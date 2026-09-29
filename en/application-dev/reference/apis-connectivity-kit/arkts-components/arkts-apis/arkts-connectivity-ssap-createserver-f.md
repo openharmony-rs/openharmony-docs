@@ -20,6 +20,8 @@ Creates an SSAP server instance.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ssap-function createServer(): Server--><!--Device-ssap-function createServer(): Server-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Return value:**

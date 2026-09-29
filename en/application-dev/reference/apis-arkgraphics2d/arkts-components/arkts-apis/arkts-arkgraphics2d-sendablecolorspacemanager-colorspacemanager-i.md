@@ -12,6 +12,8 @@ Before calling any of the following APIs, you must use [create()](arkts-arkgraph
 
 **Since:** 12
 
+<!--Device-sendableColorSpaceManager-interface ColorSpaceManager extends ISendable--><!--Device-sendableColorSpaceManager-interface ColorSpaceManager extends ISendable-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ getColorSpaceName(): colorSpaceManager.ColorSpace
 Obtains the color space type.
 
 **Since:** 12
+
+<!--Device-ColorSpaceManager-getColorSpaceName(): colorSpaceManager.ColorSpace--><!--Device-ColorSpaceManager-getColorSpaceName(): colorSpaceManager.ColorSpace-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -61,6 +65,8 @@ Obtains the gamma of the color space.
 
 **Since:** 12
 
+<!--Device-ColorSpaceManager-getGamma(): number--><!--Device-ColorSpaceManager-getGamma(): number-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Return value:**
@@ -91,6 +97,8 @@ getWhitePoint(): collections.Array<number>
 Obtains the white point value of the color space. The chromaticity coordinates [x, y] are returned, indicating the coordinates of the white point in the color space.
 
 **Since:** 12
+
+<!--Device-ColorSpaceManager-getWhitePoint(): collections.Array<number>--><!--Device-ColorSpaceManager-getWhitePoint(): collections.Array<number>-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 

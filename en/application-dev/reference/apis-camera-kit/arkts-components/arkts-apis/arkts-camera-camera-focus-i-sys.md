@@ -12,6 +12,8 @@ It provides APIs related to focus operations.
 
 **Since:** 11
 
+<!--Device-camera-interface Focus extends FocusQuery--><!--Device-camera-interface Focus extends FocusQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ getFocusAssist(): boolean
 Checks whether the focus assist is enabled.
 
 **Since:** 12
+
+<!--Device-Focus-getFocusAssist(): boolean--><!--Device-Focus-getFocusAssist(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -72,6 +76,8 @@ getFocusDriven(): FocusDrivenType
 Obtains the focus drive type in use.
 
 **Since:** 15
+
+<!--Device-Focus-getFocusDriven(): FocusDrivenType--><!--Device-Focus-getFocusDriven(): FocusDrivenType-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -118,6 +124,8 @@ Obtains the focus range type in use.
 
 **Since:** 15
 
+<!--Device-Focus-getFocusRange(): FocusRangeType--><!--Device-Focus-getFocusRange(): FocusRangeType-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -163,6 +171,8 @@ Sets the focus assist. Before the setting, call [isFocusAssistSupported](arkts-c
 
 **Since:** 12
 
+<!--Device-Focus-setFocusAssist(enabled: boolean): void--><!--Device-Focus-setFocusAssist(enabled: boolean): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -206,6 +216,8 @@ setFocusDriven(type: FocusDrivenType): void
 Sets a focus drive type. Before the setting, call [isFocusDrivenTypeSupported](arkts-camera-camera-focusquery-i-sys.md#isfocusdriventypesupported) to check whether the focus drive type is supported.
 
 **Since:** 15
+
+<!--Device-Focus-setFocusDriven(type: FocusDrivenType): void--><!--Device-Focus-setFocusDriven(type: FocusDrivenType): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -252,6 +264,8 @@ setFocusRange(type: FocusRangeType): void
 Sets a focus range type. Before the setting, call [isFocusRangeTypeSupported](arkts-camera-camera-focusquery-i-sys.md#isfocusrangetypesupported) to check whether the focus range type is supported.
 
 **Since:** 15
+
+<!--Device-Focus-setFocusRange(type: FocusRangeType): void--><!--Device-Focus-setFocusRange(type: FocusRangeType): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -8,6 +8,8 @@ declare enum NavBarPosition
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare enum NavBarPosition--><!--Device-unnamed-declare enum NavBarPosition-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Start
@@ -22,6 +24,8 @@ Start
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavBarPosition-Start--><!--Device-NavBarPosition-Start-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## End
@@ -35,5 +39,7 @@ End
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavBarPosition-End--><!--Device-NavBarPosition-End-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

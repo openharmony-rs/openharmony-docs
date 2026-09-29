@@ -8,6 +8,8 @@ Defines the align rule options of relative container.
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare interface AlignRuleOption--><!--Device-unnamed-declare interface AlignRuleOption-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bias
@@ -30,6 +32,8 @@ bias?: Bias
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AlignRuleOption-bias?: Bias--><!--Device-AlignRuleOption-bias?: Bias-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -47,6 +51,8 @@ bottom?: VerticalAlignParam
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AlignRuleOption-bottom?: VerticalAlignParam--><!--Device-AlignRuleOption-bottom?: VerticalAlignParam-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +72,8 @@ center?: VerticalAlignParam
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AlignRuleOption-center?: VerticalAlignParam--><!--Device-AlignRuleOption-center?: VerticalAlignParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## left
@@ -83,6 +91,8 @@ left?: HorizontalAlignParam
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AlignRuleOption-left?: HorizontalAlignParam--><!--Device-AlignRuleOption-left?: HorizontalAlignParam-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +112,8 @@ middle?: HorizontalAlignParam
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AlignRuleOption-middle?: HorizontalAlignParam--><!--Device-AlignRuleOption-middle?: HorizontalAlignParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## right
@@ -120,6 +132,8 @@ right?: HorizontalAlignParam
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AlignRuleOption-right?: HorizontalAlignParam--><!--Device-AlignRuleOption-right?: HorizontalAlignParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -137,5 +151,7 @@ top?: VerticalAlignParam
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AlignRuleOption-top?: VerticalAlignParam--><!--Device-AlignRuleOption-top?: VerticalAlignParam-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

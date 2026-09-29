@@ -8,6 +8,8 @@ Image style.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface RichEditorImageSpanStyle--><!--Device-unnamed-declare interface RichEditorImageSpanStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## layoutStyle
@@ -25,6 +27,8 @@ Image layout style. Default value: {"borderRadius":"","margin":""}
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorImageSpanStyle-layoutStyle?: RichEditorLayoutStyle--><!--Device-RichEditorImageSpanStyle-layoutStyle?: RichEditorLayoutStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Default value: ImageFit.Cover.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorImageSpanStyle-objectFit?: ImageFit--><!--Device-RichEditorImageSpanStyle-objectFit?: ImageFit-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## resizable
@@ -64,6 +70,8 @@ Image resizing options.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-RichEditorImageSpanStyle-resizable?: ResizableOptions--><!--Device-RichEditorImageSpanStyle-resizable?: ResizableOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -81,6 +89,8 @@ Width and height of the image, in vp by default. Default value: related to the v
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorImageSpanStyle-size?: [Dimension, Dimension]--><!--Device-RichEditorImageSpanStyle-size?: [Dimension, Dimension]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,5 +111,7 @@ Default value: ImageSpanAlignment.BOTTOM
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorImageSpanStyle-verticalAlign?: ImageSpanAlignment--><!--Device-RichEditorImageSpanStyle-verticalAlign?: ImageSpanAlignment-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

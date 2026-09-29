@@ -22,6 +22,8 @@ Obtain last known location
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function getLastLocation(callback: AsyncCallback<Location>): void--><!--Device-geolocation-function getLastLocation(callback: AsyncCallback<Location>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -62,6 +64,8 @@ Obtain last known location
 **Substitutes:** [getLastLocation](arkts-location-geolocationmanager-getlastlocation-f.md)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-geolocation-function getLastLocation(): Promise<Location>--><!--Device-geolocation-function getLastLocation(): Promise<Location>-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

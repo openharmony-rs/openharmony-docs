@@ -20,6 +20,8 @@ Obtains the RAT used in the CS and PS domains for the SIM card in the specified 
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-radio-function getRadioTech(slotId: int, callback: AsyncCallback<NetworkRadioTech>): void--><!--Device-radio-function getRadioTech(slotId: int, callback: AsyncCallback<NetworkRadioTech>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -82,6 +84,8 @@ Obtains the RAT used in the CS and PS domains for the SIM card in the specified 
 **Since:** 6
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-radio-function getRadioTech(slotId: int): Promise<NetworkRadioTech>--><!--Device-radio-function getRadioTech(slotId: int): Promise<NetworkRadioTech>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

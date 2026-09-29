@@ -12,6 +12,8 @@ The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Since:** 7
 
+<!--Device-unnamed-declare class StackAttribute extends CommonMethod<StackAttribute>--><!--Device-unnamed-declare class StackAttribute extends CommonMethod<StackAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## alignContent
@@ -27,6 +29,8 @@ Sets the alignment of child components in the container. When both this attribut
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-StackAttribute-alignContent(value: Alignment): StackAttribute--><!--Device-StackAttribute-alignContent(value: Alignment): StackAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +59,8 @@ Sets whether to synchronously load all child components in the stack container. 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-StackAttribute-syncLoad(enable: boolean): StackAttribute--><!--Device-StackAttribute-syncLoad(enable: boolean): StackAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

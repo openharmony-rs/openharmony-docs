@@ -18,6 +18,8 @@ Updates an asset. This API returns the result synchronously.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-asset-function updateSync(query: AssetMap, attributesToUpdate: AssetMap): void--><!--Device-asset-function updateSync(query: AssetMap, attributesToUpdate: AssetMap): void-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**

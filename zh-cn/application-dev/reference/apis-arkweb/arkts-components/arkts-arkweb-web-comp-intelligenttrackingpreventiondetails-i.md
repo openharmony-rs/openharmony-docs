@@ -8,6 +8,8 @@ declare interface IntelligentTrackingPreventionDetails
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface IntelligentTrackingPreventionDetails--><!--Device-unnamed-declare interface IntelligentTrackingPreventionDetails-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## host
@@ -24,6 +26,8 @@ host: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-IntelligentTrackingPreventionDetails-host: string--><!--Device-IntelligentTrackingPreventionDetails-host: string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## trackerHost
@@ -39,5 +43,7 @@ trackerHost: string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-IntelligentTrackingPreventionDetails-trackerHost: string--><!--Device-IntelligentTrackingPreventionDetails-trackerHost: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

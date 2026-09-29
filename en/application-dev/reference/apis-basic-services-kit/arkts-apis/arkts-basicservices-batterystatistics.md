@@ -8,6 +8,8 @@ The **batteryStatistics** module provides APIs for querying software and hardwar
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace batteryStats--><!--Device-unnamed-declare namespace batteryStats-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryStatistics
 
 **System API:** This is a system API.

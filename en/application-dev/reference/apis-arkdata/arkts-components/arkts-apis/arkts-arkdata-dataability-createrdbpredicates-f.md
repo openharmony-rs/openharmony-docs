@@ -16,6 +16,8 @@ Creates an **RdbPredicates** object with a table name and **DataAbilityPredicate
 
 **Since:** 7
 
+<!--Device-dataAbility-function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPredicates): rdb.RdbPredicates--><!--Device-dataAbility-function createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPredicates): rdb.RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Parameters:**

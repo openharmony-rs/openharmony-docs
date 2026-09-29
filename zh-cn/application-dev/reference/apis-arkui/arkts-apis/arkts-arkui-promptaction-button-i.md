@@ -8,6 +8,8 @@ interface Button
 
 **起始版本：** 9
 
+<!--Device-promptAction-interface Button--><!--Device-promptAction-interface Button-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ color: string | Resource
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Button-color: string | Resource--><!--Device-Button-color: string | Resource-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primary
@@ -50,6 +54,8 @@ primary?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Button-primary?: boolean--><!--Device-Button-primary?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -67,5 +73,7 @@ text: string | Resource
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Button-text: string | Resource--><!--Device-Button-text: string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Enumerates the priorities available for EventHandler. For details about the mapp
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export enum Priority--><!--Device-unnamed-export enum Priority-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## IMMEDIATE
@@ -23,6 +25,8 @@ IMMEDIATE priority, corresponding to EventHandler IMMEDIATE priority.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-Priority-IMMEDIATE = 1--><!--Device-Priority-IMMEDIATE = 1-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -40,6 +44,8 @@ HIGH priority, corresponding to EventHandler HIGH priority.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-Priority-HIGH = 2--><!--Device-Priority-HIGH = 2-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## LOW
@@ -56,6 +62,8 @@ Low priority, corresponding to EventHandler LOW priority.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-Priority-LOW = 3--><!--Device-Priority-LOW = 3-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## IDLE
@@ -71,5 +79,7 @@ IDLE priority, corresponding to EventHandler IDLE priority.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-Priority-IDLE = 4--><!--Device-Priority-IDLE = 4-End-->
 
 **System capability:** SystemCapability.Utils.Lang

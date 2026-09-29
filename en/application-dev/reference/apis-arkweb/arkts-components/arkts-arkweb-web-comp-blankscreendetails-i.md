@@ -8,6 +8,8 @@ Provides the result details when a blank screen is detected, including the numbe
 
 **Since:** 22
 
+<!--Device-unnamed-declare interface BlankScreenDetails--><!--Device-unnamed-declare interface BlankScreenDetails-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## detectedContentfulNodesCount
@@ -23,5 +25,7 @@ Number of contentful nodes that are detected.
 **Type:** number
 
 **Since:** 22
+
+<!--Device-BlankScreenDetails-detectedContentfulNodesCount?: number--><!--Device-BlankScreenDetails-detectedContentfulNodesCount?: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

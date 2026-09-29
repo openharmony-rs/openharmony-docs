@@ -10,6 +10,8 @@ export default class Geolocation
 
 **Substitutes:** [geoLocationManager/geoLocationManager](arkts-location-geolocationmanager.md)
 
+<!--Device-unnamed-export default class Geolocation--><!--Device-unnamed-export default class Geolocation-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Obtains the geographic location.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Geolocation-static getLocation(options?: GetLocationOption): void--><!--Device-Geolocation-static getLocation(options?: GetLocationOption): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 **Parameters:**
@@ -58,6 +62,8 @@ Obtains the location types supported by the system.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Geolocation-static getLocationType(options?: GetLocationTypeOption): void--><!--Device-Geolocation-static getLocationType(options?: GetLocationTypeOption): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 **Parameters:**
@@ -79,6 +85,8 @@ Obtains the supported coordinate system types.
 **Deprecated since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Geolocation-static getSupportedCoordTypes(): Array<string>--><!--Device-Geolocation-static getSupportedCoordTypes(): Array<string>-End-->
 
 **System capability:** SystemCapability.Location.Location.Lite
 
@@ -106,6 +114,8 @@ Listens to the geographical location. If this method is called multiple times, t
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Geolocation-static subscribe(options: SubscribeLocationOption): void--><!--Device-Geolocation-static subscribe(options: SubscribeLocationOption): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 **Parameters:**
@@ -131,5 +141,7 @@ Cancels listening to the geographical location.
 **Required permissions:** ohos.permission.LOCATION
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Geolocation-static unsubscribe(): void--><!--Device-Geolocation-static unsubscribe(): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Lite

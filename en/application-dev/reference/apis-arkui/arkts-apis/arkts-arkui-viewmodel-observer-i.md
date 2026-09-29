@@ -10,6 +10,8 @@ Defines the observer interface.
 
 **Since:** 6
 
+<!--Device-unnamed-export interface observer--><!--Device-unnamed-export interface observer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## observe
@@ -23,6 +25,8 @@ Turn on the listener.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-observer-observe(callback: string): void--><!--Device-observer-observe(callback: string): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,5 +47,7 @@ Turn off the listener.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-observer-unobserve(): void--><!--Device-observer-unobserve(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

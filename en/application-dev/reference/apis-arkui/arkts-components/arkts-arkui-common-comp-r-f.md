@@ -14,6 +14,8 @@ global $r function
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-unnamed-declare function $r(value: string, ...params: any[]): Resource--><!--Device-unnamed-declare function $r(value: string, ...params: any[]): Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

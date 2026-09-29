@@ -8,6 +8,8 @@ interface WindowSnapshotConfiguration
 
 **起始版本：** 21
 
+<!--Device-window-interface WindowSnapshotConfiguration--><!--Device-window-interface WindowSnapshotConfiguration-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -27,5 +29,7 @@ useCache?: boolean
 **类型：** boolean
 
 **起始版本：** 21
+
+<!--Device-WindowSnapshotConfiguration-useCache?: boolean--><!--Device-WindowSnapshotConfiguration-useCache?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

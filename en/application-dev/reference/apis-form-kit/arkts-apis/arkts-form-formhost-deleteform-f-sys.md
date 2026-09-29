@@ -18,6 +18,8 @@ Deletes a widget. After this API is called, the application can no longer use th
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function deleteForm(formId: string, callback: AsyncCallback<void>): void--><!--Device-formHost-function deleteForm(formId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -56,6 +58,8 @@ Deletes a widget. After this API is called, the application can no longer use th
 **Since:** 9
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
+
+<!--Device-formHost-function deleteForm(formId: string): Promise<void>--><!--Device-formHost-function deleteForm(formId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

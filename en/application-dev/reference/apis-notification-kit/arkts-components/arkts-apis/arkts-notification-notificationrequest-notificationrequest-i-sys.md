@@ -8,6 +8,8 @@ Defines the data structure of a notification request, which is used to describe 
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NotificationRequest--><!--Device-unnamed-export interface NotificationRequest-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## agentBundle
@@ -21,6 +23,8 @@ Information about the agent bundle for creating notifications. This parameter is
 **Type:** [BundleOption](arkts-notification-notificationcommondef-bundleoption-i.md)
 
 **Since:** 12
+
+<!--Device-NotificationRequest-readonly agentBundle?: BundleOption--><!--Device-NotificationRequest-readonly agentBundle?: BundleOption-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -38,6 +42,8 @@ Application instance key. This parameter is left empty by default.
 
 **Since:** 15
 
+<!--Device-NotificationRequest-readonly appInstanceKey?: string--><!--Device-NotificationRequest-readonly appInstanceKey?: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -54,25 +60,7 @@ Notification classification. Not supported currently.
 
 **Since:** 7
 
-**System capability:** SystemCapability.Notification.Notification
-
-**System API:** This is a system API.
-
-## creatorInstanceKey
-
-```TypeScript
-readonly creatorInstanceKey?: number
-```
-
-Creator instance key.
-
-**Type:** number
-
-**Since:** 12
-
-**Deprecated since:** 15
-
-**Substitutes:** [appInstanceKey](#appinstancekey)
+<!--Device-NotificationRequest-classification?: string--><!--Device-NotificationRequest-classification?: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -90,6 +78,8 @@ Device ID of the notification source. Not supported currently.
 
 **Since:** 8
 
+<!--Device-NotificationRequest-readonly deviceId?: string--><!--Device-NotificationRequest-readonly deviceId?: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -105,6 +95,8 @@ Extended parameters customized for the system applications to publish notificati
 **Type:** Record&lt;string, Object&gt;
 
 **Since:** 20
+
+<!--Device-NotificationRequest-extendInfo?: Record<string, Object>--><!--Device-NotificationRequest-extendInfo?: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -126,6 +118,8 @@ Whether notifications are forcibly displayed in all scenario across devices. The
 
 **Since:** 18
 
+<!--Device-NotificationRequest-forceDistributed?: boolean--><!--Device-NotificationRequest-forceDistributed?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -143,6 +137,8 @@ Custom group notification information. This parameter is left empty by default.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotificationRequest-groupInfo?: GroupInfo--><!--Device-NotificationRequest-groupInfo?: GroupInfo-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -169,6 +165,8 @@ Whether the notification can be removed. If a notification is not removable, it 
 - API version 11 and later: ohos.permission.SET_UNREMOVABLE_NOTIFICATION
 - API versions 8 to 10: N/A
 
+<!--Device-NotificationRequest-isRemoveAllowed?: boolean--><!--Device-NotificationRequest-isRemoveAllowed?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -189,6 +187,8 @@ Whether notifications are not displayed in all scenarios across devices. The def
 
 **Since:** 18
 
+<!--Device-NotificationRequest-notDistributed?: boolean--><!--Device-NotificationRequest-notDistributed?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -204,6 +204,8 @@ Notification mode control. The default value is **0**. This API can be used to r
 **Type:** number
 
 **Since:** 12
+
+<!--Device-NotificationRequest-notificationControlFlags?: long--><!--Device-NotificationRequest-notificationControlFlags?: long-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -221,6 +223,8 @@ Information about the proxied bundle. This parameter is left empty by default.
 
 **Since:** 12
 
+<!--Device-NotificationRequest-representativeBundle?: BundleOption--><!--Device-NotificationRequest-representativeBundle?: BundleOption-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -236,6 +240,8 @@ Notification source. Not supported currently.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-NotificationRequest-readonly source?: int--><!--Device-NotificationRequest-readonly source?: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -253,6 +259,8 @@ Condition object. This parameter is left empty by default.
 
 **Since:** 23
 
+<!--Device-NotificationRequest-trigger?:Trigger--><!--Device-NotificationRequest-trigger?:Trigger-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -268,6 +276,30 @@ Intelligent notification unification information. This parameter is left empty b
 **Type:** [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md)
 
 **Since:** 12
+
+<!--Device-NotificationRequest-unifiedGroupInfo?: UnifiedGroupInfo--><!--Device-NotificationRequest-unifiedGroupInfo?: UnifiedGroupInfo-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+**System API:** This is a system API.
+
+## creatorInstanceKey
+
+```TypeScript
+readonly creatorInstanceKey?: number
+```
+
+Creator instance key.
+
+**Type:** number
+
+**Since:** 12
+
+**Deprecated since:** 15
+
+**Substitutes:** [appInstanceKey](#appinstancekey)
+
+<!--Device-NotificationRequest-readonly creatorInstanceKey?: number--><!--Device-NotificationRequest-readonly creatorInstanceKey?: number-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

@@ -19,6 +19,8 @@ Requests notification to be enabled for this application. This API uses an async
 
 **Substitutes:** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md)
 
+<!--Device-notification-function requestEnableNotification(callback: AsyncCallback<void>): void--><!--Device-notification-function requestEnableNotification(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -43,6 +45,8 @@ Requests notification to be enabled for this application. This API uses a promis
 **Deprecated since:** 9
 
 **Substitutes:** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md)
+
+<!--Device-notification-function requestEnableNotification(): Promise<void>--><!--Device-notification-function requestEnableNotification(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

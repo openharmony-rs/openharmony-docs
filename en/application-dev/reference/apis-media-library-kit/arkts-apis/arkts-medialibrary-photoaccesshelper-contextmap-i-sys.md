@@ -8,6 +8,8 @@ Provides APIs for input Context Map.
 
 **Since:** 23
 
+<!--Device-photoAccessHelper-interface ContextMap--><!--Device-photoAccessHelper-interface ContextMap-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Field Types
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContextMap-topicField: FieldType[]--><!--Device-ContextMap-topicField: FieldType[]-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

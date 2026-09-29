@@ -10,6 +10,8 @@ Flag indicating whether a module is associated with a widget or shortcut when it
 
 **Deprecated since:** 10
 
+<!--Device-bundle-export enum ModuleRemoveFlag--><!--Device-bundle-export enum ModuleRemoveFlag-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Not used by a widget.
 **Since:** 9
 
 **Deprecated since:** 10
+
+<!--Device-ModuleRemoveFlag-FLAG_MODULE_NOT_USED_BY_FORM = 0--><!--Device-ModuleRemoveFlag-FLAG_MODULE_NOT_USED_BY_FORM = 0-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -42,6 +46,8 @@ Used by a widget.
 
 **Deprecated since:** 10
 
+<!--Device-ModuleRemoveFlag-FLAG_MODULE_USED_BY_FORM = 1--><!--Device-ModuleRemoveFlag-FLAG_MODULE_USED_BY_FORM = 1-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -58,6 +64,8 @@ Not used by a shortcut.
 
 **Deprecated since:** 10
 
+<!--Device-ModuleRemoveFlag-FLAG_MODULE_NOT_USED_BY_SHORTCUT = 2--><!--Device-ModuleRemoveFlag-FLAG_MODULE_NOT_USED_BY_SHORTCUT = 2-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -73,6 +81,8 @@ Used by a shortcut.
 **Since:** 9
 
 **Deprecated since:** 10
+
+<!--Device-ModuleRemoveFlag-FLAG_MODULE_USED_BY_SHORTCUT = 3--><!--Device-ModuleRemoveFlag-FLAG_MODULE_USED_BY_SHORTCUT = 3-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

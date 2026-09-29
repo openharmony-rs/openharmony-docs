@@ -8,6 +8,8 @@ Sets the voice button options.
 
 **Since:** 23
 
+<!--Device-unnamed-interface VoiceButtonOptions--><!--Device-unnamed-interface VoiceButtonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-VoiceButtonOptions-enabled?: boolean--><!--Device-VoiceButtonOptions-enabled?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -10,6 +10,8 @@ declare interface AlertDialogParamWithButtons extends AlertDialogParam
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface AlertDialogParamWithButtons extends AlertDialogParam--><!--Device-unnamed-declare interface AlertDialogParamWithButtons extends AlertDialogParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryButton
@@ -28,6 +30,8 @@ primaryButton: AlertDialogButtonBaseOptions
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AlertDialogParamWithButtons-primaryButton: AlertDialogButtonBaseOptions--><!--Device-AlertDialogParamWithButtons-primaryButton: AlertDialogButtonBaseOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryButton
@@ -45,5 +49,7 @@ secondaryButton: AlertDialogButtonBaseOptions
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AlertDialogParamWithButtons-secondaryButton: AlertDialogButtonBaseOptions--><!--Device-AlertDialogParamWithButtons-secondaryButton: AlertDialogButtonBaseOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

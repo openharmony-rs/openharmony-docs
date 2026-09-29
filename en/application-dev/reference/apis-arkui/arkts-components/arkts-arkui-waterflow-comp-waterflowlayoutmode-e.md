@@ -8,6 +8,8 @@ Enumerates the layout modes of the **WaterFlow** component.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum WaterFlowLayoutMode--><!--Device-unnamed-declare enum WaterFlowLayoutMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALWAYS_TOP_DOWN
@@ -23,6 +25,8 @@ Default layout mode where water flow items are arranged from top to bottom. Item
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WaterFlowLayoutMode-ALWAYS_TOP_DOWN = 0--><!--Device-WaterFlowLayoutMode-ALWAYS_TOP_DOWN = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,5 +56,7 @@ is supported only in API version 18 and later. In earlier versions, the scrollba
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WaterFlowLayoutMode-SLIDING_WINDOW = 1--><!--Device-WaterFlowLayoutMode-SLIDING_WINDOW = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -10,6 +10,8 @@ The definition of User information.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-interface UserInfo--><!--Device-avMusicTemplate-interface UserInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -32,6 +34,8 @@ User is login.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserInfo-isLogin: boolean--><!--Device-UserInfo-isLogin: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## isVip
@@ -47,6 +51,8 @@ User is vip.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserInfo-isVip: boolean--><!--Device-UserInfo-isVip: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -64,6 +70,8 @@ Nick name of the user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserInfo-nickName: string--><!--Device-UserInfo-nickName: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## profilePicUrl
@@ -79,6 +87,8 @@ Profile pic url of the user.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserInfo-profilePicUrl: string--><!--Device-UserInfo-profilePicUrl: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -96,6 +106,8 @@ Other descriptions of the user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserInfo-tips: string--><!--Device-UserInfo-tips: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## userInfoId
@@ -111,5 +123,7 @@ Unique id of the user.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserInfo-userInfoId: string--><!--Device-UserInfo-userInfoId: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

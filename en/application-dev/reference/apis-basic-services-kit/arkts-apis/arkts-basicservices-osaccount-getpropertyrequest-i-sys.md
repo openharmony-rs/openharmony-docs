@@ -8,6 +8,8 @@ Defines the request for obtaining property information.
 
 **Since:** 8
 
+<!--Device-osAccount-interface GetPropertyRequest--><!--Device-osAccount-interface GetPropertyRequest-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ OS account ID, which is **undefined** by default.
 
 **Since:** 12
 
+<!--Device-GetPropertyRequest-accountId?: int--><!--Device-GetPropertyRequest-accountId?: int-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Authentication credential type.
 
 **Since:** 8
 
+<!--Device-GetPropertyRequest-authType: AuthType--><!--Device-GetPropertyRequest-authType: AuthType-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ An array of the types of the properties to obtain.
 **Type:** Array&lt;[GetPropertyType](arkts-basicservices-osaccount-getpropertytype-e-sys.md)&gt;
 
 **Since:** 8
+
+<!--Device-GetPropertyRequest-keys: Array<GetPropertyType>--><!--Device-GetPropertyRequest-keys: Array<GetPropertyType>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

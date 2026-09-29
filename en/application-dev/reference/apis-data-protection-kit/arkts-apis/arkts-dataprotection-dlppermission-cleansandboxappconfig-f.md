@@ -18,6 +18,8 @@ This API clears the sandbox application configuration and restores the default s
 
 **Since:** 11
 
+<!--Device-dlpPermission-function cleanSandboxAppConfig(): Promise<void>--><!--Device-dlpPermission-function cleanSandboxAppConfig(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Return value:**

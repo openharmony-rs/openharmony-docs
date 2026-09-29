@@ -9,6 +9,8 @@ This module provides package management capabilities, including installing and u
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace bundleManager--><!--Device-unnamed-declare namespace bundleManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

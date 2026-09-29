@@ -10,6 +10,8 @@ Color mode.
 
 **Deprecated since:** 20
 
+<!--Device-formInfo-enum ColorMode--><!--Device-formInfo-enum ColorMode-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## MODE_AUTO
@@ -25,6 +27,8 @@ Automatic mode.
 **Deprecated since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ColorMode-MODE_AUTO = -1--><!--Device-ColorMode-MODE_AUTO = -1-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -42,6 +46,8 @@ Dark mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ColorMode-MODE_DARK = 0--><!--Device-ColorMode-MODE_DARK = 0-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## MODE_LIGHT
@@ -57,5 +63,7 @@ Light mode.
 **Deprecated since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ColorMode-MODE_LIGHT = 1--><!--Device-ColorMode-MODE_LIGHT = 1-End-->
 
 **System capability:** SystemCapability.Ability.Form

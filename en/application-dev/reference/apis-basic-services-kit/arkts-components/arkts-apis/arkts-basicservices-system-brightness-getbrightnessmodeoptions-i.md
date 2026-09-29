@@ -10,6 +10,8 @@ Options for obtaining the screen brightness mode.
 
 **Deprecated since:** 7
 
+<!--Device-unnamed-export interface GetBrightnessModeOptions--><!--Device-unnamed-export interface GetBrightnessModeOptions-End-->
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Called when an API call is complete.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-GetBrightnessModeOptions-complete?: () => void--><!--Device-GetBrightnessModeOptions-complete?: () => void-End-->
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## fail
@@ -47,6 +51,8 @@ Called when an API call has failed. **data** indicates the error information, an
 **Deprecated since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-GetBrightnessModeOptions-fail?: (data: string, code: number) => void--><!--Device-GetBrightnessModeOptions-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -70,6 +76,8 @@ Called when an API call is successful. **data** is a return value of the [Bright
 **Deprecated since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-GetBrightnessModeOptions-success?: (data: BrightnessModeResponse) => void--><!--Device-GetBrightnessModeOptions-success?: (data: BrightnessModeResponse) => void-End-->
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 

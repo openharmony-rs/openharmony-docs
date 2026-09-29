@@ -16,6 +16,8 @@ Obtains the VM memory size occupied by ArkTS objects.
 
 **Since:** 21
 
+<!--Device-hidebug-function getAppVMObjectUsedSize(): bigint--><!--Device-hidebug-function getAppVMObjectUsedSize(): bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value:**

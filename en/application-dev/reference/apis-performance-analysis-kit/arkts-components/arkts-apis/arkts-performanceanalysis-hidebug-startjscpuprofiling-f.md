@@ -16,6 +16,8 @@ Starts the VM profiling method. **startJsCpuProfiling(filename: string)** and **
 
 **Since:** 9
 
+<!--Device-hidebug-function startJsCpuProfiling(filename : string) : void--><!--Device-hidebug-function startJsCpuProfiling(filename : string) : void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Parameters:**
@@ -28,7 +30,7 @@ Starts the VM profiling method. **startJsCpuProfiling(filename: string)** and **
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | the parameter check failed, Parameter type error |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed, Parameter type error. |
 
 **Examples**
 

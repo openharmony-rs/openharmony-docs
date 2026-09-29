@@ -14,6 +14,8 @@ For details about the audio and video playback demo, see [Audio Playback](../../
 
 **Since:** 9
 
+<!--Device-media-interface AVPlayer--><!--Device-media-interface AVPlayer-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 ## Modules to Import
@@ -34,7 +36,9 @@ Add a new playback source to the player's playlist.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-addPlaybackMediaSource(src: MediaSource, id?: string): Promise<string>--><!--Device-AVPlayer-addPlaybackMediaSource(src: MediaSource, id?: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -81,7 +85,9 @@ Adds an external subtitle to a video based on the FD. Currently, the external su
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-addSubtitleFromFd(fd: int, offset?: long, length?: long): Promise<void>--><!--Device-AVPlayer-addSubtitleFromFd(fd: int, offset?: long, length?: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -128,7 +134,9 @@ Adds an external subtitle to a video based on the URL. Currently, the external s
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-addSubtitleFromUrl(url: string): Promise<void>--><!--Device-AVPlayer-addSubtitleFromUrl(url: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -173,7 +181,9 @@ Ends playback of the current mediasource and starts playback of the specified me
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-advanceToMediaSource(id: string): Promise<void>--><!--Device-AVPlayer-advanceToMediaSource(id: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -227,7 +237,9 @@ Ends playback of the current mediasource and starts playback of the next mediaso
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-advanceToNextMediaSource() : Promise<void>--><!--Device-AVPlayer-advanceToNextMediaSource() : Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -274,7 +286,9 @@ Ends playback of the current mediasource and starts playback of the previous med
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-advanceToPrevMediaSource(): Promise<void>--><!--Device-AVPlayer-advanceToPrevMediaSource(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -324,7 +338,9 @@ Clears all the items in the player's playlist. Currently playing media will be t
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-clearPlaybackList(): Promise<void>--><!--Device-AVPlayer-clearPlaybackList(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -364,7 +380,9 @@ Deselects the specified track when the AVPlayer plays multimedia resources with 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-deselectTrack(index: int): Promise<void>--><!--Device-AVPlayer-deselectTrack(index: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -425,7 +443,9 @@ Return the current mediasource.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-getCurrentMediaSource(): MediaSource | undefined--><!--Device-AVPlayer-getCurrentMediaSource(): MediaSource | undefined-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -465,7 +485,9 @@ Obtains the current playback time. This API can be called only when the AVPlayer
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-AVPlayer-getCurrentPresentationTimestamp() : long--><!--Device-AVPlayer-getCurrentPresentationTimestamp() : long-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -511,6 +533,8 @@ Obtains the selected track by the specified media type. This API can be called o
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVPlayer-getCurrentTrack(trackType: MediaType): Promise<int>--><!--Device-AVPlayer-getCurrentTrack(trackType: MediaType): Promise<int>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -552,6 +576,8 @@ Obtains the list of loaded time ranges. This API uses a promise to return the re
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVPlayer-getLoadedTimeRanges(): Promise<Array<Range>>--><!--Device-AVPlayer-getLoadedTimeRanges(): Promise<Array<Range>>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Return value:**
@@ -583,7 +609,9 @@ Obtains the media key system information of the media asset that is being played
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-getMediaKeySystemInfos(): Array<drm.MediaKeySystemInfo>--><!--Device-AVPlayer-getMediaKeySystemInfos(): Array<drm.MediaKeySystemInfo>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -622,7 +650,9 @@ Return the array of mediasources in the playlist.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-getMediaSources(): Array<MediaSource | undefined>--><!--Device-AVPlayer-getMediaSources(): Array<MediaSource | undefined>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -661,6 +691,8 @@ getPlaybackInfo(): Promise<PlaybackInfo>
 Obtains the playback information. This API can be called only when the AVPlayer is in the prepared, playing, or paused state. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-AVPlayer-getPlaybackInfo(): Promise<PlaybackInfo>--><!--Device-AVPlayer-getPlaybackInfo(): Promise<PlaybackInfo>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -705,7 +737,9 @@ Obtains the current playback position. This API can be called only when the AVPl
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-AVPlayer-getPlaybackPosition() : int--><!--Device-AVPlayer-getPlaybackPosition() : int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -749,6 +783,8 @@ Obtains the playback speed of an AVPlayer. This API uses a promise to return the
 
 **Since:** 23
 
+<!--Device-AVPlayer-getPlaybackRate(): Promise<double>--><!--Device-AVPlayer-getPlaybackRate(): Promise<double>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Return value:**
@@ -777,6 +813,8 @@ getPlaybackStatisticMetrics(): Promise<PlaybackMetrics>
 Obtains the statistic metrics of the current player. This API can be called when the AVPlayer is in the prepared, playing, paused, completed, or stopped state. This API uses a promise to return the result.
 
 **Since:** 23
+
+<!--Device-AVPlayer-getPlaybackStatisticMetrics(): Promise<PlaybackMetrics>--><!--Device-AVPlayer-getPlaybackStatisticMetrics(): Promise<PlaybackMetrics>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -829,6 +867,8 @@ Obtains the list of seekable time ranges. This API uses a promise to return the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVPlayer-getSeekableTimeRanges(): Promise<Array<Range>>--><!--Device-AVPlayer-getSeekableTimeRanges(): Promise<Array<Range>>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Return value:**
@@ -860,7 +900,9 @@ Obtains the indexes of the selected audio or video tracks. This API can be calle
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-getSelectedTracks(): Promise<Array<int>>--><!--Device-AVPlayer-getSelectedTracks(): Promise<Array<int>>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -902,7 +944,9 @@ Obtains the audio and video track information. This API can be called only when 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void--><!--Device-AVPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -948,7 +992,9 @@ Obtains the audio and video track information. This API can be called only when 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-getTrackDescription(): Promise<Array<MediaDescription>>--><!--Device-AVPlayer-getTrackDescription(): Promise<Array<MediaDescription>>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -992,6 +1038,8 @@ Obtains the track selection filter configured for the player. This API uses a pr
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVPlayer-getTrackSelectionFilter(): Promise<TrackSelectionFilter>--><!--Device-AVPlayer-getTrackSelectionFilter(): Promise<TrackSelectionFilter>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Return value:**
@@ -1029,7 +1077,9 @@ Checks whether the media source supports [seek](#seek) in SEEK_CONTINUOUS mode (
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-AVPlayer-isSeekContinuousSupported() : boolean--><!--Device-AVPlayer-isSeekContinuousSupported() : boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1060,6 +1110,8 @@ Unsubscribes from media key system information changes.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-off(type: 'mediaKeySystemInfoUpdate', callback?: Callback<Array<drm.MediaKeySystemInfo>>): void--><!--Device-AVPlayer-off(type: 'mediaKeySystemInfoUpdate', callback?: Callback<Array<drm.MediaKeySystemInfo>>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1092,6 +1144,8 @@ Unsubscribes from [AVPlayerState](arkts-media-media-avplayerstate-t.md) state ch
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AVPlayer-off(type: 'stateChange', callback?: OnAVPlayerStateChangeHandle): void--><!--Device-AVPlayer-off(type: 'stateChange', callback?: OnAVPlayerStateChangeHandle): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -1122,6 +1176,8 @@ Unsubscribes from the event that checks whether the volume is successfully set.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-AVPlayer-off(type: 'volumeChange', callback?: Callback<double>): void--><!--Device-AVPlayer-off(type: 'volumeChange', callback?: Callback<double>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1154,6 +1210,8 @@ Unsubscribes from the event that indicates the end of the stream being played.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-AVPlayer-off(type: 'endOfStream', callback?: Callback<void>): void--><!--Device-AVPlayer-off(type: 'endOfStream', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -1184,6 +1242,8 @@ Unsubscribes from the event that checks whether the seek operation takes effect.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AVPlayer-off(type: 'seekDone', callback?: Callback<int>): void--><!--Device-AVPlayer-off(type: 'seekDone', callback?: Callback<int>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1216,6 +1276,8 @@ Unsubscribes from the event that checks whether the playback speed is successful
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-AVPlayer-off(type: 'speedDone', callback?: Callback<int>): void--><!--Device-AVPlayer-off(type: 'speedDone', callback?: Callback<int>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -1246,6 +1308,8 @@ Unsubscribes from the event indicating that the playback rate set by calling [se
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-AVPlayer-off(type: 'playbackRateDone', callback?: OnPlaybackRateDone): void--><!--Device-AVPlayer-off(type: 'playbackRateDone', callback?: OnPlaybackRateDone): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1278,6 +1342,8 @@ Unsubscribes from the event that checks whether the bitrate is successfully set.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-AVPlayer-off(type: 'bitrateDone', callback?: Callback<int>): void--><!--Device-AVPlayer-off(type: 'bitrateDone', callback?: Callback<int>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -1308,6 +1374,8 @@ Unsubscribes from playback position changes.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AVPlayer-off(type: 'timeUpdate', callback?: Callback<int>): void--><!--Device-AVPlayer-off(type: 'timeUpdate', callback?: Callback<int>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1340,6 +1408,8 @@ Unsubscribes from media asset duration changes.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-AVPlayer-off(type: 'durationUpdate', callback?: Callback<int>): void--><!--Device-AVPlayer-off(type: 'durationUpdate', callback?: Callback<int>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -1370,6 +1440,8 @@ Unsubscribes from audio and video buffer changes.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-off(type: 'bufferingUpdate', callback?: OnBufferingUpdateHandler): void--><!--Device-AVPlayer-off(type: 'bufferingUpdate', callback?: OnBufferingUpdateHandler): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1402,6 +1474,8 @@ Unsubscribes from the event that indicates rendering starts for the first frame.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-AVPlayer-off(type: 'startRenderFrame', callback?: Callback<void>): void--><!--Device-AVPlayer-off(type: 'startRenderFrame', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -1432,6 +1506,8 @@ Unsubscribes from video size changes.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-off(type: 'videoSizeChange', callback?: OnVideoSizeChangeHandler): void--><!--Device-AVPlayer-off(type: 'videoSizeChange', callback?: OnVideoSizeChangeHandler): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1464,6 +1540,8 @@ Unsubscribes from the audio interruption event.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVPlayer-off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void--><!--Device-AVPlayer-off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -1495,6 +1573,8 @@ Unsubscribes from available bitrates of HLS/DASH streams. This event is reported
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVPlayer-off(type: 'availableBitrates', callback?: Callback<Array<int>>): void--><!--Device-AVPlayer-off(type: 'availableBitrates', callback?: Callback<Array<int>>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -1525,6 +1605,8 @@ Unsubscribes from AVPlayer errors.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AVPlayer-off(type: 'error', callback?: ErrorCallback): void--><!--Device-AVPlayer-off(type: 'error', callback?: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1558,6 +1640,8 @@ Unsubscribes from audio stream output device changes and reasons. This API uses 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback<audio.AudioStreamDeviceChangeInfo>): void--><!--Device-AVPlayer-off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback<audio.AudioStreamDeviceChangeInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1596,6 +1680,8 @@ Unsubscribes from subtitle update events.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVPlayer-off(type: 'subtitleUpdate', callback?: Callback<SubtitleInfo>): void--><!--Device-AVPlayer-off(type: 'subtitleUpdate', callback?: Callback<SubtitleInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -1626,6 +1712,8 @@ Unsubscribes from track change events.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-off(type: 'trackChange', callback?: OnTrackChangeHandler): void--><!--Device-AVPlayer-off(type: 'trackChange', callback?: OnTrackChangeHandler): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1658,6 +1746,8 @@ Unsubscribes from track information update events.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVPlayer-off(type: 'trackInfoUpdate', callback?: Callback<Array<MediaDescription>>): void--><!--Device-AVPlayer-off(type: 'trackInfoUpdate', callback?: Callback<Array<MediaDescription>>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -1686,6 +1776,8 @@ off(type: 'amplitudeUpdate', callback?: Callback<Array<number>>): void
 Unsubscribes from update events of the maximum amplitude.
 
 **Since:** 13
+
+<!--Device-AVPlayer-off(type: 'amplitudeUpdate', callback?: Callback<Array<double>>): void--><!--Device-AVPlayer-off(type: 'amplitudeUpdate', callback?: Callback<Array<double>>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1717,6 +1809,8 @@ Unsubscribes from the events indicating that an SEI message is received.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AVPlayer-off(type: 'seiMessageReceived', payloadTypes?: Array<int>, callback?: OnSeiMessageHandle): void--><!--Device-AVPlayer-off(type: 'seiMessageReceived', payloadTypes?: Array<int>, callback?: OnSeiMessageHandle): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1750,6 +1844,8 @@ Unsubscribes from the event indicating that super resolution is enabled or disab
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AVPlayer-off(type:'superResolutionChanged', callback?: OnSuperResolutionChanged): void--><!--Device-AVPlayer-off(type:'superResolutionChanged', callback?: OnSuperResolutionChanged): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -1778,6 +1874,8 @@ offMetricsEvent(callback?: Callback<Array<AVMetricsEvent>>): void
 Unsubscribes from metric events during playback.
 
 **Since:** 23
+
+<!--Device-AVPlayer-offMetricsEvent(callback?: Callback<Array<AVMetricsEvent>>): void--><!--Device-AVPlayer-offMetricsEvent(callback?: Callback<Array<AVMetricsEvent>>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1808,7 +1906,9 @@ Unregisters listener to detect when changes occur in the playback content.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-offPlaybackContentChanged(callback?: Callback<string>):void--><!--Device-AVPlayer-offPlaybackContentChanged(callback?: Callback<string>):void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1844,7 +1944,9 @@ Unregister listener to detect time-based metadata, Currently, only the #EXT-X-DA
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-offTimedMetaData(callback?: Callback<AVTimedMetaData>): void--><!--Device-AVPlayer-offTimedMetaData(callback?: Callback<AVTimedMetaData>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1874,6 +1976,8 @@ Subscribes to media key system information changes.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-on(type: 'mediaKeySystemInfoUpdate', callback: Callback<Array<drm.MediaKeySystemInfo>>): void--><!--Device-AVPlayer-on(type: 'mediaKeySystemInfoUpdate', callback: Callback<Array<drm.MediaKeySystemInfo>>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1912,6 +2016,8 @@ Subscribes to AVPlayer state changes.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AVPlayer-on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle): void--><!--Device-AVPlayer-on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1977,6 +2083,8 @@ Subscribes to the event to check whether the volume is successfully set.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVPlayer-on(type: 'volumeChange', callback: Callback<double>): void--><!--Device-AVPlayer-on(type: 'volumeChange', callback: Callback<double>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -2009,6 +2117,8 @@ Subscribes to the event that indicates the end of the stream being played. If **
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-on(type: 'endOfStream', callback: Callback<void>): void--><!--Device-AVPlayer-on(type: 'endOfStream', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2043,6 +2153,8 @@ Subscribes to the event to check whether the seek operation takes effect.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AVPlayer-on(type: 'seekDone', callback: Callback<int>): void--><!--Device-AVPlayer-on(type: 'seekDone', callback: Callback<int>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -2075,6 +2187,8 @@ Subscribes to the event to check whether the playback speed is successfully set.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-on(type: 'speedDone', callback: Callback<int>): void--><!--Device-AVPlayer-on(type: 'speedDone', callback: Callback<int>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2109,6 +2223,8 @@ Subscribes to the event indicating that the playback rate set by calling [setPla
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-AVPlayer-on(type: 'playbackRateDone', callback: OnPlaybackRateDone): void--><!--Device-AVPlayer-on(type: 'playbackRateDone', callback: OnPlaybackRateDone): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -2141,6 +2257,8 @@ Subscribes to the event to check whether the bitrate is successfully set.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-on(type: 'bitrateDone', callback: Callback<int>): void--><!--Device-AVPlayer-on(type: 'bitrateDone', callback: Callback<int>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2183,6 +2301,8 @@ Subscribes to playback position changes. It is used to refresh the current posit
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AVPlayer-on(type: 'timeUpdate', callback: Callback<int>): void--><!--Device-AVPlayer-on(type: 'timeUpdate', callback: Callback<int>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -2207,6 +2327,8 @@ Subscribes to media asset duration changes. It is used to refresh the length of 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-on(type: 'durationUpdate', callback: Callback<int>): void--><!--Device-AVPlayer-on(type: 'durationUpdate', callback: Callback<int>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2241,6 +2363,8 @@ Subscribes to audio and video buffer changes. This subscription is supported onl
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVPlayer-on(type: 'bufferingUpdate', callback: OnBufferingUpdateHandler): void--><!--Device-AVPlayer-on(type: 'bufferingUpdate', callback: OnBufferingUpdateHandler): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -2273,6 +2397,8 @@ Subscribes to the event that indicates rendering starts for the first frame. Thi
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-on(type: 'startRenderFrame', callback: Callback<void>): void--><!--Device-AVPlayer-on(type: 'startRenderFrame', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2307,6 +2433,8 @@ Subscribes to video size (width and height) changes. This subscription is suppor
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVPlayer-on(type: 'videoSizeChange', callback: OnVideoSizeChangeHandler): void--><!--Device-AVPlayer-on(type: 'videoSizeChange', callback: OnVideoSizeChangeHandler): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -2339,6 +2467,8 @@ Subscribes to the audio interruption event. When multiple audio and video assets
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void--><!--Device-AVPlayer-on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2375,6 +2505,8 @@ Subscribes to available bitrates of HLS/DASH streams. This event is reported onl
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVPlayer-on(type: 'availableBitrates', callback: Callback<Array<int>>): void--><!--Device-AVPlayer-on(type: 'availableBitrates', callback: Callback<Array<int>>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -2407,6 +2539,8 @@ Subscribes to [AVPlayer](arkts-media-multimedia-media.md) errors. This event is 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AVPlayer-on(type: 'error', callback: ErrorCallback): void--><!--Device-AVPlayer-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2472,6 +2606,8 @@ When subscribing to this event, you are advised to implement the player behavior
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVPlayer-on(type: 'audioOutputDeviceChangeWithInfo', callback: Callback<audio.AudioStreamDeviceChangeInfo>): void--><!--Device-AVPlayer-on(type: 'audioOutputDeviceChangeWithInfo', callback: Callback<audio.AudioStreamDeviceChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -2513,6 +2649,8 @@ Subscribes to subtitle update events. When external subtitles exist, the system 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVPlayer-on(type: 'subtitleUpdate', callback: Callback<SubtitleInfo>): void--><!--Device-AVPlayer-on(type: 'subtitleUpdate', callback: Callback<SubtitleInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -2553,6 +2691,8 @@ Subscribes to track change events. When the track changes, the system notifies t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVPlayer-on(type: 'trackChange', callback: OnTrackChangeHandler): void--><!--Device-AVPlayer-on(type: 'trackChange', callback: OnTrackChangeHandler): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -2585,6 +2725,8 @@ Subscribes to track information update events. When the track information is upd
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVPlayer-on(type: 'trackInfoUpdate', callback: Callback<Array<MediaDescription>>): void--><!--Device-AVPlayer-on(type: 'trackInfoUpdate', callback: Callback<Array<MediaDescription>>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2625,6 +2767,8 @@ Subscribes to update events of the maximum audio level value, which is periodica
 
 **Since:** 13
 
+<!--Device-AVPlayer-on(type: 'amplitudeUpdate', callback: Callback<Array<double>>): void--><!--Device-AVPlayer-on(type: 'amplitudeUpdate', callback: Callback<Array<double>>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -2657,6 +2801,8 @@ Subscribes to events indicating that a Supplemental Enhancement Information (SEI
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AVPlayer-on(type: 'seiMessageReceived', payloadTypes: Array<int>, callback: OnSeiMessageHandle): void--><!--Device-AVPlayer-on(type: 'seiMessageReceived', payloadTypes: Array<int>, callback: OnSeiMessageHandle): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2706,6 +2852,8 @@ Subscribes to the event indicating that super resolution is enabled or disabled.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AVPlayer-on(type:'superResolutionChanged', callback: OnSuperResolutionChanged): void--><!--Device-AVPlayer-on(type:'superResolutionChanged', callback: OnSuperResolutionChanged): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -2736,6 +2884,8 @@ onMetricsEvent(callback: Callback<Array<AVMetricsEvent>>): void
 Subscribes to metric events during playback.
 
 **Since:** 23
+
+<!--Device-AVPlayer-onMetricsEvent(callback: Callback<Array<AVMetricsEvent>>): void--><!--Device-AVPlayer-onMetricsEvent(callback: Callback<Array<AVMetricsEvent>>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2774,7 +2924,9 @@ Registers a listener to detect when the playback content has changed. The value 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-onPlaybackContentChanged(callback: Callback<string>):void--><!--Device-AVPlayer-onPlaybackContentChanged(callback: Callback<string>):void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2807,7 +2959,9 @@ Register listener to detect time-based metadata, Currently, only the #EXT-X-DATE
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-onTimedMetaData(callback: Callback<AVTimedMetaData>): void--><!--Device-AVPlayer-onTimedMetaData(callback: Callback<AVTimedMetaData>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2837,7 +2991,9 @@ Pauses audio and video playback. This API can be called only when the AVPlayer i
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-pause(callback: AsyncCallback<void>): void--><!--Device-AVPlayer-pause(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2883,7 +3039,9 @@ Pauses audio and video playback. This API can be called only when the AVPlayer i
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-pause(): Promise<void>--><!--Device-AVPlayer-pause(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2925,7 +3083,9 @@ Starts to play an audio and video asset. This API can be called only when the AV
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-play(callback: AsyncCallback<void>): void--><!--Device-AVPlayer-play(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2971,7 +3131,9 @@ Starts to play an audio and video asset. This API can be called only when the AV
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-play(): Promise<void>--><!--Device-AVPlayer-play(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3013,7 +3175,9 @@ Prepares for audio and video playback. This API can be called only when the AVPl
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-prepare(callback: AsyncCallback<void>): void--><!--Device-AVPlayer-prepare(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3062,7 +3226,9 @@ If your application frequently switches between short videos, you can create mul
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-prepare(): Promise<void>--><!--Device-AVPlayer-prepare(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3105,7 +3271,9 @@ Releases the playback resources. This API can be called when the AVPlayer is in 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-release(callback: AsyncCallback<void>): void--><!--Device-AVPlayer-release(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3151,7 +3319,9 @@ Releases the playback resources. This API can be called when the AVPlayer is in 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-release(): Promise<void>--><!--Device-AVPlayer-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3195,7 +3365,9 @@ Removes the specified playback media source from the player's playlist. If the i
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-removePlaybackMediaSource(id: string): Promise<void>--><!--Device-AVPlayer-removePlaybackMediaSource(id: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3240,7 +3412,9 @@ Resets audio and video playback. This API can be called only when the AVPlayer i
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-reset(callback: AsyncCallback<void>): void--><!--Device-AVPlayer-reset(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3286,7 +3460,9 @@ Resets audio and video playback. This API can be called only when the AVPlayer i
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-reset(): Promise<void>--><!--Device-AVPlayer-reset(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3334,7 +3510,9 @@ Seeks to the specified playback position. This API can be called only when the A
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-seek(timeMs: int, mode?: SeekMode): void--><!--Device-AVPlayer-seek(timeMs: int, mode?: SeekMode): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3381,6 +3559,8 @@ Seeks to the default access point of the playback source. For live streams, the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVPlayer-seekToDefaultPosition(): void--><!--Device-AVPlayer-seekToDefaultPosition(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Error codes:**
@@ -3415,7 +3595,9 @@ Selects a track when the AVPlayer plays multimedia resources with multiple audio
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-selectTrack(index: int, mode?: SwitchMode): Promise<void>--><!--Device-AVPlayer-selectTrack(index: int, mode?: SwitchMode): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3475,7 +3657,9 @@ Sets the bitrate for the streaming media. This API is valid only for HLS/DASH st
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-setBitrate(bitrate: int): void--><!--Device-AVPlayer-setBitrate(bitrate: int): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3506,7 +3690,9 @@ Sets the decryption configuration. When receiving an [on('mediaKeySystemInfoUpda
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-setDecryptionConfig(mediaKeySession: drm.MediaKeySession, secureVideoPath: boolean): void--><!--Device-AVPlayer-setDecryptionConfig(mediaKeySession: drm.MediaKeySession, secureVideoPath: boolean): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3564,6 +3750,8 @@ Sets the loudness gain of the AVPlayer. After this API is called, the loudness g
 
 **Since:** 21
 
+<!--Device-AVPlayer-setLoudnessGain(loudnessGain: double): Promise<void>--><!--Device-AVPlayer-setLoudnessGain(loudnessGain: double): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -3607,7 +3795,9 @@ This API can be called only when the AVPlayer is in the prepared, playing, pause
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-setMediaMuted(mediaType: MediaType, muted: boolean): Promise<void>--><!--Device-AVPlayer-setMediaMuted(mediaType: MediaType, muted: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3658,7 +3848,9 @@ Sets a source of streaming media that can be pre-downloaded, downloads the media
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-setMediaSource(src: MediaSource, strategy?: PlaybackStrategy): Promise<void>--><!--Device-AVPlayer-setMediaSource(src: MediaSource, strategy?: PlaybackStrategy): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3711,7 +3903,9 @@ Sets the playback range and seeks to the start position of the range based on th
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-AVPlayer-setPlaybackRange(startTimeMs: int, endTimeMs: int, mode?: SeekMode) : Promise<void>--><!--Device-AVPlayer-setPlaybackRange(startTimeMs: int, endTimeMs: int, mode?: SeekMode) : Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3765,7 +3959,9 @@ Set playback rate. Sets the playback rate. This API can be called only when the 
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-AVPlayer-setPlaybackRate(rate: double): void--><!--Device-AVPlayer-setPlaybackRate(rate: double): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3802,7 +3998,9 @@ Sets a playback strategy. This API can be called only when the AVPlayer is in th
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-setPlaybackStrategy(strategy: PlaybackStrategy): Promise<void>--><!--Device-AVPlayer-setPlaybackStrategy(strategy: PlaybackStrategy): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3860,7 +4058,9 @@ Sets the playback speed. This API can be called only when the AVPlayer is in the
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-setSpeed(speed: PlaybackSpeed): void--><!--Device-AVPlayer-setSpeed(speed: PlaybackSpeed): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3892,7 +4092,9 @@ Before calling [prepare()](#prepare), enable super resolution by using [Playback
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-AVPlayer-setSuperResolution(enabled: boolean) : Promise<void>--><!--Device-AVPlayer-setSuperResolution(enabled: boolean) : Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3943,6 +4145,8 @@ Sets a track selection filter for the player. The player will use this filter to
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVPlayer-setTrackSelectionFilter(filter : TrackSelectionFilter): Promise<void>--><!--Device-AVPlayer-setTrackSelectionFilter(filter : TrackSelectionFilter): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4006,7 +4210,9 @@ Before calling [prepare()](#prepare), enable super resolution by using [Playback
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-AVPlayer-setVideoWindowSize(width: int, height: int) : Promise<void>--><!--Device-AVPlayer-setVideoWindowSize(width: int, height: int) : Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4059,7 +4265,9 @@ Sets the playback volume. This API can be called only when the AVPlayer is in th
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-setVolume(volume: double): void--><!--Device-AVPlayer-setVolume(volume: double): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4089,7 +4297,9 @@ Stops audio and video playback. This API can be called only when the AVPlayer is
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-stop(callback: AsyncCallback<void>): void--><!--Device-AVPlayer-stop(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4135,7 +4345,9 @@ Stops audio and video playback. This API can be called only when the AVPlayer is
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-stop(): Promise<void>--><!--Device-AVPlayer-stop(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4179,7 +4391,9 @@ Audio effect mode. The audio effect mode is a dynamic property and is restored t
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-audioEffectMode ?: audio.AudioEffectMode--><!--Device-AVPlayer-audioEffectMode ?: audio.AudioEffectMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4199,7 +4413,9 @@ To take effect, this property must be set before [play()](#play) is called for t
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-audioInterruptMode?: audio.InterruptMode--><!--Device-AVPlayer-audioInterruptMode?: audio.InterruptMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4219,7 +4435,9 @@ To take effect, this property must be set before [prepare()](#prepare) is called
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-audioRendererInfo?: audio.AudioRendererInfo--><!--Device-AVPlayer-audioRendererInfo?: audio.AudioRendererInfo-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4239,7 +4457,9 @@ In live mode, **-1** is returned by default.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-readonly currentTime: int--><!--Device-AVPlayer-readonly currentTime: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4275,7 +4495,9 @@ WebM is no longer supported since API version 11.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-dataSrc?: AVDataSrcDescriptor--><!--Device-AVPlayer-dataSrc?: AVDataSrcDescriptor-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4295,7 +4517,9 @@ In live mode, **-1** is returned by default.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-readonly duration: int--><!--Device-AVPlayer-readonly duration: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4335,7 +4559,9 @@ WebM is no longer supported since API version 11.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-fdSrc?: AVFileDescriptor--><!--Device-AVPlayer-fdSrc?: AVFileDescriptor-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4353,7 +4579,9 @@ The value **0** indicates an invalid value.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-readonly height: int--><!--Device-AVPlayer-readonly height: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4373,7 +4601,9 @@ This setting is not supported in live mode.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-loop: boolean--><!--Device-AVPlayer-loop: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4391,7 +4621,9 @@ Set the loop mode when playing the media source playlist. <br>Default value:PLAY
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-playlistLoopMode?: PlaylistLoopMode--><!--Device-AVPlayer-playlistLoopMode?: PlaylistLoopMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4409,6 +4641,8 @@ Audio privacy configuration. For more information, see [AudioPrivacyType](../../
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVPlayer-privacyType?: audio.AudioPrivacyType--><!--Device-AVPlayer-privacyType?: audio.AudioPrivacyType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 ## state
@@ -4423,7 +4657,9 @@ AVPlayer state. It can be used as a query parameter when the AVPlayer is in any 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-readonly state: AVPlayerState--><!--Device-AVPlayer-readonly state: AVPlayerState-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4447,7 +4683,9 @@ It can be updated when the AVPlayer is in the prepared, playing, paused, complet
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-surfaceId?: string--><!--Device-AVPlayer-surfaceId?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4484,7 +4722,9 @@ perform other read and write operations, including but not limited to transferri
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVPlayer-url?: string--><!--Device-AVPlayer-url?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4502,7 +4742,9 @@ and can be set only when the AVPlayer is in the prepared, playing, paused, or co
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-videoScaleType?: VideoScaleType--><!--Device-AVPlayer-videoScaleType?: VideoScaleType-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4520,6 +4762,8 @@ The value **0** indicates an invalid value.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVPlayer-readonly width: int--><!--Device-AVPlayer-readonly width: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer

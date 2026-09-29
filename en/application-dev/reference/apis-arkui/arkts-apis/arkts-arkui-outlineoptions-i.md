@@ -8,6 +8,8 @@ Defines the outline options.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface OutlineOptions--><!--Device-unnamed-declare interface OutlineOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -29,6 +31,8 @@ Default value: **Color.Black**
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-OutlineOptions-color?: EdgeColors | ResourceColor | LocalizedEdgeColors--><!--Device-OutlineOptions-color?: EdgeColors | ResourceColor | LocalizedEdgeColors-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Maximum effective value: Component width/2 + outlineWidth or component height/2 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-OutlineOptions-radius?: OutlineRadiuses | Dimension--><!--Device-OutlineOptions-radius?: OutlineRadiuses | Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -75,6 +81,8 @@ Default value: **OutlineStyle.SOLID**
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-OutlineOptions-style?: EdgeOutlineStyles | OutlineStyle--><!--Device-OutlineOptions-style?: EdgeOutlineStyles | OutlineStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,5 +107,7 @@ Default value: **0**
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-OutlineOptions-width?: EdgeOutlineWidths | Dimension--><!--Device-OutlineOptions-width?: EdgeOutlineWidths | Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

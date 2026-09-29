@@ -12,6 +12,8 @@ Defines a button displayed in the reminder notification.
 
 **Substitutes:** [ActionButton](arkts-backgroundtasks-reminderagentmanager-actionbutton-i.md)
 
+<!--Device-reminderAgent-interface ActionButton--><!--Device-reminderAgent-interface ActionButton-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Text on the button.
 
 **Substitutes:** [title](arkts-backgroundtasks-reminderagentmanager-actionbutton-i.md#title)
 
+<!--Device-ActionButton-title: string--><!--Device-ActionButton-title: string-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## type
@@ -53,5 +57,7 @@ Button type.
 **Deprecated since:** 9
 
 **Substitutes:** [type](arkts-backgroundtasks-reminderagentmanager-actionbutton-i.md#type)
+
+<!--Device-ActionButton-type: ActionButtonType--><!--Device-ActionButton-type: ActionButtonType-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent

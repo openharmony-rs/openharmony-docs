@@ -8,6 +8,8 @@ declare enum ShadowStyle
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare enum ShadowStyle--><!--Device-unnamed-declare enum ShadowStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## OUTER_DEFAULT_XS
@@ -23,6 +25,8 @@ OUTER_DEFAULT_XS = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ShadowStyle-OUTER_DEFAULT_XS = 0--><!--Device-ShadowStyle-OUTER_DEFAULT_XS = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ OUTER_DEFAULT_SM = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ShadowStyle-OUTER_DEFAULT_SM = 1--><!--Device-ShadowStyle-OUTER_DEFAULT_SM = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## OUTER_DEFAULT_MD
@@ -55,6 +61,8 @@ OUTER_DEFAULT_MD = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ShadowStyle-OUTER_DEFAULT_MD = 2--><!--Device-ShadowStyle-OUTER_DEFAULT_MD = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ OUTER_DEFAULT_LG = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ShadowStyle-OUTER_DEFAULT_LG = 3--><!--Device-ShadowStyle-OUTER_DEFAULT_LG = 3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## OUTER_FLOATING_SM
@@ -88,6 +98,8 @@ OUTER_FLOATING_SM = 4
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ShadowStyle-OUTER_FLOATING_SM = 4--><!--Device-ShadowStyle-OUTER_FLOATING_SM = 4-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## OUTER_FLOATING_MD
@@ -103,5 +115,7 @@ OUTER_FLOATING_MD = 5
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ShadowStyle-OUTER_FLOATING_MD = 5--><!--Device-ShadowStyle-OUTER_FLOATING_MD = 5-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

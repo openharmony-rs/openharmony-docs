@@ -20,6 +20,8 @@ Get all available shared hosts.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-print-function getSharedHosts(): Promise<SharedHost[]>--><!--Device-print-function getSharedHosts(): Promise<SharedHost[]>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.

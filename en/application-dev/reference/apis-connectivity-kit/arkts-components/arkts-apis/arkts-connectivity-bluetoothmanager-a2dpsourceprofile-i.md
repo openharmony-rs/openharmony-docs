@@ -14,6 +14,8 @@ Manager a2dp source profile.
 
 **Substitutes:** [A2dpSourceProfile](arkts-connectivity-a2dp-a2dpsourceprofile-i.md)
 
+<!--Device-bluetoothManager-interface A2dpSourceProfile extends BaseProfile--><!--Device-bluetoothManager-interface A2dpSourceProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -39,6 +41,8 @@ Connect to device with a2dp. On API 10 and above, the permission required by thi
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.DISCOVER_BLUETOOTH
+
+<!--Device-A2dpSourceProfile-connect(device: string): void--><!--Device-A2dpSourceProfile-connect(device: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -90,6 +94,8 @@ Disconnect to device with a2dp. On API 10 and above, the permission required by 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.DISCOVER_BLUETOOTH
 
+<!--Device-A2dpSourceProfile-disconnect(device: string): void--><!--Device-A2dpSourceProfile-disconnect(device: string): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -139,6 +145,8 @@ Obtains the playing state of device. On API 10 and above, the permission require
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: N/A
+
+<!--Device-A2dpSourceProfile-getPlayingState(device: string): PlayingState--><!--Device-A2dpSourceProfile-getPlayingState(device: string): PlayingState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -195,6 +203,8 @@ Unsubscribe the event reported when the profile connection state changes. On API
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: N/A
 
+<!--Device-A2dpSourceProfile-off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void--><!--Device-A2dpSourceProfile-off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -228,6 +238,8 @@ Subscribe the event reported when the profile connection state changes. On API 1
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: N/A
+
+<!--Device-A2dpSourceProfile-on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void--><!--Device-A2dpSourceProfile-on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

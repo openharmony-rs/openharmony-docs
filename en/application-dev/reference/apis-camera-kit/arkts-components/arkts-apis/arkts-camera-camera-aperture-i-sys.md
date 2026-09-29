@@ -10,6 +10,8 @@ Provides the APIs for aperture settings. It inherits from [ApertureQuery](arkts-
 
 **Since:** 24
 
+<!--Device-camera-interface Aperture extends ApertureQuery--><!--Device-camera-interface Aperture extends ApertureQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ getVirtualAperture(): number
 Obtains the virtual aperture in use.
 
 **Since:** 11
+
+<!--Device-Aperture-getVirtualAperture(): double--><!--Device-Aperture-getVirtualAperture(): double-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -63,6 +67,8 @@ setVirtualAperture(aperture: number): void
 Sets a virtual aperture. Before the setting, call [getSupportedVirtualApertures](arkts-camera-camera-aperturequery-i-sys.md#getsupportedvirtualapertures) to obtain the supported virtual apertures.
 
 **Since:** 11
+
+<!--Device-Aperture-setVirtualAperture(aperture: double): void--><!--Device-Aperture-setVirtualAperture(aperture: double): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

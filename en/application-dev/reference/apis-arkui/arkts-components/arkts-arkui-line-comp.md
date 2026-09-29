@@ -2,7 +2,15 @@
 
 The **Line** component is used to draw a straight line in the app UI. It supports customizing the start point, end point, color, width, opacity, dash style, and cap style of the line. It is suitable for drawing separators, decorative lines, coordinate axes or connecting lines in charts, and custom graphic borders.
 
-> **NOTE** > > Since API version 20, this component supports updating constructor parameters through the > [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties) API of the > [AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md) class. > > - The **Line** component cannot form a closed area, so the **fill** and **fillOpacity** attributes do not take > effect. > > - The **Line** component does not support corners, so the **strokeLineJoin** and **strokeMiterLimit** attributes do > not take effect.
+> **NOTE:** 
+> 
+> Since API version 20, this component supports updating constructor parameters through the
+> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties) API of the
+> [AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md) class.
+> 
+> - The **Line** component cannot form a closed area, so the **fill** and **fillOpacity** attributes do not take effect.
+> 
+> - The **Line** component does not support corners, so the **strokeLineJoin** and **strokeMiterLimit** attributes do not take effect.
 
 ## Child Components
 
@@ -23,6 +31,8 @@ Draws a straight line. The **Line** component draws the line within the rectangu
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LineInterface-new (options?: LineOptions): LineAttribute--><!--Device-LineInterface-new (options?: LineOptions): LineAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +57,8 @@ Draws a straight line. The **Line** component draws the line within the rectangu
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LineInterface-(options?: LineOptions): LineAttribute--><!--Device-LineInterface-(options?: LineOptions): LineAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

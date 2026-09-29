@@ -8,6 +8,8 @@ Defines the type where the element on the right of the **ComposeListItem** compo
 
 **Since:** 10
 
+<!--Device-unnamed-export declare class OperateCheck--><!--Device-unnamed-export declare class OperateCheck-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Callback invoked when the selected state of the switch, check box, or radio butt
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-OperateCheck-onChange?: (value: boolean) => void--><!--Device-OperateCheck-onChange?: (value: boolean) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -59,6 +63,8 @@ By default, the announcement rules for the basic components **Switch**, **CheckB
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-OperateCheck-accessibilityDescription?: ResourceStr--><!--Device-OperateCheck-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +98,8 @@ Default value: **"auto"**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-OperateCheck-accessibilityLevel?: string--><!--Device-OperateCheck-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -111,6 +119,8 @@ Default value: **""**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-OperateCheck-accessibilityText?: ResourceStr--><!--Device-OperateCheck-accessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,5 +145,7 @@ Default value: **false**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OperateCheck-isCheck?: boolean--><!--Device-OperateCheck-isCheck?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

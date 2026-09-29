@@ -20,6 +20,8 @@ Query whether the specified volume is currently in use. This API uses a promise 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-volumeManager-function isVolumeInUse(volumePath: string): Promise<boolean>--><!--Device-volumeManager-function isVolumeInUse(volumePath: string): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.

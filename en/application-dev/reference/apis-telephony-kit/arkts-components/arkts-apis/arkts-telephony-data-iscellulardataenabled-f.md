@@ -20,6 +20,8 @@ Checks whether the cellular data service is enabled. This API uses an asynchrono
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-data-function isCellularDataEnabled(callback: AsyncCallback<boolean>): void--><!--Device-data-function isCellularDataEnabled(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **Parameters:**
@@ -70,6 +72,8 @@ Checks whether the cellular data service is enabled. This API uses a promise to 
 **Since:** 7
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-data-function isCellularDataEnabled(): Promise<boolean>--><!--Device-data-function isCellularDataEnabled(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Telephony.CellularData
 

@@ -8,6 +8,8 @@ Provides the information about the custom page transition animation.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface SwiperContentAnimatedTransition--><!--Device-unnamed-declare interface SwiperContentAnimatedTransition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## timeout
@@ -30,6 +32,8 @@ Timeout for the page transition animation. The timeout timer starts when the def
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-SwiperContentAnimatedTransition-timeout?: number--><!--Device-SwiperContentAnimatedTransition-timeout?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## transition
@@ -49,5 +53,7 @@ Content of the custom page transition animation.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-SwiperContentAnimatedTransition-transition: Callback<SwiperContentTransitionProxy>--><!--Device-SwiperContentAnimatedTransition-transition: Callback<SwiperContentTransitionProxy>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

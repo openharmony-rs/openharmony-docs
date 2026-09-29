@@ -22,6 +22,8 @@ Defines a contact's portrait.
 
 **Since:** 7
 
+<!--Device-contact-class Portrait--><!--Device-contact-class Portrait-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## Modules to Import
@@ -44,6 +46,8 @@ Contact portrait in PixelMap format.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-Portrait-photo?: image.PixelMap--><!--Device-Portrait-photo?: image.PixelMap-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## uri
@@ -59,5 +63,7 @@ Contact portrait in URI format.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Portrait-uri: string--><!--Device-Portrait-uri: string-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData

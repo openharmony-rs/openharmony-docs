@@ -18,6 +18,8 @@ Removes one or more assets. This API uses a promise to return the result.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-asset-function remove(query: AssetMap): Promise<void>--><!--Device-asset-function remove(query: AssetMap): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**

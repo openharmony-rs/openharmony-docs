@@ -16,6 +16,8 @@ Checks whether a new call is allowed. This API uses an asynchronous callback to 
 
 **Since:** 8
 
+<!--Device-call-function isNewCallAllowed(callback: AsyncCallback<boolean>): void--><!--Device-call-function isNewCallAllowed(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -63,6 +65,8 @@ function isNewCallAllowed(): Promise<boolean>
 Checks whether a new call is allowed. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-call-function isNewCallAllowed(): Promise<boolean>--><!--Device-call-function isNewCallAllowed(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

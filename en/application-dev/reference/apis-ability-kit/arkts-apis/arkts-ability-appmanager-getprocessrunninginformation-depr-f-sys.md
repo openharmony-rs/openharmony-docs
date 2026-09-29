@@ -27,6 +27,8 @@ Obtains information about the running processes. This API uses a promise to retu
 - API version 11 and later: N/A
 - API versions 8 to 10: ohos.permission.GET_RUNNING_INFO
 
+<!--Device-appManager-function getProcessRunningInformation(): Promise<Array<ProcessRunningInfo>>--><!--Device-appManager-function getProcessRunningInformation(): Promise<Array<ProcessRunningInfo>>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -80,6 +82,8 @@ Obtains information about the running processes. This API uses an asynchronous c
 **Required permissions:** 
 - API version 11 and later: N/A
 - API versions 8 to 10: ohos.permission.GET_RUNNING_INFO
+
+<!--Device-appManager-function getProcessRunningInformation(callback: AsyncCallback<Array<ProcessRunningInfo>>): void--><!--Device-appManager-function getProcessRunningInformation(callback: AsyncCallback<Array<ProcessRunningInfo>>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

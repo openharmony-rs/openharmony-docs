@@ -8,6 +8,8 @@ Describes the **BundleOption** information, that is, the bundle information of a
 
 **Since:** 9
 
+<!--Device-notificationSubscribe-export type BundleOption = _BundleOption--><!--Device-notificationSubscribe-export type BundleOption = _BundleOption-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

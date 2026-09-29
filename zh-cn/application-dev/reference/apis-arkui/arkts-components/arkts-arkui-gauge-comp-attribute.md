@@ -4,11 +4,13 @@
 declare class GaugeAttribute extends CommonMethod<GaugeAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-**继承/实现关系：** GaugeAttribute extends CommonMethod&lt;GaugeAttribute&gt;
+**继承/实现关系：** GaugeAttribute extends CommonMethod<GaugeAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class GaugeAttribute extends CommonMethod<GaugeAttribute>--><!--Device-unnamed-declare class GaugeAttribute extends CommonMethod<GaugeAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +38,8 @@ colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGra
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GaugeAttribute-colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute--><!--Device-GaugeAttribute-colors(colors: ResourceColor | LinearGradient | Array<[ResourceColor | LinearGradient, number]>): GaugeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -57,6 +61,8 @@ contentModifier(modifier: ContentModifier<GaugeConfiguration>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GaugeAttribute-contentModifier(modifier: ContentModifier<GaugeConfiguration>): GaugeAttribute--><!--Device-GaugeAttribute-contentModifier(modifier: ContentModifier<GaugeConfiguration>): GaugeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ description(value: CustomBuilder)
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GaugeAttribute-description(value: CustomBuilder): GaugeAttribute--><!--Device-GaugeAttribute-description(value: CustomBuilder): GaugeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -103,6 +111,8 @@ endAngle(angle: number)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GaugeAttribute-endAngle(angle: number): GaugeAttribute--><!--Device-GaugeAttribute-endAngle(angle: number): GaugeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,6 +137,8 @@ indicator(value: GaugeIndicatorOptions)
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GaugeAttribute-indicator(value: GaugeIndicatorOptions): GaugeAttribute--><!--Device-GaugeAttribute-indicator(value: GaugeIndicatorOptions): GaugeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,13 +168,15 @@ privacySensitive(isPrivacySensitiveMode: Optional<boolean>)
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GaugeAttribute-privacySensitive(isPrivacySensitiveMode: Optional<boolean>): GaugeAttribute--><!--Device-GaugeAttribute-privacySensitive(isPrivacySensitiveMode: Optional<boolean>): GaugeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置隐私敏感。在隐私模式下，Gauge指针指向0位置，最大值最小值文本将被遮罩，量程显示灰色或底色。true表示打开隐私敏感，false表示关闭隐私敏感。<br>**说明：** <br>设置null则不敏感。<!--Del--> <br>需要在卡片中使用Gauge，并用FormComponent组件设置隐私遮罩属性，显示卡片时才有隐私遮罩效果。<!-- DelEnd--> |
+| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置隐私敏感。在隐私模式下，Gauge指针指向0位置，最大值最小值文本将被遮罩，量程显示灰色或底色。true表示打开隐私敏感，false表示关闭隐私敏感。<br>**说明：** <br>设置null则不敏感。<!--Del--> <br>需要在卡片中使用Gauge，并用[FormComponent](arkts-arkui-formcomponent-comp-sys.md)组件设置[隐私遮罩](arkts-arkui-common-comp.md)属性，显示卡片时才有隐私遮罩效果。<!-- DelEnd--> |
 
 ## startAngle
 
@@ -177,6 +191,8 @@ startAngle(angle: number)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GaugeAttribute-startAngle(angle: number): GaugeAttribute--><!--Device-GaugeAttribute-startAngle(angle: number): GaugeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,6 +215,8 @@ strokeWidth(length: Length)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GaugeAttribute-strokeWidth(length: Length): GaugeAttribute--><!--Device-GaugeAttribute-strokeWidth(length: Length): GaugeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -224,6 +242,8 @@ trackShadow(value: GaugeShadowOptions)
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GaugeAttribute-trackShadow(value: GaugeShadowOptions): GaugeAttribute--><!--Device-GaugeAttribute-trackShadow(value: GaugeShadowOptions): GaugeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -245,6 +265,8 @@ value(value: number)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GaugeAttribute-value(value: number): GaugeAttribute--><!--Device-GaugeAttribute-value(value: number): GaugeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

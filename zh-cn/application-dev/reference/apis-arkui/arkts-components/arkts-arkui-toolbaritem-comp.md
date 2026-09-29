@@ -22,6 +22,8 @@ ToolBarItem(options?: ToolBarItemOptions)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-ToolBarItemInterface-(options?: ToolBarItemOptions): ToolBarItemAttribute--><!--Device-ToolBarItemInterface-(options?: ToolBarItemOptions): ToolBarItemAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**

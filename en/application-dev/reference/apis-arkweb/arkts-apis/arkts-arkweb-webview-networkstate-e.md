@@ -8,6 +8,8 @@ Enumerates the network statuses of the player.
 
 **Since:** 12
 
+<!--Device-webview-enum NetworkState--><!--Device-webview-enum NetworkState-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## EMPTY
@@ -21,6 +23,8 @@ The player has not started downloading data.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NetworkState-EMPTY = 0--><!--Device-NetworkState-EMPTY = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ The player's network activity is idle. This could mean that the download of a me
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NetworkState-IDLE = 1--><!--Device-NetworkState-IDLE = 1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## LOADING
@@ -50,6 +56,8 @@ The player is downloading media data.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NetworkState-LOADING = 2--><!--Device-NetworkState-LOADING = 2-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## NETWORK_ERROR
@@ -63,5 +71,7 @@ A network error occurs.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NetworkState-NETWORK_ERROR = 3--><!--Device-NetworkState-NETWORK_ERROR = 3-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

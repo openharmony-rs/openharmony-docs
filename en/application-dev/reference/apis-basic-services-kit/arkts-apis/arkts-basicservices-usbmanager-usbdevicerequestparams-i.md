@@ -8,6 +8,8 @@ Describes control transfer parameters.
 
 **Since:** 12
 
+<!--Device-usbManager-interface USBDeviceRequestParams--><!--Device-usbManager-interface USBDeviceRequestParams-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Request control type, which specifies the direction and type of the control tran
 
 **Since:** 12
 
+<!--Device-USBDeviceRequestParams-bmRequestType: int--><!--Device-USBDeviceRequestParams-bmRequestType: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## bRequest
@@ -41,6 +45,8 @@ Request type, which indicates a specific USB control request command such as obt
 **Type:** number
 
 **Since:** 12
+
+<!--Device-USBDeviceRequestParams-bRequest: int--><!--Device-USBDeviceRequestParams-bRequest: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -56,6 +62,8 @@ Buffer for writing or reading data. The array length must be equal to the number
 
 **Since:** 12
 
+<!--Device-USBDeviceRequestParams-data: Uint8Array--><!--Device-USBDeviceRequestParams-data: Uint8Array-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## wIndex
@@ -69,6 +77,8 @@ Index value corresponding to the request parameter **wValue**, which is used to 
 **Type:** number
 
 **Since:** 12
+
+<!--Device-USBDeviceRequestParams-wIndex: int--><!--Device-USBDeviceRequestParams-wIndex: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -84,6 +94,8 @@ Length of the request data, which is used to specify the number of data bytes ex
 
 **Since:** 12
 
+<!--Device-USBDeviceRequestParams-wLength: int--><!--Device-USBDeviceRequestParams-wLength: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## wValue
@@ -97,5 +109,7 @@ Request parameter, which is used to transfer the parameters required by the cont
 **Type:** number
 
 **Since:** 12
+
+<!--Device-USBDeviceRequestParams-wValue: int--><!--Device-USBDeviceRequestParams-wValue: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager

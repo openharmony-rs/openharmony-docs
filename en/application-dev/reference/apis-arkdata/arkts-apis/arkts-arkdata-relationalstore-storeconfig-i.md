@@ -8,6 +8,8 @@ Defines the RDB store configuration.
 
 **Since:** 9
 
+<!--Device-relationalStore-interface StoreConfig--><!--Device-relationalStore-interface StoreConfig-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since:** 12
 
+<!--Device-StoreConfig-allowRebuild?: boolean--><!--Device-StoreConfig-allowRebuild?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## autoCleanDirtyData
@@ -57,6 +61,8 @@ SystemCapability.DistributedDataManager.CloudSync.Client
 **Type:** boolean
 
 **Since:** 11
+
+<!--Device-StoreConfig-autoCleanDirtyData?: boolean--><!--Device-StoreConfig-autoCleanDirtyData?: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -80,6 +86,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since:** 14
 
+<!--Device-StoreConfig-cryptoParam?: CryptoParam--><!--Device-StoreConfig-cryptoParam?: CryptoParam-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## customDir
@@ -100,6 +108,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since:** 11
 
+<!--Device-StoreConfig-customDir?: string--><!--Device-StoreConfig-customDir?: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## dataGroupId
@@ -108,7 +118,7 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 dataGroupId?: string
 ```
 
-Application group ID. &lt;!--RP1--&gt;Currently, this parameter is not supported.&lt;!--RP1End--&gt;
+Application group ID. <!--RP1-->Currently, this parameter is not supported.<!--RP1End-->
 
 **Model restriction**: This parameter can be used only in the stage model.
 
@@ -121,6 +131,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StoreConfig-dataGroupId?: string--><!--Device-StoreConfig-dataGroupId?: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -137,6 +149,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-StoreConfig-enableSemanticIndex?: boolean--><!--Device-StoreConfig-enableSemanticIndex?: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -157,6 +171,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-StoreConfig-encrypt?: boolean--><!--Device-StoreConfig-encrypt?: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -180,6 +196,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since:** 12
 
+<!--Device-StoreConfig-isReadOnly?: boolean--><!--Device-StoreConfig-isReadOnly?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## name
@@ -195,6 +213,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 **Type:** string
 
 **Since:** 9
+
+<!--Device-StoreConfig-name: string--><!--Device-StoreConfig-name: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -214,6 +234,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since:** 18
 
+<!--Device-StoreConfig-persist?: boolean--><!--Device-StoreConfig-persist?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## pluginLibs
@@ -229,6 +251,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 **Type:** Array&lt;string&gt;
 
 **Since:** 12
+
+<!--Device-StoreConfig-pluginLibs?: Array<string>--><!--Device-StoreConfig-pluginLibs?: Array<string>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -248,6 +272,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since:** 18
 
+<!--Device-StoreConfig-rootDir?: string--><!--Device-StoreConfig-rootDir?: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## securityLevel
@@ -263,6 +289,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 **Type:** [SecurityLevel](arkts-arkdata-relationalstore-securitylevel-e.md)
 
 **Since:** 9
+
+<!--Device-StoreConfig-securityLevel: SecurityLevel--><!--Device-StoreConfig-securityLevel: SecurityLevel-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -283,6 +311,8 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 **Type:** [Tokenizer](arkts-arkdata-relationalstore-tokenizer-e.md)
 
 **Since:** 17
+
+<!--Device-StoreConfig-tokenizer?: Tokenizer--><!--Device-StoreConfig-tokenizer?: Tokenizer-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -305,5 +335,7 @@ SystemCapability.DistributedDataManager.RelationalStore.Core
 **Type:** boolean
 
 **Since:** 18
+
+<!--Device-StoreConfig-vector?: boolean--><!--Device-StoreConfig-vector?: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

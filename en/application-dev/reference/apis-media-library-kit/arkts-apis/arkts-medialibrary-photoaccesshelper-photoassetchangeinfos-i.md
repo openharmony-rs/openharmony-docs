@@ -8,6 +8,8 @@ Describes the notification information about the change of a media asset.
 
 **Since:** 20
 
+<!--Device-photoAccessHelper-interface PhotoAssetChangeInfos--><!--Device-photoAccessHelper-interface PhotoAssetChangeInfos-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Array of changed media assets. If all media assets need to be queried again, **a
 
 **Since:** 20
 
+<!--Device-PhotoAssetChangeInfos-assetChangeDatas: PhotoAssetChangeData[] | null--><!--Device-PhotoAssetChangeInfos-assetChangeDatas: PhotoAssetChangeData[] | null-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## isForRecheck
@@ -46,6 +50,8 @@ In scenarios involving bulk asset operations or abnormal notifications, **isForR
 
 **Since:** 20
 
+<!--Device-PhotoAssetChangeInfos-isForRecheck: boolean--><!--Device-PhotoAssetChangeInfos-isForRecheck: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## type
@@ -59,5 +65,7 @@ Type of the media asset change.
 **Type:** [NotifyChangeType](arkts-medialibrary-photoaccesshelper-notifychangetype-e.md)
 
 **Since:** 20
+
+<!--Device-PhotoAssetChangeInfos-type: NotifyChangeType--><!--Device-PhotoAssetChangeInfos-type: NotifyChangeType-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

@@ -20,6 +20,8 @@ Performs the DNS resolution using the current default network based on the speci
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise<Array<NetAddress>>--><!--Device-connection-function getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise<Array<NetAddress>>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

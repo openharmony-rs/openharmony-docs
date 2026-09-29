@@ -6,6 +6,8 @@ Provides capabilities for controlling and interacting with mechanical devices co
 
 **Since:** 20
 
+<!--Device-unnamed-declare namespace mechanicManager--><!--Device-unnamed-declare namespace mechanicManager-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 ## Modules to Import

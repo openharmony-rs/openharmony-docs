@@ -4,11 +4,24 @@
 export declare struct CustomContentDialog
 ```
 
-Declare custom content dialog
+CustomContentDialog({controller: CustomDialogController, contentBuilder: () =&gt; void, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, localizedContentAreaPadding?: LocalizedPadding, contentAreaPadding?: Padding, buttons?: ButtonOptions[], theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
+
+Displays a dialog box that contains custom content and operation area.
+
+> **NOTE:** 
+> 
+> When the height of the dialog box is insufficient, the area defined by **contentBuilder** will be compressed.
+> Global scrolling will be enabled if the compressed area's height falls below 100 vp.
+> 
+> You must define scrolling of the content area in **CustomContentDialog**. In addition, the custom scrolling of the
+> content area must be used in conjunction with the **nestedScroll** property, as in the
+> **nestedScroll({ scrollForward: NestedScrollMode.PARALLEL, scrollBackward: NestedScrollMode.PARALLEL })** example.
 
 **Since:** 12
 
 **Decorator:** @CustomDialog
+
+<!--Device-unnamed-export declare struct CustomContentDialog--><!--Device-unnamed-export declare struct CustomContentDialog-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,13 +37,17 @@ import { AlertDialog, ButtonOptions, ConfirmDialog, LoadingDialog, SelectDialog,
 contentBuilder: () => void
 ```
 
-Sets the CustomContentDialog content.
+Component builder function used to construct the content area of the dialog box.
 
 **Since:** 12
+
+**Decorator:** @BuilderParam
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomContentDialog-contentBuilder: () => void--><!--Device-CustomContentDialog-contentBuilder: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +57,7 @@ Sets the CustomContentDialog content.
 buttons?: ButtonOptions[]
 ```
 
-Sets the CustomContentDialog buttons.
+Buttons in the operation area of the dialog box. A maximum of four buttons are allowed.
 
 **Type:** [ButtonOptions](arkts-arkui-arkui-advanced-dialog-buttonoptions-c.md)[]
 
@@ -50,6 +67,8 @@ Sets the CustomContentDialog buttons.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomContentDialog-buttons?: ButtonOptions[]--><!--Device-CustomContentDialog-buttons?: ButtonOptions[]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## contentAreaPadding
@@ -58,7 +77,7 @@ Sets the CustomContentDialog buttons.
 contentAreaPadding?: Padding
 ```
 
-Sets the CustomContentDialog content area padding.
+Padding of the content area of the dialog box. This attribute does not take effect when **localizedContentAreaPadding** is set.
 
 **Type:** Padding
 
@@ -68,6 +87,8 @@ Sets the CustomContentDialog content area padding.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomContentDialog-contentAreaPadding?: Padding--><!--Device-CustomContentDialog-contentAreaPadding?: Padding-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## controller
@@ -76,7 +97,9 @@ Sets the CustomContentDialog content area padding.
 controller: CustomDialogController
 ```
 
-Sets the CustomContentDialog Controller.
+Dialog controller used to control the show and hide of the dialog box.
+
+**Note:** Not decorated by **@Require**, and the parameter is not subject to mandatory validation during construction.
 
 **Type:** [CustomDialogController](arkts-arkui-customdialogcontroller-c.md)
 
@@ -86,6 +109,8 @@ Sets the CustomContentDialog Controller.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomContentDialog-controller: CustomDialogController--><!--Device-CustomContentDialog-controller: CustomDialogController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## localizedContentAreaPadding
@@ -94,7 +119,7 @@ Sets the CustomContentDialog Controller.
 localizedContentAreaPadding?: LocalizedPadding
 ```
 
-Sets the CustomContentDialog content area localized padding.
+Padding of the content area of the dialog box, which supports adaptation based on language direction. When this attribute is set, **contentAreaPadding** does not take effect.
 
 **Type:** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)
 
@@ -104,6 +129,8 @@ Sets the CustomContentDialog content area localized padding.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomContentDialog-localizedContentAreaPadding?: LocalizedPadding--><!--Device-CustomContentDialog-localizedContentAreaPadding?: LocalizedPadding-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryTitle
@@ -112,7 +139,13 @@ Sets the CustomContentDialog content area localized padding.
 primaryTitle?: ResourceStr
 ```
 
-Sets the CustomContentDialog title.
+Primary title of the dialog box.
+
+If this parameter is not set or is set to **undefined**, the primary title is not displayed.
+
+**NOTE:** 
+
+If the title exceeds two lines, it will be truncated with an ellipsis (...).
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -121,6 +154,8 @@ Sets the CustomContentDialog title.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomContentDialog-primaryTitle?: ResourceStr--><!--Device-CustomContentDialog-primaryTitle?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,7 +165,13 @@ Sets the CustomContentDialog title.
 secondaryTitle?: ResourceStr
 ```
 
-Sets the CustomContentDialog secondary title.
+Secondary title of the dialog box.
+
+If this parameter is not set or is set to **undefined**, the secondary title is not displayed.
+
+**NOTE:** 
+
+If the title exceeds two lines, it will be truncated with an ellipsis (...).
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -140,6 +181,8 @@ Sets the CustomContentDialog secondary title.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomContentDialog-secondaryTitle?: ResourceStr--><!--Device-CustomContentDialog-secondaryTitle?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## theme
@@ -148,7 +191,7 @@ Sets the CustomContentDialog secondary title.
 theme?: Theme | CustomTheme
 ```
 
-Custom Theme.
+Theme information, which can be a custom theme or a **Theme** instance obtained from **onWillApplyTheme**.
 
 **Type:** [Theme](arkts-arkui-arkui-theme-theme-i.md) &#124; [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md)
 
@@ -158,6 +201,8 @@ Custom Theme.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomContentDialog-theme?: Theme | CustomTheme--><!--Device-CustomContentDialog-theme?: Theme | CustomTheme-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## themeColorMode
@@ -166,7 +211,9 @@ Custom Theme.
 themeColorMode?: ThemeColorMode
 ```
 
-Sets the CustomContentDialog dark or light Mode.
+Light/dark mode of the custom dialog box.
+
+Default value: **ThemeColorMode.SYSTEM**.
 
 **Type:** [ThemeColorMode](../arkts-components/arkts-arkui-common-comp-themecolormode-e.md)
 
@@ -175,5 +222,7 @@ Sets the CustomContentDialog dark or light Mode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomContentDialog-themeColorMode?: ThemeColorMode--><!--Device-CustomContentDialog-themeColorMode?: ThemeColorMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

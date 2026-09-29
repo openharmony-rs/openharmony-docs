@@ -8,6 +8,8 @@ This module provides the capability to media enhancement
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace avMusicTemplate--><!--Device-unnamed-declare namespace avMusicTemplate-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -87,22 +89,6 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 | [AVMusicTemplateDescriptor](arkts-avsession-avmusictemplate-avmusictemplatedescriptor-i-sys.md) | Description of the AVMusicTemplate. |
 <!--DelEnd-->
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [AVMusicTemplateErrorCode](arkts-avsession-avmusictemplate-avmusictemplateerrorcode-e.md) | Enumeration ErrorCode types, returns in BusinessError.code. |
-| [AVMusicTemplateType](arkts-avsession-avmusictemplate-avmusictemplatetype-e.md) | Enumeration of AVMusicTemplate type. |
-| [ButtonType](arkts-avsession-avmusictemplate-buttontype-e.md) | Enumeration of button type. |
-| [DialogType](arkts-avsession-avmusictemplate-dialogtype-e.md) | Enumeration of dialog type. |
-| [DownloadStatus](arkts-avsession-avmusictemplate-downloadstatus-e.md) | Enumeration of DownloadStatus. |
-| [EntityType](arkts-avsession-avmusictemplate-entitytype-e.md) | Enumeration of media resource type. |
-| [MemberPurchaseType](arkts-avsession-avmusictemplate-memberpurchasetype-e.md) | Enumeration of MemberPurchaseType. |
-| [PlaybackState](arkts-avsession-avmusictemplate-playbackstate-e.md) | Enumeration of play state. |
-| [SearchPlayInfoType](arkts-avsession-avmusictemplate-searchplayinfotype-e.md) | Enumeration of SearchPlayInfoType. |
-| [SettingType](arkts-avsession-avmusictemplate-settingtype-e.md) | Enumeration of setting type. |
-| [Sort](arkts-avsession-avmusictemplate-sort-e.md) | Enumeration of Sort type. |
-
 ### Types
 
 | Name | Description |
@@ -145,3 +131,19 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 | [ReportTabContentEvent](arkts-avsession-avmusictemplate-reporttabcontentevent-t.md) | The report tab content event. |
 | [RequestDialogInfoEvent](arkts-avsession-avmusictemplate-requestdialoginfoevent-t.md) | The request dialog info event. |
 | [SettingsChangeEvent](arkts-avsession-avmusictemplate-settingschangeevent-t.md) | The settings change event. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [AVMusicTemplateErrorCode](arkts-avsession-avmusictemplate-avmusictemplateerrorcode-e.md) | Enumeration ErrorCode types, returns in BusinessError.code. |
+| [AVMusicTemplateType](arkts-avsession-avmusictemplate-avmusictemplatetype-e.md) | Enumeration of AVMusicTemplate type. |
+| [ButtonType](arkts-avsession-avmusictemplate-buttontype-e.md) | Enumeration of button type. |
+| [DialogType](arkts-avsession-avmusictemplate-dialogtype-e.md) | Enumeration of dialog type. |
+| [DownloadStatus](arkts-avsession-avmusictemplate-downloadstatus-e.md) | Enumeration of DownloadStatus. |
+| [EntityType](arkts-avsession-avmusictemplate-entitytype-e.md) | Enumeration of media resource type. |
+| [MemberPurchaseType](arkts-avsession-avmusictemplate-memberpurchasetype-e.md) | Enumeration of MemberPurchaseType. |
+| [PlaybackState](arkts-avsession-avmusictemplate-playbackstate-e.md) | Enumeration of play state. |
+| [SearchPlayInfoType](arkts-avsession-avmusictemplate-searchplayinfotype-e.md) | Enumeration of SearchPlayInfoType. |
+| [SettingType](arkts-avsession-avmusictemplate-settingtype-e.md) | Enumeration of setting type. |
+| [Sort](arkts-avsession-avmusictemplate-sort-e.md) | Enumeration of Sort type. |

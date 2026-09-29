@@ -16,7 +16,9 @@ Launches the call screen and displays the dialed number. This API uses an asynch
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-call-function makeCall(phoneNumber: string, callback: AsyncCallback<void>): void--><!--Device-call-function makeCall(phoneNumber: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Applications.Contacts
 
@@ -64,7 +66,9 @@ Launches the call screen and displays the dialed number. This API uses a promise
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-call-function makeCall(phoneNumber: string): Promise<void>--><!--Device-call-function makeCall(phoneNumber: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Applications.Contacts
 
@@ -118,6 +122,8 @@ Launches the call screen and displays the dialed number. This API uses a promise
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-call-function makeCall(phoneNumber: string, options?: MakeCallOptions): Promise<void>--><!--Device-call-function makeCall(phoneNumber: string, options?: MakeCallOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Applications.Contacts
 
@@ -173,7 +179,9 @@ Launches the call screen and displays the dialed number. This API uses a promise
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-call-function makeCall(context: Context, phoneNumber: string): Promise<void>--><!--Device-call-function makeCall(context: Context, phoneNumber: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Applications.Contacts
 

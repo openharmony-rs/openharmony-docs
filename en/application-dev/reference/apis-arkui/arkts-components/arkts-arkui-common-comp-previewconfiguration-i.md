@@ -8,6 +8,8 @@ Configures the style of the preview image during custom drag operations.
 
 **Since:** 15
 
+<!--Device-unnamed-declare interface PreviewConfiguration--><!--Device-unnamed-declare interface PreviewConfiguration-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## delayCreating
@@ -29,6 +31,8 @@ The default value is **false**. The value **true** means that the preview builde
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-PreviewConfiguration-delayCreating?: boolean--><!--Device-PreviewConfiguration-delayCreating?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,5 +57,7 @@ The default value is **false**. **true**: The custom preview image is used only 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-PreviewConfiguration-onlyForLifting?: boolean--><!--Device-PreviewConfiguration-onlyForLifting?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

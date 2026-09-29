@@ -10,7 +10,9 @@ The interface of filling failure result.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-autoFillManager-export type FillFailureResult = _FillFailureResult--><!--Device-autoFillManager-export type FillFailureResult = _FillFailureResult-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

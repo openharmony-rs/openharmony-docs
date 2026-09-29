@@ -12,6 +12,8 @@ Base interface of profile.
 
 **Substitutes:** [BaseProfile](arkts-connectivity-bluetoothmanager-baseprofile-i.md)
 
+<!--Device-bluetooth-interface BaseProfile--><!--Device-bluetooth-interface BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Obtains the connected devices list of profile.
 **Substitutes:** [getConnectionDevices](arkts-connectivity-bluetoothmanager-baseprofile-i.md#getconnectiondevices)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-BaseProfile-getConnectionDevices(): Array<string>--><!--Device-BaseProfile-getConnectionDevices(): Array<string>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -66,6 +70,8 @@ Obtains the profile state of device.
 **Substitutes:** [getDeviceState](arkts-connectivity-bluetoothmanager-baseprofile-i.md#getdevicestate)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-BaseProfile-getDeviceState(device: string): ProfileConnectionState--><!--Device-BaseProfile-getDeviceState(device: string): ProfileConnectionState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

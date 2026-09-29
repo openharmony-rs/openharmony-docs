@@ -22,6 +22,8 @@ You can use this method to create a theme form.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function addForm(want: Want): Promise<formInfo.RunningFormInfo>--><!--Device-formHost-function addForm(want: Want): Promise<formInfo.RunningFormInfo>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

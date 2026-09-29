@@ -8,6 +8,8 @@ AVCastController definition used to implement a remote control when a cast is co
 
 **Since:** 10
 
+<!--Device-avSession-interface AVCastController--><!--Device-avSession-interface AVCastController-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 ## Modules to Import
@@ -25,6 +27,8 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback<void>): void
 Set a surface instance to display playing view, used at sink side.
 
 **Since:** 10
+
+<!--Device-AVCastController-setDisplaySurface(surfaceId: string, callback: AsyncCallback<void>): void--><!--Device-AVCastController-setDisplaySurface(surfaceId: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -76,6 +80,8 @@ setDisplaySurface(surfaceId: string): Promise<void>
 Set a surface instance to display playing view, used at sink side.
 
 **Since:** 10
+
+<!--Device-AVCastController-setDisplaySurface(surfaceId: string): Promise<void>--><!--Device-AVCastController-setDisplaySurface(surfaceId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 

@@ -14,6 +14,8 @@ controller: TextController = new TextController()
 
 **Since:** 11
 
+<!--Device-unnamed-declare class TextController--><!--Device-unnamed-declare class TextController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## closeSelectionMenu
@@ -29,6 +31,8 @@ Closes the custom or default text selection menu.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextController-closeSelectionMenu(): void--><!--Device-TextController-closeSelectionMenu(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,13 +50,15 @@ Obtains the **LayoutManager** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextController-getLayoutManager(): LayoutManager--><!--Device-TextController-getLayoutManager(): LayoutManager-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [LayoutManager](../arkts-apis/arkts-arkui-layoutmanager-i.md) | **LayoutManager** object. |
+| [LayoutManager](../arkts-apis/arkts-arkui-layoutmanager-i.md) | Layout manager object, which is used to obtain text layout information, including the number of lines, glyph position, line information, and character viewport rectangle.<br>**NOTE:** <br>If the **TextController** component has not been bound to the **Text** component or the bound **Text** component has been destroyed or uninstalled, **undefined** will be returned. |
 
 ## setStyledString
 
@@ -68,13 +74,15 @@ Binds to or updates the specified styled string.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextController-setStyledString(value: StyledString): void--><!--Device-TextController-setStyledString(value: StyledString): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | Yes | Styled string.<br>**NOTE:** <br>The child class [MutableStyledString](../arkts-apis/arkts-arkui-mutablestyledstring-c.md) of **StyledString** can also serve as the argument. |
+| value | [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | Yes | Styled string. <br>**NOTE:** <br>The child class [MutableStyledString](../arkts-apis/arkts-arkui-mutablestyledstring-c.md) of **StyledString** can also serve as the argument. |
 
 ## setTextSelection
 
@@ -98,8 +106,8 @@ Sets the text selection area, which will be highlighted.
 > text content. If the value is less than 0, the value **0** will be used. If the value is greater than
 > **textSize**, **textSize** will be used.
 > 
-> If the selection range falls within a truncated or invisible area, selection is ignored. When truncation is
-> disabled, selection can extend beyond the parent component's bounds.
+> If the selection range falls within a truncated or invisible area, selection is ignored. When **clip** is set to
+> **false**, the text selection area beyond the parent component takes effect.
 > 
 > On PC or 2-in-1 devices, calling **setTextSelection** does not show the menu even if **options** is set to
 > **MenuPolicy.SHOW**.
@@ -112,6 +120,8 @@ Sets the text selection area, which will be highlighted.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-TextController-setTextSelection(selectionStart: number | undefined, selectionEnd: number | undefined,                   options?: SelectionOptions): void--><!--Device-TextController-setTextSelection(selectionStart: number | undefined, selectionEnd: number | undefined,                   options?: SelectionOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

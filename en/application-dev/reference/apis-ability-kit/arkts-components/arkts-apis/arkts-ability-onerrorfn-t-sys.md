@@ -12,6 +12,8 @@ Defines a OnError function.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-type OnErrorFn = (code: number, name: string, message: string) => void--><!--Device-unnamed-type OnErrorFn = (code: number, name: string, message: string) => void-End-->
+
 **System capability:** SystemCapability.Ability.AppExtension.VerticalPanel
 
 **System API:** This is a system API.

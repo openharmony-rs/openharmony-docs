@@ -24,6 +24,8 @@ Obtains all activated wired network interfaces. This API uses an asynchronous ca
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function getAllNetworkInterfaces(admin: Want, callback: AsyncCallback<Array<string>>): void--><!--Device-networkManager-function getAllNetworkInterfaces(admin: Want, callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -86,6 +88,8 @@ Obtains all activated wired network interfaces. This API uses a promise to retur
 **Required permissions:** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-networkManager-function getAllNetworkInterfaces(admin: Want): Promise<Array<string>>--><!--Device-networkManager-function getAllNetworkInterfaces(admin: Want): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

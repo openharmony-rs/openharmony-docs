@@ -8,6 +8,8 @@ Provides API for stream operations. Before calling any API of **Stream**, you ne
 
 **Since:** 9
 
+<!--Device-unnamed-declare interface Stream--><!--Device-unnamed-declare interface Stream-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Closes the file stream. This API uses a promise to return the result.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-Stream-close(): Promise<void>--><!--Device-Stream-close(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -75,6 +79,8 @@ Closes the file stream. This API uses an asynchronous callback to return the res
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-Stream-close(callback: AsyncCallback<void>): void--><!--Device-Stream-close(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -122,6 +128,8 @@ Closes the file stream. This API returns the result synchronously.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-Stream-closeSync(): void--><!--Device-Stream-closeSync(): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -154,6 +162,8 @@ Flushes the file stream. This API uses a promise to return the result.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-Stream-flush(): Promise<void>--><!--Device-Stream-flush(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -209,6 +219,8 @@ Flushes the file stream. This API uses an asynchronous callback to return the re
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-Stream-flush(callback: AsyncCallback<void>): void--><!--Device-Stream-flush(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -263,6 +275,8 @@ Flushes the file stream. This API returns the result synchronously.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-Stream-flushSync(): void--><!--Device-Stream-flushSync(): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -305,6 +319,8 @@ Reads data from a stream file. This API uses a promise to return the result.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-Stream-read(      buffer: ArrayBuffer,      options?: ReadOptions  ): Promise<number>--><!--Device-Stream-read(      buffer: ArrayBuffer,      options?: ReadOptions  ): Promise<number>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -373,6 +389,8 @@ Reads data from a stream file. This API uses an asynchronous callback to return 
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-Stream-read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void--><!--Device-Stream-read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -433,6 +451,8 @@ Reads data from a stream file. This API uses an asynchronous callback to return 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-Stream-read(      buffer: ArrayBuffer,      options: ReadOptions,      callback: AsyncCallback<number>  ): void--><!--Device-Stream-read(      buffer: ArrayBuffer,      options: ReadOptions,      callback: AsyncCallback<number>  ): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -498,6 +518,8 @@ Reads data from a stream file. This API returns the result synchronously.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-Stream-readSync(      buffer: ArrayBuffer,      options?: ReadOptions  ): number--><!--Device-Stream-readSync(      buffer: ArrayBuffer,      options?: ReadOptions  ): number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -558,6 +580,8 @@ Writes data to a stream file. This API uses a promise to return the result.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-Stream-write(      buffer: ArrayBuffer | string,      options?: WriteOptions  ): Promise<number>--><!--Device-Stream-write(      buffer: ArrayBuffer | string,      options?: WriteOptions  ): Promise<number>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -626,6 +650,8 @@ Writes data to a stream file. This API uses an asynchronous callback to return t
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-Stream-write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void--><!--Device-Stream-write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -688,6 +714,8 @@ Writes data to a stream file. This API uses an asynchronous callback to return t
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-Stream-write(      buffer: ArrayBuffer | string,      options: WriteOptions,      callback: AsyncCallback<number>  ): void--><!--Device-Stream-write(      buffer: ArrayBuffer | string,      options: WriteOptions,      callback: AsyncCallback<number>  ): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -755,6 +783,8 @@ Writes data to a stream file. This API returns the result synchronously.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-Stream-writeSync(      buffer: ArrayBuffer | string,      options?: WriteOptions  ): number--><!--Device-Stream-writeSync(      buffer: ArrayBuffer | string,      options?: WriteOptions  ): number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

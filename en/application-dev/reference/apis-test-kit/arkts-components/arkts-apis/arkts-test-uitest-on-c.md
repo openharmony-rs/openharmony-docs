@@ -18,6 +18,8 @@ All APIs provided in the **On** class are synchronous. You are advised to use th
 
 **Since:** 9
 
+<!--Device-unnamed-declare class On--><!--Device-unnamed-declare class On-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -41,7 +43,9 @@ Specifies that the target component is located after the given feature component
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-On-afterComponent(com: Component): On--><!--Device-On-afterComponent(com: Component): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -90,7 +94,9 @@ Specifies that the target component is located before the given feature componen
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-On-beforeComponent(com: Component): On--><!--Device-On-beforeComponent(com: Component): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -137,7 +143,9 @@ Specifies the display to which the target component belongs.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-On-belongingDisplay(displayId: int): On--><!--Device-On-belongingDisplay(displayId: int): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -180,7 +188,9 @@ Specifies the checkable attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-checkable(b?: boolean): On--><!--Device-On-checkable(b?: boolean): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -223,7 +233,9 @@ Specifies the checked attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-checked(b?: boolean): On--><!--Device-On-checked(b?: boolean): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -266,7 +278,9 @@ Specifies the clickable attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-clickable(b?: boolean): On--><!--Device-On-clickable(b?: boolean): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -309,7 +323,9 @@ Specifies the description of the target component. Multiple match patterns are s
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-description(val: string, pattern?: MatchPattern): On--><!--Device-On-description(val: string, pattern?: MatchPattern): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -353,7 +369,9 @@ Specifies the enabled attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-enabled(b?: boolean): On--><!--Device-On-enabled(b?: boolean): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -396,7 +414,9 @@ Specifies the focused attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-focused(b?: boolean): On--><!--Device-On-focused(b?: boolean): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -439,7 +459,9 @@ Specifies the hint text attribute of the target component.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-On-hint(val: string, pattern?: MatchPattern): On--><!--Device-On-hint(val: string, pattern?: MatchPattern): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -483,7 +505,9 @@ Specifies the ID attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-id(id: string): On--><!--Device-On-id(id: string): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -528,7 +552,9 @@ Specifies the **id** attribute and match pattern of the target component.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-On-id(id: string, pattern: MatchPattern): On--><!--Device-On-id(id: string, pattern: MatchPattern): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -572,7 +598,9 @@ Specifies that the target component is located within the given application wind
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-inWindow(bundleName: string): On--><!--Device-On-inWindow(bundleName: string): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -615,7 +643,9 @@ Specifies that the target component is located after the given attribute compone
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-isAfter(on: On): On--><!--Device-On-isAfter(on: On): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -659,7 +689,9 @@ Specifies that the target component is located before the given attribute compon
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-isBefore(on: On): On--><!--Device-On-isBefore(on: On): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -703,7 +735,9 @@ Specifies the long-clickable attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-longClickable(b?: boolean): On--><!--Device-On-longClickable(b?: boolean): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -753,7 +787,9 @@ Specifies the text content and text matching pattern of the component.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-On-originalText(text: string, pattern?: MatchPattern): On--><!--Device-On-originalText(text: string, pattern?: MatchPattern): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -797,7 +833,9 @@ Specifies the scrollable attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-scrollable(b?: boolean): On--><!--Device-On-scrollable(b?: boolean): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -840,7 +878,9 @@ Specifies the selected attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-selected(b?: boolean): On--><!--Device-On-selected(b?: boolean): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -890,7 +930,9 @@ Specifies the text attribute of the target component. Multiple match patterns ar
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-text(txt: string, pattern?: MatchPattern): On--><!--Device-On-text(txt: string, pattern?: MatchPattern): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -934,7 +976,9 @@ Specifies the type attribute of the target component.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-type(tp: string): On--><!--Device-On-type(tp: string): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -979,7 +1023,9 @@ Specifies the **type** attribute and match pattern of the target component.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-On-type(tp: string, pattern: MatchPattern): On--><!--Device-On-type(tp: string, pattern: MatchPattern): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -1023,7 +1069,9 @@ Specifies that the target component is located within the given attribute compon
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-On-within(on: On): On--><!--Device-On-within(on: On): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -1069,7 +1117,9 @@ Specifies that the target component is located within the given feature componen
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-On-withinComponent(com: Component): On--><!--Device-On-withinComponent(com: Component): On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

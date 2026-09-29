@@ -16,6 +16,8 @@ Send extended commands to location subsystem.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-function sendCommand(command: LocationCommand, callback: AsyncCallback<void>): void--><!--Device-geoLocationManager-function sendCommand(command: LocationCommand, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -62,6 +64,8 @@ function sendCommand(command: LocationCommand): Promise<void>
 Send extended commands to location subsystem.
 
 **Since:** 9
+
+<!--Device-geoLocationManager-function sendCommand(command: LocationCommand): Promise<void>--><!--Device-geoLocationManager-function sendCommand(command: LocationCommand): Promise<void>-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

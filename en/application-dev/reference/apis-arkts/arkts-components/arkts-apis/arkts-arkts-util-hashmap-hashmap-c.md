@@ -8,6 +8,8 @@ HashMap is a map implemented based on the array, linked list, and red-black tree
 
 **Since:** 8
 
+<!--Device-unnamed-declare class HashMap<K, V>--><!--Device-unnamed-declare class HashMap<K, V>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Obtains an iterator, each item of which is a JavaScript object.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HashMap-[Symbol.iterator](): IterableIterator<[K, V]>--><!--Device-HashMap-[Symbol.iterator](): IterableIterator<[K, V]>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -95,7 +99,9 @@ Clears this HashMap and sets its length to **0**.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashMap-clear(): void--><!--Device-HashMap-clear(): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -126,7 +132,9 @@ A constructor used to create a **HashMap** instance.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashMap-constructor()--><!--Device-HashMap-constructor()-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -152,7 +160,9 @@ Returns an iterator that contains all the elements in this HashMap.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashMap-entries(): IterableIterator<[K, V]>--><!--Device-HashMap-entries(): IterableIterator<[K, V]>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -207,6 +217,8 @@ Uses a callback to traverse each element.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HashMap-forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object): void--><!--Device-HashMap-forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -259,6 +271,8 @@ Obtains the value of the specified key in this HashMap. If nothing is obtained, 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HashMap-get(key: K): V--><!--Device-HashMap-get(key: K): V-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -299,7 +313,9 @@ Checks whether this HashMap has the specified key.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashMap-hasKey(key: K): boolean--><!--Device-HashMap-hasKey(key: K): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -340,7 +356,9 @@ Checks whether this HashMap has the specified value.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashMap-hasValue(value: V): boolean--><!--Device-HashMap-hasValue(value: V): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -381,7 +399,9 @@ Checks whether this HashMap is empty (contains no element).
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashMap-isEmpty(): boolean--><!--Device-HashMap-isEmpty(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -415,7 +435,9 @@ Returns an iterator that contains all the keys in this HashMap.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashMap-keys(): IterableIterator<K>--><!--Device-HashMap-keys(): IterableIterator<K>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -457,6 +479,8 @@ Removes an element with the specified key from this HashMap.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HashMap-remove(key: K): V--><!--Device-HashMap-remove(key: K): V-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -497,7 +521,9 @@ Replaces the value of a specified key.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashMap-replace(key: K, newValue: V): boolean--><!--Device-HashMap-replace(key: K, newValue: V): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -539,7 +565,9 @@ Adds or updates an element in this HashMap.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashMap-set(key: K, value: V): Object--><!--Device-HashMap-set(key: K, value: V): Object-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -580,7 +608,9 @@ Adds all elements in a **HashMap** instance to this HashMap.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashMap-setAll(map: HashMap<K, V>): void--><!--Device-HashMap-setAll(map: HashMap<K, V>): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -619,7 +649,9 @@ Returns an iterator that contains all the values in this HashMap.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashMap-values(): IterableIterator<V>--><!--Device-HashMap-values(): IterableIterator<V>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -662,5 +694,7 @@ Number of elements in a HashMap.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HashMap-length: number--><!--Device-HashMap-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

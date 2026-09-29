@@ -20,6 +20,8 @@ Obtains the current system date. This API uses an asynchronous callback to retur
 
 **Substitutes:** new Date()
 
+<!--Device-systemDateTime-function getDate(callback: AsyncCallback<Date>): void--><!--Device-systemDateTime-function getDate(callback: AsyncCallback<Date>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **Parameters:**
@@ -69,6 +71,8 @@ Obtains the current system date. This API uses a promise to return the result.
 **Deprecated since:** 10
 
 **Substitutes:** new Date()
+
+<!--Device-systemDateTime-function getDate(): Promise<Date>--><!--Device-systemDateTime-function getDate(): Promise<Date>-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 

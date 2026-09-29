@@ -10,6 +10,8 @@ Profiler tools for inspectors.
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace Profiler--><!--Device-unnamed-declare namespace Profiler-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

@@ -8,9 +8,11 @@ export declare class LazyDynamicLayoutAttribute extends CommonMethod<LazyDynamic
 
 @extends CommonMethod&lt;LazyDynamicLayoutAttribute&gt;
 
-**继承/实现关系：** LazyDynamicLayoutAttribute extends CommonMethod&lt;LazyDynamicLayoutAttribute&gt;
+**继承/实现关系：** LazyDynamicLayoutAttribute extends CommonMethod<LazyDynamicLayoutAttribute>
 
 **起始版本：** 26.0.0
+
+<!--Device-unnamed-export declare class LazyDynamicLayoutAttribute extends CommonMethod<LazyDynamicLayoutAttribute>--><!--Device-unnamed-export declare class LazyDynamicLayoutAttribute extends CommonMethod<LazyDynamicLayoutAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +35,8 @@ onVisibleIndexesChange(callback: Callback<number[]> | undefined): LazyDynamicLay
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-LazyDynamicLayoutAttribute-onVisibleIndexesChange(callback: Callback<int[]> | undefined): LazyDynamicLayoutAttribute--><!--Device-LazyDynamicLayoutAttribute-onVisibleIndexesChange(callback: Callback<int[]> | undefined): LazyDynamicLayoutAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

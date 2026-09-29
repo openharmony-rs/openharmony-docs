@@ -20,6 +20,8 @@ Removes the USB device types that have been disallowed via [addDisallowedPermiss
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-usbManager-function removeDisallowedPermissiveUsbDevices(admin: Want, usbDevices: Array<PermissiveUsbDeviceType>): void--><!--Device-usbManager-function removeDisallowedPermissiveUsbDevices(admin: Want, usbDevices: Array<PermissiveUsbDeviceType>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

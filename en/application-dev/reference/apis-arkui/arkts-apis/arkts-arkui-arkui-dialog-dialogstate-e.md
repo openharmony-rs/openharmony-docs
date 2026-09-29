@@ -8,6 +8,8 @@ Enum for dialog state.
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-export enum DialogState--><!--Device-unnamed-export enum DialogState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## UNINITIALIZED
@@ -23,6 +25,8 @@ Indicates it is uninitialized.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-DialogState-UNINITIALIZED = 0--><!--Device-DialogState-UNINITIALIZED = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Indicates it is initialized.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-DialogState-INITIALIZED = 1--><!--Device-DialogState-INITIALIZED = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## APPEARING
@@ -55,6 +61,8 @@ Indicates it is appearing.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-DialogState-APPEARING = 2--><!--Device-DialogState-APPEARING = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ Indicates it is appeared.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-DialogState-APPEARED = 3--><!--Device-DialogState-APPEARED = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DISAPPEARING
@@ -88,6 +98,8 @@ Indicates it is disappearing.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-DialogState-DISAPPEARING = 4--><!--Device-DialogState-DISAPPEARING = 4-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DISAPPEARED
@@ -103,5 +115,7 @@ Indicates it is disappeared.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-DialogState-DISAPPEARED = 5--><!--Device-DialogState-DISAPPEARED = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

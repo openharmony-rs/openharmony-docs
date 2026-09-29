@@ -23,6 +23,8 @@ Obtains the list of USB devices connected to the host. After the API is called s
 
 **Since:** 9
 
+<!--Device-usbManager-function getDevices(): Array<Readonly<USBDevice>>--><!--Device-usbManager-function getDevices(): Array<Readonly<USBDevice>>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Return value:**

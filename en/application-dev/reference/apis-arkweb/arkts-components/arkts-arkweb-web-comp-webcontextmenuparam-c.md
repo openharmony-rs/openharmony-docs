@@ -14,6 +14,8 @@ For sample code, see [onContextMenuShow](arkts-arkweb-web-comp-attribute.md#onco
 
 **Since:** 9
 
+<!--Device-unnamed-declare class WebContextMenuParam--><!--Device-unnamed-declare class WebContextMenuParam-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -28,6 +30,8 @@ Constructs a **WebContextMenuParam** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuParam-constructor()--><!--Device-WebContextMenuParam-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## existsImageContents
@@ -41,6 +45,8 @@ Checks whether there is image content at the current long press or right-click p
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebContextMenuParam-existsImageContents(): boolean--><!--Device-WebContextMenuParam-existsImageContents(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -59,6 +65,8 @@ getContextMenuMediaType(): ContextMenuDataMediaType
 Obtains the type of the web element that the user long presses or right-clicks when reporting a context menu event.
 
 **Since:** 22
+
+<!--Device-WebContextMenuParam-getContextMenuMediaType(): ContextMenuDataMediaType--><!--Device-WebContextMenuParam-getContextMenuMediaType(): ContextMenuDataMediaType-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -80,6 +88,8 @@ Obtains the edit state flag of the web element. This is used to finely control t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuParam-getEditStateFlags(): number--><!--Device-WebContextMenuParam-getEditStateFlags(): number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -99,6 +109,8 @@ Obtains the input field type of the web element (such as text box, password box,
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebContextMenuParam-getInputFieldType(): ContextMenuInputFieldType--><!--Device-WebContextMenuParam-getInputFieldType(): ContextMenuInputFieldType-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -126,6 +138,8 @@ Obtains the URL link address that has passed the security check. This can be use
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuParam-getLinkUrl(): string--><!--Device-WebContextMenuParam-getLinkUrl(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -151,6 +165,8 @@ Obtains the media type of the web element.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuParam-getMediaType(): ContextMenuMediaType--><!--Device-WebContextMenuParam-getMediaType(): ContextMenuMediaType-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -169,6 +185,8 @@ Obtains the height of a preview image.
 
 **Since:** 13
 
+<!--Device-WebContextMenuParam-getPreviewHeight(): number--><!--Device-WebContextMenuParam-getPreviewHeight(): number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -186,6 +204,8 @@ getPreviewWidth(): number
 Obtains the width of a preview image.
 
 **Since:** 13
+
+<!--Device-WebContextMenuParam-getPreviewWidth(): number--><!--Device-WebContextMenuParam-getPreviewWidth(): number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -207,6 +227,8 @@ Obtains the content when right-clicking selected text. This is used to provide t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuParam-getSelectionText(): string--><!--Device-WebContextMenuParam-getSelectionText(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -226,6 +248,8 @@ Obtains the trigger source type of the context menu event (such as mouse right-c
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebContextMenuParam-getSourceType(): ContextMenuSourceType--><!--Device-WebContextMenuParam-getSourceType(): ContextMenuSourceType-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -247,6 +271,8 @@ Obtains the URL link address corresponding to the **src** attribute of the eleme
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuParam-getSourceUrl(): string--><!--Device-WebContextMenuParam-getSourceUrl(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -266,6 +292,8 @@ Obtains the original URL link address that has not passed the security check.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebContextMenuParam-getUnfilteredLinkUrl(): string--><!--Device-WebContextMenuParam-getUnfilteredLinkUrl(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -287,6 +315,8 @@ Checks whether a web element is editable. This is used to dynamically show or hi
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuParam-isEditable(): boolean--><!--Device-WebContextMenuParam-isEditable(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -307,6 +337,8 @@ X coordinate of the context menu, which is the horizontal distance relative to t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuParam-x(): number--><!--Device-WebContextMenuParam-x(): number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -326,6 +358,8 @@ Y coordinate of the context menu, which is the vertical distance relative to the
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebContextMenuParam-y(): number--><!--Device-WebContextMenuParam-y(): number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

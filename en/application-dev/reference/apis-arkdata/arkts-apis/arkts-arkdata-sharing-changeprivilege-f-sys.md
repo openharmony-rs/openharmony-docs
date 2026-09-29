@@ -20,6 +20,8 @@ Changes the privilege on the shared data. This API uses an asynchronous callback
 
 **Since:** 11
 
+<!--Device-sharing-function changePrivilege(      sharingResource: string,      participants: Array<Participant>,      callback: AsyncCallback<Result<Array<Result<Participant>>>>    ): void--><!--Device-sharing-function changePrivilege(      sharingResource: string,      participants: Array<Participant>,      callback: AsyncCallback<Result<Array<Result<Participant>>>>    ): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -84,6 +86,8 @@ function changePrivilege(
 Changes the privilege on the shared data. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-sharing-function changePrivilege(      sharingResource: string,      participants: Array<Participant>    ): Promise<Result<Array<Result<Participant>>>>--><!--Device-sharing-function changePrivilege(      sharingResource: string,      participants: Array<Participant>    ): Promise<Result<Array<Result<Participant>>>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

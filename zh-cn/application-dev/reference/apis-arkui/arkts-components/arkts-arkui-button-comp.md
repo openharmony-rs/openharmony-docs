@@ -24,6 +24,8 @@ Button()
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ButtonInterface-(): ButtonAttribute--><!--Device-ButtonInterface-(): ButtonAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Button
@@ -41,6 +43,8 @@ Button(options: ButtonOptions)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ButtonInterface-(options: ButtonOptions): ButtonAttribute--><!--Device-ButtonInterface-(options: ButtonOptions): ButtonAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,6 +71,8 @@ Button(label: ResourceStr, options?: ButtonOptions)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ButtonInterface-(label: ResourceStr, options?: ButtonOptions): ButtonAttribute--><!--Device-ButtonInterface-(label: ResourceStr, options?: ButtonOptions): ButtonAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -422,7 +428,7 @@ struct ButtonExample {
 
 ### 示例8（设置label文本水平对齐方式）
 
-该示例通过配置LabelStyle的textAlign，设置文本对齐方式。
+该示例通过配置[LabelStyle](#labelstyle10对象说明)的textAlign，设置文本对齐方式。
 
 从API version 23开始，新增textAlign接口。
 
@@ -448,7 +454,7 @@ struct Index {
 
 ### 示例9（设置按钮的沉浸光感效果）
 
-该示例使用通用属性systemMaterial接口来设置组件的系统材质，以实现沉浸光感效果。
+该示例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来设置组件的系统材质，以实现沉浸光感效果。
 
 该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 

@@ -25,6 +25,8 @@ Encapsulates the parameters used for encryption or decryption. You need to const
 
 **Since:** 9
 
+<!--Device-cryptoFramework-interface ParamsSpec--><!--Device-cryptoFramework-interface ParamsSpec-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Cipher
 - API versions 9 to 11: SystemCapability.Security.CryptoFramework
@@ -52,7 +54,9 @@ Algorithm for symmetric encryption or decryption. The value can be:
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ParamsSpec-algName: string--><!--Device-ParamsSpec-algName: string-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Cipher

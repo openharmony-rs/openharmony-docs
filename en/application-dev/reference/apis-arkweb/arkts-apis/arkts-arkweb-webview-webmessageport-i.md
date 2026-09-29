@@ -10,6 +10,8 @@ WebMessagePort is a message port interface in the Web component used for bidirec
 
 **Since:** 9
 
+<!--Device-webview-interface WebMessagePort--><!--Device-webview-interface WebMessagePort-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Closes this message port when messages do not need to be sent. Before calling th
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessagePort-close(): void--><!--Device-WebMessagePort-close(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -87,6 +91,8 @@ Registers a callback on the application message port to receive messages of the 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessagePort-onMessageEvent(callback: (result: WebMessage) => void): void--><!--Device-WebMessagePort-onMessageEvent(callback: (result: WebMessage) => void): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -156,6 +162,8 @@ Registers a callback on the application message port to receive messages of the 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessagePort-onMessageEventExt(callback: (result: WebMessageExt) => void): void--><!--Device-WebMessagePort-onMessageEventExt(callback: (result: WebMessageExt) => void): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -474,6 +482,8 @@ Sends a message of the [WebMessage](arkts-arkweb-webview-webmessage-t.md) type t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMessagePort-postMessageEvent(message: WebMessage): void--><!--Device-WebMessagePort-postMessageEvent(message: WebMessage): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -545,6 +555,8 @@ Sends a message of the [WebMessageType](arkts-arkweb-webview-webmessagetype-e.md
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMessagePort-postMessageEventExt(message: WebMessageExt): void--><!--Device-WebMessagePort-postMessageEventExt(message: WebMessageExt): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -577,5 +589,7 @@ Default value: false.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessagePort-isExtentionType?: boolean--><!--Device-WebMessagePort-isExtentionType?: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

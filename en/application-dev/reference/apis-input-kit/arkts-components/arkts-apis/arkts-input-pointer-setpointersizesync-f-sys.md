@@ -16,6 +16,8 @@ Sets the pointer size. This API returns the result synchronously.
 
 **Since:** 10
 
+<!--Device-pointer-function setPointerSizeSync(size: int): void--><!--Device-pointer-function setPointerSizeSync(size: int): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.

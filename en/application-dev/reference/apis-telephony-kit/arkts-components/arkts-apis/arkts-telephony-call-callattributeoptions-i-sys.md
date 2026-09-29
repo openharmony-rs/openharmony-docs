@@ -8,6 +8,8 @@ Defines the call attribute options.
 
 **Since:** 7
 
+<!--Device-call-export interface CallAttributeOptions--><!--Device-call-export interface CallAttributeOptions-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Account ID.
 
 **Since:** 7
 
+<!--Device-CallAttributeOptions-accountId: int--><!--Device-CallAttributeOptions-accountId: int-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Account number.
 **Type:** string
 
 **Since:** 7
+
+<!--Device-CallAttributeOptions-accountNumber: string--><!--Device-CallAttributeOptions-accountNumber: string-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -62,6 +68,8 @@ Call ID.
 
 **Since:** 7
 
+<!--Device-CallAttributeOptions-callId: int--><!--Device-CallAttributeOptions-callId: int-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Detailed call state.
 **Type:** [DetailedCallState](arkts-telephony-call-detailedcallstate-e-sys.md)
 
 **Since:** 7
+
+<!--Device-CallAttributeOptions-callState: DetailedCallState--><!--Device-CallAttributeOptions-callState: DetailedCallState-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -94,6 +104,8 @@ Enumerates call types.
 
 **Since:** 7
 
+<!--Device-CallAttributeOptions-callType: CallType--><!--Device-CallAttributeOptions-callType: CallType-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Enumerates conference states.
 **Type:** [ConferenceState](arkts-telephony-call-conferencestate-e-sys.md)
 
 **Since:** 7
+
+<!--Device-CallAttributeOptions-conferenceState: ConferenceState--><!--Device-CallAttributeOptions-conferenceState: ConferenceState-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -126,6 +140,8 @@ Video RBT type.
 
 **Since:** 11
 
+<!--Device-CallAttributeOptions-crsType: int--><!--Device-CallAttributeOptions-crsType: int-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -141,6 +157,8 @@ Indicates the extra call parameters.
 **Type:** Record&lt;string, Object&gt;
 
 **Since:** 14
+
+<!--Device-CallAttributeOptions-extraParams?: Record<string, Object>--><!--Device-CallAttributeOptions-extraParams?: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -159,6 +177,8 @@ Indicates is custom accessibility enabled.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-CallAttributeOptions-isCustomAccessibility?: boolean--><!--Device-CallAttributeOptions-isCustomAccessibility?: boolean-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -179,6 +199,8 @@ Whether the call is an ECC. The default value is **false**.
 
 **Since:** 7
 
+<!--Device-CallAttributeOptions-isEcc: boolean--><!--Device-CallAttributeOptions-isEcc: boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -194,6 +216,8 @@ Home location area of the number.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-CallAttributeOptions-numberLocation?: string--><!--Device-CallAttributeOptions-numberLocation?: string-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -211,6 +235,8 @@ Number mark.
 
 **Since:** 12
 
+<!--Device-CallAttributeOptions-numberMarkInfo?: NumberMarkInfo--><!--Device-CallAttributeOptions-numberMarkInfo?: NumberMarkInfo-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -226,6 +252,8 @@ Original call type of the Video RBT service.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-CallAttributeOptions-originalCallType: int--><!--Device-CallAttributeOptions-originalCallType: int-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -244,6 +272,8 @@ Indicates the rtt state.
 **Since:** 22
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-CallAttributeOptions-rttState?: RttState--><!--Device-CallAttributeOptions-rttState?: RttState-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -264,6 +294,8 @@ Whether the speakerphone is used to answer a call. The default value is **false*
 
 **Since:** 7
 
+<!--Device-CallAttributeOptions-speakerphoneOn: boolean--><!--Device-CallAttributeOptions-speakerphoneOn: boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -279,6 +311,8 @@ Start time.
 **Type:** number
 
 **Since:** 7
+
+<!--Device-CallAttributeOptions-startTime: int--><!--Device-CallAttributeOptions-startTime: int-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -296,6 +330,8 @@ Video state type.
 
 **Since:** 7
 
+<!--Device-CallAttributeOptions-videoState: VideoStateType--><!--Device-CallAttributeOptions-videoState: VideoStateType-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -311,6 +347,8 @@ Defines the VoIP call information.
 **Type:** [VoipCallAttribute](arkts-telephony-call-voipcallattribute-i-sys.md)
 
 **Since:** 11
+
+<!--Device-CallAttributeOptions-voipCallAttribute?: VoipCallAttribute--><!--Device-CallAttributeOptions-voipCallAttribute?: VoipCallAttribute-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -329,6 +367,8 @@ X-Call type.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-CallAttributeOptions-xCallType?: XCallType--><!--Device-CallAttributeOptions-xCallType?: XCallType-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

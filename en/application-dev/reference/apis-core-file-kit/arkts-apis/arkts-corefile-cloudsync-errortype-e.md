@@ -17,6 +17,8 @@ the cloud.
 
 **Since:** 12
 
+<!--Device-cloudSync-enum ErrorType--><!--Device-cloudSync-enum ErrorType-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## NO_ERROR
@@ -28,6 +30,8 @@ NO_ERROR = 0
 No error.
 
 **Since:** 12
+
+<!--Device-ErrorType-NO_ERROR = 0--><!--Device-ErrorType-NO_ERROR = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -41,6 +45,8 @@ No network is available.
 
 **Since:** 12
 
+<!--Device-ErrorType-NETWORK_UNAVAILABLE = 1--><!--Device-ErrorType-NETWORK_UNAVAILABLE = 1-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## WIFI_UNAVAILABLE
@@ -52,6 +58,8 @@ WIFI_UNAVAILABLE = 2
 Wi-Fi is unavailable.
 
 **Since:** 12
+
+<!--Device-ErrorType-WIFI_UNAVAILABLE = 2--><!--Device-ErrorType-WIFI_UNAVAILABLE = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -65,6 +73,8 @@ The battery level is lower than 10%.
 
 **Since:** 12
 
+<!--Device-ErrorType-BATTERY_LEVEL_LOW = 3--><!--Device-ErrorType-BATTERY_LEVEL_LOW = 3-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## BATTERY_LEVEL_WARNING
@@ -76,6 +86,8 @@ BATTERY_LEVEL_WARNING = 4
 The battery level is lower than 15%.
 
 **Since:** 12
+
+<!--Device-ErrorType-BATTERY_LEVEL_WARNING = 4--><!--Device-ErrorType-BATTERY_LEVEL_WARNING = 4-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -89,6 +101,8 @@ The cloud space is insufficient.
 
 **Since:** 12
 
+<!--Device-ErrorType-CLOUD_STORAGE_FULL = 5--><!--Device-ErrorType-CLOUD_STORAGE_FULL = 5-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## LOCAL_STORAGE_FULL
@@ -100,6 +114,8 @@ LOCAL_STORAGE_FULL = 6
 The local space is insufficient.
 
 **Since:** 12
+
+<!--Device-ErrorType-LOCAL_STORAGE_FULL = 6--><!--Device-ErrorType-LOCAL_STORAGE_FULL = 6-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -113,6 +129,8 @@ The device temperature is too high.
 
 **Since:** 12
 
+<!--Device-ErrorType-DEVICE_TEMPERATURE_TOO_HIGH = 7--><!--Device-ErrorType-DEVICE_TEMPERATURE_TOO_HIGH = 7-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## REMOTE_SERVER_ABNORMAL
@@ -124,5 +142,7 @@ REMOTE_SERVER_ABNORMAL = 8
 The remote service is unavailable.
 
 **Since:** 20
+
+<!--Device-ErrorType-REMOTE_SERVER_ABNORMAL = 8--><!--Device-ErrorType-REMOTE_SERVER_ABNORMAL = 8-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

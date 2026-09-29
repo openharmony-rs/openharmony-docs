@@ -8,6 +8,8 @@ Provides coordinate information for tap gestures.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface EventLocationInfo--><!--Device-unnamed-declare interface EventLocationInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getCurrentLocalPosition
@@ -23,6 +25,8 @@ Gets the coordinates of the top-left corner of the current component based on it
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-EventLocationInfo-getCurrentLocalPosition?(): Coordinate2D--><!--Device-EventLocationInfo-getCurrentLocalPosition?(): Coordinate2D-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ Unit: vp
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-EventLocationInfo-displayX: number--><!--Device-EventLocationInfo-displayX: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## displayY
@@ -73,6 +79,8 @@ Unit: vp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-EventLocationInfo-displayY: number--><!--Device-EventLocationInfo-displayY: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,6 +104,8 @@ Value range: [0, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-EventLocationInfo-globalDisplayX?: number--><!--Device-EventLocationInfo-globalDisplayX?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalDisplayY
@@ -117,6 +127,8 @@ Value range: [0, +∞)
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-EventLocationInfo-globalDisplayY?: number--><!--Device-EventLocationInfo-globalDisplayY?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,6 +152,8 @@ Unit: vp
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-EventLocationInfo-windowX: number--><!--Device-EventLocationInfo-windowX: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowY
@@ -161,6 +175,8 @@ Unit: vp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-EventLocationInfo-windowY: number--><!--Device-EventLocationInfo-windowY: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,6 +200,8 @@ Unit: vp
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-EventLocationInfo-x: number--><!--Device-EventLocationInfo-x: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -205,5 +223,7 @@ Unit: vp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-EventLocationInfo-y: number--><!--Device-EventLocationInfo-y: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

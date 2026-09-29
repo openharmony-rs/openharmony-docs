@@ -14,6 +14,8 @@ Sets the spacing between child components of the **Column** component.
 
 **Since:** 18
 
+<!--Device-unnamed-interface ColumnOptions--><!--Device-unnamed-interface ColumnOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## space
@@ -45,5 +47,7 @@ The value of **space** is a number greater than or equal to 0, or a string that 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ColumnOptions-space?: string | number--><!--Device-ColumnOptions-space?: string | number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

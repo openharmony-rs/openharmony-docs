@@ -8,6 +8,8 @@ Notification request proxy.
 
 **Since:** 26.0.0
 
+<!--Device-reminderAgentManager-interface NotificationRequestProxy--><!--Device-reminderAgentManager-interface NotificationRequestProxy-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Unique ID carried in a notification sent by an application, which is used for no
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotificationRequestProxy-appMessageId?: string--><!--Device-NotificationRequestProxy-appMessageId?: string-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## isAlertOnce
@@ -49,5 +53,7 @@ the alert mode is changed to [LEVEL_LOW](../../apis-notification-kit/arkts-apis/
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotificationRequestProxy-isAlertOnce?: boolean--><!--Device-NotificationRequestProxy-isAlertOnce?: boolean-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent

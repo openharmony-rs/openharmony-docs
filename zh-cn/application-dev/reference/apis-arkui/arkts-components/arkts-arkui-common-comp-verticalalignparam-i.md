@@ -10,6 +10,8 @@ declare interface VerticalAlignParam
 
 **起始版本：** 23
 
+<!--Device-unnamed-declare interface VerticalAlignParam--><!--Device-unnamed-declare interface VerticalAlignParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## align
@@ -30,6 +32,8 @@ Anonymous Object Rectification
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-VerticalAlignParam-align: VerticalAlign--><!--Device-VerticalAlignParam-align: VerticalAlign-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## anchor
@@ -49,5 +53,7 @@ Anonymous Object Rectification
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-VerticalAlignParam-anchor: string--><!--Device-VerticalAlignParam-anchor: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

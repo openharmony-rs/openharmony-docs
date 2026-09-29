@@ -18,6 +18,8 @@ Obtains the list of all physical USB ports. This API can be used to enumerate US
 
 **Required permissions:** ohos.permission.MANAGE_USB_CONFIG
 
+<!--Device-usbManager-function getPortList(): Array<USBPort>--><!--Device-usbManager-function getPortList(): Array<USBPort>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

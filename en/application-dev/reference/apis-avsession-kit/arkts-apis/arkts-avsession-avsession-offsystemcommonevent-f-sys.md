@@ -18,6 +18,8 @@ Unregister system common event callback
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avSession-function offSystemCommonEvent(callback?: EventProcess): void--><!--Device-avSession-function offSystemCommonEvent(callback?: EventProcess): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **System API:** This is a system API.

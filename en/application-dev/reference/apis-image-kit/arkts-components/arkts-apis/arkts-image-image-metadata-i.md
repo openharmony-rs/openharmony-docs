@@ -8,6 +8,8 @@ The **Metadata** class provides APIs for storing image metadata. For details abo
 
 **Since:** 13
 
+<!--Device-image-interface Metadata--><!--Device-image-interface Metadata-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ clone(): Promise<Metadata>
 Clones the metadata. This API uses a promise to return the result.
 
 **Since:** 13
+
+<!--Device-Metadata-clone(): Promise<Metadata>--><!--Device-Metadata-clone(): Promise<Metadata>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -74,6 +78,8 @@ Obtains all properties and values from the image's metadata. This API uses a pro
 For details about how to query the property values, see [PropertyKey](arkts-image-image-propertykey-e.md), [FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md), [GifPropertyKey](arkts-image-image-gifpropertykey-e.md), and [HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md).
 
 **Since:** 13
+
+<!--Device-Metadata-getAllProperties(): Promise<Record<string, string | null>>--><!--Device-Metadata-getAllProperties(): Promise<Record<string, string | null>>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -125,6 +131,8 @@ Obtains the metadata in binary format. This API uses a promise to return the res
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Metadata-getBlob(): Promise<ArrayBuffer>--><!--Device-Metadata-getBlob(): Promise<ArrayBuffer>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -169,6 +177,8 @@ getProperties(key: Array<string>): Promise<Record<string, string | null>>
 Obtains the values of properties from the image's metadata. This API uses a promise to return the result. For details about how to query the property values, see [PropertyKey](arkts-image-image-propertykey-e.md), [FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md), [GifPropertyKey](arkts-image-image-gifpropertykey-e.md), and [HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md).
 
 **Since:** 13
+
+<!--Device-Metadata-getProperties(key: Array<string>): Promise<Record<string, string | null>>--><!--Device-Metadata-getProperties(key: Array<string>): Promise<Record<string, string | null>>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -230,6 +240,8 @@ Replaces the current metadata with binary data. This API uses a promise to retur
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Metadata-setBlob(blob: ArrayBuffer): Promise<void>--><!--Device-Metadata-setBlob(blob: ArrayBuffer): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -294,6 +306,8 @@ Sets the values of properties for the image's metadata. This API uses a promise 
 For details about how to query the property values, see [PropertyKey](arkts-image-image-propertykey-e.md), [FragmentMapPropertyKey](arkts-image-image-fragmentmappropertykey-e.md), [GifPropertyKey](arkts-image-image-gifpropertykey-e.md), and [HeifsPropertyKey](arkts-image-image-heifspropertykey-e.md).
 
 **Since:** 13
+
+<!--Device-Metadata-setProperties(records: Record<string, string | null>): Promise<void>--><!--Device-Metadata-setProperties(records: Record<string, string | null>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

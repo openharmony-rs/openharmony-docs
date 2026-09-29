@@ -10,6 +10,8 @@ Enumeration of dialog type.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-enum DialogType--><!--Device-avMusicTemplate-enum DialogType-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## NORMAL
@@ -23,6 +25,8 @@ Normal dialog box.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DialogType-NORMAL = 0--><!--Device-DialogType-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -38,6 +42,8 @@ Internet dialog box.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DialogType-INTERNET = 1--><!--Device-DialogType-INTERNET = 1-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## FLOW
@@ -51,6 +57,8 @@ Flow dialog box.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DialogType-FLOW = 2--><!--Device-DialogType-FLOW = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -66,6 +74,8 @@ Paid dialog box.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DialogType-PAID = 3--><!--Device-DialogType-PAID = 3-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## VIP
@@ -79,6 +89,8 @@ Vip dialog box.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DialogType-VIP = 4--><!--Device-DialogType-VIP = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -94,6 +106,8 @@ Login dialog box.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DialogType-LOGIN = 5--><!--Device-DialogType-LOGIN = 5-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## ERROR
@@ -108,6 +122,8 @@ Error dialog box.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DialogType-ERROR = 6--><!--Device-DialogType-ERROR = 6-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## UNKNOWN
@@ -121,5 +137,7 @@ Unknown dialog box.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DialogType-UNKNOWN = 7--><!--Device-DialogType-UNKNOWN = 7-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

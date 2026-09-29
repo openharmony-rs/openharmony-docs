@@ -14,6 +14,8 @@ Defines a length in fp.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-unnamed-declare type FP = `${number}fp`--><!--Device-unnamed-declare type FP = `${number}fp`-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** `${number}fp`

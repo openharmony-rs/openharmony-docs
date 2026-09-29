@@ -14,6 +14,8 @@ The state of Wi-Fi connection enumeration.
 
 **Substitutes:** [ConnState](arkts-connectivity-wifimanager-connstate-e.md)
 
+<!--Device-wifi-export enum ConnState--><!--Device-wifi-export enum ConnState-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## SCANNING
@@ -29,6 +31,8 @@ The device is searching for an available AP.
 **Deprecated since:** 9
 
 **Substitutes:** [SCANNING](arkts-connectivity-wifimanager-connstate-e.md#scanning)
+
+<!--Device-ConnState-SCANNING--><!--Device-ConnState-SCANNING-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -46,6 +50,8 @@ The Wi-Fi connection is being set up.
 
 **Substitutes:** [CONNECTING](arkts-connectivity-wifimanager-connstate-e.md#connecting)
 
+<!--Device-ConnState-CONNECTING--><!--Device-ConnState-CONNECTING-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## AUTHENTICATING
@@ -61,6 +67,8 @@ The Wi-Fi connection is being authenticated.
 **Deprecated since:** 9
 
 **Substitutes:** [AUTHENTICATING](arkts-connectivity-wifimanager-connstate-e.md#authenticating)
+
+<!--Device-ConnState-AUTHENTICATING--><!--Device-ConnState-AUTHENTICATING-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -78,6 +86,8 @@ The IP address of the Wi-Fi connection is being obtained.
 
 **Substitutes:** [OBTAINING_IPADDR](arkts-connectivity-wifimanager-connstate-e.md#obtaining_ipaddr)
 
+<!--Device-ConnState-OBTAINING_IPADDR--><!--Device-ConnState-OBTAINING_IPADDR-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## CONNECTED
@@ -93,6 +103,8 @@ The Wi-Fi connection has been set up.
 **Deprecated since:** 9
 
 **Substitutes:** [CONNECTED](arkts-connectivity-wifimanager-connstate-e.md#connected)
+
+<!--Device-ConnState-CONNECTED--><!--Device-ConnState-CONNECTED-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -110,6 +122,8 @@ The Wi-Fi connection is being torn down.
 
 **Substitutes:** [DISCONNECTING](arkts-connectivity-wifimanager-connstate-e.md#disconnecting)
 
+<!--Device-ConnState-DISCONNECTING--><!--Device-ConnState-DISCONNECTING-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## DISCONNECTED
@@ -126,6 +140,8 @@ The Wi-Fi connection has been torn down.
 
 **Substitutes:** [DISCONNECTED](arkts-connectivity-wifimanager-connstate-e.md#disconnected)
 
+<!--Device-ConnState-DISCONNECTED--><!--Device-ConnState-DISCONNECTED-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## UNKNOWN
@@ -141,5 +157,7 @@ Failed to set up the Wi-Fi connection.
 **Deprecated since:** 9
 
 **Substitutes:** [UNKNOWN](arkts-connectivity-wifimanager-connstate-e.md#unknown)
+
+<!--Device-ConnState-UNKNOWN--><!--Device-ConnState-UNKNOWN-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA

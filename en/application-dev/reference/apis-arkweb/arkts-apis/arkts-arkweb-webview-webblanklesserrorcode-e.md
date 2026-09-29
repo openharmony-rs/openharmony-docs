@@ -8,6 +8,8 @@ Enumerates the error codes of the blankless loading.
 
 **Since:** 20
 
+<!--Device-webview-enum WebBlanklessErrorCode--><!--Device-webview-enum WebBlanklessErrorCode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## SUCCESS
@@ -19,6 +21,8 @@ SUCCESS = 0
 Operation successful.
 
 **Since:** 20
+
+<!--Device-WebBlanklessErrorCode-SUCCESS = 0--><!--Device-WebBlanklessErrorCode-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -32,6 +36,8 @@ Unknown error or internal status error.
 
 **Since:** 20
 
+<!--Device-WebBlanklessErrorCode-ERR_UNKNOWN = -1--><!--Device-WebBlanklessErrorCode-ERR_UNKNOWN = -1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_PARAM
@@ -43,6 +49,8 @@ ERR_INVALID_PARAM = -2
 Invalid parameter.
 
 **Since:** 20
+
+<!--Device-WebBlanklessErrorCode-ERR_INVALID_PARAM = -2--><!--Device-WebBlanklessErrorCode-ERR_INVALID_PARAM = -2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -56,6 +64,8 @@ ERR_CONTROLLER_NOT_INITED = -3
 
 **Since:** 20
 
+<!--Device-WebBlanklessErrorCode-ERR_CONTROLLER_NOT_INITED = -3--><!--Device-WebBlanklessErrorCode-ERR_CONTROLLER_NOT_INITED = -3-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_KEY_NOT_MATCH
@@ -68,6 +78,8 @@ No key value is matched. [setBlanklessLoadingWithKey](arkts-arkweb-webview-webvi
 
 **Since:** 20
 
+<!--Device-WebBlanklessErrorCode-ERR_KEY_NOT_MATCH = -4--><!--Device-WebBlanklessErrorCode-ERR_KEY_NOT_MATCH = -4-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SIGNIFICANT_CHANGE
@@ -79,6 +91,8 @@ ERR_SIGNIFICANT_CHANGE = -5
 The similarity is low, and the system determines that the scene change is too large. As a result, the [setBlanklessLoadingWithKey](arkts-arkweb-webview-webviewcontroller-c.md#setblanklessloadingwithkey) API does not enable frame interpolation.
 
 **Since:** 20
+
+<!--Device-WebBlanklessErrorCode-ERR_SIGNIFICANT_CHANGE = -5--><!--Device-WebBlanklessErrorCode-ERR_SIGNIFICANT_CHANGE = -5-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -94,6 +108,8 @@ The frame interpolation duration set in [BlanklessLoadingParam](arkts-arkweb-web
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebBlanklessErrorCode-ERR_DURATION_OUT_OF_RANGE = -6--><!--Device-WebBlanklessErrorCode-ERR_DURATION_OUT_OF_RANGE = -6-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_EXPIRATION_TIME_OUT_OF_RANGE
@@ -107,5 +123,7 @@ The historical frame expiration time set in [BlanklessLoadingParam](arkts-arkweb
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebBlanklessErrorCode-ERR_EXPIRATION_TIME_OUT_OF_RANGE = -7--><!--Device-WebBlanklessErrorCode-ERR_EXPIRATION_TIME_OUT_OF_RANGE = -7-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

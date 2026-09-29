@@ -16,6 +16,8 @@ Adds one or more check rules. HiChecker detects unexpected operations or gives f
 
 **Since:** 9
 
+<!--Device-hichecker-function addCheckRule(rule: bigint) : void--><!--Device-hichecker-function addCheckRule(rule: bigint) : void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 **Parameters:**

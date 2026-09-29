@@ -8,6 +8,8 @@ Storage usage information of the application.
 
 **Since:** 26.0.0
 
+<!--Device-bundleManager-interface BundleStorageStats--><!--Device-bundleManager-interface BundleStorageStats-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Application installation file directory:
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BundleStorageStats-appSize: number--><!--Device-BundleStorageStats-appSize: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## bundleName
@@ -49,6 +53,8 @@ Bundle name of the application.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleStorageStats-bundleName: string--><!--Device-BundleStorageStats-bundleName: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -79,5 +85,7 @@ Database file directory:
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleStorageStats-dataSize: number--><!--Device-BundleStorageStats-dataSize: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

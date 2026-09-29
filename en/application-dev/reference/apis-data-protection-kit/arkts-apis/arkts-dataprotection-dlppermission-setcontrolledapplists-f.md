@@ -20,6 +20,8 @@ Sets the list of applications controlled by enterprise DLP. This API uses a prom
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dlpPermission-function setControlledAppLists(appLists: Array<string>, userId?: number): Promise<void>--><!--Device-dlpPermission-function setControlledAppLists(appLists: Array<string>, userId?: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**

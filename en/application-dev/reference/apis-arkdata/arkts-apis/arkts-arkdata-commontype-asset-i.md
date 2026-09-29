@@ -8,6 +8,8 @@ Represents asset (such as a file, image, or video) information.
 
 **Since:** 11
 
+<!--Device-commonType-interface Asset--><!--Device-commonType-interface Asset-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CommonType
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Time when the asset was created.
 
 **Since:** 11
 
+<!--Device-Asset-createTime: string--><!--Device-Asset-createTime: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CommonType
 
 ## modifyTime
@@ -41,6 +45,8 @@ Time when the asset was last modified.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-Asset-modifyTime: string--><!--Device-Asset-modifyTime: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CommonType
 
@@ -56,6 +62,8 @@ Asset name.
 
 **Since:** 11
 
+<!--Device-Asset-name: string--><!--Device-Asset-name: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CommonType
 
 ## path
@@ -69,6 +77,8 @@ Application sandbox path of the asset.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-Asset-path: string--><!--Device-Asset-path: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CommonType
 
@@ -84,6 +94,8 @@ Size of the asset. If this field changes, the asset is considered to have change
 
 **Since:** 11
 
+<!--Device-Asset-size: string--><!--Device-Asset-size: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CommonType
 
 ## status
@@ -98,6 +110,8 @@ Asset status. The default value is ASSET_NORMAL.
 
 **Since:** 11
 
+<!--Device-Asset-status?: AssetStatus--><!--Device-Asset-status?: AssetStatus-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CommonType
 
 ## uri
@@ -111,5 +125,7 @@ Asset URI, which is an absolute path in the system.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-Asset-uri: string--><!--Device-Asset-uri: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CommonType

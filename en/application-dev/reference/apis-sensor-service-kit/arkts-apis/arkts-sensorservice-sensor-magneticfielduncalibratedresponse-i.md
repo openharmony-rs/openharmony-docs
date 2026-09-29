@@ -10,6 +10,8 @@ Describes the uncalibrated magnetic field sensor data. It extends from [Response
 
 **Since:** 8
 
+<!--Device-sensor-interface MagneticFieldUncalibratedResponse extends Response--><!--Device-sensor-interface MagneticFieldUncalibratedResponse extends Response-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 ## Modules to Import
@@ -24,11 +26,13 @@ import { sensor } from '@kit.SensorServiceKit';
 biasX: number
 ```
 
-Bias of the uncalibrated magnetic field strength on the x-axis, in μT.
+Uncalibrated magnetic field strength bias along the x-axis (estimated magnetic field deviation), in μT.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MagneticFieldUncalibratedResponse-biasX: double--><!--Device-MagneticFieldUncalibratedResponse-biasX: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -38,11 +42,13 @@ Bias of the uncalibrated magnetic field strength on the x-axis, in μT.
 biasY: number
 ```
 
-Bias of the uncalibrated magnetic field strength on the y-axis, in μT.
+Uncalibrated magnetic field strength bias along the y-axis (estimated magnetic field deviation), in μT.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MagneticFieldUncalibratedResponse-biasY: double--><!--Device-MagneticFieldUncalibratedResponse-biasY: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -52,11 +58,13 @@ Bias of the uncalibrated magnetic field strength on the y-axis, in μT.
 biasZ: number
 ```
 
-Bias of the uncalibrated magnetic field strength on the z-axis, in μT.
+Uncalibrated magnetic field strength bias along the z-axis (estimated magnetic field deviation), in μT.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MagneticFieldUncalibratedResponse-biasZ: double--><!--Device-MagneticFieldUncalibratedResponse-biasZ: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -66,11 +74,13 @@ Bias of the uncalibrated magnetic field strength on the z-axis, in μT.
 x: number
 ```
 
-Uncalibrated magnetic field strength on the x-axis, in μT.
+Uncalibrated magnetic field strength along the x-axis, in μT.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MagneticFieldUncalibratedResponse-x: double--><!--Device-MagneticFieldUncalibratedResponse-x: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -80,11 +90,13 @@ Uncalibrated magnetic field strength on the x-axis, in μT.
 y: number
 ```
 
-Uncalibrated magnetic field strength on the y-axis, in μT.
+Uncalibrated magnetic field strength along the y-axis, in μT.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MagneticFieldUncalibratedResponse-y: double--><!--Device-MagneticFieldUncalibratedResponse-y: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -94,10 +106,12 @@ Uncalibrated magnetic field strength on the y-axis, in μT.
 z: number
 ```
 
-Uncalibrated magnetic field strength on the z-axis, in μT.
+Uncalibrated magnetic field strength along the z-axis, in μT.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MagneticFieldUncalibratedResponse-z: double--><!--Device-MagneticFieldUncalibratedResponse-z: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

@@ -8,6 +8,8 @@ Enumerates the opacity levels of the navigation bar background.
 
 **Since:** 18
 
+<!--Device-unnamed-export declare enum GradientAlpha--><!--Device-unnamed-export declare enum GradientAlpha-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## OPACITY_20
@@ -21,6 +23,8 @@ OPACITY_20 = 1
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-GradientAlpha-OPACITY_20 = 1--><!--Device-GradientAlpha-OPACITY_20 = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +40,8 @@ OPACITY_60 = 2
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-GradientAlpha-OPACITY_60 = 2--><!--Device-GradientAlpha-OPACITY_60 = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## OPACITY_80
@@ -50,6 +56,8 @@ OPACITY_80 = 3
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-GradientAlpha-OPACITY_80 = 3--><!--Device-GradientAlpha-OPACITY_80 = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## OPACITY_100
@@ -63,5 +71,7 @@ OPACITY_100 = 4
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-GradientAlpha-OPACITY_100 = 4--><!--Device-GradientAlpha-OPACITY_100 = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

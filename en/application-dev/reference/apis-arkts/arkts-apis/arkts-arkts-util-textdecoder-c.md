@@ -8,6 +8,8 @@ Provides APIs to decode byte arrays into strings. It supports multiple formats, 
 
 **Since:** 7
 
+<!--Device-util-class TextDecoder--><!--Device-util-class TextDecoder-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ A constructor used to create a **TextDecoder** object.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextDecoder-constructor()--><!--Device-TextDecoder-constructor()-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -55,6 +59,8 @@ A constructor used to create a **TextDecoder** object.
 
 **Substitutes:** [create](#create)
 
+<!--Device-TextDecoder-constructor(encoding?: string, options?: { fatal?: boolean; ignoreBOM?: boolean })--><!--Device-TextDecoder-constructor(encoding?: string, options?: { fatal?: boolean; ignoreBOM?: boolean })-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -81,6 +87,8 @@ Creates a **TextDecoder** object. It provides the same function as the deprecate
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TextDecoder-static create(encoding?: string, options?: TextDecoderOptions): TextDecoder--><!--Device-TextDecoder-static create(encoding?: string, options?: TextDecoderOptions): TextDecoder-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -110,52 +118,6 @@ console.info('retStr = ' + retStr);
 // Output: retStr = utf-8
 ```
 
-## decode
-
-```TypeScript
-decode(input: Uint8Array, options?: { stream?: false }): string
-```
-
-Decodes the input content into a string.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [decodeToString](#decodetostring)
-
-**System capability:** SystemCapability.Utils.Lang
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| input | Uint8Array | Yes | Uint8Array object to decode. |
-| options | { stream?: false } | No | Decoding-related options. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| string | String obtained. |
-
-**Examples**
-
-```TypeScript
-let textDecoder = new util.TextDecoder("utf-8",{ignoreBOM: true});
-let uint8 = new Uint8Array(6);
-uint8[0] = 0xEF;
-uint8[1] = 0xBB;
-uint8[2] = 0xBF;
-uint8[3] = 0x61;
-uint8[4] = 0x62;
-uint8[5] = 0x63;
-console.info("input num:");
-let retStr = textDecoder.decode(uint8, {stream: false});
-console.info("retStr = " + retStr);
-// Output: retStr = abc
-```
-
 ## decodeToString
 
 ```TypeScript
@@ -167,6 +129,8 @@ Decodes the input content into a string.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextDecoder-decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string--><!--Device-TextDecoder-decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -200,6 +164,54 @@ console.info("retStr = " + retStr);
 // Output: retStr = abc
 ```
 
+## decode
+
+```TypeScript
+decode(input: Uint8Array, options?: { stream?: false }): string
+```
+
+Decodes the input content into a string.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [decodeToString](#decodetostring)
+
+<!--Device-TextDecoder-decode(input: Uint8Array, options?: { stream?: false }): string--><!--Device-TextDecoder-decode(input: Uint8Array, options?: { stream?: false }): string-End-->
+
+**System capability:** SystemCapability.Utils.Lang
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| input | Uint8Array | Yes | Uint8Array object to decode. |
+| options | { stream?: false } | No | Decoding-related options. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | String obtained. |
+
+**Examples**
+
+```TypeScript
+let textDecoder = new util.TextDecoder("utf-8",{ignoreBOM: true});
+let uint8 = new Uint8Array(6);
+uint8[0] = 0xEF;
+uint8[1] = 0xBB;
+uint8[2] = 0xBF;
+uint8[3] = 0x61;
+uint8[4] = 0x62;
+uint8[5] = 0x63;
+console.info("input num:");
+let retStr = textDecoder.decode(uint8, {stream: false});
+console.info("retStr = " + retStr);
+// Output: retStr = abc
+```
+
 ## decodeWithStream
 
 ```TypeScript
@@ -215,6 +227,8 @@ Decodes the input content into a string. If **input** is an empty array, **undef
 **Substitutes:** [decodeToString](#decodetostring)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TextDecoder-decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string--><!--Device-TextDecoder-decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -269,6 +283,8 @@ Encoding format.<br>The following formats are supported: utf-8, ibm866, iso-8859
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextDecoder-readonly encoding: string--><!--Device-TextDecoder-readonly encoding: string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## fatal
@@ -285,6 +301,8 @@ Whether to display fatal errors. The value **true** means to display fatal error
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextDecoder-readonly fatal: boolean--><!--Device-TextDecoder-readonly fatal: boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## ignoreBOM
@@ -300,5 +318,7 @@ Whether to ignore the byte order marker (BOM). The default value is **false**, w
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextDecoder-readonly ignoreBOM = false--><!--Device-TextDecoder-readonly ignoreBOM = false-End-->
 
 **System capability:** SystemCapability.Utils.Lang

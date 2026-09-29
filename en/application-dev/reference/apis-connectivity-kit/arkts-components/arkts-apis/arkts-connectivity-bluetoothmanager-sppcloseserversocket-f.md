@@ -20,6 +20,8 @@ Disables an spp server socket and releases related resources.
 
 **Substitutes:** [sppCloseServerSocket](arkts-connectivity-socket-sppcloseserversocket-f.md)
 
+<!--Device-bluetoothManager-function sppCloseServerSocket(socket: number): void--><!--Device-bluetoothManager-function sppCloseServerSocket(socket: number): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

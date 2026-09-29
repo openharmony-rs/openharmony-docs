@@ -12,6 +12,8 @@ Defines information about the images or videos selected.
 
 **Substitutes:** [PhotoSelectResult](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoselectresult-c.md)
 
+<!--Device-picker-class PhotoSelectResult--><!--Device-picker-class PhotoSelectResult-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## Modules to Import
@@ -38,6 +40,8 @@ Whether the selected image is the original one. The value **true** means the sel
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PhotoSelectResult-isOriginalPhoto: boolean--><!--Device-PhotoSelectResult-isOriginalPhoto: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## photoUris
@@ -57,5 +61,7 @@ URIs of the media files selected. This URI array can be used only by [photoAcces
 **Substitutes:** [photoUris](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoselectresult-c.md#photouris)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PhotoSelectResult-photoUris: Array<string>--><!--Device-PhotoSelectResult-photoUris: Array<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService

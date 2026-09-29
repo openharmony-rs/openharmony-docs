@@ -24,6 +24,8 @@ Queries whether the system time of a device can be modified. This API uses an as
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dateTimeManager-function isModifyDateTimeDisallowed(admin: Want, callback: AsyncCallback<boolean>): void--><!--Device-dateTimeManager-function isModifyDateTimeDisallowed(admin: Want, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -86,6 +88,8 @@ Queries whether the system time of a device can be modified. This API uses a pro
 **Required permissions:** ohos.permission.ENTERPRISE_SET_DATETIME
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-dateTimeManager-function isModifyDateTimeDisallowed(admin: Want): Promise<boolean>--><!--Device-dateTimeManager-function isModifyDateTimeDisallowed(admin: Want): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

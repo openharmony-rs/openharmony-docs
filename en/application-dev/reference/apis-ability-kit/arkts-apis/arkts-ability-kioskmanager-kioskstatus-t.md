@@ -10,6 +10,8 @@ Defines the kiosk status information, including whether the system is in kiosk m
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-kioskManager-export type KioskStatus = _KioskStatus--><!--Device-kioskManager-export type KioskStatus = _KioskStatus-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _KioskStatus

@@ -4,6 +4,8 @@ This module provides the capability of content processing for images, including 
 
 **Since:** 18
 
+<!--Device-unnamed-declare namespace videoProcessingEngine--><!--Device-unnamed-declare namespace videoProcessingEngine-End-->
+
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 
 ## Modules to Import

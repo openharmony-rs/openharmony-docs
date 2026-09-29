@@ -8,6 +8,8 @@ Compression and decompression return value information.
 
 **Since:** 12
 
+<!--Device-zlib-interface ZipOutputInfo--><!--Device-zlib-interface ZipOutputInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Total length of the destination buffer.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ZipOutputInfo-destLen: long--><!--Device-ZipOutputInfo-destLen: long-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -44,6 +48,8 @@ For details, see [ReturnStatus](arkts-basicservices-zlib-returnstatus-e.md).
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ZipOutputInfo-status: ReturnStatus--><!--Device-ZipOutputInfo-status: ReturnStatus-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib

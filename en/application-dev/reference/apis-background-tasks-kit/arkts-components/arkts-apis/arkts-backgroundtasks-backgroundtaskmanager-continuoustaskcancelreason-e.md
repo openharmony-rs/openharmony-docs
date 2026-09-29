@@ -8,6 +8,8 @@ Describes the reason for canceling a continuous task.
 
 **Since:** 15
 
+<!--Device-backgroundTaskManager-export enum ContinuousTaskCancelReason--><!--Device-backgroundTaskManager-export enum ContinuousTaskCancelReason-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## USER_CANCEL
@@ -19,6 +21,8 @@ USER_CANCEL = 1
 The task is canceled by the user.
 
 **Since:** 15
+
+<!--Device-ContinuousTaskCancelReason-USER_CANCEL = 1--><!--Device-ContinuousTaskCancelReason-USER_CANCEL = 1-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -32,6 +36,8 @@ The task is canceled by the system.
 
 **Since:** 15
 
+<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL = 2--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL = 2-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## USER_CANCEL_REMOVE_NOTIFICATION
@@ -43,6 +49,8 @@ USER_CANCEL_REMOVE_NOTIFICATION = 3
 User removal notification. This value is reserved.
 
 **Since:** 15
+
+<!--Device-ContinuousTaskCancelReason-USER_CANCEL_REMOVE_NOTIFICATION = 3--><!--Device-ContinuousTaskCancelReason-USER_CANCEL_REMOVE_NOTIFICATION = 3-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -56,6 +64,8 @@ A continuous task of the DATA_TRANSFER type is requested, but the data transmiss
 
 **Since:** 15
 
+<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION
@@ -67,6 +77,8 @@ SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5
 A continuous task of the AUDIO_PLAYBACK type is requested, but the [AVSession](../../../media/avsession/avsession-overview.md) is not accessed. This value is reserved.
 
 **Since:** 15
+
+<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -80,6 +92,8 @@ A continuous task of the AUDIO_PLAYBACK type is requested, but the audio and vid
 
 **Since:** 15
 
+<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING = 6--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING = 6-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING
@@ -91,6 +105,8 @@ SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING = 7
 A continuous task of the AUDIO_RECORDING type is requested, but audio recording is not in progress. This value is reserved.
 
 **Since:** 15
+
+<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING = 7--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING = 7-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -104,6 +120,8 @@ A continuous task of the **LOCATION** type is requested, but the location servic
 
 **Since:** 15
 
+<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_NOT_USE_LOCATION = 8--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_NOT_USE_LOCATION = 8-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_CANCEL_NOT_USE_BLUETOOTH
@@ -115,6 +133,8 @@ SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9
 A continuous task of the BLUETOOTH_INTERACTION type is requested, but Bluetooth-related services are not used. This value is reserved.
 
 **Since:** 15
+
+<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -128,6 +148,8 @@ A continuous task of the MULTI_DEVICE_CONNECTION type is requested, but multi-de
 
 **Since:** 15
 
+<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_CANCEL_USE_ILLEGALLY
@@ -139,5 +161,7 @@ SYSTEM_CANCEL_USE_ILLEGALLY = 11
 A continuous task of an invalid type is used. For example, a continuous task of the **AUDIO_PLAYBACK** type is requested, but the audio playback and location services are in use. This value is reserved.
 
 **Since:** 15
+
+<!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_USE_ILLEGALLY = 11--><!--Device-ContinuousTaskCancelReason-SYSTEM_CANCEL_USE_ILLEGALLY = 11-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask

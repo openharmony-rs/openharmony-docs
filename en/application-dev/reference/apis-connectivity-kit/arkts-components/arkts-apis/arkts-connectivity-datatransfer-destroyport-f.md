@@ -20,6 +20,8 @@ Destroys the port channel.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dataTransfer-function destroyPort(uuid: string): void--><!--Device-dataTransfer-function destroyPort(uuid: string): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

@@ -8,6 +8,8 @@ Enumerates the application [distribution types](../../../security/app-provision-
 
 **Since:** 12
 
+<!--Device-bundleManager-export enum AppDistributionType--><!--Device-bundleManager-export enum AppDistributionType-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ APP_GALLERY = 1
 Application installed from AppGallery.
 
 **Since:** 12
+
+<!--Device-AppDistributionType-APP_GALLERY = 1--><!--Device-AppDistributionType-APP_GALLERY = 1-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -36,6 +40,8 @@ Enterprise application that can be installed on personal devices.
 
 **Since:** 12
 
+<!--Device-AppDistributionType-ENTERPRISE = 2--><!--Device-AppDistributionType-ENTERPRISE = 2-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -49,6 +55,8 @@ ENTERPRISE_NORMAL = 3
 Common enterprise application that can be installed on enterprise devices only through an enterprise mobile device management (MDM) application.
 
 **Since:** 12
+
+<!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3--><!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -64,6 +72,8 @@ Enterprise MDM application that can be installed only on enterprise devices. To 
 
 **Since:** 12
 
+<!--Device-AppDistributionType-ENTERPRISE_MDM = 4--><!--Device-AppDistributionType-ENTERPRISE_MDM = 4-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -77,6 +87,8 @@ OS_INTEGRATION = 5
 Preinstalled system application.
 
 **Since:** 12
+
+<!--Device-AppDistributionType-OS_INTEGRATION = 5--><!--Device-AppDistributionType-OS_INTEGRATION = 5-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -92,6 +104,8 @@ Application under crowdtesting, which is distributed by AppGallery to a limited 
 
 **Since:** 12
 
+<!--Device-AppDistributionType-CROWDTESTING = 6--><!--Device-AppDistributionType-CROWDTESTING = 6-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -105,6 +119,8 @@ NONE = 7
 Other.
 
 **Since:** 12
+
+<!--Device-AppDistributionType-NONE = 7--><!--Device-AppDistributionType-NONE = 7-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

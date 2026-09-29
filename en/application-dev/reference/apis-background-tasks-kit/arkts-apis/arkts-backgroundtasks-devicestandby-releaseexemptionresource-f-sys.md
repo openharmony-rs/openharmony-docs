@@ -18,6 +18,8 @@ Releases exemption resources.
 
 **Required permissions:** ohos.permission.DEVICE_STANDBY_EXEMPTION
 
+<!--Device-deviceStandby-function releaseExemptionResource(request: ResourceRequest): void--><!--Device-deviceStandby-function releaseExemptionResource(request: ResourceRequest): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.DeviceStandby
 
 **System API:** This is a system API.

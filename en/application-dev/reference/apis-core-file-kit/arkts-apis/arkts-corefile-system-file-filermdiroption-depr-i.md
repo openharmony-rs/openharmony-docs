@@ -10,6 +10,8 @@ Defines the options used in rmdir().
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export interface FileRmdirOption--><!--Device-unnamed-export interface FileRmdirOption-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Callback invoked when the API call is complete.
 
 **Deprecated since:** 10
 
+<!--Device-FileRmdirOption-complete?: () => void--><!--Device-FileRmdirOption-complete?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## fail
@@ -42,6 +46,8 @@ Callback invoked when the API call fails. **data** indicates the error informati
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileRmdirOption-fail?: (data: string, code: number) => void--><!--Device-FileRmdirOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -64,6 +70,8 @@ Callback invoked when the API call is successful.
 
 **Deprecated since:** 10
 
+<!--Device-FileRmdirOption-success?: () => void--><!--Device-FileRmdirOption-success?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## recursive
@@ -79,6 +87,8 @@ Whether to recursively delete files and subdirectories of the specified director
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileRmdirOption-recursive?: boolean--><!--Device-FileRmdirOption-recursive?: boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -97,5 +107,7 @@ URI of the directory. Restricted by the underlying file system of lite wearables
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileRmdirOption-uri: string--><!--Device-FileRmdirOption-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite

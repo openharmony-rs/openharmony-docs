@@ -8,6 +8,8 @@ declare enum AccessibilityRoleType
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare enum AccessibilityRoleType--><!--Device-unnamed-declare enum AccessibilityRoleType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ACTION_SHEET
@@ -25,6 +27,8 @@ ACTION_SHEET = 0
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-ACTION_SHEET = 0--><!--Device-AccessibilityRoleType-ACTION_SHEET = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ ALERT_DIALOG = 1
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-ALERT_DIALOG = 1--><!--Device-AccessibilityRoleType-ALERT_DIALOG = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## INDEXER_COMPONENT
@@ -61,6 +67,8 @@ INDEXER_COMPONENT = 2
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-INDEXER_COMPONENT = 2--><!--Device-AccessibilityRoleType-INDEXER_COMPONENT = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +88,8 @@ BADGE_COMPONENT = 3
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-BADGE_COMPONENT = 3--><!--Device-AccessibilityRoleType-BADGE_COMPONENT = 3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BLANK
@@ -97,6 +107,8 @@ BLANK = 4
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-BLANK = 4--><!--Device-AccessibilityRoleType-BLANK = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,6 +128,8 @@ BUTTON = 5
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-BUTTON = 5--><!--Device-AccessibilityRoleType-BUTTON = 5-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BACK_BUTTON
@@ -133,6 +147,8 @@ BACK_BUTTON = 6
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-BACK_BUTTON = 6--><!--Device-AccessibilityRoleType-BACK_BUTTON = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,6 +168,8 @@ SHEET_DRAG_BAR = 7
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-SHEET_DRAG_BAR = 7--><!--Device-AccessibilityRoleType-SHEET_DRAG_BAR = 7-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CALENDAR_PICKER
@@ -169,6 +187,8 @@ CALENDAR_PICKER = 8
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-CALENDAR_PICKER = 8--><!--Device-AccessibilityRoleType-CALENDAR_PICKER = 8-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +208,8 @@ CALENDAR = 9
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-CALENDAR = 9--><!--Device-AccessibilityRoleType-CALENDAR = 9-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CANVAS
@@ -205,6 +227,8 @@ CANVAS = 10
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-CANVAS = 10--><!--Device-AccessibilityRoleType-CANVAS = 10-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -224,6 +248,8 @@ CANVAS_GRADIENT = 11
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-CANVAS_GRADIENT = 11--><!--Device-AccessibilityRoleType-CANVAS_GRADIENT = 11-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CANVAS_PATTERN
@@ -241,6 +267,8 @@ CANVAS_PATTERN = 12
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-CANVAS_PATTERN = 12--><!--Device-AccessibilityRoleType-CANVAS_PATTERN = 12-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -260,6 +288,8 @@ CHECKBOX = 13
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-CHECKBOX = 13--><!--Device-AccessibilityRoleType-CHECKBOX = 13-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CHECKBOX_GROUP
@@ -277,6 +307,8 @@ CHECKBOX_GROUP = 14
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-CHECKBOX_GROUP = 14--><!--Device-AccessibilityRoleType-CHECKBOX_GROUP = 14-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -296,6 +328,8 @@ CIRCLE = 15
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-CIRCLE = 15--><!--Device-AccessibilityRoleType-CIRCLE = 15-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## COLUMN_SPLIT
@@ -313,6 +347,8 @@ COLUMN_SPLIT = 16
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-COLUMN_SPLIT = 16--><!--Device-AccessibilityRoleType-COLUMN_SPLIT = 16-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,6 +368,8 @@ COLUMN = 17
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-COLUMN = 17--><!--Device-AccessibilityRoleType-COLUMN = 17-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CANVAS_RENDERING_CONTEXT_2D
@@ -349,6 +387,8 @@ CANVAS_RENDERING_CONTEXT_2D = 18
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-CANVAS_RENDERING_CONTEXT_2D = 18--><!--Device-AccessibilityRoleType-CANVAS_RENDERING_CONTEXT_2D = 18-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -368,6 +408,8 @@ CHART = 19
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-CHART = 19--><!--Device-AccessibilityRoleType-CHART = 19-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## COUNTER
@@ -385,6 +427,8 @@ COUNTER = 20
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-COUNTER = 20--><!--Device-AccessibilityRoleType-COUNTER = 20-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -404,6 +448,8 @@ CONTAINER_MODAL = 21
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-CONTAINER_MODAL = 21--><!--Device-AccessibilityRoleType-CONTAINER_MODAL = 21-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DATA_PANEL
@@ -421,6 +467,8 @@ DATA_PANEL = 22
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-DATA_PANEL = 22--><!--Device-AccessibilityRoleType-DATA_PANEL = 22-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -440,6 +488,8 @@ DATE_PICKER = 23
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-DATE_PICKER = 23--><!--Device-AccessibilityRoleType-DATE_PICKER = 23-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DIALOG
@@ -457,6 +507,8 @@ DIALOG = 24
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-DIALOG = 24--><!--Device-AccessibilityRoleType-DIALOG = 24-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -476,6 +528,8 @@ DIVIDER = 25
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-DIVIDER = 25--><!--Device-AccessibilityRoleType-DIVIDER = 25-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DRAG_BAR
@@ -493,6 +547,8 @@ DRAG_BAR = 26
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-DRAG_BAR = 26--><!--Device-AccessibilityRoleType-DRAG_BAR = 26-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -512,6 +568,8 @@ EFFECT_COMPONENT = 27
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-EFFECT_COMPONENT = 27--><!--Device-AccessibilityRoleType-EFFECT_COMPONENT = 27-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ELLIPSE
@@ -529,6 +587,8 @@ ELLIPSE = 28
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-ELLIPSE = 28--><!--Device-AccessibilityRoleType-ELLIPSE = 28-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -548,6 +608,8 @@ FLEX = 29
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-FLEX = 29--><!--Device-AccessibilityRoleType-FLEX = 29-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FLOW_ITEM
@@ -565,6 +627,8 @@ FLOW_ITEM = 30
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-FLOW_ITEM = 30--><!--Device-AccessibilityRoleType-FLOW_ITEM = 30-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -584,6 +648,8 @@ FORM_COMPONENT = 31
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-FORM_COMPONENT = 31--><!--Device-AccessibilityRoleType-FORM_COMPONENT = 31-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FORM_LINK
@@ -601,6 +667,8 @@ FORM_LINK = 32
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-FORM_LINK = 32--><!--Device-AccessibilityRoleType-FORM_LINK = 32-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -620,6 +688,8 @@ GAUGE = 33
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-GAUGE = 33--><!--Device-AccessibilityRoleType-GAUGE = 33-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## GRID
@@ -637,6 +707,8 @@ GRID = 34
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-GRID = 34--><!--Device-AccessibilityRoleType-GRID = 34-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -656,6 +728,8 @@ GRID_COL = 35
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-GRID_COL = 35--><!--Device-AccessibilityRoleType-GRID_COL = 35-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## GRID_CONTAINER
@@ -673,6 +747,8 @@ GRID_CONTAINER = 36
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-GRID_CONTAINER = 36--><!--Device-AccessibilityRoleType-GRID_CONTAINER = 36-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -692,6 +768,8 @@ GRID_ITEM = 37
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-GRID_ITEM = 37--><!--Device-AccessibilityRoleType-GRID_ITEM = 37-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## GRID_ROW
@@ -709,6 +787,8 @@ GRID_ROW = 38
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-GRID_ROW = 38--><!--Device-AccessibilityRoleType-GRID_ROW = 38-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -728,6 +808,8 @@ HYPERLINK = 39
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-HYPERLINK = 39--><!--Device-AccessibilityRoleType-HYPERLINK = 39-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## IMAGE
@@ -745,6 +827,8 @@ IMAGE = 40
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-IMAGE = 40--><!--Device-AccessibilityRoleType-IMAGE = 40-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -764,6 +848,8 @@ IMAGE_ANIMATOR = 41
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-IMAGE_ANIMATOR = 41--><!--Device-AccessibilityRoleType-IMAGE_ANIMATOR = 41-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## IMAGE_BITMAP
@@ -781,6 +867,8 @@ IMAGE_BITMAP = 42
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-IMAGE_BITMAP = 42--><!--Device-AccessibilityRoleType-IMAGE_BITMAP = 42-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -800,6 +888,8 @@ IMAGE_DATA = 43
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-IMAGE_DATA = 43--><!--Device-AccessibilityRoleType-IMAGE_DATA = 43-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## IMAGE_SPAN
@@ -817,6 +907,8 @@ IMAGE_SPAN = 44
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-IMAGE_SPAN = 44--><!--Device-AccessibilityRoleType-IMAGE_SPAN = 44-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -836,6 +928,8 @@ LABEL = 45
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-LABEL = 45--><!--Device-AccessibilityRoleType-LABEL = 45-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LINE
@@ -853,6 +947,8 @@ LINE = 46
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-LINE = 46--><!--Device-AccessibilityRoleType-LINE = 46-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -872,6 +968,8 @@ LIST = 47
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-LIST = 47--><!--Device-AccessibilityRoleType-LIST = 47-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LIST_ITEM
@@ -889,6 +987,8 @@ LIST_ITEM = 48
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-LIST_ITEM = 48--><!--Device-AccessibilityRoleType-LIST_ITEM = 48-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -908,6 +1008,8 @@ LIST_ITEM_GROUP = 49
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-LIST_ITEM_GROUP = 49--><!--Device-AccessibilityRoleType-LIST_ITEM_GROUP = 49-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LOADING_PROGRESS
@@ -925,6 +1027,8 @@ LOADING_PROGRESS = 50
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-LOADING_PROGRESS = 50--><!--Device-AccessibilityRoleType-LOADING_PROGRESS = 50-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -944,6 +1048,8 @@ MARQUEE = 51
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-MARQUEE = 51--><!--Device-AccessibilityRoleType-MARQUEE = 51-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MATRIX2D
@@ -961,6 +1067,8 @@ MATRIX2D = 52
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-MATRIX2D = 52--><!--Device-AccessibilityRoleType-MATRIX2D = 52-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -980,6 +1088,8 @@ MENU = 53
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-MENU = 53--><!--Device-AccessibilityRoleType-MENU = 53-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MENU_ITEM
@@ -997,6 +1107,8 @@ MENU_ITEM = 54
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-MENU_ITEM = 54--><!--Device-AccessibilityRoleType-MENU_ITEM = 54-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1016,6 +1128,8 @@ MENU_ITEM_GROUP = 55
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-MENU_ITEM_GROUP = 55--><!--Device-AccessibilityRoleType-MENU_ITEM_GROUP = 55-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NAV_DESTINATION
@@ -1033,6 +1147,8 @@ NAV_DESTINATION = 56
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-NAV_DESTINATION = 56--><!--Device-AccessibilityRoleType-NAV_DESTINATION = 56-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1052,6 +1168,8 @@ navrouter component type
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-NAV_ROUTER = 57--><!--Device-AccessibilityRoleType-NAV_ROUTER = 57-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NAVIGATION
@@ -1069,6 +1187,8 @@ NAVIGATION = 58
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-NAVIGATION = 58--><!--Device-AccessibilityRoleType-NAVIGATION = 58-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1088,6 +1208,8 @@ NAVIGATION_BAR = 59
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-NAVIGATION_BAR = 59--><!--Device-AccessibilityRoleType-NAVIGATION_BAR = 59-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NAVIGATION_MENU
@@ -1105,6 +1227,8 @@ NAVIGATION_MENU = 60
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-NAVIGATION_MENU = 60--><!--Device-AccessibilityRoleType-NAVIGATION_MENU = 60-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1124,6 +1248,8 @@ NAVIGATOR = 61
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-NAVIGATOR = 61--><!--Device-AccessibilityRoleType-NAVIGATOR = 61-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## OFFSCREEN_CANVAS
@@ -1141,6 +1267,8 @@ OFFSCREEN_CANVAS = 62
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-OFFSCREEN_CANVAS = 62--><!--Device-AccessibilityRoleType-OFFSCREEN_CANVAS = 62-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1160,6 +1288,8 @@ OFFSCREEN_CANVAS_RENDERING_CONTEXT2D = 63
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-OFFSCREEN_CANVAS_RENDERING_CONTEXT2D = 63--><!--Device-AccessibilityRoleType-OFFSCREEN_CANVAS_RENDERING_CONTEXT2D = 63-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## OPTION
@@ -1177,6 +1307,8 @@ option component type
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-OPTION = 64--><!--Device-AccessibilityRoleType-OPTION = 64-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1196,6 +1328,8 @@ PANEL = 65
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-PANEL = 65--><!--Device-AccessibilityRoleType-PANEL = 65-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PAPER_PAGE
@@ -1213,6 +1347,8 @@ paper page component type
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-PAPER_PAGE = 66--><!--Device-AccessibilityRoleType-PAPER_PAGE = 66-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1232,6 +1368,8 @@ PATH = 67
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-PATH = 67--><!--Device-AccessibilityRoleType-PATH = 67-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PATH2D
@@ -1249,6 +1387,8 @@ PATH2D = 68
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-PATH2D = 68--><!--Device-AccessibilityRoleType-PATH2D = 68-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1268,6 +1408,8 @@ PATTERN_LOCK = 69
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-PATTERN_LOCK = 69--><!--Device-AccessibilityRoleType-PATTERN_LOCK = 69-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PICKER
@@ -1285,6 +1427,8 @@ PICKER = 70
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-PICKER = 70--><!--Device-AccessibilityRoleType-PICKER = 70-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1304,6 +1448,8 @@ PICKER_VIEW = 71
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-PICKER_VIEW = 71--><!--Device-AccessibilityRoleType-PICKER_VIEW = 71-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PLUGIN_COMPONENT
@@ -1321,6 +1467,8 @@ PLUGIN_COMPONENT = 72
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-PLUGIN_COMPONENT = 72--><!--Device-AccessibilityRoleType-PLUGIN_COMPONENT = 72-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1340,6 +1488,8 @@ POLYGON = 73
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-POLYGON = 73--><!--Device-AccessibilityRoleType-POLYGON = 73-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## POLYLINE
@@ -1357,6 +1507,8 @@ POLYLINE = 74
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-POLYLINE = 74--><!--Device-AccessibilityRoleType-POLYLINE = 74-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1376,6 +1528,8 @@ POPUP = 75
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-POPUP = 75--><!--Device-AccessibilityRoleType-POPUP = 75-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PROGRESS
@@ -1393,6 +1547,8 @@ progress component type
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-PROGRESS = 76--><!--Device-AccessibilityRoleType-PROGRESS = 76-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1412,6 +1568,8 @@ QRCODE = 77
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-QRCODE = 77--><!--Device-AccessibilityRoleType-QRCODE = 77-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RADIO
@@ -1429,6 +1587,8 @@ RADIO = 78
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-RADIO = 78--><!--Device-AccessibilityRoleType-RADIO = 78-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1448,6 +1608,8 @@ RATING = 79
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-RATING = 79--><!--Device-AccessibilityRoleType-RATING = 79-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RECT
@@ -1465,6 +1627,8 @@ RECT = 80
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-RECT = 80--><!--Device-AccessibilityRoleType-RECT = 80-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1484,6 +1648,8 @@ REFRESH = 81
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-REFRESH = 81--><!--Device-AccessibilityRoleType-REFRESH = 81-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RELATIVE_CONTAINER
@@ -1501,6 +1667,8 @@ RELATIVE_CONTAINER = 82
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-RELATIVE_CONTAINER = 82--><!--Device-AccessibilityRoleType-RELATIVE_CONTAINER = 82-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1520,6 +1688,8 @@ REMOTE_WINDOW = 83
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-REMOTE_WINDOW = 83--><!--Device-AccessibilityRoleType-REMOTE_WINDOW = 83-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RICH_EDITOR
@@ -1537,6 +1707,8 @@ RICH_EDITOR = 84
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-RICH_EDITOR = 84--><!--Device-AccessibilityRoleType-RICH_EDITOR = 84-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1556,6 +1728,8 @@ RICH_TEXT = 85
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-RICH_TEXT = 85--><!--Device-AccessibilityRoleType-RICH_TEXT = 85-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ROLE_PAGER
@@ -1573,6 +1747,8 @@ ROLE_PAGER = 86
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-ROLE_PAGER = 86--><!--Device-AccessibilityRoleType-ROLE_PAGER = 86-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1592,6 +1768,8 @@ ROW = 87
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-ROW = 87--><!--Device-AccessibilityRoleType-ROW = 87-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ROW_SPLIT
@@ -1609,6 +1787,8 @@ ROW_SPLIT = 88
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-ROW_SPLIT = 88--><!--Device-AccessibilityRoleType-ROW_SPLIT = 88-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1628,6 +1808,8 @@ SCROLL = 89
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-SCROLL = 89--><!--Device-AccessibilityRoleType-SCROLL = 89-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SCROLL_BAR
@@ -1645,6 +1827,8 @@ SCROLL_BAR = 90
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-SCROLL_BAR = 90--><!--Device-AccessibilityRoleType-SCROLL_BAR = 90-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1664,6 +1848,8 @@ SEARCH = 91
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-SEARCH = 91--><!--Device-AccessibilityRoleType-SEARCH = 91-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SEARCH_FIELD
@@ -1681,6 +1867,8 @@ SEARCH_FIELD = 92
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-SEARCH_FIELD = 92--><!--Device-AccessibilityRoleType-SEARCH_FIELD = 92-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1700,6 +1888,8 @@ SELECT = 93
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-SELECT = 93--><!--Device-AccessibilityRoleType-SELECT = 93-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SHAPE
@@ -1717,6 +1907,8 @@ SHAPE = 94
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-SHAPE = 94--><!--Device-AccessibilityRoleType-SHAPE = 94-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1736,6 +1928,8 @@ SIDEBAR_CONTAINER = 95
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-SIDEBAR_CONTAINER = 95--><!--Device-AccessibilityRoleType-SIDEBAR_CONTAINER = 95-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SLIDER
@@ -1753,6 +1947,8 @@ slider component type
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-SLIDER = 96--><!--Device-AccessibilityRoleType-SLIDER = 96-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1772,6 +1968,8 @@ SPAN = 97
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-SPAN = 97--><!--Device-AccessibilityRoleType-SPAN = 97-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## STACK
@@ -1789,6 +1987,8 @@ STACK = 98
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-STACK = 98--><!--Device-AccessibilityRoleType-STACK = 98-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1808,6 +2008,8 @@ STEPPER = 99
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-STEPPER = 99--><!--Device-AccessibilityRoleType-STEPPER = 99-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## STEPPER_ITEM
@@ -1825,6 +2027,8 @@ STEPPER_ITEM = 100
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-STEPPER_ITEM = 100--><!--Device-AccessibilityRoleType-STEPPER_ITEM = 100-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1844,6 +2048,8 @@ SWIPER = 101
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-SWIPER = 101--><!--Device-AccessibilityRoleType-SWIPER = 101-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SWIPER_INDICATOR
@@ -1861,6 +2067,8 @@ SWIPER_INDICATOR = 102
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-SWIPER_INDICATOR = 102--><!--Device-AccessibilityRoleType-SWIPER_INDICATOR = 102-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1880,6 +2088,8 @@ SWITCH = 103
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-SWITCH = 103--><!--Device-AccessibilityRoleType-SWITCH = 103-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SYMBOL_GLYPH
@@ -1897,6 +2107,8 @@ SYMBOL_GLYPH = 104
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-SYMBOL_GLYPH = 104--><!--Device-AccessibilityRoleType-SYMBOL_GLYPH = 104-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1916,6 +2128,8 @@ TAB_CONTENT = 105
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-TAB_CONTENT = 105--><!--Device-AccessibilityRoleType-TAB_CONTENT = 105-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TAB_BAR
@@ -1933,6 +2147,8 @@ TAB_BAR = 106
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-TAB_BAR = 106--><!--Device-AccessibilityRoleType-TAB_BAR = 106-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1952,6 +2168,8 @@ TABS = 107
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-TABS = 107--><!--Device-AccessibilityRoleType-TABS = 107-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXT
@@ -1969,6 +2187,8 @@ TEXT = 108
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-TEXT = 108--><!--Device-AccessibilityRoleType-TEXT = 108-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1988,6 +2208,8 @@ TEXT_CLOCK = 109
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-TEXT_CLOCK = 109--><!--Device-AccessibilityRoleType-TEXT_CLOCK = 109-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXT_ENTRY
@@ -2005,6 +2227,8 @@ text entry component type
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-TEXT_ENTRY = 110--><!--Device-AccessibilityRoleType-TEXT_ENTRY = 110-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2024,6 +2248,8 @@ TEXT_INPUT = 111
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-TEXT_INPUT = 111--><!--Device-AccessibilityRoleType-TEXT_INPUT = 111-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXT_PICKER
@@ -2041,6 +2267,8 @@ TEXT_PICKER = 112
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-TEXT_PICKER = 112--><!--Device-AccessibilityRoleType-TEXT_PICKER = 112-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2060,6 +2288,8 @@ TEXT_TIMER = 113
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-TEXT_TIMER = 113--><!--Device-AccessibilityRoleType-TEXT_TIMER = 113-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXT_AREA
@@ -2077,6 +2307,8 @@ TEXT_AREA = 114
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-TEXT_AREA = 114--><!--Device-AccessibilityRoleType-TEXT_AREA = 114-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2096,6 +2328,8 @@ TEXT_FIELD = 115
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-TEXT_FIELD = 115--><!--Device-AccessibilityRoleType-TEXT_FIELD = 115-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TIME_PICKER
@@ -2113,6 +2347,8 @@ TIME_PICKER = 116
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-TIME_PICKER = 116--><!--Device-AccessibilityRoleType-TIME_PICKER = 116-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2132,6 +2368,8 @@ TITLE_BAR = 117
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-TITLE_BAR = 117--><!--Device-AccessibilityRoleType-TITLE_BAR = 117-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOGGLER
@@ -2149,6 +2387,8 @@ toggler component type
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-TOGGLER = 118--><!--Device-AccessibilityRoleType-TOGGLER = 118-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2168,6 +2408,8 @@ UI_EXTENSION_COMPONENT = 119
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-UI_EXTENSION_COMPONENT = 119--><!--Device-AccessibilityRoleType-UI_EXTENSION_COMPONENT = 119-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## VIDEO
@@ -2185,6 +2427,8 @@ VIDEO = 120
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-VIDEO = 120--><!--Device-AccessibilityRoleType-VIDEO = 120-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2204,6 +2448,8 @@ WATER_FLOW = 121
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-WATER_FLOW = 121--><!--Device-AccessibilityRoleType-WATER_FLOW = 121-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WEB
@@ -2221,6 +2467,8 @@ WEB = 122
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-WEB = 122--><!--Device-AccessibilityRoleType-WEB = 122-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2240,6 +2488,8 @@ XCOMPONENT = 123
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AccessibilityRoleType-XCOMPONENT = 123--><!--Device-AccessibilityRoleType-XCOMPONENT = 123-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ROLE_NONE
@@ -2257,5 +2507,7 @@ NULL。
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AccessibilityRoleType-ROLE_NONE = 124--><!--Device-AccessibilityRoleType-ROLE_NONE = 124-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Enumerates the font widths.
 
 **Since:** 12
 
+<!--Device-text-enum FontWidth--><!--Device-text-enum FontWidth-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## ULTRA_CONDENSED
@@ -20,7 +22,9 @@ Ultra condensed.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWidth-ULTRA_CONDENSED = 1--><!--Device-FontWidth-ULTRA_CONDENSED = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -34,7 +38,9 @@ Extra condensed.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWidth-EXTRA_CONDENSED = 2--><!--Device-FontWidth-EXTRA_CONDENSED = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -48,7 +54,9 @@ Condensed.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWidth-CONDENSED = 3--><!--Device-FontWidth-CONDENSED = 3-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -62,7 +70,9 @@ Semi condensed.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWidth-SEMI_CONDENSED = 4--><!--Device-FontWidth-SEMI_CONDENSED = 4-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -76,7 +86,9 @@ Normal.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWidth-NORMAL = 5--><!--Device-FontWidth-NORMAL = 5-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -90,7 +102,9 @@ Semi expanded.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWidth-SEMI_EXPANDED = 6--><!--Device-FontWidth-SEMI_EXPANDED = 6-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -104,7 +118,9 @@ Expanded.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWidth-EXPANDED = 7--><!--Device-FontWidth-EXPANDED = 7-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -118,7 +134,9 @@ Extra expanded.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWidth-EXTRA_EXPANDED = 8--><!--Device-FontWidth-EXTRA_EXPANDED = 8-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -132,6 +150,8 @@ Ultra expanded.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWidth-ULTRA_EXPANDED = 9--><!--Device-FontWidth-ULTRA_EXPANDED = 9-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

@@ -8,6 +8,8 @@ Defines the parameters for creating a child window or system window.
 
 **Since:** 9
 
+<!--Device-window-interface Configuration--><!--Device-window-interface Configuration-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ The default value is **false**.
 
 **Since:** 20
 
+<!--Device-Configuration-defaultDensityEnabled?: boolean--><!--Device-Configuration-defaultDensityEnabled?: boolean-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Z-level of the system window. This parameter is valid only when [WindowType](ark
 **Type:** number
 
 **Since:** 20
+
+<!--Device-Configuration-zIndex?: int--><!--Device-Configuration-zIndex?: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

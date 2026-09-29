@@ -14,4 +14,6 @@ The UIAbility is launched via a home screen shortcut. If this string is obtained
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-AbilityConstant-const REASON_MESSAGE_DESKTOP_SHORTCUT = 'ReasonMessage_DesktopShortcut'--><!--Device-AbilityConstant-const REASON_MESSAGE_DESKTOP_SHORTCUT = 'ReasonMessage_DesktopShortcut'-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase

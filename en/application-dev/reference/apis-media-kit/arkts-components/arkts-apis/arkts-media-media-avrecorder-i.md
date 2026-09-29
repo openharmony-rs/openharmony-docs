@@ -16,6 +16,8 @@ For details about the audio and video recording demo, see [Audio Recording](../.
 
 **Since:** 9
 
+<!--Device-media-interface AVRecorder--><!--Device-media-interface AVRecorder-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## Modules to Import
@@ -35,6 +37,8 @@ add a watermark for the AVRecorder. This API uses a promise to return the result
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVRecorder-addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise<int>--><!--Device-AVRecorder-addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -94,6 +98,8 @@ The return value is the maximum amplitude within the duration from the time the 
 
 **Since:** 11
 
+<!--Device-AVRecorder-getAudioCapturerMaxAmplitude(callback: AsyncCallback<int>): void--><!--Device-AVRecorder-getAudioCapturerMaxAmplitude(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Parameters:**
@@ -142,6 +148,8 @@ The return value is the maximum amplitude within the duration from the time the 
 
 **Since:** 11
 
+<!--Device-AVRecorder-getAudioCapturerMaxAmplitude(): Promise<int>--><!--Device-AVRecorder-getAudioCapturerMaxAmplitude(): Promise<int>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Return value:**
@@ -182,6 +190,8 @@ getAvailableEncoder(callback: AsyncCallback<Array<EncoderInfo>>): void
 Obtains available encoders. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-AVRecorder-getAvailableEncoder(callback: AsyncCallback<Array<EncoderInfo>>): void--><!--Device-AVRecorder-getAvailableEncoder(callback: AsyncCallback<Array<EncoderInfo>>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -231,6 +241,8 @@ Obtains available encoders. This API uses a promise to return the result.
 
 **Since:** 11
 
+<!--Device-AVRecorder-getAvailableEncoder(): Promise<Array<EncoderInfo>>--><!--Device-AVRecorder-getAvailableEncoder(): Promise<Array<EncoderInfo>>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Return value:**
@@ -277,6 +289,8 @@ Obtains the real-time configuration of this AVRecorder. This API uses an asynchr
 This API can be called only after [prepare()](#prepare) is called.
 
 **Since:** 11
+
+<!--Device-AVRecorder-getAVRecorderConfig(callback: AsyncCallback<AVRecorderConfig>): void--><!--Device-AVRecorder-getAVRecorderConfig(callback: AsyncCallback<AVRecorderConfig>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -325,6 +339,8 @@ This API can be called only after [prepare()](#prepare-1) is called.
 
 **Since:** 11
 
+<!--Device-AVRecorder-getAVRecorderConfig(): Promise<AVRecorderConfig>--><!--Device-AVRecorder-getAVRecorderConfig(): Promise<AVRecorderConfig>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Return value:**
@@ -368,6 +384,8 @@ Obtains the information about the current audio capturer. This API uses an async
 This API can be called only after the [prepare()](#prepare) API is called. If this API is called after [stop()](#stop) is successfully called, an error is reported.
 
 **Since:** 11
+
+<!--Device-AVRecorder-getCurrentAudioCapturerInfo(callback: AsyncCallback<audio.AudioCapturerChangeInfo>): void--><!--Device-AVRecorder-getCurrentAudioCapturerInfo(callback: AsyncCallback<audio.AudioCapturerChangeInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -417,6 +435,8 @@ This API can be called only after the [prepare()](#prepare) API is called. If th
 
 **Since:** 11
 
+<!--Device-AVRecorder-getCurrentAudioCapturerInfo(): Promise<audio.AudioCapturerChangeInfo>--><!--Device-AVRecorder-getCurrentAudioCapturerInfo(): Promise<audio.AudioCapturerChangeInfo>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Return value:**
@@ -465,6 +485,8 @@ Note that the video data must carry the timestamp (in ns) and buffer size, and t
 This API can be called only after the [prepare()](#prepare) API is called.
 
 **Since:** 9
+
+<!--Device-AVRecorder-getInputSurface(callback: AsyncCallback<string>): void--><!--Device-AVRecorder-getInputSurface(callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -517,6 +539,8 @@ This API can be called only after the [prepare()](#prepare-1) API is called.
 
 **Since:** 9
 
+<!--Device-AVRecorder-getInputSurface(): Promise<string>--><!--Device-AVRecorder-getInputSurface(): Promise<string>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Return value:**
@@ -561,6 +585,8 @@ Unsubscribes from AVRecorder state changes. This API uses an asynchronous callba
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVRecorder-off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void--><!--Device-AVRecorder-off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Parameters:**
@@ -588,6 +614,8 @@ Unsubscribes from AVRecorder errors. After the unsubscription, your application 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVRecorder-off(type: 'error', callback?: ErrorCallback): void--><!--Device-AVRecorder-off(type: 'error', callback?: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Parameters:**
@@ -613,6 +641,8 @@ Subscribes to audio capturer configuration changes. This API uses an asynchronou
 
 **Since:** 11
 
+<!--Device-AVRecorder-off(type: 'audioCapturerChange', callback?: Callback<audio.AudioCapturerChangeInfo>): void--><!--Device-AVRecorder-off(type: 'audioCapturerChange', callback?: Callback<audio.AudioCapturerChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Parameters:**
@@ -637,6 +667,8 @@ off(type: 'photoAssetAvailable', callback?: Callback<photoAccessHelper.PhotoAsse
 Unsubscribes from media asset callback events. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-AVRecorder-off(type: 'photoAssetAvailable', callback?: Callback<photoAccessHelper.PhotoAsset>): void--><!--Device-AVRecorder-off(type: 'photoAssetAvailable', callback?: Callback<photoAccessHelper.PhotoAsset>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -664,6 +696,8 @@ Subscribes to audio capturer configuration changes. Any configuration change tri
 When the application initiates multiple subscriptions to this event, the last subscription is applied.
 
 **Since:** 11
+
+<!--Device-AVRecorder-on(type: 'audioCapturerChange', callback: Callback<audio.AudioCapturerChangeInfo>): void--><!--Device-AVRecorder-on(type: 'audioCapturerChange', callback: Callback<audio.AudioCapturerChangeInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -704,6 +738,8 @@ Subscribes to media asset callback events. When [FileGenerationMode](arkts-media
 When the application initiates multiple subscriptions to this event, the last subscription is applied.
 
 **Since:** 12
+
+<!--Device-AVRecorder-on(type: 'photoAssetAvailable', callback: Callback<photoAccessHelper.PhotoAsset>): void--><!--Device-AVRecorder-on(type: 'photoAssetAvailable', callback: Callback<photoAccessHelper.PhotoAsset>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -765,6 +801,8 @@ Subscribes to AVRecorder state changes. An application can subscribe to only one
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVRecorder-on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void--><!--Device-AVRecorder-on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Parameters:**
@@ -802,6 +840,8 @@ An application can subscribe to only one AVRecorder error event. When the applic
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVRecorder-on(type: 'error', callback: ErrorCallback): void--><!--Device-AVRecorder-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -849,6 +889,8 @@ This API can be called only after the [start()](#start) API is called. You can c
 
 **Since:** 9
 
+<!--Device-AVRecorder-pause(callback: AsyncCallback<void>): void--><!--Device-AVRecorder-pause(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Parameters:**
@@ -893,7 +935,9 @@ This API can be called only after the [start()](#start) API is called. You can c
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVRecorder-pause(): Promise<void>--><!--Device-AVRecorder-pause(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -935,6 +979,8 @@ Sets audio and video recording parameters. This API uses an asynchronous callbac
 **Since:** 9
 
 **Required permissions:** ohos.permission.MICROPHONE
+
+<!--Device-AVRecorder-prepare(config: AVRecorderConfig, callback: AsyncCallback<void>): void--><!--Device-AVRecorder-prepare(config: AVRecorderConfig, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1007,7 +1053,9 @@ Sets audio and video recording parameters. This API uses a promise to return the
 
 **Required permissions:** ohos.permission.MICROPHONE
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVRecorder-prepare(config: AVRecorderConfig): Promise<void>--><!--Device-AVRecorder-prepare(config: AVRecorderConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1082,6 +1130,8 @@ After the resources are released, you can no longer perform any operation on the
 
 **Since:** 9
 
+<!--Device-AVRecorder-release(callback: AsyncCallback<void>): void--><!--Device-AVRecorder-release(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Parameters:**
@@ -1124,7 +1174,9 @@ After the resources are released, you can no longer perform any operation on the
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVRecorder-release(): Promise<void>--><!--Device-AVRecorder-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1164,6 +1216,8 @@ Resets audio and video recording. This API uses an asynchronous callback to retu
 For audio-only recording, you can call [prepare()](#prepare) again for re -recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare) and [getInputSurface()](#getinputsurface) again for re- recording.
 
 **Since:** 9
+
+<!--Device-AVRecorder-reset(callback: AsyncCallback<void>): void--><!--Device-AVRecorder-reset(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1208,6 +1262,8 @@ For audio-only recording, you can call [prepare()](#prepare-1) again for re-reco
 
 **Since:** 9
 
+<!--Device-AVRecorder-reset(): Promise<void>--><!--Device-AVRecorder-reset(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Return value:**
@@ -1247,6 +1303,8 @@ Resumes video recording. This API uses an asynchronous callback to return the re
 This API can be called only after the [pause()](#pause) API is called.
 
 **Since:** 9
+
+<!--Device-AVRecorder-resume(callback: AsyncCallback<void>): void--><!--Device-AVRecorder-resume(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1292,7 +1350,9 @@ This API can be called only after the [pause()](#pause) API is called.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVRecorder-resume(): Promise<void>--><!--Device-AVRecorder-resume(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1334,6 +1394,8 @@ Set metadata (key-value pairs) for the recording file of the recorder. This meta
 This API can be called only after the prepare() event is successfully triggered and before the stop() API is called.
 
 **Since:** 26.0.0
+
+<!--Device-AVRecorder-setMetadata(metadata: Record<string, string>): void--><!--Device-AVRecorder-setMetadata(metadata: Record<string, string>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1377,6 +1439,8 @@ setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise<void>
 Sets whether to mute the current audio recording stream when an audio interruption occurs. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-AVRecorder-setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise<void>--><!--Device-AVRecorder-setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1424,6 +1488,8 @@ For audio-only recording, this API can be called only after the [prepare()](#pre
 
 **Since:** 9
 
+<!--Device-AVRecorder-start(callback: AsyncCallback<void>): void--><!--Device-AVRecorder-start(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Parameters:**
@@ -1468,7 +1534,9 @@ For audio-only recording, this API can be called only after the [prepare()](#pre
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVRecorder-start(): Promise<void>--><!--Device-AVRecorder-start(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1512,6 +1580,8 @@ This API can be called only after the [start()](#start) or [pause()](#pause) API
 For audio-only recording, you can call [prepare()](#prepare) again for re -recording. For video-only recording or audio and video recording, you can call [prepare()](#prepare) and [getInputSurface()](#getinputsurface) again for re- recording.
 
 **Since:** 9
+
+<!--Device-AVRecorder-stop(callback: AsyncCallback<void>): void--><!--Device-AVRecorder-stop(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1559,7 +1629,9 @@ For audio-only recording, you can call [prepare()](#prepare-1) again for re-reco
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVRecorder-stop(): Promise<void>--><!--Device-AVRecorder-stop(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1601,6 +1673,8 @@ Updates the video rotation angle, in degrees. This API uses a promise to return 
 This API can be called only after the [prepare()](#prepare-1) event is triggered and before the [start()](#start) API is called.
 
 **Since:** 12
+
+<!--Device-AVRecorder-updateRotation(rotation: int): Promise<void>--><!--Device-AVRecorder-updateRotation(rotation: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -1652,6 +1726,8 @@ AVRecorder state.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVRecorder-readonly state: AVRecorderState--><!--Device-AVRecorder-readonly state: AVRecorderState-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder

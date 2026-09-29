@@ -10,6 +10,8 @@ Describes the barometer sensor data. It extends from [Response](arkts-sensorserv
 
 **Since:** 8
 
+<!--Device-sensor-interface BarometerResponse extends Response--><!--Device-sensor-interface BarometerResponse extends Response-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 ## Modules to Import
@@ -24,10 +26,12 @@ import { sensor } from '@kit.SensorServiceKit';
 pressure: number
 ```
 
-Atmospheric pressure, in units of hPa.
+Atmospheric pressure, in hPa.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-BarometerResponse-pressure: double--><!--Device-BarometerResponse-pressure: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

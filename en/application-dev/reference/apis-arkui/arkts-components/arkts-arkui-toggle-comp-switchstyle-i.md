@@ -8,6 +8,8 @@ Sets the style for the component of the **Switch** type.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface SwitchStyle--><!--Device-unnamed-declare interface SwitchStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## pointColor
@@ -27,6 +29,8 @@ Default value: **$r('sys.color.ohos_id_color_foreground_contrary')**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SwitchStyle-pointColor?: ResourceColor--><!--Device-SwitchStyle-pointColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ If the value is not specified or the specified one is less than 0, the radius is
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SwitchStyle-pointRadius?: number | Resource--><!--Device-SwitchStyle-pointRadius?: number | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## trackBorderRadius
@@ -80,6 +86,8 @@ Default value formula: Component height (in vp)/2
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SwitchStyle-trackBorderRadius?: number | Resource--><!--Device-SwitchStyle-trackBorderRadius?: number | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## unselectedColor
@@ -99,5 +107,7 @@ Default value: **0x337F7F7F** (applies to both dark and light modes). Since API 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SwitchStyle-unselectedColor?: ResourceColor--><!--Device-SwitchStyle-unselectedColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

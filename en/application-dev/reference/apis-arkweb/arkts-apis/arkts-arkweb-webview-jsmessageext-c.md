@@ -10,6 +10,8 @@ JsMessageExt supports parsing of multiple JavaScript return value types: string 
 
 **Since:** 10
 
+<!--Device-webview-class JsMessageExt--><!--Device-webview-class JsMessageExt-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Obtains array-type data of the data object. For details about the sample code, s
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-JsMessageExt-getArray(): Array<string | number | boolean>--><!--Device-JsMessageExt-getArray(): Array<string | number | boolean>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -56,6 +60,8 @@ Obtains raw binary data of the data object. For details about the sample code, s
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-JsMessageExt-getArrayBuffer(): ArrayBuffer--><!--Device-JsMessageExt-getArrayBuffer(): ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -82,6 +88,8 @@ Obtains Boolean-type data of the data object. For details about the sample code,
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-JsMessageExt-getBoolean(): boolean--><!--Device-JsMessageExt-getBoolean(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -106,6 +114,8 @@ Obtains the error information about the JavaScript execution. For details about 
 
 **Since:** 22
 
+<!--Device-JsMessageExt-getErrorDescription(): string | null--><!--Device-JsMessageExt-getErrorDescription(): string | null-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -125,6 +135,8 @@ Obtains number-type data of the data object. For details about the sample code, 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-JsMessageExt-getNumber(): number--><!--Device-JsMessageExt-getNumber(): number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -152,6 +164,8 @@ Obtains string-type data of the data object. For details about the sample code, 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-JsMessageExt-getString(): string--><!--Device-JsMessageExt-getString(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -177,6 +191,8 @@ Obtains the type of the data object. For details about the sample code, see [run
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-JsMessageExt-getType(): JsMessageType--><!--Device-JsMessageExt-getType(): JsMessageType-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

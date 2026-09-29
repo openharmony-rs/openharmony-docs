@@ -8,6 +8,8 @@ Describes the album sorting order.
 
 **Since:** 20
 
+<!--Device-photoAccessHelper-interface AlbumOrder--><!--Device-photoAccessHelper-interface AlbumOrder-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Album ID.
 
 **Since:** 20
 
+<!--Device-AlbumOrder-albumId: int--><!--Device-AlbumOrder-albumId: int-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Sorting value of the album.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-AlbumOrder-albumOrder: int--><!--Device-AlbumOrder-albumOrder: int-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,6 +68,8 @@ Sorting section of the album.
 
 **Since:** 20
 
+<!--Device-AlbumOrder-orderSection: int--><!--Device-AlbumOrder-orderSection: int-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -78,6 +86,8 @@ Sorting status of the album.
 
 **Since:** 20
 
+<!--Device-AlbumOrder-orderStatus: int--><!--Device-AlbumOrder-orderStatus: int-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ Sorting type of the album.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-AlbumOrder-orderType: int--><!--Device-AlbumOrder-orderType: int-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

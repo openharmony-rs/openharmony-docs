@@ -8,6 +8,8 @@ Enumerates the scrolling directions.
 
 **Since:** 7
 
+<!--Device-unnamed-declare enum ScrollDirection--><!--Device-unnamed-declare enum ScrollDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Vertical
@@ -24,6 +26,8 @@ Only vertical scrolling is supported.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ScrollDirection-Vertical--><!--Device-ScrollDirection-Vertical-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Horizontal
@@ -39,6 +43,8 @@ Only horizontal scrolling is supported.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScrollDirection-Horizontal--><!--Device-ScrollDirection-Horizontal-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +64,8 @@ Vertical or horizontal scrolling is supported.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-ScrollDirection-Free--><!--Device-ScrollDirection-Free-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -74,6 +82,8 @@ Scrolling is disabled.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ScrollDirection-None--><!--Device-ScrollDirection-None-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## FREE
@@ -89,5 +99,7 @@ Free scrolling is supported.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ScrollDirection-FREE = 4--><!--Device-ScrollDirection-FREE = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

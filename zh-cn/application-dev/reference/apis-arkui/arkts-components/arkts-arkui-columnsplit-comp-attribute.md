@@ -4,13 +4,15 @@
 declare class ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-支持通用事件。
+支持[通用事件](arkts-arkui-common-comp.md)。
 
-**继承/实现关系：** ColumnSplitAttribute extends CommonMethod&lt;ColumnSplitAttribute&gt;
+**继承/实现关系：** ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>--><!--Device-unnamed-declare class ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ divider(value: ColumnSplitDividerStyle | null)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColumnSplitAttribute-divider(value: ColumnSplitDividerStyle | null): ColumnSplitAttribute--><!--Device-ColumnSplitAttribute-divider(value: ColumnSplitDividerStyle | null): ColumnSplitAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ resizeable(value: boolean)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColumnSplitAttribute-resizeable(value: boolean): ColumnSplitAttribute--><!--Device-ColumnSplitAttribute-resizeable(value: boolean): ColumnSplitAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

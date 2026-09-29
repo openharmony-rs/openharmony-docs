@@ -8,6 +8,8 @@ export interface AnimatorOptions
 
 **起始版本：** 6
 
+<!--Device-unnamed-export interface AnimatorOptions--><!--Device-unnamed-export interface AnimatorOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -34,6 +36,8 @@ begin: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AnimatorOptions-begin: number--><!--Device-AnimatorOptions-begin: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## delay
@@ -51,6 +55,8 @@ delay: number
 **起始版本：** 6
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AnimatorOptions-delay: number--><!--Device-AnimatorOptions-delay: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +86,8 @@ direction: "normal" | "reverse" | "alternate" | "alternate-reverse"
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AnimatorOptions-direction: "normal" | "reverse" | "alternate" | "alternate-reverse"--><!--Device-AnimatorOptions-direction: "normal" | "reverse" | "alternate" | "alternate-reverse"-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## duration
@@ -102,6 +110,8 @@ duration: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AnimatorOptions-duration: number--><!--Device-AnimatorOptions-duration: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## easing
@@ -119,6 +129,8 @@ easing: string
 **起始版本：** 6
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AnimatorOptions-easing: string--><!--Device-AnimatorOptions-easing: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,6 +151,8 @@ end: number
 **起始版本：** 6
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AnimatorOptions-end: number--><!--Device-AnimatorOptions-end: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,6 +178,8 @@ fill: "none" | "forwards" | "backwards" | "both"
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AnimatorOptions-fill: "none" | "forwards" | "backwards" | "both"--><!--Device-AnimatorOptions-fill: "none" | "forwards" | "backwards" | "both"-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## iterations
@@ -183,5 +199,7 @@ iterations: number
 **起始版本：** 6
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AnimatorOptions-iterations: number--><!--Device-AnimatorOptions-iterations: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

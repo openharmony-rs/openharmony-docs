@@ -10,6 +10,8 @@ Establishes a single UICC access rule pursuant to the GlobalPlatform Secure Elem
 
 **Since:** 20
 
+<!--Device-eSIM-export interface AccessRule--><!--Device-eSIM-export interface AccessRule-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The type of access.
 
 **Since:** 20
 
+<!--Device-AccessRule-accessType: int--><!--Device-AccessRule-accessType: int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ Certificate hash hexadecimal string.
 
 **Since:** 20
 
+<!--Device-AccessRule-certificateHashHexStr: string--><!--Device-AccessRule-certificateHashHexStr: string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -63,6 +69,8 @@ The name of package.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AccessRule-packageName: string--><!--Device-AccessRule-packageName: string-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 

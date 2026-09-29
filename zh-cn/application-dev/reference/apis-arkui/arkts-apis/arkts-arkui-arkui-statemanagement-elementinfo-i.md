@@ -8,6 +8,8 @@ export interface ElementInfo
 
 **起始版本：** 23
 
+<!--Device-unnamed-export interface ElementInfo--><!--Device-unnamed-export interface ElementInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ elementId: number
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-ElementInfo-elementId: number--><!--Device-ElementInfo-elementId: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## elementName
@@ -49,5 +53,7 @@ elementName: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-ElementInfo-elementName: string--><!--Device-ElementInfo-elementName: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

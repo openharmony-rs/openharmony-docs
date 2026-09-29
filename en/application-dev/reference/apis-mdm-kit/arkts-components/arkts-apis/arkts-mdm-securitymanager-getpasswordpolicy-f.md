@@ -20,6 +20,8 @@ Obtains the device screen lock password policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getPasswordPolicy(admin: Want): PasswordPolicy--><!--Device-securityManager-function getPasswordPolicy(admin: Want): PasswordPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -90,6 +92,8 @@ Obtains the device screen lock password policy. Enterprises can use this API to 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-securityManager-function getPasswordPolicy(admin: Want | null): PasswordPolicy--><!--Device-securityManager-function getPasswordPolicy(admin: Want | null): PasswordPolicy-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -26,6 +26,8 @@ Obtains state information about the page at the top of the navigation stack.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-router-function getState(): RouterState--><!--Device-router-function getState(): RouterState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**

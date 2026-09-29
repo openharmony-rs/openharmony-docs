@@ -19,6 +19,8 @@ Checks whether the current device is a RAM-constrained device (a device with sev
 
 **Substitutes:** [isRamConstrainedDevice](arkts-ability-appmanager-isramconstraineddevice-f.md)
 
+<!--Device-appManager-function isRamConstrainedDevice(): Promise<boolean>--><!--Device-appManager-function isRamConstrainedDevice(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**
@@ -56,6 +58,8 @@ Checks whether the current device is a RAM-constrained device (a device with sev
 **Deprecated since:** 9
 
 **Substitutes:** [isRamConstrainedDevice](arkts-ability-appmanager-isramconstraineddevice-f.md)
+
+<!--Device-appManager-function isRamConstrainedDevice(callback: AsyncCallback<boolean>): void--><!--Device-appManager-function isRamConstrainedDevice(callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

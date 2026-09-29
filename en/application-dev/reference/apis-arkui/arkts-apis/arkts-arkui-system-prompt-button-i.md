@@ -4,11 +4,11 @@
 export interface Button
 ```
 
-Defines the prompt info of button.
+Defines the display information of a button.
 
-@interface Button
+**Since:** 3
 
-**Since:** 11
+<!--Device-unnamed-export interface Button--><!--Device-unnamed-export interface Button-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,15 +24,17 @@ import { Prompt, Button, ShowActionMenuOptions, ShowDialogOptions, ShowDialogSuc
 color: string
 ```
 
-Defines the color of button.
+Color of the button.
 
 **Type:** string
 
-**Since:** 11
+**Since:** 3
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Button-color: string--><!--Device-Button-color: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,14 +44,16 @@ Defines the color of button.
 text: string
 ```
 
-Defines the button info.
+Text of the button.
 
 **Type:** string
 
-**Since:** 11
+**Since:** 3
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Button-text: string--><!--Device-Button-text: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

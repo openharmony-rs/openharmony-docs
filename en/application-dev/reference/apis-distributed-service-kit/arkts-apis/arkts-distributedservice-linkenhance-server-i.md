@@ -8,6 +8,8 @@ Represents a **Server** object, which provides methods for starting, stopping, a
 
 **Since:** 20
 
+<!--Device-linkEnhance-interface Server--><!--Device-linkEnhance-interface Server-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Destroys the **Server** object to release related resources. To interact with th
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Server-close(): void--><!--Device-Server-close(): void-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -72,6 +76,8 @@ Unregisters the callback listener for **connectionAccepted** event. This API mus
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Server-off(type: 'connectionAccepted', callback?: Callback<Connection>): void--><!--Device-Server-off(type: 'connectionAccepted', callback?: Callback<Connection>): void-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -130,6 +136,8 @@ Unregisters the callback listener for **serverStopped** event. This API must be 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Server-off(type: 'serverStopped', callback?: Callback<number>): void--><!--Device-Server-off(type: 'serverStopped', callback?: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**
@@ -186,6 +194,8 @@ Registers a callback listener for **connectionAccepted** events. This API uses a
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Server-on(type: 'connectionAccepted', callback: Callback<Connection>): void--><!--Device-Server-on(type: 'connectionAccepted', callback: Callback<Connection>): void-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -244,6 +254,8 @@ Registers a callback listener for **serverStopped** events. This API uses an asy
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Server-on(type: 'serverStopped', callback: Callback<number>): void--><!--Device-Server-on(type: 'serverStopped', callback: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**
@@ -301,6 +313,8 @@ Starts a server so that it can be connected by the client. A maximum of 10 serve
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Server-start(): void--><!--Device-Server-start(): void-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Error codes:**
@@ -344,6 +358,8 @@ Stops the server. After the server is stopped, you can call `start` to start it 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Server-stop(): void--><!--Device-Server-stop(): void-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 

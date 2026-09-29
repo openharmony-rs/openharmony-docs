@@ -8,6 +8,8 @@ Represents the text layout result.
 
 **Since:** 24
 
+<!--Device-text-interface TextLayoutResult--><!--Device-text-interface TextLayoutResult-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Rectangle size of the paragraph after layout.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-TextLayoutResult-correctRect: TextRectSize--><!--Device-TextLayoutResult-correctRect: TextRectSize-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -48,6 +52,8 @@ Array of character ranges that can be completely displayed after text layout cal
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-TextLayoutResult-fitStrRange: Array<Range>--><!--Device-TextLayoutResult-fitStrRange: Array<Range>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

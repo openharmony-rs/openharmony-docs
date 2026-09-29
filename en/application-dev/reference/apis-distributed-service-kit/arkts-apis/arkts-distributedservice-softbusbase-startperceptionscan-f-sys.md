@@ -19,6 +19,8 @@ Starts perception scanning for the current owner. After the scanning is started,
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-softbusBase-function startPerceptionScan(type: PerceptionType, cycle: PerceptionCycle): Promise<void>--><!--Device-softbusBase-function startPerceptionScan(type: PerceptionType, cycle: PerceptionCycle): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.

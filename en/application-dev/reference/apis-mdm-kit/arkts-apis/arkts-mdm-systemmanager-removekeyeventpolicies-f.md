@@ -20,6 +20,8 @@ Removes a key event handling policy. After the deletion is successful, the syste
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function removeKeyEventPolicies(admin: Want, keyCodes: Array<KeyCode>): void--><!--Device-systemManager-function removeKeyEventPolicies(admin: Want, keyCodes: Array<KeyCode>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

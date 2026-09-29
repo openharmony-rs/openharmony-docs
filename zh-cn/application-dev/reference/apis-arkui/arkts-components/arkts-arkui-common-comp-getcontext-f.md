@@ -18,6 +18,8 @@ Obtains the Context object associated with a component on the page.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare function getContext(component?: Object): Context--><!--Device-unnamed-declare function getContext(component?: Object): Context-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

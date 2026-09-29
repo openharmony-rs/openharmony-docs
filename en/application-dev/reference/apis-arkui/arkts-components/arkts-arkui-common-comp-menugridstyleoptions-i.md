@@ -8,6 +8,8 @@ Defines the grid style of menu.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface MenuGridStyleOptions--><!--Device-unnamed-declare interface MenuGridStyleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## count
@@ -27,6 +29,8 @@ The count of items in grid.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-MenuGridStyleOptions-count?: number--><!--Device-MenuGridStyleOptions-count?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ The horizontal size of items in grid.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-MenuGridStyleOptions-horizontalSize?: number--><!--Device-MenuGridStyleOptions-horizontalSize?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## position
@@ -67,5 +73,7 @@ The position of grid.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-MenuGridStyleOptions-position?: MenuGridPosition--><!--Device-MenuGridStyleOptions-position?: MenuGridPosition-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

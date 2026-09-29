@@ -8,6 +8,8 @@ Defines a contact's organization.
 
 **Since:** 7
 
+<!--Device-contact-class Organization--><!--Device-contact-class Organization-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Organization name.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Organization-name: string--><!--Device-Organization-name: string-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## title
@@ -45,5 +49,7 @@ Job title.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Organization-title?: string--><!--Device-Organization-title?: string-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData

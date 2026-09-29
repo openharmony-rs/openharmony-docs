@@ -20,6 +20,8 @@ Opens the Certificate Management dialog box to display the certificate details. 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManagerDialog-function openCertificateDetailDialog(context: common.Context,cert: Uint8Array, property: CertificateDialogProperty): Promise<void>--><!--Device-certificateManagerDialog-function openCertificateDetailDialog(context: common.Context,cert: Uint8Array, property: CertificateDialogProperty): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 **Parameters:**

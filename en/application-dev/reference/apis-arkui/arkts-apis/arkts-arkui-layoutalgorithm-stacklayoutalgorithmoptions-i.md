@@ -8,6 +8,8 @@ Sets the alignment method of the stack layout algorithm.
 
 **Since:** 24
 
+<!--Device-unnamed-interface StackLayoutAlgorithmOptions--><!--Device-unnamed-interface StackLayoutAlgorithmOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## alignContent
@@ -33,5 +35,7 @@ Invalid values are treated as the default value.
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
+
+<!--Device-StackLayoutAlgorithmOptions-alignContent?: LocalizedAlignment--><!--Device-StackLayoutAlgorithmOptions-alignContent?: LocalizedAlignment-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

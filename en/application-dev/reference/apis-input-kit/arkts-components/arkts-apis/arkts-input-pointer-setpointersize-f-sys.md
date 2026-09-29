@@ -16,6 +16,8 @@ Sets the mouse pointer size. This API uses an asynchronous callback to return th
 
 **Since:** 10
 
+<!--Device-pointer-function setPointerSize(size: int, callback: AsyncCallback<void>): void--><!--Device-pointer-function setPointerSize(size: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -77,6 +79,8 @@ function setPointerSize(size: number): Promise<void>
 Sets the mouse pointer size. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function setPointerSize(size: int): Promise<void>--><!--Device-pointer-function setPointerSize(size: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

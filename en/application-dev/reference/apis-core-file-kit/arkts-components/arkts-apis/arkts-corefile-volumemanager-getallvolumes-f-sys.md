@@ -18,6 +18,8 @@ Obtains information about all volumes of this external storage device. This API 
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
 
+<!--Device-volumeManager-function getAllVolumes(callback: AsyncCallback<Array<Volume>>): void--><!--Device-volumeManager-function getAllVolumes(callback: AsyncCallback<Array<Volume>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -52,6 +54,8 @@ Obtains information about all volumes of this external storage device. This API 
 **Since:** 9
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
+
+<!--Device-volumeManager-function getAllVolumes(): Promise<Array<Volume>>--><!--Device-volumeManager-function getAllVolumes(): Promise<Array<Volume>>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 

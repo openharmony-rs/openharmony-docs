@@ -8,6 +8,8 @@ Provides APIs for the file manager application to download files from the Drive 
 
 **Since:** 11
 
+<!--Device-cloudSync-class CloudFileCache--><!--Device-cloudSync-class CloudFileCache-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Deletes a cache file. This API returns the result synchronously.
 **Since:** 11
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-CloudFileCache-cleanCache(uri: string): void--><!--Device-CloudFileCache-cleanCache(uri: string): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -81,6 +85,8 @@ A constructor used to create a CloudFileCache object.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CloudFileCache-constructor(bundleName: string)--><!--Device-CloudFileCache-constructor(bundleName: string)-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -110,6 +116,8 @@ Query the download state of the cloud file list.
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CloudFileCache-getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>--><!--Device-CloudFileCache-getDownloadList(uris: Array<string>): Promise<Array<DownloadProgress>>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

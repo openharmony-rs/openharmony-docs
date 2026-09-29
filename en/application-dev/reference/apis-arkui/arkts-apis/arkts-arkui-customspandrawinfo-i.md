@@ -8,6 +8,8 @@ Defines the CustomSpanDrawInfo interface.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface CustomSpanDrawInfo--><!--Device-unnamed-declare interface CustomSpanDrawInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## baseline
@@ -16,9 +18,9 @@ Defines the CustomSpanDrawInfo interface.
 baseline: number
 ```
 
-Baseline offset of the line where the custom span is located.
+Baseline offset of the line where the custom drawing span is located.
 
-Unit: px
+Unit: [px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** number
 
@@ -27,6 +29,8 @@ Unit: px
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomSpanDrawInfo-baseline: number--><!--Device-CustomSpanDrawInfo-baseline: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,9 +40,9 @@ Unit: px
 lineBottom: number
 ```
 
-Bottom margin of the custom span relative to the **Text** component.
+Bottom margin of the custom drawing span relative to the **Text** component.
 
-Unit: px
+Unit: [px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** number
 
@@ -47,6 +51,8 @@ Unit: px
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomSpanDrawInfo-lineBottom: number--><!--Device-CustomSpanDrawInfo-lineBottom: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,9 +62,9 @@ Unit: px
 lineTop: number
 ```
 
-Top margin of the custom span relative to the **Text** component.
+Top margin of the custom drawing span relative to the **Text** component.
 
-Unit: px
+Unit: [px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** number
 
@@ -67,6 +73,8 @@ Unit: px
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomSpanDrawInfo-lineTop: number--><!--Device-CustomSpanDrawInfo-lineTop: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,9 +84,9 @@ Unit: px
 x: number
 ```
 
-Offset of the custom span relative to the mounted component.
+Offset of the custom drawing span relative to the mounted component.
 
-Unit: px
+Unit: [px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** number
 
@@ -87,5 +95,7 @@ Unit: px
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomSpanDrawInfo-x: number--><!--Device-CustomSpanDrawInfo-x: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -24,6 +24,8 @@ Obtains information about the running processes of the current application. This
 - API version 11 and later: N/A
 - API versions 9 to 10: ohos.permission.GET_RUNNING_INFO
 
+<!--Device-appManager-function getProcessRunningInfos(): Promise<Array<ProcessInformation>>--><!--Device-appManager-function getProcessRunningInfos(): Promise<Array<ProcessInformation>>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -73,6 +75,8 @@ Obtains information about the running processes of the current application. This
 **Required permissions:** 
 - API version 11 and later: N/A
 - API versions 9 to 10: ohos.permission.GET_RUNNING_INFO
+
+<!--Device-appManager-function getProcessRunningInfos(callback: AsyncCallback<Array<ProcessInformation>>): void--><!--Device-appManager-function getProcessRunningInfos(callback: AsyncCallback<Array<ProcessInformation>>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

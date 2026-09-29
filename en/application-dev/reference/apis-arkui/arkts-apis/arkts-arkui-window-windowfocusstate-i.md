@@ -8,6 +8,8 @@ Describes the focus state change information of the window.
 
 **Since:** 26.0.1
 
+<!--Device-window-interface WindowFocusState--><!--Device-window-interface WindowFocusState-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Reason for the focus state change.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowFocusState-focusChangeReason: FocusChangeReason--><!--Device-WindowFocusState-focusChangeReason: FocusChangeReason-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## isFocused
@@ -45,6 +49,8 @@ Whether the window gains focus. **true** if the window gains focus, **false** ot
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowFocusState-isFocused: boolean--><!--Device-WindowFocusState-isFocused: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -62,6 +68,8 @@ ID of the next focused window. This field is valid only when the window is unfoc
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowFocusState-nextFocusedWindowId?: int--><!--Device-WindowFocusState-nextFocusedWindowId?: int-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## prevFocusedWindowId
@@ -77,5 +85,7 @@ ID of the previous focused window. This field is valid only when the window is f
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowFocusState-prevFocusedWindowId?: int--><!--Device-WindowFocusState-prevFocusedWindowId?: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

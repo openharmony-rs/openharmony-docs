@@ -104,6 +104,8 @@
   <!--Del-->
   - [ChangeData(system api)](arkts-medialibrary-photoaccesshelper-changedata-i-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [CleanupSize(system api)](arkts-medialibrary-photoaccesshelper-cleanupsize-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [CloudAssetDownloadProgressInfo(system api)](arkts-medialibrary-photoaccesshelper-cloudassetdownloadprogressinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [CloudAssetDownloadStatus(system api)](arkts-medialibrary-photoaccesshelper-cloudassetdownloadstatus-i-sys.md)<!--DelEnd-->
@@ -118,6 +120,8 @@
   <!--Del-->
   - [DeepOptimizeSpaceProgress(system api)](arkts-medialibrary-photoaccesshelper-deepoptimizespaceprogress-i-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [DirtyDataResultInfo(system api)](arkts-medialibrary-photoaccesshelper-dirtydataresultinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [Entity(system api)](arkts-medialibrary-photoaccesshelper-entity-i-sys.md)<!--DelEnd-->
   - [FetchOptions](arkts-medialibrary-photoaccesshelper-fetchoptions-i.md)
   - [FetchResult](arkts-medialibrary-photoaccesshelper-fetchresult-i.md)
@@ -127,6 +131,10 @@
   - [FusionAssetsInfo(system api)](arkts-medialibrary-photoaccesshelper-fusionassetsinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [GalleryFormInfo(system api)](arkts-medialibrary-photoaccesshelper-galleryforminfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [IntervalInfo(system api)](arkts-medialibrary-photoaccesshelper-intervalinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LocalEnhancementTaskState(system api)](arkts-medialibrary-photoaccesshelper-localenhancementtaskstate-i-sys.md)<!--DelEnd-->
   - [MediaAssetDataHandler](arkts-medialibrary-photoaccesshelper-mediaassetdatahandler-i.md)
   - [MediaAssetProgressHandler](arkts-medialibrary-photoaccesshelper-mediaassetprogresshandler-i.md)
   - [MediaChangeRequest](arkts-medialibrary-photoaccesshelper-mediachangerequest-i.md)

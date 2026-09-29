@@ -24,6 +24,8 @@ Cancels the permission to access the serial port device when the application is 
 
 **Since:** 19
 
+<!--Device-serialManager-function cancelSerialRight(portId: int): void--><!--Device-serialManager-function cancelSerialRight(portId: int): void-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 **Parameters:**

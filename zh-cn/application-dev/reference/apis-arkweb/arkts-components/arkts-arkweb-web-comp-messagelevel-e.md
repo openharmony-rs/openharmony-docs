@@ -12,6 +12,8 @@ ConsoleMessage的信息级别。
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare enum MessageLevel--><!--Device-unnamed-declare enum MessageLevel-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## Debug
@@ -25,6 +27,8 @@ Debug = 1
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MessageLevel-Debug = 1--><!--Device-MessageLevel-Debug = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -40,6 +44,8 @@ Info = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-MessageLevel-Info = 2--><!--Device-MessageLevel-Info = 2-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## Warn
@@ -54,6 +60,8 @@ Warn = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-MessageLevel-Warn = 3--><!--Device-MessageLevel-Warn = 3-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## Error
@@ -67,6 +75,8 @@ Error = 4
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MessageLevel-Error = 4--><!--Device-MessageLevel-Error = 4-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -83,5 +93,7 @@ Log = 5
 **废弃版本：** 26.0.0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MessageLevel-Log = 5--><!--Device-MessageLevel-Log = 5-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

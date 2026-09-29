@@ -8,6 +8,8 @@ JFIF metadata.
 
 **Since:** 26.0.0
 
+<!--Device-image-class JfifMetadata--><!--Device-image-class JfifMetadata-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ JFIF density unit. The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-JfifMetadata-readonly densityUnit?: int--><!--Device-JfifMetadata-readonly densityUnit?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## isProgressive
@@ -45,6 +49,8 @@ whether the JFIF image is progressive.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-JfifMetadata-readonly isProgressive?: boolean--><!--Device-JfifMetadata-readonly isProgressive?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -62,6 +68,8 @@ JFIF version.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-JfifMetadata-readonly version?: int[]--><!--Device-JfifMetadata-readonly version?: int[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## xDensity
@@ -78,6 +86,8 @@ JFIF x density. The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-JfifMetadata-readonly xDensity?: int--><!--Device-JfifMetadata-readonly xDensity?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## yDensity
@@ -93,5 +103,7 @@ JFIF y density. The value should be an integer.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-JfifMetadata-readonly yDensity?: int--><!--Device-JfifMetadata-readonly yDensity?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

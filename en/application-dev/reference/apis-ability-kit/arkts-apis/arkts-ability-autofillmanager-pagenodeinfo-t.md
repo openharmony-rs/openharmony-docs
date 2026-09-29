@@ -12,6 +12,8 @@ Defines the page node information used for auto-fill.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-autoFillManager-export type PageNodeInfo = _PageNodeInfo.default--><!--Device-autoFillManager-export type PageNodeInfo = _PageNodeInfo.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Type:** _PageNodeInfo.default

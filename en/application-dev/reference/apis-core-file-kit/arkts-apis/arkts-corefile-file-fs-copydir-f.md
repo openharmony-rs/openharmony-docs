@@ -16,6 +16,8 @@ Copies the source directory to the destination path. This API uses a promise to 
 
 **Since:** 10
 
+<!--Device-unnamed-declare function copyDir(src: string, dest: string, mode?: number): Promise<void>--><!--Device-unnamed-declare function copyDir(src: string, dest: string, mode?: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -68,6 +70,8 @@ Copies the source directory to the destination directory. This API uses an async
 
 **Since:** 10
 
+<!--Device-unnamed-declare function copyDir(src: string, dest: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function copyDir(src: string, dest: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -115,6 +119,8 @@ An exception will be thrown if the destination directory contains a directory wi
 
 **Since:** 10
 
+<!--Device-unnamed-declare function copyDir(src: string, dest: string, callback: AsyncCallback<void, Array<ConflictFiles>>): void--><!--Device-unnamed-declare function copyDir(src: string, dest: string, callback: AsyncCallback<void, Array<ConflictFiles>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -143,6 +149,8 @@ declare function copyDir(src: string, dest: string, mode: number, callback: Asyn
 Copies the source directory to the destination directory. You can set the copy mode. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-unnamed-declare function copyDir(src: string, dest: string, mode: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function copyDir(src: string, dest: string, mode: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -189,6 +197,8 @@ declare function copyDir(src: string, dest: string, mode: number, callback: Asyn
 Copies the source directory to the destination path. You can set the copy mode. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-unnamed-declare function copyDir(src: string, dest: string, mode: number, callback: AsyncCallback<void, Array<ConflictFiles>>): void--><!--Device-unnamed-declare function copyDir(src: string, dest: string, mode: number, callback: AsyncCallback<void, Array<ConflictFiles>>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

@@ -18,6 +18,8 @@ Sets whether to enable the notification badge for a specified application. This 
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -75,6 +77,8 @@ Sets whether to enable the notification badge for a specified application. This 
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function displayBadge(bundle: BundleOption, enable: boolean): Promise<void>--><!--Device-notificationManager-function displayBadge(bundle: BundleOption, enable: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

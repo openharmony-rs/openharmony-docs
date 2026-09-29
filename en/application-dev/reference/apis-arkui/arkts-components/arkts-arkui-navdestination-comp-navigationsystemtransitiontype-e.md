@@ -18,6 +18,8 @@ Type of the system transition animation.
 
 **Since:** 14
 
+<!--Device-unnamed-declare enum NavigationSystemTransitionType--><!--Device-unnamed-declare enum NavigationSystemTransitionType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -33,6 +35,8 @@ Default system transition animation.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-NavigationSystemTransitionType-DEFAULT = 0--><!--Device-NavigationSystemTransitionType-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ No system transition animation.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-NavigationSystemTransitionType-NONE = 1--><!--Device-NavigationSystemTransitionType-NONE = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TITLE
@@ -65,6 +71,8 @@ System transition animation of the title bar.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-NavigationSystemTransitionType-TITLE = 2--><!--Device-NavigationSystemTransitionType-TITLE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +90,8 @@ System transition animation of the content area.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-NavigationSystemTransitionType-CONTENT = 3--><!--Device-NavigationSystemTransitionType-CONTENT = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## FADE
@@ -97,6 +107,8 @@ Fade-type system transition animation.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-NavigationSystemTransitionType-FADE = 4--><!--Device-NavigationSystemTransitionType-FADE = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,6 +126,8 @@ Center-scale type system transition animation.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-NavigationSystemTransitionType-EXPLODE = 5--><!--Device-NavigationSystemTransitionType-EXPLODE = 5-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SLIDE_RIGHT
@@ -130,6 +144,8 @@ Right-slide type system transition animation.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-NavigationSystemTransitionType-SLIDE_RIGHT = 6--><!--Device-NavigationSystemTransitionType-SLIDE_RIGHT = 6-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SLIDE_BOTTOM
@@ -145,5 +161,7 @@ Bottom-slide type system transition animation.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-NavigationSystemTransitionType-SLIDE_BOTTOM = 7--><!--Device-NavigationSystemTransitionType-SLIDE_BOTTOM = 7-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines information about entries in the IP neighbor table.
 
 **Since:** 22
 
+<!--Device-connection-export interface NetIpMacInfo--><!--Device-connection-export interface NetIpMacInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ NIC name.
 
 **Since:** 22
 
+<!--Device-NetIpMacInfo-iface: string--><!--Device-NetIpMacInfo-iface: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## ipAddress
@@ -42,6 +46,8 @@ IP address information.
 
 **Since:** 22
 
+<!--Device-NetIpMacInfo-ipAddress: NetAddress--><!--Device-NetIpMacInfo-ipAddress: NetAddress-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## macAddress
@@ -55,5 +61,7 @@ MAC address.
 **Type:** string
 
 **Since:** 22
+
+<!--Device-NetIpMacInfo-macAddress: string--><!--Device-NetIpMacInfo-macAddress: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

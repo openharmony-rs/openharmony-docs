@@ -10,6 +10,8 @@ Represents the AgentExtensionConnectCallback type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-common-export type AgentExtensionConnectCallback = _AgentExtensionConnectCallback--><!--Device-common-export type AgentExtensionConnectCallback = _AgentExtensionConnectCallback-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

@@ -20,6 +20,8 @@ Obtains the Bluetooth scanning mode of a device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getBluetoothScanMode(): ScanMode--><!--Device-connection-function getBluetoothScanMode(): ScanMode-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

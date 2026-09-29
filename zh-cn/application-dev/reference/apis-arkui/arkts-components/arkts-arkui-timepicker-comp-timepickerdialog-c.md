@@ -8,6 +8,8 @@ declare class TimePickerDialog
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class TimePickerDialog--><!--Device-unnamed-declare class TimePickerDialog-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## show
@@ -32,6 +34,8 @@ static show(options?: TimePickerDialogOptions)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialog-static show(options?: TimePickerDialogOptions)--><!--Device-TimePickerDialog-static show(options?: TimePickerDialogOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -8,6 +8,8 @@ Defines the SMS message segment information.
 
 **Since:** 8
 
+<!--Device-sms-export interface SmsSegmentsInfo--><!--Device-sms-export interface SmsSegmentsInfo-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Encoding count.
 
 **Since:** 8
 
+<!--Device-SmsSegmentsInfo-encodeCount: int--><!--Device-SmsSegmentsInfo-encodeCount: int-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Remaining encoding count.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-SmsSegmentsInfo-encodeCountRemaining: int--><!--Device-SmsSegmentsInfo-encodeCountRemaining: int-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -62,6 +68,8 @@ Encoding scheme.
 
 **Since:** 8
 
+<!--Device-SmsSegmentsInfo-scheme: SmsEncodingScheme--><!--Device-SmsSegmentsInfo-scheme: SmsEncodingScheme-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Split count.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-SmsSegmentsInfo-splitCount: int--><!--Device-SmsSegmentsInfo-splitCount: int-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

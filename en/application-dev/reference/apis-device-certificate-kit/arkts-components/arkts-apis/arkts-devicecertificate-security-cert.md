@@ -4,6 +4,8 @@ The certificate algorithm library framework provides certificate-related APIs. T
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace cert--><!--Device-unnamed-declare namespace cert-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import

@@ -8,6 +8,8 @@ Describes the codec bit rate.
 
 **Since:** 19
 
+<!--Device-a2dp-enum CodecBitRate--><!--Device-a2dp-enum CodecBitRate-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## CODEC_BIT_RATE_96000
@@ -19,6 +21,8 @@ CODEC_BIT_RATE_96000 = 0
 Codec bit rate 96k.
 
 **Since:** 19
+
+<!--Device-CodecBitRate-CODEC_BIT_RATE_96000 = 0--><!--Device-CodecBitRate-CODEC_BIT_RATE_96000 = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -32,6 +36,8 @@ Codec bit rate 128k.
 
 **Since:** 19
 
+<!--Device-CodecBitRate-CODEC_BIT_RATE_128000 = 1--><!--Device-CodecBitRate-CODEC_BIT_RATE_128000 = 1-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## CODEC_BIT_RATE_192000
@@ -43,6 +49,8 @@ CODEC_BIT_RATE_192000 = 2
 Codec bit rate 192k.
 
 **Since:** 19
+
+<!--Device-CodecBitRate-CODEC_BIT_RATE_192000 = 2--><!--Device-CodecBitRate-CODEC_BIT_RATE_192000 = 2-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -56,6 +64,8 @@ Codec bit rate 256k.
 
 **Since:** 19
 
+<!--Device-CodecBitRate-CODEC_BIT_RATE_256000 = 3--><!--Device-CodecBitRate-CODEC_BIT_RATE_256000 = 3-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## CODEC_BIT_RATE_320000
@@ -67,6 +77,8 @@ CODEC_BIT_RATE_320000 = 4
 Codec bit rate 320k.
 
 **Since:** 19
+
+<!--Device-CodecBitRate-CODEC_BIT_RATE_320000 = 4--><!--Device-CodecBitRate-CODEC_BIT_RATE_320000 = 4-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -80,6 +92,8 @@ Codec bit rate 480k.
 
 **Since:** 19
 
+<!--Device-CodecBitRate-CODEC_BIT_RATE_480000 = 5--><!--Device-CodecBitRate-CODEC_BIT_RATE_480000 = 5-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## CODEC_BIT_RATE_640000
@@ -91,6 +105,8 @@ CODEC_BIT_RATE_640000 = 6
 Codec bit rate 640k.
 
 **Since:** 19
+
+<!--Device-CodecBitRate-CODEC_BIT_RATE_640000 = 6--><!--Device-CodecBitRate-CODEC_BIT_RATE_640000 = 6-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -104,6 +120,8 @@ Codec bit rate 960k.
 
 **Since:** 19
 
+<!--Device-CodecBitRate-CODEC_BIT_RATE_960000 = 7--><!--Device-CodecBitRate-CODEC_BIT_RATE_960000 = 7-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## CODEC_BIT_RATE_ABR
@@ -115,6 +133,8 @@ CODEC_BIT_RATE_ABR = 8
 Codec bit rate adaptive bitrate streaming.
 
 **Since:** 19
+
+<!--Device-CodecBitRate-CODEC_BIT_RATE_ABR = 8--><!--Device-CodecBitRate-CODEC_BIT_RATE_ABR = 8-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -128,6 +148,8 @@ Codec bit rate 1.5M.
 
 **Since:** 21
 
+<!--Device-CodecBitRate-CODEC_BIT_RATE_1500000 = 9--><!--Device-CodecBitRate-CODEC_BIT_RATE_1500000 = 9-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## CODEC_BIT_RATE_2300000
@@ -139,5 +161,7 @@ CODEC_BIT_RATE_2300000 = 10
 Codec bit rate 2.3M.
 
 **Since:** 21
+
+<!--Device-CodecBitRate-CODEC_BIT_RATE_2300000 = 10--><!--Device-CodecBitRate-CODEC_BIT_RATE_2300000 = 10-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

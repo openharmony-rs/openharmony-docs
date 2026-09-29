@@ -10,6 +10,8 @@ Contains the sync ID, current batch, and total batch.
 
 **Since:** 26.0.0
 
+<!--Device-contact-interface ContactSyncProgress--><!--Device-contact-interface ContactSyncProgress-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## Modules to Import
@@ -36,6 +38,8 @@ The range of values is from 1 to totalBatches.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ContactSyncProgress-currentBatch: int--><!--Device-ContactSyncProgress-currentBatch: int-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## syncId
@@ -56,6 +60,8 @@ The value should start from 0.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ContactSyncProgress-syncId: int--><!--Device-ContactSyncProgress-syncId: int-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## totalBatches
@@ -73,5 +79,7 @@ Indicates the total number of batches of contacts to be synchronized.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ContactSyncProgress-totalBatches: int--><!--Device-ContactSyncProgress-totalBatches: int-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData

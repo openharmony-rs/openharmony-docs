@@ -19,6 +19,8 @@ Listens for file or directory changes. This API uses an asynchronous callback to
 
 **Substitutes:** [createWatcher](arkts-corefile-file-fs-createwatcher-f.md)
 
+<!--Device-unnamed-declare function createWatcher(filename: string, events: number, callback: AsyncCallback<number>): Watcher--><!--Device-unnamed-declare function createWatcher(filename: string, events: number, callback: AsyncCallback<number>): Watcher-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

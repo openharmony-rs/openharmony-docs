@@ -12,6 +12,8 @@ Describes the value of the indication or notification sent by the Gatt server.
 
 **Substitutes:** [NotifyCharacteristic](arkts-connectivity-ble-notifycharacteristic-i.md)
 
+<!--Device-bluetoothManager-interface NotifyCharacteristic--><!--Device-bluetoothManager-interface NotifyCharacteristic-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ The UUID of a NotifyCharacteristic instance
 
 **Substitutes:** [characteristicUuid](arkts-connectivity-ble-notifycharacteristic-i.md#characteristicuuid)
 
+<!--Device-NotifyCharacteristic-characteristicUuid: string--><!--Device-NotifyCharacteristic-characteristicUuid: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## characteristicValue
@@ -53,6 +57,8 @@ The value of a NotifyCharacteristic instance
 **Deprecated since:** 10
 
 **Substitutes:** [characteristicValue](arkts-connectivity-ble-notifycharacteristic-i.md#characteristicvalue)
+
+<!--Device-NotifyCharacteristic-characteristicValue: ArrayBuffer--><!--Device-NotifyCharacteristic-characteristicValue: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -72,6 +78,8 @@ Specifies whether to request confirmation from the BLE peripheral device (indica
 
 **Substitutes:** [confirm](arkts-connectivity-ble-notifycharacteristic-i.md#confirm)
 
+<!--Device-NotifyCharacteristic-confirm: boolean--><!--Device-NotifyCharacteristic-confirm: boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## serviceUuid
@@ -89,5 +97,7 @@ The UUID of the [GattService](arkts-connectivity-bluetoothmanager-gattservice-i.
 **Deprecated since:** 10
 
 **Substitutes:** [serviceUuid](arkts-connectivity-ble-notifycharacteristic-i.md#serviceuuid)
+
+<!--Device-NotifyCharacteristic-serviceUuid: string--><!--Device-NotifyCharacteristic-serviceUuid: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

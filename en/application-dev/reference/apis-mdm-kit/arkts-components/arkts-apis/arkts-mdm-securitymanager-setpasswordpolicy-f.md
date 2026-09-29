@@ -20,6 +20,8 @@ Sets the device screen lock password policy. After the policy is set, when a use
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function setPasswordPolicy(admin: Want, policy: PasswordPolicy): void--><!--Device-securityManager-function setPasswordPolicy(admin: Want, policy: PasswordPolicy): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

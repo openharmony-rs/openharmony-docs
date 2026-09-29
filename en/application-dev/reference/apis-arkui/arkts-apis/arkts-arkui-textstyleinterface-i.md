@@ -8,6 +8,8 @@ TextStyleInterface
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface TextStyleInterface--><!--Device-unnamed-declare interface TextStyleInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -18,7 +20,7 @@ fontColor?: ResourceColor
 
 Font color.
 
-Default value: theme color.
+The default value is the theme color.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -28,6 +30,8 @@ Default value: theme color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextStyleInterface-fontColor?: ResourceColor--><!--Device-TextStyleInterface-fontColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontConfigs
@@ -36,7 +40,7 @@ Default value: theme color.
 fontConfigs?: FontConfigs
 ```
 
-Font configuration. The default value is inherited from [FontConfigs](arkts-arkui-fontconfigs-i.md).
+Font configuration. The default value inherits [FontConfigs](arkts-arkui-fontconfigs-i.md).
 
 **Type:** [FontConfigs](arkts-arkui-fontconfigs-i.md)
 
@@ -46,6 +50,8 @@ Font configuration. The default value is inherited from [FontConfigs](arkts-arku
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-TextStyleInterface-fontConfigs?: FontConfigs--><!--Device-TextStyleInterface-fontConfigs?: FontConfigs-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontFamily
@@ -54,9 +60,9 @@ Font configuration. The default value is inherited from [FontConfigs](arkts-arku
 fontFamily?: ResourceStr
 ```
 
-Font family.
+Text font.
 
-Default value: theme font.
+The default value is the theme font.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -65,6 +71,8 @@ Default value: theme font.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextStyleInterface-fontFamily?: ResourceStr--><!--Device-TextStyleInterface-fontFamily?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,11 +84,11 @@ fontSize?: LengthMetrics
 
 Font size.
 
-Default value: 16 fp.
+The default font size is 16fp.
 
-If **unit** of **LengthMetrics** is percent, the setting does not take effect, and 16 fp is used instead.
+If the unit value of LengthMetrics is PERCENT, the current setting does not take effect and is processed as **16fp**.
 
-Unit: fp
+Unit: [fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 
@@ -89,6 +97,8 @@ Unit: fp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextStyleInterface-fontSize?: LengthMetrics--><!--Device-TextStyleInterface-fontSize?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,7 +110,7 @@ fontStyle?: FontStyle
 
 Font style.
 
-Default value: **FontStyle.Normal**.
+Default value: **FontStyle.Normal**
 
 **Type:** [FontStyle](arkts-arkui-fontstyle-e.md)
 
@@ -110,6 +120,8 @@ Default value: **FontStyle.Normal**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextStyleInterface-fontStyle?: FontStyle--><!--Device-TextStyleInterface-fontStyle?: FontStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontVariations
@@ -118,13 +130,7 @@ Default value: **FontStyle.Normal**.
 fontVariations?: Array<FontVariation>
 ```
 
-Variable font attributes.
-
-Default value: **undefined**, indicating that variable font attributes are not set.
-
-The priority of **fontVariations** is higher than that of **fontWeight**.
-
-**Since**: 26.0.0
+Attribute of the variable font. indicating that the attribute of the variable font is not set. The **fontVariations** attribute has a higher priority than **fontWeight**. Default value: **undefined**.
 
 **Type:** Array&lt;[FontVariation](arkts-arkui-fontvariation-t.md)&gt;
 
@@ -133,6 +139,8 @@ The priority of **fontVariations** is higher than that of **fontWeight**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-TextStyleInterface-fontVariations?: Array<FontVariation>--><!--Device-TextStyleInterface-fontVariations?: Array<FontVariation>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,7 +152,9 @@ fontWeight?: number | FontWeight | string
 
 Font weight.
 
-For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings that represent a number, for example, **400**, and the following enumerated values of **FontWeight** are supported: **bold**, **bolder**, **lighter**, **regular**, and **medium**.
+For the number type, the value ranges from 100 to 900 at an interval of 100. The default value is 400. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in **FontWeight**. An excessively large value may be truncated in different fonts. If the value passed in is out of the value range or does not meet the interval requirement, the default value is used.
+
+Default value: **FontWeight.Normal**
 
 **Type:** number &#124; [FontWeight](arkts-arkui-fontweight-e.md) &#124; string
 
@@ -153,6 +163,8 @@ For the number type, the value ranges from 100 to 900, at an interval of 100. A 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextStyleInterface-fontWeight?: number | FontWeight | string--><!--Device-TextStyleInterface-fontWeight?: number | FontWeight | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,7 +176,7 @@ strokeColor?: ResourceColor
 
 Text stroke color.
 
-Default value: text color. If invalid values are provided, the text color is used.
+The default value is the font color. If an abnormal value is set, the font color is used.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -174,6 +186,8 @@ Default value: text color. If invalid values are provided, the text color is use
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TextStyleInterface-strokeColor?: ResourceColor--><!--Device-TextStyleInterface-strokeColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeJoinStyle
@@ -182,11 +196,9 @@ Default value: text color. If invalid values are provided, the text color is use
 strokeJoinStyle?: StrokeJoinStyle
 ```
 
-Text stroke join style.
+Text stroke join style. For details about the enum values and their descriptions, see **StrokeJoinStyle**.
 
-Default value: **StrokeJoinStyle.MITER_JOIN**.
-
-**Since**: 26.0.0.
+Default value: **StrokeJoinStyle.MITER_JOIN**, indicating a miter join with a sharp corner.
 
 **Type:** [StrokeJoinStyle](arkts-arkui-strokejoinstyle-e.md)
 
@@ -196,6 +208,8 @@ Default value: **StrokeJoinStyle.MITER_JOIN**.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-TextStyleInterface-strokeJoinStyle?: StrokeJoinStyle--><!--Device-TextStyleInterface-strokeJoinStyle?: StrokeJoinStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeWidth
@@ -204,11 +218,11 @@ Default value: **StrokeJoinStyle.MITER_JOIN**.
 strokeWidth?: LengthMetrics
 ```
 
-Text stroke width. If **unit** of **LengthMetrics** is percent, the setting does not take effect, and 0 is used instead.
+Text stroke width. If the unit value of **LengthMetrics** is **PERCENT**, the current setting does not take effect and is processed as 0.
 
-If the value is less than 0, the text is solid. If the value is greater than 0, the text is hollow.
+If the value is less than 0, the text is solid; if the value is greater than 0, the text is hollow.
 
-Default value: **0**.
+The default value is **0**.
 
 **Type:** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 
@@ -218,6 +232,8 @@ Default value: **0**.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TextStyleInterface-strokeWidth?: LengthMetrics--><!--Device-TextStyleInterface-strokeWidth?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## superscript
@@ -226,9 +242,9 @@ Default value: **0**.
 superscript?: SuperscriptStyle
 ```
 
-Superscript or subscript for the text.
+Text superscript and subscript.
 
-Default value: **SuperscriptStyle.NORMAL**.
+Default value: **SuperscriptStyle.NORMAL**
 
 **Type:** [SuperscriptStyle](arkts-arkui-superscriptstyle-e.md)
 
@@ -237,5 +253,7 @@ Default value: **SuperscriptStyle.NORMAL**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-TextStyleInterface-superscript?: SuperscriptStyle--><!--Device-TextStyleInterface-superscript?: SuperscriptStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

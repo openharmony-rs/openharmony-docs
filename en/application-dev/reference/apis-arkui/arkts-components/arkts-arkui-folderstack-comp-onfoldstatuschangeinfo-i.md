@@ -14,6 +14,8 @@ Defines the information about the fold status change, which takes effect only in
 
 **Since:** 18
 
+<!--Device-unnamed-interface OnFoldStatusChangeInfo--><!--Device-unnamed-interface OnFoldStatusChangeInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## foldStatus
@@ -31,5 +33,7 @@ Fold status of the current device.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnFoldStatusChangeInfo-foldStatus: FoldStatus--><!--Device-OnFoldStatusChangeInfo-foldStatus: FoldStatus-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -14,6 +14,8 @@ Before calling any API in AudioCapturer, you must use [createAudioCapturer](arkt
 
 **Since:** 8
 
+<!--Device-audio-interface AudioCapturer--><!--Device-audio-interface AudioCapturer-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Unsubscribes from micIn audio data callback.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioCapturer-offReadMicInData(callback?: Callback<AudioCapturerMicInData>): void--><!--Device-AudioCapturer-offReadMicInData(callback?: Callback<AudioCapturerMicInData>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -64,6 +68,8 @@ Subscribes to micIn audio data callback. This callback has higher priority than 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioCapturer-onReadMicInData(callback: Callback<AudioCapturerMicInData>): void--><!--Device-AudioCapturer-onReadMicInData(callback: Callback<AudioCapturerMicInData>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -90,6 +96,8 @@ setInputDeviceToAccessory(): void
 Sets default input device of this Capturer to DEVICE_TYPE_ACCESSORY. Other capturers' devices will not be affected by this method.This method can only be used before the capture stream starts. Besides, if audio accessory is not connected, this method will report fail. After calling this function, the input device of this capturer will not be affected by other interfaces.
 
 **Since:** 19
+
+<!--Device-AudioCapturer-setInputDeviceToAccessory(): void--><!--Device-AudioCapturer-setInputDeviceToAccessory(): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 

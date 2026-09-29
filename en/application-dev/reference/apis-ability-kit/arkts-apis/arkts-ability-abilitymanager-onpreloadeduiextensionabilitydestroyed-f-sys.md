@@ -20,6 +20,8 @@ Subscribes to destroyed events of a preloaded [UIExtensionAbility](arkts-ability
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-abilityManager-function onPreloadedUIExtensionAbilityDestroyed(callback: PreloadedUIExtensionAbilityDestroyedFn): void--><!--Device-abilityManager-function onPreloadedUIExtensionAbilityDestroyed(callback: PreloadedUIExtensionAbilityDestroyedFn): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

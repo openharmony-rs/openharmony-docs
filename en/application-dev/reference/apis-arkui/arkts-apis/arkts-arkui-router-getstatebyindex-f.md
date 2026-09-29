@@ -28,6 +28,8 @@ Obtains the status information about a page by its index.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-router-function getStateByIndex(index: number): RouterState | undefined--><!--Device-router-function getStateByIndex(index: number): RouterState | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

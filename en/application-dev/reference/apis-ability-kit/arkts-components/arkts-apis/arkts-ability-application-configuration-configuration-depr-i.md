@@ -12,6 +12,8 @@ The module defines environment change information. Configuration is an interface
 
 **Substitutes:** [Configuration/Configuration](arkts-ability-app-ability-configuration-configuration-i.md)
 
+<!--Device-unnamed-export interface Configuration--><!--Device-unnamed-export interface Configuration-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Color mode, which can be **COLOR_MODE_LIGHT** or **COLOR_MODE_DARK**. The defaul
 
 **Substitutes:** [colorMode](arkts-ability-app-ability-configuration-configuration-i.md#colormode)
 
+<!--Device-Configuration-colorMode?: ConfigurationConstant.ColorMode--><!--Device-Configuration-colorMode?: ConfigurationConstant.ColorMode-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## language
@@ -52,6 +56,8 @@ Language of the application, for example, **zh**.
 **Deprecated since:** 9
 
 **Substitutes:** [language](arkts-ability-app-ability-configuration-configuration-i.md#language)
+
+<!--Device-Configuration-language?: string--><!--Device-Configuration-language?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 

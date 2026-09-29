@@ -20,6 +20,8 @@ Opens the settings screen of notification extension subscription in a semi-modal
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationExtensionSubscription-function openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise<UserGrantSetting>--><!--Device-notificationExtensionSubscription-function openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise<UserGrantSetting>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**

@@ -8,6 +8,8 @@ Result object containing batch operation,including [batchAdd](arkts-assetstore-a
 
 **Since:** 26.0.0
 
+<!--Device-asset-interface BatchResult--><!--Device-asset-interface BatchResult-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Failed count of the batch operation, 0 means all success.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-BatchResult-failedCount: number--><!--Device-BatchResult-failedCount: number-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## failedErrorInfos
@@ -45,5 +49,7 @@ An array of error details for assets that failed in the batch operation, includi
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-BatchResult-failedErrorInfos: Array<BatchErrInfo>--><!--Device-BatchResult-failedErrorInfos: Array<BatchErrInfo>-End-->
 
 **System capability:** SystemCapability.Security.Asset

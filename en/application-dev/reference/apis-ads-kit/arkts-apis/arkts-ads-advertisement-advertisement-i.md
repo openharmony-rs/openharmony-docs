@@ -8,6 +8,8 @@ This module provides the requested ad content.
 
 **Since:** 11
 
+<!--Device-unnamed-export interface Advertisement--><!--Device-unnamed-export interface Advertisement-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## [key:string]
@@ -18,13 +20,15 @@ This module provides the requested ad content.
 
 Custom parameters.
 
-&lt;!--RP1--&gt;&lt;!--RP1End--&gt;
+<!--RP1--><!--RP1End-->
 
 **Type:** Object
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Advertisement-[key:string]: Object--><!--Device-Advertisement-[key:string]: Object-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 
@@ -51,6 +55,8 @@ If not filled, the default is native ad type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Advertisement-adType: number--><!--Device-Advertisement-adType: number-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## clicked
@@ -70,6 +76,8 @@ Whether the ad is clicked.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Advertisement-clicked: boolean--><!--Device-Advertisement-clicked: boolean-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## rewarded
@@ -88,6 +96,8 @@ Whether users get rewarded for watching or clicking the ad.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Advertisement-rewarded: boolean--><!--Device-Advertisement-rewarded: boolean-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 
@@ -113,6 +123,8 @@ userId: "12345"
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Advertisement-rewardVerifyConfig: Map<string, string>--><!--Device-Advertisement-rewardVerifyConfig: Map<string, string>-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 **Test API:** This API is used only in automated test scripts.
@@ -134,6 +146,8 @@ Whether the ad is shown.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Advertisement-shown: boolean--><!--Device-Advertisement-shown: boolean-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## uniqueId
@@ -149,5 +163,7 @@ Unique ID of the ad.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Advertisement-uniqueId: string--><!--Device-Advertisement-uniqueId: string-End-->
 
 **System capability:** SystemCapability.Advertising.Ads

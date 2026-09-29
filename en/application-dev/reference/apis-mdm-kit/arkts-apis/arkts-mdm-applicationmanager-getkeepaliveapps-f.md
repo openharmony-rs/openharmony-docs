@@ -20,6 +20,8 @@ Obtains the bundle name of the keep-alive application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function getKeepAliveApps(admin: Want, accountId: number): Array<string>--><!--Device-applicationManager-function getKeepAliveApps(admin: Want, accountId: number): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -80,6 +82,8 @@ Obtains the bundle name of the keep-alive application.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function getKeepAliveApps(admin: Want | null, accountId: number): Array<string>--><!--Device-applicationManager-function getKeepAliveApps(admin: Want | null, accountId: number): Array<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

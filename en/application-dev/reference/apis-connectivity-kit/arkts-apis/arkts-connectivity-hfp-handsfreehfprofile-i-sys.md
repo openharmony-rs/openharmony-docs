@@ -10,6 +10,8 @@ Manage hfp sink profile.
 
 **Since:** 26.0.0
 
+<!--Device-hfp-interface HandsFreeHfProfile extends BaseProfile--><!--Device-hfp-interface HandsFreeHfProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Initiate the HFP connection to a remote device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HandsFreeHfProfile-connect(deviceId: string): void--><!--Device-HandsFreeHfProfile-connect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -67,6 +71,8 @@ Disconnect the HFP connection with the remote device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HandsFreeHfProfile-disconnect(deviceId: string): void--><!--Device-HandsFreeHfProfile-disconnect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

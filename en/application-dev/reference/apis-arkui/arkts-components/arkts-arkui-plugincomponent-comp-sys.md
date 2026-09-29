@@ -16,6 +16,8 @@ Creates a **PluginComponent** to display the UI provided by an external applicat
 
 **Since:** 9
 
+<!--Device-PluginComponentInterface-(options: PluginComponentOptions): PluginComponentAttribute--><!--Device-PluginComponentInterface-(options: PluginComponentOptions): PluginComponentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

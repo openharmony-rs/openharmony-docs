@@ -24,6 +24,8 @@ Restores factory settings. This API uses an asynchronous callback to return the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceControl-function resetFactory(admin: Want, callback: AsyncCallback<void>): void--><!--Device-deviceControl-function resetFactory(admin: Want, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -86,6 +88,8 @@ Restores factory settings. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ENTERPRISE_RESET_DEVICE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-deviceControl-function resetFactory(admin: Want): Promise<void>--><!--Device-deviceControl-function resetFactory(admin: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -12,6 +12,8 @@ ZoomQuery provides APIs to query the zoom feature of a device camera, including 
 
 **Since:** 12
 
+<!--Device-camera-interface ZoomQuery--><!--Device-camera-interface ZoomQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ isZoomCenterPointSupported(): boolean
 Checks whether zoom center point is supported.
 
 **Since:** 20
+
+<!--Device-ZoomQuery-isZoomCenterPointSupported(): boolean--><!--Device-ZoomQuery-isZoomCenterPointSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -2,9 +2,11 @@
 
 The **EffectComponent** component defines combined special effects for child components to optimize the special effect drawing performance.
 
-> **NOTE**
-
-> - The APIs provided by this component are system APIs. > > - Currently, this component provides only combined background blur effects for child components. > > - To use this component for combined background blur effects, first replace the **backgroundBlurStyle(BlurStyle)** > attribute of the target child components with **useEffect(true)**.
+> **NOTE:** 
+> 
+> - Currently, this component only supports the drawing combination optimization of the background blur effect of child components.
+> 
+> - When performing drawing combination on the background blur effect of a child component, replace the child component's **backgroundBlurStyle(BlurStyle)** attribute with **useEffect(true)**.
 
 ## EffectComponent
 
@@ -18,6 +20,8 @@ Creates an **EffectComponent** component.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EffectComponentInterface-(): EffectComponentAttribute--><!--Device-EffectComponentInterface-(): EffectComponentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -28,11 +32,13 @@ Creates an **EffectComponent** component.
 EffectComponent(options?: EffectComponentOptions)
 ```
 
-Creates an effect drawing and combination component. If no parameter is passed or the parameter is EffectLayer.None, the background blur effect of child components is combined. If a parameter is specified, the current rendering layer is placed on a special layer.
+Creates an effect rendering merging component. When no parameter is passed or the parameter is **EffectLayer.NONE**, it is used to merge the rendering of the background blur effect of child components. When an explicit parameter is passed, it indicates that the current rendering layer is placed on a special layer.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EffectComponentInterface-(options?: EffectComponentOptions): EffectComponentAttribute--><!--Device-EffectComponentInterface-(options?: EffectComponentOptions): EffectComponentAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

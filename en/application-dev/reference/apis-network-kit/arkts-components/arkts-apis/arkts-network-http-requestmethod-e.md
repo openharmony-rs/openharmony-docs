@@ -8,6 +8,8 @@ Defines an HTTP request method.
 
 **Since:** 6
 
+<!--Device-http-export enum RequestMethod--><!--Device-http-export enum RequestMethod-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## OPTIONS
@@ -20,7 +22,9 @@ Describes the communication options of the target resource.
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-RequestMethod-OPTIONS = "OPTIONS"--><!--Device-RequestMethod-OPTIONS = "OPTIONS"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -34,7 +38,9 @@ Requests the representation of the specified resource. The GET request should on
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-RequestMethod-GET = "GET"--><!--Device-RequestMethod-GET = "GET"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -48,7 +54,9 @@ Requests the same response (but does not have a response body) as the GET reques
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-RequestMethod-HEAD = "HEAD"--><!--Device-RequestMethod-HEAD = "HEAD"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -62,7 +70,9 @@ Submits an entity to a specified resource, which usually causes a status change 
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-RequestMethod-POST = "POST"--><!--Device-RequestMethod-POST = "POST"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -76,7 +86,9 @@ Replaces all current representations of the target resource with the requested c
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-RequestMethod-PUT = "PUT"--><!--Device-RequestMethod-PUT = "PUT"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -90,7 +102,9 @@ Deletes the specified resource.
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-RequestMethod-DELETE = "DELETE"--><!--Device-RequestMethod-DELETE = "DELETE"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -104,7 +118,9 @@ Performs a message loopback test along the path to the target resource.
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-RequestMethod-TRACE = "TRACE"--><!--Device-RequestMethod-TRACE = "TRACE"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -120,7 +136,9 @@ Establishes a tunnel to the server identified by the target resource.
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-RequestMethod-CONNECT = "CONNECT"--><!--Device-RequestMethod-CONNECT = "CONNECT"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -137,5 +155,7 @@ Modifies a resource partially.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RequestMethod-PATCH = "PATCH"--><!--Device-RequestMethod-PATCH = "PATCH"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

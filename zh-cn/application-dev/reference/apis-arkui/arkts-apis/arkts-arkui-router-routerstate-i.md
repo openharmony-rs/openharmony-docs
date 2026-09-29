@@ -8,6 +8,8 @@ interface RouterState
 
 **起始版本：** 8
 
+<!--Device-router-interface RouterState--><!--Device-router-interface RouterState-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ index: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RouterState-index: number--><!--Device-RouterState-index: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -45,6 +49,8 @@ name: string
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RouterState-name: string--><!--Device-RouterState-name: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ params: Object
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RouterState-params: Object--><!--Device-RouterState-params: Object-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## path
@@ -85,5 +93,7 @@ path: string
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RouterState-path: string--><!--Device-RouterState-path: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

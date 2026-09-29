@@ -8,6 +8,8 @@ declare enum MouseAction
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare enum MouseAction--><!--Device-unnamed-declare enum MouseAction-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Press
@@ -23,6 +25,8 @@ Press
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MouseAction-Press--><!--Device-MouseAction-Press-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Release
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-MouseAction-Release--><!--Device-MouseAction-Release-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Move
@@ -55,6 +61,8 @@ Move
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MouseAction-Move--><!--Device-MouseAction-Move-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +82,8 @@ Hover
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-MouseAction-Hover--><!--Device-MouseAction-Hover-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ENTER_WINDOW
@@ -90,6 +100,8 @@ ENTER_WINDOW = 4
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-MouseAction-ENTER_WINDOW = 4--><!--Device-MouseAction-ENTER_WINDOW = 4-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LEAVE_WINDOW
@@ -105,6 +117,8 @@ LEAVE_WINDOW = 5
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-MouseAction-LEAVE_WINDOW = 5--><!--Device-MouseAction-LEAVE_WINDOW = 5-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -125,5 +139,7 @@ CANCEL = 13
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-MouseAction-CANCEL = 13--><!--Device-MouseAction-CANCEL = 13-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

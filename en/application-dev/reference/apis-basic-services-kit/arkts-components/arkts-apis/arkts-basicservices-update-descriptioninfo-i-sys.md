@@ -8,6 +8,8 @@ Represents information about the version description file.
 
 **Since:** 9
 
+<!--Device-update-export interface DescriptionInfo--><!--Device-update-export interface DescriptionInfo-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Content of the description file.
 
 **Since:** 9
 
+<!--Device-DescriptionInfo-content: string--><!--Device-DescriptionInfo-content: string-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Description type. The value **CONTENT** indicates that the description is conten
 **Type:** [DescriptionType](arkts-basicservices-update-descriptiontype-e-sys.md)
 
 **Since:** 9
+
+<!--Device-DescriptionInfo-descriptionType: DescriptionType--><!--Device-DescriptionInfo-descriptionType: DescriptionType-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

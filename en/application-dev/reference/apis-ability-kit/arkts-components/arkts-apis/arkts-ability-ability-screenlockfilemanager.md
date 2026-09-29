@@ -8,6 +8,8 @@ This module provides the capability to protect app sensitive data under the lock
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace screenLockFileManager--><!--Device-unnamed-declare namespace screenLockFileManager-End-->
+
 **System capability:** SystemCapability.Security.ScreenLockFileManager
 
 ## Modules to Import

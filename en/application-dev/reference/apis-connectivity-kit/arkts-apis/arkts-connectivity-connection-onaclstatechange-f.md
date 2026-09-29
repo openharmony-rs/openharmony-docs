@@ -20,6 +20,8 @@ Subscribe the event of acl state changed from a remote device. If the applicatio
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function onAclStateChange(callback: Callback<AclStateResult>): void--><!--Device-connection-function onAclStateChange(callback: Callback<AclStateResult>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

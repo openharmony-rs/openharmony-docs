@@ -4,7 +4,7 @@
 export class RenderNode
 ```
 
-The **RenderNode** module provides APIs for creating a RenderNode in custom drawing settings with C APIs.
+The **RenderNode** module provides APIs for creating a RenderNode in custom drawing settings with C APIs. **RenderNode** also supports capabilities such as render node tree management (adding, removing, and querying child nodes), visual attribute settings like background color and opacity, transformations (scaling, rotation, translation, and transformation matrices), shadows, borders, masks and clipping, and blur effects. It is suitable for custom rendering and node tree management scenarios in the stage model.
 
 > **NOTE:** 
 > 
@@ -13,6 +13,8 @@ The **RenderNode** module provides APIs for creating a RenderNode in custom draw
 > - RenderNode objects do not support JSON serialization.
 
 **Since:** 11
+
+<!--Device-unnamed-export class RenderNode--><!--Device-unnamed-export class RenderNode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +31,8 @@ Appends a child node to this RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-appendChild(node: RenderNode): void--><!--Device-RenderNode-appendChild(node: RenderNode): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,6 +115,8 @@ Clears all child nodes of this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-clearChildren(): void--><!--Device-RenderNode-clearChildren(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Examples**
@@ -178,6 +184,8 @@ Constructor used to create a RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-constructor()--><!--Device-RenderNode-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Examples**
@@ -229,13 +237,15 @@ struct Index {
 dispose(): void
 ```
 
-Releases this RenderNode immediately.
+Immediately releases the current RenderNode. After this API is called, the RenderNode will release its reference to the backend entity node. Calling APIs of this node again may cause a crash or return default values. You can query whether the node has been released through the [isDisposed](#isdisposed) API.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-dispose(): void--><!--Device-RenderNode-dispose(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -314,6 +324,8 @@ Note: The Canvas provided in the [DrawContext](arkts-arkui-graphics-drawcontext-
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-draw(context: DrawContext): void--><!--Device-RenderNode-draw(context: DrawContext): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -499,13 +511,15 @@ Obtains the child node in the specified position of this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-getChild(index: number): RenderNode | null--><!--Device-RenderNode-getChild(index: number): RenderNode | null-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the child node to obtain. |
+| index | number | Yes | Sequence number of the child node to query, starting from 0. Value range: [0, Number of child nodes - 1]. **null** is returned if the value is out of range. Negative indexes are not supported. |
 
 **Return value:**
 
@@ -587,6 +601,8 @@ Obtains the first child node of this RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-getFirstChild(): RenderNode | null--><!--Device-RenderNode-getFirstChild(): RenderNode | null-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -675,6 +691,8 @@ Obtains the next sibling node of this RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-getNextSibling(): RenderNode | null--><!--Device-RenderNode-getNextSibling(): RenderNode | null-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -769,6 +787,8 @@ Obtains the previous sibling node of this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-getPreviousSibling(): RenderNode | null--><!--Device-RenderNode-getPreviousSibling(): RenderNode | null-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -862,6 +882,8 @@ Inserts a child node after the specified child node of this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-insertChildAfter(child: RenderNode, sibling: RenderNode | null): void--><!--Device-RenderNode-insertChildAfter(child: RenderNode, sibling: RenderNode | null): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -949,13 +971,15 @@ struct Index {
 invalidate(): void
 ```
 
-Triggers the re-rendering of this RenderNode.
+Triggers re-rendering of the RenderNode, during which the [draw](#draw) API is called. If you inherit the RenderNode and implement the **draw** API, calling **invalidate()** will re-execute the drawing logic in the **draw** API.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-invalidate(): void--><!--Device-RenderNode-invalidate(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1028,7 +1052,7 @@ struct Index {
 isDisposed(): boolean
 ```
 
-Checks whether this RenderNode object has released its reference to its backend entity node. Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
+Queries whether the current RenderNode object has released its reference to the backend entity node. After a node calls the **dispose** API, calling other APIs may cause a crash or return default values. You are advised to call this API to check the validity of the node before operating on it, to avoid potential risks.
 
 **Since:** 20
 
@@ -1036,13 +1060,15 @@ Checks whether this RenderNode object has released its reference to its backend 
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-RenderNode-isDisposed(): boolean--><!--Device-RenderNode-isDisposed(): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite. |
+| boolean | Whether the reference to the backend node is released. The value **true** indicates that the reference to the backend node is released, and **false** indicates the opposite. |
 
 **Examples**
 
@@ -1136,6 +1162,8 @@ Deletes the specified child node from this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-removeChild(node: RenderNode): void--><!--Device-RenderNode-removeChild(node: RenderNode): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1208,7 +1236,7 @@ struct Index {
 set backgroundBlur(blurValue: BackgroundBlur | undefined)
 ```
 
-Sets a background blur effect.
+Sets the background blur effect of the current RenderNode, which blurs the background area of the node.
 
 **Type:** [BackgroundBlur](arkts-arkui-graphics-backgroundblur-i.md)
 
@@ -1217,6 +1245,8 @@ Sets a background blur effect.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-RenderNode-set backgroundBlur(blurValue: BackgroundBlur | undefined)--><!--Device-RenderNode-set backgroundBlur(blurValue: BackgroundBlur | undefined)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1233,6 +1263,8 @@ Get the background blur effect.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-RenderNode-get backgroundBlur(): BackgroundBlur--><!--Device-RenderNode-get backgroundBlur(): BackgroundBlur-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1336,6 +1368,8 @@ Sets the background color for this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set backgroundColor(color: number)--><!--Device-RenderNode-set backgroundColor(color: number)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1354,6 +1388,8 @@ Get the background color of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get backgroundColor(): number--><!--Device-RenderNode-get backgroundColor(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1413,6 +1449,8 @@ Sets the border color for this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set borderColor(color: Edges<number>)--><!--Device-RenderNode-set borderColor(color: Edges<number>)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1430,6 +1468,8 @@ Get border color of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get borderColor(): Edges<number>--><!--Device-RenderNode-get borderColor(): Edges<number>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1493,6 +1533,8 @@ Sets the border corner radius for this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set borderRadius(radius: BorderRadiuses)--><!--Device-RenderNode-set borderRadius(radius: BorderRadiuses)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1510,6 +1552,8 @@ Get border radius of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get borderRadius(): BorderRadiuses--><!--Device-RenderNode-get borderRadius(): BorderRadiuses-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1572,6 +1616,8 @@ Sets the border style for this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set borderStyle(style: Edges<BorderStyle>)--><!--Device-RenderNode-set borderStyle(style: Edges<BorderStyle>)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1587,6 +1633,8 @@ Get border style of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get borderStyle(): Edges<BorderStyle>--><!--Device-RenderNode-get borderStyle(): Edges<BorderStyle>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1655,6 +1703,8 @@ Sets the border width for this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set borderWidth(width: Edges<number>)--><!--Device-RenderNode-set borderWidth(width: Edges<number>)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1672,6 +1722,8 @@ Get border width of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get borderWidth(): Edges<number>--><!--Device-RenderNode-get borderWidth(): Edges<number>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1734,6 +1786,8 @@ Sets whether to clip this RenderNode. The value **true** means to clip the Rende
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set clipToFrame(useClip: boolean)--><!--Device-RenderNode-set clipToFrame(useClip: boolean)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1752,6 +1806,8 @@ Get whether the RenderNode clip to frame.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get clipToFrame(): boolean--><!--Device-RenderNode-get clipToFrame(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1808,7 +1864,7 @@ struct Index {
 set contentBlur(blurValue: ContentBlur | undefined)
 ```
 
-Sets a content blur effect.
+Sets the content blur effect of the current RenderNode, which blurs the drawn content of the node.
 
 **Type:** [ContentBlur](arkts-arkui-graphics-contentblur-i.md)
 
@@ -1817,6 +1873,8 @@ Sets a content blur effect.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-RenderNode-set contentBlur(blurValue: ContentBlur | undefined)--><!--Device-RenderNode-set contentBlur(blurValue: ContentBlur | undefined)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1833,6 +1891,8 @@ Get the content blur effect.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-RenderNode-get contentBlur(): ContentBlur--><!--Device-RenderNode-get contentBlur(): ContentBlur-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1926,7 +1986,7 @@ struct Index {
 set foregroundBlur(blurValue: ForegroundBlur | undefined)
 ```
 
-Sets a foreground blur effect.
+Sets the foreground blur effect of the current RenderNode, which blurs the foreground area of the node.
 
 **Type:** [ForegroundBlur](arkts-arkui-graphics-foregroundblur-i.md)
 
@@ -1935,6 +1995,8 @@ Sets a foreground blur effect.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-RenderNode-set foregroundBlur(blurValue: ForegroundBlur | undefined)--><!--Device-RenderNode-set foregroundBlur(blurValue: ForegroundBlur | undefined)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1951,6 +2013,8 @@ Get the foreground blur effect.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-RenderNode-get foregroundBlur(): ForegroundBlur--><!--Device-RenderNode-get foregroundBlur(): ForegroundBlur-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2053,6 +2117,8 @@ Sets the size and position for this RenderNode. When this parameter is used toge
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set frame(frame: Frame)--><!--Device-RenderNode-set frame(frame: Frame)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2071,6 +2137,8 @@ Get frame info of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get frame(): Frame--><!--Device-RenderNode-get frame(): Frame-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2121,7 +2189,7 @@ struct Index {
 set label(label: string)
 ```
 
-Sets the label for this RenderNode. If the RenderNode was created with **new**, the set label will appear in the node Inspector information.
+Sets the label of the current RenderNode. If the current node is a RenderNode created through **new**, the label information will be displayed in the attribute of the node's **Inspector** information.
 
 **Type:** string
 
@@ -2130,6 +2198,8 @@ Sets the label for this RenderNode. If the RenderNode was created with **new**, 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-set label(label: string)--><!--Device-RenderNode-set label(label: string)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2146,6 +2216,8 @@ Get label of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get label(): string--><!--Device-RenderNode-get label(): string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2198,7 +2270,7 @@ struct Index {
 set lengthMetricsUnit(unit: LengthMetricsUnit)
 ```
 
-Sets the metric unit used by attributes of this RenderNode.
+Sets the metric unit used by attributes of the RenderNode. This API is suitable for scenarios that require precise pixel control (such as using px) or following the system default layout (such as using DEFAULT).
 
 **Type:** [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md)
 
@@ -2207,6 +2279,8 @@ Sets the metric unit used by attributes of this RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-set lengthMetricsUnit(unit: LengthMetricsUnit)--><!--Device-RenderNode-set lengthMetricsUnit(unit: LengthMetricsUnit)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2225,6 +2299,8 @@ Get the length metrics unit of RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get lengthMetricsUnit(): LengthMetricsUnit--><!--Device-RenderNode-get lengthMetricsUnit(): LengthMetricsUnit-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2293,7 +2369,7 @@ struct Index {
 set markNodeGroup(isNodeGroup: boolean)
 ```
 
-Sets whether to enable drawing priority for this node and its child nodes. When this feature is enabled, visual attributes like opacity are applied during composition after drawing completes. The configuration result is as follows.
+Sets whether to enable drawing priority for this node and its child nodes. When this feature is enabled, visual attributes like opacity are applied during composition after drawing completes. This API is suitable for scenarios where multiple semi-transparent nodes overlap and correct compositing of the opacity effect is required. The configuration result is as follows.
 
 ![markNodeGroup](../../../reference/apis-arkui/figures/renderNode-markNodeGroup.png)
 
@@ -2304,6 +2380,8 @@ Sets whether to enable drawing priority for this node and its child nodes. When 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-set markNodeGroup(isNodeGroup: boolean)--><!--Device-RenderNode-set markNodeGroup(isNodeGroup: boolean)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2322,6 +2400,8 @@ Get whether to preferentially draw the node and its children.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get markNodeGroup(): boolean--><!--Device-RenderNode-get markNodeGroup(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2402,6 +2482,8 @@ Sets the opacity for this RenderNode. If the value passed in is less than **0**,
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set opacity(value: number)--><!--Device-RenderNode-set opacity(value: number)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2420,6 +2502,8 @@ Get opacity of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get opacity(): number--><!--Device-RenderNode-get opacity(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2481,6 +2565,8 @@ Sets the pivot for this RenderNode, which affects the scaling and rotation effec
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set pivot(pivot: Pivot)--><!--Device-RenderNode-set pivot(pivot: Pivot)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2499,6 +2585,8 @@ Get pivot vector of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get pivot(): Pivot--><!--Device-RenderNode-get pivot(): Pivot-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2552,7 +2640,7 @@ struct Index {
 set position(position: Position)
 ```
 
-Sets the position for this RenderNode.
+Sets the position of the current RenderNode. When used together with frame, the one set later prevails.
 
 **Type:** [Position](arkts-arkui-position-t.md)
 
@@ -2561,6 +2649,8 @@ Sets the position for this RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-set position(position: Position)--><!--Device-RenderNode-set position(position: Position)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2580,6 +2670,8 @@ Get frame position of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get position(): Position--><!--Device-RenderNode-get position(): Position-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2631,7 +2723,7 @@ struct Index {
 set rotation(rotation: Rotation)
 ```
 
-Sets the rotation angle for this RenderNode.
+Sets the rotation angle of the current RenderNode. Rotation is performed centered on the pivot set by pivot.
 
 **Type:** [Rotation](arkts-arkui-rotation-t.md)
 
@@ -2640,6 +2732,8 @@ Sets the rotation angle for this RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-set rotation(rotation: Rotation)--><!--Device-RenderNode-set rotation(rotation: Rotation)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2659,6 +2753,8 @@ Get rotation vector of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get rotation(): Rotation--><!--Device-RenderNode-get rotation(): Rotation-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2710,7 +2806,7 @@ struct Index {
 set scale(scale: Scale)
 ```
 
-Sets the scale factor for this RenderNode.
+Sets the scale factor of the current RenderNode. Scaling is performed centered on the pivot set by pivot.
 
 **Type:** [Scale](arkts-arkui-scale-t.md)
 
@@ -2719,6 +2815,8 @@ Sets the scale factor for this RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-set scale(scale: Scale)--><!--Device-RenderNode-set scale(scale: Scale)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2738,6 +2836,8 @@ Get scale vector of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get scale(): Scale--><!--Device-RenderNode-get scale(): Scale-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2789,7 +2889,7 @@ struct Index {
 set shadowAlpha(alpha: number)
 ```
 
-Sets the alpha value of the shadow color for this RenderNode.
+Sets the alpha value of the shadow color of the current RenderNode. If this attribute is set, the opacity of the shadow color is determined by this attribute, overriding the alpha value in shadowColor.
 
 **Type:** number
 
@@ -2798,6 +2898,8 @@ Sets the alpha value of the shadow color for this RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-set shadowAlpha(alpha: number)--><!--Device-RenderNode-set shadowAlpha(alpha: number)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2817,6 +2919,8 @@ Get shadow alpha of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get shadowAlpha(): number--><!--Device-RenderNode-get shadowAlpha(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2881,6 +2985,8 @@ Sets the shadow color for this RenderNode, in ARGB format. If shadowAlpha is set
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set shadowColor(color: number)--><!--Device-RenderNode-set shadowColor(color: number)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2899,6 +3005,8 @@ Get shadow color of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get shadowColor(): number--><!--Device-RenderNode-get shadowColor(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2951,7 +3059,7 @@ struct Index {
 set shadowElevation(elevation: number)
 ```
 
-Sets the shadow elevation for this RenderNode.
+Sets the shadow elevation of the current RenderNode. The shadow elevation simulates the height of the light source relative to the node. A larger value results in a more diffused shadow.
 
 **Type:** number
 
@@ -2960,6 +3068,8 @@ Sets the shadow elevation for this RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-set shadowElevation(elevation: number)--><!--Device-RenderNode-set shadowElevation(elevation: number)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2979,6 +3089,8 @@ Get shadow elevation of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get shadowElevation(): number--><!--Device-RenderNode-get shadowElevation(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3042,6 +3154,8 @@ Sets the shadow offset for this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set shadowOffset(offset: Offset)--><!--Device-RenderNode-set shadowOffset(offset: Offset)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3060,6 +3174,8 @@ Get shadow offset of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get shadowOffset(): Offset--><!--Device-RenderNode-get shadowOffset(): Offset-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3123,6 +3239,8 @@ Sets the shadow blur radius for this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set shadowRadius(radius: number)--><!--Device-RenderNode-set shadowRadius(radius: number)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3141,6 +3259,8 @@ Get shadow radius of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get shadowRadius(): number--><!--Device-RenderNode-get shadowRadius(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3210,6 +3330,8 @@ Sets the clipping shape for this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set shapeClip(shapeClip: ShapeClip)--><!--Device-RenderNode-set shapeClip(shapeClip: ShapeClip)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3225,6 +3347,8 @@ Get shape clip of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get shapeClip(): ShapeClip--><!--Device-RenderNode-get shapeClip(): ShapeClip-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3344,6 +3468,8 @@ Sets the mask for this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set shapeMask(shapeMask: ShapeMask)--><!--Device-RenderNode-set shapeMask(shapeMask: ShapeMask)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3359,6 +3485,8 @@ Get shape mask of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get shapeMask(): ShapeMask--><!--Device-RenderNode-get shapeMask(): ShapeMask-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3418,7 +3546,7 @@ struct Index {
 set size(size: Size)
 ```
 
-Sets the size for this RenderNode.
+Sets the size of the current RenderNode. When used together with frame, the one set later prevails.
 
 **Type:** Size
 
@@ -3427,6 +3555,8 @@ Sets the size for this RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-set size(size: Size)--><!--Device-RenderNode-set size(size: Size)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3446,6 +3576,8 @@ Get frame size of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get size(): Size--><!--Device-RenderNode-get size(): Size-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3506,6 +3638,8 @@ Sets the transformation matrix for this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set transform(transform: Matrix4)--><!--Device-RenderNode-set transform(transform: Matrix4)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3524,6 +3658,8 @@ Get transform info of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get transform(): Matrix4--><!--Device-RenderNode-get transform(): Matrix4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3590,6 +3726,8 @@ Sets the translation amount for this RenderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderNode-set translation(translation: Translation)--><!--Device-RenderNode-set translation(translation: Translation)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3608,6 +3746,8 @@ Get translation vector of the RenderNode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderNode-get translation(): Translation--><!--Device-RenderNode-get translation(): Translation-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

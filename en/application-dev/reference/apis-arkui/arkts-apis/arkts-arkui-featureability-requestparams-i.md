@@ -10,6 +10,8 @@ export interface RequestParams
 
 **Deprecated since:** 8
 
+<!--Device-unnamed-export interface RequestParams--><!--Device-unnamed-export interface RequestParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## abilityName
@@ -25,6 +27,8 @@ Ability name, which is case sensitive.
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-RequestParams-abilityName?: string--><!--Device-RequestParams-abilityName?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -42,6 +46,8 @@ Without specifying the bundle name and ability name, you can start the applicati
 
 **Deprecated since:** 8
 
+<!--Device-RequestParams-action?: string--><!--Device-RequestParams-action?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## bundleName
@@ -57,6 +63,8 @@ The name of the bundle to start. It should be used with abilityname and case sen
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-RequestParams-bundleName?: string--><!--Device-RequestParams-bundleName?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -74,6 +82,8 @@ Data sent to the ability which need to be serializable.
 
 **Deprecated since:** 8
 
+<!--Device-RequestParams-data?: object--><!--Device-RequestParams-data?: object-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## deviceType
@@ -89,6 +99,8 @@ If more than one FA meets the conditions, the user can select the device from th
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-RequestParams-deviceType?: number--><!--Device-RequestParams-deviceType?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -106,6 +118,8 @@ The list of entities to which the FA to be called. If it is not filled in, all e
 
 **Deprecated since:** 8
 
+<!--Device-RequestParams-entities?: Array<string>--><!--Device-RequestParams-entities?: Array<string>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## flag
@@ -122,6 +136,8 @@ Configuration switch when start FA.
 
 **Deprecated since:** 8
 
+<!--Device-RequestParams-flag?: number--><!--Device-RequestParams-flag?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## url
@@ -137,5 +153,7 @@ Specify the url of the page which the FA to be called. Use home page directly by
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-RequestParams-url?: string--><!--Device-RequestParams-url?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite

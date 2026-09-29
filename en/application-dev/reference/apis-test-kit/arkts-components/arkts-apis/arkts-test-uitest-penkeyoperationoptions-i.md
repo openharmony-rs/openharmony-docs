@@ -8,6 +8,8 @@ Pen key operation options.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface PenKeyOperationOptions--><!--Device-unnamed-declare interface PenKeyOperationOptions-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -33,7 +35,9 @@ The coordinate point for air mouse mode operations. Required when key is AIR_MOU
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-PenKeyOperationOptions-point?: Point--><!--Device-PenKeyOperationOptions-point?: Point-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

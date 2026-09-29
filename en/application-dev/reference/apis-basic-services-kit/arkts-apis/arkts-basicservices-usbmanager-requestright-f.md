@@ -16,6 +16,8 @@ Requests the temporary permission for the app to access the device. This API use
 
 **Since:** 9
 
+<!--Device-usbManager-function requestRight(deviceName: string): Promise<boolean>--><!--Device-usbManager-function requestRight(deviceName: string): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

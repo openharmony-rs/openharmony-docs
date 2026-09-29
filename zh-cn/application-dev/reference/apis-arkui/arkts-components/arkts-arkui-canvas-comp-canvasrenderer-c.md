@@ -18,6 +18,8 @@ CanvasRenderingContext2D对象与Canvas组件绑定后，可在Canvas组件上�
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class CanvasRenderer extends CanvasPath--><!--Device-unnamed-declare class CanvasRenderer extends CanvasPath-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## beginPath
@@ -36,6 +38,8 @@ beginPath(): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-beginPath(): void--><!--Device-CanvasRenderer-beginPath(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## clearRect
@@ -53,6 +57,8 @@ clearRect(x: number, y: number, w: number, h: number): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-clearRect(x: number, y: number, w: number, h: number): void--><!--Device-CanvasRenderer-clearRect(x: number, y: number, w: number, h: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -81,6 +87,8 @@ clip(fillRule?: CanvasFillRule): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-clip(fillRule?: CanvasFillRule): void--><!--Device-CanvasRenderer-clip(fillRule?: CanvasFillRule): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -104,6 +112,8 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-clip(path: Path2D, fillRule?: CanvasFillRule): void--><!--Device-CanvasRenderer-clip(path: Path2D, fillRule?: CanvasFillRule): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,6 +141,8 @@ createConicGradient(
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CanvasRenderer-createConicGradient(    startAngle: number,    x: number,    y: number  ): CanvasGradient--><!--Device-CanvasRenderer-createConicGradient(    startAngle: number,    x: number,    y: number  ): CanvasGradient-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,6 +175,8 @@ createImageData(sw: number, sh: number): ImageData
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-createImageData(sw: number, sh: number): ImageData--><!--Device-CanvasRenderer-createImageData(sw: number, sh: number): ImageData-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -197,6 +211,8 @@ createImageData(imageData: ImageData): ImageData
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-createImageData(imageData: ImageData): ImageData--><!--Device-CanvasRenderer-createImageData(imageData: ImageData): ImageData-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -226,6 +242,8 @@ createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGrad
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient--><!--Device-CanvasRenderer-createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -260,6 +278,8 @@ createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | nu
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | null--><!--Device-CanvasRenderer-createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | null-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -290,6 +310,8 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient--><!--Device-CanvasRenderer-createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -326,6 +348,8 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void--><!--Device-CanvasRenderer-drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -353,6 +377,8 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh:
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void--><!--Device-CanvasRenderer-drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -394,6 +420,8 @@ drawImage(
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-drawImage(    image: ImageBitmap | PixelMap,    sx: number,    sy: number,    sw: number,    sh: number,    dx: number,    dy: number,    dw: number,    dh: number,  ): void--><!--Device-CanvasRenderer-drawImage(    image: ImageBitmap | PixelMap,    sx: number,    sy: number,    sw: number,    sh: number,    dx: number,    dy: number,    dw: number,    dh: number,  ): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -426,6 +454,8 @@ fill(fillRule?: CanvasFillRule): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-fill(fillRule?: CanvasFillRule): void--><!--Device-CanvasRenderer-fill(fillRule?: CanvasFillRule): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -452,6 +482,8 @@ fill(path: Path2D, fillRule?: CanvasFillRule): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-fill(path: Path2D, fillRule?: CanvasFillRule): void--><!--Device-CanvasRenderer-fill(path: Path2D, fillRule?: CanvasFillRule): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -476,6 +508,8 @@ fillRect(x: number, y: number, w: number, h: number): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-fillRect(x: number, y: number, w: number, h: number): void--><!--Device-CanvasRenderer-fillRect(x: number, y: number, w: number, h: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -504,6 +538,8 @@ fillText(text: string, x: number, y: number, maxWidth?: number): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-fillText(text: string, x: number, y: number, maxWidth?: number): void--><!--Device-CanvasRenderer-fillText(text: string, x: number, y: number, maxWidth?: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -530,6 +566,8 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-getImageData(sx: number, sy: number, sw: number, sh: number): ImageData--><!--Device-CanvasRenderer-getImageData(sx: number, sy: number, sw: number, sh: number): ImageData-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -564,6 +602,8 @@ getLineDash(): number[]
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-getLineDash(): number[]--><!--Device-CanvasRenderer-getLineDash(): number[]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -585,6 +625,8 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CanvasRenderer-getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap--><!--Device-CanvasRenderer-getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -619,6 +661,8 @@ getTransform(): Matrix2D
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-getTransform(): Matrix2D--><!--Device-CanvasRenderer-getTransform(): Matrix2D-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -642,6 +686,8 @@ measureText(text: string): TextMetrics
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-measureText(text: string): TextMetrics--><!--Device-CanvasRenderer-measureText(text: string): TextMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -672,6 +718,8 @@ putImageData(imageData: ImageData, dx: number | string, dy: number | string): vo
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-putImageData(imageData: ImageData, dx: number | string, dy: number | string): void--><!--Device-CanvasRenderer-putImageData(imageData: ImageData, dx: number | string, dy: number | string): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -709,6 +757,8 @@ putImageData(
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-putImageData(    imageData: ImageData,    dx: number | string,    dy: number | string,    dirtyX: number | string,    dirtyY: number | string,    dirtyWidth: number | string,    dirtyHeight: number | string  ): void--><!--Device-CanvasRenderer-putImageData(    imageData: ImageData,    dx: number | string,    dy: number | string,    dirtyX: number | string,    dirtyY: number | string,    dirtyWidth: number | string,    dirtyHeight: number | string  ): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -737,6 +787,8 @@ reset(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CanvasRenderer-reset(): void--><!--Device-CanvasRenderer-reset(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## resetTransform
@@ -754,6 +806,8 @@ resetTransform(): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-resetTransform(): void--><!--Device-CanvasRenderer-resetTransform(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -773,6 +827,8 @@ restore(): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-restore(): void--><!--Device-CanvasRenderer-restore(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## restoreLayer
@@ -788,6 +844,8 @@ restoreLayer(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CanvasRenderer-restoreLayer(): void--><!--Device-CanvasRenderer-restoreLayer(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -806,6 +864,8 @@ rotate(angle: number): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-rotate(angle: number): void--><!--Device-CanvasRenderer-rotate(angle: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -831,6 +891,8 @@ save(): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-save(): void--><!--Device-CanvasRenderer-save(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## saveLayer
@@ -846,6 +908,8 @@ saveLayer(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CanvasRenderer-saveLayer(): void--><!--Device-CanvasRenderer-saveLayer(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -864,6 +928,8 @@ scale(x: number, y: number): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-scale(x: number, y: number): void--><!--Device-CanvasRenderer-scale(x: number, y: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -890,6 +956,8 @@ setLineDash(segments: number[]): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-setLineDash(segments: number[]): void--><!--Device-CanvasRenderer-setLineDash(segments: number[]): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -911,6 +979,8 @@ setPixelMap(value?: PixelMap): void
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CanvasRenderer-setPixelMap(value?: PixelMap): void--><!--Device-CanvasRenderer-setPixelMap(value?: PixelMap): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -946,6 +1016,8 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void--><!--Device-CanvasRenderer-setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -977,6 +1049,8 @@ setTransform(transform?: Matrix2D): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-setTransform(transform?: Matrix2D): void--><!--Device-CanvasRenderer-setTransform(transform?: Matrix2D): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1001,6 +1075,8 @@ stroke(): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-stroke(): void--><!--Device-CanvasRenderer-stroke(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <a id="stroke-1"></a>
@@ -1020,6 +1096,8 @@ stroke(path: Path2D): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-stroke(path: Path2D): void--><!--Device-CanvasRenderer-stroke(path: Path2D): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1044,6 +1122,8 @@ strokeRect(x: number, y: number, w: number, h: number): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-strokeRect(x: number, y: number, w: number, h: number): void--><!--Device-CanvasRenderer-strokeRect(x: number, y: number, w: number, h: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1072,6 +1152,8 @@ strokeText(text: string, x: number, y: number, maxWidth?: number): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-strokeText(text: string, x: number, y: number, maxWidth?: number): void--><!--Device-CanvasRenderer-strokeText(text: string, x: number, y: number, maxWidth?: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1098,6 +1180,8 @@ transferFromImageBitmap(bitmap: ImageBitmap): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-transferFromImageBitmap(bitmap: ImageBitmap): void--><!--Device-CanvasRenderer-transferFromImageBitmap(bitmap: ImageBitmap): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1133,6 +1217,8 @@ transform方法对应一个变换矩阵，想对一个图形进行变化的时�
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-transform(a: number, b: number, c: number, d: number, e: number, f: number): void--><!--Device-CanvasRenderer-transform(a: number, b: number, c: number, d: number, e: number, f: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1161,6 +1247,8 @@ translate(x: number, y: number): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-translate(x: number, y: number): void--><!--Device-CanvasRenderer-translate(x: number, y: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1195,6 +1283,8 @@ antialias: boolean | undefined
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
+<!--Device-CanvasRenderer-antialias: boolean | undefined--><!--Device-CanvasRenderer-antialias: boolean | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -1218,6 +1308,8 @@ direction: CanvasDirection
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-direction: CanvasDirection--><!--Device-CanvasRenderer-direction: CanvasDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1252,6 +1344,8 @@ fillStyle: string | number | CanvasGradient | CanvasPattern
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-fillStyle: string | number | CanvasGradient | CanvasPattern--><!--Device-CanvasRenderer-fillStyle: string | number | CanvasGradient | CanvasPattern-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1288,6 +1382,8 @@ filter: string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-filter: string--><!--Device-CanvasRenderer-filter: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## font
@@ -1300,7 +1396,7 @@ font: string
 
 语法：ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family'<br>-&nbsp;font-style(可选)，用于指定字体样式，支持如下几种样式：'normal','italic'。<br>-&nbsp;font-weight(可选)，用于指定字体的粗细，支持如下几种类型：'normal',&nbsp;'bold', &nbsp;'bolder',&nbsp;'lighter',&nbsp;100,&nbsp;200,&nbsp;300,&nbsp;400,&nbsp;500,&nbsp;600, &nbsp;700,&nbsp;800,&nbsp;900。<br>-&nbsp;font-size(可选)，指定字号和行高，单位支持px、vp。使用时需要添加单位。<br>-&nbsp;font-family(可选)，指定字体系列，支持如下几种类型：'sans-serif',&nbsp;'serif', &nbsp;'monospace'。
 
-从API version 20开始，支持通过该接口设置注册过的自定义字体（DevEco Studio的预览器不支持显示自定义字体）。自定义字体注册有以下两种方式。一种是通过ArkUI的异步接口this.uiContext.getFont().[registerFont](../arkts-apis/arkts-arkui-arkui-uicontext-font-c.md#registerfont)注册，调用后立即绘制可能会导致自定义字体不生效。另一种是直接调用字体引擎的fontCollection.loadFontSync接口来注册自定义字体到字体引擎。在直接调用字体引擎接口注册自定义字体时，fontCollection的实例需要是text.FontCollection.getGlobalInstance()，因为组件默认会从该实例加载字体。如果使用其他实例，可能会导致自定义字体不生效。
+从API version 20开始，支持通过该接口设置注册过的自定义字体（DevEco Studio的预览器不支持显示自定义字体）。自定义字体注册有以下两种方式。一种是通过ArkUI的异步接口this.uiContext.getFont().[registerFont](../arkts-apis/arkts-arkui-arkui-uicontext-font-c.md#registerfont)注册，调用后立即绘制可能会导致自定义字体不生效。另一种是直接调用字体引擎的fontCollection.[loadFontSync](../../../reference/apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口来注册自定义字体到字体引擎。在直接调用字体引擎接口注册自定义字体时，fontCollection的实例需要是text.FontCollection.getGlobalInstance()，因为组件默认会从该实例加载字体。如果使用其他实例，可能会导致自定义字体不生效。
 
 **类型：** string
 
@@ -1313,6 +1409,8 @@ font: string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-font: string--><!--Device-CanvasRenderer-font: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1341,6 +1439,8 @@ API version 18之前，设置NaN或Infinity时，在该方法后执行的绘制�
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-globalAlpha: number--><!--Device-CanvasRenderer-globalAlpha: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1382,6 +1482,8 @@ globalCompositeOperation: string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-globalCompositeOperation: string--><!--Device-CanvasRenderer-globalCompositeOperation: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageSmoothingEnabled
@@ -1406,6 +1508,8 @@ imageSmoothingEnabled: boolean
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-imageSmoothingEnabled: boolean--><!--Device-CanvasRenderer-imageSmoothingEnabled: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageSmoothingQuality
@@ -1429,6 +1533,8 @@ imageSmoothingEnabled为true时，用于设置图像平滑度，此属性为只�
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-imageSmoothingQuality: ImageSmoothingQuality--><!--Device-CanvasRenderer-imageSmoothingQuality: ImageSmoothingQuality-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1476,6 +1582,8 @@ letterSpacing: LengthMetrics | string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CanvasRenderer-letterSpacing: LengthMetrics | string--><!--Device-CanvasRenderer-letterSpacing: LengthMetrics | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## lineCap
@@ -1497,6 +1605,8 @@ lineCap: CanvasLineCap
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-lineCap: CanvasLineCap--><!--Device-CanvasRenderer-lineCap: CanvasLineCap-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1528,6 +1638,8 @@ API version 18之前，设置NaN或Infinity时，设置了虚线样式的线条�
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-lineDashOffset: number--><!--Device-CanvasRenderer-lineDashOffset: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## lineJoin
@@ -1549,6 +1661,8 @@ lineJoin: CanvasLineJoin
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-lineJoin: CanvasLineJoin--><!--Device-CanvasRenderer-lineJoin: CanvasLineJoin-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1578,6 +1692,8 @@ lineWidth取值不支持0和负数，0、负数和NaN按默认值处理，Infini
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-lineWidth: number--><!--Device-CanvasRenderer-lineWidth: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## miterLimit
@@ -1605,6 +1721,8 @@ miterLimit取值不支持0和负数，0、负数和NaN按默认值处理，Infin
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-miterLimit: number--><!--Device-CanvasRenderer-miterLimit: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1636,6 +1754,8 @@ shadowBlur取值不支持负数，负数、NaN和Infinity按默认值处理。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-shadowBlur: number--><!--Device-CanvasRenderer-shadowBlur: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadowColor
@@ -1661,6 +1781,8 @@ shadowColor: string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-shadowColor: string--><!--Device-CanvasRenderer-shadowColor: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1690,6 +1812,8 @@ shadowOffsetX: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-shadowOffsetX: number--><!--Device-CanvasRenderer-shadowOffsetX: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadowOffsetY
@@ -1717,6 +1841,8 @@ shadowOffsetY: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-shadowOffsetY: number--><!--Device-CanvasRenderer-shadowOffsetY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1752,6 +1878,8 @@ strokeStyle: string | number | CanvasGradient | CanvasPattern
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-strokeStyle: string | number | CanvasGradient | CanvasPattern--><!--Device-CanvasRenderer-strokeStyle: string | number | CanvasGradient | CanvasPattern-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## textAlign
@@ -1778,6 +1906,8 @@ ltr布局模式下'start'和'left'一致，rtl布局模式下'start'和'right'�
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderer-textAlign: CanvasTextAlign--><!--Device-CanvasRenderer-textAlign: CanvasTextAlign-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## textBaseline
@@ -1801,5 +1931,7 @@ textBaseline: CanvasTextBaseline
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderer-textBaseline: CanvasTextBaseline--><!--Device-CanvasRenderer-textBaseline: CanvasTextBaseline-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

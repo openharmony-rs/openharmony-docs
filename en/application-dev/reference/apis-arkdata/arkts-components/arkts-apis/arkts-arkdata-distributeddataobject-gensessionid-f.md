@@ -16,6 +16,8 @@ Creates a random session ID.
 
 **Since:** 8
 
+<!--Device-distributedDataObject-function genSessionId(): string--><!--Device-distributedDataObject-function genSessionId(): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
 **Return value:**

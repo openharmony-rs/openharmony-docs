@@ -18,6 +18,8 @@ Unregisters the listener for printer state change events. This API uses a callba
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function off(type: 'printerStateChange', callback?: Callback<boolean>): void--><!--Device-print-function off(type: 'printerStateChange', callback?: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.
@@ -60,6 +62,8 @@ Unregisters the listener for print job state change events. This API uses a call
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function off(type: 'jobStateChange', callback?: Callback<boolean>): void--><!--Device-print-function off(type: 'jobStateChange', callback?: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.
@@ -101,6 +105,8 @@ Unregisters the listener for printer extension information change events. This A
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function off(type: 'extInfoChange', callback?: Callback<boolean>): void--><!--Device-print-function off(type: 'extInfoChange', callback?: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

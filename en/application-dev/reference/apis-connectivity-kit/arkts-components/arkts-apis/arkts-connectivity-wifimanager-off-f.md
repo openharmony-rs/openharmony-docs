@@ -22,6 +22,8 @@ All callback functions will be deregistered If there is no specific callback par
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-wifiManager-function off(type: 'wifiStateChange', callback?: Callback<number>): void--><!--Device-wifiManager-function off(type: 'wifiStateChange', callback?: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Parameters:**
@@ -70,6 +72,8 @@ Unsubscribe Wi-Fi connection change events. All callback functions will be dereg
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-wifiManager-function off(type: 'wifiConnectionChange', callback?: Callback<number>): void--><!--Device-wifiManager-function off(type: 'wifiConnectionChange', callback?: Callback<number>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -120,6 +124,8 @@ Unsubscribe Wi-Fi scan status change events. All callback functions will be dere
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-wifiManager-function off(type: 'wifiScanStateChange', callback?: Callback<number>): void--><!--Device-wifiManager-function off(type: 'wifiScanStateChange', callback?: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Parameters:**
@@ -166,6 +172,8 @@ Unsubscribe Wi-Fi rssi change events. All callback functions will be deregistere
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManager-function off(type: 'wifiRssiChange', callback?: Callback<number>): void--><!--Device-wifiManager-function off(type: 'wifiRssiChange', callback?: Callback<number>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -214,6 +222,8 @@ Unsubscribe Wi-Fi hotspot state change events. All callback functions will be de
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function off(type: 'hotspotStateChange', callback?: Callback<number>): void--><!--Device-wifiManager-function off(type: 'hotspotStateChange', callback?: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 **Parameters:**
@@ -260,6 +270,8 @@ Unsubscribe P2P status change events.
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManager-function off(type: 'p2pStateChange', callback?: Callback<number>): void--><!--Device-wifiManager-function off(type: 'p2pStateChange', callback?: Callback<number>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -308,6 +320,8 @@ Unsubscribe P2P connection change events.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function off(type: 'p2pConnectionChange', callback?: Callback<WifiP2pLinkedInfo>): void--><!--Device-wifiManager-function off(type: 'p2pConnectionChange', callback?: Callback<WifiP2pLinkedInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Parameters:**
@@ -353,6 +367,8 @@ Unsubscribe P2P local device change events.
 
 **Since:** 10
 
+<!--Device-wifiManager-function off(type: 'p2pDeviceChange', callback?: Callback<WifiP2pDevice>): void--><!--Device-wifiManager-function off(type: 'p2pDeviceChange', callback?: Callback<WifiP2pDevice>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Parameters:**
@@ -397,6 +413,8 @@ function off(type: 'p2pPeerDeviceChange', callback?: Callback<WifiP2pDevice[]>):
 Unsubscribe P2P peer device change events.
 
 **Since:** 10
+
+<!--Device-wifiManager-function off(type: 'p2pPeerDeviceChange', callback?: Callback<WifiP2pDevice[]>): void--><!--Device-wifiManager-function off(type: 'p2pPeerDeviceChange', callback?: Callback<WifiP2pDevice[]>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -445,6 +463,8 @@ Unsubscribe P2P persistent group change events.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function off(type: 'p2pPersistentGroupChange', callback?: Callback<void>): void--><!--Device-wifiManager-function off(type: 'p2pPersistentGroupChange', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Parameters:**
@@ -491,6 +511,8 @@ Unsubscribe P2P discovery events.
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManager-function off(type: 'p2pDiscoveryChange', callback?: Callback<number>): void--><!--Device-wifiManager-function off(type: 'p2pDiscoveryChange', callback?: Callback<number>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 

@@ -8,6 +8,8 @@ Represents the font variable axis information.
 
 **Since:** 24
 
+<!--Device-text-interface FontVariationAxis--><!--Device-text-interface FontVariationAxis-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Default value of the font variable axis.
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-FontVariationAxis-defaultValue: double--><!--Device-FontVariationAxis-defaultValue: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -44,7 +48,9 @@ Flag of the font variable axis, which is used to indicate whether a variable axi
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-FontVariationAxis-flags: int--><!--Device-FontVariationAxis-flags: int-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -60,7 +66,9 @@ Keyword identifier of the font variable axis.
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-FontVariationAxis-key: string--><!--Device-FontVariationAxis-key: string-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -76,7 +84,9 @@ Localized name of the font variable axis, which can be empty.
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-FontVariationAxis-localName: string--><!--Device-FontVariationAxis-localName: string-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -92,7 +102,9 @@ Maximum value of the font variable axis.
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-FontVariationAxis-maxValue: double--><!--Device-FontVariationAxis-maxValue: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -108,7 +120,9 @@ Minimum value of the font variable axis.
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-FontVariationAxis-minValue: double--><!--Device-FontVariationAxis-minValue: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -124,6 +138,8 @@ English name of the font variable axis.
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-FontVariationAxis-name: string--><!--Device-FontVariationAxis-name: string-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

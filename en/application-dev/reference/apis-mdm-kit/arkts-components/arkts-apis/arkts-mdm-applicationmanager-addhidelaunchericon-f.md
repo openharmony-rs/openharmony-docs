@@ -28,6 +28,8 @@ Adds applications to the home screen icon hide list.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function addHideLauncherIcon(admin: Want, bundleNames: Array<string>): void--><!--Device-applicationManager-function addHideLauncherIcon(admin: Want, bundleNames: Array<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

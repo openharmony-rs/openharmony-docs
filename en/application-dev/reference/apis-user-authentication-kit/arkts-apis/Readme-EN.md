@@ -50,10 +50,12 @@
   - [DeviceIdType(system api)](arkts-userauthentication-companiondeviceauth-deviceidtype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [SelectPurpose(system api)](arkts-userauthentication-companiondeviceauth-selectpurpose-e-sys.md)<!--DelEnd-->
-- [@ohos.userIAM.faceAuth(Facial Authentication)](arkts-userauthentication-useriam-faceauth.md)
+<!--Del-->
+- [@ohos.userIAM.faceAuth(Facial Authentication)](arkts-userauthentication-useriam-faceauth.md)<!--DelEnd-->
   <!--Del-->
   - [FaceAuthManager(system api)](arkts-userauthentication-faceauth-faceauthmanager-c-sys.md)<!--DelEnd-->
-- [@ohos.userIAM.userAccessCtrl(User Access Control)](arkts-userauthentication-useriam-useraccessctrl.md)
+<!--Del-->
+- [@ohos.userIAM.userAccessCtrl(User Access Control)](arkts-userauthentication-useriam-useraccessctrl.md)<!--DelEnd-->
   <!--Del-->
   - [verifyAuthToken(system api)](arkts-userauthentication-useraccessctrl-verifyauthtoken-f-sys.md)<!--DelEnd-->
   <!--Del-->

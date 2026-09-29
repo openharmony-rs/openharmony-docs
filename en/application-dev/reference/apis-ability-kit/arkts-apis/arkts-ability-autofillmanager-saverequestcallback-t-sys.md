@@ -10,6 +10,8 @@ Defines the callback for an automatic or a manual saving request.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-autoFillManager-export type SaveRequestCallback = _AutoFillRequest.SaveRequestCallback--><!--Device-autoFillManager-export type SaveRequestCallback = _AutoFillRequest.SaveRequestCallback-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.

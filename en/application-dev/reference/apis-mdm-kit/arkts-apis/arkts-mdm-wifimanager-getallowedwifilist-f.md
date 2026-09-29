@@ -20,6 +20,8 @@ Obtains Wi-Fi networks from the allowed list.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function getAllowedWifiList(admin: Want): Array<WifiAccessInfo>--><!--Device-wifiManager-function getAllowedWifiList(admin: Want): Array<WifiAccessInfo>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -77,6 +79,8 @@ Obtains Wi-Fi networks from the allowed list.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-wifiManager-function getAllowedWifiList(admin: Want | null): Array<WifiAccessInfo>--><!--Device-wifiManager-function getAllowedWifiList(admin: Want | null): Array<WifiAccessInfo>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -20,6 +20,8 @@ Query all tool summary information. The summary information only contains the fi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-cliManager-function queryToolSummaries(): Promise<Array<ToolSummary>>--><!--Device-cliManager-function queryToolSummaries(): Promise<Array<ToolSummary>>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

@@ -10,6 +10,8 @@ Represents optional element for the ResolvedSymbolDateTimeFormatOptions object. 
 
 **Since:** 26.0.0
 
+<!--Device-i18n-export interface ResolvedSymbolDateTimeFormatOptions extends Intl.ResolvedDateTimeFormatOptions--><!--Device-i18n-export interface ResolvedSymbolDateTimeFormatOptions extends Intl.ResolvedDateTimeFormatOptions-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -33,5 +35,7 @@ AM and PM symbol of date time period part, such as "PM" of "2:23 PM". First para
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ResolvedSymbolDateTimeFormatOptions-amPMSymbol?: string[]--><!--Device-ResolvedSymbolDateTimeFormatOptions-amPMSymbol?: string[]-End-->
 
 **System capability:** SystemCapability.Global.I18n

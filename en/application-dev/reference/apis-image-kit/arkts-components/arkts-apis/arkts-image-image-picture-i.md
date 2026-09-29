@@ -10,6 +10,8 @@ Images occupy a large amount of memory. When you finish using a Picture instance
 
 **Since:** 13
 
+<!--Device-image-interface Picture--><!--Device-image-interface Picture-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ getAuxiliaryPicture(type: AuxiliaryPictureType): AuxiliaryPicture | null
 Obtains an auxiliary picture by type.
 
 **Since:** 13
+
+<!--Device-Picture-getAuxiliaryPicture(type: AuxiliaryPictureType): AuxiliaryPicture | null--><!--Device-Picture-getAuxiliaryPicture(type: AuxiliaryPictureType): AuxiliaryPicture | null-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -68,6 +72,8 @@ getGainmapPixelmap(): PixelMap | null
 Obtains the PixelMap object of the gain map.
 
 **Since:** 13
+
+<!--Device-Picture-getGainmapPixelmap(): PixelMap | null--><!--Device-Picture-getGainmapPixelmap(): PixelMap | null-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -114,6 +120,8 @@ getHdrComposedPixelmap(): Promise<PixelMap>
 Generates a High Dynamic Range (HDR) image and obtains its PixelMap object. This API uses a promise to return the result.
 
 **Since:** 13
+
+<!--Device-Picture-getHdrComposedPixelmap(): Promise<PixelMap>--><!--Device-Picture-getHdrComposedPixelmap(): Promise<PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -167,6 +175,8 @@ The Picture object that calls this API must contain the main picture, gain map, 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Picture-getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise<PixelMap | undefined>--><!--Device-Picture-getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise<PixelMap | undefined>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -230,6 +240,8 @@ Obtains the PixelMap object of the main picture. This API returns the result syn
 
 **Since:** 13
 
+<!--Device-Picture-getMainPixelmap(): PixelMap--><!--Device-Picture-getMainPixelmap(): PixelMap-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -271,6 +283,8 @@ getMetadata(metadataType: MetadataType): Promise<Metadata>
 Obtains the metadata of this Picture object. This API uses a promise to return the result.
 
 **Since:** 13
+
+<!--Device-Picture-getMetadata(metadataType: MetadataType): Promise<Metadata>--><!--Device-Picture-getMetadata(metadataType: MetadataType): Promise<Metadata>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -325,6 +339,8 @@ The Picture object that calls this API must contain the main pixelmap, gain map.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Picture-hdrComposeToMainPixelmap(): Promise<void>--><!--Device-Picture-hdrComposeToMainPixelmap(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -368,6 +384,8 @@ marshalling(sequence: rpc.MessageSequence): void
 Marshals this Picture object and writes it to a MessageSequence object.
 
 **Since:** 13
+
+<!--Device-Picture-marshalling(sequence: rpc.MessageSequence): void--><!--Device-Picture-marshalling(sequence: rpc.MessageSequence): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -445,6 +463,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 13
 
+<!--Device-Picture-release(): void--><!--Device-Picture-release(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Examples**
@@ -474,6 +494,8 @@ setAuxiliaryPicture(type: AuxiliaryPictureType, auxiliaryPicture: AuxiliaryPictu
 Sets an auxiliary picture.
 
 **Since:** 13
+
+<!--Device-Picture-setAuxiliaryPicture(type: AuxiliaryPictureType, auxiliaryPicture: AuxiliaryPicture): void--><!--Device-Picture-setAuxiliaryPicture(type: AuxiliaryPictureType, auxiliaryPicture: AuxiliaryPicture): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -530,6 +552,8 @@ Sets the PixelMap object of the picture.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Picture-setMainPixelmap(pixelmap: PixelMap): void--><!--Device-Picture-setMainPixelmap(pixelmap: PixelMap): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -553,6 +577,8 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise<void>
 Sets the metadata for this Picture object. This API uses a promise to return the result.
 
 **Since:** 13
+
+<!--Device-Picture-setMetadata(metadataType: MetadataType, metadata: Metadata): Promise<void>--><!--Device-Picture-setMetadata(metadataType: MetadataType, metadata: Metadata): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

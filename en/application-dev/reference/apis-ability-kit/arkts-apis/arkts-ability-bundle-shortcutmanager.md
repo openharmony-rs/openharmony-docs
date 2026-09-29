@@ -4,6 +4,8 @@ This module provides the application's management capabilities for shortcuts, in
 
 **Since:** 20
 
+<!--Device-unnamed-declare namespace shortcutManager--><!--Device-unnamed-declare namespace shortcutManager-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
 ## Modules to Import

@@ -24,6 +24,8 @@ Registers a listener for monitoring the font service status.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-fontManager-function onFontObserver(observer: FontClientObserver): void--><!--Device-fontManager-function onFontObserver(observer: FontClientObserver): void-End-->
+
 **System capability:** SystemCapability.Global.FontManager
 
 **Parameters:**

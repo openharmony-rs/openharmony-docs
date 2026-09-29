@@ -12,6 +12,8 @@ UIServiceExtensionConnectCallback provides callbacks for the connection to a UIS
 
 **Since:** 14
 
+<!--Device-unnamed-export default interface UIServiceExtensionConnectCallback--><!--Device-unnamed-export default interface UIServiceExtensionConnectCallback-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## onData
@@ -32,6 +34,8 @@ Called to receive data when a connection to the UIServiceExtensionAbility is est
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-UIServiceExtensionConnectCallback-onData(data: Record<string, Object>): void--><!--Device-UIServiceExtensionConnectCallback-onData(data: Record<string, Object>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -144,7 +148,9 @@ Called when the connection to the UIServiceExtensionAbility is interrupted.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-UIServiceExtensionConnectCallback-onDisconnect(): void--><!--Device-UIServiceExtensionConnectCallback-onDisconnect(): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

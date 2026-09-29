@@ -12,6 +12,8 @@ Enumerates power role types.
 
 **Substitutes:** [PowerRoleType](arkts-basicservices-usbmanager-powerroletype-e-sys.md)
 
+<!--Device-usb-export enum PowerRoleType--><!--Device-usb-export enum PowerRoleType-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ None
 **Deprecated since:** 9
 
 **Substitutes:** [NONE](arkts-basicservices-usbmanager-powerroletype-e-sys.md#none)
+
+<!--Device-PowerRoleType-NONE = 0--><!--Device-PowerRoleType-NONE = 0-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -48,6 +52,8 @@ External power supply.
 
 **Substitutes:** [SOURCE](arkts-basicservices-usbmanager-powerroletype-e-sys.md#source)
 
+<!--Device-PowerRoleType-SOURCE = 1--><!--Device-PowerRoleType-SOURCE = 1-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -65,6 +71,8 @@ Internal power supply.
 **Deprecated since:** 9
 
 **Substitutes:** [SINK](arkts-basicservices-usbmanager-powerroletype-e-sys.md#sink)
+
+<!--Device-PowerRoleType-SINK = 2--><!--Device-PowerRoleType-SINK = 2-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 

@@ -8,6 +8,8 @@ Provides recording strategy management, including collaborative recording and re
 
 **Since:** 26.0.0
 
+<!--Device-audio-interface AudioRecordingManager--><!--Device-audio-interface AudioRecordingManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Enables or disables the system recording controller panel. The application can c
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioRecordingManager-enableSystemRecordController(show: boolean, config: SystemRecordControllerConfig): Promise<void>--><!--Device-AudioRecordingManager-enableSystemRecordController(show: boolean, config: SystemRecordControllerConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 

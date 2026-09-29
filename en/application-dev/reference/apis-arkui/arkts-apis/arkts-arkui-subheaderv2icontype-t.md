@@ -14,6 +14,8 @@ SubHeaderV2IconType
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier--><!--Device-unnamed-declare type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

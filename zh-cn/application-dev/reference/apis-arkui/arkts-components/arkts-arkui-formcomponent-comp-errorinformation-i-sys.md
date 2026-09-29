@@ -8,6 +8,8 @@ interface ErrorInformation
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface ErrorInformation--><!--Device-unnamed-interface ErrorInformation-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -24,6 +26,8 @@ errcode: number
 
 **起始版本：** 18
 
+<!--Device-ErrorInformation-errcode: number--><!--Device-ErrorInformation-errcode: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -39,6 +43,8 @@ msg: string
 **类型：** string
 
 **起始版本：** 18
+
+<!--Device-ErrorInformation-msg: string--><!--Device-ErrorInformation-msg: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

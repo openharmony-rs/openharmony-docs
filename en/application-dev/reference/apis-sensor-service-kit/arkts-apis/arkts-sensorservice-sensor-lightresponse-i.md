@@ -10,6 +10,8 @@ Describes the ambient light sensor data. It extends from [Response](arkts-sensor
 
 **Since:** 8
 
+<!--Device-sensor-interface LightResponse extends Response--><!--Device-sensor-interface LightResponse extends Response-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 ## Modules to Import
@@ -24,11 +26,13 @@ import { sensor } from '@kit.SensorServiceKit';
 colorTemperature?: number
 ```
 
-Color temperature, in Kelvin. This parameter is optional. If this parameter is not supported, a fixed value (customized by the sensor) is returned. If this parameter is supported, a normal value is returned.
+Color temperature, in K (Kelvin). This parameter is optional. If this parameter is not supported, a fixed value (customized by the sensor) is returned. If this parameter is supported, a normal value is returned.
 
 **Type:** number
 
 **Since:** 12
+
+<!--Device-LightResponse-colorTemperature?: double--><!--Device-LightResponse-colorTemperature?: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -38,11 +42,13 @@ Color temperature, in Kelvin. This parameter is optional. If this parameter is n
 infraredLuminance?: number
 ```
 
-Infrared luminance, in cd/m?. This parameter is optional. If this parameter is not supported, a fixed value (customized by the sensor) is returned. If this parameter is supported, a normal value is returned.
+Infrared luminance. in cd/m². This parameter is optional. If this parameter is not supported, a fixed value (customized by the sensor) is returned. If this parameter is supported, a normal value is returned.
 
 **Type:** number
 
 **Since:** 12
+
+<!--Device-LightResponse-infraredLuminance?: double--><!--Device-LightResponse-infraredLuminance?: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -52,10 +58,12 @@ Infrared luminance, in cd/m?. This parameter is optional. If this parameter is n
 intensity: number
 ```
 
-Illumination, in lux.
+Ambient light intensity, in lux.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-LightResponse-intensity: double--><!--Device-LightResponse-intensity: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

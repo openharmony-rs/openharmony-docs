@@ -16,7 +16,9 @@ Obtains the information about the primary display. For devices other than 2-in-1
 
 **Since:** 14
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-display-function getPrimaryDisplaySync(): Display--><!--Device-display-function getPrimaryDisplaySync(): Display-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

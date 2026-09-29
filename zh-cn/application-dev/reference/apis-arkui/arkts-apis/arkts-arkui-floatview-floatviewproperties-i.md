@@ -8,6 +8,8 @@ interface FloatViewProperties
 
 **起始版本：** 26.0.0
 
+<!--Device-floatView-interface FloatViewProperties--><!--Device-floatView-interface FloatViewProperties-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -34,6 +36,8 @@ avoidArea: window.AvoidArea
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewProperties-avoidArea: window.AvoidArea--><!--Device-FloatViewProperties-avoidArea: window.AvoidArea-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## displayId
@@ -49,6 +53,8 @@ displayId: number
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewProperties-displayId: int--><!--Device-FloatViewProperties-displayId: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -66,6 +72,8 @@ inSidebar: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewProperties-inSidebar: boolean--><!--Device-FloatViewProperties-inSidebar: boolean-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## templateType
@@ -81,6 +89,8 @@ templateType: FloatViewTemplateType
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewProperties-templateType: FloatViewTemplateType--><!--Device-FloatViewProperties-templateType: FloatViewTemplateType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -98,6 +108,8 @@ windowId: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewProperties-windowId: int--><!--Device-FloatViewProperties-windowId: int-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## windowRect
@@ -114,6 +126,8 @@ windowRect: window.Rect
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewProperties-windowRect: window.Rect--><!--Device-FloatViewProperties-windowRect: window.Rect-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## windowScale
@@ -129,5 +143,7 @@ windowScale: number
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewProperties-windowScale: double--><!--Device-FloatViewProperties-windowScale: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

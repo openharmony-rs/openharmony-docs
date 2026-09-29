@@ -4,11 +4,11 @@ Refresh是提供下拉刷新交互的容器组件，适用于列表数据刷新�
 
 > **说明：** 
 > 
-> - 该组件从API version 12开始支持与垂直滚动的Swiper和Web的联动。当Swiper设置[loop](arkts-arkui-swiper-comp-attribute.md#loop)属性为true时，Refresh无法和Swiper产生联动。
+> - 该组件从API version 12开始支持与垂直滚动的[Swiper](arkts-arkui-swiper-comp.md)和[Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md)的联动。当[Swiper](arkts-arkui-swiper-comp.md)设置[loop](arkts-arkui-swiper-comp-attribute.md#loop)属性为true时，Refresh无法和[Swiper](arkts-arkui-swiper-comp.md)产生联动。
 > 
-> - Refresh和内容大小小于组件自身的List组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果。此时可以将[alwaysEnabled](arkts-arkui-common-comp-edgeeffectoptions-i.md)参数设为true，List会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果。具体可以参考示例9（不满一屏场景实现下拉刷新）。
+> - Refresh和内容大小小于组件自身的[List](arkts-arkui-list-comp.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果。此时可以将[alwaysEnabled](arkts-arkui-common-comp-edgeeffectoptions-i.md)参数设为true，[List](arkts-arkui-list-comp.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果。具体可以参考[示例9（不满一屏场景实现下拉刷新）](arkts-arkui-refresh-comp.md)。
 > 
-> - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考手势拦截增强进行处理。
+> - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](arkts-arkui-common-comp.md)进行处理。
 > 
 > - 组件无法通过鼠标按下拖动操作进行下拉刷新。
 
@@ -31,6 +31,8 @@ Refresh(value: RefreshOptions)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RefreshInterface-(value: RefreshOptions): RefreshAttribute--><!--Device-RefreshInterface-(value: RefreshOptions): RefreshAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,7 +128,7 @@ struct RefreshExample {
 
 ### 示例2（设置刷新区域显示文本）
 
-通过promptText参数设置刷新区域显示文本。
+通过[promptText](#refreshoptions对象说明)参数设置刷新区域显示文本。
 
 
 
@@ -186,7 +188,7 @@ struct RefreshExample {
 
 ### 示例3（自定义刷新区域显示内容-builder）
 
-通过builder参数自定义刷新区域显示内容。
+通过[builder](#refreshoptions对象说明)参数自定义刷新区域显示内容。
 
 
 
@@ -258,7 +260,7 @@ struct RefreshExample {
 
 ### 示例4（自定义刷新区域显示内容-refreshingContent）
 
-通过refreshingContent参数自定义刷新区域显示内容。
+通过[refreshingContent](#refreshoptions对象说明)参数自定义刷新区域显示内容。
 
 
 
@@ -352,7 +354,7 @@ struct RefreshExample {
 
 ### 示例5（实现最大下拉距离）
 
-通过[pullDownRatio](arkts-arkui-refresh-comp-attribute.md#pulldownratio)属性和onOffsetChange事件实现最大下拉距离。
+通过[pullDownRatio](arkts-arkui-refresh-comp-attribute.md#pulldownratio)属性和[onOffsetChange](#onoffsetchange12)事件实现最大下拉距离。
 
 
 
@@ -438,7 +440,7 @@ struct RefreshExample {
 
 ### 示例6（实现下拉刷新上拉加载更多）
 
-Refresh组件与List组件组合实现下拉刷新上拉加载更多效果。
+Refresh组件与[List](ts-container-list.md)组件组合实现下拉刷新上拉加载更多效果。
 
 
 
@@ -667,7 +669,7 @@ struct RefreshExample {
 
 ### 示例9（不满一屏场景实现下拉刷新）
 
-调用edgeEffect时，将options参数的alwaysEnabled设置为true，可以在不满一屏的情况下实现Refresh组件的下拉刷新效果。
+调用[edgeEffect](ts-container-scrollable-common.md#edgeeffect11)时，将options参数的[alwaysEnabled](ts-container-scrollable-common.md#edgeeffectoptions11对象说明)设置为true，可以在不满一屏的情况下实现Refresh组件的下拉刷新效果。
 
 
 

@@ -8,6 +8,8 @@ Enumerates the security levels of the web page.
 
 **Since:** 11
 
+<!--Device-webview-enum SecurityLevel--><!--Device-webview-enum SecurityLevel-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## NONE
@@ -21,6 +23,8 @@ The web page is neither absolutely secure nor insecure, that is, neutral. A typi
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityLevel-NONE = 0--><!--Device-SecurityLevel-NONE = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ The web page is secure, using the HTTPS protocol and a trusted certificate.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SecurityLevel-SECURE = 1--><!--Device-SecurityLevel-SECURE = 1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## WARNING
@@ -50,6 +56,8 @@ The web page is insecure. A typical example is a web page that uses the HTTP or 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SecurityLevel-WARNING = 2--><!--Device-SecurityLevel-WARNING = 2-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## DANGEROUS
@@ -63,5 +71,7 @@ The web page is dangerous. This means that the page may have attempted to load H
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityLevel-DANGEROUS = 3--><!--Device-SecurityLevel-DANGEROUS = 3-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

@@ -8,6 +8,8 @@ interface SnapshotResult
 
 **起始版本：** 12
 
+<!--Device-webview-interface SnapshotResult--><!--Device-webview-interface SnapshotResult-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -30,6 +32,8 @@ snapshot的id。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SnapshotResult-id?: string--><!--Device-SnapshotResult-id?: string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## imagePixelMap
@@ -45,6 +49,8 @@ imagePixelMap?: image.PixelMap
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SnapshotResult-imagePixelMap?: image.PixelMap--><!--Device-SnapshotResult-imagePixelMap?: image.PixelMap-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -62,6 +68,8 @@ Web绘制的真实尺寸，SizeOptions对象包含width和height属性，均为n
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SnapshotResult-size?: SizeOptions--><!--Device-SnapshotResult-size?: SizeOptions-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## status
@@ -77,5 +85,7 @@ snapshot的状态，正常为true，失败为false，获取全量绘制结果失
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SnapshotResult-status?: boolean--><!--Device-SnapshotResult-status?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

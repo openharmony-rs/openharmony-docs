@@ -8,7 +8,39 @@ Implements the bottom and side tab style.
 
 **Since:** 9
 
+<!--Device-unnamed-declare class BottomTabBarStyle--><!--Device-unnamed-declare class BottomTabBarStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## badge
+
+```TypeScript
+badge(badgeStyle:TabBarBadgeStyle): BottomTabBarStyle
+```
+
+Sets the badge style of the bottom tab. If this parameter is not set, no badge is displayed.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-BottomTabBarStyle-badge(badgeStyle:TabBarBadgeStyle): BottomTabBarStyle--><!--Device-BottomTabBarStyle-badge(badgeStyle:TabBarBadgeStyle): BottomTabBarStyle-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| badgeStyle | [TabBarBadgeStyle](arkts-arkui-tabcontent-comp-tabbarbadgestyle-i.md) | Yes | Badge style of the bottom tab. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | **BottomTabBarStyle** object. |
 
 ## constructor
 
@@ -21,6 +53,8 @@ A constructor used to create a **BottomTabBarStyle** instance.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-BottomTabBarStyle-constructor(icon: ResourceStr | TabBarSymbol, text: ResourceStr)--><!--Device-BottomTabBarStyle-constructor(icon: ResourceStr | TabBarSymbol, text: ResourceStr)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +78,8 @@ Sets the style of the label icon on the bottom tab.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BottomTabBarStyle-iconStyle(style: TabBarIconStyle): BottomTabBarStyle--><!--Device-BottomTabBarStyle-iconStyle(style: TabBarIconStyle): BottomTabBarStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,6 +109,8 @@ Sets the ID of the bottom tab.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BottomTabBarStyle-id(value: string): BottomTabBarStyle--><!--Device-BottomTabBarStyle-id(value: string): BottomTabBarStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -100,6 +138,8 @@ Sets the style of the label text and font for the bottom tab.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-BottomTabBarStyle-labelStyle(value: LabelStyle): BottomTabBarStyle--><!--Device-BottomTabBarStyle-labelStyle(value: LabelStyle): BottomTabBarStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,6 +169,8 @@ Sets the layout mode of the images and texts on the bottom tab.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-BottomTabBarStyle-layoutMode(value: LayoutMode): BottomTabBarStyle--><!--Device-BottomTabBarStyle-layoutMode(value: LayoutMode): BottomTabBarStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -156,6 +198,8 @@ Static constructor used to create a **BottomTabBarStyle** instance.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-BottomTabBarStyle-static of(icon: ResourceStr | TabBarSymbol, text: ResourceStr): BottomTabBarStyle--><!--Device-BottomTabBarStyle-static of(icon: ResourceStr | TabBarSymbol, text: ResourceStr): BottomTabBarStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -186,6 +230,8 @@ Sets the padding of the bottom tab. It cannot be set in percentage. When the par
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-BottomTabBarStyle-padding(value: Padding | Dimension | LocalizedPadding): BottomTabBarStyle--><!--Device-BottomTabBarStyle-padding(value: Padding | Dimension | LocalizedPadding): BottomTabBarStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -214,6 +260,8 @@ Sets whether the images and text on the bottom tab can be symmetrically extended
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-BottomTabBarStyle-symmetricExtensible(value: boolean): BottomTabBarStyle--><!--Device-BottomTabBarStyle-symmetricExtensible(value: boolean): BottomTabBarStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -241,6 +289,8 @@ Sets the vertical alignment mode of the images and text on the bottom tab.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-BottomTabBarStyle-verticalAlign(value: VerticalAlign): BottomTabBarStyle--><!--Device-BottomTabBarStyle-verticalAlign(value: VerticalAlign): BottomTabBarStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

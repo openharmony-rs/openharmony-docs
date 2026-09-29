@@ -18,6 +18,8 @@ Obtains the stack trace information of the main thread. A maximum of 64 call fra
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-util-function getMainThreadStackTrace(): string--><!--Device-util-function getMainThreadStackTrace(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**

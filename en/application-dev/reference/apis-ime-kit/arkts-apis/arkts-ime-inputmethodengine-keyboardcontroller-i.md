@@ -8,6 +8,8 @@ You must first use [on('inputStart')](arkts-ime-inputmethodengine-inputmethodabi
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-interface KeyboardController--><!--Device-inputMethodEngine-interface KeyboardController-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -25,6 +27,8 @@ exitCurrentInputType(callback: AsyncCallback<void>): void
 Exits this input type. This API can be called only by the preconfigured default input method. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-KeyboardController-exitCurrentInputType(callback: AsyncCallback<void>): void--><!--Device-KeyboardController-exitCurrentInputType(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -67,6 +71,8 @@ Exits this input type. This API can be called only by the preconfigured default 
 
 **Since:** 11
 
+<!--Device-KeyboardController-exitCurrentInputType(): Promise<void>--><!--Device-KeyboardController-exitCurrentInputType(): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -103,6 +109,8 @@ hide(callback: AsyncCallback<void>): void
 Hides the keyboard. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-KeyboardController-hide(callback: AsyncCallback<void>): void--><!--Device-KeyboardController-hide(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -144,6 +152,8 @@ Hides the keyboard. This API uses a promise to return the result.
 
 **Since:** 9
 
+<!--Device-KeyboardController-hide(): Promise<void>--><!--Device-KeyboardController-hide(): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -184,6 +194,8 @@ Hides the keyboard. This API uses an asynchronous callback to return the result.
 
 **Substitutes:** [hide](#hide)(callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void--><!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -221,6 +233,8 @@ Hides the keyboard. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [hide](#hide)()
+
+<!--Device-KeyboardController-hideKeyboard(): Promise<void>--><!--Device-KeyboardController-hideKeyboard(): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

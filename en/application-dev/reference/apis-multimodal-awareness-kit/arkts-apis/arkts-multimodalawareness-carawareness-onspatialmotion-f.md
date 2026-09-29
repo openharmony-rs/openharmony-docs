@@ -20,6 +20,8 @@ Enables spatial motion awareness and subscribes to spatial motion awareness resu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-carAwareness-function onSpatialMotion(callback: Callback<SpatialMotionInfo>): void--><!--Device-carAwareness-function onSpatialMotion(callback: Callback<SpatialMotionInfo>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **Parameters:**

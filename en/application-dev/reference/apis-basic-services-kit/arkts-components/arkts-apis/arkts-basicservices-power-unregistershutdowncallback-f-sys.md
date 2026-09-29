@@ -18,6 +18,8 @@ Unregisters the callback to be invoked when the device is shut down or rebooted.
 
 **Required permissions:** ohos.permission.REBOOT
 
+<!--Device-power-function unregisterShutdownCallback(callback?: Callback<void>): void--><!--Device-power-function unregisterShutdownCallback(callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **System API:** This is a system API.

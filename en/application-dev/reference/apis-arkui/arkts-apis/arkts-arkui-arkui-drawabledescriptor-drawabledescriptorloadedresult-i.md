@@ -8,6 +8,8 @@ Represents the result of loading an image resource or URI.
 
 **Since:** 21
 
+<!--Device-unnamed-export interface DrawableDescriptorLoadedResult--><!--Device-unnamed-export interface DrawableDescriptorLoadedResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Unit: px.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-DrawableDescriptorLoadedResult-imageHeight: number--><!--Device-DrawableDescriptorLoadedResult-imageHeight: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageWidth
@@ -53,6 +57,8 @@ Unit: px.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-DrawableDescriptorLoadedResult-imageWidth: number--><!--Device-DrawableDescriptorLoadedResult-imageWidth: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

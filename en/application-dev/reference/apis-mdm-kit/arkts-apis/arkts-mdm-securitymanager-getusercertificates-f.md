@@ -20,6 +20,8 @@ Obtains the user certificate of a specified system account. Enterprises can use 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getUserCertificates(admin: Want, accountId: number): Array<string>--><!--Device-securityManager-function getUserCertificates(admin: Want, accountId: number): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

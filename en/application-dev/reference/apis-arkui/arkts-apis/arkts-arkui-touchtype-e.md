@@ -8,6 +8,8 @@ Sets the trigger status type of a touch operation.
 
 **Since:** 7
 
+<!--Device-unnamed-declare enum TouchType--><!--Device-unnamed-declare enum TouchType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Down
@@ -21,6 +23,8 @@ A finger is pressed.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TouchType-Down--><!--Device-TouchType-Down-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +40,8 @@ A finger is lifted.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TouchType-Up--><!--Device-TouchType-Up-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Move
@@ -50,6 +56,8 @@ A finger moves on the screen in pressed state.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TouchType-Move--><!--Device-TouchType-Move-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Cancel
@@ -58,11 +66,13 @@ A finger moves on the screen in pressed state.
 Cancel
 ```
 
-A touch event is canceled. Examples: 1. touching the home button to return to the home screen while keeping a finger on the screen; 2. folding a foldable phone to switch to the external screen while keeping a finger on the screen.
+A touch event is canceled. For example: 1. When a finger is held on the screen and the Home key is tapped to return to the home screen, **Cancel** is triggered; 2. <!--RP2--><!--RP2End-->When a stylus operation occurs during a finger touch, the finger touch operation receives a Cancel event.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TouchType-Cancel--><!--Device-TouchType-Cancel-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +90,8 @@ A finger is pressed in accessibility mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TouchType-HOVER_ENTER = 9--><!--Device-TouchType-HOVER_ENTER = 9-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## HOVER_MOVE
@@ -88,13 +100,15 @@ A finger is pressed in accessibility mode.
 HOVER_MOVE = 10
 ```
 
-The mouse pointer moves in accessibility mode.
+The touch moves in accessibility mode.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-TouchType-HOVER_MOVE = 10--><!--Device-TouchType-HOVER_MOVE = 10-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,13 +118,15 @@ The mouse pointer moves in accessibility mode.
 HOVER_EXIT = 11
 ```
 
-The mouse pointer exits the component in accessibility mode.
+A finger is lifted in accessibility mode.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-TouchType-HOVER_EXIT = 11--><!--Device-TouchType-HOVER_EXIT = 11-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,12 +136,14 @@ The mouse pointer exits the component in accessibility mode.
 HOVER_CANCEL = 12
 ```
 
-The triggered event is canceled in accessibility mode.
+The current event is canceled in accessibility mode.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-TouchType-HOVER_CANCEL = 12--><!--Device-TouchType-HOVER_CANCEL = 12-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

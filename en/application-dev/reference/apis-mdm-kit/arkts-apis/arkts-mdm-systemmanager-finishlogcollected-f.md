@@ -31,6 +31,8 @@ Deletes the device logs collected by the current MDM app under the current user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function finishLogCollected(admin: Want): void--><!--Device-systemManager-function finishLogCollected(admin: Want): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

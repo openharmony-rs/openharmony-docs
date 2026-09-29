@@ -8,6 +8,8 @@ This module provides common features related to user key management, including u
 
 **Since:** 15
 
+<!--Device-unnamed-declare namespace keyManager--><!--Device-unnamed-declare namespace keyManager-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Encryption
 
 ## Modules to Import

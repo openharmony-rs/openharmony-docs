@@ -12,6 +12,8 @@ Since API version 20, the inheritance rules for `span` are described in [GridCol
 
 **Since:** 9
 
+<!--Device-unnamed-declare interface GridColOptions--><!--Device-unnamed-declare interface GridColOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -33,6 +35,8 @@ If an illegal value is set, the default value is used.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridColOptions-offset?: number | GridColColumnOption--><!--Device-GridColOptions-offset?: number | GridColColumnOption-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +66,8 @@ When some child components have **order** set and others do not, the child compo
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-GridColOptions-order?: number | GridColColumnOption--><!--Device-GridColOptions-order?: number | GridColColumnOption-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## span
@@ -83,5 +89,7 @@ If an illegal value is set, the default value is used.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridColOptions-span?: number | GridColColumnOption--><!--Device-GridColOptions-span?: number | GridColColumnOption-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Provides the configuration options for animation playback, including the playbac
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface AnimationOptions--><!--Device-unnamed-declare interface AnimationOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -38,6 +40,8 @@ The default value is **true**.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-AnimationOptions-autoPlay?: boolean--><!--Device-AnimationOptions-autoPlay?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## duration
@@ -64,6 +68,8 @@ Negative values are treated as the default value.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AnimationOptions-duration?: number--><!--Device-AnimationOptions-duration?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## frameDurations
@@ -88,6 +94,8 @@ Unit: ms.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-AnimationOptions-frameDurations?: Array<number>--><!--Device-AnimationOptions-frameDurations?: Array<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## iterations
@@ -110,6 +118,8 @@ The default value is **1**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AnimationOptions-iterations?: number--><!--Device-AnimationOptions-iterations?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## stopMode
@@ -131,6 +141,8 @@ The default value is **AnimationStopMode.FIRST_FRAME**, indicating that the anim
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-AnimationOptions-stopMode?: AnimationStopMode--><!--Device-AnimationOptions-stopMode?: AnimationStopMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

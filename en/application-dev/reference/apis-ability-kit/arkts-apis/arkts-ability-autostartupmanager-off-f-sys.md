@@ -20,6 +20,8 @@ Unregisters the callback used to listen for auto-startup status changes of an ap
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-autoStartupManager-function off(type: 'systemAutoStartup', callback?: AutoStartupCallback): void--><!--Device-autoStartupManager-function off(type: 'systemAutoStartup', callback?: AutoStartupCallback): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

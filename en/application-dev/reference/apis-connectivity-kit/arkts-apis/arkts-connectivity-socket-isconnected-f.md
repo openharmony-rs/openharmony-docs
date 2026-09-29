@@ -16,6 +16,8 @@ Check whether the current socket connection has been established.
 
 **Since:** 22
 
+<!--Device-socket-function isConnected(clientSocket: int): boolean--><!--Device-socket-function isConnected(clientSocket: int): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

@@ -8,6 +8,8 @@ Represents the storage information about a certificate, including the certificat
 
 **Since:** 18
 
+<!--Device-certificateManager-export interface CertStoreProperty--><!--Device-certificateManager-export interface CertStoreProperty-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Certificate algorithm. This parameter is valid only when **certType** is set to 
 
 **Since:** 20
 
+<!--Device-CertStoreProperty-certAlg?: CertAlgorithm--><!--Device-CertStoreProperty-certAlg?: CertAlgorithm-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## certScope
@@ -42,6 +46,8 @@ Scope of the certificate. This parameter is mandatory when **certType** is **CA_
 
 **Since:** 18
 
+<!--Device-CertStoreProperty-certScope?: CertScope--><!--Device-CertStoreProperty-certScope?: CertScope-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## certType
@@ -55,5 +61,7 @@ Type of the certificate.
 **Type:** [CertType](arkts-devicecertificate-certificatemanager-certtype-e.md)
 
 **Since:** 18
+
+<!--Device-CertStoreProperty-certType: CertType--><!--Device-CertStoreProperty-certType: CertType-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager

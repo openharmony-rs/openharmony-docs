@@ -18,6 +18,8 @@ Obtains the mask combination for the supported mode list of a given USB port. Th
 
 **Required permissions:** ohos.permission.MANAGE_USB_CONFIG
 
+<!--Device-usbManager-function getPortSupportModes(portId: int): PortModeType--><!--Device-usbManager-function getPortSupportModes(portId: int): PortModeType-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

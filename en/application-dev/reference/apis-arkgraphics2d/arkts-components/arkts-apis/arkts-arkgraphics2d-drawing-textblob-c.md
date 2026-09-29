@@ -14,6 +14,8 @@ Defines a block consisting of one or more characters with the same font.
 
 **Since:** 11
 
+<!--Device-drawing-class TextBlob--><!--Device-drawing-class TextBlob-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -31,6 +33,8 @@ bounds(): common2D.Rect
 Obtains the rectangular bounding box of the text blob.
 
 **Since:** 11
+
+<!--Device-TextBlob-bounds(): common2D.Rect--><!--Device-TextBlob-bounds(): common2D.Rect-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -60,6 +64,8 @@ static makeFromPosText(text: string, len: number, points: common2D.Point[], font
 Creates a **TextBlob** object from the text. The coordinates of each font in the **TextBlob** object are determined by the coordinate information in the **points** array.
 
 **Since:** 12
+
+<!--Device-TextBlob-static makeFromPosText(text: string, len: number, points: common2D.Point[], font: Font): TextBlob--><!--Device-TextBlob-static makeFromPosText(text: string, len: number, points: common2D.Point[], font: Font): TextBlob-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -120,6 +126,8 @@ Creates a sequence of TextBlob objects from text with font fallback support. Whe
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TextBlob-static makeFromPosTextWithFallback(      text: string, len: number, points: common2D.Point[], font: Font): Array<TextBlob>--><!--Device-TextBlob-static makeFromPosTextWithFallback(      text: string, len: number, points: common2D.Point[], font: Font): Array<TextBlob>-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -152,6 +160,8 @@ static makeFromRunBuffer(pos: Array<TextBlobRunBuffer>, font: Font, bounds?: com
 Creates a **TextBlob** object based on the **RunBuffer** information.
 
 **Since:** 11
+
+<!--Device-TextBlob-static makeFromRunBuffer(pos: Array<TextBlobRunBuffer>, font: Font, bounds?: common2D.Rect): TextBlob--><!--Device-TextBlob-static makeFromRunBuffer(pos: Array<TextBlobRunBuffer>, font: Font, bounds?: common2D.Rect): TextBlob-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -213,6 +223,8 @@ Converts a value of the string type into a **TextBlob** object.
 
 **Since:** 11
 
+<!--Device-TextBlob-static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBlob--><!--Device-TextBlob-static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBlob-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -268,6 +280,8 @@ Creates a sequence of TextBlob objects from a string with font fallback support.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TextBlob-static makeFromStringWithFallback(text: string, font: Font): Array<TextBlob>--><!--Device-TextBlob-static makeFromStringWithFallback(text: string, font: Font): Array<TextBlob>-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -292,6 +306,8 @@ uniqueID(): number
 Obtains the unique, non-zero identifier of this **TextBlob** object.
 
 **Since:** 12
+
+<!--Device-TextBlob-uniqueID(): long--><!--Device-TextBlob-uniqueID(): long-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

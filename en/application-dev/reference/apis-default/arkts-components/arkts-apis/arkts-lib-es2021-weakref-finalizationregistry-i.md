@@ -17,6 +17,8 @@ register(target: object, heldValue: T, unregisterToken?: object): void
 
 Registers an object with the registry.
 
+<!--Device-FinalizationRegistry-register(target: object, heldValue: T, unregisterToken?: object): void--><!--Device-FinalizationRegistry-register(target: object, heldValue: T, unregisterToken?: object): void-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -32,6 +34,8 @@ unregister(unregisterToken: object): void
 ```
 
 Unregisters an object from the registry.
+
+<!--Device-FinalizationRegistry-unregister(unregisterToken: object): void--><!--Device-FinalizationRegistry-unregister(unregisterToken: object): void-End-->
 
 **Parameters:**
 

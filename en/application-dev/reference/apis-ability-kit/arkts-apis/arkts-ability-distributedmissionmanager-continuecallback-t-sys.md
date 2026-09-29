@@ -12,6 +12,8 @@ ContinueCallback registered for notify continue result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-distributedMissionManager-export type ContinueCallback = _ContinueCallback--><!--Device-distributedMissionManager-export type ContinueCallback = _ContinueCallback-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.

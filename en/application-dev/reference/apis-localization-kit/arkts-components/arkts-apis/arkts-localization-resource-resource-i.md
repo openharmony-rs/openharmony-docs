@@ -8,6 +8,8 @@ This module provides resource-related information, including the application pac
 
 **Since:** 9
 
+<!--Device-unnamed-export interface Resource--><!--Device-unnamed-export interface Resource-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 ## bundleName
@@ -22,7 +24,9 @@ Application bundle name.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Resource-bundleName: string--><!--Device-Resource-bundleName: string-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -38,7 +42,9 @@ Resource ID. The value ranges are as follows: <br>- Application resource ranges:
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Resource-id: long--><!--Device-Resource-id: long-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -54,7 +60,9 @@ Application module name.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Resource-moduleName: string--><!--Device-Resource-moduleName: string-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -72,6 +80,8 @@ Resource parameters, including the resource name (string type), replacement valu
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Resource-params?: any[]--><!--Device-Resource-params?: any[]-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 ## type
@@ -86,6 +96,8 @@ Resource type. The options are as follows: <br>- 10001: color <br>- 10002: float
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Resource-type?: int--><!--Device-Resource-type?: int-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager

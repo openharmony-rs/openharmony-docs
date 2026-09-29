@@ -10,6 +10,8 @@ a **Calendar** object before calling related APIs.
 
 **Since:** 10
 
+<!--Device-calendarManager-export interface Calendar--><!--Device-calendarManager-export interface Calendar-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Adds an event, with no event ID, instanceStartTime, and instanceEndTime specifie
 - API versions 10 to 20: ohos.permission.WRITE_CALENDAR
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Calendar-addEvent(event: Event): Promise<number>--><!--Device-Calendar-addEvent(event: Event): Promise<number>-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -105,6 +109,8 @@ Adds an event, with no event ID, instanceStartTime, and instanceEndTime specifie
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Calendar-addEvent(event: Event, callback: AsyncCallback<number>): void--><!--Device-Calendar-addEvent(event: Event, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -166,6 +172,8 @@ Adds events in batches, with no event ID, instanceStartTime, and instanceEndTime
 **Required permissions:** 
 - API version 21 and later: ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
 - API versions 10 to 20: ohos.permission.WRITE_CALENDAR
+
+<!--Device-Calendar-addEvents(events: Event[]): Promise<void>--><!--Device-Calendar-addEvents(events: Event[]): Promise<void>-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -243,6 +251,8 @@ Adds events in batches, with no event ID, instanceStartTime, and instanceEndTime
 - API version 21 and later: ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
 - API versions 10 to 20: ohos.permission.WRITE_CALENDAR
 
+<!--Device-Calendar-addEvents(events: Event[], callback: AsyncCallback<void>): void--><!--Device-Calendar-addEvents(events: Event[], callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -309,6 +319,8 @@ deleteEvent(id: number): Promise<void>
 Deletes an event with the specified ID. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-Calendar-deleteEvent(id: number): Promise<void>--><!--Device-Calendar-deleteEvent(id: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -378,6 +390,8 @@ Deletes an event with the specified ID. This API uses an asynchronous callback t
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-Calendar-deleteEvent(id: number, callback: AsyncCallback<void>): void--><!--Device-Calendar-deleteEvent(id: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -438,6 +452,8 @@ deleteEvents(ids: number[]): Promise<void>
 Deletes a batch of events with the specified IDs. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-Calendar-deleteEvents(ids: number[]): Promise<void>--><!--Device-Calendar-deleteEvents(ids: number[]): Promise<void>-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -520,6 +536,8 @@ Deletes a batch of events with the specified IDs. This API uses an asynchronous 
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-Calendar-deleteEvents(ids: number[], callback: AsyncCallback<void>): void--><!--Device-Calendar-deleteEvents(ids: number[], callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -594,6 +612,8 @@ Obtains the calendar account information.
 
 **Since:** 10
 
+<!--Device-Calendar-getAccount(): CalendarAccount--><!--Device-Calendar-getAccount(): CalendarAccount-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Return value:**
@@ -633,6 +653,8 @@ getConfig(): CalendarConfig
 Obtains the calendar configuration information.
 
 **Since:** 10
+
+<!--Device-Calendar-getConfig(): CalendarConfig--><!--Device-Calendar-getConfig(): CalendarConfig-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -677,6 +699,8 @@ Obtains all events in a calendar that match the filter criteria. This API uses a
 **Required permissions:** 
 - API version 21 and later: ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
 - API versions 10 to 20: ohos.permission.READ_CALENDAR
+
+<!--Device-Calendar-getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise<Event[]>--><!--Device-Calendar-getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise<Event[]>-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -756,6 +780,8 @@ Obtains all events in a calendar that match the filter criteria. This API uses a
 **Required permissions:** 
 - API version 21 and later: ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
 - API versions 10 to 20: ohos.permission.READ_CALENDAR
+
+<!--Device-Calendar-getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCallback<Event[]>):void--><!--Device-Calendar-getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCallback<Event[]>):void-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -846,6 +872,8 @@ For versions earlier than API version 20, the default fields to be obtained incl
 - API version 21 and later: ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
 - API versions 10 to 20: ohos.permission.READ_CALENDAR
 
+<!--Device-Calendar-getEvents(callback: AsyncCallback<Event[]>):void--><!--Device-Calendar-getEvents(callback: AsyncCallback<Event[]>):void-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -903,6 +931,8 @@ This API can be used to view and edit calendar events in the system calendar.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-Calendar-openEventEditPage(id: number): Promise<void>--><!--Device-Calendar-openEventEditPage(id: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -992,6 +1022,8 @@ Queries the event instance with a specified event key in a calendar. This API us
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Calendar-queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyof Event)[]): Promise<Event[]>--><!--Device-Calendar-queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyof Event)[]): Promise<Event[]>-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -1066,6 +1098,8 @@ Sets the calendar configuration information. This API uses a promise to return t
 
 **Since:** 10
 
+<!--Device-Calendar-setConfig(config: CalendarConfig): Promise<void>--><!--Device-Calendar-setConfig(config: CalendarConfig): Promise<void>-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -1128,6 +1162,8 @@ Sets the calendar configuration information. This API uses an asynchronous callb
 
 **Since:** 10
 
+<!--Device-Calendar-setConfig(config: CalendarConfig, callback: AsyncCallback<void>): void--><!--Device-Calendar-setConfig(config: CalendarConfig, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -1184,6 +1220,8 @@ updateEvent(event: Event): Promise<void>
 Updates an event, with the ID of the updated event specified in Event. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-Calendar-updateEvent(event: Event): Promise<void>--><!--Device-Calendar-updateEvent(event: Event): Promise<void>-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -1253,6 +1291,8 @@ Updates an event. The ID of the updated event must be specified in Event. If not
 
 **Since:** 10
 
+<!--Device-Calendar-updateEvent(event: Event, callback: AsyncCallback<void>): void--><!--Device-Calendar-updateEvent(event: Event, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -1319,5 +1359,7 @@ Calendar account ID, which is the unique identifier of a calendar account and is
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Calendar-readonly id: number--><!--Device-Calendar-readonly id: number-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData

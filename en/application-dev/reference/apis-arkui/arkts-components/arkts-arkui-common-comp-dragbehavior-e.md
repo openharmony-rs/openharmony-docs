@@ -8,6 +8,8 @@ Describes the drag behavior. When [DragResult](arkts-arkui-common-comp-dragresul
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum DragBehavior--><!--Device-unnamed-declare enum DragBehavior-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## COPY
@@ -24,6 +26,8 @@ The data is handled as a copy operation.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-DragBehavior-COPY = 0--><!--Device-DragBehavior-COPY = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## MOVE
@@ -39,5 +43,7 @@ The data is handled as a move operation, effectively cutting it from its origina
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DragBehavior-MOVE = 1--><!--Device-DragBehavior-MOVE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

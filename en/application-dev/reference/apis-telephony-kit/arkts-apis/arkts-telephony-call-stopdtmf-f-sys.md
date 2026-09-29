@@ -18,6 +18,8 @@ Stops playing DTMF tones. This API uses an asynchronous callback to return the r
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function stopDTMF(callId: int, callback: AsyncCallback<void>): void--><!--Device-call-function stopDTMF(callId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Stops playing DTMF tones. This API uses a promise to return the result.
 **Since:** 7
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function stopDTMF(callId: int): Promise<void>--><!--Device-call-function stopDTMF(callId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

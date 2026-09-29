@@ -19,6 +19,8 @@ Opens a file. This API uses a promise to return the result.
 
 **Substitutes:** [open](arkts-corefile-file-fs-open-f.md)
 
+<!--Device-unnamed-declare function open(path: string, flags?: number, mode?: number): Promise<number>--><!--Device-unnamed-declare function open(path: string, flags?: number, mode?: number): Promise<number>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -52,6 +54,8 @@ Opens a file. This API uses an asynchronous callback to return the result.
 
 **Substitutes:** [open](arkts-corefile-file-fs-open-f.md)
 
+<!--Device-unnamed-declare function open(path: string, callback: AsyncCallback<number>): void--><!--Device-unnamed-declare function open(path: string, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -77,6 +81,8 @@ Opens a file. This API uses an asynchronous callback to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [open](arkts-corefile-file-fs-open-f.md)
+
+<!--Device-unnamed-declare function open(path: string, flags: number, callback: AsyncCallback<number>): void--><!--Device-unnamed-declare function open(path: string, flags: number, callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -104,6 +110,8 @@ Opens a file. This API uses an asynchronous callback to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [open](arkts-corefile-file-fs-open-f.md)
+
+<!--Device-unnamed-declare function open(path: string, flags: number, mode: number, callback: AsyncCallback<number>): void--><!--Device-unnamed-declare function open(path: string, flags: number, mode: number, callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

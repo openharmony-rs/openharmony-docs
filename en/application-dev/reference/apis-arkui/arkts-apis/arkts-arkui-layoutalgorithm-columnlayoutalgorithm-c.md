@@ -17,6 +17,8 @@ A vertical linear layout algorithm class, which is used to implement vertical li
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export class ColumnLayoutAlgorithm implements LayoutAlgorithm--><!--Device-unnamed-export class ColumnLayoutAlgorithm implements LayoutAlgorithm-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -34,6 +36,8 @@ Constructs the vertical linear layout algorithm class.
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
+
+<!--Device-ColumnLayoutAlgorithm-constructor(option?: ColumnLayoutAlgorithmOptions)--><!--Device-ColumnLayoutAlgorithm-constructor(option?: ColumnLayoutAlgorithmOptions)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,6 +75,8 @@ Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
 
+<!--Device-ColumnLayoutAlgorithm-public alignItems?: HorizontalAlign--><!--Device-ColumnLayoutAlgorithm-public alignItems?: HorizontalAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isReverse
@@ -97,6 +103,8 @@ Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
 
+<!--Device-ColumnLayoutAlgorithm-public isReverse?: boolean--><!--Device-ColumnLayoutAlgorithm-public isReverse?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## justifyContent
@@ -122,6 +130,8 @@ Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
+
+<!--Device-ColumnLayoutAlgorithm-public justifyContent?: FlexAlign--><!--Device-ColumnLayoutAlgorithm-public justifyContent?: FlexAlign-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,5 +160,7 @@ Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
+
+<!--Device-ColumnLayoutAlgorithm-public space?: LengthMetrics--><!--Device-ColumnLayoutAlgorithm-public space?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

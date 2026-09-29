@@ -12,6 +12,8 @@ declare type TextPickerScrollStopCallback = (value: string[], index: number[]) =
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type TextPickerScrollStopCallback = (value: string | string[], index: number | number[]) => void--><!--Device-unnamed-declare type TextPickerScrollStopCallback = (value: string | string[], index: number | number[]) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

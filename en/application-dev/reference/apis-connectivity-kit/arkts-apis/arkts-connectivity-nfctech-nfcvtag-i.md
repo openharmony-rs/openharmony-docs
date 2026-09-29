@@ -16,6 +16,8 @@ The following describes the unique APIs of **NfcVTag**.
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NfcVTag extends TagSession--><!--Device-unnamed-export interface NfcVTag extends TagSession-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## getDsfId
@@ -28,7 +30,9 @@ Obtains the data storage format identifier (DSFID) from this NFC-V tag.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NfcVTag-getDsfId(): int--><!--Device-NfcVTag-getDsfId(): int-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 
@@ -58,7 +62,9 @@ Obtains the response flags from this NFC-V tag.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NfcVTag-getResponseFlags(): int--><!--Device-NfcVTag-getResponseFlags(): int-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

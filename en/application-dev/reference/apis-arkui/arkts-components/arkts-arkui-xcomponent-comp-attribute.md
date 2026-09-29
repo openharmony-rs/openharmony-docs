@@ -6,11 +6,13 @@ declare class XComponentAttribute extends CommonMethod<XComponentAttribute>
 
 In addition to universal attributes, the following attributes are supported.
 
-Since API version 12, the [universal events](arkts-arkui-common-comp.md#common) are supported when **type** is set to **SURFACE** or **TEXTURE**.
+Since API version 12, the [universal events](arkts-arkui-common-comp.md) are supported when **type** is set to **SURFACE** or **TEXTURE**.
 
 **Inheritance/Implementation:** XComponentAttribute extends CommonMethod<XComponentAttribute>
 
 **Since:** 8
+
+<!--Device-unnamed-declare class XComponentAttribute extends CommonMethod<XComponentAttribute>--><!--Device-unnamed-declare class XComponentAttribute extends CommonMethod<XComponentAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,6 +33,8 @@ This feature cannot be used together with the [overlay](../../../reference/apis-
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-XComponentAttribute-enableAnalyzer(enable: boolean): XComponentAttribute--><!--Device-XComponentAttribute-enableAnalyzer(enable: boolean): XComponentAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Sets whether to enable the secure surface to protect the content rendered within
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-XComponentAttribute-enableSecure(isSecure: boolean): XComponentAttribute--><!--Device-XComponentAttribute-enableSecure(isSecure: boolean): XComponentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -75,6 +81,8 @@ Sets the brightness of HDR video playback for the component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-XComponentAttribute-hdrBrightness(brightness: number): XComponentAttribute--><!--Device-XComponentAttribute-hdrBrightness(brightness: number): XComponentAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,6 +108,8 @@ Set hdrBrightness for XComponent.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-XComponentAttribute-hdrBrightness(brightness: number, type?: HdrType): XComponentAttribute--><!--Device-XComponentAttribute-hdrBrightness(brightness: number, type?: HdrType): XComponentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -121,6 +131,8 @@ Triggered when the plugin is destroyed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-XComponentAttribute-onDestroy(event: VoidCallback): XComponentAttribute--><!--Device-XComponentAttribute-onDestroy(event: VoidCallback): XComponentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -140,6 +152,8 @@ Triggered when the plugin is loaded.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-XComponentAttribute-onLoad(callback: OnNativeLoadCallback): XComponentAttribute--><!--Device-XComponentAttribute-onLoad(callback: OnNativeLoadCallback): XComponentAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

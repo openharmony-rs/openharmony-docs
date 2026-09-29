@@ -18,6 +18,8 @@ Obtains the list of detailed information about peripherals. If the device has no
 
 **Required permissions:** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
+<!--Device-deviceManager-function queryDeviceInfo(deviceId?: long): Array<Readonly<DeviceInfo>>--><!--Device-deviceManager-function queryDeviceInfo(deviceId?: long): Array<Readonly<DeviceInfo>>-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **System API:** This is a system API.

@@ -10,6 +10,8 @@ ErrorCode
 
 **Deprecated since:** 9
 
+<!--Device-zlib-export enum ErrorCode--><!--Device-zlib-export enum ErrorCode-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 ## ERROR_CODE_OK
@@ -22,6 +24,8 @@ ERROR_CODE_OK = 0
 
 **Deprecated since:** 9
 
+<!--Device-ErrorCode-ERROR_CODE_OK = 0--><!--Device-ErrorCode-ERROR_CODE_OK = 0-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 ## ERROR_CODE_ERRNO
@@ -33,5 +37,7 @@ ERROR_CODE_ERRNO = -1
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-ErrorCode-ERROR_CODE_ERRNO = -1--><!--Device-ErrorCode-ERROR_CODE_ERRNO = -1-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib

@@ -8,6 +8,8 @@ enum PiPControlType
 
 **起始版本：** 12
 
+<!--Device-PiPWindow-enum PiPControlType--><!--Device-PiPWindow-enum PiPControlType-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## VIDEO_PLAY_PAUSE
@@ -20,7 +22,9 @@ VIDEO_PLAY_PAUSE = 0
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPControlType-VIDEO_PLAY_PAUSE = 0--><!--Device-PiPControlType-VIDEO_PLAY_PAUSE = 0-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -34,7 +38,9 @@ VIDEO_PREVIOUS = 1
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPControlType-VIDEO_PREVIOUS = 1--><!--Device-PiPControlType-VIDEO_PREVIOUS = 1-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -48,7 +54,9 @@ VIDEO_NEXT = 2
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPControlType-VIDEO_NEXT = 2--><!--Device-PiPControlType-VIDEO_NEXT = 2-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -62,7 +70,9 @@ FAST_FORWARD = 3
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPControlType-FAST_FORWARD = 3--><!--Device-PiPControlType-FAST_FORWARD = 3-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -76,7 +86,9 @@ FAST_BACKWARD = 4
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPControlType-FAST_BACKWARD = 4--><!--Device-PiPControlType-FAST_BACKWARD = 4-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -90,7 +102,9 @@ HANG_UP_BUTTON = 5
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPControlType-HANG_UP_BUTTON = 5--><!--Device-PiPControlType-HANG_UP_BUTTON = 5-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -104,7 +118,9 @@ MICROPHONE_SWITCH = 6
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPControlType-MICROPHONE_SWITCH = 6--><!--Device-PiPControlType-MICROPHONE_SWITCH = 6-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -118,7 +134,9 @@ CAMERA_SWITCH = 7
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPControlType-CAMERA_SWITCH = 7--><!--Device-PiPControlType-CAMERA_SWITCH = 7-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -132,6 +150,8 @@ MUTE_SWITCH = 8
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPControlType-MUTE_SWITCH = 8--><!--Device-PiPControlType-MUTE_SWITCH = 8-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

@@ -18,6 +18,8 @@ Obtains the current network sharing status. This API uses an asynchronous callba
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
 
+<!--Device-sharing-function isSharing(callback: AsyncCallback<boolean>): void--><!--Device-sharing-function isSharing(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ Obtains the current network sharing status. This API uses a promise to return th
 **Since:** 9
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
+
+<!--Device-sharing-function isSharing(): Promise<boolean>--><!--Device-sharing-function isSharing(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 

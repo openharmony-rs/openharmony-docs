@@ -12,6 +12,8 @@ declare interface PolygonOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface PolygonOptions--><!--Device-unnamed-declare interface PolygonOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -38,6 +40,8 @@ height?: Length
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-PolygonOptions-height?: Length--><!--Device-PolygonOptions-height?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -63,5 +67,7 @@ width?: Length
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PolygonOptions-width?: Length--><!--Device-PolygonOptions-width?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

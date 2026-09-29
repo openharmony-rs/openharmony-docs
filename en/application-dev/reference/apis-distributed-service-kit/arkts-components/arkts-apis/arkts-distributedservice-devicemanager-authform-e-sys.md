@@ -10,6 +10,8 @@ Enumerates the device authentication types.
 
 **Deprecated since:** 11
 
+<!--Device-deviceManager-enum AuthForm--><!--Device-deviceManager-enum AuthForm-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ No authentication.
 **Since:** 10
 
 **Deprecated since:** 11
+
+<!--Device-AuthForm-INVALID_TYPE = -1--><!--Device-AuthForm-INVALID_TYPE = -1-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -42,6 +46,8 @@ Point-to-point authentication for devices without accounts.
 
 **Deprecated since:** 11
 
+<!--Device-AuthForm-PEER_TO_PEER = 0--><!--Device-AuthForm-PEER_TO_PEER = 0-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -58,6 +64,8 @@ Authentication for devices using the same account.
 
 **Deprecated since:** 11
 
+<!--Device-AuthForm-IDENTICAL_ACCOUNT = 1--><!--Device-AuthForm-IDENTICAL_ACCOUNT = 1-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -73,6 +81,8 @@ Authentication for devices using different accounts.
 **Since:** 10
 
 **Deprecated since:** 11
+
+<!--Device-AuthForm-ACROSS_ACCOUNT = 2--><!--Device-AuthForm-ACROSS_ACCOUNT = 2-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

@@ -25,6 +25,8 @@ Matrix的叠加函数，可以将两个矩阵的效果叠加起来作用于当�
 
 **替代接口：** [combine](arkts-arkui-matrix4-matrix4transit-i.md#combine)
 
+<!--Device-matrix4-function combine(options: Matrix4Transit): Matrix4Transit--><!--Device-matrix4-function combine(options: Matrix4Transit): Matrix4Transit-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

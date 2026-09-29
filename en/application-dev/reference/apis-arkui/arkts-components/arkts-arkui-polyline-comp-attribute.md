@@ -10,6 +10,8 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 **Since:** 7
 
+<!--Device-unnamed-declare class PolylineAttribute extends CommonShapeMethod<PolylineAttribute>--><!--Device-unnamed-declare class PolylineAttribute extends CommonShapeMethod<PolylineAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## points
@@ -27,6 +29,8 @@ Sets the list of coordinate points that the polyline passes through. This attrib
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PolylineAttribute-points(value: Array<any>): PolylineAttribute--><!--Device-PolylineAttribute-points(value: Array<any>): PolylineAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

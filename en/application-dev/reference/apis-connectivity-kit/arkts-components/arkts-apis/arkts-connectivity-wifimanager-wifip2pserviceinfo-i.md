@@ -8,6 +8,8 @@ Represents the P2P service information.
 
 **Since:** 26.0.1
 
+<!--Device-wifiManager-interface WifiP2pServiceInfo--><!--Device-wifiManager-interface WifiP2pServiceInfo-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Service protocol type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiP2pServiceInfo-protocolType: P2pServiceProtocolType--><!--Device-WifiP2pServiceInfo-protocolType: P2pServiceProtocolType-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 ## queryList
@@ -46,6 +50,8 @@ Query string list consumed by wpa_supplicant. The maximum size of a single data 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiP2pServiceInfo-queryList: Array<string>--><!--Device-WifiP2pServiceInfo-queryList: Array<string>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 ## serviceName
@@ -61,5 +67,7 @@ Service name. Refer to the [addDnsSdLocalP2pService](arkts-connectivity-wifimana
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiP2pServiceInfo-serviceName: string--><!--Device-WifiP2pServiceInfo-serviceName: string-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P

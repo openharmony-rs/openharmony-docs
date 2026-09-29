@@ -16,7 +16,9 @@ Creates a PiP controller. This API uses a promise to return the result.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PiPWindow-function create(config: PiPConfiguration): Promise<PiPController>--><!--Device-PiPWindow-function create(config: PiPConfiguration): Promise<PiPController>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -155,7 +157,9 @@ Creates a PiP controller. This API uses **typeNode** to add a custom UI node for
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PiPWindow-function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise<PiPController>--><!--Device-PiPWindow-function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise<PiPController>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

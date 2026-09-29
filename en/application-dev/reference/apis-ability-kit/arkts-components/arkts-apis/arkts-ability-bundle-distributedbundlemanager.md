@@ -8,6 +8,8 @@ The module provides APIs for managing distributed bundles.
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace distributedBundleManager--><!--Device-unnamed-declare namespace distributedBundleManager-End-->
+
 **System capability:** SystemCapability.BundleManager.DistributedBundleFramework
 
 **System API:** This is a system API.

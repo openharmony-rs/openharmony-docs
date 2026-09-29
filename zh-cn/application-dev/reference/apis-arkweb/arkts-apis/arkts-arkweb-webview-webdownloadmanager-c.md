@@ -10,6 +10,8 @@ WebDownloadManager与[WebDownloadDelegate](arkts-arkweb-webview-webdownloaddeleg
 
 **起始版本：** 11
 
+<!--Device-webview-class WebDownloadManager--><!--Device-webview-class WebDownloadManager-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -35,6 +37,8 @@ static resumeDownload(webDownloadItem: WebDownloadItem): void
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebDownloadManager-static resumeDownload(webDownloadItem: WebDownloadItem): void--><!--Device-WebDownloadManager-static resumeDownload(webDownloadItem: WebDownloadItem): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -154,6 +158,8 @@ static setDownloadDelegate(delegate: WebDownloadDelegate): void
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebDownloadManager-static setDownloadDelegate(delegate: WebDownloadDelegate): void--><!--Device-WebDownloadManager-static setDownloadDelegate(delegate: WebDownloadDelegate): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

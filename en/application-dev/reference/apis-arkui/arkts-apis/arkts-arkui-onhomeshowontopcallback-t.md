@@ -12,6 +12,8 @@ Represents the callback invoked when the home page is displayed at the top of th
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-unnamed-declare type OnHomeShowOnTopCallback = (name: string) => void--><!--Device-unnamed-declare type OnHomeShowOnTopCallback = (name: string) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -8,6 +8,8 @@ Enumerates device setting items.
 
 **Since:** 26.0.0
 
+<!--Device-restrictions-enum SettingsForDevice--><!--Device-restrictions-enum SettingsForDevice-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SET_APN
@@ -21,6 +23,8 @@ APN configuration, currently supported only on phones and tablets.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsForDevice-SET_APN = 0--><!--Device-SettingsForDevice-SET_APN = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,6 +40,8 @@ Opens the power menu by long-pressing the power button. Currently, this item is 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SettingsForDevice-POWER_LONG_PRESS = 1--><!--Device-SettingsForDevice-POWER_LONG_PRESS = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SET_ETHERNET_IP
@@ -49,6 +55,8 @@ Changes the Ethernet IP address. Currently, this item is supported only on PCs/2
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsForDevice-SET_ETHERNET_IP = 2--><!--Device-SettingsForDevice-SET_ETHERNET_IP = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -65,6 +73,8 @@ Changes the device name configuration. Currently, this item is supported only on
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SettingsForDevice-SET_DEVICE_NAME = 3--><!--Device-SettingsForDevice-SET_DEVICE_NAME = 3-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SET_BIOMETRICS_AND_SCREEN_LOCK
@@ -78,5 +88,7 @@ Changes the screen lock password. Currently, this item is supported only on PCs/
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsForDevice-SET_BIOMETRICS_AND_SCREEN_LOCK = 4--><!--Device-SettingsForDevice-SET_BIOMETRICS_AND_SCREEN_LOCK = 4-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

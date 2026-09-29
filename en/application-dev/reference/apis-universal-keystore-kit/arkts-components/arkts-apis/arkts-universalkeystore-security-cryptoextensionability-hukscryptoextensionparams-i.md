@@ -8,6 +8,8 @@ Defines options used in the APIs.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface HuksCryptoExtensionParams--><!--Device-unnamed-export interface HuksCryptoExtensionParams-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The input data of the operation.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HuksCryptoExtensionParams-inData?: Uint8Array--><!--Device-HuksCryptoExtensionParams-inData?: Uint8Array-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 ## properties
@@ -45,5 +49,7 @@ The properties of the operation.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HuksCryptoExtensionParams-properties: HuksCryptoExtensionParam[]--><!--Device-HuksCryptoExtensionParams-properties: HuksCryptoExtensionParam[]-End-->
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension

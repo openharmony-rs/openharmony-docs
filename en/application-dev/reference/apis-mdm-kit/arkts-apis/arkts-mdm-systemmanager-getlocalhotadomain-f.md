@@ -20,6 +20,8 @@ Get local HOTA domain for device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function getLocalHotaDomain(admin: Want): string--><!--Device-systemManager-function getLocalHotaDomain(admin: Want): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

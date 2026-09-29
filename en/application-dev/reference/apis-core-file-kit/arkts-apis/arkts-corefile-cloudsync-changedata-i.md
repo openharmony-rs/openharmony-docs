@@ -8,6 +8,8 @@ Represents the data change information.
 
 **Since:** 12
 
+<!--Device-cloudSync-interface ChangeData--><!--Device-cloudSync-interface ChangeData-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Whether the URIs with data changed are of directories. The value **true** means 
 
 **Since:** 12
 
+<!--Device-ChangeData-isDirectory: Array<boolean>--><!--Device-ChangeData-isDirectory: Array<boolean>-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## type
@@ -42,6 +46,8 @@ Type of the data change.
 
 **Since:** 12
 
+<!--Device-ChangeData-type: NotifyType--><!--Device-ChangeData-type: NotifyType-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## uris
@@ -55,5 +61,7 @@ List of URIs whose data needs to be changed.
 **Type:** Array&lt;string&gt;
 
 **Since:** 12
+
+<!--Device-ChangeData-uris: Array<string>--><!--Device-ChangeData-uris: Array<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

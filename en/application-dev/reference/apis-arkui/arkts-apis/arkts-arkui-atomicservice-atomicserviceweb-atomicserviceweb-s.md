@@ -14,6 +14,8 @@ export declare struct AtomicServiceWeb
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct AtomicServiceWeb--><!--Device-unnamed-export declare struct AtomicServiceWeb-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Triggered when the resources loading is intercepted.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AtomicServiceWeb-onLoadIntercept?: OnLoadInterceptCallback--><!--Device-AtomicServiceWeb-onLoadIntercept?: OnLoadInterceptCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## controller
@@ -51,6 +55,8 @@ Sets the controller of the AtomicServiceWeb.
 **Decorator:** @ObjectLink
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AtomicServiceWeb-controller: AtomicServiceWebController--><!--Device-AtomicServiceWeb-controller: AtomicServiceWebController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ Sets the dark mode of Web.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AtomicServiceWeb-darkMode?: WebDarkMode--><!--Device-AtomicServiceWeb-darkMode?: WebDarkMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## forceDarkAccess
@@ -87,6 +95,8 @@ Sets whether to enable forced dark algorithm when the web is in dark mode.
 **Decorator:** @Prop
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AtomicServiceWeb-forceDarkAccess?: boolean--><!--Device-AtomicServiceWeb-forceDarkAccess?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +116,8 @@ Sets how to load HTTP and HTTPS content.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AtomicServiceWeb-mixedMode?: MixedMode--><!--Device-AtomicServiceWeb-mixedMode?: MixedMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## navPathStack
@@ -121,6 +133,8 @@ The navPathStack to control page route in Navigation and NavDestination.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AtomicServiceWeb-navPathStack?: NavPathStack--><!--Device-AtomicServiceWeb-navPathStack?: NavPathStack-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,6 +154,8 @@ Sets the nested scroll options.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-AtomicServiceWeb-nestedScroll?: NestedScrollOptions | NestedScrollOptionsExt--><!--Device-AtomicServiceWeb-nestedScroll?: NestedScrollOptions | NestedScrollOptionsExt-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onControllerAttached
@@ -155,6 +171,8 @@ Triggered when The controller is bound to the web component, this controller mus
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AtomicServiceWeb-onControllerAttached?: Callback<void>--><!--Device-AtomicServiceWeb-onControllerAttached?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,6 +190,8 @@ Triggered when the web page receives a web resource loading error.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AtomicServiceWeb-onErrorReceive?: Callback<OnErrorReceiveEvent>--><!--Device-AtomicServiceWeb-onErrorReceive?: Callback<OnErrorReceiveEvent>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onHttpErrorReceive
@@ -187,6 +207,8 @@ Triggered when the web page receives a web resource loading HTTP error.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AtomicServiceWeb-onHttpErrorReceive?: Callback<OnHttpErrorReceiveEvent>--><!--Device-AtomicServiceWeb-onHttpErrorReceive?: Callback<OnHttpErrorReceiveEvent>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -204,6 +226,8 @@ The callback method to invoke after page is back or destroyed if postMessage() i
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AtomicServiceWeb-onMessage?: Callback<OnMessageEvent>--><!--Device-AtomicServiceWeb-onMessage?: Callback<OnMessageEvent>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onPageBegin
@@ -219,6 +243,8 @@ Triggered at the begin of web page loading.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AtomicServiceWeb-onPageBegin?: Callback<OnPageBeginEvent>--><!--Device-AtomicServiceWeb-onPageBegin?: Callback<OnPageBeginEvent>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -236,6 +262,8 @@ Triggered at the end of web page loading.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AtomicServiceWeb-onPageEnd?: Callback<OnPageEndEvent>--><!--Device-AtomicServiceWeb-onPageEnd?: Callback<OnPageEndEvent>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onProgressChange
@@ -252,6 +280,8 @@ Triggered when the page loading progress changes.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AtomicServiceWeb-onProgressChange?: Callback<OnProgressChangeEvent>--><!--Device-AtomicServiceWeb-onProgressChange?: Callback<OnProgressChangeEvent>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## src
@@ -267,5 +297,7 @@ The address of the web page to be displayed.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AtomicServiceWeb-src: ResourceStr--><!--Device-AtomicServiceWeb-src: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

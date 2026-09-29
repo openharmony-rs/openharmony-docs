@@ -10,6 +10,8 @@ A four-dimensional vector used to represent a point, a direction, or a vector tr
 
 **Since:** 12
 
+<!--Device-unnamed-export interface Vec4--><!--Device-unnamed-export interface Vec4-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## w
@@ -23,6 +25,8 @@ Component on the W axis. The value is a real number.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Vec4-w: double--><!--Device-Vec4-w: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -38,6 +42,8 @@ Component on the X axis. The value is a real number.
 
 **Since:** 12
 
+<!--Device-Vec4-x: double--><!--Device-Vec4-x: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## y
@@ -52,6 +58,8 @@ Component on the Y axis. The value is a real number.
 
 **Since:** 12
 
+<!--Device-Vec4-y: double--><!--Device-Vec4-y: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## z
@@ -65,5 +73,7 @@ Component on the Z axis. The value is a real number.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Vec4-z: double--><!--Device-Vec4-z: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

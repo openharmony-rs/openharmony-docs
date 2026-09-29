@@ -12,6 +12,8 @@ declare class WebCookie
 
 **替代接口：** [WebCookieManager](../arkts-apis/arkts-arkweb-webview-webcookiemanager-c.md)
 
+<!--Device-unnamed-declare class WebCookie--><!--Device-unnamed-declare class WebCookie-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -30,6 +32,8 @@ WebCookie的构造函数。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebCookie-constructor()--><!--Device-WebCookie-constructor()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## saveCookie
@@ -46,6 +50,8 @@ saveCookie()
 
 **替代接口：** [saveCookieAsync](../arkts-apis/arkts-arkweb-webview-webcookiemanager-c.md#savecookieasync)
 
+<!--Device-WebCookie-saveCookie()--><!--Device-WebCookie-saveCookie()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## setCookie
@@ -61,5 +67,7 @@ setCookie()
 **废弃版本：** 9
 
 **替代接口：** setCookie
+
+<!--Device-WebCookie-setCookie()--><!--Device-WebCookie-setCookie()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

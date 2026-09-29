@@ -8,6 +8,8 @@ Defines the Contact selection options, which specifies whether one contact or mu
 
 **Since:** 10
 
+<!--Device-contact-interface ContactSelectionOptions--><!--Device-contact-interface ContactSelectionOptions-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Contact selection filter. This API can be used in atomic services since API vers
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-ContactSelectionOptions-filter?: ContactSelectionFilter--><!--Device-ContactSelectionOptions-filter?: ContactSelectionFilter-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 ## isAutoDismissOnNavigation
@@ -50,6 +54,8 @@ The default value is false.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ContactSelectionOptions-isAutoDismissOnNavigation?: boolean--><!--Device-ContactSelectionOptions-isAutoDismissOnNavigation?: boolean-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 ## isDisplayedByName
@@ -65,6 +71,8 @@ Whether to display contacts by name. The value **true** indicates that contacts 
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-ContactSelectionOptions-isDisplayedByName?: boolean--><!--Device-ContactSelectionOptions-isDisplayedByName?: boolean-End-->
 
 **System capability:** SystemCapability.Applications.Contacts
 
@@ -82,6 +90,8 @@ Whether multiple contacts can be selected. The value **true** indicates that mul
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ContactSelectionOptions-isMultiSelect?: boolean--><!--Device-ContactSelectionOptions-isMultiSelect?: boolean-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 ## maxSelectable
@@ -97,5 +107,7 @@ Maximum number of contacts. The default value is **10000**. If the value exceeds
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-ContactSelectionOptions-maxSelectable?: number--><!--Device-ContactSelectionOptions-maxSelectable?: number-End-->
 
 **System capability:** SystemCapability.Applications.Contacts

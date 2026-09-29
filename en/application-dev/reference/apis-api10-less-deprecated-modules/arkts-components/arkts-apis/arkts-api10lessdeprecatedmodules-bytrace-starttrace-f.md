@@ -26,6 +26,8 @@ Marks the start of a timeslice trace task.
 
 **Substitutes:** startTrace
 
+<!--Device-bytrace-function startTrace(name: string, taskId: number, expectedTime?: number): void--><!--Device-bytrace-function startTrace(name: string, taskId: number, expectedTime?: number): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 **Parameters:**

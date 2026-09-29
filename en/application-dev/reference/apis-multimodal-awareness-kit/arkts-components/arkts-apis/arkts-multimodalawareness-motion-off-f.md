@@ -20,6 +20,8 @@ Unsubscribes from operating hand change events.
 - API version 20 and later: ohos.permission.ACTIVITY_MOTION or ohos.permission.DETECT_GESTURE
 - API versions 15 to 19: ohos.permission.ACTIVITY_MOTION
 
+<!--Device-motion-function off(type: 'operatingHandChanged', callback?: Callback<OperatingHandStatus>): void--><!--Device-motion-function off(type: 'operatingHandChanged', callback?: Callback<OperatingHandStatus>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
 **Parameters:**
@@ -65,6 +67,8 @@ Disables listening for holding hand status changes.
 **Since:** 20
 
 **Required permissions:** ohos.permission.DETECT_GESTURE
+
+<!--Device-motion-function off(type: 'holdingHandChanged', callback?: Callback<HoldingHandStatus>): void--><!--Device-motion-function off(type: 'holdingHandChanged', callback?: Callback<HoldingHandStatus>): void-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 

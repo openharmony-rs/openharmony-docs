@@ -22,6 +22,8 @@ dialogController : CustomDialogController | null = new CustomDialogController(Cu
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare class CustomDialogController--><!--Device-unnamed-declare class CustomDialogController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## close
@@ -35,6 +37,8 @@ close()
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogController-close()--><!--Device-CustomDialogController-close()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,6 +67,8 @@ constructor(value: CustomDialogControllerOptions)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogController-constructor(value: CustomDialogControllerOptions)--><!--Device-CustomDialogController-constructor(value: CustomDialogControllerOptions)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -84,6 +90,8 @@ getState(): PromptActionCommonState
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogController-getState(): PromptActionCommonState--><!--Device-CustomDialogController-getState(): PromptActionCommonState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,5 +120,7 @@ open()
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogController-open()--><!--Device-CustomDialogController-open()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

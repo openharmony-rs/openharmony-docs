@@ -8,6 +8,8 @@ export interface WindowAnimationTarget
 
 **起始版本：** 9
 
+<!--Device-windowAnimationManager-export interface WindowAnimationTarget--><!--Device-windowAnimationManager-export interface WindowAnimationTarget-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,6 +32,8 @@ readonly abilityName: string
 
 **起始版本：** 9
 
+<!--Device-WindowAnimationTarget-readonly abilityName: string--><!--Device-WindowAnimationTarget-readonly abilityName: string-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -45,6 +49,8 @@ readonly bundleName: string
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-WindowAnimationTarget-readonly bundleName: string--><!--Device-WindowAnimationTarget-readonly bundleName: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,6 +68,8 @@ readonly missionId: number
 
 **起始版本：** 9
 
+<!--Device-WindowAnimationTarget-readonly missionId: int--><!--Device-WindowAnimationTarget-readonly missionId: int-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -77,6 +85,8 @@ readonly windowBounds: RRect
 **类型：** [RRect](arkts-arkui-windowanimationmanager-rrect-i-sys.md)
 
 **起始版本：** 9
+
+<!--Device-WindowAnimationTarget-readonly windowBounds: RRect--><!--Device-WindowAnimationTarget-readonly windowBounds: RRect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

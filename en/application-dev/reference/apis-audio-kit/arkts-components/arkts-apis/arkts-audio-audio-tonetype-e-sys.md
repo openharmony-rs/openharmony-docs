@@ -8,6 +8,8 @@ Enumerates tone types for player.
 
 **Since:** 9
 
+<!--Device-audio-enum ToneType--><!--Device-audio-enum ToneType-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ TONE_TYPE_DIAL_0 = 0
 Dial tone for key 0.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_DIAL_0 = 0--><!--Device-ToneType-TONE_TYPE_DIAL_0 = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -36,6 +40,8 @@ Dial tone for key 1.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_DIAL_1 = 1--><!--Device-ToneType-TONE_TYPE_DIAL_1 = 1-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -49,6 +55,8 @@ TONE_TYPE_DIAL_2 = 2
 Dial tone for key 2.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_DIAL_2 = 2--><!--Device-ToneType-TONE_TYPE_DIAL_2 = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -64,6 +72,8 @@ Dial tone for key 3.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_DIAL_3 = 3--><!--Device-ToneType-TONE_TYPE_DIAL_3 = 3-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -77,6 +87,8 @@ TONE_TYPE_DIAL_4 = 4
 Dial tone for key 4.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_DIAL_4 = 4--><!--Device-ToneType-TONE_TYPE_DIAL_4 = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -92,6 +104,8 @@ Dial tone for key 5.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_DIAL_5 = 5--><!--Device-ToneType-TONE_TYPE_DIAL_5 = 5-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -105,6 +119,8 @@ TONE_TYPE_DIAL_6 = 6
 Dial tone for key 6.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_DIAL_6 = 6--><!--Device-ToneType-TONE_TYPE_DIAL_6 = 6-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -120,6 +136,8 @@ Dial tone for key 7.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_DIAL_7 = 7--><!--Device-ToneType-TONE_TYPE_DIAL_7 = 7-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -133,6 +151,8 @@ TONE_TYPE_DIAL_8 = 8
 Dial tone for key 8.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_DIAL_8 = 8--><!--Device-ToneType-TONE_TYPE_DIAL_8 = 8-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -148,6 +168,8 @@ Dial tone for key 9.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_DIAL_9 = 9--><!--Device-ToneType-TONE_TYPE_DIAL_9 = 9-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -161,6 +183,8 @@ TONE_TYPE_DIAL_S = 10
 Dial tone for key *.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_DIAL_S = 10--><!--Device-ToneType-TONE_TYPE_DIAL_S = 10-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -176,6 +200,8 @@ Dial tone for key #.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_DIAL_P = 11--><!--Device-ToneType-TONE_TYPE_DIAL_P = 11-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -189,6 +215,8 @@ TONE_TYPE_DIAL_A = 12
 Dial tone for key A.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_DIAL_A = 12--><!--Device-ToneType-TONE_TYPE_DIAL_A = 12-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -204,6 +232,8 @@ Dial tone for key B.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_DIAL_B = 13--><!--Device-ToneType-TONE_TYPE_DIAL_B = 13-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -217,6 +247,8 @@ TONE_TYPE_DIAL_C = 14
 Dial tone for key C.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_DIAL_C = 14--><!--Device-ToneType-TONE_TYPE_DIAL_C = 14-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -232,6 +264,8 @@ Dial tone for key D.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_DIAL_D = 15--><!--Device-ToneType-TONE_TYPE_DIAL_D = 15-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -245,6 +279,8 @@ TONE_TYPE_COMMON_SUPERVISORY_DIAL = 100
 Supervisory tone for dial.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_DIAL = 100--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_DIAL = 100-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -260,6 +296,8 @@ Supervisory tone for busy.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_BUSY = 101--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_BUSY = 101-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -273,6 +311,8 @@ TONE_TYPE_COMMON_SUPERVISORY_CONGESTION = 102
 Supervisory tone for dial.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CONGESTION = 102--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CONGESTION = 102-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -288,6 +328,8 @@ Supervisory tone for radio path acknowledgment.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RADIO_ACK = 103--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RADIO_ACK = 103-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -301,6 +343,8 @@ TONE_TYPE_COMMON_SUPERVISORY_RADIO_NOT_AVAILABLE = 104
 Supervisory tone for radio path not available.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RADIO_NOT_AVAILABLE = 104--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RADIO_NOT_AVAILABLE = 104-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -316,6 +360,8 @@ Supervisory tone for call waiting.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CALL_WAITING = 106--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CALL_WAITING = 106-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -329,6 +375,8 @@ TONE_TYPE_COMMON_SUPERVISORY_RINGTONE = 107
 Supervisory tone for ringtone.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RINGTONE = 107--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_RINGTONE = 107-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -344,6 +392,8 @@ Supervisory tone for call holding.
 
 **Since:** 18
 
+<!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CALL_HOLDING = 108--><!--Device-ToneType-TONE_TYPE_COMMON_SUPERVISORY_CALL_HOLDING = 108-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -357,6 +407,8 @@ TONE_TYPE_COMMON_PROPRIETARY_BEEP = 200
 Proprietary tone for beep.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_BEEP = 200--><!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_BEEP = 200-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -372,6 +424,8 @@ Proprietary tone for positive acknowledgment.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_ACK = 201--><!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_ACK = 201-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -386,6 +440,8 @@ Proprietary tone for prompt.
 
 **Since:** 9
 
+<!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_PROMPT = 203--><!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_PROMPT = 203-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -399,6 +455,8 @@ TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP = 204
 Proprietary tone for double beep.
 
 **Since:** 9
+
+<!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP = 204--><!--Device-ToneType-TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP = 204-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 

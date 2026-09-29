@@ -12,6 +12,8 @@ Describes the video playback state. You can obtain the state through the **state
 
 **Substitutes:** [AVPlayerState](arkts-media-media-avplayerstate-t.md)
 
+<!--Device-media-type VideoPlayState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | 'error'--><!--Device-media-type VideoPlayState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | 'error'-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoPlayer
 
 | Type | Description |

@@ -16,6 +16,8 @@ Obtains the path of the configuration file with the highest priority. This API u
 
 **Since:** 8
 
+<!--Device-configPolicy-function getOneCfgFile(relPath: string, callback: AsyncCallback<string>): void--><!--Device-configPolicy-function getOneCfgFile(relPath: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.ConfigPolicy
 
 **System API:** This is a system API.
@@ -45,6 +47,8 @@ function getOneCfgFile(relPath: string): Promise<string>
 Obtains the path of the configuration file with the highest priority. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-configPolicy-function getOneCfgFile(relPath: string): Promise<string>--><!--Device-configPolicy-function getOneCfgFile(relPath: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Customization.ConfigPolicy
 
@@ -81,6 +85,8 @@ Obtains the path of the configuration file with the highest priority based on th
 
 **Since:** 11
 
+<!--Device-configPolicy-function getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback<string>): void--><!--Device-configPolicy-function getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.ConfigPolicy
 
 **System API:** This is a system API.
@@ -111,6 +117,8 @@ function getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, 
 Obtains the path of the configuration file with the highest priority based on the provided follow mode. This API uses an asynchronous callback to return the result. For example, if the paths of **config.xml** on the device are **\/system/etc/config.xml**, **\/sys_pod/etc/config.xml**, and **\/sys_pod/etc/carrier/46060/etc/config.xml** in ascending order of priority, the opkey of the device card 1 is **46060**, **followMode** is set to **configPolicy.FollowXMode.USER_DEFINED**, and the custom follow rule is **"etc/carrier/${telephony.sim.opkey0}"**, the final return value is **\/sys_pod/etc/carrier/46060/etc/config.xml**.
 
 **Since:** 11
+
+<!--Device-configPolicy-function getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback<string>): void--><!--Device-configPolicy-function getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Customization.ConfigPolicy
 
@@ -143,6 +151,8 @@ function getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string)
 Obtains the path of the configuration file with the highest priority based on the provided follow mode. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-configPolicy-function getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string): Promise<string>--><!--Device-configPolicy-function getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Customization.ConfigPolicy
 

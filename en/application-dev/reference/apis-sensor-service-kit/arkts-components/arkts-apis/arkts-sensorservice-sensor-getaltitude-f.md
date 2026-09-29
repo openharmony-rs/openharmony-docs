@@ -14,11 +14,19 @@ function getAltitude(seaPressure: number, currentPressure: number, callback: Asy
 
 Obtains the altitude at which the device is located based on the sea-level atmospheric pressure and the current atmospheric pressure. This API uses an asynchronous callback to return the result.
 
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.getDeviceAltitude](arkts-sensorservice-sensor-getdevicealtitude-f.md)
+> instead.
+
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [getDeviceAltitude](arkts-sensorservice-sensor-getdevicealtitude-f.md)(seaPressure: number, currentPressure: number, callback: AsyncCallback&lt;number&gt;)
+
+<!--Device-sensor-function getAltitude(seaPressure: number, currentPressure: number, callback: AsyncCallback<number>): void--><!--Device-sensor-function getAltitude(seaPressure: number, currentPressure: number, callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -56,11 +64,18 @@ function getAltitude(seaPressure: number, currentPressure: number): Promise<numb
 
 Obtains the altitude at which the device is located based on the sea-level atmospheric pressure and the current atmospheric pressure. This API uses a promise to return the result.
 
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.getDeviceAltitude](arkts-sensorservice-sensor-getdevicealtitude-f.md) instead.
+
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [getDeviceAltitude](arkts-sensorservice-sensor-getdevicealtitude-f.md)(seaPressure: number, currentPressure: number)
+
+<!--Device-sensor-function getAltitude(seaPressure: number, currentPressure: number): Promise<number>--><!--Device-sensor-function getAltitude(seaPressure: number, currentPressure: number): Promise<number>-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 

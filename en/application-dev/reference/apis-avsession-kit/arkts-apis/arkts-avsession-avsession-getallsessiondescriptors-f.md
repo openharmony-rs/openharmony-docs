@@ -22,6 +22,8 @@ Get all avsession descriptors which can be shown on system entrance.
 - API version 23 and later: ohos.permission.MANAGE_MEDIA_RESOURCES or ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 - API versions 9 to 22: ohos.permission.MANAGE_MEDIA_RESOURCES
 
+<!--Device-avSession-function getAllSessionDescriptors(): Promise<Array<Readonly<AVSessionDescriptor>>>--><!--Device-avSession-function getAllSessionDescriptors(): Promise<Array<Readonly<AVSessionDescriptor>>>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **Return value:**

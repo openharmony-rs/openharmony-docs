@@ -10,6 +10,8 @@ AI session destruction callback function type. Used to clean up resources associ
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-type OnDestroyAISession = (id: string) => void--><!--Device-unnamed-type OnDestroyAISession = (id: string) => void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

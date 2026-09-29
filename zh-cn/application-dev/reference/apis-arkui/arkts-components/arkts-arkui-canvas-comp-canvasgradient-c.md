@@ -8,6 +8,8 @@ OffscreenCanvas支持以下属性：
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class CanvasGradient--><!--Device-unnamed-declare class CanvasGradient-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## addColorStop
@@ -25,6 +27,8 @@ addColorStop(offset: number, color: string): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasGradient-addColorStop(offset: number, color: string): void--><!--Device-CanvasGradient-addColorStop(offset: number, color: string): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,6 +90,8 @@ addColorStop(offset: number, color: string | ColorMetrics): void
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasGradient-addColorStop(offset: number, color: string | ColorMetrics): void--><!--Device-CanvasGradient-addColorStop(offset: number, color: string | ColorMetrics): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -103,7 +109,7 @@ addColorStop(offset: number, color: string | ColorMetrics): void
 
 **示例**
 
-通过addColorStop设置指定色域的渐变断点值，包括偏移和颜色。设置窗口色域模式为广色域参照方法setWindowColorSpace。
+通过addColorStop设置指定色域的渐变断点值，包括偏移和颜色。设置窗口色域模式为广色域参照方法[setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace)。
 
 ```TypeScript
 // xxx.ets
@@ -163,7 +169,7 @@ struct AddColorStop {
 
 > 说明：
 > 
-> 使用HDR颜色时，需要将Canvas组件所在窗口的色域模式通过setWindowColorSpace方法设置为广色域模式（WIDE_GAMUT），否则HDR提亮效果不会生效。
+> 使用HDR颜色时，需要将Canvas组件所在窗口的色域模式通过[setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace)方法设置为广色域模式（WIDE_GAMUT），否则HDR提亮效果不会生效。
 
 从API版本26.0.0开始，[addColorStop](#addcolorstop)接口新增支持通过ColorMetrics类型入参进行HDR提亮。
 

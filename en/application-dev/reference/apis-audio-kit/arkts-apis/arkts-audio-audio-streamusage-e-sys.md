@@ -8,6 +8,8 @@ Enumerates the types of audio streams played.
 
 **Since:** 7
 
+<!--Device-audio-enum StreamUsage--><!--Device-audio-enum StreamUsage-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## STREAM_USAGE_SYSTEM
@@ -19,6 +21,8 @@ STREAM_USAGE_SYSTEM = 9
 System usage, such as screen lock or key click.
 
 **Since:** 10
+
+<!--Device-StreamUsage-STREAM_USAGE_SYSTEM = 9--><!--Device-StreamUsage-STREAM_USAGE_SYSTEM = 9-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -34,6 +38,8 @@ DTMF dial tone usage.
 
 **Since:** 10
 
+<!--Device-StreamUsage-STREAM_USAGE_DTMF = 14--><!--Device-StreamUsage-STREAM_USAGE_DTMF = 14-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **System API:** This is a system API.
@@ -47,6 +53,8 @@ STREAM_USAGE_ENFORCED_TONE = 15
 Enforced tone usage, such as camera shutter.
 
 **Since:** 10
+
+<!--Device-StreamUsage-STREAM_USAGE_ENFORCED_TONE = 15--><!--Device-StreamUsage-STREAM_USAGE_ENFORCED_TONE = 15-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -62,6 +70,8 @@ Ultrasonic playing usage. This type is only used for msdp condition.
 
 **Since:** 10
 
+<!--Device-StreamUsage-STREAM_USAGE_ULTRASONIC = 16--><!--Device-StreamUsage-STREAM_USAGE_ULTRASONIC = 16-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **System API:** This is a system API.
@@ -75,6 +85,8 @@ STREAM_USAGE_VOICE_CALL_ASSISTANT = 21
 Voice call assistant type. This type is only used for call assistant functionalities.
 
 **Since:** 12
+
+<!--Device-StreamUsage-STREAM_USAGE_VOICE_CALL_ASSISTANT = 21--><!--Device-StreamUsage-STREAM_USAGE_VOICE_CALL_ASSISTANT = 21-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -92,6 +104,8 @@ Announcement usage.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StreamUsage-STREAM_USAGE_ANNOUNCEMENT = 22--><!--Device-StreamUsage-STREAM_USAGE_ANNOUNCEMENT = 22-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **System API:** This is a system API.
@@ -107,6 +121,8 @@ Emergency usage.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StreamUsage-STREAM_USAGE_EMERGENCY = 23--><!--Device-StreamUsage-STREAM_USAGE_EMERGENCY = 23-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -124,7 +140,9 @@ Voice assistant broadcast usage for system app.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-StreamUsage-STREAM_USAGE_VOICE_ASSISTANT_SYSTEM = 27--><!--Device-StreamUsage-STREAM_USAGE_VOICE_ASSISTANT_SYSTEM = 27-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 

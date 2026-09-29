@@ -12,6 +12,8 @@ interface ActionMenuSuccessResponse
 
 **替代接口：** [ActionMenuSuccessResponse](arkts-arkui-promptaction-actionmenusuccessresponse-i.md)
 
+<!--Device-prompt-interface ActionMenuSuccessResponse--><!--Device-prompt-interface ActionMenuSuccessResponse-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -37,5 +39,7 @@ index: number
 **替代接口：** [index](arkts-arkui-promptaction-actionmenusuccessresponse-i.md#index)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-ActionMenuSuccessResponse-index: number--><!--Device-ActionMenuSuccessResponse-index: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

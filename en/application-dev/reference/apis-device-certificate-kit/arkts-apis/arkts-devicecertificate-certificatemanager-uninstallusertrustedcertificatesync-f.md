@@ -18,6 +18,8 @@ Uninstalls a user CA certificate.
 
 **Required permissions:** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT or ohos.permission.ACCESS_USER_TRUSTED_CERT
 
+<!--Device-certificateManager-function uninstallUserTrustedCertificateSync(certUri: string): void--><!--Device-certificateManager-function uninstallUserTrustedCertificateSync(certUri: string): void-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **Parameters:**

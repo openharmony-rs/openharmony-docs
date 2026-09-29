@@ -6,6 +6,8 @@ declare interface GeometryTransitionOptions
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface GeometryTransitionOptions--><!--Device-unnamed-declare interface GeometryTransitionOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## follow
@@ -27,5 +29,7 @@ follow?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GeometryTransitionOptions-follow?: boolean--><!--Device-GeometryTransitionOptions-follow?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

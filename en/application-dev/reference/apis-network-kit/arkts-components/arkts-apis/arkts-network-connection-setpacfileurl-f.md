@@ -26,6 +26,8 @@ Sets the URL of the Proxy Auto-Configuration Script (PAC) and enables the PAC pr
 
 **Required permissions:** ohos.permission.SET_PAC_URL
 
+<!--Device-connection-function setPacFileUrl(pacFileUrl: string): void--><!--Device-connection-function setPacFileUrl(pacFileUrl: string): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

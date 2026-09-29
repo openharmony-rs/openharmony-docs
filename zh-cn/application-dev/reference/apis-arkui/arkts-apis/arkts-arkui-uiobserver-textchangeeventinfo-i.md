@@ -8,6 +8,8 @@ export interface TextChangeEventInfo
 
 **起始版本：** 22
 
+<!--Device-uiObserver-export interface TextChangeEventInfo--><!--Device-uiObserver-export interface TextChangeEventInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ content: string
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextChangeEventInfo-content: string--><!--Device-TextChangeEventInfo-content: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -50,6 +54,8 @@ id: string
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextChangeEventInfo-id: string--><!--Device-TextChangeEventInfo-id: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## uniqueId
@@ -67,5 +73,7 @@ uniqueId: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextChangeEventInfo-uniqueId: number--><!--Device-TextChangeEventInfo-uniqueId: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines the content transition effect.
 
 **Since:** 21
 
+<!--Device-unnamed-declare class ContentTransitionEffect--><!--Device-unnamed-declare class ContentTransitionEffect-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## IDENTITY
@@ -24,6 +26,8 @@ When the content changes, there is no animation effect.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-ContentTransitionEffect-static get IDENTITY(): ContentTransitionEffect--><!--Device-ContentTransitionEffect-static get IDENTITY(): ContentTransitionEffect-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## OPACITY
@@ -39,5 +43,7 @@ When the content changes, there is a smooth fade-in and fade-out effect.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-ContentTransitionEffect-static get OPACITY(): ContentTransitionEffect--><!--Device-ContentTransitionEffect-static get OPACITY(): ContentTransitionEffect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

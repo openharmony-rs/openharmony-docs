@@ -8,6 +8,8 @@ Configuring parameters in geo fence requests.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-export interface GeofenceRequest--><!--Device-geoLocationManager-export interface GeofenceRequest-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Circular fence information.
 
 **Since:** 9
 
+<!--Device-GeofenceRequest-geofence: Geofence--><!--Device-GeofenceRequest-geofence: Geofence-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## scenario
@@ -41,5 +45,7 @@ Indicate the user scenario.
 **Type:** [LocationRequestScenario](arkts-location-geolocationmanager-locationrequestscenario-e.md)
 
 **Since:** 9
+
+<!--Device-GeofenceRequest-scenario: LocationRequestScenario--><!--Device-GeofenceRequest-scenario: LocationRequestScenario-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence

@@ -8,6 +8,8 @@ The module defines the application information.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface ApplicationInfo--><!--Device-unnamed-export interface ApplicationInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## applicationReservedFlag
@@ -24,6 +26,8 @@ Indicates the reserved flag of the application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly applicationReservedFlag?: bundleManager.ApplicationReservedFlag--><!--Device-ApplicationInfo-readonly applicationReservedFlag?: bundleManager.ApplicationReservedFlag-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Indicates the flags of the application.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-ApplicationInfo-readonly flags?: int--><!--Device-ApplicationInfo-readonly flags?: int-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

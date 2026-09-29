@@ -20,6 +20,8 @@ Obtains the security status of the current device. This API is applicable to sce
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getSecurityStatus(admin: Want, item: string): string--><!--Device-securityManager-function getSecurityStatus(admin: Want, item: string): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

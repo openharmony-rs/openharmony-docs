@@ -8,6 +8,8 @@ Represents an enterprise custom policy.
 
 **Since:** 21
 
+<!--Device-dlpPermission-export interface EnterprisePolicy--><!--Device-dlpPermission-export interface EnterprisePolicy-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## Modules to Import
@@ -27,5 +29,7 @@ JSON string of an enterprise custom policy. The value contains a maximum of 4,19
 **Type:** string
 
 **Since:** 21
+
+<!--Device-EnterprisePolicy-policyString: string--><!--Device-EnterprisePolicy-policyString: string-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention

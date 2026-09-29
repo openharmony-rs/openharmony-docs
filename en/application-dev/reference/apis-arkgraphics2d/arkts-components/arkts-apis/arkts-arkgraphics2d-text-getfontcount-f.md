@@ -20,7 +20,9 @@ Returns **0** if the font file is not found, the font file path is invalid, the 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-text-function getFontCount(path: string | Resource) : int--><!--Device-text-function getFontCount(path: string | Resource) : int-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

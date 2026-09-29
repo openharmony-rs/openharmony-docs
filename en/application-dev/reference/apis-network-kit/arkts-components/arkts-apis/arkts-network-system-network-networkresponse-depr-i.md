@@ -8,6 +8,8 @@ This module provides the Network Response.
 
 **Since:** 3
 
+<!--Device-unnamed-export interface NetworkResponse--><!--Device-unnamed-export interface NetworkResponse-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Whether to charge by traffic. The value **true** means to charge by traffic, and
 
 **Since:** 3
 
+<!--Device-NetworkResponse-metered: boolean--><!--Device-NetworkResponse-metered: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## type
@@ -40,5 +44,7 @@ Network type. The value can be **2G**, **3G**, **4G**, **5G**, **WiFi**, or **no
 **Type:** string
 
 **Since:** 3
+
+<!--Device-NetworkResponse-type: string--><!--Device-NetworkResponse-type: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

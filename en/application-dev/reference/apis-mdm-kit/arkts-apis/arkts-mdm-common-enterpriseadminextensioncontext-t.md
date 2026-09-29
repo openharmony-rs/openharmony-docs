@@ -10,6 +10,8 @@ export type EnterpriseAdminExtensionContext = _EnterpriseAdminExtensionContext.d
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-common-export type EnterpriseAdminExtensionContext = _EnterpriseAdminExtensionContext.default--><!--Device-common-export type EnterpriseAdminExtensionContext = _EnterpriseAdminExtensionContext.default-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Type:** _EnterpriseAdminExtensionContext.default

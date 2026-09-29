@@ -8,6 +8,8 @@ Defines the CustomSpanMeasureInfo interface.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface CustomSpanMeasureInfo--><!--Device-unnamed-declare interface CustomSpanMeasureInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontSize
@@ -16,9 +18,9 @@ Defines the CustomSpanMeasureInfo interface.
 fontSize: number
 ```
 
-Text font size.
+Font size of the text.
 
-Unit: fp
+Unit: [fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** number
 
@@ -28,6 +30,8 @@ Unit: fp
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomSpanMeasureInfo-fontSize: number--><!--Device-CustomSpanMeasureInfo-fontSize: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## layoutPolicy
@@ -36,11 +40,11 @@ Unit: fp
 layoutPolicy?: LayoutPolicy
 ```
 
-Width layout policy of the parent component of the custom span.
+Width layout policy of the parent component where the custom drawing span is located.
 
 **NOTE:** 
 
-When the value is **null** or **undefined**, the parent component does not have a width layout policy set.
+When the value is **null** or **undefined**, it indicates that the parent component has no width layout policy set.
 
 **Type:** [LayoutPolicy](../arkts-components/arkts-arkui-common-comp-layoutpolicy-c.md)
 
@@ -50,6 +54,8 @@ When the value is **null** or **undefined**, the parent component does not have 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CustomSpanMeasureInfo-layoutPolicy?: LayoutPolicy--><!--Device-CustomSpanMeasureInfo-layoutPolicy?: LayoutPolicy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxWidth
@@ -58,9 +64,11 @@ When the value is **null** or **undefined**, the parent component does not have 
 maxWidth?: number
 ```
 
-Maximum width constraint of the custom span within the parent component's content area.
+Maximum width constraint of the content area of the parent component where the custom drawing span is located.
 
-Unit: px
+Default value: uses its own width.
+
+Unit: [px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** number
 
@@ -69,5 +77,7 @@ Unit: px
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CustomSpanMeasureInfo-maxWidth?: number--><!--Device-CustomSpanMeasureInfo-maxWidth?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

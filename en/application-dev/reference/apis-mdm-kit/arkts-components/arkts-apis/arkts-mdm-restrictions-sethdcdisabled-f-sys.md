@@ -24,6 +24,8 @@ Enables or disables [HDC](../../../../device-dev/subsystems/subsys-toolchain-hdc
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function setHdcDisabled(admin: Want, disabled: boolean, callback: AsyncCallback<void>): void--><!--Device-restrictions-function setHdcDisabled(admin: Want, disabled: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -87,6 +89,8 @@ Enables or disables HDC on a device. This API uses a promise to return the resul
 **Required permissions:** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-restrictions-function setHdcDisabled(admin: Want, disabled: boolean): Promise<void>--><!--Device-restrictions-function setHdcDisabled(admin: Want, disabled: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -8,6 +8,8 @@ Enum for satellite additional information.
 
 **Since:** 12
 
+<!--Device-geoLocationManager-export enum SatelliteAdditionalInfo--><!--Device-geoLocationManager-export enum SatelliteAdditionalInfo-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## SATELLITES_ADDITIONAL_INFO_NULL
@@ -19,6 +21,8 @@ SATELLITES_ADDITIONAL_INFO_NULL = 0
 Default value.
 
 **Since:** 12
+
+<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_NULL = 0--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_NULL = 0-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -32,6 +36,8 @@ Ephemeris data exist.
 
 **Since:** 12
 
+<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_EPHEMERIS_DATA_EXIST = 1--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_EPHEMERIS_DATA_EXIST = 1-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST
@@ -43,6 +49,8 @@ SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2
 Almanac data exist.
 
 **Since:** 12
+
+<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -56,6 +64,8 @@ This satellite is being used in location fix.
 
 **Since:** 12
 
+<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_USED_IN_FIX = 4--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_USED_IN_FIX = 4-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST
@@ -67,5 +77,7 @@ SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8
 Carrier frequency exist.
 
 **Since:** 12
+
+<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss

@@ -18,6 +18,8 @@ Obtains the public key ID information supported by the phone.
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_ESIM_STATE
 
+<!--Device-eSIM-function getSupportedPkids(slotId: int) : Promise<string>--><!--Device-eSIM-function getSupportedPkids(slotId: int) : Promise<string>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.

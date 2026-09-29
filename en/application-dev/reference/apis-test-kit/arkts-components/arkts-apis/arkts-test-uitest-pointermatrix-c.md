@@ -8,6 +8,8 @@ Implements a **PointerMatrix** object that stores coordinates and behaviors of e
 
 **Since:** 9
 
+<!--Device-unnamed-declare class PointerMatrix--><!--Device-unnamed-declare class PointerMatrix-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -29,7 +31,9 @@ Creates a **PointerMatrix** object and returns the object created. This API is a
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PointerMatrix-static create(fingers: int, steps: int): PointerMatrix--><!--Device-PointerMatrix-static create(fingers: int, steps: int): PointerMatrix-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -75,7 +79,9 @@ Sets the coordinates for the action corresponding to the specified finger and st
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PointerMatrix-setPoint(finger: int, step: int, point: Point): void--><!--Device-PointerMatrix-setPoint(finger: int, step: int, point: Point): void-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

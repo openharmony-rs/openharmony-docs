@@ -16,6 +16,8 @@ Enables listening for system load level changes. This API uses an asynchronous c
 
 **Since:** 12
 
+<!--Device-systemLoad-function on(type: 'systemLoadChange', callback: Callback<SystemLoadLevel>): void--><!--Device-systemLoad-function on(type: 'systemLoadChange', callback: Callback<SystemLoadLevel>): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
 **Parameters:**

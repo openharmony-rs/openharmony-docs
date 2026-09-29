@@ -16,6 +16,8 @@ Attaches an ID to the end of a given URI.
 
 **Since:** 9
 
+<!--Device-dataUriUtils-function attachId(uri: string, id: double): string--><!--Device-dataUriUtils-function attachId(uri: string, id: double): string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

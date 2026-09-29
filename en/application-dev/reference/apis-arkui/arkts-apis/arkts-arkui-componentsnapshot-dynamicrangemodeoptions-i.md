@@ -8,6 +8,8 @@ Defines the dynamic range mode used for the snapshot.
 
 **Since:** 23
 
+<!--Device-componentSnapshot-interface DynamicRangeModeOptions--><!--Device-componentSnapshot-interface DynamicRangeModeOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -50,6 +52,8 @@ If the value is **undefined**, **null**, or not set, the default value is used. 
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-DynamicRangeModeOptions-dynamicRangeMode?: DynamicRangeMode--><!--Device-DynamicRangeModeOptions-dynamicRangeMode?: DynamicRangeMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isAuto
@@ -79,5 +83,7 @@ When **isAuto** is set to true, the value of **dynamicRangeMode** is ignored.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-DynamicRangeModeOptions-isAuto?: boolean--><!--Device-DynamicRangeModeOptions-isAuto?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

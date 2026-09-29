@@ -1,6 +1,6 @@
 # ArkTS API<!--arkts-sensorservicekit-->
 
-- [@ohos.sensor](arkts-sensorservice-sensor.md)
+- [@ohos.sensor(Sensor module)](arkts-sensorservice-sensor.md)
   - [createQuaternion](arkts-sensorservice-sensor-createquaternion-f.md)
   - [createRotationMatrix](arkts-sensorservice-sensor-createrotationmatrix-f.md)
   - [getAltitude](arkts-sensorservice-sensor-getaltitude-f.md)
@@ -71,7 +71,7 @@
   <!--Del-->
   - [SensorId(system api)](arkts-sensorservice-sensor-sensorid-e-sys.md)<!--DelEnd-->
   - [SensorType](arkts-sensorservice-sensor-sensortype-e.md)
-- [@ohos.vibrator](arkts-sensorservice-vibrator.md)
+- [@ohos.vibrator(Vibration control module)](arkts-sensorservice-vibrator.md)
   - [getEffectInfoSync](arkts-sensorservice-vibrator-geteffectinfosync-f.md)
   - [getVibratorInfoSync](arkts-sensorservice-vibrator-getvibratorinfosync-f.md)
   - [isHdHapticSupported](arkts-sensorservice-vibrator-ishdhapticsupported-f.md)
@@ -108,7 +108,7 @@
   - [HapticFeedback](arkts-sensorservice-vibrator-hapticfeedback-e.md)
   - [VibratorEventType](arkts-sensorservice-vibrator-vibratoreventtype-e.md)
   - [VibratorStopMode](arkts-sensorservice-vibrator-vibratorstopmode-e.md)
-- [@system.sensor](arkts-sensorservice-system-sensor.md)
+- [@system.sensor(Sensor module)](arkts-sensorservice-system-sensor.md)
   - [Sensor](arkts-sensorservice-system-sensor-sensor-c.md)
   - [AccelerometerResponse](arkts-sensorservice-system-sensor-accelerometerresponse-i.md)
   - [BarometerResponse](arkts-sensorservice-system-sensor-barometerresponse-i.md)
@@ -131,6 +131,6 @@
   - [SubscribeOnBodyStateOptions](arkts-sensorservice-system-sensor-subscribeonbodystateoptions-i.md)
   - [SubscribeProximityOptions](arkts-sensorservice-system-sensor-subscribeproximityoptions-i.md)
   - [SubscribeStepCounterOptions](arkts-sensorservice-system-sensor-subscribestepcounteroptions-i.md)
-- [@system.vibrator](arkts-sensorservice-system-vibrator.md)
+- [@system.vibrator(Vibration control module)](arkts-sensorservice-system-vibrator.md)
   - [Vibrator](arkts-sensorservice-system-vibrator-vibrator-c.md)
   - [VibrateOptions](arkts-sensorservice-system-vibrator-vibrateoptions-i.md)

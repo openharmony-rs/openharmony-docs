@@ -20,6 +20,8 @@ Obtains all activated wired network interfaces. This API is suitable for enterpr
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function getAllNetworkInterfacesSync(admin: Want): Array<string>--><!--Device-networkManager-function getAllNetworkInterfacesSync(admin: Want): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -8,6 +8,8 @@ Options for opening an overlay with order.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface OrderOverlayOptions--><!--Device-unnamed-export interface OrderOverlayOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ The display mode of the overlay.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OrderOverlayOptions-levelMode?: LevelMode--><!--Device-OrderOverlayOptions-levelMode?: LevelMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelOrder
@@ -53,6 +57,8 @@ The display order of the overlay.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OrderOverlayOptions-levelOrder?: LevelOrder--><!--Device-OrderOverlayOptions-levelOrder?: LevelOrder-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelUniqueId
@@ -70,5 +76,7 @@ The uniqueId of any node in the router or navigation page.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-OrderOverlayOptions-levelUniqueId?: int--><!--Device-OrderOverlayOptions-levelUniqueId?: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

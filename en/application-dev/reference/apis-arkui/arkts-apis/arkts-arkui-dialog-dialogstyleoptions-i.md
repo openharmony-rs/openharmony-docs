@@ -10,6 +10,8 @@ Options for the fixed-style dialog.
 
 **Since:** 26.0.1
 
+<!--Device-dialog-declare interface DialogStyleOptions extends DialogBaseOptions--><!--Device-dialog-declare interface DialogStyleOptions extends DialogBaseOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -36,6 +38,8 @@ The arrangement of buttons.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-DialogStyleOptions-buttonDirection?: DialogButtonOrientation--><!--Device-DialogStyleOptions-buttonDirection?: DialogButtonOrientation-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttons
@@ -53,6 +57,8 @@ Array of buttons in the dialog box. When provided, the dialog displays as an ale
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-DialogStyleOptions-buttons?: Array<DialogButton>--><!--Device-DialogStyleOptions-buttons?: Array<DialogButton>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ Grid count of dialog. The value should be an integer.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-DialogStyleOptions-gridCount?: int--><!--Device-DialogStyleOptions-gridCount?: int-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## message
@@ -89,6 +97,8 @@ Message content and text style of the dialog box.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-DialogStyleOptions-message?: DialogMessage--><!--Device-DialogStyleOptions-message?: DialogMessage-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +118,8 @@ Array of sheet items for action-sheet style. When provided, the dialog displays 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-DialogStyleOptions-sheets?: Array<DialogSheet>--><!--Device-DialogStyleOptions-sheets?: Array<DialogSheet>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## subtitle
@@ -126,6 +138,8 @@ Subtitle of the dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-DialogStyleOptions-subtitle?: ResourceStr--><!--Device-DialogStyleOptions-subtitle?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -143,5 +157,7 @@ Title of the dialog box.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-DialogStyleOptions-title?: ResourceStr--><!--Device-DialogStyleOptions-title?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

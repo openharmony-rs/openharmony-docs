@@ -10,6 +10,8 @@ PreviewOutput implements preview output. It inherits from [CameraOutput](arkts-c
 
 **Since:** 10
 
+<!--Device-camera-interface PreviewOutput extends CameraOutput--><!--Device-camera-interface PreviewOutput extends CameraOutput-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ attachSketchSurface(surfaceId: string): void
 Attaches a surface for PiP preview.
 
 **Since:** 11
+
+<!--Device-PreviewOutput-attachSketchSurface(surfaceId: string): void--><!--Device-PreviewOutput-attachSketchSurface(surfaceId: string): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -78,6 +82,8 @@ Enables or disables PiP preview.
 
 **Since:** 11
 
+<!--Device-PreviewOutput-enableSketch(enabled: boolean): void--><!--Device-PreviewOutput-enableSketch(enabled: boolean): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -127,6 +133,8 @@ Obtains the zoom ratio when PiP preview is enabled.
 
 **Since:** 11
 
+<!--Device-PreviewOutput-getSketchRatio(): double--><!--Device-PreviewOutput-getSketchRatio(): double-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -162,6 +170,8 @@ isSketchSupported(): boolean
 Checks whether Picture-in-Picture (PiP) preview is supported.
 
 **Since:** 11
+
+<!--Device-PreviewOutput-isSketchSupported(): boolean--><!--Device-PreviewOutput-isSketchSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -207,6 +217,8 @@ Unsubscribes from PiP status change events.
 
 **Since:** 11
 
+<!--Device-PreviewOutput-off(type: 'sketchStatusChanged', callback?: AsyncCallback<SketchStatusData>): void--><!--Device-PreviewOutput-off(type: 'sketchStatusChanged', callback?: AsyncCallback<SketchStatusData>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -241,6 +253,8 @@ on(type: 'sketchStatusChanged', callback: AsyncCallback<SketchStatusData>): void
 Subscribes to PiP status change events. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-PreviewOutput-on(type: 'sketchStatusChanged', callback: AsyncCallback<SketchStatusData>): void--><!--Device-PreviewOutput-on(type: 'sketchStatusChanged', callback: AsyncCallback<SketchStatusData>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

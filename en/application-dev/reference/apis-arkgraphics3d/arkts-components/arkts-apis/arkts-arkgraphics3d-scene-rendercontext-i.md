@@ -10,6 +10,8 @@ Defines the context of all rendering resources. Multiple scenes created within t
 
 **Since:** 20
 
+<!--Device-unnamed-export interface RenderContext--><!--Device-unnamed-export interface RenderContext-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## getRenderResourceFactory
@@ -21,6 +23,8 @@ getRenderResourceFactory() : RenderResourceFactory
 Obtains the rendering resource factory, which provides APIs for creating different rendering resources.
 
 **Since:** 20
+
+<!--Device-RenderContext-getRenderResourceFactory() : RenderResourceFactory--><!--Device-RenderContext-getRenderResourceFactory() : RenderResourceFactory-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -55,6 +59,8 @@ loadPlugin(name: string): Promise<boolean>
 Loads a plugin by name. The API locates and loads the corresponding plugin resource using the provided plugin name. It uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-RenderContext-loadPlugin(name: string): Promise<boolean>--><!--Device-RenderContext-loadPlugin(name: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -94,6 +100,8 @@ registerResourcePath(protocol: string, uri: string): boolean
 Registers the directory path and retrieval name for asset files, such as shaders. It allows the system to find and replace the path descriptions of related files within the shaders using the retrieval name. This ensures that the correct paths for assets and their associated files are located and loaded properly.
 
 **Since:** 20
+
+<!--Device-RenderContext-registerResourcePath(protocol: string, uri: string): boolean--><!--Device-RenderContext-registerResourcePath(protocol: string, uri: string): boolean-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 

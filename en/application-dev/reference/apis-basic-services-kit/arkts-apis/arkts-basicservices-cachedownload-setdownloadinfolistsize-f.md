@@ -22,6 +22,8 @@ list size is decreased, the LRU mode is used by default to clear excess cached d
 
 **Since:** 20
 
+<!--Device-cacheDownload-function setDownloadInfoListSize(size: long): void--><!--Device-cacheDownload-function setDownloadInfoListSize(size: long): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

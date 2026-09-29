@@ -8,6 +8,8 @@ Defines the callback function used to write data to the audio renderer. Once the
 
 **Since:** 12
 
+<!--Device-audio-type AudioRendererWriteDataCallback = (data: ArrayBuffer) => AudioDataCallbackResult | void--><!--Device-audio-type AudioRendererWriteDataCallback = (data: ArrayBuffer) => AudioDataCallbackResult | void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **Parameters:**

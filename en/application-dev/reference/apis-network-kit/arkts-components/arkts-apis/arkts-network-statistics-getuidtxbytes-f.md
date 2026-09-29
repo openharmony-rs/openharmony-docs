@@ -25,6 +25,8 @@ Obtains the total uplink traffic (in bytes) of the specified application from th
 - API version 26 and later: ohos.permission.GET_NETWORK_STATS
 - API versions 10 to 25: N/A
 
+<!--Device-statistics-function getUidTxBytes(uid: int, callback: AsyncCallback<long>): void--><!--Device-statistics-function getUidTxBytes(uid: int, callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -82,6 +84,8 @@ Obtains the total uplink traffic of the specified application from the last star
 **Required permissions:** 
 - API version 26 and later: ohos.permission.GET_NETWORK_STATS
 - API versions 10 to 25: N/A
+
+<!--Device-statistics-function getUidTxBytes(uid: int): Promise<long>--><!--Device-statistics-function getUidTxBytes(uid: int): Promise<long>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

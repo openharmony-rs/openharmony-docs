@@ -14,6 +14,8 @@ let patternLockController: PatternLockController = new PatternLockController();
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare class PatternLockController--><!--Device-unnamed-declare class PatternLockController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -28,6 +30,8 @@ PatternLockController的构造函数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PatternLockController-constructor()--><!--Device-PatternLockController-constructor()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## reset
@@ -41,6 +45,8 @@ reset()
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PatternLockController-reset()--><!--Device-PatternLockController-reset()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,6 +63,8 @@ setChallengeResult(result: PatternLockChallengeResult): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PatternLockController-setChallengeResult(result: PatternLockChallengeResult): void--><!--Device-PatternLockController-setChallengeResult(result: PatternLockChallengeResult): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

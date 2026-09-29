@@ -10,6 +10,8 @@ WebHttpBodyStream works in conjunction with [WebSchemeHandlerRequest](arkts-arkw
 
 **Since:** 12
 
+<!--Device-webview-class WebHttpBodyStream--><!--Device-webview-class WebHttpBodyStream-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Reads the current read position in this **WebHttpBodyStream** instance.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebHttpBodyStream-getPosition(): number--><!--Device-WebHttpBodyStream-getPosition(): number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -54,6 +58,8 @@ Obtains the size of data in this **WebHttpBodyStream** instance. This API always
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebHttpBodyStream-getSize(): number--><!--Device-WebHttpBodyStream-getSize(): number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -77,6 +83,8 @@ Initializes this **WebHttpBodyStream** instance.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebHttpBodyStream-initialize(): Promise<void>--><!--Device-WebHttpBodyStream-initialize(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -186,6 +194,8 @@ Checks whether this **WebHttpBodyStream** instance is transmitted by chunk.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebHttpBodyStream-isChunked(): boolean--><!--Device-WebHttpBodyStream-isChunked(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -209,6 +219,8 @@ Checks whether all data in this **WebHttpBodyStream** instance has been read.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebHttpBodyStream-isEof(): boolean--><!--Device-WebHttpBodyStream-isEof(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -234,6 +246,8 @@ Checks whether the uploaded data in this **WebHttpBodyStream** instance is in me
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebHttpBodyStream-isInMemory(): boolean--><!--Device-WebHttpBodyStream-isInMemory(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -255,6 +269,8 @@ Reads data from this **WebHttpBodyStream** instance.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebHttpBodyStream-read(size: number): Promise<ArrayBuffer>--><!--Device-WebHttpBodyStream-read(size: number): Promise<ArrayBuffer>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

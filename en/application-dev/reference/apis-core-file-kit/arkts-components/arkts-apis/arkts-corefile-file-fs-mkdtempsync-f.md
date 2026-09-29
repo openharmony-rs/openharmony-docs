@@ -16,6 +16,8 @@ Creates a temporary directory. This API returns the result synchronously.
 
 **Since:** 9
 
+<!--Device-unnamed-declare function mkdtempSync(prefix: string): string--><!--Device-unnamed-declare function mkdtempSync(prefix: string): string-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

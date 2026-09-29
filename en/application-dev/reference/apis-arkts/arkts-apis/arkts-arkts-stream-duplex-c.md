@@ -10,6 +10,8 @@ A stream that is both readable and writable. A duplex stream allows data to be t
 
 **Since:** 12
 
+<!--Device-stream-export class Duplex extends Readable--><!--Device-stream-export class Duplex extends Readable-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -28,7 +30,9 @@ A constructor used to create a **Duplex** object.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-constructor()--><!--Device-Duplex-constructor()-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -48,7 +52,9 @@ Forces subsequent writes to be buffered. This API is called to optimize the perf
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-cork(): boolean--><!--Device-Duplex-cork(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -76,7 +82,9 @@ A data write API. You need to implement this API but do not call it directly. Th
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void--><!--Device-Duplex-doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -119,7 +127,9 @@ A batch data write API. You need to implement this API but do not call it direct
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-doWritev(chunks: string[] | Uint8Array[], callback: Function): void--><!--Device-Duplex-doWritev(chunks: string[] | Uint8Array[], callback: Function): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -169,7 +179,9 @@ Ends the writing process in a duplex stream. If the value of **writableCorked** 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable--><!--Device-Duplex-end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -226,7 +238,9 @@ Sets the default encoding format for the writable stream.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-setDefaultEncoding(encoding?: string): boolean--><!--Device-Duplex-setDefaultEncoding(encoding?: string): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -273,7 +287,9 @@ Releases the cork state, flushing the buffered data and writing it to the target
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-uncork(): boolean--><!--Device-Duplex-uncork(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -319,7 +335,9 @@ Writes data to the buffer of the stream. This API uses an asynchronous callback 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): boolean--><!--Device-Duplex-write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -379,7 +397,9 @@ Is true if it is safe to call writable.write(), which means the stream has not b
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-get writable(): boolean--><!--Device-Duplex-get writable(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -395,7 +415,9 @@ Number of times writable.uncork() needs to be called in order to fully uncork th
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-get writableCorked(): int--><!--Device-Duplex-get writableCorked(): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -411,7 +433,9 @@ Whether Writable.end has been called.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-get writableEnded(): boolean--><!--Device-Duplex-get writableEnded(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -427,7 +451,9 @@ Whether Writable.end has been called and all buffers have been flushed.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-get writableFinished(): boolean--><!--Device-Duplex-get writableFinished(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -443,7 +469,9 @@ Value of highWatermark.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-get writableHighWatermark(): int--><!--Device-Duplex-get writableHighWatermark(): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -459,7 +487,9 @@ Size of data that can be flushed, in bytes or objects.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-get writableLength(): int--><!--Device-Duplex-get writableLength(): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -475,6 +505,8 @@ Returns boolean indicating whether it is in ObjectMode.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Duplex-get writableObjectMode(): boolean--><!--Device-Duplex-get writableObjectMode(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang

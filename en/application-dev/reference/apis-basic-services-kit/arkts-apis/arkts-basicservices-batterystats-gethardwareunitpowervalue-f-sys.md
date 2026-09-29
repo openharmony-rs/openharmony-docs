@@ -16,6 +16,8 @@ Obtains the power consumption of a hardware unit according to the consumption ty
 
 **Since:** 8
 
+<!--Device-batteryStats-function getHardwareUnitPowerValue(type: ConsumptionType): double--><!--Device-batteryStats-function getHardwareUnitPowerValue(type: ConsumptionType): double-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryStatistics
 
 **System API:** This is a system API.

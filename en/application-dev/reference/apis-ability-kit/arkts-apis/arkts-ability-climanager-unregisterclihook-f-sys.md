@@ -20,6 +20,8 @@ Unregister the previously registered CLI hook. The hook object must be the same 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-cliManager-function unregisterCliHook(hook: CliHook): Promise<void>--><!--Device-cliManager-function unregisterCliHook(hook: CliHook): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

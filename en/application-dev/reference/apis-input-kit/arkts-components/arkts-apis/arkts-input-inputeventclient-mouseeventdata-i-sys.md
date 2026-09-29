@@ -8,6 +8,8 @@ Defines the mouse event data.
 
 **Since:** 11
 
+<!--Device-inputEventClient-interface MouseEventData--><!--Device-inputEventClient-interface MouseEventData-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Mouse event.
 
 **Since:** 11
 
+<!--Device-MouseEventData-mouseEvent: MouseEvent--><!--Device-MouseEventData-mouseEvent: MouseEvent-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Whether to use global coordinates to calculate the injected mouse event. The def
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-MouseEventData-useGlobalCoordinate? : boolean--><!--Device-MouseEventData-useGlobalCoordinate? : boolean-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 

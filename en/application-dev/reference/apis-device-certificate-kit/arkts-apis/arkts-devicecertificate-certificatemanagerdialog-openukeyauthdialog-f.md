@@ -20,6 +20,8 @@ Opens the PIN authentication dialog box of the USB Key credential. On the displa
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManagerDialog-function openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): Promise<void>--><!--Device-certificateManagerDialog-function openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 **Parameters:**

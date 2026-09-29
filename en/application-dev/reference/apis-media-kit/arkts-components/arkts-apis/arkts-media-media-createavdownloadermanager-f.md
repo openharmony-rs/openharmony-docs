@@ -18,6 +18,8 @@ Creating a Streaming Resource Download Task Manager
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-media-function createAVDownloaderManager(): Promise<AVDownloaderManager>--><!--Device-media-function createAVDownloaderManager(): Promise<AVDownloaderManager>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Return value:**

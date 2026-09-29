@@ -18,6 +18,8 @@ Checks whether the super device administrator application of the first user (u10
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function isSuperAdmin(bundleName: String, callback: AsyncCallback<boolean>): void--><!--Device-adminManager-function isSuperAdmin(bundleName: String, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -68,6 +70,8 @@ Checks whether the super device administrator application of the first user (u10
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-adminManager-function isSuperAdmin(bundleName: String): Promise<boolean>--><!--Device-adminManager-function isSuperAdmin(bundleName: String): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

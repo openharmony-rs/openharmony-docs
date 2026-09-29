@@ -18,6 +18,8 @@ Resets the network settings to the factory defaults. This API uses a promise to 
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
 
+<!--Device-connection-function factoryReset(): Promise<void>--><!--Device-connection-function factoryReset(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.

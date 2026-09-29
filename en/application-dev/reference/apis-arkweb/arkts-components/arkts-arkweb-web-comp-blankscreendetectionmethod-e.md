@@ -8,6 +8,8 @@ Defines the detection strategy methods used for blank screen detection, which sp
 
 **Since:** 22
 
+<!--Device-unnamed-declare enum BlankScreenDetectionMethod--><!--Device-unnamed-declare enum BlankScreenDetectionMethod-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## DETECTION_CONTENTFUL_NODES_SEVENTEEN
@@ -27,5 +29,7 @@ Center point (1): The center point is at the geometric center of the page.
 Internal grid intersection points (16): A 5 × 5 uniform grid is defined in the page area. The 16 points are the intersection points of four vertical equal division lines and four horizontal equal division lines in the page.
 
 **Since:** 22
+
+<!--Device-BlankScreenDetectionMethod-DETECTION_CONTENTFUL_NODES_SEVENTEEN = 0--><!--Device-BlankScreenDetectionMethod-DETECTION_CONTENTFUL_NODES_SEVENTEEN = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

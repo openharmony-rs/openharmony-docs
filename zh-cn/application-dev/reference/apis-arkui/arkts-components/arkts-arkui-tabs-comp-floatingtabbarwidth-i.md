@@ -8,6 +8,8 @@ interface FloatingTabBarWidth
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-interface FloatingTabBarWidth--><!--Device-unnamed-interface FloatingTabBarWidth-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## largeBarWidth
@@ -25,6 +27,8 @@ largeBarWidth?: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FloatingTabBarWidth-largeBarWidth?: Length--><!--Device-FloatingTabBarWidth-largeBarWidth?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ mediumBarWidth?: Length
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-FloatingTabBarWidth-mediumBarWidth?: Length--><!--Device-FloatingTabBarWidth-mediumBarWidth?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## smallBarWidth
@@ -61,5 +67,7 @@ smallBarWidth?: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FloatingTabBarWidth-smallBarWidth?: Length--><!--Device-FloatingTabBarWidth-smallBarWidth?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

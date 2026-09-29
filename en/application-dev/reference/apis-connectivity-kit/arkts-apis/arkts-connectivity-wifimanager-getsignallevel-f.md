@@ -18,6 +18,8 @@ Calculate the Wi-Fi signal level based on the Wi-Fi RSSI and frequency band.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function getSignalLevel(rssi: int, band: int): int--><!--Device-wifiManager-function getSignalLevel(rssi: int, band: int): int-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Parameters:**

@@ -21,6 +21,8 @@ Subscribes to widget uninstall events. This API uses an asynchronous callback to
 
 **Since:** 9
 
+<!--Device-formHost-function on(type: "formUninstall", callback: Callback<string>): void--><!--Device-formHost-function on(type: "formUninstall", callback: Callback<string>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -49,6 +51,8 @@ function on(type: 'formOverflow', callback: Callback<formInfo.OverflowRequest>):
 Subscribes to the interactive widget animation request event. This API uses an asynchronous callback to return the result.
 
 **Since:** 20
+
+<!--Device-formHost-function on(type: 'formOverflow', callback: Callback<formInfo.OverflowRequest>): void--><!--Device-formHost-function on(type: 'formOverflow', callback: Callback<formInfo.OverflowRequest>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -94,6 +98,8 @@ Subscribes to the event of switching the interactive widget state. An interactiv
 
 **Since:** 20
 
+<!--Device-formHost-function on(type: 'changeSceneAnimationState',     callback: Callback<formInfo.ChangeSceneAnimationStateRequest>): void--><!--Device-formHost-function on(type: 'changeSceneAnimationState',     callback: Callback<formInfo.ChangeSceneAnimationStateRequest>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -136,6 +142,8 @@ function on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): vo
 Subscribes to the event of requesting widget position and dimension. This API uses an asynchronous callback to return the result.
 
 **Since:** 20
+
+<!--Device-formHost-function on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void--><!--Device-formHost-function on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -189,6 +197,8 @@ function on(type: 'getLiveFormStatus',  callback: formInfo.GetLiveFormStatusCall
 Listens to the event of get live form status.
 
 **Since:** 20
+
+<!--Device-formHost-function on(type: 'getLiveFormStatus',  callback: formInfo.GetLiveFormStatusCallback): void--><!--Device-formHost-function on(type: 'getLiveFormStatus',  callback: formInfo.GetLiveFormStatusCallback): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

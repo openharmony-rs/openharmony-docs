@@ -12,6 +12,8 @@ Represents the current matrix object.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-unnamed-declare type ImageMatrix = import ('../api/@ohos.matrix4').default.Matrix4Transit--><!--Device-unnamed-declare type ImageMatrix = import ('../api/@ohos.matrix4').default.Matrix4Transit-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import ('../api/@ohos.matrix4').default.Matrix4Transit

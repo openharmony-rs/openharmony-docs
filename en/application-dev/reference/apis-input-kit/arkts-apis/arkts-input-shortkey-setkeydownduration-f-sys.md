@@ -17,6 +17,8 @@ Sets the delay for starting an ability using shortcut keys. This API uses an asy
 
 **Since:** 10
 
+<!--Device-shortKey-function setKeyDownDuration(businessKey: string, delay: int, callback: AsyncCallback<void>): void--><!--Device-shortKey-function setKeyDownDuration(businessKey: string, delay: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.ShortKey
 
 **System API:** This is a system API.
@@ -79,6 +81,8 @@ function setKeyDownDuration(businessKey: string, delay: number): Promise<void>
 Sets the delay for starting an ability using shortcut keys. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-shortKey-function setKeyDownDuration(businessKey: string, delay: int): Promise<void>--><!--Device-shortKey-function setKeyDownDuration(businessKey: string, delay: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.ShortKey
 

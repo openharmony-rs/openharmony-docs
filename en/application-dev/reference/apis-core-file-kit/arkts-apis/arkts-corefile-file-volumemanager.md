@@ -4,6 +4,8 @@ The **volumeManager** module provides APIs for querying and managing volumes and
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace volumeManager--><!--Device-unnamed-declare namespace volumeManager-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 ## Modules to Import

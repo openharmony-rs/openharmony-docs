@@ -8,6 +8,8 @@ Enumerates network types.
 
 **Since:** 6
 
+<!--Device-radio-export enum NetworkType--><!--Device-radio-export enum NetworkType-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## NETWORK_TYPE_UNKNOWN
@@ -19,6 +21,8 @@ NETWORK_TYPE_UNKNOWN = 0
 Unknown network.
 
 **Since:** 6
+
+<!--Device-NetworkType-NETWORK_TYPE_UNKNOWN = 0--><!--Device-NetworkType-NETWORK_TYPE_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -32,6 +36,8 @@ GSM network.
 
 **Since:** 6
 
+<!--Device-NetworkType-NETWORK_TYPE_GSM = 1--><!--Device-NetworkType-NETWORK_TYPE_GSM = 1-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## NETWORK_TYPE_CDMA
@@ -43,6 +49,8 @@ NETWORK_TYPE_CDMA = 2
 CDMA network.
 
 **Since:** 6
+
+<!--Device-NetworkType-NETWORK_TYPE_CDMA = 2--><!--Device-NetworkType-NETWORK_TYPE_CDMA = 2-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -56,6 +64,8 @@ WCDMA network.
 
 **Since:** 6
 
+<!--Device-NetworkType-NETWORK_TYPE_WCDMA = 3--><!--Device-NetworkType-NETWORK_TYPE_WCDMA = 3-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## NETWORK_TYPE_TDSCDMA
@@ -67,6 +77,8 @@ NETWORK_TYPE_TDSCDMA = 4
 TD-SCDMA network.
 
 **Since:** 6
+
+<!--Device-NetworkType-NETWORK_TYPE_TDSCDMA = 4--><!--Device-NetworkType-NETWORK_TYPE_TDSCDMA = 4-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -80,6 +92,8 @@ LTE network.
 
 **Since:** 6
 
+<!--Device-NetworkType-NETWORK_TYPE_LTE = 5--><!--Device-NetworkType-NETWORK_TYPE_LTE = 5-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## NETWORK_TYPE_NR
@@ -91,5 +105,7 @@ NETWORK_TYPE_NR = 6
 NR network.
 
 **Since:** 6
+
+<!--Device-NetworkType-NETWORK_TYPE_NR = 6--><!--Device-NetworkType-NETWORK_TYPE_NR = 6-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService

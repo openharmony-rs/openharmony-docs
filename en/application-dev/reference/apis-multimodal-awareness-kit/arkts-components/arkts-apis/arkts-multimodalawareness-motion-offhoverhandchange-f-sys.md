@@ -18,6 +18,8 @@ Unsubscribe to hover hand event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-motion-function offHoverHandChange(callback?: Callback<HoverHandAction>): void--><!--Device-motion-function offHoverHandChange(callback?: Callback<HoverHandAction>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
 **System API:** This is a system API.

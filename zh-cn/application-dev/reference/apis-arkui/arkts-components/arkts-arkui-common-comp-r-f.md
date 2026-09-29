@@ -14,6 +14,8 @@ global $r function
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare function $r(value: string, ...params: any[]): Resource--><!--Device-unnamed-declare function $r(value: string, ...params: any[]): Resource-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

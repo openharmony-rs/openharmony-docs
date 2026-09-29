@@ -8,6 +8,8 @@ Describes the parameters supported by the [@InsightIntentForm](../../../referenc
 
 **Since:** 20
 
+<!--Device-insightIntentDriver-interface FormIntentInfo--><!--Device-insightIntentDriver-interface FormIntentInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Ability name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormIntentInfo-readonly abilityName: string--><!--Device-FormIntentInfo-readonly abilityName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Name of the widget bound to the [FormExtensionAbility](../../apis-form-kit/arkts
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormIntentInfo-readonly formName: string--><!--Device-FormIntentInfo-readonly formName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

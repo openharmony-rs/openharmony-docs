@@ -22,6 +22,8 @@ input parameter.
 
 **Since:** 9
 
+<!--Device-usbManager-function closePipe(pipe: USBDevicePipe): int--><!--Device-usbManager-function closePipe(pipe: USBDevicePipe): int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

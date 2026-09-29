@@ -8,6 +8,8 @@ declare class ReadonlyEnvKey
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare class ReadonlyEnvKey--><!--Device-unnamed-declare class ReadonlyEnvKey-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_AVOID_AREA
@@ -25,6 +27,8 @@ static readonly WINDOW_AVOID_AREA: ReadonlySystemEnvKey<window.UIEnvWindowAvoidA
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_AVOID_AREA: ReadonlySystemEnvKey<window.UIEnvWindowAvoidAreaInfoVP>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_AVOID_AREA: ReadonlySystemEnvKey<window.UIEnvWindowAvoidAreaInfoVP>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ static readonly WINDOW_AVOID_AREA_PX: ReadonlySystemEnvKey<window.UIEnvWindowAvo
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_AVOID_AREA_PX: ReadonlySystemEnvKey<window.UIEnvWindowAvoidAreaInfoPX>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_AVOID_AREA_PX: ReadonlySystemEnvKey<window.UIEnvWindowAvoidAreaInfoPX>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_DISPLAY_ID
@@ -62,6 +68,8 @@ static readonly WINDOW_DISPLAY_ID: ReadonlySystemEnvKey<number>
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_DISPLAY_ID: ReadonlySystemEnvKey<long>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_DISPLAY_ID: ReadonlySystemEnvKey<long>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_IS_FOCUSED
@@ -78,6 +86,8 @@ static readonly WINDOW_IS_FOCUSED: ReadonlySystemEnvKey<boolean>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_IS_FOCUSED: ReadonlySystemEnvKey<boolean>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_IS_FOCUSED: ReadonlySystemEnvKey<boolean>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_IS_HIGHLIGHTED
@@ -93,6 +103,8 @@ static readonly WINDOW_IS_HIGHLIGHTED: ReadonlySystemEnvKey<boolean>
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_IS_HIGHLIGHTED: ReadonlySystemEnvKey<boolean>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_IS_HIGHLIGHTED: ReadonlySystemEnvKey<boolean>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +124,8 @@ static readonly WINDOW_SIZE: ReadonlySystemEnvKey<window.SizeInVP>
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_SIZE: ReadonlySystemEnvKey<window.SizeInVP>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_SIZE: ReadonlySystemEnvKey<window.SizeInVP>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_SIZE_PX
@@ -130,6 +144,8 @@ static readonly WINDOW_SIZE_PX: ReadonlySystemEnvKey<window.Size>
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_SIZE_PX: ReadonlySystemEnvKey<window.Size>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_SIZE_PX: ReadonlySystemEnvKey<window.Size>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_SYSTEM_DENSITY
@@ -147,5 +163,7 @@ static readonly WINDOW_SYSTEM_DENSITY: ReadonlySystemEnvKey<number>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_SYSTEM_DENSITY: ReadonlySystemEnvKey<double>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_SYSTEM_DENSITY: ReadonlySystemEnvKey<double>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

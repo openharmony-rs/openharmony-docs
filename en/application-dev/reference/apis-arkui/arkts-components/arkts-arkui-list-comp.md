@@ -1,60 +1,60 @@
 # List
 
-The **List** component provides a list container that presents a series of list items arranged in a column with the same width. It supports presentations of the same type of data in a multiple and coherent row style, for example, images or text.
+**List** is a list container component in ArkUI that presents continuous, multi-row or multi-column data of the same type, such as images and text, and supports vertical or horizontal scrolling. When used together with **LazyForEach** or **Repeat**, it supports lazy loading to improve the startup speed and reduce the memory usage in long-list scenarios. It also supports preloading to reduce frame loss during scrolling and improve smoothness, as well as single-column/multi-column layout, grouped lists, and sticky header/footer, making it suitable for scenarios such as message lists, product lists, and settings pages.
 
-Lazy loading of **List** loads the child components in the visible area as required. Compared with full loading, lazy loading can improve the app startup speed and reduce the memory usage. The lazy loading capabilities vary when the **List** component is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
+Lazy loading of **List** loads the child components in the visible area as required. Compared with full loading, lazy loading can improve the app startup speed and reduce the memory usage. When **List** is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), the lazy loading capabilities differ as follows:
 
-- When **List** is used together with **ForEach**, all child nodes are created at a time. The nodes within the screen
-range are laid out and rendered when needed. When a user swipes, the nodes that are out of the screen range are not removed from the tree, and the nodes that are within the screen range are laid out and rendered.
-- When **List** is used together with **LazyForEach**, all nodes within the screen range are created, laid out, and
-rendered at a time. When a user swipes, the nodes that are out of the screen range are removed from the tree, and the nodes that are within the screen range are created, laid out, and rendered.
-- When the **List** component is used together with **Repeat** with
-[virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll), the lazy loading behavior is the same as that of **LazyForEach**. When the **List** component is used together with **Repeat** without **virtualScroll**, the lazy loading behavior is the same as that of **ForEach**.
+- When **List** is used together with **ForEach**, all child nodes are created at a time. The nodes within the screen  
+range are laid out and rendered when needed. When a user swipes, the nodes that are out of the screen range are not removed from the tree, and the nodes that enter the screen range are laid out and rendered.  
+- When **List** is used together with **LazyForEach**, all nodes within the screen range are created, laid out, and  
+rendered at a time. When a user swipes, the nodes that are out of the screen range are removed from the tree, and the nodes that enter the screen range are created, laid out, and rendered.  
+- When the **List** component is used together with **Repeat** with [virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll), the lazy loading behavior is the same as that of **LazyForEach**. When the **List** component is used together with **Repeat** without **virtualScroll**, the lazy loading behavior is the same as that of **ForEach**.
 
-If a scrollable component is nested in a **List** component, their scrolling directions are the same, and the main axis size is not set for the **List** component, the **List** component loads all child components. As a result, lazy loading does not take effect. In this scenario, you are advised to use the ListItemGroup component to optimize the performance.
+If a scrollable component is nested in a **List** component, their scrolling directions are the same, and the main axis size is not set for the **List** component, the **List** component loads all child components, causing lazy loading to fail. In this scenario, you are advised to nest the [ListItemGroup](arkts-arkui-listitemgroup-comp.md) component in **List** to optimize performance.
 
-Preloading in **List** refers to loading not only the visible child components within the display area but also some invisible child components outside the display area during idle time. Preloading can reduce frame loss during scrolling and improve smoothness. Preloading takes effect only when lazy loading is used. You can set the number of components to be preloaded for the **List** component using [cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount). By default, child components equivalent to one screen above and below the visible area are preloaded (up to a maximum of 16 rows). The preloading capabilities vary when the **List** component is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
+Preloading in **List** refers to loading not only the visible child components within the display area but also some invisible child components outside the display area during idle time. Preloading can reduce frame drops during scrolling and improve smoothness. Preloading takes effect only when combined with lazy loading. **List** supports setting the number of preloaded items through [cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount). By default, one screen of child components is preloaded both above and below the display area (up to 16 rows of child components). When **List** is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), the preloading capabilities differ as follows:
 
-- When the **List** component is used together with **ForEach** and **cachedCount** is set, in addition to laying out
-child components within the visible area, child components within the range of **cachedCount** outside the visible area are pre-laid out during idle time.
-- When the **List** component is used together with **LazyForEach** and **cachedCount** is set, in addition to
-creating and laying out child components within the display area, child components within the range of **cachedCount** outside the display area are pre-created and pre-laid out during idle time.
-- When the **List** component is used together with **Repeat** with
-[virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll), the preloading behavior is the same as that of **LazyForEach**. When the **List** component is used together with **Repeat** without **virtualScroll**, the preloading behavior is the same as that of **ForEach**.
+- When the **List** component is used together with **ForEach** and **cachedCount** is set, in addition to laying out  
+child components within the visible area, child components within the range of **cachedCount** outside the visible area are pre-laid out during idle time.  
+- When the **List** component is used together with **LazyForEach** and **cachedCount** is set, in addition to  
+creating and laying out child components within the display area, child components within the range of **cachedCount** outside the display area are pre-created and pre-laid out during idle time.  
+- When the **List** component is used together with **Repeat** with [virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll), the preloading behavior is the same as that of **LazyForEach**. When the **List** component is used together with **Repeat** without **virtualScroll**, the preloading behavior is the same as that of **ForEach**.
 
-> **NOTE**
-
-> The component has been bound with gestures to implement functions such as follow-up scrolling. If you need to add > custom gestures, refer to Gesture Blocking Enhancement.
+> **NOTE:** 
+> 
+> The component has been bound with gestures to implement functions such as follow-up scrolling. If you need to add
+> custom gestures, refer to [Gesture Blocking Enhancement](arkts-arkui-common-comp.md).
 
 ## Child Components
 
-Only the ListItem and ListItemGroup child components and custom components are supported. When using custom components inside **List**, you are advised to wrap the custom component with a **ListItem** or **ListItemGroup** as the top-level container. Setting attributes or event methods directly on custom components is not recommended.
+Only [ListItem](arkts-arkui-listitem-comp.md), [ListItemGroup](arkts-arkui-listitemgroup-comp.md), and custom components are supported as child components. When a custom component is used under **List**, use **ListItem** or **ListItemGroup** as the top- level component of the custom component. Do not directly set attributes and event methods for the custom component, because **List** manages the layout and event handling of child components through **ListItem** or **ListItemGroup**. Directly setting them may cause some functions to fail to take effect.
 
 Child components can be dynamically generated using rendering control types [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md). **LazyForEach** or **Repeat** is recommended to optimize performance.
 
 > **NOTE:** 
 > 
-> If performance lag occurs when you process a large number of child components, consider using lazy loading, list
-> item caching, dynamic preloading, component reuse, and layout optimization. For best practices, see
-> [Optimizing Frame Loss for Long List Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-best-practices-long-list).
+> If you encounter lag when processing a large number of child components, use methods such as lazy loading, caching
+> list items, dynamic preloading, component reuse, and layout optimization.
 > 
-> Starting from API version 21, the maximum width or height for a single child component inside a **List** container
-> is 16,777,216 px. In API version 20 and earlier versions, the limit was 1,000,000 px. If a child component exceeds
-> the applicable size limit, scrolling or display behavior may become abnormal.
+> Since API version 21, the maximum width and height of a single child component of **List** is 16777216 px. In API
+> version 20 and earlier, the maximum width and height of a single child component of **List** is 1000000 px. A child
+> component exceeding this size may cause scrolling or display exceptions.
 > 
-> Below are the rules for calculating the indexes of the child components of **List**:
+> The index value calculation rules for child components of **List** are as follows:
 > 
-> - The index increases in ascending order of child components.
+> - The index values increase sequentially in the order of the child components.
 > 
-> - In the **if/else** statement, only the child components for which the condition evaluates to true participate in the index calculation.
+> - In an **if**\/**else** statement, only the child components in the branch whose condition is true participate in index value calculation. The child components in the branch whose condition is false are not counted.
 > 
-> - In the **ForEach**, **LazyForEach**, or **Repeat** statement, the indexes of all expanded subnodes are calculated.
+> - In a **ForEach**\/**LazyForEach**\/**Repeat** statement, the index values of all expanded child components are calculated.
 > 
-> - After changes occur in [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md),[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md),[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), index values are updated accordingly for child components.
+> - After [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md),[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md),[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) change, the index values of the child components are updated.
 > 
-> - Each **ListItemGroup** component is taken as a whole and assigned an index, and the indexes of the list items within are not included in the index calculation.
+> - A **ListItemGroup** is counted as one index value as a whole, and the **ListItem** components inside the
+> **ListItemGroup** are not counted.
 > 
-> - Child components of **List** whose **visibility** attribute is set to **Hidden** or **None** are included in the index calculation.
+> - The index value is still calculated when the **visibility** attribute of a child component of **List** is set to
+> **Hidden** or **None**.
 
 ## List
 
@@ -72,13 +72,15 @@ Creates a list container.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ListInterface-(options?: ListOptions): ListAttribute--><!--Device-ListInterface-(options?: ListOptions): ListAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ListOptions](arkts-arkui-list-comp-listoptions-i.md) | No | Options of the **List** component. |
+| options | [ListOptions](arkts-arkui-list-comp-listoptions-i.md) | No | **List** component parameters. If not passed, the default configuration is used. |
 
 ## Summary
 
@@ -86,8 +88,8 @@ Creates a list container.
 
 | Name | Description |
 | --- | --- |
-| [ChainAnimationOptions](arkts-arkui-list-comp-chainanimationoptions-i-sys.md) | Defines the chain animation options. |
-| [CloseSwipeActionOptions](arkts-arkui-list-comp-closeswipeactionoptions-i.md) | Implements the callbacks and events for the ListItem in the [expanded](arkts-arkui-listitem-comp-swipeactionstate-e.md) state. |
+| [ChainAnimationOptions](arkts-arkui-list-comp-chainanimationoptions-i-sys.md) | Defines a collection of chain animation effect attributes, used to set the maximum spacing, minimum spacing, animation intensity, conduction coefficient, edge effect, stiffness, and damping of the list. When the list requires fine-grained control over the chained linkage elastic effect, different animation feels can be achieved by adjusting the parameters in this object. |
+| [CloseSwipeActionOptions](arkts-arkui-list-comp-closeswipeactionoptions-i.md) | Implements the callbacks and events for the [ListItem](arkts-arkui-listitem-comp.md) in the [expanded](arkts-arkui-listitem-comp-swipeactionstate-e.md) state. |
 | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) | Defines the system back button behavior of the **List** component. |
 | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) | Defines the divider style of the list or list item group. |
 | [ListOptions](arkts-arkui-list-comp-listoptions-i.md) | Defines the options of the **List** component. |
@@ -105,7 +107,7 @@ Creates a list container.
 
 | Name | Description |
 | --- | --- |
-| [ChainEdgeEffect](arkts-arkui-list-comp-chainedgeeffect-e-sys.md) | Declare edge effect of chain animation. |
+| [ChainEdgeEffect](arkts-arkui-list-comp-chainedgeeffect-e-sys.md) | Sets the edge effect of the chain animation effect, which determines how the spacing between list items changes when the list continues to be dragged after being scrolled to the edge. |
 | [ListItemAlign](arkts-arkui-list-comp-listitemalign-e.md) | Sets the alignment mode of child components in the cross-axis direction of the list. |
 | [ListItemGroupArea](arkts-arkui-list-comp-listitemgrouparea-e.md) | Enumerates the areas of **ListItemGroup**. |
 | [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md) | Enumerates the alignment modes of list items when scrolling ends. |

@@ -1,19 +1,15 @@
-# ToolEventCallback
+# ToolEventCallback(CLI Tool Event Callback)
 
 ## Summary
 
-<!--Del-->
-### Interfaces(System API)
+### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [ToolEventCallback](arkts-ability-tooleventcallback-i-sys.md) | ToolEventCallback is used to receive session events generated during the running of the CLI tool process. |
-<!--DelEnd-->
+| [ToolEventCallback](arkts-ability-tooleventcallback-i.md) | ToolEventCallback is used to receive session events generated during the running of the CLI tool process. |
 
-<!--Del-->
-### Types(System API)
+### Types
 
 | Name | Description |
 | --- | --- |
-| [OnEventFn](arkts-ability-oneventfn-t-sys.md) | Defines cli event callback function. |
-<!--DelEnd-->
+| [OnEventFn](arkts-ability-oneventfn-t.md) | Defines the callback function type for receiving CLI tool events. |

@@ -22,6 +22,8 @@ Obtains the product ID of a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getRemoteProductId(deviceId: string): string--><!--Device-connection-function getRemoteProductId(deviceId: string): string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

@@ -1,4 +1,4 @@
-# @ohos.ability.ability
+# @ohos.ability.ability(Ability Module)
 
 The module provides all level-2 module APIs for developers to export.
 
@@ -6,6 +6,8 @@ The module provides all level-2 module APIs for developers to export.
 
 **Model restriction:** 
 - API version 11 and later: This API can be used in both the stage model and FA model.
+
+<!--Device-unnamed-declare namespace ability--><!--Device-unnamed-declare namespace ability-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

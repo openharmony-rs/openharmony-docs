@@ -8,6 +8,8 @@ Declare NodeParam
 
 **Since:** 10
 
+<!--Device-unnamed-export interface NodeParam--><!--Device-unnamed-export interface NodeParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Default value: **() =&gt; void**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NodeParam-container?: () => void--><!--Device-NodeParam-container?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Default value: **-1**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NodeParam-currentNodeId?: number--><!--Device-NodeParam-currentNodeId?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## editIcon
@@ -76,6 +82,8 @@ The default value is an empty string.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NodeParam-editIcon?: ResourceStr--><!--Device-NodeParam-editIcon?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -95,6 +103,8 @@ The default value is an empty string.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NodeParam-icon?: ResourceStr--><!--Device-NodeParam-icon?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,6 +128,8 @@ Default value: **false**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NodeParam-isFolder?: boolean--><!--Device-NodeParam-isFolder?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## parentNodeId
@@ -140,6 +152,8 @@ Default value: -1. The root node ID is -1. If the value is less than -1, the set
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NodeParam-parentNodeId?: number--><!--Device-NodeParam-parentNodeId?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryTitle
@@ -159,6 +173,8 @@ The default value is an empty string.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NodeParam-primaryTitle?: ResourceStr--><!--Device-NodeParam-primaryTitle?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,6 +196,8 @@ The default value is an empty string.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NodeParam-secondaryTitle?: ResourceStr--><!--Device-NodeParam-secondaryTitle?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedIcon
@@ -199,6 +217,8 @@ The default value is an empty string.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NodeParam-selectedIcon?: ResourceStr--><!--Device-NodeParam-selectedIcon?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -220,6 +240,8 @@ Default value: **undefined**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-NodeParam-symbolEditIconStyle?: SymbolGlyphModifier--><!--Device-NodeParam-symbolEditIconStyle?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolIconStyle
@@ -240,6 +262,8 @@ Default value: **undefined**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-NodeParam-symbolIconStyle?: SymbolGlyphModifier--><!--Device-NodeParam-symbolIconStyle?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolSelectedIconStyle
@@ -259,5 +283,7 @@ Default value: **undefined**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-NodeParam-symbolSelectedIconStyle?: SymbolGlyphModifier--><!--Device-NodeParam-symbolSelectedIconStyle?: SymbolGlyphModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

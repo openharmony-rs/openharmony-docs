@@ -16,6 +16,8 @@ Obtains the interval (including the device sleep time) elapsed since the last sy
 
 **Since:** 14
 
+<!--Device-inputDevice-function getIntervalSinceLastInput(): Promise<long>--><!--Device-inputDevice-function getIntervalSinceLastInput(): Promise<long>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 **Return value:**

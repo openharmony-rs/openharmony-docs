@@ -16,6 +16,8 @@ function setScreenPrivacyMaskImage(screenId: number, image?: image.PixelMap): Pr
 
 **起始版本：** 19
 
+<!--Device-screen-function setScreenPrivacyMaskImage(screenId: long, image?: image.PixelMap): Promise<void>--><!--Device-screen-function setScreenPrivacyMaskImage(screenId: long, image?: image.PixelMap): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。

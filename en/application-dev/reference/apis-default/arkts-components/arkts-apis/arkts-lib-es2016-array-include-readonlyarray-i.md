@@ -17,6 +17,8 @@ includes(searchElement: T, fromIndex?: number): boolean
 
 Determines whether an array includes a certain element, returning true or false as appropriate.
 
+<!--Device-ReadonlyArray-includes(searchElement: T, fromIndex?: number): boolean--><!--Device-ReadonlyArray-includes(searchElement: T, fromIndex?: number): boolean-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

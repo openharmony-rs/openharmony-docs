@@ -8,6 +8,8 @@ ConsoleMessage是Web组件中封装JavaScript控制台输出信息的对象。�
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class ConsoleMessage--><!--Device-unnamed-declare class ConsoleMessage-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 <a id="constructor-1"></a>
@@ -24,6 +26,8 @@ ConsoleMessage的构造函数。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ConsoleMessage-constructor()--><!--Device-ConsoleMessage-constructor()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -39,6 +43,8 @@ ConsoleMessage的构造函数。
 **废弃版本：** 9
 
 **替代接口：** constructor
+
+<!--Device-ConsoleMessage-constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)--><!--Device-ConsoleMessage-constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -63,6 +69,8 @@ getLineNumber(): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ConsoleMessage-getLineNumber(): number--><!--Device-ConsoleMessage-getLineNumber(): number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -82,6 +90,8 @@ getMessage(): string
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ConsoleMessage-getMessage(): string--><!--Device-ConsoleMessage-getMessage(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -103,6 +113,8 @@ getMessageLevel(): MessageLevel
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ConsoleMessage-getMessageLevel(): MessageLevel--><!--Device-ConsoleMessage-getMessageLevel(): MessageLevel-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -120,6 +132,8 @@ getSource() : ConsoleMessageSource
 获取ConsoleMessage的日志来源。
 
 **起始版本：** 23
+
+<!--Device-ConsoleMessage-getSource() : ConsoleMessageSource--><!--Device-ConsoleMessage-getSource() : ConsoleMessageSource-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -140,6 +154,8 @@ getSourceId(): string
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ConsoleMessage-getSourceId(): string--><!--Device-ConsoleMessage-getSourceId(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -8,6 +8,8 @@ Defines a response to a client request.
 
 **Since:** 26.0.0
 
+<!--Device-ssap-interface ServerResponse--><!--Device-ssap-interface ServerResponse-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Client device address. The address format is **11:22:33:AA:BB:FF**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServerResponse-address: string--><!--Device-ServerResponse-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## requestId
@@ -46,6 +50,8 @@ Request ID. The value range is [0, 65535]. The ID must be the same as the value 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServerResponse-requestId: int--><!--Device-ServerResponse-requestId: int-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## value
@@ -61,5 +67,7 @@ Data value of the response.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServerResponse-value: ArrayBuffer--><!--Device-ServerResponse-value: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

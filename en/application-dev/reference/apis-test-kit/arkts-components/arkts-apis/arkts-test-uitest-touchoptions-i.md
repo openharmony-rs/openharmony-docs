@@ -8,6 +8,8 @@ Common options for touch operations.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface TouchOptions--><!--Device-unnamed-declare interface TouchOptions-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -33,7 +35,9 @@ Duration of the operation in milliseconds. <br>Value range: The value should be 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-TouchOptions-duration?: int--><!--Device-TouchOptions-duration?: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -53,7 +57,9 @@ Pressure value of the touch. The value range is [0, 1]. The default value is **0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-TouchOptions-pressure?: double--><!--Device-TouchOptions-pressure?: double-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -73,7 +79,9 @@ Speed of touch action. <br>Value range:[200, 40000] <br>Unit: px/s. <br>If the v
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-TouchOptions-speed?: int--><!--Device-TouchOptions-speed?: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

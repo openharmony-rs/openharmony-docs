@@ -8,6 +8,8 @@ Describes the application bundle information.
 
 **Since:** 20
 
+<!--Device-bundleManager-interface BundleInfo--><!--Device-bundleManager-interface BundleInfo-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Index of an application clone. It takes effect only for application clones.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BundleInfo-readonly appIndex: number--><!--Device-BundleInfo-readonly appIndex: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## appInfo
@@ -45,6 +49,8 @@ Application information.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleInfo-readonly appInfo: ApplicationInfo--><!--Device-BundleInfo-readonly appInfo: ApplicationInfo-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -62,6 +68,8 @@ Timestamp for the initial installation of the application bundle. It measures th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BundleInfo-readonly firstInstallTime?: number--><!--Device-BundleInfo-readonly firstInstallTime?: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## installTime
@@ -77,6 +85,8 @@ Timestamp for the installation of the application bundle. It measures the millis
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleInfo-readonly installTime: number--><!--Device-BundleInfo-readonly installTime: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -94,6 +104,8 @@ Minimum compatible version of the application bundle in the distributed scenario
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BundleInfo-readonly minCompatibleVersionCode: number--><!--Device-BundleInfo-readonly minCompatibleVersionCode: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## name
@@ -109,6 +121,8 @@ Name of the application bundle. It corresponds to the **bundleName** field in th
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleInfo-readonly name: string--><!--Device-BundleInfo-readonly name: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -126,6 +140,8 @@ Signature information of the bundle.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BundleInfo-readonly signatureInfo: SignatureInfo--><!--Device-BundleInfo-readonly signatureInfo: SignatureInfo-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## targetVersion
@@ -141,6 +157,8 @@ Target version of the application. It corresponds to the **targetAPIVersion** fi
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleInfo-readonly targetVersion: number--><!--Device-BundleInfo-readonly targetVersion: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -158,6 +176,8 @@ Timestamp for the last update of the application bundle. It measures the millise
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BundleInfo-readonly updateTime: number--><!--Device-BundleInfo-readonly updateTime: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## vendor
@@ -173,6 +193,8 @@ Vendor of the application bundle. It corresponds to the **vendor** field in the 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleInfo-readonly vendor: string--><!--Device-BundleInfo-readonly vendor: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -190,6 +212,8 @@ Version code of the application bundle. It corresponds to the **versionCode** fi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BundleInfo-readonly versionCode: number--><!--Device-BundleInfo-readonly versionCode: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## versionName
@@ -205,5 +229,7 @@ Version description of the application bundle. It corresponds to the **versionNa
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleInfo-readonly versionName: string--><!--Device-BundleInfo-readonly versionName: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

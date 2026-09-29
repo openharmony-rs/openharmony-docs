@@ -8,6 +8,8 @@ Describes the information about the TCP and UDP ports that are currently listene
 
 **Since:** 24
 
+<!--Device-connection-export interface NetPortStatesInfo--><!--Device-connection-export interface NetPortStatesInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ TCP information currently listened for by the system.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NetPortStatesInfo-tcpPortStatesInfo?: Array<TcpNetPortStatesInfo>--><!--Device-NetPortStatesInfo-tcpPortStatesInfo?: Array<TcpNetPortStatesInfo>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## udpPortStatesInfo
@@ -45,5 +49,7 @@ UDP information currently listened for by the system.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NetPortStatesInfo-udpPortStatesInfo?: Array<UdpNetPortStatesInfo>--><!--Device-NetPortStatesInfo-udpPortStatesInfo?: Array<UdpNetPortStatesInfo>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

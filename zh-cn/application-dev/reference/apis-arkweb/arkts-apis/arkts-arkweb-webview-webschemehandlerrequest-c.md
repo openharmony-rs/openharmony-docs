@@ -8,6 +8,8 @@ WebSchemeHandlerRequest类模块定义了通过WebSchemeHandler拦截到的资�
 
 **起始版本：** 12
 
+<!--Device-webview-class WebSchemeHandlerRequest--><!--Device-webview-class WebSchemeHandlerRequest-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -26,6 +28,8 @@ getFrameUrl(): string
 
 **起始版本：** 12
 
+<!--Device-WebSchemeHandlerRequest-getFrameUrl(): string--><!--Device-WebSchemeHandlerRequest-getFrameUrl(): string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -36,7 +40,7 @@ getFrameUrl(): string
 
 **示例**
 
-完整示例代码参考onRequestStart。
+完整示例代码参考[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
 
 ## getHeader
 
@@ -50,6 +54,8 @@ getHeader(): Array<WebHeader>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebSchemeHandlerRequest-getHeader(): Array<WebHeader>--><!--Device-WebSchemeHandlerRequest-getHeader(): Array<WebHeader>-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -60,7 +66,7 @@ getHeader(): Array<WebHeader>
 
 **示例**
 
-完整示例代码参考onRequestStart。
+完整示例代码参考[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
 
 ## getHttpBodyStream
 
@@ -74,6 +80,8 @@ getHttpBodyStream(): WebHttpBodyStream | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebSchemeHandlerRequest-getHttpBodyStream(): WebHttpBodyStream | null--><!--Device-WebSchemeHandlerRequest-getHttpBodyStream(): WebHttpBodyStream | null-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -84,7 +92,7 @@ getHttpBodyStream(): WebHttpBodyStream | null
 
 **示例**
 
-完整示例代码参考onRequestStart。
+完整示例代码参考[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
 
 ## getReferrer
 
@@ -98,6 +106,8 @@ getReferrer(): string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebSchemeHandlerRequest-getReferrer(): string--><!--Device-WebSchemeHandlerRequest-getReferrer(): string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -108,7 +118,7 @@ getReferrer(): string
 
 **示例**
 
-完整示例代码参考onRequestStart。
+完整示例代码参考[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
 
 ## getRequestMethod
 
@@ -122,6 +132,8 @@ getRequestMethod(): string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebSchemeHandlerRequest-getRequestMethod(): string--><!--Device-WebSchemeHandlerRequest-getRequestMethod(): string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -132,7 +144,7 @@ getRequestMethod(): string
 
 **示例**
 
-完整示例代码参考onRequestStart。
+完整示例代码参考[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
 
 ## getRequestResourceType
 
@@ -144,6 +156,8 @@ getRequestResourceType(): WebResourceType
 
 **起始版本：** 12
 
+<!--Device-WebSchemeHandlerRequest-getRequestResourceType(): WebResourceType--><!--Device-WebSchemeHandlerRequest-getRequestResourceType(): WebResourceType-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -154,7 +168,7 @@ getRequestResourceType(): WebResourceType
 
 **示例**
 
-完整示例代码参考onRequestStart。
+完整示例代码参考[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
 
 ## getRequestUrl
 
@@ -168,6 +182,8 @@ getRequestUrl(): string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebSchemeHandlerRequest-getRequestUrl(): string--><!--Device-WebSchemeHandlerRequest-getRequestUrl(): string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -178,7 +194,7 @@ getRequestUrl(): string
 
 **示例**
 
-完整示例代码参考onRequestStart。
+完整示例代码参考[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
 
 ## hasGesture
 
@@ -192,6 +208,8 @@ hasGesture(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebSchemeHandlerRequest-hasGesture(): boolean--><!--Device-WebSchemeHandlerRequest-hasGesture(): boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -202,7 +220,7 @@ hasGesture(): boolean
 
 **示例**
 
-完整示例代码参考onRequestStart。
+完整示例代码参考[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
 
 ## isMainFrame
 
@@ -216,6 +234,8 @@ isMainFrame(): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebSchemeHandlerRequest-isMainFrame(): boolean--><!--Device-WebSchemeHandlerRequest-isMainFrame(): boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -226,4 +246,4 @@ isMainFrame(): boolean
 
 **示例**
 
-完整示例代码参考onRequestStart。
+完整示例代码参考[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。

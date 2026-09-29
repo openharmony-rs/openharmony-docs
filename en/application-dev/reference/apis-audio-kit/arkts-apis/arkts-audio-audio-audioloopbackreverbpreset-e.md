@@ -8,6 +8,8 @@ Enumerates the reverb modes of audio loopback.
 
 **Since:** 21
 
+<!--Device-audio-enum AudioLoopbackReverbPreset--><!--Device-audio-enum AudioLoopbackReverbPreset-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 ## ORIGINAL
@@ -19,6 +21,8 @@ ORIGINAL = 1
 Maintains the original reverb without enhancement.
 
 **Since:** 21
+
+<!--Device-AudioLoopbackReverbPreset-ORIGINAL = 1--><!--Device-AudioLoopbackReverbPreset-ORIGINAL = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -32,6 +36,8 @@ Provides a Karaoke-style reverb effect.
 
 **Since:** 21
 
+<!--Device-AudioLoopbackReverbPreset-KTV = 2--><!--Device-AudioLoopbackReverbPreset-KTV = 2-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 ## THEATER
@@ -44,6 +50,8 @@ Provides a theater-style reverb effect (default).
 
 **Since:** 21
 
+<!--Device-AudioLoopbackReverbPreset-THEATER = 3--><!--Device-AudioLoopbackReverbPreset-THEATER = 3-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 ## CONCERT
@@ -55,5 +63,7 @@ CONCERT = 4
 Provides a concert-style reverb effect.
 
 **Since:** 21
+
+<!--Device-AudioLoopbackReverbPreset-CONCERT = 4--><!--Device-AudioLoopbackReverbPreset-CONCERT = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer

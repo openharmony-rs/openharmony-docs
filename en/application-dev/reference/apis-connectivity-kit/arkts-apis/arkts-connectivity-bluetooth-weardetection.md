@@ -4,6 +4,8 @@ Provides methods to manage the wearing detection function.
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace wearDetection--><!--Device-unnamed-declare namespace wearDetection-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import

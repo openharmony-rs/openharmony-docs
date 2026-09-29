@@ -10,6 +10,8 @@ AnimateOptions
 
 **Since:** 4
 
+<!--Device-unnamed-export interface AnimateOptions--><!--Device-unnamed-export interface AnimateOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## delay
@@ -25,6 +27,8 @@ Delay for the animation start. The default value indicates no delay. The default
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimateOptions-delay: number--><!--Device-AnimateOptions-delay: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ The animation playback mode. The default value is "normal".
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimateOptions-direction: "normal" | "reverse" | "alternate" | "alternate-reverse"--><!--Device-AnimateOptions-direction: "normal" | "reverse" | "alternate" | "alternate-reverse"-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## duration
@@ -57,6 +63,8 @@ Duration of the animation, in milliseconds. The default value is 0.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimateOptions-duration: number--><!--Device-AnimateOptions-duration: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +82,8 @@ Time curve of the animation. For details about the supported types. linear The a
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimateOptions-easing: string--><!--Device-AnimateOptions-easing: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fill
@@ -90,6 +100,8 @@ Whether to resume to the initial state after the animation is executed. none: Th
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimateOptions-fill: "none" | "forwards" | "backwards" | "both"--><!--Device-AnimateOptions-fill: "none" | "forwards" | "backwards" | "both"-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## iterations
@@ -105,5 +117,7 @@ Number of times the animation will be played. number indicates a fixed number of
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimateOptions-iterations: number | string--><!--Device-AnimateOptions-iterations: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

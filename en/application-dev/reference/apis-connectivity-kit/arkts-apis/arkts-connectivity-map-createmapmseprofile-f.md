@@ -16,6 +16,8 @@ create the instance of MAP MSE profile.
 
 **Since:** 11
 
+<!--Device-map-function createMapMseProfile(): MapMseProfile--><!--Device-map-function createMapMseProfile(): MapMseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

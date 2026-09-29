@@ -20,6 +20,8 @@ Obtains the notification reminder type. This API uses an asynchronous callback t
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void--><!--Device-notificationManager-function getDeviceRemindType(callback: AsyncCallback<DeviceRemindType>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -73,6 +75,8 @@ Obtains the notification reminder type. This API uses a promise to return the re
 **Deprecated since:** 26.0.0
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function getDeviceRemindType(): Promise<DeviceRemindType>--><!--Device-notificationManager-function getDeviceRemindType(): Promise<DeviceRemindType>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

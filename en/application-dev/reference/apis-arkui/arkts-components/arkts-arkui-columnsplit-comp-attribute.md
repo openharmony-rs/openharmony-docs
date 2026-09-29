@@ -4,17 +4,19 @@
 declare class ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md#common), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
 > **NOTE:** 
 > 
 > The default value of [shape clipping](arkts-arkui-common-comp-commonmethod-c.md#clip) of the **ColumnSplit** component is **true**.
 
-The [universal events](arkts-arkui-common-comp.md#common) are supported.
+The [universal events](arkts-arkui-common-comp.md) are supported.
 
 **Inheritance/Implementation:** ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
 
 **Since:** 7
+
+<!--Device-unnamed-declare class ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>--><!--Device-unnamed-declare class ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,6 +33,8 @@ Sets the distance between the divider and the child components.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ColumnSplitAttribute-divider(value: ColumnSplitDividerStyle | null): ColumnSplitAttribute--><!--Device-ColumnSplitAttribute-divider(value: ColumnSplitDividerStyle | null): ColumnSplitAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ Sets whether the divider can be dragged. When set to **true**, the user can drag
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ColumnSplitAttribute-resizeable(value: boolean): ColumnSplitAttribute--><!--Device-ColumnSplitAttribute-resizeable(value: boolean): ColumnSplitAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

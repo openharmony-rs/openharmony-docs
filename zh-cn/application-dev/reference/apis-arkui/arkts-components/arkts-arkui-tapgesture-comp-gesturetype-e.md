@@ -8,6 +8,8 @@ enum GestureType
 
 **起始版本：** 11
 
+<!--Device-GestureControl-enum GestureType--><!--Device-GestureControl-enum GestureType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TAP_GESTURE
@@ -23,6 +25,8 @@ TAP_GESTURE = 0
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureType-TAP_GESTURE = 0--><!--Device-GestureType-TAP_GESTURE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ LONG_PRESS_GESTURE = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureType-LONG_PRESS_GESTURE = 1--><!--Device-GestureType-LONG_PRESS_GESTURE = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PAN_GESTURE
@@ -55,6 +61,8 @@ PAN_GESTURE = 2
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureType-PAN_GESTURE = 2--><!--Device-GestureType-PAN_GESTURE = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ PINCH_GESTURE = 3
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureType-PINCH_GESTURE = 3--><!--Device-GestureType-PINCH_GESTURE = 3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SWIPE_GESTURE
@@ -87,6 +97,8 @@ SWIPE_GESTURE = 4
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureType-SWIPE_GESTURE = 4--><!--Device-GestureType-SWIPE_GESTURE = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +116,8 @@ ROTATION_GESTURE = 5
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureType-ROTATION_GESTURE = 5--><!--Device-GestureType-ROTATION_GESTURE = 5-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DRAG
@@ -119,6 +133,8 @@ DRAG = 6
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureType-DRAG = 6--><!--Device-GestureType-DRAG = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +152,8 @@ CLICK = 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureType-CLICK = 7--><!--Device-GestureType-CLICK = 7-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOX_SELECT_GESTURE
@@ -151,6 +169,8 @@ BOX_SELECT_GESTURE = 8
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureType-BOX_SELECT_GESTURE = 8--><!--Device-GestureType-BOX_SELECT_GESTURE = 8-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +188,8 @@ Web组件滚动手势，是一种特殊的滑动手势，用于控制Web组件�
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureType-WEB_SCROLL_GESTURE = 9--><!--Device-GestureType-WEB_SCROLL_GESTURE = 9-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXT_FIELD_SELECT_GESTURE
@@ -184,6 +206,8 @@ TEXT_FIELD_SELECT_GESTURE = 10
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureType-TEXT_FIELD_SELECT_GESTURE = 10--><!--Device-GestureType-TEXT_FIELD_SELECT_GESTURE = 10-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CONTEXT_MENU_HOVER_GESTURE
@@ -199,5 +223,7 @@ CONTEXT_MENU_HOVER_GESTURE = 11
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureType-CONTEXT_MENU_HOVER_GESTURE = 11--><!--Device-GestureType-CONTEXT_MENU_HOVER_GESTURE = 11-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

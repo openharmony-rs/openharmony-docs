@@ -10,6 +10,8 @@ The **FormEditExtensionAbility** module, inherited from [UIExtensionAbility](../
 
 **Since:** 18
 
+<!--Device-unnamed-declare class FormEditExtensionAbility extends UIExtensionAbility--><!--Device-unnamed-declare class FormEditExtensionAbility extends UIExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -31,5 +33,7 @@ Indicates configuration information about a form edit extension ability context.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormEditExtensionAbility-context: FormEditExtensionContext--><!--Device-FormEditExtensionAbility-context: FormEditExtensionContext-End-->
 
 **System capability:** SystemCapability.Ability.Form

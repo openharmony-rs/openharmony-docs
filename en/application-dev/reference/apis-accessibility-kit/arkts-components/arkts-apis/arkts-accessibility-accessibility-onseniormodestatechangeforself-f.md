@@ -27,6 +27,8 @@ Unlike [accessibility.onSeniorModeStateChange](arkts-accessibility-accessibility
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accessibility-function onSeniorModeStateChangeForSelf(callback: Callback<boolean>): void--><!--Device-accessibility-function onSeniorModeStateChangeForSelf(callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**

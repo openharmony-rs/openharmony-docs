@@ -18,6 +18,8 @@ Start Portal certification.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifiManager-function startPortalCertification(): void--><!--Device-wifiManager-function startPortalCertification(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

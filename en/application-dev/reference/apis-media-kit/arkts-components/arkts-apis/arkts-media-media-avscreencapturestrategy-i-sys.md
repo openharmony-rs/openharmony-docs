@@ -8,6 +8,8 @@ Provides the media AVScreenCaptureStrategy definition.
 
 **Since:** 20
 
+<!--Device-media-interface AVScreenCaptureStrategy--><!--Device-media-interface AVScreenCaptureStrategy-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Defines whether to enable device-level content recording
 **Default:** false
 
 **Since:** 20
+
+<!--Device-AVScreenCaptureStrategy-enableDeviceLevelCapture?: boolean--><!--Device-AVScreenCaptureStrategy-enableDeviceLevelCapture?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 

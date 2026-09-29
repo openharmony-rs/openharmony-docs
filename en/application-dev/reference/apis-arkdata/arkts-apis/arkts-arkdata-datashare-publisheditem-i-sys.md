@@ -8,6 +8,8 @@ Defines the data to publish.
 
 **Since:** 10
 
+<!--Device-dataShare-interface PublishedItem--><!--Device-dataShare-interface PublishedItem-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Data to publish. If the data to publish exceeds 20 KB, you are advised to use th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PublishedItem-data: string | ArrayBuffer--><!--Device-PublishedItem-data: string | ArrayBuffer-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ Key of the data to publish.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PublishedItem-key: string--><!--Device-PublishedItem-key: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ Subscriber ID.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PublishedItem-subscriberId: string--><!--Device-PublishedItem-subscriberId: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 

@@ -8,6 +8,8 @@ Defines optional parameters for a device certificate request.
 
 **Since:** 11
 
+<!--Device-drm-interface OptionsData--><!--Device-drm-interface OptionsData-End-->
+
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Name of the optional parameter.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-OptionsData-name: string--><!--Device-OptionsData-name: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
@@ -44,6 +48,8 @@ Value of the optional parameter.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-OptionsData-value: string--><!--Device-OptionsData-value: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core

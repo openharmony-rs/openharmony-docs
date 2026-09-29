@@ -10,6 +10,8 @@ declare interface ScriptItem
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface ScriptItem--><!--Device-unnamed-declare interface ScriptItem-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## script
@@ -25,6 +27,8 @@ script: string
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScriptItem-script: string--><!--Device-ScriptItem-script: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -54,6 +58,8 @@ scriptRules: Array<string>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ScriptItem-scriptRules: Array<string>--><!--Device-ScriptItem-scriptRules: Array<string>-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## urlRegexRules
@@ -69,5 +75,7 @@ urlRegexRules? : Array<UrlRegexRule>
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ScriptItem-urlRegexRules? : Array<UrlRegexRule>--><!--Device-ScriptItem-urlRegexRules? : Array<UrlRegexRule>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

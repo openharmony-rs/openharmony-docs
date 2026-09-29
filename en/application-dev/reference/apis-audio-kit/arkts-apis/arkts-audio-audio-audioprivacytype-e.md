@@ -8,6 +8,8 @@ Enumerates whether an audio stream can be recorded by other applications.
 
 **Since:** 10
 
+<!--Device-audio-enum AudioPrivacyType--><!--Device-audio-enum AudioPrivacyType-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
 
 ## PRIVACY_TYPE_PUBLIC
@@ -20,6 +22,8 @@ The audio stream can be recorded or screen-projected by other applications and i
 
 **Since:** 10
 
+<!--Device-AudioPrivacyType-PRIVACY_TYPE_PUBLIC = 0--><!--Device-AudioPrivacyType-PRIVACY_TYPE_PUBLIC = 0-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
 
 ## PRIVACY_TYPE_PRIVATE
@@ -31,6 +35,8 @@ PRIVACY_TYPE_PRIVATE = 1
 The audio stream cannot be recorded or screen-projected by other applications.
 
 **Since:** 10
+
+<!--Device-AudioPrivacyType-PRIVACY_TYPE_PRIVATE = 1--><!--Device-AudioPrivacyType-PRIVACY_TYPE_PRIVATE = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
 
@@ -47,5 +53,7 @@ For example, if the privacy policy is **PRIVACY_TYPE_PUBLIC**, audio streams of 
 However, if the privacy policy is **PRIVACY_TYPE_SHARED**, these audio streams can be recorded or screen- projected by other applications.
 
 **Since:** 21
+
+<!--Device-AudioPrivacyType-PRIVACY_TYPE_SHARED = 2--><!--Device-AudioPrivacyType-PRIVACY_TYPE_SHARED = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture

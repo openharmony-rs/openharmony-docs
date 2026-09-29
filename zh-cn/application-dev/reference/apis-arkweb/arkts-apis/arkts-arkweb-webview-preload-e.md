@@ -8,6 +8,8 @@ enum Preload
 
 **起始版本：** 12
 
+<!--Device-webview-enum Preload--><!--Device-webview-enum Preload-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NONE
@@ -21,6 +23,8 @@ NONE = 0
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Preload-NONE = 0--><!--Device-Preload-NONE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ METADATA = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Preload-METADATA = 1--><!--Device-Preload-METADATA = 1-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## AUTO
@@ -49,5 +55,7 @@ AUTO = 2
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Preload-AUTO = 2--><!--Device-Preload-AUTO = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

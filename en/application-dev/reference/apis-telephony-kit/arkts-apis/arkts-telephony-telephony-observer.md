@@ -4,6 +4,8 @@ The **observer** module provides event subscription management functions. You ca
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace observer--><!--Device-unnamed-declare namespace observer-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 ## Modules to Import
@@ -67,12 +69,6 @@ import { observer } from '@kit.TelephonyKit';
 | [ObserverOptions](arkts-telephony-observer-observeroptions-i.md) | Defines event subscription parameters. |
 | [SimStateData](arkts-telephony-observer-simstatedata-i.md) | Enumerates SIM card types and states. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [LockReason](arkts-telephony-observer-lockreason-e.md) | Enumerates SIM card lock types. |
-
 ### Types
 
 | Name | Description |
@@ -96,3 +92,9 @@ import { observer } from '@kit.TelephonyKit';
 | [CellInformation](arkts-telephony-observer-cellinformation-t-sys.md) | Describes current cell information. |
 | [NetworkSearchRealTimeResult](arkts-telephony-observer-networksearchrealtimeresult-t-sys.md) | Indicates the result of network search. |
 <!--DelEnd-->
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [LockReason](arkts-telephony-observer-lockreason-e.md) | Enumerates SIM card lock types. |

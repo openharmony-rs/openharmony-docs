@@ -25,6 +25,8 @@ Sets whether to enable nonce for OTA update (nonce is enabled by default). When 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function setOtaUpdateNonceEnable(admin: Want, isEnable: boolean): void--><!--Device-systemManager-function setOtaUpdateNonceEnable(admin: Want, isEnable: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -8,6 +8,8 @@ Represents the cursor information.
 
 **Since:** 10
 
+<!--Device-inputMethod-export interface CursorInfo--><!--Device-inputMethod-export interface CursorInfo-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -30,6 +32,8 @@ ID of the monitor where the cursor is located.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CursorInfo-displayId?: long--><!--Device-CursorInfo-displayId?: long-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## height
@@ -43,6 +47,8 @@ Height of the cursor, in px. The value must be an integer. The minimum value is 
 **Type:** number
 
 **Since:** 10
+
+<!--Device-CursorInfo-height: double--><!--Device-CursorInfo-height: double-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -58,6 +64,8 @@ Horizontal coordinate of the cursor, in px. The value must be an integer. The mi
 
 **Since:** 10
 
+<!--Device-CursorInfo-left: double--><!--Device-CursorInfo-left: double-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## top
@@ -72,6 +80,8 @@ Vertical coordinate of the cursor, in px. The value must be an integer. The mini
 
 **Since:** 10
 
+<!--Device-CursorInfo-top: double--><!--Device-CursorInfo-top: double-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## width
@@ -85,5 +95,7 @@ Width of the cursor, in px. The value must be an integer. The minimum value is 0
 **Type:** number
 
 **Since:** 10
+
+<!--Device-CursorInfo-width: double--><!--Device-CursorInfo-width: double-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

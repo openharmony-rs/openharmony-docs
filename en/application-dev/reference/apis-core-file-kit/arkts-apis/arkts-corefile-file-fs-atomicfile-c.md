@@ -12,6 +12,8 @@ You can call **finishWrite()** or **failWrite()** to write or roll back file con
 
 **Since:** 15
 
+<!--Device-unnamed-export class AtomicFile--><!--Device-unnamed-export class AtomicFile-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -29,6 +31,8 @@ constructor(path: string)
 Creates an **AtomicFile** class for a file in a specified path.
 
 **Since:** 15
+
+<!--Device-AtomicFile-constructor(path: string)--><!--Device-AtomicFile-constructor(path: string)-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -53,6 +57,8 @@ delete(): void
 Deletes the **AtomicFile** class, including the original files and temporary files.
 
 **Since:** 15
+
+<!--Device-AtomicFile-delete(): void--><!--Device-AtomicFile-delete(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -104,6 +110,8 @@ Rolls back the file after the file fails to be written.
 
 **Since:** 15
 
+<!--Device-AtomicFile-failWrite(): void--><!--Device-AtomicFile-failWrite(): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -142,6 +150,8 @@ finishWrite(): void
 Finishes writing file data when the write operation is complete.
 
 **Since:** 15
+
+<!--Device-AtomicFile-finishWrite(): void--><!--Device-AtomicFile-finishWrite(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -182,6 +192,8 @@ Obtains the file object through the **AtomicFile** object.
 The FD needs to be closed by calling **close()**.
 
 **Since:** 15
+
+<!--Device-AtomicFile-getBaseFile(): File--><!--Device-AtomicFile-getBaseFile(): File-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -231,6 +243,8 @@ openRead(): ReadStream
 Creates a **ReadStream** instance.
 
 **Since:** 15
+
+<!--Device-AtomicFile-openRead(): ReadStream--><!--Device-AtomicFile-openRead(): ReadStream-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -290,6 +304,8 @@ Reads all content of a file.
 
 **Since:** 15
 
+<!--Device-AtomicFile-readFully(): ArrayBuffer--><!--Device-AtomicFile-readFully(): ArrayBuffer-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Return value:**
@@ -345,6 +361,8 @@ If the file does not exist, create a file.
 Call **finishWrite()** if the write operation is successful; call **failWrite()** if the write operation fails.
 
 **Since:** 15
+
+<!--Device-AtomicFile-startWrite(): WriteStream--><!--Device-AtomicFile-startWrite(): WriteStream-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

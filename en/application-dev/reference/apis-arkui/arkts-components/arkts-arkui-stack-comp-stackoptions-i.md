@@ -14,6 +14,8 @@ Sets the alignment method of the child component in the stack container.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface StackOptions--><!--Device-unnamed-declare interface StackOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## alignContent
@@ -37,5 +39,7 @@ Invalid value: The default value is used.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-StackOptions-alignContent?: Alignment--><!--Device-StackOptions-alignContent?: Alignment-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

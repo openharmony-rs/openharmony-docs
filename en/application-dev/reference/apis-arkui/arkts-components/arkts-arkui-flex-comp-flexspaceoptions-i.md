@@ -8,6 +8,8 @@ Sets the spacing between child components along the main axis or cross axis of t
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface FlexSpaceOptions--><!--Device-unnamed-declare interface FlexSpaceOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## cross
@@ -28,6 +30,8 @@ Default value: **LengthMetrics.px(0)**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FlexSpaceOptions-cross?: LengthMetrics--><!--Device-FlexSpaceOptions-cross?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## main
@@ -47,5 +51,7 @@ Default value: **LengthMetrics.px(0)**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FlexSpaceOptions-main?: LengthMetrics--><!--Device-FlexSpaceOptions-main?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

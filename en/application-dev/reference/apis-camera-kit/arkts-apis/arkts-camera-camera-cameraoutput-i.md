@@ -8,6 +8,8 @@ CameraOutput implements output information used in [Session](arkts-camera-camera
 
 **Since:** 10
 
+<!--Device-camera-interface CameraOutput--><!--Device-camera-interface CameraOutput-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Releases output resources. This API uses an asynchronous callback to return the 
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-CameraOutput-release(callback: AsyncCallback<void>): void--><!--Device-CameraOutput-release(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -80,7 +84,9 @@ Releases output resources. This API uses a promise to return the result.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-CameraOutput-release(): Promise<void>--><!--Device-CameraOutput-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

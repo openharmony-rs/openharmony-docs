@@ -8,6 +8,8 @@ Describes the system memory information, including the total memory, free memory
 
 **Since:** 12
 
+<!--Device-hidebug-interface SystemMemInfo--><!--Device-hidebug-interface SystemMemInfo-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Available memory of the system, in KB. The value of this parameter is obtained b
 
 **Since:** 12
 
+<!--Device-SystemMemInfo-availableMem: bigint--><!--Device-SystemMemInfo-availableMem: bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## freeMem
@@ -42,6 +46,8 @@ Free memory of the system, in KB. The value of this parameter is obtained by rea
 
 **Since:** 12
 
+<!--Device-SystemMemInfo-freeMem: bigint--><!--Device-SystemMemInfo-freeMem: bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## totalMem
@@ -55,5 +61,7 @@ Total memory of the system, in KB. The value of this parameter is obtained by re
 **Type:** bigint
 
 **Since:** 12
+
+<!--Device-SystemMemInfo-totalMem: bigint--><!--Device-SystemMemInfo-totalMem: bigint-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug

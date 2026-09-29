@@ -10,6 +10,8 @@ Provides APIs to manage the file retrieval result.
 
 **Since:** 12
 
+<!--Device-sendablePhotoAccessHelper-interface FetchResult<T> extends lang.ISendable--><!--Device-sendablePhotoAccessHelper-interface FetchResult<T> extends lang.ISendable-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ close(): void
 Closes this FetchResult instance to invalidate it. After this instance is closed, the APIs in this instance cannot be invoked.
 
 **Since:** 12
+
+<!--Device-FetchResult-close(): void--><!--Device-FetchResult-close(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -70,6 +74,8 @@ getAllObjects(): Promise<Array<T>>
 Obtains all the file assets in the result set. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-FetchResult-getAllObjects(): Promise<Array<T>>--><!--Device-FetchResult-getAllObjects(): Promise<Array<T>>-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -116,6 +122,8 @@ Obtains the total number of files in the result set.
 
 **Since:** 12
 
+<!--Device-FetchResult-getCount(): number--><!--Device-FetchResult-getCount(): number-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Return value:**
@@ -161,6 +169,8 @@ Obtains the first asset in the result set. This API uses a promise to return the
 
 **Since:** 12
 
+<!--Device-FetchResult-getFirstObject(): Promise<T>--><!--Device-FetchResult-getFirstObject(): Promise<T>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Return value:**
@@ -205,6 +215,8 @@ getLastObject(): Promise<T>
 Obtains the last asset in the result set. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-FetchResult-getLastObject(): Promise<T>--><!--Device-FetchResult-getLastObject(): Promise<T>-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -253,6 +265,8 @@ Before using this API, you must use [isAfterLast()](#isafterlast) to check wheth
 
 **Since:** 12
 
+<!--Device-FetchResult-getNextObject(): Promise<T>--><!--Device-FetchResult-getNextObject(): Promise<T>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Return value:**
@@ -298,6 +312,8 @@ getObjectByPosition(index: number): Promise<T>
 Obtains the asset with the given index in the result set. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-FetchResult-getObjectByPosition(index: number): Promise<T>--><!--Device-FetchResult-getObjectByPosition(index: number): Promise<T>-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -350,6 +366,8 @@ isAfterLast(): boolean
 Checks whether the cursor is in the last row of the result set.
 
 **Since:** 12
+
+<!--Device-FetchResult-isAfterLast(): boolean--><!--Device-FetchResult-isAfterLast(): boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

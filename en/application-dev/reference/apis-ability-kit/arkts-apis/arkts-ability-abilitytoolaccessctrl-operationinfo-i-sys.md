@@ -8,6 +8,8 @@ Operation information.
 
 **Since:** 26.0.0
 
+<!--Device-abilityToolAccessCtrl-interface OperationInfo--><!--Device-abilityToolAccessCtrl-interface OperationInfo-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Operation detail information.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-OperationInfo-info: CliCmdInfo | Permissions--><!--Device-OperationInfo-info: CliCmdInfo | Permissions-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ Operation type.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-OperationInfo-operationType: OperationType--><!--Device-OperationInfo-operationType: OperationType-End-->
 
 **System capability:** SystemCapability.Security.Asset
 

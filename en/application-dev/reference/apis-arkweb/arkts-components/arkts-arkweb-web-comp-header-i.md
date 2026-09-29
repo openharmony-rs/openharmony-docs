@@ -10,6 +10,8 @@ Request/response header object returned by the **Web** component. It is suitable
 
 **Since:** 8
 
+<!--Device-unnamed-declare interface Header--><!--Device-unnamed-declare interface Header-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## headerKey
@@ -26,6 +28,8 @@ Key of the request or response header.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Header-headerKey: string--><!--Device-Header-headerKey: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## headerValue
@@ -41,5 +45,7 @@ Value of the request or response header.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Header-headerValue: string--><!--Device-Header-headerValue: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

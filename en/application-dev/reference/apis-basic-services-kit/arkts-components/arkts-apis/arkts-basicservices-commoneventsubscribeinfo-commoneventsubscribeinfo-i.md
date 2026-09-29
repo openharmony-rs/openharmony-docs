@@ -15,6 +15,8 @@ This module provides APIs for providing subscriber information. It allows you to
 
 **Since:** 7
 
+<!--Device-unnamed-export interface CommonEventSubscribeInfo--><!--Device-unnamed-export interface CommonEventSubscribeInfo-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 ## events
@@ -29,7 +31,9 @@ Common events to subscribe to.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-CommonEventSubscribeInfo-events: Array<string>--><!--Device-CommonEventSubscribeInfo-events: Array<string>-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -45,7 +49,9 @@ Subscriber priority. A larger value indicates a higher priority, and the subscri
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-CommonEventSubscribeInfo-priority?: int--><!--Device-CommonEventSubscribeInfo-priority?: int-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -61,7 +67,9 @@ Bundle name of the publisher to be subscribed to. This parameter is used to rest
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-CommonEventSubscribeInfo-publisherBundleName?: string--><!--Device-CommonEventSubscribeInfo-publisherBundleName?: string-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -77,7 +85,9 @@ Device ID, which is used to restrict the subscriber to receive only public event
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-CommonEventSubscribeInfo-publisherDeviceId?: string--><!--Device-CommonEventSubscribeInfo-publisherDeviceId?: string-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -93,7 +103,9 @@ Permission of the publisher. The value is an array of permission names defined b
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-CommonEventSubscribeInfo-publisherPermission?: string--><!--Device-CommonEventSubscribeInfo-publisherPermission?: string-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -109,6 +121,8 @@ User ID, which is used to restrict the subscriber to receive only public events 
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-CommonEventSubscribeInfo-userId?: int--><!--Device-CommonEventSubscribeInfo-userId?: int-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent

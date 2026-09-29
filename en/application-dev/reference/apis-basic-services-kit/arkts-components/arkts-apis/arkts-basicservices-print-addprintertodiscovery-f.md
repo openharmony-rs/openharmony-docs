@@ -18,6 +18,8 @@ Adds a printer to the printer discovery list. This API uses a promise to return 
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-print-function addPrinterToDiscovery(printerInformation: PrinterInformation): Promise<void>--><!--Device-print-function addPrinterToDiscovery(printerInformation: PrinterInformation): Promise<void>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**

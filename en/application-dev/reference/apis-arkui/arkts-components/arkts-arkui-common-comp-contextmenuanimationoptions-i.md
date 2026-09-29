@@ -8,6 +8,8 @@ Defines the style for displaying a long-press preview.
 
 **Since:** 11
 
+<!--Device-unnamed-interface ContextMenuAnimationOptions--><!--Device-unnamed-interface ContextMenuAnimationOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## hoverScale
@@ -38,6 +40,8 @@ To ensure the optimal experience, it is not recommended that the final preview i
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ContextMenuAnimationOptions-hoverScale?: AnimationRange<number>--><!--Device-ContextMenuAnimationOptions-hoverScale?: AnimationRange<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## hoverScaleInterruption
@@ -63,6 +67,8 @@ If the **hoverScale** API is not set or the **transition** API is set, this para
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ContextMenuAnimationOptions-hoverScaleInterruption?: boolean--><!--Device-ContextMenuAnimationOptions-hoverScaleInterruption?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,6 +97,8 @@ The scale ratio must be set based on the specific use case. It is recommended th
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ContextMenuAnimationOptions-scale?: AnimationRange<number>--><!--Device-ContextMenuAnimationOptions-scale?: AnimationRange<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## transition
@@ -114,5 +122,7 @@ For details, see [TransitionEffect](arkts-arkui-common-comp-transitioneffect-c.m
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContextMenuAnimationOptions-transition?: TransitionEffect--><!--Device-ContextMenuAnimationOptions-transition?: TransitionEffect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

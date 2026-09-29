@@ -8,6 +8,8 @@ Indicates the uris of the skill
 
 **Since:** 12
 
+<!--Device-unnamed-export interface SkillUri--><!--Device-unnamed-export interface SkillUri-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## host
@@ -22,7 +24,9 @@ Indicates the host of the skillUri
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SkillUri-readonly host: string--><!--Device-SkillUri-readonly host: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -38,7 +42,9 @@ Indicates the linkFeature of the skillUri
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SkillUri-readonly linkFeature: string--><!--Device-SkillUri-readonly linkFeature: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -54,7 +60,9 @@ Indicates the maxFileSupported of the skillUri
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SkillUri-readonly maxFileSupported: int--><!--Device-SkillUri-readonly maxFileSupported: int-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -70,7 +78,9 @@ Indicates the path of the skillUri
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SkillUri-readonly path: string--><!--Device-SkillUri-readonly path: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -86,7 +96,9 @@ Indicates the pathRegex of the skillUri
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SkillUri-readonly pathRegex: string--><!--Device-SkillUri-readonly pathRegex: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -102,7 +114,9 @@ Indicates the pathStartWith of the skillUri
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SkillUri-readonly pathStartWith: string--><!--Device-SkillUri-readonly pathStartWith: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -120,6 +134,8 @@ Indicates the port of the skillUri
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SkillUri-readonly port: int--><!--Device-SkillUri-readonly port: int-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## scheme
@@ -134,7 +150,9 @@ Indicates the scheme of the skillUri
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SkillUri-readonly scheme: string--><!--Device-SkillUri-readonly scheme: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -150,7 +168,9 @@ Indicates the type of the skillUri
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SkillUri-readonly type: string--><!--Device-SkillUri-readonly type: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -166,6 +186,8 @@ Indicates the utd of the skillUri
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SkillUri-readonly utd: string--><!--Device-SkillUri-readonly utd: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core

@@ -24,6 +24,8 @@ Obtains the connection state of profile. On API 10 and above, the permission req
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetoothManager-function getProfileConnectionState(profileId: ProfileId): ProfileConnectionState--><!--Device-bluetoothManager-function getProfileConnectionState(profileId: ProfileId): ProfileConnectionState-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

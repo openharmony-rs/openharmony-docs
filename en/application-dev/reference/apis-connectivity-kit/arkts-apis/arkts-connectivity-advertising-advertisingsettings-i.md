@@ -8,6 +8,8 @@ Represents the advertising settings.
 
 **Since:** 26.0.0
 
+<!--Device-advertising-interface AdvertisingSettings--><!--Device-advertising-interface AdvertisingSettings-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Advertising interval, in slots. The value ranges from 160 to 16777215, and the d
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AdvertisingSettings-interval?: int--><!--Device-AdvertisingSettings-interval?: int-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## isConnectable
@@ -46,6 +50,8 @@ Whether advertising is connectable. **true**: Advertising is connectable. **fals
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AdvertisingSettings-isConnectable?: boolean--><!--Device-AdvertisingSettings-isConnectable?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## power
@@ -61,5 +67,7 @@ Advertising transmission power. If this parameter is not specified, the default 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AdvertisingSettings-power?: TxPowerMode--><!--Device-AdvertisingSettings-power?: TxPowerMode-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

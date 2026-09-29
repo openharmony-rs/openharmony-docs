@@ -20,6 +20,8 @@ Disables NearLink.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-manager-function disable(): void--><!--Device-manager-function disable(): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.

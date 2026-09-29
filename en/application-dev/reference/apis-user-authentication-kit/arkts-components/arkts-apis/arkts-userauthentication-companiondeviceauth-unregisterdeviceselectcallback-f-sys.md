@@ -20,6 +20,8 @@ Unregisters a callback for companion device selection. After the callback is unr
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-companionDeviceAuth-function unregisterDeviceSelectCallback(): void--><!--Device-companionDeviceAuth-function unregisterDeviceSelectCallback(): void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.

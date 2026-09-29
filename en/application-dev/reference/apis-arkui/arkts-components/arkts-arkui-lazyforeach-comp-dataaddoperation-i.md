@@ -8,6 +8,8 @@ Represents an operation for adding data.
 
 **Since:** 12
 
+<!--Device-unnamed-interface DataAddOperation--><!--Device-unnamed-interface DataAddOperation-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## count
@@ -16,9 +18,7 @@ Represents an operation for adding data.
 count?: number
 ```
 
-Number of data records to insert.
-
-Default value: **1**
+Number of added data items. It must be a positive integer (greater than 0), and the default value is **1**. Passing 0 or a negative number may cause abnormal rendering.
 
 **Type:** number
 
@@ -30,6 +30,8 @@ Default value: **1**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DataAddOperation-count?: number--><!--Device-DataAddOperation-count?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
@@ -38,7 +40,7 @@ Default value: **1**
 index: number
 ```
 
-Index at which to insert the data record. The value range is [0, data source length].
+Index of the added data. The value range is [0, data source length]. Rendering is abnormal when the value exceeds the range.
 
 **Type:** number
 
@@ -48,6 +50,8 @@ Index at which to insert the data record. The value range is [0, data source len
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DataAddOperation-index: number--><!--Device-DataAddOperation-index: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## key
@@ -56,7 +60,7 @@ Index at which to insert the data record. The value range is [0, data source len
 key?: string | Array<string>
 ```
 
-Keys to assign to the inserted data records. The original keys are used by default.
+Assigns a key to the added data. The original key is used by default. The key supports the string or Array\&lt;string\&gt; type. If the key is an array whose length is greater than **count**, an invalid parameter error is reported.
 
 **Type:** string &#124; Array&lt;string&gt;
 
@@ -66,6 +70,8 @@ Keys to assign to the inserted data records. The original keys are used by defau
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DataAddOperation-key?: string | Array<string>--><!--Device-DataAddOperation-key?: string | Array<string>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -74,7 +80,7 @@ Keys to assign to the inserted data records. The original keys are used by defau
 type: DataOperationType.ADD
 ```
 
-Type of data addition.
+Data addition type.
 
 **Type:** [DataOperationType.ADD](arkts-arkui-lazyforeach-comp-dataoperationtype-e.md)
 
@@ -83,5 +89,7 @@ Type of data addition.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DataAddOperation-type: DataOperationType.ADD--><!--Device-DataAddOperation-type: DataOperationType.ADD-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

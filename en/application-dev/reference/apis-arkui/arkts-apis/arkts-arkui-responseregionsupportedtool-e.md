@@ -8,6 +8,8 @@ Sets the type of the input tool applicable to the touch target.
 
 **Since:** 22
 
+<!--Device-unnamed-declare enum ResponseRegionSupportedTool--><!--Device-unnamed-declare enum ResponseRegionSupportedTool-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALL
@@ -23,6 +25,8 @@ All input tool types.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-ResponseRegionSupportedTool-ALL = 0--><!--Device-ResponseRegionSupportedTool-ALL = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Finger.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-ResponseRegionSupportedTool-FINGER = 1--><!--Device-ResponseRegionSupportedTool-FINGER = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## PEN
@@ -56,6 +62,8 @@ Stylus.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-ResponseRegionSupportedTool-PEN = 2--><!--Device-ResponseRegionSupportedTool-PEN = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## MOUSE
@@ -71,5 +79,7 @@ Mouse.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-ResponseRegionSupportedTool-MOUSE = 3--><!--Device-ResponseRegionSupportedTool-MOUSE = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

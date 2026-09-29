@@ -8,6 +8,8 @@ Filter effect class, used to apply corresponding effects to specified components
 
 **Since:** 12
 
+<!--Device-uiEffect-interface Filter--><!--Device-uiEffect-interface Filter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -25,6 +27,8 @@ blur(blurRadius: number): Filter
 Adds a blur effect to the component.
 
 **Since:** 12
+
+<!--Device-Filter-blur(blurRadius: double): Filter--><!--Device-Filter-blur(blurRadius: double): Filter-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -94,6 +98,8 @@ The maximum supported brightness boost multiple is calculated as the device's cu
 **Required permissions:** 
 - API version 24 and later: ohos.permission.HDR_BRIGHTNESS
 - API versions 20 to 23: N/A
+
+<!--Device-Filter-hdrBrightnessRatio(ratio: double): Filter--><!--Device-Filter-hdrBrightnessRatio(ratio: double): Filter-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

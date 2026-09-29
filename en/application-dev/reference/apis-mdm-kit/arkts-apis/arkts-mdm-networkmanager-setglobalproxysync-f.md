@@ -20,6 +20,8 @@ Sets the global network proxy. This API is suitable for enterprise network manag
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function setGlobalProxySync(admin: Want, httpProxy: connection.HttpProxy): void--><!--Device-networkManager-function setGlobalProxySync(admin: Want, httpProxy: connection.HttpProxy): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

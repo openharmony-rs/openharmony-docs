@@ -8,6 +8,8 @@ Provides APIs for operating on certificate extensions.
 
 **Since:** 10
 
+<!--Device-cert-interface CertExtension--><!--Device-cert-interface CertExtension-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Checks whether the certificate is a CA certificate.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CertExtension-checkCA(): int--><!--Device-CertExtension-checkCA(): int-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -94,7 +98,9 @@ Obtains the serialized data of the certificate extensions.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CertExtension-getEncoded(): EncodingBlob--><!--Device-CertExtension-getEncoded(): EncodingBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -163,7 +169,9 @@ Obtains the value of a specific certificate extension entry by OID.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CertExtension-getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob--><!--Device-CertExtension-getEntry(valueType: ExtensionEntryType, oid: DataBlob): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -244,7 +252,9 @@ Obtains the OIDs of the certificate extensions.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CertExtension-getOidList(valueType: ExtensionOidType): DataArray--><!--Device-CertExtension-getOidList(valueType: ExtensionOidType): DataArray-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -320,7 +330,9 @@ Checks whether there is a critical extension that is not supported.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CertExtension-hasUnsupportedCriticalExtension(): boolean--><!--Device-CertExtension-hasUnsupportedCriticalExtension(): boolean-End-->
 
 **System capability:** SystemCapability.Security.Cert
 

@@ -16,6 +16,8 @@ Write data through the socket.
 
 **Since:** 10
 
+<!--Device-socket-function sppWrite(clientSocket: int, data: ArrayBuffer): void--><!--Device-socket-function sppWrite(clientSocket: int, data: ArrayBuffer): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

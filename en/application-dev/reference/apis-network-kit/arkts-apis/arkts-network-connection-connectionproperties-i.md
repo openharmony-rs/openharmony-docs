@@ -13,6 +13,8 @@ Defines the network connection properties.
 
 **Since:** 8
 
+<!--Device-connection-export interface ConnectionProperties--><!--Device-connection-export interface ConnectionProperties-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Network address. For details, see [NetAddress](arkts-network-connection-netaddre
 
 **Since:** 8
 
+<!--Device-ConnectionProperties-dnses: Array<NetAddress>--><!--Device-ConnectionProperties-dnses: Array<NetAddress>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## domains
@@ -47,6 +51,8 @@ Domain name.
 
 **Since:** 8
 
+<!--Device-ConnectionProperties-domains: string--><!--Device-ConnectionProperties-domains: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## interfaceName
@@ -60,6 +66,8 @@ Network interface card (NIC) name.
 **Type:** string
 
 **Since:** 8
+
+<!--Device-ConnectionProperties-interfaceName: string--><!--Device-ConnectionProperties-interfaceName: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -77,6 +85,8 @@ Whether IPv4 is available on the current network. **true**: IPv4 is available wh
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionProperties-isIPv4LinkValid?: boolean--><!--Device-ConnectionProperties-isIPv4LinkValid?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## isIPv6LinkValid
@@ -93,6 +103,8 @@ Whether IPv6 is available on the current network. **true**: IPv6 is available wh
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionProperties-isIPv6LinkValid?: boolean--><!--Device-ConnectionProperties-isIPv6LinkValid?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## linkAddresses
@@ -106,6 +118,8 @@ Network link information.
 **Type:** Array&lt;[LinkAddress](arkts-network-connection-linkaddress-i.md)&gt;
 
 **Since:** 8
+
+<!--Device-ConnectionProperties-linkAddresses: Array<LinkAddress>--><!--Device-ConnectionProperties-linkAddresses: Array<LinkAddress>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -121,6 +135,8 @@ Maximum transmission unit (MTU).
 
 **Since:** 8
 
+<!--Device-ConnectionProperties-mtu: int--><!--Device-ConnectionProperties-mtu: int-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## routes
@@ -134,5 +150,7 @@ Network route information.
 **Type:** Array&lt;[RouteInfo](arkts-network-connection-routeinfo-i.md)&gt;
 
 **Since:** 8
+
+<!--Device-ConnectionProperties-routes: Array<RouteInfo>--><!--Device-ConnectionProperties-routes: Array<RouteInfo>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

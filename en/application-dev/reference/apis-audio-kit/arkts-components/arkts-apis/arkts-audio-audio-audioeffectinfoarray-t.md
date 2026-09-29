@@ -8,6 +8,8 @@ Defines an array that contains the audio effect mode corresponding to a specific
 
 **Since:** 10
 
+<!--Device-audio-type AudioEffectInfoArray = Array<Readonly<AudioEffectMode>>--><!--Device-audio-type AudioEffectInfoArray = Array<Readonly<AudioEffectMode>>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **Type:** Array&lt;Readonly&lt;[AudioEffectMode](arkts-audio-audio-audioeffectmode-e.md)&gt;&gt;

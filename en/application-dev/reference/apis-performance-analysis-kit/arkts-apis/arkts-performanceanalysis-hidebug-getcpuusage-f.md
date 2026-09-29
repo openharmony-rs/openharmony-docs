@@ -21,6 +21,8 @@ Obtains the CPU usage of a process.
 
 **Since:** 9
 
+<!--Device-hidebug-function getCpuUsage() : double--><!--Device-hidebug-function getCpuUsage() : double-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value:**

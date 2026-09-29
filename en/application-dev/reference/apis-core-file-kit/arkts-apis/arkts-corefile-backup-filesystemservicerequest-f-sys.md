@@ -20,6 +20,8 @@ Requests filesystem garbage collection with specified configuration.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-backup-function fileSystemServiceRequest(config: FileSystemRequestConfig): Promise<int>--><!--Device-backup-function fileSystemServiceRequest(config: FileSystemRequestConfig): Promise<int>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.

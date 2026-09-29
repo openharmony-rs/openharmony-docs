@@ -8,6 +8,8 @@ Represents the transparently transmitted data, which contains information requir
 
 **Since:** 11
 
+<!--Device-cloudData-interface ExtraData--><!--Device-cloudData-interface ExtraData-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Event ID. The value **cloud_data_change** indicates cloud data changes.
 
 **Since:** 11
 
+<!--Device-ExtraData-eventId: string--><!--Device-ExtraData-eventId: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Data to be transmitted transparently. **extraData** is a JSON string that must c
 **Type:** string
 
 **Since:** 11
+
+<!--Device-ExtraData-extraData: string--><!--Device-ExtraData-extraData: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 

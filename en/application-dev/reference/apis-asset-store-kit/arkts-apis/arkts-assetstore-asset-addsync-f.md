@@ -20,6 +20,8 @@ To set [IS_PERSISTENT](arkts-assetstore-asset-tag-e.md#is_persistent), the appli
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-asset-function addSync(attributes: AssetMap): void--><!--Device-asset-function addSync(attributes: AssetMap): void-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**

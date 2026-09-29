@@ -22,6 +22,8 @@ Updates the specified Wi-Fi configuration.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG
 
+<!--Device-wifi-function updateNetwork(config: WifiDeviceConfig): number--><!--Device-wifi-function updateNetwork(config: WifiDeviceConfig): number-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

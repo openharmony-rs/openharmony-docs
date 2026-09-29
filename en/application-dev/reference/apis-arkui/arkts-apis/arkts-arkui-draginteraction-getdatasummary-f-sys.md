@@ -16,6 +16,8 @@ Obtains the data summary of all dragged objects.
 
 **Since:** 11
 
+<!--Device-dragInteraction-function getDataSummary(): Array<Summary>--><!--Device-dragInteraction-function getDataSummary(): Array<Summary>-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Drag
 
 **System API:** This is a system API.

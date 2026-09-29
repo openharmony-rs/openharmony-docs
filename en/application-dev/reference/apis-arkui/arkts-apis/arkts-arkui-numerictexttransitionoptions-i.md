@@ -8,6 +8,8 @@ Defines the options of the numeric flip animation.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface NumericTextTransitionOptions--><!--Device-unnamed-declare interface NumericTextTransitionOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableBlur
@@ -32,6 +34,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-NumericTextTransitionOptions-enableBlur?: boolean--><!--Device-NumericTextTransitionOptions-enableBlur?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## flipDirection
@@ -51,5 +55,7 @@ Default value: **FlipDirection.DOWN**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-NumericTextTransitionOptions-flipDirection?: FlipDirection--><!--Device-NumericTextTransitionOptions-flipDirection?: FlipDirection-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -16,6 +16,8 @@ Obtains the data security level of a file or directory in synchronous mode. If n
 
 **Since:** 9
 
+<!--Device-securityLabel-function getSecurityLabelSync(path: string): string--><!--Device-securityLabel-function getSecurityLabelSync(path: string): string-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

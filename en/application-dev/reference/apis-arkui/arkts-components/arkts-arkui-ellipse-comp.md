@@ -22,6 +22,8 @@ Constructor used to draw an ellipse. After being called, it creates an **Ellipse
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-EllipseInterface-new (options?: EllipseOptions): EllipseAttribute--><!--Device-EllipseInterface-new (options?: EllipseOptions): EllipseAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -45,6 +47,8 @@ Constructor used to draw an ellipse. After being called, it creates an **Ellipse
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-EllipseInterface-(options?: EllipseOptions): EllipseAttribute--><!--Device-EllipseInterface-(options?: EllipseOptions): EllipseAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

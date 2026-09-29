@@ -18,6 +18,8 @@ Vector is a linear data structure that is implemented based on arrays. When the 
 
 **Substitutes:** [ArrayList](arkts-arkts-util-arraylist-arraylist-c.md)
 
+<!--Device-unnamed-declare class Vector<T>--><!--Device-unnamed-declare class Vector<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -37,6 +39,8 @@ returns an ES6 iterator.Each item of the iterator is a Javascript Object
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-[Symbol.iterator](): IterableIterator<T>--><!--Device-Vector-[Symbol.iterator](): IterableIterator<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -81,6 +85,8 @@ Adds an element at the end of this Vector.
 
 **Deprecated since:** 9
 
+<!--Device-Vector-add(element: T): boolean--><!--Device-Vector-add(element: T): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -123,6 +129,8 @@ Clears all elements in this Vector and sets its length to **0**.
 
 **Deprecated since:** 9
 
+<!--Device-Vector-clear(): void--><!--Device-Vector-clear(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Examples**
@@ -147,6 +155,8 @@ Clones this Vector and returns a copy. The modification to the copy does not aff
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-clone(): Vector<T>--><!--Device-Vector-clone(): Vector<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -179,6 +189,8 @@ A constructor used to create a **Vector** instance.
 
 **Deprecated since:** 9
 
+<!--Device-Vector-constructor()--><!--Device-Vector-constructor()-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Examples**
@@ -198,6 +210,8 @@ Converts this Vector into an array.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-convertToArray(): Array<T>--><!--Device-Vector-convertToArray(): Array<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -230,6 +244,8 @@ Copies elements in this Vector into an array to overwrite elements of the same p
 
 **Deprecated since:** 9
 
+<!--Device-Vector-copyToArray(array: Array<T>): void--><!--Device-Vector-copyToArray(array: Array<T>): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -249,6 +265,8 @@ Uses a callback to traverse the elements in this Vector and obtain their positio
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-forEach(callbackFn: (value: T, index?: number, vector?: Vector<T>) => void, thisArg?: Object): void--><!--Device-Vector-forEach(callbackFn: (value: T, index?: number, vector?: Vector<T>) => void, thisArg?: Object): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -283,6 +301,8 @@ Obtains an element at the specified position in this Vector.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-get(index: number): T--><!--Device-Vector-get(index: number): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -321,6 +341,8 @@ Obtains the capacity of this Vector.
 
 **Deprecated since:** 9
 
+<!--Device-Vector-getCapacity(): number--><!--Device-Vector-getCapacity(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -352,6 +374,8 @@ Obtains the first element in this Vector.
 
 **Deprecated since:** 9
 
+<!--Device-Vector-getFirstElement(): T--><!--Device-Vector-getFirstElement(): T-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -382,6 +406,8 @@ Searches for an element forward from the specified position index and returns th
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-getIndexFrom(element: T, index: number): number--><!--Device-Vector-getIndexFrom(element: T, index: number): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -420,6 +446,8 @@ Obtains the index of the first occurrence of the specified element in this Vecto
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-getIndexOf(element: T): number--><!--Device-Vector-getIndexOf(element: T): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -461,6 +489,8 @@ Obtains the last element in this Vector.
 
 **Deprecated since:** 9
 
+<!--Device-Vector-getLastElement(): T--><!--Device-Vector-getLastElement(): T-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -491,6 +521,8 @@ Searches for an element backward from the specified position index and returns t
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-getLastIndexFrom(element: T, index: number): number--><!--Device-Vector-getLastIndexFrom(element: T, index: number): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -529,6 +561,8 @@ Obtains the index of the last occurrence of the specified element in this Vector
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-getLastIndexOf(element: T): number--><!--Device-Vector-getLastIndexOf(element: T): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -570,6 +604,8 @@ Checks whether this Vector has the specified element.
 
 **Deprecated since:** 9
 
+<!--Device-Vector-has(element: T): boolean--><!--Device-Vector-has(element: T): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -605,6 +641,8 @@ Increases the capacity of this Vector.
 
 **Deprecated since:** 9
 
+<!--Device-Vector-increaseCapacityTo(newCapacity: number): void--><!--Device-Vector-increaseCapacityTo(newCapacity: number): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -637,6 +675,8 @@ Inserts an element within the length range and moves its subsequent elements rig
 
 **Deprecated since:** 9
 
+<!--Device-Vector-insert(element: T, index: number): void--><!--Device-Vector-insert(element: T, index: number): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -666,6 +706,8 @@ Checks whether this Vector is empty (contains no elements).
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-isEmpty(): boolean--><!--Device-Vector-isEmpty(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -697,6 +739,8 @@ Removes the first occurrence of the specified element from this Vector.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-remove(element: T): boolean--><!--Device-Vector-remove(element: T): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -734,6 +778,8 @@ Searches for an element based on its index, removes the element after returning 
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-removeByIndex(index: number): T--><!--Device-Vector-removeByIndex(index: number): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -773,6 +819,8 @@ Removes from this Vector all of the elements within a range, including the eleme
 
 **Deprecated since:** 9
 
+<!--Device-Vector-removeByRange(fromIndex: number, toIndex: number): void--><!--Device-Vector-removeByRange(fromIndex: number, toIndex: number): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -804,6 +852,8 @@ Replaces all elements in this Vector with new elements, and returns the new ones
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-replaceAllElements(callbackFn: (value: T, index?: number, vector?: Vector<T>) => T, thisArg?: Object): void--><!--Device-Vector-replaceAllElements(callbackFn: (value: T, index?: number, vector?: Vector<T>) => T, thisArg?: Object): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -840,6 +890,8 @@ Replaces an element at the specified position in this Vector with a given elemen
 
 **Deprecated since:** 9
 
+<!--Device-Vector-set(index: number, element: T): T--><!--Device-Vector-set(index: number, element: T): T-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -866,6 +918,8 @@ Sets a new length for this Vector.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-setLength(newSize: number): void--><!--Device-Vector-setLength(newSize: number): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -899,6 +953,8 @@ Sorts elements in this Vector.
 
 **Deprecated since:** 9
 
+<!--Device-Vector-sort(comparator?: (firstValue: T, secondValue: T) => number): void--><!--Device-Vector-sort(comparator?: (firstValue: T, secondValue: T) => number): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -931,6 +987,8 @@ Obtains elements within a range in this Vector, including the element at the sta
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-subVector(fromIndex: number, toIndex: number): Vector<T>--><!--Device-Vector-subVector(fromIndex: number, toIndex: number): Vector<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -973,6 +1031,8 @@ Uses commas (,) to concatenate elements in this Vector into a string.
 
 **Deprecated since:** 9
 
+<!--Device-Vector-toString(): string--><!--Device-Vector-toString(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -1004,6 +1064,8 @@ Trims the capacity of this Vector into its current length.
 
 **Deprecated since:** 9
 
+<!--Device-Vector-trimToCurrentLength(): void--><!--Device-Vector-trimToCurrentLength(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Examples**
@@ -1030,5 +1092,7 @@ Number of elements in a Vector.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-Vector-length: number--><!--Device-Vector-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

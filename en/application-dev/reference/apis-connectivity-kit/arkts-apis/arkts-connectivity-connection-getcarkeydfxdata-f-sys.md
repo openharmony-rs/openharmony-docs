@@ -18,6 +18,8 @@ Get the dfx data of car key.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getCarKeyDfxData(): string--><!--Device-connection-function getCarKeyDfxData(): string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

@@ -12,6 +12,8 @@ Enumerates the affinity modes.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type Affinity = import('../api/@ohos.graphics.text').default.Affinity--><!--Device-unnamed-declare type Affinity = import('../api/@ohos.graphics.text').default.Affinity-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.graphics.text').default.Affinity

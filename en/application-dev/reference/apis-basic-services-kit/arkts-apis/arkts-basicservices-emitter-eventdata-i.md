@@ -8,6 +8,8 @@ Describes data carried by the emitted event.
 
 **Since:** 7
 
+<!--Device-emitter-export interface EventData--><!--Device-emitter-export interface EventData-End-->
+
 **System capability:** SystemCapability.Notification.Emitter
 
 ## Modules to Import
@@ -29,5 +31,7 @@ Data carried by the emitted event. The value can be in any of the following type
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-EventData-data?: { [key: string]: any }--><!--Device-EventData-data?: { [key: string]: any }-End-->
 
 **System capability:** SystemCapability.Notification.Emitter

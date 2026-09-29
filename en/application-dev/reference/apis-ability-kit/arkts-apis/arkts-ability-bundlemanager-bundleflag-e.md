@@ -8,6 +8,8 @@ Enumerates the bundle flags, which indicate the type of bundle information to ob
 
 **Since:** 9
 
+<!--Device-bundleManager-enum BundleFlag--><!--Device-bundleManager-enum BundleFlag-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## GET_BUNDLE_INFO_DEFAULT
@@ -20,7 +22,9 @@ Used to obtain the default bundle information. The obtained information does not
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_DEFAULT = 0x00000000--><!--Device-BundleFlag-GET_BUNDLE_INFO_DEFAULT = 0x00000000-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -34,7 +38,9 @@ Used to obtain the bundle information with application information. The obtained
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_APPLICATION = 0x00000001--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_APPLICATION = 0x00000001-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -48,7 +54,9 @@ Used to obtain the bundle information with HAP module information. The obtained 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_HAP_MODULE = 0x00000002--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_HAP_MODULE = 0x00000002-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -62,7 +70,9 @@ Used to obtain the bundle information with ability information. The obtained inf
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_ABILITY = 0x00000004--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_ABILITY = 0x00000004-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -76,7 +86,9 @@ Used to obtain the bundle information with ExtensionAbility information. The obt
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY = 0x00000008--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY = 0x00000008-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -90,7 +102,9 @@ Used to obtain the bundle information with permission information. The obtained 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION = 0x00000010--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION = 0x00000010-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -113,7 +127,9 @@ Used to obtain the metadata contained in the application, module, ability, or Ex
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_METADATA = 0x00000020--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_METADATA = 0x00000020-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -127,7 +143,9 @@ Used to obtain the information about disabled bundles and abilities of a bundle.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_DISABLE = 0x00000040--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_DISABLE = 0x00000040-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -141,7 +159,9 @@ Used to obtain the bundle information with signature information. The obtained i
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_SIGNATURE_INFO = 0x00000080--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_SIGNATURE_INFO = 0x00000080-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -155,7 +175,9 @@ Used to obtain the bundle information with the file context menu configuration. 
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_MENU = 0x00000100--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_MENU = 0x00000100-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -169,7 +191,9 @@ Used to obtain the bundle information with the router map. It must be used toget
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_ROUTER_MAP = 0x00000200--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_ROUTER_MAP = 0x00000200-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -183,7 +207,9 @@ Used to obtain the bundle information with the skills. It must be used together 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_SKILL = 0x00000800--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_SKILL = 0x00000800-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -195,7 +221,9 @@ GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY = 0x00001000
 
 Used to obtain the bundle information of the application that has only a home screen icon.
 
-**Since:** 26.2.0
+**Since:** 26.1.0
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY = 0x00001000--><!--Device-BundleFlag-GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY = 0x00001000-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -209,6 +237,8 @@ Used to obtain the bundle information with the HAP module information. It is val
 
 **Since:** 23
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_ENTRY_MODULE = 0x00010000--><!--Device-BundleFlag-GET_BUNDLE_INFO_WITH_ENTRY_MODULE = 0x00010000-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core

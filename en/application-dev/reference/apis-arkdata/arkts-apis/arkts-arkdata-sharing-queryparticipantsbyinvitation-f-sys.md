@@ -19,6 +19,8 @@ Queries the participants based on the sharing invitation code. This API uses an 
 
 **Since:** 11
 
+<!--Device-sharing-function queryParticipantsByInvitation(      invitationCode: string,      callback: AsyncCallback<Result<Array<Participant>>>    ): void--><!--Device-sharing-function queryParticipantsByInvitation(      invitationCode: string,      callback: AsyncCallback<Result<Array<Participant>>>    ): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ function queryParticipantsByInvitation(invitationCode: string): Promise<Result<A
 Queries the participants based on the sharing invitation code. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-sharing-function queryParticipantsByInvitation(invitationCode: string): Promise<Result<Array<Participant>>>--><!--Device-sharing-function queryParticipantsByInvitation(invitationCode: string): Promise<Result<Array<Participant>>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

@@ -8,6 +8,8 @@ Provides the ConditionType type,including timeout, killSignal, maxBuffer.
 
 **Since:** 10
 
+<!--Device-process-interface ConditionType--><!--Device-process-interface ConditionType-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Signal sent to the child process when the running time of a child process exceed
 
 **Since:** 10
 
+<!--Device-ConditionType-killSignal?: number | string--><!--Device-ConditionType-killSignal?: number | string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ Maximum buffer size for the standard input and output of the child process.
 
 **Since:** 10
 
+<!--Device-ConditionType-maxBuffer?: number--><!--Device-ConditionType-maxBuffer?: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ Maximum running time (in ms) of the child process.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-ConditionType-timeout?: number--><!--Device-ConditionType-timeout?: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

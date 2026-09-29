@@ -12,11 +12,13 @@ ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 如果ComposeTitleBarV2设置通用属性和通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ComposeTitleBarV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ComposeTitleBarV2设置通用属性和通用事件。
+> - 如果ComposeTitleBarV2设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ComposeTitleBarV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ComposeTitleBarV2设置通用属性和通用事件。
 
 **起始版本：** 26.0.0
 
 **装饰器类型：** @ComponentV2
+
+<!--Device-unnamed-export declare struct ComposeTitleBarV2--><!--Device-unnamed-export declare struct ComposeTitleBarV2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +44,8 @@ item?: ComposeTitleBarV2MenuItem
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ComposeTitleBarV2-item?: ComposeTitleBarV2MenuItem--><!--Device-ComposeTitleBarV2-item?: ComposeTitleBarV2MenuItem-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## menuItems
@@ -59,6 +63,8 @@ menuItems?: Array<ComposeTitleBarV2MenuItem>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ComposeTitleBarV2-menuItems?: Array<ComposeTitleBarV2MenuItem>--><!--Device-ComposeTitleBarV2-menuItems?: Array<ComposeTitleBarV2MenuItem>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +84,8 @@ subtitle?: ResourceStr
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ComposeTitleBarV2-subtitle?: ResourceStr--><!--Device-ComposeTitleBarV2-subtitle?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -95,5 +103,7 @@ title: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ComposeTitleBarV2-title: ResourceStr--><!--Device-ComposeTitleBarV2-title: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

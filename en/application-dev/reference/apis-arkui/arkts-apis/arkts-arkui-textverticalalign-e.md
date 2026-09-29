@@ -8,6 +8,8 @@ Defines the vertical alignment mode of text. The default value is **BASELINE** (
 
 **Since:** 20
 
+<!--Device-unnamed-declare enum TextVerticalAlign--><!--Device-unnamed-declare enum TextVerticalAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## BASELINE
@@ -23,6 +25,8 @@ Aligns text along the baseline.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-TextVerticalAlign-BASELINE = 0--><!--Device-TextVerticalAlign-BASELINE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Aligns text to the bottom.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TextVerticalAlign-BOTTOM = 1--><!--Device-TextVerticalAlign-BOTTOM = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CENTER
@@ -56,6 +62,8 @@ Aligns text vertically to the center.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TextVerticalAlign-CENTER = 2--><!--Device-TextVerticalAlign-CENTER = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOP
@@ -71,5 +79,7 @@ Aligns text to the top.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-TextVerticalAlign-TOP = 3--><!--Device-TextVerticalAlign-TOP = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

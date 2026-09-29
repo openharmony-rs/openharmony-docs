@@ -15,6 +15,8 @@ AppStorage是与应用进程绑定的全局UI状态存储中心，由UI框架在
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare class AppStorage--><!--Device-unnamed-declare class AppStorage-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## clear
@@ -30,6 +32,8 @@ static clear(): boolean
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AppStorage-static clear(): boolean--><!--Device-AppStorage-static clear(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +76,8 @@ static delete(propName: string): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AppStorage-static delete(propName: string): boolean--><!--Device-AppStorage-static delete(propName: string): boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -109,6 +115,8 @@ static get<T>(propName: string): T | undefined
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AppStorage-static get<T>(propName: string): T | undefined--><!--Device-AppStorage-static get<T>(propName: string): T | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -142,6 +150,8 @@ static has(propName: string): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AppStorage-static has(propName: string): boolean--><!--Device-AppStorage-static has(propName: string): boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -174,6 +184,8 @@ static keys(): IterableIterator<string>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AppStorage-static keys(): IterableIterator<string>--><!--Device-AppStorage-static keys(): IterableIterator<string>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -202,6 +214,8 @@ static link<T>(propName: string): SubscribedAbstractProperty<T>
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AppStorage-static link<T>(propName: string): SubscribedAbstractProperty<T>--><!--Device-AppStorage-static link<T>(propName: string): SubscribedAbstractProperty<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,6 +251,8 @@ static prop<T>(propName: string): SubscribedAbstractProperty<T>
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AppStorage-static prop<T>(propName: string): SubscribedAbstractProperty<T>--><!--Device-AppStorage-static prop<T>(propName: string): SubscribedAbstractProperty<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -275,6 +291,8 @@ static ref<T>(propName: string): AbstractProperty<T> | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-AppStorage-static ref<T>(propName: string): AbstractProperty<T> | undefined--><!--Device-AppStorage-static ref<T>(propName: string): AbstractProperty<T> | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -309,6 +327,8 @@ static set<T>(propName: string, newValue: T): boolean
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AppStorage-static set<T>(propName: string, newValue: T): boolean--><!--Device-AppStorage-static set<T>(propName: string, newValue: T): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -345,6 +365,8 @@ static setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractPrope
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AppStorage-static setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>--><!--Device-AppStorage-static setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -379,6 +401,8 @@ static setAndProp<T>(propName: string, defaultValue: T): SubscribedAbstractPrope
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AppStorage-static setAndProp<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>--><!--Device-AppStorage-static setAndProp<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -415,6 +439,8 @@ static setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-AppStorage-static setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>--><!--Device-AppStorage-static setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -453,6 +479,8 @@ static setOrCreate<T>(propName: string, newValue: T): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AppStorage-static setOrCreate<T>(propName: string, newValue: T): void--><!--Device-AppStorage-static setOrCreate<T>(propName: string, newValue: T): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -479,6 +507,8 @@ static size(): number
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AppStorage-static size(): number--><!--Device-AppStorage-static size(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -512,6 +542,8 @@ static Clear(): boolean
 **替代接口：** [clear](#clear)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-AppStorage-static Clear(): boolean--><!--Device-AppStorage-static Clear(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -547,6 +579,8 @@ static Delete(propName: string): boolean
 **替代接口：** [delete](#delete)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-AppStorage-static Delete(propName: string): boolean--><!--Device-AppStorage-static Delete(propName: string): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -589,6 +623,8 @@ static Get<T>(propName: string): T | undefined
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-AppStorage-static Get<T>(propName: string): T | undefined--><!--Device-AppStorage-static Get<T>(propName: string): T | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -625,6 +661,8 @@ static Has(propName: string): boolean
 **替代接口：** [has](#has)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-AppStorage-static Has(propName: string): boolean--><!--Device-AppStorage-static Has(propName: string): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -664,6 +702,8 @@ static IsMutable(propName: string): boolean
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-AppStorage-static IsMutable(propName: string): boolean--><!--Device-AppStorage-static IsMutable(propName: string): boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -701,6 +741,8 @@ static Keys(): IterableIterator<string>
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-AppStorage-static Keys(): IterableIterator<string>--><!--Device-AppStorage-static Keys(): IterableIterator<string>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -735,6 +777,8 @@ static Link(propName: string): any
 **替代接口：** [link](#link)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-AppStorage-static Link(propName: string): any--><!--Device-AppStorage-static Link(propName: string): any-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -779,6 +823,8 @@ static Prop(propName: string): any
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-AppStorage-static Prop(propName: string): any--><!--Device-AppStorage-static Prop(propName: string): any-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -817,6 +863,8 @@ static Set<T>(propName: string, newValue: T): boolean
 **替代接口：** [set](#set)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-AppStorage-static Set<T>(propName: string, newValue: T): boolean--><!--Device-AppStorage-static Set<T>(propName: string, newValue: T): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -857,6 +905,8 @@ static SetAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractPrope
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-AppStorage-static SetAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>--><!--Device-AppStorage-static SetAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -896,6 +946,8 @@ static SetAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractPrope
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-AppStorage-static SetAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractProperty<S>--><!--Device-AppStorage-static SetAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractProperty<S>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -934,6 +986,8 @@ static SetOrCreate<T>(propName: string, newValue: T): void
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-AppStorage-static SetOrCreate<T>(propName: string, newValue: T): void--><!--Device-AppStorage-static SetOrCreate<T>(propName: string, newValue: T): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -965,6 +1019,8 @@ static Size(): number
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-AppStorage-static Size(): number--><!--Device-AppStorage-static Size(): number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -995,6 +1051,8 @@ static staticClear(): boolean
 **替代接口：** [Clear](#clear)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-AppStorage-static staticClear(): boolean--><!--Device-AppStorage-static staticClear(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

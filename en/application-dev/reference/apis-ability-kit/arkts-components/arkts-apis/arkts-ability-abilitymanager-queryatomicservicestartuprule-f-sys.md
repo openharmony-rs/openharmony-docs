@@ -18,6 +18,8 @@ Obtains the rule for launching an [EmbeddableUIAbility](arkts-ability-app-abilit
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-abilityManager-function queryAtomicServiceStartupRule(context: Context, appId: string): Promise<AtomicServiceStartupRule>--><!--Device-abilityManager-function queryAtomicServiceStartupRule(context: Context, appId: string): Promise<AtomicServiceStartupRule>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

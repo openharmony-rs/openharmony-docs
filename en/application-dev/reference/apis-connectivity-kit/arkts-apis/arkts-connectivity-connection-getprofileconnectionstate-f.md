@@ -20,6 +20,8 @@ Get the profile connection state of the current device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getProfileConnectionState(profileId?: ProfileId): ProfileConnectionState--><!--Device-connection-function getProfileConnectionState(profileId?: ProfileId): ProfileConnectionState-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

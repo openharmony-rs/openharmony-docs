@@ -12,6 +12,8 @@ Defines the AbsAlbum.
 
 **Substitutes:** [AbsAlbum](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-absalbum-i.md)
 
+<!--Device-userFileManager-interface AbsAlbum--><!--Device-userFileManager-interface AbsAlbum-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -37,6 +39,8 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 **Substitutes:** [getAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-absalbum-i.md#getassets)
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+<!--Device-AbsAlbum-getPhotoAssets(options: FetchOptions, callback: AsyncCallback<FetchResult<FileAsset>>): void--><!--Device-AbsAlbum-getPhotoAssets(options: FetchOptions, callback: AsyncCallback<FetchResult<FileAsset>>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -72,6 +76,8 @@ Obtains image and video assets. This API uses a promise to return the result.
 **Substitutes:** [getAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-absalbum-i.md#getassets)
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+<!--Device-AbsAlbum-getPhotoAssets(options: FetchOptions): Promise<FetchResult<FileAsset>>--><!--Device-AbsAlbum-getPhotoAssets(options: FetchOptions): Promise<FetchResult<FileAsset>>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -115,6 +121,8 @@ Name of the album.
 
 **Substitutes:** [albumName](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-absalbum-i.md#albumname)
 
+<!--Device-AbsAlbum-albumName: string--><!--Device-AbsAlbum-albumName: string-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -134,6 +142,8 @@ Subtype of the album.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** albumSubType
+
+<!--Device-AbsAlbum-readonly albumSubType: AlbumSubType--><!--Device-AbsAlbum-readonly albumSubType: AlbumSubType-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -155,6 +165,8 @@ Type of the album to obtain.
 
 **Substitutes:** [albumType](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-absalbum-i.md#albumtype)
 
+<!--Device-AbsAlbum-readonly albumType: AlbumType--><!--Device-AbsAlbum-readonly albumType: AlbumType-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -175,6 +187,8 @@ URI of the album.
 
 **Substitutes:** [albumUri](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-absalbum-i.md#albumuri)
 
+<!--Device-AbsAlbum-readonly albumUri: string--><!--Device-AbsAlbum-readonly albumUri: string-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -194,6 +208,8 @@ Number of files in the album.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [count](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-absalbum-i.md#count)
+
+<!--Device-AbsAlbum-readonly count: number--><!--Device-AbsAlbum-readonly count: number-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -219,6 +235,8 @@ URI of the cover file of the album.
 
 **Substitutes:** [coverUri](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-absalbum-i.md#coveruri)
 
+<!--Device-AbsAlbum-coverUri: string--><!--Device-AbsAlbum-coverUri: string-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -238,6 +256,8 @@ Time when the album was modified. Unit: ms, The value must be an integer greater
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [dateModified](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-album-i-sys.md#datemodified)
+
+<!--Device-AbsAlbum-readonly dateModified: number--><!--Device-AbsAlbum-readonly dateModified: number-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

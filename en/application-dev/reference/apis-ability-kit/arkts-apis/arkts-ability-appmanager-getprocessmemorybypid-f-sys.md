@@ -16,6 +16,8 @@ Obtains the memory size of a process. This API uses a promise to return the resu
 
 **Since:** 10
 
+<!--Device-appManager-function getProcessMemoryByPid(pid: int): Promise<int>--><!--Device-appManager-function getProcessMemoryByPid(pid: int): Promise<int>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -73,6 +75,8 @@ function getProcessMemoryByPid(pid: number, callback: AsyncCallback<number>): vo
 Obtains the memory size of a process. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-appManager-function getProcessMemoryByPid(pid: int, callback: AsyncCallback<int>): void--><!--Device-appManager-function getProcessMemoryByPid(pid: int, callback: AsyncCallback<int>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

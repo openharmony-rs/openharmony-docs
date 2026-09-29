@@ -20,6 +20,8 @@ Removes a system account. Currently, this API is supported only on phones and ta
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accountManager-function removeOsAccount(admin: Want, accountId: number): Promise<void>--><!--Device-accountManager-function removeOsAccount(admin: Want, accountId: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

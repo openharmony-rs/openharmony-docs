@@ -10,6 +10,8 @@ Represents information about the recent file list.
 
 **Deprecated since:** 23
 
+<!--Device-recent-interface FileInfo--><!--Device-recent-interface FileInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -36,6 +38,8 @@ Time when the file was created. <br>Unit: second.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileInfo-readonly ctime: number--><!--Device-FileInfo-readonly ctime: number-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -55,6 +59,8 @@ File name.
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileInfo-readonly fileName: string--><!--Device-FileInfo-readonly fileName: string-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -76,6 +82,8 @@ readonly mode: number
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileInfo-readonly mode: number--><!--Device-FileInfo-readonly mode: number-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -95,6 +103,8 @@ Time when the file was last modified. <br>Unit: ms.
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileInfo-readonly mtime: number--><!--Device-FileInfo-readonly mtime: number-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -116,6 +126,8 @@ File size, in bytes.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileInfo-readonly size: number--><!--Device-FileInfo-readonly size: number-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -136,6 +148,8 @@ File path.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileInfo-readonly srcPath: string--><!--Device-FileInfo-readonly srcPath: string-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -155,6 +169,8 @@ File URI.
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileInfo-readonly uri: string--><!--Device-FileInfo-readonly uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

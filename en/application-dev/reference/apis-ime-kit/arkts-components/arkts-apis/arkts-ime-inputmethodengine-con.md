@@ -12,6 +12,8 @@ The caret moves downward.
 
 **Since:** 9
 
+<!--Device-inputMethodEngine-const CURSOR_DOWN: int--><!--Device-inputMethodEngine-const CURSOR_DOWN: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## CURSOR_LEFT
@@ -25,6 +27,8 @@ The caret moves leftward.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-inputMethodEngine-const CURSOR_LEFT: int--><!--Device-inputMethodEngine-const CURSOR_LEFT: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -40,6 +44,8 @@ The caret moves rightward.
 
 **Since:** 9
 
+<!--Device-inputMethodEngine-const CURSOR_RIGHT: int--><!--Device-inputMethodEngine-const CURSOR_RIGHT: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## CURSOR_UP
@@ -53,6 +59,8 @@ The caret moves upward.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-inputMethodEngine-const CURSOR_UP: int--><!--Device-inputMethodEngine-const CURSOR_UP: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -68,6 +76,8 @@ The edit box is displayed in full screen.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-const DISPLAY_MODE_FULL: int--><!--Device-inputMethodEngine-const DISPLAY_MODE_FULL: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## DISPLAY_MODE_PART
@@ -81,6 +91,8 @@ The edit box is displayed in half-screen mode.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const DISPLAY_MODE_PART: int--><!--Device-inputMethodEngine-const DISPLAY_MODE_PART: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -96,6 +108,8 @@ Key that indicates that a task or input is complete.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-const ENTER_KEY_TYPE_DONE: int--><!--Device-inputMethodEngine-const ENTER_KEY_TYPE_DONE: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## ENTER_KEY_TYPE_GO
@@ -109,6 +123,8 @@ Key that executes a command or navigates to a specific location.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const ENTER_KEY_TYPE_GO: int--><!--Device-inputMethodEngine-const ENTER_KEY_TYPE_GO: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -124,6 +140,8 @@ Key that inserts a new line.
 
 **Since:** 12
 
+<!--Device-inputMethodEngine-const ENTER_KEY_TYPE_NEWLINE: int--><!--Device-inputMethodEngine-const ENTER_KEY_TYPE_NEWLINE: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## ENTER_KEY_TYPE_NEXT
@@ -137,6 +155,8 @@ Key that moves the focus to the next item in a sequence.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const ENTER_KEY_TYPE_NEXT: int--><!--Device-inputMethodEngine-const ENTER_KEY_TYPE_NEXT: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -152,6 +172,8 @@ Key that moves the focus to the previous item in a sequence.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-const ENTER_KEY_TYPE_PREVIOUS: int--><!--Device-inputMethodEngine-const ENTER_KEY_TYPE_PREVIOUS: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## ENTER_KEY_TYPE_SEARCH
@@ -165,6 +187,8 @@ Key that initiates a search operation.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const ENTER_KEY_TYPE_SEARCH: int--><!--Device-inputMethodEngine-const ENTER_KEY_TYPE_SEARCH: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -180,6 +204,8 @@ Key that sends the text to its target.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-const ENTER_KEY_TYPE_SEND: int--><!--Device-inputMethodEngine-const ENTER_KEY_TYPE_SEND: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## ENTER_KEY_TYPE_UNSPECIFIED
@@ -193,6 +219,8 @@ No function is specified for the key.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const ENTER_KEY_TYPE_UNSPECIFIED: int--><!--Device-inputMethodEngine-const ENTER_KEY_TYPE_UNSPECIFIED: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -208,6 +236,8 @@ The edit box is being selected.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-const FLAG_SELECTING: int--><!--Device-inputMethodEngine-const FLAG_SELECTING: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## FLAG_SINGLE_LINE
@@ -221,6 +251,8 @@ The edit box allows only single-line input.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const FLAG_SINGLE_LINE: int--><!--Device-inputMethodEngine-const FLAG_SINGLE_LINE: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -236,6 +268,8 @@ ASCII values are allowed.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-const OPTION_ASCII: int--><!--Device-inputMethodEngine-const OPTION_ASCII: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## OPTION_AUTO_CAP_CHARACTERS
@@ -244,11 +278,13 @@ ASCII values are allowed.
 const OPTION_AUTO_CAP_CHARACTERS: number
 ```
 
-Characters are allowed.
+Characters are auto-capitalized.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const OPTION_AUTO_CAP_CHARACTERS: int--><!--Device-inputMethodEngine-const OPTION_AUTO_CAP_CHARACTERS: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -258,11 +294,13 @@ Characters are allowed.
 const OPTION_AUTO_CAP_SENTENCES: number
 ```
 
-Sentences are allowed.
+Sentences are auto-capitalized.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const OPTION_AUTO_CAP_SENTENCES: int--><!--Device-inputMethodEngine-const OPTION_AUTO_CAP_SENTENCES: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -278,6 +316,8 @@ Words are allowed.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-const OPTION_AUTO_WORDS: int--><!--Device-inputMethodEngine-const OPTION_AUTO_WORDS: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## OPTION_MULTI_LINE
@@ -291,6 +331,8 @@ Multiple lines are allowed.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const OPTION_MULTI_LINE: int--><!--Device-inputMethodEngine-const OPTION_MULTI_LINE: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -306,6 +348,8 @@ Half-screen style.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-const OPTION_NO_FULLSCREEN: int--><!--Device-inputMethodEngine-const OPTION_NO_FULLSCREEN: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## OPTION_NONE
@@ -319,6 +363,8 @@ No input attribute is specified.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const OPTION_NONE: int--><!--Device-inputMethodEngine-const OPTION_NONE: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -334,6 +380,8 @@ Date edit box.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-const PATTERN_DATETIME: int--><!--Device-inputMethodEngine-const PATTERN_DATETIME: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## PATTERN_EMAIL
@@ -347,6 +395,8 @@ Email edit box.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const PATTERN_EMAIL: int--><!--Device-inputMethodEngine-const PATTERN_EMAIL: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -364,6 +414,8 @@ New password edit box.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-inputMethodEngine-const PATTERN_NEW_PASSWORD: int--><!--Device-inputMethodEngine-const PATTERN_NEW_PASSWORD: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## PATTERN_NULL
@@ -378,6 +430,8 @@ Any type of edit box.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-const PATTERN_NULL: int--><!--Device-inputMethodEngine-const PATTERN_NULL: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## PATTERN_NUMBER
@@ -391,6 +445,8 @@ Number edit box.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const PATTERN_NUMBER: int--><!--Device-inputMethodEngine-const PATTERN_NUMBER: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -408,6 +464,8 @@ Edit box for numbers with decimal points.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-inputMethodEngine-const PATTERN_NUMBER_DECIMAL: int--><!--Device-inputMethodEngine-const PATTERN_NUMBER_DECIMAL: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## PATTERN_ONE_TIME_CODE
@@ -423,6 +481,8 @@ Verification code edit box.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-inputMethodEngine-const PATTERN_ONE_TIME_CODE: int--><!--Device-inputMethodEngine-const PATTERN_ONE_TIME_CODE: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -440,6 +500,8 @@ The numeric verification code edit box. The value is fixed at 15. The value shou
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-inputMethodEngine-const PATTERN_ONE_TIME_CODE_NUMBER: int--><!--Device-inputMethodEngine-const PATTERN_ONE_TIME_CODE_NUMBER: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## PATTERN_PASSWORD
@@ -453,6 +515,8 @@ Password edit box.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const PATTERN_PASSWORD: int--><!--Device-inputMethodEngine-const PATTERN_PASSWORD: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -468,6 +532,8 @@ Numeric password edit box.
 
 **Since:** 11
 
+<!--Device-inputMethodEngine-const PATTERN_PASSWORD_NUMBER: int--><!--Device-inputMethodEngine-const PATTERN_PASSWORD_NUMBER: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## PATTERN_PASSWORD_SCREEN_LOCK
@@ -481,6 +547,8 @@ Screen lock password edit box.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-inputMethodEngine-const PATTERN_PASSWORD_SCREEN_LOCK: int--><!--Device-inputMethodEngine-const PATTERN_PASSWORD_SCREEN_LOCK: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -496,6 +564,8 @@ Phone number edit box.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-const PATTERN_PHONE: int--><!--Device-inputMethodEngine-const PATTERN_PHONE: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## PATTERN_TEXT
@@ -510,6 +580,8 @@ Text edit box.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-const PATTERN_TEXT: int--><!--Device-inputMethodEngine-const PATTERN_TEXT: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## PATTERN_URI
@@ -523,6 +595,8 @@ URI edit box.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-inputMethodEngine-const PATTERN_URI: int--><!--Device-inputMethodEngine-const PATTERN_URI: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -540,6 +614,8 @@ User name edit box.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-inputMethodEngine-const PATTERN_USER_NAME: int--><!--Device-inputMethodEngine-const PATTERN_USER_NAME: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## WINDOW_TYPE_INPUT_METHOD_FLOAT
@@ -553,5 +629,7 @@ The input method is displayed in a floating window.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-inputMethodEngine-const WINDOW_TYPE_INPUT_METHOD_FLOAT: int--><!--Device-inputMethodEngine-const WINDOW_TYPE_INPUT_METHOD_FLOAT: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

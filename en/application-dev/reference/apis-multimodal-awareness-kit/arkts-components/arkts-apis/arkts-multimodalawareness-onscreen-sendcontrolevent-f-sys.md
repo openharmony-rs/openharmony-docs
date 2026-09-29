@@ -18,6 +18,8 @@ If the target window is displayed on the screen, you can use this API to send sc
 
 **Required permissions:** ohos.permission.SIMULATE_USER_INPUT
 
+<!--Device-onScreen-function sendControlEvent(event: ControlEvent): Promise<void>--><!--Device-onScreen-function sendControlEvent(event: ControlEvent): Promise<void>-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API:** This is a system API.

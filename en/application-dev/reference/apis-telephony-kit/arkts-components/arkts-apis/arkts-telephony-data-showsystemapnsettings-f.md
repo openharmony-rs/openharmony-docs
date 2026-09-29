@@ -18,6 +18,8 @@ Open the system APN selection menu, which is presented in a semi-modal form and 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-data-function showSystemApnSettings(context: Context): Promise<void>--><!--Device-data-function showSystemApnSettings(context: Context): Promise<void>-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **Parameters:**

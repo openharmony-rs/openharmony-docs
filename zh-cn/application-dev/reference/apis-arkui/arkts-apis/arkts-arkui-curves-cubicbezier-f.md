@@ -24,6 +24,8 @@ function cubicBezier(x1: number, y1: number, x2: number, y2: number): string
 
 **替代接口：** [cubicBezierCurve](arkts-arkui-curves-cubicbeziercurve-f.md)
 
+<!--Device-curves-function cubicBezier(x1: number, y1: number, x2: number, y2: number): string--><!--Device-curves-function cubicBezier(x1: number, y1: number, x2: number, y2: number): string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

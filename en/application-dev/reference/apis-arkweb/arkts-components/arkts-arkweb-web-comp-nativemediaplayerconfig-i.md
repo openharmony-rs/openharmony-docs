@@ -8,6 +8,8 @@ Configures the [enableNativeMediaPlayer](arkts-arkweb-web-comp-attribute.md#enab
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface NativeMediaPlayerConfig--><!--Device-unnamed-declare interface NativeMediaPlayerConfig-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## enable
@@ -28,6 +30,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerConfig-enable: boolean--><!--Device-NativeMediaPlayerConfig-enable: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## shouldOverlay
@@ -47,5 +51,7 @@ Default value: **false**
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NativeMediaPlayerConfig-shouldOverlay: boolean--><!--Device-NativeMediaPlayerConfig-shouldOverlay: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

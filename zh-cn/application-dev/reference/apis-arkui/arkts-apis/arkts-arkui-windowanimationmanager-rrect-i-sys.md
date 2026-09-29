@@ -8,6 +8,8 @@ export interface RRect
 
 **起始版本：** 9
 
+<!--Device-windowAnimationManager-export interface RRect--><!--Device-windowAnimationManager-export interface RRect-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,6 +32,8 @@ height: number
 
 **起始版本：** 9
 
+<!--Device-RRect-height: double--><!--Device-RRect-height: double-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -45,6 +49,8 @@ left: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-RRect-left: double--><!--Device-RRect-left: double-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,6 +68,8 @@ radius: number
 
 **起始版本：** 9
 
+<!--Device-RRect-radius: double--><!--Device-RRect-radius: double-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -78,6 +86,8 @@ top: number
 
 **起始版本：** 9
 
+<!--Device-RRect-top: double--><!--Device-RRect-top: double-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -93,6 +103,8 @@ width: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-RRect-width: double--><!--Device-RRect-width: double-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

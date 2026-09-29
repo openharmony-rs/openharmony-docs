@@ -8,6 +8,8 @@ Defines the configuration for the system recording controller panel.
 
 **Since:** 26.0.0
 
+<!--Device-audio-interface SystemRecordControllerConfig--><!--Device-audio-interface SystemRecordControllerConfig-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 ## Modules to Import
@@ -29,5 +31,7 @@ The system uses this to determine the recording scenario of the application acco
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SystemRecordControllerConfig-sourceType: SourceType--><!--Device-SystemRecordControllerConfig-sourceType: SourceType-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer

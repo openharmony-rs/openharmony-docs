@@ -21,6 +21,8 @@ This API is the synchronous version of [accessibility.isAnimationReduceEnabled](
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accessibility-function isAnimationReduceEnabledSync(): boolean--><!--Device-accessibility-function isAnimationReduceEnabledSync(): boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Return value:**

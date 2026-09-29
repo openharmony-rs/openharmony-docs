@@ -13,6 +13,8 @@ LabelOptions定义文本属性。
 
 **起始版本：** 11
 
+<!--Device-unnamed-export interface LabelOptions--><!--Device-unnamed-export interface LabelOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -41,6 +43,8 @@ Chip激活时的文字颜色。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LabelOptions-activatedFontColor?: ResourceColor--><!--Device-LabelOptions-activatedFontColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -63,6 +67,8 @@ fontColor?: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LabelOptions-fontColor?: ResourceColor--><!--Device-LabelOptions-fontColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontFamily
@@ -84,6 +90,8 @@ fontFamily?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LabelOptions-fontFamily?: string--><!--Device-LabelOptions-fontFamily?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,6 +118,8 @@ fontSize?: Dimension
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LabelOptions-fontSize?: Dimension--><!--Device-LabelOptions-fontSize?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,6 +148,8 @@ size为ChipSize.NORMAL时，{ left: 6, right: 6 }
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LabelOptions-labelMargin?: LabelMarginOptions--><!--Device-LabelOptions-labelMargin?: LabelMarginOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,6 +181,8 @@ size为ChipSize.NORMAL时，
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LabelOptions-localizedLabelMargin?: LocalizedLabelMarginOptions--><!--Device-LabelOptions-localizedLabelMargin?: LocalizedLabelMarginOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -186,5 +200,7 @@ Chip组件显示的文本内容。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LabelOptions-text: string--><!--Device-LabelOptions-text: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

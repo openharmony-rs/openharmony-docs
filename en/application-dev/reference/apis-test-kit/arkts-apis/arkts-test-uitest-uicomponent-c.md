@@ -12,6 +12,8 @@ In **UiTest**, the **UiComponent** class represents a component on the UI and pr
 
 **Substitutes:** [Component](arkts-test-uitest-component-c.md)
 
+<!--Device-unnamed-declare class UiComponent--><!--Device-unnamed-declare class UiComponent-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -36,6 +38,8 @@ Clicks this component. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [click](arkts-test-uitest-component-c.md#click)
+
+<!--Device-UiComponent-click(): Promise<void>--><!--Device-UiComponent-click(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -74,6 +78,8 @@ Double-clicks this component. This API uses a promise to return the result.
 
 **Substitutes:** [doubleClick](arkts-test-uitest-component-c.md#doubleclick)
 
+<!--Device-UiComponent-doubleClick(): Promise<void>--><!--Device-UiComponent-doubleClick(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -110,6 +116,8 @@ Obtains the ID of this component. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [getId](arkts-test-uitest-component-c.md#getid)
+
+<!--Device-UiComponent-getId(): Promise<number>--><!--Device-UiComponent-getId(): Promise<number>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -148,6 +156,8 @@ Obtains the key of this component. This API uses a promise to return the result.
 
 **Substitutes:** [getId](arkts-test-uitest-component-c.md#getid)
 
+<!--Device-UiComponent-getKey(): Promise<string>--><!--Device-UiComponent-getKey(): Promise<string>-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -184,6 +194,8 @@ Obtains the text information of this component. This API uses a promise to retur
 **Deprecated since:** 9
 
 **Substitutes:** [getText](arkts-test-uitest-component-c.md#gettext)
+
+<!--Device-UiComponent-getText(): Promise<string>--><!--Device-UiComponent-getText(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -222,6 +234,8 @@ Obtains the type of this component. This API uses a promise to return the result
 
 **Substitutes:** [getType](arkts-test-uitest-component-c.md#gettype)
 
+<!--Device-UiComponent-getType(): Promise<string>--><!--Device-UiComponent-getType(): Promise<string>-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -258,6 +272,8 @@ Inputs text to a component. This API takes effect only for editable text compone
 **Deprecated since:** 9
 
 **Substitutes:** [inputText](arkts-test-uitest-component-c.md#inputtext)(text: string)
+
+<!--Device-UiComponent-inputText(text: string): Promise<void>--><!--Device-UiComponent-inputText(text: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -302,6 +318,8 @@ Obtains the clickable status of this component. This API uses a promise to retur
 
 **Substitutes:** [isClickable](arkts-test-uitest-component-c.md#isclickable)
 
+<!--Device-UiComponent-isClickable(): Promise<boolean>--><!--Device-UiComponent-isClickable(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -342,6 +360,8 @@ Obtains the enabled status of this component. This API uses a promise to return 
 **Deprecated since:** 9
 
 **Substitutes:** [isEnabled](arkts-test-uitest-component-c.md#isenabled)
+
+<!--Device-UiComponent-isEnabled(): Promise<boolean>--><!--Device-UiComponent-isEnabled(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -384,6 +404,8 @@ Obtains the focused status of this component. This API uses a promise to return 
 
 **Substitutes:** [isFocused](arkts-test-uitest-component-c.md#isfocused)
 
+<!--Device-UiComponent-isFocused(): Promise<boolean>--><!--Device-UiComponent-isFocused(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -424,6 +446,8 @@ Obtains the scrollable status of this component. This API uses a promise to retu
 **Deprecated since:** 9
 
 **Substitutes:** [isScrollable](arkts-test-uitest-component-c.md#isscrollable)
+
+<!--Device-UiComponent-isScrollable(): Promise<boolean>--><!--Device-UiComponent-isScrollable(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -466,6 +490,8 @@ Obtains the selected status of this component. This API uses a promise to return
 
 **Substitutes:** [isSelected](arkts-test-uitest-component-c.md#isselected)
 
+<!--Device-UiComponent-isSelected(): Promise<boolean>--><!--Device-UiComponent-isSelected(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -507,6 +533,8 @@ Long-clicks this component. This API uses a promise to return the result.
 
 **Substitutes:** [longClick](arkts-test-uitest-component-c.md#longclick)
 
+<!--Device-UiComponent-longClick(): Promise<void>--><!--Device-UiComponent-longClick(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -543,6 +571,8 @@ Scrolls on this component to search for the target component (applicable to comp
 **Deprecated since:** 9
 
 **Substitutes:** [scrollSearch](arkts-test-uitest-component-c.md#scrollsearch)(on: On)
+
+<!--Device-UiComponent-scrollSearch(by: By): Promise<UiComponent>--><!--Device-UiComponent-scrollSearch(by: By): Promise<UiComponent>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

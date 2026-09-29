@@ -16,6 +16,8 @@ Defines tap gesture parameters. Inherits from [BaseHandlerOptions](arkts-arkui-t
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface TapGestureParameters extends BaseHandlerOptions--><!--Device-unnamed-declare interface TapGestureParameters extends BaseHandlerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## count
@@ -44,6 +46,8 @@ recognition fails. In multi-finger scenarios, the tapped position is the average
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TapGestureParameters-count?: number--><!--Device-TapGestureParameters-count?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## distanceThreshold
@@ -70,6 +74,8 @@ If the finger movement exceeds the preset movement threshold, the tap gesture re
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TapGestureParameters-distanceThreshold?: number--><!--Device-TapGestureParameters-distanceThreshold?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fingers
@@ -95,5 +101,7 @@ after the first finger; when fingers are lifted, if the remaining number of fing
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TapGestureParameters-fingers?: number--><!--Device-TapGestureParameters-fingers?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

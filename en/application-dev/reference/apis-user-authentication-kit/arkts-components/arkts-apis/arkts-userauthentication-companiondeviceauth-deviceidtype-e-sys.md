@@ -8,6 +8,8 @@ Enumerates device ID types. They are used to define the device service identifie
 
 **Since:** 23
 
+<!--Device-companionDeviceAuth-enum DeviceIdType--><!--Device-companionDeviceAuth-enum DeviceIdType-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ Unified device ID. It is a system-defined device service ID type, used for unifi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceIdType-UNIFIED_DEVICE_ID = 1--><!--Device-DeviceIdType-UNIFIED_DEVICE_ID = 1-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Start value of the vendor-defined device ID type. The vendor can extend device I
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceIdType-VENDOR_BEGIN = 10000--><!--Device-DeviceIdType-VENDOR_BEGIN = 10000-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 

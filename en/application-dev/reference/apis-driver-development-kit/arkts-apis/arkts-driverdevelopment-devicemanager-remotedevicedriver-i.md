@@ -8,6 +8,8 @@ Represents information about a remote device driver.
 
 **Since:** 11
 
+<!--Device-deviceManager-interface RemoteDeviceDriver--><!--Device-deviceManager-interface RemoteDeviceDriver-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 ## Modules to Import
@@ -28,6 +30,8 @@ ID of the peripheral device.
 
 **Since:** 11
 
+<!--Device-RemoteDeviceDriver-deviceId: long--><!--Device-RemoteDeviceDriver-deviceId: long-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 ## remote
@@ -41,5 +45,7 @@ Remote driver object.
 **Type:** [rpc.IRemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-iremoteobject-c.md)
 
 **Since:** 11
+
+<!--Device-RemoteDeviceDriver-remote: rpc.IRemoteObject--><!--Device-RemoteDeviceDriver-remote: rpc.IRemoteObject-End-->
 
 **System capability:** SystemCapability.Driver.ExternalDevice

@@ -10,6 +10,8 @@ The **HashStream** class is a utility for creating a message digest of data. You
 
 **Since:** 12
 
+<!--Device-hash-class HashStream extends stream.Transform--><!--Device-hash-class HashStream extends stream.Transform-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -27,6 +29,8 @@ digest(): string
 Generates a message digest.
 
 **Since:** 12
+
+<!--Device-HashStream-digest(): string--><!--Device-HashStream-digest(): string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -64,6 +68,8 @@ update(data: ArrayBuffer): void
 Updates the data for generating a message digest. This API can be called multiple times.
 
 **Since:** 12
+
+<!--Device-HashStream-update(data: ArrayBuffer): void--><!--Device-HashStream-update(data: ArrayBuffer): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

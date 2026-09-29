@@ -14,6 +14,8 @@ Blender
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 13.
 
+<!--Device-unnamed-declare type Blender = import('../api/@ohos.graphics.uiEffect').default.Blender--><!--Device-unnamed-declare type Blender = import('../api/@ohos.graphics.uiEffect').default.Blender-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

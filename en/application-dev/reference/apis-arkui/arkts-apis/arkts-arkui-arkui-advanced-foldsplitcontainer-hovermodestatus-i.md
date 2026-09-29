@@ -8,6 +8,8 @@ Provides device or application information covering fold status, hover mode, app
 
 **Since:** 12
 
+<!--Device-unnamed-export interface HoverModeStatus--><!--Device-unnamed-export interface HoverModeStatus-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ App rotation angle, in degrees.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HoverModeStatus-appRotation: number--><!--Device-HoverModeStatus-appRotation: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## foldStatus
@@ -49,6 +53,8 @@ Fold status of the device, including expanded, half-folded, and fully folded sta
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HoverModeStatus-foldStatus: display.FoldStatus--><!--Device-HoverModeStatus-foldStatus: display.FoldStatus-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +74,8 @@ Whether the app is currently in hover state. The value **true** indicates hover 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HoverModeStatus-isHoverMode: boolean--><!--Device-HoverModeStatus-isHoverMode: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowStatusType
@@ -85,5 +93,7 @@ Window mode, including full-screen, split-screen, and freeform window modes.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HoverModeStatus-windowStatusType: window.WindowStatusType--><!--Device-HoverModeStatus-windowStatusType: window.WindowStatusType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines the frame info when fetch picture form a video.
 
 **Since:** 23
 
+<!--Device-media-interface FrameInfo--><!--Device-media-interface FrameInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The actual frame time.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FrameInfo-actualTimeUs?: long--><!--Device-FrameInfo-actualTimeUs?: long-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 ## image
@@ -45,6 +49,8 @@ The image extracted from video.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FrameInfo-image?: image.PixelMap--><!--Device-FrameInfo-image?: image.PixelMap-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -62,6 +68,8 @@ The requested frame time.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FrameInfo-requestedTimeUs: long--><!--Device-FrameInfo-requestedTimeUs: long-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 ## result
@@ -77,5 +85,7 @@ The fetch result code - succeed, failed or cancelled.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FrameInfo-result: FetchResult--><!--Device-FrameInfo-result: FetchResult-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVMetadataExtractor

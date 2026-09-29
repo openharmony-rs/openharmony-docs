@@ -12,6 +12,8 @@ Represents a FrameNode of the **Text** type. This type of node does not allow ch
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-type Text = TypedFrameNode<TextInterface, TextAttribute>--><!--Device-typeNode-type Text = TypedFrameNode<TextInterface, TextAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextInterface, [TextAttribute](../arkts-components/arkts-arkui-text-comp-attribute.md)&gt;

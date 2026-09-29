@@ -8,6 +8,8 @@ Describes an uninstallation disposed rule.
 
 **Since:** 15
 
+<!--Device-appControl-export interface UninstallDisposedRule--><!--Device-appControl-export interface UninstallDisposedRule-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Priority of the disposed rule, which is used to sort the query results of the ru
 
 **Since:** 15
 
+<!--Device-UninstallDisposedRule-priority: int--><!--Device-UninstallDisposedRule-priority: int-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Type of the ability to start during interception.
 
 **Since:** 15
 
+<!--Device-UninstallDisposedRule-uninstallComponentType: UninstallComponentType--><!--Device-UninstallDisposedRule-uninstallComponentType: UninstallComponentType-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Component displayed when the application is disposed of.
 **Type:** [Want](arkts-ability-app-ability-want-want-c.md)
 
 **Since:** 15
+
+<!--Device-UninstallDisposedRule-want: Want--><!--Device-UninstallDisposedRule-want: Want-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 

@@ -13,6 +13,8 @@ Defines a **TLSSocketConnection** object, that is, the connection between the TL
 
 **Since:** 10
 
+<!--Device-socket-export interface TLSSocketConnection--><!--Device-socket-export interface TLSSocketConnection-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Closes a **TLSSocketServer** connection. This API uses an asynchronous callback 
 
 **Since:** 10
 
+<!--Device-TLSSocketConnection-close(callback: AsyncCallback<void>): void--><!--Device-TLSSocketConnection-close(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -46,7 +50,7 @@ Closes a **TLSSocketServer** connection. This API uses an asynchronous callback 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 | [2303501](../errorcode-net-socket.md#2303501-null-ssl) | SSL is null. |
 | [2303505](../errorcode-net-socket.md#2303505-tls-system-call-error) | An error occurred in the TLS system call. |
-| [2303506](../errorcode-net-socket.md#2303506-failed-to-close-tls-connections) | Failed to close the TLS connection. |
+| [2303506](../errorcode-net-socket.md#2303506-failed-to-close-the-tls-connection) | Failed to close the TLS connection. |
 | [2300002](../errorcode-net-socket.md#2300002-system-internal-error) | System internal error. |
 
 **Examples**
@@ -104,6 +108,8 @@ Closes a **TLSSocketServer** connection. This API uses a promise to return the r
 
 **Since:** 10
 
+<!--Device-TLSSocketConnection-close(): Promise<void>--><!--Device-TLSSocketConnection-close(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -118,7 +124,7 @@ Closes a **TLSSocketServer** connection. This API uses a promise to return the r
 | --- | --- |
 | [2303501](../errorcode-net-socket.md#2303501-null-ssl) | SSL is null. |
 | [2303505](../errorcode-net-socket.md#2303505-tls-system-call-error) | An error occurred in the TLS system call. |
-| [2303506](../errorcode-net-socket.md#2303506-failed-to-close-tls-connections) | Failed to close the TLS connection. |
+| [2303506](../errorcode-net-socket.md#2303506-failed-to-close-the-tls-connection) | Failed to close the TLS connection. |
 | [2300002](../errorcode-net-socket.md#2300002-system-internal-error) | System internal error. |
 
 **Examples**
@@ -170,6 +176,8 @@ getCipherSuite(callback: AsyncCallback<Array<string>>): void
 Obtains the cipher suite negotiated by both communication parties after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-TLSSocketConnection-getCipherSuite(callback: AsyncCallback<Array<string>>): void--><!--Device-TLSSocketConnection-getCipherSuite(callback: AsyncCallback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -243,6 +251,8 @@ Obtains the cipher suite negotiated by both communication parties after a **TLSS
 
 **Since:** 10
 
+<!--Device-TLSSocketConnection-getCipherSuite(): Promise<Array<string>>--><!--Device-TLSSocketConnection-getCipherSuite(): Promise<Array<string>>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -314,6 +324,8 @@ Obtains the local socket address of a **TLSSocketConnection** connection. This A
 
 **Since:** 12
 
+<!--Device-TLSSocketConnection-getLocalAddress(): Promise<NetAddress>--><!--Device-TLSSocketConnection-getLocalAddress(): Promise<NetAddress>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -380,6 +392,8 @@ getRemoteAddress(callback: AsyncCallback<NetAddress>): void
 Obtains the remote address of a TLS socket server connection. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-TLSSocketConnection-getRemoteAddress(callback: AsyncCallback<NetAddress>): void--><!--Device-TLSSocketConnection-getRemoteAddress(callback: AsyncCallback<NetAddress>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -451,6 +465,8 @@ Obtains the remote address of a TLS socket server connection. This API uses a pr
 
 **Since:** 10
 
+<!--Device-TLSSocketConnection-getRemoteAddress(): Promise<NetAddress>--><!--Device-TLSSocketConnection-getRemoteAddress(): Promise<NetAddress>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -515,6 +531,8 @@ getRemoteCertificate(callback: AsyncCallback<X509CertRawData>): void
 Obtains the digital certificate of the peer end after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result. It applies only to the scenario where the client sends a certificate to the server.
 
 **Since:** 10
+
+<!--Device-TLSSocketConnection-getRemoteCertificate(callback: AsyncCallback<X509CertRawData>): void--><!--Device-TLSSocketConnection-getRemoteCertificate(callback: AsyncCallback<X509CertRawData>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -630,6 +648,8 @@ Obtains the digital certificate of the peer end after a **TLSSocketServer** conn
 
 **Since:** 10
 
+<!--Device-TLSSocketConnection-getRemoteCertificate(): Promise<X509CertRawData>--><!--Device-TLSSocketConnection-getRemoteCertificate(): Promise<X509CertRawData>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -741,6 +761,8 @@ Obtains the signing algorithm negotiated by both communication parties after a *
 
 **Since:** 10
 
+<!--Device-TLSSocketConnection-getSignatureAlgorithms(callback: AsyncCallback<Array<string>>): void--><!--Device-TLSSocketConnection-getSignatureAlgorithms(callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -810,6 +832,8 @@ getSignatureAlgorithms(): Promise<Array<string>>
 Obtains the signing algorithm negotiated by both communication parties after a **TLSSocketServer** connection is established. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-TLSSocketConnection-getSignatureAlgorithms(): Promise<Array<string>>--><!--Device-TLSSocketConnection-getSignatureAlgorithms(): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -886,6 +910,8 @@ Obtains the file descriptor of a TLSSocketConnection connection. This API uses a
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-TLSSocketConnection-getSocketFd(): Promise<int>--><!--Device-TLSSocketConnection-getSocketFd(): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -949,6 +975,8 @@ off(type: 'message', callback?: Callback<SocketMessageInfo>): void
 Unsubscribes from **message** events of the **TLSSocketConnection** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-TLSSocketConnection-off(type: 'message', callback?: Callback<SocketMessageInfo>): void--><!--Device-TLSSocketConnection-off(type: 'message', callback?: Callback<SocketMessageInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -1026,6 +1054,8 @@ Unsubscribes from **close** events of the **TLSSocketConnection** object. This A
 
 **Since:** 10
 
+<!--Device-TLSSocketConnection-off(type: 'close', callback?: Callback<void>): void--><!--Device-TLSSocketConnection-off(type: 'close', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -1094,6 +1124,8 @@ Unsubscribes from **error** events of the **TLSSocketConnection** object. This A
 
 **Since:** 10
 
+<!--Device-TLSSocketConnection-off(type: 'error', callback?: ErrorCallback): void--><!--Device-TLSSocketConnection-off(type: 'error', callback?: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -1161,6 +1193,8 @@ on(type: 'message', callback: Callback<SocketMessageInfo>): void
 Subscribes to **message** events of the **TLSSocketConnection** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-TLSSocketConnection-on(type: 'message', callback: Callback<SocketMessageInfo>): void--><!--Device-TLSSocketConnection-on(type: 'message', callback: Callback<SocketMessageInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -1234,6 +1268,8 @@ Subscribes to **close** events of the **TLSSocketConnection** object. This API u
 
 **Since:** 10
 
+<!--Device-TLSSocketConnection-on(type: 'close', callback: Callback<void>): void--><!--Device-TLSSocketConnection-on(type: 'close', callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -1296,6 +1332,8 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to **error** events of the **TLSSocketConnection** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-TLSSocketConnection-on(type: 'error', callback: ErrorCallback): void--><!--Device-TLSSocketConnection-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -1361,6 +1399,8 @@ Sends a message to the client after a **TLSSocketServer** connection is establis
 
 **Since:** 10
 
+<!--Device-TLSSocketConnection-send(data: string | ArrayBuffer, callback: AsyncCallback<void>): void--><!--Device-TLSSocketConnection-send(data: string | ArrayBuffer, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -1378,7 +1418,7 @@ Sends a message to the client after a **TLSSocketServer** connection is establis
 | [2303501](../errorcode-net-socket.md#2303501-null-ssl) | SSL is null. |
 | [2303503](../errorcode-net-socket.md#2303503-tls-write-error) | An error occurred when writing data on the TLS socket. |
 | [2303505](../errorcode-net-socket.md#2303505-tls-system-call-error) | An error occurred in the TLS system call. |
-| [2303506](../errorcode-net-socket.md#2303506-failed-to-close-tls-connections) | Failed to close the TLS connection. |
+| [2303506](../errorcode-net-socket.md#2303506-failed-to-close-the-tls-connection) | Failed to close the TLS connection. |
 | [2300002](../errorcode-net-socket.md#2300002-system-internal-error) | System internal error. |
 
 **Examples**
@@ -1436,6 +1476,8 @@ Sends a message to the server after a **TLSSocketServer** connection is establis
 
 **Since:** 10
 
+<!--Device-TLSSocketConnection-send(data: string | ArrayBuffer): Promise<void>--><!--Device-TLSSocketConnection-send(data: string | ArrayBuffer): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -1458,7 +1500,7 @@ Sends a message to the server after a **TLSSocketServer** connection is establis
 | [2303501](../errorcode-net-socket.md#2303501-null-ssl) | SSL is null. |
 | [2303503](../errorcode-net-socket.md#2303503-tls-write-error) | An error occurred when writing data on the TLS socket. |
 | [2303505](../errorcode-net-socket.md#2303505-tls-system-call-error) | An error occurred in the TLS system call. |
-| [2303506](../errorcode-net-socket.md#2303506-failed-to-close-tls-connections) | Failed to close the TLS connection. |
+| [2303506](../errorcode-net-socket.md#2303506-failed-to-close-the-tls-connection) | Failed to close the TLS connection. |
 | [2300002](../errorcode-net-socket.md#2300002-system-internal-error) | System internal error. |
 
 **Examples**
@@ -1513,5 +1555,7 @@ ID of the connection between the client and TLSSocketServer.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-TLSSocketConnection-clientId: int--><!--Device-TLSSocketConnection-clientId: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

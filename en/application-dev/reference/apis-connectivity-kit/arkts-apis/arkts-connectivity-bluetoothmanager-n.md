@@ -10,6 +10,8 @@ Provides methods to operate or manage Bluetooth.
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-declare namespace bluetoothManager--><!--Device-unnamed-declare namespace bluetoothManager-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import

@@ -8,6 +8,8 @@ The MediaAssetManager class is used for manipulating the read and write operatio
 
 **Since:** 11
 
+<!--Device-photoAccessHelper-class MediaAssetManager--><!--Device-photoAccessHelper-class MediaAssetManager-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ The AI enhancement generates an additional image. Together with the original ima
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-MediaAssetManager-static requestCompositeAuxiliaryImageData(      context: Context,      asset: PhotoAsset,      dataHandler: MediaAssetDataHandler<ArrayBuffer>    ): Promise<string>--><!--Device-MediaAssetManager-static requestCompositeAuxiliaryImageData(      context: Context,      asset: PhotoAsset,      dataHandler: MediaAssetDataHandler<ArrayBuffer>    ): Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -58,7 +62,57 @@ The AI enhancement generates an additional image. Together with the original ima
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Permission denied. The application does not have the required permission ohos.permission.READ_IMAGEVIDEO. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | Scene parameters validate failed, possible causes: 1. The asset is not a cloud-enhanced composite photo asset. |
+| [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+## requestEnhancementImage
+
+```TypeScript
+static requestEnhancementImage(
+      context: Context, 
+      asset: PhotoAsset, 
+      dataHandler: MediaAssetDataHandler<image.ImageSource>
+    ) : Promise<string>
+```
+
+Request the local AI-enhanced image. If it does not exist, generate it immediately.
+
+This interface is restricted to local AI enhancement only, distinguishing it from cloud-side AI enhancement.
+
+**Since:** 26.0.1
+
+**Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-MediaAssetManager-static requestEnhancementImage(      context: Context,       asset: PhotoAsset,       dataHandler: MediaAssetDataHandler<image.ImageSource>    ) : Promise<string>--><!--Device-MediaAssetManager-static requestEnhancementImage(      context: Context,       asset: PhotoAsset,       dataHandler: MediaAssetDataHandler<image.ImageSource>    ) : Promise<string>-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Context of the ability instance. |
+| asset | [PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md) | Yes | PhotoAsset to request. |
+| dataHandler | [MediaAssetDataHandler](arkts-medialibrary-photoaccesshelper-mediaassetdatahandler-i.md)&lt;[image.ImageSource](../../apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md)&gt; | Yes | Callback will be called when the requested data is ready. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the request ID, which can be used in [cancelRequest](arkts-medialibrary-photoaccesshelper-mediaassetmanager-c.md#cancelrequest) to cancel a request. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| 23800108 | The specified asset does not exist. |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | Scene parameters validate failed, possible causes: 1. The context is invalid. 2. The photoAsset does not support local AI enhancement. |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |

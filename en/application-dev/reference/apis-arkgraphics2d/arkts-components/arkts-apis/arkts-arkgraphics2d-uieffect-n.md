@@ -11,6 +11,8 @@ This module provides basic capabilities for component effects, including blur, b
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace uiEffect--><!--Device-unnamed-declare namespace uiEffect-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import

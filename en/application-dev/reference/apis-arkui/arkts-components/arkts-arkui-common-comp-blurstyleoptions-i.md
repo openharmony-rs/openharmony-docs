@@ -8,6 +8,8 @@ Defines the options of blurStyle
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface BlurStyleOptions--><!--Device-unnamed-declare interface BlurStyleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## adaptiveColor
@@ -29,6 +31,8 @@ Default value: **AdaptiveColor.DEFAULT**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-BlurStyleOptions-adaptiveColor?: AdaptiveColor--><!--Device-BlurStyleOptions-adaptiveColor?: AdaptiveColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ Default value: **grayscale: [0,0]**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BlurStyleOptions-blurOptions?: BlurOptions--><!--Device-BlurStyleOptions-blurOptions?: BlurOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorMode
@@ -73,6 +79,8 @@ Default value: **ThemeColorMode.SYSTEM**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-BlurStyleOptions-colorMode?: ThemeColorMode--><!--Device-BlurStyleOptions-colorMode?: ThemeColorMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,5 +109,7 @@ Value range: [0.0, 1.0]
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BlurStyleOptions-scale?: number--><!--Device-BlurStyleOptions-scale?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

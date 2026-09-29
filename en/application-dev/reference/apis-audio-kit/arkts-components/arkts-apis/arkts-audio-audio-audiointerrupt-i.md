@@ -12,6 +12,8 @@ Describes input parameters of audio interruption events.
 
 **Substitutes:** [AudioRendererOptions](arkts-audio-audio-audiorendereroptions-i.md)
 
+<!--Device-audio-interface AudioInterrupt--><!--Device-audio-interface AudioInterrupt-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Audio content type.
 
 **Substitutes:** rendererInfo
 
+<!--Device-AudioInterrupt-contentType: ContentType--><!--Device-AudioInterrupt-contentType: ContentType-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## pauseWhenDucked
@@ -54,6 +58,8 @@ Whether audio playback can be paused during an audio interruption. **true** if a
 
 **Substitutes:** [hintType](arkts-audio-audio-interruptevent-i.md#hinttype)
 
+<!--Device-AudioInterrupt-pauseWhenDucked: boolean--><!--Device-AudioInterrupt-pauseWhenDucked: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## streamUsage
@@ -71,5 +77,7 @@ Audio stream usage.
 **Deprecated since:** 9
 
 **Substitutes:** rendererInfo
+
+<!--Device-AudioInterrupt-streamUsage: StreamUsage--><!--Device-AudioInterrupt-streamUsage: StreamUsage-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer

@@ -4,7 +4,7 @@
 export interface GyroscopeResponse
 ```
 
-Defines a **GyroscopeResponse** object.
+Defines a response object of the callback function after the gyroscope sensor data changes, including the rotational velocity data of the device on the x, y, and z axes.
 
 **Since:** 6
 
@@ -13,6 +13,8 @@ Defines a **GyroscopeResponse** object.
 **Substitutes:** [GyroscopeResponse](arkts-sensorservice-sensor-gyroscoperesponse-i.md)
 
 **Required permissions:** ohos.permission.GYROSCOPE
+
+<!--Device-unnamed-export interface GyroscopeResponse--><!--Device-unnamed-export interface GyroscopeResponse-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -28,7 +30,7 @@ import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, Devi
 x: number
 ```
 
-Rotation angular velocity of the X axis.
+Rotation angular velocity of the X axis, in rad/s. Value range: The value is the actually reported physical quantity, which is determined by the hardware sensor.
 
 **Type:** number
 
@@ -42,6 +44,8 @@ Rotation angular velocity of the X axis.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-GyroscopeResponse-x: number--><!--Device-GyroscopeResponse-x: number-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
 ## y
@@ -50,7 +54,7 @@ Rotation angular velocity of the X axis.
 y: number
 ```
 
-Rotation angular velocity of the Y axis.
+Rotation angular velocity of the Y axis, in rad/s. Value range: The value is the actually reported physical quantity, which is determined by the hardware sensor.
 
 **Type:** number
 
@@ -64,6 +68,8 @@ Rotation angular velocity of the Y axis.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-GyroscopeResponse-y: number--><!--Device-GyroscopeResponse-y: number-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
 ## z
@@ -72,7 +78,7 @@ Rotation angular velocity of the Y axis.
 z: number
 ```
 
-Rotation angular velocity of the Z axis.
+Rotation angular velocity of the Z axis, in rad/s. Value range: The value is the actually reported physical quantity, which is determined by the hardware sensor.
 
 **Type:** number
 
@@ -85,5 +91,7 @@ Rotation angular velocity of the Z axis.
 **Required permissions:** ohos.permission.GYROSCOPE
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-GyroscopeResponse-z: number--><!--Device-GyroscopeResponse-z: number-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite

@@ -18,6 +18,8 @@ This API returns **true** if the specified tokenizer is supported; returns **fal
 
 **Since:** 18
 
+<!--Device-relationalStore-function isTokenizerSupported(tokenizer: Tokenizer): boolean--><!--Device-relationalStore-function isTokenizerSupported(tokenizer: Tokenizer): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**

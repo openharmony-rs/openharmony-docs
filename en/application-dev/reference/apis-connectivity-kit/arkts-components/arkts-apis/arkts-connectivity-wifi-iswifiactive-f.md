@@ -22,6 +22,8 @@ Queries the Wi-Fi status
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifi-function isWifiActive(): boolean--><!--Device-wifi-function isWifiActive(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**

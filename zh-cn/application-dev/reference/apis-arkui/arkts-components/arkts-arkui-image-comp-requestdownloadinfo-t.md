@@ -14,6 +14,8 @@ declare type RequestDownloadInfo = import('../api/@ohos.request.cacheDownload').
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare type RequestDownloadInfo = import('../api/@ohos.request.cacheDownload').default.DownloadInfo--><!--Device-unnamed-declare type RequestDownloadInfo = import('../api/@ohos.request.cacheDownload').default.DownloadInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** import('../api/@ohos.request.cacheDownload').default.DownloadInfo

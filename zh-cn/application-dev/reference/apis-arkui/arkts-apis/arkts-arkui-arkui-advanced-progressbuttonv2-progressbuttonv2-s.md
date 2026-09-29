@@ -24,6 +24,8 @@ import { ColorMetrics, LengthMetrics, ProgressButtonV2, ProgressButtonV2Color } 
 
 **装饰器类型：** @ComponentV2
 
+<!--Device-unnamed-export declare struct ProgressButtonV2--><!--Device-unnamed-export declare struct ProgressButtonV2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -46,6 +48,8 @@ readonly onClicked: ClickCallback
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProgressButtonV2-readonly onClicked: ClickCallback--><!--Device-ProgressButtonV2-readonly onClicked: ClickCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorOptions
@@ -63,6 +67,8 @@ colorOptions?: ProgressButtonV2Color
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProgressButtonV2-colorOptions?: ProgressButtonV2Color--><!--Device-ProgressButtonV2-colorOptions?: ProgressButtonV2Color-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,6 +90,8 @@ readonly content: ResourceStr
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProgressButtonV2-readonly content: ResourceStr--><!--Device-ProgressButtonV2-readonly content: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isEnabled
@@ -101,6 +109,8 @@ readonly isEnabled: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProgressButtonV2-readonly isEnabled: boolean--><!--Device-ProgressButtonV2-readonly isEnabled: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +132,8 @@ readonly progress: number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProgressButtonV2-readonly progress: number--><!--Device-ProgressButtonV2-readonly progress: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## progressButtonRadius
@@ -140,6 +152,8 @@ progressButtonRadius?: LengthMetrics
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProgressButtonV2-progressButtonRadius?: LengthMetrics--><!--Device-ProgressButtonV2-progressButtonRadius?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## progressButtonWidth
@@ -157,5 +171,7 @@ progressButtonWidth?: LengthMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProgressButtonV2-progressButtonWidth?: LengthMetrics--><!--Device-ProgressButtonV2-progressButtonWidth?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

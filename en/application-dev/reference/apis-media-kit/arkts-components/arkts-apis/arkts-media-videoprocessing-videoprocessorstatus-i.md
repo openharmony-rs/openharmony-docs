@@ -8,6 +8,8 @@ Provides the unified video processor status.
 
 **Since:** 26.0.0
 
+<!--Device-videoProcessing-interface VideoProcessorStatus--><!--Device-videoProcessing-interface VideoProcessorStatus-End-->
+
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 
 ## Modules to Import
@@ -29,5 +31,7 @@ AIHDR status.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VideoProcessorStatus-aiHdr?: VideoProcessorAiHdrStatus--><!--Device-VideoProcessorStatus-aiHdr?: VideoProcessorAiHdrStatus-End-->
 
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine

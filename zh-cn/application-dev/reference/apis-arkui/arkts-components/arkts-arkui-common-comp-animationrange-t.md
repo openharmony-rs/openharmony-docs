@@ -12,6 +12,8 @@ declare type AnimationRange<T> = [from: T, to: T]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type AnimationRange<T> = [from: T, to: T]--><!--Device-unnamed-declare type AnimationRange<T> = [from: T, to: T]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** [from: T, to: T]

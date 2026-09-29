@@ -8,6 +8,8 @@ Represents a device screen lock password policy.
 
 **Since:** 12
 
+<!--Device-securityManager-export interface PasswordPolicy--><!--Device-securityManager-export interface PasswordPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Password complexity description, for example, "The password must contain 8 to 30
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PasswordPolicy-additionalDescription?: string--><!--Device-PasswordPolicy-additionalDescription?: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## complexityRegex
@@ -45,6 +49,8 @@ Regular expression for password complexity.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PasswordPolicy-complexityRegex?: string--><!--Device-PasswordPolicy-complexityRegex?: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -62,6 +68,8 @@ Encryption algorithm used to process password data. After the setting, the encry
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PasswordPolicy-passwordAlgs?: PasswordAlgs--><!--Device-PasswordPolicy-passwordAlgs?: PasswordAlgs-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## validityPeriod
@@ -77,5 +85,7 @@ Password validity period, in ms.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PasswordPolicy-validityPeriod?: long--><!--Device-PasswordPolicy-validityPeriod?: long-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

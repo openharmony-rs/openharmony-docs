@@ -20,6 +20,8 @@ Sends data to a remote device using the device address and UUID. This API uses a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dataTransfer-function writeData(params: DataParams): Promise<void>--><!--Device-dataTransfer-function writeData(params: DataParams): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

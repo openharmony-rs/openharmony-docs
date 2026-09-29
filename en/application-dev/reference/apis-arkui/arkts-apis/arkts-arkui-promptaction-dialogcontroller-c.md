@@ -16,6 +16,8 @@ It can be used as a member variable of **UIContext** to display custom dialog bo
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-promptAction-class DialogController extends CommonController--><!--Device-promptAction-class DialogController extends CommonController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import

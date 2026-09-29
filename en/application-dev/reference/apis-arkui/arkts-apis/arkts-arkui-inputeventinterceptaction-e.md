@@ -4,9 +4,11 @@
 declare enum InputEventInterceptAction
 ```
 
-Defines the input event intercept action.
+Enumerates the input event interception actions, used to control whether input events continue to be delivered to the UI framework, applicable to scenarios where input events need to be allowed or blocked based on business rules.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-declare enum InputEventInterceptAction--><!--Device-unnamed-declare enum InputEventInterceptAction-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ Defines the input event intercept action.
 CONTINUE = 0
 ```
 
-Continue to deliver the event to the UI framework.
+The event is permitted to propagate to the UI framework.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventInterceptAction-CONTINUE = 0--><!--Device-InputEventInterceptAction-CONTINUE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,12 +36,14 @@ Continue to deliver the event to the UI framework.
 BLOCK = 1
 ```
 
-Block the event from being delivered to the UI framework.
+The event is blocked from propagating to the UI framework.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventInterceptAction-BLOCK = 1--><!--Device-InputEventInterceptAction-BLOCK = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

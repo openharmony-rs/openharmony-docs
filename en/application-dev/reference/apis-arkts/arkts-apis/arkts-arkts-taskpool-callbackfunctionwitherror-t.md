@@ -10,6 +10,8 @@ Describes a callback function with an error message.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-taskpool-type CallbackFunctionWithError = (e: Error) => void--><!--Device-taskpool-type CallbackFunctionWithError = (e: Error) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

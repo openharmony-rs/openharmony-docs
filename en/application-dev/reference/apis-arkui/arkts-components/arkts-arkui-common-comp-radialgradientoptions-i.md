@@ -14,6 +14,8 @@ Defines the radial gradient parameters.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface RadialGradientOptions--><!--Device-unnamed-declare interface RadialGradientOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## center
@@ -31,6 +33,8 @@ Center of the radial gradient, that is, the coordinates relative to the upper le
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RadialGradientOptions-center: [Length, Length]--><!--Device-RadialGradientOptions-center: [Length, Length]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ Default value: **[]**, meaning no gradient effect.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-RadialGradientOptions-colors: Array<[ResourceColor, number]>--><!--Device-RadialGradientOptions-colors: Array<[ResourceColor, number]>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## radius
@@ -71,6 +77,8 @@ Value range: [0, +∞). A value less than 0 is treated as **0**. If the value is
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RadialGradientOptions-radius: Length--><!--Device-RadialGradientOptions-radius: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,5 +106,7 @@ Default value: **false**.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RadialGradientOptions-repeating?: boolean--><!--Device-RadialGradientOptions-repeating?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

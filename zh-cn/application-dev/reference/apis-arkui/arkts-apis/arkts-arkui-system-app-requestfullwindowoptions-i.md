@@ -8,6 +8,8 @@ export interface RequestFullWindowOptions
 
 **起始版本：** 3
 
+<!--Device-unnamed-export interface RequestFullWindowOptions--><!--Device-unnamed-export interface RequestFullWindowOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,5 +33,7 @@ duration: number
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RequestFullWindowOptions-duration: number--><!--Device-RequestFullWindowOptions-duration: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

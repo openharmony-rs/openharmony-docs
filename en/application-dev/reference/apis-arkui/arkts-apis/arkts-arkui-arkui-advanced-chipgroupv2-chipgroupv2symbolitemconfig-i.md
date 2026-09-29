@@ -8,6 +8,8 @@ Defines the configuration type of the suffix symbol icon.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface ChipGroupV2SymbolItemConfig--><!--Device-unnamed-export interface ChipGroupV2SymbolItemConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Response event for the suffix icon.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2SymbolItemConfig-action: VoidCallback--><!--Device-ChipGroupV2SymbolItemConfig-action: VoidCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -51,6 +55,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2SymbolItemConfig-accessibilityDescription?: ResourceStr--><!--Device-ChipGroupV2SymbolItemConfig-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +94,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2SymbolItemConfig-accessibilityLevel?: string--><!--Device-ChipGroupV2SymbolItemConfig-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -110,6 +118,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2SymbolItemConfig-accessibilityText?: ResourceStr--><!--Device-ChipGroupV2SymbolItemConfig-accessibilityText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbol
@@ -129,5 +139,7 @@ symbol: SymbolGlyphModifier
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2SymbolItemConfig-symbol: SymbolGlyphModifier--><!--Device-ChipGroupV2SymbolItemConfig-symbol: SymbolGlyphModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

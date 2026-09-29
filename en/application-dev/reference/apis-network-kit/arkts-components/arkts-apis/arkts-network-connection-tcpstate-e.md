@@ -8,6 +8,8 @@ Enumerates TCP states.
 
 **Since:** 24
 
+<!--Device-connection-export enum TcpState--><!--Device-connection-export enum TcpState-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## TCP_ESTABLISHED
@@ -21,6 +23,8 @@ The connection is established, and data can be sent and received properly.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpState-TCP_ESTABLISHED = 1--><!--Device-TcpState-TCP_ESTABLISHED = 1-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -36,6 +40,8 @@ The client sends SYN and waits for ACK+SYN from the server (the first step of th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TcpState-TCP_SYN_SENT = 2--><!--Device-TcpState-TCP_SYN_SENT = 2-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## TCP_SYN_RECV
@@ -49,6 +55,8 @@ The server receives SYN and sends ACK+SYN, and waits for ACK from the client (th
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpState-TCP_SYN_RECV = 3--><!--Device-TcpState-TCP_SYN_RECV = 3-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -64,6 +72,8 @@ The active end sends FIN and waits for ACK from the peer end.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TcpState-TCP_FIN_WAIT1 = 4--><!--Device-TcpState-TCP_FIN_WAIT1 = 4-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## TCP_FIN_WAIT2
@@ -77,6 +87,8 @@ The active end receives ACK of FIN and waits for ACK from the peer end.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpState-TCP_FIN_WAIT2 = 5--><!--Device-TcpState-TCP_FIN_WAIT2 = 5-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -92,6 +104,8 @@ The active end receives FIN from the peer end and replies with ACK. After two ti
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TcpState-TCP_TIME_WAIT = 6--><!--Device-TcpState-TCP_TIME_WAIT = 6-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## TCP_CLOSE
@@ -105,6 +119,8 @@ Initial/closed state, with no connection.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpState-TCP_CLOSE = 7--><!--Device-TcpState-TCP_CLOSE = 7-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -120,6 +136,8 @@ The passive end receives FIN and sends ACK, and waits for FIN from the peer end.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TcpState-TCP_CLOSE_WAIT = 8--><!--Device-TcpState-TCP_CLOSE_WAIT = 8-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## TCP_LAST_ACK
@@ -133,6 +151,8 @@ The passive end sends FIN and waits for ACK from the peer end.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpState-TCP_LAST_ACK = 9--><!--Device-TcpState-TCP_LAST_ACK = 9-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -148,6 +168,8 @@ The server listens and waits for the client to connect.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TcpState-TCP_LISTEN = 10--><!--Device-TcpState-TCP_LISTEN = 10-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## TCP_CLOSING
@@ -161,5 +183,7 @@ Both ends send FIN and wait for ACK from each other.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpState-TCP_CLOSING = 11--><!--Device-TcpState-TCP_CLOSING = 11-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

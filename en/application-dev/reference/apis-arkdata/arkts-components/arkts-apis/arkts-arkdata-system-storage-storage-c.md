@@ -8,6 +8,8 @@ export default class Storage
 
 **Deprecated since:** 6
 
+<!--Device-unnamed-export default class Storage--><!--Device-unnamed-export default class Storage-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core.Lite
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Clears the stored content.
 **Substitutes:** clear
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Storage-static clear(options?: ClearStorageOptions): void--><!--Device-Storage-static clear(options?: ClearStorageOptions): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core.Lite
 
@@ -55,6 +59,8 @@ Deletes the stored content.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Storage-static delete(options: DeleteStorageOptions): void--><!--Device-Storage-static delete(options: DeleteStorageOptions): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core.Lite
 
 **Parameters:**
@@ -79,6 +85,8 @@ Reads the stored content.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Storage-static get(options: GetStorageOptions): void--><!--Device-Storage-static get(options: GetStorageOptions): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core.Lite
 
 **Parameters:**
@@ -100,6 +108,8 @@ Modifies the stored content.
 **Deprecated since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Storage-static set(options: SetStorageOptions): void--><!--Device-Storage-static set(options: SetStorageOptions): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core.Lite
 

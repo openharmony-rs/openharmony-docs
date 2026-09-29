@@ -18,6 +18,8 @@ function stopExpand(expandScreen:Array<number>, callback: AsyncCallback<void>): 
 
 **废弃版本：** 20
 
+<!--Device-screen-function stopExpand(expandScreen:Array<long>, callback: AsyncCallback<void>): void--><!--Device-screen-function stopExpand(expandScreen:Array<long>, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -69,6 +71,8 @@ function stopExpand(expandScreen:Array<number>): Promise<void>
 **起始版本：** 10
 
 **废弃版本：** 20
+
+<!--Device-screen-function stopExpand(expandScreen:Array<long>): Promise<void>--><!--Device-screen-function stopExpand(expandScreen:Array<long>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

@@ -20,6 +20,8 @@ Disconnects the connection of a specified web native message extension.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-webNativeMessagingExtensionManager-function disconnectNative(connectionId: number): Promise<void>--><!--Device-webNativeMessagingExtensionManager-function disconnectNative(connectionId: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

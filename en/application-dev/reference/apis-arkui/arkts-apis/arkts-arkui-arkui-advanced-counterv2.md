@@ -25,12 +25,6 @@ import { CounterV2Component, CounterV2Options, CounterV2DateData, CounterV2Type 
 | --- | --- |
 | [CounterV2Component](arkts-arkui-arkui-advanced-counterv2-counterv2component-s.md) | The **CounterV2** component enables precise numeric value adjustment. It provides four types: list, compact, inline number, and inline date, which are applicable to scenarios such as shopping cart quantity adjustment and date selection. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [CounterV2Type](arkts-arkui-arkui-advanced-counterv2-counterv2type-e.md) | Specifies the **CounterV2** type. |
-
 ### Types
 
 | Name | Description |
@@ -38,6 +32,12 @@ import { CounterV2Component, CounterV2Options, CounterV2DateData, CounterV2Type 
 | [OnCounterV2HoverCallback](arkts-arkui-oncounterv2hovercallback-t.md) | Defines the mouse hover callback type for the **CounterV2** component. |
 | [OnDateCounterV2ChangeCallback](arkts-arkui-ondatecounterv2changecallback-t.md) | Defines the callback for date changes of the inline date **CounterV2**. |
 | [OnInlineCounterV2Change](arkts-arkui-oninlinecounterv2change-t.md) | Defines the callback for the value change of the inline number **CounterV2**. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [CounterV2Type](arkts-arkui-arkui-advanced-counterv2-counterv2type-e.md) | Specifies the **CounterV2** type. |
 
 ## Examples
 

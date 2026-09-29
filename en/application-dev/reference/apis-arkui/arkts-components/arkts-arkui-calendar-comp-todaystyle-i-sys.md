@@ -10,6 +10,8 @@ Non current day style.
 
 **Deprecated since:** 20
 
+<!--Device-unnamed-interface TodayStyle--><!--Device-unnamed-interface TodayStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Background color of the focus area.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-TodayStyle-focusedAreaBackgroundColor?: ResourceColor--><!--Device-TodayStyle-focusedAreaBackgroundColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Focus area radius.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-TodayStyle-focusedAreaRadius?: number--><!--Device-TodayStyle-focusedAreaRadius?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -76,6 +82,8 @@ Style of focus color.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-TodayStyle-focusedDayColor?: ResourceColor--><!--Device-TodayStyle-focusedDayColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -97,6 +105,8 @@ Focus on Lunar Colors.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-TodayStyle-focusedLunarColor?: ResourceColor--><!--Device-TodayStyle-focusedLunarColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

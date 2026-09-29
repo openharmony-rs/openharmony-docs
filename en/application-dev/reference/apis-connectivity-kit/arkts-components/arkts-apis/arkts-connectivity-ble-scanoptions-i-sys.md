@@ -8,6 +8,8 @@ Describes the parameters for scan.
 
 **Since:** 10
 
+<!--Device-ble-interface ScanOptions--><!--Device-ble-interface ScanOptions-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Configuration of scan enhance mode.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ScanOptions-scanEnhanceMode?: ScanEnhanceMode--><!--Device-ScanOptions-scanEnhanceMode?: ScanEnhanceMode-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

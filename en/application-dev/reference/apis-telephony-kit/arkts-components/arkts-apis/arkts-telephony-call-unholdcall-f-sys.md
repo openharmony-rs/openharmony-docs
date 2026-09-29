@@ -18,6 +18,8 @@ Unholds a call based on the specified call ID. This API uses an asynchronous cal
 
 **Required permissions:** ohos.permission.ANSWER_CALL
 
+<!--Device-call-function unHoldCall(callId: int, callback: AsyncCallback<void>): void--><!--Device-call-function unHoldCall(callId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Unholds a call based on the specified call ID. This API uses a promise to return
 **Since:** 7
 
 **Required permissions:** ohos.permission.ANSWER_CALL
+
+<!--Device-call-function unHoldCall(callId: int): Promise<void>--><!--Device-call-function unHoldCall(callId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

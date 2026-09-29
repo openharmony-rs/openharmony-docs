@@ -8,6 +8,8 @@ Defines the callback information triggered when the scrollbar scrolls to a speci
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnScrollEvent--><!--Device-unnamed-declare interface OnScrollEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## xOffset
@@ -26,6 +28,8 @@ Unit: vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnScrollEvent-xOffset: number--><!--Device-OnScrollEvent-xOffset: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## yOffset
@@ -43,5 +47,7 @@ Unit: vp.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnScrollEvent-yOffset: number--><!--Device-OnScrollEvent-yOffset: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

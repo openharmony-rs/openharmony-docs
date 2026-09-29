@@ -8,6 +8,8 @@ declare enum MicrophoneCaptureState
 
 **起始版本：** 23
 
+<!--Device-unnamed-declare enum MicrophoneCaptureState--><!--Device-unnamed-declare enum MicrophoneCaptureState-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NONE
@@ -19,6 +21,8 @@ NONE = 0
 麦克风未工作。
 
 **起始版本：** 23
+
+<!--Device-MicrophoneCaptureState-NONE = 0--><!--Device-MicrophoneCaptureState-NONE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -32,6 +36,8 @@ PAUSED = 1
 
 **起始版本：** 23
 
+<!--Device-MicrophoneCaptureState-PAUSED = 1--><!--Device-MicrophoneCaptureState-PAUSED = 1-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ACTIVE
@@ -43,5 +49,7 @@ ACTIVE = 2
 麦克风捕获中。
 
 **起始版本：** 23
+
+<!--Device-MicrophoneCaptureState-ACTIVE = 2--><!--Device-MicrophoneCaptureState-ACTIVE = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

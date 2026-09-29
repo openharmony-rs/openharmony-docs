@@ -1,8 +1,10 @@
-# @ohos.hilog
+# @ohos.hilog(log print)
 
 The HiLog subsystem allows your applications or services to output logs based on the specified type, level, and format string. Such logs help you learn the running status of applications and better debug programs.
 
 **Since:** 7
+
+<!--Device-unnamed-declare namespace hilog--><!--Device-unnamed-declare namespace hilog-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiLog
 

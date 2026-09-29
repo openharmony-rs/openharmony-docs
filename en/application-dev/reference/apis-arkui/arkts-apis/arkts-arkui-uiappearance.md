@@ -6,6 +6,8 @@ This module provides basic capabilities for obtaining system appearance configur
 
 **Since:** 20
 
+<!--Device-unnamed-declare namespace uiAppearance--><!--Device-unnamed-declare namespace uiAppearance-End-->
+
 **System capability:** SystemCapability.ArkUI.UiAppearance
 
 ## Modules to Import

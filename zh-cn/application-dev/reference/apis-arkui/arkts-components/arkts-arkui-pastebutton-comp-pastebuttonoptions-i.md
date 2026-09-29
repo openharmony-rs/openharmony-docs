@@ -9,11 +9,13 @@ declare interface PasteButtonOptions
 > **说明：** 
 > - 建议icon或text至少传入一个。
 > 
-> - 如果icon、text都不传入，PasteButton将使用默认样式创建，默认样式：PasteIconStyle默认样式为LINES；PasteDescription默认样式为PASTEButtonType默认样式为Capsule。
+> - 如果icon、text都不传入，PasteButton将使用默认样式创建，默认样式：PasteIconStyle默认样式为LINES；PasteDescription默认样式为PASTE；ButtonType默认样式为Capsule。
 > 
 > - icon、text和buttonType不支持动态修改。这是因为安全控件的样式和属性在创建时已通过系统校验，动态修改可能导致控件样式不符合安全控件规范，从而影响授权的有效性。
 
 **起始版本：** 10
+
+<!--Device-unnamed-declare interface PasteButtonOptions--><!--Device-unnamed-declare interface PasteButtonOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,7 +25,7 @@ declare interface PasteButtonOptions
 buttonType?: ButtonType
 ```
 
-设置粘贴控件的按钮形状。Capsule。默认值：ButtonType。
+设置粘贴控件的按钮形状。默认值：ButtonType.Capsule。
 
 **类型：** [ButtonType](arkts-arkui-button-comp-buttontype-e.md)
 
@@ -32,6 +34,8 @@ buttonType?: ButtonType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PasteButtonOptions-buttonType?: ButtonType--><!--Device-PasteButtonOptions-buttonType?: ButtonType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ icon?: PasteIconStyle
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PasteButtonOptions-icon?: PasteIconStyle--><!--Device-PasteButtonOptions-icon?: PasteIconStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -68,5 +74,7 @@ text?: PasteDescription
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PasteButtonOptions-text?: PasteDescription--><!--Device-PasteButtonOptions-text?: PasteDescription-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

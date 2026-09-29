@@ -9,6 +9,8 @@ This module provides device control capabilities for enterprise device managemen
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace deviceControl--><!--Device-unnamed-declare namespace deviceControl-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

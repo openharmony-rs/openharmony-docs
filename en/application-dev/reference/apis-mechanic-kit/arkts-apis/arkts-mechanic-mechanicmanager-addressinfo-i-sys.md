@@ -8,6 +8,8 @@ Definition of device adress information.
 
 **Since:** 26.0.0
 
+<!--Device-mechanicManager-export interface AddressInfo--><!--Device-mechanicManager-export interface AddressInfo-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Address of device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AddressInfo-address: string--><!--Device-AddressInfo-address: string-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Type of address.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AddressInfo-addressType: AddressType--><!--Device-AddressInfo-addressType: AddressType-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 

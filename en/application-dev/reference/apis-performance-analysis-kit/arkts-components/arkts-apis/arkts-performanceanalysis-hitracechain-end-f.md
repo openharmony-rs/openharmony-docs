@@ -20,6 +20,8 @@ If the given HiTrace ID is invalid or is not the same as the HiTrace ID in the c
 
 **Since:** 8
 
+<!--Device-hiTraceChain-function end(id: HiTraceId): void--><!--Device-hiTraceChain-function end(id: HiTraceId): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 **Parameters:**

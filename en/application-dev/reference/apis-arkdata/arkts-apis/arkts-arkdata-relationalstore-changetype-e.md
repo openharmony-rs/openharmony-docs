@@ -8,6 +8,8 @@ Enumerates data change types. Use the enum name rather than the enum value.
 
 **Since:** 10
 
+<!--Device-relationalStore-enum ChangeType--><!--Device-relationalStore-enum ChangeType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## DATA_CHANGE
@@ -24,6 +26,8 @@ Data change.
 - API version 12 and later: N/A
 - API versions 10 to 11: ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-ChangeType-DATA_CHANGE = 0--><!--Device-ChangeType-DATA_CHANGE = 0-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## ASSET_CHANGE
@@ -39,5 +43,7 @@ Asset change.
 **Required permissions:** 
 - API version 12 and later: N/A
 - API versions 10 to 11: ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-ChangeType-ASSET_CHANGE = 1--><!--Device-ChangeType-ASSET_CHANGE = 1-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

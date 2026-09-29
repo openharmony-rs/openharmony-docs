@@ -20,6 +20,8 @@ Sets traffic calibration data. You can use this API to set traffic data during t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-statistics-function setCalibrationTraffic(simId: int, remainTraffic: long, totalTraffic?: long): Promise<void>--><!--Device-statistics-function setCalibrationTraffic(simId: int, remainTraffic: long, totalTraffic?: long): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.

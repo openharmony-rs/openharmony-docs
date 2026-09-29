@@ -8,6 +8,8 @@ The **NotificationExtensionSubscriptionInfo** module describes the information a
 
 **Since:** 22
 
+<!--Device-unnamed-export interface NotificationExtensionSubscriptionInfo--><!--Device-unnamed-export interface NotificationExtensionSubscriptionInfo-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## addr
@@ -22,6 +24,8 @@ Unique identifier of the device. When **type** is set to **SubscribeType.BLUETOO
 
 **Since:** 22
 
+<!--Device-NotificationExtensionSubscriptionInfo-addr: string--><!--Device-NotificationExtensionSubscriptionInfo-addr: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## type
@@ -35,5 +39,7 @@ Subscription type, specifying the subscription method for notification extension
 **Type:** [notificationExtensionSubscription.SubscribeType](arkts-notification-notificationextensionsubscription-subscribetype-e.md)
 
 **Since:** 22
+
+<!--Device-NotificationExtensionSubscriptionInfo-type: notificationExtensionSubscription.SubscribeType--><!--Device-NotificationExtensionSubscriptionInfo-type: notificationExtensionSubscription.SubscribeType-End-->
 
 **System capability:** SystemCapability.Notification.Notification

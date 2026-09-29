@@ -12,6 +12,8 @@ Defines an instance object of the Orientation type.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-unnamed-declare type Orientation = import('../api/@ohos.window').default.Orientation--><!--Device-unnamed-declare type Orientation = import('../api/@ohos.window').default.Orientation-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.window').default.Orientation

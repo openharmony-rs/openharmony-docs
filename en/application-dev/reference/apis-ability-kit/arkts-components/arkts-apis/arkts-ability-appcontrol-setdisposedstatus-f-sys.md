@@ -18,6 +18,8 @@ Sets the disposed status for an application. This API uses an asynchronous callb
 
 **Required permissions:** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
+<!--Device-appControl-function setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCallback<void>): void--><!--Device-appControl-function setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -79,6 +81,8 @@ Sets the disposed status for an application. This API uses a promise to return t
 **Since:** 9
 
 **Required permissions:** ohos.permission.MANAGE_DISPOSED_APP_STATUS
+
+<!--Device-appControl-function setDisposedStatus(appId: string, disposedWant: Want): Promise<void>--><!--Device-appControl-function setDisposedStatus(appId: string, disposedWant: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 

@@ -10,6 +10,8 @@ Configuration result for AI-generated image tasks.
 
 **Since:** 23
 
+<!--Device-imageGeneration-interface GenerateImageTaskResult--><!--Device-imageGeneration-interface GenerateImageTaskResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -33,6 +35,8 @@ The image result corresponding to AI-generated image task.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GenerateImageTaskResult-imageData: Array<string>--><!--Device-GenerateImageTaskResult-imageData: Array<string>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

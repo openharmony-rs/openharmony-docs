@@ -18,6 +18,8 @@ Holds a call based on the specified call ID. This API uses an asynchronous callb
 
 **Required permissions:** ohos.permission.ANSWER_CALL
 
+<!--Device-call-function holdCall(callId: int, callback: AsyncCallback<void>): void--><!--Device-call-function holdCall(callId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Holds a call based on the specified call ID. This API uses a promise to return t
 **Since:** 7
 
 **Required permissions:** ohos.permission.ANSWER_CALL
+
+<!--Device-call-function holdCall(callId: int): Promise<void>--><!--Device-call-function holdCall(callId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

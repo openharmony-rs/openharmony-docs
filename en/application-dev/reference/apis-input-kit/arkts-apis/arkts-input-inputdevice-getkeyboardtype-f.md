@@ -16,6 +16,8 @@ Obtains the keyboard type of the input device, such as full keyboard and numeric
 
 **Since:** 9
 
+<!--Device-inputDevice-function getKeyboardType(deviceId: int, callback: AsyncCallback<KeyboardType>): void--><!--Device-inputDevice-function getKeyboardType(deviceId: int, callback: AsyncCallback<KeyboardType>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 **Parameters:**
@@ -75,6 +77,8 @@ function getKeyboardType(deviceId: number): Promise<KeyboardType>
 Obtains the keyboard type of an input device. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-inputDevice-function getKeyboardType(deviceId: int): Promise<KeyboardType>--><!--Device-inputDevice-function getKeyboardType(deviceId: int): Promise<KeyboardType>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 

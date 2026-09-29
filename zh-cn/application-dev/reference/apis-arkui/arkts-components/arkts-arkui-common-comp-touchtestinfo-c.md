@@ -8,6 +8,8 @@ declare class TouchTestInfo
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare class TouchTestInfo--><!--Device-unnamed-declare class TouchTestInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -25,6 +27,8 @@ id: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TouchTestInfo-id: string--><!--Device-TouchTestInfo-id: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ parentX: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TouchTestInfo-parentX: number--><!--Device-TouchTestInfo-parentX: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## parentY
@@ -66,6 +72,8 @@ parentY: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TouchTestInfo-parentY: number--><!--Device-TouchTestInfo-parentY: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## rect
@@ -83,6 +91,8 @@ rect: RectResult
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TouchTestInfo-rect: RectResult--><!--Device-TouchTestInfo-rect: RectResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +114,8 @@ windowX: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TouchTestInfo-windowX: number--><!--Device-TouchTestInfo-windowX: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowY
@@ -123,6 +135,8 @@ windowY: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TouchTestInfo-windowY: number--><!--Device-TouchTestInfo-windowY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,6 +158,8 @@ x: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TouchTestInfo-x: number--><!--Device-TouchTestInfo-x: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -163,5 +179,7 @@ y: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TouchTestInfo-y: number--><!--Device-TouchTestInfo-y: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

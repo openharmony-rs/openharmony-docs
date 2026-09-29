@@ -10,6 +10,8 @@ Obtains the file read result. This class applies only to the **read()** method.
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare interface ReadOut--><!--Device-unnamed-declare interface ReadOut-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Buffer for storing the data read.
 
 **Deprecated since:** 9
 
+<!--Device-ReadOut-buffer: ArrayBuffer--><!--Device-ReadOut-buffer: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## bytesRead
@@ -47,6 +51,8 @@ Length of the data read, in bytes.
 
 **Deprecated since:** 9
 
+<!--Device-ReadOut-bytesRead: number--><!--Device-ReadOut-bytesRead: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## offset
@@ -62,5 +68,7 @@ Position of the buffer to which the data will be read relative to the start addr
 **Since:** 6
 
 **Deprecated since:** 9
+
+<!--Device-ReadOut-offset: number--><!--Device-ReadOut-offset: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

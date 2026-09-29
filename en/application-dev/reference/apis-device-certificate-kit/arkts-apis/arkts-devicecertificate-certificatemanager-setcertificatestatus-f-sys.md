@@ -20,6 +20,8 @@ Sets the status of a CA certificate. Currently, only the status of a user's CA c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Promise<void>--><!--Device-certificateManager-function setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

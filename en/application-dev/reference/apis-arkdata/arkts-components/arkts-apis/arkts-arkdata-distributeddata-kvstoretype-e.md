@@ -12,6 +12,8 @@ Enumerates the KV store types.
 
 **Substitutes:** KVStoreType
 
+<!--Device-distributedData-enum KVStoreType--><!--Device-distributedData-enum KVStoreType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## DEVICE_COLLABORATION
@@ -29,6 +31,8 @@ The device KV store manages data by device, which eliminates conflicts. Data can
 **Deprecated since:** 9
 
 **Substitutes:** DEVICE_COLLABORATION
+
+<!--Device-KVStoreType-DEVICE_COLLABORATION = 0--><!--Device-KVStoreType-DEVICE_COLLABORATION = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -48,6 +52,8 @@ The single KV store does not differentiate data by device. If the same key is mo
 
 **Substitutes:** SINGLE_VERSION
 
+<!--Device-KVStoreType-SINGLE_VERSION = 1--><!--Device-KVStoreType-SINGLE_VERSION = 1-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## MULTI_VERSION
@@ -61,5 +67,7 @@ Multi-version KV store. This type is not supported currently.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-KVStoreType-MULTI_VERSION = 2--><!--Device-KVStoreType-MULTI_VERSION = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore

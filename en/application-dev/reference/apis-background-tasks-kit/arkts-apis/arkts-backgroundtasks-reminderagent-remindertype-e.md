@@ -12,6 +12,8 @@ Enumerates reminder types.
 
 **Substitutes:** [ReminderType](arkts-backgroundtasks-reminderagentmanager-remindertype-e.md)
 
+<!--Device-reminderAgent-export enum ReminderType--><!--Device-reminderAgent-export enum ReminderType-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## REMINDER_TYPE_TIMER
@@ -27,6 +29,8 @@ Countdown reminder.
 **Deprecated since:** 9
 
 **Substitutes:** [REMINDER_TYPE_TIMER](arkts-backgroundtasks-reminderagentmanager-remindertype-e.md#reminder_type_timer)
+
+<!--Device-ReminderType-REMINDER_TYPE_TIMER = 0--><!--Device-ReminderType-REMINDER_TYPE_TIMER = 0-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -44,6 +48,8 @@ Calendar reminder.
 
 **Substitutes:** [REMINDER_TYPE_CALENDAR](arkts-backgroundtasks-reminderagentmanager-remindertype-e.md#reminder_type_calendar)
 
+<!--Device-ReminderType-REMINDER_TYPE_CALENDAR = 1--><!--Device-ReminderType-REMINDER_TYPE_CALENDAR = 1-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## REMINDER_TYPE_ALARM
@@ -59,5 +65,7 @@ Alarm reminder.
 **Deprecated since:** 9
 
 **Substitutes:** [REMINDER_TYPE_ALARM](arkts-backgroundtasks-reminderagentmanager-remindertype-e.md#reminder_type_alarm)
+
+<!--Device-ReminderType-REMINDER_TYPE_ALARM = 2--><!--Device-ReminderType-REMINDER_TYPE_ALARM = 2-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent

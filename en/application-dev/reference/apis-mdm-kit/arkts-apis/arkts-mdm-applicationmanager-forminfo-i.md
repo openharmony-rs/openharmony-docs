@@ -8,6 +8,8 @@ Information about a form.
 
 **Since:** 26.0.1
 
+<!--Device-applicationManager-interface FormInfo--><!--Device-applicationManager-interface FormInfo-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The ability name of the application to which this form belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormInfo-abilityName: string--><!--Device-FormInfo-abilityName: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## bundleName
@@ -45,6 +49,8 @@ The bundle name of the application to which this form belongs.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormInfo-bundleName: string--><!--Device-FormInfo-bundleName: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -62,6 +68,8 @@ The form dimension of the template form.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormInfo-dimension: formInfo.FormDimension--><!--Device-FormInfo-dimension: formInfo.FormDimension-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## moduleName
@@ -78,6 +86,8 @@ The name of the application module to which this form belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormInfo-moduleName: string--><!--Device-FormInfo-moduleName: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## name
@@ -93,5 +103,7 @@ The name of this form.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormInfo-name: string--><!--Device-FormInfo-name: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

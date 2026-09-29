@@ -18,6 +18,8 @@ Obtains the MSISDN of the SIM card in a specified slot. The MSISDN is recorded i
 
 **Required permissions:** ohos.permission.GET_PHONE_NUMBERS
 
+<!--Device-sim-function getSimTelephoneNumber(slotId: int, callback: AsyncCallback<string>): void--><!--Device-sim-function getSimTelephoneNumber(slotId: int, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Obtains the MSISDN of the SIM card in a specified slot. The MSISDN is recorded i
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_PHONE_NUMBERS
+
+<!--Device-sim-function getSimTelephoneNumber(slotId: int): Promise<string>--><!--Device-sim-function getSimTelephoneNumber(slotId: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

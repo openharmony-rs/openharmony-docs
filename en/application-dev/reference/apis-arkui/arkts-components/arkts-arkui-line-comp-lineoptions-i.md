@@ -14,6 +14,8 @@ Describes the options of the line.
 
 **Since:** 18
 
+<!--Device-unnamed-interface LineOptions--><!--Device-unnamed-interface LineOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -38,6 +40,8 @@ Default unit: vp
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-LineOptions-height?: Length--><!--Device-LineOptions-height?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -61,5 +65,7 @@ Default unit: vp
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LineOptions-width?: Length--><!--Device-LineOptions-width?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -18,6 +18,8 @@ Queries the frequency range of IR signals supported by the device.
 
 **Required permissions:** ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
+<!--Device-infraredEmitter-function getInfraredFrequencies(): Array<InfraredFrequency>--><!--Device-infraredEmitter-function getInfraredFrequencies(): Array<InfraredFrequency>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InfraredEmitter
 
 **Return value:**

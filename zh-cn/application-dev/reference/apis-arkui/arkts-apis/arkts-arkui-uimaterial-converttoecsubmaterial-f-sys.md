@@ -12,13 +12,15 @@ import { uiMaterial } from '@kit.ArkUI';
 function convertToECSubMaterial(material: uiMaterial.ImmersiveMaterial) : uiMaterial.ImmersiveMaterial
 ```
 
-将一个[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)材质转换为适用于[EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md#effect_component)子组件的ImmersiveMaterial材质。
+将一个[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)材质转换为适用于[EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md)子组件的ImmersiveMaterial材质。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-uiMaterial-function convertToECSubMaterial(material: uiMaterial.ImmersiveMaterial) : uiMaterial.ImmersiveMaterial--><!--Device-uiMaterial-function convertToECSubMaterial(material: uiMaterial.ImmersiveMaterial) : uiMaterial.ImmersiveMaterial-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,10 +30,10 @@ function convertToECSubMaterial(material: uiMaterial.ImmersiveMaterial) : uiMate
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| material | [uiMaterial.ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) | 是 | 经过转换后适用于[EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md#effect_component)子组件的沉浸式材质，该材质配合EffectComponent使用以实现材质效果绘制的合并优化。 |
+| material | [uiMaterial.ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) | 是 | 经过转换后适用于[EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md)子组件的沉浸式材质，该材质配合EffectComponent使用以实现材质效果绘制的合并优化。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [uiMaterial.ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) | 经过转换后适用于[EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md#effect_component)子组件的沉浸式材质。 |
+| [uiMaterial.ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) | 经过转换后适用于[EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md)子组件的沉浸式材质。 |

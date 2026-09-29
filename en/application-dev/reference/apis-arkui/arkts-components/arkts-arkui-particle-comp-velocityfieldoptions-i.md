@@ -4,11 +4,11 @@
 declare interface VelocityFieldOptions
 ```
 
-Parameter used to describe the velocity field of particles.
-
-@interface VelocityFieldOptions
+Defines the parameters used to describe the particle velocity field information.
 
 **Since:** 22
+
+<!--Device-unnamed-declare interface VelocityFieldOptions--><!--Device-unnamed-declare interface VelocityFieldOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,6 +30,8 @@ The region influenced by the velocity field.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-VelocityFieldOptions-region?: FieldRegion--><!--Device-VelocityFieldOptions-region?: FieldRegion-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocity
@@ -49,5 +51,7 @@ The velocity values in each direction of the velocity field. Particles only acqu
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-VelocityFieldOptions-velocity?: Vector2T<number>--><!--Device-VelocityFieldOptions-velocity?: Vector2T<number>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

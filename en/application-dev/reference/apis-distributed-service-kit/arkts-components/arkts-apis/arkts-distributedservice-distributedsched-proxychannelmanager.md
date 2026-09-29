@@ -4,6 +4,8 @@
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace proxyChannelManager--><!--Device-unnamed-declare namespace proxyChannelManager-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## Instructions

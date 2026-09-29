@@ -16,6 +16,8 @@ function getAllScreens(callback: AsyncCallback<Array<Screen>>): void
 
 **起始版本：** 9
 
+<!--Device-screen-function getAllScreens(callback: AsyncCallback<Array<Screen>>): void--><!--Device-screen-function getAllScreens(callback: AsyncCallback<Array<Screen>>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -65,6 +67,8 @@ function getAllScreens(): Promise<Array<Screen>>
 获取所有的屏幕，使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-screen-function getAllScreens(): Promise<Array<Screen>>--><!--Device-screen-function getAllScreens(): Promise<Array<Screen>>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

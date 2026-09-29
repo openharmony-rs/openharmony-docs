@@ -20,6 +20,8 @@ Subscribes to changes in the static configuration information of template widget
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback): void--><!--Device-formHost-function onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

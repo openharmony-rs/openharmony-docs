@@ -8,6 +8,8 @@ declare interface AccessibilityOptions
 
 **起始版本：** 14
 
+<!--Device-unnamed-declare interface AccessibilityOptions--><!--Device-unnamed-declare interface AccessibilityOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityPreferred
@@ -32,6 +34,8 @@ accessibilityPreferred?: boolean
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-AccessibilityOptions-accessibilityPreferred?: boolean--><!--Device-AccessibilityOptions-accessibilityPreferred?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## actionControllerId
@@ -49,6 +53,8 @@ actionControllerId?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-AccessibilityOptions-actionControllerId?: string--><!--Device-AccessibilityOptions-actionControllerId?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +84,8 @@ actionControllerRoleType?: AccessibilityRoleType
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-AccessibilityOptions-actionControllerRoleType?: AccessibilityRoleType--><!--Device-AccessibilityOptions-actionControllerRoleType?: AccessibilityRoleType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## stateControllerId
@@ -95,6 +103,8 @@ stateControllerId?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-AccessibilityOptions-stateControllerId?: string--><!--Device-AccessibilityOptions-stateControllerId?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,5 +131,7 @@ stateControllerRoleType?: AccessibilityRoleType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-AccessibilityOptions-stateControllerRoleType?: AccessibilityRoleType--><!--Device-AccessibilityOptions-stateControllerRoleType?: AccessibilityRoleType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

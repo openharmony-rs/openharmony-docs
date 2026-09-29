@@ -8,6 +8,8 @@ Widget extension class. It provides APIs to notify the widget provider that a wi
 
 **Since:** 9
 
+<!--Device-unnamed-declare class FormExtensionAbility--><!--Device-unnamed-declare class FormExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Called when the system acquire the form data.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormExtensionAbility-onAcquireFormData?(formId: string): Record<string, Object>--><!--Device-FormExtensionAbility-onAcquireFormData?(formId: string): Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -56,6 +60,8 @@ Called when the system shares the form.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormExtensionAbility-onShareForm?(formId: string): Record<string, Object>--><!--Device-FormExtensionAbility-onShareForm?(formId: string): Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

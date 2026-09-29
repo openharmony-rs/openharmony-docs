@@ -18,6 +18,8 @@ You can subscribe to this event when your application needs to perform specific 
 
 **Since:** 10
 
+<!--Device-dlpPermission-function on(type: 'openDLPFile', listener: Callback<AccessedDLPFileInfo>): void--><!--Device-dlpPermission-function on(type: 'openDLPFile', listener: Callback<AccessedDLPFileInfo>): void-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**

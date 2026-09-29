@@ -18,6 +18,8 @@ Get latest connection time of device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getLastConnectionTime(deviceId: string): Promise<long>--><!--Device-connection-function getLastConnectionTime(deviceId: string): Promise<long>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

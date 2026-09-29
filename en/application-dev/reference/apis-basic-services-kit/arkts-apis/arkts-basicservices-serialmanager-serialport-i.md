@@ -8,6 +8,8 @@ Represents the parameters of a serial port.
 
 **Since:** 19
 
+<!--Device-serialManager-interface SerialPort--><!--Device-serialManager-interface SerialPort-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Name of a serial port device, which is used to display and identify a specific s
 
 **Since:** 19
 
+<!--Device-SerialPort-deviceName: string--><!--Device-SerialPort-deviceName: string-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 ## portId
@@ -41,5 +45,7 @@ Serial port number, which uniquely identifies a serial port device. The value is
 **Type:** number
 
 **Since:** 19
+
+<!--Device-SerialPort-portId: int--><!--Device-SerialPort-portId: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager.Serial

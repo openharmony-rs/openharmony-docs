@@ -12,6 +12,8 @@ export type PositionT<T> = Vector2T<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export type PositionT<T> = Vector2T<T>--><!--Device-unnamed-export type PositionT<T> = Vector2T<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** [Vector2T](arkts-arkui-graphics-vector2t-i.md)&lt;T&gt;

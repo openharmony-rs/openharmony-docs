@@ -10,6 +10,8 @@ AI Text Model Abstract Interface.
 
 **Since:** 23
 
+<!--Device-imageGeneration-export interface TextGenerationModel--><!--Device-imageGeneration-export interface TextGenerationModel-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Cancel AI text generation task.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TextGenerationModel-cancelTextGeneration(sessionId: int): void--><!--Device-TextGenerationModel-cancelTextGeneration(sessionId: int): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -53,6 +57,8 @@ User use complaint menu to complain the result of an AI-generated text task.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TextGenerationModel-onComplain(sessionId: int, request: string, result: GenerateTextTaskResult): void--><!--Device-TextGenerationModel-onComplain(sessionId: int, request: string, result: GenerateTextTaskResult): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +84,8 @@ Request AI text generation task to get the generated text.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TextGenerationModel-requestTextGeneration(sessionId: int, value: string,      callback: Callback<GenerateTextTaskPartialResult>): void--><!--Device-TextGenerationModel-requestTextGeneration(sessionId: int, value: string,      callback: Callback<GenerateTextTaskPartialResult>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

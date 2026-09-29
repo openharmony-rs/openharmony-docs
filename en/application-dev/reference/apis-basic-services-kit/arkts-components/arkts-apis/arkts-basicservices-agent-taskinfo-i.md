@@ -8,6 +8,8 @@ Defines the data structure of the task information for query. The fields availab
 
 **Since:** 10
 
+<!--Device-agent-interface TaskInfo--><!--Device-agent-interface TaskInfo-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Task action.
 
 **Since:** 10
 
+<!--Device-TaskInfo-readonly action: Action--><!--Device-TaskInfo-readonly action: Action-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## ctime
@@ -46,6 +50,8 @@ Note: When [request.agent.search](arkts-basicservices-agent-search-f.md#search-1
 **Type:** number
 
 **Since:** 10
+
+<!--Device-TaskInfo-readonly ctime: long--><!--Device-TaskInfo-readonly ctime: long-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -64,6 +70,8 @@ and [request.agent.touch](arkts-basicservices-agent-touch-f.md#touch-1) to query
 
 **Since:** 10
 
+<!--Device-TaskInfo-readonly data?: string | Array<FormItem>--><!--Device-TaskInfo-readonly data?: string | Array<FormItem>-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## description
@@ -77,6 +85,8 @@ Task description.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-TaskInfo-readonly description: string--><!--Device-TaskInfo-readonly description: string-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -92,6 +102,8 @@ Extra information of the task.
 
 **Since:** 10
 
+<!--Device-TaskInfo-readonly extras?: object--><!--Device-TaskInfo-readonly extras?: object-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## faults
@@ -105,6 +117,8 @@ Failure cause of the task.
 **Type:** [Faults](arkts-basicservices-agent-faults-e.md)
 
 **Since:** 10
+
+<!--Device-TaskInfo-readonly faults: Faults--><!--Device-TaskInfo-readonly faults: Faults-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -124,6 +138,8 @@ result of the total task.
 
 **Since:** 10
 
+<!--Device-TaskInfo-readonly gauge: boolean--><!--Device-TaskInfo-readonly gauge: boolean-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## mimeType
@@ -137,6 +153,8 @@ MIME type in the task configuration.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-TaskInfo-readonly mimeType: string--><!--Device-TaskInfo-readonly mimeType: string-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -155,6 +173,8 @@ Task mode.
 
 **Since:** 10
 
+<!--Device-TaskInfo-readonly mode: Mode--><!--Device-TaskInfo-readonly mode: Mode-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## mtime
@@ -168,6 +188,8 @@ Unix timestamp when the task state changes, in milliseconds. The value is genera
 **Type:** number
 
 **Since:** 10
+
+<!--Device-TaskInfo-readonly mtime: long--><!--Device-TaskInfo-readonly mtime: long-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -185,6 +207,8 @@ Default value: **0**
 
 **Since:** 11
 
+<!--Device-TaskInfo-readonly priority: int--><!--Device-TaskInfo-readonly priority: int-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## progress
@@ -199,6 +223,8 @@ Task progress.
 
 **Since:** 10
 
+<!--Device-TaskInfo-readonly progress: Progress--><!--Device-TaskInfo-readonly progress: Progress-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## reason
@@ -212,6 +238,8 @@ Reason why the task is waiting, failed, stopped, or paused.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-TaskInfo-readonly reason: string--><!--Device-TaskInfo-readonly reason: string-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -230,6 +258,8 @@ Whether automatic retry is enabled for the task. This parameter applies only to 
 
 **Since:** 10
 
+<!--Device-TaskInfo-readonly retry: boolean--><!--Device-TaskInfo-readonly retry: boolean-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## saveas
@@ -243,6 +273,8 @@ Path for storing downloaded files.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-TaskInfo-readonly saveas?: string--><!--Device-TaskInfo-readonly saveas?: string-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -258,6 +290,8 @@ Task ID.
 
 **Since:** 10
 
+<!--Device-TaskInfo-readonly tid: string--><!--Device-TaskInfo-readonly tid: string-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## title
@@ -272,6 +306,8 @@ Task title.
 
 **Since:** 10
 
+<!--Device-TaskInfo-readonly title: string--><!--Device-TaskInfo-readonly title: string-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## tries
@@ -285,6 +321,8 @@ Number of retries of the task.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-TaskInfo-readonly tries: int--><!--Device-TaskInfo-readonly tries: int-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -302,5 +340,7 @@ and [request.agent.touch](arkts-basicservices-agent-touch-f.md#touch-1) to query
 **Type:** string
 
 **Since:** 10
+
+<!--Device-TaskInfo-readonly url?: string--><!--Device-TaskInfo-readonly url?: string-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

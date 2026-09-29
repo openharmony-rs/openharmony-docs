@@ -20,6 +20,8 @@ Obtains call transfer information with the phone number. This API uses a promise
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-call-function getCallTransferInfo(type: CallTransferType, number: string): Promise<CallTransferResult>--><!--Device-call-function getCallTransferInfo(type: CallTransferType, number: string): Promise<CallTransferResult>-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **Parameters:**

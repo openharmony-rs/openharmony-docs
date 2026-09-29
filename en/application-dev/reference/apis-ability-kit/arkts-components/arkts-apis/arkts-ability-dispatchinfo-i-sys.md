@@ -12,6 +12,8 @@ The module provides version information about the dispatchInfo struct and dispat
 
 **Since:** 9
 
+<!--Device-unnamed-export interface DispatchInfo--><!--Device-unnamed-export interface DispatchInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -28,6 +30,8 @@ Version of the dispatch API.
 
 **Since:** 9
 
+<!--Device-DispatchInfo-readonly dispatchAPIVersion: string--><!--Device-DispatchInfo-readonly dispatchAPIVersion: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -43,6 +47,8 @@ Version of the dispatchInfo struct.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-DispatchInfo-readonly version: string--><!--Device-DispatchInfo-readonly version: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

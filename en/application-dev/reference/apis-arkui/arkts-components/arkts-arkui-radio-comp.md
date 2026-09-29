@@ -1,8 +1,11 @@
-# Radio
+# Radio(Radio)
 
 The **Radio** component allows users to select from a set of mutually exclusive options.
 
-> **NOTE** > > Since API version 12, the default indicator type for the **Radio** component changes from > **RadioIndicatorType.DOT** to **RadioIndicatorType.TICK**.
+> **NOTE:** 
+> 
+> Since API version 12, the default indicator type for the **Radio** component changes from
+> **RadioIndicatorType.DOT** to **RadioIndicatorType.TICK**.
 
 ## Child Components
 
@@ -23,6 +26,8 @@ Creates a radio button.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RadioInterface-(options: RadioOptions): RadioAttribute--><!--Device-RadioInterface-(options: RadioOptions): RadioAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,7 +51,7 @@ Creates a radio button.
 
 | Name | Description |
 | --- | --- |
-| [OnRadioChangeCallback](arkts-arkui-radio-comp-onradiochangecallback-t.md) | Defines the callback type for radio button selected state changes. |
+| [OnRadioChangeCallback](arkts-arkui-radio-comp-onradiochangecallback-t.md) | Callback of radio box selection status changes event. |
 
 ### Enums
 

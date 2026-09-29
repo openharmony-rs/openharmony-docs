@@ -10,6 +10,8 @@ enum SplitRatioPreference
 
 **起始版本：** 26.0.0
 
+<!--Device-window-enum SplitRatioPreference--><!--Device-window-enum SplitRatioPreference-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## EQUAL
@@ -23,6 +25,8 @@ EQUAL = 0
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SplitRatioPreference-EQUAL = 0--><!--Device-SplitRatioPreference-EQUAL = 0-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -38,6 +42,8 @@ PRIMARY_DOMINANT = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-SplitRatioPreference-PRIMARY_DOMINANT = 1--><!--Device-SplitRatioPreference-PRIMARY_DOMINANT = 1-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## SECONDARY_DOMINANT
@@ -51,5 +57,7 @@ SECONDARY_DOMINANT = 2
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SplitRatioPreference-SECONDARY_DOMINANT = 2--><!--Device-SplitRatioPreference-SECONDARY_DOMINANT = 2-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

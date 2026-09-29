@@ -11,6 +11,8 @@ declare interface SizeResult
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface SizeResult--><!--Device-unnamed-declare interface SizeResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -29,6 +31,8 @@ height: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SizeResult-height: number--><!--Device-SizeResult-height: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -46,5 +50,7 @@ width: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SizeResult-width: number--><!--Device-SizeResult-width: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

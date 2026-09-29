@@ -16,6 +16,8 @@ Sets the data security level for a file or directory in synchronous mode. The le
 
 **Since:** 9
 
+<!--Device-securityLabel-function setSecurityLabelSync(path: string, type: DataLevel): void--><!--Device-securityLabel-function setSecurityLabelSync(path: string, type: DataLevel): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

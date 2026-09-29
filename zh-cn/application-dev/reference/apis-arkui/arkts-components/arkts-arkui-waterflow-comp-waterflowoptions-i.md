@@ -8,6 +8,8 @@ declare interface WaterFlowOptions
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare interface WaterFlowOptions--><!--Device-unnamed-declare interface WaterFlowOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## footer
@@ -26,6 +28,8 @@ footer?: CustomBuilder
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WaterFlowOptions-footer?: CustomBuilder--><!--Device-WaterFlowOptions-footer?: CustomBuilder-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## footerContent
@@ -43,6 +47,8 @@ footerContent?: ComponentContent
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-WaterFlowOptions-footerContent?: ComponentContent--><!--Device-WaterFlowOptions-footerContent?: ComponentContent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +70,8 @@ layoutMode?: WaterFlowLayoutMode
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WaterFlowOptions-layoutMode?: WaterFlowLayoutMode--><!--Device-WaterFlowOptions-layoutMode?: WaterFlowLayoutMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## scroller
@@ -84,6 +92,8 @@ scroller?: Scroller
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WaterFlowOptions-scroller?: Scroller--><!--Device-WaterFlowOptions-scroller?: Scroller-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## sections
@@ -103,5 +113,7 @@ sections?: WaterFlowSections
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WaterFlowOptions-sections?: WaterFlowSections--><!--Device-WaterFlowOptions-sections?: WaterFlowSections-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

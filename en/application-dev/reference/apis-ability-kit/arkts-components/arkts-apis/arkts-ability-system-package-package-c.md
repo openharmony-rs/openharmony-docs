@@ -15,6 +15,8 @@ Checks whether a bundle has been installed.
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-export default class Package--><!--Device-unnamed-export default class Package-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Checks whether an application exists, or whether a native application has been i
 **Deprecated since:** 9
 
 **Substitutes:** [canOpenLink](arkts-ability-bundlemanager-canopenlink-f.md)
+
+<!--Device-Package-static hasInstalled(options: CheckPackageHasInstalledOptions): void--><!--Device-Package-static hasInstalled(options: CheckPackageHasInstalledOptions): void-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

@@ -10,6 +10,8 @@ The event handler to be called when an exception occurs during worker execution.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-type ErrorCallback = (err: ErrorEvent) => void--><!--Device-unnamed-type ErrorCallback = (err: ErrorEvent) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

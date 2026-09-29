@@ -18,6 +18,8 @@ Set location privacy protocol confirmation status.
 
 **Required permissions:** ohos.permission.MANAGE_SECURE_SETTINGS
 
+<!--Device-geoLocationManager-function setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean): void--><!--Device-geoLocationManager-function setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.

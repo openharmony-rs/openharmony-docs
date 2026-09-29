@@ -8,6 +8,8 @@ declare interface VerifyPinEvent
 
 **起始版本：** 22
 
+<!--Device-unnamed-declare interface VerifyPinEvent--><!--Device-unnamed-declare interface VerifyPinEvent-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## handler
@@ -22,6 +24,8 @@ handler: VerifyPinHandler
 
 **起始版本：** 22
 
+<!--Device-VerifyPinEvent-handler: VerifyPinHandler--><!--Device-VerifyPinEvent-handler: VerifyPinHandler-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## identity
@@ -35,5 +39,7 @@ identity: string
 **类型：** string
 
 **起始版本：** 22
+
+<!--Device-VerifyPinEvent-identity: string--><!--Device-VerifyPinEvent-identity: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

@@ -24,6 +24,8 @@ Sets the Wi-Fi disabling policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function setWifiDisabled(admin: Want, disabled: boolean): void--><!--Device-wifiManager-function setWifiDisabled(admin: Want, disabled: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

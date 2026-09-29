@@ -16,6 +16,8 @@ Obtains the total number of bytes occupied by the total space (**uordblks** + **
 
 **Since:** 8
 
+<!--Device-hidebug-function getNativeHeapSize() : bigint--><!--Device-hidebug-function getNativeHeapSize() : bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value:**

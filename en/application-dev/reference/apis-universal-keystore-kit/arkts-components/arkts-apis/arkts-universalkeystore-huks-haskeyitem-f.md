@@ -22,6 +22,8 @@ If the key does not exist, **false** is returned through the callback.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-huks-function hasKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void--><!--Device-huks-function hasKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 **Parameters:**
@@ -85,6 +87,8 @@ If the key does not exist, **false** is returned through the promise.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-huks-function hasKeyItem(keyAlias: string, options: HuksOptions): Promise<boolean>--><!--Device-huks-function hasKeyItem(keyAlias: string, options: HuksOptions): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

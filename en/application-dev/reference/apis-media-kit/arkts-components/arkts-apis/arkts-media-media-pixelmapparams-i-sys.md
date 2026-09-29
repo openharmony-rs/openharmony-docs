@@ -8,6 +8,8 @@ Defines the format parameters of the video thumbnail to be obtained.
 
 **Since:** 12
 
+<!--Device-media-interface PixelMapParams--><!--Device-media-interface PixelMapParams-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Auto flip the thumbnail when video has mirror attribute (Vertical Flip or Horizo
 
 **Since:** 21
 
+<!--Device-PixelMapParams-autoFlip?: boolean--><!--Device-PixelMapParams-autoFlip?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Color format of the thumbnail.
 **Type:** [PixelFormat](arkts-media-media-pixelformat-e-sys.md)
 
 **Since:** 11
+
+<!--Device-PixelMapParams-colorFormat?: PixelFormat--><!--Device-PixelMapParams-colorFormat?: PixelFormat-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 

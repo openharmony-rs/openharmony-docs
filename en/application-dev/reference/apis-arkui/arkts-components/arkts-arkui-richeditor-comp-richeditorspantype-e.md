@@ -8,6 +8,8 @@ Enumerates span types.
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum RichEditorSpanType--><!--Device-unnamed-declare enum RichEditorSpanType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXT
@@ -23,6 +25,8 @@ Text span.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorSpanType-TEXT = 0--><!--Device-RichEditorSpanType-TEXT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Image span.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorSpanType-IMAGE = 1--><!--Device-RichEditorSpanType-IMAGE = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## MIXED
@@ -55,6 +61,8 @@ Mixed text and image span.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorSpanType-MIXED = 2--><!--Device-RichEditorSpanType-MIXED = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ Span of the custom layout type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorSpanType-BUILDER = 3--><!--Device-RichEditorSpanType-BUILDER = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -87,5 +97,7 @@ When a menu of this type is registered but no TEXT, IMAGE, MIXED, or BUILDER men
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-RichEditorSpanType-DEFAULT = 4--><!--Device-RichEditorSpanType-DEFAULT = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

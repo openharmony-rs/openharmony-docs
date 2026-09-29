@@ -16,6 +16,8 @@ Obtains the notification settings of the application, including the switch statu
 
 **Since:** 20
 
+<!--Device-notificationManager-function getNotificationSetting(): Promise<NotificationSetting>--><!--Device-notificationManager-function getNotificationSetting(): Promise<NotificationSetting>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:**

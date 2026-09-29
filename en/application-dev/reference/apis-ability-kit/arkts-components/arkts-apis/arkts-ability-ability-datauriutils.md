@@ -14,6 +14,8 @@ The DataUriUtils module provides APIs to process URI objects. You can use the AP
 
 **Substitutes:** [dataUriUtils](arkts-ability-app-ability-datauriutils.md)
 
+<!--Device-unnamed-declare namespace dataUriUtils--><!--Device-unnamed-declare namespace dataUriUtils-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -27,7 +29,7 @@ The DataUriUtils module provides APIs to process URI objects. You can use the AP
 
 | Name | Description |
 | --- | --- |
-| [attachId](arkts-ability-datauriutils-attachid-depr-f.md#attachid) | Attaches an ID to the end of a given URI. |
-| [deleteId](arkts-ability-datauriutils-deleteid-depr-f.md#deleteid) | Deletes the ID from the end of a given URI. |
-| [getId](arkts-ability-datauriutils-getid-depr-f.md#getid) | Obtains the ID attached to the end of a given URI. |
-| [updateId](arkts-ability-datauriutils-updateid-depr-f.md#updateid) | Updates the ID in a given URI. |
+| [attachId](arkts-ability-datauriutils-attachid-depr-f.md) | Attaches an ID to the end of a given URI. |
+| [deleteId](arkts-ability-datauriutils-deleteid-depr-f.md) | Deletes the ID from the end of a given URI. |
+| [getId](arkts-ability-datauriutils-getid-depr-f.md) | Obtains the ID attached to the end of a given URI. |
+| [updateId](arkts-ability-datauriutils-updateid-depr-f.md) | Updates the ID in a given URI. |

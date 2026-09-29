@@ -22,6 +22,8 @@ Since API version 26.0.0, error code 9200002 is returned when a non-super device
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function subscribeManagedEventSync(admin: Want, managedEvents: Array<ManagedEvent>): void--><!--Device-adminManager-function subscribeManagedEventSync(admin: Want, managedEvents: Array<ManagedEvent>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

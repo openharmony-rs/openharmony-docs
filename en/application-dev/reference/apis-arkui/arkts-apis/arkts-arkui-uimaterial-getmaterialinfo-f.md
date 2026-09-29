@@ -20,6 +20,8 @@ Obtains the material configuration information of this application. The returned
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-uiMaterial-function getMaterialInfo(): MaterialInfo--><!--Device-uiMaterial-function getMaterialInfo(): MaterialInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**

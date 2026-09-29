@@ -8,6 +8,8 @@ Label text and font style of the button.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface LabelStyle--><!--Device-unnamed-declare interface LabelStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## font
@@ -40,6 +42,8 @@ family:'HarmonyOS Sans'
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LabelStyle-font?: Font--><!--Device-LabelStyle-font?: Font-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## heightAdaptivePolicy
@@ -60,6 +64,8 @@ Default value: **TextHeightAdaptivePolicy.MAX_LINES_FIRST**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LabelStyle-heightAdaptivePolicy?: TextHeightAdaptivePolicy--><!--Device-LabelStyle-heightAdaptivePolicy?: TextHeightAdaptivePolicy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxFontSize
@@ -77,6 +83,8 @@ Maximum font size of the label text. For the setting to take effect, this attrib
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LabelStyle-maxFontSize?: number | ResourceStr--><!--Device-LabelStyle-maxFontSize?: number | ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +110,8 @@ If this parameter is set to a value less than or equal to 0, the default value i
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LabelStyle-maxLines?: number--><!--Device-LabelStyle-maxLines?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## minFontSize
@@ -124,6 +134,8 @@ If the value of **minFontSize** is less than or equal to 0, the adaptive font si
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LabelStyle-minFontSize?: number | ResourceStr--><!--Device-LabelStyle-minFontSize?: number | ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## overflow
@@ -144,6 +156,8 @@ Default value: **TextOverflow.Ellipsis**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LabelStyle-overflow?: TextOverflow--><!--Device-LabelStyle-overflow?: TextOverflow-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textAlign
@@ -163,5 +177,7 @@ The default value is **TextAlign.Center** for wearables and **TextAlign.Start** 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-LabelStyle-textAlign?: TextAlign--><!--Device-LabelStyle-textAlign?: TextAlign-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

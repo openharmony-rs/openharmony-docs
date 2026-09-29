@@ -10,6 +10,8 @@ export declare class FeatureAbility
 
 **Substitutes:** FeatureAbility
 
+<!--Device-unnamed-export declare class FeatureAbility--><!--Device-unnamed-export declare class FeatureAbility-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Sends messages to the destination device.
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-FeatureAbility-static sendMsg(options: SendMessageOptions): void--><!--Device-FeatureAbility-static sendMsg(options: SendMessageOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -48,6 +52,8 @@ Listens for messages sent from other devices.
 
 **Deprecated since:** 8
 
+<!--Device-FeatureAbility-static subscribeMsg(options: SubscribeMessageOptions): void--><!--Device-FeatureAbility-static subscribeMsg(options: SubscribeMessageOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **System API:** This is a system API.
@@ -69,6 +75,8 @@ Cancel the listening for messages sent from other devices.
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-FeatureAbility-static unsubscribeMsg(): void--><!--Device-FeatureAbility-static unsubscribeMsg(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 

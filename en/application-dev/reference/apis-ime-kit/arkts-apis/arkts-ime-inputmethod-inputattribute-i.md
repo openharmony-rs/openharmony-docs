@@ -8,6 +8,8 @@ Describes the attributes of the edit box, including the text input type and Ente
 
 **Since:** 10
 
+<!--Device-inputMethod-export interface InputAttribute--><!--Device-inputMethod-export interface InputAttribute-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Ability name set for the edit box. <br> <br>- If the ability name is set for the
 
 **Since:** 20
 
+<!--Device-InputAttribute-abilityName?: string--><!--Device-InputAttribute-abilityName?: string-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## consumeKeyEvents
@@ -46,6 +50,8 @@ Whether the editor supports consuming key events.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InputAttribute-consumeKeyEvents?: boolean--><!--Device-InputAttribute-consumeKeyEvents?: boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## enterKeyType
@@ -59,6 +65,8 @@ Function type represented by the Enter key.
 **Type:** [EnterKeyType](arkts-ime-inputmethod-enterkeytype-e.md)
 
 **Since:** 10
+
+<!--Device-InputAttribute-enterKeyType: EnterKeyType--><!--Device-InputAttribute-enterKeyType: EnterKeyType-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -74,6 +82,8 @@ Placeholder information set for the edit box. <br> <br>- When placeholder inform
 
 **Since:** 20
 
+<!--Device-InputAttribute-placeholder?: string--><!--Device-InputAttribute-placeholder?: string-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## textInputType
@@ -87,5 +97,7 @@ Enumerates the text input types.
 **Type:** [TextInputType](arkts-ime-inputmethod-textinputtype-e.md)
 
 **Since:** 10
+
+<!--Device-InputAttribute-textInputType: TextInputType--><!--Device-InputAttribute-textInputType: TextInputType-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

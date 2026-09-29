@@ -20,6 +20,8 @@ Obtains firewall rules by user ID. You need to specify the pagination query para
 
 **Required permissions:** ohos.permission.GET_NET_FIREWALL
 
+<!--Device-netFirewall-function getNetFirewallRules(userId: int, requestParam: RequestParam): Promise<FirewallRulePage>--><!--Device-netFirewall-function getNetFirewallRules(userId: int, requestParam: RequestParam): Promise<FirewallRulePage>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 **Parameters:**

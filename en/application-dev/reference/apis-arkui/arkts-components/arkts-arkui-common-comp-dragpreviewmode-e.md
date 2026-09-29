@@ -8,6 +8,8 @@ Sets the display mode of the drag preview.
 
 **Since:** 11
 
+<!--Device-unnamed-declare enum DragPreviewMode--><!--Device-unnamed-declare enum DragPreviewMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## AUTO
@@ -23,6 +25,8 @@ Enables the system to automatically change the position of the dragged point bas
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DragPreviewMode-AUTO = 1--><!--Device-DragPreviewMode-AUTO = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Disables the system's scaling behavior for the drag preview.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DragPreviewMode-DISABLE_SCALE = 2--><!--Device-DragPreviewMode-DISABLE_SCALE = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ENABLE_DEFAULT_SHADOW
@@ -55,6 +61,8 @@ Enables the default shadow effect for non-text components.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DragPreviewMode-ENABLE_DEFAULT_SHADOW = 3--><!--Device-DragPreviewMode-ENABLE_DEFAULT_SHADOW = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ Enables a unified rounded corner effect for non-text components, with the defaul
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DragPreviewMode-ENABLE_DEFAULT_RADIUS = 4--><!--Device-DragPreviewMode-ENABLE_DEFAULT_RADIUS = 4-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ENABLE_DRAG_ITEM_GRAY_EFFECT
@@ -87,6 +97,8 @@ Enables the grayscale effect for the original drag item, which does not apply to
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-DragPreviewMode-ENABLE_DRAG_ITEM_GRAY_EFFECT = 5--><!--Device-DragPreviewMode-ENABLE_DRAG_ITEM_GRAY_EFFECT = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +116,8 @@ Enables multi-tile display for mouse-dragged multi-selected objects, with each d
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-DragPreviewMode-ENABLE_MULTI_TILE_EFFECT = 6--><!--Device-DragPreviewMode-ENABLE_MULTI_TILE_EFFECT = 6-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW
@@ -119,5 +133,7 @@ Enables touch point calculation based on the initial drag preview size. Used whe
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-DragPreviewMode-ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW = 7--><!--Device-DragPreviewMode-ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW = 7-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

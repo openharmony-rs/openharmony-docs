@@ -20,6 +20,8 @@ Obtains the list of CA certificates trusted by the system. This API is called on
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function getSystemTrustedCertificateList(): Promise<CMResult>--><!--Device-certificateManager-function getSystemTrustedCertificateList(): Promise<CMResult>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

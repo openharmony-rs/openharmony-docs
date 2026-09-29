@@ -12,6 +12,8 @@ export type Context = common.Context
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export type Context = common.Context--><!--Device-unnamed-export type Context = common.Context-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **类型：** [common.Context](../../apis-ability-kit/arkts-apis/arkts-ability-common-context-t.md)

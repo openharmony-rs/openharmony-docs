@@ -12,6 +12,8 @@ declare interface RatingOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface RatingOptions--><!--Device-unnamed-declare interface RatingOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## indicator
@@ -40,6 +42,8 @@ indicator=false时，默认组件高度height=28.0vp，组件width=height * star
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RatingOptions-indicator?: boolean--><!--Device-RatingOptions-indicator?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## rating
@@ -67,5 +71,7 @@ rating: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RatingOptions-rating: number--><!--Device-RatingOptions-rating: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

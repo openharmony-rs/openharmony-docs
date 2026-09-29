@@ -10,6 +10,8 @@ Declare Component DownloadFileButton
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct DownloadFileButton--><!--Device-unnamed-export declare struct DownloadFileButton-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Set DownloadFileButton Content.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DownloadFileButton-contentOptions: DownloadContentOptions--><!--Device-DownloadFileButton-contentOptions: DownloadContentOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## styleOptions
@@ -47,5 +51,7 @@ Set DownloadFileButton Style.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DownloadFileButton-styleOptions: DownloadStyleOptions--><!--Device-DownloadFileButton-styleOptions: DownloadStyleOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

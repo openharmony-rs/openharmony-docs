@@ -8,7 +8,9 @@ Defines a callback to listen for whether the trace capture is enabled.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-hiTraceMeter-type TraceEventListener = (traceStatus: boolean) => void--><!--Device-hiTraceMeter-type TraceEventListener = (traceStatus: boolean) => void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 

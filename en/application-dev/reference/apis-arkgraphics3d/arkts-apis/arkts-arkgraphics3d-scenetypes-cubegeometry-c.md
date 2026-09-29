@@ -12,6 +12,8 @@ A cube geometry type that inherits from GeometryDefinition.
 
 **Since:** 18
 
+<!--Device-unnamed-export declare class CubeGeometry extends GeometryDefinition--><!--Device-unnamed-export declare class CubeGeometry extends GeometryDefinition-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## size
@@ -26,6 +28,8 @@ Width, height, and depth of the cube, indicating the size of the cube. The unit 
 
 **Since:** 18
 
+<!--Device-CubeGeometry-get size(): Vec3--><!--Device-CubeGeometry-get size(): Vec3-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ```TypeScript
@@ -37,5 +41,7 @@ Width, height, and depth of the cube, indicating the size of the cube. The unit 
 **Type:** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)
 
 **Since:** 18
+
+<!--Device-CubeGeometry-set size(value: Vec3)--><!--Device-CubeGeometry-set size(value: Vec3)-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

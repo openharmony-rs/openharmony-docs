@@ -18,6 +18,8 @@ Obtains the minimum width of the wallpaper. in pixels. returns 0 if no wallpaper
 
 **Deprecated since:** 9
 
+<!--Device-wallpaper-function getMinWidth(callback: AsyncCallback<number>): void--><!--Device-wallpaper-function getMinWidth(callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **Parameters:**
@@ -54,6 +56,8 @@ Obtains the minimum width of the wallpaper. in pixels. returns 0 if no wallpaper
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-wallpaper-function getMinWidth(): Promise<number>--><!--Device-wallpaper-function getMinWidth(): Promise<number>-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

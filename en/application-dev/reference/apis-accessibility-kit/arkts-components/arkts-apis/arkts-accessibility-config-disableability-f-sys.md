@@ -18,6 +18,8 @@ Disables an accessibility extension. This API must be used together with [config
 
 **Required permissions:** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
+<!--Device-config-function disableAbility(name: string): Promise<void>--><!--Device-config-function disableAbility(name: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Disables an accessibility extension. This API must be used together with [config
 **Since:** 9
 
 **Required permissions:** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+<!--Device-config-function disableAbility(name: string, callback: AsyncCallback<void>): void--><!--Device-config-function disableAbility(name: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

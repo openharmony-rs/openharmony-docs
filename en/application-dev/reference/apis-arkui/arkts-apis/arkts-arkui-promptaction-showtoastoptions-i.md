@@ -6,6 +6,8 @@ interface ShowToastOptions
 
 **Since:** 9
 
+<!--Device-promptAction-interface ShowToastOptions--><!--Device-promptAction-interface ShowToastOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Alignment mode.<br> Default value: **undefined**. If **alignment** is not set an
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ShowToastOptions-alignment?: Alignment--><!--Device-ShowToastOptions-alignment?: Alignment-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundBlurStyle
@@ -47,6 +51,8 @@ Background blur style of the toast.<br> Default value: **BlurStyle.COMPONENT_ULT
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ShowToastOptions-backgroundBlurStyle?: BlurStyle--><!--Device-ShowToastOptions-backgroundBlurStyle?: BlurStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +72,8 @@ Background color of the toast.<br> Default value: **Color.Transparent**.<br> **N
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ShowToastOptions-backgroundColor?: ResourceColor--><!--Device-ShowToastOptions-backgroundColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -84,6 +92,8 @@ Distance from the bottom of the toast to the navigation bar. If the soft keyboar
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ShowToastOptions-bottom?: string | number--><!--Device-ShowToastOptions-bottom?: string | number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## duration
@@ -101,6 +111,8 @@ Duration that the toast will remain on the screen.<br>Default value: 1500 ms.<br
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ShowToastOptions-duration?: number--><!--Device-ShowToastOptions-duration?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +134,8 @@ Whether to respond when the device is in semi-folded mode. The value **true** me
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-ShowToastOptions-enableHoverMode?: boolean--><!--Device-ShowToastOptions-enableHoverMode?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## hoverModeArea
@@ -142,6 +156,8 @@ Display area of the toast in the hover state.<br> Default value: **HoverModeArea
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-ShowToastOptions-hoverModeArea?: HoverModeAreaType--><!--Device-ShowToastOptions-hoverModeArea?: HoverModeAreaType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## message
@@ -159,6 +175,8 @@ Text to display. <br>**NOTE:** <br>The default font is **'Harmony Sans'**. Other
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ShowToastOptions-message: string | Resource--><!--Device-ShowToastOptions-message: string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,6 +196,8 @@ Offset in the specified alignment mode.<br> Default value: **{ dx: 0, dy: 0 }**,
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ShowToastOptions-offset?: Offset--><!--Device-ShowToastOptions-offset?: Offset-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadow
@@ -195,6 +215,8 @@ Shadow of the toast background.<br> Default value: **ShadowStyle.OUTER_DEFAULT_M
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ShowToastOptions-shadow?: ShadowOptions | ShadowStyle--><!--Device-ShowToastOptions-shadow?: ShadowOptions | ShadowStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -216,6 +238,8 @@ Display level mode of the toast.<br> Default value: **ToastShowMode.DEFAULT**, w
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ShowToastOptions-showMode?: ToastShowMode--><!--Device-ShowToastOptions-showMode?: ToastShowMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -234,6 +258,8 @@ Set system-styled materials for toast. Different materials have different effect
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ShowToastOptions-systemMaterial?: SystemUiMaterial--><!--Device-ShowToastOptions-systemMaterial?: SystemUiMaterial-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textColor
@@ -251,5 +277,7 @@ Text color of the toast.<br>Default value: **Color.Black**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ShowToastOptions-textColor?: ResourceColor--><!--Device-ShowToastOptions-textColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

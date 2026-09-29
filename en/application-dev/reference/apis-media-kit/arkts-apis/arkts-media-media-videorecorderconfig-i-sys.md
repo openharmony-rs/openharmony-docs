@@ -8,6 +8,8 @@ Provides the video recorder configuration definitions.
 
 **Since:** 9
 
+<!--Device-media-interface VideoRecorderConfig--><!--Device-media-interface VideoRecorderConfig-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ audio source type, details see @AudioSourceType .
 
 **Since:** 9
 
+<!--Device-VideoRecorderConfig-audioSourceType?: AudioSourceType--><!--Device-VideoRecorderConfig-audioSourceType?: AudioSourceType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ geographical location information.
 **Type:** [Location](arkts-media-media-location-i.md)
 
 **Since:** 9
+
+<!--Device-VideoRecorderConfig-location?: Location--><!--Device-VideoRecorderConfig-location?: Location-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -62,6 +68,8 @@ video recorder profile, can get by "getVideoRecorderProfile", details see @Video
 
 **Since:** 9
 
+<!--Device-VideoRecorderConfig-profile: VideoRecorderProfile--><!--Device-VideoRecorderConfig-profile: VideoRecorderProfile-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Sets the video rotation angle in output file, and for the file to playback, in d
 **Type:** number
 
 **Since:** 9
+
+<!--Device-VideoRecorderConfig-rotation?: int--><!--Device-VideoRecorderConfig-rotation?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -94,6 +104,8 @@ video output uri.support two kind of uri now. format like: scheme + "://" + "con
 
 **Since:** 9
 
+<!--Device-VideoRecorderConfig-url: string--><!--Device-VideoRecorderConfig-url: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ video source type, details see @VideoSourceType .
 **Type:** [VideoSourceType](arkts-media-media-videosourcetype-e.md)
 
 **Since:** 9
+
+<!--Device-VideoRecorderConfig-videoSourceType: VideoSourceType--><!--Device-VideoRecorderConfig-videoSourceType: VideoSourceType-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 

@@ -12,6 +12,8 @@ Defines the input parameter object for **startDataLoading**.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-unnamed-declare type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams--><!--Device-unnamed-declare type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams

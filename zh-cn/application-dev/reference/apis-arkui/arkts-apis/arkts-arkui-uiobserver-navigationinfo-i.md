@@ -8,6 +8,8 @@ Navigation组件信息。
 
 **起始版本：** 12
 
+<!--Device-uiObserver-export interface NavigationInfo--><!--Device-uiObserver-export interface NavigationInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ Navigation组件的id。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationInfo-navigationId: string--><!--Device-NavigationInfo-navigationId: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## pathStack
@@ -50,6 +54,8 @@ Navigation组件的导航控制器。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationInfo-pathStack: NavPathStack--><!--Device-NavigationInfo-pathStack: NavPathStack-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## uniqueId
@@ -58,7 +64,7 @@ Navigation组件的导航控制器。
 uniqueId?: number
 ```
 
-Navigation组件的uniqueId，可以通过queryNavigationInfo获取。
+Navigation组件的uniqueId，可以通过[queryNavigationInfo](../../../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。
 
 **类型：** number
 
@@ -67,5 +73,7 @@ Navigation组件的uniqueId，可以通过queryNavigationInfo获取。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationInfo-uniqueId?: number--><!--Device-NavigationInfo-uniqueId?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

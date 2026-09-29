@@ -20,6 +20,8 @@ query domains verify associated with bundleName.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-appDomainVerify-function queryAssociatedDomains(bundleName: string): string[]--><!--Device-appDomainVerify-function queryAssociatedDomains(bundleName: string): string[]-End-->
+
 **System capability:** SystemCapability.BundleManager.AppDomainVerify
 
 **System API:** This is a system API.

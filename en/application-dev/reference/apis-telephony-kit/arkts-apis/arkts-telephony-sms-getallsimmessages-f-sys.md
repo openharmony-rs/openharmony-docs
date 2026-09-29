@@ -18,6 +18,8 @@ Obtains all SIM card messages. This API uses an asynchronous callback to return 
 
 **Required permissions:** ohos.permission.RECEIVE_SMS
 
+<!--Device-sms-function getAllSimMessages(slotId: int, callback: AsyncCallback<Array<SimShortMessage>>): void--><!--Device-sms-function getAllSimMessages(slotId: int, callback: AsyncCallback<Array<SimShortMessage>>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Obtains all SIM card messages. This API uses a promise to return the result.
 **Since:** 7
 
 **Required permissions:** ohos.permission.RECEIVE_SMS
+
+<!--Device-sms-function getAllSimMessages(slotId: int): Promise<Array<SimShortMessage>>--><!--Device-sms-function getAllSimMessages(slotId: int): Promise<Array<SimShortMessage>>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

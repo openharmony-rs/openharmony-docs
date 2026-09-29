@@ -10,6 +10,8 @@ Defines subscription information.
 
 **Deprecated since:** 11
 
+<!--Device-deviceManager-interface SubscribeInfo--><!--Device-deviceManager-interface SubscribeInfo-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Discovery capability.
 
 **Deprecated since:** 11
 
+<!--Device-SubscribeInfo-capability: SubscribeCap--><!--Device-SubscribeInfo-capability: SubscribeCap-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Frequency of device discovery.
 **Since:** 7
 
 **Deprecated since:** 11
+
+<!--Device-SubscribeInfo-freq: ExchangeFreq--><!--Device-SubscribeInfo-freq: ExchangeFreq-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -70,6 +76,8 @@ Whether the account is the same as the current account. The value **true** indic
 
 **Deprecated since:** 11
 
+<!--Device-SubscribeInfo-isSameAccount: boolean--><!--Device-SubscribeInfo-isSameAccount: boolean-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -87,6 +95,8 @@ Whether to wake up the device. The value **true** means to wake up the device an
 **Since:** 7
 
 **Deprecated since:** 11
+
+<!--Device-SubscribeInfo-isWakeRemote: boolean--><!--Device-SubscribeInfo-isWakeRemote: boolean-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -106,6 +116,8 @@ Medium used for device discovery.
 
 **Deprecated since:** 11
 
+<!--Device-SubscribeInfo-medium: ExchangeMedium--><!--Device-SubscribeInfo-medium: ExchangeMedium-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -124,6 +136,8 @@ Device discovery mode.
 
 **Deprecated since:** 11
 
+<!--Device-SubscribeInfo-mode: DiscoverMode--><!--Device-SubscribeInfo-mode: DiscoverMode-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -141,6 +155,8 @@ Subscription ID, used to identify a device discovery period. The value ranges fr
 **Since:** 7
 
 **Deprecated since:** 11
+
+<!--Device-SubscribeInfo-subscribeId: number--><!--Device-SubscribeInfo-subscribeId: number-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

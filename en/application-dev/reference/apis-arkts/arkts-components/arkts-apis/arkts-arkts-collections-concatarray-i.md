@@ -16,6 +16,8 @@ An array-like object that can be concatenated. This API extends **ISendable**.
 
 **Since:** 12
 
+<!--Device-collections-interface ConcatArray<T> extends ISendable--><!--Device-collections-interface ConcatArray<T> extends ISendable-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Concatenates all elements in this array into a string, with a given separator.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ConcatArray-join(separator?: string): string--><!--Device-ConcatArray-join(separator?: string): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -61,6 +65,8 @@ Selects a range of elements in this array to create an array.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ConcatArray-slice(start?: number, end?: number): ConcatArray<T>--><!--Device-ConcatArray-slice(start?: number, end?: number): ConcatArray<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -89,6 +95,8 @@ Returns the element at a given index in this ConcatArray.
 
 **Since:** 12
 
+<!--Device-ConcatArray-readonly [index: number]: T--><!--Device-ConcatArray-readonly [index: number]: T-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -110,5 +118,7 @@ Number of elements in a ConcatArray.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ConcatArray-readonly length: number--><!--Device-ConcatArray-readonly length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

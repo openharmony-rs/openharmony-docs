@@ -16,7 +16,9 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-drm-function isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtectionLevel): boolean--><!--Device-drm-function isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtectionLevel): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
@@ -64,7 +66,9 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-drm-function isMediaKeySystemSupported(name: string, mimeType: string): boolean--><!--Device-drm-function isMediaKeySystemSupported(name: string, mimeType: string): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
@@ -111,7 +115,9 @@ Checks whether the device supports the specified DRM solution.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-drm-function isMediaKeySystemSupported(name: string): boolean--><!--Device-drm-function isMediaKeySystemSupported(name: string): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core
 

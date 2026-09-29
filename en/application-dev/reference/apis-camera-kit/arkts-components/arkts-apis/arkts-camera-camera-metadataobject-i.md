@@ -8,6 +8,8 @@ Describes the camera metadata, which is the data source of [CameraInput](arkts-c
 
 **Since:** 10
 
+<!--Device-camera-interface MetadataObject--><!--Device-camera-interface MetadataObject-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Metadata rectangle.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-MetadataObject-readonly boundingBox: Rect--><!--Device-MetadataObject-readonly boundingBox: Rect-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -46,7 +50,9 @@ Whether the focus is locked and being tracked currently.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-MetadataObject-readonly isLockFocusTracked?: boolean--><!--Device-MetadataObject-readonly isLockFocusTracked?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -62,7 +68,9 @@ Timestamp, in ns.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-MetadataObject-readonly timestamp: int--><!--Device-MetadataObject-readonly timestamp: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -78,6 +86,8 @@ Metadata object type.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-MetadataObject-readonly type: MetadataObjectType--><!--Device-MetadataObject-readonly type: MetadataObjectType-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

@@ -18,6 +18,8 @@ Obtains the RunningFormInfo objects provided by a specific card host application
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
 
+<!--Device-formObserver-function getRunningFormInfos(callback: AsyncCallback<Array<formInfo.RunningFormInfo>>, hostBundleName?: string): void--><!--Device-formObserver-function getRunningFormInfos(callback: AsyncCallback<Array<formInfo.RunningFormInfo>>, hostBundleName?: string): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -58,6 +60,8 @@ Obtains the RunningFormInfo objects provided by a specific card host application
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
 
+<!--Device-formObserver-function getRunningFormInfos(    callback: AsyncCallback<Array<formInfo.RunningFormInfo>>,    isUnusedIncluded: boolean,    hostBundleName?: string  ): void--><!--Device-formObserver-function getRunningFormInfos(    callback: AsyncCallback<Array<formInfo.RunningFormInfo>>,    isUnusedIncluded: boolean,    hostBundleName?: string  ): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -94,6 +98,8 @@ Obtains the RunningFormInfo objects provided by a specific card host application
 **Since:** 10
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
+
+<!--Device-formObserver-function getRunningFormInfos(hostBundleName?: string): Promise<Array<formInfo.RunningFormInfo>>--><!--Device-formObserver-function getRunningFormInfos(hostBundleName?: string): Promise<Array<formInfo.RunningFormInfo>>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -138,6 +144,8 @@ Obtains the RunningFormInfo objects provided by a specific card host application
 **Since:** 11
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
+
+<!--Device-formObserver-function getRunningFormInfos(    isUnusedIncluded: boolean,    hostBundleName?: string  ): Promise<Array<formInfo.RunningFormInfo>>--><!--Device-formObserver-function getRunningFormInfos(    isUnusedIncluded: boolean,    hostBundleName?: string  ): Promise<Array<formInfo.RunningFormInfo>>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

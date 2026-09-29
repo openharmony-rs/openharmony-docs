@@ -10,6 +10,8 @@ interface LongPressGestureHandlerOptions extends BaseHandlerOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface LongPressGestureHandlerOptions extends BaseHandlerOptions--><!--Device-unnamed-interface LongPressGestureHandlerOptions extends BaseHandlerOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## allowableMovement
@@ -31,6 +33,8 @@ allowableMovement?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-LongPressGestureHandlerOptions-allowableMovement?: number--><!--Device-LongPressGestureHandlerOptions-allowableMovement?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +59,8 @@ duration?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LongPressGestureHandlerOptions-duration?: number--><!--Device-LongPressGestureHandlerOptions-duration?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ fingers?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LongPressGestureHandlerOptions-fingers?: number--><!--Device-LongPressGestureHandlerOptions-fingers?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## repeat
@@ -101,5 +109,7 @@ repeat?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LongPressGestureHandlerOptions-repeat?: boolean--><!--Device-LongPressGestureHandlerOptions-repeat?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

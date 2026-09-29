@@ -16,6 +16,8 @@ Obtains all system shortcut keys. This API uses a promise to return the result.
 
 **Since:** 14
 
+<!--Device-inputConsumer-function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>--><!--Device-inputConsumer-function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **Return value:**

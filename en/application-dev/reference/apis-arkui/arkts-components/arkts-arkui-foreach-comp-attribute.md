@@ -4,7 +4,7 @@
 declare class ForEachAttribute extends DynamicNode<ForEachAttribute>
 ```
 
-The [drag-and-drop sorting](arkts-arkui-common-comp.md#common) attribute is supported.
+The [drag-and-drop sorting](arkts-arkui-common-comp.md) attribute is supported.
 
 **Inheritance/Implementation:** ForEachAttribute extends DynamicNode<ForEachAttribute>
 
@@ -15,5 +15,7 @@ The [drag-and-drop sorting](arkts-arkui-common-comp.md#common) attribute is supp
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-unnamed-declare class ForEachAttribute extends DynamicNode<ForEachAttribute>--><!--Device-unnamed-declare class ForEachAttribute extends DynamicNode<ForEachAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

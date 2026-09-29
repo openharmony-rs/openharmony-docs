@@ -20,6 +20,8 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 **Substitutes:** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md)
 
+<!--Device-systemDateTime-function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): void--><!--Device-systemDateTime-function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **Parameters:**
@@ -71,6 +73,8 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 **Substitutes:** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md)
 
+<!--Device-systemDateTime-function getRealActiveTime(callback: AsyncCallback<number>): void--><!--Device-systemDateTime-function getRealActiveTime(callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **Parameters:**
@@ -120,6 +124,8 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 **Deprecated since:** 12
 
 **Substitutes:** [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md)
+
+<!--Device-systemDateTime-function getRealActiveTime(isNano?: boolean): Promise<number>--><!--Device-systemDateTime-function getRealActiveTime(isNano?: boolean): Promise<number>-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 

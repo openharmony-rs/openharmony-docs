@@ -16,6 +16,8 @@ Transfers metadata to the application or service that calls the encoding API. Th
 
 **Since:** 18
 
+<!--Device-metadataBinding-function notifyMetadataBindingEvent(bundleName: string): Promise<string>--><!--Device-metadataBinding-function notifyMetadataBindingEvent(bundleName: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.MetadataBinding
 
 **System API:** This is a system API.

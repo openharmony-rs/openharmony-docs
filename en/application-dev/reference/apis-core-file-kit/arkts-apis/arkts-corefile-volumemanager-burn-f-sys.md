@@ -20,6 +20,8 @@ Burns data to a volume. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-volumeManager-function burn(volumeId: string, want: Want): Promise<void>--><!--Device-volumeManager-function burn(volumeId: string, want: Want): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.

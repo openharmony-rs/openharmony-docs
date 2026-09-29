@@ -16,6 +16,8 @@ Obtains the virtual set size used by the application process. This API is implem
 
 **Since:** 11
 
+<!--Device-hidebug-function getVss(): bigint--><!--Device-hidebug-function getVss(): bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value:**

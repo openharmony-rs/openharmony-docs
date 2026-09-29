@@ -11,6 +11,8 @@ Describes the reduce function of the ArkTS typed array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-collections-type TypedArrayReduceCallback<AccType, ElementType, ArrayType> =    (previousValue: AccType, currentValue: ElementType, currentIndex: number, array: ArrayType) => AccType--><!--Device-collections-type TypedArrayReduceCallback<AccType, ElementType, ArrayType> =    (previousValue: AccType, currentValue: ElementType, currentIndex: number, array: ArrayType) => AccType-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

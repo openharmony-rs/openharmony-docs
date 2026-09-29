@@ -16,6 +16,8 @@ declare type AccessibilityFocusCallback = (isFocus: boolean) => void
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare type AccessibilityFocusCallback = (isFocus: boolean) => void--><!--Device-unnamed-declare type AccessibilityFocusCallback = (isFocus: boolean) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

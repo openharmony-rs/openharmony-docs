@@ -22,6 +22,8 @@ Creates a **VpnConnection** object.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-vpnExtension-function createVpnConnection(context: VpnExtensionContext): VpnConnection--><!--Device-vpnExtension-function createVpnConnection(context: VpnExtensionContext): VpnConnection-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 **Parameters:**

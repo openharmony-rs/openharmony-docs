@@ -16,6 +16,8 @@ Copies the source directory to the destination path. This API returns the result
 
 **Since:** 10
 
+<!--Device-unnamed-declare function copyDirSync(src: string, dest: string, mode?: number): void--><!--Device-unnamed-declare function copyDirSync(src: string, dest: string, mode?: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

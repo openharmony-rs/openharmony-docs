@@ -8,6 +8,8 @@ declare interface RichEditorImageSpanResult
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface RichEditorImageSpanResult--><!--Device-unnamed-declare interface RichEditorImageSpanResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageStyle
@@ -25,6 +27,8 @@ imageStyle: RichEditorImageSpanStyleResult
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorImageSpanResult-imageStyle: RichEditorImageSpanStyleResult--><!--Device-RichEditorImageSpanResult-imageStyle: RichEditorImageSpanStyleResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Span里图片的起始和结束位置，取值范围为[起始位置, 结束位�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorImageSpanResult-offsetInSpan: [number, number]--><!--Device-RichEditorImageSpanResult-offsetInSpan: [number, number]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## spanPosition
@@ -61,6 +67,8 @@ Span位置。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorImageSpanResult-spanPosition: RichEditorSpanPosition--><!--Device-RichEditorImageSpanResult-spanPosition: RichEditorSpanPosition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +88,8 @@ valuePixelMap?: PixelMap
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorImageSpanResult-valuePixelMap?: PixelMap--><!--Device-RichEditorImageSpanResult-valuePixelMap?: PixelMap-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## valueResourceStr
@@ -97,5 +107,7 @@ valueResourceStr?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorImageSpanResult-valueResourceStr?: ResourceStr--><!--Device-RichEditorImageSpanResult-valueResourceStr?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

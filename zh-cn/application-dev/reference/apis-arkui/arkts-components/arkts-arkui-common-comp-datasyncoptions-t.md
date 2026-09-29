@@ -12,6 +12,8 @@ declare type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').de
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams--><!--Device-unnamed-declare type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams

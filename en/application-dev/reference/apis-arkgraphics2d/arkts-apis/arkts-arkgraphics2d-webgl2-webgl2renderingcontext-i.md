@@ -13,4 +13,6 @@ WebGL 2.0
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-export interface WebGL2RenderingContext extends WebGL2RenderingContextBase, WebGL2RenderingContextOverloads,  WebGLRenderingContextBase--><!--Device-unnamed-export interface WebGL2RenderingContext extends WebGL2RenderingContextBase, WebGL2RenderingContextOverloads,  WebGLRenderingContextBase-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL2

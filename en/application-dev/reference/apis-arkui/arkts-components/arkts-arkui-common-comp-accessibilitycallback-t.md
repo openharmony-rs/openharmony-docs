@@ -12,6 +12,8 @@ Defines the callback type used in accessibility hover events. The value of isHov
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) => void--><!--Device-unnamed-declare type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

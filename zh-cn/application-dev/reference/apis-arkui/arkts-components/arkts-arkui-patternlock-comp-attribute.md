@@ -4,11 +4,13 @@
 declare class PatternLockAttribute extends CommonMethod<PatternLockAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-**继承/实现关系：** PatternLockAttribute extends CommonMethod&lt;PatternLockAttribute&gt;
+**继承/实现关系：** PatternLockAttribute extends CommonMethod<PatternLockAttribute>
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare class PatternLockAttribute extends CommonMethod<PatternLockAttribute>--><!--Device-unnamed-declare class PatternLockAttribute extends CommonMethod<PatternLockAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ activateCircleStyle(options: Optional<CircleStyleOptions>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PatternLockAttribute-activateCircleStyle(options: Optional<CircleStyleOptions>): PatternLockAttribute--><!--Device-PatternLockAttribute-activateCircleStyle(options: Optional<CircleStyleOptions>): PatternLockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ activeColor(value: ResourceColor)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PatternLockAttribute-activeColor(value: ResourceColor): PatternLockAttribute--><!--Device-PatternLockAttribute-activeColor(value: ResourceColor): PatternLockAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -65,6 +71,8 @@ autoReset(value: boolean)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PatternLockAttribute-autoReset(value: boolean): PatternLockAttribute--><!--Device-PatternLockAttribute-autoReset(value: boolean): PatternLockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,6 +98,8 @@ backgroundColor(value: ResourceColor)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PatternLockAttribute-backgroundColor(value: ResourceColor): PatternLockAttribute--><!--Device-PatternLockAttribute-backgroundColor(value: ResourceColor): PatternLockAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -109,6 +119,8 @@ circleRadius(value: Length)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PatternLockAttribute-circleRadius(value: Length): PatternLockAttribute--><!--Device-PatternLockAttribute-circleRadius(value: Length): PatternLockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +148,8 @@ onDotConnect(callback: import('../api/@ohos.base').Callback<number>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PatternLockAttribute-onDotConnect(callback: import('../api/@ohos.base').Callback<number>): PatternLockAttribute--><!--Device-PatternLockAttribute-onDotConnect(callback: import('../api/@ohos.base').Callback<number>): PatternLockAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -161,6 +175,8 @@ onPatternComplete(callback: (input: Array<number>) => void)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PatternLockAttribute-onPatternComplete(callback: (input: Array<number>) => void): PatternLockAttribute--><!--Device-PatternLockAttribute-onPatternComplete(callback: (input: Array<number>) => void): PatternLockAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -180,6 +196,8 @@ pathColor(value: ResourceColor)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PatternLockAttribute-pathColor(value: ResourceColor): PatternLockAttribute--><!--Device-PatternLockAttribute-pathColor(value: ResourceColor): PatternLockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -201,6 +219,8 @@ pathStrokeWidth(value: number | string)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PatternLockAttribute-pathStrokeWidth(value: number | string): PatternLockAttribute--><!--Device-PatternLockAttribute-pathStrokeWidth(value: number | string): PatternLockAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -221,6 +241,8 @@ regularColor(value: ResourceColor)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PatternLockAttribute-regularColor(value: ResourceColor): PatternLockAttribute--><!--Device-PatternLockAttribute-regularColor(value: ResourceColor): PatternLockAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -240,6 +262,8 @@ selectedColor(value: ResourceColor)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PatternLockAttribute-selectedColor(value: ResourceColor): PatternLockAttribute--><!--Device-PatternLockAttribute-selectedColor(value: ResourceColor): PatternLockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -265,6 +289,8 @@ sideLength(value: Length)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PatternLockAttribute-sideLength(value: Length): PatternLockAttribute--><!--Device-PatternLockAttribute-sideLength(value: Length): PatternLockAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -286,6 +312,8 @@ skipUnselectedPoint(skipped: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-PatternLockAttribute-skipUnselectedPoint(skipped: boolean): PatternLockAttribute--><!--Device-PatternLockAttribute-skipUnselectedPoint(skipped: boolean): PatternLockAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

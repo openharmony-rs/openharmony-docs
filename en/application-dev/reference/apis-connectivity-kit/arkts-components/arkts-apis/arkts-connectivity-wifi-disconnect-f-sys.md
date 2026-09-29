@@ -22,6 +22,8 @@ Disconnect Wi-Fi network.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifi-function disconnect(): boolean--><!--Device-wifi-function disconnect(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

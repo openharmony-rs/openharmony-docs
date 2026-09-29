@@ -4,7 +4,7 @@
 declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation
 ```
 
-Define the FontVariation type.
+Properties of a variable font.
 
 **Since:** 26.0.0
 
@@ -13,6 +13,8 @@ Define the FontVariation type.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.1.
+
+<!--Device-unnamed-declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation--><!--Device-unnamed-declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

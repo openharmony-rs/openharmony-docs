@@ -8,6 +8,8 @@ Provides APIs for PIN authentication.
 
 **Since:** 8
 
+<!--Device-osAccount-class PINAuth--><!--Device-osAccount-class PINAuth-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ constructor()
 Creates a PIN authentication instance.
 
 **Since:** 8
+
+<!--Device-PINAuth-constructor()--><!--Device-PINAuth-constructor()-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -55,6 +59,8 @@ Registers a PIN inputer.
 **Since:** 8
 
 **Required permissions:** ohos.permission.ACCESS_PIN_AUTH
+
+<!--Device-PINAuth-registerInputer(inputer: IInputer): void--><!--Device-PINAuth-registerInputer(inputer: IInputer): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -108,6 +114,8 @@ Unregisters this PIN inputer.
 **Since:** 8
 
 **Required permissions:** ohos.permission.ACCESS_PIN_AUTH
+
+<!--Device-PINAuth-unregisterInputer(): void--><!--Device-PINAuth-unregisterInputer(): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

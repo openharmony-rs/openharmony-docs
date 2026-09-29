@@ -8,6 +8,8 @@ export declare interface OnProgressChangeEvent
 
 **起始版本：** 12
 
+<!--Device-unnamed-export declare interface OnProgressChangeEvent--><!--Device-unnamed-export declare interface OnProgressChangeEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,5 +31,7 @@ newProgress: number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnProgressChangeEvent-newProgress: number--><!--Device-OnProgressChangeEvent-newProgress: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

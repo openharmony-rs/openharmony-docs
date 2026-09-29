@@ -18,6 +18,8 @@ To ensure consistent results when both **desiredRegion** and **desiredSize** are
 
 **Since:** 18
 
+<!--Device-image-enum CropAndScaleStrategy--><!--Device-image-enum CropAndScaleStrategy-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SCALE_FIRST
@@ -30,6 +32,8 @@ If both **desiredRegion** and **desiredSize** are specified, the image is first 
 
 **Since:** 18
 
+<!--Device-CropAndScaleStrategy-SCALE_FIRST = 1--><!--Device-CropAndScaleStrategy-SCALE_FIRST = 1-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## CROP_FIRST
@@ -41,5 +45,7 @@ CROP_FIRST = 2
 If both **desiredRegion** and **desiredSize** are specified, the image is first cropped based on **desiredRegion** and then scaled based on **desiredSize**.
 
 **Since:** 18
+
+<!--Device-CropAndScaleStrategy-CROP_FIRST = 2--><!--Device-CropAndScaleStrategy-CROP_FIRST = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

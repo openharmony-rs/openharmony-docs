@@ -10,6 +10,8 @@ Defines user face data.
 
 **Since:** 26.0.0
 
+<!--Device-userStatus-export interface UserFacesData extends UserStatusData--><!--Device-userStatus-export interface UserFacesData extends UserStatusData-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Angular velocity of user motion status, in rad/s.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserFacesData-angularVelocity?: double[]--><!--Device-UserFacesData-angularVelocity?: double[]-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Azimuth of user motion status. The value ranges from 0 to 360, in degrees.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserFacesData-azimuth?: double[]--><!--Device-UserFacesData-azimuth?: double[]-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -70,6 +76,8 @@ Number of faces detected. The value must be an integer within [0,3].
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserFacesData-faceNum?: int--><!--Device-UserFacesData-faceNum?: int-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -87,6 +95,8 @@ Gravity acceleration of user motion status, in m/s².
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserFacesData-gravityAcceleration?: double[]--><!--Device-UserFacesData-gravityAcceleration?: double[]-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -106,6 +116,8 @@ Linear acceleration of user motion status, in m/s².
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserFacesData-linearAcceleration?: double[][]--><!--Device-UserFacesData-linearAcceleration?: double[][]-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -123,6 +135,8 @@ User visual angle. The value ranges from 0 to 90, in degrees.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserFacesData-visualAngle?: double[]--><!--Device-UserFacesData-visualAngle?: double[]-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 

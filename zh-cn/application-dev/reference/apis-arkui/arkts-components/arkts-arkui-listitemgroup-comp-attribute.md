@@ -6,9 +6,11 @@ declare class ListItemGroupAttribute extends CommonMethod<ListItemGroupAttribute
 
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** ListItemGroupAttribute extends CommonMethod&lt;ListItemGroupAttribute&gt;
+**继承/实现关系：** ListItemGroupAttribute extends CommonMethod<ListItemGroupAttribute>
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare class ListItemGroupAttribute extends CommonMethod<ListItemGroupAttribute>--><!--Device-unnamed-declare class ListItemGroupAttribute extends CommonMethod<ListItemGroupAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +31,8 @@ childrenMainSize(value: ChildrenMainSize)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListItemGroupAttribute-childrenMainSize(value: ChildrenMainSize): ListItemGroupAttribute--><!--Device-ListItemGroupAttribute-childrenMainSize(value: ChildrenMainSize): ListItemGroupAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,6 +61,8 @@ ListItem设置多态样式时，被按压的子组件上下的分割线不绘制
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListItemGroupAttribute-divider(    value: ListDividerOptions | null,  ): ListItemGroupAttribute--><!--Device-ListItemGroupAttribute-divider(    value: ListDividerOptions | null,  ): ListItemGroupAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

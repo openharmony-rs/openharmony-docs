@@ -18,6 +18,8 @@ Enumerates display orientations.
 
 **Substitutes:** [DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md)
 
+<!--Device-bundle-export enum DisplayOrientation--><!--Device-bundle-export enum DisplayOrientation-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## UNSPECIFIED
@@ -33,6 +35,8 @@ Unspecified display orientation.
 **Deprecated since:** 9
 
 **Substitutes:** [UNSPECIFIED](arkts-ability-bundlemanager-displayorientation-e.md#unspecified)
+
+<!--Device-DisplayOrientation-UNSPECIFIED = 0--><!--Device-DisplayOrientation-UNSPECIFIED = 0-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -50,6 +54,8 @@ Landscape orientation.
 
 **Substitutes:** [LANDSCAPE](arkts-ability-bundlemanager-displayorientation-e.md#landscape)
 
+<!--Device-DisplayOrientation-LANDSCAPE = 1--><!--Device-DisplayOrientation-LANDSCAPE = 1-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## PORTRAIT
@@ -66,6 +72,8 @@ Portrait orientation.
 
 **Substitutes:** [PORTRAIT](arkts-ability-bundlemanager-displayorientation-e.md#portrait)
 
+<!--Device-DisplayOrientation-PORTRAIT = 2--><!--Device-DisplayOrientation-PORTRAIT = 2-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## FOLLOW_RECENT
@@ -81,5 +89,7 @@ Orientation same as that of the nearest ability in the stack.
 **Deprecated since:** 9
 
 **Substitutes:** [FOLLOW_RECENT](arkts-ability-bundlemanager-displayorientation-e.md#follow_recent)
+
+<!--Device-DisplayOrientation-FOLLOW_RECENT = 3--><!--Device-DisplayOrientation-FOLLOW_RECENT = 3-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

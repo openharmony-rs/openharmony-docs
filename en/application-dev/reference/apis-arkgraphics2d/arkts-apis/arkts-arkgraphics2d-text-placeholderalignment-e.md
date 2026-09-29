@@ -17,6 +17,8 @@ Enumerates the vertical alignment modes of a placeholder relative to the surroun
 
 **Since:** 12
 
+<!--Device-text-enum PlaceholderAlignment--><!--Device-text-enum PlaceholderAlignment-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## OFFSET_AT_BASELINE
@@ -29,7 +31,9 @@ Aligns the baseline of the placeholder to the baseline of the text.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-PlaceholderAlignment-OFFSET_AT_BASELINE = 0--><!--Device-PlaceholderAlignment-OFFSET_AT_BASELINE = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -43,7 +47,9 @@ Aligns the bottom edge of the placeholder to the baseline of the text.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-PlaceholderAlignment-ABOVE_BASELINE = 1--><!--Device-PlaceholderAlignment-ABOVE_BASELINE = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -57,7 +63,9 @@ Aligns the top edge of the placeholder to the baseline of the text.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-PlaceholderAlignment-BELOW_BASELINE = 2--><!--Device-PlaceholderAlignment-BELOW_BASELINE = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -71,7 +79,9 @@ Aligns the top edge of the placeholder to the top edge of the text.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-PlaceholderAlignment-TOP_OF_ROW_BOX = 3--><!--Device-PlaceholderAlignment-TOP_OF_ROW_BOX = 3-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -85,7 +95,9 @@ Aligns the bottom edge of the placeholder to the bottom edge of the text.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-PlaceholderAlignment-BOTTOM_OF_ROW_BOX = 4--><!--Device-PlaceholderAlignment-BOTTOM_OF_ROW_BOX = 4-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -99,7 +111,9 @@ Center-aligned.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-PlaceholderAlignment-CENTER_OF_ROW_BOX = 5--><!--Device-PlaceholderAlignment-CENTER_OF_ROW_BOX = 5-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -113,6 +127,8 @@ Aligns with the text baseline.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-PlaceholderAlignment-FOLLOW_PARAGRAPH = 6--><!--Device-PlaceholderAlignment-FOLLOW_PARAGRAPH = 6-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

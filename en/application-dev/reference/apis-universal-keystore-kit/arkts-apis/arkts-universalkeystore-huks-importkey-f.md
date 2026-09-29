@@ -20,6 +20,8 @@ Imports a key in plaintext. This API uses an asynchronous callback to return the
 
 **Substitutes:** [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-huks-function importKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function importKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 **Parameters:**
@@ -94,6 +96,8 @@ Imports a key in plaintext. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md#importkeyitem-1)(keyAlias: string, options: HuksOptions)
+
+<!--Device-huks-function importKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function importKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

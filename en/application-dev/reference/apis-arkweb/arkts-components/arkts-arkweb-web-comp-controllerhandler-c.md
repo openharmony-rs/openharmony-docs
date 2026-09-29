@@ -8,6 +8,8 @@ ControllerHandler is a helper class provided by ArkWeb for handling the allocati
 
 **Since:** 9
 
+<!--Device-unnamed-declare class ControllerHandler--><!--Device-unnamed-declare class ControllerHandler-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -22,6 +24,8 @@ Constructs a **ControllerHandler** API.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ControllerHandler-constructor()--><!--Device-ControllerHandler-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## setWebController
@@ -35,6 +39,8 @@ Sets the WebviewController object for the newly created Web component. If the ap
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ControllerHandler-setWebController(controller: WebviewController): void--><!--Device-ControllerHandler-setWebController(controller: WebviewController): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

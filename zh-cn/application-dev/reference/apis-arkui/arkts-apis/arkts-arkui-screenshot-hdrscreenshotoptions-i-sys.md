@@ -8,6 +8,8 @@ interface HdrScreenshotOptions
 
 **起始版本：** 20
 
+<!--Device-screenshot-interface HdrScreenshotOptions--><!--Device-screenshot-interface HdrScreenshotOptions-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -32,6 +34,8 @@ displayId?: number
 
 **起始版本：** 20
 
+<!--Device-HdrScreenshotOptions-displayId?: long--><!--Device-HdrScreenshotOptions-displayId?: long-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -52,6 +56,8 @@ displayIntent?: DisplayIntentType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-HdrScreenshotOptions-displayIntent?: DisplayIntentType--><!--Device-HdrScreenshotOptions-displayIntent?: DisplayIntentType-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -70,6 +76,8 @@ isCaptureFullOfScreen?: boolean
 
 **起始版本：** 20
 
+<!--Device-HdrScreenshotOptions-isCaptureFullOfScreen?: boolean--><!--Device-HdrScreenshotOptions-isCaptureFullOfScreen?: boolean-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -87,6 +95,8 @@ isNotificationNeeded?: boolean
 **默认值：** true
 
 **起始版本：** 20
+
+<!--Device-HdrScreenshotOptions-isNotificationNeeded?: boolean--><!--Device-HdrScreenshotOptions-isNotificationNeeded?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

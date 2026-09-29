@@ -19,6 +19,8 @@ Unsubscribes from the state changes in animation reduction mode. This API uses a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accessibility-function offAnimationReduceStateChange(callback?: Callback<boolean>): void--><!--Device-accessibility-function offAnimationReduceStateChange(callback?: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**

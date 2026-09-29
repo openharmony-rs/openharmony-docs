@@ -14,6 +14,8 @@ Provides the component size information.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface SizeResult--><!--Device-unnamed-declare interface SizeResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -32,6 +34,8 @@ Height after measurement. Unit: vp, Value range: [0, +∞).
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SizeResult-height: number--><!--Device-SizeResult-height: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -49,5 +53,7 @@ Width after measurement. Unit: vp, Value range: [0, +∞).
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SizeResult-width: number--><!--Device-SizeResult-width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

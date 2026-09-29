@@ -11,6 +11,8 @@ This module provides system management capabilities, including NTP time server s
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace systemManager--><!--Device-unnamed-declare namespace systemManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

@@ -8,6 +8,8 @@ Represents a **MediaInfo** object used as a parameter of the [CreateNativeMediaP
 
 **Since:** 12
 
+<!--Device-webview-interface MediaInfo--><!--Device-webview-interface MediaInfo-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Attributes in **&lt;video&gt;** or **&lt;audio&gt;**.
 
 **Since:** 12
 
+<!--Device-MediaInfo-attributes: Record<string, string>--><!--Device-MediaInfo-attributes: Record<string, string>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## controlList
@@ -43,6 +47,8 @@ Value of the **controlslist** attribute in **&lt;video&gt;** or **&lt;audio&gt;*
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MediaInfo-controlList: string[]--><!--Device-MediaInfo-controlList: string[]-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -62,6 +68,8 @@ The value **true** indicates that it has, and **false** indicates that it does n
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-MediaInfo-controlsShown: boolean--><!--Device-MediaInfo-controlsShown: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## embedID
@@ -76,6 +84,8 @@ ID of the `&lt;video&gt;` or `&lt;audio&gt;` element in the web page.
 
 **Since:** 12
 
+<!--Device-MediaInfo-embedID: string--><!--Device-MediaInfo-embedID: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## headers
@@ -89,6 +99,8 @@ HTTP headers that need to be included in the player's request for media resource
 **Type:** Record&lt;string, string&gt;
 
 **Since:** 12
+
+<!--Device-MediaInfo-headers: Record<string, string>--><!--Device-MediaInfo-headers: Record<string, string>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -106,6 +118,8 @@ Source of the media. There may be multiple sources. The application needs to sel
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-MediaInfo-mediaSrcList: MediaSourceInfo[]--><!--Device-MediaInfo-mediaSrcList: MediaSourceInfo[]-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## mediaType
@@ -121,6 +135,8 @@ Type of the media.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MediaInfo-mediaType: MediaType--><!--Device-MediaInfo-mediaType: MediaType-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -140,6 +156,8 @@ The value **true** indicates muted playback, and **false** indicates non-muted p
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-MediaInfo-muted: boolean--><!--Device-MediaInfo-muted: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## posterUrl
@@ -155,6 +173,8 @@ URL of a poster.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MediaInfo-posterUrl: string--><!--Device-MediaInfo-posterUrl: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -172,6 +192,8 @@ Whether preloading is required.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-MediaInfo-preload: Preload--><!--Device-MediaInfo-preload: Preload-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## surfaceInfo
@@ -187,5 +209,7 @@ Surface information used for same-layer rendering.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MediaInfo-surfaceInfo: NativeMediaPlayerSurfaceInfo--><!--Device-MediaInfo-surfaceInfo: NativeMediaPlayerSurfaceInfo-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

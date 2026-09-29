@@ -10,6 +10,8 @@ Declare type ToolBarV2ItemImage
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export declare class ToolBarV2ItemImage--><!--Device-unnamed-export declare class ToolBarV2ItemImage-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -31,6 +33,8 @@ The constructor used to create a ToolBarV2ItemImage object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ToolBarV2ItemImage-constructor(options: ToolBarV2ItemImageOptions)--><!--Device-ToolBarV2ItemImage-constructor(options: ToolBarV2ItemImageOptions)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ Icon fillColor when the item is activated.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ToolBarV2ItemImage-activatedColor?: ColorMetrics--><!--Device-ToolBarV2ItemImage-activatedColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -78,6 +84,8 @@ Define icon fillColor.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ToolBarV2ItemImage-color?: ColorMetrics--><!--Device-ToolBarV2ItemImage-color?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## src
@@ -97,5 +105,7 @@ Define icon resource.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ToolBarV2ItemImage-src: ResourceStr--><!--Device-ToolBarV2ItemImage-src: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -10,6 +10,8 @@ To reference this object, at least one parameter must be passed.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface LocalizedBorderRadiuses--><!--Device-unnamed-declare interface LocalizedBorderRadiuses-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottomEnd
@@ -31,6 +33,8 @@ For right-to-left scripts, this indicates the corner radius of the bottom-left c
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-LocalizedBorderRadiuses-bottomEnd?: LengthMetrics--><!--Device-LocalizedBorderRadiuses-bottomEnd?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ For right-to-left scripts, this indicates the corner radius of the bottom-right 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-LocalizedBorderRadiuses-bottomStart?: LengthMetrics--><!--Device-LocalizedBorderRadiuses-bottomStart?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## topEnd
@@ -76,6 +82,8 @@ For right-to-left scripts, this indicates the corner radius of the top-left corn
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-LocalizedBorderRadiuses-topEnd?: LengthMetrics--><!--Device-LocalizedBorderRadiuses-topEnd?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## topStart
@@ -97,5 +105,7 @@ For right-to-left scripts, this indicates the radius of the top-right corner of 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-LocalizedBorderRadiuses-topStart?: LengthMetrics--><!--Device-LocalizedBorderRadiuses-topStart?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

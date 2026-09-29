@@ -30,12 +30,6 @@ import { SubHeaderV2IconType, SubHeaderV2Title, SubHeaderV2Select, SubHeaderV2, 
 | [SubHeaderV2SelectOptions](arkts-arkui-arkui-advanced-subheaderv2-subheaderv2selectoptions-i.md) | Defines the options for initializing a **SubHeaderV2Select** object. |
 | [SubHeaderV2TitleOptions](arkts-arkui-arkui-advanced-subheaderv2-subheaderv2titleoptions-i.md) | Defines the options for initializing a **SubHeaderV2Title** object. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [SubHeaderV2OperationType](arkts-arkui-arkui-advanced-subheaderv2-subheaderv2operationtype-e.md) | Defines the style of elements in the operation area. |
-
 ### Types
 
 | Name | Description |
@@ -45,6 +39,12 @@ import { SubHeaderV2IconType, SubHeaderV2Title, SubHeaderV2Select, SubHeaderV2, 
 | [SubHeaderV2OperationItemType](arkts-arkui-subheaderv2operationitemtype-t.md) | [SubHeaderV2OperationItemType](arkts-arkui-subheaderv2operationitemtype-t.md) |
 | [SubHeaderV2SelectOnSelect](arkts-arkui-subheaderv2selectonselect-t.md) | Defines the callback invoked when an item in the drop-down list box is selected. |
 | [SubHeaderV2TitleBuilder](arkts-arkui-subheaderv2titlebuilder-t.md) | Defines the callback used to customize the content of the title area. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [SubHeaderV2OperationType](arkts-arkui-arkui-advanced-subheaderv2-subheaderv2operationtype-e.md) | Defines the style of elements in the operation area. |
 
 ## Examples
 

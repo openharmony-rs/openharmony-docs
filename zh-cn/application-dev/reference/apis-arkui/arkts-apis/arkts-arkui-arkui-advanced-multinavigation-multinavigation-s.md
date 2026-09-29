@@ -9,9 +9,9 @@ MultiNavigation是一个支持分栏导航的组件，提供多层页面栈管�
 > **说明：** 
 
 > 由于MultiNavigation存在多层次的页面栈结构（主页、详情页、全屏页各自维护子栈，并由MultiNavPathStack统一管理），
-> 调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如getParent、
-> setInterception
-> pushDestination等)，可能会发生无法预期的问题。
+> 调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如[getParent](ts-basic-components-navigation.md#getparent11)、
+> [setInterception](ts-basic-components-navigation.md#setinterception12)
+> [pushDestination](ts-basic-components-navigation.md#pushdestination11)等)，可能会发生无法预期的问题。
 
 > MultiNavigation在深层嵌套场景下，可能存在路由动效异常的问题。
 
@@ -24,6 +24,8 @@ MultiNavigation是一个支持分栏导航的组件，提供多层页面栈管�
 **起始版本：** 14
 
 **装饰器类型：** @Component
+
+<!--Device-unnamed-export declare struct MultiNavigation--><!--Device-unnamed-export declare struct MultiNavigation-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +51,8 @@ navDestination: NavDestinationBuildFunction
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-MultiNavigation-navDestination: NavDestinationBuildFunction--><!--Device-MultiNavigation-navDestination: NavDestinationBuildFunction-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onHomeShowOnTop
@@ -65,6 +69,8 @@ onHomeShowOnTop?: OnHomeShowOnTopCallback
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-MultiNavigation-onHomeShowOnTop?: OnHomeShowOnTopCallback--><!--Device-MultiNavigation-onHomeShowOnTop?: OnHomeShowOnTopCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onNavigationModeChange
@@ -80,6 +86,8 @@ onNavigationModeChange?: OnNavigationModeChangeCallback
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-MultiNavigation-onNavigationModeChange?: OnNavigationModeChangeCallback--><!--Device-MultiNavigation-onNavigationModeChange?: OnNavigationModeChangeCallback-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,5 +108,7 @@ multiStack: MultiNavPathStack
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-MultiNavigation-multiStack: MultiNavPathStack--><!--Device-MultiNavigation-multiStack: MultiNavPathStack-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

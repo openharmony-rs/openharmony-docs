@@ -4,22 +4,21 @@
 declare interface ParticleAnnulusRegion
 ```
 
-Configures the annular emitter area.
+Configures the annulus emitter area.
 
 > **NOTE:** 
 > 
-> - If the value of outerRadius or innerRadius is less than 0 or uses the percentage unit, the value is considered as
-> 0.
+> - If **outerRadius** or **innerRadius** is less than 0 or uses the percentage unit, the value 0 is used.
 > 
-> - If the value of outerRadius is less than that of innerRadius, the smaller value is used as the new inner radius and the larger value is used as the new outer radius.
+> - If **outerRadius** is less than **innerRadius** (that is, the outer circle radius is less than the inner circle radius), the smaller value is used as the new inner circle radius, and the larger value is used as the new outer circle radius.
 > 
-> - If the value of endAngle is less than that of startAngle, the smaller value is used as the new start angle and the larger value is used as the new end angle.
+> - If **endAngle** is less than **startAngle** (that is, the end angle is less than the start angle), the smaller value is used as the new start angle, and the larger value is used as the new end angle.
 > 
 > ![](../../../reference/apis-arkui/arkui-ts/figures/annulus.png)
 
-@interface ParticleAnnulusRegion
-
 **Since:** 20
+
+<!--Device-unnamed-declare interface ParticleAnnulusRegion--><!--Device-unnamed-declare interface ParticleAnnulusRegion-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,6 +40,8 @@ The coordinates of the center of the annulus
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ParticleAnnulusRegion-center?: PositionT<LengthMetrics>--><!--Device-ParticleAnnulusRegion-center?: PositionT<LengthMetrics>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## endAngle
@@ -61,6 +62,8 @@ The end angle of the annulus, in degree
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ParticleAnnulusRegion-endAngle?: number--><!--Device-ParticleAnnulusRegion-endAngle?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## innerRadius
@@ -79,6 +82,8 @@ The inner radius of the annulus
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ParticleAnnulusRegion-innerRadius: LengthMetrics--><!--Device-ParticleAnnulusRegion-innerRadius: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## outerRadius
@@ -96,6 +101,8 @@ The outer radius of the annulus
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ParticleAnnulusRegion-outerRadius: LengthMetrics--><!--Device-ParticleAnnulusRegion-outerRadius: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,5 +123,7 @@ The start angle of the annulus, in degree
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ParticleAnnulusRegion-startAngle?: number--><!--Device-ParticleAnnulusRegion-startAngle?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

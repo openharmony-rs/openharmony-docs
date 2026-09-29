@@ -14,6 +14,8 @@ Delivers an explicit animation immediately.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare function animateToImmediately(value: AnimateParam, event: () => void): void--><!--Device-unnamed-declare function animateToImmediately(value: AnimateParam, event: () => void): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -20,6 +20,8 @@ Obtains the trustlist or blocklist for incoming calls.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-telephonyManager-function getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array<string>--><!--Device-telephonyManager-function getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -83,6 +85,8 @@ Obtains the trustlist or blocklist for incoming calls.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-telephonyManager-function getIncomingCallPolicyNumbers(admin: Want | null, policy: adminManager.Policy): Array<string>--><!--Device-telephonyManager-function getIncomingCallPolicyNumbers(admin: Want | null, policy: adminManager.Policy): Array<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

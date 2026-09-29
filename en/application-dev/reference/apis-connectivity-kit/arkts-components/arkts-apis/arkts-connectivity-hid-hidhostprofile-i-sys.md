@@ -10,6 +10,8 @@ Manager hid host profile.
 
 **Since:** 10
 
+<!--Device-hid-interface HidHostProfile extends BaseProfile--><!--Device-hid-interface HidHostProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Initiate an HID connection to a remote device.
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-HidHostProfile-connect(deviceId: string): void--><!--Device-HidHostProfile-connect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -76,6 +80,8 @@ Disconnect the HID connection with the remote device.
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-HidHostProfile-disconnect(deviceId: string): void--><!--Device-HidHostProfile-disconnect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

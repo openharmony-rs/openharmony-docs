@@ -8,6 +8,8 @@ Defines the ImageBitmap.
 
 **Since:** 11
 
+<!--Device-unnamed-export declare class ImageBitmap--><!--Device-unnamed-export declare class ImageBitmap-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -26,6 +28,8 @@ The height of the Image Bitmap object.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ImageBitmap-readonly height: number--><!--Device-ImageBitmap-readonly height: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -43,5 +47,7 @@ The width of the Image Bitmap object.
 **Model restriction:** This API can be used only in the FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ImageBitmap-readonly width: number--><!--Device-ImageBitmap-readonly width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

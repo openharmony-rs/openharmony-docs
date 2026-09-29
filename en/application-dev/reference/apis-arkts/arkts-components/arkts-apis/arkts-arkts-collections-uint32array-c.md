@@ -15,6 +15,8 @@ A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-arkts-c
 
 **Decorator:** @Sendable
 
+<!--Device-collections-class Uint32Array--><!--Device-collections-class Uint32Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Returns an iterator that iterates over numbers.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-[Symbol.iterator](): IterableIterator<number>--><!--Device-Uint32Array-[Symbol.iterator](): IterableIterator<number>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -60,6 +64,8 @@ Returns the element at the given index. If no element is found, **undefined** is
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-at(index: number): number | undefined--><!--Device-Uint32Array-at(index: number): number | undefined-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -94,6 +100,8 @@ A constructor used to create an empty ArkTS Uint32Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-constructor()--><!--Device-Uint32Array-constructor()-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -115,6 +123,8 @@ A constructor used to create an ArkTS Uint32Array of a given length.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-constructor(length: number)--><!--Device-Uint32Array-constructor(length: number)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -144,6 +154,8 @@ A constructor that creates an ArkTS Uint32Array from an iterable object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-constructor(elements: Iterable<number>)--><!--Device-Uint32Array-constructor(elements: Iterable<number>)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -171,6 +183,8 @@ A constructor that creates an ArkTS Uint32Array from an array-like object or Ark
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-constructor(array: ArrayLike<number> | ArrayBuffer)--><!--Device-Uint32Array-constructor(array: ArrayLike<number> | ArrayBuffer)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -200,6 +214,8 @@ A constructor that creates an ArkTS Uint32Array from an ArrayBuffer.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)--><!--Device-Uint32Array-constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -227,6 +243,8 @@ Copies elements within a given range from this ArkTS Uint32Array to another posi
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-copyWithin(target: number, start: number, end?: number): Uint32Array--><!--Device-Uint32Array-copyWithin(target: number, start: number, end?: number): Uint32Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -263,6 +281,8 @@ Returns an iterator object that contains the key-value pair of each element in t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-entries(): IterableIterator<[number, number]>--><!--Device-Uint32Array-entries(): IterableIterator<[number, number]>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -289,6 +309,8 @@ Checks whether all elements in this ArkTS Uint32Array meet a given condition.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-every(predicate: TypedArrayPredicateFn<number, Uint32Array>): boolean--><!--Device-Uint32Array-every(predicate: TypedArrayPredicateFn<number, Uint32Array>): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -325,6 +347,8 @@ Fills all elements in a given range in this ArkTS Uint32Array with a value.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-fill(value: number, start?: number, end?: number): Uint32Array--><!--Device-Uint32Array-fill(value: number, start?: number, end?: number): Uint32Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -359,6 +383,8 @@ Returns a new ArkTS Uint32Array that contains all elements that meet the given c
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-filter(predicate: TypedArrayPredicateFn<number, Uint32Array>): Uint32Array--><!--Device-Uint32Array-filter(predicate: TypedArrayPredicateFn<number, Uint32Array>): Uint32Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -395,6 +421,8 @@ Returns the value of the first element that passes a test provided by a callback
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-find(predicate: TypedArrayPredicateFn<number, Uint32Array>): number | undefined--><!--Device-Uint32Array-find(predicate: TypedArrayPredicateFn<number, Uint32Array>): number | undefined-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Test API:** This API is used only in automated test scripts.
@@ -429,6 +457,8 @@ Returns the index of the first element that passes a test provided by a callback
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-findIndex(predicate: TypedArrayPredicateFn<number, Uint32Array>): number--><!--Device-Uint32Array-findIndex(predicate: TypedArrayPredicateFn<number, Uint32Array>): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -465,6 +495,8 @@ Calls a callback function for each element in this ArkTS Uint32Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-forEach(callbackFn: TypedArrayForEachCallback<number, Uint32Array>): void--><!--Device-Uint32Array-forEach(callbackFn: TypedArrayForEachCallback<number, Uint32Array>): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -491,6 +523,8 @@ Creates an ArkTS Uint32Array from an array-like or iterator object.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-static from(arrayLike: ArrayLike<number>): Uint32Array--><!--Device-Uint32Array-static from(arrayLike: ArrayLike<number>): Uint32Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -519,6 +553,8 @@ Creates an ArkTS Uint32Array from an array-like object.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): Uint32Array--><!--Device-Uint32Array-static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): Uint32Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -549,6 +585,8 @@ Creates an ArkTS Uint32Array from an iterator object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, number>): Uint32Array--><!--Device-Uint32Array-static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, number>): Uint32Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -575,6 +613,8 @@ Checks whether elements are contained in this ArkTS Uint32Array.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-includes(searchElement: number, fromIndex?: number): boolean--><!--Device-Uint32Array-includes(searchElement: number, fromIndex?: number): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -610,6 +650,8 @@ Returns the index of the first occurrence of a value in this ArkTS Uint32Array. 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-indexOf(searchElement: number, fromIndex?: number): number--><!--Device-Uint32Array-indexOf(searchElement: number, fromIndex?: number): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -644,6 +686,8 @@ Concatenates all elements in this ArkTS Uint32Array into a string, with a given 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-join(separator?: string): string--><!--Device-Uint32Array-join(separator?: string): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -677,6 +721,8 @@ Returns an iterator object that contains the key (index) of each element in this
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-keys(): IterableIterator<number>--><!--Device-Uint32Array-keys(): IterableIterator<number>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -703,6 +749,8 @@ Obtains the index of the last occurrence of the specified value in this ArkTS Ui
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Uint32Array-lastIndexOf(searchElement: number, fromIndex?: number): number--><!--Device-Uint32Array-lastIndexOf(searchElement: number, fromIndex?: number): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -738,6 +786,8 @@ Applies a callback function to each element in this ArkTS Uint32Array and uses t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-map(callbackFn: TypedArrayMapCallback<number, Uint32Array>): Uint32Array--><!--Device-Uint32Array-map(callbackFn: TypedArrayMapCallback<number, Uint32Array>): Uint32Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -771,6 +821,8 @@ Creates an ArkTS Uint32Array with a variable number of parameters.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Uint32Array-static of(...items: number[]): Uint32Array--><!--Device-Uint32Array-static of(...items: number[]): Uint32Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -796,6 +848,8 @@ Applies a reduce function on each element in this ArkTS Uint32Array and returns 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint32Array>): number--><!--Device-Uint32Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint32Array>): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -831,6 +885,8 @@ Applies a reduce function for each element in this ArkTS Uint32Array, receives a
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint32Array>, initialValue: number): number--><!--Device-Uint32Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint32Array>, initialValue: number): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -868,6 +924,8 @@ Applies a reduce function for each element in this ArkTS Uint32Array, receives a
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Uint32Array>, initialValue: U): U--><!--Device-Uint32Array-reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Uint32Array>, initialValue: U): U-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -901,6 +959,8 @@ Reversely traverses this ArkTS Uint32Array, applies a reduce function for each e
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Uint32Array-reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Uint32Array>, initialValue: U): U--><!--Device-Uint32Array-reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Uint32Array>, initialValue: U): U-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -938,6 +998,8 @@ Reversely traverses this ArkTS Uint32Array, applies a reduce function on each el
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Uint32Array-reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Uint32Array>): number--><!--Device-Uint32Array-reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Uint32Array>): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -971,6 +1033,8 @@ Reverses this ArkTS Uint32Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-reverse(): Uint32Array--><!--Device-Uint32Array-reverse(): Uint32Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -997,6 +1061,8 @@ Writes the elements in an array-like object to the given start position in seque
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-set(array: ArrayLike<number>, offset?: number): void--><!--Device-Uint32Array-set(array: ArrayLike<number>, offset?: number): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1025,6 +1091,8 @@ Selects a range of elements in this ArkTS Uint32Array to create an ArkTS Uint32A
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-slice(start?: number, end?: number): Uint32Array--><!--Device-Uint32Array-slice(start?: number, end?: number): Uint32Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1059,6 +1127,8 @@ Checks whether any element in this ArkTS Uint32Array meets a given condition.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-some(predicate: TypedArrayPredicateFn<number, Uint32Array>): boolean--><!--Device-Uint32Array-some(predicate: TypedArrayPredicateFn<number, Uint32Array>): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1095,6 +1165,8 @@ Sorts elements in this ArkTS Uint32Array and returns the sorted ArkTS Uint32Arra
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-sort(compareFn?: TypedArrayCompareFn<number>): Uint32Array--><!--Device-Uint32Array-sort(compareFn?: TypedArrayCompareFn<number>): Uint32Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -1127,6 +1199,8 @@ Truncates an array from a specified position and returns a new ArkTS Uint32Array
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-subarray(begin?: number, end?: number): Uint32Array--><!--Device-Uint32Array-subarray(begin?: number, end?: number): Uint32Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1162,6 +1236,8 @@ Generates a string of digits that matches the cultural conventions of the curren
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Uint32Array-toLocaleString(): string--><!--Device-Uint32Array-toLocaleString(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -1189,6 +1265,8 @@ Converts an ArkTS Uint32Array into a string.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Uint32Array-toString(): string--><!--Device-Uint32Array-toString(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -1215,6 +1293,8 @@ Returns an iterator object that contains the value of each element in this ArkTS
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-values(): IterableIterator<number>--><!--Device-Uint32Array-values(): IterableIterator<number>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1245,6 +1325,8 @@ Returns the item at that index.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-[index: number]: number--><!--Device-Uint32Array-[index: number]: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## buffer
@@ -1260,6 +1342,8 @@ Bottom-layer buffer used by an ArkTS Uint32Array.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-readonly buffer: ArrayBuffer--><!--Device-Uint32Array-readonly buffer: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1277,6 +1361,8 @@ Number of bytes occupied by an ArkTS Uint32Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-readonly byteLength: number--><!--Device-Uint32Array-readonly byteLength: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## byteOffset
@@ -1292,6 +1378,8 @@ Offset between the ArkTS Uint32Array and the start position of the ArrayBuffer.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-readonly byteOffset: number--><!--Device-Uint32Array-readonly byteOffset: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1309,6 +1397,8 @@ Number of bytes occupied by each element in the ArkTS Uint32Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint32Array-static readonly BYTES_PER_ELEMENT: number--><!--Device-Uint32Array-static readonly BYTES_PER_ELEMENT: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## length
@@ -1324,5 +1414,7 @@ Number of elements in an ArkTS Uint32Array.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint32Array-readonly length: number--><!--Device-Uint32Array-readonly length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

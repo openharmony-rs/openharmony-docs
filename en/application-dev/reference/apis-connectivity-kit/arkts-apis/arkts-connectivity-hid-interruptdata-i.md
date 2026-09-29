@@ -8,6 +8,8 @@ Describe the interrupt data is received from remote host.
 
 **Since:** 23
 
+<!--Device-hid-interface InterruptData--><!--Device-hid-interface InterruptData-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ data of interrupt data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InterruptData-data: Uint8Array--><!--Device-InterruptData-data: Uint8Array-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## id
@@ -45,5 +49,7 @@ id of interrupt data.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InterruptData-id: int--><!--Device-InterruptData-id: int-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

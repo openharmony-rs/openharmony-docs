@@ -20,6 +20,8 @@ Set the execution frequency.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-workScheduler-function setExecFrequency(info: FrequencyInfo): void--><!--Device-workScheduler-function setExecFrequency(info: FrequencyInfo): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **System API:** This is a system API.

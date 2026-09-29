@@ -4,6 +4,8 @@
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-unnamed-declare namespace privacyManager--><!--Device-unnamed-declare namespace privacyManager-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 ## Core Enum Types

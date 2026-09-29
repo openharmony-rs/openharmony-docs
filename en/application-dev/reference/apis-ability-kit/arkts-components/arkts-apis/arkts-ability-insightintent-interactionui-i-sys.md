@@ -8,6 +8,8 @@ Defines the base information of the interaction UI to be displayed after the cur
 
 **Since:** 26.0.1
 
+<!--Device-insightIntent-interface InteractionUI--><!--Device-insightIntent-interface InteractionUI-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Type of the interaction UI.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteractionUI-interactionUIType: string--><!--Device-InteractionUI-interactionUIType: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

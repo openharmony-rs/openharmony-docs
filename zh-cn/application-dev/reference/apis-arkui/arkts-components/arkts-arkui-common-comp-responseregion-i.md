@@ -18,6 +18,8 @@ declare interface ResponseRegion
 
 **起始版本：** 22
 
+<!--Device-unnamed-declare interface ResponseRegion--><!--Device-unnamed-declare interface ResponseRegion-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -39,6 +41,8 @@ height?: LengthMetrics | string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-ResponseRegion-height?: LengthMetrics | string--><!--Device-ResponseRegion-height?: LengthMetrics | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +66,8 @@ tool?: ResponseRegionSupportedTool
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-ResponseRegion-tool?: ResponseRegionSupportedTool--><!--Device-ResponseRegion-tool?: ResponseRegionSupportedTool-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -83,6 +89,8 @@ width?: LengthMetrics | string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-ResponseRegion-width?: LengthMetrics | string--><!--Device-ResponseRegion-width?: LengthMetrics | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +114,8 @@ x?: LengthMetrics
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-ResponseRegion-x?: LengthMetrics--><!--Device-ResponseRegion-x?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -127,5 +137,7 @@ y?: LengthMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-ResponseRegion-y?: LengthMetrics--><!--Device-ResponseRegion-y?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

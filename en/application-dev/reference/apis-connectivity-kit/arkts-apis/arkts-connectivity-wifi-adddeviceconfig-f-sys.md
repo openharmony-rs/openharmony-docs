@@ -24,6 +24,8 @@ Adds Wi-Fi connection configuration to the device.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG
 
+<!--Device-wifi-function addDeviceConfig(config: WifiDeviceConfig): Promise<number>--><!--Device-wifi-function addDeviceConfig(config: WifiDeviceConfig): Promise<number>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -93,6 +95,8 @@ Adds Wi-Fi connection configuration to the device.
 **Substitutes:** [addDeviceConfig](arkts-connectivity-wifimanager-adddeviceconfig-f.md)
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG
+
+<!--Device-wifi-function addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback<number>): void--><!--Device-wifi-function addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

@@ -8,6 +8,8 @@ Provides APIs for setting different **DataSharePredicates** objects. This type i
 
 **Since:** 10
 
+<!--Device-dataSharePredicates-class DataSharePredicates--><!--Device-dataSharePredicates-class DataSharePredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Currently, only RDB store supports this predicate.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataSharePredicates-beginsWith(field: string, value: string): DataSharePredicates--><!--Device-DataSharePredicates-beginsWith(field: string, value: string): DataSharePredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -68,6 +72,8 @@ Currently, only RDB store supports this predicate.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataSharePredicates-contains(field: string, value: string): DataSharePredicates--><!--Device-DataSharePredicates-contains(field: string, value: string): DataSharePredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **System API:** This is a system API.
@@ -106,6 +112,8 @@ Currently, only RDB store supports this predicate.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataSharePredicates-distinct(): DataSharePredicates--><!--Device-DataSharePredicates-distinct(): DataSharePredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **System API:** This is a system API.
@@ -136,6 +144,8 @@ Currently, only RDB store supports this predicate.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataSharePredicates-endsWith(field: string, value: string): DataSharePredicates--><!--Device-DataSharePredicates-endsWith(field: string, value: string): DataSharePredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -175,6 +185,8 @@ Currently, only RDB store supports this predicate.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataSharePredicates-glob(field: string, value: string): DataSharePredicates--><!--Device-DataSharePredicates-glob(field: string, value: string): DataSharePredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **System API:** This is a system API.
@@ -213,6 +225,8 @@ Currently, only RDB store supports this predicate.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataSharePredicates-groupBy(fields: Array<string>): DataSharePredicates--><!--Device-DataSharePredicates-groupBy(fields: Array<string>): DataSharePredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **System API:** This is a system API.
@@ -249,6 +263,8 @@ Currently, only RDB store supports this predicate.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataSharePredicates-indexedBy(field: string): DataSharePredicates--><!--Device-DataSharePredicates-indexedBy(field: string): DataSharePredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -287,6 +303,8 @@ Currently, only the KVDB supports this **DataSharePredicates** object.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataSharePredicates-inKeys(keys: Array<string>): DataSharePredicates--><!--Device-DataSharePredicates-inKeys(keys: Array<string>): DataSharePredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **System API:** This is a system API.
@@ -323,6 +341,8 @@ Currently, both the RDB store and KV store support this predicate.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataSharePredicates-isNotNull(field: string): DataSharePredicates--><!--Device-DataSharePredicates-isNotNull(field: string): DataSharePredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -361,6 +381,8 @@ Currently, both the RDB store and KV store support this predicate.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataSharePredicates-isNull(field: string): DataSharePredicates--><!--Device-DataSharePredicates-isNull(field: string): DataSharePredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **System API:** This is a system API.
@@ -398,6 +420,8 @@ Currently, only the KVDB supports this **DataSharePredicates** object.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataSharePredicates-prefixKey(prefix: string): DataSharePredicates--><!--Device-DataSharePredicates-prefixKey(prefix: string): DataSharePredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **System API:** This is a system API.
@@ -434,6 +458,8 @@ Currently, both the RDB store and KV store support this predicate.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataSharePredicates-unlike(field: string, value: string): DataSharePredicates--><!--Device-DataSharePredicates-unlike(field: string, value: string): DataSharePredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 

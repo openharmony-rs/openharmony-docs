@@ -18,6 +18,8 @@ Get the SIM card number of the specified card slot.
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+<!--Device-sim-function getShowNumber(slotId: int, callback: AsyncCallback<string>): void--><!--Device-sim-function getShowNumber(slotId: int, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Get the SIM card number of the specified card slot.
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
+
+<!--Device-sim-function getShowNumber(slotId: int): Promise<string>--><!--Device-sim-function getShowNumber(slotId: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

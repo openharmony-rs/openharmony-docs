@@ -8,6 +8,8 @@ Defines a contact's relationship.
 
 **Since:** 7
 
+<!--Device-contact-class Relation--><!--Device-contact-class Relation-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Custom relationship, the default value is **0**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Relation-static readonly CUSTOM_LABEL: 0--><!--Device-Relation-static readonly CUSTOM_LABEL: 0-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## INVALID_LABEL_ID
@@ -45,6 +49,8 @@ Invalid relationship, the default value is **-1**.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Relation-static readonly INVALID_LABEL_ID: -1--><!--Device-Relation-static readonly INVALID_LABEL_ID: -1-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -62,6 +68,8 @@ Relation type.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Relation-labelId?: number--><!--Device-Relation-labelId?: number-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## labelName
@@ -77,6 +85,8 @@ Name of the Relation type.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Relation-labelName?: string--><!--Device-Relation-labelName?: string-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -94,6 +104,8 @@ Assistant, the default value is **1**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Relation-static readonly RELATION_ASSISTANT: 1--><!--Device-Relation-static readonly RELATION_ASSISTANT: 1-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## RELATION_BROTHER
@@ -109,6 +121,8 @@ Brother, the default value is **2**.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Relation-static readonly RELATION_BROTHER: 2--><!--Device-Relation-static readonly RELATION_BROTHER: 2-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -126,6 +140,8 @@ Child, the default value is **3**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Relation-static readonly RELATION_CHILD: 3--><!--Device-Relation-static readonly RELATION_CHILD: 3-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## RELATION_DOMESTIC_PARTNER
@@ -141,6 +157,8 @@ Domestic partner, the default value is **4**.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Relation-static readonly RELATION_DOMESTIC_PARTNER: 4--><!--Device-Relation-static readonly RELATION_DOMESTIC_PARTNER: 4-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -158,6 +176,8 @@ Father, the default value is **5**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Relation-static readonly RELATION_FATHER: 5--><!--Device-Relation-static readonly RELATION_FATHER: 5-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## RELATION_FRIEND
@@ -173,6 +193,8 @@ Friend, the default value is **6**.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Relation-static readonly RELATION_FRIEND: 6--><!--Device-Relation-static readonly RELATION_FRIEND: 6-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -190,6 +212,8 @@ Manager, the default value is **7**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Relation-static readonly RELATION_MANAGER: 7--><!--Device-Relation-static readonly RELATION_MANAGER: 7-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## RELATION_MOTHER
@@ -205,6 +229,8 @@ Mother, the default value is **8**.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Relation-static readonly RELATION_MOTHER: 8--><!--Device-Relation-static readonly RELATION_MOTHER: 8-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -222,6 +248,8 @@ Parent, the default value is **9**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Relation-static readonly RELATION_PARENT: 9--><!--Device-Relation-static readonly RELATION_PARENT: 9-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## RELATION_PARTNER
@@ -237,6 +265,8 @@ Partner, the default value is **10**.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Relation-static readonly RELATION_PARTNER: 10--><!--Device-Relation-static readonly RELATION_PARTNER: 10-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -254,6 +284,8 @@ Referrer, the default value is **11**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Relation-static readonly RELATION_REFERRED_BY: 11--><!--Device-Relation-static readonly RELATION_REFERRED_BY: 11-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## RELATION_RELATIVE
@@ -269,6 +301,8 @@ Relative, the default value is **12**.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Relation-static readonly RELATION_RELATIVE: 12--><!--Device-Relation-static readonly RELATION_RELATIVE: 12-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -286,6 +320,8 @@ Sister, the default value is **13**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Relation-static readonly RELATION_SISTER: 13--><!--Device-Relation-static readonly RELATION_SISTER: 13-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## RELATION_SPOUSE
@@ -302,6 +338,8 @@ Spouse, the default value is **14**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Relation-static readonly RELATION_SPOUSE: 14--><!--Device-Relation-static readonly RELATION_SPOUSE: 14-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## relationName
@@ -317,5 +355,7 @@ Relationship name.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Relation-relationName: string--><!--Device-Relation-relationName: string-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData

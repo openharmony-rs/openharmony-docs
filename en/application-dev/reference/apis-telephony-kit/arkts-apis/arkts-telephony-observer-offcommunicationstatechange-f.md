@@ -20,6 +20,8 @@ Unsubscribes from the callback for listening to the 5A state.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-observer-function offCommunicationStateChange(callback: Callback<boolean>, options?: ObserverOptions): void--><!--Device-observer-function offCommunicationStateChange(callback: Callback<boolean>, options?: ObserverOptions): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**

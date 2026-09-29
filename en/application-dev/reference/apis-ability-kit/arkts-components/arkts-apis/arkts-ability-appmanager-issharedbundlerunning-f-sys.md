@@ -18,6 +18,8 @@ Checks whether the shared library is in use. This API uses a promise to return t
 
 **Required permissions:** ohos.permission.GET_RUNNING_INFO
 
+<!--Device-appManager-function isSharedBundleRunning(bundleName: string, versionCode: long): Promise<boolean>--><!--Device-appManager-function isSharedBundleRunning(bundleName: string, versionCode: long): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -74,6 +76,8 @@ Checks whether the shared library is in use. This API uses an asynchronous callb
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_RUNNING_INFO
+
+<!--Device-appManager-function isSharedBundleRunning(bundleName: string, versionCode: long, callback: AsyncCallback<boolean>): void--><!--Device-appManager-function isSharedBundleRunning(bundleName: string, versionCode: long, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -8,6 +8,8 @@ Defines the style of a barrier, which is used to define the ID, direction, and d
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface BarrierStyle--><!--Device-unnamed-declare interface BarrierStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -32,6 +34,8 @@ Invalid value: processed as the default value.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BarrierStyle-direction : BarrierDirection--><!--Device-BarrierStyle-direction : BarrierDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -50,6 +54,8 @@ ID of the barrier, used to identify the barrier. A child component can reference
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BarrierStyle-id : string--><!--Device-BarrierStyle-id : string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## referencedId
@@ -67,5 +73,7 @@ Components on which the barrier is generated. Put the IDs of the components that
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BarrierStyle-referencedId : Array<string>--><!--Device-BarrierStyle-referencedId : Array<string>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -16,6 +16,8 @@ Obtains a BundleInstaller object. This API is a synchronous API.
 
 **Since:** 10
 
+<!--Device-installer-function getBundleInstallerSync(): BundleInstaller--><!--Device-installer-function getBundleInstallerSync(): BundleInstaller-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

@@ -18,6 +18,8 @@ Specifies whether to enable the call waiting service. This API uses an asynchron
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function setCallWaiting(slotId: int, activate: boolean, callback: AsyncCallback<void>): void--><!--Device-call-function setCallWaiting(slotId: int, activate: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Specifies whether to enable the call waiting service. This API uses a promise to
 **Since:** 7
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function setCallWaiting(slotId: int, activate: boolean): Promise<void>--><!--Device-call-function setCallWaiting(slotId: int, activate: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

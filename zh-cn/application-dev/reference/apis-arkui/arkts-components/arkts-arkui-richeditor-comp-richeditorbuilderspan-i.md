@@ -12,6 +12,8 @@ declare interface RichEditorBuilderSpan
 
 **起始版本：** 26.2.0
 
+<!--Device-unnamed-declare interface RichEditorBuilderSpan--><!--Device-unnamed-declare interface RichEditorBuilderSpan-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilitySpanOptions
@@ -29,6 +31,8 @@ accessibilitySpanOptions?: AccessibilitySpanOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorBuilderSpan-accessibilitySpanOptions?: AccessibilitySpanOptions--><!--Device-RichEditorBuilderSpan-accessibilitySpanOptions?: AccessibilitySpanOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ builder: CustomBuilder
 
 **原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorBuilderSpan-builder: CustomBuilder--><!--Device-RichEditorBuilderSpan-builder: CustomBuilder-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onAttach
@@ -65,6 +71,8 @@ BuilderSpan挂载到**RichEditor**时触发的回调。回调接收一个[Builde
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorBuilderSpan-onAttach?: Callback<BuilderSpanInfo>--><!--Device-RichEditorBuilderSpan-onAttach?: Callback<BuilderSpanInfo>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,5 +96,7 @@ BuilderSpan从**RichEditor**中被移除时触发的回调。包括通过deleteS
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorBuilderSpan-onDetach?: Callback<BuilderSpanInfo>--><!--Device-RichEditorBuilderSpan-onDetach?: Callback<BuilderSpanInfo>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Provides methods that will be called back when the subscriber receives a new not
 
 **Since:** 9
 
+<!--Device-notificationSubscribe-export type SubscribeCallbackData = _SubscribeCallbackData--><!--Device-notificationSubscribe-export type SubscribeCallbackData = _SubscribeCallbackData-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

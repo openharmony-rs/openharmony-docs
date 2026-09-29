@@ -12,6 +12,8 @@ Provides APIs to create a **Query** object, which defines different data query c
 
 **Substitutes:** Query
 
+<!--Device-distributedData-class Query--><!--Device-distributedData-class Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Creates a **Query** object with the AND condition.
 **Deprecated since:** 9
 
 **Substitutes:** and
+
+<!--Device-Query-and(): Query--><!--Device-Query-and(): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -70,6 +74,8 @@ Creates a **Query** object for a query condition group with a left parenthesis.
 
 **Substitutes:** beginGroup
 
+<!--Device-Query-beginGroup(): Query--><!--Device-Query-beginGroup(): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -107,6 +113,8 @@ Defines a constructor used to create a **Query** instance.
 
 **Substitutes:** constructor
 
+<!--Device-Query-constructor()--><!--Device-Query-constructor()-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## deviceId
@@ -122,6 +130,8 @@ Creates a **Query** object with the device ID as the key prefix.
 **Deprecated since:** 9
 
 **Substitutes:** deviceId
+
+<!--Device-Query-deviceId(deviceId: string): Query--><!--Device-Query-deviceId(deviceId: string): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -163,6 +173,8 @@ Creates a **Query** object for a query condition group with a right parenthesis.
 
 **Substitutes:** endGroup
 
+<!--Device-Query-endGroup(): Query--><!--Device-Query-endGroup(): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -199,6 +211,8 @@ Creates a **Query** object to search for the records with the specified field th
 **Deprecated since:** 9
 
 **Substitutes:** equalTo
+
+<!--Device-Query-equalTo(field: string, value: number | string | boolean): Query--><!--Device-Query-equalTo(field: string, value: number | string | boolean): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -242,6 +256,8 @@ Obtains the query statement of the **Query** object.
 
 **Substitutes:** getSqlLike
 
+<!--Device-Query-getSqlLike(): string--><!--Device-Query-getSqlLike(): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -275,6 +291,8 @@ Creates a **Query** object to search for the records with the specified field th
 **Deprecated since:** 9
 
 **Substitutes:** greaterThan
+
+<!--Device-Query-greaterThan(field: string, value: number | string | boolean): Query--><!--Device-Query-greaterThan(field: string, value: number | string | boolean): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -318,6 +336,8 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Substitutes:** greaterThanOrEqualTo
 
+<!--Device-Query-greaterThanOrEqualTo(field: string, value: number | string): Query--><!--Device-Query-greaterThanOrEqualTo(field: string, value: number | string): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -359,6 +379,8 @@ Creates a **Query** object to search for the records with the specified field th
 **Deprecated since:** 9
 
 **Substitutes:** inNumber
+
+<!--Device-Query-inNumber(field: string, valueList: number[]): Query--><!--Device-Query-inNumber(field: string, valueList: number[]): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -402,6 +424,8 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Substitutes:** inString
 
+<!--Device-Query-inString(field: string, valueList: string[]): Query--><!--Device-Query-inString(field: string, valueList: string[]): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -444,6 +468,8 @@ Creates a **Query** object to search for the records whose value is not **null**
 
 **Substitutes:** isNotNull
 
+<!--Device-Query-isNotNull(field: string): Query--><!--Device-Query-isNotNull(field: string): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -485,6 +511,8 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Substitutes:** isNull
 
+<!--Device-Query-isNull(field: string): Query--><!--Device-Query-isNull(field: string): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -525,6 +553,8 @@ Creates a **Query** object to search for the records with the specified field th
 **Deprecated since:** 9
 
 **Substitutes:** lessThan
+
+<!--Device-Query-lessThan(field: string, value: number | string): Query--><!--Device-Query-lessThan(field: string, value: number | string): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -568,6 +598,8 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Substitutes:** lessThanOrEqualTo
 
+<!--Device-Query-lessThanOrEqualTo(field: string, value: number | string): Query--><!--Device-Query-lessThanOrEqualTo(field: string, value: number | string): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -610,6 +642,8 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Substitutes:** like
 
+<!--Device-Query-like(field: string, value: string): Query--><!--Device-Query-like(field: string, value: string): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -651,6 +685,8 @@ Creates a **Query** object to specify the number of records in the query result 
 **Deprecated since:** 9
 
 **Substitutes:** limit
+
+<!--Device-Query-limit(total: number, offset: number): Query--><!--Device-Query-limit(total: number, offset: number): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -697,6 +733,8 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Substitutes:** notEqualTo
 
+<!--Device-Query-notEqualTo(field: string, value: number | string | boolean): Query--><!--Device-Query-notEqualTo(field: string, value: number | string | boolean): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -738,6 +776,8 @@ Creates a **Query** object to search for the records with the specified field th
 **Deprecated since:** 9
 
 **Substitutes:** notInNumber
+
+<!--Device-Query-notInNumber(field: string, valueList: number[]): Query--><!--Device-Query-notInNumber(field: string, valueList: number[]): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -781,6 +821,8 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Substitutes:** notInString
 
+<!--Device-Query-notInString(field: string, valueList: string[]): Query--><!--Device-Query-notInString(field: string, valueList: string[]): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -823,6 +865,8 @@ Creates a **Query** object with the OR condition.
 
 **Substitutes:** or
 
+<!--Device-Query-or(): Query--><!--Device-Query-or(): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -859,6 +903,8 @@ Creates a **Query** object to sort the query results in ascending order.
 **Deprecated since:** 9
 
 **Substitutes:** orderByAsc
+
+<!--Device-Query-orderByAsc(field: string): Query--><!--Device-Query-orderByAsc(field: string): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -902,6 +948,8 @@ Creates a **Query** object to sort the query results in descending order.
 
 **Substitutes:** orderByDesc
 
+<!--Device-Query-orderByDesc(field: string): Query--><!--Device-Query-orderByDesc(field: string): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -943,6 +991,8 @@ Creates a **Query** object with a specified key prefix.
 **Deprecated since:** 9
 
 **Substitutes:** prefixKey
+
+<!--Device-Query-prefixKey(prefix: string): Query--><!--Device-Query-prefixKey(prefix: string): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -986,6 +1036,8 @@ Resets the **Query** object.
 
 **Substitutes:** reset
 
+<!--Device-Query-reset(): Query--><!--Device-Query-reset(): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -1022,6 +1074,8 @@ Creates a **Query** object with an index preferentially used for query.
 **Deprecated since:** 9
 
 **Substitutes:** setSuggestIndex
+
+<!--Device-Query-setSuggestIndex(index: string): Query--><!--Device-Query-setSuggestIndex(index: string): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1064,6 +1118,8 @@ Creates a **Query** object to search for the records with the specified field th
 **Deprecated since:** 9
 
 **Substitutes:** unlike
+
+<!--Device-Query-unlike(field: string, value: string): Query--><!--Device-Query-unlike(field: string, value: string): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 

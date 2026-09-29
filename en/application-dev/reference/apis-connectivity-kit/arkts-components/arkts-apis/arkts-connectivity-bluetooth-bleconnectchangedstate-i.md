@@ -12,6 +12,8 @@ Describes the Gatt profile connection state.
 
 **Substitutes:** [BLEConnectChangedState](arkts-connectivity-bluetoothmanager-bleconnectchangedstate-i.md)
 
+<!--Device-bluetooth-interface BLEConnectChangedState--><!--Device-bluetooth-interface BLEConnectChangedState-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Indicates the peer device address
 
 **Substitutes:** [deviceId](arkts-connectivity-bluetoothmanager-bleconnectchangedstate-i.md#deviceid)
 
+<!--Device-BLEConnectChangedState-deviceId: string--><!--Device-BLEConnectChangedState-deviceId: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## state
@@ -53,5 +57,7 @@ Connection state of the Gatt profile
 **Deprecated since:** 9
 
 **Substitutes:** [state](arkts-connectivity-bluetoothmanager-bleconnectchangedstate-i.md#state)
+
+<!--Device-BLEConnectChangedState-state: ProfileConnectionState--><!--Device-BLEConnectChangedState-state: ProfileConnectionState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

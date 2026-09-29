@@ -4,9 +4,11 @@
 declare enum InputEventSubTypeMask
 ```
 
-Defines the input event subtype mask for monitoring.
+Enumerates input event subtype masks, used to identify different input event subtypes.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-declare enum InputEventSubTypeMask--><!--Device-unnamed-declare enum InputEventSubTypeMask-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ Defines the input event subtype mask for monitoring.
 LEFT_MOUSE_DOWN = 1 << 0
 ```
 
-Mouse left button down.
+Left mouse button pressed.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-LEFT_MOUSE_DOWN = 1 << 0--><!--Device-InputEventSubTypeMask-LEFT_MOUSE_DOWN = 1 << 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,13 +36,15 @@ Mouse left button down.
 LEFT_MOUSE_UP = 1 << 1
 ```
 
-Mouse left button up.
+Left mouse button released.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-LEFT_MOUSE_UP = 1 << 1--><!--Device-InputEventSubTypeMask-LEFT_MOUSE_UP = 1 << 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +54,15 @@ Mouse left button up.
 RIGHT_MOUSE_DOWN = 1 << 2
 ```
 
-Mouse right button down.
+Right mouse button pressed.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-RIGHT_MOUSE_DOWN = 1 << 2--><!--Device-InputEventSubTypeMask-RIGHT_MOUSE_DOWN = 1 << 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,13 +72,15 @@ Mouse right button down.
 RIGHT_MOUSE_UP = 1 << 3
 ```
 
-Mouse right button up.
+Right mouse button released.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-RIGHT_MOUSE_UP = 1 << 3--><!--Device-InputEventSubTypeMask-RIGHT_MOUSE_UP = 1 << 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,13 +90,15 @@ Mouse right button up.
 MIDDLE_MOUSE_DOWN = 1 << 4
 ```
 
-Mouse middle button down.
+Middle mouse button pressed.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-MIDDLE_MOUSE_DOWN = 1 << 4--><!--Device-InputEventSubTypeMask-MIDDLE_MOUSE_DOWN = 1 << 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,13 +108,15 @@ Mouse middle button down.
 MIDDLE_MOUSE_UP = 1 << 5
 ```
 
-Mouse middle button up.
+Middle mouse button released.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-MIDDLE_MOUSE_UP = 1 << 5--><!--Device-InputEventSubTypeMask-MIDDLE_MOUSE_UP = 1 << 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,13 +126,15 @@ Mouse middle button up.
 LEFT_MOUSE_DRAGGING = 1 << 6
 ```
 
-Mouse left button dragging.
+Left mouse button pressed and dragged.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-LEFT_MOUSE_DRAGGING = 1 << 6--><!--Device-InputEventSubTypeMask-LEFT_MOUSE_DRAGGING = 1 << 6-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,13 +144,15 @@ Mouse left button dragging.
 RIGHT_MOUSE_DRAGGING = 1 << 7
 ```
 
-Mouse right button dragging.
+Right mouse button pressed and dragged.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-RIGHT_MOUSE_DRAGGING = 1 << 7--><!--Device-InputEventSubTypeMask-RIGHT_MOUSE_DRAGGING = 1 << 7-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,13 +162,15 @@ Mouse right button dragging.
 MIDDLE_MOUSE_DRAGGING = 1 << 8
 ```
 
-Mouse middle button dragging.
+Middle mouse button pressed and dragged.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-MIDDLE_MOUSE_DRAGGING = 1 << 8--><!--Device-InputEventSubTypeMask-MIDDLE_MOUSE_DRAGGING = 1 << 8-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,13 +180,15 @@ Mouse middle button dragging.
 TOUCH_DOWN = 1 << 9
 ```
 
-Touch down.
+Touch press.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-TOUCH_DOWN = 1 << 9--><!--Device-InputEventSubTypeMask-TOUCH_DOWN = 1 << 9-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,13 +198,15 @@ Touch down.
 TOUCH_UP = 1 << 10
 ```
 
-Touch up.
+Touch release.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-TOUCH_UP = 1 << 10--><!--Device-InputEventSubTypeMask-TOUCH_UP = 1 << 10-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,13 +216,15 @@ Touch up.
 KEY_DOWN = 1 << 11
 ```
 
-Physical keyboard key down.
+Physical key pressed.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-KEY_DOWN = 1 << 11--><!--Device-InputEventSubTypeMask-KEY_DOWN = 1 << 11-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -208,12 +234,14 @@ Physical keyboard key down.
 KEY_UP = 1 << 12
 ```
 
-Physical keyboard key up.
+Physical key released.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-InputEventSubTypeMask-KEY_UP = 1 << 12--><!--Device-InputEventSubTypeMask-KEY_UP = 1 << 12-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

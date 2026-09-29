@@ -24,6 +24,8 @@ Installs a user certificate. This API uses a callback to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function installUserCertificate(admin: Want, certificate: CertBlob, callback: AsyncCallback<string>): void--><!--Device-deviceSettings-function installUserCertificate(admin: Want, certificate: CertBlob, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -99,6 +101,8 @@ Installs a user certificate. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-deviceSettings-function installUserCertificate(admin: Want, certificate: CertBlob): Promise<string>--><!--Device-deviceSettings-function installUserCertificate(admin: Want, certificate: CertBlob): Promise<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -4,6 +4,8 @@ The **runningLock** module provides APIs for creating, querying, holding, and re
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace runningLock--><!--Device-unnamed-declare namespace runningLock-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 ## Modules to Import

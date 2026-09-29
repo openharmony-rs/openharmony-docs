@@ -10,6 +10,8 @@ Describes the text embedding functions of the multi-modal embedding model. Chine
 
 **Since:** 15
 
+<!--Device-intelligence-interface TextEmbedding--><!--Device-intelligence-interface TextEmbedding-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ getEmbedding(text: string): Promise<Array<number>>
 Obtains the embedding vector of the given text. The model can process up to 512 characters of text per inference, supporting both Chinese and English.
 
 **Since:** 15
+
+<!--Device-TextEmbedding-getEmbedding(text: string): Promise<Array<double>>--><!--Device-TextEmbedding-getEmbedding(text: string): Promise<Array<double>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -83,6 +87,8 @@ Obtains the embedding vector of a given batch of text. The model can process up 
 
 **Since:** 15
 
+<!--Device-TextEmbedding-getEmbedding(batchTexts: Array<string>): Promise<Array<Array<double>>>--><!--Device-TextEmbedding-getEmbedding(batchTexts: Array<string>): Promise<Array<Array<double>>>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **Parameters:**
@@ -136,6 +142,8 @@ Loads this text embedding model. If the loading fails, an error code is returned
 
 **Since:** 15
 
+<!--Device-TextEmbedding-loadModel(): Promise<void>--><!--Device-TextEmbedding-loadModel(): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **Return value:**
@@ -175,6 +183,8 @@ releaseModel(): Promise<void>
 Releases this text embedding model. If the releasing fails, an error code is returned.
 
 **Since:** 15
+
+<!--Device-TextEmbedding-releaseModel(): Promise<void>--><!--Device-TextEmbedding-releaseModel(): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 

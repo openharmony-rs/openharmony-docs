@@ -8,6 +8,8 @@ Callback triggered to notify the user of PIN authentication.
 
 **Since:** 22
 
+<!--Device-unnamed-type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void--><!--Device-unnamed-type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

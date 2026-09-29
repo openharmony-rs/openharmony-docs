@@ -25,6 +25,8 @@ Obtains the information about the input device with the specified ID. This API u
 
 **Substitutes:** getDeviceInfo
 
+<!--Device-inputDevice-function getDevice(deviceId: number, callback: AsyncCallback<InputDeviceData>): void--><!--Device-inputDevice-function getDevice(deviceId: number, callback: AsyncCallback<InputDeviceData>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 **Parameters:**
@@ -82,6 +84,8 @@ Obtains the information about the input device with the specified ID. This API u
 **Deprecated since:** 9
 
 **Substitutes:** getDeviceInfo
+
+<!--Device-inputDevice-function getDevice(deviceId: number): Promise<InputDeviceData>--><!--Device-inputDevice-function getDevice(deviceId: number): Promise<InputDeviceData>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 

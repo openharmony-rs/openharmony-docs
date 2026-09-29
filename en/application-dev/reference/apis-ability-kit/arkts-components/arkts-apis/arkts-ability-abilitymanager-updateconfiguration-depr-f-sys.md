@@ -21,6 +21,8 @@ Updates the configuration. This API uses an asynchronous callback to return the 
 
 **Required permissions:** ohos.permission.UPDATE_CONFIGURATION
 
+<!--Device-abilityManager-function updateConfiguration(config: Configuration, callback: AsyncCallback<void>): void--><!--Device-abilityManager-function updateConfiguration(config: Configuration, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -50,6 +52,8 @@ Updates the configuration. This API uses a promise to return the result.
 **Substitutes:** [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-f-sys.md)
 
 **Required permissions:** ohos.permission.UPDATE_CONFIGURATION
+
+<!--Device-abilityManager-function updateConfiguration(config: Configuration): Promise<void>--><!--Device-abilityManager-function updateConfiguration(config: Configuration): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

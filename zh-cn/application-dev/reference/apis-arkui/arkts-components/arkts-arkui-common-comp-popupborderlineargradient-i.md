@@ -10,6 +10,8 @@ declare interface PopupBorderLinearGradient
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare interface PopupBorderLinearGradient--><!--Device-unnamed-declare interface PopupBorderLinearGradient-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## colors
@@ -38,6 +40,8 @@ colors参数的约束：
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupBorderLinearGradient-colors: Array<[ResourceColor, number]>--><!--Device-PopupBorderLinearGradient-colors: Array<[ResourceColor, number]>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -61,5 +65,7 @@ direction?: GradientDirection
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupBorderLinearGradient-direction?: GradientDirection--><!--Device-PopupBorderLinearGradient-direction?: GradientDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

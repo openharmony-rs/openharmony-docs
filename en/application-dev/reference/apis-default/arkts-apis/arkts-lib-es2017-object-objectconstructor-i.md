@@ -17,6 +17,8 @@ entries<T>(o: { [s: string]: T } | ArrayLike<T>): [string, T][]
 
 Returns an array of key/values of the enumerable properties of an object
 
+<!--Device-ObjectConstructor-entries<T>(o: { [s: string]: T } | ArrayLike<T>): [string, T][]--><!--Device-ObjectConstructor-entries<T>(o: { [s: string]: T } | ArrayLike<T>): [string, T][]-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -33,6 +35,8 @@ entries(o: {}): [string, any][]
 
 Returns an array of key/values of the enumerable properties of an object
 
+<!--Device-ObjectConstructor-entries(o: {}): [string, any][]--><!--Device-ObjectConstructor-entries(o: {}): [string, any][]-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -47,6 +51,8 @@ getOwnPropertyDescriptors<T>(o: T): {[P in keyof T]: TypedPropertyDescriptor<T[P
 
 Returns an object containing all own property descriptors of an object
 
+<!--Device-ObjectConstructor-getOwnPropertyDescriptors<T>(o: T): {[P in keyof T]: TypedPropertyDescriptor<T[P]>} & { [x: string]: PropertyDescriptor }--><!--Device-ObjectConstructor-getOwnPropertyDescriptors<T>(o: T): {[P in keyof T]: TypedPropertyDescriptor<T[P]>} & { [x: string]: PropertyDescriptor }-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -60,6 +66,8 @@ values<T>(o: { [s: string]: T } | ArrayLike<T>): T[]
 ```
 
 Returns an array of values of the enumerable properties of an object
+
+<!--Device-ObjectConstructor-values<T>(o: { [s: string]: T } | ArrayLike<T>): T[]--><!--Device-ObjectConstructor-values<T>(o: { [s: string]: T } | ArrayLike<T>): T[]-End-->
 
 **Parameters:**
 
@@ -76,6 +84,8 @@ values(o: {}): any[]
 ```
 
 Returns an array of values of the enumerable properties of an object
+
+<!--Device-ObjectConstructor-values(o: {}): any[]--><!--Device-ObjectConstructor-values(o: {}): any[]-End-->
 
 **Parameters:**
 

@@ -8,6 +8,8 @@ Describes a collection of target [Wants](../../../quick-start/module-configurati
 
 **Since:** 20
 
+<!--Device-unnamed-export interface ShortcutWant--><!--Device-unnamed-export interface ShortcutWant-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
 ## action
@@ -23,6 +25,8 @@ Action to take when starting the shortcut, consistent with the **action** field 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ShortcutWant-action?: string--><!--Device-ShortcutWant-action?: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -42,6 +46,8 @@ How the shortcut Want object will be handled. The value is of the enumeration ty
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ShortcutWant-flags?: int--><!--Device-ShortcutWant-flags?: int-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **System API:** This is a system API.
@@ -59,6 +65,8 @@ URI to be matched when starting the shortcut, consistent with the **uri** field 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ShortcutWant-uri?: string--><!--Device-ShortcutWant-uri?: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 

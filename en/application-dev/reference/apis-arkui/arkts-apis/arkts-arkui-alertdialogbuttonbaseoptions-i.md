@@ -14,6 +14,8 @@ Defines the button style of the alert dialog box.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface AlertDialogButtonBaseOptions--><!--Device-unnamed-declare interface AlertDialogButtonBaseOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -29,6 +31,8 @@ Callback upon button clicking.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlertDialogButtonBaseOptions-action: VoidCallback--><!--Device-AlertDialogButtonBaseOptions-action: VoidCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +51,8 @@ Background color of the button.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlertDialogButtonBaseOptions-backgroundColor?: ResourceColor--><!--Device-AlertDialogButtonBaseOptions-backgroundColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,6 +73,8 @@ Whether the button is the default focus. Default value: **false**. **true**: The
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlertDialogButtonBaseOptions-defaultFocus?: boolean--><!--Device-AlertDialogButtonBaseOptions-defaultFocus?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +100,8 @@ Default value: **true**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AlertDialogButtonBaseOptions-enabled?: boolean--><!--Device-AlertDialogButtonBaseOptions-enabled?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -109,6 +119,8 @@ Font color of the button.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlertDialogButtonBaseOptions-fontColor?: ResourceColor--><!--Device-AlertDialogButtonBaseOptions-fontColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,6 +144,8 @@ Default value: **DialogButtonStyle.DEFAULT**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AlertDialogButtonBaseOptions-style?: DialogButtonStyle--><!--Device-AlertDialogButtonBaseOptions-style?: DialogButtonStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -149,5 +163,7 @@ Text of the button. If the value is null, the button is not displayed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlertDialogButtonBaseOptions-value: ResourceStr--><!--Device-AlertDialogButtonBaseOptions-value: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

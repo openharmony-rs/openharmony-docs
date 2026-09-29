@@ -8,6 +8,8 @@ interface ActionMenuSuccessResponse
 
 **起始版本：** 9
 
+<!--Device-promptAction-interface ActionMenuSuccessResponse--><!--Device-promptAction-interface ActionMenuSuccessResponse-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,5 +33,7 @@ index: number
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ActionMenuSuccessResponse-index: number--><!--Device-ActionMenuSuccessResponse-index: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

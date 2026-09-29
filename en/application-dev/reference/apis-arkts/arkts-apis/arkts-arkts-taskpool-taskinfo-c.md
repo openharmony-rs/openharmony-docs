@@ -8,6 +8,8 @@ Describes the internal information about a task.
 
 **Since:** 10
 
+<!--Device-taskpool-class TaskInfo--><!--Device-taskpool-class TaskInfo-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Duration that the task has been executed, in ms. The default value is **0**. If 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TaskInfo-duration?: number--><!--Device-TaskInfo-duration?: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## name
@@ -45,6 +49,8 @@ Task name. You are advised not to change the value.<br> This API can be used in 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TaskInfo-name: string--><!--Device-TaskInfo-name: string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -64,6 +70,8 @@ Task state. You are advised not to change the value.<br> This API can be used in
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TaskInfo-state: State--><!--Device-TaskInfo-state: State-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## taskId
@@ -81,5 +89,7 @@ Task ID, which is globally unique by default. You are advised not to change the 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TaskInfo-taskId: number--><!--Device-TaskInfo-taskId: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

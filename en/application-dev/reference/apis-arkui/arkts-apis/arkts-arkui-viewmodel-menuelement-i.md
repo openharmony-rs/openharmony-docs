@@ -12,6 +12,8 @@ The &lt;menu&gt; component provides menus as temporary pop-up windows to display
 
 **Since:** 4
 
+<!--Device-unnamed-export interface MenuElement extends Element--><!--Device-unnamed-export interface MenuElement extends Element-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## show
@@ -25,6 +27,8 @@ Displays the menu. x and y specify the position of the displayed menu. x indicat
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-MenuElement-show(position: { x: number; y: number }): void--><!--Device-MenuElement-show(position: { x: number; y: number }): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

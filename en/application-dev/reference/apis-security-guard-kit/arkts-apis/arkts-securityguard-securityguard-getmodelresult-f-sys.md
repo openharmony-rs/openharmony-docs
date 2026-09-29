@@ -18,6 +18,8 @@ Request security model result from security guard.
 
 **Required permissions:** ohos.permission.QUERY_SECURITY_MODEL_RESULT
 
+<!--Device-securityGuard-function getModelResult(rule: ModelRule): Promise<ModelResult>--><!--Device-securityGuard-function getModelResult(rule: ModelRule): Promise<ModelResult>-End-->
+
 **System capability:** SystemCapability.Security.SecurityGuard
 
 **System API:** This is a system API.

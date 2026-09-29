@@ -18,6 +18,8 @@ Obtains the active network interface. This API uses an asynchronous callback to 
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-ethernet-function getAllActiveIfaces(callback: AsyncCallback<Array<string>>): void--><!--Device-ethernet-function getAllActiveIfaces(callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Obtains the active network interface. This API uses a promise to return the resu
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-ethernet-function getAllActiveIfaces(): Promise<Array<string>>--><!--Device-ethernet-function getAllActiveIfaces(): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 

@@ -20,6 +20,8 @@ Unregister the form host service info.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function unregisterFormHostService(serviceId: string): Promise<void>--><!--Device-formHost-function unregisterFormHostService(serviceId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

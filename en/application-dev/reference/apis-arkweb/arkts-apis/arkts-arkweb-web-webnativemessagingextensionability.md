@@ -1,4 +1,4 @@
-# @ohos.web.WebNativeMessagingExtensionAbility
+# @ohos.web.WebNativeMessagingExtensionAbility(Web Native Messaging Extension Ability)
 
 WebNativeMessagingExtensionAbility is a base class for web native message communication extension provided by ArkWeb,
  inherited from ExtensionAbility. It allows web pages to establish a secure, bidirectional pipe communication channel

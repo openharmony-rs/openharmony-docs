@@ -8,6 +8,8 @@ Declaration of the tab item.
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare class TabTitleBarTabItem--><!--Device-unnamed-export declare class TabTitleBarTabItem-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ icon?: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabTitleBarTabItem-icon?: ResourceStr--><!--Device-TabTitleBarTabItem-icon?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolStyle
@@ -50,6 +54,8 @@ Symbol图标资源，优先级大于icon。当需要使用Symbol图标作为页�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabTitleBarTabItem-symbolStyle?: SymbolGlyphModifier--><!--Device-TabTitleBarTabItem-symbolStyle?: SymbolGlyphModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -67,5 +73,7 @@ title: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabTitleBarTabItem-title: ResourceStr--><!--Device-TabTitleBarTabItem-title: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

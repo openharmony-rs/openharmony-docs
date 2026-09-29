@@ -10,6 +10,8 @@ Display custom content on the far right of the **ChipGroupV2** component. It sup
 
 **Decorator:** @ComponentV2
 
+<!--Device-unnamed-export declare struct ChipGroupV2IconGroupSuffix--><!--Device-unnamed-export declare struct ChipGroupV2IconGroupSuffix-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Constructs a **ChipGroupV2IconGroupSuffix** component.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2IconGroupSuffix-build(): void--><!--Device-ChipGroupV2IconGroupSuffix-build(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconBackgroundSystemMaterial
@@ -51,6 +55,8 @@ Default value: **undefined**, meaning no material style is applied.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2IconGroupSuffix-iconBackgroundSystemMaterial?: uiMaterial.Material--><!--Device-ChipGroupV2IconGroupSuffix-iconBackgroundSystemMaterial?: uiMaterial.Material-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,5 +79,7 @@ When **SymbolGlyphModifier** is passed, using **symbolEffect** to modify the ani
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2IconGroupSuffix-items: Array<ChipGroupV2IconItemConfig | SymbolGlyphModifier | ChipGroupV2SymbolItemConfig>--><!--Device-ChipGroupV2IconGroupSuffix-items: Array<ChipGroupV2IconItemConfig | SymbolGlyphModifier | ChipGroupV2SymbolItemConfig>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

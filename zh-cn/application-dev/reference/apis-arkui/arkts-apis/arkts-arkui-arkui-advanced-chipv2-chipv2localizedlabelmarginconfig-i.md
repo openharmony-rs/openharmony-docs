@@ -8,6 +8,8 @@ ChipV2LocalizedLabelMarginConfig用于定义本地化文本与左右侧图标之
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface ChipV2LocalizedLabelMarginConfig--><!--Device-unnamed-export interface ChipV2LocalizedLabelMarginConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -50,6 +52,8 @@ size为ChipV2Size.NORMAL时，end默认值：
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipV2LocalizedLabelMarginConfig-end?: LengthMetrics--><!--Device-ChipV2LocalizedLabelMarginConfig-end?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -85,5 +89,7 @@ size为ChipV2Size.NORMAL时，start默认值：
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2LocalizedLabelMarginConfig-start?: LengthMetrics--><!--Device-ChipV2LocalizedLabelMarginConfig-start?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

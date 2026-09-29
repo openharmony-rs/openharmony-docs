@@ -20,6 +20,8 @@ Provides a permission grant for application-shared directories
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-fileShare-function grantSharedDirectoryPermission(): Promise<void>--><!--Device-fileShare-function grantSharedDirectoryPermission(): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **System API:** This is a system API.

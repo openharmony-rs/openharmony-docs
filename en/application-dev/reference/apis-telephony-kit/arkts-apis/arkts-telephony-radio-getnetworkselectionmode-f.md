@@ -16,6 +16,8 @@ Obtains the network selection mode of the SIM card in the specified slot. This A
 
 **Since:** 6
 
+<!--Device-radio-function getNetworkSelectionMode(slotId: int, callback: AsyncCallback<NetworkSelectionMode>): void--><!--Device-radio-function getNetworkSelectionMode(slotId: int, callback: AsyncCallback<NetworkSelectionMode>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -62,6 +64,8 @@ function getNetworkSelectionMode(slotId: number): Promise<NetworkSelectionMode>
 Obtains the network selection mode of the SIM card in the specified slot. This API uses a promise to return the result.
 
 **Since:** 6
+
+<!--Device-radio-function getNetworkSelectionMode(slotId: int): Promise<NetworkSelectionMode>--><!--Device-radio-function getNetworkSelectionMode(slotId: int): Promise<NetworkSelectionMode>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

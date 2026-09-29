@@ -20,6 +20,8 @@ Unregisters a remote authentication callback. This API is used to unregister a r
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-userAuth-function unregisterRemoteAuthCallback(): void--><!--Device-userAuth-function unregisterRemoteAuthCallback(): void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.

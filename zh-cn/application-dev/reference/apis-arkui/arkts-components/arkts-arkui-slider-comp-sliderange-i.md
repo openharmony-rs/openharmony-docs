@@ -20,6 +20,8 @@ declare interface SlideRange
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface SlideRange--><!--Device-unnamed-declare interface SlideRange-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## from
@@ -38,6 +40,8 @@ from?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SlideRange-from?: number--><!--Device-SlideRange-from?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## to
@@ -55,5 +59,7 @@ to?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SlideRange-to?: number--><!--Device-SlideRange-to?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

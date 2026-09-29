@@ -12,6 +12,8 @@ A sphere geometry type that inherits from GeometryDefinition.
 
 **Since:** 18
 
+<!--Device-unnamed-export declare class SphereGeometry extends GeometryDefinition--><!--Device-unnamed-export declare class SphereGeometry extends GeometryDefinition-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## radius
@@ -26,6 +28,8 @@ Radius of the sphere, measured in the world coordinate system's units (for examp
 
 **Since:** 18
 
+<!--Device-SphereGeometry-get radius(): double--><!--Device-SphereGeometry-get radius(): double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ```TypeScript
@@ -37,6 +41,8 @@ Radius of the sphere, measured in the world coordinate system's units (for examp
 **Type:** number
 
 **Since:** 18
+
+<!--Device-SphereGeometry-set radius(value: double)--><!--Device-SphereGeometry-set radius(value: double)-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -52,6 +58,8 @@ Number of segments divided by longitude and latitude on the sphere. The value ra
 
 **Since:** 18
 
+<!--Device-SphereGeometry-get segmentCount(): int--><!--Device-SphereGeometry-get segmentCount(): int-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ```TypeScript
@@ -63,5 +71,7 @@ Number of segments divided by longitude and latitude on the sphere. The value ra
 **Type:** number
 
 **Since:** 18
+
+<!--Device-SphereGeometry-set segmentCount(value: int)--><!--Device-SphereGeometry-set segmentCount(value: int)-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

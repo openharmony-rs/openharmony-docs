@@ -8,6 +8,8 @@ Implements file uploads. Before using any APIs of this class, you must obtain an
 
 **Since:** 6
 
+<!--Device-request-interface UploadTask--><!--Device-request-interface UploadTask-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Deletes the upload task. This API uses an asynchronous callback to return the re
 **Since:** 9
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-UploadTask-delete(callback: AsyncCallback<boolean>): void--><!--Device-UploadTask-delete(callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 
@@ -78,6 +82,8 @@ Deletes the upload task. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-UploadTask-delete(): Promise<boolean>--><!--Device-UploadTask-delete(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 **Return value:**
@@ -111,6 +117,8 @@ off(type: 'progress', callback?: (uploadedSize: number, totalSize: number) => vo
 Unsubscribes from upload progress events.
 
 **Since:** 6
+
+<!--Device-UploadTask-off(type: 'progress', callback?: (uploadedSize: long, totalSize: long) => void): void--><!--Device-UploadTask-off(type: 'progress', callback?: (uploadedSize: long, totalSize: long) => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 
@@ -154,6 +162,8 @@ Unsubscribes from HTTP response events for the upload task.
 
 **Since:** 7
 
+<!--Device-UploadTask-off(type: 'headerReceive', callback?: (header: object) => void): void--><!--Device-UploadTask-off(type: 'headerReceive', callback?: (header: object) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 **Parameters:**
@@ -195,6 +205,8 @@ off(type: 'complete' | 'fail', callback?: Callback<Array<TaskState>>): void
 Unsubscribes from upload completion or failure events.
 
 **Since:** 9
+
+<!--Device-UploadTask-off(type: 'complete' | 'fail', callback?: Callback<Array<TaskState>>): void--><!--Device-UploadTask-off(type: 'complete' | 'fail', callback?: Callback<Array<TaskState>>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 
@@ -268,6 +280,8 @@ Subscribes to upload progress events. This API uses an asynchronous callback to 
 
 **Since:** 6
 
+<!--Device-UploadTask-on(type: 'progress', callback: (uploadedSize: long, totalSize: long) => void): void--><!--Device-UploadTask-on(type: 'progress', callback: (uploadedSize: long, totalSize: long) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 **Parameters:**
@@ -302,6 +316,8 @@ Subscribes to HTTP response events for the upload task.This API uses an asynchro
 
 **Since:** 7
 
+<!--Device-UploadTask-on(type: 'headerReceive', callback: (header: object) => void): void--><!--Device-UploadTask-on(type: 'headerReceive', callback: (header: object) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 **Parameters:**
@@ -335,6 +351,8 @@ on(type: 'complete' | 'fail', callback: Callback<Array<TaskState>>): void
 Subscribes to upload completion or failure events. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-UploadTask-on(type: 'complete' | 'fail', callback: Callback<Array<TaskState>>): void--><!--Device-UploadTask-on(type: 'complete' | 'fail', callback: Callback<Array<TaskState>>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 
@@ -385,6 +403,8 @@ Deletes the upload task. This API uses an asynchronous callback to return the re
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-UploadTask-remove(callback: AsyncCallback<boolean>): void--><!--Device-UploadTask-remove(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 **Parameters:**
@@ -430,6 +450,8 @@ Deletes the upload task. This API uses a promise to return the result.
 **Substitutes:** [delete](#delete)()
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-UploadTask-remove(): Promise<boolean>--><!--Device-UploadTask-remove(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 

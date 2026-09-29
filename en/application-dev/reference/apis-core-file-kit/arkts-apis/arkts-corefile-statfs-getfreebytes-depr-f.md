@@ -19,6 +19,8 @@ Obtains the free size of the specified file system, in bytes. This API uses an a
 
 **Substitutes:** getFreeBytes
 
+<!--Device-Statfs-function getFreeBytes(path: string, callback: AsyncCallback<number>): void--><!--Device-Statfs-function getFreeBytes(path: string, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -60,6 +62,8 @@ Obtains the free size of the specified file system, in bytes. This API uses a pr
 **Deprecated since:** 9
 
 **Substitutes:** getFreeBytes
+
+<!--Device-Statfs-function getFreeBytes(path: string): Promise<number>--><!--Device-Statfs-function getFreeBytes(path: string): Promise<number>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

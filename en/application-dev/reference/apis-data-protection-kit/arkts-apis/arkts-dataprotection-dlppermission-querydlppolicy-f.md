@@ -24,6 +24,8 @@ This API obtains the policy information of a DLP file for analysis in scenarios 
 
 **Required permissions:** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
+<!--Device-dlpPermission-function queryDlpPolicy(dlpFd: number): Promise<string>--><!--Device-dlpPermission-function queryDlpPolicy(dlpFd: number): Promise<string>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**

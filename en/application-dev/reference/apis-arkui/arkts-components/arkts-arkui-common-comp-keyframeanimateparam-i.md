@@ -8,6 +8,8 @@ Provides animation configuration options.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface KeyframeAnimateParam--><!--Device-unnamed-declare interface KeyframeAnimateParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onFinish
@@ -23,6 +25,8 @@ Callback invoked when the animation playback is complete. This API is called aft
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-KeyframeAnimateParam-onFinish?: () => void--><!--Device-KeyframeAnimateParam-onFinish?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ A value less than 0 means to begin the animation in advance. If the absolute val
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-KeyframeAnimateParam-delay?: number--><!--Device-KeyframeAnimateParam-delay?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## expectedFrameRateRange
@@ -77,6 +83,8 @@ After a valid expected frame rate is set, the system collects the configured fra
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-KeyframeAnimateParam-expectedFrameRateRange?: ExpectedFrameRateRange--><!--Device-KeyframeAnimateParam-expectedFrameRateRange?: ExpectedFrameRateRange-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -105,5 +113,7 @@ Value range: [–1, +∞).
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-KeyframeAnimateParam-iterations?: number--><!--Device-KeyframeAnimateParam-iterations?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

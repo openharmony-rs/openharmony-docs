@@ -18,6 +18,8 @@ Listens for global touchscreen input events. This API uses an asynchronous callb
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function on(type: 'touch', receiver: TouchEventReceiver): void--><!--Device-inputMonitor-function on(type: 'touch', receiver: TouchEventReceiver): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -78,6 +80,8 @@ Enables listening for global mouse events. This API uses an asynchronous callbac
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function on(type: 'mouse', receiver: Callback<MouseEvent>): void--><!--Device-inputMonitor-function on(type: 'mouse', receiver: Callback<MouseEvent>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -137,6 +141,8 @@ Enables listening for mouse events. When the mouse pointer moves to the specifie
 **Since:** 11
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
+
+<!--Device-inputMonitor-function on(type: 'mouse', rect: display.Rect[], receiver: Callback<MouseEvent>): void--><!--Device-inputMonitor-function on(type: 'mouse', rect: display.Rect[], receiver: Callback<MouseEvent>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -223,6 +229,8 @@ Enables listening for global touchpad pinch events. This API uses an asynchronou
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function on(type: 'pinch', receiver: Callback<Pinch>): void--><!--Device-inputMonitor-function on(type: 'pinch', receiver: Callback<Pinch>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -282,6 +290,8 @@ Enables listening for global touchpad pinch events. This API uses an asynchronou
 **Since:** 11
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
+
+<!--Device-inputMonitor-function on(type: 'pinch', fingers: number, receiver: Callback<Pinch>): void--><!--Device-inputMonitor-function on(type: 'pinch', fingers: number, receiver: Callback<Pinch>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -344,6 +354,8 @@ Enables listening for rotation events of the touchpad. This API uses an asynchro
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function on(type: 'rotate', fingers: number, receiver: Callback<Rotate>): void--><!--Device-inputMonitor-function on(type: 'rotate', fingers: number, receiver: Callback<Rotate>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -405,6 +417,8 @@ Enables listening for three-finger swipe events. This API uses an asynchronous c
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function on(type: 'threeFingersSwipe', receiver: Callback<ThreeFingersSwipe>): void--><!--Device-inputMonitor-function on(type: 'threeFingersSwipe', receiver: Callback<ThreeFingersSwipe>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -464,6 +478,8 @@ Enables listening for four-finger swipe events. This API uses an asynchronous ca
 **Since:** 10
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
+
+<!--Device-inputMonitor-function on(type: 'fourFingersSwipe', receiver: Callback<FourFingersSwipe>): void--><!--Device-inputMonitor-function on(type: 'fourFingersSwipe', receiver: Callback<FourFingersSwipe>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -525,6 +541,8 @@ Enables listening for three-finger tap events. This API uses an asynchronous cal
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function on(type: 'threeFingersTap', receiver: Callback<ThreeFingersTap>): void--><!--Device-inputMonitor-function on(type: 'threeFingersTap', receiver: Callback<ThreeFingersTap>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -584,6 +602,8 @@ Enables listening for fingerprint gesture input events. This API uses an asynchr
 **Since:** 12
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
+
+<!--Device-inputMonitor-function on(type: 'fingerprint', receiver: Callback<FingerprintEvent>): void--><!--Device-inputMonitor-function on(type: 'fingerprint', receiver: Callback<FingerprintEvent>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -645,6 +665,8 @@ Listens for inward swipe events. This API uses an asynchronous callback to retur
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function on(type: 'swipeInward', receiver: Callback<SwipeInward>): void--><!--Device-inputMonitor-function on(type: 'swipeInward', receiver: Callback<SwipeInward>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -704,6 +726,8 @@ Enables listening for touchscreen swipe events. This API uses an asynchronous ca
 **Since:** 18
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
+
+<!--Device-inputMonitor-function on(type: 'touchscreenSwipe', fingers: number, receiver: Callback<TouchGestureEvent>): void--><!--Device-inputMonitor-function on(type: 'touchscreenSwipe', fingers: number, receiver: Callback<TouchGestureEvent>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -766,6 +790,8 @@ Enables listening for touchscreen pinch events. This API uses an asynchronous ca
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function on(type: 'touchscreenPinch', fingers: number, receiver: Callback<TouchGestureEvent>): void--><!--Device-inputMonitor-function on(type: 'touchscreenPinch', fingers: number, receiver: Callback<TouchGestureEvent>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -826,6 +852,8 @@ Listens for the press and release events of the specified key, which can be the 
 **Since:** 15
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
+
+<!--Device-inputMonitor-function on(type: 'keyPressed', keys: Array<KeyCode>, receiver: Callback<KeyEvent>): void--><!--Device-inputMonitor-function on(type: 'keyPressed', keys: Array<KeyCode>, receiver: Callback<KeyEvent>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 

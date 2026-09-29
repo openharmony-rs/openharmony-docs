@@ -22,6 +22,8 @@ Queries state data of the current bundle within a specified period.
 
 **Deprecated since:** 9
 
+<!--Device-bundleState-function queryCurrentBundleActiveStates(    begin: number,    end: number,    callback: AsyncCallback<Array<BundleActiveState>>  ): void--><!--Device-bundleState-function queryCurrentBundleActiveStates(    begin: number,    end: number,    callback: AsyncCallback<Array<BundleActiveState>>  ): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **Parameters:**
@@ -65,6 +67,8 @@ Queries state data of the current bundle within a specified period.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-bundleState-function queryCurrentBundleActiveStates(begin: number, end: number): Promise<Array<BundleActiveState>>--><!--Device-bundleState-function queryCurrentBundleActiveStates(begin: number, end: number): Promise<Array<BundleActiveState>>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 

@@ -18,6 +18,8 @@ Registers a callback to obtain the quick start result when an application is lau
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-continueManager-function on(type: 'prepareContinue', context: Context, callback: AsyncCallback<ContinueResultInfo>): void--><!--Device-continueManager-function on(type: 'prepareContinue', context: Context, callback: AsyncCallback<ContinueResultInfo>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **Parameters:**

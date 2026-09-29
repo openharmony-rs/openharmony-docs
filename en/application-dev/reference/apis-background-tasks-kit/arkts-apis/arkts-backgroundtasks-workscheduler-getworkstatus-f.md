@@ -18,6 +18,8 @@ Obtains the information a deferred task. This API uses an asynchronous callback 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-workScheduler-function getWorkStatus(workId: int, callback: AsyncCallback<WorkInfo>): void--><!--Device-workScheduler-function getWorkStatus(workId: int, callback: AsyncCallback<WorkInfo>): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **Parameters:**
@@ -66,6 +68,8 @@ Obtains the information a deferred task. This API uses a promise to return the r
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-workScheduler-function getWorkStatus(workId: int): Promise<WorkInfo>--><!--Device-workScheduler-function getWorkStatus(workId: int): Promise<WorkInfo>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 

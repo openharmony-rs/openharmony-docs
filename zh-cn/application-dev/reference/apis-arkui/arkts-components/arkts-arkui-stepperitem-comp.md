@@ -21,7 +21,7 @@ StepperItem()
 > **说明：** 
 
 > 从API version 8开始支持，从API version 22开始废弃，建议使用
-> Swiper替代。
+> [Swiper](arkts-arkui-swiper-comp.md)替代。
 
 **起始版本：** 8
 
@@ -30,6 +30,8 @@ StepperItem()
 **替代接口：** [SwiperAttribute](arkts-arkui-swiper-comp-attribute.md)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-StepperItemInterface-(): StepperItemAttribute--><!--Device-StepperItemInterface-(): StepperItemAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -12,6 +12,8 @@ Provides page information, which includes:
 
 **Since:** 23
 
+<!--Device-onScreen-export interface AwarenessItem--><!--Device-onScreen-export interface AwarenessItem-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API:** This is a system API.
@@ -35,6 +37,8 @@ Entity information of the awareness result, including the content, links, screen
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AwarenessItem-itemInfo: Record<string, Object>--><!--Device-AwarenessItem-itemInfo: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 

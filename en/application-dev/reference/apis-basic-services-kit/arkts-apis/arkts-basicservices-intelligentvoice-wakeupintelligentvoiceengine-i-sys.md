@@ -8,6 +8,8 @@ Implements wakeup intelligent voice engine. @typedef WakeupIntelligentVoiceEngin
 
 **Since:** 10
 
+<!--Device-intelligentVoice-interface WakeupIntelligentVoiceEngine--><!--Device-intelligentVoice-interface WakeupIntelligentVoiceEngine-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Obtains the value of an intelligent voice parameter. This method uses an asynchr
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupIntelligentVoiceEngine-getParameter(key: string, callback: AsyncCallback<string>): void--><!--Device-WakeupIntelligentVoiceEngine-getParameter(key: string, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -80,6 +84,8 @@ Obtains the value of an intelligent voice parameter. This method uses a promise 
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupIntelligentVoiceEngine-getParameter(key: string): Promise<string>--><!--Device-WakeupIntelligentVoiceEngine-getParameter(key: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -133,6 +139,8 @@ Gets pulse-code modulation audio. This method uses a promise to return the resul
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-WakeupIntelligentVoiceEngine-getPcm(): Promise<ArrayBuffer>--><!--Device-WakeupIntelligentVoiceEngine-getPcm(): Promise<ArrayBuffer>-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -178,6 +186,8 @@ Obtains the supported regions, This method uses an asynchronous callback to retu
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupIntelligentVoiceEngine-getSupportedRegions(callback: AsyncCallback<Array<string>>): void--><!--Device-WakeupIntelligentVoiceEngine-getSupportedRegions(callback: AsyncCallback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -227,6 +237,8 @@ Obtains the supported regions, This method uses a promise to return the query re
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-WakeupIntelligentVoiceEngine-getSupportedRegions(): Promise<Array<string>>--><!--Device-WakeupIntelligentVoiceEngine-getSupportedRegions(): Promise<Array<string>>-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -271,6 +283,8 @@ Unsubscribes wakeup intelligent voice events.
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-WakeupIntelligentVoiceEngine-off(type: 'wakeupIntelligentVoiceEvent', callback?: Callback<WakeupIntelligentVoiceEngineCallbackInfo>): void--><!--Device-WakeupIntelligentVoiceEngine-off(type: 'wakeupIntelligentVoiceEvent', callback?: Callback<WakeupIntelligentVoiceEngineCallbackInfo>): void-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -308,6 +322,8 @@ Subscribes wakeup intelligent voice events. When wakeup intelligent voice events
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupIntelligentVoiceEngine-on(type: 'wakeupIntelligentVoiceEvent', callback: Callback<WakeupIntelligentVoiceEngineCallbackInfo>): void--><!--Device-WakeupIntelligentVoiceEngine-on(type: 'wakeupIntelligentVoiceEvent', callback: Callback<WakeupIntelligentVoiceEngineCallbackInfo>): void-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -350,6 +366,8 @@ Reads the buffer from wakeup engine. This method uses a promise to return the re
 **Since:** 12
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupIntelligentVoiceEngine-read(): Promise<ArrayBuffer>--><!--Device-WakeupIntelligentVoiceEngine-read(): Promise<ArrayBuffer>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -398,6 +416,8 @@ Releases the engine, This method uses an asynchronous callback to return the res
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-WakeupIntelligentVoiceEngine-release(callback: AsyncCallback<void>): void--><!--Device-WakeupIntelligentVoiceEngine-release(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -445,6 +465,8 @@ Releases the engine, This method uses a promise to return the result.
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-WakeupIntelligentVoiceEngine-release(): Promise<void>--><!--Device-WakeupIntelligentVoiceEngine-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -487,6 +509,8 @@ Sets an intelligent voice parameter. This method uses an asynchronous callback t
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupIntelligentVoiceEngine-setParameter(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-WakeupIntelligentVoiceEngine-setParameter(key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -538,6 +562,8 @@ Sets an intelligent voice parameter. This method uses a promise to return the re
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupIntelligentVoiceEngine-setParameter(key: string, value: string): Promise<void>--><!--Device-WakeupIntelligentVoiceEngine-setParameter(key: string, value: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -591,6 +617,8 @@ Sets sensibility, This method uses an asynchronous callback to return the result
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-WakeupIntelligentVoiceEngine-setSensibility(sensibility: SensibilityType, callback: AsyncCallback<void>): void--><!--Device-WakeupIntelligentVoiceEngine-setSensibility(sensibility: SensibilityType, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -640,6 +668,8 @@ Sets sensibility, This method uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupIntelligentVoiceEngine-setSensibility(sensibility: SensibilityType): Promise<void>--><!--Device-WakeupIntelligentVoiceEngine-setSensibility(sensibility: SensibilityType): Promise<void>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -691,6 +721,8 @@ Sets wakeup hap information, This method uses an asynchronous callback to return
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupIntelligentVoiceEngine-setWakeupHapInfo(info: WakeupHapInfo, callback: AsyncCallback<void>): void--><!--Device-WakeupIntelligentVoiceEngine-setWakeupHapInfo(info: WakeupHapInfo, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -747,6 +779,8 @@ Sets wakeup hap information, This method uses a promise to return the result.
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-WakeupIntelligentVoiceEngine-setWakeupHapInfo(info: WakeupHapInfo): Promise<void>--><!--Device-WakeupIntelligentVoiceEngine-setWakeupHapInfo(info: WakeupHapInfo): Promise<void>-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -802,6 +836,8 @@ Starts the capturer. This method uses a promise to return the result.
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE and ohos.permission.MICROPHONE
 
+<!--Device-WakeupIntelligentVoiceEngine-startCapturer(channels: int): Promise<void>--><!--Device-WakeupIntelligentVoiceEngine-startCapturer(channels: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -854,6 +890,8 @@ Stops the capturer. This method uses a promise to return the result.
 **Since:** 12
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupIntelligentVoiceEngine-stopCapturer(): Promise<void>--><!--Device-WakeupIntelligentVoiceEngine-stopCapturer(): Promise<void>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 

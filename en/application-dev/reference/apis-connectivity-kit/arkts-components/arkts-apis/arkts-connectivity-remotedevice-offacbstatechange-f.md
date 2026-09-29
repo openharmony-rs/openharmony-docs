@@ -18,6 +18,8 @@ Unsubscribes from the logical link connection status change event. This API uses
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-remoteDevice-function offAcbStateChange(callback?: Callback<AcbStateParam>): void--><!--Device-remoteDevice-function offAcbStateChange(callback?: Callback<AcbStateParam>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

@@ -8,6 +8,8 @@ Provides methods for accessing NDEF tag.
 
 **Since:** 9
 
+<!--Device-tag-namespace ndef--><!--Device-tag-namespace ndef-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## Modules to Import

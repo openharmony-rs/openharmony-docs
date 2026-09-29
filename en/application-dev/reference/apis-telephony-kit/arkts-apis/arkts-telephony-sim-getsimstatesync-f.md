@@ -16,6 +16,8 @@ Obtains the state of the SIM card in the specified slot.
 
 **Since:** 10
 
+<!--Device-sim-function getSimStateSync(slotId: int): SimState--><!--Device-sim-function getSimStateSync(slotId: int): SimState-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**

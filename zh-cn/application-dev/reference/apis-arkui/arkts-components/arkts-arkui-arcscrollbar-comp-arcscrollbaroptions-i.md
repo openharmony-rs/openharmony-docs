@@ -12,6 +12,8 @@ ArcScrollBar的构造函数参数。
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface ArcScrollBarOptions--><!--Device-unnamed-declare interface ArcScrollBarOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -34,6 +36,8 @@ scroller: Scroller
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcScrollBarOptions-scroller: Scroller--><!--Device-ArcScrollBarOptions-scroller: Scroller-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## state
@@ -49,5 +53,7 @@ state?: BarState
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcScrollBarOptions-state?: BarState--><!--Device-ArcScrollBarOptions-state?: BarState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

@@ -18,6 +18,8 @@ The segmented button component is used to create tab-type, single-selection, or 
 
 **Decorator:** @ComponentV2
 
+<!--Device-unnamed-export declare struct TabSegmentButtonV2--><!--Device-unnamed-export declare struct TabSegmentButtonV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -44,6 +46,8 @@ Default value: **undefined**, meaning the callback is not triggered when not set
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-$selectedIndex?: OnSelectedIndexChange--><!--Device-TabSegmentButtonV2-$selectedIndex?: OnSelectedIndexChange-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## build
@@ -59,6 +63,8 @@ Sets the build function of the segmented button.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-build(): void--><!--Device-TabSegmentButtonV2-build(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,6 +90,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-TabSegmentButtonV2-readonly backgroundSystemMaterial?: uiMaterial.Material--><!--Device-TabSegmentButtonV2-readonly backgroundSystemMaterial?: uiMaterial.Material-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonBackgroundBlurStyle
@@ -106,6 +114,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly buttonBackgroundBlurStyle?: BlurStyle--><!--Device-TabSegmentButtonV2-readonly buttonBackgroundBlurStyle?: BlurStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonBackgroundBlurStyleOptions
@@ -127,6 +137,8 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-readonly buttonBackgroundBlurStyleOptions?: BackgroundBlurStyleOptions--><!--Device-TabSegmentButtonV2-readonly buttonBackgroundBlurStyleOptions?: BackgroundBlurStyleOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,6 +164,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly buttonBackgroundColor?: ColorMetrics--><!--Device-TabSegmentButtonV2-readonly buttonBackgroundColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonBackgroundEffect
@@ -173,6 +187,8 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-readonly buttonBackgroundEffect?: BackgroundEffectOptions--><!--Device-TabSegmentButtonV2-readonly buttonBackgroundEffect?: BackgroundEffectOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,6 +216,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly buttonBorderRadius?: LengthMetrics--><!--Device-TabSegmentButtonV2-readonly buttonBorderRadius?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonMinHeight
@@ -225,6 +243,8 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-readonly buttonMinHeight?: LengthMetrics--><!--Device-TabSegmentButtonV2-readonly buttonMinHeight?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -252,6 +272,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly buttonPadding?: LengthMetrics--><!--Device-TabSegmentButtonV2-readonly buttonPadding?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableStateAnimation
@@ -275,6 +297,8 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-TabSegmentButtonV2-readonly enableStateAnimation?: boolean--><!--Device-TabSegmentButtonV2-readonly enableStateAnimation?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -301,6 +325,8 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-readonly itemBorderRadius?: LengthMetrics--><!--Device-TabSegmentButtonV2-readonly itemBorderRadius?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,6 +358,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly itemFontColor?: ColorMetrics--><!--Device-TabSegmentButtonV2-readonly itemFontColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemFontSize
@@ -362,6 +390,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly itemFontSize?: LengthMetrics--><!--Device-TabSegmentButtonV2-readonly itemFontSize?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemFontWeight
@@ -389,6 +419,8 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-readonly itemFontWeight?: FontWeight--><!--Device-TabSegmentButtonV2-readonly itemFontWeight?: FontWeight-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -420,6 +452,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly itemIconFillColor?: ColorMetrics--><!--Device-TabSegmentButtonV2-readonly itemIconFillColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemIconSize
@@ -450,6 +484,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly itemIconSize?: SizeT<LengthMetrics>--><!--Device-TabSegmentButtonV2-readonly itemIconSize?: SizeT<LengthMetrics>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemMaxFontScale
@@ -477,6 +513,8 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-readonly itemMaxFontScale?: number | Resource--><!--Device-TabSegmentButtonV2-readonly itemMaxFontScale?: number | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -506,6 +544,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly itemMinFontScale?: number | Resource--><!--Device-TabSegmentButtonV2-readonly itemMinFontScale?: number | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemMinHeight
@@ -534,6 +574,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly itemMinHeight?: LengthMetrics--><!--Device-TabSegmentButtonV2-readonly itemMinHeight?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemPadding
@@ -557,6 +599,8 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-readonly itemPadding?: LocalizedPadding--><!--Device-TabSegmentButtonV2-readonly itemPadding?: LocalizedPadding-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -582,6 +626,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly items: SegmentButtonV2Items--><!--Device-TabSegmentButtonV2-readonly items: SegmentButtonV2Items-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSelectedBackgroundColor
@@ -605,6 +651,8 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-readonly itemSelectedBackgroundColor?: ColorMetrics--><!--Device-TabSegmentButtonV2-readonly itemSelectedBackgroundColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -636,6 +684,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly itemSelectedFontColor?: ColorMetrics--><!--Device-TabSegmentButtonV2-readonly itemSelectedFontColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSelectedFontSize
@@ -666,6 +716,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly itemSelectedFontSize?: LengthMetrics--><!--Device-TabSegmentButtonV2-readonly itemSelectedFontSize?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSelectedFontWeight
@@ -693,6 +745,8 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-readonly itemSelectedFontWeight?: FontWeight--><!--Device-TabSegmentButtonV2-readonly itemSelectedFontWeight?: FontWeight-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -724,6 +778,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly itemSelectedIconFillColor?: ColorMetrics--><!--Device-TabSegmentButtonV2-readonly itemSelectedIconFillColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSelectedSymbolFontColor
@@ -754,6 +810,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly itemSelectedSymbolFontColor?: ColorMetrics--><!--Device-TabSegmentButtonV2-readonly itemSelectedSymbolFontColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemShadow
@@ -777,6 +835,8 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-readonly itemShadow?: ShadowOptions | ShadowStyle--><!--Device-TabSegmentButtonV2-readonly itemShadow?: ShadowOptions | ShadowStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -805,6 +865,8 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-readonly itemSpace?: LengthMetrics--><!--Device-TabSegmentButtonV2-readonly itemSpace?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -836,6 +898,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly itemSymbolFontColor?: ColorMetrics--><!--Device-TabSegmentButtonV2-readonly itemSymbolFontColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSymbolFontSize
@@ -866,6 +930,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly itemSymbolFontSize?: LengthMetrics--><!--Device-TabSegmentButtonV2-readonly itemSymbolFontSize?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## languageDirection
@@ -890,6 +956,8 @@ This member is read-only and cannot be changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabSegmentButtonV2-readonly languageDirection?: Direction--><!--Device-TabSegmentButtonV2-readonly languageDirection?: Direction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onItemClicked
@@ -911,6 +979,8 @@ Default value: **undefined**, meaning the callback is not triggered when not set
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-onItemClicked?: Callback<number>--><!--Device-TabSegmentButtonV2-onItemClicked?: Callback<number>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -937,5 +1007,7 @@ This member is read-only and cannot be changed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabSegmentButtonV2-readonly selectedIndex: number--><!--Device-TabSegmentButtonV2-readonly selectedIndex: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

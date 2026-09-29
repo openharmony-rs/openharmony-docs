@@ -14,11 +14,13 @@ function finishTask(taskInfo: TaskInfo): void
 
 Finish background load task.
 
-**Since:** 26.0.1
+**Since:** 26.2.0
 
 **Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-backgroundLoader-function finishTask(taskInfo: TaskInfo): void--><!--Device-backgroundLoader-function finishTask(taskInfo: TaskInfo): void-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 

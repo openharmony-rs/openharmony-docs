@@ -8,6 +8,8 @@ interface FloatingBallParams
 
 **起始版本：** 20
 
+<!--Device-floatingBall-interface FloatingBallParams--><!--Device-floatingBall-interface FloatingBallParams-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,6 +30,8 @@ backgroundColor?: string
 
 **起始版本：** 20
 
+<!--Device-FloatingBallParams-backgroundColor?: string--><!--Device-FloatingBallParams-backgroundColor?: string-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## content
@@ -41,6 +45,8 @@ content?: string
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-FloatingBallParams-content?: string--><!--Device-FloatingBallParams-content?: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -63,6 +69,8 @@ otherwise is '#99000000'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatingBallParams-contentColor?: string--><!--Device-FloatingBallParams-contentColor?: string-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## icon
@@ -77,6 +85,8 @@ icon?: image.PixelMap
 
 **起始版本：** 20
 
+<!--Device-FloatingBallParams-icon?: image.PixelMap--><!--Device-FloatingBallParams-icon?: image.PixelMap-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## template
@@ -90,6 +100,8 @@ template: FloatingBallTemplate
 **类型：** [FloatingBallTemplate](arkts-arkui-floatingball-floatingballtemplate-e.md)
 
 **起始版本：** 20
+
+<!--Device-FloatingBallParams-template: FloatingBallTemplate--><!--Device-FloatingBallParams-template: FloatingBallTemplate-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -109,6 +121,8 @@ textUpdateAnimationType?: FloatingBallTextUpdateAnimationType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatingBallParams-textUpdateAnimationType?: FloatingBallTextUpdateAnimationType--><!--Device-FloatingBallParams-textUpdateAnimationType?: FloatingBallTextUpdateAnimationType-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## title
@@ -122,6 +136,8 @@ title: string
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-FloatingBallParams-title: string--><!--Device-FloatingBallParams-title: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -143,5 +159,7 @@ otherwise is '#E5000000'.
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatingBallParams-titleColor?: string--><!--Device-FloatingBallParams-titleColor?: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

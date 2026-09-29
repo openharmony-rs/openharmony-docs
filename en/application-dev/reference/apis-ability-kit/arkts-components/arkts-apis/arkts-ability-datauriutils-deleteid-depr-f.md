@@ -19,6 +19,8 @@ Deletes the ID from the end of a given URI.
 
 **Substitutes:** [deleteId](arkts-ability-datauriutils-deleteid-f.md)
 
+<!--Device-dataUriUtils-function deleteId(uri: string): string--><!--Device-dataUriUtils-function deleteId(uri: string): string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

@@ -16,6 +16,8 @@ Obtains the switch status of the automatic time setting. This API returns the re
 
 **Since:** 21
 
+<!--Device-systemDateTime-function getAutoTimeStatus(): boolean--><!--Device-systemDateTime-function getAutoTimeStatus(): boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **Return value:**

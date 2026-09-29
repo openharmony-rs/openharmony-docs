@@ -31,7 +31,9 @@ ensure that ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME has been added.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ble-function startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?: AdvertiseData): void--><!--Device-ble-function startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?: AdvertiseData): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -131,6 +133,8 @@ ensure that ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME has been added.
 - API versions 11 to 22: ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ble-function startAdvertising(advertisingParams: AdvertisingParams, callback: AsyncCallback<int>): void--><!--Device-ble-function startAdvertising(advertisingParams: AdvertisingParams, callback: AsyncCallback<int>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -243,6 +247,8 @@ ensure that ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME has been added.
 - API versions 11 to 22: ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ble-function startAdvertising(advertisingParams: AdvertisingParams): Promise<int>--><!--Device-ble-function startAdvertising(advertisingParams: AdvertisingParams): Promise<int>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

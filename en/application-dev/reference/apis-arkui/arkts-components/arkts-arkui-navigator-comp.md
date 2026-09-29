@@ -22,6 +22,8 @@ Called when the route jumps.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavigatorInterface-(value?: { target: string; type?: NavigationType }): NavigatorAttribute--><!--Device-NavigatorInterface-(value?: { target: string; type?: NavigationType }): NavigatorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -45,6 +47,8 @@ Called when using the navigator.
 **Substitutes:** [NavigationAttribute](arkts-arkui-navigation-comp-attribute.md#navigationattribute)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigatorInterface-(): NavigatorAttribute--><!--Device-NavigatorInterface-(): NavigatorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

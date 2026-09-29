@@ -10,7 +10,9 @@ declare enum NavigationType
 
 **废弃版本：** 13
 
-**替代接口：** Navigation
+**替代接口：** [Navigation](arkts-arkui-navigation-comp.md)
+
+<!--Device-unnamed-declare enum NavigationType--><!--Device-unnamed-declare enum NavigationType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,6 +34,8 @@ Push
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationType-Push--><!--Device-NavigationType-Push-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Back
@@ -48,6 +52,8 @@ Back
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationType-Back--><!--Device-NavigationType-Back-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Replace
@@ -63,5 +69,7 @@ Replace
 **替代接口：** [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationType-Replace--><!--Device-NavigationType-Replace-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -5,7 +5,7 @@ declare class SecurityComponentMethod<T>
 ```
 
 安全控件通用属性模块，提供安全控件的布局、尺寸、文字、图标、颜色、边框和交互等通用属性的统一配置能力。  
-- 为PasteButton、SaveButton等安全控件统一设置布局、尺寸、文字、图标、颜色、边框和交互相关属性。  
+- 为[PasteButton](../arkts-components/arkts-arkui-pastebutton-comp.md)、[SaveButton](../arkts-components/arkts-arkui-savebutton-comp.md)等安全控件统一设置布局、尺寸、文字、图标、颜色、边框和交互相关属性。  
 - 在满足安全控件规范的前提下，调整安全控件显示效果和交互体验。具体约束请参见[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。  
 - 通过链式调用方式复用安全控件通用属性能力。
 
@@ -24,6 +24,8 @@ declare class SecurityComponentMethod<T>
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare class SecurityComponentMethod<T>--><!--Device-unnamed-declare class SecurityComponentMethod<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDefaultFocus
@@ -39,6 +41,8 @@ accessibilityDefaultFocus(focus: boolean): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-accessibilityDefaultFocus(focus: boolean): T--><!--Device-SecurityComponentMethod-accessibilityDefaultFocus(focus: boolean): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +72,8 @@ accessibilityDescription(description: string | Resource): T
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-accessibilityDescription(description: string | Resource): T--><!--Device-SecurityComponentMethod-accessibilityDescription(description: string | Resource): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -95,6 +101,8 @@ accessibilityNextFocusId(nextId: string): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-accessibilityNextFocusId(nextId: string): T--><!--Device-SecurityComponentMethod-accessibilityNextFocusId(nextId: string): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,6 +132,8 @@ accessibilityRole(role: SecurityComponentRoleType): T
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-accessibilityRole(role: SecurityComponentRoleType): T--><!--Device-SecurityComponentMethod-accessibilityRole(role: SecurityComponentRoleType): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -152,6 +162,8 @@ align(alignType: Alignment): T
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-align(alignType: Alignment): T--><!--Device-SecurityComponentMethod-align(alignType: Alignment): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -172,7 +184,7 @@ align(alignType: Alignment): T
 alignRules(alignRule: AlignRuleOption): T
 ```
 
-设置在相对容器中子组件的对齐规则，仅当父容器为RelativeContainer时生效。
+设置在相对容器中子组件的对齐规则，仅当父容器为[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md)时生效。
 
 **起始版本：** 15
 
@@ -180,13 +192,15 @@ alignRules(alignRule: AlignRuleOption): T
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-alignRules(alignRule: AlignRuleOption): T--><!--Device-SecurityComponentMethod-alignRules(alignRule: AlignRuleOption): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alignRule | [AlignRuleOption](../arkts-components/arkts-arkui-common-comp-alignruleoption-i.md) | 是 | 对齐规则配置对象，包含top、bottom、left、right、center等锚点对齐配置，用于指定安全控件在RelativeContainer中的对齐位置和方式。 |
+| alignRule | [AlignRuleOption](../arkts-components/arkts-arkui-common-comp-alignruleoption-i.md) | 是 | 对齐规则配置对象，包含top、bottom、left、right、center等锚点对齐配置，用于指定安全控件在[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md)中的对齐位置和方式。 |
 
 **返回值：**
 
@@ -202,7 +216,7 @@ alignRules(alignRule: AlignRuleOption): T
 alignRules(alignRule: LocalizedAlignRuleOptions): T
 ```
 
-设置在相对容器中子组件的对齐规则，仅当父容器为[RelativeContainer]{@link./relative_container}时生效。该方法水平方向上以start和end分别替代上述[alignRules](#alignrules)的left和right，以便在RTL模式下能镜像显示，建议优先使用该方法。
+设置在相对容器中子组件的对齐规则，仅当父容器为[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md)时生效。该方法水平方向上以start和end分别替代上述[alignRules](#alignrules)的left和right，以便在RTL模式下能镜像显示，建议优先使用该方法。
 
 **起始版本：** 15
 
@@ -210,13 +224,15 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-alignRules(alignRule: LocalizedAlignRuleOptions): T--><!--Device-SecurityComponentMethod-alignRules(alignRule: LocalizedAlignRuleOptions): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alignRule | [LocalizedAlignRuleOptions](../arkts-components/arkts-arkui-common-comp-localizedalignruleoptions-i.md) | 是 | 对齐规则配置对象，使用start和end替代left和right以支持RTL布局镜像。包含top、bottom、start、end、center等锚点对齐配置，用于指定安全控件在RelativeContainer中的对齐位置和方式。 |
+| alignRule | [LocalizedAlignRuleOptions](../arkts-components/arkts-arkui-common-comp-localizedalignruleoptions-i.md) | 是 | 对齐规则配置对象，使用start和end替代left和right以支持RTL布局镜像。包含top、bottom、start、end、center等锚点对齐配置，用于指定安全控件在[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md)中的对齐位置和方式。 |
 
 **返回值：**
 
@@ -237,6 +253,8 @@ backgroundColor(value: ResourceColor): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-backgroundColor(value: ResourceColor): T--><!--Device-SecurityComponentMethod-backgroundColor(value: ResourceColor): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -265,6 +283,8 @@ borderColor(value: ResourceColor): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-borderColor(value: ResourceColor): T--><!--Device-SecurityComponentMethod-borderColor(value: ResourceColor): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -295,6 +315,8 @@ borderRadius的设置效果受ButtonType影响。当按钮类型为Capsule或Cir
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-borderRadius(value: Dimension): T--><!--Device-SecurityComponentMethod-borderRadius(value: Dimension): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -328,6 +350,8 @@ borderRadius的设置效果受ButtonType影响。当按钮类型为Capsule或Cir
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-borderRadius(radius: Dimension | BorderRadiuses): T--><!--Device-SecurityComponentMethod-borderRadius(radius: Dimension | BorderRadiuses): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -355,6 +379,8 @@ borderStyle(value: BorderStyle): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-borderStyle(value: BorderStyle): T--><!--Device-SecurityComponentMethod-borderStyle(value: BorderStyle): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -384,6 +410,8 @@ borderWidth(value: Dimension): T
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-borderWidth(value: Dimension): T--><!--Device-SecurityComponentMethod-borderWidth(value: Dimension): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -404,7 +432,7 @@ borderWidth(value: Dimension): T
 chainMode(direction: Axis, style: ChainStyle): T
 ```
 
-设置以该组件为链头所构成的链式布局的参数（包括链的方向和样式），仅当父容器为RelativeContainer时生效。
+设置以该组件为链头所构成的链式布局的参数（包括链的方向和样式），仅当父容器为[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md)时生效。
 
 **起始版本：** 15
 
@@ -412,13 +440,15 @@ chainMode(direction: Axis, style: ChainStyle): T
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-chainMode(direction: Axis, style: ChainStyle): T--><!--Device-SecurityComponentMethod-chainMode(direction: Axis, style: ChainStyle): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| direction | [Axis](arkts-arkui-axis-e.md) | 是 | 链式布局的方向，用于指定以该组件为链头的链在RelativeContainer中的排列方向。 |
+| direction | [Axis](arkts-arkui-axis-e.md) | 是 | 链式布局的方向，用于指定以该组件为链头的链在[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md)中的排列方向。 |
 | style | [ChainStyle](../arkts-components/arkts-arkui-common-comp-chainstyle-e.md) | 是 | 链式布局的样式，用于控制链内子组件的分布方式，如均匀分布、两端对齐或紧凑排列等，具体取值及效果请参考[ChainStyle](../arkts-components/arkts-arkui-common-comp-chainstyle-e.md)。 |
 
 **返回值：**
@@ -440,6 +470,8 @@ constraintSize(value: ConstraintSizeOptions): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-constraintSize(value: ConstraintSizeOptions): T--><!--Device-SecurityComponentMethod-constraintSize(value: ConstraintSizeOptions): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -469,6 +501,8 @@ enabled(respond: boolean): T
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-enabled(respond: boolean): T--><!--Device-SecurityComponentMethod-enabled(respond: boolean): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -481,7 +515,7 @@ enabled(respond: boolean): T
 
 | 类型 | 说明 |
 | --- | --- |
-| T | Attribute of the security component. |
+| T | 安全控件的属性。 |
 
 ## fallbackLineSpacing
 
@@ -498,6 +532,8 @@ fallbackLineSpacing属性和[RichEditorTextStyle](../arkts-components/arkts-arku
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-fallbackLineSpacing(enabled: boolean): T--><!--Device-SecurityComponentMethod-fallbackLineSpacing(enabled: boolean): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -527,6 +563,8 @@ focusBox(style: FocusBoxStyle): T
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-focusBox(style: FocusBoxStyle): T--><!--Device-SecurityComponentMethod-focusBox(style: FocusBoxStyle): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -554,6 +592,8 @@ fontColor(value: ResourceColor): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-fontColor(value: ResourceColor): T--><!--Device-SecurityComponentMethod-fontColor(value: ResourceColor): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -583,6 +623,8 @@ fontFamily(value: string | Resource): T
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-fontFamily(value: string | Resource): T--><!--Device-SecurityComponentMethod-fontFamily(value: string | Resource): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -610,6 +652,8 @@ fontSize(value: Dimension): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-fontSize(value: Dimension): T--><!--Device-SecurityComponentMethod-fontSize(value: Dimension): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -639,6 +683,8 @@ fontStyle(value: FontStyle): T
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-fontStyle(value: FontStyle): T--><!--Device-SecurityComponentMethod-fontStyle(value: FontStyle): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -666,6 +712,8 @@ fontWeight(value: number | FontWeight | string | Resource): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-fontWeight(value: number | FontWeight | string | Resource): T--><!--Device-SecurityComponentMethod-fontWeight(value: number | FontWeight | string | Resource): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -695,6 +743,8 @@ height(value: Length): T
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-height(value: Length): T--><!--Device-SecurityComponentMethod-height(value: Length): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -721,7 +771,7 @@ heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T
 
 当设置为TextHeightAdaptivePolicy.MAX_LINES_FIRST时，优先使用[maxLines](#maxlines)属性来调整文本高度。如果使用maxLines属性的布局大小超过了布局约束，则尝试在[minFontSize](#minfontsize)和[maxFontSize](#maxfontsize)的范围内缩小字体以显示更多文本，如果此时仍不能完整显示文本信息，安全控件会自适应调整高度以使得文本完整显示。
 
-当设置为TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST时，优先使用[minFontSize](#minfontsize)属性来调整文本高度。如果使用minFontSize属性可以将文本布局在一行中，则尝试在minFontSize和[maxFontSize](#maxfontsize)的范围内增大字体并使用最大可能的字体大小；如果使用minFontSize属性无法将文本布局在一行中，则尝试使用[maxLines]{@linkSecurityComponentMethod.maxLines}属性进行布局，如果此时仍不能完整显示文本信息，安全控件会自适应调整高度以使得文本完整显示。
+当设置为TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST时，优先使用[minFontSize](#minfontsize)属性来调整文本高度。如果使用minFontSize属性可以将文本布局在一行中，则尝试在minFontSize和[maxFontSize](#maxfontsize)的范围内增大字体并使用最大可能的字体大小；如果使用minFontSize属性无法将文本布局在一行中，则尝试使用[maxLines](#maxlines)属性进行布局，如果此时仍不能完整显示文本信息，安全控件会自适应调整高度以使得文本完整显示。
 
 当设置为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST时，优先使用布局约束来调整文本高度。如果布局大小超过布局约束，则尝试在[minFontSize](#minfontsize)和[maxFontSize](#maxfontsize)的范围内缩小字体以满足布局约束。如果将字体大小缩小到minFontSize后，布局大小仍然超过布局约束，则删除超过布局约束的行；如果设置了[maxLines](#maxlines)属性，布局后行数不超过maxLines值（可能存在横向截断）；如果未设置maxLines属性值，布局后的行数不限制。
 
@@ -732,6 +782,8 @@ heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T--><!--Device-SecurityComponentMethod-heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -761,6 +813,8 @@ iconColor(value: ResourceColor): T
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-iconColor(value: ResourceColor): T--><!--Device-SecurityComponentMethod-iconColor(value: ResourceColor): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -788,6 +842,8 @@ iconSize(value: Dimension): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-iconSize(value: Dimension): T--><!--Device-SecurityComponentMethod-iconSize(value: Dimension): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -817,6 +873,8 @@ id(id: string): T
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-id(id: string): T--><!--Device-SecurityComponentMethod-id(id: string): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -845,6 +903,8 @@ layoutDirection(value: SecurityComponentLayoutDirection): T
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-layoutDirection(value: SecurityComponentLayoutDirection): T--><!--Device-SecurityComponentMethod-layoutDirection(value: SecurityComponentLayoutDirection): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -872,6 +932,8 @@ markAnchor(value: Position): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-markAnchor(value: Position): T--><!--Device-SecurityComponentMethod-markAnchor(value: Position): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -903,6 +965,8 @@ maxFontScale(scale: number | Resource): T
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-maxFontScale(scale: number | Resource): T--><!--Device-SecurityComponentMethod-maxFontScale(scale: number | Resource): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -925,7 +989,7 @@ maxFontSize(maxSize: number | string | Resource): T
 
 设置文本最大显示字号。
 
-- 配合[minFontSize](#minfontsize)以及[maxLines]{@linkSecurityComponentMethod.maxLines}或布局  
+- 配合[minFontSize](#minfontsize)以及[maxLines](#maxlines)或布局  
 大小限制使用，可实现自适应字号，单独设置不生效。  
 - maxFontSize应大于minFontSize，若maxFontSize小于minFontSize，minFontSize将按maxFontSize处理。  
 - 当自适应字号生效时，设置的fontSize将不生效。  
@@ -936,6 +1000,8 @@ maxFontSize(maxSize: number | string | Resource): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-maxFontSize(maxSize: number | string | Resource): T--><!--Device-SecurityComponentMethod-maxFontSize(maxSize: number | string | Resource): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -965,13 +1031,15 @@ maxLines(line: number | Resource): T
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-maxLines(line: number | Resource): T--><!--Device-SecurityComponentMethod-maxLines(line: number | Resource): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| line | number &#124; [Resource](arkts-arkui-resource-t.md) | 是 | 文本的最大行数。<br>number类型入参的取值范围： [1, +∞)。从API version 20开始，支持Resource类型。Resource类型仅支持'integer'，取值范围为[1, +∞)。**说明：** <br>设置的值小于1时，按默认值1000000处理。<br>**适用版本：** 18 - 19 |
+| line | number &#124; [Resource](arkts-arkui-resource-t.md) | 是 | 文本的最大行数。<br>number类型入参的取值范围： [1, +∞)。从API version 20开始，支持Resource类型。Resource类型仅支持'integer'，取值范围为[1, +∞)。**说明：** <br>设置的值小于1时，按默认值1000000处理。<br>**适用版本：** 20 |
 
 **返回值：**
 
@@ -995,6 +1063,8 @@ minFontScale(scale: number | Resource): T
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-minFontScale(scale: number | Resource): T--><!--Device-SecurityComponentMethod-minFontScale(scale: number | Resource): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1017,7 +1087,7 @@ minFontSize(minSize: number | string | Resource): T
 
 设置文本最小显示字号。
 
-- 配合[maxFontSize](#maxfontsize)以及[maxLines]{@linkSecurityComponentMethod.maxLines}或布局  
+- 配合[maxFontSize](#maxfontsize)以及[maxLines](#maxlines)或布局  
 大小限制使用，可实现自适应字号，单独设置不生效。  
 - minFontSize应小于maxFontSize，若设置值大于maxFontSize，将按maxFontSize处理。  
 - minFontSize小于或等于0时，自适应字号不生效。  
@@ -1029,6 +1099,8 @@ minFontSize(minSize: number | string | Resource): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-minFontSize(minSize: number | string | Resource): T--><!--Device-SecurityComponentMethod-minFontSize(minSize: number | string | Resource): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1058,6 +1130,8 @@ offset(value: Position | Edges | LocalizedEdges): T
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-offset(value: Position | Edges | LocalizedEdges): T--><!--Device-SecurityComponentMethod-offset(value: Position | Edges | LocalizedEdges): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1085,6 +1159,8 @@ padding(value: Padding | Dimension): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-padding(value: Padding | Dimension): T--><!--Device-SecurityComponentMethod-padding(value: Padding | Dimension): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1114,6 +1190,8 @@ position(value: Position): T
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-position(value: Position): T--><!--Device-SecurityComponentMethod-position(value: Position): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1141,6 +1219,8 @@ size(value: SizeOptions): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-size(value: SizeOptions): T--><!--Device-SecurityComponentMethod-size(value: SizeOptions): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1170,6 +1250,8 @@ textIconSpace(value: Dimension): T
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SecurityComponentMethod-textIconSpace(value: Dimension): T--><!--Device-SecurityComponentMethod-textIconSpace(value: Dimension): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1197,6 +1279,8 @@ width(value: Length): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecurityComponentMethod-width(value: Length): T--><!--Device-SecurityComponentMethod-width(value: Length): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

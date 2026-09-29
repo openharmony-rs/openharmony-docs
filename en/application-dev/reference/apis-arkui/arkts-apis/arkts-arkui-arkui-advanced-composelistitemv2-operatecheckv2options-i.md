@@ -4,9 +4,11 @@
 export interface OperateCheckV2Options
 ```
 
-Declare interface OperateCheckV2Options
+Defines options for the **OperateCheckV2** constructor.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-export interface OperateCheckV2Options--><!--Device-unnamed-export interface OperateCheckV2Options-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,13 +24,17 @@ import { ComposeListItemV2, ContentItemV2, ContentItemV2Options, IconTypeV2, Ope
 onChange?: OnChangeCallback
 ```
 
-Callback function when operate the checkbox/switch/radio
+Callback triggered when the selected state of the right element **Switch**, **CheckBox**, or **Radio** of the list item changes.
+
+By default or when set to **undefined**, the callback is not triggered when the state changes.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-OperateCheckV2Options-onChange?: OnChangeCallback--><!--Device-OperateCheckV2Options-onChange?: OnChangeCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,7 +44,7 @@ Callback function when operate the checkbox/switch/radio
 accessibilityDescription?: ResourceStr
 ```
 
-The accessibilityDescription of the checkbox/switch/radio.
+Accessibility description of the right element **Switch**, **CheckBox**, or **Radio** of the list item. This description is used to explain the current component to users in detail. You should provide a relatively detailed text description for this attribute to help users understand the operation to be performed and its possible consequences, especially when such consequences cannot be directly inferred from the component's attributes and accessibility text. If a component that is selected has both a text attribute and an accessibility description attribute, the system first announces the text attribute, followed by the accessibility description. By default, the announcement rules of the base components **Switch**, **CheckBox**, and **Radio** are followed. Default value: the announcement rules of the base components **Switch**, **CheckBox**, and **Radio** are followed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -48,6 +54,8 @@ The accessibilityDescription of the checkbox/switch/radio.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateCheckV2Options-accessibilityDescription?: ResourceStr--><!--Device-OperateCheckV2Options-accessibilityDescription?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityLevel
@@ -56,7 +64,7 @@ The accessibilityDescription of the checkbox/switch/radio.
 accessibilityLevel?: string
 ```
 
-The accessibilityLevel of the checkbox/switch/radio.
+Accessibility level of the right element **Switch**, **CheckBox**, or **Radio** of the list item. This attribute controls whether the current component can be recognized by accessibility services. Supported values: **"auto"**: Whether the component can be recognized by accessibility services is determined by the accessibility service and ArkUI. **"yes"**: The component can be recognized by accessibility services. **"no"**: The component cannot be recognized by accessibility services. **"no-hide-descendants"**: The component and all its child components cannot be recognized by accessibility services. Default value: **"auto"**.
 
 **Type:** string
 
@@ -68,6 +76,8 @@ The accessibilityLevel of the checkbox/switch/radio.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateCheckV2Options-accessibilityLevel?: string--><!--Device-OperateCheckV2Options-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -76,7 +86,7 @@ The accessibilityLevel of the checkbox/switch/radio.
 accessibilityText?: ResourceStr
 ```
 
-The accessibilityText of the checkbox/switch/radio
+Accessibility text of the right element **Switch**, **CheckBox**, or **Radio** of the list item. When a component does not contain a text attribute, the screen reader does not announce it upon selection, leaving users unaware of which component is currently selected. To address this, you can set accessibility text for components without text information. When the screen reader selects such a component, it announces the accessibility text, helping screen reader users clearly understand which component they have selected. Default value: **""**.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -86,6 +96,8 @@ The accessibilityText of the checkbox/switch/radio
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateCheckV2Options-accessibilityText?: ResourceStr--><!--Device-OperateCheckV2Options-accessibilityText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isCheck
@@ -94,7 +106,7 @@ The accessibilityText of the checkbox/switch/radio
 isCheck?: boolean
 ```
 
-Whether is checked on default
+Selected state of the right element **Switch**, **CheckBox**, or **Radio** of the list item. The value **true** indicates selected, and **false** indicates unselected. Default value: **false**.
 
 **Type:** boolean
 
@@ -103,5 +115,7 @@ Whether is checked on default
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-OperateCheckV2Options-isCheck?: boolean--><!--Device-OperateCheckV2Options-isCheck?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

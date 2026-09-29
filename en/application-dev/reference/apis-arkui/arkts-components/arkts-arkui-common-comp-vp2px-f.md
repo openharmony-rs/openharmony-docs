@@ -18,6 +18,8 @@ Converts a value in vp units to a value in px. By default, the virtual pixel rat
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-unnamed-declare function vp2px(value: number): number--><!--Device-unnamed-declare function vp2px(value: number): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

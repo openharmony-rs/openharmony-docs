@@ -8,6 +8,8 @@ Defines an OS account sub-profile manager.
 
 **Since:** 26.0.0
 
+<!--Device-osAccount-interface OsAccountSubProfileManager--><!--Device-osAccount-interface OsAccountSubProfileManager-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Creates an OS account sub-profile. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OsAccountSubProfileManager-createOsAccountSubProfile(osAccountLocalId: int): Promise<OsAccountSubProfile>--><!--Device-OsAccountSubProfileManager-createOsAccountSubProfile(osAccountLocalId: int): Promise<OsAccountSubProfile>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -95,6 +99,8 @@ Deletes an OS account sub-profile. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OsAccountSubProfileManager-deleteOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<void>--><!--Device-OsAccountSubProfileManager-deleteOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -158,6 +164,8 @@ Obtains the foreground sub-profile ID of the OS account of the caller. This API 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OsAccountSubProfileManager-getOsAccountForegroundSubProfileId(): Promise<int>--><!--Device-OsAccountSubProfileManager-getOsAccountForegroundSubProfileId(): Promise<int>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -207,6 +215,8 @@ Obtains the foreground sub-profile ID of the specified OS account. This API uses
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OsAccountSubProfileManager-getOsAccountForegroundSubProfileId(osAccountLocalId: int): Promise<int>--><!--Device-OsAccountSubProfileManager-getOsAccountForegroundSubProfileId(osAccountLocalId: int): Promise<int>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -266,6 +276,8 @@ Obtains the local ID of the OS account of a sub-profile. This API uses a promise
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OsAccountSubProfileManager-getOsAccountLocalIdForSubProfile(subProfileId: int): Promise<int>--><!--Device-OsAccountSubProfileManager-getOsAccountLocalIdForSubProfile(subProfileId: int): Promise<int>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -324,6 +336,8 @@ Obtains the sub-profile of the OS account of the caller. This API uses a promise
 **Required permissions:** ohos.permission.GET_LOCAL_ACCOUNTS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OsAccountSubProfileManager-getOsAccountSubProfile(subProfileId: int): Promise<OsAccountSubProfile>--><!--Device-OsAccountSubProfileManager-getOsAccountSubProfile(subProfileId: int): Promise<OsAccountSubProfile>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -387,6 +401,8 @@ Obtains the sub-profile of the specified OS account. This API uses a promise to 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OsAccountSubProfileManager-getOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<OsAccountSubProfile>--><!--Device-OsAccountSubProfileManager-getOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<OsAccountSubProfile>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -449,6 +465,8 @@ Obtains the sub-profile IDs of the OS account of the caller. This API uses a pro
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OsAccountSubProfileManager-getOsAccountSubProfileIds(): Promise<int[]>--><!--Device-OsAccountSubProfileManager-getOsAccountSubProfileIds(): Promise<int[]>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -500,6 +518,8 @@ Obtains the sub-profile IDs of the specified OS account. This API uses a promise
 **Required permissions:** ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OsAccountSubProfileManager-getOsAccountSubProfileIds(osAccountLocalId: int): Promise<int[]>--><!--Device-OsAccountSubProfileManager-getOsAccountSubProfileIds(osAccountLocalId: int): Promise<int[]>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -559,6 +579,8 @@ Unsubscribes from OS account sub-profile events. This API uses an asynchronous c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OsAccountSubProfileManager-offOsAccountSubProfileEvent(callback?: Callback<OsAccountSubProfileEventData>): void--><!--Device-OsAccountSubProfileManager-offOsAccountSubProfileEvent(callback?: Callback<OsAccountSubProfileEventData>): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -603,6 +625,8 @@ Subscribes to OS account sub-profile events. This API uses an asynchronous callb
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OsAccountSubProfileManager-onOsAccountSubProfileEvent(      events: OsAccountSubProfileEvent[],      callback: Callback<OsAccountSubProfileEventData>): void--><!--Device-OsAccountSubProfileManager-onOsAccountSubProfileEvent(      events: OsAccountSubProfileEvent[],      callback: Callback<OsAccountSubProfileEventData>): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -655,6 +679,8 @@ Switches to an OS account sub-profile. This API uses a promise to return the res
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OsAccountSubProfileManager-switchOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<void>--><!--Device-OsAccountSubProfileManager-switchOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

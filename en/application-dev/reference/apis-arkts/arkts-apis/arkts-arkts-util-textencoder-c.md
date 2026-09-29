@@ -8,6 +8,8 @@ Provides APIs to encode strings into byte arrays. Multiple encoding formats are 
 
 **Since:** 7
 
+<!--Device-util-class TextEncoder--><!--Device-util-class TextEncoder-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ A constructor used to create a **TextEncoder** object.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TextEncoder-constructor()--><!--Device-TextEncoder-constructor()-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -49,6 +53,8 @@ A constructor used to create a **TextEncoder** object.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TextEncoder-constructor(encoding?: string)--><!--Device-TextEncoder-constructor(encoding?: string)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -76,6 +82,8 @@ Creates a **TextEncoder** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextEncoder-static create(encoding?: string): TextEncoder--><!--Device-TextEncoder-static create(encoding?: string): TextEncoder-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -96,43 +104,6 @@ Creates a **TextEncoder** object.
 let textEncoder = util.TextEncoder.create("utf-8");
 ```
 
-## encode
-
-```TypeScript
-encode(input?: string): Uint8Array
-```
-
-Encodes the input content in to a Uint8Array object.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [encodeInto](#encodeinto)
-
-**System capability:** SystemCapability.Utils.Lang
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| input | string | No | String to encode. The default value is an empty string. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Uint8Array | Uint8Array object obtained. |
-
-**Examples**
-
-```TypeScript
-let textEncoder = new util.TextEncoder();
-let result = textEncoder.encode("\uD800¥¥");
-console.info("result = " + result);
-// Output: result = 237,160,128,194,165,194,165
-```
-
 ## encodeInto
 
 ```TypeScript
@@ -144,6 +115,8 @@ Encodes the input content into a Uint8Array object.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TextEncoder-encodeInto(input?: string): Uint8Array--><!--Device-TextEncoder-encodeInto(input?: string): Uint8Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -184,6 +157,8 @@ Writes the generated UTF-8 encoded text to an array.
 
 **Substitutes:** [encodeIntoUint8Array](#encodeintouint8array)
 
+<!--Device-TextEncoder-encodeInto(input: string, dest: Uint8Array): { read: number; written: number }--><!--Device-TextEncoder-encodeInto(input: string, dest: Uint8Array): { read: number; written: number }-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -222,6 +197,8 @@ Encodes the input content and stores the result into a Uint8Array object.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TextEncoder-encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo--><!--Device-TextEncoder-encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -253,6 +230,45 @@ console.info("result.written = " + result.written);
 // Output: result.written = 4
 ```
 
+## encode
+
+```TypeScript
+encode(input?: string): Uint8Array
+```
+
+Encodes the input content in to a Uint8Array object.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [encodeInto](#encodeinto)
+
+<!--Device-TextEncoder-encode(input?: string): Uint8Array--><!--Device-TextEncoder-encode(input?: string): Uint8Array-End-->
+
+**System capability:** SystemCapability.Utils.Lang
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| input | string | No | String to encode. The default value is an empty string. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Uint8Array | Uint8Array object obtained. |
+
+**Examples**
+
+```TypeScript
+let textEncoder = new util.TextEncoder();
+let result = textEncoder.encode("\uD800¥¥");
+console.info("result = " + result);
+// Output: result = 237,160,128,194,165,194,165
+```
+
 ## encoding
 
 ```TypeScript
@@ -266,5 +282,7 @@ Encoding format.<br>The following formats are supported: utf-8, gb2312, gb18030,
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextEncoder-readonly encoding = 'utf-8'--><!--Device-TextEncoder-readonly encoding = 'utf-8'-End-->
 
 **System capability:** SystemCapability.Utils.Lang

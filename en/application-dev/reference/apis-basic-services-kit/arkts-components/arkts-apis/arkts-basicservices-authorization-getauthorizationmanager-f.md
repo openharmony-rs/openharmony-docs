@@ -18,6 +18,8 @@ Obtains an [AuthorizationManager](arkts-basicservices-authorization-authorizatio
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-authorization-function getAuthorizationManager(): AuthorizationManager--><!--Device-authorization-function getAuthorizationManager(): AuthorizationManager-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **Return value:**

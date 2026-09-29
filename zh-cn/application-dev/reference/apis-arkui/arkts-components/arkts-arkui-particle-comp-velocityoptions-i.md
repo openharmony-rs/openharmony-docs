@@ -12,6 +12,8 @@ declare interface VelocityOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface VelocityOptions--><!--Device-unnamed-declare interface VelocityOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## angle
@@ -32,6 +34,8 @@ angle: ParticleTuple<number, number>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-VelocityOptions-angle: ParticleTuple<number, number>--><!--Device-VelocityOptions-angle: ParticleTuple<number, number>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## speed
@@ -51,5 +55,7 @@ speed: ParticleTuple<number, number>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-VelocityOptions-speed: ParticleTuple<number, number>--><!--Device-VelocityOptions-speed: ParticleTuple<number, number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

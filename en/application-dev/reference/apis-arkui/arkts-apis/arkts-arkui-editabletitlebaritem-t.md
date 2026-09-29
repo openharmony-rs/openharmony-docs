@@ -12,6 +12,8 @@ Declaration of the image item.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export type EditableTitleBarItem = EditableTitleBarMenuItem--><!--Device-unnamed-export type EditableTitleBarItem = EditableTitleBarMenuItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [EditableTitleBarMenuItem](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebarmenuitem-c.md)

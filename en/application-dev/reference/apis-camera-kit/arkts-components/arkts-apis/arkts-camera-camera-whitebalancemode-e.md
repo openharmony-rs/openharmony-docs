@@ -8,6 +8,8 @@ Enumerates the white balance modes.
 
 **Since:** 20
 
+<!--Device-camera-enum WhiteBalanceMode--><!--Device-camera-enum WhiteBalanceMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## AUTO
@@ -20,7 +22,9 @@ Automatic.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-WhiteBalanceMode-AUTO = 0--><!--Device-WhiteBalanceMode-AUTO = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -34,7 +38,9 @@ Cloudy.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-WhiteBalanceMode-CLOUDY = 1--><!--Device-WhiteBalanceMode-CLOUDY = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -48,7 +54,9 @@ Incandescent light.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-WhiteBalanceMode-INCANDESCENT =2--><!--Device-WhiteBalanceMode-INCANDESCENT =2-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -62,7 +70,9 @@ Fluorescence light.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-WhiteBalanceMode-FLUORESCENT =3--><!--Device-WhiteBalanceMode-FLUORESCENT =3-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -76,7 +86,9 @@ Daylight.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-WhiteBalanceMode-DAYLIGHT = 4--><!--Device-WhiteBalanceMode-DAYLIGHT = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -90,7 +102,9 @@ Manual.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-WhiteBalanceMode-MANUAL = 5--><!--Device-WhiteBalanceMode-MANUAL = 5-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -104,6 +118,8 @@ Locked.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-WhiteBalanceMode-LOCKED = 6--><!--Device-WhiteBalanceMode-LOCKED = 6-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

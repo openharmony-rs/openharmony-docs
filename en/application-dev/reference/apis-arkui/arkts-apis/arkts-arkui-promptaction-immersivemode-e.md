@@ -8,6 +8,8 @@ Enumerates the display area modes of the dialog box overlay within a page.
 
 **Since:** 15
 
+<!--Device-unnamed-export enum ImmersiveMode--><!--Device-unnamed-export enum ImmersiveMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -24,6 +26,8 @@ The dialog box overlay follows the layout constraints of its parent node.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-ImmersiveMode-DEFAULT = 0--><!--Device-ImmersiveMode-DEFAULT = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## EXTEND
@@ -39,5 +43,7 @@ The dialog box overlay can extend to cover the status bar and navigation bar for
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-ImmersiveMode-EXTEND = 1--><!--Device-ImmersiveMode-EXTEND = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

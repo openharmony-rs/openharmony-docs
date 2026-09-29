@@ -26,6 +26,8 @@ Anonymous Object Rectification.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ParticleInterface-<    PARTICLE extends ParticleType,    COLOR_UPDATER extends ParticleUpdater,    OPACITY_UPDATER extends ParticleUpdater,    SCALE_UPDATER extends ParticleUpdater,    ACC_SPEED_UPDATER extends ParticleUpdater,    ACC_ANGLE_UPDATER extends ParticleUpdater,    SPIN_UPDATER extends ParticleUpdater  >(particles: Particles<      PARTICLE,      COLOR_UPDATER,      OPACITY_UPDATER,      SCALE_UPDATER,      ACC_SPEED_UPDATER,      ACC_ANGLE_UPDATER,      SPIN_UPDATER    >): ParticleAttribute--><!--Device-ParticleInterface-<    PARTICLE extends ParticleType,    COLOR_UPDATER extends ParticleUpdater,    OPACITY_UPDATER extends ParticleUpdater,    SCALE_UPDATER extends ParticleUpdater,    ACC_SPEED_UPDATER extends ParticleUpdater,    ACC_ANGLE_UPDATER extends ParticleUpdater,    SPIN_UPDATER extends ParticleUpdater  >(particles: Particles<      PARTICLE,      COLOR_UPDATER,      OPACITY_UPDATER,      SCALE_UPDATER,      ACC_SPEED_UPDATER,      ACC_ANGLE_UPDATER,      SPIN_UPDATER    >): ParticleAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -41,47 +43,47 @@ Anonymous Object Rectification.
 | Name | Description |
 | --- | --- |
 | [AccelerationOptions](arkts-arkui-particle-comp-accelerationoptions-i.md) | Particle acceleration. |
-| [DisturbanceFieldOptions](arkts-arkui-particle-comp-disturbancefieldoptions-i.md) | Defines particle disturbance Field params. |
-| [EmitterOptions](arkts-arkui-particle-comp-emitteroptions-i.md) | Particle emitter configuration. |
-| [EmitterParticleOptions](arkts-arkui-particle-comp-emitterparticleoptions-i.md) | Defines parameters of particles used by emitters. |
-| [EmitterProperty](arkts-arkui-particle-comp-emitterproperty-i.md) | Defines the emitter property. |
-| [FieldRegion](arkts-arkui-particle-comp-fieldregion-i.md) | Defines the area information of the particle field. |
-| [ImageParticleParameters](arkts-arkui-particle-comp-imageparticleparameters-i.md) | Defines the parameters for an image-like particle. @interface ImageParticleParameters |
-| [ParticleAnnulusRegion](arkts-arkui-particle-comp-particleannulusregion-i.md) | Configures the annular emitter area. |
-| [ParticleColorOptions](arkts-arkui-particle-comp-particlecoloroptions-i.md) | The color changes randomly, with the per-second change difference being a value randomly generated from the range. The target color is obtained by applying the change difference to the current color value of each of the R, G, B, A channels. |
-| [ParticleColorPropertyOptions](arkts-arkui-particle-comp-particlecolorpropertyoptions-i.md) | Defines the particle color property updater configs which can support generics. @interface ParticleColorPropertyOptions |
-| [ParticleColorPropertyUpdaterConfigs](arkts-arkui-particle-comp-particlecolorpropertyupdaterconfigs-i.md) | Defines the particle color property updater configs. @interface ParticleColorPropertyUpdaterConfigs |
+| [DisturbanceFieldOptions](arkts-arkui-particle-comp-disturbancefieldoptions-i.md) | Sets the parameters of the disturbance field. |
+| [EmitterOptions](arkts-arkui-particle-comp-emitteroptions-i.md) | Defines the configuration options of the particle emitter. |
+| [EmitterParticleOptions](arkts-arkui-particle-comp-emitterparticleoptions-i.md) | Particle configuration. |
+| [EmitterProperty](arkts-arkui-particle-comp-emitterproperty-i.md) | Sets the emitter attributes. |
+| [FieldRegion](arkts-arkui-particle-comp-fieldregion-i.md) | Sets the region information of the particle field. |
+| [ImageParticleParameters](arkts-arkui-particle-comp-imageparticleparameters-i.md) | Sets the image options. |
+| [ParticleAnnulusRegion](arkts-arkui-particle-comp-particleannulusregion-i.md) | Configures the annulus emitter area. |
+| [ParticleColorOptions](arkts-arkui-particle-comp-particlecoloroptions-i.md) | Randomly generates a difference value within the interval when the color change mode is random. The four color channels—r, g, b, and a—each overlay the current color value with the difference value every second to produce the target color value, achieving the effect of random color changes. |
+| [ParticleColorPropertyOptions](arkts-arkui-particle-comp-particlecolorpropertyoptions-i.md) | Sets the particle color attribute updater configuration. |
+| [ParticleColorPropertyUpdaterConfigs](arkts-arkui-particle-comp-particlecolorpropertyupdaterconfigs-i.md) | Sets the configuration of the particle color attribute updater. |
 | [ParticleColorUpdaterOptions](arkts-arkui-particle-comp-particlecolorupdateroptions-i.md) | How the color property is updated. |
-| [ParticleConfigs](arkts-arkui-particle-comp-particleconfigs-i.md) | Defines the particle configs. |
-| [ParticleOptions](arkts-arkui-particle-comp-particleoptions-i.md) | Defines the ParticleOptions Interface. |
-| [ParticlePropertyAnimation](arkts-arkui-particle-comp-particlepropertyanimation-i.md) | Defines the particle property lifecycle. @interface ParticlePropertyAnimation |
-| [ParticlePropertyOptions](arkts-arkui-particle-comp-particlepropertyoptions-i.md) | Defines the particle property Options. @interface ParticlePropertyOptions |
-| [ParticlePropertyUpdaterConfigs](arkts-arkui-particle-comp-particlepropertyupdaterconfigs-i.md) | Defines the particle property updater configs. @interface ParticlePropertyUpdaterConfigs |
-| [Particles](arkts-arkui-particle-comp-particles-i.md) | Defines the particle array. |
-| [ParticleUpdaterOptions](arkts-arkui-particle-comp-particleupdateroptions-i.md) | Defines the particle updater options. |
-| [PointParticleParameters](arkts-arkui-particle-comp-pointparticleparameters-i.md) | Defines the parameters for a point-like particle. @interface PointParticleParameters |
-| [RippleFieldOptions](arkts-arkui-particle-comp-ripplefieldoptions-i.md) | Defines ripple field options. |
-| [VelocityFieldOptions](arkts-arkui-particle-comp-velocityfieldoptions-i.md) | Parameter used to describe the velocity field of particles. |
-| [VelocityOptions](arkts-arkui-particle-comp-velocityoptions-i.md) | Defines velocity options. |
+| [ParticleConfigs](arkts-arkui-particle-comp-particleconfigs-i.md) | Sets particle configuration items. |
+| [ParticleOptions](arkts-arkui-particle-comp-particleoptions-i.md) | Sets particle parameters. |
+| [ParticlePropertyAnimation](arkts-arkui-particle-comp-particlepropertyanimation-i.md) | Sets the lifecycle of particle properties. |
+| [ParticlePropertyOptions](arkts-arkui-particle-comp-particlepropertyoptions-i.md) | Sets particle attributes. |
+| [ParticlePropertyUpdaterConfigs](arkts-arkui-particle-comp-particlepropertyupdaterconfigs-i.md) | Sets the particle property updater configuration. |
+| [Particles](arkts-arkui-particle-comp-particles-i.md) | Defines a collection of particle animations. |
+| [ParticleUpdaterOptions](arkts-arkui-particle-comp-particleupdateroptions-i.md) | Defines the property change configuration. |
+| [PointParticleParameters](arkts-arkui-particle-comp-pointparticleparameters-i.md) | Sets the radius of a particle. |
+| [RippleFieldOptions](arkts-arkui-particle-comp-ripplefieldoptions-i.md) | Defines the parameters used to describe the particle ripple field information. |
+| [VelocityFieldOptions](arkts-arkui-particle-comp-velocityfieldoptions-i.md) | Defines the parameters used to describe the particle velocity field information. |
+| [VelocityOptions](arkts-arkui-particle-comp-velocityoptions-i.md) | Particle velocity. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [ParticleTuple](arkts-arkui-particle-comp-particletuple-t.md) | Defines a pair of given type for particle. |
-| [PositionT](arkts-arkui-particle-comp-positiont-t.md) | Defines the PositionT type. |
-| [SizeT](arkts-arkui-particle-comp-sizet-t.md) | Defines the SizeT type. |
-| [Vector2T](arkts-arkui-particle-comp-vector2t-t.md) | Defines the Vector2T type. The Vector2T type contains two attribute values: x and y. |
+| [ParticleTuple](arkts-arkui-particle-comp-particletuple-t.md) | Defines the particle tuple, which defines the type of animation parameter configuration value pairs. |
+| [PositionT](arkts-arkui-particle-comp-positiont-t.md) | Sets or returns the position of the component. |
+| [SizeT](arkts-arkui-particle-comp-sizet-t.md) | Defines the Size type. |
+| [Vector2T](arkts-arkui-particle-comp-vector2t-t.md) | Defines the **Vector2T** type. The **Vector2T** type contains two property values: **x** and **y**. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [DistributionType](arkts-arkui-particle-comp-distributiontype-e.md) | Enumerates the color distribution types of a particle. |
-| [DisturbanceFieldShape](arkts-arkui-particle-comp-disturbancefieldshape-e.md) | Defines particle disturbance shape. |
-| [ParticleEmitterShape](arkts-arkui-particle-comp-particleemittershape-e.md) | Enumerates the emitter shapes of a particle. |
-| [ParticleType](arkts-arkui-particle-comp-particletype-e.md) | Enumerates the particle types. |
-| [ParticleUpdater](arkts-arkui-particle-comp-particleupdater-e.md) | Enumerates the updater types of a particle. |
+| [DistributionType](arkts-arkui-particle-comp-distributiontype-e.md) | Defines the random distribution type of the initial color. |
+| [DisturbanceFieldShape](arkts-arkui-particle-comp-disturbancefieldshape-e.md) | Defines the shape of the disturbance field. |
+| [ParticleEmitterShape](arkts-arkui-particle-comp-particleemittershape-e.md) | Particle emitter shape. |
+| [ParticleType](arkts-arkui-particle-comp-particletype-e.md) | Particle type. |
+| [ParticleUpdater](arkts-arkui-particle-comp-particleupdater-e.md) | Particle change type. |
 
 ## Examples
 

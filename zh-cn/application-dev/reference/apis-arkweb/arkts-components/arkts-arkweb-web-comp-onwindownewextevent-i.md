@@ -8,6 +8,8 @@ declare interface OnWindowNewExtEvent
 
 **起始版本：** 23
 
+<!--Device-unnamed-declare interface OnWindowNewExtEvent--><!--Device-unnamed-declare interface OnWindowNewExtEvent-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## handler
@@ -23,6 +25,8 @@ handler: ControllerHandler
 **起始版本：** 23
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnWindowNewExtEvent-handler: ControllerHandler--><!--Device-OnWindowNewExtEvent-handler: ControllerHandler-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -40,6 +44,8 @@ true代表请求创建对话框，false代表请求创建新标签页。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-OnWindowNewExtEvent-isAlert: boolean--><!--Device-OnWindowNewExtEvent-isAlert: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isUserTrigger
@@ -55,6 +61,8 @@ true代表用户触发，false代表非用户触发。
 **起始版本：** 23
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnWindowNewExtEvent-isUserTrigger: boolean--><!--Device-OnWindowNewExtEvent-isUserTrigger: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -72,6 +80,8 @@ navigationPolicy: NavigationPolicy
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-OnWindowNewExtEvent-navigationPolicy: NavigationPolicy--><!--Device-OnWindowNewExtEvent-navigationPolicy: NavigationPolicy-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## targetUrl
@@ -88,6 +98,8 @@ targetUrl: string
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-OnWindowNewExtEvent-targetUrl: string--><!--Device-OnWindowNewExtEvent-targetUrl: string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## windowFeatures
@@ -103,5 +115,7 @@ windowFeatures: WindowFeatures
 **起始版本：** 23
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnWindowNewExtEvent-windowFeatures: WindowFeatures--><!--Device-OnWindowNewExtEvent-windowFeatures: WindowFeatures-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

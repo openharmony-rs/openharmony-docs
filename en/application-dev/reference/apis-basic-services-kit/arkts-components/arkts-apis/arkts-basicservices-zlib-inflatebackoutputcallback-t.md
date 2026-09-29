@@ -10,6 +10,8 @@ The output data provided by the user is written into the callback function. When
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-zlib-type InflateBackOutputCallback = (outDesc: object, buf: ArrayBuffer, length: int) => int--><!--Device-zlib-type InflateBackOutputCallback = (outDesc: object, buf: ArrayBuffer, length: int) => int-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 **Parameters:**

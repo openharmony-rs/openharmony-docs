@@ -8,6 +8,8 @@ interface GestureGroupGestureHandlerOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface GestureGroupGestureHandlerOptions--><!--Device-unnamed-interface GestureGroupGestureHandlerOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## gestures
@@ -20,7 +22,7 @@ gestures: GestureHandler<TapGestureHandler | LongPressGestureHandler | PanGestur
 
 **说明：** 
 
-当需要为一个组件同时添加单击和双击手势时，可在GestureGroup中添加两个TapGesture，需要双击手势在前，单击手势在后，否则不生效。
+当需要为一个组件同时添加单击和双击手势时，可在[GestureGroup](arkts-arkui-tapgesture-comp-con.md#gesturegroup)中添加两个[TapGesture](arkts-arkui-gesturecontrol-n.md#tapgesture)，需要双击手势在前，单击手势在后，否则不生效。
 
 **类型：** [GestureHandler](arkts-arkui-tapgesture-comp-gesturehandler-c.md)&lt;[TapGestureHandler](arkts-arkui-tapgesture-comp-tapgesturehandler-c.md) &#124; [LongPressGestureHandler](arkts-arkui-tapgesture-comp-longpressgesturehandler-c.md) &#124; [PanGestureHandler](arkts-arkui-tapgesture-comp-pangesturehandler-c.md) &#124; [SwipeGestureHandler](arkts-arkui-tapgesture-comp-swipegesturehandler-c.md) &#124; [PinchGestureHandler](arkts-arkui-tapgesture-comp-pinchgesturehandler-c.md) &#124; [RotationGestureHandler](arkts-arkui-tapgesture-comp-rotationgesturehandler-c.md) &#124; [GestureGroupHandler](arkts-arkui-tapgesture-comp-gesturegrouphandler-c.md)&gt;[]
 
@@ -29,6 +31,8 @@ gestures: GestureHandler<TapGestureHandler | LongPressGestureHandler | PanGestur
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureGroupGestureHandlerOptions-gestures: GestureHandler<TapGestureHandler | LongPressGestureHandler | PanGestureHandler | SwipeGestureHandler | PinchGestureHandler | RotationGestureHandler | GestureGroupHandler>[]--><!--Device-GestureGroupGestureHandlerOptions-gestures: GestureHandler<TapGestureHandler | LongPressGestureHandler | PanGestureHandler | SwipeGestureHandler | PinchGestureHandler | RotationGestureHandler | GestureGroupHandler>[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,5 +53,7 @@ mode: GestureMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureGroupGestureHandlerOptions-mode: GestureMode--><!--Device-GestureGroupGestureHandlerOptions-mode: GestureMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

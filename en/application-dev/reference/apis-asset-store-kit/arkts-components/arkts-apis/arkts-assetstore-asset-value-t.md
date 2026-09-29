@@ -10,6 +10,8 @@ Represents the value of each attribute in [AssetMap](arkts-assetstore-asset-asse
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-asset-declare type Value = boolean | number | Uint8Array--><!--Device-asset-declare type Value = boolean | number | Uint8Array-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 | Type | Description |

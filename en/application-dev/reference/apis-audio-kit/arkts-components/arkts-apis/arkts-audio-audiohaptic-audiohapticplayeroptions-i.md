@@ -8,6 +8,8 @@ Describes the options for the audio-haptic player.
 
 **Since:** 11
 
+<!--Device-audioHaptic-interface AudioHapticPlayerOptions--><!--Device-audioHaptic-interface AudioHapticPlayerOptions-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Whether to mute the audio. **true** to mute, **false** otherwise. If this parame
 
 **Since:** 11
 
+<!--Device-AudioHapticPlayerOptions-muteAudio?: boolean--><!--Device-AudioHapticPlayerOptions-muteAudio?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 ## muteHaptics
@@ -41,5 +45,7 @@ Whether to mute haptics feedback. **true** to mute, **false** otherwise. If this
 **Type:** boolean
 
 **Since:** 11
+
+<!--Device-AudioHapticPlayerOptions-muteHaptics?: boolean--><!--Device-AudioHapticPlayerOptions-muteHaptics?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core

@@ -18,6 +18,8 @@ Obtains information about the bundles contained in a HAP file. This API uses an 
 
 **Deprecated since:** 9
 
+<!--Device-bundle-function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback<BundleInfo>): void--><!--Device-bundle-function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback<BundleInfo>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **Parameters:**
@@ -59,6 +61,8 @@ Obtains information about the bundles contained in a HAP file. This API uses a p
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-bundle-function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number): Promise<BundleInfo>--><!--Device-bundle-function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number): Promise<BundleInfo>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

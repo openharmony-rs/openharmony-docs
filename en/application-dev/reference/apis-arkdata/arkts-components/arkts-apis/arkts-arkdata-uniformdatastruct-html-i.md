@@ -8,6 +8,8 @@ Represents data of the HTML type.
 
 **Since:** 12
 
+<!--Device-uniformDataStruct-interface HTML--><!--Device-uniformDataStruct-interface HTML-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -40,6 +42,8 @@ By default, it is an empty dictionary object.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HTML-details?: Record<string, string>--><!--Device-HTML-details?: Record<string, string>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## htmlContent
@@ -55,6 +59,8 @@ Content in HTML format.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HTML-htmlContent: string--><!--Device-HTML-htmlContent: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -72,6 +78,8 @@ Plaintext without HTML tags. This parameter is optional. By default, it is an em
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HTML-plainContent?: string--><!--Device-HTML-plainContent?: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## uniformDataType
@@ -88,6 +96,8 @@ Uniform data type, which has a fixed value of **general.html**. For details, see
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HTML-readonly uniformDataType: 'general.html'--><!--Device-HTML-readonly uniformDataType: 'general.html'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## uriAuthorizationPolicies
@@ -103,5 +113,7 @@ Defines URI authorization policies for drag intention.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HTML-uriAuthorizationPolicies?: Array<int>--><!--Device-HTML-uriAuthorizationPolicies?: Array<int>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

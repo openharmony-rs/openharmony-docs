@@ -16,7 +16,9 @@ Creates an **X509CertChain** instance. This API uses a promise to return the res
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-cert-function createX509CertChain(inStream: EncodingBlob): Promise<X509CertChain>--><!--Device-cert-function createX509CertChain(inStream: EncodingBlob): Promise<X509CertChain>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -143,7 +145,9 @@ Creates an **X509CertChain** instance. This API uses an asynchronous callback to
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-cert-function createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback<X509CertChain>): void--><!--Device-cert-function createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback<X509CertChain>): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -260,7 +264,9 @@ Creates an X.509 certificate chain object based on the specified certificates. T
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-cert-function createX509CertChain(certs: Array<X509Cert>): X509CertChain--><!--Device-cert-function createX509CertChain(certs: Array<X509Cert>): X509CertChain-End-->
 
 **System capability:** SystemCapability.Security.Cert
 

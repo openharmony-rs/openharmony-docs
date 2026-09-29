@@ -8,6 +8,8 @@ Defines detailed information about a driver.
 
 **Since:** 12
 
+<!--Device-deviceManager-interface DriverInfo--><!--Device-deviceManager-interface DriverInfo-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Bus type.
 
 **Since:** 12
 
+<!--Device-DriverInfo-busType: BusType--><!--Device-DriverInfo-busType: BusType-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Driver description.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-DriverInfo-description: string--><!--Device-DriverInfo-description: string-End-->
 
 **System capability:** SystemCapability.Driver.ExternalDevice
 
@@ -62,6 +68,8 @@ Driver name.
 
 **Since:** 12
 
+<!--Device-DriverInfo-driverName: string--><!--Device-DriverInfo-driverName: string-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Driver size, in bytes.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-DriverInfo-driverSize: string--><!--Device-DriverInfo-driverSize: string-End-->
 
 **System capability:** SystemCapability.Driver.ExternalDevice
 
@@ -94,6 +104,8 @@ Driver UID.
 
 **Since:** 12
 
+<!--Device-DriverInfo-driverUid: string--><!--Device-DriverInfo-driverUid: string-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Driver version.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-DriverInfo-driverVersion: string--><!--Device-DriverInfo-driverVersion: string-End-->
 
 **System capability:** SystemCapability.Driver.ExternalDevice
 

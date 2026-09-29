@@ -28,6 +28,8 @@ Obtains a **ComponentInfo** object based on the component ID and synchronously r
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-componentUtils-function getRectangleById(id: string): ComponentInfo--><!--Device-componentUtils-function getRectangleById(id: string): ComponentInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

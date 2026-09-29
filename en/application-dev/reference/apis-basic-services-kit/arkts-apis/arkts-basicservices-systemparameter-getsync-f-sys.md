@@ -28,6 +28,8 @@ Obtains a value of the specified key.
 
 **Substitutes:** getSync
 
+<!--Device-systemParameter-function getSync(key: string, def?: string): string--><!--Device-systemParameter-function getSync(key: string, def?: string): string-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo
 
 **System API:** This is a system API.

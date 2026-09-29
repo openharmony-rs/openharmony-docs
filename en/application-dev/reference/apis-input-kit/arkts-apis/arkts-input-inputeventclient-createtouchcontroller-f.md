@@ -20,6 +20,8 @@ Creates a touch controller for simulating touch operations. This API uses a prom
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-inputEventClient-function createTouchController(): Promise<TouchController>--><!--Device-inputEventClient-function createTouchController(): Promise<TouchController>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **Return value:**

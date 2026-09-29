@@ -10,6 +10,8 @@ Defines a callback invoked when the **Web** component enters full screen mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-type OnFullScreenEnterCallback = (event: FullScreenEnterEvent) => void--><!--Device-unnamed-type OnFullScreenEnterCallback = (event: FullScreenEnterEvent) => void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

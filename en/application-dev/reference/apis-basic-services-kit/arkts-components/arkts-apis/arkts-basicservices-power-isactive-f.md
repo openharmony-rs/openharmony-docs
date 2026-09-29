@@ -19,6 +19,8 @@ Checks whether the current device is active.
 
 **Since:** 9
 
+<!--Device-power-function isActive(): boolean--><!--Device-power-function isActive(): boolean-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **Return value:**

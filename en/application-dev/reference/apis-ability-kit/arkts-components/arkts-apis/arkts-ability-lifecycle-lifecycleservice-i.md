@@ -10,6 +10,8 @@ interface of service lifecycle.
 
 **Since:** 7
 
+<!--Device-unnamed-export declare interface LifecycleService--><!--Device-unnamed-export declare interface LifecycleService-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Called back when Service is started.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleService-onCommand?(want: Want, startId: number): void--><!--Device-LifecycleService-onCommand?(want: Want, startId: number): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -49,6 +53,8 @@ Called back when a Service ability is first connected to an ability.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleService-onConnect?(want: Want): rpc.RemoteObject--><!--Device-LifecycleService-onConnect?(want: Want): rpc.RemoteObject-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -76,6 +82,8 @@ Called back when all abilities connected to a Service ability are disconnected.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleService-onDisconnect?(want: Want): void--><!--Device-LifecycleService-onDisconnect?(want: Want): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -95,6 +103,8 @@ Called when a new client attempts to connect to a Service ability after all prev
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleService-onReconnect?(want: Want): void--><!--Device-LifecycleService-onReconnect?(want: Want): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -116,6 +126,8 @@ Called back when an ability is started for initialization (it can be called only
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleService-onStart?(): void--><!--Device-LifecycleService-onStart?(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## onStop
@@ -129,5 +141,7 @@ Called back before an ability is destroyed.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleService-onStop?(): void--><!--Device-LifecycleService-onStop?(): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel

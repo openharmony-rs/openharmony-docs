@@ -13,6 +13,8 @@ Describes the conflict information when the USB interface that has been exclusiv
 
 **Since:** 26.0.1
 
+<!--Device-usbManager-interface InterfaceConflictInfo--><!--Device-usbManager-interface InterfaceConflictInfo-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Bus address of the USB device. The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InterfaceConflictInfo-busNum: int--><!--Device-InterfaceConflictInfo-busNum: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## devAddr
@@ -51,6 +55,8 @@ Device address of the USB device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InterfaceConflictInfo-devAddr: int--><!--Device-InterfaceConflictInfo-devAddr: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## interfaceId
@@ -66,5 +72,7 @@ ID of the USB interface that has been claimed by another process.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InterfaceConflictInfo-interfaceId: int--><!--Device-InterfaceConflictInfo-interfaceId: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager

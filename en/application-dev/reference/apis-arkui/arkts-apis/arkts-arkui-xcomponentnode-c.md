@@ -16,6 +16,8 @@ Defines XComponent Node.
 
 **Substitutes:** XComponent
 
+<!--Device-unnamed-export declare class XComponentNode extends FrameNode--><!--Device-unnamed-export declare class XComponentNode extends FrameNode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## changeRenderType
@@ -33,6 +35,8 @@ Set the render type of the builderNode.
 **Substitutes:** appendChild
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-XComponentNode-changeRenderType(type: NodeRenderType): boolean--><!--Device-XComponentNode-changeRenderType(type: NodeRenderType): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,6 +69,8 @@ constructor.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-XComponentNode-constructor(uiContext: UIContext, options: RenderOptions,    id: string, type: XComponentType, libraryName?: string)--><!--Device-XComponentNode-constructor(uiContext: UIContext, options: RenderOptions,    id: string, type: XComponentType, libraryName?: string)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -93,6 +99,8 @@ Called when the XComponent surface has been created.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-XComponentNode-onCreate(event?: Object): void--><!--Device-XComponentNode-onCreate(event?: Object): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -116,5 +124,7 @@ Called when the XComponent surface has been destroyed.
 **Substitutes:** onDestroy
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-XComponentNode-onDestroy(): void--><!--Device-XComponentNode-onDestroy(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

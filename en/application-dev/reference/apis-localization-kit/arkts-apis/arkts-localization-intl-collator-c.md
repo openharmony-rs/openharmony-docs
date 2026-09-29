@@ -8,6 +8,8 @@ Provides the string collation capability.
 
 **Since:** 8
 
+<!--Device-intl-export class Collator--><!--Device-intl-export class Collator-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Compares two strings based on the specified collation rules.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Collator-compare(first: string, second: string): int--><!--Device-Collator-compare(first: string, second: string): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -66,6 +70,8 @@ Creates a **Collator** object for the current system locale.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Collator-constructor()--><!--Device-Collator-constructor()-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Examples**
@@ -90,6 +96,8 @@ Creates a **Collator** object based on the specified locale and options.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Collator-constructor(locale: string | Array<string>, options?: CollatorOptions)--><!--Device-Collator-constructor(locale: string | Array<string>, options?: CollatorOptions)-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -120,6 +128,8 @@ Obtains the options for creating a **Collator** object.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Collator-resolvedOptions(): CollatorOptions--><!--Device-Collator-resolvedOptions(): CollatorOptions-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

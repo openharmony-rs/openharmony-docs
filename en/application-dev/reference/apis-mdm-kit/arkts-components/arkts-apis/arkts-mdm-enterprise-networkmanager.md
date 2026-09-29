@@ -11,6 +11,8 @@ This module provides device network management capabilities, including querying 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace networkManager--><!--Device-unnamed-declare namespace networkManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

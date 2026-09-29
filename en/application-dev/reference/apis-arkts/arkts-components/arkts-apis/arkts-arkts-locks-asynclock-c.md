@@ -10,6 +10,8 @@ Class to execute an asynchronous operation under lock.
 
 **Decorator:** @Sendable
 
+<!--Device-locks-class AsyncLock--><!--Device-locks-class AsyncLock-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Default constructor.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AsyncLock-constructor()--><!--Device-AsyncLock-constructor()-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## lockAsync
@@ -43,6 +47,8 @@ Perform an operation with the acquired lock exclusively. The method acquires the
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AsyncLock-lockAsync<T>(callback: AsyncLockCallback<T>): Promise<T>--><!--Device-AsyncLock-lockAsync<T>(callback: AsyncLockCallback<T>): Promise<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -77,6 +83,8 @@ Perform an operation with the acquired lock. The method acquires the lock first,
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AsyncLock-lockAsync<T>(callback: AsyncLockCallback<T>, mode: AsyncLockMode): Promise<T>--><!--Device-AsyncLock-lockAsync<T>(callback: AsyncLockCallback<T>, mode: AsyncLockMode): Promise<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -114,6 +122,8 @@ Perform an operation with the acquired lock. The method acquires the lock first,
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AsyncLock-lockAsync<T, U>(callback: AsyncLockCallback<T>, mode: AsyncLockMode,        options: AsyncLockOptions<U>): Promise<T | U>--><!--Device-AsyncLock-lockAsync<T, U>(callback: AsyncLockCallback<T>, mode: AsyncLockMode,        options: AsyncLockOptions<U>): Promise<T | U>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -149,6 +159,8 @@ Query information about the specified lock.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AsyncLock-static query(name: string): AsyncLockState--><!--Device-AsyncLock-static query(name: string): AsyncLockState-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -181,6 +193,8 @@ Query information about all locks.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AsyncLock-static queryAll(): AsyncLockState[]--><!--Device-AsyncLock-static queryAll(): AsyncLockState[]-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -200,6 +214,8 @@ Find or create an instance of AsyncLock using the specified name.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AsyncLock-static request(name: string): AsyncLock--><!--Device-AsyncLock-static request(name: string): AsyncLock-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -228,5 +244,7 @@ Name of the lock.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AsyncLock-readonly name: string--><!--Device-AsyncLock-readonly name: string-End-->
 
 **System capability:** SystemCapability.Utils.Lang

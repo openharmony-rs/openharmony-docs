@@ -10,6 +10,8 @@ Before using the following APIs, you must create a ThreadWorker instance. The Th
 
 **Since:** 9
 
+<!--Device-worker-class ThreadWorker implements WorkerEventTarget--><!--Device-worker-class ThreadWorker implements WorkerEventTarget-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Adds an event listener for the Worker thread. This API provides the same functio
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ThreadWorker-addEventListener(type: string, listener: WorkerEventListener): void--><!--Device-ThreadWorker-addEventListener(type: string, listener: WorkerEventListener): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -74,6 +78,8 @@ A constructor used to create a ThreadWorker instance.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ThreadWorker-constructor(scriptURL: string, options?: WorkerOptions)--><!--Device-ThreadWorker-constructor(scriptURL: string, options?: WorkerOptions)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -113,6 +119,8 @@ Dispatches the event defined for the Worker thread.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ThreadWorker-dispatchEvent(event: Event): boolean--><!--Device-ThreadWorker-dispatchEvent(event: Event): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -162,6 +170,8 @@ Removes an event listener for the Worker thread. This API provides the same func
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ThreadWorker-off(type: string, listener?: WorkerEventListener): void--><!--Device-ThreadWorker-off(type: string, listener?: WorkerEventListener): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -219,6 +229,8 @@ Adds an event listener for the Worker thread. This API provides the same functio
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ThreadWorker-on(type: string, listener: WorkerEventListener): void--><!--Device-ThreadWorker-on(type: string, listener: WorkerEventListener): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -268,6 +280,8 @@ onAllErrors can capture global exceptions generated during the onmessage callbac
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ThreadWorker-onAllErrors?: ErrorCallback--><!--Device-ThreadWorker-onAllErrors?: ErrorCallback-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -288,6 +302,8 @@ Adds an event listener for the Worker thread and removes the event listener afte
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ThreadWorker-once(type: string, listener: WorkerEventListener): void--><!--Device-ThreadWorker-once(type: string, listener: WorkerEventListener): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -335,6 +351,8 @@ Called when an exception occurs during worker execution. The event handler is ex
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ThreadWorker-onerror?: (err: ErrorEvent) => void--><!--Device-ThreadWorker-onerror?: (err: ErrorEvent) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -361,6 +379,8 @@ Called when the Worker thread exits. The event handler is executed in the host t
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ThreadWorker-onexit?: (code: number) => void--><!--Device-ThreadWorker-onexit?: (code: number) => void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -389,6 +409,8 @@ Called when the host thread receives a message sent by the Worker thread through
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ThreadWorker-onmessage?: (event: MessageEvents) => void--><!--Device-ThreadWorker-onmessage?: (event: MessageEvents) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -416,6 +438,8 @@ Called when the Worker thread receives a message that cannot be serialized. The 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ThreadWorker-onmessageerror?: (event: MessageEvents) => void--><!--Device-ThreadWorker-onmessageerror?: (event: MessageEvents) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -442,6 +466,8 @@ Sends a message from the host thread to the Worker thread by transferring object
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ThreadWorker-postMessage(message: Object, transfer: ArrayBuffer[]): void--><!--Device-ThreadWorker-postMessage(message: Object, transfer: ArrayBuffer[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -548,6 +574,8 @@ Sends a message from the host thread to the Worker thread by transferring object
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ThreadWorker-postMessage(message: Object, options?: PostMessageOptions): void--><!--Device-ThreadWorker-postMessage(message: Object, options?: PostMessageOptions): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -593,6 +621,8 @@ Sends a message from the host thread to the Worker thread. In the message, a sen
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ThreadWorker-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void--><!--Device-ThreadWorker-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -664,6 +694,8 @@ Registers an object with the ThreadWorker instance of the host thread. In this w
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ThreadWorker-registerGlobalCallObject(instanceName: string, globalCallObject: Object): void--><!--Device-ThreadWorker-registerGlobalCallObject(instanceName: string, globalCallObject: Object): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -739,6 +771,8 @@ Removes all event listeners for the Worker thread.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ThreadWorker-removeAllListener(): void--><!--Device-ThreadWorker-removeAllListener(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -771,6 +805,8 @@ Removes an event listener for the Worker thread. This API provides the same func
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ThreadWorker-removeEventListener(type: string, callback?: WorkerEventListener): void--><!--Device-ThreadWorker-removeEventListener(type: string, callback?: WorkerEventListener): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -816,6 +852,8 @@ Terminates the Worker thread to stop it from receiving messages.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ThreadWorker-terminate(): void--><!--Device-ThreadWorker-terminate(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -845,6 +883,8 @@ Unregisters an object with the ThreadWorker instance of the host thread. This AP
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ThreadWorker-unregisterGlobalCallObject(instanceName?: string): void--><!--Device-ThreadWorker-unregisterGlobalCallObject(instanceName?: string): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

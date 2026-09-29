@@ -14,6 +14,8 @@ Implements a **WebStorage** object to manage the Web SQL database and HTML5 Web 
 
 **Since:** 9
 
+<!--Device-webview-class WebStorage--><!--Device-webview-class WebStorage-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Deletes all storage data used by JavaScript storage APIs, including the Web SQL 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebStorage-static deleteAllData(incognito?: boolean): void--><!--Device-WebStorage-static deleteAllData(incognito?: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -81,6 +85,8 @@ Deletes all data in the specified origin.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebStorage-static deleteOrigin(origin: string): void--><!--Device-WebStorage-static deleteOrigin(origin: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -230,6 +236,8 @@ Obtains the storage quota of an origin in the Web SQL Database and HTML5-support
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebStorage-static getOriginQuota(origin: string): Promise<number>--><!--Device-WebStorage-static getOriginQuota(origin: string): Promise<number>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -301,6 +309,8 @@ Obtains the storage quota of an origin in Web SQL Database and HTML5-supported W
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebStorage-static getOriginQuota(origin: string, callback: AsyncCallback<number>): void--><!--Device-WebStorage-static getOriginQuota(origin: string, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -364,6 +374,8 @@ Obtains information about origins that are currently using the Web SQL Database 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebStorage-static getOrigins(): Promise<Array<WebStorageOrigin>>--><!--Device-WebStorage-static getOrigins(): Promise<Array<WebStorageOrigin>>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -433,6 +445,8 @@ Obtains information about origins that are currently using the Web SQL Database 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebStorage-static getOrigins(callback: AsyncCallback<Array<WebStorageOrigin>>): void--><!--Device-WebStorage-static getOrigins(callback: AsyncCallback<Array<WebStorageOrigin>>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -498,6 +512,8 @@ Obtains the storage usage of an origin in the Web SQL Database and HTML5-support
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebStorage-static getOriginUsage(origin: string): Promise<number>--><!--Device-WebStorage-static getOriginUsage(origin: string): Promise<number>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -567,6 +583,8 @@ Obtains the storage usage of an origin in the Web SQL Database and HTML5-support
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebStorage-static getOriginUsage(origin: string, callback: AsyncCallback<number>): void--><!--Device-WebStorage-static getOriginUsage(origin: string, callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

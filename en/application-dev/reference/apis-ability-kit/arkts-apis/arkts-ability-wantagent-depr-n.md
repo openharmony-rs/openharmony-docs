@@ -12,6 +12,8 @@ The WantAgent module provides APIs for creating and comparing WantAgent objects,
 
 **Substitutes:** [wantAgent/wantAgent](arkts-ability-wantagent-n.md)
 
+<!--Device-unnamed-declare namespace wantAgent--><!--Device-unnamed-declare namespace wantAgent-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -31,7 +33,7 @@ The WantAgent module provides APIs for creating and comparing WantAgent objects,
 | [getUid](arkts-ability-wantagent-getuid-depr-f.md#getuid-1) | Obtains the UID of a WantAgent. |
 | [cancel](arkts-ability-wantagent-cancel-depr-f.md#cancel) | Cancel a WantAgent. Only the application that creates the WantAgent can cancel it. |
 | [cancel](arkts-ability-wantagent-cancel-depr-f.md#cancel-1) | Cancel a WantAgent. Only the application that creates the WantAgent can cancel it. |
-| [trigger](arkts-ability-wantagent-trigger-depr-f.md#trigger) | Triggers a WantAgent. |
+| [trigger](arkts-ability-wantagent-trigger-depr-f.md) | Triggers a WantAgent. |
 | [equal](arkts-ability-wantagent-equal-depr-f.md#equal) | Checks whether two WantAgent objects are equal. |
 | [equal](arkts-ability-wantagent-equal-depr-f.md#equal-1) | Checks whether two WantAgent objects are equal. |
 | [getWantAgent](arkts-ability-wantagent-getwantagent-depr-f.md#getwantagent) | Obtains a WantAgent object. |
@@ -42,8 +44,8 @@ The WantAgent module provides APIs for creating and comparing WantAgent objects,
 
 | Name | Description |
 | --- | --- |
-| [getWant](arkts-ability-wantagent-getwant-depr-f-sys.md#getwant) | Obtains the [Want](arkts-ability-app-ability-want-want-c.md) of an [WantAgent](arkts-ability-wantagent-depr-t.md#wantagent). |
-| [getWant](arkts-ability-wantagent-getwant-depr-f-sys.md#getwant-1) | Obtains the [Want](arkts-ability-app-ability-want-want-c.md) of an [WantAgent](arkts-ability-wantagent-depr-t.md#wantagent). |
+| [getWant](arkts-ability-wantagent-getwant-depr-f-sys.md#getwant) | Obtains the [Want](arkts-ability-app-ability-want-want-c.md) of an [WantAgent](arkts-ability-wantagent-depr-t.md). |
+| [getWant](arkts-ability-wantagent-getwant-depr-f-sys.md#getwant-1) | Obtains the [Want](arkts-ability-app-ability-want-want-c.md) of an [WantAgent](arkts-ability-wantagent-depr-t.md). |
 <!--DelEnd-->
 
 ### Interfaces

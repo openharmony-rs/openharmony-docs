@@ -18,6 +18,8 @@ Obtains the window corresponding to this ability. This API uses an asynchronous 
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-featureAbility-function getWindow(callback: AsyncCallback<window.Window>): void--><!--Device-featureAbility-function getWindow(callback: AsyncCallback<window.Window>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -57,6 +59,8 @@ Obtains the window corresponding to this ability. This API uses a promise to ret
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-featureAbility-function getWindow(): Promise<window.Window>--><!--Device-featureAbility-function getWindow(): Promise<window.Window>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 

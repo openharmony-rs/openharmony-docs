@@ -16,6 +16,8 @@ Defines the rectangular region for capturing the component snapshot, with coordi
 
 **Since:** 15
 
+<!--Device-componentSnapshot-interface LocalizedSnapshotRegion--><!--Device-componentSnapshot-interface LocalizedSnapshotRegion-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -44,6 +46,8 @@ Value range: [0, Component height].
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-LocalizedSnapshotRegion-bottom: number--><!--Device-LocalizedSnapshotRegion-bottom: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## end
@@ -67,6 +71,8 @@ Value range: [0, Component width].
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-LocalizedSnapshotRegion-end: number--><!--Device-LocalizedSnapshotRegion-end: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +98,8 @@ Value range: [0, Component width].
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-LocalizedSnapshotRegion-start: number--><!--Device-LocalizedSnapshotRegion-start: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -115,5 +123,7 @@ Value range: [0, Component height].
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-LocalizedSnapshotRegion-top: number--><!--Device-LocalizedSnapshotRegion-top: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

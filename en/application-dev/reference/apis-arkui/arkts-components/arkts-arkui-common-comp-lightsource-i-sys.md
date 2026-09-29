@@ -8,6 +8,8 @@ Each component allows for one light source.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface LightSource--><!--Device-unnamed-declare interface LightSource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -28,6 +30,8 @@ Default value: **Color.White**
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LightSource-color?: ResourceColor--><!--Device-LightSource-color?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Intensity of the light source. The recommended value range is 0-1. When the inte
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LightSource-intensity: number--><!--Device-LightSource-intensity: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +70,8 @@ X-coordinate of the light source relative to the current component.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LightSource-positionX: Dimension--><!--Device-LightSource-positionX: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -82,6 +90,8 @@ Y-coordinate of the light source relative to the current component.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LightSource-positionY: Dimension--><!--Device-LightSource-positionY: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -99,6 +109,8 @@ Height of the light source. The higher the light source, the broader the light d
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LightSource-positionZ: Dimension--><!--Device-LightSource-positionZ: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -14,6 +14,8 @@ Defines length metrics unit.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-unnamed-declare type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit--><!--Device-unnamed-declare type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/arkui/Graphics').LengthMetricsUnit

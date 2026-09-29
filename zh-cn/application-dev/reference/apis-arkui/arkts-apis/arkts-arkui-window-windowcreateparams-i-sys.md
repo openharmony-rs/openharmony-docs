@@ -8,6 +8,8 @@ interface WindowCreateParams
 
 **起始版本：** 20
 
+<!--Device-window-interface WindowCreateParams--><!--Device-window-interface WindowCreateParams-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -32,6 +34,8 @@ isWindowLimitsForcible?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WindowCreateParams-isWindowLimitsForcible?: boolean--><!--Device-WindowCreateParams-isWindowLimitsForcible?: boolean-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -49,6 +53,8 @@ systemAnimationParams?: StartAnimationSystemParams
 **类型：** [StartAnimationSystemParams](arkts-arkui-window-startanimationsystemparams-i-sys.md)
 
 **起始版本：** 20
+
+<!--Device-WindowCreateParams-systemAnimationParams?: StartAnimationSystemParams--><!--Device-WindowCreateParams-systemAnimationParams?: StartAnimationSystemParams-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

@@ -8,6 +8,8 @@ Provides the widget information.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface FormInfo--><!--Device-unnamed-declare interface FormInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ Ability name of the widget.
 
 **Since:** 12
 
+<!--Device-FormInfo-ability: string--><!--Device-FormInfo-ability: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Bundle name of the widget.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-FormInfo-bundle: string--><!--Device-FormInfo-bundle: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +64,8 @@ Default value: **Dimension_2_2**
 
 **Since:** 12
 
+<!--Device-FormInfo-dimension?: FormDimension--><!--Device-FormInfo-dimension?: FormDimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -75,6 +83,8 @@ Default value: **false**.
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-FormInfo-exemptAppLock?: boolean--><!--Device-FormInfo-exemptAppLock?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +108,8 @@ If a widget host uses the same ID for two widgets, the one added later is displa
 
 **Since:** 12
 
+<!--Device-FormInfo-id: number | string--><!--Device-FormInfo-id: number | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -114,6 +126,8 @@ Module name of the widget.
 
 **Since:** 12
 
+<!--Device-FormInfo-module: string--><!--Device-FormInfo-module: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -129,6 +143,8 @@ Widget name.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-FormInfo-name: string--><!--Device-FormInfo-name: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -155,6 +171,8 @@ If the system does not support unified rendering, the widget framework does not 
 
 **Since:** 12
 
+<!--Device-FormInfo-renderingMode?: FormRenderingMode--><!--Device-FormInfo-renderingMode?: FormRenderingMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -170,6 +188,8 @@ The shape of the form.
 **Type:** [FormShape](arkts-arkui-formcomponent-comp-formshape-e-sys.md)
 
 **Since:** 12
+
+<!--Device-FormInfo-shape?: FormShape--><!--Device-FormInfo-shape?: FormShape-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,6 +209,8 @@ Default value: **false**.
 
 **Since:** 12
 
+<!--Device-FormInfo-temporary?: boolean--><!--Device-FormInfo-temporary?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -204,6 +226,8 @@ The want of the form.
 **Type:** import('../api/@ohos.app.ability.Want').default
 
 **Since:** 12
+
+<!--Device-FormInfo-want?: import('../api/@ohos.app.ability.Want').default--><!--Device-FormInfo-want?: import('../api/@ohos.app.ability.Want').default-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

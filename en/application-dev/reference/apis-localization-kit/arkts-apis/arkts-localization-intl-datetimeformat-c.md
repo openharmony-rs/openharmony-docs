@@ -12,6 +12,8 @@ Performs date and time formatting.
 
 **Substitutes:** [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)
 
+<!--Device-intl-export class DateTimeFormat--><!--Device-intl-export class DateTimeFormat-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Creates a **DateTimeOptions** object for the specified locale.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-DateTimeFormat-constructor()--><!--Device-DateTimeFormat-constructor()-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -68,6 +72,8 @@ Creates a **DateTimeOptions** object for the specified locale.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-DateTimeFormat-constructor(locale: string | Array<string>, options?: DateTimeOptions)--><!--Device-DateTimeFormat-constructor(locale: string | Array<string>, options?: DateTimeOptions)-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -107,6 +113,8 @@ Formats the date and time.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-DateTimeFormat-format(date: Date): string--><!--Device-DateTimeFormat-format(date: Date): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -155,6 +163,8 @@ Formats date and time ranges.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-DateTimeFormat-formatRange(startDate: Date, endDate: Date): string--><!--Device-DateTimeFormat-formatRange(startDate: Date, endDate: Date): string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -199,6 +209,8 @@ Obtains the options for creating a **DateTimeOptions** object.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-DateTimeFormat-resolvedOptions(): DateTimeOptions--><!--Device-DateTimeFormat-resolvedOptions(): DateTimeOptions-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

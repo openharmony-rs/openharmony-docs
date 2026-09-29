@@ -18,7 +18,9 @@ Create a ble scanner instance. Each ble scanner instance can be independently st
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-ble-function createBleScanner(): BleScanner--><!--Device-ble-function createBleScanner(): BleScanner-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

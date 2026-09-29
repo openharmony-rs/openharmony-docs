@@ -1,4 +1,4 @@
-# @ohos.app.ability.CompletionHandlerForAbilityStartCallback
+# @ohos.app.ability.CompletionHandlerForAbilityStartCallback(Completion Handler for Ability Start Callback)
 
 **CompletionHandlerForAbilityStartCallback** is an optional parameter of
  [AbilityStartCallback](arkts-ability-abilitystartcallback-c.md). It provides callback results for launching ability
@@ -20,15 +20,15 @@ import { CompletionHandlerForAbilityStartCallback, AbilityStartFailureCode } fro
 | --- | --- |
 | [CompletionHandlerForAbilityStartCallback](arkts-ability-app-ability-completionhandlerforabilitystartcallback-completionhandlerforabilitystartcallback-c.md) | CompletionHandlerForAbilityStartCallback provides two callback functions, **onRequestSuccess** and **onRequestFailure**, which are invoked when launching the specified ability succeeds or fails, respectively. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [AbilityStartFailureCode](arkts-ability-app-ability-completionhandlerforabilitystartcallback-abilitystartfailurecode-e.md) | Enumerates the specific error codes for ability launch failures. |
-
 ### Types
 
 | Name | Description |
 | --- | --- |
 | [OnRequestFailureFn](arkts-ability-onrequestfailurefn-t.md) | Defines the callback for failed ability launches. |
 | [OnRequestSuccessFn](arkts-ability-onrequestsuccessfn-t.md) | Defines the callback for successful ability launches. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [AbilityStartFailureCode](arkts-ability-app-ability-completionhandlerforabilitystartcallback-abilitystartfailurecode-e.md) | Enumerates the specific error codes for ability launch failures. |

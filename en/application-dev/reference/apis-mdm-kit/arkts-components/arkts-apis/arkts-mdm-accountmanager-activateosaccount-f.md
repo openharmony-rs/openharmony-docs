@@ -20,6 +20,8 @@ Switches the system account. Currently, this API is supported only on phones and
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accountManager-function activateOsAccount(admin: Want, accountId: number): Promise<void>--><!--Device-accountManager-function activateOsAccount(admin: Want, accountId: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

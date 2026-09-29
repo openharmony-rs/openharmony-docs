@@ -8,6 +8,8 @@ Defines the result status of AI session operations.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare enum AISessionResultType--><!--Device-unnamed-declare enum AISessionResultType-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## SUCCESS
@@ -21,6 +23,8 @@ The operation is successful.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AISessionResultType-SUCCESS = 0--><!--Device-AISessionResultType-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ The operation failed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AISessionResultType-FAILURE = 1--><!--Device-AISessionResultType-FAILURE = 1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## RUNNING
@@ -49,5 +55,7 @@ The operation is in progress.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AISessionResultType-RUNNING = 2--><!--Device-AISessionResultType-RUNNING = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

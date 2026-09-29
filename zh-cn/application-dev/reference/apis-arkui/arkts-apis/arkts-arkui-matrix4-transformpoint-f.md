@@ -20,6 +20,8 @@ Matrix的坐标点转换函数，可以将当前的变换效果作用到一个�
 
 **替代接口：** [transformPoint](arkts-arkui-matrix4-matrix4transit-i.md#transformpoint)
 
+<!--Device-matrix4-function transformPoint(options: [number, number]): [number, number]--><!--Device-matrix4-function transformPoint(options: [number, number]): [number, number]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

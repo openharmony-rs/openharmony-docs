@@ -8,6 +8,8 @@ Defines the parameters for application installation.
 
 **Since:** 12
 
+<!--Device-bundleManager-interface InstallParam--><!--Device-bundleManager-interface InstallParam-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Installation flag.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InstallParam-installFlag?: number--><!--Device-InstallParam-installFlag?: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## parameters
@@ -48,6 +52,8 @@ Extended parameters. The default value is null. The key can be **ohos.bms.param.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InstallParam-parameters?: Record<string, string>--><!--Device-InstallParam-parameters?: Record<string, string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## userId
@@ -63,5 +69,7 @@ User ID, which must be greater than or equal to 0. The default value is the user
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InstallParam-userId?: number--><!--Device-InstallParam-userId?: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

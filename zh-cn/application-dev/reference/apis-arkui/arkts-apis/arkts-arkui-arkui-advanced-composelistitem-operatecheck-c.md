@@ -8,6 +8,8 @@ export declare class OperateCheck
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare class OperateCheck--><!--Device-unnamed-export declare class OperateCheck-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -34,6 +36,8 @@ value为false时，表示从选中变为未选中。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateCheck-onChange?: (value: boolean) => void--><!--Device-OperateCheck-onChange?: (value: boolean) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -59,6 +63,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateCheck-accessibilityDescription?: ResourceStr--><!--Device-OperateCheck-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +98,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateCheck-accessibilityLevel?: string--><!--Device-OperateCheck-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -111,6 +119,8 @@ accessibilityText?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateCheck-accessibilityText?: ResourceStr--><!--Device-OperateCheck-accessibilityText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,5 +145,7 @@ isCheck为false时，表示为未选中。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateCheck-isCheck?: boolean--><!--Device-OperateCheck-isCheck?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

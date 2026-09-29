@@ -6,6 +6,8 @@ Provides fileUri APIS
 
 **Since:** 15
 
+<!--Device-unnamed-declare namespace fileUri--><!--Device-unnamed-declare namespace fileUri-End-->
+
 **System capability:** SystemCapability.FileManagement.AppFileService
 
 ## Modules to Import

@@ -10,6 +10,8 @@ Describes the Hall effect sensor data. It extends from [Response](arkts-sensorse
 
 **Since:** 8
 
+<!--Device-sensor-interface HallResponse extends Response--><!--Device-sensor-interface HallResponse extends Response-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 ## Modules to Import
@@ -24,10 +26,12 @@ import { sensor } from '@kit.SensorServiceKit';
 status: number
 ```
 
-Hall effect sensor status. This parameter specifies whether a magnetic field exists around a device. The value **0** means that a magnetic field does not exist, and a value greater than **0** means the opposite.
+Hall effect status, indicating whether there is a magnetic force around the device. The value **0** indicates there is no magnetic force, and the Hall effect is off. A value greater than 0 indicates there is magnetic force, and the Hall effect is on.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-HallResponse-status: double--><!--Device-HallResponse-status: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

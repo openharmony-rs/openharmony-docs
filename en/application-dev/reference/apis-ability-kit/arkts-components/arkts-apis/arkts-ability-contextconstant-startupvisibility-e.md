@@ -8,6 +8,8 @@ Enumerates the visibility statuses of the UIAbility after it is started. If the 
 
 **Since:** 12
 
+<!--Device-contextConstant-export enum StartupVisibility--><!--Device-contextConstant-export enum StartupVisibility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## STARTUP_HIDE
@@ -22,6 +24,8 @@ The target UIAbility is hidden after it is started in the new process. The **onF
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StartupVisibility-STARTUP_HIDE = 0--><!--Device-StartupVisibility-STARTUP_HIDE = 0-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## STARTUP_SHOW
@@ -35,5 +39,7 @@ The target UIAbility is displayed normally after it is started in the new proces
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartupVisibility-STARTUP_SHOW = 1--><!--Device-StartupVisibility-STARTUP_SHOW = 1-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

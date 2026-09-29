@@ -8,6 +8,8 @@ Network access policy.
 
 **Since:** 12
 
+<!--Device-policy-export interface NetworkAccessPolicy--><!--Device-policy-export interface NetworkAccessPolicy-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Whether the application is allowed to access the cellular network. The value **t
 
 **Since:** 12
 
+<!--Device-NetworkAccessPolicy-allowCellular?: boolean--><!--Device-NetworkAccessPolicy-allowCellular?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Whether the application is allowed to access the Wi-Fi network. The value **true
 **Type:** boolean
 
 **Since:** 12
+
+<!--Device-NetworkAccessPolicy-allowWiFi?: boolean--><!--Device-NetworkAccessPolicy-allowWiFi?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -62,6 +68,8 @@ Whether the application is always allowed to access the cellular network. The va
 
 **Since:** 18
 
+<!--Device-NetworkAccessPolicy-alwaysAllowCellular?: boolean--><!--Device-NetworkAccessPolicy-alwaysAllowCellular?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Whether the application is always allowed to access the Wi-Fi network. The value
 **Type:** boolean
 
 **Since:** 18
+
+<!--Device-NetworkAccessPolicy-alwaysAllowWiFi?: boolean--><!--Device-NetworkAccessPolicy-alwaysAllowWiFi?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

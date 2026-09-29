@@ -22,6 +22,8 @@ Creates a **Helper** object to bind with all file management services in the sys
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-fileAccess-function createFileAccessHelper(context: Context): FileAccessHelper--><!--Device-fileAccess-function createFileAccessHelper(context: Context): FileAccessHelper-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -114,6 +116,8 @@ Creates a **Helper** object to bind with the specified Wants. This API returns t
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-fileAccess-function createFileAccessHelper(context: Context, wants: Array<Want>): FileAccessHelper--><!--Device-fileAccess-function createFileAccessHelper(context: Context, wants: Array<Want>): FileAccessHelper-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

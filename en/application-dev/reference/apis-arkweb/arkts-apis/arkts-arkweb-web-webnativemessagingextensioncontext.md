@@ -1,4 +1,4 @@
-# @ohos.web.WebNativeMessagingExtensionContext
+# @ohos.web.WebNativeMessagingExtensionContext(Web Native Messaging Extension Context)
 
 ## Modules to Import
 

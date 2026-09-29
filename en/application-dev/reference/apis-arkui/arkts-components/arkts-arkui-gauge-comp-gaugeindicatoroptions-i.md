@@ -8,6 +8,8 @@ Provides gauge indicator options.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface GaugeIndicatorOptions--><!--Device-unnamed-declare interface GaugeIndicatorOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -16,13 +18,13 @@ Provides gauge indicator options.
 icon?: ResourceStr
 ```
 
-Image path of the icon.
+Icon resource path.
 
-**NOTE:** 
+**Note:** 
 
-If this parameter is not set, the default style is used, which is a triangle pointer.
+If this parameter is not set, the system default style is used, which is a triangle pointer.
 
-Only icons in SVG format are supported. If icons in other formats are used, the default triangle style indicator is used.
+Only icons in SVG format are supported. If an icon in another format is used, the default triangle pointer is used.
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -36,6 +38,8 @@ Only icons in SVG format are supported. If icons in other formats are used, the 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-GaugeIndicatorOptions-icon?: ResourceStr--><!--Device-GaugeIndicatorOptions-icon?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## space
@@ -44,19 +48,21 @@ Only icons in SVG format are supported. If icons in other formats are used, the 
 space?: Dimension
 ```
 
-Distance between the indicator and the outer edge of the ring. The value cannot be in percentage.
+Spacing between the pointer and the outer edge of the ring.
 
 Default value: **8**
 
 Unit: vp
 
-**NOTE:** 
+**Note:** 
 
-For the default triangle style indicator, the distance is the amount of space between the triangle and the outer edge of the ring.
+Percentage is not supported.
 
-If this parameter is set to a value less than 0, the default value will be used.
+For the default triangle pointer, this is the spacing between the black triangle and the outer edge of the ring.
 
-If this parameter is set to a value greater than the ring radius, the default value will be used.
+If the value is less than 0, the default value is used.
+
+If the value is greater than the ring radius, the default value is used.
 
 **Type:** [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)
 
@@ -69,5 +75,7 @@ If this parameter is set to a value greater than the ring radius, the default va
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-GaugeIndicatorOptions-space?: Dimension--><!--Device-GaugeIndicatorOptions-space?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

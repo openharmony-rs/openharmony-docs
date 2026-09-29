@@ -8,6 +8,8 @@ Represents basic image and video information.
 
 **Since:** 12
 
+<!--Device-unnamed-export declare class BaseItemInfo--><!--Device-unnamed-export declare class BaseItemInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ This parameter is supported only when [ItemType](arkts-medialibrary-file-photopi
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BaseItemInfo-duration?: number--><!--Device-BaseItemInfo-duration?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## dynamicRangeType
@@ -50,6 +54,8 @@ For moving photos, this parameter specifies the dynamic range type of the cover 
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-BaseItemInfo-dynamicRangeType?: photoAccessHelper.DynamicRangeType--><!--Device-BaseItemInfo-dynamicRangeType?: photoAccessHelper.DynamicRangeType-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## height
@@ -67,6 +73,8 @@ This parameter is supported only when [ItemType](arkts-medialibrary-file-photopi
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BaseItemInfo-height?: number--><!--Device-BaseItemInfo-height?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -88,6 +96,8 @@ You can determine the media type based on the prefix of the **mimeType** string.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BaseItemInfo-mimeType?: string--><!--Device-BaseItemInfo-mimeType?: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## movingPhotoBadgeState
@@ -105,6 +115,8 @@ This parameter is supported only when [ItemType](arkts-medialibrary-file-photopi
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-BaseItemInfo-movingPhotoBadgeState?: photoAccessHelper.MovingPhotoBadgeStateType--><!--Device-BaseItemInfo-movingPhotoBadgeState?: photoAccessHelper.MovingPhotoBadgeStateType-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -140,6 +152,8 @@ Images with mirroring information retain their original width and height attribu
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-BaseItemInfo-orientation?: number--><!--Device-BaseItemInfo-orientation?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## photoSubType
@@ -157,6 +171,8 @@ The default value is **DEFAULT (0)**.
 **Since:** 21
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-BaseItemInfo-photoSubType?: photoAccessHelper.PhotoSubtype--><!--Device-BaseItemInfo-photoSubType?: photoAccessHelper.PhotoSubtype-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -177,6 +193,8 @@ This parameter is supported only when [ItemType](arkts-medialibrary-file-photopi
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BaseItemInfo-size?: number--><!--Device-BaseItemInfo-size?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -200,6 +218,8 @@ If the resource is a burst shot photo, only the cover image of the burst shot ph
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BaseItemInfo-uri?: string--><!--Device-BaseItemInfo-uri?: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## videoMode
@@ -215,6 +235,8 @@ Log mode of a video file.
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-BaseItemInfo-videoMode?: photoAccessHelper.VideoMode--><!--Device-BaseItemInfo-videoMode?: photoAccessHelper.VideoMode-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -233,5 +255,7 @@ This parameter is supported only when [ItemType](arkts-medialibrary-file-photopi
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BaseItemInfo-width?: number--><!--Device-BaseItemInfo-width?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

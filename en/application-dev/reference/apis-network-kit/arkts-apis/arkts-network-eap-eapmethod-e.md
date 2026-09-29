@@ -8,6 +8,8 @@ Enumerates the EAP authentication methods.
 
 **Since:** 20
 
+<!--Device-eap-enum EapMethod--><!--Device-eap-enum EapMethod-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
 ## EAP_NONE
@@ -19,6 +21,8 @@ EAP_NONE = 0
 Not specified.
 
 **Since:** 20
+
+<!--Device-EapMethod-EAP_NONE = 0--><!--Device-EapMethod-EAP_NONE = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
@@ -32,6 +36,8 @@ PEAP.
 
 **Since:** 20
 
+<!--Device-EapMethod-EAP_PEAP = 1--><!--Device-EapMethod-EAP_PEAP = 1-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
 ## EAP_TLS
@@ -43,6 +49,8 @@ EAP_TLS = 2
 TLS.
 
 **Since:** 20
+
+<!--Device-EapMethod-EAP_TLS = 2--><!--Device-EapMethod-EAP_TLS = 2-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
@@ -56,6 +64,8 @@ TTLS.
 
 **Since:** 20
 
+<!--Device-EapMethod-EAP_TTLS = 3--><!--Device-EapMethod-EAP_TTLS = 3-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
 ## EAP_PWD
@@ -67,6 +77,8 @@ EAP_PWD = 4
 Password.
 
 **Since:** 20
+
+<!--Device-EapMethod-EAP_PWD = 4--><!--Device-EapMethod-EAP_PWD = 4-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
@@ -80,6 +92,8 @@ SIM.
 
 **Since:** 20
 
+<!--Device-EapMethod-EAP_SIM = 5--><!--Device-EapMethod-EAP_SIM = 5-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
 ## EAP_AKA
@@ -91,6 +105,8 @@ EAP_AKA = 6
 AKA.
 
 **Since:** 20
+
+<!--Device-EapMethod-EAP_AKA = 6--><!--Device-EapMethod-EAP_AKA = 6-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
@@ -104,6 +120,8 @@ AKA Prime.
 
 **Since:** 20
 
+<!--Device-EapMethod-EAP_AKA_PRIME = 7--><!--Device-EapMethod-EAP_AKA_PRIME = 7-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
 ## EAP_UNAUTH_TLS
@@ -115,5 +133,7 @@ EAP_UNAUTH_TLS = 8
 UNAUTH TLS.
 
 **Since:** 20
+
+<!--Device-EapMethod-EAP_UNAUTH_TLS = 8--><!--Device-EapMethod-EAP_UNAUTH_TLS = 8-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap

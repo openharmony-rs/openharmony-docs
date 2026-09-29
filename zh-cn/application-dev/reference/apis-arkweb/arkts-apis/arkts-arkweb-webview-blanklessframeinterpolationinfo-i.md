@@ -8,6 +8,8 @@ interface BlanklessFrameInterpolationInfo
 
 **起始版本：** 23
 
+<!--Device-webview-interface BlanklessFrameInterpolationInfo--><!--Device-webview-interface BlanklessFrameInterpolationInfo-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -30,6 +32,8 @@ key: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-BlanklessFrameInterpolationInfo-key: string--><!--Device-BlanklessFrameInterpolationInfo-key: string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## reason
@@ -45,6 +49,8 @@ reason: string
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BlanklessFrameInterpolationInfo-reason: string--><!--Device-BlanklessFrameInterpolationInfo-reason: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -62,6 +68,8 @@ state: BlanklessFrameInterpolationState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-BlanklessFrameInterpolationInfo-state: BlanklessFrameInterpolationState--><!--Device-BlanklessFrameInterpolationInfo-state: BlanklessFrameInterpolationState-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## timestamp
@@ -77,5 +85,7 @@ timestamp: number
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BlanklessFrameInterpolationInfo-timestamp: number--><!--Device-BlanklessFrameInterpolationInfo-timestamp: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

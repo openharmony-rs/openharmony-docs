@@ -8,6 +8,8 @@ Describes the notification information about the change of an album.
 
 **Since:** 20
 
+<!--Device-photoAccessHelper-interface AlbumChangeInfos--><!--Device-photoAccessHelper-interface AlbumChangeInfos-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Array of changed albums. If all albums need to be queried again, **albumChangeDa
 
 **Since:** 20
 
+<!--Device-AlbumChangeInfos-albumChangeDatas: AlbumChangeData[] | null--><!--Device-AlbumChangeInfos-albumChangeDatas: AlbumChangeData[] | null-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## isForRecheck
@@ -46,6 +50,8 @@ In scenarios involving bulk asset operations or abnormal notifications, **isForR
 
 **Since:** 20
 
+<!--Device-AlbumChangeInfos-isForRecheck: boolean--><!--Device-AlbumChangeInfos-isForRecheck: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## type
@@ -59,5 +65,7 @@ Type of the album change.
 **Type:** [NotifyChangeType](arkts-medialibrary-photoaccesshelper-notifychangetype-e.md)
 
 **Since:** 20
+
+<!--Device-AlbumChangeInfos-type: NotifyChangeType--><!--Device-AlbumChangeInfos-type: NotifyChangeType-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

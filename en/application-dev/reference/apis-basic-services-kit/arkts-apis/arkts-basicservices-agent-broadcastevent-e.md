@@ -16,6 +16,8 @@ For details about how to obtain the event configuration and configure the level-
 
 **Since:** 11
 
+<!--Device-agent-enum BroadcastEvent--><!--Device-agent-enum BroadcastEvent-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## COMPLETE
@@ -27,5 +29,7 @@ COMPLETE = 'ohos.request.event.COMPLETE'
 Task completion event. The returned event code can be **0x40** or **0x41**, depending on whether the task is successful or fails.
 
 **Since:** 11
+
+<!--Device-BroadcastEvent-COMPLETE = 'ohos.request.event.COMPLETE'--><!--Device-BroadcastEvent-COMPLETE = 'ohos.request.event.COMPLETE'-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

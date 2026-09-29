@@ -4,11 +4,11 @@
 export enum SceneType
 ```
 
-Enumeration type of scene.
-
-@enum { int } SceneType
+Enumerates the scene types of the moving photo playback.
 
 **Since:** 23
+
+<!--Device-photoAccessHelper-export enum SceneType--><!--Device-photoAccessHelper-export enum SceneType-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -24,7 +24,9 @@ Tap the grid icon to browse the large image.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-SceneType-GRID_TO_PHOTO_BROWSER = 0--><!--Device-SceneType-GRID_TO_PHOTO_BROWSER = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,6 +42,8 @@ Swipe left or right in the large image scene.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-SceneType-PHOTO_BROWSER_SWIPE = 1--><!--Device-SceneType-PHOTO_BROWSER_SWIPE = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

@@ -10,6 +10,8 @@ RectObj
 
 **Since:** 6
 
+<!--Device-unnamed-export interface RectObj--><!--Device-unnamed-export interface RectObj-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -23,6 +25,8 @@ height: number
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-RectObj-height: number--><!--Device-RectObj-height: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,6 +42,8 @@ left: number
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-RectObj-left: number--><!--Device-RectObj-left: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -52,6 +58,8 @@ top: number
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-RectObj-top: number--><!--Device-RectObj-top: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -65,5 +73,7 @@ width: number
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-RectObj-width: number--><!--Device-RectObj-width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

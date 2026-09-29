@@ -18,6 +18,8 @@ Performs postprocessing for the asset query. This API is used when user authenti
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-asset-function postQuery(handle: AssetMap): Promise<void>--><!--Device-asset-function postQuery(handle: AssetMap): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**

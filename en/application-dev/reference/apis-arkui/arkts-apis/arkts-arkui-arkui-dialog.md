@@ -1,4 +1,4 @@
-# @ohos.arkui.dialog
+# @ohos.arkui.dialog(Dialog Box)
 
 Provides unified dialog APIs.
 

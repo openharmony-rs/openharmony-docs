@@ -8,6 +8,8 @@ WarpedRingParam specifies the ring's radius, width, variation, rotation, 3D orie
 
 **Since:** 26.0.1
 
+<!--Device-uiEffect-interface WarpedRingParam--><!--Device-uiEffect-interface WarpedRingParam-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Defines half the ring's thickness, measured from the centerline to either edge. 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WarpedRingParam-baseHalfWidth: double--><!--Device-WarpedRingParam-baseHalfWidth: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Defines the evolution of the noise pattern over time. The value is unrestricted,
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WarpedRingParam-noiseEvolution: double--><!--Device-WarpedRingParam-noiseEvolution: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -68,6 +74,8 @@ Defines the ring radius, measured from the ring's center to the midpoint of its 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WarpedRingParam-radius: double--><!--Device-WarpedRingParam-radius: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Defines the progress of the ring's 3D orientation cycle. The input value is redu
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WarpedRingParam-rotate3DProgress: double--><!--Device-WarpedRingParam-rotate3DProgress: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -104,6 +114,8 @@ Defines the angle by which the ring is rotated around its center. The value is u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WarpedRingParam-rotateAngle: double--><!--Device-WarpedRingParam-rotateAngle: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -121,6 +133,8 @@ Defines the amount of variation along the ring's circumference. The value is unr
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WarpedRingParam-widthVariation: double--><!--Device-WarpedRingParam-widthVariation: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

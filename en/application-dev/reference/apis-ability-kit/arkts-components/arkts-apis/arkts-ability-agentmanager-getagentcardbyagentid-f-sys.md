@@ -20,6 +20,8 @@ Gets the AgentCard within specified agent id.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-agentManager-function getAgentCardByAgentId(bundleName: string, agentId: string): Promise<AgentCard>--><!--Device-agentManager-function getAgentCardByAgentId(bundleName: string, agentId: string): Promise<AgentCard>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

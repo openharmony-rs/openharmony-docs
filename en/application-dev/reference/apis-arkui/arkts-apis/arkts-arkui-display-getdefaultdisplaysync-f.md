@@ -16,7 +16,9 @@ Obtains the **Display** object of the screen where the application is located. I
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-display-function getDefaultDisplaySync(): Display--><!--Device-display-function getDefaultDisplaySync(): Display-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

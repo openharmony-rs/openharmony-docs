@@ -8,6 +8,8 @@ Defines the finger information type.
 
 **Since:** 8
 
+<!--Device-unnamed-interface FingerInfo--><!--Device-unnamed-interface FingerInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getCurrentLocalPosition
@@ -23,6 +25,8 @@ Gets the coordinates of the top-left corner of the current component based on it
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-FingerInfo-getCurrentLocalPosition?(): Coordinate2D--><!--Device-FingerInfo-getCurrentLocalPosition?(): Coordinate2D-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ Value range: [0, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FingerInfo-displayX: number--><!--Device-FingerInfo-displayX: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## displayY
@@ -69,6 +75,8 @@ Value range: [0, +∞)
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FingerInfo-displayY: number--><!--Device-FingerInfo-displayY: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,6 +98,8 @@ Value range: [0, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-FingerInfo-globalDisplayX?: number--><!--Device-FingerInfo-globalDisplayX?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalDisplayY
@@ -110,6 +120,8 @@ Value range: [0, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-FingerInfo-globalDisplayY?: number--><!--Device-FingerInfo-globalDisplayY?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalX
@@ -127,6 +139,8 @@ Value range: [0, +∞)
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FingerInfo-globalX: number--><!--Device-FingerInfo-globalX: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,6 +160,8 @@ Value range: [0, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FingerInfo-globalY: number--><!--Device-FingerInfo-globalY: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## hand
@@ -163,6 +179,8 @@ Whether the event is triggered by a left-hand or right-hand tap.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-FingerInfo-hand?: InteractionHand--><!--Device-FingerInfo-hand?: InteractionHand-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -186,6 +204,8 @@ Value range: [0, 9)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FingerInfo-id: number--><!--Device-FingerInfo-id: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## localX
@@ -204,6 +224,8 @@ Value range: [0, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FingerInfo-localX: number--><!--Device-FingerInfo-localX: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## localY
@@ -221,5 +243,7 @@ Value range: [0, +∞)
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FingerInfo-localY: number--><!--Device-FingerInfo-localY: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

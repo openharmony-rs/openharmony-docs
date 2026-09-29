@@ -14,6 +14,8 @@ Currently, the following formats are supported: jpeg, webp, png, heic&lt;sup&gt;
 
 **Since:** 6
 
+<!--Device-image-interface ImagePacker--><!--Device-image-interface ImagePacker-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Compresses or packs an image into a file and uses a promise to return the result
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ImagePacker-packBinaryImageToTiffData(bufferInfo: BinaryBufferInfo, options?: PackingOptionsForTiff): Promise<ArrayBuffer>--><!--Device-ImagePacker-packBinaryImageToTiffData(bufferInfo: BinaryBufferInfo, options?: PackingOptionsForTiff): Promise<ArrayBuffer>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -105,6 +109,8 @@ Compresses or packs an image into a file and uses a promise to return the result
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ImagePacker-packBinaryImageToTiffFile(bufferInfo: BinaryBufferInfo, fd: int, options?: PackingOptionsForTiff): Promise<void>--><!--Device-ImagePacker-packBinaryImageToTiffFile(bufferInfo: BinaryBufferInfo, fd: int, options?: PackingOptionsForTiff): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 **Parameters:**
@@ -170,6 +176,73 @@ async function PackBinaryImageToTiffFile(context: Context) {
 }
 ```
 
+<a id="packing-4"></a>
+
+## packing
+
+```TypeScript
+packing(picture: Picture, options: PackingOption): Promise<ArrayBuffer>
+```
+
+Compresses or re-encodes an image. This API uses a promise to return the result.
+
+**Since:** 13
+
+<!--Device-ImagePacker-packing(picture: Picture, options: PackingOption): Promise<ArrayBuffer>--><!--Device-ImagePacker-packing(picture: Picture, options: PackingOption): Promise<ArrayBuffer>-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.ImagePacker
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| picture | [Picture](arkts-image-image-picture-i.md) | Yes | Picture to compress or re-encode. |
+| options | [PackingOption](arkts-image-image-packingoption-i.md) | Yes | Encoding parameters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;ArrayBuffer&gt; | Promise used to return the compressed or encoded image data. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [7800301](../errorcode-image.md#7800301-encoding-failure) | Encode failed. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Packing(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("test.jpg");
+  let ops: image.SourceOptions = {
+    sourceDensity: 98,
+  }
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
+  let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
+  let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  let funcName = "Packing";
+  if (imagePackerObj != null) {
+    let opts: image.PackingOption = {
+      format: "image/jpeg",
+      quality: 98,
+      desiredDynamicRange: image.PackingDynamicRange.AUTO,
+      needsPackProperties: true};
+    await imagePackerObj.packing(pictureObj, opts).then((data: ArrayBuffer) => {
+      console.info(funcName, 'Succeeded in packing the image.'+ data);
+    }).catch((error: BusinessError) => {
+      console.error(funcName, `Failed to pack the image.code ${error.code},message is ${error.message}`);
+    });
+  }
+}
+```
+
 ## packing
 
 ```TypeScript
@@ -185,6 +258,8 @@ Compresses or re-encodes an image. This API uses an asynchronous callback to ret
 **Substitutes:** [packToData](#packtodata)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ImagePacker-packing(source: ImageSource, option: PackingOption, callback: AsyncCallback<ArrayBuffer>): void--><!--Device-ImagePacker-packing(source: ImageSource, option: PackingOption, callback: AsyncCallback<ArrayBuffer>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -234,6 +309,8 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 **Substitutes:** [packToData](#packtodata)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ImagePacker-packing(source: ImageSource, option: PackingOption): Promise<ArrayBuffer>--><!--Device-ImagePacker-packing(source: ImageSource, option: PackingOption): Promise<ArrayBuffer>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -294,6 +371,8 @@ Compresses or re-encodes an image. This API uses an asynchronous callback to ret
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ImagePacker-packing(source: PixelMap, option: PackingOption, callback: AsyncCallback<ArrayBuffer>): void--><!--Device-ImagePacker-packing(source: PixelMap, option: PackingOption, callback: AsyncCallback<ArrayBuffer>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 **Parameters:**
@@ -352,6 +431,8 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ImagePacker-packing(source: PixelMap, option: PackingOption): Promise<ArrayBuffer>--><!--Device-ImagePacker-packing(source: PixelMap, option: PackingOption): Promise<ArrayBuffer>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 **Parameters:**
@@ -390,71 +471,6 @@ async function Packing() {
 }
 ```
 
-<a id="packing-4"></a>
-
-## packing
-
-```TypeScript
-packing(picture: Picture, options: PackingOption): Promise<ArrayBuffer>
-```
-
-Compresses or re-encodes an image. This API uses a promise to return the result.
-
-**Since:** 13
-
-**System capability:** SystemCapability.Multimedia.Image.ImagePacker
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| picture | [Picture](arkts-image-image-picture-i.md) | Yes | Picture to compress or re-encode. |
-| options | [PackingOption](arkts-image-image-packingoption-i.md) | Yes | Encoding parameters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;ArrayBuffer&gt; | Promise used to return the compressed or encoded image data. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [7800301](../errorcode-image.md#7800301-encoding-failure) | Encode failed. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function Packing(context: Context) {
-  const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("test.jpg");
-  let ops: image.SourceOptions = {
-    sourceDensity: 98,
-  }
-  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
-  let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
-  let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
-  const imagePackerObj: image.ImagePacker = image.createImagePacker();
-  let funcName = "Packing";
-  if (imagePackerObj != null) {
-    let opts: image.PackingOption = {
-      format: "image/jpeg",
-      quality: 98,
-      desiredDynamicRange: image.PackingDynamicRange.AUTO,
-      needsPackProperties: true};
-    await imagePackerObj.packing(pictureObj, opts).then((data: ArrayBuffer) => {
-      console.info(funcName, 'Succeeded in packing the image.'+ data);
-    }).catch((error: BusinessError) => {
-      console.error(funcName, `Failed to pack the image.code ${error.code},message is ${error.message}`);
-    });
-  }
-}
-```
-
 ## packToData
 
 ```TypeScript
@@ -465,7 +481,9 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Since:** 13
 
-**Atomic service API:** This API can be used in atomic services since API version 13.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 13.
+
+<!--Device-ImagePacker-packToData(source: ImageSource, options: PackingOption): Promise<ArrayBuffer>--><!--Device-ImagePacker-packToData(source: ImageSource, options: PackingOption): Promise<ArrayBuffer>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -534,7 +552,9 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Since:** 13
 
-**Atomic service API:** This API can be used in atomic services since API version 13.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 13.
+
+<!--Device-ImagePacker-packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>--><!--Device-ImagePacker-packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -598,6 +618,8 @@ Encodes multiple PixelMap objects into GIF data. This API uses a promise to retu
 
 **Since:** 18
 
+<!--Device-ImagePacker-packToDataFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, options: PackingOptionsForSequence): Promise<ArrayBuffer>--><!--Device-ImagePacker-packToDataFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, options: PackingOptionsForSequence): Promise<ArrayBuffer>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 **Parameters:**
@@ -657,6 +679,8 @@ packToFile(source: ImageSource, fd: number, options: PackingOption, callback: As
 Encodes the image source into a file based on the specified encoding parameters. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-ImagePacker-packToFile(source: ImageSource, fd: int, options: PackingOption, callback: AsyncCallback<void>): void--><!--Device-ImagePacker-packToFile(source: ImageSource, fd: int, options: PackingOption, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -718,6 +742,8 @@ packToFile(source: ImageSource, fd: number, options: PackingOption): Promise<voi
 Encodes the image source into a file based on the specified encoding parameters. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-ImagePacker-packToFile(source: ImageSource, fd: int, options: PackingOption): Promise<void>--><!--Device-ImagePacker-packToFile(source: ImageSource, fd: int, options: PackingOption): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -789,6 +815,8 @@ Encodes the PixelMap into a file based on the specified encoding parameters. Thi
 
 **Since:** 11
 
+<!--Device-ImagePacker-packToFile(source: PixelMap, fd: int, options: PackingOption, callback: AsyncCallback<void>): void--><!--Device-ImagePacker-packToFile(source: PixelMap, fd: int, options: PackingOption, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 **Parameters:**
@@ -857,6 +885,8 @@ Encodes the PixelMap into a file based on the specified encoding parameters. Thi
 
 **Since:** 11
 
+<!--Device-ImagePacker-packToFile(source: PixelMap, fd: int, options: PackingOption): Promise<void>--><!--Device-ImagePacker-packToFile(source: PixelMap, fd: int, options: PackingOption): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 **Parameters:**
@@ -922,6 +952,8 @@ packToFile(picture: Picture, fd: number, options: PackingOption): Promise<void>
 Encodes the Picture into a file based on the specified encoding parameters. This API uses a promise to return the result.
 
 **Since:** 13
+
+<!--Device-ImagePacker-packToFile(picture: Picture, fd: int, options: PackingOption): Promise<void>--><!--Device-ImagePacker-packToFile(picture: Picture, fd: int, options: PackingOption): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -991,6 +1023,8 @@ Encodes multiple PixelMaps into a GIF file. This API uses a promise to return th
 
 **Since:** 18
 
+<!--Device-ImagePacker-packToFileFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, fd: int, options: PackingOptionsForSequence): Promise<void>--><!--Device-ImagePacker-packToFileFromPixelmapSequence(pixelmapSequence: Array<PixelMap>, fd: int, options: PackingOptionsForSequence): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 **Parameters:**
@@ -1059,6 +1093,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 6
 
+<!--Device-ImagePacker-release(callback: AsyncCallback<void>): void--><!--Device-ImagePacker-release(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 **Parameters:**
@@ -1100,6 +1136,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 6
 
+<!--Device-ImagePacker-release(): Promise<void>--><!--Device-ImagePacker-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 **Return value:**
@@ -1134,5 +1172,7 @@ Supported formats for image encoding, including jpeg, webp, png, heic&lt;sup&gt;
 **Type:** Array&lt;string&gt;
 
 **Since:** 6
+
+<!--Device-ImagePacker-readonly supportedFormats: Array<string>--><!--Device-ImagePacker-readonly supportedFormats: Array<string>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker

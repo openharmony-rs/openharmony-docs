@@ -8,6 +8,8 @@ Process data as blob type
 
 **Since:** 9
 
+<!--Device-buffer-class Blob--><!--Device-buffer-class Blob-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Puts the **Blob** data into an **ArrayBuffer** object. This API uses a promise t
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Blob-arrayBuffer(): Promise<ArrayBuffer>--><!--Device-Blob-arrayBuffer(): Promise<ArrayBuffer>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -62,6 +66,8 @@ A constructor used to create a **Blob** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Blob-constructor(sources: string[] | ArrayBuffer[] | TypedArray[] | DataView[] | Blob[], options?: Object)--><!--Device-Blob-constructor(sources: string[] | ArrayBuffer[] | TypedArray[] | DataView[] | Blob[], options?: Object)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -96,7 +102,9 @@ Creates and returns a **Blob** object that contains specified data from this **B
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Blob-slice(start?: int, end?: int, type?: string): Blob--><!--Device-Blob-slice(start?: int, end?: int, type?: string): Blob-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -135,7 +143,9 @@ Decodes data using UTF-8 and returns a string. This API uses a promise to return
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Blob-text(): Promise<string>--><!--Device-Blob-text(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -170,7 +180,9 @@ Total size of the Blob instance, in bytes.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Blob-get size(): int--><!--Device-Blob-get size(): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -186,6 +198,8 @@ Type of the data in the Blob instance.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Blob-get type(): string--><!--Device-Blob-get type(): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang

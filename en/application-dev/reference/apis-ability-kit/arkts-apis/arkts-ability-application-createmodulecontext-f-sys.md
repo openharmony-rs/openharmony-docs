@@ -31,6 +31,8 @@ Creates the context for a module. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-application-export function createModuleContext(context: Context, bundleName: string, moduleName: string): Promise<Context>--><!--Device-application-export function createModuleContext(context: Context, bundleName: string, moduleName: string): Promise<Context>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

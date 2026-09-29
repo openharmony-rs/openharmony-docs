@@ -8,6 +8,8 @@ Represents data of the content widget type.
 
 **Since:** 14
 
+<!--Device-uniformDataStruct-interface ContentForm--><!--Device-uniformDataStruct-interface ContentForm-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Application icon data in the content widget.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContentForm-appIcon?: Uint8Array--><!--Device-ContentForm-appIcon?: Uint8Array-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## appName
@@ -45,6 +49,8 @@ Application name in the content widget.
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContentForm-appName?: string--><!--Device-ContentForm-appName?: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -62,6 +68,8 @@ Description of the content widget.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContentForm-description?: string--><!--Device-ContentForm-description?: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## linkUri
@@ -77,6 +85,8 @@ Hyperlink in the content widget.
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContentForm-linkUri?: string--><!--Device-ContentForm-linkUri?: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -94,6 +104,8 @@ Image data in the content widget.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContentForm-thumbData?: Uint8Array--><!--Device-ContentForm-thumbData?: Uint8Array-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## title
@@ -110,6 +122,8 @@ Title of the content widget.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContentForm-title: string--><!--Device-ContentForm-title: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## uniformDataType
@@ -125,5 +139,7 @@ Uniform data type, which has a fixed value of **general.content-form**.
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContentForm-readonly uniformDataType: 'general.content-form'--><!--Device-ContentForm-readonly uniformDataType: 'general.content-form'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

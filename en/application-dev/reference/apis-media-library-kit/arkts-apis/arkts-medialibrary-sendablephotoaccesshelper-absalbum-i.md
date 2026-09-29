@@ -1,7 +1,7 @@
 # AbsAlbum
 
 ```TypeScript
-interface AbsAlbum extends lang.ISendable
+interface AbsAlbum  extends lang.ISendable
 ```
 
 Defines the abstract interface of albums.
@@ -9,6 +9,8 @@ Defines the abstract interface of albums.
 **Inheritance/Implementation:** AbsAlbum extends [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
 
 **Since:** 12
+
+<!--Device-sendablePhotoAccessHelper-interface AbsAlbum  extends lang.ISendable--><!--Device-sendablePhotoAccessHelper-interface AbsAlbum  extends lang.ISendable-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -30,6 +32,8 @@ Obtains media assets. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
 
+<!--Device-AbsAlbum-getAssets(options: photoAccessHelper.FetchOptions): Promise<FetchResult<PhotoAsset>>--><!--Device-AbsAlbum-getAssets(options: photoAccessHelper.FetchOptions): Promise<FetchResult<PhotoAsset>>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters:**
@@ -48,9 +52,9 @@ Obtains media assets. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse FetchOptions, please check if the parameter is valid; <br>2. System internal error, failed to create boolean value, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry; <br>3. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 ## albumName
 
@@ -63,6 +67,8 @@ Album name.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-AbsAlbum-albumName: string--><!--Device-AbsAlbum-albumName: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -78,6 +84,8 @@ Album subtype
 
 **Since:** 12
 
+<!--Device-AbsAlbum-readonly albumSubtype: AlbumSubtype--><!--Device-AbsAlbum-readonly albumSubtype: AlbumSubtype-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## albumType
@@ -91,6 +99,8 @@ Album type
 **Type:** [AlbumType](arkts-medialibrary-sendablephotoaccesshelper-albumtype-e.md)
 
 **Since:** 12
+
+<!--Device-AbsAlbum-readonly albumType: AlbumType--><!--Device-AbsAlbum-readonly albumType: AlbumType-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -106,6 +116,8 @@ Album uri.
 
 **Since:** 12
 
+<!--Device-AbsAlbum-readonly albumUri: string--><!--Device-AbsAlbum-readonly albumUri: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## count
@@ -120,6 +132,8 @@ Number of assets in the album
 
 **Since:** 12
 
+<!--Device-AbsAlbum-readonly count: number--><!--Device-AbsAlbum-readonly count: number-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## coverUri
@@ -133,5 +147,7 @@ Cover uri for the album
 **Type:** string
 
 **Since:** 12
+
+<!--Device-AbsAlbum-readonly coverUri: string--><!--Device-AbsAlbum-readonly coverUri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

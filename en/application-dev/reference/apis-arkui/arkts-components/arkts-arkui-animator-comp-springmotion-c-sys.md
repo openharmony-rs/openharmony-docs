@@ -10,6 +10,8 @@ Spring animation model. You can build a spring animation based on the start poin
 
 **Deprecated since:** 22
 
+<!--Device-unnamed-declare class SpringMotion--><!--Device-unnamed-declare class SpringMotion-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Constructor parameters
 **Since:** 7
 
 **Deprecated since:** 22
+
+<!--Device-SpringMotion-constructor(start: number, end: number, velocity: number, prop: SpringProp)--><!--Device-SpringMotion-constructor(start: number, end: number, velocity: number, prop: SpringProp)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

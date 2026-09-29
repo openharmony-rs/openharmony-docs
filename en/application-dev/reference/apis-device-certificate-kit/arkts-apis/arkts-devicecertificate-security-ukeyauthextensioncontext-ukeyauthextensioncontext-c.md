@@ -10,6 +10,8 @@ UkeyAuthExtensionContext is the context of a UkeyAuthExtensionAbility, providing
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-declare class UkeyAuthExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class UkeyAuthExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Destroys this UkeyAuthExtensionAbility and closes the corresponding window. This
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UkeyAuthExtensionContext-terminateSelf(): Promise<void>--><!--Device-UkeyAuthExtensionContext-terminateSelf(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 **Return value:**
@@ -49,6 +53,8 @@ Destroys this UkeyAuthExtensionAbility, closes the corresponding window, and ret
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UkeyAuthExtensionContext-terminateSelfWithResult(parameter: AbilityResult): Promise<void>--><!--Device-UkeyAuthExtensionContext-terminateSelfWithResult(parameter: AbilityResult): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 

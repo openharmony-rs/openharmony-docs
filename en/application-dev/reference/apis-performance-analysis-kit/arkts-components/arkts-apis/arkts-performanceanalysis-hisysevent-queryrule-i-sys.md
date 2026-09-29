@@ -8,6 +8,8 @@ Defines event query rules.
 
 **Since:** 9
 
+<!--Device-hiSysEvent-interface QueryRule--><!--Device-hiSysEvent-interface QueryRule-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.
@@ -36,6 +38,8 @@ Multiple conditions can be configured in the **"and"** array, and the intersecti
 
 **Since:** 10
 
+<!--Device-QueryRule-condition?: string--><!--Device-QueryRule-condition?: string-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.
@@ -52,6 +56,8 @@ Event domain.
 
 **Since:** 9
 
+<!--Device-QueryRule-domain: string--><!--Device-QueryRule-domain: string-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ Array of event names. A **QueryRule** object contains multiple system event name
 **Type:** string[]
 
 **Since:** 9
+
+<!--Device-QueryRule-names: string[]--><!--Device-QueryRule-names: string[]-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 

@@ -10,6 +10,8 @@ Portrait Photo Conflict Functions object.
 
 **Since:** 13
 
+<!--Device-camera-interface PortraitPhotoConflictFunctions extends ZoomQuery, PortraitQuery, ApertureQuery--><!--Device-camera-interface PortraitPhotoConflictFunctions extends ZoomQuery, PortraitQuery, ApertureQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.

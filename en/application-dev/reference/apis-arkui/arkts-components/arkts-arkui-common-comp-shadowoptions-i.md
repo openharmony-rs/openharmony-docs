@@ -8,6 +8,8 @@ Provides the shadow attributes, including the blur radius, color, and offset alo
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface ShadowOptions--><!--Device-unnamed-declare interface ShadowOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -35,6 +37,8 @@ The **'average'** string can be used to trigger the mode for obtaining the avera
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ShadowOptions-color?: Color | string | Resource | ColoringStrategy--><!--Device-ShadowOptions-color?: Color | string | Resource | ColoringStrategy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ This attribute does not take effect in [textShadow](arkts-arkui-text-comp-attrib
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ShadowOptions-fill?: boolean--><!--Device-ShadowOptions-fill?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offsetX
@@ -92,6 +98,8 @@ If **offsetX** is of the Resource type, its value must be of the number type.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ShadowOptions-offsetX?: number | Resource--><!--Device-ShadowOptions-offsetX?: number | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offsetY
@@ -119,6 +127,8 @@ If **offsetY** is of the Resource type, its value must be of the number type.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ShadowOptions-offsetY?: number | Resource--><!--Device-ShadowOptions-offsetY?: number | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,6 +160,8 @@ If **radius** is of the Resource type, its value must be of the number type.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ShadowOptions-radius: number | Resource--><!--Device-ShadowOptions-radius: number | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -171,5 +183,7 @@ Default value: **COLOR**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ShadowOptions-type?: ShadowType--><!--Device-ShadowOptions-type?: ShadowType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,9 +8,11 @@ declare class BlankAttribute extends CommonMethod<BlankAttribute>
 
 支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** BlankAttribute extends CommonMethod&lt;BlankAttribute&gt;
+**继承/实现关系：** BlankAttribute extends CommonMethod<BlankAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class BlankAttribute extends CommonMethod<BlankAttribute>--><!--Device-unnamed-declare class BlankAttribute extends CommonMethod<BlankAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ color(value: ResourceColor)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BlankAttribute-color(value: ResourceColor): BlankAttribute--><!--Device-BlankAttribute-color(value: ResourceColor): BlankAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

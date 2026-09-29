@@ -8,6 +8,8 @@ Enumerates the positions of the **Tabs** component.
 
 **Since:** 7
 
+<!--Device-unnamed-declare enum BarPosition--><!--Device-unnamed-declare enum BarPosition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Start
@@ -22,6 +24,8 @@ If the **vertical** attribute is set to **true**, the tab is on the left of the 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-BarPosition-Start--><!--Device-BarPosition-Start-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## End
@@ -35,5 +39,7 @@ If the **vertical** attribute is set to **true**, the tab is on the right of the
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-BarPosition-End--><!--Device-BarPosition-End-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

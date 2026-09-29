@@ -8,6 +8,8 @@ declare interface SslErrorEvent
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface SslErrorEvent--><!--Device-unnamed-declare interface SslErrorEvent-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## certChainData
@@ -21,6 +23,8 @@ certChainData?: Array<Uint8Array>
 **类型：** Array&lt;Uint8Array&gt;
 
 **起始版本：** 20
+
+<!--Device-SslErrorEvent-certChainData?: Array<Uint8Array>--><!--Device-SslErrorEvent-certChainData?: Array<Uint8Array>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -38,6 +42,8 @@ error: SslError
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SslErrorEvent-error: SslError--><!--Device-SslErrorEvent-error: SslError-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## handler
@@ -53,6 +59,8 @@ handler: SslErrorHandler
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SslErrorEvent-handler: SslErrorHandler--><!--Device-SslErrorEvent-handler: SslErrorHandler-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -72,6 +80,8 @@ true表示致命错误，false表示非致命错误。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SslErrorEvent-isFatalError: boolean--><!--Device-SslErrorEvent-isFatalError: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isMainFrame
@@ -90,6 +100,8 @@ true表示主资源，false表示非主资源。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SslErrorEvent-isMainFrame: boolean--><!--Device-SslErrorEvent-isMainFrame: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## originalUrl
@@ -105,6 +117,8 @@ originalUrl: string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SslErrorEvent-originalUrl: string--><!--Device-SslErrorEvent-originalUrl: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -122,6 +136,8 @@ referrer url地址。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SslErrorEvent-referrer: string--><!--Device-SslErrorEvent-referrer: string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## url
@@ -137,5 +153,7 @@ url地址。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SslErrorEvent-url: string--><!--Device-SslErrorEvent-url: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

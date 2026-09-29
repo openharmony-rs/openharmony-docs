@@ -8,6 +8,8 @@ Describes the page routing options.
 
 **Since:** 8
 
+<!--Device-router-interface RouterOptions--><!--Device-router-interface RouterOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## Modules to Import
@@ -34,6 +36,8 @@ The **params** parameter can only carry serializable data. Objects returned by m
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RouterOptions-params?: Object--><!--Device-RouterOptions-params?: Object-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## recoverable
@@ -58,6 +62,8 @@ If an application is switched to the background and is later closed by the syste
 
 **Since:** 14
 
+<!--Device-RouterOptions-recoverable?: boolean--><!--Device-RouterOptions-recoverable?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## url
@@ -79,5 +85,7 @@ home page is set to the first item in the **src** value array.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RouterOptions-url: string--><!--Device-RouterOptions-url: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite

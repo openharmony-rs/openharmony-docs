@@ -10,6 +10,8 @@ Provides methods for setting network information, including the data roaming sta
 
 **Since:** 7
 
+<!--Device-settings-namespace network--><!--Device-settings-namespace network-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## Modules to Import

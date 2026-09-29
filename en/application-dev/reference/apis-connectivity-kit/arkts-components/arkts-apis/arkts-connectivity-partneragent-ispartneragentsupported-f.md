@@ -18,6 +18,8 @@ Checks whether the current device supports the partner agent feature.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-partnerAgent-function isPartnerAgentSupported(): boolean--><!--Device-partnerAgent-function isPartnerAgentSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 **Return value:**

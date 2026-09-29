@@ -14,6 +14,8 @@ The context of live form extension. It allows access to liveFormExtension-specif
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-common-export type LiveFormExtensionContext = _LiveFormExtensionContext.default--><!--Device-common-export type LiveFormExtensionContext = _LiveFormExtensionContext.default-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **Type:** _LiveFormExtensionContext.default

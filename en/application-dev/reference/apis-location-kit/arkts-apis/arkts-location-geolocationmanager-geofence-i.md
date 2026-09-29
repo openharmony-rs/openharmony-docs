@@ -8,6 +8,8 @@ Circular fence information.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-export interface Geofence--><!--Device-geoLocationManager-export interface Geofence-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Coordinate system type.
 
 **Since:** 12
 
+<!--Device-Geofence-coordinateSystemType?: CoordinateSystemType--><!--Device-Geofence-coordinateSystemType?: CoordinateSystemType-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## expiration
@@ -41,6 +45,8 @@ Expiration of the circular fence.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Geofence-expiration: double--><!--Device-Geofence-expiration: double-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -56,6 +62,8 @@ Latitude of the center point of the circular fence.
 
 **Since:** 9
 
+<!--Device-Geofence-latitude: double--><!--Device-Geofence-latitude: double-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## longitude
@@ -70,6 +78,8 @@ Longitude of the center point of the circular fence.
 
 **Since:** 9
 
+<!--Device-Geofence-longitude: double--><!--Device-Geofence-longitude: double-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## radius
@@ -83,5 +93,7 @@ Radius of the circular fence.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Geofence-radius: double--><!--Device-Geofence-radius: double-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence

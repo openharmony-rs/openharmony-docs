@@ -8,6 +8,8 @@ Represents the access records of all applications or devices.
 
 **Since:** 9
 
+<!--Device-privacyManager-interface PermissionUsedResponse--><!--Device-privacyManager-interface PermissionUsedResponse-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Start time of the query. Unit: milliseconds.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedResponse-beginTime: long--><!--Device-PermissionUsedResponse-beginTime: long-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ Each element represents the permission access record under an application dimens
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedResponse-bundleRecords: Array<BundleUsedRecord>--><!--Device-PermissionUsedResponse-bundleRecords: Array<BundleUsedRecord>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ End time of the query. Unit: milliseconds.
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionUsedResponse-endTime: long--><!--Device-PermissionUsedResponse-endTime: long-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

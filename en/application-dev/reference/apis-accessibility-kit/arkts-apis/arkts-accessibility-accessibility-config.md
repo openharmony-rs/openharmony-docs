@@ -4,6 +4,8 @@ The **accessibility.config** module provides APIs for configuring system accessi
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace config--><!--Device-unnamed-declare namespace config-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -50,16 +52,6 @@ import { config } from '@kit.AccessibilityKit';
 <!--DelEnd-->
 
 <!--Del-->
-### Enums(System API)
-
-| Name | Description |
-| --- | --- |
-| [BlinkingMode](arkts-accessibility-config-blinkingmode-e-sys.md) | Enumerates the blinking modes. |
-| [BlinkingScenario](arkts-accessibility-config-blinkingscenario-e-sys.md) | Enumerates the blinking scenarios. |
-| [BlinkResultCode](arkts-accessibility-config-blinkresultcode-e-sys.md) | Enumerates the result codes of blinking operations. |
-<!--DelEnd-->
-
-<!--Del-->
 ### Types(System API)
 
 | Name | Description |
@@ -68,6 +60,16 @@ import { config } from '@kit.AccessibilityKit';
 | [DaltonizationColorFilter](arkts-accessibility-config-daltonizationcolorfilter-t-sys.md) | Color correction filters for different types of color vision deficiency. |
 | [OnDisconnectCallback](arkts-accessibility-config-ondisconnectcallback-t-sys.md) | Describes the callback to be invoked when the connection to **AccessibilityExtensionAbility** is disconnected. |
 | [RepeatClickInterval](arkts-accessibility-config-repeatclickinterval-t-sys.md) | Ignore repeated clicks at different time intervals. |
+<!--DelEnd-->
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [BlinkingMode](arkts-accessibility-config-blinkingmode-e-sys.md) | Enumerates the blinking modes. |
+| [BlinkingScenario](arkts-accessibility-config-blinkingscenario-e-sys.md) | Enumerates the blinking scenarios. |
+| [BlinkResultCode](arkts-accessibility-config-blinkresultcode-e-sys.md) | Enumerates the result codes of blinking operations. |
 <!--DelEnd-->
 
 <!--Del-->

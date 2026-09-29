@@ -6,6 +6,8 @@ The sendableContextManager module provides APIs for converting between Context a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace sendableContextManager--><!--Device-unnamed-declare namespace sendableContextManager-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -25,7 +27,7 @@ import { sendableContextManager } from '@kit.AbilityKit';
 | [convertToApplicationContext](arkts-ability-sendablecontextmanager-converttoapplicationcontext-f.md) | Converts a SendableContext object to an ApplicationContext object. |
 | [convertToContext](arkts-ability-sendablecontextmanager-converttocontext-f.md) | Converts a SendableContext object to a Context object. |
 | [convertToUIAbilityContext](arkts-ability-sendablecontextmanager-converttouiabilitycontext-f.md) | Converts a SendableContext object to a UIAbilityContext object. |
-| [setEventHubMultithreadingEnabled](arkts-ability-sendablecontextmanager-seteventhubmultithreadingenabled-f.md) | Enables the cross-thread data transfer feature of [EventHub](arkts-ability-eventhub-c.md) in Context. |
+| [setEventHubMultithreadingEnabled](arkts-ability-sendablecontextmanager-seteventhubmultithreadingenabled-f.md) | Enables the cross-thread data transfer feature of [EventHub](arkts-ability-eventhub-c.md) in [Context](arkts-ability-context.md). |
 
 ### Types
 

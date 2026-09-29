@@ -12,6 +12,8 @@ Inherits from [MenuItemOptions](../arkts-components/arkts-arkui-menuitem-comp-me
 
 **Since:** 11
 
+<!--Device-unnamed-export interface ExpandedMenuOptions extends MenuItemOptions--><!--Device-unnamed-export interface ExpandedMenuOptions extends MenuItemOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -26,12 +28,14 @@ import { EditorEventInfo, EditorMenuOptions, ExpandedMenuOptions, SelectionMenu,
 action?: () => void
 ```
 
-Action triggered when the menu option is clicked.
+Callback invoked when an option in the menu is tapped. When not set, no response occurs upon tapping.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ExpandedMenuOptions-action?: () => void--><!--Device-ExpandedMenuOptions-action?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

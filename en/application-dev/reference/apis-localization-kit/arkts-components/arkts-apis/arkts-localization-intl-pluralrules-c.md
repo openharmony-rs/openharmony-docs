@@ -12,6 +12,8 @@ Provides the capability for obtaining the plural rule type.
 
 **Substitutes:** [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules)
 
+<!--Device-intl-export class PluralRules--><!--Device-intl-export class PluralRules-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Creates a **PluralRules** object to obtain the singular-plural type of numbers.
 **Substitutes:** [Intl.PluralRules.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PluralRules-constructor()--><!--Device-PluralRules-constructor()-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -64,6 +68,8 @@ Creates a **PluralRules** object to obtain the singular-plural type of numbers.
 **Substitutes:** [Intl.PluralRules.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PluralRules-constructor(locale: string | Array<string>, options?: PluralRulesOptions)--><!--Device-PluralRules-constructor(locale: string | Array<string>, options?: PluralRulesOptions)-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -98,6 +104,8 @@ Obtains the singular-plural type of the specified number.
 **Substitutes:** [Intl.PluralRules.select](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/select)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PluralRules-select(n: double): string--><!--Device-PluralRules-select(n: double): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

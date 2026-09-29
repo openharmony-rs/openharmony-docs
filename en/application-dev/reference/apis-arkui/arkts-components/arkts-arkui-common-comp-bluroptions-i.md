@@ -8,6 +8,8 @@ Grayscale blur parameters.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface BlurOptions--><!--Device-unnamed-declare interface BlurOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## grayscale
@@ -25,5 +27,7 @@ Grayscale blur, with two parameters in the value range of [0, 127]. The color gr
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BlurOptions-grayscale: [number, number]--><!--Device-BlurOptions-grayscale: [number, number]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

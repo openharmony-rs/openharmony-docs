@@ -8,6 +8,8 @@ enum MaterialType
 
 **起始版本：** 26.0.0
 
+<!--Device-uiMaterial-enum MaterialType--><!--Device-uiMaterial-enum MaterialType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NONE
@@ -25,6 +27,8 @@ NONE = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MaterialType-NONE = 0--><!--Device-MaterialType-NONE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,6 +57,8 @@ SEMI_TRANSPARENT = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MaterialType-SEMI_TRANSPARENT = 1--><!--Device-MaterialType-SEMI_TRANSPARENT = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

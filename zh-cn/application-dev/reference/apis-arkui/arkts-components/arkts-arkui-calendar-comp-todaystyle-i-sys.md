@@ -10,6 +10,8 @@ Non current day style.
 
 **废弃版本：** 20
 
+<!--Device-unnamed-interface TodayStyle--><!--Device-unnamed-interface TodayStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -31,6 +33,8 @@ Background color of the focus area.
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TodayStyle-focusedAreaBackgroundColor?: ResourceColor--><!--Device-TodayStyle-focusedAreaBackgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Focus area radius.
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-TodayStyle-focusedAreaRadius?: number--><!--Device-TodayStyle-focusedAreaRadius?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -76,6 +82,8 @@ Style of focus color.
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-TodayStyle-focusedDayColor?: ResourceColor--><!--Device-TodayStyle-focusedDayColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -97,6 +105,8 @@ Focus on Lunar Colors.
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TodayStyle-focusedLunarColor?: ResourceColor--><!--Device-TodayStyle-focusedLunarColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

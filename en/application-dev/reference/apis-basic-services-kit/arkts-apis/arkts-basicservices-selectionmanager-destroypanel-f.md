@@ -18,6 +18,8 @@ Destroys the word selection panel. This API is used together with [createPanel](
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-selectionManager-function destroyPanel(panel: Panel): Promise<void>--><!--Device-selectionManager-function destroyPanel(panel: Panel): Promise<void>-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 **Parameters:**

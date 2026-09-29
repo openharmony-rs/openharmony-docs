@@ -16,6 +16,8 @@ function off(type: 'privateModeChange', callback?: Callback<boolean>): void
 
 **起始版本：** 10
 
+<!--Device-display-function off(type: 'privateModeChange', callback?: Callback<boolean>): void--><!--Device-display-function off(type: 'privateModeChange', callback?: Callback<boolean>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。

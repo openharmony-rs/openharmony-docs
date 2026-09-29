@@ -14,6 +14,8 @@ The **ArcButton** component offers various button styles, such as emphasized, no
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct ArcButton--><!--Device-unnamed-export declare struct ArcButton-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## Modules to Import
@@ -37,5 +39,7 @@ Text, background color, shadow, and other parameters of the **ArcButton** compon
 **Decorator:** @Require
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcButton-readonly options: ArcButtonOptions--><!--Device-ArcButton-readonly options: ArcButtonOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle

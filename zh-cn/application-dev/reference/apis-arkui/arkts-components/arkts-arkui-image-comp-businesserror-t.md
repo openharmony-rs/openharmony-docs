@@ -16,6 +16,8 @@ declare type BusinessError<T = void> = import('../api/@ohos.base').BusinessError
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare type BusinessError<T = void> = import('../api/@ohos.base').BusinessError<T>--><!--Device-unnamed-declare type BusinessError<T = void> = import('../api/@ohos.base').BusinessError<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** import('../api/@ohos.base').BusinessError&lt;T&gt;

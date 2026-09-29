@@ -24,6 +24,8 @@ Queries whether the USB is disabled.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-usbManager-function isUsbDisabled(admin: Want): boolean--><!--Device-usbManager-function isUsbDisabled(admin: Want): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Sets the device type that triggers the button event.
 
 **Since:** 7
 
+<!--Device-unnamed-declare enum KeySource--><!--Device-unnamed-declare enum KeySource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Unknown
@@ -23,6 +25,8 @@ Unknown input device.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-KeySource-Unknown--><!--Device-KeySource-Unknown-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ The input device is a keyboard.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-KeySource-Keyboard--><!--Device-KeySource-Keyboard-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## JOYSTICK
@@ -55,5 +61,7 @@ The input device is a joystick.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-KeySource-JOYSTICK--><!--Device-KeySource-JOYSTICK-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

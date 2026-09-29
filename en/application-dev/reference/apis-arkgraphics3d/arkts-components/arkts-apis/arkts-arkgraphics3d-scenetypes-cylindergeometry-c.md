@@ -17,6 +17,8 @@ A cylinder geometry type that inherits from GeometryDefinition.
 
 **Since:** 23
 
+<!--Device-unnamed-export declare class CylinderGeometry extends GeometryDefinition--><!--Device-unnamed-export declare class CylinderGeometry extends GeometryDefinition-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## height
@@ -31,6 +33,8 @@ Height of the cylinder, in scene units of the world coordinate system (such as c
 
 **Since:** 23
 
+<!--Device-CylinderGeometry-get height(): double--><!--Device-CylinderGeometry-get height(): double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ```TypeScript
@@ -42,6 +46,8 @@ Height of the cylinder, in scene units of the world coordinate system (such as c
 **Type:** number
 
 **Since:** 23
+
+<!--Device-CylinderGeometry-set height(value: double)--><!--Device-CylinderGeometry-set height(value: double)-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -57,6 +63,8 @@ Bottom radius of the cylinder, in scene units of the world coordinate system (su
 
 **Since:** 23
 
+<!--Device-CylinderGeometry-get radius(): double--><!--Device-CylinderGeometry-get radius(): double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ```TypeScript
@@ -68,6 +76,8 @@ Bottom radius of the cylinder, in scene units of the world coordinate system (su
 **Type:** number
 
 **Since:** 23
+
+<!--Device-CylinderGeometry-set radius(value: double)--><!--Device-CylinderGeometry-set radius(value: double)-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -83,6 +93,8 @@ Use regular polygons to approximate the circular base of the cylinder, where seg
 
 **Since:** 23
 
+<!--Device-CylinderGeometry-get segmentCount(): int--><!--Device-CylinderGeometry-get segmentCount(): int-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ```TypeScript
@@ -94,5 +106,7 @@ Use regular polygons to approximate the circular base of the cylinder, where seg
 **Type:** number
 
 **Since:** 23
+
+<!--Device-CylinderGeometry-set segmentCount(value: int)--><!--Device-CylinderGeometry-set segmentCount(value: int)-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

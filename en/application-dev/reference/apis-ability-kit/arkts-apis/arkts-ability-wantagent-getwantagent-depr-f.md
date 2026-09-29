@@ -21,6 +21,8 @@ Obtains a WantAgent object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-wantAgent-function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void--><!--Device-wantAgent-function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -92,6 +94,8 @@ Obtains a WantAgent object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-wantAgent-function getWantAgent(info: WantAgentInfo): Promise<WantAgent>--><!--Device-wantAgent-function getWantAgent(info: WantAgentInfo): Promise<WantAgent>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -104,7 +108,7 @@ Obtains a WantAgent object.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[WantAgent](arkts-ability-wantagent-depr-t.md)&gt; | Returns the created [WantAgent](arkts-ability-wantagent-depr-t.md#wantagent) object. |
+| Promise&lt;[WantAgent](arkts-ability-wantagent-depr-t.md)&gt; | Returns the created [WantAgent](arkts-ability-wantagent-depr-t.md) object. |
 
 **Examples**
 

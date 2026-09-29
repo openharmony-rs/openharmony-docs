@@ -18,6 +18,8 @@ Set the current network selection mode.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-radio-function setNetworkSelectionMode(options: NetworkSelectionModeOptions, callback: AsyncCallback<void>): void--><!--Device-radio-function setNetworkSelectionMode(options: NetworkSelectionModeOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -81,6 +83,8 @@ Set the current network selection mode.
 **Since:** 6
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-radio-function setNetworkSelectionMode(options: NetworkSelectionModeOptions): Promise<void>--><!--Device-radio-function setNetworkSelectionMode(options: NetworkSelectionModeOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

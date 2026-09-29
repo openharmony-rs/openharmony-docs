@@ -18,6 +18,8 @@ Sends an SMS message. This API uses an asynchronous callback to return the resul
 
 **Required permissions:** ohos.permission.SEND_MESSAGES
 
+<!--Device-sms-function sendShortMessage(options: SendMessageOptions, callback: AsyncCallback<void>): void--><!--Device-sms-function sendShortMessage(options: SendMessageOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **Parameters:**
@@ -78,6 +80,8 @@ Sends an SMS message. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.SEND_MESSAGES
+
+<!--Device-sms-function sendShortMessage(options: SendMessageOptions): Promise<void>--><!--Device-sms-function sendShortMessage(options: SendMessageOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

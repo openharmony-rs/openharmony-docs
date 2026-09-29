@@ -16,6 +16,8 @@ UIServiceExtensionContext provides access to a [UIServiceExtensionAbility](arkts
 
 **Since:** 14
 
+<!--Device-unnamed-declare class UIServiceExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class UIServiceExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -36,6 +38,8 @@ Connects to a [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIServiceExtensionContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long--><!--Device-UIServiceExtensionContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -148,6 +152,8 @@ Disconnects from a [UIExtensionAbility](arkts-ability-app-ability-uiextensionabi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIServiceExtensionContext-disconnectServiceExtensionAbility(connectionId: long): Promise<void>--><!--Device-UIServiceExtensionContext-disconnectServiceExtensionAbility(connectionId: long): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -232,6 +238,8 @@ Starts an ability. This API uses a promise to return the result.
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIServiceExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>--><!--Device-UIServiceExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -326,6 +334,8 @@ Starts a [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) or [UIE
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIServiceExtensionContext-startAbilityByType(type: string, wantParam: Record<string, Object>,    abilityStartCallback: AbilityStartCallback): Promise<void>--><!--Device-UIServiceExtensionContext-startAbilityByType(type: string, wantParam: Record<string, Object>,    abilityStartCallback: AbilityStartCallback): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -426,6 +436,8 @@ Terminates this [UIServiceExtensionAbility](arkts-ability-app-ability-uiservicee
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIServiceExtensionContext-terminateSelf(): Promise<void>--><!--Device-UIServiceExtensionContext-terminateSelf(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

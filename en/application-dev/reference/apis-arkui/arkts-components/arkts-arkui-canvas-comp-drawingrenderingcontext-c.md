@@ -8,6 +8,8 @@ declare class DrawingRenderingContext
 
 **Since:** 12
 
+<!--Device-unnamed-declare class DrawingRenderingContext--><!--Device-unnamed-declare class DrawingRenderingContext-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -23,6 +25,8 @@ Creates a **Canvas** object for drawing operations using the drawing API. Config
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DrawingRenderingContext-constructor(unit?: LengthMetricsUnit)--><!--Device-DrawingRenderingContext-constructor(unit?: LengthMetricsUnit)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Invalidates the component and triggers re-rendering of the component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DrawingRenderingContext-invalidate(): void--><!--Device-DrawingRenderingContext-invalidate(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## canvas
@@ -64,6 +70,8 @@ Obtains the canvas object for drawing content.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DrawingRenderingContext-get canvas(): DrawingCanvas--><!--Device-DrawingRenderingContext-get canvas(): DrawingCanvas-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -81,5 +89,7 @@ Obtains the size of the **DrawingRenderingContext** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DrawingRenderingContext-get size(): Size--><!--Device-DrawingRenderingContext-get size(): Size-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

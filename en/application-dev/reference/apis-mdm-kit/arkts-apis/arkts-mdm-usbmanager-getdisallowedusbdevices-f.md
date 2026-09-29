@@ -20,6 +20,8 @@ Obtains the disallowed USB device types.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-usbManager-function getDisallowedUsbDevices(admin: Want): Array<UsbDeviceType>--><!--Device-usbManager-function getDisallowedUsbDevices(admin: Want): Array<UsbDeviceType>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -84,6 +86,8 @@ Use cases:
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_USB
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-usbManager-function getDisallowedUsbDevices(admin: Want | null): Array<UsbDeviceType>--><!--Device-usbManager-function getDisallowedUsbDevices(admin: Want | null): Array<UsbDeviceType>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

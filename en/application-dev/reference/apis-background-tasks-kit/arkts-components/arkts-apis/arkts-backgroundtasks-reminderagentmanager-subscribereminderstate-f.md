@@ -20,6 +20,8 @@ Subscribes to agent-powered reminder state changes. This API uses a promise to r
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-reminderAgentManager-function subscribeReminderState(callback: Callback<Array<ReminderState>>): Promise<void>--><!--Device-reminderAgentManager-function subscribeReminderState(callback: Callback<Array<ReminderState>>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **Parameters:**

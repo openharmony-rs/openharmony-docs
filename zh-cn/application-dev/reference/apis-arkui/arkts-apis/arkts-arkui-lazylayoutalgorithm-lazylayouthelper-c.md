@@ -8,6 +8,8 @@ export class LazyLayoutHelper
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export class LazyLayoutHelper--><!--Device-unnamed-export class LazyLayoutHelper-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getLazyLayoutDirection
@@ -23,6 +25,8 @@ getLazyLayoutDirection(): LazyLayoutDirection
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-LazyLayoutHelper-getLazyLayoutDirection(): LazyLayoutDirection--><!--Device-LazyLayoutHelper-getLazyLayoutDirection(): LazyLayoutDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ getViewEnd(): number
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-LazyLayoutHelper-getViewEnd(): int--><!--Device-LazyLayoutHelper-getViewEnd(): int-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -67,6 +73,8 @@ getViewStart(): number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-LazyLayoutHelper-getViewStart(): int--><!--Device-LazyLayoutHelper-getViewStart(): int-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +102,8 @@ setAdjustedOffset(offset: number): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-LazyLayoutHelper-setAdjustedOffset(offset: int): void--><!--Device-LazyLayoutHelper-setAdjustedOffset(offset: int): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -110,11 +120,11 @@ setChildrenInactive(children: number[]): void
 
 设置子组件为非激活状态。
 
-如果子组件是通过[ForEach](../arkts-components/arkts-arkui-foreach-comp-attribute.md)或Repeat（未启用[virtualScroll](../arkts-components/arkts-arkui-repeat-comp-attribute.md#virtualscroll)）生成的，设置为非激活状态后将不显示。
+如果子组件是通过[ForEach](../arkts-components/arkts-arkui-foreach-comp-attribute.md)或[Repeat](../arkts-components/arkts-arkui-repeat-comp.md)（未启用[virtualScroll](../arkts-components/arkts-arkui-repeat-comp-attribute.md#virtualscroll)）生成的，设置为非激活状态后将不显示。
 
-如果子组件是通过LazyForEach或Repeat（启用[virtualScroll](../arkts-components/arkts-arkui-repeat-comp-attribute.md#virtualscroll)）生成的，设置为非激活状态后将销毁或回收。
+如果子组件是通过[LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md)或[Repeat](../arkts-components/arkts-arkui-repeat-comp.md)（启用[virtualScroll](../arkts-components/arkts-arkui-repeat-comp-attribute.md#virtualscroll)）生成的，设置为非激活状态后将销毁或回收。
 
-LazyForEach或Repeat（启用[virtualScroll](../arkts-components/arkts-arkui-repeat-comp-attribute.md#virtualscroll)）只支持连续的激活子组件；在两个激活子组件之间设置子组件为非激活状态不会生效。
+[LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md)或[Repeat](../arkts-components/arkts-arkui-repeat-comp.md)（启用[virtualScroll](../arkts-components/arkts-arkui-repeat-comp-attribute.md#virtualscroll)）只支持连续的激活子组件；在两个激活子组件之间设置子组件为非激活状态不会生效。
 
 布局在可视区域外的子组件会自动设置为非激活状态。
 
@@ -123,6 +133,8 @@ LazyForEach或Repeat（启用[virtualScroll](../arkts-components/arkts-arkui-rep
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-LazyLayoutHelper-setChildrenInactive(children: int[]): void--><!--Device-LazyLayoutHelper-setChildrenInactive(children: int[]): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -30,6 +30,8 @@ Obtains the **DragPreview** object, which represents the preview displayed durin
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-dragController-function getDragPreview(): DragPreview--><!--Device-dragController-function getDragPreview(): DragPreview-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**

@@ -1,12 +1,18 @@
 # TextArea
 
-The **TextArea** component provides multi-line text input and automatically wraps text to ensure that no line extends beyond the component's width.
+The **TextArea** component is a multi-line text input box. When the entered text exceeds the component width, it automatically wraps to the next line. It is suitable for scenarios that require multi-line text input, such as comment input, feedback forms, and content editing.
 
-If the component does not have its height set, it adapts its height to the content. If the component does not have its width set, it stretches to fill the maximum available width.
+When the height is not set, the component has no default height and adapts its height to the content. When the width is not set, the component fills the maximum width by default.
+
+> **NOTE:** 
+> 
+> - This component is supported since API version 7. Newly added APIs in later versions are marked with a superscript to indicate their earliest version.
+> 
+> - To set whether to clear the text selection and handles when touching outside the text component, use the [setTextSelectionClearPolicy](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#settextselectionclearpolicy) API.
 
 ## Child Components
 
-Not supported
+None
 
 ## TextArea
 
@@ -20,13 +26,15 @@ Defines the constructor of TextArea.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TextAreaInterface-(value?: TextAreaOptions): TextAreaAttribute--><!--Device-TextAreaInterface-(value?: TextAreaOptions): TextAreaAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [TextAreaOptions](arkts-arkui-textarea-comp-textareaoptions-i.md) | No | Parameters of the **TextArea** component. |
+| value | [TextAreaOptions](arkts-arkui-textarea-comp-textareaoptions-i.md) | No | Parameters of the TextArea component. Default value: see TextAreaOptions. |
 
 ## Summary
 
@@ -34,19 +42,19 @@ Defines the constructor of TextArea.
 
 | Name | Description |
 | --- | --- |
-| [TextAreaOptions](arkts-arkui-textarea-comp-textareaoptions-i.md) | Describes the initialization options of the **TextArea** component. |
+| [TextAreaOptions](arkts-arkui-textarea-comp-textareaoptions-i.md) | Initialization parameters of TextArea. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [TextAreaSubmitCallback](arkts-arkui-textarea-comp-textareasubmitcallback-t.md) | Represents the callback invoked when the Enter key on the soft keyboard is pressed. |
+| [TextAreaSubmitCallback](arkts-arkui-textarea-comp-textareasubmitcallback-t.md) | Called when the Enter key on the soft keyboard is pressed. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [TextAreaType](arkts-arkui-textarea-comp-textareatype-e.md) | Multi-line text input box type. |
+| [TextAreaType](arkts-arkui-textarea-comp-textareatype-e.md) | Type of the multi-line text input box. |
 
 ## Examples
 

@@ -8,6 +8,8 @@ Enumerates the operation modes for the routing stack.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum LaunchMode--><!--Device-unnamed-declare enum LaunchMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## STANDARD
@@ -26,6 +28,8 @@ In this mode, push operations add the specified **NavDestination** page to the s
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LaunchMode-STANDARD = 0--><!--Device-LaunchMode-STANDARD = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## MOVE_TO_TOP_SINGLETON
@@ -41,6 +45,8 @@ This mode searches from the bottom to the top of the routing stack. If a **NavDe
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LaunchMode-MOVE_TO_TOP_SINGLETON = 1--><!--Device-LaunchMode-MOVE_TO_TOP_SINGLETON = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +64,8 @@ This mode searches from the bottom to the top of the routing stack. If a **NavDe
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LaunchMode-POP_TO_SINGLETON = 2--><!--Device-LaunchMode-POP_TO_SINGLETON = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## NEW_INSTANCE
@@ -73,5 +81,7 @@ This mode creates an instance of **NavDestination**. Compared with **STANDARD**,
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LaunchMode-NEW_INSTANCE = 3--><!--Device-LaunchMode-NEW_INSTANCE = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

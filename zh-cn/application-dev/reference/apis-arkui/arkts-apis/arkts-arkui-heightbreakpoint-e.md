@@ -10,6 +10,8 @@ declare enum HeightBreakpoint
 
 **起始版本：** 13
 
+<!--Device-unnamed-declare enum HeightBreakpoint--><!--Device-unnamed-declare enum HeightBreakpoint-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## HEIGHT_SM
@@ -25,6 +27,8 @@ HEIGHT_SM = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-HeightBreakpoint-HEIGHT_SM = 0--><!--Device-HeightBreakpoint-HEIGHT_SM = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ HEIGHT_MD = 1
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-HeightBreakpoint-HEIGHT_MD = 1--><!--Device-HeightBreakpoint-HEIGHT_MD = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## HEIGHT_LG
@@ -57,5 +63,7 @@ HEIGHT_LG = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-HeightBreakpoint-HEIGHT_LG = 2--><!--Device-HeightBreakpoint-HEIGHT_LG = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

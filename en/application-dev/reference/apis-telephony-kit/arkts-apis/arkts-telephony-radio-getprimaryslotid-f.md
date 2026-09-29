@@ -16,6 +16,8 @@ Obtains the ID of the slot in which the primary card is located. This API uses a
 
 **Since:** 7
 
+<!--Device-radio-function getPrimarySlotId(callback: AsyncCallback<int>): void--><!--Device-radio-function getPrimarySlotId(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -60,6 +62,8 @@ function getPrimarySlotId(): Promise<number>
 Obtains the ID of the slot in which the primary card is located. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-radio-function getPrimarySlotId(): Promise<int>--><!--Device-radio-function getPrimarySlotId(): Promise<int>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

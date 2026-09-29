@@ -10,6 +10,8 @@ TransformObject
 
 **Since:** 4
 
+<!--Device-unnamed-export interface TransformObject--><!--Device-unnamed-export interface TransformObject-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## matrix
@@ -23,6 +25,8 @@ Defines a 2D transformation, using a matrix of six values..
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-TransformObject-matrix(scaleX: number, skewX: number, skewY: number, scaleY: number, translateX: number, translateY: number): void--><!--Device-TransformObject-matrix(scaleX: number, skewX: number, skewY: number, scaleY: number, translateX: number, translateY: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ Defines a 3D transformation using a 4x4 matrix of 16 values.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-TransformObject-matrix3d(    n00: number,    n01: number,    n02: number,    n03: number,    n10: number,    n11: number,    n12: number,    n13: number,    n20: number,    n21: number,    n22: number,    n23: number,    n30: number,    n31: number,    n32: number,    n33: number,  ): void--><!--Device-TransformObject-matrix3d(    n00: number,    n01: number,    n02: number,    n03: number,    n10: number,    n11: number,    n12: number,    n13: number,    n20: number,    n21: number,    n22: number,    n23: number,    n30: number,    n31: number,    n32: number,    n33: number,  ): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -101,6 +107,8 @@ Defines a perspective view for the 3D transformation element.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-TransformObject-perspective(verticalDistance: number): void--><!--Device-TransformObject-perspective(verticalDistance: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -121,6 +129,8 @@ Define the 2D rotation and specify the angle in the parameters.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-TransformObject-rotate(angle: number): void--><!--Device-TransformObject-rotate(angle: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -140,6 +150,8 @@ Defines a 3D transformation for rotating the X / Y / Z axes.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-TransformObject-rotate3d(x: number, y: number, z: number, angle: number): void--><!--Device-TransformObject-rotate3d(x: number, y: number, z: number, angle: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,6 +176,8 @@ Defines 3D transformations for rotating of the X axes.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-TransformObject-rotateX(angle: number): void--><!--Device-TransformObject-rotateX(angle: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -183,6 +197,8 @@ Defines 3D transformations for rotating of the Y axes.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-TransformObject-rotateY(angle: number): void--><!--Device-TransformObject-rotateY(angle: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -204,6 +220,8 @@ Defines 3D transformations for rotating of the Z axes.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-TransformObject-rotateZ(angle: number): void--><!--Device-TransformObject-rotateZ(angle: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -223,6 +241,8 @@ Defines 2D transformations for scaling of the X and Y axes
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-TransformObject-scale(x: number, y: number): void--><!--Device-TransformObject-scale(x: number, y: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -244,6 +264,8 @@ Defines 3D transformations for scaling of the X / Y / Z axes
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-TransformObject-scale3d(x: number, y: number, z: number): void--><!--Device-TransformObject-scale3d(x: number, y: number, z: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -267,6 +289,8 @@ Defines 2D transformations for scaling of the X axes
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-TransformObject-scaleX(x: number): void--><!--Device-TransformObject-scaleX(x: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -286,6 +310,8 @@ Defines 2D transformations for scaling of the Y axes
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-TransformObject-scaleY(y: number): void--><!--Device-TransformObject-scaleY(y: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -307,6 +333,8 @@ Defines 3D transformations for scaling of the Z axes
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-TransformObject-scaleZ(z: number): void--><!--Device-TransformObject-scaleZ(z: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -326,6 +354,8 @@ Defines the 2D skew transition along the X and Y axes.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-TransformObject-skew(xAngle: number, yAngle: number): void--><!--Device-TransformObject-skew(xAngle: number, yAngle: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -348,6 +378,8 @@ Defines the 2D skew transition along the X axes.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-TransformObject-skewX(angle: number): void--><!--Device-TransformObject-skewX(angle: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -367,6 +399,8 @@ Defines the 2D skew transition along the Y axes.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-TransformObject-skewY(angle: number): void--><!--Device-TransformObject-skewY(angle: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -388,6 +422,8 @@ Defines 2D transformations for translation of the X and Y axes
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-TransformObject-translate(x: number, y: number): void--><!--Device-TransformObject-translate(x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -408,6 +444,8 @@ Defines 3D transformations for translation of the X / Y / Z axes
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-TransformObject-translate3d(x: number, y: number, z: number): void--><!--Device-TransformObject-translate3d(x: number, y: number, z: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -431,6 +469,8 @@ Defines 2D transformations for translation of the X axes
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-TransformObject-translateX(x: number): void--><!--Device-TransformObject-translateX(x: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -451,6 +491,8 @@ Defines 2D transformations for translation of the Y axes
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-TransformObject-translateY(y: number): void--><!--Device-TransformObject-translateY(y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -470,6 +512,8 @@ Defines 3D transformations for translation of the Z axes
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-TransformObject-translateZ(z: number): void--><!--Device-TransformObject-translateZ(z: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

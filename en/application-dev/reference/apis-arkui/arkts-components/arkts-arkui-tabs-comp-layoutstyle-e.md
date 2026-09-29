@@ -8,6 +8,8 @@ Enumerates the tab layout styles of the tab bar when not scrolling in scrollable
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum LayoutStyle--><!--Device-unnamed-declare enum LayoutStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALWAYS_CENTER
@@ -26,6 +28,8 @@ If not, the tabs are compactly centered on the tab bar and not scrollable.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LayoutStyle-ALWAYS_CENTER = 0--><!--Device-LayoutStyle-ALWAYS_CENTER = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALWAYS_AVERAGE_SPLIT
@@ -41,6 +45,8 @@ If the tab content exceeds the tab bar width, the tabs are scrollable. If not, t
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LayoutStyle-ALWAYS_AVERAGE_SPLIT = 1--><!--Device-LayoutStyle-ALWAYS_AVERAGE_SPLIT = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,5 +67,7 @@ If the tab content does not exceed half the width of the tab bar, the tabs are c
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LayoutStyle-SPACE_BETWEEN_OR_CENTER = 2--><!--Device-LayoutStyle-SPACE_BETWEEN_OR_CENTER = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

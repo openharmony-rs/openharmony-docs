@@ -18,6 +18,8 @@ Returns the list of all capabilities.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-carAwareness-function getAllCapabilityList(): Promise<Capability[]>--><!--Device-carAwareness-function getAllCapabilityList(): Promise<Capability[]>-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **Return value:**

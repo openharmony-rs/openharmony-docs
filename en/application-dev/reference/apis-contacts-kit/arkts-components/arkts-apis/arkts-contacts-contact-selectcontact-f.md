@@ -20,6 +20,8 @@ Selects a contact. This API uses an asynchronous callback to return the result.
 
 **Substitutes:** [selectContacts](arkts-contacts-contact-selectcontacts-f.md)(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
+<!--Device-contact-function selectContact(callback: AsyncCallback<Array<Contact>>): void--><!--Device-contact-function selectContact(callback: AsyncCallback<Array<Contact>>): void-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 **Parameters:**
@@ -60,6 +62,8 @@ Selects a contact. This API uses a promise to return the result.
 **Deprecated since:** 10
 
 **Substitutes:** [selectContacts](arkts-contacts-contact-selectcontacts-f.md)()
+
+<!--Device-contact-function selectContact(): Promise<Array<Contact>>--><!--Device-contact-function selectContact(): Promise<Array<Contact>>-End-->
 
 **System capability:** SystemCapability.Applications.Contacts
 

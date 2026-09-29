@@ -12,6 +12,8 @@ The **bytrace** module implements performance tracing for processes.
 
 **Substitutes:** [hiTraceMeter](../../apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter.md)
 
+<!--Device-unnamed-declare namespace bytrace--><!--Device-unnamed-declare namespace bytrace-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 ## Modules to Import

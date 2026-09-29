@@ -8,6 +8,8 @@ Defines the policy for sensitive content identification. In a single policy, key
 
 **Since:** 21
 
+<!--Device-identifySensitiveContent-export interface Policy--><!--Device-identifySensitiveContent-export interface Policy-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Keyword set, which is used to match sensitive keywords in a file. The system sea
 
 **Since:** 21
 
+<!--Device-Policy-keywords: Array<string>--><!--Device-Policy-keywords: Array<string>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## regex
@@ -42,6 +46,8 @@ Regular expression used to match sensitive content. The system performs pattern 
 
 **Since:** 21
 
+<!--Device-Policy-regex: string--><!--Device-Policy-regex: string-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## sensitiveLabel
@@ -55,5 +61,7 @@ Label of an identification policy, which is used to identify and classify matchi
 **Type:** string
 
 **Since:** 21
+
+<!--Device-Policy-sensitiveLabel: string--><!--Device-Policy-sensitiveLabel: string-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention

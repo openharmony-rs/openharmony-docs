@@ -12,6 +12,8 @@ Sets the relative scale ratio at the start and end of the animation compared to 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type AnimationRange<T> = [from: T, to: T]--><!--Device-unnamed-declare type AnimationRange<T> = [from: T, to: T]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [from: T, to: T]

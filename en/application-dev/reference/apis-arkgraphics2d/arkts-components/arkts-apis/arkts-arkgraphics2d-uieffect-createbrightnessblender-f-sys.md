@@ -16,7 +16,9 @@ Creates a BrightnessBlender instance for adding a brightness effect to a compone
 
 **Since:** 12
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-uiEffect-function createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlender--><!--Device-uiEffect-function createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlender-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

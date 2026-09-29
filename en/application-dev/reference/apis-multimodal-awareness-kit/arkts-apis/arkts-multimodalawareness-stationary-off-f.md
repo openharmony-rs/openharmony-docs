@@ -16,6 +16,8 @@ Unsubscribes from the device status.
 
 **Since:** 9
 
+<!--Device-stationary-function off(activity: ActivityType, event: ActivityEvent, callback?: Callback<ActivityResponse>): void--><!--Device-stationary-function off(activity: ActivityType, event: ActivityEvent, callback?: Callback<ActivityResponse>): void-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Stationary
 
 **Parameters:**

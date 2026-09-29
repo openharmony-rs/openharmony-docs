@@ -8,6 +8,8 @@ Parameter for function hook interception.
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-export interface InvokeFunctionParam--><!--Device-unnamed-export interface InvokeFunctionParam-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Indicates the original function arguments.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InvokeFunctionParam-args: Record<string, Object>--><!--Device-InvokeFunctionParam-args: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -44,6 +48,8 @@ Indicates the name of the function.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InvokeFunctionParam-functionName: string--><!--Device-InvokeFunctionParam-functionName: string-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -62,6 +68,8 @@ Indicates the namespace of the function.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InvokeFunctionParam-functionNamespace: string--><!--Device-InvokeFunctionParam-functionNamespace: string-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -79,6 +87,8 @@ Indicates the invocation options.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InvokeFunctionParam-invokeOptions?: InvokeOptions--><!--Device-InvokeFunctionParam-invokeOptions?: InvokeOptions-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 

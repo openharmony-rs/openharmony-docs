@@ -8,6 +8,8 @@ Defines the download configuration.
 
 **Since:** 18
 
+<!--Device-eSIM-export interface DownloadConfiguration--><!--Device-eSIM-export interface DownloadConfiguration-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Whether to forcibly deactivate the current profile during profile switching.
 
 **Since:** 18
 
+<!--Device-DownloadConfiguration-forceDisableProfile: boolean--><!--Device-DownloadConfiguration-forceDisableProfile: boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ Whether user authorization is obtained to implement the profile policy rule. The
 
 **Since:** 18
 
+<!--Device-DownloadConfiguration-isPprAllowed: boolean--><!--Device-DownloadConfiguration-isPprAllowed: boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -65,6 +71,8 @@ Whether to enable the profile after successful download. The value **true** mean
 **Type:** boolean
 
 **Since:** 18
+
+<!--Device-DownloadConfiguration-switchAfterDownload: boolean--><!--Device-DownloadConfiguration-switchAfterDownload: boolean-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 

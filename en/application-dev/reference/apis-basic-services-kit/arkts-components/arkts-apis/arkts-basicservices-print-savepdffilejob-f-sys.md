@@ -20,6 +20,8 @@ Save the pdf file for a print job.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-print-function savePdfFileJob(jobId: string, fd: int): Promise<void>--><!--Device-print-function savePdfFileJob(jobId: string, fd: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.

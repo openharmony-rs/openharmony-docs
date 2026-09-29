@@ -8,6 +8,8 @@ Enumerates the task states. After a task is created and **execute()** is called,
 
 **Since:** 10
 
+<!--Device-taskpool-enum State--><!--Device-taskpool-enum State-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## WAITING
@@ -21,6 +23,8 @@ The task is waiting.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-State-WAITING = 1--><!--Device-State-WAITING = 1-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -36,6 +40,8 @@ The task is running.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-State-RUNNING = 2--><!--Device-State-RUNNING = 2-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## CANCELED
@@ -49,5 +55,7 @@ The task is canceled.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-State-CANCELED = 3--><!--Device-State-CANCELED = 3-End-->
 
 **System capability:** SystemCapability.Utils.Lang

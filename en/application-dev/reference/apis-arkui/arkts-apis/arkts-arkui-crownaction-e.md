@@ -8,6 +8,8 @@ Enumerates the crown actions.
 
 **Since:** 18
 
+<!--Device-unnamed-declare enum CrownAction--><!--Device-unnamed-declare enum CrownAction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## BEGIN
@@ -16,7 +18,9 @@ Enumerates the crown actions.
 BEGIN = 0
 ```
 
-Rotation crown behavior begins.
+The crown starts rotating.
+
+**Note:** Supported from API version 18 and deprecated from API version 24.
 
 **Since:** 18
 
@@ -26,6 +30,8 @@ Rotation crown behavior begins.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CrownAction-BEGIN = 0--><!--Device-CrownAction-BEGIN = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## UPDATE
@@ -34,13 +40,15 @@ Rotation crown behavior begins.
 UPDATE = 1
 ```
 
-Rotation crown behavior update.
+The crown is rotating.
 
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CrownAction-UPDATE = 1--><!--Device-CrownAction-UPDATE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,12 +58,14 @@ Rotation crown behavior update.
 END = 2
 ```
 
-The rotation crown behavior ends.
+The crown stops rotating.
 
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CrownAction-END = 2--><!--Device-CrownAction-END = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

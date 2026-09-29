@@ -8,6 +8,8 @@ You must first use [on('inputStart')](arkts-ime-inputmethodengine-inputmethodabi
 
 **Since:** 9
 
+<!--Device-inputMethodEngine-interface InputClient--><!--Device-inputMethodEngine-interface InputClient-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -25,6 +27,8 @@ deleteBackward(length: number, callback: AsyncCallback<boolean>): void
 Deletes the fixed-length text after the cursor. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-deleteBackward(length: int, callback: AsyncCallback<boolean>): void--><!--Device-InputClient-deleteBackward(length: int, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -73,6 +77,8 @@ deleteBackward(length: number): Promise<boolean>
 Deletes the fixed-length text after the cursor. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-deleteBackward(length: int): Promise<boolean>--><!--Device-InputClient-deleteBackward(length: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -123,6 +129,8 @@ Deletes the fixed-length text after the cursor.
 
 **Since:** 10
 
+<!--Device-InputClient-deleteBackwardSync(length: int): void--><!--Device-InputClient-deleteBackwardSync(length: int): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -155,6 +163,8 @@ deleteForward(length: number, callback: AsyncCallback<boolean>): void
 Deletes the fixed-length text before the cursor. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-deleteForward(length: int, callback: AsyncCallback<boolean>): void--><!--Device-InputClient-deleteForward(length: int, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -203,6 +213,8 @@ deleteForward(length: number): Promise<boolean>
 Deletes the fixed-length text before the cursor. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-deleteForward(length: int): Promise<boolean>--><!--Device-InputClient-deleteForward(length: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -253,6 +265,8 @@ Deletes the fixed-length text before the cursor.
 
 **Since:** 10
 
+<!--Device-InputClient-deleteForwardSync(length: int): void--><!--Device-InputClient-deleteForwardSync(length: int): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -288,6 +302,8 @@ Finishes the text preview. This API uses a promise to return the result. <br> <b
 > If there is preview text in the current text box, calling this API will display the preview text on the screen.
 
 **Since:** 12
+
+<!--Device-InputClient-finishTextPreview(): Promise<void>--><!--Device-InputClient-finishTextPreview(): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -329,6 +345,8 @@ Finishes the text preview. <br> <br>
 
 **Since:** 12
 
+<!--Device-InputClient-finishTextPreviewSync(): void--><!--Device-InputClient-finishTextPreviewSync(): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Error codes:**
@@ -353,6 +371,8 @@ getAttachOptions(): AttachOptions
 Obtains the additional options for binding an input method.
 
 **Since:** 19
+
+<!--Device-InputClient-getAttachOptions(): AttachOptions--><!--Device-InputClient-getAttachOptions(): AttachOptions-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -384,6 +404,8 @@ getBackward(length: number, callback: AsyncCallback<string>): void
 Obtains the specific-length text after the cursor. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-getBackward(length: int, callback: AsyncCallback<string>): void--><!--Device-InputClient-getBackward(length: int, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -428,6 +450,8 @@ getBackward(length: number): Promise<string>
 Obtains the specific-length text after the cursor. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-getBackward(length: int): Promise<string>--><!--Device-InputClient-getBackward(length: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -474,6 +498,8 @@ Obtains the specific-length text after the cursor.
 
 **Since:** 10
 
+<!--Device-InputClient-getBackwardSync(length: int): string--><!--Device-InputClient-getBackwardSync(length: int): string-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -517,6 +543,8 @@ Obtains information about the application window, in which the input box that st
 
 **Since:** 12
 
+<!--Device-InputClient-getCallingWindowInfo(): Promise<WindowInfo>--><!--Device-InputClient-getCallingWindowInfo(): Promise<WindowInfo>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -555,6 +583,8 @@ getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void
 Obtains the attribute of the edit box. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void--><!--Device-InputClient-getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -597,6 +627,8 @@ Obtains the attribute of the edit box. This API uses a promise to return the res
 
 **Since:** 9
 
+<!--Device-InputClient-getEditorAttribute(): Promise<EditorAttribute>--><!--Device-InputClient-getEditorAttribute(): Promise<EditorAttribute>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -634,6 +666,8 @@ Obtains the attribute of the edit box.
 
 **Since:** 10
 
+<!--Device-InputClient-getEditorAttributeSync(): EditorAttribute--><!--Device-InputClient-getEditorAttributeSync(): EditorAttribute-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -665,6 +699,8 @@ getForward(length: number, callback: AsyncCallback<string>): void
 Obtains the specific-length text before the cursor. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-getForward(length: int, callback: AsyncCallback<string>): void--><!--Device-InputClient-getForward(length: int, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -709,6 +745,8 @@ getForward(length: number): Promise<string>
 Obtains the specific-length text before the cursor. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-getForward(length: int): Promise<string>--><!--Device-InputClient-getForward(length: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -755,6 +793,8 @@ Obtains the specific-length text before the cursor.
 
 **Since:** 10
 
+<!--Device-InputClient-getForwardSync(length: int): string--><!--Device-InputClient-getForwardSync(length: int): string-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -794,6 +834,8 @@ getTextIndexAtCursor(callback: AsyncCallback<number>): void
 Obtains the index of the text where the cursor is located. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-InputClient-getTextIndexAtCursor(callback: AsyncCallback<int>): void--><!--Device-InputClient-getTextIndexAtCursor(callback: AsyncCallback<int>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -836,6 +878,8 @@ Obtains the index of the text where the cursor is located. This API uses a promi
 
 **Since:** 10
 
+<!--Device-InputClient-getTextIndexAtCursor(): Promise<int>--><!--Device-InputClient-getTextIndexAtCursor(): Promise<int>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -873,6 +917,8 @@ Obtains the index of the text where the cursor is located.
 
 **Since:** 10
 
+<!--Device-InputClient-getTextIndexAtCursorSync(): int--><!--Device-InputClient-getTextIndexAtCursorSync(): int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -904,6 +950,8 @@ insertText(text: string, callback: AsyncCallback<boolean>): void
 Inserts text. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-insertText(text: string, callback: AsyncCallback<boolean>): void--><!--Device-InputClient-insertText(text: string, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -953,6 +1001,8 @@ Inserts text. This API uses a promise to return the result.
 
 **Since:** 9
 
+<!--Device-InputClient-insertText(text: string): Promise<boolean>--><!--Device-InputClient-insertText(text: string): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1001,6 +1051,8 @@ Inserts text.
 
 **Since:** 10
 
+<!--Device-InputClient-insertTextSync(text: string): void--><!--Device-InputClient-insertTextSync(text: string): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1032,6 +1084,8 @@ moveCursor(direction: number, callback: AsyncCallback<void>): void
 Moves the cursor. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-moveCursor(direction: int, callback: AsyncCallback<void>): void--><!--Device-InputClient-moveCursor(direction: int, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1074,6 +1128,8 @@ moveCursor(direction: number): Promise<void>
 Moves the cursor. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-moveCursor(direction: int): Promise<void>--><!--Device-InputClient-moveCursor(direction: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1118,6 +1174,8 @@ Moves the cursor.
 
 **Since:** 10
 
+<!--Device-InputClient-moveCursorSync(direction: int): void--><!--Device-InputClient-moveCursorSync(direction: int): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1148,6 +1206,8 @@ off(type: 'attachOptionsDidChange', callback?: Callback<AttachOptions>): void
 Unsubscribes from the event indicating that additional options for binding an input method are changed. This API uses an asynchronous callback to return the result.
 
 **Since:** 19
+
+<!--Device-InputClient-off(type: 'attachOptionsDidChange', callback?: Callback<AttachOptions>): void--><!--Device-InputClient-off(type: 'attachOptionsDidChange', callback?: Callback<AttachOptions>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1181,6 +1241,8 @@ on(type: 'attachOptionsDidChange', callback: Callback<AttachOptions>): void
 Subscribes to the event indicating that the additional options for binding an input method are changed. This API uses an asynchronous callback to return the result.
 
 **Since:** 19
+
+<!--Device-InputClient-on(type: 'attachOptionsDidChange', callback: Callback<AttachOptions>): void--><!--Device-InputClient-on(type: 'attachOptionsDidChange', callback: Callback<AttachOptions>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1226,6 +1288,8 @@ Registers or unregisters MessageHandler. <br> <br>
 
 **Since:** 15
 
+<!--Device-InputClient-recvMessage(msgHandler?: MessageHandler): void--><!--Device-InputClient-recvMessage(msgHandler?: MessageHandler): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1270,6 +1334,8 @@ Selects text based on the cursor movement direction. This API uses an asynchrono
 
 **Since:** 10
 
+<!--Device-InputClient-selectByMovement(movement: Movement, callback: AsyncCallback<void>): void--><!--Device-InputClient-selectByMovement(movement: Movement, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1312,6 +1378,8 @@ selectByMovement(movement: Movement): Promise<void>
 Selects text based on the cursor movement direction. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-InputClient-selectByMovement(movement: Movement): Promise<void>--><!--Device-InputClient-selectByMovement(movement: Movement): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1357,6 +1425,8 @@ Selects text based on the cursor movement direction.
 
 **Since:** 10
 
+<!--Device-InputClient-selectByMovementSync(movement: Movement): void--><!--Device-InputClient-selectByMovementSync(movement: Movement): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1388,6 +1458,8 @@ selectByRange(range: Range, callback: AsyncCallback<void>): void
 Selects text based on the specified range. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-InputClient-selectByRange(range: Range, callback: AsyncCallback<void>): void--><!--Device-InputClient-selectByRange(range: Range, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1431,6 +1503,8 @@ selectByRange(range: Range): Promise<void>
 Selects text based on the specified range. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-InputClient-selectByRange(range: Range): Promise<void>--><!--Device-InputClient-selectByRange(range: Range): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1476,6 +1550,8 @@ Selects text based on the specified range.
 
 **Since:** 10
 
+<!--Device-InputClient-selectByRangeSync(range: Range): void--><!--Device-InputClient-selectByRangeSync(range: Range): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1512,6 +1588,8 @@ Sends an extended edit action. This API uses an asynchronous callback to return 
 > When the edit box responds to the **PASTE** command of [ExtendAction](arkts-ime-inputmethodengine-extendaction-e.md), the edit box application needs to apply for the [ohos.permission.READ_PASTEBOARD](../../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) permission.
 
 **Since:** 10
+
+<!--Device-InputClient-sendExtendAction(action: ExtendAction, callback: AsyncCallback<void>): void--><!--Device-InputClient-sendExtendAction(action: ExtendAction, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1561,6 +1639,8 @@ Sends an extended edit action. This API uses a promise to return the result. <br
 
 **Since:** 10
 
+<!--Device-InputClient-sendExtendAction(action: ExtendAction): Promise<void>--><!--Device-InputClient-sendExtendAction(action: ExtendAction): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1604,6 +1684,8 @@ sendKeyFunction(action: number, callback: AsyncCallback<boolean>): void
 Sends the function key. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-sendKeyFunction(action: int, callback: AsyncCallback<boolean>): void--><!--Device-InputClient-sendKeyFunction(action: int, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1652,6 +1734,8 @@ sendKeyFunction(action: number): Promise<boolean>
 Sends the function key. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-InputClient-sendKeyFunction(action: int): Promise<boolean>--><!--Device-InputClient-sendKeyFunction(action: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1705,6 +1789,8 @@ Sends the custom communication to the edit box application attached to the input
 > The maximum length of **msgId** is 256 B, and the maximum length of **msgParam** is 128 KB.
 
 **Since:** 15
+
+<!--Device-InputClient-sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>--><!--Device-InputClient-sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1761,6 +1847,8 @@ Sends private data to the system component that needs to communicate with the in
 
 **Since:** 12
 
+<!--Device-InputClient-sendPrivateCommand(commandData: Record<string, CommandDataType>): Promise<void>--><!--Device-InputClient-sendPrivateCommand(commandData: Record<string, CommandDataType>): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1813,6 +1901,8 @@ Sets the preview text. This API uses a promise to return the result.
 
 **Since:** 12
 
+<!--Device-InputClient-setPreviewText(text: string, range: Range): Promise<void>--><!--Device-InputClient-setPreviewText(text: string, range: Range): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1858,6 +1948,8 @@ setPreviewTextSync(text: string, range: Range): void
 Sets the preview text.
 
 **Since:** 12
+
+<!--Device-InputClient-setPreviewTextSync(text: string, range: Range): void--><!--Device-InputClient-setPreviewTextSync(text: string, range: Range): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

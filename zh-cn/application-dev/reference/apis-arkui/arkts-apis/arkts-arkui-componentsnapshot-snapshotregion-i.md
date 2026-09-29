@@ -8,6 +8,8 @@ interface SnapshotRegion
 
 **起始版本：** 15
 
+<!--Device-componentSnapshot-interface SnapshotRegion--><!--Device-componentSnapshot-interface SnapshotRegion-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ bottom: number
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-SnapshotRegion-bottom: number--><!--Device-SnapshotRegion-bottom: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## left
@@ -57,6 +61,8 @@ left: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-SnapshotRegion-left: number--><!--Device-SnapshotRegion-left: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +86,8 @@ right: number
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-SnapshotRegion-right: number--><!--Device-SnapshotRegion-right: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -101,5 +109,7 @@ top: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-SnapshotRegion-top: number--><!--Device-SnapshotRegion-top: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

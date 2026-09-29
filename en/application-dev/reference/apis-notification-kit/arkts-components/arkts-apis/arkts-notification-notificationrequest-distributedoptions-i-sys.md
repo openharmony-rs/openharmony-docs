@@ -8,6 +8,8 @@ Describes options for cross-device notifications. Not supported currently.
 
 **Since:** 8
 
+<!--Device-unnamed-export interface DistributedOptions--><!--Device-unnamed-export interface DistributedOptions-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## remindType
@@ -21,6 +23,8 @@ Notification reminder type.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-DistributedOptions-readonly remindType?: int--><!--Device-DistributedOptions-readonly remindType?: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

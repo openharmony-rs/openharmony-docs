@@ -8,6 +8,8 @@ Defines accessibility options for the span.
 
 **Since:** 23
 
+<!--Device-unnamed-declare interface AccessibilitySpanOptions--><!--Device-unnamed-declare interface AccessibilitySpanOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -30,6 +32,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-AccessibilitySpanOptions-accessibilityDescription?: ResourceStr--><!--Device-AccessibilitySpanOptions-accessibilityDescription?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityLevel
@@ -38,31 +42,13 @@ If the value is **undefined**, the default value is used.
 accessibilityLevel?: string
 ```
 
-Accessibility level. It determines whether the component can be recognized by accessibility services.
-
-The options are as follows:
-
-**"auto"**: The component's recognizability is determined jointly by accessibility services and ArkUI.
-
-**"yes"**: The component can be recognized by accessibility services.
-
-**"no"**: The component cannot be recognized by accessibility services.
-
-**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.
-
-The default value is **"auto"**.
-
-If the value is **undefined**, the default value is used.
-
-**NOTE:** 
-
-When accessibilityLevel is set to **"auto"**, the component's recognizability depends on the following factors:
-
-1. The accessibility service internally determines whether the component can be recognized.
-2. If the parent component's **accessibilityGroup** property has **isGroup** set to **true**,
-the accessibility service will not focus on its child components, making them unrecognizable.
-3. If the parent component's **accessibilityLevel** is set to **"no-hide-descendants"**,
-the component will not be recognized by accessibility services.
+Accessibility importance. Used to set whether the component can be recognized by the accessibility service. The following values are supported:"auto": The accessibility service and ArkUI comprehensively determine whether the component can be recognized by the accessibility service."yes": The component can be recognized by the accessibility service."no": The component cannot be recognized by the accessibility service."no-hide-descendants": The component and all its child components cannot be recognized by the accessibility service. the default value is used. **NOTE:** When accessibilityLevel is set to "auto", whether the component can be recognized by the accessibility service depends on the following factors:
+1. Whether the component can be recognized is determined internally by the accessibility service, which makes its
+own choice.
+2. If isGroup in the accessibilityGroup attribute of the parent component is set to true, the accessibility service
+no longer focuses on the content of its child components, and the component cannot be recognized by the accessibility service.
+3. If the accessibilityLevel attribute of the parent component is set to "no-hide-descendants", the component
+cannot be recognized by the accessibility service. Default value: "auto"If the value is undefined.
 
 **Type:** string
 
@@ -73,6 +59,8 @@ the component will not be recognized by accessibility services.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-AccessibilitySpanOptions-accessibilityLevel?: string--><!--Device-AccessibilitySpanOptions-accessibilityLevel?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,5 +83,7 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-AccessibilitySpanOptions-accessibilityText?: ResourceStr--><!--Device-AccessibilitySpanOptions-accessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

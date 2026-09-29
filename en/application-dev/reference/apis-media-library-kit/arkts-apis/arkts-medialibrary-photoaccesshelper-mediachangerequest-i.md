@@ -13,6 +13,8 @@ Media change request, which is the parent class of the asset change request and 
 
 **Since:** 11
 
+<!--Device-photoAccessHelper-interface MediaChangeRequest--><!--Device-photoAccessHelper-interface MediaChangeRequest-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -35,6 +37,8 @@ A readonly member for type checking.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-MediaChangeRequest-readonly comment: string--><!--Device-MediaChangeRequest-readonly comment: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

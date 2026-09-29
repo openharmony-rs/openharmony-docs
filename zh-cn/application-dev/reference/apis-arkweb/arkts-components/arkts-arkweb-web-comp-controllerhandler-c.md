@@ -8,6 +8,8 @@ ControllerHandler是ArkWeb提供的处理新建Web组件控制器分配的帮助
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare class ControllerHandler--><!--Device-unnamed-declare class ControllerHandler-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -22,6 +24,8 @@ ControllerHandler的构造函数。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ControllerHandler-constructor()--><!--Device-ControllerHandler-constructor()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## setWebController
@@ -35,6 +39,8 @@ setWebController(controller: WebviewController): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ControllerHandler-setWebController(controller: WebviewController): void--><!--Device-ControllerHandler-setWebController(controller: WebviewController): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

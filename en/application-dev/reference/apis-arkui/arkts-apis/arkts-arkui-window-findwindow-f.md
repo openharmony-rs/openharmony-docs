@@ -16,7 +16,9 @@ Finds a window based on the name.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-window-function findWindow(name: string): Window--><!--Device-window-function findWindow(name: string): Window-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

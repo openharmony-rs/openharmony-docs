@@ -13,6 +13,8 @@ Represents a custom gesture recognizer judgment callback type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: GestureRecognizer, recognizers: Array<GestureRecognizer>,  touchRecognizers?: Array<TouchRecognizer>) => GestureJudgeResult--><!--Device-unnamed-declare type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: GestureRecognizer, recognizers: Array<GestureRecognizer>,  touchRecognizers?: Array<TouchRecognizer>) => GestureJudgeResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

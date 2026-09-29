@@ -18,6 +18,8 @@ Provides constants that define the names of all predefined event parameters.
 
 **Substitutes:** Param
 
+<!--Device-hiAppEvent-namespace Param--><!--Device-hiAppEvent-namespace Param-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import

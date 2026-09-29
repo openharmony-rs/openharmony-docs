@@ -20,6 +20,8 @@ Disables a super device administrator application based on **bundleName**. This 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function disableSuperAdmin(bundleName: String, callback: AsyncCallback<void>): void--><!--Device-adminManager-function disableSuperAdmin(bundleName: String, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -74,6 +76,8 @@ Disables a super device administrator application based on **bundleName**. This 
 **Required permissions:** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-adminManager-function disableSuperAdmin(bundleName: String): Promise<void>--><!--Device-adminManager-function disableSuperAdmin(bundleName: String): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

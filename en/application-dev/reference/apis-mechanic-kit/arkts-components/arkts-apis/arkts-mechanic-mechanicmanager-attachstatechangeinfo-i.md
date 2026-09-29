@@ -8,6 +8,8 @@ Callback information about the device attachment state change. @typedef AttachSt
 
 **Since:** 20
 
+<!--Device-mechanicManager-export interface AttachStateChangeInfo--><!--Device-mechanicManager-export interface AttachStateChangeInfo-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Mechanical device information.
 
 **Since:** 20
 
+<!--Device-AttachStateChangeInfo-mechInfo: MechInfo--><!--Device-AttachStateChangeInfo-mechInfo: MechInfo-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 ## state
@@ -41,5 +45,7 @@ Device attachment state.
 **Type:** [AttachState](arkts-mechanic-mechanicmanager-attachstate-e.md)
 
 **Since:** 20
+
+<!--Device-AttachStateChangeInfo-state: AttachState--><!--Device-AttachStateChangeInfo-state: AttachState-End-->
 
 **System capability:** SystemCapability.Mechanic.Core

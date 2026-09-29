@@ -8,6 +8,8 @@ Defines the options for selecting documents.
 
 **Since:** 9
 
+<!--Device-picker-class DocumentSelectOptions--><!--Device-picker-class DocumentSelectOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Whether to support for selecting folders, Only 2-in-1 devices are supported. The
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-DocumentSelectOptions-allowsMulFolderSelection?: boolean--><!--Device-DocumentSelectOptions-allowsMulFolderSelection?: boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService.FolderSelection
 
@@ -56,6 +60,8 @@ SystemCapability.FileManagement.UserFileService.FolderSelection
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DocumentSelectOptions-authMode?: boolean--><!--Device-DocumentSelectOptions-authMode?: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService.FolderSelection
 
 ## defaultFilePathUri
@@ -71,6 +77,8 @@ URI of the file or directory that can be selected. It is empty by default (the r
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DocumentSelectOptions-defaultFilePathUri?: string--><!--Device-DocumentSelectOptions-defaultFilePathUri?: string-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -94,6 +102,8 @@ This parameter is available only to the devices that have the required system ca
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DocumentSelectOptions-fileSuffixFilters?: Array<string>--><!--Device-DocumentSelectOptions-fileSuffixFilters?: Array<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## isEncryptionSupported
@@ -109,6 +119,8 @@ Whether to support encryption (only files are supported). The default value is *
 **Since:** 19
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-DocumentSelectOptions-isEncryptionSupported?: boolean--><!--Device-DocumentSelectOptions-isEncryptionSupported?: boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -132,6 +144,8 @@ In API version 23 and later versions, the maximum number of files that can be se
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DocumentSelectOptions-maxSelectNumber?: number--><!--Device-DocumentSelectOptions-maxSelectNumber?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## mergeMode
@@ -149,6 +163,8 @@ This parameter can be used on smartphones but has no effect on other devices.
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-DocumentSelectOptions-mergeMode?: MergeTypeMode--><!--Device-DocumentSelectOptions-mergeMode?: MergeTypeMode-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -170,6 +186,8 @@ This parameter can be used on smartphones but has no effect on other devices.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-DocumentSelectOptions-multiAuthMode?: boolean--><!--Device-DocumentSelectOptions-multiAuthMode?: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## multiUriArray
@@ -188,6 +206,8 @@ This parameter can be used on smartphones but has no effect on other devices.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-DocumentSelectOptions-multiUriArray?: Array<string>--><!--Device-DocumentSelectOptions-multiUriArray?: Array<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## selectMode
@@ -203,5 +223,7 @@ Type of the document selected by Picker. The default value is **FILE** (file typ
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DocumentSelectOptions-selectMode?: DocumentSelectMode--><!--Device-DocumentSelectOptions-selectMode?: DocumentSelectMode-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService.FolderSelection

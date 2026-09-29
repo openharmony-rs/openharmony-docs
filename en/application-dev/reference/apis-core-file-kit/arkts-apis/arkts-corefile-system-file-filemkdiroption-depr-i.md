@@ -10,6 +10,8 @@ Defines the options used in mkdir().
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export interface FileMkdirOption--><!--Device-unnamed-export interface FileMkdirOption-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Callback invoked when the API call is complete.
 
 **Deprecated since:** 10
 
+<!--Device-FileMkdirOption-complete?: () => void--><!--Device-FileMkdirOption-complete?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## fail
@@ -42,6 +46,8 @@ Callback invoked when the API call fails. **data** indicates the error informati
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileMkdirOption-fail?: (data: string, code: number) => void--><!--Device-FileMkdirOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -64,6 +70,8 @@ Callback invoked when the API call is successful.
 
 **Deprecated since:** 10
 
+<!--Device-FileMkdirOption-success?: () => void--><!--Device-FileMkdirOption-success?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## recursive
@@ -79,6 +87,8 @@ Whether to recursively create the upper-level directory of the specified directo
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileMkdirOption-recursive?: boolean--><!--Device-FileMkdirOption-recursive?: boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -97,5 +107,7 @@ URI of the directory. Restricted by the underlying file system of lite wearables
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileMkdirOption-uri: string--><!--Device-FileMkdirOption-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite

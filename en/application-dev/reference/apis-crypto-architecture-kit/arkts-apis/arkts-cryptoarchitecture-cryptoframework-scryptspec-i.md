@@ -16,6 +16,8 @@ Defines the child class of [KdfSpec](arkts-cryptoarchitecture-cryptoframework-kd
 
 **Since:** 18
 
+<!--Device-cryptoFramework-interface ScryptSpec extends KdfSpec--><!--Device-cryptoFramework-interface ScryptSpec extends KdfSpec-End-->
+
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf
 
 ## Modules to Import
@@ -36,7 +38,9 @@ Length of the derived key, in bytes. The value must be a positive integer.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-ScryptSpec-keySize: int--><!--Device-ScryptSpec-keySize: int-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -52,7 +56,9 @@ Maximum memory size, in bytes. The value must be a positive integer.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-ScryptSpec-maxMemory: long--><!--Device-ScryptSpec-maxMemory: long-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -68,7 +74,9 @@ CPU/memory cost parameter. The value must be a positive integer.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-ScryptSpec-n: long--><!--Device-ScryptSpec-n: long-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -84,7 +92,9 @@ Parallelization parameter. The value must be a positive integer.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-ScryptSpec-p: long--><!--Device-ScryptSpec-p: long-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -100,7 +110,9 @@ Original password entered by the user.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-ScryptSpec-passphrase: string | Uint8Array--><!--Device-ScryptSpec-passphrase: string | Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -116,7 +128,9 @@ Block size. The value must be a positive integer.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-ScryptSpec-r: long--><!--Device-ScryptSpec-r: long-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -132,6 +146,8 @@ Salt value.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-ScryptSpec-salt: Uint8Array--><!--Device-ScryptSpec-salt: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf

@@ -6,11 +6,15 @@ type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication''tou
 
 Enumerates the vibration scenarios.
 
-&lt;!--RP1End--&gt;
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+<!--RP1End-->
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-vibrator-type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication' |  'touch' | 'media' | 'physicalFeedback' | 'simulateReality'--><!--Device-vibrator-type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication' |  'touch' | 'media' | 'physicalFeedback' | 'simulateReality'-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 

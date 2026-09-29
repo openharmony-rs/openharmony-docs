@@ -8,6 +8,8 @@ declare interface LocalizedEdges
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface LocalizedEdges--><!--Device-unnamed-declare interface LocalizedEdges-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -25,6 +27,8 @@ bottom?: LengthMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocalizedEdges-bottom?: LengthMetrics--><!--Device-LocalizedEdges-bottom?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ LTR模式时相对右边的偏移量，RTL模式时相对左边的偏移量。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LocalizedEdges-end?: LengthMetrics--><!--Device-LocalizedEdges-end?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -62,6 +68,8 @@ LTR模式时相对左边的偏移量，RTL模式时相对右边的偏移量。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LocalizedEdges-start?: LengthMetrics--><!--Device-LocalizedEdges-start?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -79,5 +87,7 @@ top?: LengthMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocalizedEdges-top?: LengthMetrics--><!--Device-LocalizedEdges-top?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

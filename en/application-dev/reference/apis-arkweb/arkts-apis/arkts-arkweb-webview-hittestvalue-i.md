@@ -8,6 +8,8 @@ Provides the element information of the area being clicked. For the sample code,
 
 **Since:** 9
 
+<!--Device-webview-interface HitTestValue--><!--Device-webview-interface HitTestValue-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Extra information of the area being clicked. If the area being clicked is an ima
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HitTestValue-extra: string--><!--Device-HitTestValue-extra: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## type
@@ -45,5 +49,7 @@ Element type of the area being clicked.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HitTestValue-type: WebHitTestType--><!--Device-HitTestValue-type: WebHitTestType-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

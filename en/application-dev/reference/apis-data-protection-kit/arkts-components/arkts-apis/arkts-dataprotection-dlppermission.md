@@ -10,6 +10,8 @@ Data loss prevention (DLP) is a system solution provided to prevent data disclos
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace dlpPermission--><!--Device-unnamed-declare namespace dlpPermission-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## Modules to Import

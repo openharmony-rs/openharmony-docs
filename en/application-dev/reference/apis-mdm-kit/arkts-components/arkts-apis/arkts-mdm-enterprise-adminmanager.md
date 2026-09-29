@@ -9,6 +9,8 @@ The **adminManager** module provides administrator permission management capabil
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace adminManager--><!--Device-unnamed-declare namespace adminManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

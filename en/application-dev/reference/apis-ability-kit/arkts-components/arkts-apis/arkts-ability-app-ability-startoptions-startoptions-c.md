@@ -8,6 +8,8 @@ StartOptions can be used as an input parameter for APIs used to launch a UIAbili
 
 **Since:** 9
 
+<!--Device-unnamed-declare class StartOptions--><!--Device-unnamed-declare class StartOptions-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Operation class used to handle the result of an application launch request.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-StartOptions-completionHandler?: CompletionHandler--><!--Device-StartOptions-completionHandler?: CompletionHandler-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -58,7 +62,9 @@ In versions earlier than API version 14, the default value is **0**, indicating 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-StartOptions-displayId?: long--><!--Device-StartOptions-displayId?: long-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -81,6 +87,8 @@ Whether to hide the starting window for the UIAbility of the current application
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StartOptions-hideStartWindow?: boolean--><!--Device-StartOptions-hideStartWindow?: boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## maxWindowHeight
@@ -100,6 +108,8 @@ This function takes effect only in the [freeform window](../../../windowmanager/
 **Since:** 17
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartOptions-maxWindowHeight?: int--><!--Device-StartOptions-maxWindowHeight?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -121,6 +131,8 @@ This function takes effect only in the [freeform window](../../../windowmanager/
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StartOptions-maxWindowWidth?: int--><!--Device-StartOptions-maxWindowWidth?: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## minWindowHeight
@@ -141,6 +153,8 @@ This function takes effect only in the [freeform window](../../../windowmanager/
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StartOptions-minWindowHeight?: int--><!--Device-StartOptions-minWindowHeight?: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## minWindowWidth
@@ -160,6 +174,8 @@ This function takes effect only in the [freeform window](../../../windowmanager/
 **Since:** 17
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartOptions-minWindowWidth?: int--><!--Device-StartOptions-minWindowWidth?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -184,6 +200,8 @@ Process mode of the UIAbility after it is started.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StartOptions-processMode?: contextConstant.ProcessMode--><!--Device-StartOptions-processMode?: contextConstant.ProcessMode-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## splitRatio
@@ -199,6 +217,8 @@ Window allocation ratio when starting the UIAbility.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartOptions-splitRatio?: window.SplitRatioPreference--><!--Device-StartOptions-splitRatio?: window.SplitRatioPreference-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -223,6 +243,8 @@ Visibility status of the UIAbility after it is started. If the target UIAbility 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StartOptions-startupVisibility?: contextConstant.StartupVisibility--><!--Device-StartOptions-startupVisibility?: contextConstant.StartupVisibility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## startWindowBackgroundColor
@@ -244,6 +266,8 @@ Background color of the window for the UIAbility of the current application upon
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartOptions-startWindowBackgroundColor?: string--><!--Device-StartOptions-startWindowBackgroundColor?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -268,6 +292,8 @@ Icon displayed on the starting window for the UIAbility of the current applicati
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StartOptions-startWindowIcon?: image.PixelMap--><!--Device-StartOptions-startWindowIcon?: image.PixelMap-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## supportWindowModes
@@ -287,13 +313,15 @@ When **FULL_SCREEN** and **SPLIT** are both configured for a [freeform window](.
 
 **Constraints**:
 
-&lt;!--RP1--&gt;This property takes effect only on 2-in-1 devices and tablets.&lt;!--RP1End--&gt;
+<!--RP1-->This property takes effect only on 2-in-1 devices and tablets.<!--RP1End-->
 
 **Type:** Array&lt;[bundleManager.SupportWindowMode](arkts-ability-bundlemanager-supportwindowmode-e.md)&gt;
 
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartOptions-supportWindowModes?: Array<bundleManager.SupportWindowMode>--><!--Device-StartOptions-supportWindowModes?: Array<bundleManager.SupportWindowMode>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -310,6 +338,8 @@ Parameters for the window for the UIAbility upon startup.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartOptions-windowCreateParams?: window.WindowCreateParams--><!--Device-StartOptions-windowCreateParams?: window.WindowCreateParams-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -333,6 +363,8 @@ This function takes effect only in the [freeform window](../../../windowmanager/
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StartOptions-windowHeight?: int--><!--Device-StartOptions-windowHeight?: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## windowLeft
@@ -353,6 +385,8 @@ This function takes effect only in the [freeform window](../../../windowmanager/
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StartOptions-windowLeft?: int--><!--Device-StartOptions-windowLeft?: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## windowMode
@@ -368,6 +402,8 @@ Window mode for the UIAbility upon startup. For details, see [WindowMode](arkts-
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartOptions-windowMode?: int--><!--Device-StartOptions-windowMode?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -388,6 +424,8 @@ This function takes effect only in the [freeform window](../../../windowmanager/
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartOptions-windowTop?: int--><!--Device-StartOptions-windowTop?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -410,6 +448,8 @@ This function takes effect only in the [freeform window](../../../windowmanager/
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartOptions-windowWidth?: int--><!--Device-StartOptions-windowWidth?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -434,6 +474,8 @@ If this parameter is not specified, the default value is **undefined**, and the 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartOptions-withAnimation?: boolean--><!--Device-StartOptions-withAnimation?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -20,6 +20,8 @@ PermissionRequest is an object used by the **Web** component to grant or deny pe
 
 **Since:** 9
 
+<!--Device-unnamed-declare class PermissionRequest--><!--Device-unnamed-declare class PermissionRequest-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -33,6 +35,8 @@ Constructs a **PermissionRequest** object.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PermissionRequest-constructor()--><!--Device-PermissionRequest-constructor()-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -48,6 +52,8 @@ Denies the permission requested by the web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PermissionRequest-deny(): void--><!--Device-PermissionRequest-deny(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## getAccessibleResource
@@ -61,6 +67,8 @@ Obtains the list of permission resources requested by the web page. For details 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PermissionRequest-getAccessibleResource(): Array<string>--><!--Device-PermissionRequest-getAccessibleResource(): Array<string>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -82,6 +90,8 @@ Obtains the origin of this web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PermissionRequest-getOrigin(): string--><!--Device-PermissionRequest-getOrigin(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -101,6 +111,8 @@ Grants the permission requested by the web page.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PermissionRequest-grant(resources: Array<string>): void--><!--Device-PermissionRequest-grant(resources: Array<string>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

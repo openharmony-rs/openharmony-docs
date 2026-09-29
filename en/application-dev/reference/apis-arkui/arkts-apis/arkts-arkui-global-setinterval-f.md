@@ -16,6 +16,8 @@ Sets the interval for repeatedly calling a function.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-export declare function setInterval(  handler: Function,  delay: number,  ...arguments: any[]): number--><!--Device-unnamed-export declare function setInterval(  handler: Function,  delay: number,  ...arguments: any[]): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **Parameters:**

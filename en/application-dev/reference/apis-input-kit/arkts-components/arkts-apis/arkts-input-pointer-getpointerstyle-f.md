@@ -16,6 +16,8 @@ Obtains the mouse pointer style type of a specified window. This API can obtain 
 
 **Since:** 9
 
+<!--Device-pointer-function getPointerStyle(windowId: int, callback: AsyncCallback<PointerStyle>): void--><!--Device-pointer-function getPointerStyle(windowId: int, callback: AsyncCallback<PointerStyle>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **Parameters:**
@@ -87,6 +89,8 @@ function getPointerStyle(windowId: number): Promise<PointerStyle>
 Obtains the mouse pointer style type. This API can obtain only the mouse pointer style type of windows within the current application process. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-pointer-function getPointerStyle(windowId: int): Promise<PointerStyle>--><!--Device-pointer-function getPointerStyle(windowId: int): Promise<PointerStyle>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

@@ -8,6 +8,8 @@ Provides information related to the upcoming scroll action, including the index 
 
 **Since:** 15
 
+<!--Device-unnamed-declare interface SwiperContentWillScrollResult--><!--Device-unnamed-declare interface SwiperContentWillScrollResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## comingIndex
@@ -28,6 +30,8 @@ Index of the page that will be displayed in the scroll direction.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
 
+<!--Device-SwiperContentWillScrollResult-comingIndex: number--><!--Device-SwiperContentWillScrollResult-comingIndex: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## currentIndex
@@ -47,6 +51,8 @@ Index of the current page. During a finger swipe, this value remains constant as
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
+
+<!--Device-SwiperContentWillScrollResult-currentIndex: number--><!--Device-SwiperContentWillScrollResult-currentIndex: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,5 +75,7 @@ This value represents the offset for each frame during a finger swipe and the di
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
+
+<!--Device-SwiperContentWillScrollResult-offset: number--><!--Device-SwiperContentWillScrollResult-offset: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

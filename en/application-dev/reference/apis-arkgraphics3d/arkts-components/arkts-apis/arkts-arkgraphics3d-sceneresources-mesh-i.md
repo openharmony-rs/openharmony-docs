@@ -12,6 +12,8 @@ Mesh resource, which inherits from SceneResource.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface Mesh extends SceneResource--><!--Device-unnamed-export interface Mesh extends SceneResource-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## aabb
@@ -25,6 +27,8 @@ Axis aligned bounding box.
 **Type:** [Aabb](arkts-arkgraphics3d-scenetypes-aabb-i.md)
 
 **Since:** 12
+
+<!--Device-Mesh-readonly aabb: Aabb--><!--Device-Mesh-readonly aabb: Aabb-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -40,6 +44,8 @@ Material. The default value is undefined.
 
 **Since:** 12
 
+<!--Device-Mesh-materialOverride?: Material--><!--Device-Mesh-materialOverride?: Material-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## subMeshes
@@ -53,5 +59,7 @@ Array of sub-meshes.
 **Type:** [SubMesh](arkts-arkgraphics3d-sceneresources-submesh-i.md)[]
 
 **Since:** 12
+
+<!--Device-Mesh-readonly subMeshes: SubMesh[]--><!--Device-Mesh-readonly subMeshes: SubMesh[]-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

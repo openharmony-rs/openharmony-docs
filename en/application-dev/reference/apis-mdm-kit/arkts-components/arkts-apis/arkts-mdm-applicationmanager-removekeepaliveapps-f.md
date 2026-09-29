@@ -20,6 +20,8 @@ Removes a specified application from the keep-alive list.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function removeKeepAliveApps(admin: Want, bundleNames: Array<string>, accountId: number): void--><!--Device-applicationManager-function removeKeepAliveApps(admin: Want, bundleNames: Array<string>, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

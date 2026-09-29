@@ -20,6 +20,8 @@ This component is implemented based on [state management V2](../../../ui/state-m
 
 **Decorator:** @ComponentV2
 
+<!--Device-unnamed-export declare struct SwipeRefresherV2--><!--Device-unnamed-export declare struct SwipeRefresherV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -48,6 +50,8 @@ Default value: an empty string.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SwipeRefresherV2-content?: ResourceStr--><!--Device-SwipeRefresherV2-content?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isLoading
@@ -71,5 +75,7 @@ Whether the content is currently being loaded.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SwipeRefresherV2-isLoading: boolean--><!--Device-SwipeRefresherV2-isLoading: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

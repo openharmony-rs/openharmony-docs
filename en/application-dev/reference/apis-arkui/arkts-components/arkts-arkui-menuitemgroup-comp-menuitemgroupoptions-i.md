@@ -4,9 +4,11 @@
 declare interface MenuItemGroupOptions
 ```
 
-Describes the header and footer of the menu item group.
+Describes the header and footer information of the menu item group.
 
 **Since:** 9
+
+<!--Device-unnamed-declare interface MenuItemGroupOptions--><!--Device-unnamed-declare interface MenuItemGroupOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +18,9 @@ Describes the header and footer of the menu item group.
 footer?: ResourceStr | CustomBuilder
 ```
 
-Footer of the menu item group.
+Footer information of the menu item group, which is displayed at the bottom of all menu items in the group.
+
+If not set, no footer is displayed.
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)
 
@@ -25,6 +29,8 @@ Footer of the menu item group.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MenuItemGroupOptions-footer?: ResourceStr | CustomBuilder--><!--Device-MenuItemGroupOptions-footer?: ResourceStr | CustomBuilder-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +40,9 @@ Footer of the menu item group.
 header?: ResourceStr | CustomBuilder
 ```
 
-Header of the menu item group.
+Header information of the menu item group, which is displayed at the top of all menu items in the group.
+
+If not set, no header is displayed.
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)
 
@@ -43,5 +51,7 @@ Header of the menu item group.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MenuItemGroupOptions-header?: ResourceStr | CustomBuilder--><!--Device-MenuItemGroupOptions-header?: ResourceStr | CustomBuilder-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

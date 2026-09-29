@@ -8,6 +8,8 @@ Defines information about the host application window and **UIExtensionComponent
 
 **Since:** 11
 
+<!--Device-uiExtensionHost-interface UIExtensionHostWindowProxyProperties--><!--Device-uiExtensionHost-interface UIExtensionHostWindowProxyProperties-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Position, width, and height of the **UIExtensionComponent**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionHostWindowProxyProperties-uiExtensionHostWindowProxyRect: window.Rect--><!--Device-UIExtensionHostWindowProxyProperties-uiExtensionHostWindowProxyRect: window.Rect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

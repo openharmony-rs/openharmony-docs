@@ -12,6 +12,8 @@ Provides APIs for obtaining locale information.
 
 **Substitutes:** [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale)
 
+<!--Device-intl-export class Locale--><!--Device-intl-export class Locale-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Creates a **Locale** object.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Locale-constructor()--><!--Device-Locale-constructor()-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -70,6 +74,8 @@ Creates a **Locale** object.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Locale-constructor(locale: string, options?: LocaleOptions)--><!--Device-Locale-constructor(locale: string, options?: LocaleOptions)-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -107,6 +113,8 @@ Maximizes locale information by supplementing the missing script and country/reg
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Locale-maximize(): Locale--><!--Device-Locale-maximize(): Locale-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -152,6 +160,8 @@ Minimizes locale information by removing the script and country/region informati
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Locale-minimize(): Locale--><!--Device-Locale-minimize(): Locale-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Return value:**
@@ -196,6 +206,8 @@ Obtains the string that represents a **Locale** object.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Locale-toString(): string--><!--Device-Locale-toString(): string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Return value:**
@@ -234,6 +246,8 @@ Locale information, which consists of the language, script, and country/region, 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Locale-baseName: string--><!--Device-Locale-baseName: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## calendar
@@ -255,6 +269,8 @@ Calendar for the locale. The value can be: The value can be any of the following
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Locale-calendar: string--><!--Device-Locale-calendar: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -278,6 +294,8 @@ Whether case is taken into account for the locale's collation rules. The value c
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Locale-caseFirst: string--><!--Device-Locale-caseFirst: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## collation
@@ -299,6 +317,8 @@ Collation rules for the locale. The value can be: **big5han**: Pinyin sorting fo
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Locale-collation: string--><!--Device-Locale-collation: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -322,6 +342,8 @@ Time system for the locale. The value can be:"h11", "h12", "h23", or "h24". For 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Locale-hourCycle: string--><!--Device-Locale-hourCycle: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## language
@@ -343,6 +365,8 @@ Language associated with the locale, for example, **zh**. The value complies wit
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Locale-language: string--><!--Device-Locale-language: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -366,6 +390,8 @@ Numbering system for the locale. The value can be: **adlm**, **ahom**, **arab**,
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Locale-numberingSystem: string--><!--Device-Locale-numberingSystem: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## numeric
@@ -387,6 +413,8 @@ Whether to use special sorting rules for digits. The value **true** means to use
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Locale-numeric: boolean--><!--Device-Locale-numeric: boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -410,6 +438,8 @@ Country/region associated with the locale, for example, **CN**. The value compli
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Locale-region: string--><!--Device-Locale-region: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## script
@@ -431,5 +461,7 @@ Script type of the language, for example, **Hans**. The value complies with the 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Locale-script: string--><!--Device-Locale-script: string-End-->
 
 **System capability:** SystemCapability.Global.I18n

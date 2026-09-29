@@ -22,6 +22,8 @@ Defines the callback triggered when content in the **Tabs** component scrolls.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-unnamed-declare type OnTabsContentDidScrollCallback = (selectedIndex: number, index: number, position: number, mainAxisLength: number) => void--><!--Device-unnamed-declare type OnTabsContentDidScrollCallback = (selectedIndex: number, index: number, position: number, mainAxisLength: number) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

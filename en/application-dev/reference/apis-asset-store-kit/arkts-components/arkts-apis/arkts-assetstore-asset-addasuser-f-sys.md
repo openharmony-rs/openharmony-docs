@@ -20,6 +20,8 @@ To set [IS_PERSISTENT](arkts-assetstore-asset-tag-e.md#is_persistent), the appli
 
 **Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
+<!--Device-asset-function addAsUser(userId: number, attributes: AssetMap): Promise<void>--><!--Device-asset-function addAsUser(userId: number, attributes: AssetMap): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.

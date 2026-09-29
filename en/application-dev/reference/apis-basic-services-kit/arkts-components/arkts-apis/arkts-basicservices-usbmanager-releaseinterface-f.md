@@ -21,6 +21,8 @@ Releases the claimed communication interface.
 
 **Since:** 9
 
+<!--Device-usbManager-function releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int--><!--Device-usbManager-function releaseInterface(pipe: USBDevicePipe, iface: USBInterface): int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

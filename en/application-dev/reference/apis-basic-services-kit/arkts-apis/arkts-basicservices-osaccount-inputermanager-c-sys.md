@@ -8,6 +8,8 @@ Provides APIs for managing credential inputers.
 
 **Since:** 9
 
+<!--Device-osAccount-class InputerManager--><!--Device-osAccount-class InputerManager-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Registers a credential inputer.
 **Since:** 9
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL or ohos.permission.MANAGE_USER_IDM
+
+<!--Device-InputerManager-static registerInputer(authType: AuthType, inputer: IInputer): void--><!--Device-InputerManager-static registerInputer(authType: AuthType, inputer: IInputer): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -84,6 +88,8 @@ Unregisters a credential inputer.
 **Since:** 9
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL or ohos.permission.MANAGE_USER_IDM
+
+<!--Device-InputerManager-static unregisterInputer(authType: AuthType): void--><!--Device-InputerManager-static unregisterInputer(authType: AuthType): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

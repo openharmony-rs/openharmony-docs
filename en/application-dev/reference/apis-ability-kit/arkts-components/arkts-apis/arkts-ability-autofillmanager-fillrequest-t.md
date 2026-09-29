@@ -12,6 +12,8 @@ Defines the information about an auto-fill request.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-autoFillManager-export type FillRequest = _AutoFillRequest.FillRequest--><!--Device-autoFillManager-export type FillRequest = _AutoFillRequest.FillRequest-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Type:** [_AutoFillRequest.FillRequest](arkts-ability-autofillrequest-fillrequest-i.md)

@@ -8,6 +8,8 @@ Defines PixelMap initialization options.
 
 **Since:** 8
 
+<!--Device-image-interface InitializationOptions--><!--Device-image-interface InitializationOptions-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -28,9 +30,11 @@ Alpha type. The default value is **IMAGE_ALPHA_TYPE_PREMUL**.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-InitializationOptions-alphaType?: AlphaType--><!--Device-InitializationOptions-alphaType?: AlphaType-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -46,9 +50,11 @@ Whether the image pixels are editable. **true** if editable, **false** otherwise
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-InitializationOptions-editable?: boolean--><!--Device-InitializationOptions-editable?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -64,9 +70,11 @@ Pixel format of the generated PixelMap. The default value is **RGBA_8888**.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-InitializationOptions-pixelFormat?: PixelMapFormat--><!--Device-InitializationOptions-pixelFormat?: PixelMapFormat-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -82,9 +90,11 @@ Scale mode. The default value is **0**.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-InitializationOptions-scaleMode?: ScaleMode--><!--Device-InitializationOptions-scaleMode?: ScaleMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -100,9 +110,11 @@ Image size.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-InitializationOptions-size: Size--><!--Device-InitializationOptions-size: Size-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -117,5 +129,7 @@ Pixel format of the passed-in buffer data. The default value is **BGRA_8888**.
 **Type:** [PixelMapFormat](arkts-image-image-pixelmapformat-e.md)
 
 **Since:** 12
+
+<!--Device-InitializationOptions-srcPixelFormat?: PixelMapFormat--><!--Device-InitializationOptions-srcPixelFormat?: PixelMapFormat-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

@@ -8,6 +8,8 @@ Defines the network policy information for an application.
 
 **Since:** 11
 
+<!--Device-policy-export interface NetUidPolicyInfo--><!--Device-policy-export interface NetUidPolicyInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Policy that specifies whether the application specified by a given UID is allowe
 
 **Since:** 11
 
+<!--Device-NetUidPolicyInfo-policy: NetUidPolicy--><!--Device-NetUidPolicyInfo-policy: NetUidPolicy-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Traffic alarm threshold. The default value is **DATA_USAGE_UNKNOWN**.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-NetUidPolicyInfo-uid: int--><!--Device-NetUidPolicyInfo-uid: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

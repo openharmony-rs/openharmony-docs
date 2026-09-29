@@ -8,6 +8,8 @@ interface Configuration
 
 **起始版本：** 9
 
+<!--Device-window-interface Configuration--><!--Device-window-interface Configuration-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
@@ -34,6 +36,8 @@ defaultDensityEnabled?: boolean
 
 **起始版本：** 20
 
+<!--Device-Configuration-defaultDensityEnabled?: boolean--><!--Device-Configuration-defaultDensityEnabled?: boolean-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -49,6 +53,8 @@ zIndex?: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-Configuration-zIndex?: int--><!--Device-Configuration-zIndex?: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

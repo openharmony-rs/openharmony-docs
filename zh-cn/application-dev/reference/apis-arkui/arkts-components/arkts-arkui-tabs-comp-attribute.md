@@ -8,9 +8,11 @@ declare class TabsAttribute extends CommonMethod<TabsAttribute>
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** TabsAttribute extends CommonMethod&lt;TabsAttribute&gt;
+**继承/实现关系：** TabsAttribute extends CommonMethod<TabsAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class TabsAttribute extends CommonMethod<TabsAttribute>--><!--Device-unnamed-declare class TabsAttribute extends CommonMethod<TabsAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ animationCurve(curve: Curve | ICurve)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-animationCurve(curve: Curve | ICurve): TabsAttribute--><!--Device-TabsAttribute-animationCurve(curve: Curve | ICurve): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ animationCurve不设置时，由于滑动TabContent翻页动画曲线interpolati
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-animationDuration(value: number): TabsAttribute--><!--Device-TabsAttribute-animationDuration(value: number): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +84,8 @@ animationMode(mode: Optional<AnimationMode>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-animationMode(mode: Optional<AnimationMode>): TabsAttribute--><!--Device-TabsAttribute-animationMode(mode: Optional<AnimationMode>): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -104,6 +112,8 @@ barBackgroundBlurStyle(value: BlurStyle)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-barBackgroundBlurStyle(value: BlurStyle): TabsAttribute--><!--Device-TabsAttribute-barBackgroundBlurStyle(value: BlurStyle): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -128,6 +138,8 @@ barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions): TabsAttribute--><!--Device-TabsAttribute-barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -151,6 +163,8 @@ barBackgroundColor(value: ResourceColor)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-barBackgroundColor(value: ResourceColor): TabsAttribute--><!--Device-TabsAttribute-barBackgroundColor(value: ResourceColor): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -172,6 +186,8 @@ barBackgroundEffect(options: BackgroundEffectOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-barBackgroundEffect(options: BackgroundEffectOptions): TabsAttribute--><!--Device-TabsAttribute-barBackgroundEffect(options: BackgroundEffectOptions): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -195,6 +211,8 @@ barFloatingStyle(style: Optional<FloatingTabBarStyle>)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-barFloatingStyle(style: Optional<FloatingTabBarStyle>): TabsAttribute--><!--Device-TabsAttribute-barFloatingStyle(style: Optional<FloatingTabBarStyle>): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -217,6 +235,8 @@ barGridAlign(value: BarGridColumnOptions)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-barGridAlign(value: BarGridColumnOptions): TabsAttribute--><!--Device-TabsAttribute-barGridAlign(value: BarGridColumnOptions): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -238,6 +258,8 @@ API version 14之前的版本，若设置barHeight为固定值后，TabBar无法
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-barHeight(value: Length): TabsAttribute--><!--Device-TabsAttribute-barHeight(value: Length): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -263,6 +285,8 @@ barHeight(height: Length, noMinHeightLimit: boolean)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-barHeight(height: Length, noMinHeightLimit: boolean): TabsAttribute--><!--Device-TabsAttribute-barHeight(height: Length, noMinHeightLimit: boolean): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -285,6 +309,8 @@ barMode(value: BarMode.Fixed)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-barMode(value: BarMode.Fixed): TabsAttribute--><!--Device-TabsAttribute-barMode(value: BarMode.Fixed): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -310,6 +336,8 @@ barMode(value: BarMode.Scrollable, options: ScrollableBarModeOptions)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-barMode(value: BarMode.Scrollable, options: ScrollableBarModeOptions): TabsAttribute--><!--Device-TabsAttribute-barMode(value: BarMode.Scrollable, options: ScrollableBarModeOptions): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -332,6 +360,8 @@ barMode(value: BarMode, options?: ScrollableBarModeOptions)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-barMode(value: BarMode, options?: ScrollableBarModeOptions): TabsAttribute--><!--Device-TabsAttribute-barMode(value: BarMode, options?: ScrollableBarModeOptions): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -356,6 +386,8 @@ barOverlap(value: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-barOverlap(value: boolean): TabsAttribute--><!--Device-TabsAttribute-barOverlap(value: boolean): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -376,6 +408,8 @@ barPosition(value: BarPosition)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-barPosition(value: BarPosition): TabsAttribute--><!--Device-TabsAttribute-barPosition(value: BarPosition): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -395,6 +429,8 @@ barWidth(value: Length)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-barWidth(value: Length): TabsAttribute--><!--Device-TabsAttribute-barWidth(value: Length): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -417,6 +453,8 @@ cachedMaxCount(count: number, mode: TabsCacheMode)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-cachedMaxCount(count: number, mode: TabsCacheMode): TabsAttribute--><!--Device-TabsAttribute-cachedMaxCount(count: number, mode: TabsCacheMode): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -456,6 +494,8 @@ customContentTransition(delegate: TabsCustomContentTransitionCallback)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-customContentTransition(delegate: TabsCustomContentTransitionCallback): TabsAttribute--><!--Device-TabsAttribute-customContentTransition(delegate: TabsCustomContentTransitionCallback): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -477,6 +517,8 @@ divider(value: DividerStyle | null)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-divider(value: DividerStyle | null): TabsAttribute--><!--Device-TabsAttribute-divider(value: DividerStyle | null): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -504,6 +546,8 @@ edgeEffect(edgeEffect: Optional<EdgeEffect>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-edgeEffect(edgeEffect: Optional<EdgeEffect>): TabsAttribute--><!--Device-TabsAttribute-edgeEffect(edgeEffect: Optional<EdgeEffect>): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -525,6 +569,8 @@ fadingEdge(value: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-fadingEdge(value: boolean): TabsAttribute--><!--Device-TabsAttribute-fadingEdge(value: boolean): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -548,6 +594,8 @@ nestedScroll(value: TabsNestedScrollMode | undefined)
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-nestedScroll(value: TabsNestedScrollMode | undefined): TabsAttribute--><!--Device-TabsAttribute-nestedScroll(value: TabsNestedScrollMode | undefined): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -570,6 +618,8 @@ onAnimationEnd(handler: OnTabsAnimationEndCallback)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-onAnimationEnd(handler: OnTabsAnimationEndCallback): TabsAttribute--><!--Device-TabsAttribute-onAnimationEnd(handler: OnTabsAnimationEndCallback): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -591,6 +641,8 @@ onAnimationStart(handler: OnTabsAnimationStartCallback)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-onAnimationStart(handler: OnTabsAnimationStartCallback): TabsAttribute--><!--Device-TabsAttribute-onAnimationStart(handler: OnTabsAnimationStartCallback): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -622,13 +674,15 @@ Tab页签切换后触发的事件。
 
 > 使用自定义页签时，在onChange事件中联动可能会导致滑动页面切换后才执行页签联动，引起自定义页签切换效果延迟。建议在
 > [onAnimationStart](#onanimationstart)中监听并刷新当前索引，以确保动效能够及时触发。具体实现可参考
-> 示例3。
+> [示例3](../../../reference/apis-arkui/arkui-ts/ts-container-tabs.md#示例3自定义页签切换联动)。
 > 
 > 如果在动画过程中index参数发生变化，将使用最新值触发回调。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-onChange(event: Callback<number>): TabsAttribute--><!--Device-TabsAttribute-onChange(event: Callback<number>): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -653,6 +707,8 @@ onContentDidScroll(handler: OnTabsContentDidScrollCallback | undefined)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-onContentDidScroll(handler: OnTabsContentDidScrollCallback | undefined): TabsAttribute--><!--Device-TabsAttribute-onContentDidScroll(handler: OnTabsContentDidScrollCallback | undefined): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -692,6 +748,8 @@ onContentWillChange(handler: OnTabsContentWillChangeCallback)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-onContentWillChange(handler: OnTabsContentWillChangeCallback): TabsAttribute--><!--Device-TabsAttribute-onContentWillChange(handler: OnTabsContentWillChangeCallback): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -713,6 +771,8 @@ onGestureSwipe(handler: OnTabsGestureSwipeCallback)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-onGestureSwipe(handler: OnTabsGestureSwipeCallback): TabsAttribute--><!--Device-TabsAttribute-onGestureSwipe(handler: OnTabsGestureSwipeCallback): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -750,6 +810,8 @@ onSelected(event: Callback<number>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-onSelected(event: Callback<number>): TabsAttribute--><!--Device-TabsAttribute-onSelected(event: Callback<number>): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -771,6 +833,8 @@ Tab页签点击后触发的事件。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-onTabBarClick(event: Callback<number>): TabsAttribute--><!--Device-TabsAttribute-onTabBarClick(event: Callback<number>): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -808,6 +872,8 @@ onUnselected(event: Callback<number>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-onUnselected(event: Callback<number>): TabsAttribute--><!--Device-TabsAttribute-onUnselected(event: Callback<number>): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -830,6 +896,8 @@ pageFlipMode(mode: Optional<PageFlipMode>)
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-pageFlipMode(mode: Optional<PageFlipMode>): TabsAttribute--><!--Device-TabsAttribute-pageFlipMode(mode: Optional<PageFlipMode>): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -850,6 +918,8 @@ scrollable(value: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsAttribute-scrollable(value: boolean): TabsAttribute--><!--Device-TabsAttribute-scrollable(value: boolean): TabsAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -869,6 +939,8 @@ vertical(value: boolean)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-vertical(value: boolean): TabsAttribute--><!--Device-TabsAttribute-vertical(value: boolean): TabsAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -16,6 +16,8 @@ Releases a **DeviceManager** instance that is no longer used.
 
 **Since:** 10
 
+<!--Device-distributedDeviceManager-function releaseDeviceManager(deviceManager: DeviceManager): void--><!--Device-distributedDeviceManager-function releaseDeviceManager(deviceManager: DeviceManager): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Parameters:**

@@ -18,6 +18,8 @@ Sets wallpaper of the specified type based on the uri path of the custom wallpap
 
 **Required permissions:** ohos.permission.SET_WALLPAPER
 
+<!--Device-wallpaper-function setCustomWallpaper(source: string, wallpaperType: WallpaperType, callback: AsyncCallback<void>): void--><!--Device-wallpaper-function setCustomWallpaper(source: string, wallpaperType: WallpaperType, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.
@@ -71,6 +73,8 @@ Sets wallpaper of the specified type based on the uri path of the custom wallpap
 **Since:** 10
 
 **Required permissions:** ohos.permission.SET_WALLPAPER
+
+<!--Device-wallpaper-function setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promise<void>--><!--Device-wallpaper-function setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

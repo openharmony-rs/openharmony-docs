@@ -20,6 +20,8 @@ This is suitable for scenarios where users need to manually modify notification 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationManager-function openNotificationSettings(context: UIAbilityContext): Promise<void>--><!--Device-notificationManager-function openNotificationSettings(context: UIAbilityContext): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.NotificationSettings
 
 **See also:**

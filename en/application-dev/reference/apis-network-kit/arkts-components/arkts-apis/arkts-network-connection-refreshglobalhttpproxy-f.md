@@ -20,6 +20,8 @@ Notifies the system that global proxy re-authentication is required. Upon receiv
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function refreshGlobalHttpProxy(): Promise<HttpProxy>--><!--Device-connection-function refreshGlobalHttpProxy(): Promise<HttpProxy>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Return value:**

@@ -4,9 +4,20 @@
 declare class LocalStorage
 ```
 
-For details about how to use LocalStorage on the UI, see [LocalStorage: UI State Storage](../../../ui/state-management/arkts-localstorage.md).
+A page-level UI state storage. The parameters received through the [@Entry](../../../apis-arkui/arkui-ts/ts-universal-entry.md#entry) decorator can share the same **LocalStorage** instance within a page. For details about how to use it on the UI, see [LocalStorage: Storing Page-Level UI State](../../../ui/state-management/arkts-localstorage.md).
+
+> **NOTE:** 
+
+> Since API version 12, LocalStorage supports
+> [Map](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-map-type),
+> [Set](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-set-type),
+> [Date](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-date-type) types, as well
+> as **null**, **undefined**, and
+> [union types](../../../ui/state-management/arkts-localstorage.md#using-union-types-in-localstorage).
 
 **Since:** 9
+
+<!--Device-unnamed-declare class LocalStorage--><!--Device-unnamed-declare class LocalStorage-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +38,8 @@ For details about the subscriber, see [delete](#delete).
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LocalStorage-clear(): boolean--><!--Device-LocalStorage-clear(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,7 +63,7 @@ let res: boolean = storage.clear(); // true: There are no subscribers.
 constructor(initializingProperties?: Object)
 ```
 
-Creates a [LocalStorage](../../../ui/state-management/arkts-localstorage.md) instance and initializes it using the properties and values returned by **Object.keys(initializingProperties)**.
+Creates a [LocalStorage](../../../ui/state-management/arkts-localstorage.md) instance and initializes it using the property names and values returned by **Object.keys(initializingProperties)**.
 
 **Since:** 9
 
@@ -60,13 +73,15 @@ Creates a [LocalStorage](../../../ui/state-management/arkts-localstorage.md) ins
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-LocalStorage-constructor(initializingProperties?: Object)--><!--Device-LocalStorage-constructor(initializingProperties?: Object)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| initializingProperties | Object | No | Properties and values used to initialize the **LocalStorage** instance. **initializingProperties** cannot be set to **undefined**. The default value is an empty object, meaning no properties are added to LocalStorage during initialization. |
+| initializingProperties | Object | No | Properties and values used to initialize the **LocalStorage** instance. This parameter is passed when property data is preset during creation. Its keys serve as property names in **LocalStorage**, and values are the initial values of the corresponding properties. **initializingProperties** cannot be set to **undefined**. If not passed, the default value is an empty object, indicating **LocalStorage** contains no preset properties. |
 
 **Examples**
 
@@ -86,7 +101,7 @@ Deletes the property corresponding to **propName** from [LocalStorage](../../../
 The property subscribers include the following:
 
 1. Variables decorated by
-[\@LocalStorageLink](../../../ui/state-management/arkts-localstorage.md#localstoragelink) or [\@LocalStorageProp](../../../ui/state-management/arkts-localstorage.md#localstorageprop)
+[\@LocalStorageLink](../../../ui/state-management/arkts-localstorage.md#localstoragelink) and [\@LocalStorageProp](../../../ui/state-management/arkts-localstorage.md#localstorageprop)
 
 2. Instances of [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)
 returned by [link](#link), [prop](#prop), [setAndLink](#setandlink), or [setAndProp](#setandprop)
@@ -106,6 +121,8 @@ of **SubscribedAbstractProperty** returned by **link**, **prop**, **setAndLink**
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LocalStorage-delete(propName: string): boolean--><!--Device-LocalStorage-delete(propName: string): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,7 +156,7 @@ let res2: boolean = storage.delete('PropB'); // true: PropB is successfully dele
 get<T>(propName: string): T | undefined
 ```
 
-Obtains the value of the property corresponding to **propName** from [LocalStorage](../../../ui/state-management/arkts-localstorage.md).
+Obtains the value of the property corresponding to **propName** from [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If **propName** does not exist, **undefined** is returned.
 
 **Since:** 9
 
@@ -148,6 +165,8 @@ Obtains the value of the property corresponding to **propName** from [LocalStora
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LocalStorage-get<T>(propName: string): T | undefined--><!--Device-LocalStorage-get<T>(propName: string): T | undefined-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,72 +190,6 @@ let storage: LocalStorage = new LocalStorage(initialData);
 let value: number = storage.get('PropA') as number; // 47
 ```
 
-## GetShared
-
-```TypeScript
-static GetShared(): LocalStorage
-```
-
-Obtains the [LocalStorage](../../../ui/state-management/arkts-localstorage.md) instance shared across the current stage.
-
-**Since:** 9
-
-**Deprecated since:** 10
-
-**Substitutes:** [getShared](#getshared)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [LocalStorage](arkts-arkui-localstorage-c.md) | **LocalStorage** instance. |
-
-**Examples**
-
-```TypeScript
-let storage: LocalStorage = LocalStorage.GetShared();
-```
-
-## getShared
-
-```TypeScript
-static getShared(): LocalStorage
-```
-
-Obtains the [LocalStorage](../../../ui/state-management/arkts-localstorage.md) instance shared across the current stage.
-
-> **NOTE:** 
-
-> Since API version 12, you can use the
-> [getSharedLocalStorage](arkts-arkui-arkui-uicontext-uicontext-c.md#getsharedlocalstorage)
-> API in [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to specify the UI execution context.
-
-**Since:** 10
-
-**Deprecated since:** 18
-
-**Substitutes:** [getSharedLocalStorage](arkts-arkui-arkui-uicontext-uicontext-c.md#getsharedlocalstorage)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 10.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [LocalStorage](arkts-arkui-localstorage-c.md) | **LocalStorage** instance. |
-
 ## has
 
 ```TypeScript
@@ -252,6 +205,8 @@ Checks whether the property corresponding to **propName** exists in [LocalStorag
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LocalStorage-has(propName: string): boolean--><!--Device-LocalStorage-has(propName: string): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -291,6 +246,8 @@ Obtains all property names in [LocalStorage](../../../ui/state-management/arkts-
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-LocalStorage-keys(): IterableIterator<string>--><!--Device-LocalStorage-keys(): IterableIterator<string>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -313,9 +270,7 @@ let keys: IterableIterator<string> = storage.keys();
 link<T>(propName: string): SubscribedAbstractProperty<T>
 ```
 
-Establishes a two-way data binding with the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given property exists in LocalStorage, this API returns the two-way bound data for the property.
-
-Any update of the data is synchronized back to LocalStorage, which then synchronizes the update to all data and components bound to the property.
+Establishes a two-way data binding with the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given **propName** exists in LocalStorage, the two-way bound data of the corresponding property in LocalStorage is returned. Unlike the one-way data binding of [prop](#prop), **link** establishes a two-way data binding, where modifications are synchronized back to LocalStorage, and LocalStorage synchronizes the changes to all data and custom components bound to this **propName**.
 
 If the given property does not exist in LocalStorage, **undefined** is returned.
 
@@ -326,6 +281,8 @@ If the given property does not exist in LocalStorage, **undefined** is returned.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LocalStorage-link<T>(propName: string): SubscribedAbstractProperty<T>--><!--Device-LocalStorage-link<T>(propName: string): SubscribedAbstractProperty<T>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -339,7 +296,7 @@ If the given property does not exist in LocalStorage, **undefined** is returned.
 
 | Type | Description |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | Returns the **SubscribedAbstractProperty&lt;T&gt;** instance if the given property exists in LocalStorage; returns **undefined** otherwise. |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | Instance of SubscribedAbstractProperty&lt;T&gt;, which is the two-way bound data of the property corresponding to **propName** in LocalStorage; **undefined** if the property does not exist in LocalStorage. |
 
 **Examples**
 
@@ -357,7 +314,7 @@ linkToPropA1.set(48); // Two-way synchronization: linkToPropA1.get() == linkToPr
 prop<S>(propName: string): SubscribedAbstractProperty<S>
 ```
 
-Establishes a one-way data binding with the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given property exists in LocalStorage, this API returns the one-way bound data for the property. If the given property does not exist in LocalStorage, **undefined** is returned. Updates of the one-way bound data are not synchronized back to LocalStorage.
+Establishes a one-way data binding with the property corresponding to propName in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given **propName** exists in LocalStorage, the one-way bound data of the corresponding property in LocalStorage is returned. If **propName** does not exist in LocalStorage, **undefined** is returned. Modifications to the one-way bound data are not synchronized back to LocalStorage.
 
 **Since:** 9
 
@@ -366,6 +323,8 @@ Establishes a one-way data binding with the property corresponding to **propName
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LocalStorage-prop<S>(propName: string): SubscribedAbstractProperty<S>--><!--Device-LocalStorage-prop<S>(propName: string): SubscribedAbstractProperty<S>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -379,7 +338,7 @@ Establishes a one-way data binding with the property corresponding to **propName
 
 | Type | Description |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | Instance of **SubscribedAbstractProperty&lt;S&gt;** and one-way bound data of the given property in LocalStorage. If the given property does not exist in LocalStorage, **undefined** is returned. |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | Instance of SubscribedAbstractProperty&lt;S&gt;, which is the one-way bound data of the property corresponding to **propName** in LocalStorage; **undefined** if the property does not exist in LocalStorage. |
 
 **Examples**
 
@@ -399,11 +358,13 @@ public ref<T>(propName: string): AbstractProperty<T> | undefined
 
 Returns a reference to the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the provided **propName** does not exist, this API returns **undefined**.
 
-This API is similar to [link](#link) but does not require manually releasing the returned variable of the [AbstractProperty](arkts-arkui-abstractproperty-i.md) type.
+This API is basically the same as [link](#link), except that it does not require manual release of the returned variable of the [AbstractProperty&lt;T&gt;](arkts-arkui-abstractproperty-i.md) type.
 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LocalStorage-public ref<T>(propName: string): AbstractProperty<T> | undefined--><!--Device-LocalStorage-public ref<T>(propName: string): AbstractProperty<T> | undefined-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -417,7 +378,7 @@ This API is similar to [link](#link) but does not require manually releasing the
 
 | Type | Description |
 | --- | --- |
-| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; &#124; undefined | A reference to the property in LocalStorage, or **undefined** if the property does not exist. |
+| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; &#124; undefined | Reference to the property corresponding to **propName** in LocalStorage. If the corresponding **propName** does not exist in LocalStorage, **undefined** is returned. |
 
 **Examples**
 
@@ -435,16 +396,7 @@ refToPropA1?.set(48); // refToPropA1.get() == refToPropA2.get() == 48
 set<T>(propName: string, newValue: T): boolean
 ```
 
-Sets the value of the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the value of **newValue** is the same as the current value of the property, no assignment is performed, and the state variable does not instruct the UI to update the value of the property.
-
-> **NOTE:** 
-
-> Since API version 12, LocalStorage supports
-> [Map](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-map-type),
-> [Set](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-set-type),
-> [Date](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-date-type), **null**,
-> **undefined**, and [union](../../../ui/state-management/arkts-localstorage.md#using-union-types-in-localstorage)
-> types.
+Sets the value of the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the value of **newValue** is the same as the current value of the property, no assignment is performed, and the state variable does not instruct the UI to update the value of the property. Unlike [setOrCreate](#setorcreate), **set** takes effect only when **propName** already exists, and returns **false** if **propName** does not exist.
 
 **Since:** 9
 
@@ -454,6 +406,8 @@ Sets the value of the property corresponding to **propName** in [LocalStorage](.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-LocalStorage-set<T>(propName: string, newValue: T): boolean--><!--Device-LocalStorage-set<T>(propName: string, newValue: T): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -461,7 +415,7 @@ Sets the value of the property corresponding to **propName** in [LocalStorage](.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | propName | string | Yes | Property name in LocalStorage. |
-| newValue | T | Yes | Property value. Since API version 12, the value can be **null** or **undefined**. |
+| newValue | T | Yes | New value of the property corresponding to **propName**. Since API version 12, the value can be **null** or **undefined**. |
 
 **Return value:**
 
@@ -486,15 +440,6 @@ setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>
 
 Similar to the [link](#link) API, establishes a two-way data binding with the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given property exists in LocalStorage, this API returns the two-way bound data for the property. If the given property does not exist, this API creates and initializes the property in LocalStorage using **defaultValue** and returns its two-way bound data.
 
-> **NOTE:** 
-
-> Since API version 12, LocalStorage supports
-> [Map](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-map-type),
-> [Set](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-set-type),
-> [Date](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-date-type), **null**,
-> **undefined**, and [union](../../../ui/state-management/arkts-localstorage.md#using-union-types-in-localstorage)
-> types.
-
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
@@ -502,6 +447,8 @@ Similar to the [link](#link) API, establishes a two-way data binding with the pr
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LocalStorage-setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>--><!--Device-LocalStorage-setAndLink<T>(propName: string, defaultValue: T): SubscribedAbstractProperty<T>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -516,7 +463,7 @@ Similar to the [link](#link) API, establishes a two-way data binding with the pr
 
 | Type | Description |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | Instance of **SubscribedAbstractProperty&lt;T&gt;** and two-way bound data of the given property in LocalStorage. |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | Instance of SubscribedAbstractProperty&lt;T&gt;, which is the two-way bound data of the property corresponding to **propName** in LocalStorage. |
 
 **Examples**
 
@@ -533,16 +480,7 @@ let link2: SubscribedAbstractProperty<number> = storage.setAndLink('PropA', 50);
 setAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractProperty<S>
 ```
 
-Similar to the [prop](#prop) API, establishes a one-way data binding with the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given property exists in LocalStorage, this API returns the one-way bound data for the property. If the given property does not exist, this API creates and initializes the property in LocalStorage using **defaultValue** and returns its one-way bound data.
-
-> **NOTE:** 
-
-> Since API version 12, LocalStorage supports
-> [Map](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-map-type),
-> [Set](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-set-type),
-> [Date](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-date-type), **null**,
-> **undefined**, and [union](../../../ui/state-management/arkts-localstorage.md#using-union-types-in-localstorage)
-> types.
+Similar to the [prop](#prop) API, establishes a one-way data binding with the property corresponding to propName in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given **propName** exists in LocalStorage, the one-way bound data of the corresponding property is returned. If the given **propName** does not exist, this API creates and initializes the property corresponding to **propName** in LocalStorage using **defaultValue** and returns its one-way bound data.
 
 **Since:** 9
 
@@ -551,6 +489,8 @@ Similar to the [prop](#prop) API, establishes a one-way data binding with the pr
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LocalStorage-setAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractProperty<S>--><!--Device-LocalStorage-setAndProp<S>(propName: string, defaultValue: S): SubscribedAbstractProperty<S>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -565,7 +505,7 @@ Similar to the [prop](#prop) API, establishes a one-way data binding with the pr
 
 | Type | Description |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | Instance of **SubscribedAbstractProperty&lt;S&gt;** and one-way bound data of the given property in LocalStorage. |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | Instance of SubscribedAbstractProperty&lt;S&gt;, which is the one-way bound data of the property corresponding to **propName** in LocalStorage. |
 
 **Examples**
 
@@ -583,20 +523,13 @@ public setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>
 
 Similar to the [ref](arkts-arkui-appstorage-c.md#ref) API, returns a reference to the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given property does not exist, this API creates and initializes the property in LocalStorage using **defaultValue** and returns its reference.
 
-This API is similar to [setAndLink](#setandlink) but does not require manually releasing the returned variable of the [AbstractProperty](arkts-arkui-abstractproperty-i.md) type.
-
-> **NOTE:** 
-
-> Since API version 12, LocalStorage supports
-> [Map](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-map-type),
-> [Set](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-set-type),
-> [Date](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-date-type), **null**,
-> **undefined**, and [union](../../../ui/state-management/arkts-localstorage.md#using-union-types-in-localstorage)
-> types.
+This API is basically the same as [setAndLink](#setandlink), except that it does not require manual release of the returned variable of the [AbstractProperty&lt;T&gt;](arkts-arkui-abstractproperty-i.md) type.
 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LocalStorage-public setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>--><!--Device-LocalStorage-public setAndRef<T>(propName: string, defaultValue: T): AbstractProperty<T>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -611,7 +544,7 @@ This API is similar to [setAndLink](#setandlink) but does not require manually r
 
 | Type | Description |
 | --- | --- |
-| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; | Instance of **AbstractProperty&lt;T&gt;**, which is a reference to the property in LocalStorage corresponding to **propName**. |
+| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; | Instance of **AbstractProperty&lt;T&gt;**, which is a reference to the property corresponding to **propName** in LocalStorage. |
 
 **Examples**
 
@@ -630,16 +563,7 @@ setOrCreate<T>(propName: string, newValue: T): boolean
 
 Sets the value of the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md) to a new value, if the property exists and the new value is different from the current value. If the new value is the same as the current value of the property, no assignment is performed, and the state variable does not instruct the UI to update the value of the property.
 
-If the property does not exist, this API creates it with the value of **newValue**. This **setOrCreate** API can create only one LocalStorage key-value pair each time. To create multiple key-value pairs, call this API multiple times.
-
-> **NOTE:** 
-
-> Since API version 12, LocalStorage supports
-> [Map](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-map-type),
-> [Set](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-set-type),
-> [Date](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-date-type), **null**,
-> **undefined**, and [union](../../../ui/state-management/arkts-localstorage.md#using-union-types-in-localstorage)
-> types.
+If **propName** does not exist, this API creates it with the value of **newValue**. This **setOrCreate** API can create only one LocalStorage key-value pair each time. To create multiple key-value pairs, call this API multiple times.
 
 **Since:** 9
 
@@ -649,6 +573,8 @@ If the property does not exist, this API creates it with the value of **newValue
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-LocalStorage-setOrCreate<T>(propName: string, newValue: T): boolean--><!--Device-LocalStorage-setOrCreate<T>(propName: string, newValue: T): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -656,13 +582,13 @@ If the property does not exist, this API creates it with the value of **newValue
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | propName | string | Yes | Property name in LocalStorage. |
-| newValue | T | Yes | Property value. Since API version 12, the value can be **null** or **undefined**. |
+| newValue | T | Yes | New value of the property corresponding to **propName**. Since API version 12, the value can be **null** or **undefined**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns **true** if the property corresponding to **propName** exists and its value is updated to the value of **newValue**,<br>or if **propName** is created with the value of **newValue**. |
+| boolean | Returns **true** if the property corresponding to **propName** exists and its value is updated to the value of **newValue**, or if **propName** is created with the value of **newValue**.<br>Before API version 12, **false** is returned when the value of **newValue** is **null** or **undefined**. |
 
 **Examples**
 
@@ -690,6 +616,8 @@ Obtains the number of properties in [LocalStorage](../../../ui/state-management/
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-LocalStorage-size(): number--><!--Device-LocalStorage-size(): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -705,3 +633,73 @@ let initialData: Record<string, number> = { 'PropA': 47 };
 let storage: LocalStorage = new LocalStorage(initialData);
 let res: number = storage.size(); // 1
 ```
+
+## GetShared
+
+```TypeScript
+static GetShared(): LocalStorage
+```
+
+Obtains the [LocalStorage](../../../ui/state-management/arkts-localstorage.md) instance shared across the current stage.
+
+**Since:** 9
+
+**Deprecated since:** 10
+
+**Substitutes:** [getShared](#getshared)
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LocalStorage-static GetShared(): LocalStorage--><!--Device-LocalStorage-static GetShared(): LocalStorage-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [LocalStorage](arkts-arkui-localstorage-c.md) | **LocalStorage** instance shared across the current stage. |
+
+**Examples**
+
+```TypeScript
+let storage: LocalStorage = LocalStorage.GetShared();
+```
+
+## getShared
+
+```TypeScript
+static getShared(): LocalStorage
+```
+
+Obtains the [LocalStorage](../../../ui/state-management/arkts-localstorage.md) instance shared across the current stage.
+
+> **NOTE:** 
+
+> Since API version 12, you can use
+> [getSharedLocalStorage](arkts-arkui-arkui-uicontext-uicontext-c.md#getsharedlocalstorage) in [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to specify the
+> **LocalStorage** instance in the UI execution context.
+
+**Since:** 10
+
+**Deprecated since:** 18
+
+**Substitutes:** [getSharedLocalStorage](arkts-arkui-arkui-uicontext-uicontext-c.md#getsharedlocalstorage)
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-LocalStorage-static getShared(): LocalStorage--><!--Device-LocalStorage-static getShared(): LocalStorage-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [LocalStorage](arkts-arkui-localstorage-c.md) | **LocalStorage** instance shared across the current stage. |

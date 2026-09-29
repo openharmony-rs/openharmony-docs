@@ -20,6 +20,8 @@ Obtains an **Authenticator** instance for user authentication.
 
 **Substitutes:** [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md)
 
+<!--Device-userAuth-function getAuthenticator(): Authenticator--><!--Device-userAuth-function getAuthenticator(): Authenticator-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **Return value:**

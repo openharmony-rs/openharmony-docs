@@ -26,6 +26,8 @@ Sets a screen watermark policy, which takes effect for all users.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function setScreenWatermarkImage(admin: Want, pixelMap: image.PixelMap): void--><!--Device-securityManager-function setScreenWatermarkImage(admin: Want, pixelMap: image.PixelMap): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

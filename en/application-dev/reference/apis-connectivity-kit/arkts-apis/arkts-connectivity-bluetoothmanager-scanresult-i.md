@@ -12,6 +12,8 @@ Describes the contents of the scan results.
 
 **Substitutes:** [ScanResult](arkts-connectivity-ble-scanresult-i.md)
 
+<!--Device-bluetoothManager-interface ScanResult--><!--Device-bluetoothManager-interface ScanResult-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ The raw data of broadcast packet
 
 **Substitutes:** [data](arkts-connectivity-ble-scanresult-i.md#data)
 
+<!--Device-ScanResult-data: ArrayBuffer--><!--Device-ScanResult-data: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## deviceId
@@ -54,6 +58,8 @@ Address of the scanned device
 
 **Substitutes:** [deviceId](arkts-connectivity-ble-scanresult-i.md#deviceid)
 
+<!--Device-ScanResult-deviceId: string--><!--Device-ScanResult-deviceId: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## rssi
@@ -71,5 +77,7 @@ RSSI of the remote device
 **Deprecated since:** 10
 
 **Substitutes:** [rssi](arkts-connectivity-ble-scanresult-i.md#rssi)
+
+<!--Device-ScanResult-rssi: number--><!--Device-ScanResult-rssi: number-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

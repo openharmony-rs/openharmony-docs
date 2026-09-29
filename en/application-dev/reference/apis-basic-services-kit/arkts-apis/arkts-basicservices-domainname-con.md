@@ -14,6 +14,8 @@ Provide the domain name for device shared Key.
 
 **Since:** 11
 
+<!--Device-domainName-const DEVICE_SHARED: string--><!--Device-domainName-const DEVICE_SHARED: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## USER_PROPERTY
@@ -29,5 +31,7 @@ Provide the domain name for user property.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-domainName-const USER_PROPERTY: string--><!--Device-domainName-const USER_PROPERTY: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core

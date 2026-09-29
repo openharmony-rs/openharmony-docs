@@ -18,6 +18,8 @@ Whether the hotspot is metered hotspot or not.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function isMeteredHotspot(): boolean--><!--Device-wifiManager-function isMeteredHotspot(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**

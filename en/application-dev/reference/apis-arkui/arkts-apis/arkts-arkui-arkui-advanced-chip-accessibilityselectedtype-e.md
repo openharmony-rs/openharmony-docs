@@ -8,11 +8,13 @@ Defines the selected state types that can be specified for **Chip**. This API is
 
 | Name| Value| Description|  
 | ---- | -- | ---- |  
-| [CLICKED](arkts-arkui-arkui-advanced-chip-accessibilityselectedtype-e.md) | 0 | Click type. The chip acts as a regular clickable component, without reporting any selected state to accessibility services. Use this type when the chip triggers an action but does not maintain a selected state.|
-| [CHECKED](arkts-arkui-arkui-advanced-chip-accessibilityselectedtype-e.md) | 1 | Checkbox type. The chip reports its selected state to accessibility services using the [accessibilityChecked](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitychecked) attribute. Use this type for multi-select scenarios, such as tag filtering and attribute selection.|
-| [SELECTED](arkts-arkui-arkui-advanced-chip-accessibilityselectedtype-e.md) | 2 | Radio type. The chip reports its selected state to accessibility services using the [accessibilitySelected](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilityselected) attribute. Use this type for single-select scenarios, such as navigation bar tabs and radio buttons.|
+| CLICKED | 0 | Click type. The chip acts as a regular clickable component, without reporting any selected state to accessibility services. Use this type when the chip triggers an action but does not maintain a selected state.|
+| CHECKED | 1 | Checkbox type. The chip reports its selected state to accessibility services using the [accessibilityChecked](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitychecked) attribute. Use this type for multi-select scenarios, such as tag filtering and attribute selection.|
+| SELECTED | 2 | Radio type. The chip reports its selected state to accessibility services using the [accessibilitySelected](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilityselected) attribute. Use this type for single-select scenarios, such as navigation bar tabs and radio buttons.|
 
 **Since:** 14
+
+<!--Device-unnamed-export declare enum AccessibilitySelectedType--><!--Device-unnamed-export declare enum AccessibilitySelectedType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,6 +32,8 @@ Click type. The chip acts as a regular clickable component, without reporting an
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-AccessibilitySelectedType-CLICKED = 0--><!--Device-AccessibilitySelectedType-CLICKED = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CHECKED
@@ -46,6 +50,8 @@ Checkbox type. The chip reports its selected state to accessibility services usi
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-AccessibilitySelectedType-CHECKED = 1--><!--Device-AccessibilitySelectedType-CHECKED = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SELECTED
@@ -61,5 +67,7 @@ Radio type. The chip reports its selected state to accessibility services using 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-AccessibilitySelectedType-SELECTED = 2--><!--Device-AccessibilitySelectedType-SELECTED = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

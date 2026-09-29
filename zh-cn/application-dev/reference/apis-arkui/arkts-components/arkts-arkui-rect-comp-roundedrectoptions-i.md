@@ -12,6 +12,8 @@ declare interface RoundedRectOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface RoundedRectOptions--><!--Device-unnamed-declare interface RoundedRectOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -37,6 +39,8 @@ height?: Length
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RoundedRectOptions-height?: Length--><!--Device-RoundedRectOptions-height?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ radiusHeight?: Length
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RoundedRectOptions-radiusHeight?: Length--><!--Device-RoundedRectOptions-radiusHeight?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## radiusWidth
@@ -90,6 +96,8 @@ radiusWidth?: Length
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RoundedRectOptions-radiusWidth?: Length--><!--Device-RoundedRectOptions-radiusWidth?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -115,5 +123,7 @@ width?: Length
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RoundedRectOptions-width?: Length--><!--Device-RoundedRectOptions-width?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

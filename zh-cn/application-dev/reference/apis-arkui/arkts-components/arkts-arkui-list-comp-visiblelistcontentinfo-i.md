@@ -8,6 +8,8 @@ declare interface VisibleListContentInfo
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface VisibleListContentInfo--><!--Device-unnamed-declare interface VisibleListContentInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
@@ -25,6 +27,8 @@ index: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-VisibleListContentInfo-index: number--><!--Device-VisibleListContentInfo-index: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ itemGroupArea?: ListItemGroupArea
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-VisibleListContentInfo-itemGroupArea?: ListItemGroupArea--><!--Device-VisibleListContentInfo-itemGroupArea?: ListItemGroupArea-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemIndexInGroup
@@ -61,5 +67,7 @@ itemIndexInGroup?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-VisibleListContentInfo-itemIndexInGroup?: number--><!--Device-VisibleListContentInfo-itemIndexInGroup?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

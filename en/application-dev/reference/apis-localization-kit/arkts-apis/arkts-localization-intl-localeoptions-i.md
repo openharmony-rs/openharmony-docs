@@ -16,6 +16,8 @@ Options for initializing the **Locale** object. Since API version 9, the **Local
 
 **Substitutes:** [Intl.LocaleOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale#options)
 
+<!--Device-intl-export interface LocaleOptions--><!--Device-intl-export interface LocaleOptions-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -46,6 +48,8 @@ Calendar parameter. The value can be:
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-LocaleOptions-calendar?: string--><!--Device-LocaleOptions-calendar?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## caseFirst
@@ -73,6 +77,8 @@ Whether case is taken into account for the locale's collation rules. The value c
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-LocaleOptions-caseFirst?: string--><!--Device-LocaleOptions-caseFirst?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -128,6 +134,8 @@ Collation rules for the locale. The value can be:
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-LocaleOptions-collation?: string--><!--Device-LocaleOptions-collation?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## hourCycle
@@ -151,6 +159,8 @@ Hour cycle. The value can be:
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-LocaleOptions-hourCycle?: string--><!--Device-LocaleOptions-hourCycle?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -176,6 +186,8 @@ Numbering system. The value can be:
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-LocaleOptions-numberingSystem?: string--><!--Device-LocaleOptions-numberingSystem?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## numeric
@@ -197,5 +209,7 @@ Whether to treat numeric characters as numbers for sorting. The value true means
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-LocaleOptions-numeric?: boolean--><!--Device-LocaleOptions-numeric?: boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n

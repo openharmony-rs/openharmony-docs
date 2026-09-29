@@ -14,6 +14,8 @@ Provides APIs for parsing, verifying, and decrypting CMS messages.
 
 **Since:** 22
 
+<!--Device-cert-interface CmsParser--><!--Device-cert-interface CmsParser-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -32,7 +34,9 @@ Decrypts the CMS message of the **ENVELOPED_DATA** content type. This API uses a
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CmsParser-decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise<Uint8Array>--><!--Device-CmsParser-decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -151,7 +155,9 @@ Obtains the certificate from CMS message of the **SIGNED_DATA** type by passing 
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CmsParser-getCerts(type: CmsCertType): Promise<Array<X509Cert>>--><!--Device-CmsParser-getCerts(type: CmsCertType): Promise<Array<X509Cert>>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -303,7 +309,9 @@ Obtains the content data from CMS message of the **SIGNED_DATA** type. This API 
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CmsParser-getContentData(): Promise<Uint8Array>--><!--Device-CmsParser-getContentData(): Promise<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -446,7 +454,9 @@ Obtains the CMS content type.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CmsParser-getContentType(): CmsContentType--><!--Device-CmsParser-getContentType(): CmsContentType-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -595,7 +605,9 @@ Set the CMS message data. This API uses a promise to return the result.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CmsParser-setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise<void>--><!--Device-CmsParser-setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -745,7 +757,9 @@ Verifies the CMS message of the **SIGNED_DATA** content type. This API uses a pr
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CmsParser-verifySignedData(config: CmsVerificationConfig): Promise<void>--><!--Device-CmsParser-verifySignedData(config: CmsVerificationConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 

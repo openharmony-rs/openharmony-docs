@@ -16,6 +16,8 @@ Obtains the maximum rotation angles relative to the reference point for the spec
 
 **Since:** 20
 
+<!--Device-mechanicManager-function getRotationLimits(mechId: int): RotationLimits--><!--Device-mechanicManager-function getRotationLimits(mechId: int): RotationLimits-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.

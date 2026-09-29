@@ -4,7 +4,7 @@
 declare type OnDidStopDraggingCallback = (willFling: boolean) => void
 ```
 
-On scroll callback using in scrollable onDidStopDragging.
+Defines the callback invoked when the scrollable component stops being dragged.
 
 **Since:** 21
 
@@ -14,10 +14,12 @@ On scroll callback using in scrollable onDidStopDragging.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 21.
 
+<!--Device-unnamed-declare type OnDidStopDraggingCallback = (willFling: boolean) => void--><!--Device-unnamed-declare type OnDidStopDraggingCallback = (willFling: boolean) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| willFling | boolean | Yes | whether start fling animation. |
+| willFling | boolean | Yes | Whether an inertial animation will follow. **true**: An inertial animation will follow. **false**: No inertial animation will follow. |

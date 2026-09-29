@@ -8,6 +8,8 @@ Provides keyframe configuration options.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface KeyframeState--><!--Device-unnamed-declare interface KeyframeState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## event
@@ -23,6 +25,8 @@ Closure function of the state at the time of the keyframe, that is, the state to
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-KeyframeState-event: () => void--><!--Device-KeyframeState-event: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Because the [springMotion](../arkts-apis/arkts-arkui-curves-springmotion-f.md), 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-KeyframeState-curve?: Curve | string | ICurve--><!--Device-KeyframeState-curve?: Curve | string | ICurve-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## duration
@@ -78,5 +84,7 @@ Value range: [0, +∞)
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-KeyframeState-duration: number--><!--Device-KeyframeState-duration: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

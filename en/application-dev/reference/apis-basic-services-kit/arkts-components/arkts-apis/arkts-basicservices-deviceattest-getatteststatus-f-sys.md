@@ -16,6 +16,8 @@ Obtains the AttestResultInfo object.
 
 **Since:** 9
 
+<!--Device-deviceAttest-function getAttestStatus(callback: AsyncCallback<AttestResultInfo>): void--><!--Device-deviceAttest-function getAttestStatus(callback: AsyncCallback<AttestResultInfo>): void-End-->
+
 **System capability:** SystemCapability.XTS.DeviceAttest
 
 **System API:** This is a system API.
@@ -71,6 +73,8 @@ function getAttestStatus(): Promise<AttestResultInfo>
 Obtains the AttestResultInfo object.
 
 **Since:** 9
+
+<!--Device-deviceAttest-function getAttestStatus(): Promise<AttestResultInfo>--><!--Device-deviceAttest-function getAttestStatus(): Promise<AttestResultInfo>-End-->
 
 **System capability:** SystemCapability.XTS.DeviceAttest
 

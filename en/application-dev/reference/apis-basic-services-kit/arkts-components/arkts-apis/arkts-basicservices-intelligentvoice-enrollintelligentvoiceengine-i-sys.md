@@ -8,6 +8,8 @@ Implements enroll intelligent voice engine. @typedef EnrollIntelligentVoiceEngin
 
 **Since:** 10
 
+<!--Device-intelligentVoice-interface EnrollIntelligentVoiceEngine--><!--Device-intelligentVoice-interface EnrollIntelligentVoiceEngine-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Commit enroll, This method uses an asynchronous callback to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-EnrollIntelligentVoiceEngine-commit(callback: AsyncCallback<void>): void--><!--Device-EnrollIntelligentVoiceEngine-commit(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -78,6 +82,8 @@ Commit enroll, This method uses a promise to return the result.
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-EnrollIntelligentVoiceEngine-commit(): Promise<void>--><!--Device-EnrollIntelligentVoiceEngine-commit(): Promise<void>-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -121,6 +127,8 @@ Enrolls for result, This method uses an asynchronous callback to return the resu
 **Since:** 23
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE and ohos.permission.MICROPHONE
+
+<!--Device-EnrollIntelligentVoiceEngine-enrollForResult(isLast: boolean, callback: AsyncCallback<EnrollCallbackInfo>): void--><!--Device-EnrollIntelligentVoiceEngine-enrollForResult(isLast: boolean, callback: AsyncCallback<EnrollCallbackInfo>): void-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -173,6 +181,8 @@ Enrolls for result, This method uses a promise to return the result.
 **Since:** 23
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE and ohos.permission.MICROPHONE
+
+<!--Device-EnrollIntelligentVoiceEngine-enrollForResult(isLast: boolean): Promise<EnrollCallbackInfo>--><!--Device-EnrollIntelligentVoiceEngine-enrollForResult(isLast: boolean): Promise<EnrollCallbackInfo>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -227,6 +237,8 @@ Evaluates for result, This method uses a promise to return the result.
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-EnrollIntelligentVoiceEngine-evaluateForResult(word: string): Promise<EvaluationResult>--><!--Device-EnrollIntelligentVoiceEngine-evaluateForResult(word: string): Promise<EvaluationResult>-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -280,6 +292,8 @@ Obtains the value of an intelligent voice parameter. This method uses an asynchr
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-EnrollIntelligentVoiceEngine-getParameter(key: string, callback: AsyncCallback<string>): void--><!--Device-EnrollIntelligentVoiceEngine-getParameter(key: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -330,6 +344,8 @@ Obtains the value of an intelligent voice parameter. This method uses a promise 
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-EnrollIntelligentVoiceEngine-getParameter(key: string): Promise<string>--><!--Device-EnrollIntelligentVoiceEngine-getParameter(key: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -383,6 +399,8 @@ Obtains the supported regions, This method uses an asynchronous callback to retu
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-EnrollIntelligentVoiceEngine-getSupportedRegions(callback: AsyncCallback<Array<string>>): void--><!--Device-EnrollIntelligentVoiceEngine-getSupportedRegions(callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -433,6 +451,8 @@ Obtains the supported regions, This method uses a promise to return the query re
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-EnrollIntelligentVoiceEngine-getSupportedRegions(): Promise<Array<string>>--><!--Device-EnrollIntelligentVoiceEngine-getSupportedRegions(): Promise<Array<string>>-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -477,6 +497,8 @@ Initials the engine, This method uses an asynchronous callback to return the res
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-EnrollIntelligentVoiceEngine-init(config: EnrollEngineConfig, callback: AsyncCallback<void>): void--><!--Device-EnrollIntelligentVoiceEngine-init(config: EnrollEngineConfig, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -532,6 +554,8 @@ Initials the engine, This method uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-EnrollIntelligentVoiceEngine-init(config: EnrollEngineConfig): Promise<void>--><!--Device-EnrollIntelligentVoiceEngine-init(config: EnrollEngineConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -589,6 +613,8 @@ Releases the engine, This method uses an asynchronous callback to return the res
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-EnrollIntelligentVoiceEngine-release(callback: AsyncCallback<void>): void--><!--Device-EnrollIntelligentVoiceEngine-release(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -636,6 +662,8 @@ Releases the engine, This method uses a promise to return the result.
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-EnrollIntelligentVoiceEngine-release(): Promise<void>--><!--Device-EnrollIntelligentVoiceEngine-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -678,6 +706,8 @@ Sets an intelligent voice parameter. This method uses an asynchronous callback t
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-EnrollIntelligentVoiceEngine-setParameter(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-EnrollIntelligentVoiceEngine-setParameter(key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -729,6 +759,8 @@ Sets an intelligent voice parameter. This method uses a promise to return the re
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-EnrollIntelligentVoiceEngine-setParameter(key: string, value: string): Promise<void>--><!--Device-EnrollIntelligentVoiceEngine-setParameter(key: string, value: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -782,6 +814,8 @@ Sets sensibility, This method uses an asynchronous callback to return the result
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-EnrollIntelligentVoiceEngine-setSensibility(sensibility: SensibilityType, callback: AsyncCallback<void>): void--><!--Device-EnrollIntelligentVoiceEngine-setSensibility(sensibility: SensibilityType, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -831,6 +865,8 @@ Sets sensibility, This method uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-EnrollIntelligentVoiceEngine-setSensibility(sensibility: SensibilityType): Promise<void>--><!--Device-EnrollIntelligentVoiceEngine-setSensibility(sensibility: SensibilityType): Promise<void>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -882,6 +918,8 @@ Sets wakeup hap information, This method uses an asynchronous callback to return
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-EnrollIntelligentVoiceEngine-setWakeupHapInfo(info: WakeupHapInfo, callback: AsyncCallback<void>): void--><!--Device-EnrollIntelligentVoiceEngine-setWakeupHapInfo(info: WakeupHapInfo, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -936,6 +974,8 @@ Sets wakeup hap information, This method uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-EnrollIntelligentVoiceEngine-setWakeupHapInfo(info: WakeupHapInfo): Promise<void>--><!--Device-EnrollIntelligentVoiceEngine-setWakeupHapInfo(info: WakeupHapInfo): Promise<void>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -992,6 +1032,8 @@ Stops the engine, This method uses an asynchronous callback to return the result
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-EnrollIntelligentVoiceEngine-stop(callback: AsyncCallback<void>): void--><!--Device-EnrollIntelligentVoiceEngine-stop(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -1038,6 +1080,8 @@ Stops the engine, This method uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-EnrollIntelligentVoiceEngine-stop(): Promise<void>--><!--Device-EnrollIntelligentVoiceEngine-stop(): Promise<void>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 

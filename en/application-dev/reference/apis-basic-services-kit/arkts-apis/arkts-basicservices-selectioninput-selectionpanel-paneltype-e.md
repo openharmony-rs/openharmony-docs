@@ -8,6 +8,8 @@ Enumerates the word selection panel types, which defines the two-level architect
 
 **Since:** 24
 
+<!--Device-unnamed-export enum PanelType--><!--Device-unnamed-export enum PanelType-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 ## MENU_PANEL
@@ -22,6 +24,8 @@ Menu panel, which serves as the level-1 panel to display the functions that the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PanelType-MENU_PANEL = 1--><!--Device-PanelType-MENU_PANEL = 1-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 ## MAIN_PANEL
@@ -35,5 +39,7 @@ Main panel, which serves as the level-2 panel and is displayed when a user taps 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PanelType-MAIN_PANEL = 2--><!--Device-PanelType-MAIN_PANEL = 2-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection

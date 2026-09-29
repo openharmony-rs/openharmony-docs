@@ -8,6 +8,8 @@ Enumerates the log modes of video files.
 
 **Since:** 22
 
+<!--Device-photoAccessHelper-export enum VideoMode--><!--Device-photoAccessHelper-export enum VideoMode-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## DEFAULT
@@ -22,6 +24,8 @@ A value of **0** indicates that the video is either not in log mode or its type 
 
 **Since:** 22
 
+<!--Device-VideoMode-DEFAULT = 0--><!--Device-VideoMode-DEFAULT = 0-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## LOG_VIDEO
@@ -33,5 +37,7 @@ LOG_VIDEO = 1
 Video file in log mode.
 
 **Since:** 22
+
+<!--Device-VideoMode-LOG_VIDEO = 1--><!--Device-VideoMode-LOG_VIDEO = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

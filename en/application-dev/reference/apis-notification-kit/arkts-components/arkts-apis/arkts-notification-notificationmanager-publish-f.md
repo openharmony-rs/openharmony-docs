@@ -18,6 +18,8 @@ After a notification is published, it will be displayed as a notification widget
 
 **Since:** 9
 
+<!--Device-notificationManager-function publish(request: NotificationRequest, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function publish(request: NotificationRequest, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:**
@@ -97,6 +99,8 @@ Publishes a notification. This API uses a promise to return the result.
 After a notification is published, it will be displayed as a notification card in the device's notification center, status bar, and other locations. If the ID and tag of the newly published notification are the same as those of an already published notification, the new notification will replace the original one, achieving a notification update effect.
 
 **Since:** 9
+
+<!--Device-notificationManager-function publish(request: NotificationRequest): Promise<void>--><!--Device-notificationManager-function publish(request: NotificationRequest): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

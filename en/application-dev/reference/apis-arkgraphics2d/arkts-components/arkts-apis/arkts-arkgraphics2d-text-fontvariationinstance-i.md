@@ -8,6 +8,8 @@ Font variable instance information, which stores preset variable font style info
 
 **Since:** 24
 
+<!--Device-text-interface FontVariationInstance--><!--Device-text-interface FontVariationInstance-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Array of font variations.
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-FontVariationInstance-coordinates: Array<FontVariation>--><!--Device-FontVariationInstance-coordinates: Array<FontVariation>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -44,7 +48,9 @@ Localized name of the font variable instance, which can be empty.
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-FontVariationInstance-localName: string--><!--Device-FontVariationInstance-localName: string-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -60,6 +66,8 @@ English name of the font variable instance.
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-FontVariationInstance-name: string--><!--Device-FontVariationInstance-name: string-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

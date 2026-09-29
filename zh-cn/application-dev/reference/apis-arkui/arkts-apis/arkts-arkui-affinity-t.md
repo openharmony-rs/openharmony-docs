@@ -12,6 +12,8 @@ declare type Affinity = import('../api/@ohos.graphics.text').default.Affinity
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type Affinity = import('../api/@ohos.graphics.text').default.Affinity--><!--Device-unnamed-declare type Affinity = import('../api/@ohos.graphics.text').default.Affinity-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** import('../api/@ohos.graphics.text').default.Affinity

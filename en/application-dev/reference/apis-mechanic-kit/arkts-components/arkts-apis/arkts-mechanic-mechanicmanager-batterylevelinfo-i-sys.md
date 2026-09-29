@@ -8,6 +8,8 @@ Definition of battery level information.
 
 **Since:** 26.2.0
 
+<!--Device-mechanicManager-export interface BatteryLevelInfo--><!--Device-mechanicManager-export interface BatteryLevelInfo-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Battery level percentage(in %). The value is an integer in the range [0, 100]. 0
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BatteryLevelInfo-batteryLevel: int--><!--Device-BatteryLevelInfo-batteryLevel: int-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ Indicates whether the device is charging. The value is true when charging and fa
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BatteryLevelInfo-isCharging: boolean--><!--Device-BatteryLevelInfo-isCharging: boolean-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ ID of the mechanical device corresponding to the battery level information.
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BatteryLevelInfo-mechId: int--><!--Device-BatteryLevelInfo-mechId: int-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 

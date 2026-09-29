@@ -16,6 +16,8 @@ function makeMirror(mainScreen:number, mirrorScreen:Array<number>, callback: Asy
 
 **起始版本：** 9
 
+<!--Device-screen-function makeMirror(mainScreen:long, mirrorScreen:Array<long>, callback: AsyncCallback<long>): void--><!--Device-screen-function makeMirror(mainScreen:long, mirrorScreen:Array<long>, callback: AsyncCallback<long>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -67,6 +69,8 @@ function makeMirror(mainScreen:number, mirrorScreen:Array<number>): Promise<numb
 将屏幕设置为镜像模式，使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-screen-function makeMirror(mainScreen:long, mirrorScreen:Array<long>): Promise<long>--><!--Device-screen-function makeMirror(mainScreen:long, mirrorScreen:Array<long>): Promise<long>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

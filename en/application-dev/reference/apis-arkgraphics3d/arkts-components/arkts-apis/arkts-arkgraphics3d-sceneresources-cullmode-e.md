@@ -10,6 +10,8 @@ Enumerates the culling modes of PBR materials. You can improve rendering perform
 
 **Since:** 20
 
+<!--Device-unnamed-export enum CullMode--><!--Device-unnamed-export enum CullMode-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## NONE
@@ -21,6 +23,8 @@ NONE = 0
 Culling is disabled.
 
 **Since:** 20
+
+<!--Device-CullMode-NONE = 0--><!--Device-CullMode-NONE = 0-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -34,6 +38,8 @@ Culls the front faces of geometric objects.
 
 **Since:** 20
 
+<!--Device-CullMode-FRONT = 1--><!--Device-CullMode-FRONT = 1-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## BACK
@@ -45,5 +51,7 @@ BACK = 2
 Culls the back faces of geometric objects.
 
 **Since:** 20
+
+<!--Device-CullMode-BACK = 2--><!--Device-CullMode-BACK = 2-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

@@ -20,6 +20,8 @@ Request enable location
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function requestEnableLocation(callback: AsyncCallback<boolean>): void--><!--Device-geolocation-function requestEnableLocation(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -58,6 +60,8 @@ Request enable location
 **Deprecated since:** 9
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-geolocation-function requestEnableLocation(): Promise<boolean>--><!--Device-geolocation-function requestEnableLocation(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

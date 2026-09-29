@@ -4,11 +4,13 @@
 declare class AppearSymbolEffect extends SymbolEffect
 ```
 
-Defines AppearSymbolEffect class, which inherits from **SymbolEffect**.
+Inherits from **SymbolEffect**.
 
 **Inheritance/Implementation:** AppearSymbolEffect extends [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md)
 
 **Since:** 12
+
+<!--Device-unnamed-declare class AppearSymbolEffect extends SymbolEffect--><!--Device-unnamed-declare class AppearSymbolEffect extends SymbolEffect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,13 +30,15 @@ A constructor used to create an **AppearSymbolEffect** instance, which comes wit
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-AppearSymbolEffect-constructor(scope?: EffectScope)--><!--Device-AppearSymbolEffect-constructor(scope?: EffectScope)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Effect scope.<br>Default value: **EffectScope.LAYER** |
+| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER |
 
 ## scope
 
@@ -42,9 +46,9 @@ A constructor used to create an **AppearSymbolEffect** instance, which comes wit
 scope?: EffectScope
 ```
 
-Effect scope.
+Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.
 
-Default value: **EffectScope.LAYER**
+Default value: EffectScope.LAYER
 
 **Type:** [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md)
 
@@ -55,5 +59,7 @@ Default value: **EffectScope.LAYER**
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-AppearSymbolEffect-scope?: EffectScope--><!--Device-AppearSymbolEffect-scope?: EffectScope-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

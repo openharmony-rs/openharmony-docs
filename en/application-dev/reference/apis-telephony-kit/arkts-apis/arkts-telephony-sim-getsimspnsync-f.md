@@ -16,6 +16,8 @@ Obtains the SPN of the SIM card in the specified slot. This API returns the resu
 
 **Since:** 10
 
+<!--Device-sim-function getSimSpnSync(slotId: int): string--><!--Device-sim-function getSimSpnSync(slotId: int): string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**

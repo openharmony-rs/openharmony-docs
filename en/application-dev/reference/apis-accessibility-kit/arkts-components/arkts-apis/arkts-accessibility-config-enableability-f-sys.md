@@ -20,6 +20,8 @@ Compared with [config.enableAbilityWithCallback](arkts-accessibility-config-enab
 
 **Required permissions:** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
+<!--Device-config-function enableAbility(name: string, capability: Array<accessibility.Capability>): Promise<void>--><!--Device-config-function enableAbility(name: string, capability: Array<accessibility.Capability>): Promise<void>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -83,6 +85,8 @@ Compared with [config.enableAbilityWithCallback](arkts-accessibility-config-enab
 **Since:** 9
 
 **Required permissions:** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+<!--Device-config-function enableAbility(    name: string,    capability: Array<accessibility.Capability>,    callback: AsyncCallback<void>  ): void--><!--Device-config-function enableAbility(    name: string,    capability: Array<accessibility.Capability>,    callback: AsyncCallback<void>  ): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

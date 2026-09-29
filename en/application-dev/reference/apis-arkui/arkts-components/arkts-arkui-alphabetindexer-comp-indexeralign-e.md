@@ -8,6 +8,8 @@ Enumerates the alignment styles of the indexer pop-up window.
 
 **Since:** 7
 
+<!--Device-unnamed-declare enum IndexerAlign--><!--Device-unnamed-declare enum IndexerAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Left
@@ -22,6 +24,8 @@ The pop-up window is displayed on the right of the indexer.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-IndexerAlign-Left--><!--Device-IndexerAlign-Left-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Right
@@ -35,6 +39,8 @@ The pop-up window is displayed on the left of the indexer.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-IndexerAlign-Right--><!--Device-IndexerAlign-Right-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +58,8 @@ The pop-up window is displayed on the right of the indexer for left-to-right scr
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-IndexerAlign-START--><!--Device-IndexerAlign-START-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## END
@@ -67,5 +75,7 @@ The pop-up window is displayed on the left of the indexer for left-to-right scri
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-IndexerAlign-END--><!--Device-IndexerAlign-END-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

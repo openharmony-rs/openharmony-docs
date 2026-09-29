@@ -10,6 +10,8 @@ Defines an exception observer that can be used as an input parameter for [errorM
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-errorManager-export type GlobalObserver = (reason: GlobalError) => void--><!--Device-errorManager-export type GlobalObserver = (reason: GlobalError) => void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

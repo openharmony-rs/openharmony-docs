@@ -10,6 +10,8 @@ Defines the AppClonePreference information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-export type AppClonePreference = _BundleInfo.AppClonePreference--><!--Device-bundleManager-export type AppClonePreference = _BundleInfo.AppClonePreference-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

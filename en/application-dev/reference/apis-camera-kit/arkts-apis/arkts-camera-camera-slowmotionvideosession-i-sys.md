@@ -10,6 +10,8 @@ SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorE
 
 **Since:** 12
 
+<!--Device-camera-interface SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect--><!--Device-camera-interface SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ isSlowMotionDetectionSupported(): boolean
 Checks whether the device supports slow-motion detection.
 
 **Since:** 12
+
+<!--Device-SlowMotionVideoSession-isSlowMotionDetectionSupported(): boolean--><!--Device-SlowMotionVideoSession-isSlowMotionDetectionSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -75,6 +79,8 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 **Since:** 12
 
+<!--Device-SlowMotionVideoSession-off(type: 'error', callback?: ErrorCallback): void--><!--Device-SlowMotionVideoSession-off(type: 'error', callback?: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -109,6 +115,8 @@ off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void
 Unsubscribes from focus state change events.
 
 **Since:** 12
+
+<!--Device-SlowMotionVideoSession-off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void--><!--Device-SlowMotionVideoSession-off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -145,6 +153,8 @@ Unsubscribes from smooth zoom state change events.
 
 **Since:** 12
 
+<!--Device-SlowMotionVideoSession-off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback<SmoothZoomInfo>): void--><!--Device-SlowMotionVideoSession-off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback<SmoothZoomInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -180,6 +190,8 @@ Unsubscribes from slow-motion status change events.
 
 **Since:** 12
 
+<!--Device-SlowMotionVideoSession-off(type: 'slowMotionStatus', callback?: AsyncCallback<SlowMotionStatus>): void--><!--Device-SlowMotionVideoSession-off(type: 'slowMotionStatus', callback?: AsyncCallback<SlowMotionStatus>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -214,6 +226,8 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to HighResolutionPhotoSession error events. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-SlowMotionVideoSession-on(type: 'error', callback: ErrorCallback): void--><!--Device-SlowMotionVideoSession-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -255,6 +269,8 @@ on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void
 Subscribes to focus state change events. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-SlowMotionVideoSession-on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void--><!--Device-SlowMotionVideoSession-on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -301,6 +317,8 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Since:** 12
 
+<!--Device-SlowMotionVideoSession-on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback<SmoothZoomInfo>): void--><!--Device-SlowMotionVideoSession-on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback<SmoothZoomInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -346,6 +364,8 @@ Subscribes to slow-motion status change events. This API uses an asynchronous ca
 
 **Since:** 12
 
+<!--Device-SlowMotionVideoSession-on(type: 'slowMotionStatus', callback: AsyncCallback<SlowMotionStatus>): void--><!--Device-SlowMotionVideoSession-on(type: 'slowMotionStatus', callback: AsyncCallback<SlowMotionStatus>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -390,6 +410,8 @@ setSlowMotionDetectionArea(area: Rect): void
 Sets an area for slow-motion detection.
 
 **Since:** 12
+
+<!--Device-SlowMotionVideoSession-setSlowMotionDetectionArea(area: Rect): void--><!--Device-SlowMotionVideoSession-setSlowMotionDetectionArea(area: Rect): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

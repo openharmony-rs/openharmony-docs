@@ -14,6 +14,8 @@ Images occupy a large amount of memory. When you finish using an Image instance,
 
 **Since:** 12
 
+<!--Device-sendableImage-interface Image extends lang.ISendable--><!--Device-sendableImage-interface Image extends lang.ISendable-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ getComponent(componentType: image.ComponentType): Promise<image.Component>
 Obtains the component buffer from the Image instance based on the color component type. This API uses a promise to return the result. The thread that runs **getComponent** is insecure.
 
 **Since:** 12
+
+<!--Device-Image-getComponent(componentType: image.ComponentType): Promise<image.Component>--><!--Device-Image-getComponent(componentType: image.ComponentType): Promise<image.Component>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -84,6 +88,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 12
 
+<!--Device-Image-release(): Promise<void>--><!--Device-Image-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -126,6 +132,8 @@ Image area to be cropped.
 
 **Since:** 12
 
+<!--Device-Image-clipRect: Region--><!--Device-Image-clipRect: Region-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## format
@@ -139,6 +147,8 @@ Image format. For details, see [OH_NativeBuffer_Format](../../../reference/apis-
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Image-readonly format: number--><!--Device-Image-readonly format: number-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -162,6 +172,8 @@ For details about the best practices of camera preview and photo capture, see [D
 
 **Since:** 12
 
+<!--Device-Image-readonly size: Size--><!--Device-Image-readonly size: Size-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## timestamp
@@ -175,5 +187,7 @@ Image timestamp. Timestamps, measured in nanoseconds, are usually monotonically 
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Image-readonly timestamp: number--><!--Device-Image-readonly timestamp: number-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

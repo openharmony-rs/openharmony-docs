@@ -8,6 +8,8 @@ declare interface StartLineInfo
 
 **起始版本：** 23
 
+<!--Device-unnamed-declare interface StartLineInfo--><!--Device-unnamed-declare interface StartLineInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -26,6 +28,8 @@ startIndex: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-StartLineInfo-startIndex: int--><!--Device-StartLineInfo-startIndex: int-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -43,6 +47,8 @@ startIndex对应GridItem在Grid布局中的起始行号。若该GridItem跨多�
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StartLineInfo-startLine: int--><!--Device-StartLineInfo-startLine: int-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +70,8 @@ startIndex对应的GridItem的顶部与Grid顶部之间的偏移量。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-StartLineInfo-startOffset: double--><!--Device-StartLineInfo-startOffset: double-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -83,6 +91,8 @@ totalOffset: number
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StartLineInfo-totalOffset: double--><!--Device-StartLineInfo-totalOffset: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

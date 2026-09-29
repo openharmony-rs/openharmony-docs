@@ -10,6 +10,8 @@ Before calling any of the following APIs, you must use [floatingBall.create()](a
 
 **Since:** 20
 
+<!--Device-floatingBall-interface FloatingBallController--><!--Device-floatingBall-interface FloatingBallController-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -27,6 +29,8 @@ getFloatingBallWindowInfo(): Promise<FloatingBallWindowInfo>
 Obtains the floating ball window information. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-FloatingBallController-getFloatingBallWindowInfo(): Promise<FloatingBallWindowInfo>--><!--Device-FloatingBallController-getFloatingBallWindowInfo(): Promise<FloatingBallWindowInfo>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -70,6 +74,8 @@ Unregisters the listener for lifecycle state changes of the floating ball.
 
 **Since:** 20
 
+<!--Device-FloatingBallController-off(type: 'stateChange', callback?: Callback<FloatingBallState>): void--><!--Device-FloatingBallController-off(type: 'stateChange', callback?: Callback<FloatingBallState>): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -111,6 +117,8 @@ off(type: 'click', callback?: Callback<void>): void
 Unregisters the listener for click events of the floating ball.
 
 **Since:** 20
+
+<!--Device-FloatingBallController-off(type: 'click', callback?: Callback<void>): void--><!--Device-FloatingBallController-off(type: 'click', callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -155,6 +163,8 @@ Unregister floating ball destroy event listener.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatingBallController-offDestroy(callback?: Callback<string>): void--><!--Device-FloatingBallController-offDestroy(callback?: Callback<string>): void-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -203,6 +213,8 @@ Registers a listener for lifecycle state changes of the floating ball. To preven
 
 **Since:** 20
 
+<!--Device-FloatingBallController-on(type: 'stateChange', callback: Callback<FloatingBallState>): void--><!--Device-FloatingBallController-on(type: 'stateChange', callback: Callback<FloatingBallState>): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -245,6 +257,8 @@ on(type: 'click', callback: Callback<void>): void
 Registers a listener for click events of the floating ball. To prevent memory leaks, remember to unregister the listener when it is no longer needed.
 
 **Since:** 20
+
+<!--Device-FloatingBallController-on(type: 'click', callback: Callback<void>): void--><!--Device-FloatingBallController-on(type: 'click', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -291,6 +305,8 @@ Register floating ball destroy event listener.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatingBallController-onDestroy(callback: Callback<string>): void--><!--Device-FloatingBallController-onDestroy(callback: Callback<string>): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -334,6 +350,8 @@ Restores the main window of the application and loads the specified page. This A
 **Since:** 20
 
 **Required permissions:** ohos.permission.USE_FLOAT_BALL
+
+<!--Device-FloatingBallController-restoreMainWindow(want: Want): Promise<void>--><!--Device-FloatingBallController-restoreMainWindow(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -404,6 +422,8 @@ is in the foreground (the [lifecycle state](../../../windowmanager/window-lifecy
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatingBallController-setFloatingBallVisibilityInApp(isVisible: boolean): Promise<void>--><!--Device-FloatingBallController-setFloatingBallVisibilityInApp(isVisible: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -450,6 +470,8 @@ Starts the floating ball. This API uses a promise to return the result.
 **Since:** 20
 
 **Required permissions:** ohos.permission.USE_FLOAT_BALL
+
+<!--Device-FloatingBallController-startFloatingBall(params: FloatingBallParams): Promise<void>--><!--Device-FloatingBallController-startFloatingBall(params: FloatingBallParams): Promise<void>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -512,6 +534,8 @@ Stops the floating ball. This API uses a promise to return the result.
 
 **Since:** 20
 
+<!--Device-FloatingBallController-stopFloatingBall(): Promise<void>--><!--Device-FloatingBallController-stopFloatingBall(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Return value:**
@@ -550,6 +574,8 @@ updateFloatingBall(params: FloatingBallParams): Promise<void>
 Updates the floating ball. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-FloatingBallController-updateFloatingBall(params: FloatingBallParams): Promise<void>--><!--Device-FloatingBallController-updateFloatingBall(params: FloatingBallParams): Promise<void>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

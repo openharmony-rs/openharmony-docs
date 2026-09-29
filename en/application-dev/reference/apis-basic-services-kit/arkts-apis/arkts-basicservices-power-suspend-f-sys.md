@@ -20,6 +20,8 @@ Enables a device to enter the sleep state.
 - API version 19 and later: ohos.permission.POWER_MANAGER
 - API versions 9 to 18: N/A
 
+<!--Device-power-function suspend(isImmediate?: boolean): void--><!--Device-power-function suspend(isImmediate?: boolean): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **System API:** This is a system API.

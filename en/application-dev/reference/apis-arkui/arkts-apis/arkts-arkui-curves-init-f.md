@@ -20,6 +20,8 @@ Implements initialization for the interpolation curve, which is used to create a
 
 **Substitutes:** [initCurve](arkts-arkui-curves-initcurve-f.md)
 
+<!--Device-curves-function init(curve?: Curve): string--><!--Device-curves-function init(curve?: Curve): string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

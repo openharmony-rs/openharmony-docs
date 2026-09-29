@@ -16,7 +16,9 @@ Checks whether the system supports the specified font file. You can use this API
 
 **Since:** 23
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-text-function isFontSupported(fontURL: string | Resource): boolean--><!--Device-text-function isFontSupported(fontURL: string | Resource): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

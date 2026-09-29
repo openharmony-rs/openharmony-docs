@@ -14,6 +14,8 @@ When used as a parameter of JSON.stringify, the function is used to transfer and
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-json-type Transformer = (this: Object, key: string, value: Object) => Object | undefined | null--><!--Device-json-type Transformer = (this: Object, key: string, value: Object) => Object | undefined | null-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

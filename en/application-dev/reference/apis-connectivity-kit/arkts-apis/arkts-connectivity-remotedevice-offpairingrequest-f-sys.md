@@ -18,6 +18,8 @@ Unsubscribes from pairing request events from remote NearLink devices.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-remoteDevice-function offPairingRequest(callback?: Callback<PairingRequestParam>): void--><!--Device-remoteDevice-function offPairingRequest(callback?: Callback<PairingRequestParam>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.

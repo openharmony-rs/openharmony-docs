@@ -10,6 +10,8 @@ When parseReturnType is MAP, the parsed result is a Sendable Map (JSSharedMap) i
 
 **Since:** 26.0.1
 
+<!--Device-json-const enum ParseReturnType--><!--Device-json-const enum ParseReturnType-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## OBJECT
@@ -26,6 +28,8 @@ The parsing result is a non-extensible Sendable object, whose existing propertie
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-ParseReturnType-OBJECT = 0--><!--Device-ParseReturnType-OBJECT = 0-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## MAP
@@ -41,5 +45,7 @@ The parsing result is a sendable Map, which supports adding and deleting entries
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-ParseReturnType-MAP = 1--><!--Device-ParseReturnType-MAP = 1-End-->
 
 **System capability:** SystemCapability.Utils.Lang

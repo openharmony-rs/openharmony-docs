@@ -27,6 +27,8 @@ If no flags are set, the value is the empty string.
 
 **Type:** string
 
+<!--Device-RegExp-readonly flags: string--><!--Device-RegExp-readonly flags: string-End-->
+
 ## sticky
 
 ```TypeScript
@@ -37,6 +39,8 @@ Returns a Boolean value indicating the state of the sticky flag (y) used with a 
 
 **Type:** boolean
 
+<!--Device-RegExp-readonly sticky: boolean--><!--Device-RegExp-readonly sticky: boolean-End-->
+
 ## unicode
 
 ```TypeScript
@@ -46,3 +50,5 @@ readonly unicode: boolean
 Returns a Boolean value indicating the state of the Unicode flag (u) used with a regular expression. Default is false. Read-only.
 
 **Type:** boolean
+
+<!--Device-RegExp-readonly unicode: boolean--><!--Device-RegExp-readonly unicode: boolean-End-->

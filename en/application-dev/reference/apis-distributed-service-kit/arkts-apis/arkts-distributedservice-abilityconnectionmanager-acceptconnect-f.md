@@ -18,6 +18,8 @@ Accepts the UIAbility connection after a collaboration session is set up and the
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-abilityConnectionManager-function acceptConnect(sessionId: int, token: string): Promise<void>--><!--Device-abilityConnectionManager-function acceptConnect(sessionId: int, token: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**

@@ -10,6 +10,8 @@ WorkSchedulerExtensionContext represents the context of WorkSchedulerExtensionAb
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext--><!--Device-unnamed-export type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **Type:** _WorkSchedulerExtensionContext

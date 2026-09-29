@@ -8,6 +8,8 @@ Defines a vector that contains the x and y coordinate values.
 
 **Since:** 11
 
+<!--Device-unnamed-interface Vector2--><!--Device-unnamed-interface Vector2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -16,7 +18,7 @@ Defines a vector that contains the x and y coordinate values.
 x: number
 ```
 
-X coordinate value of the vector.
+Value of the vector along the x-axis.
 
 Value range: (-∞, +∞).
 
@@ -27,6 +29,8 @@ Value range: (-∞, +∞).
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Vector2-x: number--><!--Device-Vector2-x: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +40,7 @@ Value range: (-∞, +∞).
 y: number
 ```
 
-Y coordinate value of the vector.
+Value of the vector along the y-axis.
 
 Value range: (-∞, +∞).
 
@@ -47,5 +51,7 @@ Value range: (-∞, +∞).
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Vector2-y: number--><!--Device-Vector2-y: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

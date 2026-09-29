@@ -8,6 +8,8 @@ Enum for provides MSTensor data type
 
 **Since:** 10
 
+<!--Device-mindSporeLite-export enum DataType--><!--Device-mindSporeLite-export enum DataType-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## TYPE_UNKNOWN
@@ -21,6 +23,8 @@ data type is unknown
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataType-TYPE_UNKNOWN = 0--><!--Device-DataType-TYPE_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -36,6 +40,8 @@ data type is int8
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataType-NUMBER_TYPE_INT8 = 32--><!--Device-DataType-NUMBER_TYPE_INT8 = 32-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## NUMBER_TYPE_INT16
@@ -49,6 +55,8 @@ data type is int16
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataType-NUMBER_TYPE_INT16 = 33--><!--Device-DataType-NUMBER_TYPE_INT16 = 33-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -64,6 +72,8 @@ data type is int32
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataType-NUMBER_TYPE_INT32 = 34--><!--Device-DataType-NUMBER_TYPE_INT32 = 34-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## NUMBER_TYPE_INT64
@@ -77,6 +87,8 @@ data type is int64
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataType-NUMBER_TYPE_INT64 = 35--><!--Device-DataType-NUMBER_TYPE_INT64 = 35-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -92,6 +104,8 @@ data type is uint8
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataType-NUMBER_TYPE_UINT8 = 37--><!--Device-DataType-NUMBER_TYPE_UINT8 = 37-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## NUMBER_TYPE_UINT16
@@ -105,6 +119,8 @@ data type is uint16
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataType-NUMBER_TYPE_UINT16 = 38--><!--Device-DataType-NUMBER_TYPE_UINT16 = 38-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -120,6 +136,8 @@ data type is uint32
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataType-NUMBER_TYPE_UINT32 = 39--><!--Device-DataType-NUMBER_TYPE_UINT32 = 39-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## NUMBER_TYPE_UINT64
@@ -133,6 +151,8 @@ data type is uint64
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataType-NUMBER_TYPE_UINT64 = 40--><!--Device-DataType-NUMBER_TYPE_UINT64 = 40-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -148,6 +168,8 @@ data type is float16
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataType-NUMBER_TYPE_FLOAT16 = 42--><!--Device-DataType-NUMBER_TYPE_FLOAT16 = 42-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## NUMBER_TYPE_FLOAT32
@@ -162,6 +184,8 @@ data type is float32
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataType-NUMBER_TYPE_FLOAT32 = 43--><!--Device-DataType-NUMBER_TYPE_FLOAT32 = 43-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## NUMBER_TYPE_FLOAT64
@@ -175,5 +199,7 @@ data type is float64
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataType-NUMBER_TYPE_FLOAT64 = 44--><!--Device-DataType-NUMBER_TYPE_FLOAT64 = 44-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite

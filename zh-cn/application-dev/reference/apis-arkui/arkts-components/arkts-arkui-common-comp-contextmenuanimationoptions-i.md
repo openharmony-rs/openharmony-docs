@@ -8,6 +8,8 @@ interface ContextMenuAnimationOptions
 
 **起始版本：** 11
 
+<!--Device-unnamed-interface ContextMenuAnimationOptions--><!--Device-unnamed-interface ContextMenuAnimationOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## hoverScale
@@ -38,6 +40,8 @@ hoverScale?: AnimationRange<number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuAnimationOptions-hoverScale?: AnimationRange<number>--><!--Device-ContextMenuAnimationOptions-hoverScale?: AnimationRange<number>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## hoverScaleInterruption
@@ -63,6 +67,8 @@ hoverScaleInterruption?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuAnimationOptions-hoverScaleInterruption?: boolean--><!--Device-ContextMenuAnimationOptions-hoverScaleInterruption?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,6 +97,8 @@ scale?: AnimationRange<number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuAnimationOptions-scale?: AnimationRange<number>--><!--Device-ContextMenuAnimationOptions-scale?: AnimationRange<number>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## transition
@@ -114,5 +122,7 @@ transition?: TransitionEffect
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuAnimationOptions-transition?: TransitionEffect--><!--Device-ContextMenuAnimationOptions-transition?: TransitionEffect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Provides the policy configuration options for blank screen detection, including 
 
 **Since:** 22
 
+<!--Device-unnamed-declare interface BlankScreenDetectionConfig--><!--Device-unnamed-declare interface BlankScreenDetectionConfig-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## contentfulNodesCountThreshold
@@ -28,6 +30,8 @@ Note: The maximum nodes of the detection strategy depend on the selected detecti
 
 **Since:** 22
 
+<!--Device-BlankScreenDetectionConfig-contentfulNodesCountThreshold?: number--><!--Device-BlankScreenDetectionConfig-contentfulNodesCountThreshold?: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## detectionMethods
@@ -47,6 +51,8 @@ Default value: **[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEE
 **Type:** [BlankScreenDetectionMethod](arkts-arkweb-web-comp-blankscreendetectionmethod-e.md)[]
 
 **Since:** 22
+
+<!--Device-BlankScreenDetectionConfig-detectionMethods?: BlankScreenDetectionMethod[]--><!--Device-BlankScreenDetectionConfig-detectionMethods?: BlankScreenDetectionMethod[]-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -71,6 +77,8 @@ Default value: [1.0, 3.0, 5.0].
 
 **Since:** 22
 
+<!--Device-BlankScreenDetectionConfig-detectionTiming?: number[]--><!--Device-BlankScreenDetectionConfig-detectionTiming?: number[]-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## enable
@@ -84,5 +92,7 @@ Whether to enable the white screen policy feature. The value **true** indicates 
 **Type:** boolean
 
 **Since:** 22
+
+<!--Device-BlankScreenDetectionConfig-enable: boolean--><!--Device-BlankScreenDetectionConfig-enable: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

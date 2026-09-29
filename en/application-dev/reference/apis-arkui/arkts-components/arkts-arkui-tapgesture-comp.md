@@ -16,6 +16,8 @@ When triggered by keyboard or gamepad input, the gesture event's [SourceTool](ar
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TapGestureInterface-(value?: TapGestureParameters): TapGestureInterface--><!--Device-TapGestureInterface-(value?: TapGestureParameters): TapGestureInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -35,6 +37,8 @@ Triggered when the tap gesture is recognized.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TapGestureInterface-onAction(event: (event: GestureEvent) => void): TapGestureInterface--><!--Device-TapGestureInterface-onAction(event: (event: GestureEvent) => void): TapGestureInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

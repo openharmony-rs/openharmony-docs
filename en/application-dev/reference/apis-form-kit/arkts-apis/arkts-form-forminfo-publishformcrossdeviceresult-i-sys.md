@@ -8,6 +8,8 @@ PublishFormCrossDeviceResult
 
 **Since:** 26.0.1
 
+<!--Device-formInfo-interface PublishFormCrossDeviceResult--><!--Device-formInfo-interface PublishFormCrossDeviceResult-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ The form Id of the form added to the peer form host service.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PublishFormCrossDeviceResult-formId: string--><!--Device-PublishFormCrossDeviceResult-formId: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

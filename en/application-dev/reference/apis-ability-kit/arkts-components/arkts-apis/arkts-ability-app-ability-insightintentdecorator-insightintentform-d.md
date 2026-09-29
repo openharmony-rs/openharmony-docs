@@ -15,4 +15,6 @@ Decorates a [FormExtensionAbility](../../apis-form-kit/arkts-apis/arkts-form-app
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-unnamed-export declare const InsightIntentForm: ((intentInfo: FormIntentDecoratorInfo) => ClassDecorator)--><!--Device-unnamed-export declare const InsightIntentForm: ((intentInfo: FormIntentDecoratorInfo) => ClassDecorator)-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

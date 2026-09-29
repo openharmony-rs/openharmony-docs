@@ -22,6 +22,8 @@ Before you do this, call [usb.getDevices](arkts-basicservices-usb-getdevices-f.m
 
 **Substitutes:** [getRawDescriptor](arkts-basicservices-usbmanager-getrawdescriptor-f.md)
 
+<!--Device-usb-function getRawDescriptor(pipe: USBDevicePipe): Uint8Array--><!--Device-usb-function getRawDescriptor(pipe: USBDevicePipe): Uint8Array-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

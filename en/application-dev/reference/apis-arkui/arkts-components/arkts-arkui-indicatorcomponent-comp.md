@@ -18,6 +18,8 @@ Called when a indicator is set.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
 
+<!--Device-IndicatorComponentInterface-(controller?: IndicatorComponentController): IndicatorComponentAttribute--><!--Device-IndicatorComponentInterface-(controller?: IndicatorComponentController): IndicatorComponentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

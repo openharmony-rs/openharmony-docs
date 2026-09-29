@@ -8,6 +8,8 @@ Configures the web layout mode, which controls the page layout of web content an
 
 **Since:** 11
 
+<!--Device-unnamed-declare enum WebLayoutMode--><!--Device-unnamed-declare enum WebLayoutMode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## NONE
@@ -22,6 +24,8 @@ Web layout follows the system. This is suitable for traditional web page layout 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebLayoutMode-NONE = 0--><!--Device-WebLayoutMode-NONE = 0-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## FIT_CONTENT
@@ -35,5 +39,7 @@ Web adaptive layout based on page size. This is suitable for scenarios where the
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebLayoutMode-FIT_CONTENT = 1--><!--Device-WebLayoutMode-FIT_CONTENT = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

@@ -18,6 +18,8 @@ Sets the local preview window. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function setPreviewSurface(callId: int, surfaceId: string): Promise<void>--><!--Device-call-function setPreviewSurface(callId: int, surfaceId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.

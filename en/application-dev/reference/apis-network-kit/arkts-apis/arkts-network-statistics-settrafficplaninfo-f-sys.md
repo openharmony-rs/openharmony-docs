@@ -20,6 +20,8 @@ Set traffic plan info.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-statistics-function setTrafficPlanInfo(simId: int, planParam: TrafficPlanParam, value: long): Promise<void>--><!--Device-statistics-function setTrafficPlanInfo(simId: int, planParam: TrafficPlanParam, value: long): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.

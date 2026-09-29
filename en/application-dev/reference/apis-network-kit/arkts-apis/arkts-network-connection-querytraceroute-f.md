@@ -16,7 +16,7 @@ Queries the network route tracing information. This API uses a promise to return
 
 > **NOTE:** 
 > 
-> To call this API, the application needs to apply for the precise location permission. &lt;!--RP1--&gt;According to
+> To call this API, the application needs to apply for the precise location permission. <!--RP1-->According to
 > [Applying for Location Permissions (ArkTS)](../../../device/location/location-permission-guidelines.md)<!--RP1 > End-->, the caller needs to apply for both **ohos.permission.APPROXIMATELY_LOCATION** and
 > **ohos.permission.LOCATION**.
 
@@ -25,6 +25,8 @@ Queries the network route tracing information. This API uses a promise to return
 **Required permissions:** ohos.permission.INTERNET and ohos.permission.ACCESS_NET_TRACE_INFO and ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-connection-function queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise<TraceRouteInfo[]>--><!--Device-connection-function queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise<TraceRouteInfo[]>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

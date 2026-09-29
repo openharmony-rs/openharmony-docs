@@ -18,6 +18,8 @@ Formats a string by replacing the placeholders in it.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-util-function format(format: string, ...args: Object[]): string--><!--Device-util-function format(format: string, ...args: Object[]): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

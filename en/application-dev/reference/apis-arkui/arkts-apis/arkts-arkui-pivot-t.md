@@ -12,6 +12,8 @@ Sets the pivot of the component. As the rotation or scaling center of the compon
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export type Pivot = Vector2--><!--Device-unnamed-export type Pivot = Vector2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [Vector2](arkts-arkui-graphics-vector2-i.md)

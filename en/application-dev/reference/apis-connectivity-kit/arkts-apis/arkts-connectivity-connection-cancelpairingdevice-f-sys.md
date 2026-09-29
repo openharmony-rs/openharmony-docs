@@ -20,6 +20,8 @@ Remove a pairing remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function cancelPairingDevice(deviceId: string, callback: AsyncCallback<void>): void--><!--Device-connection-function cancelPairingDevice(deviceId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Remove a pairing remote device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-connection-function cancelPairingDevice(deviceId: string): Promise<void>--><!--Device-connection-function cancelPairingDevice(deviceId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

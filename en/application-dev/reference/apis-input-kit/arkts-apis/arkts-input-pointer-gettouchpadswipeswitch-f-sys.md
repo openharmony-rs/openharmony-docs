@@ -16,6 +16,8 @@ Obtains the touchpad multi-finger swipe switch state. This API uses an asynchron
 
 **Since:** 10
 
+<!--Device-pointer-function getTouchpadSwipeSwitch(callback: AsyncCallback<boolean>): void--><!--Device-pointer-function getTouchpadSwipeSwitch(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getTouchpadSwipeSwitch(): Promise<boolean>
 Obtains the touchpad multi-finger swipe switch state. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function getTouchpadSwipeSwitch(): Promise<boolean>--><!--Device-pointer-function getTouchpadSwipeSwitch(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

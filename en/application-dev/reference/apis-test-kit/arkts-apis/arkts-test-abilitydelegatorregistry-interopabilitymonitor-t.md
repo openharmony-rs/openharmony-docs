@@ -10,7 +10,9 @@ Provide methods for matching monitored Ability objects that meet specified condi
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-abilityDelegatorRegistry-export type InteropAbilityMonitor = _InteropAbilityMonitor--><!--Device-abilityDelegatorRegistry-export type InteropAbilityMonitor = _InteropAbilityMonitor-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

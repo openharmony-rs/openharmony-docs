@@ -8,6 +8,8 @@ enum FloatingBallState
 
 **起始版本：** 20
 
+<!--Device-floatingBall-enum FloatingBallState--><!--Device-floatingBall-enum FloatingBallState-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## STARTED
@@ -20,6 +22,8 @@ STARTED = 1
 
 **起始版本：** 20
 
+<!--Device-FloatingBallState-STARTED = 1--><!--Device-FloatingBallState-STARTED = 1-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## STOPPED
@@ -31,5 +35,7 @@ STOPPED = 2
 表示闪控球停止。
 
 **起始版本：** 20
+
+<!--Device-FloatingBallState-STOPPED = 2--><!--Device-FloatingBallState-STOPPED = 2-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

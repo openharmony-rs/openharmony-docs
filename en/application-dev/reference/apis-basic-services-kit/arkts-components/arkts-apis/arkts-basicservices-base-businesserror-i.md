@@ -12,6 +12,8 @@ Defines an error parameter. This API inherits from the **Error** class and is us
 
 **Since:** 6
 
+<!--Device-unnamed-export interface BusinessError<T = void> extends Error--><!--Device-unnamed-export interface BusinessError<T = void> extends Error-End-->
+
 **System capability:** SystemCapability.Base
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Error code returned when the API call fails. The specific error code is defined 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-BusinessError-code: number--><!--Device-BusinessError-code: number-End-->
+
 **System capability:** SystemCapability.Base
 
 ## data
@@ -53,5 +57,7 @@ Additional error information returned when the API call fails. If this parameter
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-BusinessError-data?: T--><!--Device-BusinessError-data?: T-End-->
 
 **System capability:** SystemCapability.Base

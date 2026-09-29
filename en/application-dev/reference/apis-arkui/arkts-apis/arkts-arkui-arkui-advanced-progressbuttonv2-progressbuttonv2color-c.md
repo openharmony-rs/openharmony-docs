@@ -10,6 +10,8 @@ Declare ProgressButtonV2 Color.
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export declare class ProgressButtonV2Color--><!--Device-unnamed-export declare class ProgressButtonV2Color-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -31,6 +33,8 @@ The constructor of ProgressButtonV2
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ProgressButtonV2Color-constructor(options: ProgressButtonV2ColorOptions)--><!--Device-ProgressButtonV2Color-constructor(options: ProgressButtonV2ColorOptions)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Set background color of the ProgressButtonV2.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ProgressButtonV2Color-backgroundColor?: ColorMetrics--><!--Device-ProgressButtonV2Color-backgroundColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderColor
@@ -73,6 +79,8 @@ Set border color of the ProgressButtonV2.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ProgressButtonV2Color-borderColor?: ColorMetrics--><!--Device-ProgressButtonV2Color-borderColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +100,8 @@ Set progress color of the ProgressButtonV2.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ProgressButtonV2Color-progressColor?: ColorMetrics--><!--Device-ProgressButtonV2Color-progressColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textColor
@@ -109,5 +119,7 @@ Set text color of the ProgressButtonV2.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ProgressButtonV2Color-textColor?: ColorMetrics--><!--Device-ProgressButtonV2Color-textColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

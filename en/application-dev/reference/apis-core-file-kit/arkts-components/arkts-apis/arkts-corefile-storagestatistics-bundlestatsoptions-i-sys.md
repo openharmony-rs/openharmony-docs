@@ -8,6 +8,8 @@ Options for obtaining the bundle statistics.
 
 **Since:** 26.0.1
 
+<!--Device-storageStatistics-export interface BundleStatsOptions--><!--Device-storageStatistics-export interface BundleStatsOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Index of an application clone. The default value is **0**, which indicates the a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BundleStatsOptions-index?: int--><!--Device-BundleStatsOptions-index?: int-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Flag for obtaining the bundle statistics.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleStatsOptions-statFlag?: GetBundleStatsFlag--><!--Device-BundleStatsOptions-statFlag?: GetBundleStatsFlag-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 

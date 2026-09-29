@@ -8,6 +8,8 @@ Enumerates the Phase 2 authentication methods.
 
 **Since:** 20
 
+<!--Device-eap-enum Phase2Method--><!--Device-eap-enum Phase2Method-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
 ## PHASE2_NONE
@@ -19,6 +21,8 @@ PHASE2_NONE = 0
 Not specified.
 
 **Since:** 20
+
+<!--Device-Phase2Method-PHASE2_NONE = 0--><!--Device-Phase2Method-PHASE2_NONE = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
@@ -32,6 +36,8 @@ PAP.
 
 **Since:** 20
 
+<!--Device-Phase2Method-PHASE2_PAP = 1--><!--Device-Phase2Method-PHASE2_PAP = 1-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
 ## PHASE2_MSCHAP
@@ -43,6 +49,8 @@ PHASE2_MSCHAP = 2
 MS-CHAP.
 
 **Since:** 20
+
+<!--Device-Phase2Method-PHASE2_MSCHAP = 2--><!--Device-Phase2Method-PHASE2_MSCHAP = 2-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
@@ -56,6 +64,8 @@ MS-CHAPv2.
 
 **Since:** 20
 
+<!--Device-Phase2Method-PHASE2_MSCHAPV2 = 3--><!--Device-Phase2Method-PHASE2_MSCHAPV2 = 3-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
 ## PHASE2_GTC
@@ -67,6 +77,8 @@ PHASE2_GTC = 4
 GTC.
 
 **Since:** 20
+
+<!--Device-Phase2Method-PHASE2_GTC = 4--><!--Device-Phase2Method-PHASE2_GTC = 4-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
@@ -80,6 +92,8 @@ SIM.
 
 **Since:** 20
 
+<!--Device-Phase2Method-PHASE2_SIM = 5--><!--Device-Phase2Method-PHASE2_SIM = 5-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
 ## PHASE2_AKA
@@ -92,6 +106,8 @@ AKA.
 
 **Since:** 20
 
+<!--Device-Phase2Method-PHASE2_AKA = 6--><!--Device-Phase2Method-PHASE2_AKA = 6-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
 ## PHASE2_AKA_PRIME
@@ -103,5 +119,7 @@ PHASE2_AKA_PRIME = 7
 AKA Prime.
 
 **Since:** 20
+
+<!--Device-Phase2Method-PHASE2_AKA_PRIME = 7--><!--Device-Phase2Method-PHASE2_AKA_PRIME = 7-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap

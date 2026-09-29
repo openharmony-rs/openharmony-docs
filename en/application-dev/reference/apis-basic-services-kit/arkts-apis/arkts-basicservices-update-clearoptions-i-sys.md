@@ -8,6 +8,8 @@ Defines the clearing options, which specify the errors to be cleared.
 
 **Since:** 9
 
+<!--Device-update-export interface ClearOptions--><!--Device-update-export interface ClearOptions-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -33,6 +35,8 @@ A common value is **UPGRADE_FAIL**, including upgrade failure. Note: Only the **
 **Type:** [UpgradeStatus](arkts-basicservices-update-upgradestatus-e-sys.md)
 
 **Since:** 9
+
+<!--Device-ClearOptions-status: UpgradeStatus--><!--Device-ClearOptions-status: UpgradeStatus-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

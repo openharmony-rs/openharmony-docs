@@ -14,6 +14,8 @@ Enum for location priority
 
 **Required permissions:** ohos.permission.LOCATION @enum { number }
 
+<!--Device-geolocation-export enum LocationRequestPriority--><!--Device-geolocation-export enum LocationRequestPriority-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## UNSET
@@ -27,6 +29,8 @@ UNSET = 0x200
 **Deprecated since:** 9
 
 **Substitutes:** [UNSET](arkts-location-geolocationmanager-locationrequestpriority-e.md#unset)
+
+<!--Device-LocationRequestPriority-UNSET = 0x200--><!--Device-LocationRequestPriority-UNSET = 0x200-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -42,6 +46,8 @@ ACCURACY
 
 **Substitutes:** [ACCURACY](arkts-location-geolocationmanager-locationrequestpriority-e.md#accuracy)
 
+<!--Device-LocationRequestPriority-ACCURACY--><!--Device-LocationRequestPriority-ACCURACY-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## LOW_POWER
@@ -56,6 +62,8 @@ LOW_POWER
 
 **Substitutes:** [LOW_POWER](arkts-location-geolocationmanager-locationrequestpriority-e.md#low_power)
 
+<!--Device-LocationRequestPriority-LOW_POWER--><!--Device-LocationRequestPriority-LOW_POWER-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## FIRST_FIX
@@ -69,5 +77,7 @@ FIRST_FIX
 **Deprecated since:** 9
 
 **Substitutes:** [FIRST_FIX](arkts-location-geolocationmanager-locationrequestpriority-e.md#first_fix)
+
+<!--Device-LocationRequestPriority-FIRST_FIX--><!--Device-LocationRequestPriority-FIRST_FIX-End-->
 
 **System capability:** SystemCapability.Location.Location.Core

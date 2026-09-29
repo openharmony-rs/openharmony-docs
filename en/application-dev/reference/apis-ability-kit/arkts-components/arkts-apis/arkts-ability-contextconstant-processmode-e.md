@@ -8,6 +8,8 @@ Enumerates the process modes of the UIAbility after it is started. As a property
 
 **Since:** 12
 
+<!--Device-contextConstant-export enum ProcessMode--><!--Device-contextConstant-export enum ProcessMode-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## NEW_PROCESS_ATTACH_TO_PARENT
@@ -25,6 +27,8 @@ In this mode, the target UIAbility and caller must be in the same application.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ProcessMode-NEW_PROCESS_ATTACH_TO_PARENT = 1--><!--Device-ProcessMode-NEW_PROCESS_ATTACH_TO_PARENT = 1-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,6 +48,8 @@ In this mode, the target UIAbility and caller must be in the same application, a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ProcessMode-NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM = 2--><!--Device-ProcessMode-NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM = 2-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## ATTACH_TO_STATUS_BAR_ITEM
@@ -61,5 +67,7 @@ In this mode, the target UIAbility and caller must be in the same application, a
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ProcessMode-ATTACH_TO_STATUS_BAR_ITEM = 3--><!--Device-ProcessMode-ATTACH_TO_STATUS_BAR_ITEM = 3-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

@@ -16,6 +16,8 @@ Obtains the SIM card label based on the specified SIM card slot ID.
 
 **Since:** 20
 
+<!--Device-sim-function getSimLabelSync(slotId: int): SimLabel--><!--Device-sim-function getSimLabelSync(slotId: int): SimLabel-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**

@@ -8,6 +8,8 @@ Describes the badge configuration.
 
 **Since:** 21
 
+<!--Device-unnamed-export declare class BadgeConfig--><!--Device-unnamed-export declare class BadgeConfig-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Badge type.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-BadgeConfig-badgeType?: BadgeType--><!--Device-BadgeConfig-badgeType?: BadgeType-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## uris
@@ -45,5 +49,7 @@ URIs of the assets for the badge.
 **Since:** 21
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-BadgeConfig-uris?: Array<string>--><!--Device-BadgeConfig-uris?: Array<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

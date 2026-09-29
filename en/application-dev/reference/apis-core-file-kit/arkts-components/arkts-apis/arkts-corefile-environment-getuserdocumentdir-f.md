@@ -20,6 +20,8 @@ Obtains the sandbox path of the pre-authorized **Document** directory.
 - API version 12 and later: N/A
 - API version 11: ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY
 
+<!--Device-Environment-function getUserDocumentDir(): string--><!--Device-Environment-function getUserDocumentDir(): string-End-->
+
 **System capability:** SystemCapability.FileManagement.File.Environment.FolderObtain
 
 **Return value:**

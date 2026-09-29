@@ -12,6 +12,8 @@ Define the alarm tone category.
 
 **Since:** 12
 
+<!--Device-systemSoundManager-const TONE_CATEGORY_ALARM: int--><!--Device-systemSoundManager-const TONE_CATEGORY_ALARM: int-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ Define the contact tone category.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-systemSoundManager-const TONE_CATEGORY_CONTACTS: 16--><!--Device-systemSoundManager-const TONE_CATEGORY_CONTACTS: 16-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -44,6 +48,8 @@ Define the notification tone category.
 
 **Since:** 12
 
+<!--Device-systemSoundManager-const TONE_CATEGORY_NOTIFICATION: int--><!--Device-systemSoundManager-const TONE_CATEGORY_NOTIFICATION: int-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -59,6 +65,8 @@ Define the app notification tone category.
 **Type:** number
 
 **Since:** 22
+
+<!--Device-systemSoundManager-const TONE_CATEGORY_NOTIFICATION_APP: int--><!--Device-systemSoundManager-const TONE_CATEGORY_NOTIFICATION_APP: int-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -76,6 +84,8 @@ Define the ringtone category.
 
 **Since:** 12
 
+<!--Device-systemSoundManager-const TONE_CATEGORY_RINGTONE: int--><!--Device-systemSoundManager-const TONE_CATEGORY_RINGTONE: int-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -91,6 +101,8 @@ Define the text message tone category.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-systemSoundManager-const TONE_CATEGORY_TEXT_MESSAGE: int--><!--Device-systemSoundManager-const TONE_CATEGORY_TEXT_MESSAGE: int-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 

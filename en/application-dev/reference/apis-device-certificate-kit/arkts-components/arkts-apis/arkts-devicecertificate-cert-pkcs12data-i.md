@@ -8,6 +8,8 @@ P12(PKCS #12) data, which includes private key, certificate, and other certifica
 
 **Since:** 18
 
+<!--Device-cert-interface Pkcs12Data--><!--Device-cert-interface Pkcs12Data-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -28,7 +30,9 @@ The certificate that matches the private key.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-Pkcs12Data-cert?: X509Cert--><!--Device-Pkcs12Data-cert?: X509Cert-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -44,7 +48,9 @@ Other certificates.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-Pkcs12Data-otherCerts?: Array<X509Cert>--><!--Device-Pkcs12Data-otherCerts?: Array<X509Cert>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -60,6 +66,8 @@ Private key. **string** corresponds to PEM format, and **Uint8Array** correspond
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-Pkcs12Data-privateKey?: string | Uint8Array--><!--Device-Pkcs12Data-privateKey?: string | Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.Cert

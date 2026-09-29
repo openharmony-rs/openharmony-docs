@@ -18,6 +18,8 @@ Cancels the unfinished USSD services. This API uses an asynchronous callback to 
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function closeUnfinishedUssd(slotId: int, callback: AsyncCallback<void>): void--><!--Device-call-function closeUnfinishedUssd(slotId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Cancels the unfinished USSD services. This API uses a promise to return the resu
 **Since:** 10
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function closeUnfinishedUssd(slotId: int): Promise<void>--><!--Device-call-function closeUnfinishedUssd(slotId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

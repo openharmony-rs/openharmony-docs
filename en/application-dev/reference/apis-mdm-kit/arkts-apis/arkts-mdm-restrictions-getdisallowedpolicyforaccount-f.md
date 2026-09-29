@@ -24,6 +24,8 @@ Obtains the status of a feature for a specified user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function getDisallowedPolicyForAccount(admin: Want | null, feature: string, accountId: number): boolean--><!--Device-restrictions-function getDisallowedPolicyForAccount(admin: Want | null, feature: string, accountId: number): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -85,6 +87,8 @@ Obtains the status of a feature for a specified user.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-restrictions-function getDisallowedPolicyForAccount(admin: Want | null, feature: FeatureForAccount, accountId: number): boolean--><!--Device-restrictions-function getDisallowedPolicyForAccount(admin: Want | null, feature: FeatureForAccount, accountId: number): boolean-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

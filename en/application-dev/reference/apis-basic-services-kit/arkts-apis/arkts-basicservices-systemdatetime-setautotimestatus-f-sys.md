@@ -18,6 +18,8 @@ Sets the status of the automatic time setting. This API uses a promise to return
 
 **Required permissions:** ohos.permission.SET_TIME
 
+<!--Device-systemDateTime-function setAutoTimeStatus(status: boolean): Promise<void>--><!--Device-systemDateTime-function setAutoTimeStatus(status: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.

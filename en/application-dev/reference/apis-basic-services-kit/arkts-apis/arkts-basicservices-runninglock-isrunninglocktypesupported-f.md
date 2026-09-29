@@ -20,6 +20,8 @@ Checks whether a specified type of [RunningLock](arkts-basicservices-runninglock
 
 **Substitutes:** [isSupported](arkts-basicservices-runninglock-issupported-f.md)
 
+<!--Device-runningLock-function isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback<boolean>): void--><!--Device-runningLock-function isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **Parameters:**
@@ -57,6 +59,8 @@ Checks whether a specified type of [RunningLock](arkts-basicservices-runninglock
 **Deprecated since:** 9
 
 **Substitutes:** [isSupported](arkts-basicservices-runninglock-issupported-f.md)
+
+<!--Device-runningLock-function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>--><!--Device-runningLock-function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 

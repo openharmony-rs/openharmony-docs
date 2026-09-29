@@ -18,6 +18,8 @@ Unregisters a specified external Provider. This API uses a promise to return the
 
 **Required permissions:** ohos.permission.CRYPTO_EXTENSION_REGISTER
 
+<!--Device-huksExternalCrypto-function unregisterProvider(providerName: string, params?: Array<HuksExternalCryptoParam>): Promise<void>--><!--Device-huksExternalCrypto-function unregisterProvider(providerName: string, params?: Array<HuksExternalCryptoParam>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 **Parameters:**

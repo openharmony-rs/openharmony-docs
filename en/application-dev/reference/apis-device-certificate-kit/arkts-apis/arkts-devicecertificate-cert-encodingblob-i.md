@@ -8,6 +8,8 @@ Represents an encoded binary data block.
 
 **Since:** 9
 
+<!--Device-cert-interface EncodingBlob--><!--Device-cert-interface EncodingBlob-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Encoded data.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-EncodingBlob-data: Uint8Array--><!--Device-EncodingBlob-data: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -44,6 +48,8 @@ Encoding format.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-EncodingBlob-encodingFormat: EncodingFormat--><!--Device-EncodingBlob-encodingFormat: EncodingFormat-End-->
 
 **System capability:** SystemCapability.Security.Cert

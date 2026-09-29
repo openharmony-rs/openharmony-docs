@@ -8,6 +8,8 @@ declare enum CopyOptions
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare enum CopyOptions--><!--Device-unnamed-declare enum CopyOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -25,6 +27,8 @@ None = 0
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CopyOptions-None = 0--><!--Device-CopyOptions-None = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ InApp = 1
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CopyOptions-InApp = 1--><!--Device-CopyOptions-InApp = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LocalDevice
@@ -62,6 +68,8 @@ LocalDevice = 2
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CopyOptions-LocalDevice = 2--><!--Device-CopyOptions-LocalDevice = 2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CROSS_DEVICE
@@ -79,5 +87,7 @@ CROSS_DEVICE = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CopyOptions-CROSS_DEVICE = 3--><!--Device-CopyOptions-CROSS_DEVICE = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

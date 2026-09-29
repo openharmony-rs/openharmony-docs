@@ -10,6 +10,8 @@ Defines the callback triggered for receiving notifications of available device s
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-companionDeviceAuth-type AvailableDeviceStatusCallback = (deviceStatusList: DeviceStatus[]) => void--><!--Device-companionDeviceAuth-type AvailableDeviceStatusCallback = (deviceStatusList: DeviceStatus[]) => void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.

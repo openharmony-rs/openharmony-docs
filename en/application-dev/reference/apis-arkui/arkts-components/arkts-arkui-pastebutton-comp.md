@@ -1,6 +1,6 @@
 # PasteButton
 
-**PasteButton** is a security component that provides paste functionality. When users tap this component, the application temporarily gains pasteboard read permissions. <br>**Description**</br>
+**PasteButton** is a security component that provides paste functionality. When users tap this component, the application temporarily gains pasteboard read permissions. <br>**Description**&lt;/br&gt;
 
 ## Key Enums
 
@@ -28,6 +28,8 @@ Creates a **PasteButton** component with an icon, text, and background by defaul
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PasteButtonInterface-(): PasteButtonAttribute--><!--Device-PasteButtonInterface-(): PasteButtonAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## PasteButton
@@ -43,6 +45,8 @@ Creates a paste button with the specified icon, text and button type. After crea
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PasteButtonInterface-(options: PasteButtonOptions): PasteButtonAttribute--><!--Device-PasteButtonInterface-(options: PasteButtonOptions): PasteButtonAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

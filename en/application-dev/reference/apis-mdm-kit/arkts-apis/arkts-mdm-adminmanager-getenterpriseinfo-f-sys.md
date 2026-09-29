@@ -18,6 +18,8 @@ Obtains the enterprise information of the device administrator application. This
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function getEnterpriseInfo(admin: Want, callback: AsyncCallback<EnterpriseInfo>): void--><!--Device-adminManager-function getEnterpriseInfo(admin: Want, callback: AsyncCallback<EnterpriseInfo>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Obtains the enterprise information of the device administrator application. This
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-adminManager-function getEnterpriseInfo(admin: Want): Promise<EnterpriseInfo>--><!--Device-adminManager-function getEnterpriseInfo(admin: Want): Promise<EnterpriseInfo>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

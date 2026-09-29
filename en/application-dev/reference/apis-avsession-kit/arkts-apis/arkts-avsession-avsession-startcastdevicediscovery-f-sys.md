@@ -16,6 +16,8 @@ Start device discovery.
 
 **Since:** 10
 
+<!--Device-avSession-function startCastDeviceDiscovery(callback: AsyncCallback<void>): void--><!--Device-avSession-function startCastDeviceDiscovery(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.
@@ -52,6 +54,8 @@ function startCastDeviceDiscovery(filter: number, callback: AsyncCallback<void>)
 Start device discovery.
 
 **Since:** 10
+
+<!--Device-avSession-function startCastDeviceDiscovery(filter: int, callback: AsyncCallback<void>): void--><!--Device-avSession-function startCastDeviceDiscovery(filter: int, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -92,6 +96,8 @@ function startCastDeviceDiscovery(filter?: number, drmSchemes?: Array<string>): 
 Start device discovery.
 
 **Since:** 10
+
+<!--Device-avSession-function startCastDeviceDiscovery(filter?: int, drmSchemes?: Array<string>): Promise<void>--><!--Device-avSession-function startCastDeviceDiscovery(filter?: int, drmSchemes?: Array<string>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 

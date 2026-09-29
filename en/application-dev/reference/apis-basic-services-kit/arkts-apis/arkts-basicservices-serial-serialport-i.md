@@ -8,6 +8,8 @@ Defines a serial port object, which provides information about the serial port d
 
 **Since:** 26.0.0
 
+<!--Device-serial-interface SerialPort--><!--Device-serial-interface SerialPort-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 ## Modules to Import
@@ -32,6 +34,8 @@ you need to call **open()** again.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialPort-close(): Promise<void>--><!--Device-SerialPort-close(): Promise<void>-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 
@@ -84,6 +88,8 @@ where complete data transmission is required. **flush()** directly discards all 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialPort-drain(): Promise<void>--><!--Device-SerialPort-drain(): Promise<void>-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 **Return value:**
@@ -130,6 +136,8 @@ Difference between **flush()** and **drain()**: **flush()** directly discards al
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialPort-flush(): Promise<void>--><!--Device-SerialPort-flush(): Promise<void>-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 
@@ -180,6 +188,8 @@ control and determine whether data can be sent. **getDsr()** queries the DSR sig
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialPort-getCts(): Promise<boolean>--><!--Device-SerialPort-getCts(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 **Return value:**
@@ -220,6 +230,8 @@ Obtains the status of the data set ready (DSR) signal. This API uses a promise t
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialPort-getDsr(): Promise<boolean>--><!--Device-SerialPort-getDsr(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 
@@ -265,6 +277,8 @@ Cancels listening for data receiving events on the serial port. This API is used
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialPort-offDataRead(callback?: Callback<Uint8Array>): void--><!--Device-SerialPort-offDataRead(callback?: Callback<Uint8Array>): void-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 
@@ -316,6 +330,8 @@ Unsubscribes from serial port disconnection events. This method must be called a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialPort-offDisconnect(callback?: Callback<void>): void--><!--Device-SerialPort-offDisconnect(callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 **Parameters:**
@@ -365,6 +381,8 @@ Listens for data receiving events on the serial port. This API uses an asynchron
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialPort-onDataRead(callback: Callback<Uint8Array>): void--><!--Device-SerialPort-onDataRead(callback: Callback<Uint8Array>): void-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 **Parameters:**
@@ -412,6 +430,8 @@ disconnect event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialPort-onDisconnect(callback: Callback<void>): void--><!--Device-SerialPort-onDisconnect(callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 **Parameters:**
@@ -452,6 +472,8 @@ Opens a serial port device. This API uses a promise to return the result. This A
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialPort-open(config?: SerialConfigs): Promise<void>--><!--Device-SerialPort-open(config?: SerialConfigs): Promise<void>-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 
@@ -515,6 +537,8 @@ Sends a BRK signal. This API uses a promise to return the result. This method mu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialPort-sendBrk(): Promise<void>--><!--Device-SerialPort-sendBrk(): Promise<void>-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 **Return value:**
@@ -555,6 +579,8 @@ Sets the status of the data terminal ready (DTR) signal. This API uses a promise
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialPort-setDtr(enable: boolean): Promise<void>--><!--Device-SerialPort-setDtr(enable: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 
@@ -609,6 +635,8 @@ Difference between **setRts()** and **setDtr()**: **setRts()** controls the RTS/
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialPort-setRts(enable: boolean): Promise<void>--><!--Device-SerialPort-setRts(enable: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 **Parameters:**
@@ -659,6 +687,8 @@ Writes data to a serial port device. The value range of the data length is (0, 4
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialPort-write(data: Uint8Array, timeout?: int): Promise<int>--><!--Device-SerialPort-write(data: Uint8Array, timeout?: int): Promise<int>-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 
@@ -713,5 +743,7 @@ Serial port information.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialPort-readonly portInfo: SerialPortInfo--><!--Device-SerialPort-readonly portInfo: SerialPortInfo-End-->
 
 **System capability:** SystemCapability.BusManager.Serial

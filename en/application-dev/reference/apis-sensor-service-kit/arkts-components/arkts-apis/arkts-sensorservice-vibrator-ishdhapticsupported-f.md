@@ -16,13 +16,15 @@ Checks whether HD vibration is supported.
 
 **Since:** 12
 
+<!--Device-vibrator-function isHdHapticSupported(): boolean--><!--Device-vibrator-function isHdHapticSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Boolean value indicating whether HD vibration is supported. The value **true** indicates that HD vibration is supported, and the value **false** indicates the opposite. |
+| boolean | Whether HD vibration is supported. The value **true** indicates that HD vibration is supported, and the value **false** indicates the opposite. |
 
 **Error codes:**
 

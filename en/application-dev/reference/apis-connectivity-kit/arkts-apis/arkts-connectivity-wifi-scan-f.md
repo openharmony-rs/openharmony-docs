@@ -24,6 +24,8 @@ Scans Wi-Fi hotspot.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.LOCATION
 
+<!--Device-wifi-function scan(): boolean--><!--Device-wifi-function scan(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**

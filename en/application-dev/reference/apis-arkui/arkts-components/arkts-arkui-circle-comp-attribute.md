@@ -10,6 +10,8 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 **Since:** 7
 
+<!--Device-unnamed-declare class CircleAttribute extends CommonShapeMethod<CircleAttribute>--><!--Device-unnamed-declare class CircleAttribute extends CommonShapeMethod<CircleAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fill
@@ -27,6 +29,8 @@ Sets the color of the fill area. [ColorMetrics](../arkts-apis/arkts-arkui-graphi
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-CircleAttribute-fill(value: ResourceColor | ColorMetrics): CircleAttribute--><!--Device-CircleAttribute-fill(value: ResourceColor | ColorMetrics): CircleAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ Sets the stroke color. [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colorme
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-CircleAttribute-stroke(value: ResourceColor | ColorMetrics): CircleAttribute--><!--Device-CircleAttribute-stroke(value: ResourceColor | ColorMetrics): CircleAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -18,6 +18,8 @@ Unsubscribes from the notification extension. This API uses a promise to return 
 
 **Required permissions:** ohos.permission.SUBSCRIBE_NOTIFICATION
 
+<!--Device-notificationExtensionSubscription-function unsubscribe(): Promise<void>--><!--Device-notificationExtensionSubscription-function unsubscribe(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:** [subscribe](arkts-notification-notificationextensionsubscription-subscribe-f.md) subscribes to the notification extension.

@@ -8,6 +8,8 @@ Declare type SymbolOptions
 
 **Since:** 12
 
+<!--Device-unnamed-export declare class SymbolOptions--><!--Device-unnamed-export declare class SymbolOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -22,7 +24,7 @@ import { OperationOption, OperationType, SelectOptions, SubHeader, SymbolOptions
 effectStrategy?: SymbolEffectStrategy
 ```
 
-Effect strategy of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
+Effect strategy of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md).
 
 Default value: **SymbolEffectStrategy.NONE**.
 
@@ -38,6 +40,8 @@ For the resources referenced in **$r('sys.symbol.ohos_*')**, only **ohos_wifi** 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SymbolOptions-effectStrategy?: SymbolEffectStrategy--><!--Device-SymbolOptions-effectStrategy?: SymbolEffectStrategy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -46,7 +50,7 @@ For the resources referenced in **$r('sys.symbol.ohos_*')**, only **ohos_wifi** 
 fontColor?: Array<ResourceColor>
 ```
 
-Color of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
+Color of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md).
 
 Default value: depending on the rendering strategy
 
@@ -58,6 +62,8 @@ Default value: depending on the rendering strategy
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SymbolOptions-fontColor?: Array<ResourceColor>--><!--Device-SymbolOptions-fontColor?: Array<ResourceColor>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontSize
@@ -66,7 +72,7 @@ Default value: depending on the rendering strategy
 fontSize?: number | string | Resource
 ```
 
-Size of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
+Size of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md).
 
 For the number type, the value must be greater than or equal to 0.
 
@@ -82,6 +88,8 @@ Default value: system default value
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SymbolOptions-fontSize?: number | string | Resource--><!--Device-SymbolOptions-fontSize?: number | string | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontWeight
@@ -90,7 +98,7 @@ Default value: system default value
 fontWeight?: number | FontWeight | string
 ```
 
-Weight of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
+Weight of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md).
 
 For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**.
 
@@ -106,6 +114,8 @@ Default value: **FontWeight.Normal**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SymbolOptions-fontWeight?: number | FontWeight | string--><!--Device-SymbolOptions-fontWeight?: number | FontWeight | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## renderingStrategy
@@ -114,7 +124,7 @@ Default value: **FontWeight.Normal**.
 renderingStrategy?: SymbolRenderingStrategy
 ```
 
-Rendering strategy of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
+Rendering strategy of the [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md).
 
 Default value: **SymbolRenderingStrategy.SINGLE**.
 
@@ -129,5 +139,7 @@ For the resources referenced in **$r('sys.symbol.ohos_*')**, only **ohos_trash_c
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SymbolOptions-renderingStrategy?: SymbolRenderingStrategy--><!--Device-SymbolOptions-renderingStrategy?: SymbolRenderingStrategy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

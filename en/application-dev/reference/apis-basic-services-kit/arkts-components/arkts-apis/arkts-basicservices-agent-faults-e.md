@@ -14,6 +14,8 @@ Defines the cause of a task failure.
 
 **Since:** 10
 
+<!--Device-agent-enum Faults--><!--Device-agent-enum Faults-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## OTHERS
@@ -26,7 +28,9 @@ Other fault.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Faults-OTHERS = 0xFF--><!--Device-Faults-OTHERS = 0xFF-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -40,7 +44,9 @@ Network disconnection.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Faults-DISCONNECTED = 0x00--><!--Device-Faults-DISCONNECTED = 0x00-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -54,7 +60,9 @@ Timeout.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Faults-TIMEOUT = 0x10--><!--Device-Faults-TIMEOUT = 0x10-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -68,7 +76,9 @@ Protocol error, for example, an internal server error (500) or a data range that
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Faults-PROTOCOL = 0x20--><!--Device-Faults-PROTOCOL = 0x20-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -82,7 +92,9 @@ Parameter error, for example, incorrect URL format.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Faults-PARAM = 0x30--><!--Device-Faults-PARAM = 0x30-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -96,7 +108,9 @@ File system I/O error, for example, an error that occurs during the open, search
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Faults-FSIO = 0x40--><!--Device-Faults-FSIO = 0x40-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -110,7 +124,9 @@ DNS resolution error.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Faults-DNS = 0x50--><!--Device-Faults-DNS = 0x50-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -124,7 +140,9 @@ TCP connection error.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Faults-TCP = 0x60--><!--Device-Faults-TCP = 0x60-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -138,7 +156,9 @@ SSL connection error, for example, a certificate error or certificate verificati
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Faults-SSL = 0x70--><!--Device-Faults-SSL = 0x70-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -152,7 +172,9 @@ Redirection error.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Faults-REDIRECT = 0x80--><!--Device-Faults-REDIRECT = 0x80-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -165,5 +187,7 @@ LOW_SPEED = 0x90
 Low speed.
 
 **Since:** 20
+
+<!--Device-Faults-LOW_SPEED = 0x90--><!--Device-Faults-LOW_SPEED = 0x90-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

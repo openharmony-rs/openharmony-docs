@@ -8,6 +8,8 @@ declare interface AnimationOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface AnimationOptions--><!--Device-unnamed-declare interface AnimationOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -38,6 +40,8 @@ true表示自动播放，false表示不自动播放。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
+<!--Device-AnimationOptions-autoPlay?: boolean--><!--Device-AnimationOptions-autoPlay?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## duration
@@ -64,6 +68,8 @@ PixelMap数组的默认值是每张图片播放1秒。本地图片或者应用�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-AnimationOptions-duration?: number--><!--Device-AnimationOptions-duration?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## frameDurations
@@ -88,6 +94,8 @@ frameDurations?: Array<number>
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
+<!--Device-AnimationOptions-frameDurations?: Array<number>--><!--Device-AnimationOptions-frameDurations?: Array<number>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## iterations
@@ -110,6 +118,8 @@ iterations?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-AnimationOptions-iterations?: number--><!--Device-AnimationOptions-iterations?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## stopMode
@@ -131,6 +141,8 @@ stopMode?: AnimationStopMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
+
+<!--Device-AnimationOptions-stopMode?: AnimationStopMode--><!--Device-AnimationOptions-stopMode?: AnimationStopMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

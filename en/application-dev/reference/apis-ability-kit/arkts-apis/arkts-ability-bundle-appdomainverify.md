@@ -8,6 +8,8 @@ This module provides app domain verification info.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace appDomainVerify--><!--Device-unnamed-declare namespace appDomainVerify-End-->
+
 **System capability:** SystemCapability.BundleManager.AppDomainVerify
 
 **System API:** This is a system API.

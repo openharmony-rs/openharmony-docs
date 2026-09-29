@@ -20,6 +20,8 @@ Obtains a CalendarManager object based on the context.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-calendarManager-function getCalendarManager(context: Context) : CalendarManager--><!--Device-calendarManager-function getCalendarManager(context: Context) : CalendarManager-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**

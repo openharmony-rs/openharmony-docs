@@ -10,6 +10,8 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 
 **Decorator:** @CustomDialog
 
+<!--Device-unnamed-export declare struct InputMethodListDialog--><!--Device-unnamed-export declare struct InputMethodListDialog-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Sets the controller.
 
 **Since:** 11
 
+<!--Device-InputMethodListDialog-controller: CustomDialogController--><!--Device-InputMethodListDialog-controller: CustomDialogController-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## patternOptions
@@ -43,5 +47,7 @@ Sets the pattern options. This parameter can be left blank when it is not defaul
 **Type:** [PatternOptions](arkts-ime-inputmethodlist-patternoptions-i.md)
 
 **Since:** 11
+
+<!--Device-InputMethodListDialog-patternOptions?: PatternOptions--><!--Device-InputMethodListDialog-patternOptions?: PatternOptions-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

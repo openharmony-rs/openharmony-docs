@@ -20,6 +20,8 @@ The priority defined in a priority group restricts the resource usage of an appl
 
 **Deprecated since:** 9
 
+<!--Device-bundleState-function queryAppUsagePriorityGroup(callback: AsyncCallback<number>): void--><!--Device-bundleState-function queryAppUsagePriorityGroup(callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
 **Parameters:**
@@ -59,6 +61,8 @@ The priority defined in a priority group restricts the resource usage of an appl
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-bundleState-function queryAppUsagePriorityGroup(): Promise<number>--><!--Device-bundleState-function queryAppUsagePriorityGroup(): Promise<number>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 

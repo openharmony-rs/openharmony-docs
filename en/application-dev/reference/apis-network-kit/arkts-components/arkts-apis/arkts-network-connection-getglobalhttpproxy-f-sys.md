@@ -16,6 +16,8 @@ Obtains the global network proxy configuration information. This API uses an asy
 
 **Since:** 10
 
+<!--Device-connection-function getGlobalHttpProxy(callback: AsyncCallback<HttpProxy>): void--><!--Device-connection-function getGlobalHttpProxy(callback: AsyncCallback<HttpProxy>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -59,6 +61,8 @@ function getGlobalHttpProxy(): Promise<HttpProxy>
 Obtains the global network proxy configuration information. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-connection-function getGlobalHttpProxy(): Promise<HttpProxy>--><!--Device-connection-function getGlobalHttpProxy(): Promise<HttpProxy>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

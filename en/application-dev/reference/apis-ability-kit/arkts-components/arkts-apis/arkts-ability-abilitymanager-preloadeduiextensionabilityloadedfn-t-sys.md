@@ -10,6 +10,8 @@ Defines the callback function when the preloaded [UIExtensionAbility](arkts-abil
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-abilityManager-export type PreloadedUIExtensionAbilityLoadedFn = (preloadId: int) => void--><!--Device-abilityManager-export type PreloadedUIExtensionAbilityLoadedFn = (preloadId: int) => void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.

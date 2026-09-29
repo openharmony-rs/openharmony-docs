@@ -18,6 +18,8 @@ Obtains the minimum height of the wallpaper. in pixels. returns 0 if no wallpape
 
 **Deprecated since:** 9
 
+<!--Device-wallpaper-function getMinHeight(callback: AsyncCallback<number>): void--><!--Device-wallpaper-function getMinHeight(callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **Parameters:**
@@ -54,6 +56,8 @@ Obtains the minimum height of the wallpaper. in pixels. returns 0 if no wallpape
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-wallpaper-function getMinHeight(): Promise<number>--><!--Device-wallpaper-function getMinHeight(): Promise<number>-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

@@ -14,6 +14,8 @@ Provides the capability of displaying and hiding of the magnifier. The magnifier
 
 **Since:** 22
 
+<!--Device-unnamed-export class Magnifier--><!--Device-unnamed-export class Magnifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -42,6 +44,8 @@ Binds the magnifier to the component with the specified ID.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Magnifier-bind(id: string): void--><!--Device-Magnifier-bind(id: string): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,6 +115,8 @@ Sets the position of the component content displayed by the magnifier relative t
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-Magnifier-show(x: number, y: number): void--><!--Device-Magnifier-show(x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -137,6 +143,8 @@ Unbinds the magnifier from the current component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Magnifier-unbind(): void--><!--Device-Magnifier-unbind(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -22,6 +22,8 @@ The module provides the capabilities of the [WindowExtensionAbility](arkts-arkui
 
 **Deprecated since:** 21
 
+<!--Device-unnamed-declare class WindowExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class WindowExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -39,6 +41,8 @@ Starts an ability. This API uses an asynchronous callback to return the result.
 **Deprecated since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowExtensionContext-startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-WindowExtensionContext-startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -114,6 +118,8 @@ Starts an ability. This API uses a promise to return the result.
 **Deprecated since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>--><!--Device-WindowExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

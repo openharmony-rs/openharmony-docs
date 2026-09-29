@@ -20,6 +20,8 @@ Obtains the provision configuration file information of all applications based i
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function getAllAppProvisionInfoInDevice(userId: int): Promise<Array<AppProvisionInfo>>--><!--Device-bundleManager-function getAllAppProvisionInfoInDevice(userId: int): Promise<Array<AppProvisionInfo>>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

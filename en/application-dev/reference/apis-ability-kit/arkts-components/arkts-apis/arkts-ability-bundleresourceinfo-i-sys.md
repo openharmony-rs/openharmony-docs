@@ -12,6 +12,8 @@ The module provides resource information of an application, such as the icon and
 
 **Since:** 11
 
+<!--Device-unnamed-export interface BundleResourceInfo--><!--Device-unnamed-export interface BundleResourceInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ Index of an application clone.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-BundleResourceInfo-readonly appIndex: int--><!--Device-BundleResourceInfo-readonly appIndex: int-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -44,6 +48,8 @@ Bundle name of the application.
 
 **Since:** 11
 
+<!--Device-BundleResourceInfo-readonly bundleName: string--><!--Device-BundleResourceInfo-readonly bundleName: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
 **System API:** This is a system API.
@@ -59,6 +65,8 @@ drawableDescriptor object of the application icon.
 **Type:** [DrawableDescriptor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-drawabledescriptor-drawabledescriptor-c.md)
 
 **Since:** 12
+
+<!--Device-BundleResourceInfo-readonly drawableDescriptor: DrawableDescriptor--><!--Device-BundleResourceInfo-readonly drawableDescriptor: DrawableDescriptor-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -76,6 +84,8 @@ Application icon, which is encoded using Base64.
 
 **Since:** 11
 
+<!--Device-BundleResourceInfo-readonly icon: string--><!--Device-BundleResourceInfo-readonly icon: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
 **System API:** This is a system API.
@@ -91,6 +101,8 @@ Application label.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-BundleResourceInfo-readonly label: string--><!--Device-BundleResourceInfo-readonly label: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 

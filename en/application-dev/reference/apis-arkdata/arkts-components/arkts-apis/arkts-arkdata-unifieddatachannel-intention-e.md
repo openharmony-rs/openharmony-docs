@@ -8,6 +8,8 @@ Enumerates the data channel types supported by the UDMF. It is used to identify 
 
 **Since:** 10
 
+<!--Device-unifiedDataChannel-enum Intention--><!--Device-unifiedDataChannel-enum Intention-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## DATA_HUB
@@ -22,7 +24,9 @@ Public data channel.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Intention-DATA_HUB = 'DataHub'--><!--Device-Intention-DATA_HUB = 'DataHub'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -40,6 +44,8 @@ Channel in which data can be dragged and dropped.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Intention-DRAG = 'Drag'--><!--Device-Intention-DRAG = 'Drag'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## SYSTEM_SHARE
@@ -55,6 +61,8 @@ Data channel of the system sharing type.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Intention-SYSTEM_SHARE = 'SystemShare'--><!--Device-Intention-SYSTEM_SHARE = 'SystemShare'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -72,6 +80,8 @@ Data channel of the picker type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Intention-PICKER = 'Picker'--><!--Device-Intention-PICKER = 'Picker'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## MENU
@@ -87,5 +97,7 @@ Data channel of the menu type.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Intention-MENU = 'Menu'--><!--Device-Intention-MENU = 'Menu'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

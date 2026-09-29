@@ -4,11 +4,11 @@
 declare enum PresetFillType
 ```
 
-Specify the number of columns for different responsive breakpoints.
-
-@enum { number }
+Enumerates column count policies for different [breakpoints](../../../ui/arkts-layout-development-grid-layout.md#breakpoints).
 
 **Since:** 22
+
+<!--Device-unnamed-declare enum PresetFillType--><!--Device-unnamed-declare enum PresetFillType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +18,17 @@ Specify the number of columns for different responsive breakpoints.
 BREAKPOINT_DEFAULT = 0
 ```
 
-For Lists and Swipers: One column is displayed on SM (and smaller),two on MD, and three on LG (and larger) devices. For Grid and WaterFlow: two column is displayed on SM (and smaller), three on MD, and five on LG (and larger) devices.
+For **List** and **Swiper** components: displays 1 column when the component width falls within the sm and smaller breakpoint range, 2 columns within the md breakpoint range, and 3 columns within the lg and larger breakpoint range.
+
+For **Grid**, **WaterFlow**, and **LazyVWaterFlowLayout** components: displays 2 columns when the component width falls within the sm and smaller breakpoint range, 3 columns within the md breakpoint range, and 5 columns within the lg and larger breakpoint range. **LazyVWaterFlowLayout** is supported since API version 26.0.0.
 
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-PresetFillType-BREAKPOINT_DEFAULT = 0--><!--Device-PresetFillType-BREAKPOINT_DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,13 +38,15 @@ For Lists and Swipers: One column is displayed on SM (and smaller),two on MD, an
 BREAKPOINT_SM1MD2LG3 = 1
 ```
 
-For SM (and smaller),MD, and LG (and larger) devices, one,two,and three columns are displayed respectively.
+Displays 1 column when the component width falls within the sm and smaller breakpoint range, 2 columns within the md breakpoint range, and 3 columns within the lg and larger breakpoint range.
 
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-PresetFillType-BREAKPOINT_SM1MD2LG3 = 1--><!--Device-PresetFillType-BREAKPOINT_SM1MD2LG3 = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,12 +56,14 @@ For SM (and smaller),MD, and LG (and larger) devices, one,two,and three columns 
 BREAKPOINT_SM2MD3LG5 = 2
 ```
 
-For SM (and smaller),MD, and LG (and larger) devices,two,three,and five columns are displayed respectively.
+Displays 2 columns when the component width falls within the sm and smaller breakpoint range, 3 columns within the md breakpoint range, and 5 columns within the lg and larger breakpoint range.
 
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-PresetFillType-BREAKPOINT_SM2MD3LG5 = 2--><!--Device-PresetFillType-BREAKPOINT_SM2MD3LG5 = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

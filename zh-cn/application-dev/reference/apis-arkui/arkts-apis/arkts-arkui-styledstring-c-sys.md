@@ -8,6 +8,8 @@ declare class StyledString
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare class StyledString--><!--Device-unnamed-declare class StyledString-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## marshalling
@@ -23,6 +25,8 @@ static marshalling(styledString: StyledString, callback: StyledStringMarshallCal
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StyledString-static marshalling(styledString: StyledString, callback: StyledStringMarshallCallback): ArrayBuffer--><!--Device-StyledString-static marshalling(styledString: StyledString, callback: StyledStringMarshallCallback): ArrayBuffer-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +59,8 @@ static marshalling(styledString: StyledString): ArrayBuffer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-StyledString-static marshalling(styledString: StyledString): ArrayBuffer--><!--Device-StyledString-static marshalling(styledString: StyledString): ArrayBuffer-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -84,6 +90,8 @@ static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallba
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StyledString-static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallback): Promise<StyledString>--><!--Device-StyledString-static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallback): Promise<StyledString>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,6 +132,8 @@ static unmarshalling(buffer: ArrayBuffer): Promise<StyledString>
 **起始版本：** 13
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-StyledString-static unmarshalling(buffer: ArrayBuffer): Promise<StyledString>--><!--Device-StyledString-static unmarshalling(buffer: ArrayBuffer): Promise<StyledString>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

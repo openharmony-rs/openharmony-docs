@@ -82,7 +82,7 @@
     - [GcStats](arkts-performanceanalysis-hidebug-gcstats-t.md)
     - [JsRawHeapTrimLevel](arkts-performanceanalysis-hidebug-jsrawheaptrimlevel-e.md)
     - [TraceFlag](arkts-performanceanalysis-hidebug-traceflag-e.md)
-- [@ohos.hilog](arkts-performanceanalysis-hilog.md)
+- [@ohos.hilog(log print)](arkts-performanceanalysis-hilog.md)
   - [clean](arkts-performanceanalysis-hilog-clean-f.md)
   - [debug](arkts-performanceanalysis-hilog-debug-f.md)
   - [error](arkts-performanceanalysis-hilog-error-f.md)
@@ -230,7 +230,7 @@
   - [LeakWatcherConfig](arkts-performanceanalysis-jsleakwatcher-leakwatcherconfig-i.md)
   - [MonitorObjectType](arkts-performanceanalysis-jsleakwatcher-monitorobjecttype-e.md)
 <!--Del-->
-- [@ohos.logLibrary](arkts-performanceanalysis-loglibrary.md)<!--DelEnd-->
+- [@ohos.logLibrary(Obtaining various system maintenance and test logs)](arkts-performanceanalysis-loglibrary.md)<!--DelEnd-->
   <!--Del-->
   - [copy(system api)](arkts-performanceanalysis-loglibrary-copy-f-sys.md)<!--DelEnd-->
   <!--Del-->

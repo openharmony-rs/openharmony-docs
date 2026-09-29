@@ -14,6 +14,8 @@ declare type RectShape = import('../api/@ohos.arkui.shape').RectShape
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare type RectShape = import('../api/@ohos.arkui.shape').RectShape--><!--Device-unnamed-declare type RectShape = import('../api/@ohos.arkui.shape').RectShape-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** import('../api/@ohos.arkui.shape').RectShape

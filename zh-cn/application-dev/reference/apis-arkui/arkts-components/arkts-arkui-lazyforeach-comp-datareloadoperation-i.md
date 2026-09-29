@@ -14,6 +14,8 @@ interface DataReloadOperation
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface DataReloadOperation--><!--Device-unnamed-interface DataReloadOperation-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## reuseImmediately
@@ -40,6 +42,8 @@ false：不允许在更新过程中复用旧的子组件。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-DataReloadOperation-reuseImmediately?: boolean--><!--Device-DataReloadOperation-reuseImmediately?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -57,5 +61,7 @@ type: DataOperationType.RELOAD
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DataReloadOperation-type: DataOperationType.RELOAD--><!--Device-DataReloadOperation-type: DataOperationType.RELOAD-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

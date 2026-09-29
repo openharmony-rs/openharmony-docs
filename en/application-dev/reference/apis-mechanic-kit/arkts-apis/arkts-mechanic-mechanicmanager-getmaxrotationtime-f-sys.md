@@ -16,6 +16,8 @@ Obtains the maximum continuous rotation duration of a mechanical device.
 
 **Since:** 20
 
+<!--Device-mechanicManager-function getMaxRotationTime(mechId: int): int--><!--Device-mechanicManager-function getMaxRotationTime(mechId: int): int-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.

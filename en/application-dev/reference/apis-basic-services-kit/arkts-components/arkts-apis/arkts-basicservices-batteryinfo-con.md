@@ -12,6 +12,8 @@ Battery level of the device.
 
 **Since:** 9
 
+<!--Device-batteryInfo-const batteryCapacityLevel: BatteryCapacityLevel--><!--Device-batteryInfo-const batteryCapacityLevel: BatteryCapacityLevel-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
 ## batterySOC
@@ -28,6 +30,8 @@ Battery state of charge (SoC) of the device, in unit of percentage, which ranges
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-batteryInfo-const batterySOC: number--><!--Device-batteryInfo-const batterySOC: number-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
 ## batteryTemperature
@@ -41,6 +45,8 @@ Battery temperature of the device, in unit of 0.1°C.
 **Type:** number
 
 **Since:** 6
+
+<!--Device-batteryInfo-const batteryTemperature: number--><!--Device-batteryInfo-const batteryTemperature: number-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -58,6 +64,8 @@ Battery charging state of the current device.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-batteryInfo-const chargingStatus: BatteryChargeState--><!--Device-batteryInfo-const chargingStatus: BatteryChargeState-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
 ## healthStatus
@@ -71,6 +79,8 @@ Battery health status of the device.
 **Type:** [BatteryHealthState](arkts-basicservices-batteryinfo-batteryhealthstate-e.md)
 
 **Since:** 6
+
+<!--Device-batteryInfo-const healthStatus: BatteryHealthState--><!--Device-batteryInfo-const healthStatus: BatteryHealthState-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -88,6 +98,8 @@ Default value: **false**.
 
 **Since:** 7
 
+<!--Device-batteryInfo-const isBatteryPresent: boolean--><!--Device-batteryInfo-const isBatteryPresent: boolean-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
 ## nowCurrent
@@ -101,6 +113,8 @@ Battery current of the device, in unit of mA.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-batteryInfo-const nowCurrent: number--><!--Device-batteryInfo-const nowCurrent: number-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -116,6 +130,8 @@ Charger type of the device.
 
 **Since:** 6
 
+<!--Device-batteryInfo-const pluggedType: BatteryPluggedType--><!--Device-batteryInfo-const pluggedType: BatteryPluggedType-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
 ## technology
@@ -130,6 +146,8 @@ Battery technology of the device.
 
 **Since:** 6
 
+<!--Device-batteryInfo-const technology: string--><!--Device-batteryInfo-const technology: string-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
 ## voltage
@@ -143,5 +161,7 @@ Battery voltage of the device, in unit of microvolt.
 **Type:** number
 
 **Since:** 6
+
+<!--Device-batteryInfo-const voltage: number--><!--Device-batteryInfo-const voltage: number-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core

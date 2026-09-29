@@ -16,6 +16,8 @@ Obtains the number of mouse scroll lines. This API uses an asynchronous callback
 
 **Since:** 10
 
+<!--Device-pointer-function getMouseScrollRows(callback: AsyncCallback<int>): void--><!--Device-pointer-function getMouseScrollRows(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getMouseScrollRows(): Promise<number>
 Obtains the number of mouse scroll lines. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function getMouseScrollRows(): Promise<int>--><!--Device-pointer-function getMouseScrollRows(): Promise<int>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

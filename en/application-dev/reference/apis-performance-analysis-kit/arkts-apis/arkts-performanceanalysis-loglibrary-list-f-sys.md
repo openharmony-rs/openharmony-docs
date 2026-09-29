@@ -18,6 +18,8 @@ Obtains the list of log files of the specified type in synchronous mode. This AP
 
 **Required permissions:** ohos.permission.READ_HIVIEW_SYSTEM
 
+<!--Device-logLibrary-function list(logType: string): LogEntry[]--><!--Device-logLibrary-function list(logType: string): LogEntry[]-End-->
+
 **System capability:** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
 **System API:** This is a system API.

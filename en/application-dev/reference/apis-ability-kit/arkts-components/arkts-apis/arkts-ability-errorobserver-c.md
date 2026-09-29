@@ -8,6 +8,8 @@ The ErrorObserver module defines an observer to listen for application errors. I
 
 **Since:** 9
 
+<!--Device-unnamed-export default class ErrorObserver--><!--Device-unnamed-export default class ErrorObserver-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## onException
@@ -16,11 +18,13 @@ The ErrorObserver module defines an observer to listen for application errors. I
 onException?(errObject: Error): void
 ```
 
-Called when the application encounters an exception and reports it to the JavaScript layer.
+Called when the application encounters an exception and reports it to the JavaScript layer. Currently, only the default Error object (containing name, message, and stack) is supported; custom modification, inheritance, or extension is not supported.
 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ErrorObserver-onException?(errObject: Error): void--><!--Device-ErrorObserver-onException?(errObject: Error): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -67,6 +71,8 @@ Called when an uncaught exception occurs in the application.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ErrorObserver-onUnhandledException(errMsg: string): void--><!--Device-ErrorObserver-onUnhandledException(errMsg: string): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

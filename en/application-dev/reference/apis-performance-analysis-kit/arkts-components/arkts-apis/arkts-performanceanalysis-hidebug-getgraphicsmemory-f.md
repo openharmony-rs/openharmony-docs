@@ -16,7 +16,9 @@ Obtains the total GPU memory size (**gl** + **graph**) of the application. This 
 
 **Since:** 14
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-hidebug-function getGraphicsMemory(): Promise<int>--><!--Device-hidebug-function getGraphicsMemory(): Promise<int>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 

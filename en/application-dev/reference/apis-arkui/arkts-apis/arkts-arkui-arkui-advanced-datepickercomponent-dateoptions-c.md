@@ -4,13 +4,15 @@
 export declare class DateOptions extends CommonOptions
 ```
 
-DateOptions defines options for the date picker.
+Defines the options of the date picker.
 
-Inherits from [CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md).
+This API inherits from [CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md).
 
 **Inheritance/Implementation:** DateOptions extends [CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md)
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-export declare class DateOptions extends CommonOptions--><!--Device-unnamed-export declare class DateOptions extends CommonOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,16 +28,18 @@ import { DatePickerComponent, DatePickerComponentOptions, DisplayMode, DateMode,
 lunar?: boolean
 ```
 
-Specifies whether to display as lunar calendar.
+Whether to display the lunar calendar.
 
-- true: Display as lunar calendar.  
-- false: Do not display as lunar calendar.
+- **true**: The lunar calendar is displayed. This is applicable to scenarios where the traditional lunar calendar  
+is required, such as traditional festivals, lunar birthdays, and lunar anniversaries.  
+- **false**: The lunar calendar is not displayed. This is applicable to scenarios where the Gregorian calendar is  
+used.
 
-Default value: false
+Default value: **false**
 
-**Description**:
+**NOTE:** 
 
-This only takes effect in Simplified Chinese and Traditional Chinese language environments. In other language environments, setting this property has no effect.
+This attribute takes effect only in the simplified Chinese and traditional Chinese language environments. It has no effect in other language environments.
 
 **Type:** boolean
 
@@ -47,6 +51,8 @@ This only takes effect in Simplified Chinese and Traditional Chinese language en
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-DateOptions-lunar?: boolean--><!--Device-DateOptions-lunar?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## mode
@@ -55,7 +61,7 @@ This only takes effect in Simplified Chinese and Traditional Chinese language en
 mode?: DateMode
 ```
 
-Defines the mode of the date picker.
+Mode of the date picker.
 
 Default value: DateMode.DATE
 
@@ -68,5 +74,7 @@ Default value: DateMode.DATE
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-DateOptions-mode?: DateMode--><!--Device-DateOptions-mode?: DateMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

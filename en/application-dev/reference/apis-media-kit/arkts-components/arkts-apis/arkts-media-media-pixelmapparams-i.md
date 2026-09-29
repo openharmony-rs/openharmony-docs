@@ -8,6 +8,8 @@ Defines the format parameters of the video thumbnail to be obtained.
 
 **Since:** 12
 
+<!--Device-media-interface PixelMapParams--><!--Device-media-interface PixelMapParams-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Height of the thumbnail. Unit: px. The value must be greater than 0 and less tha
 
 **Since:** 12
 
+<!--Device-PixelMapParams-height?: int--><!--Device-PixelMapParams-height?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
 ## width
@@ -41,5 +45,7 @@ Width of the thumbnail. Unit: px. The value must be greater than 0 and less than
 **Type:** number
 
 **Since:** 12
+
+<!--Device-PixelMapParams-width?: int--><!--Device-PixelMapParams-width?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator

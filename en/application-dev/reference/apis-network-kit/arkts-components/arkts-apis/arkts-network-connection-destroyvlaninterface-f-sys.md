@@ -24,6 +24,8 @@ Deletes a VLAN specified by **vlanId** from a specified Ethernet NIC. This API u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function destroyVlanInterface(ifName: string, vlanId: int): Promise<void>--><!--Device-connection-function destroyVlanInterface(ifName: string, vlanId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.

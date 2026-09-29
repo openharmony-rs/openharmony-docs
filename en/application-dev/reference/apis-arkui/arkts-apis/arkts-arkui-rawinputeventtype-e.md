@@ -8,6 +8,8 @@ Enumerates the raw input event types.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare enum RawInputEventType--><!--Device-unnamed-declare enum RawInputEventType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOUCH
@@ -24,6 +26,8 @@ Touch event.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-RawInputEventType-TOUCH = 0--><!--Device-RawInputEventType-TOUCH = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## MOUSE
@@ -39,5 +43,7 @@ Mouse event.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-RawInputEventType-MOUSE = 1--><!--Device-RawInputEventType-MOUSE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

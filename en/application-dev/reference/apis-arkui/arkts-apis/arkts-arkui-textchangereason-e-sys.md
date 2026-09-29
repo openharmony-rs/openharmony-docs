@@ -8,6 +8,8 @@ Enumerates the reasons for component content changes.
 
 **Since:** 20
 
+<!--Device-unnamed-declare enum TextChangeReason--><!--Device-unnamed-declare enum TextChangeReason-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Unknown reason.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TextChangeReason-UNKNOWN = 0--><!--Device-TextChangeReason-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ User input.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TextChangeReason-INPUT = 1--><!--Device-TextChangeReason-INPUT = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Paste operation.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TextChangeReason-PASTE = 2--><!--Device-TextChangeReason-PASTE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ Cut operation.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TextChangeReason-CUT = 3--><!--Device-TextChangeReason-CUT = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -87,6 +97,8 @@ Drag and drop operation.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TextChangeReason-DRAG = 4--><!--Device-TextChangeReason-DRAG = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +116,8 @@ Auto-fill operation.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TextChangeReason-AUTO_FILL = 5--><!--Device-TextChangeReason-AUTO_FILL = 5-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -119,6 +133,8 @@ AI-assisted writing.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TextChangeReason-AI_WRITE = 6--><!--Device-TextChangeReason-AI_WRITE = 6-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +152,8 @@ Redo operation.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TextChangeReason-REDO = 7--><!--Device-TextChangeReason-REDO = 7-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -151,6 +169,8 @@ Undo operation.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TextChangeReason-UNDO = 8--><!--Device-TextChangeReason-UNDO = 8-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +188,8 @@ Component API call.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TextChangeReason-CONTROLLER = 9--><!--Device-TextChangeReason-CONTROLLER = 9-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -183,6 +205,8 @@ Accessibility API.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TextChangeReason-ACCESSIBILITY = 10--><!--Device-TextChangeReason-ACCESSIBILITY = 10-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,6 +224,8 @@ Cross-device photographing.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TextChangeReason-COLLABORATION = 11--><!--Device-TextChangeReason-COLLABORATION = 11-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -215,6 +241,8 @@ Stylus input.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TextChangeReason-STYLUS = 12--><!--Device-TextChangeReason-STYLUS = 12-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -11,6 +11,8 @@ Defines type and quantity of the data to load.
 
 **Since:** 20
 
+<!--Device-unifiedDataChannel-interface DataLoadInfo--><!--Device-unifiedDataChannel-interface DataLoadInfo-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -33,7 +35,9 @@ Indicates the maximum number of data records to be loaded.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-DataLoadInfo-recordCount?: long--><!--Device-DataLoadInfo-recordCount?: long-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -51,6 +55,8 @@ Represents the data type or supported types to load. <br>This parameter is manda
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-DataLoadInfo-types?: Set<string>--><!--Device-DataLoadInfo-types?: Set<string>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

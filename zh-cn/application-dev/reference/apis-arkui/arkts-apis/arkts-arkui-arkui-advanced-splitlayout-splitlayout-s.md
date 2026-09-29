@@ -25,6 +25,8 @@ import { SplitLayout } from '@kit.ArkUI';
 
 **装饰器类型：** @Component
 
+<!--Device-unnamed-export declare struct SplitLayout--><!--Device-unnamed-export declare struct SplitLayout-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -49,6 +51,8 @@ container: () => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SplitLayout-container: () => void--><!--Device-SplitLayout-container: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## mainImage
@@ -68,6 +72,8 @@ mainImage: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SplitLayout-mainImage: ResourceStr--><!--Device-SplitLayout-mainImage: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,6 +95,8 @@ primaryText: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SplitLayout-primaryText: ResourceStr--><!--Device-SplitLayout-primaryText: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryText
@@ -109,6 +117,8 @@ secondaryText?: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SplitLayout-secondaryText?: ResourceStr--><!--Device-SplitLayout-secondaryText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## tertiaryText
@@ -128,5 +138,7 @@ tertiaryText?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SplitLayout-tertiaryText?: ResourceStr--><!--Device-SplitLayout-tertiaryText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

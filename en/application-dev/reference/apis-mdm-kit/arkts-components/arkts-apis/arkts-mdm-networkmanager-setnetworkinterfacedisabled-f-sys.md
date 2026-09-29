@@ -24,6 +24,8 @@ Disables a network interface. This API uses an asynchronous callback to return t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDisabled: boolean, callback: AsyncCallback<void>): void--><!--Device-networkManager-function setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDisabled: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -89,6 +91,8 @@ Disables a network interface. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ENTERPRISE_SET_NETWORK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-networkManager-function setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDisabled: boolean): Promise<void>--><!--Device-networkManager-function setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDisabled: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

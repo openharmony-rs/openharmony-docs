@@ -4,9 +4,11 @@
 declare interface ColorMetricsStop
 ```
 
-Describes the breakpoint of the gradient color.
+Describes the linear gradient color stop type.
 
 **Since:** 23
+
+<!--Device-unnamed-declare interface ColorMetricsStop--><!--Device-unnamed-declare interface ColorMetricsStop-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +18,7 @@ Describes the breakpoint of the gradient color.
 color: ColorMetrics
 ```
 
-Color value of the linear gradient color breakpoint.
+Color value of the linear gradient color stop.
 
 **Type:** ColorMetrics
 
@@ -25,6 +27,8 @@ Color value of the linear gradient color breakpoint.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-ColorMetricsStop-color: ColorMetrics--><!--Device-ColorMetricsStop-color: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +40,7 @@ offset: Length
 
 Value of the linear gradient color stop. The value is a proportion ranging from 0 to 1. If a value less than 0 is passed, the value is set to **0**. If a value greater than 1 is passed, the value is set to **1**.
 
-**NOTE:** 
+**Note:** 
 
 If the value is a string that represents a number, it will be converted to a number. For example, **'10vp'** is converted to **10**, and **'10%'** is converted to **0.1**.
 
@@ -47,5 +51,7 @@ If the value is a string that represents a number, it will be converted to a num
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-ColorMetricsStop-offset: Length--><!--Device-ColorMetricsStop-offset: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

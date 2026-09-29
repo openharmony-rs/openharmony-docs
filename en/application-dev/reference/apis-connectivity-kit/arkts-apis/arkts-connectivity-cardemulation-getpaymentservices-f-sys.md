@@ -20,6 +20,8 @@ Obtains all payment services. If an application declares the support for the HCE
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-cardEmulation-function getPaymentServices(): AbilityInfo[]--><!--Device-cardEmulation-function getPaymentServices(): AbilityInfo[]-End-->
+
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
 
 **System API:** This is a system API.

@@ -12,7 +12,7 @@ import { prompt } from '@kit.ArkUI';
 function showToast(options: ShowToastOptions): void
 ```
 
-Displays the notification text.
+Shows a toast.
 
 **Since:** 8
 
@@ -22,13 +22,15 @@ Displays the notification text.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-prompt-function showToast(options: ShowToastOptions): void--><!--Device-prompt-function showToast(options: ShowToastOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ShowToastOptions](arkts-arkui-prompt-showtoastoptions-i.md) | Yes | Options. |
+| options | [ShowToastOptions](arkts-arkui-prompt-showtoastoptions-i.md) | Yes | Toast options. |
 
 **Examples**
 

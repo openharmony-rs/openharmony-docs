@@ -12,40 +12,40 @@ import { ComposeListItemV2, ContentItemV2, ContentItemV2Options, IconTypeV2, Ope
 
 | Name | Description |
 | --- | --- |
-| [ContentItemV2](arkts-arkui-arkui-advanced-composelistitemv2-contentitemv2-c.md) | Declare ContentItemV2 |
-| [OperateButtonV2](arkts-arkui-arkui-advanced-composelistitemv2-operatebuttonv2-c.md) | Declare type OperateButtonV2 |
-| [OperateCheckV2](arkts-arkui-arkui-advanced-composelistitemv2-operatecheckv2-c.md) | Declare type OperateCheckV2 |
-| [OperateIconV2](arkts-arkui-arkui-advanced-composelistitemv2-operateiconv2-c.md) | Declare type OperateIconV2 |
-| [OperateItemV2](arkts-arkui-arkui-advanced-composelistitemv2-operateitemv2-c.md) | Declare OperateItemV2 |
+| [ContentItemV2](arkts-arkui-arkui-advanced-composelistitemv2-contentitemv2-c.md) | Defines the left icon, icon size, and middle element text content displayed in the list item. |
+| [OperateButtonV2](arkts-arkui-arkui-advanced-composelistitemv2-operatebuttonv2-c.md) | Defines the type of the right button element of the list item. |
+| [OperateCheckV2](arkts-arkui-arkui-advanced-composelistitemv2-operatecheckv2-c.md) | Defines the **Switch**, **CheckBox**, and **Radio** types for the right element of the list item. You can set the corresponding attribute based on the type. |
+| [OperateIconV2](arkts-arkui-arkui-advanced-composelistitemv2-operateiconv2-c.md) | Defines the type of the right icon element of the list item. |
+| [OperateItemV2](arkts-arkui-arkui-advanced-composelistitemv2-operateitemv2-c.md) | Defines the element types for the right element of list items. |
 
 ### Structs
 
 | Name | Description |
 | --- | --- |
-| [ComposeListItemV2](arkts-arkui-arkui-advanced-composelistitemv2-composelistitemv2-s.md) | Declare ComposeListItemV2 |
+| [ComposeListItemV2](arkts-arkui-arkui-advanced-composelistitemv2-composelistitemv2-s.md) | The **ComposeListItemV2** component is used to display a series of list items with the same width, suitable for presenting continuous, multi-row combinations of similar data (such as images and text). |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [ContentItemV2Options](arkts-arkui-arkui-advanced-composelistitemv2-contentitemv2options-i.md) | Declare interface ContentItemV2Options |
-| [OperateButtonV2Options](arkts-arkui-arkui-advanced-composelistitemv2-operatebuttonv2options-i.md) | Declare interface OperateButtonV2Options |
-| [OperateCheckV2Options](arkts-arkui-arkui-advanced-composelistitemv2-operatecheckv2options-i.md) | Declare interface OperateCheckV2Options |
-| [OperateIconV2Options](arkts-arkui-arkui-advanced-composelistitemv2-operateiconv2options-i.md) | Declare interface OperateIconV2Options |
-| [OperateItemV2Options](arkts-arkui-arkui-advanced-composelistitemv2-operateitemv2options-i.md) | Declare interface OperateItemV2Options |
-
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [IconTypeV2](arkts-arkui-arkui-advanced-composelistitemv2-icontypev2-e.md) | Declare enum IconTypeV2 |
+| [ContentItemV2Options](arkts-arkui-arkui-advanced-composelistitemv2-contentitemv2options-i.md) | Defines the options for the **ContentItemV2** constructor. |
+| [OperateButtonV2Options](arkts-arkui-arkui-advanced-composelistitemv2-operatebuttonv2options-i.md) | Defines options for the **OperateButtonV2** constructor. |
+| [OperateCheckV2Options](arkts-arkui-arkui-advanced-composelistitemv2-operatecheckv2options-i.md) | Defines options for the **OperateCheckV2** constructor. |
+| [OperateIconV2Options](arkts-arkui-arkui-advanced-composelistitemv2-operateiconv2options-i.md) | Defines options for the **OperateIconV2** constructor. |
+| [OperateItemV2Options](arkts-arkui-arkui-advanced-composelistitemv2-operateitemv2options-i.md) | Defines the options for the **OperateItemV2** constructor. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [OnActionCallback](arkts-arkui-onactioncallback-t.md) | Callback function when operate the icon. |
-| [OnChangeCallback](arkts-arkui-onchangecallback-t.md) | Callback function when operate the checkbox/switch/radio. |
+| [OnActionCallback](arkts-arkui-onactioncallback-t.md) | Defines the callback triggered for the tap event of the right icon or arrow of the list item. |
+| [OnChangeCallback](arkts-arkui-onchangecallback-t.md) | Defines the callback triggered when the state of the right element **Switch**, **CheckBox**, or **Radio** of the list item changes. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [IconTypeV2](arkts-arkui-arkui-advanced-composelistitemv2-icontypev2-e.md) | Enumerates icon types for the left element of list items. |
 
 ## Examples
 

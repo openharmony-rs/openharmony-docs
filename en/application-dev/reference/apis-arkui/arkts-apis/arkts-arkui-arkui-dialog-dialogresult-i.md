@@ -8,6 +8,8 @@ Response result for dialog.
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-export interface DialogResult--><!--Device-unnamed-export interface DialogResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -31,5 +33,7 @@ Id of the dialog. The value should be an integer.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-DialogResult-dialogId: int--><!--Device-DialogResult-dialogId: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

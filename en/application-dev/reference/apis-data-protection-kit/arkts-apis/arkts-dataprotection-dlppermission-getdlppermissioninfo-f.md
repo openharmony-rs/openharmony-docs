@@ -20,6 +20,8 @@ You are advised to call [isInSandbox](arkts-dataprotection-dlppermission-isinsan
 
 **Since:** 10
 
+<!--Device-dlpPermission-function getDLPPermissionInfo(): Promise<DLPPermissionInfo>--><!--Device-dlpPermission-function getDLPPermissionInfo(): Promise<DLPPermissionInfo>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Return value:**
@@ -67,6 +69,8 @@ Obtains the permission information of this DLP file. The returned permission inf
 When processing files in the DLP sandbox, the system determines the operations that can be performed for the current user to prevent calling unauthorized capabilities.
 
 **Since:** 10
+
+<!--Device-dlpPermission-function getDLPPermissionInfo(callback: AsyncCallback<DLPPermissionInfo>): void--><!--Device-dlpPermission-function getDLPPermissionInfo(callback: AsyncCallback<DLPPermissionInfo>): void-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

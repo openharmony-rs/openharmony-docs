@@ -10,6 +10,8 @@ type ISendable = lang.ISendable
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-collections-type ISendable = lang.ISendable--><!--Device-collections-type ISendable = lang.ISendable-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Type:** [lang.ISendable](arkts-arkts-lang-isendable-i.md)

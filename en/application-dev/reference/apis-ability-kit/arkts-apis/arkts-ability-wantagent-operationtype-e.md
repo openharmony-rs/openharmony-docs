@@ -8,6 +8,8 @@ Enumerates the operation types of the WantAgent objects.
 
 **Since:** 9
 
+<!--Device-wantAgent-export enum OperationType--><!--Device-wantAgent-export enum OperationType-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## UNKNOWN_TYPE
@@ -20,7 +22,9 @@ Unknown operation type.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-OperationType-UNKNOWN_TYPE = 0--><!--Device-OperationType-UNKNOWN_TYPE = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -34,7 +38,9 @@ Starts an ability with a UI.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-OperationType-START_ABILITY--><!--Device-OperationType-START_ABILITY-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -48,7 +54,9 @@ Starts multiple abilities with a UI.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-OperationType-START_ABILITIES--><!--Device-OperationType-START_ABILITIES-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -62,7 +70,9 @@ Starts an ability without a UI (valid only in the FA model).
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-OperationType-START_SERVICE--><!--Device-OperationType-START_SERVICE-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -76,6 +86,8 @@ Sends a common event.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-OperationType-SEND_COMMON_EVENT--><!--Device-OperationType-SEND_COMMON_EVENT-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

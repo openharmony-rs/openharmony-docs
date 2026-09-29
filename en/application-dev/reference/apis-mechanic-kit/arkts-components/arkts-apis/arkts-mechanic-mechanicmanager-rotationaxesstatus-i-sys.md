@@ -10,6 +10,8 @@ Rotation axes status
 
 **Since:** 20
 
+<!--Device-mechanicManager-export interface RotationAxesStatus--><!--Device-mechanicManager-export interface RotationAxesStatus-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Whether the pitch axis is enabled.
 
 **Since:** 20
 
+<!--Device-RotationAxesStatus-pitchEnabled: boolean--><!--Device-RotationAxesStatus-pitchEnabled: boolean-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Whether the pitch axis is limited.
 **Type:** [RotationAxisLimited](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md)
 
 **Since:** 20
+
+<!--Device-RotationAxesStatus-pitchLimited?: RotationAxisLimited--><!--Device-RotationAxesStatus-pitchLimited?: RotationAxisLimited-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 
@@ -64,6 +70,8 @@ Whether the roll axis is enabled.
 
 **Since:** 20
 
+<!--Device-RotationAxesStatus-rollEnabled: boolean--><!--Device-RotationAxesStatus-rollEnabled: boolean-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -79,6 +87,8 @@ Whether the roll axis is limited.
 **Type:** [RotationAxisLimited](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md)
 
 **Since:** 20
+
+<!--Device-RotationAxesStatus-rollLimited?: RotationAxisLimited--><!--Device-RotationAxesStatus-rollLimited?: RotationAxisLimited-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 
@@ -96,6 +106,8 @@ Whether the yaw axis is enabled.
 
 **Since:** 20
 
+<!--Device-RotationAxesStatus-yawEnabled: boolean--><!--Device-RotationAxesStatus-yawEnabled: boolean-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -111,6 +123,8 @@ Whether the yaw axis is limited.
 **Type:** [RotationAxisLimited](arkts-mechanic-mechanicmanager-rotationaxislimited-e-sys.md)
 
 **Since:** 20
+
+<!--Device-RotationAxesStatus-yawLimited?: RotationAxisLimited--><!--Device-RotationAxesStatus-yawLimited?: RotationAxisLimited-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 

@@ -18,6 +18,8 @@ Initializes the active tag chip.
 
 **Required permissions:** ohos.permission.NFC_TAG
 
+<!--Device-connectedTag-function initialize(): void--><!--Device-connectedTag-function initialize(): void-End-->
+
 **System capability:** SystemCapability.Communication.ConnectedTag
 
 **Error codes:**

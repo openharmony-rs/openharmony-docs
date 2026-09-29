@@ -10,7 +10,9 @@ Permission request result object, containing information such as the list of req
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-unnamed-export type PermissionRequestResult = _PermissionRequestResult--><!--Device-unnamed-export type PermissionRequestResult = _PermissionRequestResult-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

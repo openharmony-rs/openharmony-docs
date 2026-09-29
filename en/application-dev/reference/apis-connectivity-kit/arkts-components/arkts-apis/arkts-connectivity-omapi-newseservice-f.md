@@ -27,6 +27,8 @@ The returned **SEService** instance is available only when **true** is returned 
 
 **Substitutes:** [createService](arkts-connectivity-omapi-createservice-f.md)
 
+<!--Device-omapi-function newSEService(type: 'serviceState', callback: Callback<ServiceState>): SEService--><!--Device-omapi-function newSEService(type: 'serviceState', callback: Callback<ServiceState>): SEService-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 **Parameters:**

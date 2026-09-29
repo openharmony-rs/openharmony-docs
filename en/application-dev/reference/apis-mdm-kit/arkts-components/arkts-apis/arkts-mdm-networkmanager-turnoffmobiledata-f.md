@@ -20,6 +20,8 @@ Turns off mobile data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function turnOffMobileData(admin: Want): void--><!--Device-networkManager-function turnOffMobileData(admin: Want): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

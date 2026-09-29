@@ -16,6 +16,8 @@ Creates a **DeviceManager** instance. The **DeviceManager** instance is the entr
 
 **Since:** 10
 
+<!--Device-distributedDeviceManager-function createDeviceManager(bundleName: string): DeviceManager--><!--Device-distributedDeviceManager-function createDeviceManager(bundleName: string): DeviceManager-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Parameters:**

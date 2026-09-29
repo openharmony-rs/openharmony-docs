@@ -18,6 +18,8 @@ Check whether the device supports the [openCertificateDetailDialog](arkts-device
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManagerDialog-function supportsCACertDialog(): boolean--><!--Device-certificateManagerDialog-function supportsCACertDialog(): boolean-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 **Return value:**

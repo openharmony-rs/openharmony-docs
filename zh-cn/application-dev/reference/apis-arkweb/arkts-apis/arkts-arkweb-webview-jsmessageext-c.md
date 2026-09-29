@@ -10,6 +10,8 @@ JsMessageExt支持多种JavaScript返回值类型的解析：字符串（getStri
 
 **起始版本：** 10
 
+<!--Device-webview-class JsMessageExt--><!--Device-webview-class JsMessageExt-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -29,6 +31,8 @@ getArray(): Array<string | number | boolean>
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-JsMessageExt-getArray(): Array<string | number | boolean>--><!--Device-JsMessageExt-getArray(): Array<string | number | boolean>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -56,6 +60,8 @@ getArrayBuffer(): ArrayBuffer
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-JsMessageExt-getArrayBuffer(): ArrayBuffer--><!--Device-JsMessageExt-getArrayBuffer(): ArrayBuffer-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -82,6 +88,8 @@ getBoolean(): boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-JsMessageExt-getBoolean(): boolean--><!--Device-JsMessageExt-getBoolean(): boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -106,6 +114,8 @@ getErrorDescription(): string | null
 
 **起始版本：** 22
 
+<!--Device-JsMessageExt-getErrorDescription(): string | null--><!--Device-JsMessageExt-getErrorDescription(): string | null-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -125,6 +135,8 @@ getNumber(): number
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-JsMessageExt-getNumber(): number--><!--Device-JsMessageExt-getNumber(): number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -152,6 +164,8 @@ getString(): string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-JsMessageExt-getString(): string--><!--Device-JsMessageExt-getString(): string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -177,6 +191,8 @@ getType(): JsMessageType
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-JsMessageExt-getType(): JsMessageType--><!--Device-JsMessageExt-getType(): JsMessageType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

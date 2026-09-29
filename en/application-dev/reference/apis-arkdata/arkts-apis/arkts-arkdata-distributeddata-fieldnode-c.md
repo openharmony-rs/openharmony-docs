@@ -12,6 +12,8 @@ Represents a **Schema** instance, which provides the APIs for defining the value
 
 **Substitutes:** FieldNode
 
+<!--Device-distributedData-class FieldNode--><!--Device-distributedData-class FieldNode-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Appends a child node to this **FieldNode**.
 **Deprecated since:** 9
 
 **Substitutes:** appendChild
+
+<!--Device-FieldNode-appendChild(child: FieldNode): boolean--><!--Device-FieldNode-appendChild(child: FieldNode): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -83,6 +87,8 @@ A constructor used to create a **FieldNode** instance with a string field.
 
 **Substitutes:** constructor
 
+<!--Device-FieldNode-constructor(name: string)--><!--Device-FieldNode-constructor(name: string)-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **Parameters:**
@@ -107,6 +113,8 @@ Default value of a **FieldNode**.
 
 **Substitutes:** default
 
+<!--Device-FieldNode-default: string--><!--Device-FieldNode-default: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## nullable
@@ -125,6 +133,8 @@ Whether the database field can be null.
 
 **Substitutes:** nullable
 
+<!--Device-FieldNode-nullable: boolean--><!--Device-FieldNode-nullable: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## type
@@ -142,5 +152,7 @@ Value of the data type corresponding to the specified node.
 **Deprecated since:** 9
 
 **Substitutes:** type
+
+<!--Device-FieldNode-type: number--><!--Device-FieldNode-type: number-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore

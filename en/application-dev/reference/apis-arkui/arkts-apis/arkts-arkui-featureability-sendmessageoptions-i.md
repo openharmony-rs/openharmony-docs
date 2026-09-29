@@ -10,6 +10,8 @@ export interface SendMessageOptions
 
 **Deprecated since:** 8
 
+<!--Device-unnamed-export interface SendMessageOptions--><!--Device-unnamed-export interface SendMessageOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## complete
@@ -24,6 +26,8 @@ Called when the execution is completed.
 
 **Deprecated since:** 8
 
+<!--Device-SendMessageOptions-complete?: () => void--><!--Device-SendMessageOptions-complete?: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## fail
@@ -37,6 +41,8 @@ Called when the messages fail to be sent.
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-SendMessageOptions-fail?: (data: string, code: number) => void--><!--Device-SendMessageOptions-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -59,6 +65,8 @@ Called when the messages are sent successfully.
 
 **Deprecated since:** 8
 
+<!--Device-SendMessageOptions-success?: () => void--><!--Device-SendMessageOptions-success?: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## abilityName
@@ -74,6 +82,8 @@ Destination ability name, which is case sensitive.
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-SendMessageOptions-abilityName: string--><!--Device-SendMessageOptions-abilityName: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -91,6 +101,8 @@ Name of the destination bundle where the ability has been located. The name is c
 
 **Deprecated since:** 8
 
+<!--Device-SendMessageOptions-bundleName: string--><!--Device-SendMessageOptions-bundleName: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## deviceId
@@ -107,6 +119,8 @@ Destination device ID.
 
 **Deprecated since:** 8
 
+<!--Device-SendMessageOptions-deviceId: string--><!--Device-SendMessageOptions-deviceId: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## message
@@ -122,5 +136,7 @@ Messages sent to the destination device. A maximum of 1 KB of data can be transm
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-SendMessageOptions-message?: string--><!--Device-SendMessageOptions-message?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite

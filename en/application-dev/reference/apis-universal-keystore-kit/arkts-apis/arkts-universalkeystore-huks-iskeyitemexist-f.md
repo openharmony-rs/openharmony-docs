@@ -20,6 +20,8 @@ If the key does not exist, the error code 12000011 is returned.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-huks-function isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void--><!--Device-huks-function isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 **Parameters:**
@@ -165,6 +167,8 @@ Checks whether a key exists. This API uses a promise to return the result.
 If the key does not exist, the error code 12000011 is returned.
 
 **Since:** 9
+
+<!--Device-huks-function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean>--><!--Device-huks-function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

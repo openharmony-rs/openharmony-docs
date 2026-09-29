@@ -8,6 +8,8 @@ Enumerates radio access technologies.
 
 **Since:** 6
 
+<!--Device-radio-export enum RadioTechnology--><!--Device-radio-export enum RadioTechnology-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## RADIO_TECHNOLOGY_UNKNOWN
@@ -19,6 +21,8 @@ RADIO_TECHNOLOGY_UNKNOWN = 0
 Unknown RAT
 
 **Since:** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_UNKNOWN = 0--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -32,6 +36,8 @@ Global System for Mobile Communication (GSM)
 
 **Since:** 6
 
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_GSM = 1--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_GSM = 1-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## RADIO_TECHNOLOGY_1XRTT
@@ -43,6 +49,8 @@ RADIO_TECHNOLOGY_1XRTT = 2
 Single-Carrier Radio Transmission Technology (1XRTT)
 
 **Since:** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_1XRTT = 2--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_1XRTT = 2-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -56,6 +64,8 @@ Wideband Code Division Multiple Access (WCDMA)
 
 **Since:** 6
 
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_WCDMA = 3--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_WCDMA = 3-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## RADIO_TECHNOLOGY_HSPA
@@ -67,6 +77,8 @@ RADIO_TECHNOLOGY_HSPA = 4
 High Speed Packet Access (HSPA)
 
 **Since:** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_HSPA = 4--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_HSPA = 4-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -80,6 +92,8 @@ Evolved High Speed Packet Access (HSPA+)
 
 **Since:** 6
 
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_HSPAP = 5--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_HSPAP = 5-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## RADIO_TECHNOLOGY_TD_SCDMA
@@ -91,6 +105,8 @@ RADIO_TECHNOLOGY_TD_SCDMA = 6
 TD-SCDMA.
 
 **Since:** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_TD_SCDMA = 6--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_TD_SCDMA = 6-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -104,6 +120,8 @@ Evolution-Data Optimized (EVDO)
 
 **Since:** 6
 
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_EVDO = 7--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_EVDO = 7-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## RADIO_TECHNOLOGY_EHRPD
@@ -115,6 +133,8 @@ RADIO_TECHNOLOGY_EHRPD = 8
 Evolved High Rate Package Data (EHRPD)
 
 **Since:** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_EHRPD = 8--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_EHRPD = 8-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -128,6 +148,8 @@ Long Term Evolution (LTE)
 
 **Since:** 6
 
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_LTE = 9--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_LTE = 9-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## RADIO_TECHNOLOGY_LTE_CA
@@ -139,6 +161,8 @@ RADIO_TECHNOLOGY_LTE_CA = 10
 Long Term Evolution_Carrier Aggregation (LTE_CA)
 
 **Since:** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_LTE_CA = 10--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_LTE_CA = 10-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -152,6 +176,8 @@ Industrial Wireless LAN (IWLAN)
 
 **Since:** 6
 
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_IWLAN = 11--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_IWLAN = 11-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## RADIO_TECHNOLOGY_NR
@@ -163,5 +189,7 @@ RADIO_TECHNOLOGY_NR = 12
 New Radio (NR)
 
 **Since:** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_NR = 12--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_NR = 12-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService

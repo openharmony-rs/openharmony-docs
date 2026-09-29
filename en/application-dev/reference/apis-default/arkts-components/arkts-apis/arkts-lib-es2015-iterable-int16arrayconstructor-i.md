@@ -29,6 +29,8 @@ from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number, this
 
 Creates an array from an array-like or iterable object.
 
+<!--Device-Int16ArrayConstructor-from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number, thisArg?: any): Int16Array--><!--Device-Int16ArrayConstructor-from(arrayLike: Iterable<number>, mapfn?: (v: number, k: number) => number, thisArg?: any): Int16Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

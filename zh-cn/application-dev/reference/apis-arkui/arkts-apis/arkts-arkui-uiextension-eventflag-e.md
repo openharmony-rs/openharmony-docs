@@ -8,6 +8,8 @@ enum EventFlag
 
 **起始版本：** 18
 
+<!--Device-uiExtension-enum EventFlag--><!--Device-uiExtension-enum EventFlag-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## EVENT_PAN_GESTURE_LEFT
@@ -22,7 +24,9 @@ EVENT_PAN_GESTURE_LEFT = 0x00000001
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventFlag-EVENT_PAN_GESTURE_LEFT = 0x00000001--><!--Device-EventFlag-EVENT_PAN_GESTURE_LEFT = 0x00000001-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,7 +42,9 @@ EVENT_PAN_GESTURE_RIGHT = 0x00000002
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventFlag-EVENT_PAN_GESTURE_RIGHT = 0x00000002--><!--Device-EventFlag-EVENT_PAN_GESTURE_RIGHT = 0x00000002-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +60,9 @@ EVENT_LONG_PRESS = 0x00000200
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventFlag-EVENT_LONG_PRESS = 0x00000200--><!--Device-EventFlag-EVENT_LONG_PRESS = 0x00000200-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,7 +78,9 @@ EVENT_PAN_GESTURE_UP = 0x00000004
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventFlag-EVENT_PAN_GESTURE_UP = 0x00000004--><!--Device-EventFlag-EVENT_PAN_GESTURE_UP = 0x00000004-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,7 +96,9 @@ EVENT_CLICK = 0x00000100
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventFlag-EVENT_CLICK = 0x00000100--><!--Device-EventFlag-EVENT_CLICK = 0x00000100-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,7 +114,9 @@ EVENT_NONE = 0x00000000
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventFlag-EVENT_NONE = 0x00000000--><!--Device-EventFlag-EVENT_NONE = 0x00000000-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,6 +132,8 @@ EVENT_PAN_GESTURE_DOWN = 0x00000008
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventFlag-EVENT_PAN_GESTURE_DOWN = 0x00000008--><!--Device-EventFlag-EVENT_PAN_GESTURE_DOWN = 0x00000008-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

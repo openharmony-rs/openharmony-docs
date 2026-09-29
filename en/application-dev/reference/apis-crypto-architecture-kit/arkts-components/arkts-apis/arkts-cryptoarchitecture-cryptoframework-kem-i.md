@@ -8,6 +8,8 @@ Key encapsulation mechanism (KEM) interface, defining methods for key encapsulat
 
 **Since:** 26.0.0
 
+<!--Device-cryptoFramework-interface Kem--><!--Device-cryptoFramework-interface Kem-End-->
+
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Key decapsulation operation. Using the receiver's private key, executed by the r
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Kem-decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise<Uint8Array>--><!--Device-Kem-decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -90,7 +94,9 @@ Key decapsulation operation. Using the receiver's private key, executed by the r
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Kem-decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array--><!--Device-Kem-decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -150,7 +156,9 @@ Key encapsulation operation. Using the recipient's public key, executed by the s
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Kem-encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise<KemEncapResult>--><!--Device-Kem-encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise<KemEncapResult>-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -212,7 +220,9 @@ Key encapsulation operation. Using the recipient's public key, executed by the s
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Kem-encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult--><!--Device-Kem-encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 

@@ -10,6 +10,8 @@ This API is used to define the notification reminder behavior level of Notificat
 
 **Since:** 9
 
+<!--Device-notificationManager-export enum SlotLevel--><!--Device-notificationManager-export enum SlotLevel-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## LEVEL_NONE
@@ -21,6 +23,8 @@ LEVEL_NONE = 0
 Notification is disabled.
 
 **Since:** 9
+
+<!--Device-SlotLevel-LEVEL_NONE = 0--><!--Device-SlotLevel-LEVEL_NONE = 0-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -34,6 +38,8 @@ Notification is enabled, but the notification icon is not displayed in the statu
 
 **Since:** 9
 
+<!--Device-SlotLevel-LEVEL_MIN = 1--><!--Device-SlotLevel-LEVEL_MIN = 1-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## LEVEL_LOW
@@ -45,6 +51,8 @@ LEVEL_LOW = 2
 Notification is enabled, and the notification icon is displayed in the status bar, with no alert tone and banner.
 
 **Since:** 9
+
+<!--Device-SlotLevel-LEVEL_LOW = 2--><!--Device-SlotLevel-LEVEL_LOW = 2-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -58,6 +66,8 @@ Notification is enabled, and the notification icon is displayed in the status ba
 
 **Since:** 9
 
+<!--Device-SlotLevel-LEVEL_DEFAULT = 3--><!--Device-SlotLevel-LEVEL_DEFAULT = 3-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## LEVEL_HIGH
@@ -69,5 +79,7 @@ LEVEL_HIGH = 4
 Notification is enabled, and the notification icon is displayed in the status bar, with an alert tone and banner.
 
 **Since:** 9
+
+<!--Device-SlotLevel-LEVEL_HIGH = 4--><!--Device-SlotLevel-LEVEL_HIGH = 4-End-->
 
 **System capability:** SystemCapability.Notification.Notification

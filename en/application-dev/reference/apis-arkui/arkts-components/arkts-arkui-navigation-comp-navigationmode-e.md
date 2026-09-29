@@ -32,6 +32,8 @@ Display mode of the navigation page. When **Navigation** is displayed in split-c
 
 **Since:** 9
 
+<!--Device-unnamed-declare enum NavigationMode--><!--Device-unnamed-declare enum NavigationMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Stack
@@ -45,6 +47,8 @@ The navigation page and content area are displayed independently of each other, 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigationMode-Stack--><!--Device-NavigationMode-Stack-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +76,8 @@ The navigation page and content area are displayed in different columns.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavigationMode-Split--><!--Device-NavigationMode-Split-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Auto
@@ -88,6 +94,8 @@ In API version 10 and later versions: If the window width is greater than or equ
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavigationMode-Auto--><!--Device-NavigationMode-Auto-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## AUTO_WITH_ASPECT_RATIO
@@ -103,5 +111,7 @@ If the navigation width is greater than the sum of minNavBarWidth and minContent
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-NavigationMode-AUTO_WITH_ASPECT_RATIO--><!--Device-NavigationMode-AUTO_WITH_ASPECT_RATIO-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

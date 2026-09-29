@@ -10,6 +10,8 @@ CanvasRenderingContext2D allows you to draw rectangles, text, images, and other 
 
 **Since:** 4
 
+<!--Device-unnamed-export interface CanvasRenderingContext2D--><!--Device-unnamed-export interface CanvasRenderingContext2D-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## arc
@@ -23,6 +25,8 @@ Draws an arc on the canvas.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void--><!--Device-CanvasRenderingContext2D-arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +53,8 @@ Draws an arc based on the radius and points on the arc.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void--><!--Device-CanvasRenderingContext2D-arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -73,6 +79,8 @@ Creates a drawing path.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-beginPath(): void--><!--Device-CanvasRenderingContext2D-beginPath(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bezierCurveTo
@@ -86,6 +94,8 @@ Draws a cubic bezier curve on the canvas.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void--><!--Device-CanvasRenderingContext2D-bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +122,8 @@ Clears the content in a rectangle on the canvas.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-clearRect(x: number, y: number, width: number, height: number): void--><!--Device-CanvasRenderingContext2D-clearRect(x: number, y: number, width: number, height: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -135,6 +147,8 @@ Sets a path as the clipping path.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-clip(): void--><!--Device-CanvasRenderingContext2D-clip(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## closePath
@@ -149,6 +163,8 @@ Draws a closed path.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-closePath(): void--><!--Device-CanvasRenderingContext2D-closePath(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## createImageData
@@ -162,6 +178,8 @@ Creates an ImageData object.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-createImageData(width: number, height: number): ImageData--><!--Device-CanvasRenderingContext2D-createImageData(width: number, height: number): ImageData-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,6 +210,8 @@ Creates an ImageData object.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-createImageData(imageData: ImageData): ImageData--><!--Device-CanvasRenderingContext2D-createImageData(imageData: ImageData): ImageData-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -217,6 +237,8 @@ Creates a linear gradient color.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient--><!--Device-CanvasRenderingContext2D-createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -247,6 +269,8 @@ Creates a path that is later used by the CanvasRenderingContext2D object.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-createPath2D(path?: Path2D): Path2D--><!--Device-CanvasRenderingContext2D-createPath2D(path?: Path2D): Path2D-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -275,6 +299,8 @@ Creates a path that is later used by the CanvasRenderingContext2D object.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-createPath2D(cmds?: string): Path2D--><!--Device-CanvasRenderingContext2D-createPath2D(cmds?: string): Path2D-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -300,6 +326,8 @@ Creates a pattern for image filling based on a specified source image and repeti
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-createPattern(image: Image, repetition: string): object--><!--Device-CanvasRenderingContext2D-createPattern(image: Image, repetition: string): object-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -327,6 +355,8 @@ Creates a radial gradient color.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient--><!--Device-CanvasRenderingContext2D-createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -358,6 +388,8 @@ Draws an image.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-drawImage(image: Image, dx: number, dy: number, dWidth: number, dHeight: number): void--><!--Device-CanvasRenderingContext2D-drawImage(image: Image, dx: number, dy: number, dWidth: number, dHeight: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -395,6 +427,8 @@ Draws an image.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-drawImage(    image: Image,    sx: number,    sy: number,    sWidth: number,    sHeight: number,    dx: number,    dy: number,    dWidth: number,    dHeight: number,  ): void--><!--Device-CanvasRenderingContext2D-drawImage(    image: Image,    sx: number,    sy: number,    sWidth: number,    sHeight: number,    dx: number,    dy: number,    dWidth: number,    dHeight: number,  ): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -424,6 +458,8 @@ Draws an image.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-drawImage(image: image.PixelMap, dx: number, dy: number, dWidth: number, dHeight: number): void--><!--Device-CanvasRenderingContext2D-drawImage(image: image.PixelMap, dx: number, dy: number, dWidth: number, dHeight: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -460,6 +496,8 @@ Draws an image.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-drawImage(    image: image.PixelMap,    sx: number,    sy: number,    sWidth: number,    sHeight: number,    dx: number,    dy: number,    dWidth: number,    dHeight: number,  ): void--><!--Device-CanvasRenderingContext2D-drawImage(    image: image.PixelMap,    sx: number,    sy: number,    sWidth: number,    sHeight: number,    dx: number,    dy: number,    dWidth: number,    dHeight: number,  ): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -498,6 +536,8 @@ Draws an ellipse based on the coordinate and radius.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-ellipse(    x: number,    y: number,    radiusX: number,    radiusY: number,    rotation: number,    startAngle: number,    endAngle: number,    counterclockwise?: number,  ): void--><!--Device-CanvasRenderingContext2D-ellipse(    x: number,    y: number,    radiusX: number,    radiusY: number,    rotation: number,    startAngle: number,    endAngle: number,    counterclockwise?: number,  ): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -525,6 +565,8 @@ Fills the area inside a closed path.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-fill(): void--><!--Device-CanvasRenderingContext2D-fill(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fillRect
@@ -538,6 +580,8 @@ Fills a rectangle on the canvas.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-fillRect(x: number, y: number, width: number, height: number): void--><!--Device-CanvasRenderingContext2D-fillRect(x: number, y: number, width: number, height: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -562,6 +606,8 @@ Draws filled text on the canvas.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-fillText(text: string, x: number, y: number): void--><!--Device-CanvasRenderingContext2D-fillText(text: string, x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -583,6 +629,8 @@ ImageData object created with pixels in the specified area on the canvas.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-getImageData(sx: number, sy: number, sw: number, sh: number): ImageData--><!--Device-CanvasRenderingContext2D-getImageData(sx: number, sy: number, sw: number, sh: number): ImageData-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -613,6 +661,8 @@ Obtains the dash line style.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-getLineDash(): Array<number>--><!--Device-CanvasRenderingContext2D-getLineDash(): Array<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -632,6 +682,8 @@ Get an PixelMap object.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-getPixelMap(sx: number, sy: number, sw: number, sh: number): image.PixelMap--><!--Device-CanvasRenderingContext2D-getPixelMap(sx: number, sy: number, sw: number, sh: number): image.PixelMap-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -662,6 +714,8 @@ Connects the current point to a target position using a straight line.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-lineTo(x: number, y: number): void--><!--Device-CanvasRenderingContext2D-lineTo(x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -682,6 +736,8 @@ Returns a TextMetrics object used to obtain the width of specified text.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-measureText(text: string): TextMetrics--><!--Device-CanvasRenderingContext2D-measureText(text: string): TextMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -709,6 +765,8 @@ Moves a drawing path to a target position on the canvas.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-moveTo(x: number, y: number): void--><!--Device-CanvasRenderingContext2D-moveTo(x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -729,6 +787,8 @@ Puts the ImageData onto a rectangular area on the canvas.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-putImageData(imageData: ImageData, dx: number, dy: number): void--><!--Device-CanvasRenderingContext2D-putImageData(imageData: ImageData, dx: number, dy: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -762,6 +822,8 @@ Puts the ImageData onto a rectangular area on the canvas.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-putImageData(    imageData: ImageData,    dx: number,    dy: number,    dirtyX: number,    dirtyY: number,    dirtyWidth: number,    dirtyHeight: number,  ): void--><!--Device-CanvasRenderingContext2D-putImageData(    imageData: ImageData,    dx: number,    dy: number,    dirtyX: number,    dirtyY: number,    dirtyWidth: number,    dirtyHeight: number,  ): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -788,6 +850,8 @@ Draws a quadratic curve on the canvas.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void--><!--Device-CanvasRenderingContext2D-quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -810,6 +874,8 @@ Creates a rectangular.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-rect(x: number, y: number, width: number, height: number): void--><!--Device-CanvasRenderingContext2D-rect(x: number, y: number, width: number, height: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -834,6 +900,8 @@ Restores the saved drawing context.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-restore: () => void--><!--Device-CanvasRenderingContext2D-restore: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## rotate
@@ -847,6 +915,8 @@ Rotates a canvas clockwise around its coordinate axes.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-rotate(rotate: number): void--><!--Device-CanvasRenderingContext2D-rotate(rotate: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -868,6 +938,8 @@ Saves the current drawing context.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-save: () => void--><!--Device-CanvasRenderingContext2D-save: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## scale
@@ -881,6 +953,8 @@ Scales a canvas based on scaling factors.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-scale(x: number, y: number): void--><!--Device-CanvasRenderingContext2D-scale(x: number, y: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -902,6 +976,8 @@ Sets the dash line style.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-setLineDash(segments: Array<number>): void--><!--Device-CanvasRenderingContext2D-setLineDash(segments: Array<number>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -930,6 +1006,8 @@ Uses same parameters as the transform() function to reset the existing transform
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-setTransform(    scaleX: number,    skewX: number,    skewY: number,    scaleY: number,    translateX: number,    translateY: number,  ): void--><!--Device-CanvasRenderingContext2D-setTransform(    scaleX: number,    skewX: number,    skewY: number,    scaleY: number,    translateX: number,    translateY: number,  ): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -955,6 +1033,8 @@ Draws a border stroke.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-stroke(): void--><!--Device-CanvasRenderingContext2D-stroke(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 <a id="stroke-1"></a>
@@ -970,6 +1050,8 @@ Draws a path stroke.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-stroke(path: Path2D): void--><!--Device-CanvasRenderingContext2D-stroke(path: Path2D): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -990,6 +1072,8 @@ Draws a rectangle stroke on the canvas.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-strokeRect(x: number, y: number, width: number, height: number): void--><!--Device-CanvasRenderingContext2D-strokeRect(x: number, y: number, width: number, height: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1014,6 +1098,8 @@ Draws a text stroke on the canvas.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-strokeText(text: string, x: number, y: number): void--><!--Device-CanvasRenderingContext2D-strokeText(text: string, x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1036,6 +1122,8 @@ Draws the Bitmap to the current canvas.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-transferFromImageBitmap(bitmap: ImageBitmap): void--><!--Device-CanvasRenderingContext2D-transferFromImageBitmap(bitmap: ImageBitmap): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1055,6 +1143,8 @@ Defines a transformation matrix. To transform a graph, you only need to set para
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-transform(scaleX: number, skewX: number, skewY: number, scaleY: number, translateX: number, translateY: number): void--><!--Device-CanvasRenderingContext2D-transform(scaleX: number, skewX: number, skewY: number, scaleY: number, translateX: number, translateY: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1081,6 +1171,8 @@ Moves the origin of the coordinate system.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-translate(x: number, y: number): void--><!--Device-CanvasRenderingContext2D-translate(x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1104,6 +1196,8 @@ Sets the style of a paint to fill an area. Paint color used to fill the area. Ca
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-fillStyle?: string | CanvasGradient | CanvasPattern--><!--Device-CanvasRenderingContext2D-fillStyle?: string | CanvasGradient | CanvasPattern-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## font
@@ -1119,6 +1213,8 @@ Sets the font style. Font style. The default value is 10px sans-serif in tv, pho
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-font: string--><!--Device-CanvasRenderingContext2D-font: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1136,6 +1232,8 @@ Sets the alpha value. Global alpha value to set. The value ranges from 0.0 (comp
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-globalAlpha: number--><!--Device-CanvasRenderingContext2D-globalAlpha: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalCompositeOperation
@@ -1151,6 +1249,8 @@ Sets the composite operation type. source-over Default value. Displays the new d
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-globalCompositeOperation: string--><!--Device-CanvasRenderingContext2D-globalCompositeOperation: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1168,6 +1268,8 @@ Sets whether an image is smooth. default value is true.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-imageSmoothingEnabled: boolean--><!--Device-CanvasRenderingContext2D-imageSmoothingEnabled: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## lineCap
@@ -1183,6 +1285,8 @@ Sets the style of line endpoints. Style of line endpoints. Available values incl
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-lineCap: string--><!--Device-CanvasRenderingContext2D-lineCap: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1200,6 +1304,8 @@ Sets the dash line offset. Dash line offset. The value is a float number startin
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-lineDashOffset: number--><!--Device-CanvasRenderingContext2D-lineDashOffset: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## lineJoin
@@ -1215,6 +1321,8 @@ Sets the style for an intersection point where a line joins another. Style of th
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-lineJoin: string--><!--Device-CanvasRenderingContext2D-lineJoin: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1232,6 +1340,8 @@ Sets the width of a line.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-lineWidth?: number--><!--Device-CanvasRenderingContext2D-lineWidth?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## miterLimit
@@ -1247,6 +1357,8 @@ Sets the maximum miter length. The miter length is the distance between the inne
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-miterLimit: number--><!--Device-CanvasRenderingContext2D-miterLimit: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1264,6 +1376,8 @@ Sets the shadow blur degree. Shadow blur degree. A larger value indicates a more
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-shadowBlur: number--><!--Device-CanvasRenderingContext2D-shadowBlur: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadowColor
@@ -1279,6 +1393,8 @@ Sets the shadow color.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-shadowColor: string--><!--Device-CanvasRenderingContext2D-shadowColor: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1296,6 +1412,8 @@ Sets the x-axis shadow offset relative to the original object. X-axis shadow off
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-shadowOffsetX: number--><!--Device-CanvasRenderingContext2D-shadowOffsetX: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadowOffsetY
@@ -1311,6 +1429,8 @@ Sets the y-axis shadow offset relative to the original object. Y-axis shadow off
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-shadowOffsetY: number--><!--Device-CanvasRenderingContext2D-shadowOffsetY: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1328,6 +1448,8 @@ Sets the stroke paint style. Color of the stroke paint. Canvas gradient object u
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-strokeStyle?: string | CanvasGradient | CanvasPattern--><!--Device-CanvasRenderingContext2D-strokeStyle?: string | CanvasGradient | CanvasPattern-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textAlign
@@ -1344,6 +1466,8 @@ Sets the text alignment mode. Text alignment mode. Available values include: lef
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasRenderingContext2D-textAlign: "left" | "right" | "center" | "start" | "end"--><!--Device-CanvasRenderingContext2D-textAlign: "left" | "right" | "center" | "start" | "end"-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textBaseline
@@ -1359,5 +1483,7 @@ Sets a text baseline in the horizontal direction for text alignment. Text baseli
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasRenderingContext2D-textBaseline: string--><!--Device-CanvasRenderingContext2D-textBaseline: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

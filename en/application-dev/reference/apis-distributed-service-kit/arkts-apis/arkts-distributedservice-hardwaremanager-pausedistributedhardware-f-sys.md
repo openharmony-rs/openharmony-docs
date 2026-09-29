@@ -18,6 +18,8 @@ Pauses the distributed hardware service on the controlled device. This API uses 
 
 **Required permissions:** ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
 
+<!--Device-hardwareManager-function pauseDistributedHardware(description: HardwareDescriptor): Promise<void>--><!--Device-hardwareManager-function pauseDistributedHardware(description: HardwareDescriptor): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DistributedHardwareFWK
 
 **System API:** This is a system API.

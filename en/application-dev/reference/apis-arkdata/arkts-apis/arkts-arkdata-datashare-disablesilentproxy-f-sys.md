@@ -26,6 +26,8 @@ Observe the following when using this API:
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dataShare-function disableSilentProxy(context: Context, uri?: string): Promise<void>--><!--Device-dataShare-function disableSilentProxy(context: Context, uri?: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.

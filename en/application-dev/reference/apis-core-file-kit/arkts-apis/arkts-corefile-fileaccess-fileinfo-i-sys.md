@@ -10,6 +10,8 @@ Provides APIs for managing file or directory attribute information.
 
 **Deprecated since:** 23
 
+<!--Device-fileAccess-interface FileInfo--><!--Device-fileAccess-interface FileInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -37,6 +39,8 @@ Obtains a **FileIterator** object that lists the next-level files or directories
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileInfo-listFile(filter?: Filter): FileIterator--><!--Device-FileInfo-listFile(filter?: Filter): FileIterator-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -140,6 +144,8 @@ Obtains a **FileIterator** object that recursively retrieves the files matching 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileInfo-scanFile(filter?: Filter): FileIterator--><!--Device-FileInfo-scanFile(filter?: Filter): FileIterator-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -246,6 +252,8 @@ Name of the file or directory.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileInfo-fileName: string--><!--Device-FileInfo-fileName: string-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -267,6 +275,8 @@ Multipurpose Internet Mail Extensions (MIME) type of the file or directory.
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileInfo-mimeType: string--><!--Device-FileInfo-mimeType: string-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -290,6 +300,8 @@ Permissions on the file or directory.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileInfo-mode: number--><!--Device-FileInfo-mode: number-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -311,6 +323,8 @@ Time when the file or directory was last modified. <br>Unit: ms.
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileInfo-mtime: number--><!--Device-FileInfo-mtime: number-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -334,6 +348,8 @@ Relative path of the file or directory.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileInfo-relativePath: string--><!--Device-FileInfo-relativePath: string-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -356,6 +372,8 @@ Size of the file or directory. <br>Unit: Byte.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileInfo-size: number--><!--Device-FileInfo-size: number-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -377,6 +395,8 @@ URI of the file or directory.
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileInfo-uri: string--><!--Device-FileInfo-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

@@ -25,6 +25,8 @@ Obtains information about entries in the IP neighbor table of the local device, 
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO and ohos.permission.GET_IP_MAC_INFO
 
+<!--Device-connection-function getIpNeighTable(): Promise<Array<NetIpMacInfo>>--><!--Device-connection-function getIpNeighTable(): Promise<Array<NetIpMacInfo>>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Return value:**

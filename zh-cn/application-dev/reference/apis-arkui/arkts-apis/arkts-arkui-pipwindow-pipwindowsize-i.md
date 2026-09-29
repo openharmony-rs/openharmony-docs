@@ -8,6 +8,8 @@ interface PiPWindowSize
 
 **起始版本：** 15
 
+<!--Device-PiPWindow-interface PiPWindowSize--><!--Device-PiPWindow-interface PiPWindowSize-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,7 +30,9 @@ height: number
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPWindowSize-height: int--><!--Device-PiPWindowSize-height: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -44,7 +48,9 @@ scale: number
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPWindowSize-scale: double--><!--Device-PiPWindowSize-scale: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -60,6 +66,8 @@ width: number
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPWindowSize-width: int--><!--Device-PiPWindowSize-width: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

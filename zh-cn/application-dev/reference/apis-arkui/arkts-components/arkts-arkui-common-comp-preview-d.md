@@ -14,4 +14,6 @@ declare const Preview: ClassDecorator & ((value: PreviewParams) => ClassDecorato
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare const Preview: ClassDecorator & ((value: PreviewParams) => ClassDecorator)--><!--Device-unnamed-declare const Preview: ClassDecorator & ((value: PreviewParams) => ClassDecorator)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

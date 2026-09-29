@@ -32,6 +32,8 @@ Policy that forcibly enables extensions from external sources to run. Users cann
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): void--><!--Device-securityManager-function setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

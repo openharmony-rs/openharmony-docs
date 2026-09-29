@@ -10,6 +10,8 @@ Provides APIs for key operations. Before performing cryptographic operations (su
 
 **Since:** 9
 
+<!--Device-cryptoFramework-interface Key--><!--Device-cryptoFramework-interface Key-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Key
 - API versions 9 to 11: SystemCapability.Security.CryptoFramework
@@ -35,7 +37,9 @@ Obtains the byte stream of the key data. This API returns the result synchronous
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Key-getEncoded(): DataBlob--><!--Device-Key-getEncoded(): DataBlob-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Key
@@ -80,7 +84,9 @@ Obtains the key size in bits. The key can be a symmetric key, a public key, or a
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Key-getKeySize(): int--><!--Device-Key-getKeySize(): int-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Key
 
@@ -124,7 +130,9 @@ Indicates the algorithm name of the key object. This parameter contains the key 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Key-readonly algName: string--><!--Device-Key-readonly algName: string-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Key
@@ -142,7 +150,9 @@ Indicates the format of the key object.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Key-readonly format: string--><!--Device-Key-readonly format: string-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Key

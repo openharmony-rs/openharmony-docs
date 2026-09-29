@@ -20,6 +20,8 @@ Obtains the system update result. This API uses a promise to return the result. 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function getUpdateResult(admin: Want, version: string): Promise<UpdateResult>--><!--Device-systemManager-function getUpdateResult(admin: Want, version: string): Promise<UpdateResult>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

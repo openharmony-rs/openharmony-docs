@@ -18,6 +18,8 @@ Request strong authentication for os account local userId.
 
 **Required permissions:** ohos.permission.ACCESS_SCREEN_LOCK
 
+<!--Device-screenLock-function requestStrongAuth(reasonFlag: StrongAuthReasonFlags, userId: int): Promise<void>--><!--Device-screenLock-function requestStrongAuth(reasonFlag: StrongAuthReasonFlags, userId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **System API:** This is a system API.

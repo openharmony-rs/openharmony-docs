@@ -8,6 +8,8 @@ interface MaterialInfo
 
 **起始版本：** 26.0.0
 
+<!--Device-uiMaterial-interface MaterialInfo--><!--Device-uiMaterial-interface MaterialInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -34,6 +36,8 @@ state: MaterialState
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-MaterialInfo-state: MaterialState--><!--Device-MaterialInfo-state: MaterialState-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -53,5 +57,7 @@ type: MaterialType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-MaterialInfo-type: MaterialType--><!--Device-MaterialInfo-type: MaterialType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

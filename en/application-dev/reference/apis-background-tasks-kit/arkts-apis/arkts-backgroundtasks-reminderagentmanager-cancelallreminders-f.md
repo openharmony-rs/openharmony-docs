@@ -16,6 +16,8 @@ Cancels all reminders set by the current application. This API uses an asynchron
 
 **Since:** 9
 
+<!--Device-reminderAgentManager-function cancelAllReminders(callback: AsyncCallback<void>): void--><!--Device-reminderAgentManager-function cancelAllReminders(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **Parameters:**
@@ -58,6 +60,8 @@ function cancelAllReminders(): Promise<void>
 Cancels all reminders set by the current application. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-reminderAgentManager-function cancelAllReminders(): Promise<void>--><!--Device-reminderAgentManager-function cancelAllReminders(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 

@@ -22,6 +22,8 @@ Imports a key securely for the specified user. This API uses a promise to return
 
 **Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
+<!--Device-huks-function importWrappedKeyItemAsUser(    userId: number, keyAlias: string,    wrappingKeyAlias: string,    huksOptions: HuksOptions  ): Promise<void>--><!--Device-huks-function importWrappedKeyItemAsUser(    userId: number, keyAlias: string,    wrappingKeyAlias: string,    huksOptions: HuksOptions  ): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 **System API:** This is a system API.

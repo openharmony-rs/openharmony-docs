@@ -8,6 +8,8 @@ Describes the keep-alive application information, which can be obtained by calli
 
 **Since:** 14
 
+<!--Device-appManager-export interface KeepAliveBundleInfo--><!--Device-appManager-export interface KeepAliveBundleInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Whether the user can cancel the keep-alive status. **true** if yes, **false** ot
 
 **Since:** 20
 
+<!--Device-KeepAliveBundleInfo-allowUserToCancel?: boolean--><!--Device-KeepAliveBundleInfo-allowUserToCancel?: boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Bundle name.
 **Type:** string
 
 **Since:** 14
+
+<!--Device-KeepAliveBundleInfo-bundleName: string--><!--Device-KeepAliveBundleInfo-bundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -62,6 +68,8 @@ Type of the party that sets to keep the application alive.
 
 **Since:** 14
 
+<!--Device-KeepAliveBundleInfo-setter: KeepAliveSetter--><!--Device-KeepAliveBundleInfo-setter: KeepAliveSetter-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -78,6 +86,8 @@ ID of the user who keeps the application alive.
 
 **Since:** 20
 
+<!--Device-KeepAliveBundleInfo-setterUserId?: int--><!--Device-KeepAliveBundleInfo-setterUserId?: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ Type of the application to be kept alive.
 **Type:** [KeepAliveAppType](arkts-ability-appmanager-keepaliveapptype-e-sys.md)
 
 **Since:** 14
+
+<!--Device-KeepAliveBundleInfo-type: KeepAliveAppType--><!--Device-KeepAliveBundleInfo-type: KeepAliveAppType-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

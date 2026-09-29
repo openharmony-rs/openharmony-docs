@@ -20,6 +20,8 @@ Unregisters a mission status listener. This API uses an asynchronous callback to
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-distributedMissionManager-function unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback<void>): void--><!--Device-distributedMissionManager-function unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ Unregisters a mission status listener. This API uses a promise to return the res
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-distributedMissionManager-function unRegisterMissionListener(parameter: MissionDeviceInfo): Promise<void>--><!--Device-distributedMissionManager-function unRegisterMissionListener(parameter: MissionDeviceInfo): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

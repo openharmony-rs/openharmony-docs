@@ -8,6 +8,8 @@ Enumerates the appearance modes of the keyboard.
 
 **Since:** 15
 
+<!--Device-unnamed-declare enum KeyboardAppearance--><!--Device-unnamed-declare enum KeyboardAppearance-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## NONE_IMMERSIVE
@@ -23,6 +25,8 @@ Default appearance mode, not using immersive style.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-KeyboardAppearance-NONE_IMMERSIVE = 0--><!--Device-KeyboardAppearance-NONE_IMMERSIVE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Immersive mode, following the system.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-KeyboardAppearance-IMMERSIVE = 1--><!--Device-KeyboardAppearance-IMMERSIVE = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## LIGHT_IMMERSIVE
@@ -56,6 +62,8 @@ Immersive style in light mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-KeyboardAppearance-LIGHT_IMMERSIVE = 2--><!--Device-KeyboardAppearance-LIGHT_IMMERSIVE = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DARK_IMMERSIVE
@@ -71,5 +79,7 @@ Immersive style in dark mode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-KeyboardAppearance-DARK_IMMERSIVE = 3--><!--Device-KeyboardAppearance-DARK_IMMERSIVE = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

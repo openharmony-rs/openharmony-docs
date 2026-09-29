@@ -8,6 +8,8 @@ The module defines whether an application supports the multi-app mode.
 
 **Since:** 12
 
+<!--Device-unnamed-export enum MultiAppMode--><!--Device-unnamed-export enum MultiAppMode-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ The application does not support the multi-app mode.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MultiAppMode-NOT_SUPPORTED = 0--><!--Device-MultiAppMode-NOT_SUPPORTED = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -44,6 +48,8 @@ The application supports the multi-instance mode. When an application is set to 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MultiAppMode-MULTI_INSTANCE = 1--><!--Device-MultiAppMode-MULTI_INSTANCE = 1-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -59,6 +65,8 @@ The application supports the app-clone mode. The app-clone mode allows creating 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MultiAppMode-APP_CLONE = 2--><!--Device-MultiAppMode-APP_CLONE = 2-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

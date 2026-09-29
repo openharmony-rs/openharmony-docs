@@ -16,6 +16,8 @@ function destroyVirtualScreen(screenId:number, callback: AsyncCallback<void>): v
 
 **起始版本：** 9
 
+<!--Device-screen-function destroyVirtualScreen(screenId:long, callback: AsyncCallback<void>): void--><!--Device-screen-function destroyVirtualScreen(screenId:long, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -66,6 +68,8 @@ function destroyVirtualScreen(screenId:number): Promise<void>
 销毁虚拟屏幕，使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-screen-function destroyVirtualScreen(screenId:long): Promise<void>--><!--Device-screen-function destroyVirtualScreen(screenId:long): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

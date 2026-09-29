@@ -8,6 +8,8 @@ BackForwardCacheSupportedFeatures is a configuration class in the ArkWeb framewo
 
 **Since:** 12
 
+<!--Device-webview-class BackForwardCacheSupportedFeatures--><!--Device-webview-class BackForwardCacheSupportedFeatures-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ constructor()
 Constructs a **BackForwardCacheSupportedFeatures** object.
 
 **Since:** 12
+
+<!--Device-BackForwardCacheSupportedFeatures-constructor()--><!--Device-BackForwardCacheSupportedFeatures-constructor()-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -46,6 +50,8 @@ Default value: false.
 
 **Since:** 12
 
+<!--Device-BackForwardCacheSupportedFeatures-mediaTakeOver: boolean--><!--Device-BackForwardCacheSupportedFeatures-mediaTakeOver: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## nativeEmbed
@@ -65,5 +71,7 @@ Default value: false.
 **Type:** boolean
 
 **Since:** 12
+
+<!--Device-BackForwardCacheSupportedFeatures-nativeEmbed: boolean--><!--Device-BackForwardCacheSupportedFeatures-nativeEmbed: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

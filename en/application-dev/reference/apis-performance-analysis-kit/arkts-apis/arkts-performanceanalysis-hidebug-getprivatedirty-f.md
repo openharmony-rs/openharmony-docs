@@ -22,6 +22,8 @@ Obtains the size of the private dirty memory of a process. This API is implement
 
 **Since:** 9
 
+<!--Device-hidebug-function getPrivateDirty() : bigint--><!--Device-hidebug-function getPrivateDirty() : bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value:**

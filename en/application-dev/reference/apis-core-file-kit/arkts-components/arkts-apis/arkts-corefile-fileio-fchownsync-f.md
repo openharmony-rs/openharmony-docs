@@ -17,6 +17,8 @@ Changes the file owner based on the file descriptor. This API returns the result
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare function fchownSync(fd: number, uid: number, gid: number): void--><!--Device-unnamed-declare function fchownSync(fd: number, uid: number, gid: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

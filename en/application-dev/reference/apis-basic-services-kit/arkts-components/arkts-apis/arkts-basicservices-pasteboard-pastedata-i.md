@@ -8,42 +8,14 @@ Implements a **PasteData** object. PasteData contains one or more data records (
 
 **Since:** 6
 
+<!--Device-pasteboard-interface PasteData--><!--Device-pasteboard-interface PasteData-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 ## Modules to Import
 
 ```TypeScript
 import { pasteboard } from '@kit.BasicServicesKit';
-```
-
-## addHtmlRecord
-
-```TypeScript
-addHtmlRecord(htmlText: string): void
-```
-
-Adds an HTML record to the PasteData, and adds **MIMETYPE_TEXT_HTML** to **mimeTypes** in [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md). The parameters cannot be empty. Otherwise, the operation fails.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
-
-**System capability:** SystemCapability.MiscServices.Pasteboard
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| htmlText | string | Yes | HTML content. |
-
-**Examples**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-let html: string = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "<meta charset=\"utf-8\">\n" + "<title>HTML-PASTEBOARD_HTML</title>\n" + "</head>\n" + "<body>\n" + "    <h1>HEAD</h1>\n" + "    <p></p>\n" + "</body>\n" + "</html>";
-pasteData.addHtmlRecord(html);
 ```
 
 ## addRecord
@@ -56,7 +28,9 @@ Adds a data record to the PasteData, and adds its type to **mimeTypes** in [Past
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-addRecord(record: PasteDataRecord): void--><!--Device-PasteData-addRecord(record: PasteDataRecord): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -91,7 +65,9 @@ Adds a data record to the PasteData, and adds its type to **mimeTypes** in [Past
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-addRecord(mimeType: string, value: ValueType): void--><!--Device-PasteData-addRecord(mimeType: string, value: ValueType): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -118,99 +94,6 @@ let dataXml = new ArrayBuffer(256);
 pasteData.addRecord('app/xml', dataXml);
 ```
 
-## addTextRecord
-
-```TypeScript
-addTextRecord(text: string): void
-```
-
-Adds a plain text record to the PasteData, and adds **MIMETYPE_TEXT_PLAIN** to **mimeTypes** in [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md). The parameters cannot be empty. Otherwise, the operation fails.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
-
-**System capability:** SystemCapability.MiscServices.Pasteboard
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| text | string | Yes | Plain text. |
-
-**Examples**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-pasteData.addTextRecord('good');
-```
-
-## addUriRecord
-
-```TypeScript
-addUriRecord(uri: string): void
-```
-
-Adds a URI record to the PasteData, and adds **MIMETYPE_TEXT_URI** to **mimeTypes** in [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md). The parameters cannot be empty. Otherwise, the operation fails.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
-
-**System capability:** SystemCapability.MiscServices.Pasteboard
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| uri | string | Yes | URI content. |
-
-**Examples**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-pasteData.addUriRecord('dataability:///com.example.myapplication1/user.txt');
-```
-
-## addWantRecord
-
-```TypeScript
-addWantRecord(want: Want): void
-```
-
-Adds a Want record to the PasteData, and adds **MIMETYPE_TEXT_WANT** to **mimeTypes** in [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md). The parameters cannot be empty. Otherwise, the operation fails.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
-
-**System capability:** SystemCapability.MiscServices.Pasteboard
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | Want object. |
-
-**Examples**
-
-```TypeScript
-import { Want } from '@kit.AbilityKit';
-
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-let object: Want = {
-    bundleName: "com.example.aafwk.test",
-    abilityName: "com.example.aafwk.test.TwoAbility"
-};
-pasteData.addWantRecord(object);
-```
-
 ## getMimeTypes
 
 ```TypeScript
@@ -221,7 +104,9 @@ Obtains types of [PasteDataProperty](arkts-basicservices-pasteboard-pastedatapro
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-getMimeTypes(): Array<string>--><!--Device-PasteData-getMimeTypes(): Array<string>-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -248,7 +133,9 @@ Obtains the HTML content of the primary record.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-getPrimaryHtml(): string--><!--Device-PasteData-getPrimaryHtml(): string-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -281,7 +168,9 @@ Obtains the data type of the primary record in the pasteboard.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-getPrimaryMimeType(): string--><!--Device-PasteData-getPrimaryMimeType(): string-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -308,7 +197,9 @@ Obtains the PixelMap of the primary record.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-getPrimaryPixelMap(): image.PixelMap--><!--Device-PasteData-getPrimaryPixelMap(): image.PixelMap-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -350,7 +241,9 @@ Obtains the plain text of the primary record.
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-getPrimaryText(): string--><!--Device-PasteData-getPrimaryText(): string-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -387,7 +280,9 @@ Obtains the URI of the primary record.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-getPrimaryUri(): string--><!--Device-PasteData-getPrimaryUri(): string-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -420,7 +315,9 @@ Obtains the **Want** object of the primary record.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-getPrimaryWant(): Want--><!--Device-PasteData-getPrimaryWant(): Want-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -454,7 +351,9 @@ Obtains the property of the PasteData.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-getProperty(): PasteDataProperty--><!--Device-PasteData-getProperty(): PasteDataProperty-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -481,7 +380,9 @@ Obtains the record with a specific index in PasteData.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-getRecord(index: int): PasteDataRecord--><!--Device-PasteData-getRecord(index: int): PasteDataRecord-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -511,47 +412,6 @@ let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_
 let record: pasteboard.PasteDataRecord = pasteData.getRecord(0);
 ```
 
-## getRecordAt
-
-```TypeScript
-getRecordAt(index: number): PasteDataRecord
-```
-
-Obtains the record with a specific index in PasteData.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getRecord](#getrecord)(index: number)
-
-**System capability:** SystemCapability.MiscServices.Pasteboard
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| index | number | Yes | Index of the target record. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md) | Record with the specified index. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-
-**Examples**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-let record: pasteboard.PasteDataRecord = pasteData.getRecordAt(0);
-```
-
 ## getRecordCount
 
 ```TypeScript
@@ -562,7 +422,9 @@ Obtains the number of records in a PasteData object.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-getRecordCount(): int--><!--Device-PasteData-getRecordCount(): int-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -589,7 +451,9 @@ Obtains the custom tag from the PasteData. If no custom tag is set, an empty str
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-getTag(): string--><!--Device-PasteData-getTag(): string-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -606,47 +470,6 @@ let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_
 let tag: string = pasteData.getTag();
 ```
 
-## hasMimeType
-
-```TypeScript
-hasMimeType(mimeType: string): boolean
-```
-
-Checks whether the PasteData contains data of the specified type.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [hasType](#hastype)(mimeType: string)
-
-**System capability:** SystemCapability.MiscServices.Pasteboard
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| mimeType | string | Yes | Type of the data to query. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| boolean | Returns **true** if the specified data type exists; returns **false** otherwise. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-
-**Examples**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-let hasType: boolean = pasteData.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN);
-```
-
 ## hasType
 
 ```TypeScript
@@ -657,7 +480,9 @@ Checks whether the PasteData contains data of the specified MIME type.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-hasType(mimeType: string): boolean--><!--Device-PasteData-hasType(mimeType: string): boolean-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -696,6 +521,8 @@ Invoked to notify pasteboard service the utilization of PasteData has completed 
 
 **Since:** 12
 
+<!--Device-PasteData-pasteComplete(): void--><!--Device-PasteData-pasteComplete(): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 **Examples**
@@ -724,6 +551,8 @@ pasteStart(): void
 Notifies the pasteboard service to retain the cross-device channel before reading data from the pasteboard.
 
 **Since:** 12
+
+<!--Device-PasteData-pasteStart(): void--><!--Device-PasteData-pasteStart(): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -754,7 +583,9 @@ Removes the record with a specific index in PasteData.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-removeRecord(index: int): void--><!--Device-PasteData-removeRecord(index: int): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -778,47 +609,6 @@ let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_
 pasteData.removeRecord(0);
 ```
 
-## removeRecordAt
-
-```TypeScript
-removeRecordAt(index: number): boolean
-```
-
-Removes the record with a specific index in PasteData.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [removeRecord](#removerecord)(index: number)
-
-**System capability:** SystemCapability.MiscServices.Pasteboard
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| index | number | Yes | Specified index. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
-
-**Examples**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-let isRemove: boolean = pasteData.removeRecordAt(0);
-```
-
 ## replaceRecord
 
 ```TypeScript
@@ -829,7 +619,9 @@ Replaces the record with a specific index in PasteData.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-replaceRecord(index: int, record: PasteDataRecord): void--><!--Device-PasteData-replaceRecord(index: int, record: PasteDataRecord): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -855,43 +647,6 @@ let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIME
 pasteData.replaceRecord(0, record);
 ```
 
-## replaceRecordAt
-
-```TypeScript
-replaceRecordAt(index: number, record: PasteDataRecord): boolean
-```
-
-Replaces the record with a specific index in PasteData.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [replaceRecord](#replacerecord)(index: number, record: PasteDataRecord)
-
-**System capability:** SystemCapability.MiscServices.Pasteboard
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| index | number | Yes | Specified index. |
-| record | [PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md) | Yes | New record. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
-
-**Examples**
-
-```TypeScript
-let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
-let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
-let isReplace: boolean = pasteData.replaceRecordAt(0, record);
-```
-
 ## setProperty
 
 ```TypeScript
@@ -902,7 +657,9 @@ Sets a [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteData-setProperty(property: PasteDataProperty): void--><!--Device-PasteData-setProperty(property: PasteDataProperty): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -966,4 +723,303 @@ The localOnly and shareOption attributes of [PasteDataProperty](arkts-basicservi
         });
     });
 })
+```
+
+## addHtmlRecord
+
+```TypeScript
+addHtmlRecord(htmlText: string): void
+```
+
+Adds an HTML record to the PasteData, and adds **MIMETYPE_TEXT_HTML** to **mimeTypes** in [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md). The parameters cannot be empty. Otherwise, the operation fails.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+
+<!--Device-PasteData-addHtmlRecord(htmlText: string): void--><!--Device-PasteData-addHtmlRecord(htmlText: string): void-End-->
+
+**System capability:** SystemCapability.MiscServices.Pasteboard
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| htmlText | string | Yes | HTML content. |
+
+**Examples**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+let html: string = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "<meta charset=\"utf-8\">\n" + "<title>HTML-PASTEBOARD_HTML</title>\n" + "</head>\n" + "<body>\n" + "    <h1>HEAD</h1>\n" + "    <p></p>\n" + "</body>\n" + "</html>";
+pasteData.addHtmlRecord(html);
+```
+
+## addTextRecord
+
+```TypeScript
+addTextRecord(text: string): void
+```
+
+Adds a plain text record to the PasteData, and adds **MIMETYPE_TEXT_PLAIN** to **mimeTypes** in [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md). The parameters cannot be empty. Otherwise, the operation fails.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+
+<!--Device-PasteData-addTextRecord(text: string): void--><!--Device-PasteData-addTextRecord(text: string): void-End-->
+
+**System capability:** SystemCapability.MiscServices.Pasteboard
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| text | string | Yes | Plain text. |
+
+**Examples**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+pasteData.addTextRecord('good');
+```
+
+## addUriRecord
+
+```TypeScript
+addUriRecord(uri: string): void
+```
+
+Adds a URI record to the PasteData, and adds **MIMETYPE_TEXT_URI** to **mimeTypes** in [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md). The parameters cannot be empty. Otherwise, the operation fails.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+
+<!--Device-PasteData-addUriRecord(uri: string): void--><!--Device-PasteData-addUriRecord(uri: string): void-End-->
+
+**System capability:** SystemCapability.MiscServices.Pasteboard
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| uri | string | Yes | URI content. |
+
+**Examples**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+pasteData.addUriRecord('dataability:///com.example.myapplication1/user.txt');
+```
+
+## addWantRecord
+
+```TypeScript
+addWantRecord(want: Want): void
+```
+
+Adds a Want record to the PasteData, and adds **MIMETYPE_TEXT_WANT** to **mimeTypes** in [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md). The parameters cannot be empty. Otherwise, the operation fails.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [addRecord](#addrecord-1)(mimeType: string, value: ValueType)
+
+<!--Device-PasteData-addWantRecord(want: Want): void--><!--Device-PasteData-addWantRecord(want: Want): void-End-->
+
+**System capability:** SystemCapability.MiscServices.Pasteboard
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | Want object. |
+
+**Examples**
+
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+let object: Want = {
+    bundleName: "com.example.aafwk.test",
+    abilityName: "com.example.aafwk.test.TwoAbility"
+};
+pasteData.addWantRecord(object);
+```
+
+## getRecordAt
+
+```TypeScript
+getRecordAt(index: number): PasteDataRecord
+```
+
+Obtains the record with a specific index in PasteData.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getRecord](#getrecord)(index: number)
+
+<!--Device-PasteData-getRecordAt(index: number): PasteDataRecord--><!--Device-PasteData-getRecordAt(index: number): PasteDataRecord-End-->
+
+**System capability:** SystemCapability.MiscServices.Pasteboard
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| index | number | Yes | Index of the target record. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md) | Record with the specified index. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+
+**Examples**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+let record: pasteboard.PasteDataRecord = pasteData.getRecordAt(0);
+```
+
+## hasMimeType
+
+```TypeScript
+hasMimeType(mimeType: string): boolean
+```
+
+Checks whether the PasteData contains data of the specified type.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [hasType](#hastype)(mimeType: string)
+
+<!--Device-PasteData-hasMimeType(mimeType: string): boolean--><!--Device-PasteData-hasMimeType(mimeType: string): boolean-End-->
+
+**System capability:** SystemCapability.MiscServices.Pasteboard
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| mimeType | string | Yes | Type of the data to query. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Returns **true** if the specified data type exists; returns **false** otherwise. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+
+**Examples**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+let hasType: boolean = pasteData.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN);
+```
+
+## removeRecordAt
+
+```TypeScript
+removeRecordAt(index: number): boolean
+```
+
+Removes the record with a specific index in PasteData.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [removeRecord](#removerecord)(index: number)
+
+<!--Device-PasteData-removeRecordAt(index: number): boolean--><!--Device-PasteData-removeRecordAt(index: number): boolean-End-->
+
+**System capability:** SystemCapability.MiscServices.Pasteboard
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| index | number | Yes | Specified index. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+
+**Examples**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+let isRemove: boolean = pasteData.removeRecordAt(0);
+```
+
+## replaceRecordAt
+
+```TypeScript
+replaceRecordAt(index: number, record: PasteDataRecord): boolean
+```
+
+Replaces the record with a specific index in PasteData.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [replaceRecord](#replacerecord)(index: number, record: PasteDataRecord)
+
+<!--Device-PasteData-replaceRecordAt(index: number, record: PasteDataRecord): boolean--><!--Device-PasteData-replaceRecordAt(index: number, record: PasteDataRecord): boolean-End-->
+
+**System capability:** SystemCapability.MiscServices.Pasteboard
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| index | number | Yes | Specified index. |
+| record | [PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md) | Yes | New record. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
+let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
+let isReplace: boolean = pasteData.replaceRecordAt(0, record);
 ```

@@ -18,6 +18,8 @@ Delete the persistent P2P group with the specified network ID.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifiManager-function deletePersistentGroup(netId: int): void--><!--Device-wifiManager-function deletePersistentGroup(netId: int): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **System API:** This is a system API.

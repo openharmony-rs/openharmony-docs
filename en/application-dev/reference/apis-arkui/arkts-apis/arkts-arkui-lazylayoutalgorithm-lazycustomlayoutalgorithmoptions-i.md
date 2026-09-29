@@ -8,6 +8,8 @@ LazyCustomLayoutAlgorithm constructor options.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-interface LazyCustomLayoutAlgorithmOptions--><!--Device-unnamed-interface LazyCustomLayoutAlgorithmOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## axis
@@ -27,5 +29,7 @@ Defines the lazy layout axis.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-LazyCustomLayoutAlgorithmOptions-axis?: Axis--><!--Device-LazyCustomLayoutAlgorithmOptions-axis?: Axis-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

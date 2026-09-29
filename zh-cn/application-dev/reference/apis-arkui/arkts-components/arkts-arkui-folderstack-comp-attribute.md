@@ -6,9 +6,11 @@ declare class FolderStackAttribute extends CommonMethod<FolderStackAttribute>
 
 In addition to the [universal events](arkts-arkui-common-comp-commonmethod-c.md), the following events are supported.
 
-**继承/实现关系：** FolderStackAttribute extends CommonMethod&lt;FolderStackAttribute&gt;
+**继承/实现关系：** FolderStackAttribute extends CommonMethod<FolderStackAttribute>
 
 **起始版本：** 11
+
+<!--Device-unnamed-declare class FolderStackAttribute extends CommonMethod<FolderStackAttribute>--><!--Device-unnamed-declare class FolderStackAttribute extends CommonMethod<FolderStackAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +31,8 @@ alignContent(value: Alignment)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FolderStackAttribute-alignContent(value: Alignment): FolderStackAttribute--><!--Device-FolderStackAttribute-alignContent(value: Alignment): FolderStackAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ autoHalfFold(value: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-FolderStackAttribute-autoHalfFold(value: boolean): FolderStackAttribute--><!--Device-FolderStackAttribute-autoHalfFold(value: boolean): FolderStackAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -83,6 +89,8 @@ enableAnimation(value: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FolderStackAttribute-enableAnimation(value: boolean): FolderStackAttribute--><!--Device-FolderStackAttribute-enableAnimation(value: boolean): FolderStackAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +120,8 @@ onFolderStateChange(callback: OnFoldStatusChangeCallback)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-FolderStackAttribute-onFolderStateChange(callback: OnFoldStatusChangeCallback): FolderStackAttribute--><!--Device-FolderStackAttribute-onFolderStateChange(callback: OnFoldStatusChangeCallback): FolderStackAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -139,6 +149,8 @@ onHoverStatusChange(handler: OnHoverStatusChangeCallback)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FolderStackAttribute-onHoverStatusChange(handler: OnHoverStatusChangeCallback): FolderStackAttribute--><!--Device-FolderStackAttribute-onHoverStatusChange(handler: OnHoverStatusChangeCallback): FolderStackAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

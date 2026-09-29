@@ -16,6 +16,8 @@ Get l2cap socket psm.
 
 **Since:** 20
 
+<!--Device-socket-function getL2capPsm(serverSocket: int): int--><!--Device-socket-function getL2capPsm(serverSocket: int): int-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

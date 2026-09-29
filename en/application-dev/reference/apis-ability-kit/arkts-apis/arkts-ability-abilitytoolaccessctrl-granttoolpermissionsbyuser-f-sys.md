@@ -19,6 +19,8 @@ Grants tool permissions based on user authorization results. This function grant
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-abilityToolAccessCtrl-export function grantToolPermissionsByUser(userAuthResult: UserAuthResult[]): Promise<TicketInfo[]>--><!--Device-abilityToolAccessCtrl-export function grantToolPermissionsByUser(userAuthResult: UserAuthResult[]): Promise<TicketInfo[]>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.

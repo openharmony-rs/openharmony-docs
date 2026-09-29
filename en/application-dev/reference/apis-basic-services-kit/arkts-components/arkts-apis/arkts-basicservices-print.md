@@ -4,6 +4,8 @@ The **print** module provides APIs for basic print operations.
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace print--><!--Device-unnamed-declare namespace print-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import
@@ -68,8 +70,8 @@ import { print } from '@kit.BasicServicesKit';
 | [getPrinterDefaultPreferences](arkts-basicservices-print-getprinterdefaultpreferences-f-sys.md) | Get default preferences by printer ID. |
 | [getPrinterInfoById](arkts-basicservices-print-getprinterinfobyid-f-sys.md) | Obtains printer information based on the printer ID. This API uses a promise to return the result. |
 | [getSharedHosts](arkts-basicservices-print-getsharedhosts-f-sys.md) | Get all available shared hosts. |
-| [notifyPrintService](arkts-basicservices-print-notifyprintservice-f-sys.md) | Notifies the print service of the spooler shutdown information. This API uses an asynchronous callback to return the result. |
-| [notifyPrintService](arkts-basicservices-print-notifyprintservice-f-sys.md) | Notifies the print service of the spooler shutdown information. This API uses a promise to return the result. |
+| notifyPrintService | Notifies the print service of the spooler shutdown information. This API uses an asynchronous callback to return the result. |
+| notifyPrintService | Notifies the print service of the spooler shutdown information. This API uses a promise to return the result. |
 | [notifyPrintServiceEvent](arkts-basicservices-print-notifyprintserviceevent-f-sys.md#notifyprintserviceevent) | Notifies the print service of the print application events. This API uses a promise to return the result. |
 | [notifyPrintServiceEvent](arkts-basicservices-print-notifyprintserviceevent-f-sys.md#notifyprintserviceevent-1) | Notifies the print service of the print application events. This API uses a promise to return the result. |
 | [off](arkts-basicservices-print-off-f-sys.md#offprinterstatechange) | Unregisters the listener for printer state change events. This API uses a callback to return the result. |
@@ -145,6 +147,21 @@ import { print } from '@kit.BasicServicesKit';
 | [PrinterExtensionInfo](arkts-basicservices-print-printerextensioninfo-i-sys.md) | Provides the printer extension information. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [PrinterChangeCallback](arkts-basicservices-print-printerchangecallback-t.md) | Defines a callback that takes the printer event and printer information as parameters. |
+| [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | Defines the callback type used in registering to listen for watermark handling. The value of jobId indicates the print job ID. The value of fd indicates the fd. |
+
+<!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [PrinterInfoQueryCallback](arkts-basicservices-print-printerinfoquerycallback-t-sys.md) | Defines the callback type used in registering to listen for printerInfoQuery event. The value of printerInfo indicates the printer info. The value of ppdInfo indicates all the printer ppd info. |
+<!--DelEnd-->
+
 ### Enums
 
 | Name | Description |
@@ -168,18 +185,3 @@ import { print } from '@kit.BasicServicesKit';
 | [PrintPageType](arkts-basicservices-print-printpagetype-e.md) | Enumerates the print page types. |
 | [PrintQuality](arkts-basicservices-print-printquality-e.md) | Enumerates the print qualities. |
 | [WatermarkHandleResult](arkts-basicservices-print-watermarkhandleresult-e.md) | Watermark handling result. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [PrinterChangeCallback](arkts-basicservices-print-printerchangecallback-t.md) | Defines a callback that takes the printer event and printer information as parameters. |
-| [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | Defines the callback type used in registering to listen for watermark handling. The value of jobId indicates the print job ID. The value of fd indicates the fd. |
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [PrinterInfoQueryCallback](arkts-basicservices-print-printerinfoquerycallback-t-sys.md) | Defines the callback type used in registering to listen for printerInfoQuery event. The value of printerInfo indicates the printer info. The value of ppdInfo indicates all the printer ppd info. |
-<!--DelEnd-->

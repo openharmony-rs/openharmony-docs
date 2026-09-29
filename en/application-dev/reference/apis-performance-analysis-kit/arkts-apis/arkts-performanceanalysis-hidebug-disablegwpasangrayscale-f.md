@@ -22,6 +22,8 @@ Disables GWP-ASan. This API is used to cancel the custom configuration and resto
 
 **Since:** 20
 
+<!--Device-hidebug-function disableGwpAsanGrayscale(): void--><!--Device-hidebug-function disableGwpAsanGrayscale(): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Examples**

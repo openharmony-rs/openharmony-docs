@@ -18,6 +18,8 @@ function createVirtualScreen(config: VirtualScreenConfig): Promise<number>
 
 **需要权限：** ohos.permission.ACCESS_VIRTUAL_SCREEN
 
+<!--Device-display-function createVirtualScreen(config: VirtualScreenConfig): Promise<long>--><!--Device-display-function createVirtualScreen(config: VirtualScreenConfig): Promise<long>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -36,9 +38,9 @@ function createVirtualScreen(config: VirtualScreenConfig): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
-| 801 | Capability not supported. Function createVirtualScreen can not work correctly due to limited device capabilities. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Function createVirtualScreen can not work correctly due to limited device capabilities. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例**

@@ -8,6 +8,8 @@ Sets the mask type.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface MenuMaskType--><!--Device-unnamed-declare interface MenuMaskType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundBlurStyle
@@ -30,6 +32,8 @@ Default value: **BlurStyle.BACKGROUND_THIN**
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-MenuMaskType-backgroundBlurStyle?: BlurStyle--><!--Device-MenuMaskType-backgroundBlurStyle?: BlurStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -49,5 +53,7 @@ Default value: **$r('sys.color.ohos_id_color_mask_thin')**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-MenuMaskType-color?: ResourceColor--><!--Device-MenuMaskType-color?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

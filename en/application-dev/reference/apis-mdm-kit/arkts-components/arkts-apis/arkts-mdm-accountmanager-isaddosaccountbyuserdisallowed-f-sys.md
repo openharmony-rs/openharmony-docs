@@ -24,6 +24,8 @@ Queries whether to disallow a user to add accounts.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accountManager-function isAddOsAccountByUserDisallowed(admin: Want, userId: number): boolean--><!--Device-accountManager-function isAddOsAccountByUserDisallowed(admin: Want, userId: number): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Defines the returned key alias array.
 
 **Since:** 12
 
+<!--Device-huks-export interface HuksListAliasesReturnResult--><!--Device-huks-export interface HuksListAliasesReturnResult-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## Modules to Import
@@ -29,5 +31,7 @@ Array of key aliases.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksListAliasesReturnResult-keyAliases: Array<string>--><!--Device-HuksListAliasesReturnResult-keyAliases: Array<string>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension

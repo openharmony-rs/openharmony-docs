@@ -26,6 +26,14 @@
 | [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md) | A three-dimensional vector used to represent a point, a direction, or a vector transformation in 3D space. It consists of three components: x, y, and z. |
 | [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md) | A four-dimensional vector used to represent a point, a direction, or a vector transformation in 4D space. It consists of four components: x, y, z, and w. The fourth component (w) enhances normalization and convenience for various calculations and transformations. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [Position3](arkts-arkgraphics3d-position3-t.md) | Position of an object in 3D space. The type is a three-dimensional vector. The unit is the scene unit in the world coordinate system (such as cm, m, and km). The value can be any value. |
+| [Rotation3](arkts-arkgraphics3d-rotation3-t.md) | Rotation of an object in 3D space. The type is a three-dimensional vector in the unit of radian (rad). The value can be any value. |
+| [Scale3](arkts-arkgraphics3d-scale3-t.md) | Scaling of an object in 3D space. The value is of the Vec3 type. Any 3D vector. |
+
 ### Enums
 
 | Name | Description |
@@ -34,11 +42,3 @@
 | [PrimitiveTopology](arkts-arkgraphics3d-scenetypes-primitivetopology-e.md) | Enumerates the vertex processing methods. |
 | [RenderingPipelineType](arkts-arkgraphics3d-scenetypes-renderingpipelinetype-e.md) | Enumerates the rendering pipeline types. |
 | [ShadowAlgorithmType](arkts-arkgraphics3d-scenetypes-shadowalgorithmtype-e.md) | Enumerates the types of shadow algorithms. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [Position3](arkts-arkgraphics3d-position3-t.md) | Position of an object in 3D space. The type is a three-dimensional vector. The unit is the scene unit in the world coordinate system (such as cm, m, and km). The value can be any value. |
-| [Rotation3](arkts-arkgraphics3d-rotation3-t.md) | Rotation of an object in 3D space. The type is a three-dimensional vector in the unit of radian (rad). The value can be any value. |
-| [Scale3](arkts-arkgraphics3d-scale3-t.md) | Scaling of an object in 3D space. The value is of the Vec3 type. Any 3D vector. |

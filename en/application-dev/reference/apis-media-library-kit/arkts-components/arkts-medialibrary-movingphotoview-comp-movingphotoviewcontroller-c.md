@@ -8,6 +8,8 @@ Defines the MovingPhotoView controller.
 
 **Since:** 12
 
+<!--Device-unnamed-export class MovingPhotoViewController--><!--Device-unnamed-export class MovingPhotoViewController-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ constructor.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-MovingPhotoViewController-constructor()--><!--Device-MovingPhotoViewController-constructor()-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## refreshMovingPhoto
@@ -41,6 +45,8 @@ refresh moving photo data
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MovingPhotoViewController-refreshMovingPhoto()--><!--Device-MovingPhotoViewController-refreshMovingPhoto()-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -56,6 +62,8 @@ Start play moving photo.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-MovingPhotoViewController-startPlayback()--><!--Device-MovingPhotoViewController-startPlayback()-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## stopPlayback
@@ -69,5 +77,7 @@ Stop play moving photo.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MovingPhotoViewController-stopPlayback()--><!--Device-MovingPhotoViewController-stopPlayback()-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

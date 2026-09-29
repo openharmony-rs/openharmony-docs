@@ -18,6 +18,8 @@ Removes a **Preferences** instance from the cache. This API uses a promise to re
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-sendablePreferences-function removePreferencesFromCache(context: Context, options: Options): Promise<void>--><!--Device-sendablePreferences-function removePreferencesFromCache(context: Context, options: Options): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 **Parameters:**

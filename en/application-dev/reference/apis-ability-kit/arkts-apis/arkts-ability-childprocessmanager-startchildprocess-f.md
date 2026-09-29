@@ -27,6 +27,8 @@ Starts an [ArkTS child process](../../../application-models/ability-terminology.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-childProcessManager-function startChildProcess(srcEntry: string, startMode: StartMode): Promise<int>--><!--Device-childProcessManager-function startChildProcess(srcEntry: string, startMode: StartMode): Promise<int>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -108,6 +110,8 @@ Starts an [ArkTS child process](../../../application-models/ability-terminology.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-childProcessManager-function startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallback<int>): void--><!--Device-childProcessManager-function startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallback<int>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

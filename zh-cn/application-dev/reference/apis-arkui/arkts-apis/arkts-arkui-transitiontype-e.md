@@ -8,6 +8,8 @@ declare enum TransitionType
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum TransitionType--><!--Device-unnamed-declare enum TransitionType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## All
@@ -23,6 +25,8 @@ All
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TransitionType-All--><!--Device-TransitionType-All-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Insert
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-TransitionType-Insert--><!--Device-TransitionType-Insert-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Delete
@@ -55,5 +61,7 @@ Delete
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TransitionType-Delete--><!--Device-TransitionType-Delete-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

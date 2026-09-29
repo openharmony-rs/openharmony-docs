@@ -12,6 +12,8 @@ The enum of profile connection state.
 
 **Substitutes:** [ProfileConnectionState](arkts-connectivity-constant-profileconnectionstate-e.md)
 
+<!--Device-bluetoothManager-enum ProfileConnectionState--><!--Device-bluetoothManager-enum ProfileConnectionState-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## STATE_DISCONNECTED
@@ -27,6 +29,8 @@ the current profile is disconnected
 **Deprecated since:** 10
 
 **Substitutes:** [STATE_DISCONNECTED](arkts-connectivity-constant-profileconnectionstate-e.md#state_disconnected)
+
+<!--Device-ProfileConnectionState-STATE_DISCONNECTED = 0--><!--Device-ProfileConnectionState-STATE_DISCONNECTED = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -44,6 +48,8 @@ the current profile is being connected
 
 **Substitutes:** [STATE_CONNECTING](arkts-connectivity-constant-profileconnectionstate-e.md#state_connecting)
 
+<!--Device-ProfileConnectionState-STATE_CONNECTING = 1--><!--Device-ProfileConnectionState-STATE_CONNECTING = 1-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## STATE_CONNECTED
@@ -60,6 +66,8 @@ the current profile is connected
 
 **Substitutes:** [STATE_CONNECTED](arkts-connectivity-constant-profileconnectionstate-e.md#state_connected)
 
+<!--Device-ProfileConnectionState-STATE_CONNECTED = 2--><!--Device-ProfileConnectionState-STATE_CONNECTED = 2-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## STATE_DISCONNECTING
@@ -75,5 +83,7 @@ the current profile is being disconnected
 **Deprecated since:** 10
 
 **Substitutes:** [STATE_DISCONNECTING](arkts-connectivity-constant-profileconnectionstate-e.md#state_disconnecting)
+
+<!--Device-ProfileConnectionState-STATE_DISCONNECTING = 3--><!--Device-ProfileConnectionState-STATE_DISCONNECTING = 3-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

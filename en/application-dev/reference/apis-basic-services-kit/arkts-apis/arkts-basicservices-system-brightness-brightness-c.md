@@ -10,6 +10,8 @@ The module provides APIs for querying and adjusting the screen brightness and mo
 
 **Deprecated since:** 7
 
+<!--Device-unnamed-export default class Brightness--><!--Device-unnamed-export default class Brightness-End-->
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Obtains the screen brightness adjustment mode.
 **Deprecated since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-Brightness-static getMode(options?: GetBrightnessModeOptions): void--><!--Device-Brightness-static getMode(options?: GetBrightnessModeOptions): void-End-->
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -120,6 +124,8 @@ Obtains the current screen brightness.
 **Deprecated since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-Brightness-static getValue(options?: GetBrightnessOptions): void--><!--Device-Brightness-static getValue(options?: GetBrightnessOptions): void-End-->
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -219,6 +225,8 @@ timeout (automatic). It cannot prevent screen-off caused by user actions (such a
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-Brightness-static setKeepScreenOn(options?: SetKeepScreenOnOptions): void--><!--Device-Brightness-static setKeepScreenOn(options?: SetKeepScreenOnOptions): void-End-->
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **Parameters:**
@@ -308,6 +316,8 @@ Sets the screen brightness adjustment mode.
 **Deprecated since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-Brightness-static setMode(options?: SetBrightnessModeOptions): void--><!--Device-Brightness-static setMode(options?: SetBrightnessModeOptions): void-End-->
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -400,6 +410,8 @@ Sets the screen brightness.
 **Substitutes:** [setValue](arkts-basicservices-brightness-setvalue-f-sys.md)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-Brightness-static setValue(options?: SetBrightnessOptions): void--><!--Device-Brightness-static setValue(options?: SetBrightnessOptions): void-End-->
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 

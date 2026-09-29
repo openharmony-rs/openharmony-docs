@@ -10,6 +10,8 @@ export class PictureDrawableDescriptor extends DrawableDescriptor
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export class PictureDrawableDescriptor extends DrawableDescriptor--><!--Device-unnamed-export class PictureDrawableDescriptor extends DrawableDescriptor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ PictureDrawableDescriptor的构造函数。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-PictureDrawableDescriptor-constructor(src: image.Picture)--><!--Device-PictureDrawableDescriptor-constructor(src: image.Picture)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -53,6 +57,8 @@ setHdrComposition(config: HdrCompositionConfig): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-PictureDrawableDescriptor-setHdrComposition(config: HdrCompositionConfig): void--><!--Device-PictureDrawableDescriptor-setHdrComposition(config: HdrCompositionConfig): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

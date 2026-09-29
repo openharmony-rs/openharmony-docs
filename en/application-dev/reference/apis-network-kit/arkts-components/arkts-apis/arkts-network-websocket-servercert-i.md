@@ -8,6 +8,8 @@ Certificate information, which includes the paths of the WebSocketServer certifi
 
 **Since:** 19
 
+<!--Device-webSocket-export interface ServerCert--><!--Device-webSocket-export interface ServerCert-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Path of the server certificate file.
 
 **Since:** 19
 
+<!--Device-ServerCert-certPath: string--><!--Device-ServerCert-certPath: string-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## keyPath
@@ -41,5 +45,7 @@ Path of the private key file of the server certificate.
 **Type:** string
 
 **Since:** 19
+
+<!--Device-ServerCert-keyPath: string--><!--Device-ServerCert-keyPath: string-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

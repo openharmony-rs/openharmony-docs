@@ -8,6 +8,8 @@ Describes the window parameters during application startup.
 
 **Since:** 20
 
+<!--Device-window-interface WindowCreateParams--><!--Device-window-interface WindowCreateParams-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Whether to override system window limits. If true, the main window of the curren
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowCreateParams-isWindowLimitsForcible?: boolean--><!--Device-WindowCreateParams-isWindowLimitsForcible?: boolean-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ The configuration does not take effect for inter-application transitions, where 
 **Type:** [StartAnimationSystemParams](arkts-arkui-window-startanimationsystemparams-i-sys.md)
 
 **Since:** 20
+
+<!--Device-WindowCreateParams-systemAnimationParams?: StartAnimationSystemParams--><!--Device-WindowCreateParams-systemAnimationParams?: StartAnimationSystemParams-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

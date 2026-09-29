@@ -10,6 +10,8 @@ Describes a historical page record.
 
 **Since:** 9
 
+<!--Device-webview-interface HistoryItem--><!--Device-webview-interface HistoryItem-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Original URL of the historical page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HistoryItem-historyRawUrl: string--><!--Device-HistoryItem-historyRawUrl: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## historyUrl
@@ -47,6 +51,8 @@ URL of the historical page.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HistoryItem-historyUrl: string--><!--Device-HistoryItem-historyUrl: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -64,6 +70,8 @@ icon: image.PixelMap
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HistoryItem-icon: image.PixelMap--><!--Device-HistoryItem-icon: image.PixelMap-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## title
@@ -79,5 +87,7 @@ Title of the historical page.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HistoryItem-title: string--><!--Device-HistoryItem-title: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

@@ -12,6 +12,8 @@ Provides callbacks to return the authentication result.
 
 **Substitutes:** [AuthEvent](arkts-userauthentication-userauth-authevent-i.md)
 
+<!--Device-userAuth-interface IUserAuthCallback--><!--Device-userAuth-interface IUserAuthCallback-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Called to acquire authentication tip information. This API is optional.
 **Deprecated since:** 9
 
 **Substitutes:** [callback](arkts-userauthentication-userauth-authevent-i.md#callback)
+
+<!--Device-IUserAuthCallback-onAcquireInfo?: (module: number, acquire: number, extraInfo: any) => void--><!--Device-IUserAuthCallback-onAcquireInfo?: (module: number, acquire: number, extraInfo: any) => void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -95,6 +99,8 @@ is successful, the user authentication token will be returned in **extraInfo**. 
 **Deprecated since:** 9
 
 **Substitutes:** [callback](arkts-userauthentication-userauth-authevent-i.md#callback)
+
+<!--Device-IUserAuthCallback-onResult: (result: number, extraInfo: AuthResult) => void--><!--Device-IUserAuthCallback-onResult: (result: number, extraInfo: AuthResult) => void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

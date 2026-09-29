@@ -16,7 +16,9 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-emitter-function on(event: InnerEvent, callback: Callback<EventData>): void--><!--Device-emitter-function on(event: InnerEvent, callback: Callback<EventData>): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -59,6 +61,8 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-emitter-function on(eventId: string, callback: Callback<EventData>): void--><!--Device-emitter-function on(eventId: string, callback: Callback<EventData>): void-End-->
+
 **System capability:** SystemCapability.Notification.Emitter
 
 **Parameters:**
@@ -94,6 +98,8 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-emitter-function on<T>(eventId: string, callback: Callback<GenericEventData<T>>): void--><!--Device-emitter-function on<T>(eventId: string, callback: Callback<GenericEventData<T>>): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 

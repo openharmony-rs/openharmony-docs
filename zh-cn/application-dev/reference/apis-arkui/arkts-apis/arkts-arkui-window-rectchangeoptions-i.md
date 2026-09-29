@@ -8,6 +8,8 @@ interface RectChangeOptions
 
 **起始版本：** 12
 
+<!--Device-window-interface RectChangeOptions--><!--Device-window-interface RectChangeOptions-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,7 +30,9 @@ reason: RectChangeReason
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RectChangeOptions-reason: RectChangeReason--><!--Device-RectChangeOptions-reason: RectChangeReason-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -44,6 +48,8 @@ New value of the window rectangle.
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RectChangeOptions-rect: Rect--><!--Device-RectChangeOptions-rect: Rect-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

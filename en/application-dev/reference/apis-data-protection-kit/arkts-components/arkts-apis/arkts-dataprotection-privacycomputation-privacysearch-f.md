@@ -20,6 +20,8 @@ Performs a privacy-preserving search. Searches the given dataset elements agains
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-privacyComputation-function privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: PrivacyProtocol):        Promise<PrivacySearchResult>--><!--Device-privacyComputation-function privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: PrivacyProtocol):        Promise<PrivacySearchResult>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**
@@ -40,5 +42,8 @@ Performs a privacy-preserving search. Searches the given dataset elements agains
 
 | Error Code ID | Error Message |
 | --- | --- |
+| [24000001](../../apis-asset-store-kit/errorcode-asset.md#24000001-asset-store-service-unavailable) | The service is unavailable. |
 | [24000006](../../apis-asset-store-kit/errorcode-asset.md#24000006-insufficient-memory) | Insufficient memory. |
+| [24000009](../../apis-asset-store-kit/errorcode-asset.md#24000009-cryptographic-operation-failed) | The cryptography operation failed. |
+| [24000017](../../apis-asset-store-kit/errorcode-asset.md#24000017-function-not-supported) | The capability is not supported. |
 | [24000018](../../apis-asset-store-kit/errorcode-asset.md#24000018-parameter-check-failed) | Parameter verification failed. |

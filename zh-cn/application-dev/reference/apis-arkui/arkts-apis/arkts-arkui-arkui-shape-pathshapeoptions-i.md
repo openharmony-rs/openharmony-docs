@@ -8,6 +8,8 @@ PathShape的构造函数参数。
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface PathShapeOptions--><!--Device-unnamed-interface PathShapeOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -33,5 +35,7 @@ commands?: string
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PathShapeOptions-commands?: string--><!--Device-PathShapeOptions-commands?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines a struct for notifying subscribers of the shared configuration changes, 
 
 **Since:** 20
 
+<!--Device-dataShare-interface DataProxyChangeInfo--><!--Device-dataShare-interface DataProxyChangeInfo-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Data change type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataProxyChangeInfo-type: ChangeType--><!--Device-DataProxyChangeInfo-type: ChangeType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## uri
@@ -45,6 +49,8 @@ URI to change.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyChangeInfo-uri: string--><!--Device-DataProxyChangeInfo-uri: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -62,6 +68,8 @@ Changed data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataProxyChangeInfo-value: ValueType--><!--Device-DataProxyChangeInfo-value: ValueType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## values
@@ -77,5 +85,7 @@ Changed data of the multi-value type. If the changed data is not multi-value typ
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyChangeInfo-values?: ValueType[]--><!--Device-DataProxyChangeInfo-values?: ValueType[]-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer

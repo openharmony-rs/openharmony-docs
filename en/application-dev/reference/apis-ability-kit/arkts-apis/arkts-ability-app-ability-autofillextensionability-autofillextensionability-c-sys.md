@@ -10,6 +10,8 @@ The AutoFillExtensionAbility module supports auto-fill and save for multiple dat
 
 **Since:** 11
 
+<!--Device-unnamed-declare class AutoFillExtensionAbility extends ExtensionAbility--><!--Device-unnamed-declare class AutoFillExtensionAbility extends ExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Called when this AutoFillExtensionAbility is switched from the foreground to the
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AutoFillExtensionAbility-onBackground(): void--><!--Device-AutoFillExtensionAbility-onBackground(): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -61,6 +65,8 @@ Called when an AutoFillExtensionAbility is created. In this method, you can perf
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AutoFillExtensionAbility-onCreate(): void--><!--Device-AutoFillExtensionAbility-onCreate(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -90,6 +96,8 @@ Called to clear resources when this AutoFillExtensionAbility is destroyed. This 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AutoFillExtensionAbility-onDestroy(): void | Promise<void>--><!--Device-AutoFillExtensionAbility-onDestroy(): void | Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -118,6 +126,8 @@ Called when an auto-fill request is initiated or a password is generated.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AutoFillExtensionAbility-onFillRequest(session: UIExtensionContentSession, request: FillRequest, callback: FillRequestCallback): void--><!--Device-AutoFillExtensionAbility-onFillRequest(session: UIExtensionContentSession, request: FillRequest, callback: FillRequestCallback): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -181,6 +191,8 @@ Called when this AutoFillExtensionAbility is switched from the background to the
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AutoFillExtensionAbility-onForeground(): void--><!--Device-AutoFillExtensionAbility-onForeground(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -209,6 +221,8 @@ This callback is triggered when automatic or manual saving is initiated.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AutoFillExtensionAbility-onSaveRequest(session: UIExtensionContentSession, request: SaveRequest, callback: SaveRequestCallback): void--><!--Device-AutoFillExtensionAbility-onSaveRequest(session: UIExtensionContentSession, request: SaveRequest, callback: SaveRequestCallback): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -270,6 +284,8 @@ Called when the session of this AutoFillExtensionAbility is destroyed. The sessi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AutoFillExtensionAbility-onSessionDestroy(session: UIExtensionContentSession): void--><!--Device-AutoFillExtensionAbility-onSessionDestroy(session: UIExtensionContentSession): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -304,6 +320,8 @@ Called when the application UI data changes and the filled content needs to be u
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AutoFillExtensionAbility-onUpdateRequest(request: UpdateRequest): void--><!--Device-AutoFillExtensionAbility-onUpdateRequest(request: UpdateRequest): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -342,6 +360,8 @@ Context of the AutoFillExtensionAbility. This context inherits from **ExtensionC
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AutoFillExtensionAbility-context: AutoFillExtensionContext--><!--Device-AutoFillExtensionAbility-context: AutoFillExtensionContext-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

@@ -8,6 +8,8 @@ Defines the options of the **Video** component.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface VideoOptions--><!--Device-unnamed-declare interface VideoOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## controller
@@ -28,6 +30,8 @@ Default value: no video controller is set.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-VideoOptions-controller?: VideoController--><!--Device-VideoOptions-controller?: VideoController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## controllerAsync
@@ -47,6 +51,8 @@ Default value: empty
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-VideoOptions-controllerAsync?: VideoControllerAsync--><!--Device-VideoOptions-controllerAsync?: VideoControllerAsync-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +84,8 @@ Abnormal value: processed as the default value.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-VideoOptions-currentProgressRate?: number | string | PlaybackSpeed--><!--Device-VideoOptions-currentProgressRate?: number | string | PlaybackSpeed-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageAIOptions
@@ -96,6 +104,8 @@ Image AI analysis options, which can configure the analysis type or bind an anal
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-VideoOptions-imageAIOptions?: ImageAIOptions--><!--Device-VideoOptions-imageAIOptions?: ImageAIOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## posterOptions
@@ -113,6 +123,8 @@ First-frame display options for video playback, which can control whether the vi
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-VideoOptions-posterOptions?: PosterOptions--><!--Device-VideoOptions-posterOptions?: PosterOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,6 +159,8 @@ Abnormal value: processed as the default value.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-VideoOptions-previewUri?: string | PixelMap | Resource--><!--Device-VideoOptions-previewUri?: string | PixelMap | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,5 +198,7 @@ The supported video formats are mp4, mkv, and TS.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-VideoOptions-src?: string | Resource--><!--Device-VideoOptions-src?: string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

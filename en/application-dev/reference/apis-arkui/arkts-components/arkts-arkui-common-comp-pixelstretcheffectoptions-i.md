@@ -8,6 +8,8 @@ Describes the pixel stretch effect options.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface PixelStretchEffectOptions--><!--Device-unnamed-declare interface PixelStretchEffectOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -27,6 +29,8 @@ Length by which a pixel is stretched towards the right edge of the image.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PixelStretchEffectOptions-bottom?: Length--><!--Device-PixelStretchEffectOptions-bottom?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ Length by which a pixel is stretched towards the left edge of the image.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PixelStretchEffectOptions-left?: Length--><!--Device-PixelStretchEffectOptions-left?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## right
@@ -68,6 +74,8 @@ Length by which a pixel is stretched towards the right edge of the image.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PixelStretchEffectOptions-right?: Length--><!--Device-PixelStretchEffectOptions-right?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -87,5 +95,7 @@ Length by which a pixel is stretched towards the top edge of the image.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PixelStretchEffectOptions-top?: Length--><!--Device-PixelStretchEffectOptions-top?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

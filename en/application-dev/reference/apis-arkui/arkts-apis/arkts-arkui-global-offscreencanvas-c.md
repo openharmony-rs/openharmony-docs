@@ -8,6 +8,8 @@ OffscreenCanvas provides a Canvas object that can be rendered off-screen. It wor
 
 **Since:** 11
 
+<!--Device-unnamed-export declare class OffscreenCanvas--><!--Device-unnamed-export declare class OffscreenCanvas-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -23,6 +25,8 @@ The width of the offScreen Canvas object The height of the offScreen Canvas obje
 **Model restriction:** This API can be used only in the FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OffscreenCanvas-constructor(width: number, height: number)--><!--Device-OffscreenCanvas-constructor(width: number, height: number)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Gets the context object for off-screen drawing.
 **Model restriction:** This API can be used only in the FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OffscreenCanvas-getContext(contextId: "2d", options?: CanvasRenderingContext2DSettings): OffscreenCanvasRenderingContext2D--><!--Device-OffscreenCanvas-getContext(contextId: "2d", options?: CanvasRenderingContext2DSettings): OffscreenCanvasRenderingContext2D-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +82,8 @@ Converts the draw contents of the current off-screen draw object to a string in 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-OffscreenCanvas-toDataURL(type?: string, quality?: number): string--><!--Device-OffscreenCanvas-toDataURL(type?: string, quality?: number): string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -105,6 +113,8 @@ Converts the draw content in the current off-screen draw object to a Bitmap obje
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-OffscreenCanvas-transferToImageBitmap(): ImageBitmap--><!--Device-OffscreenCanvas-transferToImageBitmap(): ImageBitmap-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -129,6 +139,8 @@ The height of the offScreen Canvas object
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-OffscreenCanvas-height: number--><!--Device-OffscreenCanvas-height: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -146,5 +158,7 @@ The width of the offScreen Canvas object
 **Model restriction:** This API can be used only in the FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OffscreenCanvas-width: number--><!--Device-OffscreenCanvas-width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

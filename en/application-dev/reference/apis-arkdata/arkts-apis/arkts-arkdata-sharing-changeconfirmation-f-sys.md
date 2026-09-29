@@ -16,6 +16,8 @@ Changes the invitation confirmation state based on the shared resource ID. This 
 
 **Since:** 11
 
+<!--Device-sharing-function changeConfirmation(sharingResource: string, state: State, callback: AsyncCallback<Result<void>>): void--><!--Device-sharing-function changeConfirmation(sharingResource: string, state: State, callback: AsyncCallback<Result<void>>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -62,6 +64,8 @@ function changeConfirmation(sharingResource: string, state: State): Promise<Resu
 Changes the invitation confirmation state based on the shared resource ID. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-sharing-function changeConfirmation(sharingResource: string, state: State): Promise<Result<void>>--><!--Device-sharing-function changeConfirmation(sharingResource: string, state: State): Promise<Result<void>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

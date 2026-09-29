@@ -6,6 +6,8 @@ interface Uint16Array
 
 A typed array of 16-bit unsigned integer values. The contents are initialized to 0. If the requested number of bytes could not be allocated an exception is raised.
 
+<!--Device-unnamed-interface Uint16Array--><!--Device-unnamed-interface Uint16Array-End-->
+
 ## Modules to Import
 
 ```TypeScript
@@ -18,6 +20,8 @@ copyWithin(target: number, start: number, end?: number): this
 ```
 
 Returns the this object after copying a section of the array identified by start and end to the same array starting at position target
+
+<!--Device-Uint16Array-copyWithin(target: number, start: number, end?: number): this--><!--Device-Uint16Array-copyWithin(target: number, start: number, end?: number): this-End-->
 
 **Parameters:**
 
@@ -34,6 +38,8 @@ every(predicate: (value: number, index: number, array: Uint16Array) => unknown, 
 ```
 
 Determines whether all the members of an array satisfy the specified test.
+
+<!--Device-Uint16Array-every(predicate: (value: number, index: number, array: Uint16Array) => unknown, thisArg?: any): boolean--><!--Device-Uint16Array-every(predicate: (value: number, index: number, array: Uint16Array) => unknown, thisArg?: any): boolean-End-->
 
 **Test API:** This API is used only in automated test scripts.
 
@@ -52,6 +58,8 @@ fill(value: number, start?: number, end?: number): this
 
 Changes all array elements from `start` to `end` index to a static `value` and returns the modified array
 
+<!--Device-Uint16Array-fill(value: number, start?: number, end?: number): this--><!--Device-Uint16Array-fill(value: number, start?: number, end?: number): this-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -68,6 +76,8 @@ filter(predicate: (value: number, index: number, array: Uint16Array) => any, thi
 
 Returns the elements of an array that meet the condition specified in a callback function.
 
+<!--Device-Uint16Array-filter(predicate: (value: number, index: number, array: Uint16Array) => any, thisArg?: any): Uint16Array--><!--Device-Uint16Array-filter(predicate: (value: number, index: number, array: Uint16Array) => any, thisArg?: any): Uint16Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -82,6 +92,8 @@ find(predicate: (value: number, index: number, obj: Uint16Array) => boolean, thi
 ```
 
 Returns the value of the first element in the array where predicate is true, and undefined otherwise.
+
+<!--Device-Uint16Array-find(predicate: (value: number, index: number, obj: Uint16Array) => boolean, thisArg?: any): number | undefined--><!--Device-Uint16Array-find(predicate: (value: number, index: number, obj: Uint16Array) => boolean, thisArg?: any): number | undefined-End-->
 
 **Parameters:**
 
@@ -98,6 +110,8 @@ findIndex(predicate: (value: number, index: number, obj: Uint16Array) => boolean
 
 Returns the index of the first element in the array where predicate is true, and -1 otherwise.
 
+<!--Device-Uint16Array-findIndex(predicate: (value: number, index: number, obj: Uint16Array) => boolean, thisArg?: any): number--><!--Device-Uint16Array-findIndex(predicate: (value: number, index: number, obj: Uint16Array) => boolean, thisArg?: any): number-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -112,6 +126,8 @@ forEach(callbackfn: (value: number, index: number, array: Uint16Array) => void, 
 ```
 
 Performs the specified action for each element in an array.
+
+<!--Device-Uint16Array-forEach(callbackfn: (value: number, index: number, array: Uint16Array) => void, thisArg?: any): void--><!--Device-Uint16Array-forEach(callbackfn: (value: number, index: number, array: Uint16Array) => void, thisArg?: any): void-End-->
 
 **Parameters:**
 
@@ -128,6 +144,8 @@ indexOf(searchElement: number, fromIndex?: number): number
 
 Returns the index of the first occurrence of a value in an array.
 
+<!--Device-Uint16Array-indexOf(searchElement: number, fromIndex?: number): number--><!--Device-Uint16Array-indexOf(searchElement: number, fromIndex?: number): number-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -143,6 +161,8 @@ join(separator?: string): string
 
 Adds all the elements of an array separated by the specified separator string.
 
+<!--Device-Uint16Array-join(separator?: string): string--><!--Device-Uint16Array-join(separator?: string): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -156,6 +176,8 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 ```
 
 Returns the index of the last occurrence of a value in an array.
+
+<!--Device-Uint16Array-lastIndexOf(searchElement: number, fromIndex?: number): number--><!--Device-Uint16Array-lastIndexOf(searchElement: number, fromIndex?: number): number-End-->
 
 **Parameters:**
 
@@ -172,6 +194,8 @@ map(callbackfn: (value: number, index: number, array: Uint16Array) => number, th
 
 Calls a defined callback function on each element of an array, and returns an array that contains the results.
 
+<!--Device-Uint16Array-map(callbackfn: (value: number, index: number, array: Uint16Array) => number, thisArg?: any): Uint16Array--><!--Device-Uint16Array-map(callbackfn: (value: number, index: number, array: Uint16Array) => number, thisArg?: any): Uint16Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -186,6 +210,8 @@ reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: n
 ```
 
 Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
+
+<!--Device-Uint16Array-reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Uint16Array) => number): number--><!--Device-Uint16Array-reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Uint16Array) => number): number-End-->
 
 **Parameters:**
 
@@ -218,6 +244,8 @@ reduce<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: num
 
 Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 
+<!--Device-Uint16Array-reduce<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Uint16Array) => U, initialValue: U): U--><!--Device-Uint16Array-reduce<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Uint16Array) => U, initialValue: U): U-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -232,6 +260,8 @@ reduceRight(callbackfn: (previousValue: number, currentValue: number, currentInd
 ```
 
 Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
+
+<!--Device-Uint16Array-reduceRight(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Uint16Array) => number): number--><!--Device-Uint16Array-reduceRight(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Uint16Array) => number): number-End-->
 
 **Parameters:**
 
@@ -264,6 +294,8 @@ reduceRight<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex
 
 Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 
+<!--Device-Uint16Array-reduceRight<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Uint16Array) => U, initialValue: U): U--><!--Device-Uint16Array-reduceRight<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Uint16Array) => U, initialValue: U): U-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -279,6 +311,8 @@ reverse(): Uint16Array
 
 Reverses the elements in an Array.
 
+<!--Device-Uint16Array-reverse(): Uint16Array--><!--Device-Uint16Array-reverse(): Uint16Array-End-->
+
 ## set
 
 ```TypeScript
@@ -286,6 +320,8 @@ set(array: ArrayLike<number>, offset?: number): void
 ```
 
 Sets a value or an array of values.
+
+<!--Device-Uint16Array-set(array: ArrayLike<number>, offset?: number): void--><!--Device-Uint16Array-set(array: ArrayLike<number>, offset?: number): void-End-->
 
 **Parameters:**
 
@@ -302,6 +338,8 @@ slice(start?: number, end?: number): Uint16Array
 
 Returns a section of an array.
 
+<!--Device-Uint16Array-slice(start?: number, end?: number): Uint16Array--><!--Device-Uint16Array-slice(start?: number, end?: number): Uint16Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -316,6 +354,8 @@ some(predicate: (value: number, index: number, array: Uint16Array) => unknown, t
 ```
 
 Determines whether the specified callback function returns true for any element of an array.
+
+<!--Device-Uint16Array-some(predicate: (value: number, index: number, array: Uint16Array) => unknown, thisArg?: any): boolean--><!--Device-Uint16Array-some(predicate: (value: number, index: number, array: Uint16Array) => unknown, thisArg?: any): boolean-End-->
 
 **Parameters:**
 
@@ -332,6 +372,8 @@ sort(compareFn?: (a: number, b: number) => number): this
 
 Sorts an array.
 
+<!--Device-Uint16Array-sort(compareFn?: (a: number, b: number) => number): this--><!--Device-Uint16Array-sort(compareFn?: (a: number, b: number) => number): this-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -345,6 +387,8 @@ subarray(begin?: number, end?: number): Uint16Array
 ```
 
 Gets a new Uint16Array view of the ArrayBuffer store for this array, referencing the elements at begin, inclusive, up to end, exclusive.
+
+<!--Device-Uint16Array-subarray(begin?: number, end?: number): Uint16Array--><!--Device-Uint16Array-subarray(begin?: number, end?: number): Uint16Array-End-->
 
 **Parameters:**
 
@@ -361,6 +405,8 @@ toLocaleString(): string
 
 Converts a number to a string by using the current locale.
 
+<!--Device-Uint16Array-toLocaleString(): string--><!--Device-Uint16Array-toLocaleString(): string-End-->
+
 ## toString
 
 ```TypeScript
@@ -369,6 +415,8 @@ toString(): string
 
 Returns a string representation of an array.
 
+<!--Device-Uint16Array-toString(): string--><!--Device-Uint16Array-toString(): string-End-->
+
 ## valueOf
 
 ```TypeScript
@@ -376,6 +424,8 @@ valueOf(): Uint16Array
 ```
 
 Returns the primitive value of the specified object.
+
+<!--Device-Uint16Array-valueOf(): Uint16Array--><!--Device-Uint16Array-valueOf(): Uint16Array-End-->
 
 ## [index: number]
 
@@ -395,6 +445,8 @@ The ArrayBuffer instance referenced by the array.
 
 **Type:** [ArrayBufferLike](arkts-arraybufferlike-t.md)
 
+<!--Device-Uint16Array-readonly buffer: ArrayBufferLike--><!--Device-Uint16Array-readonly buffer: ArrayBufferLike-End-->
+
 ## byteLength
 
 ```TypeScript
@@ -404,6 +456,8 @@ readonly byteLength: number
 The length in bytes of the array.
 
 **Type:** number
+
+<!--Device-Uint16Array-readonly byteLength: number--><!--Device-Uint16Array-readonly byteLength: number-End-->
 
 ## byteOffset
 
@@ -415,6 +469,8 @@ The offset in bytes of the array.
 
 **Type:** number
 
+<!--Device-Uint16Array-readonly byteOffset: number--><!--Device-Uint16Array-readonly byteOffset: number-End-->
+
 ## BYTES_PER_ELEMENT
 
 ```TypeScript
@@ -425,6 +481,8 @@ The size in bytes of each element in the array.
 
 **Type:** number
 
+<!--Device-Uint16Array-readonly BYTES_PER_ELEMENT: number--><!--Device-Uint16Array-readonly BYTES_PER_ELEMENT: number-End-->
+
 ## length
 
 ```TypeScript
@@ -434,3 +492,5 @@ readonly length: number
 The length of the array.
 
 **Type:** number
+
+<!--Device-Uint16Array-readonly length: number--><!--Device-Uint16Array-readonly length: number-End-->

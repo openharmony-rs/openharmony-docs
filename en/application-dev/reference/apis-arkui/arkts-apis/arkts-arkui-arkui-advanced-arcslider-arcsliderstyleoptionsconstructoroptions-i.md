@@ -8,6 +8,8 @@ Defines the constructor information for **ArcSliderStyleOptions**.
 
 **Since:** 18
 
+<!--Device-unnamed-interface ArcSliderStyleOptionsConstructorOptions--><!--Device-unnamed-interface ArcSliderStyleOptionsConstructorOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## Modules to Import
@@ -28,8 +30,6 @@ Default value: **24**
 
 Value range: [24, 36]. If the value is invalid, the default value is used.
 
-@Trace
-
 **Type:** number
 
 **Default:** 24
@@ -37,6 +37,8 @@ Value range: [24, 36]. If the value is invalid, the default value is used.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSliderStyleOptionsConstructorOptions-activeTrackThickness?: number--><!--Device-ArcSliderStyleOptionsConstructorOptions-activeTrackThickness?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -50,8 +52,6 @@ Highlight color of the stroke.
 
 Default value: **#FF5EA1FF**
 
-@Trace
-
 **Type:** string
 
 **Default:** #FF5EA1FF
@@ -59,6 +59,8 @@ Default value: **#FF5EA1FF**
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSliderStyleOptionsConstructorOptions-selectedColor?: string--><!--Device-ArcSliderStyleOptionsConstructorOptions-selectedColor?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -68,13 +70,11 @@ Default value: **#FF5EA1FF**
 trackBlur?: number
 ```
 
-Blur effect applied to the stroke background, in vp.
+Stroke background blur value. Unit: vp.
 
 Default value: **20**
 
-If a value less than 0 is set, the default is used.
-
-@Trace
+Value range: [0, +∞). Abnormal values are handled as default.
 
 **Type:** number
 
@@ -83,6 +83,8 @@ If a value less than 0 is set, the default is used.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSliderStyleOptionsConstructorOptions-trackBlur?: number--><!--Device-ArcSliderStyleOptionsConstructorOptions-trackBlur?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -96,8 +98,6 @@ Background color of the stroke.
 
 Default value: **#33FFFFFF**
 
-@Trace
-
 **Type:** string
 
 **Default:** #33FFFFFF
@@ -105,6 +105,8 @@ Default value: **#33FFFFFF**
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSliderStyleOptionsConstructorOptions-trackColor?: string--><!--Device-ArcSliderStyleOptionsConstructorOptions-trackColor?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -120,8 +122,6 @@ Default value: **5**
 
 Value range: [5, 16]. If the value is invalid, the default value is used.
 
-@Trace
-
 **Type:** number
 
 **Default:** 5
@@ -129,5 +129,7 @@ Value range: [5, 16]. If the value is invalid, the default value is used.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSliderStyleOptionsConstructorOptions-trackThickness?: number--><!--Device-ArcSliderStyleOptionsConstructorOptions-trackThickness?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle

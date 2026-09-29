@@ -8,6 +8,8 @@ Describes audio renderer filter.
 
 **Since:** 9
 
+<!--Device-audio-interface AudioRendererFilter--><!--Device-audio-interface AudioRendererFilter-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Keeps the first device selection not cleared. Default value: false.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioRendererFilter-blockFirstOverrode?: boolean--><!--Device-AudioRendererFilter-blockFirstOverrode?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ AudioRenderer id.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-AudioRendererFilter-rendererId?: int--><!--Device-AudioRendererFilter-rendererId?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -64,6 +70,8 @@ Renderer information.
 
 **Since:** 9
 
+<!--Device-AudioRendererFilter-rendererInfo?: AudioRendererInfo--><!--Device-AudioRendererFilter-rendererInfo?: AudioRendererInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **System API:** This is a system API.
@@ -79,6 +87,8 @@ Application uid.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-AudioRendererFilter-uid?: int--><!--Device-AudioRendererFilter-uid?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 

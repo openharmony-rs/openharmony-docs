@@ -16,6 +16,8 @@ Stops the VM profiling method. **stopJsCpuProfiling()** and **startJsCpuProfilin
 
 **Since:** 9
 
+<!--Device-hidebug-function stopJsCpuProfiling() : void--><!--Device-hidebug-function stopJsCpuProfiling() : void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Examples**

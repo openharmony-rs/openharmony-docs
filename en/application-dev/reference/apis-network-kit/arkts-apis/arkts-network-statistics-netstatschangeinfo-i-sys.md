@@ -8,6 +8,8 @@ Defines the NIC status and usage of an application.
 
 **Since:** 11
 
+<!--Device-statistics-export interface NetStatsChangeInfo--><!--Device-statistics-export interface NetStatsChangeInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ NIC name.
 
 **Since:** 11
 
+<!--Device-NetStatsChangeInfo-iface: string--><!--Device-NetStatsChangeInfo-iface: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Application UID.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-NetStatsChangeInfo-uid?: int--><!--Device-NetStatsChangeInfo-uid?: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

@@ -4,6 +4,8 @@ The displaySync module allows your application to draw its custom UI content at 
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace displaySync--><!--Device-unnamed-declare namespace displaySync-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import

@@ -20,6 +20,8 @@ Sets a browser sub-policy for a specified browser. This API is applicable to sce
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-browser-function setPolicySync(admin: Want, appId: string, policyName: string, policyValue: string): void--><!--Device-browser-function setPolicySync(admin: Want, appId: string, policyName: string, policyValue: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

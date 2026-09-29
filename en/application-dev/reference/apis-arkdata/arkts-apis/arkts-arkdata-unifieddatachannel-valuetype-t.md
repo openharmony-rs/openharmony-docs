@@ -12,6 +12,8 @@ Enumerates the data field types allowed in a unified data record.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unifiedDataChannel-type ValueType = int | long | double | string | boolean | image.PixelMap | Want | ArrayBuffer | object | null | undefined--><!--Device-unifiedDataChannel-type ValueType = int | long | double | string | boolean | image.PixelMap | Want | ArrayBuffer | object | null | undefined-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 | Type | Description |

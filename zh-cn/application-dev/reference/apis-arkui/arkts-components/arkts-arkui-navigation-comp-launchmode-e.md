@@ -8,6 +8,8 @@ declare enum LaunchMode
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare enum LaunchMode--><!--Device-unnamed-declare enum LaunchMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## STANDARD
@@ -26,6 +28,8 @@ push操作会将指定的NavDestination入栈；replace操作会将当前栈顶N
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LaunchMode-STANDARD = 0--><!--Device-LaunchMode-STANDARD = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MOVE_TO_TOP_SINGLETON
@@ -41,6 +45,8 @@ MOVE_TO_TOP_SINGLETON = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LaunchMode-MOVE_TO_TOP_SINGLETON = 1--><!--Device-LaunchMode-MOVE_TO_TOP_SINGLETON = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +64,8 @@ POP_TO_SINGLETON = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LaunchMode-POP_TO_SINGLETON = 2--><!--Device-LaunchMode-POP_TO_SINGLETON = 2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NEW_INSTANCE
@@ -73,5 +81,7 @@ NEW_INSTANCE = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LaunchMode-NEW_INSTANCE = 3--><!--Device-LaunchMode-NEW_INSTANCE = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

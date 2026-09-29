@@ -8,6 +8,8 @@ Represents detailed file information. Before calling any API of the **Stat()** c
 
 **Since:** 9
 
+<!--Device-unnamed-declare interface Stat--><!--Device-unnamed-declare interface Stat-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -25,6 +27,8 @@ isBlockDevice(): boolean
 Checks whether this file is a block special file. A block special file supports access by block only, and it is cached when accessed.
 
 **Since:** 9
+
+<!--Device-Stat-isBlockDevice(): boolean--><!--Device-Stat-isBlockDevice(): boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -57,6 +61,8 @@ isCharacterDevice(): boolean
 Checks whether this file is a character special file. A character special device supports random access, and it is not cached when accessed.
 
 **Since:** 9
+
+<!--Device-Stat-isCharacterDevice(): boolean--><!--Device-Stat-isCharacterDevice(): boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -92,6 +98,8 @@ Checks whether this file is a directory.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Stat-isDirectory(): boolean--><!--Device-Stat-isDirectory(): boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Return value:**
@@ -123,6 +131,8 @@ isFIFO(): boolean
 Checks whether this file is a named pipe (or FIFO). Named pipes are used for inter-process communication.
 
 **Since:** 9
+
+<!--Device-Stat-isFIFO(): boolean--><!--Device-Stat-isFIFO(): boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -158,6 +168,8 @@ Checks whether this file is a regular file.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Stat-isFile(): boolean--><!--Device-Stat-isFile(): boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Return value:**
@@ -190,6 +202,8 @@ Checks whether this file is a socket.
 
 **Since:** 9
 
+<!--Device-Stat-isSocket(): boolean--><!--Device-Stat-isSocket(): boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Return value:**
@@ -221,6 +235,8 @@ isSymbolicLink(): boolean
 Checks whether this file is a symbolic link.
 
 **Since:** 9
+
+<!--Device-Stat-isSymbolicLink(): boolean--><!--Device-Stat-isSymbolicLink(): boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -260,6 +276,8 @@ Time when the file was last accessed. The value is the number of seconds elapsed
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Stat-readonly atime: number--><!--Device-Stat-readonly atime: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -283,6 +301,8 @@ Time of the last access to the file. The value is the number of nanoseconds elap
 
 **Since:** 15
 
+<!--Device-Stat-readonly atimeNs?:bigint--><!--Device-Stat-readonly atimeNs?:bigint-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -302,6 +322,8 @@ Time when the file metadata was last modified. The value is the number of second
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Stat-readonly ctime: number--><!--Device-Stat-readonly ctime: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -324,6 +346,8 @@ Time of the last status change of the file. The value is the number of nanosecon
 
 **Since:** 15
 
+<!--Device-Stat-readonly ctimeNs?:bigint--><!--Device-Stat-readonly ctimeNs?:bigint-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -343,6 +367,8 @@ ID of the user group of the file.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Stat-readonly gid: number--><!--Device-Stat-readonly gid: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -365,6 +391,8 @@ File ID. Different files on the same device have different **ino**s.
 
 **Since:** 9
 
+<!--Device-Stat-readonly ino: bigint--><!--Device-Stat-readonly ino: bigint-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -385,6 +413,8 @@ File location, which indicates whether the file is stored in a local device or i
 **Type:** [LocationType](arkts-corefile-file-fs-locationtype-e.md)
 
 **Since:** 11
+
+<!--Device-Stat-readonly location: LocationType--><!--Device-Stat-readonly location: LocationType-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -422,6 +452,8 @@ directory.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Stat-readonly mode: number--><!--Device-Stat-readonly mode: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -445,6 +477,8 @@ Time when the file content was last modified. The value is the number of seconds
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Stat-readonly mtime: number--><!--Device-Stat-readonly mtime: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -465,6 +499,8 @@ Time of the last modification to the file. The value is the number of nanosecond
 **Type:** bigint
 
 **Since:** 15
+
+<!--Device-Stat-readonly mtimeNs?:bigint--><!--Device-Stat-readonly mtimeNs?:bigint-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -488,6 +524,8 @@ File size, in bytes. This parameter is valid only for regular files.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Stat-readonly size: number--><!--Device-Stat-readonly size: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -508,6 +546,8 @@ ID of the file owner.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Stat-readonly uid: number--><!--Device-Stat-readonly uid: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

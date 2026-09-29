@@ -8,6 +8,8 @@ Represents a version component.
 
 **Since:** 9
 
+<!--Device-update-export interface VersionComponent--><!--Device-update-export interface VersionComponent-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Component ID, which uniquely identifies a component in the upgrade package. The 
 
 **Since:** 9
 
+<!--Device-VersionComponent-componentId: string--><!--Device-VersionComponent-componentId: string-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Component type.
 **Type:** [ComponentType](arkts-basicservices-update-componenttype-e-sys.md)
 
 **Since:** 9
+
+<!--Device-VersionComponent-componentType: ComponentType--><!--Device-VersionComponent-componentType: ComponentType-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -62,6 +68,8 @@ Information about the version description file.
 
 **Since:** 9
 
+<!--Device-VersionComponent-descriptionInfo: DescriptionInfo--><!--Device-VersionComponent-descriptionInfo: DescriptionInfo-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Display version number.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-VersionComponent-displayVersion: string--><!--Device-VersionComponent-displayVersion: string-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -94,6 +104,8 @@ Effective mode. The value **COLD** indicates the cold upgrade, which takes effec
 
 **Since:** 9
 
+<!--Device-VersionComponent-effectiveMode: EffectiveMode--><!--Device-VersionComponent-effectiveMode: EffectiveMode-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Internal version number.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-VersionComponent-innerVersion: string--><!--Device-VersionComponent-innerVersion: string-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -126,6 +140,8 @@ OTA mode. Pass this parameter to specify a specific upgrade mode, which is appli
 
 **Since:** 20
 
+<!--Device-VersionComponent-otaMode?: OtaMode--><!--Device-VersionComponent-otaMode?: OtaMode-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -142,6 +158,8 @@ Size of the upgrade package, in bytes. The value range is [0, +∞]. An exceptio
 
 **Since:** 9
 
+<!--Device-VersionComponent-size: int--><!--Device-VersionComponent-size: int-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -157,6 +175,8 @@ Upgrade action. The value **UPGRADE** indicates that the upgrade package is a di
 **Type:** [UpgradeAction](arkts-basicservices-update-upgradeaction-e-sys.md)
 
 **Since:** 9
+
+<!--Device-VersionComponent-upgradeAction: UpgradeAction--><!--Device-VersionComponent-upgradeAction: UpgradeAction-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

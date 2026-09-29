@@ -8,6 +8,8 @@ enum ImmersiveStyle
 
 **起始版本：** 26.0.0
 
+<!--Device-uiMaterial-enum ImmersiveStyle--><!--Device-uiMaterial-enum ImmersiveStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ULTRA_THIN
@@ -23,6 +25,8 @@ ULTRA_THIN = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ImmersiveStyle-ULTRA_THIN = 0--><!--Device-ImmersiveStyle-ULTRA_THIN = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ THIN = 1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ImmersiveStyle-THIN = 1--><!--Device-ImmersiveStyle-THIN = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## REGULAR
@@ -55,6 +61,8 @@ REGULAR = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ImmersiveStyle-REGULAR = 2--><!--Device-ImmersiveStyle-REGULAR = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ THICK = 3
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ImmersiveStyle-THICK = 3--><!--Device-ImmersiveStyle-THICK = 3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ULTRA_THICK
@@ -87,5 +97,7 @@ ULTRA_THICK = 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ImmersiveStyle-ULTRA_THICK = 4--><!--Device-ImmersiveStyle-ULTRA_THICK = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Represents an error message.
 
 **Since:** 9
 
+<!--Device-update-export interface ErrorMessage--><!--Device-update-export interface ErrorMessage-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Use scenarios: In the callback of **EVENT_UPGRADE_FAIL**, use **errorCode** to d
 
 **Since:** 9
 
+<!--Device-ErrorMessage-errorCode: int--><!--Device-ErrorMessage-errorCode: int-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Use scenarios: During error handling, **errorMessage** can be used for log recor
 **Type:** string
 
 **Since:** 9
+
+<!--Device-ErrorMessage-errorMessage: string--><!--Device-ErrorMessage-errorMessage: string-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

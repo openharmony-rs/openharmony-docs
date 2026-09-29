@@ -8,6 +8,8 @@ The enum of BLE match mode.
 
 **Since:** 10
 
+<!--Device-ble-enum MatchMode--><!--Device-ble-enum MatchMode-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## MATCH_MODE_AGGRESSIVE
@@ -22,7 +24,9 @@ aggressive mode
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-MatchMode-MATCH_MODE_AGGRESSIVE = 1--><!--Device-MatchMode-MATCH_MODE_AGGRESSIVE = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -38,6 +42,8 @@ sticky mode
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-MatchMode-MATCH_MODE_STICKY = 2--><!--Device-MatchMode-MATCH_MODE_STICKY = 2-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

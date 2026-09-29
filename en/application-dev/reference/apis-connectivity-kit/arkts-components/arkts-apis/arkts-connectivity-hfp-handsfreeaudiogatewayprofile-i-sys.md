@@ -10,6 +10,8 @@ Manager hfp source profile.
 
 **Since:** 10
 
+<!--Device-hfp-interface HandsFreeAudioGatewayProfile extends BaseProfile--><!--Device-hfp-interface HandsFreeAudioGatewayProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Initiate an HFP connection to a remote device.
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
+
+<!--Device-HandsFreeAudioGatewayProfile-connect(deviceId: string): void--><!--Device-HandsFreeAudioGatewayProfile-connect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -64,6 +68,8 @@ Disconnect the HFP connection with the remote device.
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
+
+<!--Device-HandsFreeAudioGatewayProfile-disconnect(deviceId: string): void--><!--Device-HandsFreeAudioGatewayProfile-disconnect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

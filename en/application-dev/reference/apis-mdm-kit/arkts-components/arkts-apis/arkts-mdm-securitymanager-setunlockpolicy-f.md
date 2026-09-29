@@ -20,6 +20,8 @@ Sets the unlock policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function setUnlockPolicy(policy: UnlockPolicy, accountId: number): void--><!--Device-securityManager-function setUnlockPolicy(policy: UnlockPolicy, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

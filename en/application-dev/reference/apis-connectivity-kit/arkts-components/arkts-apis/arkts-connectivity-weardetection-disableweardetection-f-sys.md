@@ -18,6 +18,8 @@ Turn off the wearing detection switch.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
+<!--Device-wearDetection-function disableWearDetection(deviceId: string, callback: AsyncCallback<void>): void--><!--Device-wearDetection-function disableWearDetection(deviceId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Turn off the wearing detection switch.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-wearDetection-function disableWearDetection(deviceId: string): Promise<void>--><!--Device-wearDetection-function disableWearDetection(deviceId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

@@ -25,6 +25,8 @@ Disconnects all allowed bluetooth profiles between the local and remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function disconnectAllowedProfiles(deviceId: string): Promise<void>--><!--Device-connection-function disconnectAllowedProfiles(deviceId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

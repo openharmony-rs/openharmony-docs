@@ -8,6 +8,8 @@ Defines the parameters required when using the **PluginManager.Push** API.
 
 **Since:** 8
 
+<!--Device-pluginComponentManager-interface PushParameters--><!--Device-pluginComponentManager-interface PushParameters-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Component data.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PushParameters-data: KVObject--><!--Device-PushParameters-data: KVObject-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## extraData
@@ -45,6 +49,8 @@ Extra data.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PushParameters-extraData: KVObject--><!--Device-PushParameters-extraData: KVObject-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +68,8 @@ Path to the [external.json](../../../reference/apis-arkui/js-apis-plugincomponen
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PushParameters-jsonPath?: string--><!--Device-PushParameters-jsonPath?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -78,6 +86,8 @@ Component name.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PushParameters-name: string--><!--Device-PushParameters-name: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## want
@@ -93,5 +103,7 @@ Ability information of the component user.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PushParameters-want: Want--><!--Device-PushParameters-want: Want-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

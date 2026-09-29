@@ -8,6 +8,8 @@ The enum of BLE advertising state.
 
 **Since:** 11
 
+<!--Device-ble-enum AdvertisingState--><!--Device-ble-enum AdvertisingState-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## STARTED
@@ -21,6 +23,8 @@ advertising started.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AdvertisingState-STARTED = 1--><!--Device-AdvertisingState-STARTED = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -36,6 +40,8 @@ advertising temporarily enabled.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AdvertisingState-ENABLED = 2--><!--Device-AdvertisingState-ENABLED = 2-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## DISABLED
@@ -50,6 +56,8 @@ advertising temporarily disabled.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AdvertisingState-DISABLED = 3--><!--Device-AdvertisingState-DISABLED = 3-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## STOPPED
@@ -63,5 +71,7 @@ advertising stopped.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AdvertisingState-STOPPED = 4--><!--Device-AdvertisingState-STOPPED = 4-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

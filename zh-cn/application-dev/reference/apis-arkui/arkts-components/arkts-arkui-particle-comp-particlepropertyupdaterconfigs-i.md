@@ -8,6 +8,8 @@ interface ParticlePropertyUpdaterConfigs<T>
 
 **起始版本：** 10
 
+<!--Device-unnamed-interface ParticlePropertyUpdaterConfigs<T>--><!--Device-unnamed-interface ParticlePropertyUpdaterConfigs<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## [ParticleUpdater.CURVE]
@@ -26,6 +28,8 @@ interface ParticlePropertyUpdaterConfigs<T>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ParticlePropertyUpdaterConfigs-[ParticleUpdater.CURVE]: Array<ParticlePropertyAnimation<T>>--><!--Device-ParticlePropertyUpdaterConfigs-[ParticleUpdater.CURVE]: Array<ParticlePropertyAnimation<T>>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## [ParticleUpdater.NONE]
@@ -43,6 +47,8 @@ interface ParticlePropertyUpdaterConfigs<T>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticlePropertyUpdaterConfigs-[ParticleUpdater.NONE]: void--><!--Device-ParticlePropertyUpdaterConfigs-[ParticleUpdater.NONE]: void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,5 +79,7 @@ config配置的是变化差值的取值范围，差值的最大最小值没有�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticlePropertyUpdaterConfigs-[ParticleUpdater.RANDOM]: ParticleTuple<T, T>--><!--Device-ParticlePropertyUpdaterConfigs-[ParticleUpdater.RANDOM]: ParticleTuple<T, T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

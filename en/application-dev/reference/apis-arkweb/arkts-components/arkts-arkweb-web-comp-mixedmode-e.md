@@ -8,6 +8,8 @@ Enumerates the mixed content modes.
 
 **Since:** 8
 
+<!--Device-unnamed-declare enum MixedMode--><!--Device-unnamed-declare enum MixedMode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## All
@@ -21,6 +23,8 @@ Loose mode: HTTP and HTTPS hybrid content can be loaded. This means that all ins
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MixedMode-All = 0--><!--Device-MixedMode-All = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ Compatible mode. Allows some HTTP content to be loaded on an HTTPS page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MixedMode-Compatible = 1--><!--Device-MixedMode-Compatible = 1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## None
@@ -49,5 +55,7 @@ Strict mode: HTTP and HTTPS hybrid content cannot be loaded.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MixedMode-None = 2--><!--Device-MixedMode-None = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

@@ -8,6 +8,8 @@ Describes the options for inverting the foreground color.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface InvertOptions--><!--Device-unnamed-declare interface InvertOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## high
@@ -27,6 +29,8 @@ Value range: [0, 1].
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-InvertOptions-high: number--><!--Device-InvertOptions-high: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ Value range: [0, 1].
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-InvertOptions-low: number--><!--Device-InvertOptions-low: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## threshold
@@ -67,6 +73,8 @@ Value range: [0, 1].
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-InvertOptions-threshold: number--><!--Device-InvertOptions-threshold: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,5 +99,7 @@ This range defines the upper and lower bounds of the grayscale threshold. The gr
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-InvertOptions-thresholdRange: number--><!--Device-InvertOptions-thresholdRange: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

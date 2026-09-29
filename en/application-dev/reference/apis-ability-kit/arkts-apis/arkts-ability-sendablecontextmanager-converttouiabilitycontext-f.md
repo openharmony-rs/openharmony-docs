@@ -20,6 +20,8 @@ Converts a SendableContext object to a UIAbilityContext object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-sendableContextManager-function convertToUIAbilityContext(sendableContext: SendableContext): common.UIAbilityContext--><!--Device-sendableContextManager-function convertToUIAbilityContext(sendableContext: SendableContext): common.UIAbilityContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

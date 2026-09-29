@@ -8,6 +8,8 @@ ChipGroupPaddingOptions定义了ChipGroup的上下内边距，用于控制其整
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface ChipGroupPaddingOptions--><!--Device-unnamed-export interface ChipGroupPaddingOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -40,6 +42,8 @@ ChipGroup的下方内边距（不支持百分比）。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupPaddingOptions-bottom: Length--><!--Device-ChipGroupPaddingOptions-bottom: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -65,5 +69,7 @@ ChipGroup的上方内边距（不支持百分比）。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupPaddingOptions-top: Length--><!--Device-ChipGroupPaddingOptions-top: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

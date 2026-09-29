@@ -8,6 +8,8 @@ Defines the MediaQuery API.
 
 **Since:** 3
 
+<!--Device-unnamed-export default class MediaQuery--><!--Device-unnamed-export default class MediaQuery-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Creates a **MediaQueryList** object based on the query condition.
 **Since:** 3
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MediaQuery-static matchMedia(condition: string): MediaQueryList--><!--Device-MediaQuery-static matchMedia(condition: string): MediaQueryList-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

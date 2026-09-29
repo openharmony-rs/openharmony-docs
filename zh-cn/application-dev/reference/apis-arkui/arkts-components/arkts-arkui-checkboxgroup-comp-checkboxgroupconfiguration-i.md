@@ -6,9 +6,11 @@ declare interface CheckBoxGroupConfiguration extends CommonConfiguration<CheckBo
 
 开发者必须自定义此类以实现ContentModifier接口，使用方法见[contentModifier](arkts-arkui-checkboxgroup-comp-attribute.md#contentmodifier)。
 
-**继承/实现关系：** CheckBoxGroupConfiguration extends CommonConfiguration&lt;CheckBoxGroupConfiguration&gt;
+**继承/实现关系：** CheckBoxGroupConfiguration extends CommonConfiguration<CheckBoxGroupConfiguration>
 
 **起始版本：** 21
+
+<!--Device-unnamed-declare interface CheckBoxGroupConfiguration extends CommonConfiguration<CheckBoxGroupConfiguration>--><!--Device-unnamed-declare interface CheckBoxGroupConfiguration extends CommonConfiguration<CheckBoxGroupConfiguration>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,6 +30,8 @@ name: string
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
+<!--Device-CheckBoxGroupConfiguration-name: string--><!--Device-CheckBoxGroupConfiguration-name: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## status
@@ -46,6 +50,8 @@ status: SelectStatus
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
+<!--Device-CheckBoxGroupConfiguration-status: SelectStatus--><!--Device-CheckBoxGroupConfiguration-status: SelectStatus-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## triggerChange
@@ -63,5 +69,7 @@ triggerChange: Callback<boolean>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
+
+<!--Device-CheckBoxGroupConfiguration-triggerChange: Callback<boolean>--><!--Device-CheckBoxGroupConfiguration-triggerChange: Callback<boolean>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

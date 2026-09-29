@@ -18,6 +18,8 @@ Updates the IMS call mode. This API uses an asynchronous callback to return the 
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function updateImsCallMode(callId: int, mode: ImsCallMode, callback: AsyncCallback<void>): void--><!--Device-call-function updateImsCallMode(callId: int, mode: ImsCallMode, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Updates the IMS call mode. This API uses a promise to return the result.
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function updateImsCallMode(callId: int, mode: ImsCallMode): Promise<void>--><!--Device-call-function updateImsCallMode(callId: int, mode: ImsCallMode): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

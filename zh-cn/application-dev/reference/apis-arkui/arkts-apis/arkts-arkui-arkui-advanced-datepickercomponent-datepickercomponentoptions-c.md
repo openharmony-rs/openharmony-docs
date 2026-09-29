@@ -8,6 +8,8 @@ DatePickerComponentOptions定义日期时间选择器组件的选项。
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export declare class DatePickerComponentOptions--><!--Device-unnamed-export declare class DatePickerComponentOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,6 +33,8 @@ dateOptions?: DateOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerComponentOptions-dateOptions?: DateOptions--><!--Device-DatePickerComponentOptions-dateOptions?: DateOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +64,8 @@ displayMode?: DisplayMode
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-DatePickerComponentOptions-displayMode?: DisplayMode--><!--Device-DatePickerComponentOptions-displayMode?: DisplayMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## timeOptions
@@ -77,5 +83,7 @@ timeOptions?: TimeOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerComponentOptions-timeOptions?: TimeOptions--><!--Device-DatePickerComponentOptions-timeOptions?: TimeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

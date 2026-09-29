@@ -20,6 +20,8 @@ Obtains the network status of the SIM card in the specified slot. This API uses 
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-radio-function getNetworkState(slotId: int, callback: AsyncCallback<NetworkState>): void--><!--Device-radio-function getNetworkState(slotId: int, callback: AsyncCallback<NetworkState>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -71,6 +73,8 @@ Obtains the network status of the SIM card in the specified slot. This API uses 
 **Since:** 6
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-radio-function getNetworkState(slotId?: int): Promise<NetworkState>--><!--Device-radio-function getNetworkState(slotId?: int): Promise<NetworkState>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -126,6 +130,8 @@ Obtains the network status. This API uses an asynchronous callback to return the
 **Since:** 6
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-radio-function getNetworkState(callback: AsyncCallback<NetworkState>): void--><!--Device-radio-function getNetworkState(callback: AsyncCallback<NetworkState>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

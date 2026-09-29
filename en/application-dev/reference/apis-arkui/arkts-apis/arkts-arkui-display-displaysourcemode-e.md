@@ -8,6 +8,8 @@ Enumerates the display modes for screen content.
 
 **Since:** 19
 
+<!--Device-display-enum DisplaySourceMode--><!--Device-display-enum DisplaySourceMode-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## MAIN
@@ -20,7 +22,9 @@ The primary screen of the device is currently in use.
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-DisplaySourceMode-MAIN = 1--><!--Device-DisplaySourceMode-MAIN = 1-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -34,7 +38,9 @@ The device is currently not in use.
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-DisplaySourceMode-NONE = 0--><!--Device-DisplaySourceMode-NONE = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -48,7 +54,9 @@ The device is currently in extended display mode.
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-DisplaySourceMode-EXTEND = 3--><!--Device-DisplaySourceMode-EXTEND = 3-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -62,7 +70,9 @@ The device is currently in mirror display mode.
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-DisplaySourceMode-MIRROR = 2--><!--Device-DisplaySourceMode-MIRROR = 2-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -76,6 +86,8 @@ The device is currently in independent display mode.
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-DisplaySourceMode-ALONE = 4--><!--Device-DisplaySourceMode-ALONE = 4-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

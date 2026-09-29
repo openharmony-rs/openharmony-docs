@@ -26,6 +26,8 @@ status, and terminating the upgrade.
 
 **Since:** 9
 
+<!--Device-update-export interface Updater--><!--Device-update-export interface Updater-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ properly deployed and accessible.
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-checkNewVersion(callback: AsyncCallback<CheckResult>): void--><!--Device-Updater-checkNewVersion(callback: AsyncCallback<CheckResult>): void-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -157,6 +161,8 @@ properly deployed and accessible.
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-checkNewVersion(): Promise<CheckResult>--><!--Device-Updater-checkNewVersion(): Promise<CheckResult>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -234,6 +240,8 @@ abnormal status.
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, callback: AsyncCallback<void>): void--><!--Device-Updater-clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -328,6 +336,8 @@ abnormal status.
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Promise<void>--><!--Device-Updater-clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -432,6 +442,8 @@ message will be returned, indicating that the current version is the latest vers
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-download(      versionDigestInfo: VersionDigestInfo,      downloadOptions: DownloadOptions,      callback: AsyncCallback<void>    ): void--><!--Device-Updater-download(      versionDigestInfo: VersionDigestInfo,      downloadOptions: DownloadOptions,      callback: AsyncCallback<void>    ): void-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -535,6 +547,8 @@ message will be returned, indicating that the current version is the latest vers
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions): Promise<void>--><!--Device-Updater-download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -631,6 +645,8 @@ then call this method to obtain the detailed description for display.
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-getCurrentVersionDescription(      descriptionOptions: DescriptionOptions,      callback: AsyncCallback<Array<ComponentDescription>>    ): void--><!--Device-Updater-getCurrentVersionDescription(      descriptionOptions: DescriptionOptions,      callback: AsyncCallback<Array<ComponentDescription>>    ): void-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -714,6 +730,8 @@ then call this method to obtain the detailed description for display.
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise<Array<ComponentDescription>>--><!--Device-Updater-getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise<Array<ComponentDescription>>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -789,6 +807,8 @@ This method reads the current version information from the local system files an
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-getCurrentVersionInfo(callback: AsyncCallback<CurrentVersionInfo>): void--><!--Device-Updater-getCurrentVersionInfo(callback: AsyncCallback<CurrentVersionInfo>): void-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -859,6 +879,8 @@ This method reads the current version information from the local system files an
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-getCurrentVersionInfo(): Promise<CurrentVersionInfo>--><!--Device-Updater-getCurrentVersionInfo(): Promise<CurrentVersionInfo>-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -934,6 +956,8 @@ information.
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-getNewVersionDescription(      versionDigestInfo: VersionDigestInfo,      descriptionOptions: DescriptionOptions,      callback: AsyncCallback<Array<ComponentDescription>>    ): void--><!--Device-Updater-getNewVersionDescription(      versionDigestInfo: VersionDigestInfo,      descriptionOptions: DescriptionOptions,      callback: AsyncCallback<Array<ComponentDescription>>    ): void-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -1024,6 +1048,8 @@ information.
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-getNewVersionDescription(      versionDigestInfo: VersionDigestInfo,      descriptionOptions: DescriptionOptions    ): Promise<Array<ComponentDescription>>--><!--Device-Updater-getNewVersionDescription(      versionDigestInfo: VersionDigestInfo,      descriptionOptions: DescriptionOptions    ): Promise<Array<ComponentDescription>>-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -1133,6 +1159,8 @@ only when **isExistNewVersion** is **true**.
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-getNewVersionInfo(callback: AsyncCallback<NewVersionInfo>): void--><!--Device-Updater-getNewVersionInfo(callback: AsyncCallback<NewVersionInfo>): void-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -1224,6 +1252,8 @@ only when **isExistNewVersion** is **true**.
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-getNewVersionInfo(): Promise<NewVersionInfo>--><!--Device-Updater-getNewVersionInfo(): Promise<NewVersionInfo>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -1306,6 +1336,8 @@ determine the follow-up procedure.
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-getTaskInfo(callback: AsyncCallback<TaskInfo>): void--><!--Device-Updater-getTaskInfo(callback: AsyncCallback<TaskInfo>): void-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -1395,6 +1427,8 @@ determine the follow-up procedure.
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-getTaskInfo(): Promise<TaskInfo>--><!--Device-Updater-getTaskInfo(): Promise<TaskInfo>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -1458,6 +1492,8 @@ This method queries the upgrade policy configuration from the system upgrade ser
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-getUpgradePolicy(callback: AsyncCallback<UpgradePolicy>): void--><!--Device-Updater-getUpgradePolicy(callback: AsyncCallback<UpgradePolicy>): void-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -1526,6 +1562,8 @@ This method queries the upgrade policy configuration from the system upgrade ser
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-getUpgradePolicy(): Promise<UpgradePolicy>--><!--Device-Updater-getUpgradePolicy(): Promise<UpgradePolicy>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -1593,6 +1631,8 @@ The process is as follows: Confirm the event type based on **eventClassifyInfo**
 release resources in a timely manner.
 
 **Since:** 9
+
+<!--Device-Updater-off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): void--><!--Device-Updater-off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): void-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -1671,6 +1711,8 @@ or **EVENT_UPGRADE_SUCCESS**) is received.
 
 **Since:** 9
 
+<!--Device-Updater-on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): void--><!--Device-Updater-on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): void-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -1748,6 +1790,8 @@ resume the download and complete the installation first.
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-pauseDownload(      versionDigestInfo: VersionDigestInfo,      pauseDownloadOptions: PauseDownloadOptions,      callback: AsyncCallback<void>    ): void--><!--Device-Updater-pauseDownload(      versionDigestInfo: VersionDigestInfo,      pauseDownloadOptions: PauseDownloadOptions,      callback: AsyncCallback<void>    ): void-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -1842,6 +1886,8 @@ resume the download and complete the installation first.
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseDownloadOptions): Promise<void>--><!--Device-Updater-pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseDownloadOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -1933,6 +1979,8 @@ The process is as follows: Read the progress status saved when the download is p
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-resumeDownload(      versionDigestInfo: VersionDigestInfo,      resumeDownloadOptions: ResumeDownloadOptions,      callback: AsyncCallback<void>    ): void--><!--Device-Updater-resumeDownload(      versionDigestInfo: VersionDigestInfo,      resumeDownloadOptions: ResumeDownloadOptions,      callback: AsyncCallback<void>    ): void-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -2019,6 +2067,8 @@ The process is as follows: Read the progress status saved when the download is p
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: ResumeDownloadOptions): Promise<void>--><!--Device-Updater-resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: ResumeDownloadOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -2102,6 +2152,8 @@ The process is as follows: Verify the validity of the policy parameters. Write t
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback<void>): void--><!--Device-Updater-setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -2176,6 +2228,8 @@ The process is as follows: Verify the validity of the policy parameters. Write t
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-setUpgradePolicy(policy: UpgradePolicy): Promise<void>--><!--Device-Updater-setUpgradePolicy(policy: UpgradePolicy): Promise<void>-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -2265,6 +2319,8 @@ The process is as follows: Check the current task status, and only download or i
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-Updater-terminateUpgrade(callback: AsyncCallback<void>): void--><!--Device-Updater-terminateUpgrade(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -2344,6 +2400,8 @@ The process is as follows: Check the current task status, and only download or i
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-terminateUpgrade(): Promise<void>--><!--Device-Updater-terminateUpgrade(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -2425,6 +2483,8 @@ If the **upgrade** method fails (the status is **UPGRADE_FAIL**), you must call 
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, callback: AsyncCallback<void>): void--><!--Device-Updater-upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -2523,6 +2583,8 @@ If the **upgrade** method fails (the status is **UPGRADE_FAIL**), you must call 
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-Updater-upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): Promise<void>--><!--Device-Updater-upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

@@ -12,6 +12,8 @@ This API inherits from [ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface ChipV2SuffixImageIconConfig extends ChipV2ImageIconConfig, ChipV2AccessibilityConfig--><!--Device-unnamed-export interface ChipV2SuffixImageIconConfig extends ChipV2ImageIconConfig, ChipV2AccessibilityConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,5 +37,7 @@ Default value: **undefined**, meaning no suffix icon event is set. When **undefi
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2SuffixImageIconConfig-action?: VoidCallback--><!--Device-ChipV2SuffixImageIconConfig-action?: VoidCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

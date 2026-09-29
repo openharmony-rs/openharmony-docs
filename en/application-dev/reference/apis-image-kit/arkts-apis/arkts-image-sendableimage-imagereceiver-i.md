@@ -10,6 +10,8 @@ Before calling any APIs in ImageReceiver, you must create an ImageReceiver insta
 
 **Since:** 12
 
+<!--Device-sendableImage-interface ImageReceiver--><!--Device-sendableImage-interface ImageReceiver-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 ## Modules to Import
@@ -27,6 +29,8 @@ getReceivingSurfaceId(): Promise<string>
 Obtains a surface ID for the camera or other components. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-ImageReceiver-getReceivingSurfaceId(): Promise<string>--><!--Device-ImageReceiver-getReceivingSurfaceId(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -66,6 +70,8 @@ on(type: 'imageArrival', callback: AsyncCallback<void>): void
 Listens for image arrival events. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-ImageReceiver-on(type: 'imageArrival', callback: AsyncCallback<void>): void--><!--Device-ImageReceiver-on(type: 'imageArrival', callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -110,6 +116,8 @@ Reads the latest image from the ImageReceiver instance. This API uses a promise 
 > the release.
 
 **Since:** 12
+
+<!--Device-ImageReceiver-readLatestImage(): Promise<Image>--><!--Device-ImageReceiver-readLatestImage(): Promise<Image>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -157,6 +165,8 @@ Reads the next image from the ImageReceiver instance. This API uses a promise to
 
 **Since:** 12
 
+<!--Device-ImageReceiver-readNextImage(): Promise<Image>--><!--Device-ImageReceiver-readNextImage(): Promise<Image>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 **Return value:**
@@ -195,6 +205,8 @@ release(): Promise<void>
 Releases this ImageReceiver instance. This API uses a promise to return the result. Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call this API to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 12
+
+<!--Device-ImageReceiver-release(): Promise<void>--><!--Device-ImageReceiver-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -239,6 +251,8 @@ The actual capacity is determined by the device hardware.
 
 **Since:** 12
 
+<!--Device-ImageReceiver-readonly capacity: number--><!--Device-ImageReceiver-readonly capacity: number-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 ## format
@@ -253,6 +267,8 @@ Image format.
 
 **Since:** 12
 
+<!--Device-ImageReceiver-readonly format: image.ImageFormat--><!--Device-ImageReceiver-readonly format: image.ImageFormat-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 ## size
@@ -266,5 +282,7 @@ Image size.
 **Type:** [image.Size](arkts-image-image-size-i.md)
 
 **Since:** 12
+
+<!--Device-ImageReceiver-readonly size: image.Size--><!--Device-ImageReceiver-readonly size: image.Size-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver

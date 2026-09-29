@@ -12,6 +12,8 @@ Represents the callback invoked when a paste operation is about to complete.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type PasteEventCallback = (event?: PasteEvent) => void--><!--Device-unnamed-declare type PasteEventCallback = (event?: PasteEvent) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -8,6 +8,8 @@ Defines the callback information triggered when a URL is loaded, including the r
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnResourceLoadEvent--><!--Device-unnamed-declare interface OnResourceLoadEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## url
@@ -23,5 +25,7 @@ URL of the loaded resource file.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnResourceLoadEvent-url: string--><!--Device-OnResourceLoadEvent-url: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

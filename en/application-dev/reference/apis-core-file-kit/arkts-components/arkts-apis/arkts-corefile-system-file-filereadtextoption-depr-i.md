@@ -10,6 +10,8 @@ Defines the options used in readText().
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export interface FileReadTextOption--><!--Device-unnamed-export interface FileReadTextOption-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Callback invoked when the API call is complete.
 
 **Deprecated since:** 10
 
+<!--Device-FileReadTextOption-complete?: () => void--><!--Device-FileReadTextOption-complete?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## fail
@@ -42,6 +46,8 @@ Callback invoked when the API call fails. **data** indicates the error informati
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileReadTextOption-fail?: (data: string, code: number) => void--><!--Device-FileReadTextOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -58,11 +64,13 @@ Callback invoked when the API call fails. **data** indicates the error informati
 success?: (data: FileReadTextResponse) => void
 ```
 
-Callback invoked when the API call is successful. **data** is [FileReadTextResponse](arkts-corefile-system-file-filereadtextresponse-depr-i.md#filereadtextresponse).
+Callback invoked when the API call is successful. **data** is [FileReadTextResponse](arkts-corefile-system-file-filereadtextresponse-depr-i.md).
 
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileReadTextOption-success?: (data: FileReadTextResponse) => void--><!--Device-FileReadTextOption-success?: (data: FileReadTextResponse) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -86,6 +94,8 @@ Encoding format. The default format is **UTF-8**.
 
 **Deprecated since:** 10
 
+<!--Device-FileReadTextOption-encoding?: string--><!--Device-FileReadTextOption-encoding?: string-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## length
@@ -102,6 +112,8 @@ Length of the text to be read, in bytes. The default value is **4096**.
 
 **Deprecated since:** 10
 
+<!--Device-FileReadTextOption-length?: number--><!--Device-FileReadTextOption-length?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## position
@@ -117,6 +129,8 @@ Position where the reading starts, in bytes. The default value is the start posi
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileReadTextOption-position?: number--><!--Device-FileReadTextOption-position?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -135,5 +149,7 @@ URI of the file to which the content is written. Restricted by the underlying fi
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileReadTextOption-uri: string--><!--Device-FileReadTextOption-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite

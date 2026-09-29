@@ -20,6 +20,8 @@ Obtains a file of the wallpaper of the specified type. Returns the file descript
 
 **Required permissions:** ohos.permission.GET_WALLPAPER
 
+<!--Device-wallpaper-function getFile(wallpaperType: WallpaperType, callback: AsyncCallback<number>): void--><!--Device-wallpaper-function getFile(wallpaperType: WallpaperType, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **Parameters:**
@@ -59,6 +61,8 @@ Obtains a file of the wallpaper of the specified type. Returns the file descript
 **Deprecated since:** 9
 
 **Required permissions:** ohos.permission.GET_WALLPAPER
+
+<!--Device-wallpaper-function getFile(wallpaperType: WallpaperType): Promise<number>--><!--Device-wallpaper-function getFile(wallpaperType: WallpaperType): Promise<number>-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

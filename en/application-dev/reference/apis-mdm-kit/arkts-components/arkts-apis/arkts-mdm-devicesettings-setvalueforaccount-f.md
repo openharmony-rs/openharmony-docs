@@ -20,6 +20,8 @@ Sets the device policy for a specified user. This API allows you to set a specif
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: string): void--><!--Device-deviceSettings-function setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -10,6 +10,8 @@ The definition of dialog action result.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-interface DialogActionInfo--><!--Device-avMusicTemplate-interface DialogActionInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Id of the button clicked by the user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DialogActionInfo-clickedBtnId: string--><!--Device-DialogActionInfo-clickedBtnId: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## dialogId
@@ -48,6 +52,8 @@ Unique ID of the dialog action.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DialogActionInfo-dialogId: string--><!--Device-DialogActionInfo-dialogId: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## isChecked
@@ -63,5 +69,7 @@ Is the checkbox in the pop-up window selected.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DialogActionInfo-isChecked: boolean--><!--Device-DialogActionInfo-isChecked: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

@@ -16,6 +16,8 @@ function setScreenRotationLocked(isLocked:boolean, callback: AsyncCallback<void>
 
 **起始版本：** 9
 
+<!--Device-screen-function setScreenRotationLocked(isLocked:boolean, callback: AsyncCallback<void>): void--><!--Device-screen-function setScreenRotationLocked(isLocked:boolean, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -63,6 +65,8 @@ function setScreenRotationLocked(isLocked:boolean): Promise<void>
 设置自动转屏开关是否锁定，使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-screen-function setScreenRotationLocked(isLocked:boolean): Promise<void>--><!--Device-screen-function setScreenRotationLocked(isLocked:boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

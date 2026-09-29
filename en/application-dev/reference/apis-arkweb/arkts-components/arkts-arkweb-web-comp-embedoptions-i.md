@@ -8,6 +8,8 @@ Configuration for Web same-layer rendering. Configures Web same-layer rendering 
 
 **Since:** 16
 
+<!--Device-unnamed-declare interface EmbedOptions--><!--Device-unnamed-declare interface EmbedOptions-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## supportCssDisplayChange
@@ -29,6 +31,8 @@ Otherwise, CSS attributes are not displayed, and only same-layer tags are visibl
 **Default:** false
 
 **Since:** 20
+
+<!--Device-EmbedOptions-supportCssDisplayChange?: boolean--><!--Device-EmbedOptions-supportCssDisplayChange?: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -56,6 +60,8 @@ Unit: px.
 
 **Since:** 16
 
+<!--Device-EmbedOptions-supportDefaultIntrinsicSize?: boolean--><!--Device-EmbedOptions-supportDefaultIntrinsicSize?: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## supportTransformRotateAndSkew
@@ -73,5 +79,7 @@ Whether the same-layer rendering component supports CSS transform rotate and ske
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EmbedOptions-supportTransformRotateAndSkew?: boolean--><!--Device-EmbedOptions-supportTransformRotateAndSkew?: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

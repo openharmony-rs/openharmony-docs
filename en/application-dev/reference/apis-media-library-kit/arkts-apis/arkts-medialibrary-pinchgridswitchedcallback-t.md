@@ -12,6 +12,8 @@ Callback to be invoked when a user pinches a grid component.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-unnamed-export type PinchGridSwitchedCallback = (gridLevel: photoAccessHelper.GridLevel) => void--><!--Device-unnamed-export type PinchGridSwitchedCallback = (gridLevel: photoAccessHelper.GridLevel) => void-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters:**

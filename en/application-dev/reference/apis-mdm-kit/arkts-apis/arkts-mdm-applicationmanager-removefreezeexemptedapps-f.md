@@ -20,6 +20,8 @@ Removes the background freeze-exempt application list for a specified user. Afte
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function removeFreezeExemptedApps(admin: Want, applicationInstances: Array<common.ApplicationInstance>): void--><!--Device-applicationManager-function removeFreezeExemptedApps(admin: Want, applicationInstances: Array<common.ApplicationInstance>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

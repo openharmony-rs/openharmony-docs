@@ -20,6 +20,8 @@ Sets a value of the specified key. This API uses an asynchronous callback to ret
 
 **Substitutes:** set
 
+<!--Device-systemParameter-function set(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-systemParameter-function set(key: string, value: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo
 
 **System API:** This is a system API.
@@ -66,6 +68,8 @@ Sets a value of the specified key. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** set
+
+<!--Device-systemParameter-function set(key: string, value: string): Promise<void>--><!--Device-systemParameter-function set(key: string, value: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo
 

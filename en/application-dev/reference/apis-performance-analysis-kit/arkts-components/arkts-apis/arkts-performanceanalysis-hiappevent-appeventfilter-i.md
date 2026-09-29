@@ -13,6 +13,8 @@ Defines parameters of subscription filtering conditions of a [Watcher](arkts-per
 
 **Since:** 9
 
+<!--Device-hiAppEvent-interface AppEventFilter--><!--Device-hiAppEvent-interface AppEventFilter-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import
@@ -33,7 +35,9 @@ Event domain, which can be the system event domain (**hiAppEvent.domain.OS**) or
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventFilter-domain: string--><!--Device-AppEventFilter-domain: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -49,7 +53,9 @@ Event types. If this parameter is not set, events are not filtered by default.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventFilter-eventTypes?: EventType[]--><!--Device-AppEventFilter-eventTypes?: EventType[]-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -65,6 +71,8 @@ Names of the events to be subscribed. If this parameter is not set, events are n
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventFilter-names?: string[]--><!--Device-AppEventFilter-names?: string[]-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

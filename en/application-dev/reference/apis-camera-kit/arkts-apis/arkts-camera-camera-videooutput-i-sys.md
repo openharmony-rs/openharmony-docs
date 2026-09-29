@@ -10,6 +10,8 @@ VideoOutput implements output information used in a video session. It inherits f
 
 **Since:** 10
 
+<!--Device-camera-interface VideoOutput extends CameraOutput--><!--Device-camera-interface VideoOutput extends CameraOutput-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ attachMetaSurface(surfaceId: string, type: VideoMetaType): void
 Attach a meta surface to VideoOutput.
 
 **Since:** 12
+
+<!--Device-VideoOutput-attachMetaSurface(surfaceId: string, type: VideoMetaType): void--><!--Device-VideoOutput-attachMetaSurface(surfaceId: string, type: VideoMetaType): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -57,6 +61,8 @@ Enable auto deferred video enhancement if needed.
 
 **Since:** 13
 
+<!--Device-VideoOutput-enableAutoDeferredVideoEnhancement(enabled: boolean): void--><!--Device-VideoOutput-enableAutoDeferredVideoEnhancement(enabled: boolean): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -85,6 +91,8 @@ Enable auto frame rate for video capture.
 
 **Since:** 18
 
+<!--Device-VideoOutput-enableAutoVideoFrameRate(enabled: boolean): void--><!--Device-VideoOutput-enableAutoVideoFrameRate(enabled: boolean): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -112,6 +120,8 @@ Get supported video rotations.
 
 **Since:** 14
 
+<!--Device-VideoOutput-getSupportedRotations(): Array<ImageRotation>--><!--Device-VideoOutput-getSupportedRotations(): Array<ImageRotation>-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -137,6 +147,8 @@ getSupportedVideoMetaTypes(): Array<VideoMetaType>
 Get supported video meta types.
 
 **Since:** 12
+
+<!--Device-VideoOutput-getSupportedVideoMetaTypes(): Array<VideoMetaType>--><!--Device-VideoOutput-getSupportedVideoMetaTypes(): Array<VideoMetaType>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -165,6 +177,8 @@ Confirm if auto deferred video enhancement is enabled.
 
 **Since:** 13
 
+<!--Device-VideoOutput-isAutoDeferredVideoEnhancementEnabled(): boolean--><!--Device-VideoOutput-isAutoDeferredVideoEnhancementEnabled(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -191,6 +205,8 @@ isAutoDeferredVideoEnhancementSupported(): boolean
 Confirm if auto deferred video enhancement is supported in the specific device.
 
 **Since:** 13
+
+<!--Device-VideoOutput-isAutoDeferredVideoEnhancementSupported(): boolean--><!--Device-VideoOutput-isAutoDeferredVideoEnhancementSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -219,6 +235,8 @@ Determine whether auto frame rate is supported.
 
 **Since:** 18
 
+<!--Device-VideoOutput-isAutoVideoFrameRateSupported(): boolean--><!--Device-VideoOutput-isAutoVideoFrameRateSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -245,6 +263,8 @@ Determine whether video rotation is supported.
 
 **Since:** 14
 
+<!--Device-VideoOutput-isRotationSupported(): boolean--><!--Device-VideoOutput-isRotationSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -270,6 +290,8 @@ off(type: 'deferredVideoEnhancementInfo', callback?: AsyncCallback<DeferredVideo
 Unsubscribes from deferred video enhancement info callback.
 
 **Since:** 13
+
+<!--Device-VideoOutput-off(type: 'deferredVideoEnhancementInfo', callback?: AsyncCallback<DeferredVideoEnhancementInfo>): void--><!--Device-VideoOutput-off(type: 'deferredVideoEnhancementInfo', callback?: AsyncCallback<DeferredVideoEnhancementInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -298,6 +320,8 @@ Subscribes deferred video enhancement info callback.
 
 **Since:** 13
 
+<!--Device-VideoOutput-on(type: 'deferredVideoEnhancementInfo', callback: AsyncCallback<DeferredVideoEnhancementInfo>): void--><!--Device-VideoOutput-on(type: 'deferredVideoEnhancementInfo', callback: AsyncCallback<DeferredVideoEnhancementInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -324,6 +348,8 @@ setRotation(rotation: ImageRotation): void
 Set a video rotation.
 
 **Since:** 14
+
+<!--Device-VideoOutput-setRotation(rotation: ImageRotation): void--><!--Device-VideoOutput-setRotation(rotation: ImageRotation): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

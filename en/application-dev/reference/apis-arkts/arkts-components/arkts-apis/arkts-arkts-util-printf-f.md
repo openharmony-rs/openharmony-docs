@@ -20,6 +20,8 @@ Formats a string by replacing the placeholders in it.
 
 **Substitutes:** [format](arkts-arkts-util-format-f.md)
 
+<!--Device-util-function printf(format: string, ...args: Object[]): string--><!--Device-util-function printf(format: string, ...args: Object[]): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

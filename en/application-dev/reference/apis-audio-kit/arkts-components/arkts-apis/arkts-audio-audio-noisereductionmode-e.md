@@ -8,6 +8,8 @@ Enumerates the noise reduction modes.
 
 **Since:** 26.0.0
 
+<!--Device-audio-enum NoiseReductionMode--><!--Device-audio-enum NoiseReductionMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## FIDELITY
@@ -21,6 +23,8 @@ Fidelity mode, no noise cancellation.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NoiseReductionMode-FIDELITY = 0--><!--Device-NoiseReductionMode-FIDELITY = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -36,6 +40,8 @@ Pure vocals mode, enhanced noise reduction.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NoiseReductionMode-PURE_VOCALS = 1--><!--Device-NoiseReductionMode-PURE_VOCALS = 1-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## STANDARD
@@ -49,5 +55,7 @@ Standard mode, weak noise reduction.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NoiseReductionMode-STANDARD = 2--><!--Device-NoiseReductionMode-STANDARD = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

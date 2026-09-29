@@ -8,6 +8,8 @@ Enumerates the media types.
 
 **Since:** 8
 
+<!--Device-media-enum MediaType--><!--Device-media-enum MediaType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## MEDIA_TYPE_UNSUPPORTED
@@ -20,7 +22,9 @@ The media type is not supported.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-MediaType-MEDIA_TYPE_UNSUPPORTED = -1--><!--Device-MediaType-MEDIA_TYPE_UNSUPPORTED = -1-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -34,7 +38,9 @@ Media.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MediaType-MEDIA_TYPE_AUD = 0--><!--Device-MediaType-MEDIA_TYPE_AUD = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -48,7 +54,9 @@ Video.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MediaType-MEDIA_TYPE_VID = 1--><!--Device-MediaType-MEDIA_TYPE_VID = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -62,7 +70,9 @@ Subtitle.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-MediaType-MEDIA_TYPE_SUBTITLE = 2--><!--Device-MediaType-MEDIA_TYPE_SUBTITLE = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -76,7 +86,9 @@ Attachment information (for example, an embedded external file).
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-MediaType-MEDIA_TYPE_ATTACHMENT = 3--><!--Device-MediaType-MEDIA_TYPE_ATTACHMENT = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -90,7 +102,9 @@ Data.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-MediaType-MEDIA_TYPE_DATA = 4--><!--Device-MediaType-MEDIA_TYPE_DATA = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -104,7 +118,9 @@ Metadata with a timestamp.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-MediaType-MEDIA_TYPE_TIMED_METADATA = 5--><!--Device-MediaType-MEDIA_TYPE_TIMED_METADATA = 5-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -118,6 +134,8 @@ Auxiliary (track) information.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-MediaType-MEDIA_TYPE_AUXILIARY = 6--><!--Device-MediaType-MEDIA_TYPE_AUXILIARY = 6-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core

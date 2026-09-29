@@ -8,6 +8,8 @@ Asynchronous lock.
 
 **Since:** 12
 
+<!--Device-utils-namespace locks--><!--Device-utils-namespace locks-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import

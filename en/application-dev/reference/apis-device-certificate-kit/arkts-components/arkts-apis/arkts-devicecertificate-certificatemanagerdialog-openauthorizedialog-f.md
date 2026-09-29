@@ -20,6 +20,8 @@ Opens the authorization page of the certificate management dialog box to grant a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManagerDialog-function openAuthorizeDialog(context: common.Context): Promise<string>--><!--Device-certificateManagerDialog-function openAuthorizeDialog(context: common.Context): Promise<string>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 **Parameters:**
@@ -83,6 +85,8 @@ Opens the Certificate Credential Authorization page of the Certificate Managemen
 **Required permissions:** ohos.permission.ACCESS_CERT_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-certificateManagerDialog-function openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest): Promise<CertReference>--><!--Device-certificateManagerDialog-function openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest): Promise<CertReference>-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 

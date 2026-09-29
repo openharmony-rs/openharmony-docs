@@ -10,6 +10,8 @@ Defines the options for the domain plug-in to obtain the domain account informat
 
 **Since:** 10
 
+<!--Device-osAccount-interface GetDomainAccountInfoPluginOptions extends GetDomainAccountInfoOptions--><!--Device-osAccount-interface GetDomainAccountInfoPluginOptions extends GetDomainAccountInfoOptions-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Caller UID.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-GetDomainAccountInfoPluginOptions-callerUid: int--><!--Device-GetDomainAccountInfoPluginOptions-callerUid: int-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

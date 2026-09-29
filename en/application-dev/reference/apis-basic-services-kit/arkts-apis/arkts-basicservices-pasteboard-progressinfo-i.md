@@ -8,6 +8,8 @@ Defines the progress information. This information is reported only when [Progre
 
 **Since:** 15
 
+<!--Device-pasteboard-interface ProgressInfo--><!--Device-pasteboard-interface ProgressInfo-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 ## Modules to Import
@@ -28,6 +30,8 @@ If the progress indicator provided by the system is not used, the system reports
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-ProgressInfo-progress: int--><!--Device-ProgressInfo-progress: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard

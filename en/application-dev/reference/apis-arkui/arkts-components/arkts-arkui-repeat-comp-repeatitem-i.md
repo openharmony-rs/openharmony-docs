@@ -8,6 +8,8 @@ Construct a new type for each item.
 
 **Since:** 12
 
+<!--Device-unnamed-interface RepeatItem<T>--><!--Device-unnamed-interface RepeatItem<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
@@ -28,6 +30,8 @@ Index corresponding to the current data item.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-RepeatItem-index: number--><!--Device-RepeatItem-index: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## item
@@ -47,5 +51,7 @@ Each data item in the **arr** array. **T** indicates the data type passed in.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-RepeatItem-item: T--><!--Device-RepeatItem-item: T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

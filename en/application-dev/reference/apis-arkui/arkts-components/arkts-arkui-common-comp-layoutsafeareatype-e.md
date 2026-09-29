@@ -8,6 +8,8 @@ Enumerates the types for expanding layout safe areas.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum LayoutSafeAreaType--><!--Device-unnamed-declare enum LayoutSafeAreaType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SYSTEM
@@ -23,5 +25,7 @@ The component's layout range can be expanded to include both component-level saf
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LayoutSafeAreaType-SYSTEM = 0--><!--Device-LayoutSafeAreaType-SYSTEM = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

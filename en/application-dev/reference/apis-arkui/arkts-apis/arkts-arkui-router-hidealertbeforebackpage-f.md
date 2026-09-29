@@ -26,6 +26,8 @@ Disables the display of a confirm dialog box before returning to the previous pa
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-router-function hideAlertBeforeBackPage(): void--><!--Device-router-function hideAlertBeforeBackPage(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Examples**

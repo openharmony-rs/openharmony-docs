@@ -17,6 +17,8 @@ Parses and processes the body of an ad response (this API is only open to some p
 
 **Since:** 12
 
+<!--Device-advertising-function parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener,     context: common.UIAbilityContext): void--><!--Device-advertising-function parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener,     context: common.UIAbilityContext): void-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 **Parameters:**

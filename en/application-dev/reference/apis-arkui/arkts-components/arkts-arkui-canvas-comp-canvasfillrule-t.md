@@ -14,6 +14,8 @@ Defines the fill pattern algorithm used to determine whether a point is inside o
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare type CanvasFillRule = "evenodd" | "nonzero"--><!--Device-unnamed-declare type CanvasFillRule = "evenodd" | "nonzero"-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

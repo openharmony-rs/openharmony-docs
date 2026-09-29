@@ -20,6 +20,8 @@ Obtains the USB device list.
 
 **Substitutes:** [getDevices](arkts-basicservices-usbmanager-getdevices-f.md)
 
+<!--Device-usb-function getDevices(): Array<Readonly<USBDevice>>--><!--Device-usb-function getDevices(): Array<Readonly<USBDevice>>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Return value:**

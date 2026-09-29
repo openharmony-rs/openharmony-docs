@@ -8,6 +8,8 @@ Enumerates the pan directions. Unlike **SwipeDirection**, **PanDirection** has n
 
 **Since:** 7
 
+<!--Device-unnamed-declare enum PanDirection--><!--Device-unnamed-declare enum PanDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -21,6 +23,8 @@ Panning disabled.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanDirection-None--><!--Device-PanDirection-None-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +40,8 @@ Horizontal direction.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanDirection-Horizontal--><!--Device-PanDirection-Horizontal-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Left
@@ -49,6 +55,8 @@ Leftward.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanDirection-Left--><!--Device-PanDirection-Left-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +72,8 @@ Rightward.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanDirection-Right--><!--Device-PanDirection-Right-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Vertical
@@ -77,6 +87,8 @@ Vertical direction.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanDirection-Vertical--><!--Device-PanDirection-Vertical-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +104,8 @@ Upward.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanDirection-Up--><!--Device-PanDirection-Up-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Down
@@ -106,6 +120,8 @@ Downward.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanDirection-Down--><!--Device-PanDirection-Down-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## All
@@ -119,5 +135,7 @@ All directions.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanDirection-All--><!--Device-PanDirection-All-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

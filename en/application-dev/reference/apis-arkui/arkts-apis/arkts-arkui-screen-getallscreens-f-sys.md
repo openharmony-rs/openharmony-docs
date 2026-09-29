@@ -16,6 +16,8 @@ Obtains all screens. This API uses an asynchronous callback to return the result
 
 **Since:** 9
 
+<!--Device-screen-function getAllScreens(callback: AsyncCallback<Array<Screen>>): void--><!--Device-screen-function getAllScreens(callback: AsyncCallback<Array<Screen>>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -68,6 +70,8 @@ Obtains all screens. This API uses an asynchronous callback to return the result
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-screen-function getAllScreens(callback: AsyncCallback<Array<Screen>>, isNeedUnused?: boolean): void--><!--Device-screen-function getAllScreens(callback: AsyncCallback<Array<Screen>>, isNeedUnused?: boolean): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -119,6 +123,8 @@ Obtains all screens. This API uses a promise to return the result.
 
 **Since:** 9
 
+<!--Device-screen-function getAllScreens(): Promise<Array<Screen>>--><!--Device-screen-function getAllScreens(): Promise<Array<Screen>>-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -168,6 +174,8 @@ Obtains all screens. This API uses a promise to return the result.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-screen-function getAllScreens(isNeedUnused?: boolean): Promise<Array<Screen>>--><!--Device-screen-function getAllScreens(isNeedUnused?: boolean): Promise<Array<Screen>>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

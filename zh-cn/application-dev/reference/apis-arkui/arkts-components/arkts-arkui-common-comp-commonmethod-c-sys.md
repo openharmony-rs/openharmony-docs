@@ -8,6 +8,8 @@ CommonMethod.
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare class CommonMethod<T>--><!--Device-unnamed-declare class CommonMethod<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## advancedBlendMode
@@ -23,6 +25,8 @@ advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API版本13开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CommonMethod-advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T--><!--Device-CommonMethod-advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +59,8 @@ constructor.
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CommonMethod-constructor()--><!--Device-CommonMethod-constructor()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -76,6 +82,8 @@ edgeLight(params: EdgeLightParams | undefined): T
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CommonMethod-edgeLight(params: EdgeLightParams | undefined): T--><!--Device-CommonMethod-edgeLight(params: EdgeLightParams | undefined): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,6 +126,8 @@ excludeFromRenderGroup(exclude: boolean | undefined): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-CommonMethod-excludeFromRenderGroup(exclude: boolean | undefined): T--><!--Device-CommonMethod-excludeFromRenderGroup(exclude: boolean | undefined): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -156,6 +166,8 @@ spatialEffect(params: SpatialEffectParams | undefined): T
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-CommonMethod-spatialEffect(params: SpatialEffectParams | undefined): T--><!--Device-CommonMethod-spatialEffect(params: SpatialEffectParams | undefined): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -178,13 +190,15 @@ spatialEffect(params: SpatialEffectParams | undefined): T
 useUnionEffect(value: boolean | undefined): T
 ```
 
-表示是否使用祖先组件[UnionEffectContainer](arkts-arkui-unioneffectcontainer-comp-sys.md#union_effect_container)的融合效果，即是否作为UnionEffectContainer做形状融合的一部分，参与融合形态计算。
+表示是否使用祖先组件[UnionEffectContainer](arkts-arkui-unioneffectcontainer-comp-sys.md)的融合效果，即是否作为UnionEffectContainer做形状融合的一部分，参与融合形态计算。
 
 未设置时，默认不使用祖先组件UnionEffectContainer的融合效果。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CommonMethod-useUnionEffect(value: boolean | undefined): T--><!--Device-CommonMethod-useUnionEffect(value: boolean | undefined): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -210,13 +224,15 @@ useUnionEffect(value: boolean | undefined): T
 useUnionEffect(value: boolean | undefined, options?: GravityCenterOptions): T
 ```
 
-表示是否使用祖先组件[UnionEffectContainer](arkts-arkui-unioneffectcontainer-comp-sys.md#union_effect_container)的融合效果，是否作为UnionEffectContainer做形状融合的一部分，参与融合形态计算。当不存在祖先组件UnionEffectContainer时，设置该属性不产生效果。
+表示是否使用祖先组件[UnionEffectContainer](arkts-arkui-unioneffectcontainer-comp-sys.md)的融合效果，是否作为UnionEffectContainer做形状融合的一部分，参与融合形态计算。当不存在祖先组件UnionEffectContainer时，设置该属性不产生效果。
 
 未设置时，默认不使用祖先组件UnionEffectContainer的融合效果。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CommonMethod-useUnionEffect(value: boolean | undefined, options?: GravityCenterOptions): T--><!--Device-CommonMethod-useUnionEffect(value: boolean | undefined, options?: GravityCenterOptions): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

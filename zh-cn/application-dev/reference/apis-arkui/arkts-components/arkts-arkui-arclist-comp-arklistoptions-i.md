@@ -8,6 +8,8 @@ declare interface ArkListOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface ArkListOptions--><!--Device-unnamed-declare interface ArkListOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -29,6 +31,8 @@ ArcList的头部组件，用于在列表顶部显示标题或自定义内容。�
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArkListOptions-header?: ComponentContent--><!--Device-ArkListOptions-header?: ComponentContent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -52,6 +56,8 @@ initialIndex?: number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArkListOptions-initialIndex?: number--><!--Device-ArkListOptions-initialIndex?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## scroller
@@ -64,12 +70,14 @@ scroller?: Scroller
 
 **说明：** 
 
-不允许和其他滚动类组件，如：List、Grid、Scroll和WaterFlow绑定同一个滚动控制对象。
+不允许和其他滚动类组件，如：[List](arkts-arkui-list-comp.md)、[Grid](arkts-arkui-grid-comp.md)、[Scroll](arkts-arkui-scroll-comp.md)和[WaterFlow](arkts-arkui-waterflow-comp.md)绑定同一个滚动控制对象。
 
 **类型：** [Scroller](arkts-arkui-scroll-comp-scroller-c.md)
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArkListOptions-scroller?: Scroller--><!--Device-ArkListOptions-scroller?: Scroller-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

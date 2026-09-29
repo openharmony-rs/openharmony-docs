@@ -8,6 +8,8 @@ Defines a struct for distributed configuration of a table.
 
 **Since:** 10
 
+<!--Device-relationalStore-interface DistributedConfig--><!--Device-relationalStore-interface DistributedConfig-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Specifies the asset conflict policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DistributedConfig-assetConflictPolicy?: AssetConflictPolicy--><!--Device-DistributedConfig-assetConflictPolicy?: AssetConflictPolicy-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## assetDownloadOnDemand
@@ -45,6 +49,8 @@ Specifies whether to download assets on demand.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DistributedConfig-assetDownloadOnDemand?: boolean--><!--Device-DistributedConfig-assetDownloadOnDemand?: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -62,6 +68,8 @@ Specifies the asset temp path.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DistributedConfig-assetTempPath?: string--><!--Device-DistributedConfig-assetTempPath?: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## asyncDownloadAsset
@@ -78,6 +86,8 @@ Default value: **false**.
 
 **Since:** 18
 
+<!--Device-DistributedConfig-asyncDownloadAsset?: boolean--><!--Device-DistributedConfig-asyncDownloadAsset?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## autoSync
@@ -91,6 +101,8 @@ Whether the table supports automatic device-cloud synchronization. If the value 
 **Type:** boolean
 
 **Since:** 10
+
+<!--Device-DistributedConfig-autoSync: boolean--><!--Device-DistributedConfig-autoSync: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -108,6 +120,8 @@ Specifies the auto synchronization switch.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DistributedConfig-autoSyncSwitch?: boolean--><!--Device-DistributedConfig-autoSyncSwitch?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## enableCloud
@@ -122,6 +136,8 @@ Whether to enable device-cloud sync for this RDB store. The value **true** means
 
 **Since:** 18
 
+<!--Device-DistributedConfig-enableCloud?: boolean--><!--Device-DistributedConfig-enableCloud?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## tableType
@@ -135,5 +151,7 @@ Distributed table type. **DEVICE_COLLABORATION** indicates the device collaborat
 **Type:** [DistributedTableType](arkts-arkdata-relationalstore-distributedtabletype-e.md)
 
 **Since:** 23
+
+<!--Device-DistributedConfig-tableType?: DistributedTableType--><!--Device-DistributedConfig-tableType?: DistributedTableType-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

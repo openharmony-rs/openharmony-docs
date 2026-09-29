@@ -24,6 +24,8 @@ Uploads a file. This API uses an asynchronous callback to return the result. HTT
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-request-function uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback<UploadTask>): void--><!--Device-request-function uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback<UploadTask>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 **Parameters:**
@@ -91,6 +93,8 @@ Uploads a file. This API uses a promise to return the result. HTTP is supported.
 **Since:** 9
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-request-function uploadFile(context: BaseContext, config: UploadConfig): Promise<UploadTask>--><!--Device-request-function uploadFile(context: BaseContext, config: UploadConfig): Promise<UploadTask>-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 

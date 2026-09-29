@@ -20,6 +20,8 @@ function connectNative(context: UIAbilityContext, want: Want, callback: WebExten
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-webNativeMessagingExtensionManager-function connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): number--><!--Device-webNativeMessagingExtensionManager-function connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -40,7 +42,7 @@ function connectNative(context: UIAbilityContext, want: Want, callback: WebExten
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 801 | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 **示例**
 

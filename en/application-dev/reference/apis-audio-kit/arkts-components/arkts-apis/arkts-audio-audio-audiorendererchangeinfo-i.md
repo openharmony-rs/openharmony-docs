@@ -8,6 +8,8 @@ Describes the audio renderer change event.
 
 **Since:** 9
 
+<!--Device-audio-interface AudioRendererChangeInfo--><!--Device-audio-interface AudioRendererChangeInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Audio device description.
 
 **Since:** 9
 
+<!--Device-AudioRendererChangeInfo-readonly deviceDescriptors: AudioDeviceDescriptors--><!--Device-AudioRendererChangeInfo-readonly deviceDescriptors: AudioDeviceDescriptors-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## rendererInfo
@@ -42,6 +46,8 @@ Audio renderer information.
 
 **Since:** 9
 
+<!--Device-AudioRendererChangeInfo-readonly rendererInfo: AudioRendererInfo--><!--Device-AudioRendererChangeInfo-readonly rendererInfo: AudioRendererInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## streamId
@@ -55,5 +61,7 @@ Unique ID of an audio stream.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-AudioRendererChangeInfo-readonly streamId: int--><!--Device-AudioRendererChangeInfo-readonly streamId: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer

@@ -10,6 +10,8 @@ export interface FinishWithResultParams
 
 **Deprecated since:** 8
 
+<!--Device-unnamed-export interface FinishWithResultParams--><!--Device-unnamed-export interface FinishWithResultParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## code
@@ -26,6 +28,8 @@ Result code.
 
 **Deprecated since:** 8
 
+<!--Device-FinishWithResultParams-code: number--><!--Device-FinishWithResultParams-code: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## result
@@ -41,5 +45,7 @@ Returned data.
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-FinishWithResultParams-result: object--><!--Device-FinishWithResultParams-result: object-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite

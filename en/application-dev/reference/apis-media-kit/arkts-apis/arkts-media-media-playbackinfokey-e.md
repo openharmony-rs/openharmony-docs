@@ -8,6 +8,8 @@ Enumerates the playback description keys.
 
 **Since:** 12
 
+<!--Device-media-enum PlaybackInfoKey--><!--Device-media-enum PlaybackInfoKey-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## SERVER_IP_ADDRESS
@@ -19,6 +21,8 @@ SERVER_IP_ADDRESS = 'server_ip_address'
 IP address of the server. The corresponding key value type is string.
 
 **Since:** 12
+
+<!--Device-PlaybackInfoKey-SERVER_IP_ADDRESS = 'server_ip_address'--><!--Device-PlaybackInfoKey-SERVER_IP_ADDRESS = 'server_ip_address'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -32,6 +36,8 @@ Average download rate. The corresponding key value type is number, measured in b
 
 **Since:** 12
 
+<!--Device-PlaybackInfoKey-AVG_DOWNLOAD_RATE = 'average_download_rate'--><!--Device-PlaybackInfoKey-AVG_DOWNLOAD_RATE = 'average_download_rate'-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## DOWNLOAD_RATE
@@ -43,6 +49,8 @@ DOWNLOAD_RATE = 'download_rate'
 Download rate in one second. The corresponding key value type is number, measured in bit/s.
 
 **Since:** 12
+
+<!--Device-PlaybackInfoKey-DOWNLOAD_RATE = 'download_rate'--><!--Device-PlaybackInfoKey-DOWNLOAD_RATE = 'download_rate'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -56,6 +64,8 @@ Download status. The corresponding key value type is number. The value **1** mea
 
 **Since:** 12
 
+<!--Device-PlaybackInfoKey-IS_DOWNLOADING = 'is_downloading'--><!--Device-PlaybackInfoKey-IS_DOWNLOADING = 'is_downloading'-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## BUFFER_DURATION
@@ -67,5 +77,7 @@ BUFFER_DURATION = 'buffer_duration'
 Duration that the cached data can be played. The corresponding key value type is number, measured in seconds.
 
 **Since:** 12
+
+<!--Device-PlaybackInfoKey-BUFFER_DURATION = 'buffer_duration'--><!--Device-PlaybackInfoKey-BUFFER_DURATION = 'buffer_duration'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core

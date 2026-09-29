@@ -16,6 +16,8 @@ Creates a group based on [GroupConfig](arkts-basicservices-agent-groupconfig-i.m
 
 **Since:** 15
 
+<!--Device-agent-function createGroup(config: GroupConfig): Promise<string>--><!--Device-agent-function createGroup(config: GroupConfig): Promise<string>-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

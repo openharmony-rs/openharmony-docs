@@ -18,6 +18,8 @@ Converts a JavaScript Object Notation (JSON) string into an ArkTS Value.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ASON-function parse(text: string, reviver?: Transformer, options?: ParseOptions): ISendable | null--><!--Device-ASON-function parse(text: string, reviver?: Transformer, options?: ParseOptions): ISendable | null-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

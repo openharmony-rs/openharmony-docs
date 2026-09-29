@@ -8,6 +8,8 @@ Indicates the certificate file data.
 
 **Since:** 26.0.0
 
+<!--Device-certificateManager-export interface CertBlob--><!--Device-certificateManager-export interface CertBlob-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Certificate file data. When certFormat is transferred to PEM_DER, the maximum le
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CertBlob-certData: Uint8Array--><!--Device-CertBlob-certData: Uint8Array-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## certFormat
@@ -46,6 +50,8 @@ Indicates the certificate file format. Default value: PEM_DER.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CertBlob-certFormat? : CertFileFormat--><!--Device-CertBlob-certFormat? : CertFileFormat-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## certScope
@@ -61,5 +67,7 @@ Indicates the storage location of the user CA certificate. Default value: Curren
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CertBlob-certScope? : CertScope--><!--Device-CertBlob-certScope? : CertScope-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager

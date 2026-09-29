@@ -20,6 +20,8 @@ Queries the MAC address of the local device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-manager-function getLocalAddress(): string--><!--Device-manager-function getLocalAddress(): string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.

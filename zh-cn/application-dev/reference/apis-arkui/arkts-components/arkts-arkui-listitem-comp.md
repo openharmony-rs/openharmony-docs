@@ -4,7 +4,7 @@ ListItem用于展示列表中的具体列表项，支持设置划出菜单、选
 
 > **说明：** 
 > 
-> - 该组件的父组件只能是List或者ListItemGroup。
+> - 该组件的父组件只能是[List](arkts-arkui-list-comp.md)或者[ListItemGroup](arkts-arkui-listitemgroup-comp.md)。
 > 
 > - 当ListItem配合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，ListItem子组件在ListItem创建时创建。配合[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)使用时，或父组件为List/ListItemGroup时，ListItem子组件在ListItem布局时创建。
 
@@ -27,6 +27,8 @@ ListItem(value?: ListItemOptions)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListItemInterface-(value?: ListItemOptions): ListItemAttribute--><!--Device-ListItemInterface-(value?: ListItemOptions): ListItemAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,6 +59,8 @@ ListItem(value?: string)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListItemInterface-(value?: string): ListItemAttribute--><!--Device-ListItemInterface-(value?: string): ListItemAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

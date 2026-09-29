@@ -8,6 +8,8 @@ Defines the OS account authorization manager class.
 
 **Since:** 24
 
+<!--Device-osAccount-interface AuthorizationManager--><!--Device-osAccount-interface AuthorizationManager-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Acquires an authorization for the current process.
 **Required permissions:** ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuthorizationManager-acquireAuthorization(privilege: string, options?: AcquireAuthorizationOptions): Promise<AcquireAuthorizationResult>--><!--Device-AuthorizationManager-acquireAuthorization(privilege: string, options?: AcquireAuthorizationOptions): Promise<AcquireAuthorizationResult>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -94,6 +98,8 @@ Checks whether the current process has specified authorization.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AuthorizationManager-hasAuthorization(privilege: string): Promise<boolean>--><!--Device-AuthorizationManager-hasAuthorization(privilege: string): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -150,6 +156,8 @@ Releases the specified authorization for the current process.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuthorizationManager-releaseAuthorization(privilege: string): Promise<void>--><!--Device-AuthorizationManager-releaseAuthorization(privilege: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

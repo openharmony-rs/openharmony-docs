@@ -18,6 +18,8 @@ Sets a wallpaper of the specified type based on the uri path from a JPEG or PNG 
 
 **Required permissions:** ohos.permission.SET_WALLPAPER
 
+<!--Device-wallpaper-function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType, callback: AsyncCallback<void>): void--><!--Device-wallpaper-function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.
@@ -89,6 +91,8 @@ Sets a wallpaper of the specified type based on the uri path from a JPEG or PNG 
 **Since:** 9
 
 **Required permissions:** ohos.permission.SET_WALLPAPER
+
+<!--Device-wallpaper-function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType): Promise<void>--><!--Device-wallpaper-function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

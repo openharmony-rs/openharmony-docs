@@ -26,6 +26,8 @@ declare interface TimePickerOptions
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare interface TimePickerOptions--><!--Device-unnamed-declare interface TimePickerOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## end
@@ -51,6 +53,8 @@ end?: Date
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerOptions-end?: Date--><!--Device-TimePickerOptions-end?: Date-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## format
@@ -73,6 +77,8 @@ format?: TimePickerFormat
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerOptions-format?: TimePickerFormat--><!--Device-TimePickerOptions-format?: TimePickerFormat-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selected
@@ -94,6 +100,8 @@ selected?: Date
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerOptions-selected?: Date--><!--Device-TimePickerOptions-selected?: Date-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,5 +127,7 @@ start?: Date
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerOptions-start?: Date--><!--Device-TimePickerOptions-start?: Date-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

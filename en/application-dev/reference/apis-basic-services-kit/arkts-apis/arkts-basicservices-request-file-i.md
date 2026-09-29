@@ -8,6 +8,8 @@ Describes the list of files in [UploadConfig](arkts-basicservices-request-upload
 
 **Since:** 6
 
+<!--Device-request-interface File--><!--Device-request-interface File-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## Modules to Import
@@ -28,6 +30,8 @@ File name in the header when **multipart** is used.
 
 **Since:** 6
 
+<!--Device-File-filename: string--><!--Device-File-filename: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## name
@@ -42,6 +46,8 @@ Name of a form item when **multipart** is used. The default value is **file**.
 
 **Since:** 6
 
+<!--Device-File-name: string--><!--Device-File-name: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## type
@@ -55,6 +61,8 @@ Type of the file content. By default, the type is obtained based on the extensio
 **Type:** string
 
 **Since:** 6
+
+<!--Device-File-type: string--><!--Device-File-type: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -73,5 +81,7 @@ Example: **internal://cache/path/to/file.txt**.
 **Type:** string
 
 **Since:** 6
+
+<!--Device-File-uri: string--><!--Device-File-uri: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Download

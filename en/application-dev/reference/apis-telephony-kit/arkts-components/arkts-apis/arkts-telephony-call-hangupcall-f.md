@@ -20,6 +20,8 @@ Ends a call. This API uses an asynchronous callback to return the result.
 
 **Required permissions:** ohos.permission.ANSWER_CALL or ohos.permission.SET_TELEPHONY_STATE or ohos.permission.MANAGE_CALL_FOR_DEVICES
 
+<!--Device-call-function hangUpCall(callback: AsyncCallback<void>): void--><!--Device-call-function hangUpCall(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **Parameters:**

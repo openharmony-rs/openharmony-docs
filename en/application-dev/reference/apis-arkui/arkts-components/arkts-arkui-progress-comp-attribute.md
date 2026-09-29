@@ -5,13 +5,21 @@ declare class ProgressAttribute<Type extends keyof ProgressStyleMap = keyof Prog
   Style extends ProgressStyleMap[Type] = ProgressStyleMap[Type]> extends CommonMethod<ProgressAttribute<Type>>
 ```
 
-In addition to the [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-The [universal events][universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md) are supported.
+> **NOTE:** 
+> 
+> This component overrides the universal attribute
+> [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor). When applied directly to the
+> **Progress** component, it sets the background color of the progress indicator itself. To set the background color
+> for the entire **Progress** component area, apply **backgroundColor** to the outer container that wraps the
+> **Progress** component.
 
 **Inheritance/Implementation:** ProgressAttribute extends CommonMethod<ProgressAttribute<Type>>
 
 **Since:** 7
+
+<!--Device-unnamed-declare class ProgressAttribute<Type extends keyof ProgressStyleMap = keyof ProgressStyleMap,  Style extends ProgressStyleMap[Type] = ProgressStyleMap[Type]> extends CommonMethod<ProgressAttribute<Type>>--><!--Device-unnamed-declare class ProgressAttribute<Type extends keyof ProgressStyleMap = keyof ProgressStyleMap,  Style extends ProgressStyleMap[Type] = ProgressStyleMap[Type]> extends CommonMethod<ProgressAttribute<Type>>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,9 +31,9 @@ color(value: ResourceColor | LinearGradient)
 
 Sets the foreground color of the progress indicator.
 
-Since API version 10, LinearGradient can be used to set a gradient color for the ring style. Setting opacity is not recommended for the ring type. If opacity is required, use [DataPanel](arkts-arkui-datapanel-comp.md#data_panel).
+Since API version 10, LinearGradient can be used to set a gradient color for the ring style. Setting opacity is not recommended for the ring type. If opacity is required, use [DataPanel](arkts-arkui-datapanel-comp.md).
 
-Since API version 23, LinearGradient can be used to set gradient colors for the linear and capsule styles. In API version 22 and earlier versions, setting gradient colors via **LinearGradient** for the **Linear** and **Capsule** styles will not render the custom colors; the system's default theme colors will be used instead.
+Since API version 23, LinearGradient can be used to set the gradient color of the Linear style and Capsule style. In API version 22 and earlier, when this method is used, the default theme color is displayed.
 
 **Since:** 7
 
@@ -33,13 +41,15 @@ Since API version 23, LinearGradient can be used to set gradient colors for the 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ProgressAttribute-color(value: ResourceColor | LinearGradient): ProgressAttribute<Type>--><!--Device-ProgressAttribute-color(value: ResourceColor | LinearGradient): ProgressAttribute<Type>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Foreground color of the progress indicator.<br>Default value:<br>   - Capsule:<br>   API version 9 or earlier: **'#ff007dff'**<br>   API version 10: **'#33006cde'**<br>   API   version 11 or later: **'#33007dff'**<br>- Ring:<br>   API version 9 or earlier: **'#ff007dff'**<br>   API version 10 or later: start: **'#ff86c1ff'**, end: **'#ff254ff7'**<br>- Other styles: **'#ff007dff'** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Foreground color of the progress bar.<br>Since API version 10, LinearGradient is supported for setting the gradient color of the Ring style. Since API version 23, LinearGradient is supported for setting the gradient color of the Linear style and Capsule style. <br>Default value: <br>- Capsule: <br>   API version 9 and earlier: '#ff007dff'<br>   API version 10: '#33006cde'<br>   API version 11 and later: '#33007dff'<br>- Ring: <br>   API version 9 and earlier: '#ff007dff'<br>   API version 10 and later: start: '#ff86c1ff', end: '#ff254ff7'<br>- Other styles: '#ff007dff' |
 
 ## contentModifier
 
@@ -54,6 +64,8 @@ Creates a content modifier.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ProgressAttribute-contentModifier(modifier: ContentModifier<ProgressConfiguration>): ProgressAttribute<Type>--><!--Device-ProgressAttribute-contentModifier(modifier: ContentModifier<ProgressConfiguration>): ProgressAttribute<Type>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,13 +95,15 @@ Sets whether to enable privacy-sensitive mode.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-ProgressAttribute-privacySensitive(isPrivacySensitiveMode: Optional<boolean>): ProgressAttribute<Type>--><!--Device-ProgressAttribute-privacySensitive(isPrivacySensitiveMode: Optional<boolean>): ProgressAttribute<Type>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable privacy-sensitive mode, in which the progress indicator is cleared and text content is masked. **true**: The privacy-sensitive mode is enabled. **false**: The privacy-sensitive mode is disabled.<br> Default value: **false**<br>**NOTE:** <br>Setting this parameter to **null** indicates that no specific privacy sensitivity is applied.<!--Del--><br>For widgets, this property must be used with [FormComponent](arkts-arkui-formcomponent-comp-sys.md#form_component) and the [obscured](arkts-arkui-common-comp-commonmethod-c.md#obscured) attribute to display privacy masking effects.<!--DelEnd--> |
+| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Sets privacy sensitivity. In privacy mode, the progress is cleared and the text is masked. true: enables privacy sensitivity; false: disables privacy sensitivity. <br> Default value: false <br>**Note:** <br>Setting null indicates that the component is not sensitive. <!--Del--> <br>To use Progress in a card and set the [privacy mask](arkts-arkui-common-comp.md) attribute with the [FormComponent](arkts-arkui-formcomponent-comp-sys.md) component, the privacy mask effect is available only when the card is displayed.<!--DelEnd--> |
 
 ## style
 
@@ -105,13 +119,15 @@ Sets the component style.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ProgressAttribute-style(value: Style): ProgressAttribute<Type>--><!--Device-ProgressAttribute-style(value: Style): ProgressAttribute<Type>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Style | Yes | Component style.<br>- **CapsuleStyleOptions**: capsule style.<br>- **RingStyleOptions**: ring style.<br>- **LinearStyleOptions**: linear style.<br>- **ScaleRingStyleOptions**: determinate ring style.<br>- **EclipseStyleOptions**: eclipse style.<br>- **ProgressStyleOptions**: **strokeWidth**, **scaleCount**, and **scaleWidth** of a progress indicator. This parameter is valid only for the progress indicator that supports these style settings. |
+| value | Style | Yes | Style of the component. Style inherits from [ProgressStyleMap](arkts-arkui-progress-comp-progressstylemap-i.md). <br>**Note:** Different [ProgressType](arkts-arkui-progress-comp-progresstype-e.md) values must correspond to the respective [style](#style) attribute settings. For the detailed mapping, see [ProgressStyleMap](arkts-arkui-progress-comp-progressstylemap-i.md). <br>- [CapsuleStyleOptions](arkts-arkui-progress-comp-capsulestyleoptions-i.md): Sets the style of Capsule. <br>- [RingStyleOptions](arkts-arkui-progress-comp-ringstyleoptions-i.md): Sets the style of Ring. <br>- [LinearStyleOptions](arkts-arkui-progress-comp-linearstyleoptions-i.md): Sets the style of Linear. <br>- [ScaleRingStyleOptions](arkts-arkui-progress-comp-scaleringstyleoptions-i.md): Sets the style of ScaleRing. <br>- [EclipseStyleOptions](arkts-arkui-progress-comp-eclipsestyleoptions-i.md): Sets the style of Eclipse. <br>- [ProgressStyleOptions](arkts-arkui-progress-comp-progressstyleoptions-i.md): Can only set strokeWidth, scaleCount, and scaleWidth of each type of progress bar, and takes effect only for progress bars that support these style settings. |
 
 ## value
 
@@ -119,7 +135,7 @@ Sets the component style.
 value(value: number)
 ```
 
-Current progress. Values less than 0 are adjusted to **0**, and values greater than the **total** value are capped at the **total** value. Invalid values do not take effect.
+Sets the current progress value. When a value less than 0 is set, it is set to 0; when a value greater than total is set, it is set to total. When an invalid value is set, it is handled as the default value. When the status attribute of the Ring style is set to ProgressStatus.LOADING, setting the progress value does not take effect.
 
 **Since:** 7
 
@@ -127,10 +143,12 @@ Current progress. Values less than 0 are adjusted to **0**, and values greater t
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ProgressAttribute-value(value: number): ProgressAttribute<Type>--><!--Device-ProgressAttribute-value(value: number): ProgressAttribute<Type>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Current progress.<br> Default value: **0** |
+| value | number | Yes | Current progress value.<br>Default value: 0 <br>Value range: [0, total]. When the value is set to less than 0, it is set to 0. When the value is set to greater than total, it is set to total. When an invalid value is set, it is handled as the default value. <br>**Note:** When the status of a Ring type progress bar is set to ProgressStatus.LOADING, the set progress value does not take effect. |

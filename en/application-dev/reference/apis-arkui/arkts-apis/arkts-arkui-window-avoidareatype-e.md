@@ -10,6 +10,8 @@ When adapting window content for an [immersive layout](../../../windowmanager/wi
 
 **Since:** 7
 
+<!--Device-window-enum AvoidAreaType--><!--Device-window-enum AvoidAreaType-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## TYPE_SYSTEM
@@ -18,11 +20,13 @@ When adapting window content for an [immersive layout](../../../windowmanager/wi
 TYPE_SYSTEM = 0
 ```
 
-Default area of the system. &lt;!--RP11--&gt;It contains the status bar and three-button navigation bar.&lt;!--RP11End--&gt;
+Default area of the system. <!--RP11-->It contains the status bar and three-button navigation bar.<!--RP11End-->
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AvoidAreaType-TYPE_SYSTEM = 0--><!--Device-AvoidAreaType-TYPE_SYSTEM = 0-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -36,7 +40,9 @@ Cutout area.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AvoidAreaType-TYPE_CUTOUT = 1--><!--Device-AvoidAreaType-TYPE_CUTOUT = 1-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -50,7 +56,9 @@ Side return gesture area. Currently, no devices support this type of avoid area.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AvoidAreaType-TYPE_SYSTEM_GESTURE = 2--><!--Device-AvoidAreaType-TYPE_SYSTEM_GESTURE = 2-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -64,7 +72,9 @@ Fixed soft keyboard area.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AvoidAreaType-TYPE_KEYBOARD = 3--><!--Device-AvoidAreaType-TYPE_KEYBOARD = 3-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -74,11 +84,13 @@ Fixed soft keyboard area.
 TYPE_NAVIGATION_INDICATOR = 4
 ```
 
-Bottom navigation bar. &lt;!--RP12--&gt;OpenHarmony devices do not support this capability.&lt;!--RP12End--&gt;
+Bottom navigation bar. <!--RP12-->OpenHarmony devices do not support this capability.<!--RP12End-->
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AvoidAreaType-TYPE_NAVIGATION_INDICATOR = 4--><!--Device-AvoidAreaType-TYPE_NAVIGATION_INDICATOR = 4-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -94,6 +106,8 @@ Area for float navigation
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AvoidAreaType-TYPE_FLOAT_NAVIGATION = 5--><!--Device-AvoidAreaType-TYPE_FLOAT_NAVIGATION = 5-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

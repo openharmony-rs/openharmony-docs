@@ -10,6 +10,8 @@ ImageStream resource.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface ImageStream extends Image--><!--Device-unnamed-export interface ImageStream extends Image-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## surfaceId
@@ -25,5 +27,7 @@ The surfaceId of the ImageStream.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ImageStream-readonly surfaceId: string--><!--Device-ImageStream-readonly surfaceId: string-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

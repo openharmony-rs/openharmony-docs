@@ -8,6 +8,8 @@ Control class for restore procedure.
 
 **Since:** 10
 
+<!--Device-backup-class SessionRestore--><!--Device-backup-class SessionRestore-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Append new bundles and restoreInfos to be restore up during the restore.
 **Since:** 12
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-SessionRestore-appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], infos?: string[]): Promise<void>--><!--Device-SessionRestore-appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], infos?: string[]): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -167,6 +171,8 @@ Append new bundles to be restore up during the restore.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-SessionRestore-appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], callback: AsyncCallback<void>): void--><!--Device-SessionRestore-appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -276,6 +282,8 @@ cancel the application being restore.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-SessionRestore-cancel(bundleName: string): int--><!--Device-SessionRestore-cancel(bundleName: string): int-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -371,6 +379,8 @@ Provides an interface for the tool to clear temporary directories
 **Since:** 20
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-SessionRestore-cleanBundleTempDir(bundleName: string): Promise<boolean>--><!--Device-SessionRestore-cleanBundleTempDir(bundleName: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -473,6 +483,8 @@ Constructor for obtaining the instance of the SessionBackup class.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-SessionRestore-constructor(callbacks: GeneralCallbacks)--><!--Device-SessionRestore-constructor(callbacks: GeneralCallbacks)-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -546,6 +558,8 @@ Get the file handle of an APK file.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SessionRestore-getApkFileHandle(path: string, fileName: string): Promise<FileData>--><!--Device-SessionRestore-getApkFileHandle(path: string, fileName: string): Promise<FileData>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -584,6 +598,8 @@ Provides an interface for the tool to get compatibility info.
 **Since:** 20
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-SessionRestore-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>--><!--Device-SessionRestore-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -686,6 +702,8 @@ Request to get a shared file from the service. This interface is part of the zer
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-SessionRestore-getFileHandle(fileMeta: FileMeta): Promise<void>--><!--Device-SessionRestore-getFileHandle(fileMeta: FileMeta): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -787,6 +805,8 @@ Request to get a shared file from the service. This interface is part of the zer
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-SessionRestore-getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void--><!--Device-SessionRestore-getFileHandle(fileMeta: FileMeta, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -880,6 +900,8 @@ Request to get shared files from the service. This interface is part of the zero
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SessionRestore-getFileHandles(fileMeta: FileMeta): Promise<void>--><!--Device-SessionRestore-getFileHandles(fileMeta: FileMeta): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -917,6 +939,8 @@ Obtain a Json file that describes local capabilities.
 **Since:** 18
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-SessionRestore-getLocalCapabilities(): Promise<FileData>--><!--Device-SessionRestore-getLocalCapabilities(): Promise<FileData>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -1080,6 +1104,8 @@ Migrate file from source path to destination path.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SessionRestore-migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise<void>--><!--Device-SessionRestore-migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -1118,6 +1144,8 @@ Publish the file handle to the backup service to make the service aware that the
 **Since:** 10
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-SessionRestore-publishFile(fileMeta: FileMeta): Promise<void>--><!--Device-SessionRestore-publishFile(fileMeta: FileMeta): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -1232,6 +1260,8 @@ Publish the file handle to the backup service to make the service aware that the
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-SessionRestore-publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void--><!--Device-SessionRestore-publishFile(fileMeta: FileMeta, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -1339,6 +1369,8 @@ End restore process
 **Since:** 12
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-SessionRestore-release(): Promise<void>--><!--Device-SessionRestore-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 

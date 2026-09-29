@@ -10,6 +10,8 @@ Defines the options used in delete().
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export interface FileDeleteOption--><!--Device-unnamed-export interface FileDeleteOption-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Callback invoked when the API call is complete.
 
 **Deprecated since:** 10
 
+<!--Device-FileDeleteOption-complete?: () => void--><!--Device-FileDeleteOption-complete?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## fail
@@ -42,6 +46,8 @@ Callback invoked when the API call fails. **data** indicates the error informati
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileDeleteOption-fail?: (data: string, code: number) => void--><!--Device-FileDeleteOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -64,6 +70,8 @@ Callback invoked when the API call is successful.
 
 **Deprecated since:** 10
 
+<!--Device-FileDeleteOption-success?: () => void--><!--Device-FileDeleteOption-success?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## uri
@@ -81,5 +89,7 @@ URI of the file to delete, which cannot be an application resource path. Restric
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileDeleteOption-uri: string--><!--Device-FileDeleteOption-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite

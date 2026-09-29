@@ -4,11 +4,24 @@
 declare class Scroller
 ```
 
-Defines a controller for scrollable container components.
+Defines a controller for scrollable container components. It can be bound to a container component to control its scrolling behavior. A single **Scroller** instance cannot control multiple container components simultaneously. Currently, it can be bound to the following components: **ArcList**, **ArcScrollBar**, **List**, **Scroll**, **ScrollBar**, **Grid**, and **WaterFlow**.
 
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>1. The binding of a &lt;em&gt;Scroller&lt;/em&gt; instance to a scrollable container component occurs during the component creation phase. <br>2. &lt;em&gt;Scroller&lt;/em&gt; APIs can only be effectively called after the &lt;em&gt;Scroller&lt;/em&gt; instance is bound to a scrollable container component. Otherwise, depending on the API called, it may have no effect or throw an exception. <br>3. For example, with aboutToAppear, this callback is executed after a new instance of a custom component is created and before its &lt;em&gt;build()&lt;/em&gt; method is called. Therefore, if a scrollable component is defined within the &lt;em&gt;build&lt;/em&gt; method of a custom component, the internal scrollable component has not yet been created during the &lt;em&gt;aboutToAppear&lt;/em&gt; callback of that custom component, and therefore the &lt;em&gt;Scroller&lt;/em&gt; APIs cannot be called effectively. </p>
+> **NOTE:** 
+> 
+> 1. The binding between the **Scroller** controller and the scroll container component occurs during component creation.
+
+> 2. The **Scroller** methods can be called normally only after the **Scroller** controller is bound to the scroll container component. Otherwise, depending on the API called, the call may not take effect or may throw an exception.
+
+> 3. Take [aboutToAppear](arkts-arkui-common-comp-basecustomcomponent-c.md#abouttoappear) as an example. **aboutToAppear** is executed after a new instance of the custom component is created and before its
+> **build()** method is executed. Therefore, if the scroll component is inside the **build()** of a custom component,
+> the internal scroll component has not been created yet when **aboutToAppear** of the custom component is executed,
+> and the **Scroller** methods cannot be called normally.
+
+> 4. Take [onAppear](arkts-arkui-common-comp-commonmethod-c.md#onappear) as an example. This callback is triggered after the component is mounted and displayed. Therefore, when the **onAppear** callback of the scroll component is executed, the scroll component has been created and successfully bound to the **Scroller**, and the **Scroller** methods can be called normally.
 
 **Since:** 7
+
+<!--Device-unnamed-declare class Scroller--><!--Device-unnamed-declare class Scroller-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +31,15 @@ Defines a controller for scrollable container components.
 constructor()
 ```
 
-A constructor used to create a &lt;em&gt;Scroller&lt;/em&gt; object.
+A constructor used to create a **Scroller** object.
 
 **Since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Scroller-constructor()--><!--Device-Scroller-constructor()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,6 +56,8 @@ Obtains the content size.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Scroller-contentSize(): SizeResult--><!--Device-Scroller-contentSize(): SizeResult-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,9 +79,13 @@ Obtains the content size.
 currentOffset() : OffsetResult
 ```
 
-Obtains the current scrolling offset.
+Obtains the current scroll offset.
 
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>1. If &lt;em&gt;Scroller&lt;/em&gt; is not bound to a component, this API returns &lt;em&gt;undefined&lt;/em&gt;, which is not declared in the API. You are advised to use the &lt;em&gt;offset&lt;/em&gt; function. <br>2. The &lt;em&gt;Grid&lt;/em&gt;, &lt;em&gt;List&lt;/em&gt;, and &lt;em&gt;WaterFlow&lt;/em&gt; components use a lazy loading mechanism. Before all content is fully loaded and laid out, the total content offset is estimated, and this estimation may be inaccurate. For the &lt;em&gt;List&lt;/em&gt; component, the &lt;em&gt;childrenMainSize&lt;/em&gt; attribute can be used to mitigate such inaccuracies. Currently, there is no solution to inaccurate estimation of the &lt;em&gt;Grid&lt;/em&gt; and &lt;em&gt;WaterFlow&lt;/em&gt; components. </p>
+> **NOTE:** 
+> 
+> 1. When the **Scroller** is not bound to a component, this API returns **undefined**, which is not declared in the API. It is recommended to use the [offset](#offset) function, whose return type explicitly includes **undefined**.
+> 
+> 2. The **Grid**, **List**, and **WaterFlow** components have a lazy loading mechanism. When the component content has not been loaded and laid out, the total content offset is obtained through estimation, and the estimation result may contain errors. For the **List** component, the [childrenMainSize](arkts-arkui-list-comp-attribute.md#childrenmainsize) attribute can be used to resolve the inaccurate estimation. For **Grid** and **WaterFlow**, there is currently no solution for the inaccurate estimation.
 
 **Since:** 7
 
@@ -72,13 +93,15 @@ Obtains the current scrolling offset.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Scroller-currentOffset() : OffsetResult--><!--Device-Scroller-currentOffset() : OffsetResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [OffsetResult](arkts-arkui-scroll-comp-offsetresult-i.md) | Returns the current scrolling offset. If the scroller not bound to a component, the return value is void.<br>**Since:** 11 |
+| [OffsetResult](arkts-arkui-scroll-comp-offsetresult-i.md) | Current total scroll offset. **xOffset** indicates the total horizontal scroll offset, and **yOffset** indicates the total vertical scroll offset.<br><br>**Since:** 11 |
 
 ## fling
 
@@ -86,7 +109,7 @@ Obtains the current scrolling offset.
 fling(velocity: number): void
 ```
 
-Performs inertial scrolling based on the initial velocity passed in.
+The scroll component performs inertial scrolling based on the initial velocity passed in. This API can be used to simulate a fling effect.
 
 **Since:** 12
 
@@ -94,13 +117,15 @@ Performs inertial scrolling based on the initial velocity passed in.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Scroller-fling(velocity: number): void--><!--Device-Scroller-fling(velocity: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| velocity | number | Yes | Initial velocity of inertial scrolling. Unit: vp/s<br>&lt;em&gt;NOTE&lt;/em&gt; <br>If the value specified is 0, it is considered as invalid, and the scrolling for this instance will not take effect. A positive value indicates scrolling towards the top, while a negative value indicates scrolling towards the bottom. |
+| velocity | number | Yes | Initial velocity of the inertial scroll. Unit: vp/s<br>**Note:** <br>If **velocity** is set to **0**, the current scroll does not take effect and no scroll animation is generated. If the value is positive, the component scrolls toward the top; if the value is negative, the component scrolls toward the bottom. |
 
 **Error codes:**
 
@@ -123,6 +148,8 @@ Obtains the FrameNode corresponding to this scroller.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-Scroller-getFrameNode(): FrameNode | undefined--><!--Device-Scroller-getFrameNode(): FrameNode | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -139,13 +166,17 @@ getItemIndex(x: number, y: number): number
 
 Obtains the index of a child component based on coordinates.
 
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>The returned index is &lt;em&gt;-1&lt;/em&gt; for invalid coordinates. </p>
+> **NOTE:** 
+> 
+> This API is available for the **List**, **Grid**, and **WaterFlow** components.
 
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-Scroller-getItemIndex(x: number, y: number): number--><!--Device-Scroller-getItemIndex(x: number, y: number): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,7 +191,7 @@ Obtains the index of a child component based on coordinates.
 
 | Type | Description |
 | --- | --- |
-| number | Index of the item. |
+| number | Index of the child component hit by the coordinates. If the coordinates do not hit any child component, **-1** is returned. |
 
 **Error codes:**
 
@@ -177,13 +208,17 @@ getItemRect(index: number): RectResult
 
 Obtains the size and position of a child component relative to its container.
 
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>- The value of &lt;em&gt;index&lt;/em&gt; must be the index of a child component visible in the display area. Otherwise, the value is considered invalid. <br>- The value of &lt;em&gt;index&lt;/em&gt; must be the index of a child component visible in the display area. Otherwise, the value is considered invalid. </p>
+> **NOTE:** 
+> 
+> This API is available for the **ArcList**, **Scroll**, **List**, **Grid**, and **WaterFlow** components.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Scroller-getItemRect(index: number): RectResult--><!--Device-Scroller-getItemRect(index: number): RectResult-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,7 +249,9 @@ isAtEnd(): boolean
 
 Checks whether the component has scrolled to the bottom.
 
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>This API is available for the &lt;em&gt;ArcList&lt;/em&gt;, &lt;em&gt;Scroll&lt;/em&gt;, &lt;em&gt;List&lt;/em&gt;, &lt;em&gt;Grid&lt;/em&gt;, and &lt;em&gt;WaterFlow&lt;/em&gt; components. </p>
+> **NOTE:** 
+> 
+> This API is available for the **ArcList**, **Scroll**, **List**, **Grid**, and **WaterFlow** components.
 
 **Since:** 10
 
@@ -222,13 +259,15 @@ Checks whether the component has scrolled to the bottom.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Scroller-isAtEnd(): boolean--><!--Device-Scroller-isAtEnd(): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns whether the component scrolls to the end position. |
+| boolean | The value **true** means that the component has scrolled to the bottom, and **false** means the opposite. |
 
 ## offset
 
@@ -236,7 +275,7 @@ Checks whether the component has scrolled to the bottom.
 offset() : OffsetResult | undefined
 ```
 
-Obtains the current scrolling offset.
+Obtains the current scroll offset. Except for **undefined** in the API declaration, other information is the same as that of the [currentOffset](#currentoffset) API.
 
 **Since:** 23
 
@@ -244,13 +283,15 @@ Obtains the current scrolling offset.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-Scroller-offset() : OffsetResult | undefined--><!--Device-Scroller-offset() : OffsetResult | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [OffsetResult](arkts-arkui-scroll-comp-offsetresult-i.md) &#124; undefined | Returns the current scrolling offset. If the scroller not bound to a component, the return value is undefined. |
+| [OffsetResult](arkts-arkui-scroll-comp-offsetresult-i.md) &#124; undefined | Current total scroll offset. **xOffset** indicates the total horizontal scroll offset, and **yOffset** indicates the total vertical scroll offset. If the **Scroller** is not bound to a component, this API returns **undefined**. |
 
 ## scrollBy
 
@@ -260,7 +301,17 @@ scrollBy(dx: Length, dy: Length)
 
 Scrolls by the specified amount.
 
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>This API is available for the &lt;em&gt;ArcList&lt;/em&gt;, &lt;em&gt;Scroll&lt;/em&gt;, &lt;em&gt;List&lt;/em&gt;, &lt;em&gt;Grid&lt;/em&gt;, and &lt;em&gt;WaterFlow&lt;/em&gt; components. </p>
+> **NOTE:** 
+> 
+> - This API is available for the **ArcList**, **Scroll**, **List**, **Grid**, and **WaterFlow** components.
+> 
+> - Component behavior varies:
+> 
+> - The [ArcList](arkts-arkui-arclist-comp.md) and [List](arkts-arkui-list-comp.md) components load and lay out all items that are passed through.
+> 
+> - The **Grid** components and the **WaterFlow** components in [SLIDING_WINDOW](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md) mode directly estimate the items to be displayed when the jump distance is large (greater than twice the component main axis height). A jump refers to a one-frame scroll.
+> 
+> - The **WaterFlow** components in [ALWAYS_TOP_DOWN](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md) mode load and lay out all items passed through when jumping backward (when **dx** or **dy** is positive), and jump directly to the corresponding position when jumping forward (when **dx** or **dy** is negative). A jump refers to a one-frame scroll.
 
 **Since:** 9
 
@@ -268,14 +319,16 @@ Scrolls by the specified amount.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Scroller-scrollBy(dx: Length, dy: Length)--><!--Device-Scroller-scrollBy(dx: Length, dy: Length)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| dx | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Amount to scroll by in the horizontal direction. The percentage format is not supported. |
-| dy | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Amount to scroll by in the vertical direction. The percentage format is not supported. |
+| dx | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Amount to scroll by in the horizontal direction. The percentage format is not supported.<br>Value range: (-∞, +∞). |
+| dy | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Amount to scroll by in the vertical direction. The percentage format is not supported.<br>Value range: (-∞, +∞). |
 
 ## scrollEdge
 
@@ -283,7 +336,9 @@ Scrolls by the specified amount.
 scrollEdge(value: Edge, options?: ScrollEdgeOptions)
 ```
 
-Scrolls to the edge of the container, regardless of the scroll axis direction. By default, the &lt;em&gt;Scroll&lt;/em&gt; component comes with an animation, while the &lt;em&gt;Grid&lt;/em&gt;, &lt;em&gt;List&lt;/em&gt;, and &lt;em&gt;WaterFlow&lt;/em&gt; components do not.
+Scrolls to the edge of the container, regardless of the scroll axis direction. **Edge.Top** and **Edge.Start** behave the same, and **Edge.Bottom** and **Edge.End** behave the same. This API can be used for scenarios such as returning to the top and jumping to the end of the content.
+
+By default, the **Scroll** component comes with an animation, while the **Grid**, **List**, and **WaterFlow** components do not.
 
 **Since:** 7
 
@@ -291,13 +346,15 @@ Scrolls to the edge of the container, regardless of the scroll axis direction. B
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Scroller-scrollEdge(value: Edge, options?: ScrollEdgeOptions)--><!--Device-Scroller-scrollEdge(value: Edge, options?: ScrollEdgeOptions)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Edge](../arkts-apis/arkts-arkui-edge-e.md) | Yes | Edge position to scroll to.<br>&lt;em&gt;Atomic service API&lt;/em&gt;: This API can be used in atomic services since API version 11. |
+| value | [Edge](../arkts-apis/arkts-arkui-edge-e.md) | Yes | Edge position to scroll to. |
 | options | [ScrollEdgeOptions](arkts-arkui-scroll-comp-scrolledgeoptions-i.md) | No | Mode of scrolling to the edge position.<br>&lt;em&gt;Atomic service API&lt;/em&gt;: This API can be used in atomic services since API version 12.<br>**Since:** 12 |
 
 ## scrollPage
@@ -314,13 +371,15 @@ Scrolls to the next or previous page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Scroller-scrollPage(value: ScrollPageOptions)--><!--Device-Scroller-scrollPage(value: ScrollPageOptions)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ScrollPageOptions](arkts-arkui-scroll-comp-scrollpageoptions-i.md) | Yes | Page turning mode.<br>**Since:** 14 |
+| value | [ScrollPageOptions](arkts-arkui-scroll-comp-scrollpageoptions-i.md) | Yes | Paging mode. It contains the **next** (whether to page down) and **animation** (whether to enable the paging animation) fields, which are used to specify the paging behavior.<br>**Since:** 14 |
 
 <a id="scrollpage-1"></a>
 
@@ -340,6 +399,8 @@ Scrolls to the next or previous page.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-Scroller-scrollPage(value: { next: boolean; direction?: Axis })--><!--Device-Scroller-scrollPage(value: { next: boolean; direction?: Axis })-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -354,9 +415,19 @@ Scrolls to the next or previous page.
 scrollTo(options: ScrollOptions)
 ```
 
-Scrolls to the specified position. Anonymous Object Rectification.
+Scrolls to a specified position. This API can be used for scenarios such as directory navigation, returning to the top, and locating search results.
 
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>If the scrolling speed of the &lt;em&gt;scrollTo&lt;/em&gt; animation exceeds 200 vp/s, the components within the scrollable area will not respond to click events. </p>
+> **NOTE:** 
+> 
+> - If the scrolling speed of the **scrollTo** animation exceeds 200 vp/s, the components within the scrollable area will not respond to click events.
+> 
+> - Component behavior varies:
+> 
+> - The [ArcList](arkts-arkui-arclist-comp.md) and [List](arkts-arkui-list-comp.md) components load and lay out all items that are passed through.
+> 
+> - The **Grid** components and the [WaterFlow](arkts-arkui-waterflow-comp.md) components in [SLIDING_WINDOW](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md) mode directly estimate the items to be displayed when the jump distance is large (greater than twice the component main axis height). A jump refers to a one-frame scroll.
+> 
+> - The **WaterFlow** components in [ALWAYS_TOP_DOWN](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md) mode load and lay out all items passed through when jumping backward (when **dx** or **dy** is positive), and jump directly to the corresponding position when jumping forward (when **dx** or **dy** is negative). A jump refers to a one-frame scroll.
 
 **Since:** 7
 
@@ -364,13 +435,15 @@ Scrolls to the specified position. Anonymous Object Rectification.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Scroller-scrollTo(options: ScrollOptions)--><!--Device-Scroller-scrollTo(options: ScrollOptions)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ScrollOptions](arkts-arkui-scroll-comp-scrolloptions-i.md) | Yes | Parameters for scrolling to the specified position.<br>**Since:** 18 |
+| options | [ScrollOptions](arkts-arkui-scroll-comp-scrolloptions-i.md) | Yes | Parameters for scrolling to a specified position, including fields such as **xOffset**, **yOffset**, **animation**, and **canOverScroll**, used to specify the scroll target position and scroll behavior.<br>**Since:** 18 |
 
 ## scrollToIndex
 
@@ -378,9 +451,28 @@ Scrolls to the specified position. Anonymous Object Rectification.
 scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: ScrollToIndexOptions)
 ```
 
-Scrolls to a specified index, with support for setting an extra offset for the scroll. When smooth scrolling is enabled, all items encountered during the scroll are loaded and their layout is calculated. Loading a large number of items may cause performance issues. It is recommended that you first call &lt;em&gt;scrollToIndex&lt;/em&gt; without animation to jump to a position near the target, then call it again with animation to smoothly scroll to the final target position.
+Scrolls to a specified index, with support for setting an extra offset for the scroll.
 
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>This API only works for the &lt;em&gt;ArcList&lt;/em&gt;, &lt;em&gt;Grid&lt;/em&gt;, &lt;em&gt;List&lt;/em&gt;, and &lt;em&gt;WaterFlow&lt;/em&gt; components. <br>When refreshing the data source using &lt;em&gt;LazyForEach&lt;/em&gt;, &lt;em&gt;ForEach&lt;/em&gt;, or &lt;em&gt;Repeat&lt;/em&gt;, ensure this API is called after the data refresh is complete. <br>Starting from API version 11, the &lt;em&gt;List&lt;/em&gt; component supports &lt;em&gt;contentStartOffset&lt;/em&gt; and &lt;em&gt;contentEndOffset&lt;/em&gt;. Starting from API version 22, the &lt;em&gt;Grid&lt;/em&gt; and &lt;em&gt;WaterFlow&lt;/em&gt; components also support setting &lt;em&gt;contentStartOffset&lt;/em&gt; and &lt;em&gt;contentEndOffset&lt;/em&gt;. <br>- If the scrollable container has &lt;em&gt;contentStartOffset&lt;/em&gt; set and &lt;em&gt;ScrollAlign&lt;/em&gt; is &lt;em&gt;START&lt;/em&gt;, after scrolling, the start of the specified item will align with the &lt;em&gt;contentStartOffset&lt;/em&gt; of the container. <br>- If the scrollable container has &lt;em&gt;contentEndOffset&lt;/em&gt; set and &lt;em&gt;ScrollAlign&lt;/em&gt; is &lt;em&gt;END&lt;/em&gt;, after scrolling, the end of the specified item will align with the &lt;em&gt;contentEndOffset&lt;/em&gt; of the container. <br>- If the scrollable container has &lt;em&gt;contentStartOffset&lt;/em&gt; or &lt;em&gt;contentEndOffset&lt;/em&gt; set and &lt;em&gt;ScrollAlign&lt;/em&gt; is &lt;em&gt;AUTO&lt;/em&gt;: When the specified item is completely within the visible area, no adjustment is made. Otherwise, following the shortest-scroll-distance principle, the start of the item will align with the container's &lt;em&gt;contentStartOffset&lt;/em&gt;, or the end will align with the container's &lt;em&gt;contentEndOffset&lt;/em&gt;, ensuring the item is fully displayed. </p>
+When the smooth animation is enabled, all items passed through are loaded and laid out. Loading a large number of items may cause performance issues. To optimize performance, you should first call **scrollToIndex** without animation to jump to a position near the target, and then call **scrollToIndex** with animation to scroll to the target position.
+
+> **NOTE:** 
+> 
+> 1. This API is supported only by the **ArcList**, **Grid**, **List**, and **WaterFlow** components.
+> 
+> 2. When refreshing the data source in [LazyForEach](arkts-arkui-lazyforeach-comp.md), [ForEach](arkts-arkui-foreach-comp-attribute.md#foreachattribute), or [Repeat](arkts-arkui-repeat-comp.md), ensure that this API is called after the data refresh is complete.
+> 
+> 3. Since API version 11, [contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset) and [contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset) are supported in **List**. Since API version 22,contentStartOffsetand contentEndOffsetcan be set in the **Grid** and **WaterFlow** components.
+> 
+> - When **contentStartOffset** is set for the scroll container component and **ScrollAlign** is set to **START**,the head of the specified item is aligned with the **contentStartOffset** position of the scroll container component when scrolling ends.
+> 
+> - When **contentEndOffset** is set for the scroll container component and **ScrollAlign** is set to **END**, the tail of the specified item is aligned with the **contentEndOffset** position of the scroll container component when scrolling ends.
+> 
+> - When **contentStartOffset** or **contentEndOffset** is set for the scroll container component and
+> **ScrollAlign** is set to **AUTO**, no adjustment is made if the specified item is completely within the display
+> area. Otherwise, based on the principle of the shortest scrolling distance, the head of the specified item is
+> aligned with the **contentStartOffset** position of the scroll component, or the tail of the specified item is
+> aligned with the **contentEndOffset** position of the scroll component, so that the specified item is fully
+> displayed.
 
 **Since:** 7
 
@@ -388,13 +480,15 @@ Scrolls to a specified index, with support for setting an extra offset for the s
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Scroller-scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: ScrollToIndexOptions)--><!--Device-Scroller-scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: ScrollToIndexOptions)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Index of the item to be scrolled to in the container.<br>&lt;em&gt;NOTE&lt;/em&gt; <br>If the value set is a negative value or greater than the maximum index of the items in the container, the value is deemed abnormal, and no scrolling will be performed. |
-| smooth | boolean | No | Whether to enable the smooth animation for scrolling to the item with the specified index. The value &lt;em&gt;true&lt;/em&gt; means to enable that the smooth animation, and &lt;em&gt;false&lt;/em&gt; means the opposite.<br> Default value: &lt;em&gt;false&lt;/em&gt;<br>**Since:** 12 |
-| align | [ScrollAlign](arkts-arkui-scroll-comp-scrollalign-e.md) | No | How the list item to scroll to is aligned with the container.<br> Default value when the container is &lt;em&gt;List&lt;/em&gt;: &lt;em&gt;ScrollAlign.START&lt;/em&gt; <br> Default value when the container is &lt;em&gt;Grid&lt;/em&gt;: &lt;em&gt;ScrollAlign.AUTO&lt;/em&gt; <br> Default value when the container is &lt;em&gt;WaterFlow&lt;/em&gt;: &lt;em&gt;ScrollAlign.START&lt;/em&gt; <br>&lt;em&gt;NOTE&lt;/em&gt; <br>This parameter is only available for the &lt;em&gt;List&lt;/em&gt;, &lt;em&gt;Grid&lt;/em&gt;, and &lt;em&gt;WaterFlow&lt;/em&gt; components.<br>**Since:** 12 |
-| options | [ScrollToIndexOptions](arkts-arkui-scroll-comp-scrolltoindexoptions-i.md) | No | Options for scrolling to a specified index, for example, an extra offset for the scroll.<br>Default value: &lt;em&gt;0&lt;/em&gt;, in vp<br>**Since:** 12 |
+| value | number | Yes | Index of the item to be scrolled to in the container.<br>**NOTE:** <br>If the value set is a negative value or greater than the maximum index of the items in the container, the value is deemed abnormal, and no scrolling will be performed. |
+| smooth | boolean | No | Whether to animate scrolling to the index of a list item. The value **true** indicates that animation is used, and **false** indicates that no animation is used. When not passed, no animation is used by default.<br>Default value: **false**.<br>**Since:** 12 |
+| align | [ScrollAlign](arkts-arkui-scroll-comp-scrollalign-e.md) | No | Alignment between the element to scroll to and the current container. You can select the corresponding alignment based on whether the item is expected to be displayed at the start, end, or center.<br>Default value: **ScrollAlign.START** for **List**, **ScrollAlign.AUTO** for **Grid**, and **ScrollAlign.START** for **WaterFlow**.<br>**NOTE:** <br>This parameter is supported only by the **List**, **Grid**, and **WaterFlow** components.<br>**Since:** 12 |
+| options | [ScrollToIndexOptions](arkts-arkui-scroll-comp-scrolltoindexoptions-i.md) | No | Options for scrolling to the specified index, including the **extraOffset** field, which specifies the extra offset after scrolling.<br>When not passed, there is no extra offset.<br><br>**Since:** 12 |

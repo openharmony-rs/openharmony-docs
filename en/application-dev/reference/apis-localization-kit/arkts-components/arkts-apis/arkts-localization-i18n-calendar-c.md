@@ -8,6 +8,8 @@ Provides calendar management capabilities, such as calendar name retrieval and d
 
 **Since:** 7
 
+<!--Device-i18n-export class Calendar--><!--Device-i18n-export class Calendar-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Performs addition or subtraction on the calendar attributes of this **Calendar**
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-add(field: string, amount: int): void--><!--Device-Calendar-add(field: string, amount: int): void-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -71,7 +75,9 @@ Compares the current date of this **Calendar** object with the specified date fo
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-compareDays(date: Date): int--><!--Device-Calendar-compareDays(date: Date): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -120,7 +126,9 @@ Obtains the values of the calendar attributes in this **Calendar** object.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-get(field: string): int--><!--Device-Calendar-get(field: string): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -156,7 +164,9 @@ Obtains calendar display name in the specified language.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-getDisplayName(locale: string): string--><!--Device-Calendar-getDisplayName(locale: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -191,7 +201,9 @@ Obtains the first day of a week for this **Calendar** object.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-getFirstDayOfWeek(): int--><!--Device-Calendar-getFirstDayOfWeek(): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -220,7 +232,9 @@ Obtains the minimum number of days in the first week for this **Calendar** objec
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-getMinimalDaysInFirstWeek(): int--><!--Device-Calendar-getMinimalDaysInFirstWeek(): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -249,7 +263,9 @@ Obtains the timestamp of this **Calendar** object.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-getTimeInMillis(): long--><!--Device-Calendar-getTimeInMillis(): long-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -279,7 +295,9 @@ Obtains the time zone ID of this **Calendar** object.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-getTimeZone(): string--><!--Device-Calendar-getTimeZone(): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -309,7 +327,9 @@ Checks whether a given date is a weekend in this **Calendar** object.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-isWeekend(date?: Date): boolean--><!--Device-Calendar-isWeekend(date?: Date): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -349,6 +369,8 @@ Sets the year, month, day, hour, minute, and second for this **Calendar** object
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Calendar-set(year: int, month: int, date:int, hour?: int, minute?: int, second?: int): void--><!--Device-Calendar-set(year: int, month: int, date:int, hour?: int, minute?: int, second?: int): void-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -381,7 +403,9 @@ Sets the first day of a week for this **Calendar** object.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-setFirstDayOfWeek(value: int): void--><!--Device-Calendar-setFirstDayOfWeek(value: int): void-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -411,7 +435,9 @@ Sets the minimum number of days in the first week for this **Calendar** object.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-setMinimalDaysInFirstWeek(value: int): void--><!--Device-Calendar-setMinimalDaysInFirstWeek(value: int): void-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -441,7 +467,9 @@ Sets the date and time for a **Calendar** object based on the input **Date** obj
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-setTime(date: Date): void--><!--Device-Calendar-setTime(date: Date): void-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -473,7 +501,9 @@ Sets the date and time for a **Calendar** object based on the input timestamp.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-setTime(time: double): void--><!--Device-Calendar-setTime(time: double): void-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -502,7 +532,9 @@ Sets the time zone of this **Calendar** object.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Calendar-setTimeZone(timezone: string): void--><!--Device-Calendar-setTimeZone(timezone: string): void-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

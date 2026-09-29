@@ -12,6 +12,8 @@ Enumerates USB port roles.
 
 **Substitutes:** [USBPortStatus](arkts-basicservices-usbmanager-usbportstatus-i-sys.md)
 
+<!--Device-usb-interface USBPortStatus--><!--Device-usb-interface USBPortStatus-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -38,6 +40,8 @@ Current data role.
 
 **Substitutes:** [currentDataRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentdatarole)
 
+<!--Device-USBPortStatus-currentDataRole: number--><!--Device-USBPortStatus-currentDataRole: number-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -58,6 +62,8 @@ Current USB mode.
 
 **Substitutes:** [currentMode](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentmode)
 
+<!--Device-USBPortStatus-currentMode: number--><!--Device-USBPortStatus-currentMode: number-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -77,6 +83,8 @@ Current power role.
 **Deprecated since:** 9
 
 **Substitutes:** [currentPowerRole](arkts-basicservices-usbmanager-usbportstatus-i-sys.md#currentpowerrole)
+
+<!--Device-USBPortStatus-currentPowerRole: number--><!--Device-USBPortStatus-currentPowerRole: number-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 

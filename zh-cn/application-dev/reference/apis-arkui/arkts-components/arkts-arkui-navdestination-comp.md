@@ -35,6 +35,8 @@ NavDestination()
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationInterface-(): NavDestinationAttribute--><!--Device-NavDestinationInterface-(): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 汇总
@@ -704,7 +706,7 @@ struct ExamplePage {
 
 ### 示例5（NavDestination的onActive与onInactive生命周期）
 
-从API version 17开始，NavDestination新增onActive、onInactive属性。该示例演示onActive与onInactive生命周期的各种触发场景。
+从API version 17开始，NavDestination新增[onActive](#onactive17)、[onInactive](#oninactive17)属性。该示例演示onActive与onInactive生命周期的各种触发场景。
 
 ```TypeScript
 import { promptAction, ComponentContent, OverlayManager } from '@kit.ArkUI';

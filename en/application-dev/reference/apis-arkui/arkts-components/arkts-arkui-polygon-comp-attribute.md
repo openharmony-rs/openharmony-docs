@@ -10,6 +10,8 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 **Since:** 7
 
+<!--Device-unnamed-declare class PolygonAttribute extends CommonShapeMethod<PolygonAttribute>--><!--Device-unnamed-declare class PolygonAttribute extends CommonShapeMethod<PolygonAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## points
@@ -27,6 +29,8 @@ Sets the vertex coordinates of the polygon. This attribute can be dynamically se
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PolygonAttribute-points(value: Array<any>): PolygonAttribute--><!--Device-PolygonAttribute-points(value: Array<any>): PolygonAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

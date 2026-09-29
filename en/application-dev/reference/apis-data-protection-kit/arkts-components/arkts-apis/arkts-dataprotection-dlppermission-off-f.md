@@ -18,6 +18,8 @@ This API is usually called to release resources when the page is destroyed or th
 
 **Since:** 10
 
+<!--Device-dlpPermission-function off(type: 'openDLPFile', listener?: Callback<AccessedDLPFileInfo>): void--><!--Device-dlpPermission-function off(type: 'openDLPFile', listener?: Callback<AccessedDLPFileInfo>): void-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**

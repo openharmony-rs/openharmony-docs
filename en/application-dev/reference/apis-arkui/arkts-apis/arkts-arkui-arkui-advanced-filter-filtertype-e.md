@@ -4,9 +4,11 @@
 export declare enum FilterType
 ```
 
-Declare FilterType @enum { FilterType }
+Declare FilterType
 
-**Since:** 22
+**Since:** 10
+
+<!--Device-unnamed-export declare enum FilterType--><!--Device-unnamed-export declare enum FilterType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ Declare FilterType @enum { FilterType }
 MULTI_LINE_FILTER = 0
 ```
 
-The multi_line_filter type.
+Multi-line collapsible.
 
-**Since:** 22
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FilterType-MULTI_LINE_FILTER = 0--><!--Device-FilterType-MULTI_LINE_FILTER = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,12 +36,14 @@ The multi_line_filter type.
 LIST_FILTER = 1
 ```
 
-The list_filter type.
+Multi-line list.
 
-**Since:** 22
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FilterType-LIST_FILTER = 1--><!--Device-FilterType-LIST_FILTER = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -1,4 +1,4 @@
-# @ohos.app.ability.CompletionHandlerForAtomicService
+# @ohos.app.ability.CompletionHandlerForAtomicService(Completion Handler for Atomic Service)
 
 **CompletionHandlerForAtomicService** is an optional parameter of
  [AtomicServiceOptions](arkts-ability-app-ability-atomicserviceoptions-atomicserviceoptions-c.md) and is used to handle the

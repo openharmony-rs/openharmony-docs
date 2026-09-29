@@ -8,6 +8,8 @@ interface DragSpringLoadingConfiguration
 
 **起始版本：** 20
 
+<!--Device-dragController-interface DragSpringLoadingConfiguration--><!--Device-dragController-interface DragSpringLoadingConfiguration-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ stillTimeLimit?: number
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragSpringLoadingConfiguration-stillTimeLimit?: number--><!--Device-DragSpringLoadingConfiguration-stillTimeLimit?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## updateInterval
@@ -49,6 +53,8 @@ updateInterval?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragSpringLoadingConfiguration-updateInterval?: number--><!--Device-DragSpringLoadingConfiguration-updateInterval?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +74,8 @@ updateNotifyCount?: number
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragSpringLoadingConfiguration-updateNotifyCount?: number--><!--Device-DragSpringLoadingConfiguration-updateNotifyCount?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## updateToFinishInterval
@@ -85,5 +93,7 @@ updateToFinishInterval?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragSpringLoadingConfiguration-updateToFinishInterval?: number--><!--Device-DragSpringLoadingConfiguration-updateToFinishInterval?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

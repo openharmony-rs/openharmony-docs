@@ -8,6 +8,8 @@ Defines the WebSocketServer configuration.
 
 **Since:** 19
 
+<!--Device-webSocket-export interface WebSocketServerConfig--><!--Device-webSocket-export interface WebSocketServerConfig-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Maximum number of concurrent clients. When the number of concurrent clients reac
 
 **Since:** 19
 
+<!--Device-WebSocketServerConfig-maxConcurrentClientsNumber: int--><!--Device-WebSocketServerConfig-maxConcurrentClientsNumber: int-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## maxConnectionsForOneClient
@@ -41,6 +45,8 @@ Maximum number of connections for each client. The default value is **10**.
 **Type:** number
 
 **Since:** 19
+
+<!--Device-WebSocketServerConfig-maxConnectionsForOneClient: int--><!--Device-WebSocketServerConfig-maxConnectionsForOneClient: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -56,6 +62,8 @@ Custom protocol.
 
 **Since:** 19
 
+<!--Device-WebSocketServerConfig-protocol?: string--><!--Device-WebSocketServerConfig-protocol?: string-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## serverCert
@@ -69,6 +77,8 @@ Certificate information, which includes the paths of the WebSocketServer certifi
 **Type:** [ServerCert](arkts-network-websocket-servercert-i.md)
 
 **Since:** 19
+
+<!--Device-WebSocketServerConfig-serverCert?: ServerCert--><!--Device-WebSocketServerConfig-serverCert?: ServerCert-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -84,6 +94,8 @@ IP address of the WebSocketServer. The default value is **0.0.0.0**.
 
 **Since:** 19
 
+<!--Device-WebSocketServerConfig-serverIP?: string--><!--Device-WebSocketServerConfig-serverIP?: string-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## serverPort
@@ -97,5 +109,7 @@ Port of the WebSocketServer.
 **Type:** number
 
 **Since:** 19
+
+<!--Device-WebSocketServerConfig-serverPort: int--><!--Device-WebSocketServerConfig-serverPort: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

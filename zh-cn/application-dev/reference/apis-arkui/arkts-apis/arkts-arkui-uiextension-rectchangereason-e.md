@@ -8,6 +8,8 @@ enum RectChangeReason
 
 **起始版本：** 14
 
+<!--Device-uiExtension-enum RectChangeReason--><!--Device-uiExtension-enum RectChangeReason-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## HOST_WINDOW_RECT_CHANGE
@@ -22,6 +24,8 @@ HOST_WINDOW_RECT_CHANGE = 0x0001
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-RectChangeReason-HOST_WINDOW_RECT_CHANGE = 0x0001--><!--Device-RectChangeReason-HOST_WINDOW_RECT_CHANGE = 0x0001-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -16,6 +16,8 @@ Checks whether an application or an application clone is enabled. This API uses 
 
 **Since:** 12
 
+<!--Device-bundleManager-function isApplicationEnabled(bundleName: string, appIndex: int): Promise<boolean>--><!--Device-bundleManager-function isApplicationEnabled(bundleName: string, appIndex: int): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ Checks whether an application is enabled. This API uses an asynchronous callback
 
 **Since:** 9
 
+<!--Device-bundleManager-function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolean>): void--><!--Device-bundleManager-function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -130,6 +134,8 @@ function isApplicationEnabled(bundleName: string): Promise<boolean>
 Checks whether an application is enabled. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-bundleManager-function isApplicationEnabled(bundleName: string): Promise<boolean>--><!--Device-bundleManager-function isApplicationEnabled(bundleName: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

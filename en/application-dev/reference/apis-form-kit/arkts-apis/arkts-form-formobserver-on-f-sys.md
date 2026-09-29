@@ -18,6 +18,8 @@ Listens to the event of add form. <p>You can use this method to listen to the ev
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
 
+<!--Device-formObserver-function on(type: 'formAdd', observerCallback: Callback<formInfo.RunningFormInfo>): void--><!--Device-formObserver-function on(type: 'formAdd', observerCallback: Callback<formInfo.RunningFormInfo>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -48,6 +50,8 @@ Listens to the event of add form. <p>You can use this method to listen to the ev
 **Since:** 10
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
+
+<!--Device-formObserver-function on(type: 'formAdd', hostBundleName: string, observerCallback: Callback<formInfo.RunningFormInfo>): void--><!--Device-formObserver-function on(type: 'formAdd', hostBundleName: string, observerCallback: Callback<formInfo.RunningFormInfo>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -81,6 +85,8 @@ Listens to the event of remove form. <p>You can use this method to listen to the
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
 
+<!--Device-formObserver-function on(type: 'formRemove', observerCallback: Callback<formInfo.RunningFormInfo>): void--><!--Device-formObserver-function on(type: 'formRemove', observerCallback: Callback<formInfo.RunningFormInfo>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -111,6 +117,8 @@ Listens to the event of remove form. <p>You can use this method to listen to the
 **Since:** 10
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
+
+<!--Device-formObserver-function on(type: 'formRemove', hostBundleName: string, observerCallback: Callback<formInfo.RunningFormInfo>): void--><!--Device-formObserver-function on(type: 'formRemove', hostBundleName: string, observerCallback: Callback<formInfo.RunningFormInfo>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -143,6 +151,8 @@ Listens to the event of notifyVisible type change. <p>You can use this method to
 **Since:** 10
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
+
+<!--Device-formObserver-function on(type: 'notifyVisible', observerCallback: Callback<Array<formInfo.RunningFormInfo>>): void--><!--Device-formObserver-function on(type: 'notifyVisible', observerCallback: Callback<Array<formInfo.RunningFormInfo>>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -179,6 +189,8 @@ Listens to the event of notifyVisible type change. <p>You can use this method to
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
 
+<!--Device-formObserver-function on(    type: 'notifyVisible',    hostBundleName: string,    observerCallback: Callback<Array<formInfo.RunningFormInfo>>  ): void--><!--Device-formObserver-function on(    type: 'notifyVisible',    hostBundleName: string,    observerCallback: Callback<Array<formInfo.RunningFormInfo>>  ): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -210,6 +222,8 @@ Listens to the event of notifyInvisible type change. <p>You can use this method 
 **Since:** 10
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
+
+<!--Device-formObserver-function on(type: 'notifyInvisible', observerCallback: Callback<Array<formInfo.RunningFormInfo>>): void--><!--Device-formObserver-function on(type: 'notifyInvisible', observerCallback: Callback<Array<formInfo.RunningFormInfo>>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -246,6 +260,8 @@ Listens to the event of notifyInvisible type change. <p>You can use this method 
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
 
+<!--Device-formObserver-function on(    type: 'notifyInvisible',    hostBundleName: string,    observerCallback: Callback<Array<formInfo.RunningFormInfo>>,  ): void--><!--Device-formObserver-function on(    type: 'notifyInvisible',    hostBundleName: string,    observerCallback: Callback<Array<formInfo.RunningFormInfo>>,  ): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -278,6 +294,8 @@ Router event listening in registered form. <p>This interface requires permission
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
 
+<!--Device-formObserver-function on(type: 'router', observerCallback: Callback<formInfo.RunningFormInfo>): void--><!--Device-formObserver-function on(type: 'router', observerCallback: Callback<formInfo.RunningFormInfo>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -308,6 +326,8 @@ Router event listening in registered form. <p>This interface requires permission
 **Since:** 11
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
+
+<!--Device-formObserver-function on(type: 'router', hostBundleName: string, observerCallback: Callback<formInfo.RunningFormInfo>): void--><!--Device-formObserver-function on(type: 'router', hostBundleName: string, observerCallback: Callback<formInfo.RunningFormInfo>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -341,6 +361,8 @@ Message event listening in registered form. <p>This interface requires permissio
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
 
+<!--Device-formObserver-function on(type: 'message', observerCallback: Callback<formInfo.RunningFormInfo>): void--><!--Device-formObserver-function on(type: 'message', observerCallback: Callback<formInfo.RunningFormInfo>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -371,6 +393,8 @@ Message event listening in registered form. <p>This interface requires permissio
 **Since:** 11
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
+
+<!--Device-formObserver-function on(type: 'message', hostBundleName: string, observerCallback: Callback<formInfo.RunningFormInfo>): void--><!--Device-formObserver-function on(type: 'message', hostBundleName: string, observerCallback: Callback<formInfo.RunningFormInfo>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -404,6 +428,8 @@ Call event listening in registered form. <p>This interface requires permission t
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
 
+<!--Device-formObserver-function on(type: 'call', observerCallback: Callback<formInfo.RunningFormInfo>): void--><!--Device-formObserver-function on(type: 'call', observerCallback: Callback<formInfo.RunningFormInfo>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -434,6 +460,8 @@ Call event listening in registered form. <p>This interface requires permission t
 **Since:** 11
 
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
+
+<!--Device-formObserver-function on(type: 'call', hostBundleName: string, observerCallback: Callback<formInfo.RunningFormInfo>): void--><!--Device-formObserver-function on(type: 'call', hostBundleName: string, observerCallback: Callback<formInfo.RunningFormInfo>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

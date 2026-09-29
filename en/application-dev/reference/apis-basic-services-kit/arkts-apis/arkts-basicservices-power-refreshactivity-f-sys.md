@@ -20,6 +20,8 @@ This API takes effect only when the device is active. For details about the devi
 
 **Required permissions:** ohos.permission.REFRESH_USER_ACTION
 
+<!--Device-power-function refreshActivity(reason: string): void--><!--Device-power-function refreshActivity(reason: string): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **System API:** This is a system API.

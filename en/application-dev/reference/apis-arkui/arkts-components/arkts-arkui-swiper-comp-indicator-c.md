@@ -8,6 +8,8 @@ Sets the distance between the navigation indicator and the **Swiper** component.
 
 **Since:** 10
 
+<!--Device-unnamed-declare class Indicator<T>--><!--Device-unnamed-declare class Indicator<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -25,6 +27,8 @@ Sets the position of the navigation indicator relative to the bottom edge of the
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-Indicator-bottom(value: Length): T--><!--Device-Indicator-bottom(value: Length): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ Sets the position of the navigation indicator relative to the bottom edge of the
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 19.
 
+<!--Device-Indicator-bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T--><!--Device-Indicator-bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -89,6 +95,8 @@ Returns a **DigitIndicator** object.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-Indicator-static digit(): DigitIndicator--><!--Device-Indicator-static digit(): DigitIndicator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -113,6 +121,8 @@ Returns a **DotIndicator** object.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-Indicator-static dot(): DotIndicator--><!--Device-Indicator-static dot(): DotIndicator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -136,6 +146,8 @@ Sets the distance between the navigation point indicator and the left edge (in r
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-Indicator-end(value: LengthMetrics): T--><!--Device-Indicator-end(value: LengthMetrics): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -167,6 +179,8 @@ Sets the position of the navigation indicator relative to the left edge of the *
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-Indicator-left(value: Length): T--><!--Device-Indicator-left(value: Length): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -196,6 +210,8 @@ Sets the position of the navigation indicator relative to the right edge of the 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-Indicator-right(value: Length): T--><!--Device-Indicator-right(value: Length): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -227,6 +243,8 @@ Sets the distance between the navigation indicator and the right edge (in [RTL](
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-Indicator-start(value: LengthMetrics): T--><!--Device-Indicator-start(value: LengthMetrics): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -256,6 +274,8 @@ Sets the position of the navigation indicator relative to the top edge of the **
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-Indicator-top(value: Length): T--><!--Device-Indicator-top(value: Length): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

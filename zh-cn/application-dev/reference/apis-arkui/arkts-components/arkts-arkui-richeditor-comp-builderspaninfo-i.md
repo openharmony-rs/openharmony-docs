@@ -12,6 +12,8 @@ declare interface BuilderSpanInfo
 
 **起始版本：** 26.2.0
 
+<!--Device-unnamed-declare interface BuilderSpanInfo--><!--Device-unnamed-declare interface BuilderSpanInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -30,6 +32,8 @@ id?: string
 
 **原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-BuilderSpanInfo-id?: string--><!--Device-BuilderSpanInfo-id?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -47,5 +51,7 @@ BuilderSpan在文本内容中的当前偏移位置。该值由框架维护，随
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-BuilderSpanInfo-offset?: number--><!--Device-BuilderSpanInfo-offset?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

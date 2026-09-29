@@ -8,6 +8,8 @@ Represents a configuration object for precompiling JavaScript in the **Web** com
 
 **Since:** 12
 
+<!--Device-webview-interface CacheOptions--><!--Device-webview-interface CacheOptions-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -27,5 +29,7 @@ Response headers returned by the server when requesting this JavaScript file. ET
 **Type:** Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt;
 
 **Since:** 12
+
+<!--Device-CacheOptions-responseHeaders: Array<WebHeader>--><!--Device-CacheOptions-responseHeaders: Array<WebHeader>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

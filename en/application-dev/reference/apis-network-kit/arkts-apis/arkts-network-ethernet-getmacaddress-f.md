@@ -20,6 +20,8 @@ Obtains the names and MAC addresses of all Ethernet NICs. This API uses a promis
 
 **Required permissions:** ohos.permission.GET_ETHERNET_LOCAL_MAC
 
+<!--Device-ethernet-function getMacAddress(): Promise<Array<MacAddressInfo>>--><!--Device-ethernet-function getMacAddress(): Promise<Array<MacAddressInfo>>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 
 **Return value:**

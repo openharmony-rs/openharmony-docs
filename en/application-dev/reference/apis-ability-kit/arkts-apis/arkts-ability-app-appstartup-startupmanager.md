@@ -10,6 +10,8 @@ The module provides the capability to manage startup tasks in [AppStartup](../..
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace startupManager--><!--Device-unnamed-declare namespace startupManager-End-->
+
 **System capability:** SystemCapability.Ability.AppStartup
 
 ## Modules to Import

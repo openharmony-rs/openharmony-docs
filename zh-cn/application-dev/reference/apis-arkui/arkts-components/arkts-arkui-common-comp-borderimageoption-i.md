@@ -10,6 +10,8 @@ Border image option
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface BorderImageOption--><!--Device-unnamed-declare interface BorderImageOption-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fill
@@ -33,6 +35,8 @@ fill?: boolean
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BorderImageOption-fill?: boolean--><!--Device-BorderImageOption-fill?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +92,8 @@ outset?: Length | EdgeWidths | LocalizedEdgeWidths
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-BorderImageOption-outset?: Length | EdgeWidths | LocalizedEdgeWidths--><!--Device-BorderImageOption-outset?: Length | EdgeWidths | LocalizedEdgeWidths-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## repeat
@@ -111,6 +117,8 @@ repeat?: RepeatMode
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BorderImageOption-repeat?: RepeatMode--><!--Device-BorderImageOption-repeat?: RepeatMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,6 +174,8 @@ slice?: Length | EdgeWidths | LocalizedEdgeWidths
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-BorderImageOption-slice?: Length | EdgeWidths | LocalizedEdgeWidths--><!--Device-BorderImageOption-slice?: Length | EdgeWidths | LocalizedEdgeWidths-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## source
@@ -180,7 +190,7 @@ source?: string | Resource | LinearGradient
 
 **说明：** 
 
-边框图源仅适用于容器组件，如Row、Column、Flex，在非容器组件上使用会失效。
+边框图源仅适用于容器组件，如[Row](arkts-arkui-row-comp.md)、[Column](arkts-arkui-column-comp.md)、[Flex](arkts-arkui-flex-comp.md)，在非容器组件上使用会失效。
 
 **类型：** string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; [LinearGradient](arkts-arkui-common-comp-lineargradient-i.md)
 
@@ -191,6 +201,8 @@ source?: string | Resource | LinearGradient
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BorderImageOption-source?: string | Resource | LinearGradient--><!--Device-BorderImageOption-source?: string | Resource | LinearGradient-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -245,5 +257,7 @@ width?: Length | EdgeWidths | LocalizedEdgeWidths
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BorderImageOption-width?: Length | EdgeWidths | LocalizedEdgeWidths--><!--Device-BorderImageOption-width?: Length | EdgeWidths | LocalizedEdgeWidths-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

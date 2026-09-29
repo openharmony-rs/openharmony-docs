@@ -8,6 +8,8 @@ Defines the MMI code result.
 
 **Since:** 9
 
+<!--Device-call-export interface MmiCodeResults--><!--Device-call-export interface MmiCodeResults-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ MMI code message.
 
 **Since:** 9
 
+<!--Device-MmiCodeResults-message: string--><!--Device-MmiCodeResults-message: string-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Defines the MMI code result.
 **Type:** [MmiCodeResult](arkts-telephony-call-mmicoderesult-e-sys.md)
 
 **Since:** 9
+
+<!--Device-MmiCodeResults-result: MmiCodeResult--><!--Device-MmiCodeResults-result: MmiCodeResult-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

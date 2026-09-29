@@ -2,7 +2,14 @@
 
 The **Tabs** component is a container component that allows users to switch between content views through tabs. Each tab page corresponds to a content view.
 
-> **NOTE** > > - > > - Since API version 11, this component supports the safe area avoidance feature. The default value of the > [expandSafeArea]{} > **expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])**. You can override the default behavior by > rewriting this attribute. For versions earlier than API version 11, you need to manually implement safe area > avoidance together with the **expandSafeArea** attribute.
+> **NOTE:** 
+> 
+> -
+> 
+> - Since API version 11, this component supports the safe area avoidance feature. The default value of the [expandSafeArea]{}
+> **expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])**. You can override the default behavior by
+> rewriting this attribute. For versions earlier than API version 11, you need to manually implement safe area
+> avoidance together with the **expandSafeArea** attribute.
 
 ## Child Components
 
@@ -33,6 +40,8 @@ Create a **Tabs** container.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TabsInterface-(options?: TabsOptions): TabsAttribute--><!--Device-TabsInterface-(options?: TabsOptions): TabsAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

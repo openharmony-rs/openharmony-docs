@@ -16,6 +16,8 @@ Obtains the current input method. This API returns the result synchronously.
 
 **Since:** 9
 
+<!--Device-inputMethod-function getCurrentInputMethod(): InputMethodProperty--><!--Device-inputMethod-function getCurrentInputMethod(): InputMethodProperty-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**

@@ -8,6 +8,8 @@ interface ShowWindowOptions
 
 **起始版本：** 20
 
+<!--Device-window-interface ShowWindowOptions--><!--Device-window-interface ShowWindowOptions-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,6 +30,8 @@ focusOnShow?: boolean
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ShowWindowOptions-focusOnShow?: boolean--><!--Device-ShowWindowOptions-focusOnShow?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

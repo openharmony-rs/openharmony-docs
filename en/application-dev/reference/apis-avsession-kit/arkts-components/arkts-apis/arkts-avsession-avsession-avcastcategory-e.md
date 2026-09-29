@@ -8,6 +8,8 @@ cast category indicating different playback scenes
 
 **Since:** 10
 
+<!--Device-avSession-enum AVCastCategory--><!--Device-avSession-enum AVCastCategory-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 ## CATEGORY_LOCAL
@@ -20,7 +22,9 @@ The default cast type "local", media can be routed on the same device, including
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVCastCategory-CATEGORY_LOCAL = 0--><!--Device-AVCastCategory-CATEGORY_LOCAL = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -34,6 +38,8 @@ The remote category indicating the media is presenting on a remote device, the a
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVCastCategory-CATEGORY_REMOTE = 1--><!--Device-AVCastCategory-CATEGORY_REMOTE = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast

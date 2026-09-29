@@ -8,6 +8,8 @@ MediaAssetDataHandler is a media asset handler used to customize the media asset
 
 **Since:** 11
 
+<!--Device-photoAccessHelper-interface MediaAssetDataHandler<T>--><!--Device-photoAccessHelper-interface MediaAssetDataHandler<T>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Information returned by **map**:
 | 'quality' | Image quality. The value **high** means high quality, and **low** means poor quality.|
 
 **Since:** 11
+
+<!--Device-MediaAssetDataHandler-onDataPrepared(data: T, map?: Map<string, string>): void--><!--Device-MediaAssetDataHandler-onDataPrepared(data: T, map?: Map<string, string>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

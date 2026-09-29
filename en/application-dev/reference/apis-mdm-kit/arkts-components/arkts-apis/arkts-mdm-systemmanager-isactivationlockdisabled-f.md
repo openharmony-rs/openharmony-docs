@@ -20,6 +20,8 @@ Checks whether the device activation lock is disabled. This API is applicable to
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function isActivationLockDisabled(admin: Want): Promise<boolean>--><!--Device-systemManager-function isActivationLockDisabled(admin: Want): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

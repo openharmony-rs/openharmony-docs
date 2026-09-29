@@ -12,6 +12,8 @@ DrawModifier可设置遮罩层（drawOverlay&lt;sup&gt;23+&lt;/sup&gt;）、前�
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare class DrawModifier--><!--Device-unnamed-declare class DrawModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## drawBehind
@@ -28,6 +30,8 @@ drawBehind?(drawContext: DrawContext): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DrawModifier-drawBehind?(drawContext: DrawContext): void--><!--Device-DrawModifier-drawBehind?(drawContext: DrawContext): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -38,7 +42,7 @@ drawBehind?(drawContext: DrawContext): void
 
 **示例**
 
-请参考示例1（通过DrawModifier进行自定义绘制）。
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
 ## drawContent
 
@@ -54,6 +58,8 @@ drawContent?(drawContext: DrawContext): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DrawModifier-drawContent?(drawContext: DrawContext): void--><!--Device-DrawModifier-drawContent?(drawContext: DrawContext): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -64,7 +70,7 @@ drawContent?(drawContext: DrawContext): void
 
 **示例**
 
-请参考示例1（通过DrawModifier进行自定义绘制）。
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
 ## drawForeground
 
@@ -80,6 +86,8 @@ drawForeground(drawContext: DrawContext): void
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-DrawModifier-drawForeground(drawContext: DrawContext): void--><!--Device-DrawModifier-drawForeground(drawContext: DrawContext): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -90,7 +98,7 @@ drawForeground(drawContext: DrawContext): void
 
 **示例**
 
-请参考示例2（通过DrawModifier对容器的前景进行自定义绘制）。
+请参考[示例2（通过DrawModifier对容器的前景进行自定义绘制）](#示例2通过drawmodifier对容器的前景进行自定义绘制)。
 
 ## drawFront
 
@@ -106,6 +114,8 @@ drawFront?(drawContext: DrawContext): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DrawModifier-drawFront?(drawContext: DrawContext): void--><!--Device-DrawModifier-drawFront?(drawContext: DrawContext): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -116,7 +126,7 @@ drawFront?(drawContext: DrawContext): void
 
 **示例**
 
-请参考示例1（通过DrawModifier进行自定义绘制）。
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
 ## drawOverlay
 
@@ -135,6 +145,8 @@ drawOverlay(drawContext: DrawContext): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-DrawModifier-drawOverlay(drawContext: DrawContext): void--><!--Device-DrawModifier-drawOverlay(drawContext: DrawContext): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -219,8 +231,10 @@ invalidate(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DrawModifier-invalidate(): void--><!--Device-DrawModifier-invalidate(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
 
-请参考示例1（通过DrawModifier进行自定义绘制）。
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。

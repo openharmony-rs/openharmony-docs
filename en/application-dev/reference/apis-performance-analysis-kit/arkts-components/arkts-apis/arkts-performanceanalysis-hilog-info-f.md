@@ -18,6 +18,8 @@ Prints INFO logs.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-hilog-function info(domain: number, tag: string, format: string, ...args: any[]): void--><!--Device-hilog-function info(domain: number, tag: string, format: string, ...args: any[]): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiLog
 
 **Parameters:**

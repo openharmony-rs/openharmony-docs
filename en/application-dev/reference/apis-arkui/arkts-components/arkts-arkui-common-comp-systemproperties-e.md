@@ -10,6 +10,8 @@ Defining Environment variable enumeration value.
 
 **Since:** 22
 
+<!--Device-unnamed-declare enum SystemProperties--><!--Device-unnamed-declare enum SystemProperties-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## BREAK_POINT
@@ -25,6 +27,8 @@ System environmental breakpoint key that is used to obtain the width and height 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-SystemProperties-BREAK_POINT = 'system.arkui.breakpoint'--><!--Device-SystemProperties-BREAK_POINT = 'system.arkui.breakpoint'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ System environmental avoidarea key that is used to obtain the avoid area of the 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SystemProperties-WINDOW_AVOID_AREA = 'system.window.avoidarea'--><!--Device-SystemProperties-WINDOW_AVOID_AREA = 'system.window.avoidarea'-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_AVOID_AREA_PX
@@ -57,6 +63,8 @@ System environmental avoidarea key that is used to obtain the avoid area of the 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SystemProperties-WINDOW_AVOID_AREA_PX = 'system.window.avoidarea.px'--><!--Device-SystemProperties-WINDOW_AVOID_AREA_PX = 'system.window.avoidarea.px'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +82,8 @@ System environmental windowsize key that is used to obtain the size of the windo
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SystemProperties-WINDOW_SIZE = 'system.window.size'--><!--Device-SystemProperties-WINDOW_SIZE = 'system.window.size'-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_SIZE_PX
@@ -89,5 +99,7 @@ System environmental windowsize key that is used to obtain the size of the windo
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SystemProperties-WINDOW_SIZE_PX = 'system.window.size.px'--><!--Device-SystemProperties-WINDOW_SIZE_PX = 'system.window.size.px'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

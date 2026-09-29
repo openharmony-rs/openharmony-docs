@@ -10,6 +10,8 @@ Extends [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md) to 
 
 **Since:** 18
 
+<!--Device-promptAction-interface DialogOptions extends BaseDialogOptions--><!--Device-promptAction-interface DialogOptions extends BaseDialogOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Background blur style of the dialog box. <br>Default value: **BlurStyle.COMPONEN
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-DialogOptions-backgroundBlurStyle?: BlurStyle--><!--Device-DialogOptions-backgroundBlurStyle?: BlurStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundColor
@@ -53,6 +57,8 @@ Background color of the dialog box.<br>Default value: **Color.Transparent**. <br
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-DialogOptions-backgroundColor?: ResourceColor--><!--Device-DialogOptions-backgroundColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ Border color of the dialog box. <br>Default value: **Color.Black**. <br> **borde
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-DialogOptions-borderColor?: DialogOptionsBorderColor--><!--Device-DialogOptions-borderColor?: DialogOptionsBorderColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderStyle
@@ -89,6 +97,8 @@ Border style of the dialog box. <br>Default value: **BorderStyle.Solid**. <br> *
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-DialogOptions-borderStyle?: DialogOptionsBorderStyle--><!--Device-DialogOptions-borderStyle?: DialogOptionsBorderStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +118,8 @@ Border width of the dialog box. <br>You can set the width for all four sides or 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-DialogOptions-borderWidth?: DialogOptionsBorderWidth--><!--Device-DialogOptions-borderWidth?: DialogOptionsBorderWidth-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## cornerRadius
@@ -125,6 +137,8 @@ Background corner radius of the dialog box.<br>You can set separate radii for th
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-DialogOptions-cornerRadius?: DialogOptionsCornerRadius--><!--Device-DialogOptions-cornerRadius?: DialogOptionsCornerRadius-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,6 +158,8 @@ Height of the dialog box. <br>**NOTE:** <br>- Default maximum value: 0.9 x (Wind
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-DialogOptions-height?: Dimension--><!--Device-DialogOptions-height?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadow
@@ -162,6 +178,8 @@ Shadow of the dialog box. <br>Default value on 2-in-1 devices: **ShadowStyle.OUT
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-DialogOptions-shadow?: DialogOptionsShadow--><!--Device-DialogOptions-shadow?: DialogOptionsShadow-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -179,5 +197,7 @@ Width of the dialog box. <br>**NOTE:** <br>- Default maximum value: 400vp <br>- 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-DialogOptions-width?: Dimension--><!--Device-DialogOptions-width?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

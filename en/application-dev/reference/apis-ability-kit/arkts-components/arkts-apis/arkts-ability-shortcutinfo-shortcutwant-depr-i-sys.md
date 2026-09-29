@@ -8,13 +8,15 @@ export interface ShortcutWant
 > **NOTE:** 
 > 
 > This API has been supported since API version 7 and deprecated since API version 9. You are advised to use
-> [bundleManager-ShortcutWant](#shortcutwant-system-api) instead.
+> [bundleManager-ShortcutWant](arkts-ability-shortcutinfo-shortcutwant-depr-i-sys.md) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [ShortcutWant](#shortcutwant-system-api)
+**Substitutes:** [ShortcutWant](arkts-ability-shortcutinfo-shortcutwant-depr-i-sys.md)
+
+<!--Device-unnamed-export interface ShortcutWant--><!--Device-unnamed-export interface ShortcutWant-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -36,6 +38,8 @@ Target bundle of the shortcut.
 
 **Substitutes:** targetBundle
 
+<!--Device-ShortcutWant-readonly targetBundle: string--><!--Device-ShortcutWant-readonly targetBundle: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -55,6 +59,8 @@ Target class required by the shortcut.
 **Deprecated since:** 9
 
 **Substitutes:** targetAbility
+
+<!--Device-ShortcutWant-readonly targetClass: string--><!--Device-ShortcutWant-readonly targetClass: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

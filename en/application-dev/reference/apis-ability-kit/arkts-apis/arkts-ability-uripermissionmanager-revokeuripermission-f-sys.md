@@ -26,6 +26,8 @@ Revokes the URI permission from an application. This API uses an asynchronous ca
 - API version 12 and later: N/A
 - API versions 10 to 11: ohos.permission.PROXY_AUTHORIZATION_URI
 
+<!--Device-uriPermissionManager-function revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallback<number>): void--><!--Device-uriPermissionManager-function revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -89,6 +91,8 @@ Revokes the URI permission from an application. This API uses a promise to retur
 **Required permissions:** 
 - API version 12 and later: N/A
 - API versions 10 to 11: ohos.permission.PROXY_AUTHORIZATION_URI
+
+<!--Device-uriPermissionManager-function revokeUriPermission(uri: string, targetBundleName: string): Promise<number>--><!--Device-uriPermissionManager-function revokeUriPermission(uri: string, targetBundleName: string): Promise<number>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -156,6 +160,8 @@ Revokes the URI permission from an application. This API uses a promise to retur
 > - URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **Since:** 14
+
+<!--Device-uriPermissionManager-function revokeUriPermission(uri: string, targetBundleName: string, appCloneIndex: int): Promise<void>--><!--Device-uriPermissionManager-function revokeUriPermission(uri: string, targetBundleName: string, appCloneIndex: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

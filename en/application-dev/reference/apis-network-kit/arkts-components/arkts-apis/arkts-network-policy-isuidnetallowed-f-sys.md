@@ -18,6 +18,8 @@ Checks whether the application specified by a given UID is allowed to access a m
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function isUidNetAllowed(uid: int, isMetered: boolean, callback: AsyncCallback<boolean>): void--><!--Device-policy-function isUidNetAllowed(uid: int, isMetered: boolean, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -66,6 +68,8 @@ Checks whether the application specified by a given UID is allowed to access a m
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function isUidNetAllowed(uid: int, isMetered: boolean): Promise<boolean>--><!--Device-policy-function isUidNetAllowed(uid: int, isMetered: boolean): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -125,6 +129,8 @@ Obtains whether the network of the specified iface can be accessed by the corres
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function isUidNetAllowed(uid: int, iface: string, callback: AsyncCallback<boolean>): void--><!--Device-policy-function isUidNetAllowed(uid: int, iface: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -173,6 +179,8 @@ Obtains whether the UID can access the network of the specified iface. This API 
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function isUidNetAllowed(uid: int, iface: string): Promise<boolean>--><!--Device-policy-function isUidNetAllowed(uid: int, iface: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

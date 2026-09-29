@@ -10,6 +10,8 @@ Provides methods for setting the answering mode of incoming and outgoing calls.
 
 **Since:** 7
 
+<!--Device-settings-namespace phone--><!--Device-settings-namespace phone-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## Modules to Import

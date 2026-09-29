@@ -8,6 +8,8 @@ declare enum LocalizedAlignment
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare enum LocalizedAlignment--><!--Device-unnamed-declare enum LocalizedAlignment-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOP_START
@@ -25,6 +27,8 @@ TOP_START = "top_start"
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LocalizedAlignment-TOP_START = "top_start"--><!--Device-LocalizedAlignment-TOP_START = "top_start"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ TOP = "top"
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LocalizedAlignment-TOP = "top"--><!--Device-LocalizedAlignment-TOP = "top"-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOP_END
@@ -61,6 +67,8 @@ TOP_END = "top_end"
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LocalizedAlignment-TOP_END = "top_end"--><!--Device-LocalizedAlignment-TOP_END = "top_end"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +88,8 @@ START = "start"
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LocalizedAlignment-START = "start"--><!--Device-LocalizedAlignment-START = "start"-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CENTER
@@ -97,6 +107,8 @@ CENTER = "center"
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LocalizedAlignment-CENTER = "center"--><!--Device-LocalizedAlignment-CENTER = "center"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,6 +128,8 @@ END = "end"
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LocalizedAlignment-END = "end"--><!--Device-LocalizedAlignment-END = "end"-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM_START
@@ -133,6 +147,8 @@ BOTTOM_START = "bottom_start"
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LocalizedAlignment-BOTTOM_START = "bottom_start"--><!--Device-LocalizedAlignment-BOTTOM_START = "bottom_start"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,6 +168,8 @@ BOTTOM = "bottom"
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LocalizedAlignment-BOTTOM = "bottom"--><!--Device-LocalizedAlignment-BOTTOM = "bottom"-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM_END
@@ -169,5 +187,7 @@ BOTTOM_END = "bottom_end"
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LocalizedAlignment-BOTTOM_END = "bottom_end"--><!--Device-LocalizedAlignment-BOTTOM_END = "bottom_end"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -12,6 +12,8 @@ Represents the callback invoked when the custom context menu on selection appear
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type MenuOnAppearCallback = (start: number, end: number) => void--><!--Device-unnamed-declare type MenuOnAppearCallback = (start: number, end: number) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

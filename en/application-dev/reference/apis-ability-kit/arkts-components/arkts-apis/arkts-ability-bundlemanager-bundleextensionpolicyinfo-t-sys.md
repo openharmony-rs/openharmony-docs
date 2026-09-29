@@ -10,6 +10,8 @@ Describes the bundle extension policy information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-export type BundleExtensionPolicyInfo = _BundleInfo.BundleExtensionPolicyInfo--><!--Device-bundleManager-export type BundleExtensionPolicyInfo = _BundleInfo.BundleExtensionPolicyInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

@@ -34,6 +34,8 @@ function openCustomDialog(options: CustomDialogOptions): Promise<number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-promptAction-function openCustomDialog(options: CustomDialogOptions): Promise<number>--><!--Device-promptAction-function openCustomDialog(options: CustomDialogOptions): Promise<number>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -52,12 +54,12 @@ function openCustomDialog(options: CustomDialogOptions): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
 **示例**
 
-openCustomDialog(options: CustomDialogOptions): Promise&lt;number&gt;
+openCustomDialog(options: CustomDialogOptions): Promise<number>
 
 打开自定义弹窗。通过Promise返回结果。
 
@@ -65,9 +67,9 @@ openCustomDialog(options: CustomDialogOptions): Promise&lt;number&gt;
 
 > 说明：
 > 
-> 从API version 11开始支持，从API version 18开始废弃，建议使用openCustomDialog替代。openCustomDialog需先通过UIContext中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取PromptAction对象，然后通过该对象进行调用。且直接使用openCustomDialog可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
+> 从API version 11开始支持，从API version 18开始废弃，建议使用openCustomDialog替代。openCustomDialog需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用openCustomDialog可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 > 
-> 从API version 12开始，可以通过使用UIContext中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取当前UI上下文关联的PromptAction对象。
+> 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取当前UI上下文关联的[PromptAction](arkts-apis-uicontext-promptaction.md)对象。
 
 模型约束： 此接口仅可在Stage模型下使用。
 
@@ -158,7 +160,7 @@ struct Index {
 
 > 说明：
 > 
-> 直接使用openCustomDialog可能导致实例不明确的问题，建议使用UIContext中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)获取PromptAction对象，再通过此对象调用替代方法openCustomDialog。
+> 直接使用openCustomDialog可能导致实例不明确的问题，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，再通过此对象调用替代方法openCustomDialog。
 
 ```TypeScript
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
@@ -241,7 +243,7 @@ struct Index {
 
 > 说明：
 > 
-> 直接使用openCustomDialog可能导致实例不明确的问题，建议使用UIContext中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)获取PromptAction对象，再通过此对象调用替代方法openCustomDialog。
+> 直接使用openCustomDialog可能导致实例不明确的问题，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，再通过此对象调用替代方法openCustomDialog。
 
 ```TypeScript
 // Index.ets

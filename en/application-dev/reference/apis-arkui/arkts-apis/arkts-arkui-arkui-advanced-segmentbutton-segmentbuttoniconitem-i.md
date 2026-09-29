@@ -12,6 +12,8 @@ Icon button information.
 
 **Since:** 11
 
+<!--Device-unnamed-interface SegmentButtonIconItem--><!--Device-unnamed-interface SegmentButtonIconItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -41,6 +43,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-SegmentButtonIconItem-accessibilityDescription?: ResourceStr--><!--Device-SegmentButtonIconItem-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +80,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-SegmentButtonIconItem-accessibilityLevel?: string--><!--Device-SegmentButtonIconItem-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -97,6 +103,8 @@ If the value is **undefined**, no icon is displayed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SegmentButtonIconItem-icon: ResourceStr--><!--Device-SegmentButtonIconItem-icon: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +130,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-SegmentButtonIconItem-iconAccessibilityText?: ResourceStr--><!--Device-SegmentButtonIconItem-iconAccessibilityText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedIcon
@@ -143,6 +153,8 @@ If the value is **undefined**, no icon is displayed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SegmentButtonIconItem-selectedIcon: ResourceStr--><!--Device-SegmentButtonIconItem-selectedIcon: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -167,5 +179,7 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-SegmentButtonIconItem-selectedIconAccessibilityText?: ResourceStr--><!--Device-SegmentButtonIconItem-selectedIconAccessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

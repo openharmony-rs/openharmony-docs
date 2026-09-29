@@ -10,6 +10,8 @@ export default class WebNativeMessagingExtensionAbility extends ExtensionAbility
 
 **起始版本：** 21
 
+<!--Device-unnamed-export default class WebNativeMessagingExtensionAbility extends ExtensionAbility--><!--Device-unnamed-export default class WebNativeMessagingExtensionAbility extends ExtensionAbility-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -29,6 +31,8 @@ Web原生消息连接建立时回调此方法。在此回调中，可以获取�
 **起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebNativeMessagingExtensionAbility-onConnectNative(info: ConnectionInfo): void--><!--Device-WebNativeMessagingExtensionAbility-onConnectNative(info: ConnectionInfo): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -65,6 +69,8 @@ WebNativeMessagingExtensionAbility销毁时回调。在此回调中，可以释�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WebNativeMessagingExtensionAbility-onDestroy(): void--><!--Device-WebNativeMessagingExtensionAbility-onDestroy(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例**
@@ -91,6 +97,8 @@ Web原生消息连接断开时回调此方法。在此回调中，可以释放�
 **起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebNativeMessagingExtensionAbility-onDisconnectNative(info: ConnectionInfo): void--><!--Device-WebNativeMessagingExtensionAbility-onDisconnectNative(info: ConnectionInfo): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -127,5 +135,7 @@ context: WebNativeMessagingExtensionContext
 **起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebNativeMessagingExtensionAbility-context: WebNativeMessagingExtensionContext--><!--Device-WebNativeMessagingExtensionAbility-context: WebNativeMessagingExtensionContext-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

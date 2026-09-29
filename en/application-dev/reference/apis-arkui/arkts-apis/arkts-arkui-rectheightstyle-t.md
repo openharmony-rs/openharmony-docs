@@ -12,6 +12,8 @@ Enumerates the rectangle height styles.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-unnamed-declare type RectHeightStyle = import('../api/@ohos.graphics.text').default.RectHeightStyle--><!--Device-unnamed-declare type RectHeightStyle = import('../api/@ohos.graphics.text').default.RectHeightStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.graphics.text').default.RectHeightStyle

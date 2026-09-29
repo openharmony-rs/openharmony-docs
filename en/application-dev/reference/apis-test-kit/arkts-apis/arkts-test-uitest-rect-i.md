@@ -8,6 +8,8 @@ Represents the rectangle area on the device screen.
 
 **Since:** 9
 
+<!--Device-unnamed-declare interface Rect--><!--Device-unnamed-declare interface Rect-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -31,7 +33,9 @@ Y coordinate of the lower right corner of the component border, in pixels. The v
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Rect-bottom: int--><!--Device-Rect-bottom: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -49,7 +53,9 @@ ID of the display to which the component border belongs. The value is an integer
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-Rect-displayId?: int--><!--Device-Rect-displayId?: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -67,7 +73,9 @@ X coordinate of the upper left corner of the component border, in pixels. The va
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Rect-left: int--><!--Device-Rect-left: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -85,7 +93,9 @@ X coordinate of the lower right corner of the component border, in pixels. The v
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Rect-right: int--><!--Device-Rect-right: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -103,7 +113,9 @@ Y coordinate of the upper left corner of the component border, in pixels. The va
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Rect-top: int--><!--Device-Rect-top: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

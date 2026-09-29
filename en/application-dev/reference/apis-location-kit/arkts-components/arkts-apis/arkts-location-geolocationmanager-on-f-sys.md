@@ -19,6 +19,8 @@ Subscribe to changes in WiFi/BT scanning information, and use the WiFi/BT scanni
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-geoLocationManager-function on(type: 'locatingRequiredDataChange', config: LocatingRequiredDataConfig,       callback: Callback<Array<LocatingRequiredData>>): void--><!--Device-geoLocationManager-function on(type: 'locatingRequiredDataChange', config: LocatingRequiredDataConfig,       callback: Callback<Array<LocatingRequiredData>>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ function on(type: 'locationIconStatusChange', callback: Callback<LocationIconSta
 Subscribe location icon status changed.
 
 **Since:** 12
+
+<!--Device-geoLocationManager-function on(type: 'locationIconStatusChange', callback: Callback<LocationIconStatus>): void--><!--Device-geoLocationManager-function on(type: 'locationIconStatusChange', callback: Callback<LocationIconStatus>): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

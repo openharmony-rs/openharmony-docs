@@ -8,6 +8,8 @@ interface WindowInfo
 
 **起始版本：** 18
 
+<!--Device-window-interface WindowInfo--><!--Device-window-interface WindowInfo-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,6 +30,8 @@ Ability的名称。
 
 **起始版本：** 18
 
+<!--Device-WindowInfo-abilityName: string--><!--Device-WindowInfo-abilityName: string-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## bundleName
@@ -41,6 +45,8 @@ bundleName: string
 **类型：** string
 
 **起始版本：** 18
+
+<!--Device-WindowInfo-bundleName: string--><!--Device-WindowInfo-bundleName: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -58,6 +64,8 @@ Indicates the ID of the display where the window is located.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WindowInfo-displayId?: int--><!--Device-WindowInfo-displayId?: int-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## globalDisplayRect
@@ -71,6 +79,8 @@ globalDisplayRect?: Rect
 **类型：** [Rect](arkts-arkui-window-rect-i.md)
 
 **起始版本：** 20
+
+<!--Device-WindowInfo-globalDisplayRect?: Rect--><!--Device-WindowInfo-globalDisplayRect?: Rect-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -88,6 +98,8 @@ globalRect?: Rect
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WindowInfo-globalRect?: Rect--><!--Device-WindowInfo-globalRect?: Rect-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## isFocused
@@ -101,6 +113,8 @@ isFocused?: boolean
 **类型：** boolean
 
 **起始版本：** 18
+
+<!--Device-WindowInfo-isFocused?: boolean--><!--Device-WindowInfo-isFocused?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -116,6 +130,8 @@ rect: Rect
 
 **起始版本：** 18
 
+<!--Device-WindowInfo-rect: Rect--><!--Device-WindowInfo-rect: Rect-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## windowId
@@ -130,6 +146,8 @@ windowId: number
 
 **起始版本：** 18
 
+<!--Device-WindowInfo-windowId: int--><!--Device-WindowInfo-windowId: int-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## windowStatusType
@@ -143,5 +161,7 @@ windowStatusType: WindowStatusType
 **类型：** [WindowStatusType](arkts-arkui-window-windowstatustype-e.md)
 
 **起始版本：** 18
+
+<!--Device-WindowInfo-windowStatusType: WindowStatusType--><!--Device-WindowInfo-windowStatusType: WindowStatusType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

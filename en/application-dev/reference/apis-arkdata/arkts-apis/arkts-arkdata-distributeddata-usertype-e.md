@@ -10,6 +10,8 @@ Enumerates the user types.
 
 **Deprecated since:** 9
 
+<!--Device-distributedData-enum UserType--><!--Device-distributedData-enum UserType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## SAME_USER_ID
@@ -23,5 +25,7 @@ User who logs in to different devices using the same account.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-UserType-SAME_USER_ID = 0--><!--Device-UserType-SAME_USER_ID = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

@@ -21,6 +21,8 @@ Unsubscribes from widget uninstall events. This API uses an asynchronous callbac
 
 **Since:** 9
 
+<!--Device-formHost-function off(type: "formUninstall", callback?: Callback<string>): void--><!--Device-formHost-function off(type: "formUninstall", callback?: Callback<string>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -49,6 +51,8 @@ function off(type: 'formOverflow', callback?: Callback<formInfo.OverflowRequest>
 Unsubscribes from the interactive widget animation request event. This API uses an asynchronous callback to return the result.
 
 **Since:** 20
+
+<!--Device-formHost-function off(type: 'formOverflow', callback?: Callback<formInfo.OverflowRequest>): void--><!--Device-formHost-function off(type: 'formOverflow', callback?: Callback<formInfo.OverflowRequest>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -94,6 +98,8 @@ Unsubscribes from the event of switching the interactive widget state. An intera
 
 **Since:** 20
 
+<!--Device-formHost-function off(type: 'changeSceneAnimationState',     callback?: Callback<formInfo.ChangeSceneAnimationStateRequest>): void--><!--Device-formHost-function off(type: 'changeSceneAnimationState',     callback?: Callback<formInfo.ChangeSceneAnimationStateRequest>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -137,6 +143,8 @@ Unsubscribes from the event of requesting widget position and dimension. This AP
 
 **Since:** 20
 
+<!--Device-formHost-function off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void--><!--Device-formHost-function off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -178,6 +186,8 @@ function off(type: 'getLiveFormStatus',
 Cancels Listening to the event of get live form status.
 
 **Since:** 20
+
+<!--Device-formHost-function off(type: 'getLiveFormStatus',     callback?: formInfo.GetLiveFormStatusCallback): void--><!--Device-formHost-function off(type: 'getLiveFormStatus',     callback?: formInfo.GetLiveFormStatusCallback): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

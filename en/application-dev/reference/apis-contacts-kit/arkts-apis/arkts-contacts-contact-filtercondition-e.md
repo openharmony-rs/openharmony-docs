@@ -8,6 +8,8 @@ Enumerates filter criteria.
 
 **Since:** 15
 
+<!--Device-contact-enum FilterCondition--><!--Device-contact-enum FilterCondition-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## EQUAL_TO
@@ -21,6 +23,8 @@ The corresponding field is equal to a value.
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-FilterCondition-EQUAL_TO = 1--><!--Device-FilterCondition-EQUAL_TO = 1-End-->
 
 **System capability:** SystemCapability.Applications.Contacts
 
@@ -36,6 +40,8 @@ The corresponding field is not equal to a value.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-FilterCondition-NOT_EQUAL_TO = 2--><!--Device-FilterCondition-NOT_EQUAL_TO = 2-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 ## IN
@@ -49,6 +55,8 @@ The value of the corresponding field is in an array.
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-FilterCondition-IN = 3--><!--Device-FilterCondition-IN = 3-End-->
 
 **System capability:** SystemCapability.Applications.Contacts
 
@@ -64,6 +72,8 @@ The corresponding field is not empty.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-FilterCondition-IS_NOT_NULL = 0--><!--Device-FilterCondition-IS_NOT_NULL = 0-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 ## NOT_IN
@@ -78,6 +88,8 @@ The value of the corresponding field is not in an array.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-FilterCondition-NOT_IN = 4--><!--Device-FilterCondition-NOT_IN = 4-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 ## CONTAINS
@@ -91,5 +103,7 @@ The value of the corresponding field contains a certain value.
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-FilterCondition-CONTAINS = 5--><!--Device-FilterCondition-CONTAINS = 5-End-->
 
 **System capability:** SystemCapability.Applications.Contacts

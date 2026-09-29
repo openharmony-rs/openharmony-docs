@@ -8,6 +8,8 @@ Enumerates the strategies for the hierarchical position movement of **in** / **o
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum TransitionHierarchyStrategy--><!--Device-unnamed-declare enum TransitionHierarchyStrategy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ The **in** / **out** components maintain their original hierarchy levels and are
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12 - 12.
+
+<!--Device-TransitionHierarchyStrategy-NONE = 0--><!--Device-TransitionHierarchyStrategy-NONE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +51,8 @@ For example, if the **in** component is at a higher hierarchy level than the **o
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12 - 12.
+
+<!--Device-TransitionHierarchyStrategy-ADAPTIVE = 1--><!--Device-TransitionHierarchyStrategy-ADAPTIVE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

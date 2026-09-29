@@ -6,6 +6,8 @@ export declare class TabTitleBarMenuItem
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare class TabTitleBarMenuItem--><!--Device-unnamed-export declare class TabTitleBarMenuItem-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,6 +30,8 @@ action?: () => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabTitleBarMenuItem-action?: () => void--><!--Device-TabTitleBarMenuItem-action?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -47,6 +51,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabTitleBarMenuItem-accessibilityDescription?: ResourceStr--><!--Device-TabTitleBarMenuItem-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +86,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabTitleBarMenuItem-accessibilityLevel?: string--><!--Device-TabTitleBarMenuItem-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -99,6 +107,8 @@ accessibilityText?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabTitleBarMenuItem-accessibilityText?: ResourceStr--><!--Device-TabTitleBarMenuItem-accessibilityText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,6 +130,8 @@ isEnabled?: boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabTitleBarMenuItem-isEnabled?: boolean--><!--Device-TabTitleBarMenuItem-isEnabled?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## label
@@ -137,6 +149,8 @@ label?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabTitleBarMenuItem-label?: ResourceStr--><!--Device-TabTitleBarMenuItem-label?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,6 +170,8 @@ Symbol图标资源，优先级大于value。当需要使用Symbol图标时传入
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabTitleBarMenuItem-symbolStyle?: SymbolGlyphModifier--><!--Device-TabTitleBarMenuItem-symbolStyle?: SymbolGlyphModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -173,5 +189,7 @@ value: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabTitleBarMenuItem-value: ResourceStr--><!--Device-TabTitleBarMenuItem-value: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

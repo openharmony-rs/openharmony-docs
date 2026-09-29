@@ -18,6 +18,8 @@ Stops and clears all the deferred tasks.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-workScheduler-function stopAndClearWorks(): void--><!--Device-workScheduler-function stopAndClearWorks(): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **Error codes:**

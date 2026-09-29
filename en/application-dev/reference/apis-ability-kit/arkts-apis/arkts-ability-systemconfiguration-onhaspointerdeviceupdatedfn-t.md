@@ -12,7 +12,9 @@ Defines an OnHasPointerDeviceUpdatedFn function.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-systemConfiguration-type OnHasPointerDeviceUpdatedFn = (hasPointerDevice: boolean) => void--><!--Device-systemConfiguration-type OnHasPointerDeviceUpdatedFn = (hasPointerDevice: boolean) => void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

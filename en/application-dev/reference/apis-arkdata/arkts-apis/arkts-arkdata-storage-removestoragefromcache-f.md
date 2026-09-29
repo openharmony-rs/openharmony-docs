@@ -19,6 +19,8 @@ Removes the singleton **Storage** instance of a file from the cache. The removed
 
 **Substitutes:** removePreferencesFromCache
 
+<!--Device-storage-function removeStorageFromCache(path: string, callback: AsyncCallback<void>): void--><!--Device-storage-function removeStorageFromCache(path: string, callback: AsyncCallback<void>): void-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -42,6 +44,8 @@ Removes the singleton **Storage** instance of a file from the cache. The removed
 **Deprecated since:** 9
 
 **Substitutes:** removePreferencesFromCache
+
+<!--Device-storage-function removeStorageFromCache(path: string): Promise<void>--><!--Device-storage-function removeStorageFromCache(path: string): Promise<void>-End-->
 
 **Parameters:**
 

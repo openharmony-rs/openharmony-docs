@@ -11,6 +11,8 @@ Browser policies are a collection of rules and settings that govern how a browse
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace browser--><!--Device-unnamed-declare namespace browser-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

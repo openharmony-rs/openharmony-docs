@@ -10,6 +10,8 @@ Before calling any of the following APIs, you must use [PiPWindow.create()](arkt
 
 **Since:** 11
 
+<!--Device-PiPWindow-interface PiPController--><!--Device-PiPWindow-interface PiPController-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -27,6 +29,8 @@ isPiPSupported(): boolean
 Returns a Boolean value that indicates whether picture-in-picture is supported
 
 **Since:** 18
+
+<!--Device-PiPController-isPiPSupported(): boolean--><!--Device-PiPController-isPiPSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

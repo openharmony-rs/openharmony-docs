@@ -14,6 +14,8 @@ UIServiceExtensionAbility provides extended capabilities related to the floating
 
 **Since:** 14
 
+<!--Device-unnamed-declare class UIServiceExtensionAbility extends ExtensionAbility--><!--Device-unnamed-declare class UIServiceExtensionAbility extends ExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -35,6 +37,8 @@ Called when the connection to a [UIServiceExtensionAbility](arkts-ability-app-ab
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIServiceExtensionAbility-onConnect(want: Want, proxy: UIServiceHostProxy): void--><!--Device-UIServiceExtensionAbility-onConnect(want: Want, proxy: UIServiceHostProxy): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -71,6 +75,8 @@ Called to initialize the service logic.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIServiceExtensionAbility-onCreate(want: Want): void--><!--Device-UIServiceExtensionAbility-onCreate(want: Want): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -105,6 +111,8 @@ Callback invoked when data is received.
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIServiceExtensionAbility-onData(proxy: UIServiceHostProxy, data: Record<string, Object>): void--><!--Device-UIServiceExtensionAbility-onData(proxy: UIServiceHostProxy, data: Record<string, Object>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -141,6 +149,8 @@ Called to clear resources when this [UIServiceExtensionAbility](arkts-ability-ap
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIServiceExtensionAbility-onDestroy(): void--><!--Device-UIServiceExtensionAbility-onDestroy(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -168,6 +178,8 @@ Called when the connection to a [UIServiceExtensionAbility](arkts-ability-app-ab
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIServiceExtensionAbility-onDisconnect(want: Want, proxy: UIServiceHostProxy): void--><!--Device-UIServiceExtensionAbility-onDisconnect(want: Want, proxy: UIServiceHostProxy): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -204,6 +216,8 @@ Called to request to start a [UIServiceExtensionAbility](arkts-ability-app-abili
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIServiceExtensionAbility-onRequest(want: Want, startId: int): void--><!--Device-UIServiceExtensionAbility-onRequest(want: Want, startId: int): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -239,6 +253,8 @@ Called when a window is created for the [UIServiceExtensionAbility](arkts-abilit
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIServiceExtensionAbility-onWindowDidCreate(window: window.Window): void--><!--Device-UIServiceExtensionAbility-onWindowDidCreate(window: window.Window): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -273,6 +289,8 @@ Called when a window will be created for the [UIServiceExtensionAbility](arkts-a
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIServiceExtensionAbility-onWindowWillCreate(config: window.ExtensionWindowConfig): void--><!--Device-UIServiceExtensionAbility-onWindowWillCreate(config: window.ExtensionWindowConfig): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -310,6 +328,8 @@ Context environment for a [UIServiceExtensionAbility](arkts-ability-app-ability-
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIServiceExtensionAbility-context: UIServiceExtensionContext--><!--Device-UIServiceExtensionAbility-context: UIServiceExtensionContext-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

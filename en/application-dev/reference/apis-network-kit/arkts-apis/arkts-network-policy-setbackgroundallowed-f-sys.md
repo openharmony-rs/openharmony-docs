@@ -18,6 +18,8 @@ Sets whether background applications are allowed to access the network. This API
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function setBackgroundAllowed(isAllowed: boolean, callback: AsyncCallback<void>): void--><!--Device-policy-function setBackgroundAllowed(isAllowed: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ Sets whether background applications are allowed to access the network. This API
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function setBackgroundAllowed(isAllowed: boolean): Promise<void>--><!--Device-policy-function setBackgroundAllowed(isAllowed: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

@@ -8,6 +8,8 @@ Enumerates the flags used by the WantAgent objects.
 
 **Since:** 9
 
+<!--Device-wantAgent-export enum WantAgentFlags--><!--Device-wantAgent-export enum WantAgentFlags-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## ONE_TIME_FLAG
@@ -20,7 +22,9 @@ The WantAgent object can be used only once.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WantAgentFlags-ONE_TIME_FLAG = 0--><!--Device-WantAgentFlags-ONE_TIME_FLAG = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -34,7 +38,9 @@ The WantAgent object does not exist and hence it is not created. In this case, &
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WantAgentFlags-NO_BUILD_FLAG--><!--Device-WantAgentFlags-NO_BUILD_FLAG-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -48,7 +54,9 @@ The existing WantAgent object should be canceled before a new object is generate
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WantAgentFlags-CANCEL_PRESENT_FLAG--><!--Device-WantAgentFlags-CANCEL_PRESENT_FLAG-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -62,7 +70,9 @@ Extra information of the existing WantAgent object is replaced with that of the 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WantAgentFlags-UPDATE_PRESENT_FLAG--><!--Device-WantAgentFlags-UPDATE_PRESENT_FLAG-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -76,7 +86,9 @@ The WantAgent object is immutable.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WantAgentFlags-CONSTANT_FLAG--><!--Device-WantAgentFlags-CONSTANT_FLAG-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -90,7 +102,9 @@ The element property in the current Want can be replaced by the element property
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WantAgentFlags-REPLACE_ELEMENT--><!--Device-WantAgentFlags-REPLACE_ELEMENT-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -104,7 +118,9 @@ The action property in the current Want can be replaced by the action property i
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WantAgentFlags-REPLACE_ACTION--><!--Device-WantAgentFlags-REPLACE_ACTION-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -118,7 +134,9 @@ The uri property in the current Want can be replaced by the uri property in the 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WantAgentFlags-REPLACE_URI--><!--Device-WantAgentFlags-REPLACE_URI-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -132,7 +150,9 @@ The &lt;code&gt;entities&lt;/code&gt; property in the current Want can be replac
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WantAgentFlags-REPLACE_ENTITIES--><!--Device-WantAgentFlags-REPLACE_ENTITIES-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -146,6 +166,8 @@ The &lt;code&gt;bundleName&lt;/code&gt; property in the current Want can be repl
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WantAgentFlags-REPLACE_BUNDLE--><!--Device-WantAgentFlags-REPLACE_BUNDLE-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

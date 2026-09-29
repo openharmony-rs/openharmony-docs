@@ -6,6 +6,8 @@ This module provides APIs for collecting statistics on device usage.
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare namespace bundleState--><!--Device-unnamed-declare namespace bundleState-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 ## Modules to Import

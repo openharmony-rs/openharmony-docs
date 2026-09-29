@@ -16,6 +16,8 @@ Searches for task IDs based on [Filter](arkts-basicservices-agent-filter-i.md). 
 
 **Since:** 10
 
+<!--Device-agent-function search(callback: AsyncCallback<Array<string>>): void--><!--Device-agent-function search(callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -43,6 +45,8 @@ function search(filter: Filter, callback: AsyncCallback<Array<string>>): void
 Searches for task IDs based on [Filter](arkts-basicservices-agent-filter-i.md). This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-agent-function search(filter: Filter, callback: AsyncCallback<Array<string>>): void--><!--Device-agent-function search(filter: Filter, callback: AsyncCallback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -72,6 +76,8 @@ function search(filter?: Filter): Promise<Array<string>>
 Searches for task IDs based on [Filter](arkts-basicservices-agent-filter-i.md). This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-agent-function search(filter?: Filter): Promise<Array<string>>--><!--Device-agent-function search(filter?: Filter): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 

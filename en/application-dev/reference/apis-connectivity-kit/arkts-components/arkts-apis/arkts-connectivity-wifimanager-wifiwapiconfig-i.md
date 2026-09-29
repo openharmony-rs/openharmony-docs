@@ -8,6 +8,8 @@ Wi-Fi WAPI config. @typedef WifiWapiConfig
 
 **Since:** 12
 
+<!--Device-wifiManager-interface WifiWapiConfig--><!--Device-wifiManager-interface WifiWapiConfig-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## Modules to Import
@@ -28,6 +30,8 @@ WAPI AS certification.
 
 **Since:** 12
 
+<!--Device-WifiWapiConfig-wapiAsCert: string--><!--Device-WifiWapiConfig-wapiAsCert: string-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## wapiPskType
@@ -42,6 +46,8 @@ WAPI pre-shared key type.
 
 **Since:** 12
 
+<!--Device-WifiWapiConfig-wapiPskType: WapiPskType--><!--Device-WifiWapiConfig-wapiPskType: WapiPskType-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## wapiUserCert
@@ -55,5 +61,7 @@ WAPI user certification.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-WifiWapiConfig-wapiUserCert: string--><!--Device-WifiWapiConfig-wapiUserCert: string-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA

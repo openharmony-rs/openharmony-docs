@@ -8,6 +8,8 @@ Enumerates the modes in which elements are displayed along the main axis.
 
 **Since:** 7
 
+<!--Device-unnamed-declare enum SwiperDisplayMode--><!--Device-unnamed-declare enum SwiperDisplayMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Stretch
@@ -27,6 +29,8 @@ Note: This API is supported since API version 7 and deprecated since API version
 **Substitutes:** [STRETCH](#stretch)
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 7.
+
+<!--Device-SwiperDisplayMode-Stretch--><!--Device-SwiperDisplayMode-Stretch-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ Note: This API is supported since API version 7 and deprecated since API version
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 7.
 
+<!--Device-SwiperDisplayMode-AutoLinear--><!--Device-SwiperDisplayMode-AutoLinear-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## STRETCH
@@ -65,6 +71,8 @@ The width of each page in the **Swiper** component equals the component's own wi
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperDisplayMode-STRETCH--><!--Device-SwiperDisplayMode-STRETCH-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,5 +97,7 @@ Note: This API is supported since API version 10 and deprecated since API versio
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperDisplayMode-AUTO_LINEAR--><!--Device-SwiperDisplayMode-AUTO_LINEAR-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

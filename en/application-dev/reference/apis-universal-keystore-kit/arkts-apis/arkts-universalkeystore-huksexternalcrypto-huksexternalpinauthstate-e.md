@@ -8,6 +8,8 @@ Enumerates the UKey PIN authentication states.
 
 **Since:** 22
 
+<!--Device-huksExternalCrypto-export enum HuksExternalPinAuthState--><!--Device-huksExternalCrypto-export enum HuksExternalPinAuthState-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 ## HUKS_EXT_CRYPTO_PIN_NO_AUTH
@@ -19,6 +21,8 @@ HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0
 The UKey PIN is not authenticated.
 
 **Since:** 22
+
+<!--Device-HuksExternalPinAuthState-HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0--><!--Device-HuksExternalPinAuthState-HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0-End-->
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
@@ -32,6 +36,8 @@ The UKey PIN is authenticated successfully.
 
 **Since:** 22
 
+<!--Device-HuksExternalPinAuthState-HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1--><!--Device-HuksExternalPinAuthState-HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 ## HUKS_EXT_CRYPTO_PIN_LOCKED
@@ -43,5 +49,7 @@ HUKS_EXT_CRYPTO_PIN_LOCKED = 2
 The UKey PIN is locked.
 
 **Since:** 22
+
+<!--Device-HuksExternalPinAuthState-HUKS_EXT_CRYPTO_PIN_LOCKED = 2--><!--Device-HuksExternalPinAuthState-HUKS_EXT_CRYPTO_PIN_LOCKED = 2-End-->
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension

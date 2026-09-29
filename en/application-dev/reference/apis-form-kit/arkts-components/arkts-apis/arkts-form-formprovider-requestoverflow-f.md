@@ -18,7 +18,9 @@ Requests an animation. This API takes effect only for [scene-based widgets](../.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-formProvider-function requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise<void>--><!--Device-formProvider-function requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

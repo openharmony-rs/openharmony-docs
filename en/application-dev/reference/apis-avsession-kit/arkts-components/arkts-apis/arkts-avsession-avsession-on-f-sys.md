@@ -16,6 +16,8 @@ Register session create callback
 
 **Since:** 9
 
+<!--Device-avSession-function on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): void--><!--Device-avSession-function on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **System API:** This is a system API.
@@ -73,6 +75,8 @@ Register session destroy callback
 
 **Since:** 9
 
+<!--Device-avSession-function on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): void--><!--Device-avSession-function on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **System API:** This is a system API.
@@ -127,6 +131,8 @@ function on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) =
 Register top session changed callback
 
 **Since:** 9
+
+<!--Device-avSession-function on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): void--><!--Device-avSession-function on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): void-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
@@ -185,6 +191,8 @@ Register Session service death callback, notifying the application to clean up r
 
 **Since:** 9
 
+<!--Device-avSession-function on(type: 'sessionServiceDie', callback: () => void): void--><!--Device-avSession-function on(type: 'sessionServiceDie', callback: () => void): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **System API:** This is a system API.
@@ -223,6 +231,8 @@ Register distributed session changed callback
 
 **Since:** 18
 
+<!--Device-avSession-function on(type: 'distributedSessionChange', distributedSessionType: DistributedSessionType, callback: Callback<Array<AVSessionController>>): void--><!--Device-avSession-function on(type: 'distributedSessionChange', distributedSessionType: DistributedSessionType, callback: Callback<Array<AVSessionController>>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **System API:** This is a system API.
@@ -260,6 +270,8 @@ function on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => voi
 Register device discovery callback
 
 **Since:** 10
+
+<!--Device-avSession-function on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => void): void--><!--Device-avSession-function on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => void): void-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -300,6 +312,8 @@ Register device offline callback
 
 **Since:** 11
 
+<!--Device-avSession-function on(type: 'deviceOffline', callback: (deviceId: string) => void): void--><!--Device-avSession-function on(type: 'deviceOffline', callback: (deviceId: string) => void): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.
@@ -338,6 +352,8 @@ function on(type: 'deviceLogEvent', callback: Callback<DeviceLogEventCode>): voi
 Register log event callback.
 
 **Since:** 13
+
+<!--Device-avSession-function on(type: 'deviceLogEvent', callback: Callback<DeviceLogEventCode>): void--><!--Device-avSession-function on(type: 'deviceLogEvent', callback: Callback<DeviceLogEventCode>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -379,6 +395,8 @@ Registers a system callback for the device connection phase. The callback includ
 **Since:** 20
 
 **Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+<!--Device-avSession-function on(type: 'deviceStateChanged', callback: Callback<DeviceState>): void--><!--Device-avSession-function on(type: 'deviceStateChanged', callback: Callback<DeviceState>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 

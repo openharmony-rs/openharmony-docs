@@ -8,6 +8,8 @@ Provides APIs for registering the component layout and drawing display completio
 
 **Since:** 10
 
+<!--Device-unnamed-export class UIInspector--><!--Device-unnamed-export class UIInspector-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Registers a callback for layout and drawing display completion notifications for
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-UIInspector-createComponentObserver(id: string): inspector.ComponentObserver--><!--Device-UIInspector-createComponentObserver(id: string): inspector.ComponentObserver-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -105,6 +109,8 @@ Registers a callback for layout and drawing display completion notifications for
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-UIInspector-createComponentObserver(id: string | number): inspector.ComponentObserver--><!--Device-UIInspector-createComponentObserver(id: string | number): inspector.ComponentObserver-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

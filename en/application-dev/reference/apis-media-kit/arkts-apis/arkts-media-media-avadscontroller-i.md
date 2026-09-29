@@ -8,6 +8,8 @@ Definition of the Ad Content Control Interface
 
 **Since:** 26.0.0
 
+<!--Device-media-interface AVAdsController--><!--Device-media-interface AVAdsController-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Add an advertisement film source to the advertisement controller, The insertion 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVAdsController-addAdsMediaSource(src: MediaSource, start: int): Promise<string>--><!--Device-AVAdsController-addAdsMediaSource(src: MediaSource, start: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -61,6 +65,8 @@ Disable playback of the remaining broadcast content in the current session
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVAdsController-disableAllAdsMediaSource(): void--><!--Device-AVAdsController-disableAllAdsMediaSource(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 ## offAdsEventListenerLoadingError
@@ -74,6 +80,8 @@ Unregisters the event processing function when the ad content fails to be loaded
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVAdsController-offAdsEventListenerLoadingError(callback?: OnAdsEventLoadingErrorHandle): void--><!--Device-AVAdsController-offAdsEventListenerLoadingError(callback?: OnAdsEventLoadingErrorHandle): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -95,6 +103,8 @@ Unregisters the processing function of the event triggered by the completion of 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVAdsController-offAdsListenerAdsCompleted(callback?: Callback<string>): void--><!--Device-AVAdsController-offAdsListenerAdsCompleted(callback?: Callback<string>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -114,6 +124,8 @@ Unregisters the processing function of the event triggered when advertisement is
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVAdsController-offAdsListenerAdsSkipped(callback?: Callback<string>): void--><!--Device-AVAdsController-offAdsListenerAdsSkipped(callback?: Callback<string>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -135,6 +147,8 @@ Unregisters the processing function for the event triggered when a new ad conten
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVAdsController-offAdsListenerAdsStarted(callback?: OnAdsEventAdsStartedHandle): void--><!--Device-AVAdsController-offAdsListenerAdsStarted(callback?: OnAdsEventAdsStartedHandle): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -154,6 +168,8 @@ Registers the event processing function when the ad content fails to be loaded.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVAdsController-onAdsEventListenerLoadingError(callback: OnAdsEventLoadingErrorHandle): void--><!--Device-AVAdsController-onAdsEventListenerLoadingError(callback: OnAdsEventLoadingErrorHandle): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -175,6 +191,8 @@ Registers the processing function of the event triggered by the completion of ad
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVAdsController-onAdsListenerAdsCompleted(callback: Callback<string>): void--><!--Device-AVAdsController-onAdsListenerAdsCompleted(callback: Callback<string>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -194,6 +212,8 @@ Registers the processing function of the event triggered when advertisement is s
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVAdsController-onAdsListenerAdsSkipped(callback: Callback<string>): void--><!--Device-AVAdsController-onAdsListenerAdsSkipped(callback: Callback<string>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -215,6 +235,8 @@ Registers the processing function for the event triggered when a new ad content 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVAdsController-onAdsListenerAdsStarted(callback: OnAdsEventAdsStartedHandle): void--><!--Device-AVAdsController-onAdsListenerAdsStarted(callback: OnAdsEventAdsStartedHandle): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -235,6 +257,8 @@ Release the AVAdsController object.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVAdsController-release(): void--><!--Device-AVAdsController-release(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 ## removeAdsMediaSource
@@ -248,6 +272,8 @@ Remove the ad source specified in the AdsController.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVAdsController-removeAdsMediaSource(id: string): void--><!--Device-AVAdsController-removeAdsMediaSource(id: string): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -274,5 +300,7 @@ Skip the ad content that is being played.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVAdsController-skipCurrentAdsMediaSource(): void--><!--Device-AVAdsController-skipCurrentAdsMediaSource(): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer

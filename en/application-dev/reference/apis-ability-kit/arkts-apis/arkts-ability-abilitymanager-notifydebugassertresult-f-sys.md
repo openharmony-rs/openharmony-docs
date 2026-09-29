@@ -20,6 +20,8 @@ Notifies the application of the assertion result. This API uses a promise to ret
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-abilityManager-function notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise<void>--><!--Device-abilityManager-function notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

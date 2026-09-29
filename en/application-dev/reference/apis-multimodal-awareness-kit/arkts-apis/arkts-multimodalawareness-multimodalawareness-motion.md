@@ -1,8 +1,10 @@
-# @ohos.multimodalAwareness.motion
+# @ohos.multimodalAwareness.motion(Motion awareness)
 
-The **motion** module provides the user motion awareness capabilities, including user gestures and actions.
+This module provides awareness capabilities for user motions, supporting the recognition of user gestures and motion states. It is suitable for interactive scenarios where responses are required based on user gestures or motions, such as gesture recognition and motion triggering, helping applications deliver a more natural interactive experience and precise scenario awareness.
 
 **Since:** 15
+
+<!--Device-unnamed-declare namespace motion--><!--Device-unnamed-declare namespace motion-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
@@ -21,8 +23,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 | [getRecentOperatingHandStatus](arkts-multimodalawareness-motion-getrecentoperatinghandstatus-f.md) | Obtains the latest operating hand status. |
 | [off](arkts-multimodalawareness-motion-off-f.md#offoperatinghandchanged) | Unsubscribes from operating hand change events. |
 | [off](arkts-multimodalawareness-motion-off-f.md#offholdinghandchanged) | Disables listening for holding hand status changes. |
-| [on](arkts-multimodalawareness-motion-on-f.md#onoperatinghandchanged) | Subscribes to operating hand change events. |
-| [on](arkts-multimodalawareness-motion-on-f.md#onholdinghandchanged) | Enables listening for holding hand status changes. |
+| [on](arkts-multimodalawareness-motion-on-f.md#onoperatinghandchanged) | Subscribes to operating hand awareness events. The system collects user touch data through touchscreen sensors and combines gesture recognition algorithms to determine whether the current operating hand is the left hand or the right hand. This is suitable for scenarios such as gesture interaction and single-hand or dual-hand operation adaptation, optimizing the UI layout and interaction mode by identifying the user's operating hand state. It is recommended that you call off() to unsubscribe and release resources after use, to avoid unnecessary performance and power consumption overhead. Related method: off('operatingHandChanged'): unsubscribes from operating hand awareness events. |
+| [on](arkts-multimodalawareness-motion-on-f.md#onholdinghandchanged) | Subscribes to the holding hand status change awareness event. The system uses sensor data combined with recognition algorithms to determine whether the current holding hand is the left hand or the right hand. This is suitable for scenarios where reading applications, video playback, and other applications need to adjust the UI layout or functions based on the user's holding hand status. It is recommended that you call off() to unsubscribe and release resources after use to avoid unnecessary performance and power consumption overhead. Related method: off('holdingHandChanged'): unsubscribes from the holding hand status change awareness event. |
 
 <!--Del-->
 ### Functions(System API)
@@ -53,7 +55,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 | Name | Description |
 | --- | --- |
-| [HoldingHandStatus](arkts-multimodalawareness-motion-holdinghandstatus-e.md) | Represents the holding hand status. The holding hand status is returned if listening for holding hand status changes is enabled. |
+| [HoldingHandStatus](arkts-multimodalawareness-motion-holdinghandstatus-e.md) | Defines the holding hand state information, which represents the result of a holding hand state change awareness event. After subscribing to the event, the current holding hand state information is returned. |
 | [OperatingHandStatus](arkts-multimodalawareness-motion-operatinghandstatus-e.md) | Defines the status of the operating hand. |
 
 <!--Del-->

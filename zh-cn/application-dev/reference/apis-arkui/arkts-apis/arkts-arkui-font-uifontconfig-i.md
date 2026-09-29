@@ -8,6 +8,8 @@ interface UIFontConfig
 
 **起始版本：** 11
 
+<!--Device-font-interface UIFontConfig--><!--Device-font-interface UIFontConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ fallbackGroups: Array<UIFontFallbackGroupInfo>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-UIFontConfig-fallbackGroups: Array<UIFontFallbackGroupInfo>--><!--Device-UIFontConfig-fallbackGroups: Array<UIFontFallbackGroupInfo>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontDir
@@ -50,6 +54,8 @@ fontDir: Array<string>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-UIFontConfig-fontDir: Array<string>--><!--Device-UIFontConfig-fontDir: Array<string>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## generic
@@ -67,5 +73,7 @@ generic: Array<UIFontGenericInfo>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIFontConfig-generic: Array<UIFontGenericInfo>--><!--Device-UIFontConfig-generic: Array<UIFontGenericInfo>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

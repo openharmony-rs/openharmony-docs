@@ -11,6 +11,8 @@ An application with the overlay feature contains an overlay resource package. Fo
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace overlay--><!--Device-unnamed-declare namespace overlay-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Overlay
 
 ## Modules to Import

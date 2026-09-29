@@ -10,6 +10,8 @@ Element
 
 **Since:** 4
 
+<!--Device-unnamed-export interface Element--><!--Device-unnamed-export interface Element-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## addChild
@@ -23,6 +25,8 @@ Adds a node to the end of the child node list of the current node.
 **Since:** 8
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Element-addChild(child: Element): void--><!--Device-Element-addChild(child: Element): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,6 +47,8 @@ Creates and runs an animation shortcut on the component. Specify the keyframes a
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Element-animate(keyframes: Array<AnimateStyle>, options: AnimateOptions): AnimationResult--><!--Device-Element-animate(keyframes: Array<AnimateStyle>, options: AnimateOptions): AnimationResult-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,6 +77,8 @@ If 0.5 is returned, 50% of the current component is visible.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Element-createIntersectionObserver(param: { ratios: Array<number> }): observer--><!--Device-Element-createIntersectionObserver(param: { ratios: Array<number> }): observer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -97,6 +105,8 @@ Requests or cancels the focus for a component. If focus is set to true, the focu
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Element-focus(obj?: FocusParamObj): void--><!--Device-Element-focus(obj?: FocusParamObj): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -116,6 +126,8 @@ Obtains the size and position of the element.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Element-getBoundingClientRect(): RectObj--><!--Device-Element-getBoundingClientRect(): RectObj-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,6 +149,8 @@ Requests or cancels the crown rotation focus for a component. If focus is set to
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Element-rotation(obj?: FocusParamObj): void--><!--Device-Element-rotation(obj?: FocusParamObj): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -156,6 +170,8 @@ Sets the value of an attribute on a specified element. If the attribute already 
 **Since:** 8
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Element-setAttribute(name: string, value: string): void--><!--Device-Element-setAttribute(name: string, value: string): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -177,6 +193,8 @@ Sets a style value on a specified element. If the style exists and the style val
 **Since:** 8
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Element-setStyle(name: string, value: string): boolean--><!--Device-Element-setStyle(name: string, value: string): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

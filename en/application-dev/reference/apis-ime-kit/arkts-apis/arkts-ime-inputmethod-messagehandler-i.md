@@ -15,6 +15,8 @@ Represents a custom communication object. <br> <br>
 
 **Since:** 15
 
+<!--Device-inputMethod-interface MessageHandler--><!--Device-inputMethod-interface MessageHandler-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -34,6 +36,8 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void
 This method is called when a custom message is received.
 
 **Since:** 15
+
+<!--Device-MessageHandler-onMessage(msgId: string, msgParam?: ArrayBuffer): void--><!--Device-MessageHandler-onMessage(msgId: string, msgParam?: ArrayBuffer): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -69,6 +73,8 @@ onTerminated(): void
 This method is called when a new message handler is set.
 
 **Since:** 15
+
+<!--Device-MessageHandler-onTerminated(): void--><!--Device-MessageHandler-onTerminated(): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

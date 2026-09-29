@@ -16,6 +16,8 @@ function addVirtualScreenBlocklist(windowIds: Array<number>): Promise<void>
 
 **起始版本：** 18
 
+<!--Device-display-function addVirtualScreenBlocklist(windowIds: Array<int>): Promise<void>--><!--Device-display-function addVirtualScreenBlocklist(windowIds: Array<int>): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。

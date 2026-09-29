@@ -10,6 +10,8 @@ Enumerates the vertex processing methods.
 
 **Since:** 18
 
+<!--Device-unnamed-export enum PrimitiveTopology--><!--Device-unnamed-export enum PrimitiveTopology-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## TRIANGLE_LIST
@@ -22,6 +24,8 @@ A set of vertices forming separate triangles without intersecting.
 
 **Since:** 18
 
+<!--Device-PrimitiveTopology-TRIANGLE_LIST = 0--><!--Device-PrimitiveTopology-TRIANGLE_LIST = 0-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## TRIANGLE_STRIP
@@ -33,5 +37,7 @@ TRIANGLE_STRIP = 1
 Each vertex and the edge of the previous triangle create a new triangle.
 
 **Since:** 18
+
+<!--Device-PrimitiveTopology-TRIANGLE_STRIP = 1--><!--Device-PrimitiveTopology-TRIANGLE_STRIP = 1-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

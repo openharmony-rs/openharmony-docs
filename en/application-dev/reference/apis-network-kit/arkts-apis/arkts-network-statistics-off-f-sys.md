@@ -18,6 +18,8 @@ Unsubscribes from traffic change events. This API uses an asynchronous callback 
 
 **Required permissions:** ohos.permission.GET_NETWORK_STATS
 
+<!--Device-statistics-function off(type: 'netStatsChange', callback?: Callback<NetStatsChangeInfo>): void--><!--Device-statistics-function off(type: 'netStatsChange', callback?: Callback<NetStatsChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.

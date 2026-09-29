@@ -18,6 +18,8 @@ Specifies whether to authorize event injection.
 
 **Required permissions:** ohos.permission.INJECT_INPUT_EVENT
 
+<!--Device-inputEventClient-function permitInjection(result: boolean): void--><!--Device-inputEventClient-function permitInjection(result: boolean): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **System API:** This is a system API.

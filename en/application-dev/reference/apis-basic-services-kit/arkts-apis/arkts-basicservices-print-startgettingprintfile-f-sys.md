@@ -19,6 +19,8 @@ Starts to obtain the print file. This API uses an asynchronous callback to retur
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: int,    onFileStateChanged: Callback<PrintFileCreationState>): void--><!--Device-print-function startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: int,    onFileStateChanged: Callback<PrintFileCreationState>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.

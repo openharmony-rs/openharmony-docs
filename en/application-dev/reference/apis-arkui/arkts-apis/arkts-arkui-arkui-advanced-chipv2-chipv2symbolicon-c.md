@@ -14,6 +14,8 @@ This API inherits from [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export abstract class ChipV2SymbolIcon extends ChipV2Icon--><!--Device-unnamed-export abstract class ChipV2SymbolIcon extends ChipV2Icon-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ A constructor used to create a **ChipV2SymbolIcon** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2SymbolIcon-constructor(config: ChipV2SymbolIconConfig)--><!--Device-ChipV2SymbolIcon-constructor(config: ChipV2SymbolIconConfig)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +72,8 @@ Modifying the animation type using [SymbolEffect](../arkts-components/arkts-arku
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2SymbolIcon-public activated?: SymbolGlyphModifier--><!--Device-ChipV2SymbolIcon-public activated?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## normal
@@ -93,5 +99,7 @@ Modifying the animation type using [SymbolEffect](../arkts-components/arkts-arku
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2SymbolIcon-public normal?: SymbolGlyphModifier--><!--Device-ChipV2SymbolIcon-public normal?: SymbolGlyphModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

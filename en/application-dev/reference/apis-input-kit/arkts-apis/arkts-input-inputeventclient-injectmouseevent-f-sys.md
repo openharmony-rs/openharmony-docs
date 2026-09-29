@@ -20,6 +20,8 @@ Injects a mouse/touchpad event.
 - API version 12 and later: ohos.permission.INJECT_INPUT_EVENT
 - API version 11: N/A
 
+<!--Device-inputEventClient-function injectMouseEvent(mouseEvent: MouseEventData): void--><!--Device-inputEventClient-function injectMouseEvent(mouseEvent: MouseEventData): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Defines a print job.
 
 **Since:** 24
 
+<!--Device-print-interface PrintJob--><!--Device-print-interface PrintJob-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Color mode.
 
 **Since:** 24
 
+<!--Device-PrintJob-colorMode: int--><!--Device-PrintJob-colorMode: int-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## copyNumber
@@ -41,6 +45,8 @@ Copy of the file list.
 **Type:** number
 
 **Since:** 24
+
+<!--Device-PrintJob-copyNumber: int--><!--Device-PrintJob-copyNumber: int-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -56,6 +62,8 @@ Simplex or duplex mode.
 
 **Since:** 24
 
+<!--Device-PrintJob-duplexMode: int--><!--Device-PrintJob-duplexMode: int-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## fdList
@@ -69,6 +77,8 @@ FD list of files to print.
 **Type:** Array&lt;number&gt;
 
 **Since:** 24
+
+<!--Device-PrintJob-fdList: Array<int>--><!--Device-PrintJob-fdList: Array<int>-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -84,6 +94,8 @@ Whether pages are printed in landscape mode. The value **true** indicates that p
 
 **Since:** 24
 
+<!--Device-PrintJob-isLandscape: boolean--><!--Device-PrintJob-isLandscape: boolean-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## isSequential
@@ -97,6 +109,8 @@ Whether the printing is sequential. The value **true** means that the printing i
 **Type:** boolean
 
 **Since:** 24
+
+<!--Device-PrintJob-isSequential: boolean--><!--Device-PrintJob-isSequential: boolean-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -112,6 +126,8 @@ ID of the print job.
 
 **Since:** 24
 
+<!--Device-PrintJob-jobId: string--><!--Device-PrintJob-jobId: string-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## jobState
@@ -125,6 +141,8 @@ State of the print job.
 **Type:** [PrintJobState](arkts-basicservices-print-printjobstate-e.md)
 
 **Since:** 24
+
+<!--Device-PrintJob-jobState: PrintJobState--><!--Device-PrintJob-jobState: PrintJobState-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -140,6 +158,8 @@ Substate of the print job.
 
 **Since:** 24
 
+<!--Device-PrintJob-jobSubstate: PrintJobSubState--><!--Device-PrintJob-jobSubstate: PrintJobSubState-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## margin
@@ -153,6 +173,8 @@ Current page margin.
 **Type:** [PrintMargin](arkts-basicservices-print-printmargin-i.md)
 
 **Since:** 24
+
+<!--Device-PrintJob-margin?: PrintMargin--><!--Device-PrintJob-margin?: PrintMargin-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -168,6 +190,8 @@ Printer options. The value is a JSON object string.
 
 **Since:** 24
 
+<!--Device-PrintJob-options?: Object--><!--Device-PrintJob-options?: Object-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## pageRange
@@ -181,6 +205,8 @@ Print range.
 **Type:** [PrinterRange](arkts-basicservices-print-printerrange-i.md)
 
 **Since:** 24
+
+<!--Device-PrintJob-pageRange: PrinterRange--><!--Device-PrintJob-pageRange: PrinterRange-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -196,6 +222,8 @@ Selected page size.
 
 **Since:** 24
 
+<!--Device-PrintJob-pageSize: PrintPageSize--><!--Device-PrintJob-pageSize: PrintPageSize-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## preview
@@ -210,6 +238,8 @@ Preview settings.
 
 **Since:** 24
 
+<!--Device-PrintJob-preview?: PreviewAttribute--><!--Device-PrintJob-preview?: PreviewAttribute-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## printerId
@@ -223,6 +253,8 @@ ID of the printer used for printing.
 **Type:** string
 
 **Since:** 24
+
+<!--Device-PrintJob-printerId: string--><!--Device-PrintJob-printerId: string-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -239,5 +271,7 @@ Vendor-specific job options in JSON format.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PrintJob-vendorOptions?: string--><!--Device-PrintJob-vendorOptions?: string-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

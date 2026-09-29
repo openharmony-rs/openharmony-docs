@@ -10,6 +10,8 @@ LinkIntentDecoratorInfo inherits from [IntentDecoratorInfo](arkts-ability-app-ab
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface LinkIntentDecoratorInfo extends IntentDecoratorInfo--><!--Device-unnamed-declare interface LinkIntentDecoratorInfo extends IntentDecoratorInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Mapping between intent parameters and URI information.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-LinkIntentDecoratorInfo-paramMappings?: LinkIntentParamMapping[]--><!--Device-LinkIntentDecoratorInfo-paramMappings?: LinkIntentParamMapping[]-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## uri
@@ -51,5 +55,7 @@ URI information associated with the intent.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-LinkIntentDecoratorInfo-uri: string--><!--Device-LinkIntentDecoratorInfo-uri: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

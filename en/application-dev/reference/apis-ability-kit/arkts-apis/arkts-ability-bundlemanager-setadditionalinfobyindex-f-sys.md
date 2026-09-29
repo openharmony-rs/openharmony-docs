@@ -20,6 +20,8 @@ Sets additional information for a specified application instance. This API can b
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function setAdditionalInfoByIndex(bundleName: string, additionalInfo: string, appIndex: int): void--><!--Device-bundleManager-function setAdditionalInfoByIndex(bundleName: string, additionalInfo: string, appIndex: int): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

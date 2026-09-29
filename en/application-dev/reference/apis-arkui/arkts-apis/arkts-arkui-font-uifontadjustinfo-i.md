@@ -4,9 +4,11 @@
 interface UIFontAdjustInfo
 ```
 
-UI font configuration of the system.
+Provides a mapping list between the original weight value of a font and the actual displayed weight value.
 
 **Since:** 11
+
+<!--Device-font-interface UIFontAdjustInfo--><!--Device-font-interface UIFontAdjustInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,9 +24,9 @@ import { font } from '@kit.ArkUI';
 to: number
 ```
 
-Weight of the font displayed in the application.
+Weight value of the font displayed in the application.
 
-Valid values are **100**, **400**, **700**, and **900**.
+The value options can be **100**, **400**, **700**, and **900**.
 
 **Type:** number
 
@@ -33,6 +35,8 @@ Valid values are **100**, **400**, **700**, and **900**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIFontAdjustInfo-to: number--><!--Device-UIFontAdjustInfo-to: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,9 +46,9 @@ Valid values are **100**, **400**, **700**, and **900**.
 weight: number
 ```
 
-Original weight of the font.
+Original weight value of the font.
 
-Valid values are **50**, **80**, **100**, and **200**.
+The value options can be **50**, **80**, **100**, and **200**.
 
 **Type:** number
 
@@ -53,5 +57,7 @@ Valid values are **50**, **80**, **100**, and **200**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIFontAdjustInfo-weight: number--><!--Device-UIFontAdjustInfo-weight: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -16,6 +16,8 @@ Obtains a BundleInstaller object. This API uses an asynchronous callback to retu
 
 **Since:** 9
 
+<!--Device-installer-function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void--><!--Device-installer-function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -45,6 +47,8 @@ function getBundleInstaller(): Promise<BundleInstaller>
 Obtains a BundleInstaller object. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-installer-function getBundleInstaller(): Promise<BundleInstaller>--><!--Device-installer-function getBundleInstaller(): Promise<BundleInstaller>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

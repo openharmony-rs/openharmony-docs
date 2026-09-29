@@ -8,6 +8,8 @@ Rendering layer of the EffectComponent.
 
 **Since:** 20
 
+<!--Device-unnamed-declare enum EffectLayer--><!--Device-unnamed-declare enum EffectLayer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ No special effect layer.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EffectLayer-NONE = 0--><!--Device-EffectLayer-NONE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Charging animation layer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EffectLayer-CHARGE_MOTION = 1--><!--Device-EffectLayer-CHARGE_MOTION = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Charging text layer.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EffectLayer-CHARGE_TEXT = 2--><!--Device-EffectLayer-CHARGE_TEXT = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

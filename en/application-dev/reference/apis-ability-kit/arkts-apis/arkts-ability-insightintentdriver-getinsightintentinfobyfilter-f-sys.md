@@ -20,6 +20,8 @@ Obtains the intent information on the current device based on the given intent f
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-insightIntentDriver-function getInsightIntentInfoByFilter(filter: InsightIntentInfoFilter): Promise<Array<InsightIntentInfo>>--><!--Device-insightIntentDriver-function getInsightIntentInfoByFilter(filter: InsightIntentInfoFilter): Promise<Array<InsightIntentInfo>>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

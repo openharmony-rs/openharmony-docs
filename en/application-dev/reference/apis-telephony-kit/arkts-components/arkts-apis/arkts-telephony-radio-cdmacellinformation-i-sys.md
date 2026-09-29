@@ -8,6 +8,8 @@ Obtains CDMA cell information.
 
 **Since:** 8
 
+<!--Device-radio-export interface CdmaCellInformation--><!--Device-radio-export interface CdmaCellInformation-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Indicates the base station Id.
 
 **Since:** 8
 
+<!--Device-CdmaCellInformation-baseId: int--><!--Device-CdmaCellInformation-baseId: int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Indicates the latitude.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-CdmaCellInformation-latitude: int--><!--Device-CdmaCellInformation-latitude: int-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -62,6 +68,8 @@ Indicates the longitude.
 
 **Since:** 8
 
+<!--Device-CdmaCellInformation-longitude: int--><!--Device-CdmaCellInformation-longitude: int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -78,6 +86,8 @@ Indicates the network identification code.
 
 **Since:** 8
 
+<!--Device-CdmaCellInformation-nid: int--><!--Device-CdmaCellInformation-nid: int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ Indicates the system identification code.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-CdmaCellInformation-sid: int--><!--Device-CdmaCellInformation-sid: int-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

@@ -22,6 +22,8 @@ Represents the network connection object type.
 
 **Since:** 8
 
+<!--Device-connection-export interface NetConnection--><!--Device-connection-export interface NetConnection-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -41,6 +43,8 @@ Registers a listener for **netAvailable** events. Before you call this API, make
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NetConnection-on(type: 'netAvailable', callback: Callback<NetHandle>): void--><!--Device-NetConnection-on(type: 'netAvailable', callback: Callback<NetHandle>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -85,6 +89,8 @@ on(type: 'netBlockStatusChange', callback: Callback<NetBlockStatusInfo>): void
 Registers a listener for **netBlockStatusChange** events. Before you call this API, make sure that you have called **register** to add a listener for network status changes. When the listener is no longer needed, call **unregister** to remove it.
 
 **Since:** 8
+
+<!--Device-NetConnection-on(type: 'netBlockStatusChange', callback: Callback<NetBlockStatusInfo>): void--><!--Device-NetConnection-on(type: 'netBlockStatusChange', callback: Callback<NetBlockStatusInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -132,6 +138,8 @@ Registers a listener for **netCapabilitiesChange** events. Before you call this 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NetConnection-on(type: 'netCapabilitiesChange', callback: Callback<NetCapabilityInfo>): void--><!--Device-NetConnection-on(type: 'netCapabilitiesChange', callback: Callback<NetCapabilityInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -175,6 +183,8 @@ on(type: 'netConnectionPropertiesChange', callback: Callback<NetConnectionProper
 Registers a listener for **netConnectionPropertiesChange** events. Before you call this API, make sure that you have called **register** to add a listener for network status changes. When the listener is no longer needed, call **unregister** to remove it.
 
 **Since:** 8
+
+<!--Device-NetConnection-on(type: 'netConnectionPropertiesChange', callback: Callback<NetConnectionPropertyInfo>): void--><!--Device-NetConnection-on(type: 'netConnectionPropertiesChange', callback: Callback<NetConnectionPropertyInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -222,6 +232,8 @@ Registers a listener for **netLost** events. Before you call this API, make sure
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NetConnection-on(type: 'netLost', callback: Callback<NetHandle>): void--><!--Device-NetConnection-on(type: 'netLost', callback: Callback<NetHandle>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -267,6 +279,8 @@ Registers a listener for **netUnavailable** events. Before you call this API, ma
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NetConnection-on(type: 'netUnavailable', callback: Callback<void>): void--><!--Device-NetConnection-on(type: 'netUnavailable', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -319,7 +333,9 @@ Registers a listener for network status changes. To listen for a specific type o
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetConnection-register(callback: AsyncCallback<void>): void--><!--Device-NetConnection-register(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -362,7 +378,9 @@ Unregisters the listener for network status changes.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetConnection-unregister(callback: AsyncCallback<void>): void--><!--Device-NetConnection-unregister(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

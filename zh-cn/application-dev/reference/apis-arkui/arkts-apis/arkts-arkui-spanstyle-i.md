@@ -8,6 +8,8 @@ declare interface SpanStyle
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface SpanStyle--><!--Device-unnamed-declare interface SpanStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## length
@@ -25,6 +27,8 @@ length: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SpanStyle-length: number--><!--Device-SpanStyle-length: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ start: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SpanStyle-start: number--><!--Device-SpanStyle-start: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## styledKey
@@ -62,6 +68,8 @@ styledKey: StyledStringKey
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SpanStyle-styledKey: StyledStringKey--><!--Device-SpanStyle-styledKey: StyledStringKey-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## styledValue
@@ -79,5 +87,7 @@ styledValue: StyledStringValue
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SpanStyle-styledValue: StyledStringValue--><!--Device-SpanStyle-styledValue: StyledStringValue-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

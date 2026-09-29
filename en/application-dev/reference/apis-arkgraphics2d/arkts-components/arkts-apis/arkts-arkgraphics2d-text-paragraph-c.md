@@ -10,6 +10,8 @@ Before calling any of the following APIs, you must use [build()](arkts-arkgraphi
 
 **Since:** 12
 
+<!--Device-text-class Paragraph--><!--Device-text-class Paragraph-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Checks whether the number of lines in the paragraph exceeds the maximum.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-didExceedMaxLines(): boolean--><!--Device-Paragraph-didExceedMaxLines(): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -58,7 +62,9 @@ This API is suitable for scenarios where the text content remains unchanged but 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Paragraph-forceReuseRasterResult(isForce: boolean): void--><!--Device-Paragraph-forceReuseRasterResult(isForce: boolean): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -125,7 +131,9 @@ Obtains the actually visible text range in the specified line, excluding any ove
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getActualTextRange(lineNumber: int, includeSpaces: boolean): Range--><!--Device-Paragraph-getActualTextRange(lineNumber: int, includeSpaces: boolean): Range-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -158,7 +166,9 @@ Obtains the alphabetic baseline.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getAlphabeticBaseline(): double--><!--Device-Paragraph-getAlphabeticBaseline(): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -186,7 +196,9 @@ Obtains the character position information closest to the given coordinates.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-Paragraph-getCharacterPositionAtCoordinate(x: double, y: double, encoding: drawing.TextEncoding): PositionWithAffinity--><!--Device-Paragraph-getCharacterPositionAtCoordinate(x: double, y: double, encoding: drawing.TextEncoding): PositionWithAffinity-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -258,7 +270,9 @@ Obtains the character range corresponding to the specified glyph range.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-Paragraph-getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding): Array<Range>--><!--Device-Paragraph-getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding): Array<Range>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -326,7 +340,9 @@ Obtains the position of a glyph closest to the given coordinates.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffinity--><!--Device-Paragraph-getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffinity-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -361,7 +377,9 @@ Obtains the glyph range corresponding to the specified character range.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-Paragraph-getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEncoding): Array<Range>--><!--Device-Paragraph-getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEncoding): Array<Range>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -429,7 +447,9 @@ Obtains the total height of the text.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getHeight(): double--><!--Device-Paragraph-getHeight(): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -455,7 +475,9 @@ Obtains the ideographic baseline.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getIdeographicBaseline(): double--><!--Device-Paragraph-getIdeographicBaseline(): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -481,7 +503,9 @@ Obtains the number of text lines.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getLineCount(): int--><!--Device-Paragraph-getLineCount(): int-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -507,7 +531,9 @@ Obtains the height of a given line.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getLineHeight(line: int): double--><!--Device-Paragraph-getLineHeight(line: int): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -539,7 +565,9 @@ Obtains an array of line measurement information.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getLineMetrics(): Array<LineMetrics>--><!--Device-Paragraph-getLineMetrics(): Array<LineMetrics>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -567,7 +595,9 @@ Obtains the line measurement information of a line.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getLineMetrics(lineNumber: int): LineMetrics | undefined--><!--Device-Paragraph-getLineMetrics(lineNumber: int): LineMetrics | undefined-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -599,7 +629,9 @@ Obtains the width of a given line.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getLineWidth(line: int): double--><!--Device-Paragraph-getLineWidth(line: int): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -631,7 +663,9 @@ Obtains the longest line in the text.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getLongestLine(): double--><!--Device-Paragraph-getLongestLine(): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -657,7 +691,9 @@ Obtains the width of the longest line, including its indentation, in the text. Y
 
 **Since:** 13
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getLongestLineWithIndent(): double--><!--Device-Paragraph-getLongestLineWithIndent(): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -683,7 +719,9 @@ Obtains the maximum intrinsic width of the paragraph.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getMaxIntrinsicWidth(): double--><!--Device-Paragraph-getMaxIntrinsicWidth(): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -709,7 +747,9 @@ Obtains the maximum width of the line in the text.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getMaxWidth(): double--><!--Device-Paragraph-getMaxWidth(): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -735,7 +775,9 @@ Obtains the minimum intrinsic width of the paragraph.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getMinIntrinsicWidth(): double--><!--Device-Paragraph-getMinIntrinsicWidth(): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -763,7 +805,9 @@ Obtains the style configuration of a paragraph.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Paragraph-getParagraphStyle(): ParagraphStyle--><!--Device-Paragraph-getParagraphStyle(): ParagraphStyle-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -833,7 +877,9 @@ Obtains the text processing status of a paragraph.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Paragraph-getProcessState(): TextProcessState--><!--Device-Paragraph-getProcessState(): TextProcessState-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -888,7 +934,9 @@ Obtains the rectangles occupied by all placeholders in the text.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getRectsForPlaceholders(): Array<TextBox>--><!--Device-Paragraph-getRectsForPlaceholders(): Array<TextBox>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -914,7 +962,9 @@ Obtains the rectangles occupied by the characters in the range of the text under
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getRectsForRange(range: Range, widthStyle: RectWidthStyle, heightStyle: RectHeightStyle): Array<TextBox>--><!--Device-Paragraph-getRectsForRange(range: Range, widthStyle: RectWidthStyle, heightStyle: RectHeightStyle): Array<TextBox>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -951,7 +1001,9 @@ Obtains the text display status of a paragraph.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Paragraph-getTextDisplayState(): TextDisplayState--><!--Device-Paragraph-getTextDisplayState(): TextDisplayState-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1006,7 +1058,9 @@ Obtains all the text lines.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getTextLines(): Array<TextLine>--><!--Device-Paragraph-getTextLines(): Array<TextLine>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1040,15 +1094,17 @@ The returned range depends on the specific truncation of the paragraph (for exam
 | Only maxLines truncation is set (no ellipsis).| the text from the first line to the end of the maxLines line.|
 | EllipsisMode.END| The range is the text before the ellipsis.|
 | EllipsisMode.START| The value is the text after the ellipsis.|
-| [EllipsisMode.MIDDLE](arkts-arkgraphics2d-text-ellipsismode-e.md) | the text range before and after the ellipsis is returned.|
-| [EllipsisMode.MULTILINE_START](arkts-arkgraphics2d-text-ellipsismode-e.md) | the text range before and after the ellipsis is returned.|
-| [EllipsisMode.MULTILINE_MIDDLE](arkts-arkgraphics2d-text-ellipsismode-e.md) | the text range before and after the ellipsis is returned.|
+| EllipsisMode.MIDDLE| the text range before and after the ellipsis is returned.|
+| EllipsisMode.MULTILINE_START| the text range before and after the ellipsis is returned.|
+| EllipsisMode.MULTILINE_MIDDLE| the text range before and after the ellipsis is returned.|
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Paragraph-getVisibleTextRanges(): Array<Range>--><!--Device-Paragraph-getVisibleTextRanges(): Array<Range>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1074,7 +1130,9 @@ Obtains the range of the word where the glyph with a given offset is located.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-getWordBoundary(offset: int): Range--><!--Device-Paragraph-getWordBoundary(offset: int): Range-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1106,7 +1164,9 @@ Performs layout and calculates the positions of all glyphs. This API uses a prom
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-layout(width: double): Promise<void>--><!--Device-Paragraph-layout(width: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1211,7 +1271,9 @@ Performs layout and calculates the positions of all glyphs.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-layoutSync(width: double): void--><!--Device-Paragraph-layoutSync(width: double): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1239,7 +1301,9 @@ Performs layout with the given height and width and calculates the positions of 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-Paragraph-layoutWithConstraints(size: TextRectSize): TextLayoutResult--><!--Device-Paragraph-layoutWithConstraints(size: TextRectSize): TextLayoutResult-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1276,7 +1340,9 @@ Draws text on the canvas with (x, y) as the upper-left corner. You must call [la
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-paint(canvas: drawing.Canvas, x: double, y: double): void--><!--Device-Paragraph-paint(canvas: drawing.Canvas, x: double, y: double): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1308,7 +1374,9 @@ Draws text along a path on the canvas. You must call [layout()](#layout) for typ
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: double, vOffset: double): void--><!--Device-Paragraph-paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: double, vOffset: double): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1343,7 +1411,9 @@ Updates the color of the entire text span. This API call also updates the decora
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-updateColor(color: common2D.Color): void--><!--Device-Paragraph-updateColor(color: common2D.Color): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1369,7 +1439,9 @@ Updates the decoration line of the entire text span.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Paragraph-updateDecoration(decoration: Decoration): void--><!--Device-Paragraph-updateDecoration(decoration: Decoration): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

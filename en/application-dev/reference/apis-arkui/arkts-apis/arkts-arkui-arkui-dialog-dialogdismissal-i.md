@@ -8,6 +8,8 @@ Provides information about the action to dismiss the dialog box.
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-export interface DialogDismissal--><!--Device-unnamed-export interface DialogDismissal-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Callback for dismissing the dialog box. This API is called only when the dialog 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-DialogDismissal-dismiss: VoidCallback--><!--Device-DialogDismissal-dismiss: VoidCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## reason
@@ -47,5 +51,7 @@ Types of reasons triggering the dialog box close action.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-DialogDismissal-reason: DismissReason--><!--Device-DialogDismissal-reason: DismissReason-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

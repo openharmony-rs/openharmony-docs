@@ -20,6 +20,8 @@ Unsubscribe from ranging state change events.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ranging-function offRangingStateChange(callback?: Callback<RangingStateChangeInfo>): void--><!--Device-ranging-function offRangingStateChange(callback?: Callback<RangingStateChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 **Parameters:**

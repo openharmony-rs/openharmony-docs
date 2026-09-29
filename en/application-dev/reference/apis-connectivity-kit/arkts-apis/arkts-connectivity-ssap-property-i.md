@@ -8,6 +8,8 @@ Represents a service Property.
 
 **Since:** 26.0.0
 
+<!--Device-ssap-interface Property--><!--Device-ssap-interface Property-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Descriptors of the current property. By default, this field is not used if not s
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Property-descriptors?: PropertyDescriptor[]--><!--Device-Property-descriptors?: PropertyDescriptor[]-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## operation
@@ -45,6 +49,8 @@ Operation modes supported by the property. The default value is **READABLE|WRITE
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Property-operation?: int--><!--Device-Property-operation?: int-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -62,6 +68,8 @@ Property UUID, in the same format as **serviceUuid**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Property-propertyUuid: string--><!--Device-Property-propertyUuid: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## serviceUuid
@@ -78,6 +86,8 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Property-serviceUuid: string--><!--Device-Property-serviceUuid: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## value
@@ -93,5 +103,7 @@ Data value of a property.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Property-value: ArrayBuffer--><!--Device-Property-value: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

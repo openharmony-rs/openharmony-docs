@@ -12,4 +12,6 @@ Defining Sendable ClassDecorator The Sendable decorator can be used only for cla
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare const Sendable: ClassDecorator--><!--Device-unnamed-declare const Sendable: ClassDecorator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

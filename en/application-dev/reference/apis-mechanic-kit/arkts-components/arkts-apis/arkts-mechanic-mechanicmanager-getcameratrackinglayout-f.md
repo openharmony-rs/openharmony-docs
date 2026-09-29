@@ -16,6 +16,8 @@ Obtains the camera tracking layout of this mechanical device.
 
 **Since:** 20
 
+<!--Device-mechanicManager-function getCameraTrackingLayout(): CameraTrackingLayout--><!--Device-mechanicManager-function getCameraTrackingLayout(): CameraTrackingLayout-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **Return value:**

@@ -8,6 +8,8 @@ Enum for satellite constellation category.
 
 **Since:** 12
 
+<!--Device-geoLocationManager-export enum SatelliteConstellationCategory--><!--Device-geoLocationManager-export enum SatelliteConstellationCategory-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## CONSTELLATION_CATEGORY_UNKNOWN
@@ -19,6 +21,8 @@ CONSTELLATION_CATEGORY_UNKNOWN = 0
 Invalid value.
 
 **Since:** 12
+
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_UNKNOWN = 0--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -32,6 +36,8 @@ GPS.
 
 **Since:** 12
 
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GPS = 1--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GPS = 1-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## CONSTELLATION_CATEGORY_SBAS
@@ -43,6 +49,8 @@ CONSTELLATION_CATEGORY_SBAS = 2
 SBAS.
 
 **Since:** 12
+
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_SBAS = 2--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_SBAS = 2-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -56,6 +64,8 @@ GLONASS.
 
 **Since:** 12
 
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GLONASS = 3--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GLONASS = 3-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## CONSTELLATION_CATEGORY_QZSS
@@ -67,6 +77,8 @@ CONSTELLATION_CATEGORY_QZSS = 4
 QZSS.
 
 **Since:** 12
+
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_QZSS = 4--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_QZSS = 4-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -80,6 +92,8 @@ BEIDOU.
 
 **Since:** 12
 
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_BEIDOU = 5--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_BEIDOU = 5-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## CONSTELLATION_CATEGORY_GALILEO
@@ -92,6 +106,8 @@ GALILEO.
 
 **Since:** 12
 
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GALILEO = 6--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_GALILEO = 6-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## CONSTELLATION_CATEGORY_IRNSS
@@ -103,5 +119,7 @@ CONSTELLATION_CATEGORY_IRNSS = 7
 IRNSS.
 
 **Since:** 12
+
+<!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_IRNSS = 7--><!--Device-SatelliteConstellationCategory-CONSTELLATION_CATEGORY_IRNSS = 7-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss

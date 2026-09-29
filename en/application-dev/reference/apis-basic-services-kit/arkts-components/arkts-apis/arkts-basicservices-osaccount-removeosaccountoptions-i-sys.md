@@ -8,6 +8,8 @@ Represents the optional parameter used to remove an OS account.
 
 **Since:** 24
 
+<!--Device-osAccount-interface RemoveOsAccountOptions--><!--Device-osAccount-interface RemoveOsAccountOptions-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Token obtained from the authentication management API. The value is left empty b
 **Type:** Uint8Array
 
 **Since:** 24
+
+<!--Device-RemoveOsAccountOptions-token?: Uint8Array--><!--Device-RemoveOsAccountOptions-token?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

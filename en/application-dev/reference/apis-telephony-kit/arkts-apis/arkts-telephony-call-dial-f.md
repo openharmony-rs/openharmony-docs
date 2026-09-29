@@ -25,6 +25,8 @@ Initiates a call. You can set call options as needed. This API uses an asynchron
 
 **Required permissions:** ohos.permission.PLACE_CALL
 
+<!--Device-call-function dial(phoneNumber: string, options: DialOptions, callback: AsyncCallback<boolean>): void--><!--Device-call-function dial(phoneNumber: string, options: DialOptions, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **Parameters:**
@@ -69,6 +71,8 @@ Initiates a call. You can set call options as needed. This API uses a promise to
 **Deprecated since:** 9
 
 **Required permissions:** ohos.permission.PLACE_CALL
+
+<!--Device-call-function dial(phoneNumber: string, options?: DialOptions): Promise<boolean>--><!--Device-call-function dial(phoneNumber: string, options?: DialOptions): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -121,6 +125,8 @@ Initiates a call. This API uses an asynchronous callback to return the result.
 **Deprecated since:** 9
 
 **Required permissions:** ohos.permission.PLACE_CALL
+
+<!--Device-call-function dial(phoneNumber: string, callback: AsyncCallback<boolean>): void--><!--Device-call-function dial(phoneNumber: string, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

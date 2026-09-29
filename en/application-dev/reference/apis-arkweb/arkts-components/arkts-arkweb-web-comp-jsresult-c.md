@@ -8,6 +8,8 @@ JsResult is a result handling object returned by the Web component when processi
 
 **Since:** 8
 
+<!--Device-unnamed-declare class JsResult--><!--Device-unnamed-declare class JsResult-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -21,6 +23,8 @@ Constructor of JsResult. Used to handle JavaScript dialog box events.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-JsResult-constructor()--><!--Device-JsResult-constructor()-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ Notifies the **Web** component of the user's cancel operation in the dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-JsResult-handleCancel(): void--><!--Device-JsResult-handleCancel(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## handleConfirm
@@ -50,6 +56,8 @@ Notifies the **Web** component of the user's confirm operation in the dialog box
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-JsResult-handleConfirm(): void--><!--Device-JsResult-handleConfirm(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## handlePromptConfirm
@@ -63,6 +71,8 @@ Notifies the Web component that the user has confirmed the dialog box operation 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-JsResult-handlePromptConfirm(result: string): void--><!--Device-JsResult-handlePromptConfirm(result: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

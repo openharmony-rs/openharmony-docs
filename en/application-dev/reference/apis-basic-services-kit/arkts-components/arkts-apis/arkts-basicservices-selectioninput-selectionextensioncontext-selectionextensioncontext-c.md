@@ -18,6 +18,8 @@ When a **SelectionExtensionAbility** component is instantiated, the system autom
 
 **Since:** 24
 
+<!--Device-unnamed-declare class SelectionExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class SelectionExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Starts the target ability in the same app. This method is applicable when you ne
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SelectionExtensionContext-startAbility(want: Want): Promise<void>--><!--Device-SelectionExtensionContext-startAbility(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
 

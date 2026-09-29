@@ -14,6 +14,8 @@ Options of the toggle.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface ToggleOptions--><!--Device-unnamed-declare interface ToggleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isOn
@@ -42,6 +44,8 @@ This property supports two-way binding through [!!](../../../ui/state-management
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ToggleOptions-isOn?: boolean--><!--Device-ToggleOptions-isOn?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -63,5 +67,7 @@ Default value: **ToggleType.Switch**
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ToggleOptions-type: ToggleType--><!--Device-ToggleOptions-type: ToggleType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

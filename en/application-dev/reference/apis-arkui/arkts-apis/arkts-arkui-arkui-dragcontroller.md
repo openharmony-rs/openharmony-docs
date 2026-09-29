@@ -12,6 +12,8 @@ This module provides APIs for initiating drag actions. When receiving a gesture 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace dragController--><!--Device-unnamed-declare namespace dragController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import

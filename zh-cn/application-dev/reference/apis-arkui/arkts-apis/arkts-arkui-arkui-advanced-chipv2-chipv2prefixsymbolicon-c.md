@@ -14,6 +14,8 @@ ChipV2PrefixSymbolIcon定义前缀Symbol图标类。
 
 **装饰器类型：** @ObservedV2
 
+<!--Device-unnamed-export declare class ChipV2PrefixSymbolIcon extends ChipV2SymbolIcon--><!--Device-unnamed-export declare class ChipV2PrefixSymbolIcon extends ChipV2SymbolIcon-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ ChipV2PrefixSymbolIcon的构造函数。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2PrefixSymbolIcon-constructor(config: ChipV2PrefixSymbolIconConfig)--><!--Device-ChipV2PrefixSymbolIcon-constructor(config: ChipV2PrefixSymbolIconConfig)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

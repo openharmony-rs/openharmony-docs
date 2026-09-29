@@ -10,6 +10,8 @@ Manager a2dp source profile.
 
 **Since:** 10
 
+<!--Device-a2dp-interface A2dpSourceProfile extends BaseProfile--><!--Device-a2dp-interface A2dpSourceProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Obtains the playing state of device.
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
+
+<!--Device-A2dpSourceProfile-getPlayingState(deviceId: string): PlayingState--><!--Device-A2dpSourceProfile-getPlayingState(deviceId: string): PlayingState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

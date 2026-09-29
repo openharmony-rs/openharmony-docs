@@ -19,6 +19,8 @@ function isDoubleClickAppForSelf(callback: ClickCallback): void
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-settingsLite-function isDoubleClickAppForSelf(callback: ClickCallback): void--><!--Device-settingsLite-function isDoubleClickAppForSelf(callback: ClickCallback): void-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core.Lite
 
 **Parameters:**

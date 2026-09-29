@@ -20,6 +20,8 @@ Connects to a printer by printer ID. This API uses an asynchronous callback to r
 - API version 20 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
 - API versions 10 to 19: ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function connectPrinter(printerId: string, callback: AsyncCallback<void>): void--><!--Device-print-function connectPrinter(printerId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**
@@ -69,6 +71,8 @@ Connects to a printer by printer ID. This API uses a promise to return the resul
 **Required permissions:** 
 - API version 20 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
 - API versions 10 to 19: ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function connectPrinter(printerId: string): Promise<void>--><!--Device-print-function connectPrinter(printerId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

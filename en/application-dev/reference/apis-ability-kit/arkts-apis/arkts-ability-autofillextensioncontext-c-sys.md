@@ -10,6 +10,8 @@ The AutoFillExtensionContext module provides the context environment for the Aut
 
 **Since:** 11
 
+<!--Device-unnamed-declare class AutoFillExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AutoFillExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Reloads the modal page. This API uses a promise to return the result.
 **Since:** 13
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AutoFillExtensionContext-reloadInModal(customData: CustomData): Promise<void>--><!--Device-AutoFillExtensionContext-reloadInModal(customData: CustomData): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

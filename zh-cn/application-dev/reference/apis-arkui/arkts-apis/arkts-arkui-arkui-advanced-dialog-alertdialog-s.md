@@ -10,6 +10,8 @@ export declare struct AlertDialog
 
 **装饰器类型：** @CustomDialog
 
+<!--Device-unnamed-export declare struct AlertDialog--><!--Device-unnamed-export declare struct AlertDialog-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ content: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AlertDialog-content: ResourceStr--><!--Device-AlertDialog-content: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## controller
@@ -56,6 +60,8 @@ controller: CustomDialogController
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AlertDialog-controller: CustomDialogController--><!--Device-AlertDialog-controller: CustomDialogController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryButton
@@ -75,6 +81,8 @@ primaryButton?: ButtonOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AlertDialog-primaryButton?: ButtonOptions--><!--Device-AlertDialog-primaryButton?: ButtonOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ primaryTitle?: ResourceStr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-AlertDialog-primaryTitle?: ResourceStr--><!--Device-AlertDialog-primaryTitle?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryButton
@@ -117,6 +127,8 @@ secondaryButton?: ButtonOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AlertDialog-secondaryButton?: ButtonOptions--><!--Device-AlertDialog-secondaryButton?: ButtonOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,6 +152,8 @@ secondaryTitle?: ResourceStr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-AlertDialog-secondaryTitle?: ResourceStr--><!--Device-AlertDialog-secondaryTitle?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## theme
@@ -157,6 +171,8 @@ theme?: Theme | CustomTheme
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-AlertDialog-theme?: Theme | CustomTheme--><!--Device-AlertDialog-theme?: Theme | CustomTheme-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -177,5 +193,7 @@ themeColorMode?: ThemeColorMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-AlertDialog-themeColorMode?: ThemeColorMode--><!--Device-AlertDialog-themeColorMode?: ThemeColorMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

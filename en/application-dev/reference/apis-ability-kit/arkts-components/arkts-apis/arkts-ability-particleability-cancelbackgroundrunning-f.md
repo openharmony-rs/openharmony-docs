@@ -22,6 +22,8 @@ Requests to cancel a continuous task from the system. This API uses an asynchron
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-particleAbility-function cancelBackgroundRunning(callback: AsyncCallback<void>): void--><!--Device-particleAbility-function cancelBackgroundRunning(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **Parameters:**
@@ -65,6 +67,8 @@ Requests to cancel a continuous task from the system. This API uses a promise to
 **Substitutes:** [stopBackgroundRunning](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-particleAbility-function cancelBackgroundRunning(): Promise<void>--><!--Device-particleAbility-function cancelBackgroundRunning(): Promise<void>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

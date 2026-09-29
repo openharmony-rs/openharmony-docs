@@ -17,6 +17,8 @@ replaceAll(searchValue: string | RegExp, replaceValue: string): string
 
 Replace all instances of a substring in a string, using a regular expression or search string.
 
+<!--Device-String-replaceAll(searchValue: string | RegExp, replaceValue: string): string--><!--Device-String-replaceAll(searchValue: string | RegExp, replaceValue: string): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -33,6 +35,8 @@ replaceAll(searchValue: string | RegExp, replacer: (substring: string, ...args: 
 ```
 
 Replace all instances of a substring in a string, using a regular expression or search string.
+
+<!--Device-String-replaceAll(searchValue: string | RegExp, replacer: (substring: string, ...args: any[]) => string): string--><!--Device-String-replaceAll(searchValue: string | RegExp, replacer: (substring: string, ...args: any[]) => string): string-End-->
 
 **Parameters:**
 

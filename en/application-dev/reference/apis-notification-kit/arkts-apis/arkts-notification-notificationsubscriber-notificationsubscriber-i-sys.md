@@ -8,6 +8,8 @@ Provides callback methods for subscribers to receive and cancel notifications.
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NotificationSubscriber--><!--Device-unnamed-export interface NotificationSubscriber-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ onBadgeChanged?:(data: BadgeNumberCallbackData) => void
 Listens for changes of the application badge number.
 
 **Since:** 10
+
+<!--Device-NotificationSubscriber-onBadgeChanged?:(data: BadgeNumberCallbackData) => void--><!--Device-NotificationSubscriber-onBadgeChanged?:(data: BadgeNumberCallbackData) => void-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -61,6 +65,8 @@ onBatchCancel?: (data: Array<SubscribeCallbackData>) => void
 Called for batch deletion.
 
 **Since:** 11
+
+<!--Device-NotificationSubscriber-onBatchCancel?: (data: Array<SubscribeCallbackData>) => void--><!--Device-NotificationSubscriber-onBatchCancel?: (data: Array<SubscribeCallbackData>) => void-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -104,6 +110,8 @@ Called when a notification is canceled.
 
 **Since:** 7
 
+<!--Device-NotificationSubscriber-onCancel?:(data: SubscribeCallbackData) => void--><!--Device-NotificationSubscriber-onCancel?:(data: SubscribeCallbackData) => void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -146,6 +154,8 @@ Called when subscription is complete.
 
 **Since:** 7
 
+<!--Device-NotificationSubscriber-onConnect?:() => void--><!--Device-NotificationSubscriber-onConnect?:() => void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -179,6 +189,8 @@ onConsume?:(data: SubscribeCallbackData) => void
 Called when a new notification is received.
 
 **Since:** 7
+
+<!--Device-NotificationSubscriber-onConsume?:(data: SubscribeCallbackData) => void--><!--Device-NotificationSubscriber-onConsume?:(data: SubscribeCallbackData) => void-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -222,6 +234,8 @@ Called when the service is disconnected.
 
 **Since:** 7
 
+<!--Device-NotificationSubscriber-onDestroy?:() => void--><!--Device-NotificationSubscriber-onDestroy?:() => void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -255,6 +269,8 @@ onDisconnect?:() => void
 Called when unsubscription is complete.
 
 **Since:** 7
+
+<!--Device-NotificationSubscriber-onDisconnect?:() => void--><!--Device-NotificationSubscriber-onDisconnect?:() => void-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -305,6 +321,8 @@ Called when the DND time settings are changed.
 
 **Since:** 11
 
+<!--Device-NotificationSubscriber-onDoNotDisturbChanged?: (mode: notificationManager.DoNotDisturbDate) => void--><!--Device-NotificationSubscriber-onDoNotDisturbChanged?: (mode: notificationManager.DoNotDisturbDate) => void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -336,55 +354,6 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 });
 ```
 
-## onDoNotDisturbDateChange
-
-```TypeScript
-onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
-```
-
-Called when the DND time settings are changed.
-
-**Since:** 8
-
-**Deprecated since:** 11
-
-**Substitutes:** [onDoNotDisturbChanged](#ondonotdisturbchanged)
-
-**System capability:** SystemCapability.Notification.Notification
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| mode | [notification.DoNotDisturbDate](arkts-notification-notification-donotdisturbdate-depr-i-sys.md) | Yes |  |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import Notification from '@ohos.notification';
-
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
-
-let onDoNotDisturbDateChangeCallback = (mode: Notification.DoNotDisturbDate) => {
-  console.info('===> onDoNotDisturbDateChange:' + mode);
-}
-
-let subscriber: notificationSubscribe.NotificationSubscriber = {
-  onDoNotDisturbDateChange: onDoNotDisturbDateChangeCallback
-};
-
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
-```
-
 ## onEnabledNotificationChanged
 
 ```TypeScript
@@ -394,6 +363,8 @@ onEnabledNotificationChanged?:(callbackData: EnabledNotificationCallbackData) =>
 Listens for the notification enabled state changes.
 
 **Since:** 8
+
+<!--Device-NotificationSubscriber-onEnabledNotificationChanged?:(callbackData: EnabledNotificationCallbackData) => void--><!--Device-NotificationSubscriber-onEnabledNotificationChanged?:(callbackData: EnabledNotificationCallbackData) => void-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -437,6 +408,8 @@ Called when the enabling state of the application priority notification changes.
 
 **Since:** 23
 
+<!--Device-NotificationSubscriber-onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void--><!--Device-NotificationSubscriber-onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -473,6 +446,8 @@ onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackDat
 Called when the enabling state of the priority notification changes.
 
 **Since:** 23
+
+<!--Device-NotificationSubscriber-onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackData) => void--><!--Device-NotificationSubscriber-onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackData) => void-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -513,6 +488,8 @@ Returns the changes of the enabling state of the application's silent reminder.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotificationSubscriber-onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback--><!--Device-NotificationSubscriber-onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -528,6 +505,8 @@ Returns the changes of the notification switch status set by [notificationManage
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotificationSubscriber-onNotificationSwitchChanged?: NotificationSwitchChangedCallback--><!--Device-NotificationSubscriber-onNotificationSwitchChanged?: NotificationSwitchChangedCallback-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -545,6 +524,8 @@ Returns notification information containing the system property value.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotificationSubscriber-onSystemUpdate?: SystemUpdateCallback--><!--Device-NotificationSubscriber-onSystemUpdate?: SystemUpdateCallback-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -558,6 +539,8 @@ onUpdate?:(data: NotificationSortingMap) => void
 Called when notification sorting is updated. Not supported currently.
 
 **Since:** 7
+
+<!--Device-NotificationSubscriber-onUpdate?:(data: NotificationSortingMap) => void--><!--Device-NotificationSubscriber-onUpdate?:(data: NotificationSortingMap) => void-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -587,6 +570,57 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 });
 ```
 
+## onDoNotDisturbDateChange
+
+```TypeScript
+onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
+```
+
+Called when the DND time settings are changed.
+
+**Since:** 8
+
+**Deprecated since:** 11
+
+**Substitutes:** [onDoNotDisturbChanged](#ondonotdisturbchanged)
+
+<!--Device-NotificationSubscriber-onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void--><!--Device-NotificationSubscriber-onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| mode | [notification.DoNotDisturbDate](arkts-notification-notification-donotdisturbdate-depr-i-sys.md) | Yes |  |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import Notification from '@ohos.notification';
+
+let subscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+
+let onDoNotDisturbDateChangeCallback = (mode: Notification.DoNotDisturbDate) => {
+  console.info('===> onDoNotDisturbDateChange:' + mode);
+}
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onDoNotDisturbDateChange: onDoNotDisturbDateChangeCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
 ## onBadgeEnabledChanged
 
 ```TypeScript
@@ -598,6 +632,8 @@ Returns the changes of the enabling state of the application's badge.
 **Type:** [BadgeEnabledChangedCallback](arkts-notification-notificationsubscriber-badgeenabledchangedcallback-i-sys.md)
 
 **Since:** 12
+
+<!--Device-NotificationSubscriber-onBadgeEnabledChanged?: BadgeEnabledChangedCallback--><!--Device-NotificationSubscriber-onBadgeEnabledChanged?: BadgeEnabledChangedCallback-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

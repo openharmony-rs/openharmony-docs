@@ -6,15 +6,17 @@ interface RefreshOptions
 
 Defines the options of the **Refresh** component.
 
-> **Supplementary Notes**
+> **NOTE:** 
 > 
-> - If neither **builder** nor **refreshingContent** is set, the pull-down displacement effect is implemented by adjusting the [translate](arkts-arkui-common-comp-commonmethod-c.md#translate) attribute of the child component.During the pull-down process, the [onAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onareachange) event of the child component is not triggered, and any changes made to the [translate](arkts-arkui-common-comp-commonmethod-c.md#translate) attribute of the child component do not take effect.
+> - When neither **builder** nor **refreshingContent** is set, the pull-down displacement effect is implemented by updating the [translate](arkts-arkui-common-comp-commonmethod-c.md#translate) attribute of the child component.During the pull-down displacement, the [onAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onareachange) event of the child component is not triggered, and any changes made to the [translate](arkts-arkui-common-comp-commonmethod-c.md#translate) attribute of the child component do not take effect.
 > 
-> - When **builder** or **refreshingContent** is set, the pull-down displacement effect is implemented by adjusting the position of the child component relative to the **Refresh** component. During the pull-down process, the [onAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onareachange) event of the child component can be triggered. However, if the [position](arkts-arkui-common-comp-commonmethod-c.md#position) attribute is set for the child component, the position of the child component relative to the **Refresh** component is fixed, preventing the child component from moving down with the pull gesture.
+> - When **builder** or **refreshingContent** is set, the pull-down displacement effect is implemented by updating the position of the child component relative to the **Refresh** component. During the pull-down displacement, the [onAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onareachange) event of the child component can be triggered. However, if the [position](arkts-arkui-common-comp-commonmethod-c.md#position) attribute is set for the child component, the position of the child component relative to the **Refresh** component is fixed, preventing the child component from moving down with the pull gesture.
 > 
-> - If the width and height of a custom component set by **builder** are not specified, its dimensions will adapt to the child components. If the width is specified but the height is not, the height of the component is automatically adjusted according to the pull-down distance. If a custom component set by **refreshingContent** does not have a specified height, its height will also adapt to the pull-down distance. In such cases, as the pull-down distance increases, the height of the custom component will increase accordingly. When the custom component's height is set to a fixed value or reaches its maximum height limit, further increases in the pull-down distance will cause the spacing between the custom component and the top boundary of the **Refresh** component to widen.
+> - When the custom component set through the **builder** parameter has no width or height specified, its size adapts to the child component. When the width is specified but the height is not, its height adapts to the pull-down distance. If the custom component set through the **refreshingContent** parameter has no height specified, its height also adapts to the pull-down distance. When the height of the custom component adapts to the pull-down distance, the height of the component increases as the pull-down distance increases. When the height of the custom component is set to a fixed value or adapts to the maximum height, the spacing between the custom component and the top boundary of the **Refresh** component increases as the pull-down distance increases.
 
 **Since:** 8
+
+<!--Device-unnamed-interface RefreshOptions--><!--Device-unnamed-interface RefreshOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +26,7 @@ Defines the options of the **Refresh** component.
 builder?: CustomBuilder
 ```
 
-Custom content in the refreshing area. NOTE In API version 10 and earlier versions, there is a height limit of 64 vp on custom components. This restriction is removed since API version 11. When a custom component is set with a fixed height, it will be displayed below the refreshing area at that fixed height; when the custom component does not have a height set, its height will adapt to the height of the refreshing area, which may result in the height of the custom component changing to 0 along with the refreshing area. To maintain the intended layout, configure a minimum height constraint for a custom component, which ensures that the component's height does not fall below a certain threshold. For details about how to apply this constraint, see [Example 3](../../../reference/apis-arkui/arkui-ts/ts-container-refresh.md#example-3-customizing-the-refreshing-area-content-with-builder). Since API version 12, use **refreshingContent** instead of **builder** for customizing the content of the refreshing area, to avoid animation interruptions caused by the destruction and re-creation of the custom component during the refreshing process.
+Custom content in the refreshing area. NOTE In API version 10 and earlier versions, there is a height limit of 64 vp on custom components. This restriction is removed since API version 11. When a custom component is set with a fixed height, it will be displayed below the refreshing area at that fixed height; when the custom component does not have a height set, its height will adapt to the height of the refreshing area, which may result in the height of the custom component changing to 0 along with the refreshing area. To maintain the intended layout, configure a minimum height constraint for a custom component, which ensures that the component's height does not fall below a certain threshold. For details about how to apply this constraint, see [Example 3](../../../reference/apis-arkui/arkui-ts/ts-container-refresh.md#example-3-customizing-the- refreshing-area-content-with-builder). Since API version 12, use **refreshingContent** instead of **builder** for customizing the content of the refreshing area, to avoid animation interruptions caused by the destruction and re-creation of the custom component during the refreshing process.
 
 **Type:** [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)
 
@@ -33,6 +35,68 @@ Custom content in the refreshing area. NOTE In API version 10 and earlier versio
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RefreshOptions-builder?: CustomBuilder--><!--Device-RefreshOptions-builder?: CustomBuilder-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## promptText
+
+```TypeScript
+promptText?: ResourceStr
+```
+
+Custom text displayed at the bottom of the refreshing area. NOTE When setting the text, follow the constraints on the **Text** components. If you are using **builder** or **refreshingContent** to customize the content displayed in the refreshing area, the text set with **promptText** will not be displayed. When **promptText** is set and effective, the refreshOffset attribute defaults to 96 vp. The maximum font scale factor for the custom text, as specified by maxFontScale, is 2.
+
+**Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RefreshOptions-promptText?: ResourceStr--><!--Device-RefreshOptions-promptText?: ResourceStr-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## refreshing
+
+```TypeScript
+refreshing: boolean
+```
+
+Whether the component is being refreshed. The value **true** means that the component is being refreshed, and **false** means the opposite. Default value: **false** This parameter supports two-way binding through $$.
+
+**Type:** boolean
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RefreshOptions-refreshing: boolean--><!--Device-RefreshOptions-refreshing: boolean-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## refreshingContent
+
+```TypeScript
+refreshingContent?: ComponentContent
+```
+
+Custom content in the refreshing area. NOTE If this parameter and the **builder** parameter are set at the same time, the **builder** parameter does not take effect. When a custom component is set with a fixed height, it will be displayed below the refreshing area at that fixed height; when the custom component does not have a height set, its height will adapt to the height of the refreshing area, which may result in the height of the custom component changing to 0 along with the refreshing area. To maintain the intended layout, configure a minimum height constraint for a custom component, which ensures that the component's height does not fall below a certain threshold. For details about how to apply this constraint, see [Example 4](../../../reference/apis-arkui/arkui-ts/ts-container-refresh.md#example-4-customizing-the- refreshing-area-content-with-refreshingcontent).
+
+**Type:** ComponentContent
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RefreshOptions-refreshingContent?: ComponentContent--><!--Device-RefreshOptions-refreshingContent?: ComponentContent-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +122,8 @@ Coefficient of friction, which indicates the component's sensitivity to the pull
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-RefreshOptions-friction?: number | string--><!--Device-RefreshOptions-friction?: number | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -76,58 +142,6 @@ Distance from the pull-down starting point to the top of the component. Default 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## promptText
-
-```TypeScript
-promptText?: ResourceStr
-```
-
-Custom text displayed at the bottom of the refreshing area. NOTE When setting the text, follow the constraints on the **Text** components. If you are using **builder** or **refreshingContent** to customize the content displayed in the refreshing area, the text set with **promptText** will not be displayed. When **promptText** is set and effective, the refreshOffset attribute defaults to 96 vp. The maximum font scale factor for the custom text, as specified by maxFontScale, is 2.
-
-**Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## refreshing
-
-```TypeScript
-refreshing: boolean
-```
-
-Whether the component is being refreshed. The value **true** means that the component is being refreshed, and **false** means the opposite. Default value: **false** This parameter supports two-way binding through $$.
-
-**Type:** boolean
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## refreshingContent
-
-```TypeScript
-refreshingContent?: ComponentContent
-```
-
-Custom content in the refreshing area. NOTE If this parameter and the **builder** parameter are set at the same time, the **builder** parameter does not take effect. When a custom component is set with a fixed height, it will be displayed below the refreshing area at that fixed height; when the custom component does not have a height set, its height will adapt to the height of the refreshing area, which may result in the height of the custom component changing to 0 along with the refreshing area. To maintain the intended layout, configure a minimum height constraint for a custom component, which ensures that the component's height does not fall below a certain threshold. For details about how to apply this constraint, see [Example 4](../../../reference/apis-arkui/arkui-ts/ts-container-refresh.md#example-4-customizing-the-refreshing-area-content-with-refreshingcontent).
-
-**Type:** ComponentContent
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
+<!--Device-RefreshOptions-offset?: number | string--><!--Device-RefreshOptions-offset?: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

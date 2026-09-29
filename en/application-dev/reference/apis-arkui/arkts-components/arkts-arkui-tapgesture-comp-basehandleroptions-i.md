@@ -8,6 +8,8 @@ Provides the parameters of the basic gesture handler.
 
 **Since:** 15
 
+<!--Device-unnamed-interface BaseHandlerOptions--><!--Device-unnamed-interface BaseHandlerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isFingerCountLimited
@@ -27,5 +29,7 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-BaseHandlerOptions-isFingerCountLimited?: boolean--><!--Device-BaseHandlerOptions-isFingerCountLimited?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

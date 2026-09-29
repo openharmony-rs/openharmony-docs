@@ -20,6 +20,8 @@ Query the power configuration value for a given scene name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-power-function getPowerConfig(sceneName: string): string--><!--Device-power-function getPowerConfig(sceneName: string): string-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **System API:** This is a system API.

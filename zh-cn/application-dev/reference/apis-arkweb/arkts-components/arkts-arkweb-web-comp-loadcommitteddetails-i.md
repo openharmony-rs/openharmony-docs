@@ -10,6 +10,8 @@ declare interface LoadCommittedDetails
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface LoadCommittedDetails--><!--Device-unnamed-declare interface LoadCommittedDetails-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## didReplaceEntry
@@ -30,6 +32,8 @@ true表示提交的新节点替换了已有的节点，false表示提交的新�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-LoadCommittedDetails-didReplaceEntry: boolean--><!--Device-LoadCommittedDetails-didReplaceEntry: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isMainFrame
@@ -47,6 +51,8 @@ true表示主文档，false表示非主文档。
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LoadCommittedDetails-isMainFrame: boolean--><!--Device-LoadCommittedDetails-isMainFrame: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,6 +74,8 @@ true表示在不更改文档的情况下进行的网页跳转，false表示在�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-LoadCommittedDetails-isSameDocument: boolean--><!--Device-LoadCommittedDetails-isSameDocument: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## navigationType
@@ -84,6 +92,8 @@ navigationType: WebNavigationType
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-LoadCommittedDetails-navigationType: WebNavigationType--><!--Device-LoadCommittedDetails-navigationType: WebNavigationType-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## url
@@ -99,5 +109,7 @@ url: string
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LoadCommittedDetails-url: string--><!--Device-LoadCommittedDetails-url: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

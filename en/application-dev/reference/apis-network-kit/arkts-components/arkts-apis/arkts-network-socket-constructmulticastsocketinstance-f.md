@@ -16,6 +16,8 @@ Creates a **MulticastSocket** object.
 
 **Since:** 11
 
+<!--Device-socket-function constructMulticastSocketInstance(): MulticastSocket--><!--Device-socket-function constructMulticastSocketInstance(): MulticastSocket-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**

@@ -10,6 +10,8 @@ UkeyAuthExtensionAbility is an ExtensionAbility component for UKey authenticatio
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-declare class UkeyAuthExtensionAbility extends ExtensionAbility--><!--Device-unnamed-declare class UkeyAuthExtensionAbility extends ExtensionAbility-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Called when a UkeyAuthExtensionAbility instance is created. You can execute init
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UkeyAuthExtensionAbility-onCreate(launchParam: AbilityConstant.LaunchParam): void--><!--Device-UkeyAuthExtensionAbility-onCreate(launchParam: AbilityConstant.LaunchParam): void-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
@@ -50,6 +54,8 @@ Called when a UkeyAuthExtensionAbility is destroyed. You can clear resources and
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UkeyAuthExtensionAbility-onDestroy(): void | Promise<void>--><!--Device-UkeyAuthExtensionAbility-onDestroy(): void | Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## onSessionCreate
@@ -63,6 +69,8 @@ Called when a UIExtensionContentSession instance is created. You can load a page
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UkeyAuthExtensionAbility-onSessionCreate(want: Want, session: UIExtensionContentSession): void--><!--Device-UkeyAuthExtensionAbility-onSessionCreate(want: Want, session: UIExtensionContentSession): void-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
@@ -85,6 +93,8 @@ Called when a UIExtensionContentSession is destroyed. It informs applications th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UkeyAuthExtensionAbility-onSessionDestroy(session: UIExtensionContentSession): void--><!--Device-UkeyAuthExtensionAbility-onSessionDestroy(session: UIExtensionContentSession): void-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 **Parameters:**
@@ -106,5 +116,7 @@ Context of the UkeyAuthExtensionAbility.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UkeyAuthExtensionAbility-context: UkeyAuthExtensionContext--><!--Device-UkeyAuthExtensionAbility-context: UkeyAuthExtensionContext-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog

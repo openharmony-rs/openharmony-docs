@@ -8,6 +8,8 @@ Describes the image options of the live notification.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface PictureOptions--><!--Device-unnamed-export interface PictureOptions-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Subscribes to the image information in **extraInfo** of [NotificationLiveViewCon
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PictureOptions-preparseLiveViewPicList?: string[]--><!--Device-PictureOptions-preparseLiveViewPicList?: string[]-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

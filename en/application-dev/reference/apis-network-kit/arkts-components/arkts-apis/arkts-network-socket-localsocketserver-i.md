@@ -8,6 +8,8 @@ Defines a local socket server connection. Before calling LocalSocketServer APIs,
 
 **Since:** 11
 
+<!--Device-socket-export interface LocalSocketServer--><!--Device-socket-export interface LocalSocketServer-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Stops listening for events of the **LocalSocketServer** object and releases the 
 > [LocalSocketConnection] (#localsocketconnection11).
 
 **Since:** 20
+
+<!--Device-LocalSocketServer-close(): Promise<void>--><!--Device-LocalSocketServer-close(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -89,6 +93,8 @@ Obtains the socket properties of the **LocalSocketServer** object. This API uses
 
 **Since:** 11
 
+<!--Device-LocalSocketServer-getExtraOptions(): Promise<ExtraOptionsBase>--><!--Device-LocalSocketServer-getExtraOptions(): Promise<ExtraOptionsBase>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -144,6 +150,8 @@ Obtains the local socket address of a **LocalSocketServer** connection. This API
 > This API can be called only after **listen** is successfully called.
 
 **Since:** 12
+
+<!--Device-LocalSocketServer-getLocalAddress(): Promise<string>--><!--Device-LocalSocketServer-getLocalAddress(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -208,6 +216,8 @@ Obtains the file descriptor bound to the LocalSocketServer listening port. This 
 
 **Since:** 23
 
+<!--Device-LocalSocketServer-getSocketFd(): Promise<int>--><!--Device-LocalSocketServer-getSocketFd(): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -258,6 +268,8 @@ Obtains the status of a local socket server connection. This API uses a promise 
 > This API can be called only after **listen** is successfully called.
 
 **Since:** 11
+
+<!--Device-LocalSocketServer-getState(): Promise<SocketStateBase>--><!--Device-LocalSocketServer-getState(): Promise<SocketStateBase>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -311,6 +323,8 @@ Binds the address of the local socket file. The server listens to and accepts lo
 
 **Since:** 11
 
+<!--Device-LocalSocketServer-listen(address: LocalAddress): Promise<void>--><!--Device-LocalSocketServer-listen(address: LocalAddress): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -332,8 +346,8 @@ Binds the address of the local socket file. The server listens to and accepts lo
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 | [2303109](../errorcode-net-socket.md#2303109-error-file-number) | Bad file number. |
 | [2301013](../errorcode-net-socket.md#2301013-insufficient-permissions) | Insufficient permissions. |
-| 2301022 | Invalid argument. |
-| 2301098 | Address already in use. |
+| [2301022](../errorcode-net-socket.md#2301022-invalid-argument) | Invalid argument. |
+| [2301098](../errorcode-net-socket.md#2301098-network-address-already-in-use) | Address already in use. |
 
 **Examples**
 
@@ -367,6 +381,8 @@ off(type: 'connect', callback?: Callback<LocalSocketConnection>): void
 Unsubscribes from **connect** events of the **LocalSocketServer** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-LocalSocketServer-off(type: 'connect', callback?: Callback<LocalSocketConnection>): void--><!--Device-LocalSocketServer-off(type: 'connect', callback?: Callback<LocalSocketConnection>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -409,6 +425,8 @@ off(type: 'error', callback?: ErrorCallback): void
 Unsubscribes from **error** events of the **LocalSocketServer** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-LocalSocketServer-off(type: 'error', callback?: ErrorCallback): void--><!--Device-LocalSocketServer-off(type: 'error', callback?: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -454,6 +472,8 @@ Subscribes to **connect** events of the **LocalSocketServer** object. This API u
 
 **Since:** 11
 
+<!--Device-LocalSocketServer-on(type: 'connect', callback: Callback<LocalSocketConnection>): void--><!--Device-LocalSocketServer-on(type: 'connect', callback: Callback<LocalSocketConnection>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -496,6 +516,8 @@ Subscribes to **error** events of the **LocalSocketServer** object. This API use
 
 **Since:** 11
 
+<!--Device-LocalSocketServer-on(type: 'error', callback: ErrorCallback): void--><!--Device-LocalSocketServer-on(type: 'error', callback: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -535,6 +557,8 @@ Sets the socket properties of the **LocalSocketServer** object. This API uses a 
 > This API can be called only after **listen** is successfully called.
 
 **Since:** 11
+
+<!--Device-LocalSocketServer-setExtraOptions(options: ExtraOptionsBase): Promise<void>--><!--Device-LocalSocketServer-setExtraOptions(options: ExtraOptionsBase): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 

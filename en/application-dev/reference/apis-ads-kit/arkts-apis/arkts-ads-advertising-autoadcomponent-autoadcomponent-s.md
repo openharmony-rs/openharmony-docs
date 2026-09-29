@@ -10,6 +10,8 @@ The AutoAdComponent module provides the capability of displaying carousel ads.
 
 **Decorator:** @Component
 
+<!--Device-unnamed-declare struct AutoAdComponent--><!--Device-unnamed-declare struct AutoAdComponent-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## Modules to Import
@@ -30,6 +32,8 @@ A constructor used to create an **AutoAdComponent** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AutoAdComponent-build(): void--><!--Device-AutoAdComponent-build(): void-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## adOptions
@@ -45,6 +49,8 @@ Ad configuration options.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AutoAdComponent-adOptions: advertising.AdOptions--><!--Device-AutoAdComponent-adOptions: advertising.AdOptions-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 
@@ -62,6 +68,8 @@ Ad request parameters.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AutoAdComponent-adParam: advertising.AdRequestParams--><!--Device-AutoAdComponent-adParam: advertising.AdRequestParams-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## displayOptions
@@ -78,6 +86,8 @@ Ad display parameters.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AutoAdComponent-displayOptions: advertising.AdDisplayOptions--><!--Device-AutoAdComponent-displayOptions: advertising.AdDisplayOptions-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## interactionListener
@@ -93,6 +103,8 @@ Ad status change callback.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AutoAdComponent-interactionListener: advertising.AdInteractionListener--><!--Device-AutoAdComponent-interactionListener: advertising.AdInteractionListener-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 

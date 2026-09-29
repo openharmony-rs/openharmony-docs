@@ -8,4 +8,6 @@ type UnicodeBCP47LocaleIdentifier = string
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
 
+<!--Device-Intl-type UnicodeBCP47LocaleIdentifier = string--><!--Device-Intl-type UnicodeBCP47LocaleIdentifier = string-End-->
+
 **Type:** string

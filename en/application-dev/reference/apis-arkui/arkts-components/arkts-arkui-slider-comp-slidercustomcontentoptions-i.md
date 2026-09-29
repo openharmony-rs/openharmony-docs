@@ -8,6 +8,8 @@ Provides accessibility configuration of the slider prefix and suffix.
 
 **Since:** 20
 
+<!--Device-unnamed-interface SliderCustomContentOptions--><!--Device-unnamed-interface SliderCustomContentOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -16,7 +18,7 @@ Provides accessibility configuration of the slider prefix and suffix.
 accessibilityDescription?: ResourceStr
 ```
 
-Detailed functional description for assistive technologies.
+Accessibility details, which describe the functionality or purpose of the slider prefix or suffix, for screen readers and other tools to use.
 
 Default value: **"Double-tap to activate"**
 
@@ -28,6 +30,8 @@ Default value: **"Double-tap to activate"**
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SliderCustomContentOptions-accessibilityDescription?: ResourceStr--><!--Device-SliderCustomContentOptions-accessibilityDescription?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityGroup
@@ -36,9 +40,9 @@ Default value: **"Double-tap to activate"**
 accessibilityGroup?: boolean
 ```
 
-Whether to enable accessibility grouping.
+Whether the element belongs to an accessibility group, helping screen readers and other tools group related elements.
 
-The value **true** means to enable accessibility grouping, and **false** means the opposite. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components.
+**true**: The component and all its child components form a single selectable unit, and the accessibility service no longer focus on the content of its child components. **false**: accessibility grouping is not enabled.
 
 Default value: **false**
 
@@ -50,6 +54,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SliderCustomContentOptions-accessibilityGroup?: boolean--><!--Device-SliderCustomContentOptions-accessibilityGroup?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityLevel
@@ -58,19 +64,19 @@ Default value: **false**
 accessibilityLevel?: string
 ```
 
-Whether the component can be recognized by accessibility services.
+Whether the component can be recognized by the accessibility service.
 
 The options are as follows:
 
 **"auto"**: It is treated as "yes" by the system.
 
-**"yes"**: The component can be recognized by accessibility services.
+**"yes"**: The component can be recognized by the accessibility service.
 
-**"no"**: The component cannot be recognized by accessibility services.
+**"no"**: The component cannot be recognized by the accessibility service.
 
-**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.
+**"no-hide-descendants"**: The component and all its child components cannot be recognized by the accessibility service.
 
-Default value: **"auto"**
+Default value: **"auto"**.
 
 **Type:** string
 
@@ -80,6 +86,8 @@ Default value: **"auto"**
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SliderCustomContentOptions-accessibilityLevel?: string--><!--Device-SliderCustomContentOptions-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -88,7 +96,7 @@ Default value: **"auto"**
 accessibilityText?: ResourceStr
 ```
 
-Text for assistive technologies (for example, screen readers).
+Accessibility text for screen readers and other tools to read, enhancing accessibility.
 
 Default value: **""**
 
@@ -99,5 +107,7 @@ Default value: **""**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-SliderCustomContentOptions-accessibilityText?: ResourceStr--><!--Device-SliderCustomContentOptions-accessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -10,6 +10,8 @@ certificate provisioning (downloading).
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace drm--><!--Device-unnamed-declare namespace drm-End-->
+
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
 ## Modules to Import

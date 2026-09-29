@@ -18,6 +18,8 @@ Send envelope command to SIM card.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-sim-function sendEnvelopeCmd(slotId: int, cmd: string, callback: AsyncCallback<void>): void--><!--Device-sim-function sendEnvelopeCmd(slotId: int, cmd: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -68,6 +70,8 @@ Send envelope command to SIM card.
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-sim-function sendEnvelopeCmd(slotId: int, cmd: string): Promise<void>--><!--Device-sim-function sendEnvelopeCmd(slotId: int, cmd: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

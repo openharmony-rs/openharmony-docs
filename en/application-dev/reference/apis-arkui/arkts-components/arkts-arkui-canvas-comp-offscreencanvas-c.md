@@ -6,7 +6,7 @@ declare class OffscreenCanvas
 
 The **OffscreenCanvas** component is used to draw custom graphics.
 
-When the [Canvas](arkts-arkui-canvas-comp.md#canvas) component or **CanvasRenderingContext2D** object is used, rendering, animation, and user interaction usually occur on the main thread of the application. Calculations related to canvas animation and rendering may affect application performance. **OffscreenCanvas** allows for rendering off the screen. This means that some tasks can be run in a separate thread to reduce the load on the main thread.
+When the [Canvas](arkts-arkui-canvas-comp.md) component or **CanvasRenderingContext2D** object is used, rendering, animation, and user interaction usually occur on the main thread of the application. Calculations related to canvas animation and rendering may affect application performance. **OffscreenCanvas** allows for rendering off the screen. This means that some tasks can be run in a separate thread to reduce the load on the main thread.
 
 > **NOTE:** 
 > 
@@ -21,6 +21,8 @@ Not supported.
 @extends CanvasRenderer [since 8 - 10]
 
 **Since:** 8
+
+<!--Device-unnamed-declare class OffscreenCanvas--><!--Device-unnamed-declare class OffscreenCanvas-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,6 +41,8 @@ Constructs an **OffscreenCanvas** object.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-OffscreenCanvas-constructor(width: number, height: number)--><!--Device-OffscreenCanvas-constructor(width: number, height: number)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ Creates an **OffscreenCanvas** object, with support for configuring the unit mod
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-OffscreenCanvas-constructor(width: number, height: number, unit: LengthMetricsUnit)--><!--Device-OffscreenCanvas-constructor(width: number, height: number, unit: LengthMetricsUnit)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +104,8 @@ Obtains the drawing context of the offscreen canvas.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OffscreenCanvas-getContext(contextType: "2d", options?: RenderingContextSettings): OffscreenCanvasRenderingContext2D--><!--Device-OffscreenCanvas-getContext(contextType: "2d", options?: RenderingContextSettings): OffscreenCanvasRenderingContext2D-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +144,8 @@ Creates an **ImageBitmap** object from the current content of the **OffscreenCan
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-OffscreenCanvas-transferToImageBitmap(): ImageBitmap--><!--Device-OffscreenCanvas-transferToImageBitmap(): ImageBitmap-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -162,6 +172,8 @@ Height of the **OffscreenCanvas** component. <br>Abnormal values **NaN** and **I
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-OffscreenCanvas-height: number--><!--Device-OffscreenCanvas-height: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -181,5 +193,7 @@ Width of the **OffscreenCanvas** component. <br>Abnormal values **NaN** and **In
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-OffscreenCanvas-width: number--><!--Device-OffscreenCanvas-width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

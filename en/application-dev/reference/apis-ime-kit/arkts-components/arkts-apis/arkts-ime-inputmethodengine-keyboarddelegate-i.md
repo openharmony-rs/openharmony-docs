@@ -8,6 +8,8 @@ In the following API examples, you must first use [getKeyboardDelegate](arkts-im
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-interface KeyboardDelegate--><!--Device-inputMethodEngine-interface KeyboardDelegate-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -25,6 +27,8 @@ off(type: 'keyDown' | 'keyUp', callback?: (event: KeyEvent) => boolean): void
 Disables listening for a physical keyboard event. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
+
+<!--Device-KeyboardDelegate-off(type: 'keyDown' | 'keyUp', callback?: (event: KeyEvent) => boolean): void--><!--Device-KeyboardDelegate-off(type: 'keyDown' | 'keyUp', callback?: (event: KeyEvent) => boolean): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -58,6 +62,8 @@ Disables listening for a keyboard event. This API uses an asynchronous callback 
 
 **Since:** 10
 
+<!--Device-KeyboardDelegate-off(type: 'keyEvent', callback?: (event: InputKeyEvent) => boolean): void--><!--Device-KeyboardDelegate-off(type: 'keyEvent', callback?: (event: InputKeyEvent) => boolean): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -89,6 +95,8 @@ Disables listening for cursor context changes. This API uses an asynchronous cal
 
 **Since:** 8
 
+<!--Device-KeyboardDelegate-off(type: 'cursorContextChange', callback?: (x: number, y: number, height: number) => void): void--><!--Device-KeyboardDelegate-off(type: 'cursorContextChange', callback?: (x: number, y: number, height: number) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -119,6 +127,8 @@ Disables listening for the text selection change event. This API uses an asynchr
 
 **Since:** 8
 
+<!--Device-KeyboardDelegate-off(      type: 'selectionChange',      callback?: (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => void    ): void--><!--Device-KeyboardDelegate-off(      type: 'selectionChange',      callback?: (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => void    ): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -147,6 +157,8 @@ Disables listening for the text change event. This API uses an asynchronous call
 
 **Since:** 8
 
+<!--Device-KeyboardDelegate-off(type: 'textChange', callback?: (text: string) => void): void--><!--Device-KeyboardDelegate-off(type: 'textChange', callback?: (text: string) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -174,6 +186,8 @@ Disables listening for the edit box attribute change event. This API uses an asy
 
 **Since:** 10
 
+<!--Device-KeyboardDelegate-off(type: 'editorAttributeChanged', callback?: (attr: EditorAttribute) => void): void--><!--Device-KeyboardDelegate-off(type: 'editorAttributeChanged', callback?: (attr: EditorAttribute) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -198,6 +212,8 @@ on(type: 'keyDown' | 'keyUp', callback: (event: KeyEvent) => boolean): void
 Enables listening for a physical keyboard event. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
+
+<!--Device-KeyboardDelegate-on(type: 'keyDown' | 'keyUp', callback: (event: KeyEvent) => boolean): void--><!--Device-KeyboardDelegate-on(type: 'keyDown' | 'keyUp', callback: (event: KeyEvent) => boolean): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -233,6 +249,8 @@ Enables listening for a keyboard event. This API uses an asynchronous callback t
 
 **Since:** 10
 
+<!--Device-KeyboardDelegate-on(type: 'keyEvent', callback: (event: InputKeyEvent) => boolean): void--><!--Device-KeyboardDelegate-on(type: 'keyEvent', callback: (event: InputKeyEvent) => boolean): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -266,6 +284,8 @@ Enables listening for the cursor change event. This API uses an asynchronous cal
 
 **Since:** 8
 
+<!--Device-KeyboardDelegate-on(type: 'cursorContextChange', callback: (x: number, y: number, height: number) => void): void--><!--Device-KeyboardDelegate-on(type: 'cursorContextChange', callback: (x: number, y: number, height: number) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -298,6 +318,8 @@ Enables listening for the text selection change event. This API uses an asynchro
 
 **Since:** 8
 
+<!--Device-KeyboardDelegate-on(      type: 'selectionChange',      callback: (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => void    ): void--><!--Device-KeyboardDelegate-on(      type: 'selectionChange',      callback: (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => void    ): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -329,6 +351,8 @@ Enables listening for the text change event. This API uses an asynchronous callb
 
 **Since:** 8
 
+<!--Device-KeyboardDelegate-on(type: 'textChange', callback: (text: string) => void): void--><!--Device-KeyboardDelegate-on(type: 'textChange', callback: (text: string) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -355,6 +379,8 @@ on(type: 'editorAttributeChanged', callback: (attr: EditorAttribute) => void): v
 Enables listening for the edit box attribute change event. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-KeyboardDelegate-on(type: 'editorAttributeChanged', callback: (attr: EditorAttribute) => void): void--><!--Device-KeyboardDelegate-on(type: 'editorAttributeChanged', callback: (attr: EditorAttribute) => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

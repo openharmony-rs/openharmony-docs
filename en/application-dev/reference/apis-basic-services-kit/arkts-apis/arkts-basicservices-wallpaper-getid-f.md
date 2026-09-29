@@ -18,6 +18,8 @@ Obtains the ID of the wallpaper of the specified type. Returns an integer greate
 
 **Deprecated since:** 9
 
+<!--Device-wallpaper-function getId(wallpaperType: WallpaperType, callback: AsyncCallback<number>): void--><!--Device-wallpaper-function getId(wallpaperType: WallpaperType, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **Parameters:**
@@ -55,6 +57,8 @@ Obtains the ID of the wallpaper of the specified type. Returns an integer greate
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-wallpaper-function getId(wallpaperType: WallpaperType): Promise<number>--><!--Device-wallpaper-function getId(wallpaperType: WallpaperType): Promise<number>-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

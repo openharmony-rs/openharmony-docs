@@ -20,6 +20,8 @@ Unregisters the listener with the specified bundle name and ability name. This A
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-conversation-function unregisterConversationListener(bundleName: string, abilityName: string): void--><!--Device-conversation-function unregisterConversationListener(bundleName: string, abilityName: string): void-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.

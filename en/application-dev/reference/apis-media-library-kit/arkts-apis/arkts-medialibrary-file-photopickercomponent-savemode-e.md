@@ -8,6 +8,8 @@ Enumerates the modes for saving images or videos.
 
 **Since:** 15
 
+<!--Device-unnamed-export declare enum SaveMode--><!--Device-unnamed-export declare enum SaveMode-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## SAVE_AS
@@ -22,6 +24,8 @@ Saves the image or video as a new one.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-SaveMode-SAVE_AS = 0--><!--Device-SaveMode-SAVE_AS = 0-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## OVERWRITE
@@ -35,5 +39,7 @@ Replaces the original image or video. After the replacements, you can roll back 
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-SaveMode-OVERWRITE = 1--><!--Device-SaveMode-OVERWRITE = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

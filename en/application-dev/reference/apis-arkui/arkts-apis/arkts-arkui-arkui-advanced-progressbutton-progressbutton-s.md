@@ -18,6 +18,8 @@ The [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct ProgressButton--><!--Device-unnamed-export declare struct ProgressButton-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -40,6 +42,8 @@ Callback invoked when the button is clicked.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ProgressButton-clickCallback: () => void--><!--Device-ProgressButton-clickCallback: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorOptions
@@ -57,6 +61,8 @@ Color options of the button. This parameter is used to customize the color of ea
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ProgressButton-colorOptions?: ProgressButtonColorOptions--><!--Device-ProgressButton-colorOptions?: ProgressButtonColorOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +86,8 @@ Note: The text is truncated with an ellipsis (...) if it exceeds the maximum dis
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ProgressButton-content: ResourceStr--><!--Device-ProgressButton-content: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enable
@@ -102,6 +110,8 @@ Whether the button can be clicked.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ProgressButton-enable: boolean--><!--Device-ProgressButton-enable: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## progress
@@ -123,6 +133,8 @@ Default value: **0**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ProgressButton-progress: number--><!--Device-ProgressButton-progress: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,6 +160,8 @@ If the value is less than 0, the value **0** is used. If the value is invalid, t
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ProgressButton-progressButtonRadius?: LengthMetrics--><!--Device-ProgressButton-progressButtonRadius?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## progressButtonWidth
@@ -169,5 +183,7 @@ The default value is **44vp**. If the provided value is not of the Resource type
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ProgressButton-progressButtonWidth?: Length--><!--Device-ProgressButton-progressButtonWidth?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

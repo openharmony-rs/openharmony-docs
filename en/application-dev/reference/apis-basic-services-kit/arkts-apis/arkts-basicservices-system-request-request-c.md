@@ -10,6 +10,8 @@ export default class Request
 
 **Substitutes:** [request](arkts-basicservices-request-n.md)
 
+<!--Device-unnamed-export default class Request--><!--Device-unnamed-export default class Request-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Downloads a file. This API returns no value.
 **Deprecated since:** 9
 
 **Substitutes:** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)(context: BaseContext, config: DownloadConfig)
+
+<!--Device-Request-static download(options: DownloadRequestOptions): void--><!--Device-Request-static download(options: DownloadRequestOptions): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -54,6 +58,8 @@ Listens for download task status. This API returns no value.
 
 **Substitutes:** show(id: string)
 
+<!--Device-Request-static onDownloadComplete(options: OnDownloadCompleteOptions): void--><!--Device-Request-static onDownloadComplete(options: OnDownloadCompleteOptions): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 **Parameters:**
@@ -75,6 +81,8 @@ Uploads a file. This API returns no value.
 **Deprecated since:** 9
 
 **Substitutes:** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1)(context: BaseContext, config: UploadConfig)
+
+<!--Device-Request-static upload(options: UploadRequestOptions): void--><!--Device-Request-static upload(options: UploadRequestOptions): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 

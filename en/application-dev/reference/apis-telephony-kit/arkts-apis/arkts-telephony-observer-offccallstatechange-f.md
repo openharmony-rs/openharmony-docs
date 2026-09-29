@@ -20,6 +20,8 @@ Cancels the listening on the carrier call status and obtaining of the call numbe
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-observer-function offCCallStateChange(callback?: Callback<CCallStateInfo>): void--><!--Device-observer-function offCCallStateChange(callback?: Callback<CCallStateInfo>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**

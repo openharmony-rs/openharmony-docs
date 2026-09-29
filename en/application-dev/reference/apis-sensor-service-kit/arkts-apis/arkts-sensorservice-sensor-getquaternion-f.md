@@ -16,6 +16,8 @@ Obtains the quaternion from a rotation vector. This API uses an asynchronous cal
 
 **Since:** 9
 
+<!--Device-sensor-function getQuaternion(rotationVector: Array<double>, callback: AsyncCallback<Array<double>>): void--><!--Device-sensor-function getQuaternion(rotationVector: Array<double>, callback: AsyncCallback<Array<double>>): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -69,6 +71,8 @@ Obtains the quaternion from a rotation vector. This API uses a promise to return
 
 **Since:** 9
 
+<!--Device-sensor-function getQuaternion(rotationVector: Array<double>): Promise<Array<double>>--><!--Device-sensor-function getQuaternion(rotationVector: Array<double>): Promise<Array<double>>-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -81,7 +85,7 @@ Obtains the quaternion from a rotation vector. This API uses a promise to return
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the quaternion. |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the quaternion.. |
 
 **Error codes:**
 

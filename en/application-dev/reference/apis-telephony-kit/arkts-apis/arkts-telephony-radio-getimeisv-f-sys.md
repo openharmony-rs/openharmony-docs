@@ -18,6 +18,8 @@ Obtains the software version number of a specified card slot of the device.
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+<!--Device-radio-function getIMEISV(slotId: int): string--><!--Device-radio-function getIMEISV(slotId: int): string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.

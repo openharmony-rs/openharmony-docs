@@ -10,6 +10,8 @@ declare interface LocalizedBorderRadiuses
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface LocalizedBorderRadiuses--><!--Device-unnamed-declare interface LocalizedBorderRadiuses-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottomEnd
@@ -31,6 +33,8 @@ bottomEnd?: LengthMetrics
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LocalizedBorderRadiuses-bottomEnd?: LengthMetrics--><!--Device-LocalizedBorderRadiuses-bottomEnd?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ bottomStart?: LengthMetrics
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LocalizedBorderRadiuses-bottomStart?: LengthMetrics--><!--Device-LocalizedBorderRadiuses-bottomStart?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## topEnd
@@ -76,6 +82,8 @@ topEnd?: LengthMetrics
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LocalizedBorderRadiuses-topEnd?: LengthMetrics--><!--Device-LocalizedBorderRadiuses-topEnd?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## topStart
@@ -97,5 +105,7 @@ topStart?: LengthMetrics
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LocalizedBorderRadiuses-topStart?: LengthMetrics--><!--Device-LocalizedBorderRadiuses-topStart?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

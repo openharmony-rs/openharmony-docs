@@ -12,6 +12,8 @@ callback for deleting the forms.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formInfo-type DeleteFormsCallback = (formIds: Array<string>) => void--><!--Device-formInfo-type DeleteFormsCallback = (formIds: Array<string>) => void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

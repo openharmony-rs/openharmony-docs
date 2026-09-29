@@ -10,6 +10,8 @@ Describes the magnetic field sensor data. It extends from [Response](arkts-senso
 
 **Since:** 8
 
+<!--Device-sensor-interface MagneticFieldResponse extends Response--><!--Device-sensor-interface MagneticFieldResponse extends Response-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 ## Modules to Import
@@ -24,11 +26,13 @@ import { sensor } from '@kit.SensorServiceKit';
 x: number
 ```
 
-Magnetic field strength on the x-axis, in μT.
+Magnetic field strength along the x-axis, in μT.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MagneticFieldResponse-x: double--><!--Device-MagneticFieldResponse-x: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -38,11 +42,13 @@ Magnetic field strength on the x-axis, in μT.
 y: number
 ```
 
-Magnetic field strength on the y-axis, in μT.
+Magnetic field strength along the y-axis, in μT.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MagneticFieldResponse-y: double--><!--Device-MagneticFieldResponse-y: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -52,10 +58,12 @@ Magnetic field strength on the y-axis, in μT.
 z: number
 ```
 
-Magnetic field strength on the z-axis, in μT.
+Magnetic field strength along the z-axis, in μT.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MagneticFieldResponse-z: double--><!--Device-MagneticFieldResponse-z: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

@@ -8,6 +8,8 @@ interface DragInfo
 
 **起始版本：** 10
 
+<!--Device-dragController-interface DragInfo--><!--Device-dragController-interface DragInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -40,6 +42,8 @@ autoHideComponentUniqueIds?: number[]
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragInfo-autoHideComponentUniqueIds?: int | int[]--><!--Device-DragInfo-autoHideComponentUniqueIds?: int | int[]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## data
@@ -59,6 +63,8 @@ data?: unifiedDataChannel.UnifiedData
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragInfo-data?: unifiedDataChannel.UnifiedData--><!--Device-DragInfo-data?: unifiedDataChannel.UnifiedData-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +86,8 @@ dataLoadParams?: unifiedDataChannel.DataLoadParams
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragInfo-dataLoadParams?: unifiedDataChannel.DataLoadParams--><!--Device-DragInfo-dataLoadParams?: unifiedDataChannel.DataLoadParams-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## extraParams
@@ -100,6 +108,8 @@ extraParams?: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragInfo-extraParams?: string--><!--Device-DragInfo-extraParams?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## pointerId
@@ -117,6 +127,8 @@ pointerId: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragInfo-pointerId: number--><!--Device-DragInfo-pointerId: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +148,8 @@ previewOptions?: DragPreviewOptions
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragInfo-previewOptions?: DragPreviewOptions--><!--Device-DragInfo-previewOptions?: DragPreviewOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## touchPoint
@@ -153,5 +167,7 @@ touchPoint?: TouchPoint
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragInfo-touchPoint?: TouchPoint--><!--Device-DragInfo-touchPoint?: TouchPoint-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

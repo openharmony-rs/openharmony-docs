@@ -8,6 +8,8 @@ Describes audio renderer configurations.
 
 **Since:** 8
 
+<!--Device-audio-interface AudioRendererOptions--><!--Device-audio-interface AudioRendererOptions-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Whether the audio stream can be recorded by other applications. The default valu
 
 **Since:** 10
 
+<!--Device-AudioRendererOptions-privacyType?: AudioPrivacyType--><!--Device-AudioRendererOptions-privacyType?: AudioPrivacyType-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
 
 ## rendererInfo
@@ -42,6 +46,8 @@ Describes audio renderer information.
 
 **Since:** 8
 
+<!--Device-AudioRendererOptions-rendererInfo: AudioRendererInfo--><!--Device-AudioRendererOptions-rendererInfo: AudioRendererInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## streamInfo
@@ -55,5 +61,7 @@ Describes audio stream information.
 **Type:** [AudioStreamInfo](arkts-audio-audio-audiostreaminfo-i.md)
 
 **Since:** 8
+
+<!--Device-AudioRendererOptions-streamInfo: AudioStreamInfo--><!--Device-AudioRendererOptions-streamInfo: AudioStreamInfo-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer

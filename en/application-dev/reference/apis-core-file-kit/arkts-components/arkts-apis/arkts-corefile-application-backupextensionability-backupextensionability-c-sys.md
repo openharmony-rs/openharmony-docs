@@ -8,6 +8,8 @@ Class to be override for backup extension ability.
 
 **Since:** 10
 
+<!--Device-unnamed-declare class BackupExtensionAbility--><!--Device-unnamed-declare class BackupExtensionAbility-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Callback to be called when getting application backup compatibilityInfo. Develop
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BackupExtensionAbility-getBackupCompatibilityInfo(extInfo: string) : Promise<string>--><!--Device-BackupExtensionAbility-getBackupCompatibilityInfo(extInfo: string) : Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -56,6 +60,8 @@ Callback to be called when getting application backupInfo. Developer could overr
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BackupExtensionAbility-getBackupInfo(): string--><!--Device-BackupExtensionAbility-getBackupInfo(): string-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -77,6 +83,8 @@ Callback to be called when getting application restore compatibilityInfo. Develo
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BackupExtensionAbility-getRestoreCompatibilityInfo(extInfo: string) : Promise<string>--><!--Device-BackupExtensionAbility-getRestoreCompatibilityInfo(extInfo: string) : Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 

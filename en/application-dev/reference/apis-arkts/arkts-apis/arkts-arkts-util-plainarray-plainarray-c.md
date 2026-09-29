@@ -8,6 +8,8 @@ PlainArray stores key-value (KV) pairs. Each key must be unique, be of the numbe
 
 **Since:** 8
 
+<!--Device-unnamed-declare class PlainArray<T>--><!--Device-unnamed-declare class PlainArray<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ returns an iterator.Each item of the iterator is a Javascript Object
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PlainArray-[Symbol.iterator](): IterableIterator<[number, T]>--><!--Device-PlainArray-[Symbol.iterator](): IterableIterator<[number, T]>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -78,7 +82,9 @@ Adds an element to this PlainArray.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-add(key: int, value: T): void--><!--Device-PlainArray-add(key: int, value: T): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -113,7 +119,9 @@ Clears this PlainArray and sets its length to **0**.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-clear(): void--><!--Device-PlainArray-clear(): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -144,7 +152,9 @@ Clones this PlainArray and returns a copy. The modification to the copy does not
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-clone(): PlainArray<T>--><!--Device-PlainArray-clone(): PlainArray<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -180,7 +190,9 @@ A constructor used to create a **PlainArray** instance.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-constructor()--><!--Device-PlainArray-constructor()-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -207,6 +219,8 @@ Uses a callback to traverse each element in the **PlainArray** instance.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PlainArray-forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray<T>) => void, thisArg?: Object): void--><!--Device-PlainArray-forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray<T>) => void, thisArg?: Object): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -260,6 +274,8 @@ Obtains the value of the specified key in this PlainArray.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PlainArray-get(key: number): T--><!--Device-PlainArray-get(key: number): T-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -300,7 +316,9 @@ Obtains the index of the element with the specified key in this PlainArray.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-getIndexOfKey(key: int): int--><!--Device-PlainArray-getIndexOfKey(key: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -342,7 +360,9 @@ Obtains the index of the first occurrence of an element with the specified value
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-getIndexOfValue(value: T): int--><!--Device-PlainArray-getIndexOfValue(value: T): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -384,7 +404,9 @@ Obtains the key of the element at the specified position in this PlainArray.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-getKeyAt(index: int): int--><!--Device-PlainArray-getKeyAt(index: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -398,7 +420,7 @@ Obtains the key of the element at the specified position in this PlainArray.
 
 | Type | Description |
 | --- | --- |
-| number | Key of the element. If no match is found, **-1** is returned. |
+| number | Key of the element. If no match is found, **undefined** is returned. |
 
 **Error codes:**
 
@@ -426,7 +448,9 @@ Obtains the value of an element at the specified position in this PlainArray.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-getValueAt(index: int): T--><!--Device-PlainArray-getValueAt(index: int): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -469,7 +493,9 @@ Checks whether PlainArray has the specified key.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-has(key: int): boolean--><!--Device-PlainArray-has(key: int): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -510,7 +536,9 @@ Checks whether this PlainArray is empty.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-isEmpty(): boolean--><!--Device-PlainArray-isEmpty(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -545,6 +573,8 @@ Removes a key-value pair with the specified key.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PlainArray-remove(key: number): T--><!--Device-PlainArray-remove(key: number): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -588,6 +618,8 @@ Removes an element at the specified position from this PlainArray.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PlainArray-removeAt(index: number): T--><!--Device-PlainArray-removeAt(index: number): T-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -628,7 +660,9 @@ Removes elements within the specified range.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-removeRangeFrom(index: int, size: int): int--><!--Device-PlainArray-removeRangeFrom(index: int, size: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -672,7 +706,9 @@ Sets a value for an element at the specified position in this PlainArray.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-setValueAt(index: int, value: T): void--><!--Device-PlainArray-setValueAt(index: int, value: T): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -711,7 +747,9 @@ Obtains a string that contains all elements in this PlainArray.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PlainArray-toString(): String--><!--Device-PlainArray-toString(): String-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -750,5 +788,7 @@ Number of elements in a PlainArray.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PlainArray-length: number--><!--Device-PlainArray-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

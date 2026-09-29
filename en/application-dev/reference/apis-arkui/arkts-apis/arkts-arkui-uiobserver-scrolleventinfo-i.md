@@ -4,11 +4,11 @@
 export interface ScrollEventInfo
 ```
 
-ScrollEvent info.
-
-@interface ScrollEventInfo
+Provides the scroll event information.
 
 **Since:** 12
+
+<!--Device-uiObserver-export interface ScrollEventInfo--><!--Device-uiObserver-export interface ScrollEventInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +24,7 @@ import { uiObserver } from '@kit.ArkUI';
 axis?: Axis
 ```
 
-Scroll axis.
+Scroll direction of the scrollable component.
 
 **Type:** [Axis](arkts-arkui-axis-e.md)
 
@@ -34,6 +34,8 @@ Scroll axis.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ScrollEventInfo-axis?: Axis--><!--Device-ScrollEventInfo-axis?: Axis-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -42,7 +44,7 @@ Scroll axis.
 id: string
 ```
 
-Scroll id.
+ID of the scrollable component.
 
 **Type:** string
 
@@ -52,6 +54,8 @@ Scroll id.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ScrollEventInfo-id: string--><!--Device-ScrollEventInfo-id: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -60,7 +64,7 @@ Scroll id.
 offset: number
 ```
 
-Changed ScrollEvent offset.
+Current offset of the scrollable component.
 
 **Type:** number
 
@@ -69,6 +73,8 @@ Changed ScrollEvent offset.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollEventInfo-offset: number--><!--Device-ScrollEventInfo-offset: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,7 +84,7 @@ Changed ScrollEvent offset.
 scrollEvent: ScrollEventType
 ```
 
-Changed ScrollEvent type.
+Enumerates the scroll event types.
 
 **Type:** [ScrollEventType](arkts-arkui-uiobserver-scrolleventtype-e.md)
 
@@ -88,6 +94,8 @@ Changed ScrollEvent type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ScrollEventInfo-scrollEvent: ScrollEventType--><!--Device-ScrollEventInfo-scrollEvent: ScrollEventType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## uniqueId
@@ -96,7 +104,7 @@ Changed ScrollEvent type.
 uniqueId: number
 ```
 
-The uniqueId of the scrollable component.
+Unique ID of the scrollable component.
 
 **Type:** number
 
@@ -105,5 +113,7 @@ The uniqueId of the scrollable component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollEventInfo-uniqueId: number--><!--Device-ScrollEventInfo-uniqueId: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

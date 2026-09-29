@@ -4,6 +4,8 @@ The **Environment** module provides ArkTS APIs for obtaining the root directorie
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace Environment--><!--Device-unnamed-declare namespace Environment-End-->
+
 **System capability:** SystemCapability.FileManagement.File.Environment
 
 ## Modules to Import

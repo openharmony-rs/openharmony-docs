@@ -8,6 +8,8 @@ Provides the media AVScreenCaptureStrategy definition.
 
 **Since:** 20
 
+<!--Device-media-interface AVScreenCaptureStrategy--><!--Device-media-interface AVScreenCaptureStrategy-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Indicates whether to enable B-frame encoding, which is used to reduce the size o
 
 **Since:** 20
 
+<!--Device-AVScreenCaptureStrategy-enableBFrame?: boolean--><!--Device-AVScreenCaptureStrategy-enableBFrame?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 ## enablePause
@@ -43,6 +47,8 @@ Enable pausing the screen capture. The default value is false.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVScreenCaptureStrategy-enablePause?: boolean--><!--Device-AVScreenCaptureStrategy-enablePause?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -60,6 +66,8 @@ Allows starting or maintaining screen capture during a call
 
 **Since:** 20
 
+<!--Device-AVScreenCaptureStrategy-keepCaptureDuringCall?: boolean--><!--Device-AVScreenCaptureStrategy-keepCaptureDuringCall?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 ## privacyMaskMode
@@ -75,5 +83,7 @@ Set the fill mode for screen capture when a privacy window exists.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVScreenCaptureStrategy-privacyMaskMode?: int--><!--Device-AVScreenCaptureStrategy-privacyMaskMode?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture

@@ -10,6 +10,8 @@ Device-cloud synergy enables sync of the structured data (in RDB stores) between
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace cloudData--><!--Device-unnamed-declare namespace cloudData-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 ## Modules to Import

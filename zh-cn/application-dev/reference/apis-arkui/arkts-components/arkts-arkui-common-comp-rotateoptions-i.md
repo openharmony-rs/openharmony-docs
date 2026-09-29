@@ -14,6 +14,8 @@ declare interface RotateOptions
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface RotateOptions--><!--Device-unnamed-declare interface RotateOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## angle
@@ -31,6 +33,8 @@ angle: number | string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RotateOptions-angle: number | string--><!--Device-RotateOptions-angle: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ centerX?: number | string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RotateOptions-centerX?: number | string--><!--Device-RotateOptions-centerX?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerY
@@ -71,6 +77,8 @@ centerY?: number | string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RotateOptions-centerY?: number | string--><!--Device-RotateOptions-centerY?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,6 +105,8 @@ z轴锚点，即3D旋转中心点的z轴分量。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RotateOptions-centerZ?: number--><!--Device-RotateOptions-centerZ?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,6 +136,8 @@ perspective?: number
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RotateOptions-perspective?: number--><!--Device-RotateOptions-perspective?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -143,6 +155,8 @@ x?: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RotateOptions-x?: number--><!--Device-RotateOptions-x?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -162,6 +176,8 @@ y?: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RotateOptions-y?: number--><!--Device-RotateOptions-y?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## z
@@ -179,5 +195,7 @@ z?: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RotateOptions-z?: number--><!--Device-RotateOptions-z?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

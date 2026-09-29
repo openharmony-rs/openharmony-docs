@@ -6,6 +6,8 @@ The continueManager module provides capabilities for managing cross-device appli
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace continueManager--><!--Device-unnamed-declare namespace continueManager-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 ## Modules to Import

@@ -8,6 +8,8 @@ XComponent的类型
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare enum XComponentType--><!--Device-unnamed-declare enum XComponentType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SURFACE
@@ -23,6 +25,8 @@ SURFACE
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-XComponentType-SURFACE--><!--Device-XComponentType-SURFACE-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Component type.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-XComponentType-COMPONENT--><!--Device-XComponentType-COMPONENT-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXTURE
@@ -59,6 +65,8 @@ TEXTURE
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-XComponentType-TEXTURE--><!--Device-XComponentType-TEXTURE-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,10 +86,12 @@ NODE
 
 **废弃版本：** 20
 
-**替代接口：** ContentSlot
+**替代接口：** [ContentSlot](../arkts-components/arkts-arkui-contentslot-comp.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-XComponentType-NODE--><!--Device-XComponentType-NODE-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

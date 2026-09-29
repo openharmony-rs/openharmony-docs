@@ -8,6 +8,8 @@ Defines the device node information, including the network ID, device name, devi
 
 **Since:** 26.0.1
 
+<!--Device-conversation-interface DeviceNodeInfo--><!--Device-conversation-interface DeviceNodeInfo-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Device name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceNodeInfo-deviceName: string--><!--Device-DeviceNodeInfo-deviceName: string-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Device type ID, which indicates the device type. The value is an integer, for ex
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceNodeInfo-deviceTypeId: int--><!--Device-DeviceNodeInfo-deviceTypeId: int-End-->
 
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
@@ -68,6 +74,8 @@ Whether the device is in the near field. The value **true** indicates that the d
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceNodeInfo-nearby: boolean--><!--Device-DeviceNodeInfo-nearby: boolean-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.
@@ -86,6 +94,8 @@ Network ID of the device, which uniquely identifies a device on a distributed ne
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceNodeInfo-networkId: string--><!--Device-DeviceNodeInfo-networkId: string-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.
@@ -103,6 +113,8 @@ UDID of the device, which uniquely identifies a device and is used for device ad
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceNodeInfo-udid: string--><!--Device-DeviceNodeInfo-udid: string-End-->
 
 **System capability:** SystemCapability.Communication.SoftBus.Core
 

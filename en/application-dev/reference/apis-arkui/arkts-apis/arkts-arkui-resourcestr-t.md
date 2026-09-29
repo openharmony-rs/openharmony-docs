@@ -14,6 +14,8 @@ Defines the types that can be used by input parameters of the string type.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare type ResourceStr = string | Resource--><!--Device-unnamed-declare type ResourceStr = string | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

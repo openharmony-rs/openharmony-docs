@@ -20,6 +20,8 @@ Sets the current USB function list in Device mode. This API uses a promise to re
 
 **Substitutes:** [setDeviceFunctions](arkts-basicservices-usbmanager-setdevicefunctions-f-sys.md)(funcs: FunctionType)
 
+<!--Device-usbManager-function setCurrentFunctions(funcs: FunctionType): Promise<void>--><!--Device-usbManager-function setCurrentFunctions(funcs: FunctionType): Promise<void>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

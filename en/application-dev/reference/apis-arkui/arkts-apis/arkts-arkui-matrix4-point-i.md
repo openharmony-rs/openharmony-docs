@@ -8,6 +8,8 @@ Defines the data structure of a coordinate point.
 
 **Since:** 12
 
+<!--Device-matrix4-export interface Point--><!--Device-matrix4-export interface Point-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -22,7 +24,9 @@ import { matrix4 } from '@kit.ArkUI';
 x: number
 ```
 
-X-coordinate.
+X-axis coordinate.
+
+Unit: px
 
 Value range: (-∞, +∞)
 
@@ -33,6 +37,8 @@ Value range: (-∞, +∞)
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Point-x: number--><!--Device-Point-x: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +48,9 @@ Value range: (-∞, +∞)
 y: number
 ```
 
-Y-coordinate.
+Y-axis coordinate.
+
+Unit: px
 
 Value range: (-∞, +∞)
 
@@ -53,5 +61,7 @@ Value range: (-∞, +∞)
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Point-y: number--><!--Device-Point-y: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

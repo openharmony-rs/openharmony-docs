@@ -8,6 +8,8 @@ interface MainWindowInfo
 
 **起始版本：** 21
 
+<!--Device-window-interface MainWindowInfo--><!--Device-window-interface MainWindowInfo-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,6 +30,8 @@ ID of the display to which the main window belongs.
 
 **起始版本：** 21
 
+<!--Device-MainWindowInfo-displayId: long--><!--Device-MainWindowInfo-displayId: long-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## label
@@ -41,6 +45,8 @@ label: string
 **类型：** string
 
 **起始版本：** 21
+
+<!--Device-MainWindowInfo-label: string--><!--Device-MainWindowInfo-label: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -56,6 +62,8 @@ Foreground/Background status of the main window. **true** if the main window is 
 
 **起始版本：** 21
 
+<!--Device-MainWindowInfo-showing: boolean--><!--Device-MainWindowInfo-showing: boolean-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## windowId
@@ -69,5 +77,7 @@ ID of the main window.
 **类型：** number
 
 **起始版本：** 21
+
+<!--Device-MainWindowInfo-windowId: int--><!--Device-MainWindowInfo-windowId: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

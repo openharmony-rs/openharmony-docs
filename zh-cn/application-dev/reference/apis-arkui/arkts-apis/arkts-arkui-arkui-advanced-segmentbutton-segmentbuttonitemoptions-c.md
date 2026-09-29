@@ -10,6 +10,8 @@ declare class SegmentButtonItemOptions
 
 **装饰器类型：** @Observed
 
+<!--Device-unnamed-declare class SegmentButtonItemOptions--><!--Device-unnamed-declare class SegmentButtonItemOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,6 +33,8 @@ constructor(options: SegmentButtonItemOptionsConstructorOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SegmentButtonItemOptions-constructor(options: SegmentButtonItemOptionsConstructorOptions)--><!--Device-SegmentButtonItemOptions-constructor(options: SegmentButtonItemOptionsConstructorOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,6 +65,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-SegmentButtonItemOptions-accessibilityDescription?: ResourceStr--><!--Device-SegmentButtonItemOptions-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,6 +102,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-SegmentButtonItemOptions-accessibilityLevel?: string--><!--Device-SegmentButtonItemOptions-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -119,6 +127,8 @@ icon?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SegmentButtonItemOptions-icon?: ResourceStr--><!--Device-SegmentButtonItemOptions-icon?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,6 +154,8 @@ iconAccessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-SegmentButtonItemOptions-iconAccessibilityText?: ResourceStr--><!--Device-SegmentButtonItemOptions-iconAccessibilityText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedIcon
@@ -167,6 +179,8 @@ selectedIcon?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SegmentButtonItemOptions-selectedIcon?: ResourceStr--><!--Device-SegmentButtonItemOptions-selectedIcon?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,6 +206,8 @@ selectedIconAccessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-SegmentButtonItemOptions-selectedIconAccessibilityText?: ResourceStr--><!--Device-SegmentButtonItemOptions-selectedIconAccessibilityText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -213,5 +229,7 @@ text?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SegmentButtonItemOptions-text?: ResourceStr--><!--Device-SegmentButtonItemOptions-text?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

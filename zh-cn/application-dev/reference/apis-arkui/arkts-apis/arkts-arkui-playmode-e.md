@@ -8,6 +8,8 @@ declare enum PlayMode
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum PlayMode--><!--Device-unnamed-declare enum PlayMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Normal
@@ -25,6 +27,8 @@ Normal
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PlayMode-Normal--><!--Device-PlayMode-Normal-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Reverse
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-PlayMode-Reverse--><!--Device-PlayMode-Reverse-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Alternate
@@ -62,6 +68,8 @@ Alternate
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-PlayMode-Alternate--><!--Device-PlayMode-Alternate-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## AlternateReverse
@@ -79,5 +87,7 @@ AlternateReverse
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PlayMode-AlternateReverse--><!--Device-PlayMode-AlternateReverse-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

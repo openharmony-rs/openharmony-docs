@@ -14,6 +14,8 @@ To reference this object, at least one parameter must be passed.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare type Margin = Padding--><!--Device-unnamed-declare type Margin = Padding-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** Padding

@@ -8,6 +8,8 @@ Provides audio debug management capabilities.
 
 **Since:** 26.0.0
 
+<!--Device-audio-interface AudioDebuggingManager--><!--Device-audio-interface AudioDebuggingManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Prints full audio runtime snapshot for current app process. The snapshot will co
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioDebuggingManager-printAppInfo(fd: int): void--><!--Device-AudioDebuggingManager-printAppInfo(fd: int): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Parameters:**
@@ -47,6 +51,8 @@ Prints full audio runtime snapshot for target audio capturer instance. The snaps
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioDebuggingManager-printCapturerInfo(capturer: AudioCapturer, fd: int): void--><!--Device-AudioDebuggingManager-printCapturerInfo(capturer: AudioCapturer, fd: int): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -69,6 +75,8 @@ Prints full audio runtime snapshot for target audio loopback instance. The snaps
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioDebuggingManager-printLoopbackInfo(loopback: AudioLoopback, fd: int): void--><!--Device-AudioDebuggingManager-printLoopbackInfo(loopback: AudioLoopback, fd: int): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Parameters:**
@@ -90,6 +98,8 @@ Prints full audio runtime snapshot for target audio renderer instance. The snaps
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioDebuggingManager-printRendererInfo(renderer: AudioRenderer, fd: int): void--><!--Device-AudioDebuggingManager-printRendererInfo(renderer: AudioRenderer, fd: int): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Parameters:**
@@ -110,6 +120,8 @@ Prints full audio runtime snapshot for target audio session manager instance. Th
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioDebuggingManager-printSessionInfo(session: AudioSessionManager, fd: int): void--><!--Device-AudioDebuggingManager-printSessionInfo(session: AudioSessionManager, fd: int): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 

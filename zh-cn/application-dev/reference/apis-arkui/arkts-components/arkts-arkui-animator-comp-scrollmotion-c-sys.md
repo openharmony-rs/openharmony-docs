@@ -10,6 +10,8 @@ declare class ScrollMotion
 
 **废弃版本：** 22
 
+<!--Device-unnamed-declare class ScrollMotion--><!--Device-unnamed-declare class ScrollMotion-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -25,6 +27,8 @@ constructor(position: number, velocity: number, min: number, max: number, prop: 
 **起始版本：** 7
 
 **废弃版本：** 22
+
+<!--Device-ScrollMotion-constructor(position: number, velocity: number, min: number, max: number, prop: SpringProp)--><!--Device-ScrollMotion-constructor(position: number, velocity: number, min: number, max: number, prop: SpringProp)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

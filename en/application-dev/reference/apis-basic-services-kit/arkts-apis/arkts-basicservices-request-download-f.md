@@ -24,6 +24,8 @@ Downloads a file. This API uses an asynchronous callback to return the result.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-request-function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>): void--><!--Device-request-function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 **Parameters:**
@@ -74,6 +76,8 @@ Downloads a file. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.INTERNET
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-request-function download(config: DownloadConfig): Promise<DownloadTask>--><!--Device-request-function download(config: DownloadConfig): Promise<DownloadTask>-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 

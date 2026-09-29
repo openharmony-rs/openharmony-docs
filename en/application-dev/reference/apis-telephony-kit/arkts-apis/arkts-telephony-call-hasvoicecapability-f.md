@@ -16,6 +16,8 @@ Checks whether a device supports voice calls.
 
 **Since:** 7
 
+<!--Device-call-function hasVoiceCapability(): boolean--><!--Device-call-function hasVoiceCapability(): boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **Return value:**

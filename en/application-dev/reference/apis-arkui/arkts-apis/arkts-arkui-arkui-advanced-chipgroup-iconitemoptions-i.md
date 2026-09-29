@@ -8,6 +8,8 @@ Defines the trailing builder API, which is used to configure the display propert
 
 **Since:** 12
 
+<!--Device-unnamed-export interface IconItemOptions--><!--Device-unnamed-export interface IconItemOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-IconItemOptions-accessibilityDescription?: ResourceStr--><!--Device-IconItemOptions-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +74,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-IconItemOptions-accessibilityLevel?: string--><!--Device-IconItemOptions-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -92,6 +98,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-IconItemOptions-accessibilityText?: ResourceStr--><!--Device-IconItemOptions-accessibilityText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -111,6 +119,8 @@ When it is **undefined**, this callback is not triggered.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-IconItemOptions-action: Callback<void>--><!--Device-IconItemOptions-action: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,5 +147,7 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-IconItemOptions-icon: IconOptions--><!--Device-IconItemOptions-icon: IconOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

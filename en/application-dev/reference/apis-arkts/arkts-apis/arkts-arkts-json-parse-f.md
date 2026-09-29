@@ -18,6 +18,8 @@ Parses a JSON string into an ArkTS object or null.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-json-function parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | null--><!--Device-json-function parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | null-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

@@ -8,6 +8,8 @@ Enumerates the firewall rule actions, including allowing or denying network conn
 
 **Since:** 15
 
+<!--Device-netFirewall-enum FirewallRuleAction--><!--Device-netFirewall-enum FirewallRuleAction-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## RULE_ALLOW
@@ -20,6 +22,8 @@ Allowing network connection.
 
 **Since:** 15
 
+<!--Device-FirewallRuleAction-RULE_ALLOW = 0--><!--Device-FirewallRuleAction-RULE_ALLOW = 0-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## RULE_DENY
@@ -31,5 +35,7 @@ RULE_DENY = 1
 Denying network connection.
 
 **Since:** 15
+
+<!--Device-FirewallRuleAction-RULE_DENY = 1--><!--Device-FirewallRuleAction-RULE_DENY = 1-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall

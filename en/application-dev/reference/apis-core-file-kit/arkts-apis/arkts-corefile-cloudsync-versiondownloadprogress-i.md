@@ -8,6 +8,8 @@ Represents the download state and progress information of historical version fil
 
 **Since:** 20
 
+<!--Device-cloudSync-interface VersionDownloadProgress--><!--Device-cloudSync-interface VersionDownloadProgress-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Type of the error returned when the batch download fails.
 
 **Since:** 20
 
+<!--Device-VersionDownloadProgress-errType: DownloadErrorType--><!--Device-VersionDownloadProgress-errType: DownloadErrorType-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## progress
@@ -42,6 +46,8 @@ Download progress, in percentage.
 
 **Since:** 20
 
+<!--Device-VersionDownloadProgress-progress: int--><!--Device-VersionDownloadProgress-progress: int-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## state
@@ -55,5 +61,7 @@ Download state of the cloud file of the selected version.
 **Type:** [State](arkts-corefile-cloudsync-state-e.md)
 
 **Since:** 20
+
+<!--Device-VersionDownloadProgress-state: State--><!--Device-VersionDownloadProgress-state: State-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

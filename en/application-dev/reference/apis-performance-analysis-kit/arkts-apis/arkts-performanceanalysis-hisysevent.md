@@ -4,6 +4,8 @@ The **hiSysEvent** module provides the system event logging functions, such as c
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace hiSysEvent--><!--Device-unnamed-declare namespace hiSysEvent-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.

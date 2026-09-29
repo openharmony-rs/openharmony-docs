@@ -16,6 +16,8 @@ Obtains the touchpad double-tap and drag switch state. This API uses an asynchro
 
 **Since:** 14
 
+<!--Device-pointer-function getTouchpadDoubleTapAndDragState(callback: AsyncCallback<boolean>): void--><!--Device-pointer-function getTouchpadDoubleTapAndDragState(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getTouchpadDoubleTapAndDragState(): Promise<boolean>
 Obtains the touchpad double-tap and drag switch state. This API uses a promise to return the result.
 
 **Since:** 14
+
+<!--Device-pointer-function getTouchpadDoubleTapAndDragState(): Promise<boolean>--><!--Device-pointer-function getTouchpadDoubleTapAndDragState(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

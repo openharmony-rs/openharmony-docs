@@ -10,6 +10,8 @@ Version of the model.
 
 **Since:** 15
 
+<!--Device-intelligence-enum ModelVersion--><!--Device-intelligence-enum ModelVersion-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 ## BASIC_MODEL
@@ -21,5 +23,7 @@ BASIC_MODEL = 0
 The basic embedding model.
 
 **Since:** 15
+
+<!--Device-ModelVersion-BASIC_MODEL = 0--><!--Device-ModelVersion-BASIC_MODEL = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core

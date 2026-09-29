@@ -18,6 +18,8 @@ Monitor registration key(synchronous method) [USER_SECURE] domain need ohos.perm
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-settings-function registerKeyObserver(context: Context, name: string, domainName: string, observer: AsyncCallback<void>): boolean--><!--Device-settings-function registerKeyObserver(context: Context, name: string, domainName: string, observer: AsyncCallback<void>): boolean-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**

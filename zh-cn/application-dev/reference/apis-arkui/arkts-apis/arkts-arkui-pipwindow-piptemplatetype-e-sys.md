@@ -8,6 +8,8 @@ enum PiPTemplateType
 
 **起始版本：** 11
 
+<!--Device-PiPWindow-enum PiPTemplateType--><!--Device-PiPWindow-enum PiPTemplateType-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## VIDEO_DRIVE
@@ -20,7 +22,9 @@ VIDEO_DRIVE = 4
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPTemplateType-VIDEO_DRIVE = 4--><!--Device-PiPTemplateType-VIDEO_DRIVE = 4-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -37,6 +41,8 @@ VIDEO_NAVIGATION = 5
 **起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PiPTemplateType-VIDEO_NAVIGATION = 5--><!--Device-PiPTemplateType-VIDEO_NAVIGATION = 5-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

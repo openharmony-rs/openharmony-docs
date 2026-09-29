@@ -8,6 +8,8 @@ Describes audio renderer configurations.
 
 **Since:** 8
 
+<!--Device-audio-interface AudioRendererOptions--><!--Device-audio-interface AudioRendererOptions-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Indicates the original app ID of the audio stream.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioRendererOptions-originalAppIdInfo?: AppIdInfo--><!--Device-AudioRendererOptions-originalAppIdInfo?: AppIdInfo-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 

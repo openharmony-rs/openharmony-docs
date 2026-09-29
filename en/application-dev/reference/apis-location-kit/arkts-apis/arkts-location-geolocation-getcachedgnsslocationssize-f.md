@@ -22,6 +22,8 @@ Obtain the number of cached GNSS locations reported at a time
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function getCachedGnssLocationsSize(callback: AsyncCallback<number>): void--><!--Device-geolocation-function getCachedGnssLocationsSize(callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 **Parameters:**
@@ -62,6 +64,8 @@ Obtain the number of cached GNSS locations reported at a time
 **Substitutes:** [getCachedGnssLocationsSize](arkts-location-geolocationmanager-getcachedgnsslocationssize-f.md)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-geolocation-function getCachedGnssLocationsSize(): Promise<number>--><!--Device-geolocation-function getCachedGnssLocationsSize(): Promise<number>-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 

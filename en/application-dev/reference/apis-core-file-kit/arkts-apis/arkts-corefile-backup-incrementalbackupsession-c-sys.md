@@ -8,6 +8,8 @@ Control class for incremental backup procedure.
 
 **Since:** 12
 
+<!--Device-backup-class IncrementalBackupSession--><!--Device-backup-class IncrementalBackupSession-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Append new bundles to incremental backup.
 **Since:** 12
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-IncrementalBackupSession-appendBundles(bundlesToBackup: Array<IncrementalBackupData>): Promise<void>--><!--Device-IncrementalBackupSession-appendBundles(bundlesToBackup: Array<IncrementalBackupData>): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -133,6 +137,8 @@ Append new bundles to incremental backup.
 **Since:** 12
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-IncrementalBackupSession-appendBundles(bundlesToAppend: Array<IncrementalBackupData>, infos: string[]): Promise<void>--><!--Device-IncrementalBackupSession-appendBundles(bundlesToAppend: Array<IncrementalBackupData>, infos: string[]): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -278,6 +284,8 @@ cancel the application being incrementalBackup.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-IncrementalBackupSession-cancel(bundleName: string): int--><!--Device-IncrementalBackupSession-cancel(bundleName: string): int-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -373,6 +381,8 @@ Provides an interface for the tool to clear temporary directories
 **Since:** 20
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-IncrementalBackupSession-cleanBundleTempDir(bundleName: string): Promise<boolean>--><!--Device-IncrementalBackupSession-cleanBundleTempDir(bundleName: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -475,6 +485,8 @@ Constructor for obtaining the instance of the IncrementalBackupSession class.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-IncrementalBackupSession-constructor(callbacks: GeneralCallbacks)--><!--Device-IncrementalBackupSession-constructor(callbacks: GeneralCallbacks)-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -553,6 +565,8 @@ Obtain application data size to be backed up.
 **Since:** 18
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-IncrementalBackupSession-getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>): Promise<void>--><!--Device-IncrementalBackupSession-getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -701,6 +715,8 @@ Provides an interface for the tool to get compatibility info.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-IncrementalBackupSession-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>--><!--Device-IncrementalBackupSession-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -801,6 +817,8 @@ Obtain a Json file that describes local capabilities.
 **Since:** 18
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-IncrementalBackupSession-getLocalCapabilities(): Promise<FileData>--><!--Device-IncrementalBackupSession-getLocalCapabilities(): Promise<FileData>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -961,6 +979,8 @@ End backup process
 **Since:** 12
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-IncrementalBackupSession-release(): Promise<void>--><!--Device-IncrementalBackupSession-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 

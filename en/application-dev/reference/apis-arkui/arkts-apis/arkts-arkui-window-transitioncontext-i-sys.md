@@ -8,6 +8,8 @@ Provides the context for the transition animation.
 
 **Since:** 9
 
+<!--Device-window-interface TransitionContext--><!--Device-window-interface TransitionContext-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ completeTransition(isCompleted: boolean): void
 Completes the transition. This API can be called only after animateTo() is executed.
 
 **Since:** 9
+
+<!--Device-TransitionContext-completeTransition(isCompleted: boolean): void--><!--Device-TransitionContext-completeTransition(isCompleted: boolean): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -87,6 +91,8 @@ The target window with animation
 **Type:** [Window](arkts-arkui-window-window-i.md)
 
 **Since:** 9
+
+<!--Device-TransitionContext-toWindow: Window--><!--Device-TransitionContext-toWindow: Window-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

@@ -8,6 +8,8 @@ Provides APIs for data management in a single KV store, such as adding data, del
 
 **Since:** 9
 
+<!--Device-distributedKVStore-interface SingleKVStore--><!--Device-distributedKVStore-interface SingleKVStore-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Deletes the key-value pairs based on the dataSharePredicates.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Provider
 
@@ -119,6 +123,8 @@ Deletes the key-value pairs based on the dataSharePredicates.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-delete(predicates: dataSharePredicates.DataSharePredicates): Promise<void>--><!--Device-SingleKVStore-delete(predicates: dataSharePredicates.DataSharePredicates): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **System API:** This is a system API.
@@ -162,6 +168,8 @@ Obtains the KVStoreResultSet object matching the specified predicate object.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void--><!--Device-SingleKVStore-getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Provider
 
@@ -364,6 +372,8 @@ Obtains the KVStoreResultSet object matching the specified predicate object.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVStoreResultSet>--><!--Device-SingleKVStore-getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVStoreResultSet>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Provider
 
@@ -572,6 +582,8 @@ Writes values of ValuesBucket type into the `SingleKVStore` database.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-putBatch(value: Array<ValuesBucket>, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-putBatch(value: Array<ValuesBucket>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **System API:** This is a system API.
@@ -685,6 +697,8 @@ Writes values of ValuesBucket type into the `SingleKVStore` database.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-putBatch(value: Array<ValuesBucket>): Promise<void>--><!--Device-SingleKVStore-putBatch(value: Array<ValuesBucket>): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 

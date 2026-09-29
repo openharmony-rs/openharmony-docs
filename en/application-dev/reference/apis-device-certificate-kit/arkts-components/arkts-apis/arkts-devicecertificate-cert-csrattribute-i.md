@@ -10,6 +10,8 @@ Defines the CSR attribute representation.
 
 **Since:** 18
 
+<!--Device-cert-interface CsrAttribute--><!--Device-cert-interface CsrAttribute-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Attribute type defined in PKCS #9.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-CsrAttribute-type: string--><!--Device-CsrAttribute-type: string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -46,6 +50,8 @@ Attribute value.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-CsrAttribute-value: string--><!--Device-CsrAttribute-value: string-End-->
 
 **System capability:** SystemCapability.Security.Cert

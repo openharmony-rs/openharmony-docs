@@ -12,6 +12,8 @@ Images occupy a large amount of memory. When you finish using an ImageCreator in
 
 **Since:** 9
 
+<!--Device-image-interface ImageCreator--><!--Device-image-interface ImageCreator-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator
 
 ## Modules to Import
@@ -29,6 +31,8 @@ dequeueImage(callback: AsyncCallback<Image>): void
 Obtains an image buffer from the idle queue and writes image data into it. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-ImageCreator-dequeueImage(callback: AsyncCallback<Image>): void--><!--Device-ImageCreator-dequeueImage(callback: AsyncCallback<Image>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -66,6 +70,8 @@ Obtains an image buffer from the idle queue and writes image data into it. This 
 
 **Since:** 9
 
+<!--Device-ImageCreator-dequeueImage(): Promise<Image>--><!--Device-ImageCreator-dequeueImage(): Promise<Image>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator
 
 **Return value:**
@@ -98,6 +104,8 @@ Unregisters the callback function that is triggered when the buffer is released.
 
 **Since:** 13
 
+<!--Device-ImageCreator-off(type: 'imageRelease', callback?: AsyncCallback<void>): void--><!--Device-ImageCreator-off(type: 'imageRelease', callback?: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator
 
 **Parameters:**
@@ -128,6 +136,8 @@ on(type: 'imageRelease', callback: AsyncCallback<void>): void
 Listens for image release events. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-ImageCreator-on(type: 'imageRelease', callback: AsyncCallback<void>): void--><!--Device-ImageCreator-on(type: 'imageRelease', callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -163,6 +173,8 @@ queueImage(image: Image, callback: AsyncCallback<void>): void
 Places the drawn image in the queue. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-ImageCreator-queueImage(image: Image, callback: AsyncCallback<void>): void--><!--Device-ImageCreator-queueImage(image: Image, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -212,6 +224,8 @@ queueImage(image: Image): Promise<void>
 Places the drawn image in the queue. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-ImageCreator-queueImage(image: Image): Promise<void>--><!--Device-ImageCreator-queueImage(image: Image): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -267,6 +281,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 9
 
+<!--Device-ImageCreator-release(callback: AsyncCallback<void>): void--><!--Device-ImageCreator-release(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator
 
 **Parameters:**
@@ -307,6 +323,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 9
 
+<!--Device-ImageCreator-release(): Promise<void>--><!--Device-ImageCreator-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator
 
 **Return value:**
@@ -341,6 +359,8 @@ Maximum number of images that can be accessed at the same time. This parameter i
 
 **Since:** 9
 
+<!--Device-ImageCreator-readonly capacity: int--><!--Device-ImageCreator-readonly capacity: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator
 
 ## format
@@ -354,5 +374,7 @@ Image format.
 **Type:** [ImageFormat](arkts-image-image-imageformat-e.md)
 
 **Since:** 9
+
+<!--Device-ImageCreator-readonly format: ImageFormat--><!--Device-ImageCreator-readonly format: ImageFormat-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator

@@ -8,6 +8,8 @@ Defines the custom event dispatch result. You can influence event dispatch by re
 
 **Since:** 11
 
+<!--Device-unnamed-declare class TouchResult--><!--Device-unnamed-declare class TouchResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -28,6 +30,8 @@ If **strategy** is set to **TouchTestStrategy.DEFAULT**, **id** is optional. If 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TouchResult-id?: string--><!--Device-TouchResult-id?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strategy
@@ -45,5 +49,7 @@ Event dispatch strategy.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TouchResult-strategy: TouchTestStrategy--><!--Device-TouchResult-strategy: TouchTestStrategy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

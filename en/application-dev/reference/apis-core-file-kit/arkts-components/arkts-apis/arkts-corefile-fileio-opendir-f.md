@@ -19,6 +19,8 @@ Opens a directory. This API uses a promise to return the result.
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
+<!--Device-unnamed-declare function opendir(path: string): Promise<Dir>--><!--Device-unnamed-declare function opendir(path: string): Promise<Dir>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -49,6 +51,8 @@ Opens a file directory. This API uses an asynchronous callback to return the res
 **Deprecated since:** 9
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
+
+<!--Device-unnamed-declare function opendir(path: string, callback: AsyncCallback<Dir>): void--><!--Device-unnamed-declare function opendir(path: string, callback: AsyncCallback<Dir>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

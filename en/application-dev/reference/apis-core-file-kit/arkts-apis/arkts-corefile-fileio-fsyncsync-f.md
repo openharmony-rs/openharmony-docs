@@ -19,6 +19,8 @@ Synchronizes a file. This API returns the result synchronously.
 
 **Substitutes:** [fsyncSync](arkts-corefile-file-fs-fsyncsync-f.md)
 
+<!--Device-unnamed-declare function fsyncSync(fd: number): void--><!--Device-unnamed-declare function fsyncSync(fd: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

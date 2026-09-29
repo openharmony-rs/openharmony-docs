@@ -8,6 +8,8 @@ Defines the typeface fallback info structure for a run of glyphs that share the 
 
 **Since:** 26.0.1
 
+<!--Device-drawing-interface TypefaceFallbackInfo--><!--Device-drawing-interface TypefaceFallbackInfo-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The glyph ID array for this run.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TypefaceFallbackInfo-glyphIds: Array<number>--><!--Device-TypefaceFallbackInfo-glyphIds: Array<number>-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## typeface
@@ -45,5 +49,7 @@ The typeface matched for this run of glyphs.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TypefaceFallbackInfo-typeface: Typeface--><!--Device-TypefaceFallbackInfo-typeface: Typeface-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

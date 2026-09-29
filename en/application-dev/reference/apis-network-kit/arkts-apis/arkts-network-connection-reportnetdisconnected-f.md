@@ -20,6 +20,8 @@ Reports the network unavailability to the network management module. This API us
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
 
+<!--Device-connection-function reportNetDisconnected(netHandle: NetHandle, callback: AsyncCallback<void>): void--><!--Device-connection-function reportNetDisconnected(netHandle: NetHandle, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -76,6 +78,8 @@ Reports the network unavailability to the network management module. This API us
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
+
+<!--Device-connection-function reportNetDisconnected(netHandle: NetHandle): Promise<void>--><!--Device-connection-function reportNetDisconnected(netHandle: NetHandle): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

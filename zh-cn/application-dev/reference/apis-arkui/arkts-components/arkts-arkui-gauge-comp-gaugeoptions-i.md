@@ -8,6 +8,8 @@ interface GaugeOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface GaugeOptions--><!--Device-unnamed-interface GaugeOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## max
@@ -35,6 +37,8 @@ max和min支持负数。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GaugeOptions-max?: number--><!--Device-GaugeOptions-max?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ max和min支持负数。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GaugeOptions-min?: number--><!--Device-GaugeOptions-min?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -87,5 +93,7 @@ value不在min和max范围内时，取min作为实际值。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GaugeOptions-value: number--><!--Device-GaugeOptions-value: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

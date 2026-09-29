@@ -8,6 +8,8 @@ declare enum ItemAlign
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum ItemAlign--><!--Device-unnamed-declare enum ItemAlign-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Auto
@@ -25,6 +27,8 @@ Auto
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ItemAlign-Auto--><!--Device-ItemAlign-Auto-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Start
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ItemAlign-Start--><!--Device-ItemAlign-Start-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Center
@@ -61,6 +67,8 @@ Center
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ItemAlign-Center--><!--Device-ItemAlign-Center-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +88,8 @@ End
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ItemAlign-End--><!--Device-ItemAlign-End-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Baseline
@@ -98,6 +108,8 @@ Baseline
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ItemAlign-Baseline--><!--Device-ItemAlign-Baseline-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Stretch
@@ -115,5 +127,7 @@ Stretch
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ItemAlign-Stretch--><!--Device-ItemAlign-Stretch-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -25,6 +25,8 @@ function push(options: RouterOptions): void
 
 **替代接口：** [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl-1)(options: router.RouterOptions)
 
+<!--Device-router-function push(options: RouterOptions): void--><!--Device-router-function push(options: RouterOptions): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

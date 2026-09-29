@@ -8,6 +8,8 @@ Defines the option content in the dialog box. You can configure the text, icon, 
 
 **Since:** 8
 
+<!--Device-unnamed-interface SheetInfo--><!--Device-unnamed-interface SheetInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -23,6 +25,8 @@ Callback when the sheet is selected.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SheetInfo-action: VoidCallback--><!--Device-SheetInfo-action: VoidCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,6 +47,8 @@ The string type can be used to load local images and, more frequently, online im
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SheetInfo-icon?: string | Resource--><!--Device-SheetInfo-icon?: string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,5 +71,7 @@ If the text is too long to display, a scrollbar is displayed.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SheetInfo-title: string | Resource--><!--Device-SheetInfo-title: string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

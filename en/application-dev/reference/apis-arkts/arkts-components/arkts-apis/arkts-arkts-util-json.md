@@ -4,6 +4,8 @@ The JSON module provides a series of APIs for converting JSON text into JSON obj
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace json--><!--Device-unnamed-declare namespace json-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -31,13 +33,6 @@ import { JSON } from '@kit.ArkTS';
 | --- | --- |
 | [ParseOptions](arkts-arkts-json-parseoptions-i.md) | Describes the parsing options, which can define the mode for processing BigInt. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [BigIntMode](arkts-arkts-json-bigintmode-e.md) | Enumerates the modes for processing BigInt. |
-| [ParseReturnType](arkts-arkts-json-parsereturntype-e.md) | Enumerates the return types for parsing. |
-
 ### Types
 
 | Name | Description |
@@ -45,3 +40,10 @@ import { JSON } from '@kit.ArkTS';
 | [ISendable](arkts-arkts-json-isendable-t.md) | Redefines ISendable for convenience. |
 | [SendableTransformer](arkts-arkts-json-sendabletransformer-t.md) | Defines the type of the conversion result function for Sendable JSON parsing. |
 | [Transformer](arkts-arkts-json-transformer-t.md) | Defines the type of the conversion result function. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [BigIntMode](arkts-arkts-json-bigintmode-e.md) | Enumerates the modes for processing BigInt. |
+| [ParseReturnType](arkts-arkts-json-parsereturntype-e.md) | Enumerates the return types for parsing. |

@@ -4,9 +4,11 @@
 export interface ContentItemV2Options
 ```
 
-Declare interface ContentItemV2Options
+Defines the options for the **ContentItemV2** constructor.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-export interface ContentItemV2Options--><!--Device-unnamed-export interface ContentItemV2Options-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +24,7 @@ import { ComposeListItemV2, ContentItemV2, ContentItemV2Options, IconTypeV2, Ope
 description?: ResourceStr
 ```
 
-Sets the description.
+Description content of the middle element. Not set by default or set to **undefined**, the description content is not displayed. The text is displayed with unlimited line wrapping when it overflows.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -31,6 +33,8 @@ Sets the description.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ContentItemV2Options-description?: ResourceStr--><!--Device-ContentItemV2Options-description?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +44,7 @@ Sets the description.
 icon?: ResourceStr
 ```
 
-Sets the icon
+Icon resource of the left element. Not set by default or set to **undefined**, the icon resource is not displayed. When **symbolStyle** is also set, only the Symbol icon is displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -49,6 +53,8 @@ Sets the icon
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ContentItemV2Options-icon?: ResourceStr--><!--Device-ContentItemV2Options-icon?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,7 +64,7 @@ Sets the icon
 iconStyle?: IconTypeV2
 ```
 
-The type of icon
+Icon type of the left element. Not set by default or set to **undefined**, the leading icon resource is not displayed.
 
 **Type:** [IconTypeV2](arkts-arkui-arkui-advanced-composelistitemv2-icontypev2-e.md)
 
@@ -68,6 +74,8 @@ The type of icon
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ContentItemV2Options-iconStyle?: IconTypeV2--><!--Device-ContentItemV2Options-iconStyle?: IconTypeV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryText
@@ -76,7 +84,11 @@ The type of icon
 primaryText?: ResourceStr
 ```
 
-Sets the primaryText.
+Title content of the middle element.
+
+Not set by default or set to **undefined**, the title content is not displayed.
+
+The text is displayed with unlimited line wrapping when it overflows.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -85,6 +97,8 @@ Sets the primaryText.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ContentItemV2Options-primaryText?: ResourceStr--><!--Device-ContentItemV2Options-primaryText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,7 +108,7 @@ Sets the primaryText.
 secondaryText?: ResourceStr
 ```
 
-Sets the secondaryText.
+Subtitle content of the middle element. Not set by default or set to **undefined**, the subtitle content is not displayed. The text is displayed with unlimited line wrapping when it overflows.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -104,6 +118,8 @@ Sets the secondaryText.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ContentItemV2Options-secondaryText?: ResourceStr--><!--Device-ContentItemV2Options-secondaryText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolStyle
@@ -112,7 +128,7 @@ Sets the secondaryText.
 symbolStyle?: SymbolGlyphModifier
 ```
 
-Sets the symbol
+Symbol icon resource of the left element, which takes priority over **icon**. When both are set, only the Symbol icon is displayed. Not set by default or set to **undefined**, the Symbol icon is not displayed.
 
 **Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
@@ -121,5 +137,7 @@ Sets the symbol
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ContentItemV2Options-symbolStyle?: SymbolGlyphModifier--><!--Device-ContentItemV2Options-symbolStyle?: SymbolGlyphModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

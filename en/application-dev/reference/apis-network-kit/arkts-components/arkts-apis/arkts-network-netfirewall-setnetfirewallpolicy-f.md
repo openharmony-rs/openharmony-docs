@@ -23,6 +23,8 @@ Sets the firewall policy for a system user ID, including the firewall switch sta
 
 **Required permissions:** ohos.permission.MANAGE_NET_FIREWALL
 
+<!--Device-netFirewall-function setNetFirewallPolicy(userId: int, policy: NetFirewallPolicy): Promise<void>--><!--Device-netFirewall-function setNetFirewallPolicy(userId: int, policy: NetFirewallPolicy): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 **Parameters:**

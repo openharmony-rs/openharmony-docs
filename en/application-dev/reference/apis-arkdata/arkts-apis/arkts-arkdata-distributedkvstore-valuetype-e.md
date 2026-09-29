@@ -10,6 +10,8 @@ Indicates the `ValueType`.
 
 **Since:** 9
 
+<!--Device-distributedKVStore-enum ValueType--><!--Device-distributedKVStore-enum ValueType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## STRING
@@ -24,6 +26,8 @@ Indicates that the value type is string.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ValueType-STRING = 0--><!--Device-ValueType-STRING = 0-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## INTEGER
@@ -36,6 +40,8 @@ Indicates that the value type is int.
 
 **Since:** 9
 
+<!--Device-ValueType-INTEGER = 1--><!--Device-ValueType-INTEGER = 1-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## FLOAT
@@ -47,6 +53,8 @@ FLOAT = 2
 Indicates that the value type is float.
 
 **Since:** 9
+
+<!--Device-ValueType-FLOAT = 2--><!--Device-ValueType-FLOAT = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -62,6 +70,8 @@ Indicates that the value type is byte array.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ValueType-BYTE_ARRAY = 3--><!--Device-ValueType-BYTE_ARRAY = 3-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## BOOLEAN
@@ -76,6 +86,8 @@ Indicates that the value type is boolean.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ValueType-BOOLEAN = 4--><!--Device-ValueType-BOOLEAN = 4-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## DOUBLE
@@ -89,5 +101,7 @@ Indicates that the value type is double.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ValueType-DOUBLE = 5--><!--Device-ValueType-DOUBLE = 5-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

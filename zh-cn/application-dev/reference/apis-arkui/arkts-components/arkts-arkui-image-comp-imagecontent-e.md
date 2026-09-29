@@ -8,6 +8,8 @@ declare enum ImageContent
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare enum ImageContent--><!--Device-unnamed-declare enum ImageContent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## EMPTY
@@ -25,5 +27,7 @@ EMPTY = 0
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageContent-EMPTY = 0--><!--Device-ImageContent-EMPTY = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,9 +8,11 @@ declare class SliderAttribute extends CommonMethod<SliderAttribute>
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** SliderAttribute extends CommonMethod&lt;SliderAttribute&gt;
+**继承/实现关系：** SliderAttribute extends CommonMethod<SliderAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class SliderAttribute extends CommonMethod<SliderAttribute>--><!--Device-unnamed-declare class SliderAttribute extends CommonMethod<SliderAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +35,8 @@ blockBorderColor(value: ResourceColor)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SliderAttribute-blockBorderColor(value: ResourceColor): SliderAttribute--><!--Device-SliderAttribute-blockBorderColor(value: ResourceColor): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,6 +65,8 @@ blockBorderWidth(value: Length)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SliderAttribute-blockBorderWidth(value: Length): SliderAttribute--><!--Device-SliderAttribute-blockBorderWidth(value: Length): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,6 +97,8 @@ blockColor(value: ResourceColor)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SliderAttribute-blockColor(value: ResourceColor): SliderAttribute--><!--Device-SliderAttribute-blockColor(value: ResourceColor): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,6 +132,8 @@ blockColor(value: ResourceColor | LinearGradient)
 
 **卡片能力：** 从API版本21开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SliderAttribute-blockColor(value: ResourceColor | LinearGradient): SliderAttribute--><!--Device-SliderAttribute-blockColor(value: ResourceColor | LinearGradient): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -152,6 +162,8 @@ blockSize(value: SizeOptions)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SliderAttribute-blockSize(value: SizeOptions): SliderAttribute--><!--Device-SliderAttribute-blockSize(value: SizeOptions): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -174,6 +186,8 @@ blockStyle(value: SliderBlockStyle)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SliderAttribute-blockStyle(value: SliderBlockStyle): SliderAttribute--><!--Device-SliderAttribute-blockStyle(value: SliderBlockStyle): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -195,6 +209,8 @@ contentModifier(modifier: ContentModifier<SliderConfiguration>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SliderAttribute-contentModifier(modifier: ContentModifier<SliderConfiguration>): SliderAttribute--><!--Device-SliderAttribute-contentModifier(modifier: ContentModifier<SliderConfiguration>): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,6 +238,8 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SliderAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): SliderAttribute--><!--Device-SliderAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -246,6 +264,8 @@ enableHapticFeedback(enabled: boolean)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SliderAttribute-enableHapticFeedback(enabled: boolean): SliderAttribute--><!--Device-SliderAttribute-enableHapticFeedback(enabled: boolean): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -267,6 +287,8 @@ minResponsiveDistance(value: number)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SliderAttribute-minResponsiveDistance(value: number): SliderAttribute--><!--Device-SliderAttribute-minResponsiveDistance(value: number): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -296,6 +318,8 @@ Begin和End状态在点击时触发，Moving和Click状态在value值变化时�
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SliderAttribute-onChange(callback: (value: number, mode: SliderChangeMode) => void): SliderAttribute--><!--Device-SliderAttribute-onChange(callback: (value: number, mode: SliderChangeMode) => void): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -317,6 +341,8 @@ prefix(content: ComponentContent, options?: SliderPrefixOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SliderAttribute-prefix(content: ComponentContent, options?: SliderPrefixOptions): SliderAttribute--><!--Device-SliderAttribute-prefix(content: ComponentContent, options?: SliderPrefixOptions): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -341,6 +367,8 @@ selectedBorderRadius(value: Dimension)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SliderAttribute-selectedBorderRadius(value: Dimension): SliderAttribute--><!--Device-SliderAttribute-selectedBorderRadius(value: Dimension): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -364,6 +392,8 @@ selectedColor(value: ResourceColor)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SliderAttribute-selectedColor(value: ResourceColor): SliderAttribute--><!--Device-SliderAttribute-selectedColor(value: ResourceColor): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -391,6 +421,8 @@ selectedColor(selectedColor: ResourceColor | LinearGradient)
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SliderAttribute-selectedColor(selectedColor: ResourceColor | LinearGradient): SliderAttribute--><!--Device-SliderAttribute-selectedColor(selectedColor: ResourceColor | LinearGradient): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -414,6 +446,8 @@ showSteps(value: boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SliderAttribute-showSteps(value: boolean): SliderAttribute--><!--Device-SliderAttribute-showSteps(value: boolean): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -445,6 +479,8 @@ showSteps(value: boolean, options?: SliderShowStepOptions)
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SliderAttribute-showSteps(value: boolean, options?: SliderShowStepOptions): SliderAttribute--><!--Device-SliderAttribute-showSteps(value: boolean, options?: SliderShowStepOptions): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -474,6 +510,8 @@ showTips(value: boolean, content?: ResourceStr)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SliderAttribute-showTips(value: boolean, content?: ResourceStr): SliderAttribute--><!--Device-SliderAttribute-showTips(value: boolean, content?: ResourceStr): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -497,6 +535,8 @@ slideRange(value: SlideRange)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SliderAttribute-slideRange(value: SlideRange): SliderAttribute--><!--Device-SliderAttribute-slideRange(value: SlideRange): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -518,6 +558,8 @@ sliderInteractionMode(value: SliderInteraction)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SliderAttribute-sliderInteractionMode(value: SliderInteraction): SliderAttribute--><!--Device-SliderAttribute-sliderInteractionMode(value: SliderInteraction): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -541,6 +583,8 @@ stepColor(value: ResourceColor)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SliderAttribute-stepColor(value: ResourceColor): SliderAttribute--><!--Device-SliderAttribute-stepColor(value: ResourceColor): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -562,6 +606,8 @@ stepSize(value: Length)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SliderAttribute-stepSize(value: Length): SliderAttribute--><!--Device-SliderAttribute-stepSize(value: Length): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -585,6 +631,8 @@ suffix(content: ComponentContent, options?: SliderSuffixOptions)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-SliderAttribute-suffix(content: ComponentContent, options?: SliderSuffixOptions): SliderAttribute--><!--Device-SliderAttribute-suffix(content: ComponentContent, options?: SliderSuffixOptions): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -607,6 +655,8 @@ trackBorderRadius(value: Length)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SliderAttribute-trackBorderRadius(value: Length): SliderAttribute--><!--Device-SliderAttribute-trackBorderRadius(value: Length): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -634,6 +684,8 @@ trackColor(value: ResourceColor | LinearGradient)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SliderAttribute-trackColor(value: ResourceColor | LinearGradient): SliderAttribute--><!--Device-SliderAttribute-trackColor(value: ResourceColor | LinearGradient): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -655,6 +707,8 @@ trackColorMetrics(color: ColorMetricsLinearGradient)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-SliderAttribute-trackColorMetrics(color: ColorMetricsLinearGradient): SliderAttribute--><!--Device-SliderAttribute-trackColorMetrics(color: ColorMetricsLinearGradient): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -688,6 +742,8 @@ trackThickness或[blockSize](#blocksize)的大小超过Slider组件的宽度或�
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SliderAttribute-trackThickness(value: Length): SliderAttribute--><!--Device-SliderAttribute-trackThickness(value: Length): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -716,6 +772,8 @@ maxLabel(value: string)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-SliderAttribute-maxLabel(value: string): SliderAttribute--><!--Device-SliderAttribute-maxLabel(value: string): SliderAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -743,6 +801,8 @@ minLabel(value: string)
 **替代接口：** min
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-SliderAttribute-minLabel(value: string): SliderAttribute--><!--Device-SliderAttribute-minLabel(value: string): SliderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

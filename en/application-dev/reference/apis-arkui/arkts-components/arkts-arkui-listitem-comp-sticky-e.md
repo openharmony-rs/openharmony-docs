@@ -12,6 +12,8 @@ Enumerates the sticky effects for list items.
 
 **Substitutes:** [list/StickyStyle](arkts-arkui-list-comp-stickystyle-e.md)
 
+<!--Device-unnamed-declare enum Sticky--><!--Device-unnamed-declare enum Sticky-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -20,13 +22,15 @@ Enumerates the sticky effects for list items.
 None
 ```
 
-No sticky.
+No sticky effect.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-Sticky-None--><!--Device-Sticky-None-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,13 +40,15 @@ No sticky.
 Normal
 ```
 
-The list item is sticky with no special effects.
+The current item sticks to the top.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-Sticky-Normal--><!--Device-Sticky-Normal-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,12 +58,14 @@ The list item is sticky with no special effects.
 Opacity
 ```
 
-The list item is sticky with opacity changes.
+The current item sticks to the top with an opacity change effect.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-Sticky-Opacity--><!--Device-Sticky-Opacity-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

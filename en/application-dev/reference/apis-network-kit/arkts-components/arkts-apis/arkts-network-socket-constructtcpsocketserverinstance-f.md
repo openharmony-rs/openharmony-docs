@@ -16,6 +16,8 @@ Creates a **TCPSocketServer** object.
 
 **Since:** 10
 
+<!--Device-socket-function constructTCPSocketServerInstance(): TCPSocketServer--><!--Device-socket-function constructTCPSocketServerInstance(): TCPSocketServer-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**

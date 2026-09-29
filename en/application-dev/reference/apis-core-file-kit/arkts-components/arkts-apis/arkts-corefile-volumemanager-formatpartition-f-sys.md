@@ -20,6 +20,8 @@ Formats a partition on a disk. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-volumeManager-function formatPartition(diskId: string, partitionNum: int, params: FormatParams): Promise<void>--><!--Device-volumeManager-function formatPartition(diskId: string, partitionNum: int, params: FormatParams): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Defines a callback used to return whether the application started by double-pres
 
 **Since:** 24
 
+<!--Device-settingsLite-interface ClickCallback--><!--Device-settingsLite-interface ClickCallback-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core.Lite
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Called to determine whether the application can be started by double-pressing th
 **Since:** 24
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ClickCallback-onResult(result: boolean): void--><!--Device-ClickCallback-onResult(result: boolean): void-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core.Lite
 

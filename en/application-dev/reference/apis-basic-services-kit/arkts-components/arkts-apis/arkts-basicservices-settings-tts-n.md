@@ -10,6 +10,8 @@ Provides methods for setting information about text-to-speech (TTS) conversion, 
 
 **Since:** 7
 
+<!--Device-settings-namespace TTS--><!--Device-settings-namespace TTS-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## Modules to Import

@@ -18,6 +18,8 @@ Connects to a remote device over the socket.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
+<!--Device-socket-function sppConnect(deviceId: string, options: SppOptions, callback: AsyncCallback<int>): void--><!--Device-socket-function sppConnect(deviceId: string, options: SppOptions, callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

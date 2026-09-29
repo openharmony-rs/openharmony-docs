@@ -12,4 +12,6 @@ Set subcomponent binded on tree item.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-unnamed-declare type OnContainerCallback = () => void--><!--Device-unnamed-declare type OnContainerCallback = () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

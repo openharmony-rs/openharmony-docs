@@ -8,6 +8,8 @@ Describes the page routing state.
 
 **Since:** 8
 
+<!--Device-router-interface EnableAlertOptions--><!--Device-router-interface EnableAlertOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -29,5 +31,7 @@ Content displayed in the confirm dialog box.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-EnableAlertOptions-message: string--><!--Device-EnableAlertOptions-message: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -20,6 +20,8 @@ Get the system input method config ability of a specified user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-inputMethod-function getSystemInputMethodConfigAbility(userId?: int): ElementName--><!--Device-inputMethod-function getSystemInputMethodConfigAbility(userId?: int): ElementName-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API:** This is a system API.

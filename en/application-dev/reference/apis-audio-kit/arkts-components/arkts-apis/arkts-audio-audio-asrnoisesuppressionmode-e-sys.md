@@ -8,6 +8,8 @@ ASR noise suppression mode.
 
 **Since:** 12
 
+<!--Device-audio-enum AsrNoiseSuppressionMode--><!--Device-audio-enum AsrNoiseSuppressionMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ BYPASS = 0
 Bypass noise suppression.
 
 **Since:** 12
+
+<!--Device-AsrNoiseSuppressionMode-BYPASS = 0--><!--Device-AsrNoiseSuppressionMode-BYPASS = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -36,6 +40,8 @@ Standard noise suppression.
 
 **Since:** 12
 
+<!--Device-AsrNoiseSuppressionMode-STANDARD = 1--><!--Device-AsrNoiseSuppressionMode-STANDARD = 1-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -50,6 +56,8 @@ Near field noise suppression.
 
 **Since:** 12
 
+<!--Device-AsrNoiseSuppressionMode-NEAR_FIELD = 2--><!--Device-AsrNoiseSuppressionMode-NEAR_FIELD = 2-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -63,6 +71,8 @@ FAR_FIELD = 3
 Far field noise suppression.
 
 **Since:** 12
+
+<!--Device-AsrNoiseSuppressionMode-FAR_FIELD = 3--><!--Device-AsrNoiseSuppressionMode-FAR_FIELD = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 

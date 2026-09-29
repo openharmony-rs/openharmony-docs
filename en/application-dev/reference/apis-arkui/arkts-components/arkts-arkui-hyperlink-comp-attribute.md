@@ -4,13 +4,13 @@
 declare class HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>
 ```
 
-In addition to the [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
-
-The [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md) are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
 **Inheritance/Implementation:** HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>
 
 **Since:** 7
+
+<!--Device-unnamed-declare class HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>--><!--Device-unnamed-declare class HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,10 +26,12 @@ Sets the color of the hyperlink text.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HyperlinkAttribute-color(value: Color | number | string | Resource): HyperlinkAttribute--><!--Device-HyperlinkAttribute-color(value: Color | number | string | Resource): HyperlinkAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Color of the hyperlink text<br>&lt;!--RP1--&gt;Default value: '#ff007dff', indicating blue.&lt;!--RP1End--&gt; |
+| value | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Color of the hyperlink text<br><!--RP1-->Default value: '#ff007dff', indicating blue.<!--RP1End--> |

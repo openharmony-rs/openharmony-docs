@@ -18,6 +18,8 @@ Unsubscribes from **callDetailsChange** events. This API uses an asynchronous ca
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function off(type: 'callDetailsChange', callback?: Callback<CallAttributeOptions>): void--><!--Device-call-function off(type: 'callDetailsChange', callback?: Callback<CallAttributeOptions>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -61,6 +63,8 @@ Unsubscribes from **callEventChange** events. This API uses an asynchronous call
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function off(type: 'callEventChange', callback?: Callback<CallEventOptions>): void--><!--Device-call-function off(type: 'callEventChange', callback?: Callback<CallEventOptions>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -106,6 +110,8 @@ Unsubscribes from **callDisconnectedCause** events. This API uses an asynchronou
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function off(type: 'callDisconnectedCause', callback?: Callback<DisconnectedDetails>): void--><!--Device-call-function off(type: 'callDisconnectedCause', callback?: Callback<DisconnectedDetails>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -149,6 +155,8 @@ Unsubscribes from **mmiCodeResult** events. This API uses an asynchronous callba
 **Since:** 9
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function off(type: 'mmiCodeResult', callback?: Callback<MmiCodeResults>): void--><!--Device-call-function off(type: 'mmiCodeResult', callback?: Callback<MmiCodeResults>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -194,6 +202,8 @@ Unsubscribes from **audioDeviceChange** events. This API uses an asynchronous ca
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function off(type: 'audioDeviceChange', callback?: Callback<AudioDeviceCallbackInfo>): void--><!--Device-call-function off(type: 'audioDeviceChange', callback?: Callback<AudioDeviceCallbackInfo>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -238,6 +248,8 @@ Unsubscribes from **postDialDelay** events. This API uses an asynchronous callba
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function off(type: 'postDialDelay', callback?: Callback<string>): void--><!--Device-call-function off(type: 'postDialDelay', callback?: Callback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -281,6 +293,8 @@ Unsubscribes from **imsCallModeChange** events. This API uses an asynchronous ca
 **Since:** 11
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function off(type: 'imsCallModeChange', callback?: Callback<ImsCallModeInfo>): void--><!--Device-call-function off(type: 'imsCallModeChange', callback?: Callback<ImsCallModeInfo>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -328,6 +342,8 @@ Unsubscribes from **callSessionEvent** events. This API uses an asynchronous cal
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function off(type: 'callSessionEvent', callback?: Callback<CallSessionEvent>): void--><!--Device-call-function off(type: 'callSessionEvent', callback?: Callback<CallSessionEvent>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -374,6 +390,8 @@ Unsubscribes from **peerDimensionsChange** events. This API uses an asynchronous
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function off(type: 'peerDimensionsChange', callback?: Callback<PeerDimensionsDetail>): void--><!--Device-call-function off(type: 'peerDimensionsChange', callback?: Callback<PeerDimensionsDetail>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -419,6 +437,8 @@ Unsubscribes from **cameraCapabilitiesChange** events. This API uses an asynchro
 **Since:** 11
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function off(type: 'cameraCapabilitiesChange', callback?: Callback<CameraCapabilities>): void--><!--Device-call-function off(type: 'cameraCapabilitiesChange', callback?: Callback<CameraCapabilities>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

@@ -8,6 +8,8 @@ Manages the distributed info of the table.
 
 **Since:** 24
 
+<!--Device-relationalStore-interface DistributedInfo--><!--Device-relationalStore-interface DistributedInfo-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Specifies the data origin sources.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DistributedInfo-flag?: DistributedOrigin--><!--Device-DistributedInfo-flag?: DistributedOrigin-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Specifies the data origin sources device ID.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DistributedInfo-oriDevice?: string--><!--Device-DistributedInfo-oriDevice?: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

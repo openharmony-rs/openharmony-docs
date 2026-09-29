@@ -16,6 +16,8 @@ Checks whether the screen is currently locked.
 
 **Since:** 9
 
+<!--Device-screenLock-function isLocked(): boolean--><!--Device-screenLock-function isLocked(): boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **System API:** This is a system API.

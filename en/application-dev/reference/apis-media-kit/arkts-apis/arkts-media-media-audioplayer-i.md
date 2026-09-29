@@ -12,6 +12,8 @@ AudioPlayer is a class for audio playback management. It provides APIs to manage
 
 **Substitutes:** [media](arkts-media-multimedia-media.md)
 
+<!--Device-media-interface AudioPlayer--><!--Device-media-interface AudioPlayer-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Obtains the audio track information. It can be called only after the **'dataLoad
 **Deprecated since:** 9
 
 **Substitutes:** [getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)(callback: AsyncCallback&lt;Array&lt;MediaDescription&gt;&gt;)
+
+<!--Device-AudioPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void--><!--Device-AudioPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
@@ -58,6 +62,8 @@ Obtains the audio track information. It can be called only after the **'dataLoad
 
 **Substitutes:** [getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)()
 
+<!--Device-AudioPlayer-getTrackDescription(): Promise<Array<MediaDescription>>--><!--Device-AudioPlayer-getTrackDescription(): Promise<Array<MediaDescription>>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 **Return value:**
@@ -79,6 +85,8 @@ Subscribes to the audio buffering update event. This API works only under online
 **Deprecated since:** 9
 
 **Substitutes:** [on](arkts-media-media-avplayer-i.md#onbufferingupdate)(type: 'bufferingUpdate', callback: OnBufferingUpdateHandler)
+
+<!--Device-AudioPlayer-on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: number) => void): void--><!--Device-AudioPlayer-on(type: 'bufferingUpdate', callback: (infoType: BufferingInfoType, value: number) => void): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
@@ -103,6 +111,8 @@ Subscribes to the audio playback events.
 
 **Substitutes:** [on](arkts-media-media-avplayer-i.md#onstatechange)(type: 'stateChange', callback: OnAVPlayerStateChangeHandle)
 
+<!--Device-AudioPlayer-on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange', callback: () => void): void--><!--Device-AudioPlayer-on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeChange', callback: () => void): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 **Parameters:**
@@ -125,6 +135,8 @@ Subscribes to the **'timeUpdate'** event. This event is reported every second wh
 **Deprecated since:** 9
 
 **Substitutes:** on(type: 'timeUpdate', callback: Callback&lt;number&gt;)
+
+<!--Device-AudioPlayer-on(type: 'timeUpdate', callback: Callback<number>): void--><!--Device-AudioPlayer-on(type: 'timeUpdate', callback: Callback<number>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
@@ -149,6 +161,8 @@ Subscribes to the audio interruption event. For details, see [audio.InterruptEve
 
 **Substitutes:** [on](arkts-media-media-avplayer-i.md#onaudiointerrupt)(type: 'audioInterrupt', callback: Callback&lt;audio.InterruptEvent&gt;)
 
+<!--Device-AudioPlayer-on(type: 'audioInterrupt', callback: (info: audio.InterruptEvent) => void): void--><!--Device-AudioPlayer-on(type: 'audioInterrupt', callback: (info: audio.InterruptEvent) => void): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 **Parameters:**
@@ -171,6 +185,8 @@ Subscribes to audio playback error events. After an error event is reported, you
 **Deprecated since:** 9
 
 **Substitutes:** [on](arkts-media-media-avplayer-i.md#onerror)(type: 'error', callback: ErrorCallback)
+
+<!--Device-AudioPlayer-on(type: 'error', callback: ErrorCallback): void--><!--Device-AudioPlayer-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
@@ -195,6 +211,8 @@ Pauses audio playback.
 
 **Substitutes:** [pause](arkts-media-media-avplayer-i.md#pause)(callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-AudioPlayer-pause(): void--><!--Device-AudioPlayer-pause(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 ## play
@@ -210,6 +228,8 @@ Starts to play an audio asset. This API can be called only after the **'dataLoad
 **Deprecated since:** 9
 
 **Substitutes:** [play](arkts-media-media-avplayer-i.md#play)(callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AudioPlayer-play(): void--><!--Device-AudioPlayer-play(): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
@@ -227,6 +247,8 @@ Releases the audio playback resources.
 
 **Substitutes:** [release](arkts-media-media-avplayer-i.md#release)(callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-AudioPlayer-release(): void--><!--Device-AudioPlayer-release(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 ## reset
@@ -243,6 +265,8 @@ Resets the audio asset to be played.
 
 **Substitutes:** [reset](arkts-media-media-avplayer-i.md#reset)(callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-AudioPlayer-reset(): void--><!--Device-AudioPlayer-reset(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 ## seek
@@ -258,6 +282,8 @@ Seeks to the specified playback position.
 **Deprecated since:** 9
 
 **Substitutes:** [seek](arkts-media-media-avplayer-i.md#seek)
+
+<!--Device-AudioPlayer-seek(timeMs: number): void--><!--Device-AudioPlayer-seek(timeMs: number): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
@@ -281,6 +307,8 @@ Sets the volume.
 
 **Substitutes:** [setVolume](arkts-media-media-avplayer-i.md#setvolume)
 
+<!--Device-AudioPlayer-setVolume(vol: number): void--><!--Device-AudioPlayer-setVolume(vol: number): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 **Parameters:**
@@ -303,6 +331,8 @@ Stops audio playback.
 
 **Substitutes:** [stop](arkts-media-media-avplayer-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-AudioPlayer-stop(): void--><!--Device-AudioPlayer-stop(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 ## audioInterruptMode
@@ -320,6 +350,8 @@ Audio interruption mode.
 **Deprecated since:** 9
 
 **Substitutes:** [audioInterruptMode](arkts-media-media-avplayer-i.md#audiointerruptmode)
+
+<!--Device-AudioPlayer-audioInterruptMode?: audio.InterruptMode--><!--Device-AudioPlayer-audioInterruptMode?: audio.InterruptMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
@@ -339,6 +371,8 @@ Current audio playback position, in ms.
 
 **Substitutes:** [currentTime](arkts-media-media-avplayer-i.md#currenttime)
 
+<!--Device-AudioPlayer-readonly currentTime: number--><!--Device-AudioPlayer-readonly currentTime: number-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 ## duration
@@ -356,6 +390,8 @@ Audio duration, in ms.
 **Deprecated since:** 9
 
 **Substitutes:** [duration](arkts-media-media-avplayer-i.md#duration)
+
+<!--Device-AudioPlayer-readonly duration: number--><!--Device-AudioPlayer-readonly duration: number-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
@@ -389,6 +425,8 @@ To play an independent music file, use **src=fd://xx**.
 
 **Substitutes:** [fdSrc](arkts-media-media-avplayer-i.md#fdsrc)
 
+<!--Device-AudioPlayer-fdSrc: AVFileDescriptor--><!--Device-AudioPlayer-fdSrc: AVFileDescriptor-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 ## loop
@@ -406,6 +444,8 @@ Whether to loop audio playback. **true** to loop, **false** otherwise.
 **Deprecated since:** 9
 
 **Substitutes:** [loop](arkts-media-media-avplayer-i.md#loop)
+
+<!--Device-AudioPlayer-loop: boolean--><!--Device-AudioPlayer-loop: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
@@ -439,6 +479,8 @@ ohos.permission.READ_MEDIA or ohos.permission.INTERNET
 
 **Required permissions:** ohos.permission.READ_MEDIA or ohos.permission.INTERNET
 
+<!--Device-AudioPlayer-src: string--><!--Device-AudioPlayer-src: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 ## state
@@ -456,5 +498,7 @@ Audio playback state. This state cannot be used as the condition for triggering 
 **Deprecated since:** 9
 
 **Substitutes:** [state](arkts-media-media-avplayer-i.md#state)
+
+<!--Device-AudioPlayer-readonly state: AudioState--><!--Device-AudioPlayer-readonly state: AudioState-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer

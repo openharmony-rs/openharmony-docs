@@ -8,6 +8,8 @@ Implements an asynchronous queue, for which you can specify the task execution c
 
 **Since:** 18
 
+<!--Device-taskpool-export class AsyncRunner--><!--Device-taskpool-export class AsyncRunner-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ A constructor used to create an **AsyncRunner** instance. It constructs a non-gl
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AsyncRunner-constructor(runningCapacity: number, waitingCapacity?: number)--><!--Device-AsyncRunner-constructor(runningCapacity: number, waitingCapacity?: number)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -62,6 +66,8 @@ A constructor used to create an **AsyncRunner** instance. It constructs a global
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AsyncRunner-constructor(name: string, runningCapacity: number, waitingCapacity?: number)--><!--Device-AsyncRunner-constructor(name: string, runningCapacity: number, waitingCapacity?: number)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -106,6 +112,8 @@ Adds a task to the asynchronous queue for execution. Before using this API, you 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AsyncRunner-execute(task: Task, priority?: Priority): Promise<Object>--><!--Device-AsyncRunner-execute(task: Task, priority?: Priority): Promise<Object>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

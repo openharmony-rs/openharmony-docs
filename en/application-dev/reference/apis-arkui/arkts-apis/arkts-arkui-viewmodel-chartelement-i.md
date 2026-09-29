@@ -12,6 +12,8 @@ The &lt;chart&gt; component displays line charts, gauge charts, and bar charts.
 
 **Since:** 4
 
+<!--Device-unnamed-export interface ChartElement extends Element--><!--Device-unnamed-export interface ChartElement extends Element-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## append
@@ -44,6 +46,8 @@ Data is dynamiconlyally added to an existing data sequence. The target sequence 
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ChartElement-append(params: {    /**     * Set the data subscript of the line chart to be updated.     *     * @type { number }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @famodelonly     * @since 4 dynamiconly     */    serial: number;    /**     * Set the new data.     *     * @type { Array<number> }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @famodelonly     * @since 4 dynamiconly     */    data: Array<number>;  }): void--><!--Device-ChartElement-append(params: {    /**     * Set the data subscript of the line chart to be updated.     *     * @type { number }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @famodelonly     * @since 4 dynamiconly     */    serial: number;    /**     * Set the new data.     *     * @type { Array<number> }     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @famodelonly     * @since 4 dynamiconly     */    data: Array<number>;  }): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

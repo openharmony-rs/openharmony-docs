@@ -18,6 +18,8 @@ This API is used to query the sandbox retention information of a specified appli
 
 **Since:** 10
 
+<!--Device-dlpPermission-function getRetentionSandboxList(bundleName?: string): Promise<Array<RetentionSandboxInfo>>--><!--Device-dlpPermission-function getRetentionSandboxList(bundleName?: string): Promise<Array<RetentionSandboxInfo>>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**
@@ -69,6 +71,8 @@ This API is used to query the sandbox retention information of a specified appli
 
 **Since:** 10
 
+<!--Device-dlpPermission-function getRetentionSandboxList(bundleName: string, callback: AsyncCallback<Array<RetentionSandboxInfo>>): void--><!--Device-dlpPermission-function getRetentionSandboxList(bundleName: string, callback: AsyncCallback<Array<RetentionSandboxInfo>>): void-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**
@@ -116,6 +120,8 @@ Obtains the sandbox applications in the retention state of an application. This 
 This API is used to query the sandbox retention information of the current application, so that the sandbox environment in the retention state can be checked or managed. This API can be called only in non-DLP sandbox applications.
 
 **Since:** 10
+
+<!--Device-dlpPermission-function getRetentionSandboxList(callback: AsyncCallback<Array<RetentionSandboxInfo>>): void--><!--Device-dlpPermission-function getRetentionSandboxList(callback: AsyncCallback<Array<RetentionSandboxInfo>>): void-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

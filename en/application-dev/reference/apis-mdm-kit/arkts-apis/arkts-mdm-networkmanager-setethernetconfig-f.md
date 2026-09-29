@@ -20,6 +20,8 @@ Sets the IP address of a specific Ethernet interface. This API is suitable for e
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig): void--><!--Device-networkManager-function setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

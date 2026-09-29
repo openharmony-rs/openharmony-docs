@@ -8,6 +8,8 @@ Defines the detailed information about the permissions defined in the [module.js
 
 **Since:** 9
 
+<!--Device-bundleManager-export type PermissionDef = _PermissionDef--><!--Device-bundleManager-export type PermissionDef = _PermissionDef-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

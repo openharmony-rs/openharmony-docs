@@ -10,6 +10,8 @@ Enumerates the filtering modes of a sampler. The filtering mode determines the i
 
 **Since:** 20
 
+<!--Device-unnamed-export enum SamplerFilter--><!--Device-unnamed-export enum SamplerFilter-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## NEAREST
@@ -22,6 +24,8 @@ Uses nearest-neighbor interpolation, which is fast but can result in jagged edge
 
 **Since:** 20
 
+<!--Device-SamplerFilter-NEAREST = 0--><!--Device-SamplerFilter-NEAREST = 0-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## LINEAR
@@ -33,5 +37,7 @@ LINEAR = 1
 Uses linear interpolation, providing a smoother appearance but with a slight performance cost.
 
 **Since:** 20
+
+<!--Device-SamplerFilter-LINEAR = 1--><!--Device-SamplerFilter-LINEAR = 1-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

@@ -4,6 +4,8 @@ The **policy** module provides APIs for managing network policies, which allow y
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace policy--><!--Device-unnamed-declare namespace policy-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -94,6 +96,12 @@ import { policy } from '@kit.NetworkKit';
 | [UidNetworkAccessPolicy](arkts-network-policy-uidnetworkaccesspolicy-i-sys.md) | Defines the network policy for an application with the specified UID. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [NetBearType](arkts-network-policy-netbeartype-t.md) | Defines the network type. |
+
 <!--Del-->
 ### Enums(System API)
 
@@ -105,9 +113,3 @@ import { policy } from '@kit.NetworkKit';
 | [NetUidRule](arkts-network-policy-netuidrule-e-sys.md) | Enumerates the metered network rules. |
 | [RemindType](arkts-network-policy-remindtype-e-sys.md) | Enumerates the reminder types. |
 <!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [NetBearType](arkts-network-policy-netbeartype-t.md) | Defines the network type. |

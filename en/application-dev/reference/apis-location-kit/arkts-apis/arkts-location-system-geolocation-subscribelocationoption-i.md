@@ -12,6 +12,8 @@ export interface SubscribeLocationOption
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-unnamed-export interface SubscribeLocationOption--><!--Device-unnamed-export interface SubscribeLocationOption-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Called when the listening fails.
 **Deprecated since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeLocationOption-fail?: (data: string, code: number) => void--><!--Device-SubscribeLocationOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.Location.Location.Lite
 
@@ -57,6 +61,8 @@ Called whenever the geographical location changes.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-SubscribeLocationOption-success: (data: GeolocationResponse) => void--><!--Device-SubscribeLocationOption-success: (data: GeolocationResponse) => void-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 **Parameters:**
@@ -80,5 +86,7 @@ Coordinate system type. Available types can be obtained using getSupportedCoordT
 **Deprecated since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeLocationOption-coordType?: string--><!--Device-SubscribeLocationOption-coordType?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Lite

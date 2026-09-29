@@ -18,6 +18,8 @@ Before calling this API, ensure that the app has enabled the sensitive data prot
 
 **Since:** 12
 
+<!--Device-screenLockFileManager-function releaseAccess(): ReleaseStatus--><!--Device-screenLockFileManager-function releaseAccess(): ReleaseStatus-End-->
+
 **System capability:** SystemCapability.Security.ScreenLockFileManager
 
 **Return value:**

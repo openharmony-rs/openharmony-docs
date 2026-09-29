@@ -20,6 +20,8 @@ Sets whether priority notifications are enabled for applications in batches. Thi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationManager-function setPriorityEnabledByBundles(switches: Map<BundleOption, boolean>): Promise<void>--><!--Device-notificationManager-function setPriorityEnabledByBundles(switches: Map<BundleOption, boolean>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

@@ -13,6 +13,8 @@ Defines a **TCPSocketConnection** object, that is, the connection between the TC
 
 **Since:** 10
 
+<!--Device-socket-export interface TCPSocketConnection--><!--Device-socket-export interface TCPSocketConnection-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Closes a TCP socket connection. This API uses an asynchronous callback to return
 **Since:** 10
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-TCPSocketConnection-close(callback: AsyncCallback<void>): void--><!--Device-TCPSocketConnection-close(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -82,6 +86,8 @@ Closes a TCP socket connection. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-TCPSocketConnection-close(): Promise<void>--><!--Device-TCPSocketConnection-close(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -122,6 +128,8 @@ getLocalAddress(): Promise<NetAddress>
 Obtains the local socket address of a **TCPSocketConnection** connection. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-TCPSocketConnection-getLocalAddress(): Promise<NetAddress>--><!--Device-TCPSocketConnection-getLocalAddress(): Promise<NetAddress>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -194,6 +202,8 @@ Obtains the remote address of a socket connection. This API uses an asynchronous
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-TCPSocketConnection-getRemoteAddress(callback: AsyncCallback<NetAddress>): void--><!--Device-TCPSocketConnection-getRemoteAddress(callback: AsyncCallback<NetAddress>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -247,6 +257,8 @@ Obtains the remote address of a socket connection. This API uses a promise to re
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-TCPSocketConnection-getRemoteAddress(): Promise<NetAddress>--><!--Device-TCPSocketConnection-getRemoteAddress(): Promise<NetAddress>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -299,6 +311,8 @@ Obtains the file descriptor of a TCPSocketConnection connection. This API uses a
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-TCPSocketConnection-getSocketFd(): Promise<int>--><!--Device-TCPSocketConnection-getSocketFd(): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -347,6 +361,8 @@ off(type: 'message', callback?: Callback<SocketMessageInfo>): void
 Unsubscribes from **message** events of the **TCPSocketConnection** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-TCPSocketConnection-off(type: 'message', callback?: Callback<SocketMessageInfo>): void--><!--Device-TCPSocketConnection-off(type: 'message', callback?: Callback<SocketMessageInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -399,6 +415,8 @@ Unsubscribes from **close** events of the **TCPSocketConnection** object. This A
 
 **Since:** 10
 
+<!--Device-TCPSocketConnection-off(type: 'close', callback?: Callback<void>): void--><!--Device-TCPSocketConnection-off(type: 'close', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -440,6 +458,8 @@ off(type: 'error', callback?: ErrorCallback): void
 Unsubscribes from **error** events of the **TCPSocketConnection** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-TCPSocketConnection-off(type: 'error', callback?: ErrorCallback): void--><!--Device-TCPSocketConnection-off(type: 'error', callback?: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -483,6 +503,8 @@ on(type: 'message', callback: Callback<SocketMessageInfo>): void
 Subscribes to **message** events of the **TCPSocketConnection** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-TCPSocketConnection-on(type: 'message', callback: Callback<SocketMessageInfo>): void--><!--Device-TCPSocketConnection-on(type: 'message', callback: Callback<SocketMessageInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -532,6 +554,8 @@ Subscribes to **close** events of the **TCPSocketConnection** object. This API u
 
 **Since:** 10
 
+<!--Device-TCPSocketConnection-on(type: 'close', callback: Callback<void>): void--><!--Device-TCPSocketConnection-on(type: 'close', callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -570,6 +594,8 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to **error** events of the **TCPSocketConnection** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-TCPSocketConnection-on(type: 'error', callback: ErrorCallback): void--><!--Device-TCPSocketConnection-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -615,6 +641,8 @@ Sends data over a **TCPSocketConnection** object. This API uses an asynchronous 
 **Since:** 10
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-TCPSocketConnection-send(options: TCPSendOptions, callback: AsyncCallback<void>): void--><!--Device-TCPSocketConnection-send(options: TCPSendOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -667,6 +695,8 @@ Sends data over a **TCPSocketConnection** object. This API uses a promise to ret
 **Since:** 10
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-TCPSocketConnection-send(options: TCPSendOptions): Promise<void>--><!--Device-TCPSocketConnection-send(options: TCPSendOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -721,5 +751,7 @@ ID of the connection between the client and TCPSocketServer.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-TCPSocketConnection-clientId: int--><!--Device-TCPSocketConnection-clientId: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

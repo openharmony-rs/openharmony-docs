@@ -18,6 +18,8 @@ Stop WiFi/BT scanning and unsubscribe from WiFi/BT scanning information changes.
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-geoLocationManager-function off(type: 'locatingRequiredDataChange', callback?: Callback<Array<LocatingRequiredData>>): void--><!--Device-geoLocationManager-function off(type: 'locatingRequiredDataChange', callback?: Callback<Array<LocatingRequiredData>>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ function off(type: 'locationIconStatusChange', callback?: Callback<LocationIconS
 Unsubscribe location icon status changed.
 
 **Since:** 12
+
+<!--Device-geoLocationManager-function off(type: 'locationIconStatusChange', callback?: Callback<LocationIconStatus>): void--><!--Device-geoLocationManager-function off(type: 'locationIconStatusChange', callback?: Callback<LocationIconStatus>): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

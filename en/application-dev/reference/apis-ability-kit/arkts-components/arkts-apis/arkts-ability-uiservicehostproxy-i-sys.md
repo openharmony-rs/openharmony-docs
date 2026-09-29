@@ -12,6 +12,8 @@ UIServiceHostProxy functions as a proxy to send data from the [UIServiceExtensio
 
 **Since:** 14
 
+<!--Device-unnamed-export default interface UIServiceHostProxy--><!--Device-unnamed-export default interface UIServiceHostProxy-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ Sends data from the [UIServiceExtensionAbility](arkts-ability-app-ability-uiserv
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIServiceHostProxy-sendData(data: Record<string, Object>): void--><!--Device-UIServiceHostProxy-sendData(data: Record<string, Object>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

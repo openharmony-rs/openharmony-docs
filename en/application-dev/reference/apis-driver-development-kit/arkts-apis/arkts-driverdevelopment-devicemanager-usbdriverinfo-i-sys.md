@@ -10,6 +10,8 @@ Defines detailed information about the USB device driver. It is inherited from [
 
 **Since:** 12
 
+<!--Device-deviceManager-interface USBDriverInfo extends DriverInfo--><!--Device-deviceManager-interface USBDriverInfo extends DriverInfo-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Product ID list of the USB devices supported by the driver.
 
 **Since:** 12
 
+<!--Device-USBDriverInfo-productIdList: Array<int>--><!--Device-USBDriverInfo-productIdList: Array<int>-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Vendor ID list of the USB devices supported by the driver.
 **Type:** Array&lt;number&gt;
 
 **Since:** 12
+
+<!--Device-USBDriverInfo-vendorIdList: Array<int>--><!--Device-USBDriverInfo-vendorIdList: Array<int>-End-->
 
 **System capability:** SystemCapability.Driver.ExternalDevice
 

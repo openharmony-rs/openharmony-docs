@@ -18,6 +18,8 @@ Obtains the **ResourceManager** object of the current application. This API uses
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-resourceManager-export function getResourceManager(callback: AsyncCallback<ResourceManager>): void--><!--Device-resourceManager-export function getResourceManager(callback: AsyncCallback<ResourceManager>): void-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -67,6 +69,8 @@ Obtains the **ResourceManager** object of the specified application. This API us
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-resourceManager-export function getResourceManager(bundleName: string, callback: AsyncCallback<ResourceManager>): void--><!--Device-resourceManager-export function getResourceManager(bundleName: string, callback: AsyncCallback<ResourceManager>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -121,6 +125,8 @@ Obtains the **ResourceManager** object of the current application. This API uses
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-resourceManager-export function getResourceManager(): Promise<ResourceManager>--><!--Device-resourceManager-export function getResourceManager(): Promise<ResourceManager>-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Return value:**
@@ -166,6 +172,8 @@ Obtains the **ResourceManager** object of the specified application. This API us
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-resourceManager-export function getResourceManager(bundleName: string): Promise<ResourceManager>--><!--Device-resourceManager-export function getResourceManager(bundleName: string): Promise<ResourceManager>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 

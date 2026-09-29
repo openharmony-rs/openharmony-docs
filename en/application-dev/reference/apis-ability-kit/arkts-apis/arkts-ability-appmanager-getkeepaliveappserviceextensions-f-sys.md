@@ -18,6 +18,8 @@ Obtains information about all AppServiceExtensionAbility components that are kep
 
 **Required permissions:** ohos.permission.MANAGE_APP_KEEP_ALIVE
 
+<!--Device-appManager-function getKeepAliveAppServiceExtensions(): Promise<Array<KeepAliveBundleInfo>>--><!--Device-appManager-function getKeepAliveAppServiceExtensions(): Promise<Array<KeepAliveBundleInfo>>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

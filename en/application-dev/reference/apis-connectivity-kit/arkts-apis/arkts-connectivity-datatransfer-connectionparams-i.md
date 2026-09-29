@@ -8,6 +8,8 @@ Defines the parameters for initiating a port connection.
 
 **Since:** 26.0.0
 
+<!--Device-dataTransfer-interface ConnectionParams--><!--Device-dataTransfer-interface ConnectionParams-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ NearLink address of a remote device. The address format is **11:22:33:AA:BB:FF**
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionParams-address: string--><!--Device-ConnectionParams-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## transferMode
@@ -46,6 +50,8 @@ Data transfer mode with a remote device. The default value is **BASIC**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionParams-transferMode?: TransferMode--><!--Device-ConnectionParams-transferMode?: TransferMode-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## uuid
@@ -61,5 +67,7 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionParams-uuid: string--><!--Device-ConnectionParams-uuid: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

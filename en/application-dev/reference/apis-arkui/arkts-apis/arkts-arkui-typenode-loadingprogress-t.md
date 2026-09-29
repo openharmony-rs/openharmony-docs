@@ -12,6 +12,8 @@ Represents a FrameNode of the **LoadingProgress** type. This type of node does n
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-type LoadingProgress = TypedFrameNode<LoadingProgressInterface, LoadingProgressAttribute>--><!--Device-typeNode-type LoadingProgress = TypedFrameNode<LoadingProgressInterface, LoadingProgressAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;LoadingProgressInterface, [LoadingProgressAttribute](../arkts-components/arkts-arkui-loadingprogress-comp-attribute.md)&gt;

@@ -4,6 +4,8 @@ The **notificationSubscribe** module provides APIs for notification subscription
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace notificationSubscribe--><!--Device-unnamed-declare namespace notificationSubscribe-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -53,14 +55,6 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 <!--DelEnd-->
 
 <!--Del-->
-### Enums(System API)
-
-| Name | Description |
-| --- | --- |
-| [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | Defines the reasons for notification removal. |
-<!--DelEnd-->
-
-<!--Del-->
 ### Types(System API)
 
 | Name | Description |
@@ -80,4 +74,12 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 | [SubscribeCallbackData](arkts-notification-notificationsubscribe-subscribecallbackdata-t-sys.md) | Provides methods that will be called back when the subscriber receives a new notification or a notification is canceled. |
 | [VoiceContent](arkts-notification-notificationsubscribe-voicecontent-t-sys.md) | Describes the properties of the voice content of the received notification. |
 | [VoiceContentOptions](arkts-notification-notificationsubscribe-voicecontentoptions-t-sys.md) | Describes the properties of the voice content options for notification subscription. |
+<!--DelEnd-->
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [RemoveReason](arkts-notification-notificationsubscribe-removereason-e-sys.md) | Defines the reasons for notification removal. |
 <!--DelEnd-->

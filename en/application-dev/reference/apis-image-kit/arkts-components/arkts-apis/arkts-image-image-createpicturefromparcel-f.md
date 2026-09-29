@@ -18,6 +18,8 @@ Images occupy a large amount of memory. When you finish using a Picture instance
 
 **Since:** 13
 
+<!--Device-image-function createPictureFromParcel(sequence: rpc.MessageSequence): Picture--><!--Device-image-function createPictureFromParcel(sequence: rpc.MessageSequence): Picture-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**

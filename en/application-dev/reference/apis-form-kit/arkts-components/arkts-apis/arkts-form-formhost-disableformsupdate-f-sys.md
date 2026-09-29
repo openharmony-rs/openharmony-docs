@@ -18,6 +18,8 @@ Instructs the widget framework to make a widget not updatable. After this API is
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function disableFormsUpdate(formIds: Array<string>, callback: AsyncCallback<void>): void--><!--Device-formHost-function disableFormsUpdate(formIds: Array<string>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -56,6 +58,8 @@ Instructs the widget framework to make a widget not updatable. After this API is
 **Since:** 9
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
+
+<!--Device-formHost-function disableFormsUpdate(formIds: Array<string>): Promise<void>--><!--Device-formHost-function disableFormsUpdate(formIds: Array<string>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

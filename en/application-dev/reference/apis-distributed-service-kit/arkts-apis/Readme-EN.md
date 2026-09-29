@@ -5,7 +5,7 @@
 - [@ohos.application.DistributedExtensionContext(Distributed Extension Context)](arkts-distributedservice-application-distributedextensioncontext.md)
   - [DistributedExtensionContext](arkts-distributedservice-application-distributedextensioncontext-distributedextensioncontext-c.md)
 <!--Del-->
-- [@ohos.cooperate](arkts-distributedservice-cooperate.md)<!--DelEnd-->
+- [@ohos.cooperate(Screen Hopping)](arkts-distributedservice-cooperate.md)<!--DelEnd-->
   <!--Del-->
   - [activate(system api)](arkts-distributedservice-cooperate-activate-f-sys.md)<!--DelEnd-->
   <!--Del-->

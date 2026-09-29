@@ -4,6 +4,8 @@ The appRecovery module provides APIs for recovering faulty applications.
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace appRecovery--><!--Device-unnamed-declare namespace appRecovery-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import

@@ -16,6 +16,8 @@ Minimizes all main windows on a display.
 
 **Since:** 9
 
+<!--Device-window-function minimizeAll(id: long, callback: AsyncCallback<void>): void--><!--Device-window-function minimizeAll(id: long, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -74,6 +76,8 @@ function minimizeAll(id: number): Promise<void>
 Minimizes all main windows on a display. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-window-function minimizeAll(id: long): Promise<void>--><!--Device-window-function minimizeAll(id: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

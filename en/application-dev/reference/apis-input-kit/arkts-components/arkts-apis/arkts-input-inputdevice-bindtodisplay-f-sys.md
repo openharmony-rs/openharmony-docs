@@ -20,6 +20,8 @@ Bind input devices to a display group. Only external USB and Bluetooth mice, tou
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-inputDevice-function bindToDisplay(inputDeviceId: int, displayId: int): Promise<void>--><!--Device-inputDevice-function bindToDisplay(inputDeviceId: int, displayId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 **System API:** This is a system API.

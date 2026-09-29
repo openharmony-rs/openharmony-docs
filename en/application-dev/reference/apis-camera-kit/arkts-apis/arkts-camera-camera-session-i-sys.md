@@ -8,6 +8,8 @@ interface Session
 
 **Since:** 11
 
+<!--Device-camera-interface Session--><!--Device-camera-interface Session-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Gets the active value of the given key in camera metadata.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Session-getActiveParameter(key: string): string--><!--Device-Session-getActiveParameter(key: string): string-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -63,6 +67,8 @@ Get the supported camera output capability set.
 
 **Since:** 13
 
+<!--Device-Session-getCameraOutputCapabilities(camera: CameraDevice): Array<CameraOutputCapability>--><!--Device-Session-getCameraOutputCapabilities(camera: CameraDevice): Array<CameraOutputCapability>-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -98,6 +104,8 @@ Gets the values of the given key in camera metadata.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Session-getParameters(key: string): Array<string>--><!--Device-Session-getParameters(key: string): Array<string>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -136,6 +144,8 @@ Gets the supported keys in camera metadata.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Session-getSupportedKeys(): Array<string>--><!--Device-Session-getSupportedKeys(): Array<string>-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -166,6 +176,8 @@ Sets key-value pairs parameters for the session.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Session-setParameters(kvpairs: Record<string, string>): void--><!--Device-Session-setParameters(kvpairs: Record<string, string>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -194,6 +206,8 @@ setUsage(usage: UsageType, enabled: boolean): void
 Set usage for the capture session.
 
 **Since:** 13
+
+<!--Device-Session-setUsage(usage: UsageType, enabled: boolean): void--><!--Device-Session-setUsage(usage: UsageType, enabled: boolean): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

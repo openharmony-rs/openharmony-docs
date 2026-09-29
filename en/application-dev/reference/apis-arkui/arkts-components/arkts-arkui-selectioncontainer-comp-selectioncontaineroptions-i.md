@@ -4,9 +4,11 @@
 export interface SelectionContainerOptions
 ```
 
-Describes the initialization options of the SelectionContainer component.
+Provides the initial configuration options of the component.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-export interface SelectionContainerOptions--><!--Device-unnamed-export interface SelectionContainerOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +24,7 @@ import { OnMenuItemClickWithTextCallback, SelectionContainer, SelectionContainer
 controller: SelectionContainerController
 ```
 
-SelectionContainer controller.
+Controller of the SelectionContainer.
 
 **Type:** [SelectionContainerController](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md)
 
@@ -31,5 +33,7 @@ SelectionContainer controller.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SelectionContainerOptions-controller: SelectionContainerController--><!--Device-SelectionContainerOptions-controller: SelectionContainerController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

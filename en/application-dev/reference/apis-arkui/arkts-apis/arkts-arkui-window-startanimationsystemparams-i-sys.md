@@ -10,6 +10,8 @@ The configuration does not take effect for inter-application transitions, where 
 
 **Since:** 20
 
+<!--Device-window-interface StartAnimationSystemParams--><!--Device-window-interface StartAnimationSystemParams-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Configuration for the window animation. The default animation curve is **WindowA
 
 **Since:** 20
 
+<!--Device-StartAnimationSystemParams-animationConfig?: WindowAnimationConfig--><!--Device-StartAnimationSystemParams-animationConfig?: WindowAnimationConfig-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Type of the window animation.
 **Type:** [AnimationType](arkts-arkui-window-animationtype-e.md)
 
 **Since:** 20
+
+<!--Device-StartAnimationSystemParams-type: AnimationType--><!--Device-StartAnimationSystemParams-type: AnimationType-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

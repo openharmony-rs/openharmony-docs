@@ -8,6 +8,8 @@ NavDestination自定义动画接口。
 
 **起始版本：** 15
 
+<!--Device-unnamed-declare interface NavDestinationTransition--><!--Device-unnamed-declare interface NavDestinationTransition-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## curve
@@ -25,6 +27,8 @@ curve?: Curve
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationTransition-curve?: Curve--><!--Device-NavDestinationTransition-curve?: Curve-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ delay?: number
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationTransition-delay?: number--><!--Device-NavDestinationTransition-delay?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## duration
@@ -74,6 +80,8 @@ duration?: number
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationTransition-duration?: number--><!--Device-NavDestinationTransition-duration?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## event
@@ -92,6 +100,8 @@ event: Callback<void>
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationTransition-event: Callback<void>--><!--Device-NavDestinationTransition-event: Callback<void>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onTransitionEnd
@@ -109,5 +119,7 @@ onTransitionEnd?: Callback<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationTransition-onTransitionEnd?: Callback<void>--><!--Device-NavDestinationTransition-onTransitionEnd?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

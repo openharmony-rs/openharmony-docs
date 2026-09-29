@@ -8,6 +8,8 @@ XMPMetadata instance.
 
 **Since:** 26.0.0
 
+<!--Device-image-class XMPMetadata--><!--Device-image-class XMPMetadata-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Enumerate the XMP tags from specified path and uses a callback to return the res
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-XMPMetadata-public enumerateTags(      callback: (path: string, tag: XMPTag) => boolean,      rootPath?: string,      options?: XMPEnumerateOptions    ): void--><!--Device-XMPMetadata-public enumerateTags(      callback: (path: string, tag: XMPTag) => boolean,      rootPath?: string,      options?: XMPEnumerateOptions    ): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -60,6 +64,8 @@ Obtains the XMP metadata as a blob.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-XMPMetadata-public getBlob(): Promise<ArrayBuffer>--><!--Device-XMPMetadata-public getBlob(): Promise<ArrayBuffer>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -86,6 +92,8 @@ Get a single XMP tag from specified path.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-XMPMetadata-public getTag(path: string): Promise<XMPTag | null>--><!--Device-XMPMetadata-public getTag(path: string): Promise<XMPTag | null>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -118,6 +126,8 @@ Get all XMP tags from specified path.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-XMPMetadata-public getTags(rootPath?: string, options?: XMPEnumerateOptions): Promise<Record<string, XMPTag>>--><!--Device-XMPMetadata-public getTags(rootPath?: string, options?: XMPEnumerateOptions): Promise<Record<string, XMPTag>>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -152,6 +162,8 @@ Register a new namespace according to the xml namespace and prefix.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-XMPMetadata-public registerXMPNamespace(xmpNamespace: XMPNamespace): Promise<void>--><!--Device-XMPMetadata-public registerXMPNamespace(xmpNamespace: XMPNamespace): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -183,6 +195,8 @@ Remove the XMP tag from specified path.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-XMPMetadata-public removeTag(path: string): Promise<void>--><!--Device-XMPMetadata-public removeTag(path: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -216,6 +230,8 @@ Set a blob into the XMP metadata.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-XMPMetadata-public setBlob(buffer: ArrayBuffer): Promise<void>--><!--Device-XMPMetadata-public setBlob(buffer: ArrayBuffer): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -247,6 +263,8 @@ Set the XMP type and value of the XMP tag in the specified path.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-XMPMetadata-public setValue(path: string, type: XMPTagType, value?: string): Promise<void>--><!--Device-XMPMetadata-public setValue(path: string, type: XMPTagType, value?: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

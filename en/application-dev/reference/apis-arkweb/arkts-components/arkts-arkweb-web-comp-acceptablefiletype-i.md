@@ -8,6 +8,8 @@ Provides the file type information recommended by the file selector, including t
 
 **Since:** 23
 
+<!--Device-unnamed-declare interface AcceptableFileType--><!--Device-unnamed-declare interface AcceptableFileType-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## acceptableType
@@ -22,6 +24,8 @@ Array of acceptable file types.
 
 **Since:** 23
 
+<!--Device-AcceptableFileType-acceptableType: Array<string>--><!--Device-AcceptableFileType-acceptableType: Array<string>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## mimeType
@@ -35,5 +39,7 @@ MIME type of the file.
 **Type:** string
 
 **Since:** 23
+
+<!--Device-AcceptableFileType-mimeType: string--><!--Device-AcceptableFileType-mimeType: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

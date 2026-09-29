@@ -20,6 +20,8 @@ Checks whether the 24-hour clock is used.
 
 **Substitutes:** [is24HourClock](arkts-localization-i18n-system-c.md#is24hourclock)
 
+<!--Device-i18n-export function is24HourClock(): boolean--><!--Device-i18n-export function is24HourClock(): boolean-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Return value:**

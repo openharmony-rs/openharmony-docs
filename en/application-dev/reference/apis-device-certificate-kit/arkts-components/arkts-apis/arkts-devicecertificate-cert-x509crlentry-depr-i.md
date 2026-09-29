@@ -17,6 +17,8 @@ Provides APIs for operating on a revoked certificate entry in a CRL.
 
 **Substitutes:** [X509CRLEntry](arkts-devicecertificate-cert-x509crlentry-i.md)
 
+<!--Device-cert-interface X509CrlEntry--><!--Device-cert-interface X509CrlEntry-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -43,6 +45,8 @@ Obtains the issuer name of the revoked certificate.
 **Deprecated since:** 11
 
 **Substitutes:** getCertIssuer
+
+<!--Device-X509CrlEntry-getCertIssuer(): DataBlob--><!--Device-X509CrlEntry-getCertIssuer(): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -127,6 +131,8 @@ Obtains the serialized data of this revoked certificate entry. This API uses an 
 **Deprecated since:** 11
 
 **Substitutes:** getEncoded
+
+<!--Device-X509CrlEntry-getEncoded(callback: AsyncCallback<EncodingBlob>): void--><!--Device-X509CrlEntry-getEncoded(callback: AsyncCallback<EncodingBlob>): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -220,6 +226,8 @@ Obtains the serialized data of this revoked certificate entry. This API uses a p
 
 **Substitutes:** getEncoded
 
+<!--Device-X509CrlEntry-getEncoded(): Promise<EncodingBlob>--><!--Device-X509CrlEntry-getEncoded(): Promise<EncodingBlob>-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Return value:**
@@ -308,6 +316,8 @@ Obtains the certificate's revocation date.
 
 **Substitutes:** getRevocationDate
 
+<!--Device-X509CrlEntry-getRevocationDate(): string--><!--Device-X509CrlEntry-getRevocationDate(): string-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Return value:**
@@ -391,6 +401,8 @@ Obtains the serial number of this revoked certificate.
 **Deprecated since:** 11
 
 **Substitutes:** getSerialNumber
+
+<!--Device-X509CrlEntry-getSerialNumber(): number--><!--Device-X509CrlEntry-getSerialNumber(): number-End-->
 
 **System capability:** SystemCapability.Security.Cert
 

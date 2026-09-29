@@ -12,6 +12,8 @@ Repeat子组件构建器。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type RepeatItemBuilder<T> = (repeatItem: RepeatItem<T>) => void--><!--Device-unnamed-declare type RepeatItemBuilder<T> = (repeatItem: RepeatItem<T>) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

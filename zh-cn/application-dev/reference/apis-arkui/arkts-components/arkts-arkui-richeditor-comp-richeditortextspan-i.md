@@ -8,6 +8,8 @@ declare interface RichEditorTextSpan
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface RichEditorTextSpan--><!--Device-unnamed-declare interface RichEditorTextSpan-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## spanPosition
@@ -25,6 +27,8 @@ Span位置。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorTextSpan-spanPosition: RichEditorSpanPosition--><!--Device-RichEditorTextSpan-spanPosition: RichEditorSpanPosition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ textStyle?: RichEditorTextStyle
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorTextSpan-textStyle?: RichEditorTextStyle--><!--Device-RichEditorTextSpan-textStyle?: RichEditorTextStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -61,5 +67,7 @@ value: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorTextSpan-value: string--><!--Device-RichEditorTextSpan-value: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

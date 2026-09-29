@@ -4,6 +4,8 @@ The **Picker** module encapsulates APIs such as **DocumentViewPicker**, **AudioV
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace picker--><!--Device-unnamed-declare namespace picker-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## Modules to Import

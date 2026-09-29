@@ -8,6 +8,8 @@ declare interface LocalizedPosition
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface LocalizedPosition--><!--Device-unnamed-declare interface LocalizedPosition-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -26,6 +28,8 @@ LTR模式时x轴相对左边坐标，RTL模式x轴相对右边坐标。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LocalizedPosition-start?: LengthMetrics--><!--Device-LocalizedPosition-start?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -43,5 +47,7 @@ y轴坐标。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocalizedPosition-top?: LengthMetrics--><!--Device-LocalizedPosition-top?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

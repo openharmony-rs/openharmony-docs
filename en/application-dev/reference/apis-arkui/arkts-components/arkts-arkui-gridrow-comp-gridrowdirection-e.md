@@ -25,6 +25,8 @@ Grid element arrangement direction.
 
 **Since:** 9
 
+<!--Device-unnamed-declare enum GridRowDirection--><!--Device-unnamed-declare enum GridRowDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Row
@@ -41,6 +43,8 @@ Grid elements are arranged in the row direction. This is suitable for regular LT
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-GridRowDirection-Row--><!--Device-GridRowDirection-Row-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## RowReverse
@@ -56,5 +60,7 @@ Grid elements are arranged in the reverse row direction. This is suitable for RT
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridRowDirection-RowReverse--><!--Device-GridRowDirection-RowReverse-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

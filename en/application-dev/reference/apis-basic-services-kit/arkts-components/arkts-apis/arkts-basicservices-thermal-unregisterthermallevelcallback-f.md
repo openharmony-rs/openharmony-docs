@@ -16,6 +16,8 @@ Unregisters from the thermal level changes. This API uses an asynchronous callba
 
 **Since:** 9
 
+<!--Device-thermal-function unregisterThermalLevelCallback(callback?: Callback<void>): void--><!--Device-thermal-function unregisterThermalLevelCallback(callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.PowerManager.ThermalManager
 
 **Parameters:**

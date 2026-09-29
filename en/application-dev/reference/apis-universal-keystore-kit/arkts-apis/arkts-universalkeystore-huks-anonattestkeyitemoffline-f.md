@@ -28,6 +28,8 @@ Obtains an anonymous key certificate in offline mode. This API uses a promise to
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-huks-function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promise<HuksReturnResult>--><!--Device-huks-function anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]): Promise<HuksReturnResult>-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 **Parameters:**

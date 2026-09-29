@@ -12,11 +12,13 @@ Describes the picture-attached notification. This API is inherited from Notifica
 > 
 > - When a user taps a group notification to view the notification details, the display effect of this notification changes to the expanded state.
 > 
-> - The actual display effect depends on the device capabilities and the notification center UI style&lt;!--RP1--&gt;&lt;!--RP1End--&gt;.
+> - The actual display effect depends on the device capabilities and the notification center UI style<!--RP1--><!--RP1End-->.
 
 **Inheritance/Implementation:** NotificationPictureContent extends [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)
 
 **Since:** 7
+
+<!--Device-unnamed-export interface NotificationPictureContent extends NotificationBasicContent--><!--Device-unnamed-export interface NotificationPictureContent extends NotificationBasicContent-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -32,6 +34,8 @@ Notification summary content, which is a summary of the notification content and
 
 **Since:** 7
 
+<!--Device-NotificationPictureContent-briefText: string--><!--Device-NotificationPictureContent-briefText: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## expandedTitle
@@ -46,6 +50,8 @@ Title when the notification is expanded. It cannot be an empty string. The size 
 
 **Since:** 7
 
+<!--Device-NotificationPictureContent-expandedTitle: string--><!--Device-NotificationPictureContent-expandedTitle: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## picture
@@ -59,5 +65,7 @@ Right icon displayed after notification expansion. The total bytes of the image 
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
 **Since:** 7
+
+<!--Device-NotificationPictureContent-picture: image.PixelMap--><!--Device-NotificationPictureContent-picture: image.PixelMap-End-->
 
 **System capability:** SystemCapability.Notification.Notification

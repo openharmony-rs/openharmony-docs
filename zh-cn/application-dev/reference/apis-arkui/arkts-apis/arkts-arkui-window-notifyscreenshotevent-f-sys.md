@@ -16,6 +16,8 @@ function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>
 
 **起始版本：** 20
 
+<!--Device-window-function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>--><!--Device-window-function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。

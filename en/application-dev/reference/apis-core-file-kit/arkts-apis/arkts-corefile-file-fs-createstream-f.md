@@ -18,6 +18,8 @@ Creates a stream based on a file path. This API uses a promise to return the res
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-unnamed-declare function createStream(path: string, mode: string): Promise<Stream>--><!--Device-unnamed-declare function createStream(path: string, mode: string): Promise<Stream>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -79,6 +81,8 @@ Creates a stream based on a file path. This API uses an asynchronous callback to
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-unnamed-declare function createStream(path: string, mode: string, callback: AsyncCallback<Stream>): void--><!--Device-unnamed-declare function createStream(path: string, mode: string, callback: AsyncCallback<Stream>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

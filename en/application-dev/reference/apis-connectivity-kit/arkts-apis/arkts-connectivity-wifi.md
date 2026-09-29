@@ -4,6 +4,8 @@ Provides methods to operate or manage Wi-Fi. @namespace wifi
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace wifi--><!--Device-unnamed-declare namespace wifi-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## Modules to Import

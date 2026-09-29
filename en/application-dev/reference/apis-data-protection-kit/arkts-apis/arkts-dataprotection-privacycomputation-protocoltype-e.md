@@ -8,6 +8,8 @@ Enumerates the privacy protocol types. The protocol type determines the privacy-
 
 **Since:** 26.0.1
 
+<!--Device-privacyComputation-enum ProtocolType--><!--Device-privacyComputation-enum ProtocolType-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## PSI_PROTOCOL
@@ -24,6 +26,8 @@ Private Set Intersection (PSI) protocol. Used to check whether a target element 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-ProtocolType-PSI_PROTOCOL = 0--><!--Device-ProtocolType-PSI_PROTOCOL = 0-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## PIR_PROTOCOL
@@ -39,5 +43,7 @@ Private Information Retrieval (PIR) protocol. Used to retrieve the value associa
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-ProtocolType-PIR_PROTOCOL = 1--><!--Device-ProtocolType-PIR_PROTOCOL = 1-End-->
 
 **System capability:** SystemCapability.Security.Asset

@@ -6,9 +6,11 @@ declare class MenuAttribute extends CommonMethod<MenuAttribute>
 
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** MenuAttribute extends CommonMethod&lt;MenuAttribute&gt;
+**继承/实现关系：** MenuAttribute extends CommonMethod<MenuAttribute>
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare class MenuAttribute extends CommonMethod<MenuAttribute>--><!--Device-unnamed-declare class MenuAttribute extends CommonMethod<MenuAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ font(value: Font)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuAttribute-font(value: Font): MenuAttribute--><!--Device-MenuAttribute-font(value: Font): MenuAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +51,8 @@ fontColor(value: ResourceColor)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuAttribute-fontColor(value: ResourceColor): MenuAttribute--><!--Device-MenuAttribute-fontColor(value: ResourceColor): MenuAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ startMargin + endMargin超过组件宽度后startMargin和endMargin会被置0。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-MenuAttribute-menuItemDivider(options: DividerStyleOptions | undefined): MenuAttribute--><!--Device-MenuAttribute-menuItemDivider(options: DividerStyleOptions | undefined): MenuAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -93,6 +101,8 @@ menuItemGroupDivider(options: DividerStyleOptions | undefined)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuAttribute-menuItemGroupDivider(options: DividerStyleOptions | undefined): MenuAttribute--><!--Device-MenuAttribute-menuItemGroupDivider(options: DividerStyleOptions | undefined): MenuAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,6 +126,8 @@ radius(value: Dimension | BorderRadiuses)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-MenuAttribute-radius(value: Dimension | BorderRadiuses): MenuAttribute--><!--Device-MenuAttribute-radius(value: Dimension | BorderRadiuses): MenuAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -138,6 +150,8 @@ subMenuExpandingMode(mode: SubMenuExpandingMode)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-MenuAttribute-subMenuExpandingMode(mode: SubMenuExpandingMode): MenuAttribute--><!--Device-MenuAttribute-subMenuExpandingMode(mode: SubMenuExpandingMode): MenuAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -159,6 +173,8 @@ subMenuExpandSymbol(symbol: SymbolGlyphModifier)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuAttribute-subMenuExpandSymbol(symbol: SymbolGlyphModifier): MenuAttribute--><!--Device-MenuAttribute-subMenuExpandSymbol(symbol: SymbolGlyphModifier): MenuAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -187,6 +203,8 @@ fontSize(value: Length)
 **替代接口：** [font](#font)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-MenuAttribute-fontSize(value: Length): MenuAttribute--><!--Device-MenuAttribute-fontSize(value: Length): MenuAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -10,6 +10,8 @@ declare class WebAttribute extends CommonMethod<WebAttribute>
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class WebAttribute extends CommonMethod<WebAttribute>--><!--Device-unnamed-declare class WebAttribute extends CommonMethod<WebAttribute>-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## aiSessionOptions
@@ -23,6 +25,8 @@ aiSessionOptions(aiSessions: Array<AISessionEvent>)
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebAttribute-aiSessionOptions(aiSessions: Array<AISessionEvent>): WebAttribute--><!--Device-WebAttribute-aiSessionOptions(aiSessions: Array<AISessionEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -54,6 +58,8 @@ allowWindowOpenMethod(flag : boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-allowWindowOpenMethod(flag : boolean): WebAttribute--><!--Device-WebAttribute-allowWindowOpenMethod(flag : boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -71,6 +77,8 @@ backToTop(backToTop: boolean)
 设置Web组件是否启用点击状态栏网页回到顶部功能。当属性没有显式调用时，默认开启状态栏网页回到顶部功能。
 
 **起始版本：** 22
+
+<!--Device-WebAttribute-backToTop(backToTop: boolean): WebAttribute--><!--Device-WebAttribute-backToTop(backToTop: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -90,6 +98,8 @@ bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseT
 设置自定义选择菜单。
 
 **起始版本：** 13
+
+<!--Device-WebAttribute-bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseType: WebResponseType,      options?: SelectionMenuOptionsExt): WebAttribute--><!--Device-WebAttribute-bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseType: WebResponseType,      options?: SelectionMenuOptionsExt): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -122,6 +132,8 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
 
 **起始版本：** 22
 
+<!--Device-WebAttribute-blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig): WebAttribute--><!--Device-WebAttribute-blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -141,6 +153,8 @@ blockNetwork(block: boolean)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-blockNetwork(block: boolean): WebAttribute--><!--Device-WebAttribute-blockNetwork(block: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -162,6 +176,8 @@ blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode)
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode): WebAttribute--><!--Device-WebAttribute-blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -179,6 +195,8 @@ bypassVsyncCondition(condition: WebBypassVsyncCondition)
 当开发者调用scrollBy接口进行页面滚动时，可以通过bypassVsyncCondition接口设置渲染流程跳过vsync（垂直同步）调度，直接触发绘制。该属性没有显式调用时，默认不跳过vsync调度。
 
 **起始版本：** 20
+
+<!--Device-WebAttribute-bypassVsyncCondition(condition: WebBypassVsyncCondition): WebAttribute--><!--Device-WebAttribute-bypassVsyncCondition(condition: WebBypassVsyncCondition): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -199,6 +217,8 @@ cacheMode(cacheMode: CacheMode)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-cacheMode(cacheMode: CacheMode): WebAttribute--><!--Device-WebAttribute-cacheMode(cacheMode: CacheMode): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -225,6 +245,8 @@ copyOptions(value: CopyOptions)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-copyOptions(value: CopyOptions): WebAttribute--><!--Device-WebAttribute-copyOptions(value: CopyOptions): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -246,6 +268,8 @@ darkMode(mode: WebDarkMode)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-darkMode(mode: WebDarkMode): WebAttribute--><!--Device-WebAttribute-darkMode(mode: WebDarkMode): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -270,6 +294,8 @@ databaseAccess(databaseAccess: boolean)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-databaseAccess(databaseAccess: boolean): WebAttribute--><!--Device-WebAttribute-databaseAccess(databaseAccess: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -296,6 +322,8 @@ dataDetectorConfig(config: TextDataDetectorConfig)
 
 **起始版本：** 20
 
+<!--Device-WebAttribute-dataDetectorConfig(config: TextDataDetectorConfig): WebAttribute--><!--Device-WebAttribute-dataDetectorConfig(config: TextDataDetectorConfig): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -317,6 +345,8 @@ defaultFixedFontSize(size: number)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-defaultFixedFontSize(size: number): WebAttribute--><!--Device-WebAttribute-defaultFixedFontSize(size: number): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -340,6 +370,8 @@ defaultFontSize(size: number)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-defaultFontSize(size: number): WebAttribute--><!--Device-WebAttribute-defaultFontSize(size: number): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -360,6 +392,8 @@ defaultTextEncodingFormat(textEncodingFormat: string)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-defaultTextEncodingFormat(textEncodingFormat: string): WebAttribute--><!--Device-WebAttribute-defaultTextEncodingFormat(textEncodingFormat: string): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -379,6 +413,8 @@ domStorageAccess(domStorageAccess: boolean)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-domStorageAccess(domStorageAccess: boolean): WebAttribute--><!--Device-WebAttribute-domStorageAccess(domStorageAccess: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -417,13 +453,15 @@ editMenuOptions(editMenu: EditMenuOptions)
 
 **起始版本：** 12
 
+<!--Device-WebAttribute-editMenuOptions(editMenu: EditMenuOptions): WebAttribute--><!--Device-WebAttribute-editMenuOptions(editMenu: EditMenuOptions): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| editMenu | [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-editmenuoptions-i.md) | 是 | Web自定义文本菜单选项。<br>菜单项数量，及菜单的content大小、icon图标尺寸，与ArkUI [Menu](../../apis-arkui/arkts-components/arkts-arkui-menu-comp.md#menu)组件保持一致。<br>菜单中系统自带的id枚举值（[TextMenuItemId](../../apis-arkui/arkts-apis/arkts-arkui-textmenuitemid-c.md)）在Web中仅支持CUT、COPY、PASTE、SELECT_ALL、TRANSLATE、SEARCH、AI_WRITER七项。<br>onMenuItemClick函数中textRange参数在Web中无意义，传入值为-1。 |
+| editMenu | [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-editmenuoptions-i.md) | 是 | Web自定义文本菜单选项。<br>菜单项数量，及菜单的content大小、icon图标尺寸，与ArkUI [Menu](../../apis-arkui/arkts-components/arkts-arkui-menu-comp.md)组件保持一致。<br>菜单中系统自带的id枚举值（[TextMenuItemId](../../apis-arkui/arkts-apis/arkts-arkui-textmenuitemid-c.md)）在Web中仅支持CUT、COPY、PASTE、SELECT_ALL、TRANSLATE、SEARCH、AI_WRITER七项。<br>onMenuItemClick函数中textRange参数在Web中无意义，传入值为-1。 |
 
 ## enableAutoFill
 
@@ -442,6 +480,8 @@ enableAutoFill(value: boolean)
 <!--RP1End-->
 
 **起始版本：** 23
+
+<!--Device-WebAttribute-enableAutoFill(value: boolean): WebAttribute--><!--Device-WebAttribute-enableAutoFill(value: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -476,6 +516,8 @@ AI菜单生效时，需在选中范围内，包括一个完整的AI实体，才�
 
 **起始版本：** 20
 
+<!--Device-WebAttribute-enableDataDetector(enable: boolean): WebAttribute--><!--Device-WebAttribute-enableDataDetector(enable: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -502,6 +544,8 @@ enableDefaultContextMenu(enable: boolean)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WebAttribute-enableDefaultContextMenu(enable: boolean): WebAttribute--><!--Device-WebAttribute-enableDefaultContextMenu(enable: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -521,6 +565,8 @@ enableDrag(value: boolean)
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebAttribute-enableDrag(value: boolean): WebAttribute--><!--Device-WebAttribute-enableDrag(value: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -543,6 +589,8 @@ enableFollowSystemFontWeight(follow: boolean)
 > 目前该能力只支持前端文本元素跟随变化，暂不支持canvas元素、内嵌docx和pdf格式中的文本跟随变化。
 
 **起始版本：** 18
+
+<!--Device-WebAttribute-enableFollowSystemFontWeight(follow: boolean): WebAttribute--><!--Device-WebAttribute-enableFollowSystemFontWeight(follow: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -570,6 +618,8 @@ enableFullscreenVideoOverlay(enabled: boolean)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WebAttribute-enableFullscreenVideoOverlay(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableFullscreenVideoOverlay(enabled: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -587,6 +637,8 @@ enableHapticFeedback(enabled: boolean)
 设置Web组件长按文本选择是否开启振动。需配置"ohos.permission.VIBRATE"。该属性没有显式调用时，默认开启振动。
 
 **起始版本：** 13
+
+<!--Device-WebAttribute-enableHapticFeedback(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableHapticFeedback(enabled: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -614,6 +666,8 @@ enableImageAnalyzer(enable: boolean)
 
 **起始版本：** 23
 
+<!--Device-WebAttribute-enableImageAnalyzer(enable: boolean): WebAttribute--><!--Device-WebAttribute-enableImageAnalyzer(enable: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -637,6 +691,8 @@ enableMediaNetworkProxy(enabled: boolean)
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebAttribute-enableMediaNetworkProxy(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableMediaNetworkProxy(enabled: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -663,6 +719,8 @@ enableNativeEmbedMode(enabled: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-enableNativeEmbedMode(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableNativeEmbedMode(enabled: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -683,6 +741,8 @@ enableNativeMediaPlayer(config: NativeMediaPlayerConfig)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-enableNativeMediaPlayer(config: NativeMediaPlayerConfig): WebAttribute--><!--Device-WebAttribute-enableNativeMediaPlayer(config: NativeMediaPlayerConfig): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -702,6 +762,8 @@ enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType)
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebAttribute-enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType): WebAttribute--><!--Device-WebAttribute-enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -728,6 +790,8 @@ AI菜单生效时，需在选中范围内，包括一个完整的AI实体，才�
 
 **起始版本：** 22
 
+<!--Device-WebAttribute-enableSelectedDataDetector(enable: boolean): WebAttribute--><!--Device-WebAttribute-enableSelectedDataDetector(enable: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -745,6 +809,8 @@ enableWebAVSession(enabled: boolean)
 设置是否支持应用对接到播控中心。当属性没有显式设置时，默认支持应用对接到播控中心。
 
 **起始版本：** 18
+
+<!--Device-WebAttribute-enableWebAVSession(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableWebAVSession(enabled: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -766,6 +832,8 @@ fileAccess(fileAccess: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-fileAccess(fileAccess: boolean): WebAttribute--><!--Device-WebAttribute-fileAccess(fileAccess: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -785,6 +853,8 @@ forceDarkAccess(access: boolean)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-forceDarkAccess(access: boolean): WebAttribute--><!--Device-WebAttribute-forceDarkAccess(access: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -814,6 +884,8 @@ forceDisplayScrollBar(enabled: boolean)
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-forceDisplayScrollBar(enabled: boolean): WebAttribute--><!--Device-WebAttribute-forceDisplayScrollBar(enabled: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -831,6 +903,8 @@ forceEnableZoom(enable: boolean)
 设置Web组件是否启用强制缩放功能。
 
 **起始版本：** 21
+
+<!--Device-WebAttribute-forceEnableZoom(enable: boolean): WebAttribute--><!--Device-WebAttribute-forceEnableZoom(enable: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -852,6 +926,8 @@ geolocationAccess(geolocationAccess: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-geolocationAccess(geolocationAccess: boolean): WebAttribute--><!--Device-WebAttribute-geolocationAccess(geolocationAccess: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -869,6 +945,8 @@ gestureFocusMode(mode: GestureFocusMode)
 设置Web组件手势获焦模式，用于控制Web组件的焦点响应行为。该属性没有显式调用时，默认表示手势按下时，任何手势均会使Web组件获焦。
 
 **起始版本：** 20
+
+<!--Device-WebAttribute-gestureFocusMode(mode: GestureFocusMode): WebAttribute--><!--Device-WebAttribute-gestureFocusMode(mode: GestureFocusMode): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -896,6 +974,8 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-horizontalScrollBarAccess(horizontalScrollBar: boolean): WebAttribute--><!--Device-WebAttribute-horizontalScrollBarAccess(horizontalScrollBar: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -915,6 +995,8 @@ imageAccess(imageAccess: boolean)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-imageAccess(imageAccess: boolean): WebAttribute--><!--Device-WebAttribute-imageAccess(imageAccess: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -936,6 +1018,8 @@ initialScale(percent: number)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-initialScale(percent: number): WebAttribute--><!--Device-WebAttribute-initialScale(percent: number): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -955,6 +1039,8 @@ javaScriptAccess(javaScriptAccess: boolean)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-javaScriptAccess(javaScriptAccess: boolean): WebAttribute--><!--Device-WebAttribute-javaScriptAccess(javaScriptAccess: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -988,6 +1074,8 @@ javaScriptOnDocumentEnd(scripts: Array<ScriptItem>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-javaScriptOnDocumentEnd(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-javaScriptOnDocumentEnd(scripts: Array<ScriptItem>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1019,6 +1107,8 @@ javaScriptOnDocumentStart(scripts: Array<ScriptItem>)
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-javaScriptOnDocumentStart(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-javaScriptOnDocumentStart(scripts: Array<ScriptItem>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1054,6 +1144,8 @@ javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-javaScriptProxy(javaScriptProxy: JavaScriptProxy): WebAttribute--><!--Device-WebAttribute-javaScriptProxy(javaScriptProxy: JavaScriptProxy): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1073,6 +1165,8 @@ keyboardAppearance(mode: WebKeyboardAppearanceMode)
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebAttribute-keyboardAppearance(mode: WebKeyboardAppearanceMode): WebAttribute--><!--Device-WebAttribute-keyboardAppearance(mode: WebKeyboardAppearanceMode): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1095,6 +1189,8 @@ Web组件自定义软件键盘避让模式。
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-keyboardAvoidMode(mode: WebKeyboardAvoidMode): WebAttribute--><!--Device-WebAttribute-keyboardAvoidMode(mode: WebKeyboardAvoidMode): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1146,6 +1242,8 @@ layoutMode(mode: WebLayoutMode)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-layoutMode(mode: WebLayoutMode): WebAttribute--><!--Device-WebAttribute-layoutMode(mode: WebLayoutMode): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1176,6 +1274,8 @@ mediaOptions(options: WebMediaOptions)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-mediaOptions(options: WebMediaOptions): WebAttribute--><!--Device-WebAttribute-mediaOptions(options: WebMediaOptions): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1195,6 +1295,8 @@ mediaPlayGestureAccess(access: boolean)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-mediaPlayGestureAccess(access: boolean): WebAttribute--><!--Device-WebAttribute-mediaPlayGestureAccess(access: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1220,6 +1322,8 @@ metaViewport(enabled: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-metaViewport(enabled: boolean): WebAttribute--><!--Device-WebAttribute-metaViewport(enabled: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1241,6 +1345,8 @@ minFontSize(size: number)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-minFontSize(size: number): WebAttribute--><!--Device-WebAttribute-minFontSize(size: number): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1269,6 +1375,8 @@ minLogicalFontSize(size: number)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-minLogicalFontSize(size: number): WebAttribute--><!--Device-WebAttribute-minLogicalFontSize(size: number): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1288,6 +1396,8 @@ mixedMode(mixedMode: MixedMode)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-mixedMode(mixedMode: MixedMode): WebAttribute--><!--Device-WebAttribute-mixedMode(mixedMode: MixedMode): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1311,6 +1421,8 @@ multiWindowAccess(multiWindow: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-multiWindowAccess(multiWindow: boolean): WebAttribute--><!--Device-WebAttribute-multiWindowAccess(multiWindow: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1328,6 +1440,8 @@ nativeEmbedOptions(options?: EmbedOptions)
 设置同层渲染相关配置，该属性仅在[enableNativeEmbedMode](#enablenativeembedmode)开启时生效，不支持动态修改。当属性没有显式调用时，默认为`{supportDefaultIntrinsicSize: false}`。
 
 **起始版本：** 16
+
+<!--Device-WebAttribute-nativeEmbedOptions(options?: EmbedOptions): WebAttribute--><!--Device-WebAttribute-nativeEmbedOptions(options?: EmbedOptions): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1349,7 +1463,7 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 > 
 > - 可以设置上下左右四个方向，或者设置向前、向后两个方向的嵌套滚动模式，实现与父组件的滚动联动。
 > 
-> - 支持嵌套滚动的容器：[Grid](../../apis-arkui/arkts-components/arkts-arkui-grid-comp.md#grid)、[List](../../apis-arkui/arkts-components/arkts-arkui-list-comp.md#list)、[Scroll](../../apis-arkui/arkts-components/arkts-arkui-scroll-comp.md#scroll)、[Swiper](../../apis-arkui/arkts-components/arkts-arkui-swiper-comp.md#swiper)、[Tabs](../../apis-arkui/arkts-components/arkts-arkui-tabs-comp.md#tabs)、[WaterFlow](../../apis-arkui/arkts-components/arkts-arkui-waterflow-comp.md#water_flow)、[Refresh](../../apis-arkui/arkts-components/arkts-arkui-refresh-comp.md#refresh)、[bindSheet](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindsheet)。
+> - 支持嵌套滚动的容器：[Grid](../../apis-arkui/arkts-components/arkts-arkui-grid-comp.md)、[List](../../apis-arkui/arkts-components/arkts-arkui-list-comp.md)、[Scroll](../../apis-arkui/arkts-components/arkts-arkui-scroll-comp.md)、[Swiper](../../apis-arkui/arkts-components/arkts-arkui-swiper-comp.md)、[Tabs](../../apis-arkui/arkts-components/arkts-arkui-tabs-comp.md)、[WaterFlow](../../apis-arkui/arkts-components/arkts-arkui-waterflow-comp.md)、[Refresh](../../apis-arkui/arkts-components/arkts-arkui-refresh-comp.md)、[bindSheet](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindsheet)。
 > 
 > - 支持嵌套滚动的输入事件：使用手势、鼠标、触控板。
 > 
@@ -1358,6 +1472,8 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt): WebAttribute--><!--Device-WebAttribute-nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1383,6 +1499,8 @@ Web页面触发window.open(url, name)时，会根据name查找是否存在已绑
 
 **起始版本：** 20
 
+<!--Device-WebAttribute-onActivateContent(callback: Callback<void>): WebAttribute--><!--Device-WebAttribute-onActivateContent(callback: Callback<void>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1402,6 +1520,8 @@ onAdsBlocked(callback: OnAdsBlockedCallback)
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onAdsBlocked(callback: OnAdsBlockedCallback): WebAttribute--><!--Device-WebAttribute-onAdsBlocked(callback: OnAdsBlockedCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1423,6 +1543,8 @@ onAlert(callback: Callback<OnAlertEvent, boolean>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onAlert(callback: Callback<OnAlertEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onAlert(callback: Callback<OnAlertEvent, boolean>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1442,6 +1564,8 @@ onAudioStateChanged(callback: Callback<OnAudioStateChangedEvent>)
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onAudioStateChanged(callback: Callback<OnAudioStateChangedEvent>): WebAttribute--><!--Device-WebAttribute-onAudioStateChanged(callback: Callback<OnAudioStateChangedEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1466,6 +1590,8 @@ onBeforeUnload(callback: Callback<OnBeforeUnloadEvent, boolean>)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onBeforeUnload(callback: Callback<OnBeforeUnloadEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onBeforeUnload(callback: Callback<OnBeforeUnloadEvent, boolean>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1495,6 +1621,8 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
 
 **起始版本：** 23
 
+<!--Device-WebAttribute-onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback): WebAttribute--><!--Device-WebAttribute-onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1523,6 +1651,8 @@ onClientAuthenticationRequest(callback: Callback<OnClientAuthenticationEvent>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onClientAuthenticationRequest(callback: Callback<OnClientAuthenticationEvent>): WebAttribute--><!--Device-WebAttribute-onClientAuthenticationRequest(callback: Callback<OnClientAuthenticationEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1542,6 +1672,8 @@ onConfirm(callback: Callback<OnConfirmEvent, boolean>)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onConfirm(callback: Callback<OnConfirmEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onConfirm(callback: Callback<OnConfirmEvent, boolean>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1563,6 +1695,8 @@ onConsole(callback: Callback<OnConsoleEvent, boolean>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onConsole(callback: Callback<OnConsoleEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onConsole(callback: Callback<OnConsoleEvent, boolean>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1583,6 +1717,8 @@ onContextMenuHide(callback: OnContextMenuHideCallback)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onContextMenuHide(callback: OnContextMenuHideCallback): WebAttribute--><!--Device-WebAttribute-onContextMenuHide(callback: OnContextMenuHideCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1602,6 +1738,8 @@ onContextMenuShow(callback: Callback<OnContextMenuShowEvent, boolean>)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onContextMenuShow(callback: Callback<OnContextMenuShowEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onContextMenuShow(callback: Callback<OnContextMenuShowEvent, boolean>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1627,6 +1765,8 @@ onControllerAttached(callback: () => void)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onControllerAttached(callback: () => void): WebAttribute--><!--Device-WebAttribute-onControllerAttached(callback: () => void): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1646,6 +1786,8 @@ onDataResubmitted(callback: Callback<OnDataResubmittedEvent>)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onDataResubmitted(callback: Callback<OnDataResubmittedEvent>): WebAttribute--><!--Device-WebAttribute-onDataResubmitted(callback: Callback<OnDataResubmittedEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1669,6 +1811,8 @@ Web组件检测到白屏时触发此回调。
 
 **起始版本：** 22
 
+<!--Device-WebAttribute-onDetectedBlankScreen(callback: OnDetectBlankScreenCallback): WebAttribute--><!--Device-WebAttribute-onDetectedBlankScreen(callback: OnDetectBlankScreenCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1688,6 +1832,8 @@ onDownloadStart(callback: Callback<OnDownloadStartEvent>)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onDownloadStart(callback: Callback<OnDownloadStartEvent>): WebAttribute--><!--Device-WebAttribute-onDownloadStart(callback: Callback<OnDownloadStartEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1709,6 +1855,8 @@ onErrorReceive(callback: Callback<OnErrorReceiveEvent>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onErrorReceive(callback: Callback<OnErrorReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onErrorReceive(callback: Callback<OnErrorReceiveEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1728,6 +1876,8 @@ onFaviconReceived(callback: Callback<OnFaviconReceivedEvent>)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onFaviconReceived(callback: Callback<OnFaviconReceivedEvent>): WebAttribute--><!--Device-WebAttribute-onFaviconReceived(callback: Callback<OnFaviconReceivedEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1749,6 +1899,8 @@ onFirstContentfulPaint(callback: Callback<OnFirstContentfulPaintEvent>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onFirstContentfulPaint(callback: Callback<OnFirstContentfulPaintEvent>): WebAttribute--><!--Device-WebAttribute-onFirstContentfulPaint(callback: Callback<OnFirstContentfulPaintEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1768,6 +1920,8 @@ onFirstMeaningfulPaint(callback: OnFirstMeaningfulPaintCallback)
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onFirstMeaningfulPaint(callback: OnFirstMeaningfulPaintCallback): WebAttribute--><!--Device-WebAttribute-onFirstMeaningfulPaint(callback: OnFirstMeaningfulPaintCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1797,6 +1951,8 @@ onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
 
 **起始版本：** 23
 
+<!--Device-WebAttribute-onFirstScreenPaint(callback: OnFirstScreenPaintCallback): WebAttribute--><!--Device-WebAttribute-onFirstScreenPaint(callback: OnFirstScreenPaintCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1816,6 +1972,8 @@ onFullScreenEnter(callback: OnFullScreenEnterCallback)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onFullScreenEnter(callback: OnFullScreenEnterCallback): WebAttribute--><!--Device-WebAttribute-onFullScreenEnter(callback: OnFullScreenEnterCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1837,6 +1995,8 @@ onFullScreenExit(callback: () => void)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onFullScreenExit(callback: () => void): WebAttribute--><!--Device-WebAttribute-onFullScreenExit(callback: () => void): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1856,6 +2016,8 @@ onGeolocationHide(callback: () => void)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onGeolocationHide(callback: () => void): WebAttribute--><!--Device-WebAttribute-onGeolocationHide(callback: () => void): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1877,6 +2039,8 @@ onGeolocationShow(callback: Callback<OnGeolocationShowEvent>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onGeolocationShow(callback: Callback<OnGeolocationShowEvent>): WebAttribute--><!--Device-WebAttribute-onGeolocationShow(callback: Callback<OnGeolocationShowEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1896,6 +2060,8 @@ onHttpAuthRequest(callback: Callback<OnHttpAuthRequestEvent, boolean>)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onHttpAuthRequest(callback: Callback<OnHttpAuthRequestEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onHttpAuthRequest(callback: Callback<OnHttpAuthRequestEvent, boolean>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1917,6 +2083,8 @@ onHttpErrorReceive(callback: Callback<OnHttpErrorReceiveEvent>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onHttpErrorReceive(callback: Callback<OnHttpErrorReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onHttpErrorReceive(callback: Callback<OnHttpErrorReceiveEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1936,6 +2104,8 @@ onInputmethodAttached(callback: OnInputmethodAttachedCallback)
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebAttribute-onInputmethodAttached(callback: OnInputmethodAttachedCallback): WebAttribute--><!--Device-WebAttribute-onInputmethodAttached(callback: OnInputmethodAttachedCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1961,6 +2131,8 @@ onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionC
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback): WebAttribute--><!--Device-WebAttribute-onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -1980,6 +2152,8 @@ onInterceptKeyboardAttach(callback: WebKeyboardCallback)
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onInterceptKeyboardAttach(callback: WebKeyboardCallback): WebAttribute--><!--Device-WebAttribute-onInterceptKeyboardAttach(callback: WebKeyboardCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2001,6 +2175,8 @@ onInterceptKeyEvent(callback: (event: KeyEvent) => boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onInterceptKeyEvent(callback: (event: KeyEvent) => boolean): WebAttribute--><!--Device-WebAttribute-onInterceptKeyEvent(callback: (event: KeyEvent) => boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2021,13 +2197,15 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>): WebAttribute--><!--Device-WebAttribute-onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnInterceptRequestEvent](arkts-arkweb-web-comp-oninterceptrequestevent-i.md), [WebResourceResponse](arkts-arkweb-web-comp-webresourceresponse-c.md)&gt; | 是 | 当Web组件加载url之前触发此回调。<br>返回值[WebResourceResponse](arkts-arkweb-web-comp.md#webweb控制器)。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。<br>**适用版本：** 12 |
+| callback | Callback&lt;[OnInterceptRequestEvent](arkts-arkweb-web-comp-oninterceptrequestevent-i.md), [WebResourceResponse](arkts-arkweb-web-comp-webresourceresponse-c.md)&gt; | 是 | 当Web组件加载url之前触发此回调。<br>返回值[WebResourceResponse](arkts-arkweb-web-comp.md)。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。<br>**适用版本：** 12 |
 
 ## onLargestContentfulPaint
 
@@ -2040,6 +2218,8 @@ onLargestContentfulPaint(callback: OnLargestContentfulPaintCallback)
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onLargestContentfulPaint(callback: OnLargestContentfulPaintCallback): WebAttribute--><!--Device-WebAttribute-onLargestContentfulPaint(callback: OnLargestContentfulPaintCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2060,6 +2240,8 @@ onlineImageAccess(onlineImageAccess: boolean)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onlineImageAccess(onlineImageAccess: boolean): WebAttribute--><!--Device-WebAttribute-onlineImageAccess(onlineImageAccess: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2087,6 +2269,8 @@ onLoadFinished(callback: Callback<OnLoadFinishedEvent>)
 
 **起始版本：** 20
 
+<!--Device-WebAttribute-onLoadFinished(callback: Callback<OnLoadFinishedEvent>): WebAttribute--><!--Device-WebAttribute-onLoadFinished(callback: Callback<OnLoadFinishedEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2111,6 +2295,8 @@ onLoadIntercept(callback: Callback<OnLoadInterceptEvent, boolean>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onLoadIntercept(callback: Callback<OnLoadInterceptEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onLoadIntercept(callback: Callback<OnLoadInterceptEvent, boolean>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2132,6 +2318,8 @@ onLoadStarted(callback: Callback<OnLoadStartedEvent>)
 > - 当弹出窗口的文档在加载之前被JavaScript修改时，它将模拟触发onLoadStarted，并将URL设置为空，因为显示当前正在加载的URL可能不安全。onPageBegin将不会被模拟。
 
 **起始版本：** 20
+
+<!--Device-WebAttribute-onLoadStarted(callback: Callback<OnLoadStartedEvent>): WebAttribute--><!--Device-WebAttribute-onLoadStarted(callback: Callback<OnLoadStartedEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2167,6 +2355,8 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 
 **起始版本：** 23
 
+<!--Device-WebAttribute-onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback): WebAttribute--><!--Device-WebAttribute-onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2186,6 +2376,8 @@ onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void): WebAttribute--><!--Device-WebAttribute-onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2215,6 +2407,8 @@ onNativeEmbedVisibilityChange监控视口内的可见性变化（Visible/Hidden�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void): WebAttribute--><!--Device-WebAttribute-onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2236,6 +2430,8 @@ onNativeEmbedMouseEvent(callback: MouseInfoCallback)
 
 **起始版本：** 20
 
+<!--Device-WebAttribute-onNativeEmbedMouseEvent(callback: MouseInfoCallback): WebAttribute--><!--Device-WebAttribute-onNativeEmbedMouseEvent(callback: MouseInfoCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2254,6 +2450,8 @@ onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
 
 **起始版本：** 21
 
+<!--Device-WebAttribute-onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback): WebAttribute--><!--Device-WebAttribute-onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2271,6 +2469,8 @@ onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 当网页中同层标签（例如&lt;embed\&gt;标签或&lt;object\&gt;标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](#nativeembedoptions)，并将[EmbedOptions](arkts-arkweb-web-comp-embedoptions-i.md)中的supportCssDisplayChange参数设为true。
 
 **起始版本：** 12
+
+<!--Device-WebAttribute-onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback): WebAttribute--><!--Device-WebAttribute-onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2291,6 +2491,8 @@ onNavigationEntryCommitted(callback: OnNavigationEntryCommittedCallback)
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onNavigationEntryCommitted(callback: OnNavigationEntryCommittedCallback): WebAttribute--><!--Device-WebAttribute-onNavigationEntryCommitted(callback: OnNavigationEntryCommittedCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2317,6 +2519,8 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 > - 通过[errorPageEvent.error.getErrorCode()](arkts-arkweb-web-comp-webresourceerror-c.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
 
 **起始版本：** 20
+
+<!--Device-WebAttribute-onOverrideErrorPage(callback: OnOverrideErrorPageCallback): WebAttribute--><!--Device-WebAttribute-onOverrideErrorPage(callback: OnOverrideErrorPageCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2346,6 +2550,8 @@ onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback): WebAttribute--><!--Device-WebAttribute-onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2365,6 +2571,8 @@ onOverScroll(callback: Callback<OnOverScrollEvent>)
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onOverScroll(callback: Callback<OnOverScrollEvent>): WebAttribute--><!--Device-WebAttribute-onOverScroll(callback: Callback<OnOverScrollEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2386,6 +2594,8 @@ onPageBegin(callback: Callback<OnPageBeginEvent>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onPageBegin(callback: Callback<OnPageBeginEvent>): WebAttribute--><!--Device-WebAttribute-onPageBegin(callback: Callback<OnPageBeginEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2405,6 +2615,8 @@ onPageEnd(callback: Callback<OnPageEndEvent>)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onPageEnd(callback: Callback<OnPageEndEvent>): WebAttribute--><!--Device-WebAttribute-onPageEnd(callback: Callback<OnPageEndEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2426,6 +2638,8 @@ onPageVisible(callback: Callback<OnPageVisibleEvent>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onPageVisible(callback: Callback<OnPageVisibleEvent>): WebAttribute--><!--Device-WebAttribute-onPageVisible(callback: Callback<OnPageVisibleEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2444,6 +2658,8 @@ onPdfLoadEvent(callback: Callback<OnPdfLoadEvent>)
 
 **起始版本：** 20
 
+<!--Device-WebAttribute-onPdfLoadEvent(callback: Callback<OnPdfLoadEvent>): WebAttribute--><!--Device-WebAttribute-onPdfLoadEvent(callback: Callback<OnPdfLoadEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2461,6 +2677,8 @@ onPdfScrollAtBottom(callback: Callback<OnPdfScrollEvent>)
 通知用户PDF页面已滚动到底。
 
 **起始版本：** 20
+
+<!--Device-WebAttribute-onPdfScrollAtBottom(callback: Callback<OnPdfScrollEvent>): WebAttribute--><!--Device-WebAttribute-onPdfScrollAtBottom(callback: Callback<OnPdfScrollEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2482,6 +2700,8 @@ onPermissionRequest(callback: Callback<OnPermissionRequestEvent>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onPermissionRequest(callback: Callback<OnPermissionRequestEvent>): WebAttribute--><!--Device-WebAttribute-onPermissionRequest(callback: Callback<OnPermissionRequestEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2501,6 +2721,8 @@ onProgressChange(callback: Callback<OnProgressChangeEvent>)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onProgressChange(callback: Callback<OnProgressChangeEvent>): WebAttribute--><!--Device-WebAttribute-onProgressChange(callback: Callback<OnProgressChangeEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2522,6 +2744,8 @@ onPrompt(callback: Callback<OnPromptEvent, boolean>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onPrompt(callback: Callback<OnPromptEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onPrompt(callback: Callback<OnPromptEvent, boolean>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2541,6 +2765,8 @@ onRefreshAccessedHistory(callback: Callback<OnRefreshAccessedHistoryEvent>)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onRefreshAccessedHistory(callback: Callback<OnRefreshAccessedHistoryEvent>): WebAttribute--><!--Device-WebAttribute-onRefreshAccessedHistory(callback: Callback<OnRefreshAccessedHistoryEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2567,6 +2793,8 @@ onRenderExited(callback: Callback<OnRenderExitedEvent>)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onRenderExited(callback: Callback<OnRenderExitedEvent>): WebAttribute--><!--Device-WebAttribute-onRenderExited(callback: Callback<OnRenderExitedEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2598,6 +2826,8 @@ onRenderExited(callback: (event?: { detail: object }) => boolean)
 
 **替代接口：** [onRenderExited](#onrenderexited)
 
+<!--Device-WebAttribute-onRenderExited(callback: (event?: { detail: object }) => boolean): WebAttribute--><!--Device-WebAttribute-onRenderExited(callback: (event?: { detail: object }) => boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2620,6 +2850,8 @@ onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback)
 
 **起始版本：** 12
 
+<!--Device-WebAttribute-onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback): WebAttribute--><!--Device-WebAttribute-onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2637,6 +2869,8 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 渲染进程由无响应状态变回正常运行状态时触发该回调函数，该回调表明该网页并非真正卡死。
 
 **起始版本：** 12
+
+<!--Device-WebAttribute-onRenderProcessResponding(callback: OnRenderProcessRespondingCallback): WebAttribute--><!--Device-WebAttribute-onRenderProcessResponding(callback: OnRenderProcessRespondingCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2658,6 +2892,8 @@ onRequestSelected(callback: () => void)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onRequestSelected(callback: () => void): WebAttribute--><!--Device-WebAttribute-onRequestSelected(callback: () => void): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2677,6 +2913,8 @@ onResourceLoad(callback: Callback<OnResourceLoadEvent>)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onResourceLoad(callback: Callback<OnResourceLoadEvent>): WebAttribute--><!--Device-WebAttribute-onResourceLoad(callback: Callback<OnResourceLoadEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2701,6 +2939,8 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 > - 开启未成年模式，设置网页内容拦截，触发回调。
 
 **起始版本：** 21
+
+<!--Device-WebAttribute-onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback): WebAttribute--><!--Device-WebAttribute-onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2728,6 +2968,8 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback): WebAttribute--><!--Device-WebAttribute-onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2748,6 +2990,8 @@ onScaleChange(callback: Callback<OnScaleChangeEvent>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onScaleChange(callback: Callback<OnScaleChangeEvent>): WebAttribute--><!--Device-WebAttribute-onScaleChange(callback: Callback<OnScaleChangeEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2767,6 +3011,8 @@ onScreenCaptureRequest(callback: Callback<OnScreenCaptureRequestEvent>)
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onScreenCaptureRequest(callback: Callback<OnScreenCaptureRequestEvent>): WebAttribute--><!--Device-WebAttribute-onScreenCaptureRequest(callback: Callback<OnScreenCaptureRequestEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2796,6 +3042,8 @@ onScroll(callback: Callback<OnScrollEvent>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onScroll(callback: Callback<OnScrollEvent>): WebAttribute--><!--Device-WebAttribute-onScroll(callback: Callback<OnScrollEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2816,6 +3064,8 @@ onSearchResultReceive(callback: Callback<OnSearchResultReceiveEvent>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onSearchResultReceive(callback: Callback<OnSearchResultReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onSearchResultReceive(callback: Callback<OnSearchResultReceiveEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2835,6 +3085,8 @@ onShowFileSelector(callback: Callback<OnShowFileSelectorEvent, boolean>)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onShowFileSelector(callback: Callback<OnShowFileSelectorEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onShowFileSelector(callback: Callback<OnShowFileSelectorEvent, boolean>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2861,6 +3113,8 @@ onSslErrorEvent(callback: OnSslErrorEventCallback)
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onSslErrorEvent(callback: OnSslErrorEventCallback): WebAttribute--><!--Device-WebAttribute-onSslErrorEvent(callback: OnSslErrorEventCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2894,6 +3148,8 @@ onSslErrorEventReceive(callback: Callback<OnSslErrorEventReceiveEvent>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onSslErrorEventReceive(callback: Callback<OnSslErrorEventReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onSslErrorEventReceive(callback: Callback<OnSslErrorEventReceiveEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2920,6 +3176,8 @@ onTextSelectionChange(callback: TextSelectionChangeCallback)
 
 **起始版本：** 23
 
+<!--Device-WebAttribute-onTextSelectionChange(callback: TextSelectionChangeCallback): WebAttribute--><!--Device-WebAttribute-onTextSelectionChange(callback: TextSelectionChangeCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2939,6 +3197,8 @@ onTitleReceive(callback: Callback<OnTitleReceiveEvent>)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onTitleReceive(callback: Callback<OnTitleReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onTitleReceive(callback: Callback<OnTitleReceiveEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2960,6 +3220,8 @@ onTouchIconUrlReceived(callback: Callback<OnTouchIconUrlReceivedEvent>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onTouchIconUrlReceived(callback: Callback<OnTouchIconUrlReceivedEvent>): WebAttribute--><!--Device-WebAttribute-onTouchIconUrlReceived(callback: Callback<OnTouchIconUrlReceivedEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -2977,6 +3239,8 @@ onVerifyPin(callback: OnVerifyPinCallback)
 通知用户进行PIN码认证。使用callback异步回调。
 
 **起始版本：** 22
+
+<!--Device-WebAttribute-onVerifyPin(callback: OnVerifyPinCallback): WebAttribute--><!--Device-WebAttribute-onVerifyPin(callback: OnVerifyPinCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2998,6 +3262,8 @@ onViewportFitChanged(callback: OnViewportFitChangedCallback)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onViewportFitChanged(callback: OnViewportFitChangedCallback): WebAttribute--><!--Device-WebAttribute-onViewportFitChanged(callback: OnViewportFitChangedCallback): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3017,6 +3283,8 @@ onWindowExit(callback: () => void)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onWindowExit(callback: () => void): WebAttribute--><!--Device-WebAttribute-onWindowExit(callback: () => void): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3045,6 +3313,8 @@ onWindowNew(callback: Callback<OnWindowNewEvent>)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-onWindowNew(callback: Callback<OnWindowNewEvent>): WebAttribute--><!--Device-WebAttribute-onWindowNew(callback: Callback<OnWindowNewEvent>): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3076,6 +3346,8 @@ onWindowNewExt(callback: Callback<OnWindowNewExtEvent>)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-onWindowNewExt(callback: Callback<OnWindowNewExtEvent>): WebAttribute--><!--Device-WebAttribute-onWindowNewExt(callback: Callback<OnWindowNewExtEvent>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3095,6 +3367,8 @@ onZoomChange(callback: OnZoomChangeCallback)
 **起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebAttribute-onZoomChange(callback: OnZoomChangeCallback): WebAttribute--><!--Device-WebAttribute-onZoomChange(callback: OnZoomChangeCallback): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3120,6 +3394,8 @@ ArkWeb内核在解析HTML文档结构时采取分段解析策略，旨在避免�
 
 **起始版本：** 15
 
+<!--Device-WebAttribute-optimizeParserBudget(optimizeParserBudget: boolean): WebAttribute--><!--Device-WebAttribute-optimizeParserBudget(optimizeParserBudget: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3139,6 +3415,8 @@ overScrollMode(mode: OverScrollMode)
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-overScrollMode(mode: OverScrollMode): WebAttribute--><!--Device-WebAttribute-overScrollMode(mode: OverScrollMode): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3160,6 +3438,8 @@ overviewModeAccess(overviewModeAccess: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-overviewModeAccess(overviewModeAccess: boolean): WebAttribute--><!--Device-WebAttribute-overviewModeAccess(overviewModeAccess: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3179,6 +3459,8 @@ pinchSmooth(isEnabled: boolean)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-pinchSmooth(isEnabled: boolean): WebAttribute--><!--Device-WebAttribute-pinchSmooth(isEnabled: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3206,6 +3488,8 @@ registerNativeEmbedRule(tag: string, type:string)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-registerNativeEmbedRule(tag: string, type:string): WebAttribute--><!--Device-WebAttribute-registerNativeEmbedRule(tag: string, type:string): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3224,6 +3508,8 @@ rotateRenderEffect(effect: WebRotateEffect)
 设置Web组件旋转时，宽高动画过程中组件内容的填充方式。若未显式调用属性，默认保持动画终态的内容大小，内容始终与组件左上角对齐。
 
 **起始版本：** 22
+
+<!--Device-WebAttribute-rotateRenderEffect(effect: WebRotateEffect): WebAttribute--><!--Device-WebAttribute-rotateRenderEffect(effect: WebRotateEffect): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3251,6 +3537,8 @@ runJavaScriptOnDocumentEnd(scripts: Array<ScriptItem>)
 
 **起始版本：** 15
 
+<!--Device-WebAttribute-runJavaScriptOnDocumentEnd(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-runJavaScriptOnDocumentEnd(scripts: Array<ScriptItem>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3277,6 +3565,8 @@ runJavaScriptOnDocumentStart(scripts: Array<ScriptItem>)
 
 **起始版本：** 15
 
+<!--Device-WebAttribute-runJavaScriptOnDocumentStart(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-runJavaScriptOnDocumentStart(scripts: Array<ScriptItem>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3301,6 +3591,8 @@ runJavaScriptOnHeadEnd(scripts: Array<ScriptItem>)
 
 **起始版本：** 15
 
+<!--Device-WebAttribute-runJavaScriptOnHeadEnd(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-runJavaScriptOnHeadEnd(scripts: Array<ScriptItem>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3320,6 +3612,8 @@ scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy)
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebAttribute-scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy): WebAttribute--><!--Device-WebAttribute-scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3355,6 +3649,8 @@ textAutosizing(textAutosizing: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-textAutosizing(textAutosizing: boolean): WebAttribute--><!--Device-WebAttribute-textAutosizing(textAutosizing: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3374,6 +3670,8 @@ textZoomRatio(textZoomRatio: number)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-textZoomRatio(textZoomRatio: number): WebAttribute--><!--Device-WebAttribute-textZoomRatio(textZoomRatio: number): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3401,6 +3699,8 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-verticalScrollBarAccess(verticalScrollBar: boolean): WebAttribute--><!--Device-WebAttribute-verticalScrollBarAccess(verticalScrollBar: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3422,6 +3722,8 @@ webCursiveFont(family: string)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-webCursiveFont(family: string): WebAttribute--><!--Device-WebAttribute-webCursiveFont(family: string): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3445,6 +3747,8 @@ webFantasyFont(family: string)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-webFantasyFont(family: string): WebAttribute--><!--Device-WebAttribute-webFantasyFont(family: string): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3466,6 +3770,8 @@ webFixedFont(family: string)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-webFixedFont(family: string): WebAttribute--><!--Device-WebAttribute-webFixedFont(family: string): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3489,6 +3795,8 @@ webSansSerifFont(family: string)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-webSansSerifFont(family: string): WebAttribute--><!--Device-WebAttribute-webSansSerifFont(family: string): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3510,6 +3818,8 @@ webSerifFont(family: string)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebAttribute-webSerifFont(family: string): WebAttribute--><!--Device-WebAttribute-webSerifFont(family: string): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3533,6 +3843,8 @@ webStandardFont(family: string)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-webStandardFont(family: string): WebAttribute--><!--Device-WebAttribute-webStandardFont(family: string): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3553,6 +3865,8 @@ zoomAccess(zoomAccess: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebAttribute-zoomAccess(zoomAccess: boolean): WebAttribute--><!--Device-WebAttribute-zoomAccess(zoomAccess: boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3572,6 +3886,8 @@ zoomControlAccess(zoomControlAccess: boolean)
 当属性没有显式调用时，默认允许通过组合按键进行缩放。
 
 **起始版本：** 22
+
+<!--Device-WebAttribute-zoomControlAccess(zoomControlAccess: boolean): WebAttribute--><!--Device-WebAttribute-zoomControlAccess(zoomControlAccess: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3595,6 +3911,8 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 
 **替代接口：** [onShowFileSelector](#onshowfileselector)
 
+<!--Device-WebAttribute-onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object }) => void): WebAttribute--><!--Device-WebAttribute-onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object }) => void): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3616,6 +3934,8 @@ onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => vo
 **废弃版本：** 9
 
 **替代接口：** [onSslErrorEventReceive](#onsslerroreventreceive)
+
+<!--Device-WebAttribute-onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => void): WebAttribute--><!--Device-WebAttribute-onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => void): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3639,6 +3959,8 @@ onUrlLoadIntercept(callback: (event?: { data: string | WebResourceRequest}) => b
 
 **替代接口：** onLoadIntercept
 
+<!--Device-WebAttribute-onUrlLoadIntercept(callback: (event?: { data: string | WebResourceRequest }) => boolean): WebAttribute--><!--Device-WebAttribute-onUrlLoadIntercept(callback: (event?: { data: string | WebResourceRequest }) => boolean): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3660,6 +3982,8 @@ password(password: boolean)
 **废弃版本：** 10
 
 **替代接口：** enableAutofill
+
+<!--Device-WebAttribute-password(password: boolean): WebAttribute--><!--Device-WebAttribute-password(password: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3689,13 +4013,15 @@ Web组件自定义菜单扩展项接口，允许用户设置扩展项的文本�
 
 **替代接口：** editMenuOptions
 
+<!--Device-WebAttribute-selectionMenuOptions(expandedMenuOptions: Array<ExpandedMenuItemOptions>): WebAttribute--><!--Device-WebAttribute-selectionMenuOptions(expandedMenuOptions: Array<ExpandedMenuItemOptions>): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| expandedMenuOptions | Array&lt;[ExpandedMenuItemOptions](arkts-arkweb-web-comp-expandedmenuitemoptions-i.md)&gt; | 是 | 扩展菜单选项。<br>菜单项数量，及菜单的content大小、startIcon图标尺寸，与ArkUI [Menu](../../apis-arkui/arkts-components/arkts-arkui-menu-comp.md#menu)组件保持一致。 |
+| expandedMenuOptions | Array&lt;[ExpandedMenuItemOptions](arkts-arkweb-web-comp-expandedmenuitemoptions-i.md)&gt; | 是 | 扩展菜单选项。<br>菜单项数量，及菜单的content大小、startIcon图标尺寸，与ArkUI [Menu](../../apis-arkui/arkts-components/arkts-arkui-menu-comp.md)组件保持一致。 |
 
 ## tableData
 
@@ -3710,6 +4036,8 @@ tableData(tableData: boolean)
 **废弃版本：** 10
 
 **替代接口：** enableAutofill
+
+<!--Device-WebAttribute-tableData(tableData: boolean): WebAttribute--><!--Device-WebAttribute-tableData(tableData: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3733,6 +4061,8 @@ textZoomAtio(textZoomAtio: number)
 
 **替代接口：** [textZoomRatio](#textzoomratio)
 
+<!--Device-WebAttribute-textZoomAtio(textZoomAtio: number): WebAttribute--><!--Device-WebAttribute-textZoomAtio(textZoomAtio: number): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3755,6 +4085,8 @@ userAgent(userAgent: string)
 
 **替代接口：** setCustomUserAgent
 
+<!--Device-WebAttribute-userAgent(userAgent: string): WebAttribute--><!--Device-WebAttribute-userAgent(userAgent: string): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3776,6 +4108,8 @@ wideViewModeAccess(wideViewModeAccess: boolean)
 **废弃版本：** 10
 
 **替代接口：** [metaViewport](#metaviewport)
+
+<!--Device-WebAttribute-wideViewModeAccess(wideViewModeAccess: boolean): WebAttribute--><!--Device-WebAttribute-wideViewModeAccess(wideViewModeAccess: boolean): WebAttribute-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

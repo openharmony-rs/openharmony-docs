@@ -8,6 +8,8 @@ declare enum ThemeColorMode
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare enum ThemeColorMode--><!--Device-unnamed-declare enum ThemeColorMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SYSTEM
@@ -23,6 +25,8 @@ SYSTEM = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ThemeColorMode-SYSTEM = 0--><!--Device-ThemeColorMode-SYSTEM = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ LIGHT = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ThemeColorMode-LIGHT = 1--><!--Device-ThemeColorMode-LIGHT = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DARK
@@ -55,5 +61,7 @@ DARK = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ThemeColorMode-DARK = 2--><!--Device-ThemeColorMode-DARK = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

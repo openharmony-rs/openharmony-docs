@@ -16,6 +16,8 @@ Checks whether the specified rule exists in the collection of added rules. If th
 
 **Since:** 9
 
+<!--Device-hichecker-function containsCheckRule(rule: bigint) : boolean--><!--Device-hichecker-function containsCheckRule(rule: bigint) : boolean-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 **Parameters:**

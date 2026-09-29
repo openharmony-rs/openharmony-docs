@@ -8,6 +8,8 @@ Defines the offset relative to the four edges. If both **top** and **bottom** ar
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface Edges--><!--Device-unnamed-declare interface Edges-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -27,6 +29,8 @@ Offset relative to the bottom edge.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-Edges-bottom?: Dimension--><!--Device-Edges-bottom?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ Offset relative to the left edge.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-Edges-left?: Dimension--><!--Device-Edges-left?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## right
@@ -68,6 +74,8 @@ Offset relative to the right edge.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-Edges-right?: Dimension--><!--Device-Edges-right?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -87,5 +95,7 @@ Offset relative to the top edge.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-Edges-top?: Dimension--><!--Device-Edges-top?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

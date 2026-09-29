@@ -16,6 +16,8 @@ Obtains the system time zone in synchronous mode.
 
 **Since:** 10
 
+<!--Device-systemDateTime-function getTimezoneSync(): string--><!--Device-systemDateTime-function getTimezoneSync(): string-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **Return value:**

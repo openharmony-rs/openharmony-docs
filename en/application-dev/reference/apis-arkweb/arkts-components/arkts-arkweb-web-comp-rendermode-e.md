@@ -10,6 +10,8 @@ The asynchronous rendering mode is recommended because it has better performance
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum RenderMode--><!--Device-unnamed-declare enum RenderMode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ASYNC_RENDER
@@ -24,6 +26,8 @@ Asynchronous rendering mode of the Web component. The ArkWeb component acts as a
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderMode-ASYNC_RENDER = 0--><!--Device-RenderMode-ASYNC_RENDER = 0-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## SYNC_RENDER
@@ -37,5 +41,7 @@ Synchronous rendering mode of the Web component. The ArkWeb component acts as a 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderMode-SYNC_RENDER = 1--><!--Device-RenderMode-SYNC_RENDER = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

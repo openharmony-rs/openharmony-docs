@@ -14,6 +14,8 @@ Defines a length in px.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-unnamed-declare type PX = `${number}px`--><!--Device-unnamed-declare type PX = `${number}px`-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** `${number}px`

@@ -14,11 +14,19 @@ function createQuaternion(rotationVector: Array<number>, callback: AsyncCallback
 
 Converts a rotation vector into a quaternion. This API uses an asynchronous callback to return the result.
 
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.getQuaternion](arkts-sensorservice-sensor-getquaternion-f.md)
+> instead.
+
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [getQuaternion](arkts-sensorservice-sensor-getquaternion-f.md)(rotationVector: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;)
+
+<!--Device-sensor-function createQuaternion(rotationVector: Array<number>, callback: AsyncCallback<Array<number>>): void--><!--Device-sensor-function createQuaternion(rotationVector: Array<number>, callback: AsyncCallback<Array<number>>): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -58,11 +66,18 @@ function createQuaternion(rotationVector: Array<number>): Promise<Array<number>>
 
 Converts a rotation vector into a quaternion. This API uses a promise to return the result.
 
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.getQuaternion](arkts-sensorservice-sensor-getquaternion-f.md) instead.
+
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [getQuaternion](arkts-sensorservice-sensor-getquaternion-f.md)(rotationVector: Array&lt;number&gt;)
+
+<!--Device-sensor-function createQuaternion(rotationVector: Array<number>): Promise<Array<number>>--><!--Device-sensor-function createQuaternion(rotationVector: Array<number>): Promise<Array<number>>-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 

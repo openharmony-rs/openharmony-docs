@@ -16,6 +16,8 @@ Obtains the system time zone. This API uses an asynchronous callback to return t
 
 **Since:** 9
 
+<!--Device-systemDateTime-function getTimezone(callback: AsyncCallback<string>): void--><!--Device-systemDateTime-function getTimezone(callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **Parameters:**
@@ -55,6 +57,8 @@ function getTimezone(): Promise<string>
 Obtains the system time zone. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-systemDateTime-function getTimezone(): Promise<string>--><!--Device-systemDateTime-function getTimezone(): Promise<string>-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 

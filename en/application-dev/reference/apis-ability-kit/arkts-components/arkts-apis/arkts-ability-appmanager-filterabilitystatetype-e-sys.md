@@ -8,6 +8,8 @@ Enumerates the types of ability states to filter. It can be used with [AppStateF
 
 **Since:** 21
 
+<!--Device-appManager-export enum FilterAbilityStateType--><!--Device-appManager-export enum FilterAbilityStateType-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ CREATE = 1 << 0
 The ability is being created. It corresponds to the state **ABILITY_STATE_CREATE** in [Ability States](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability-states).
 
 **Since:** 21
+
+<!--Device-FilterAbilityStateType-CREATE = 1 << 0--><!--Device-FilterAbilityStateType-CREATE = 1 << 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -36,6 +40,8 @@ The ability is running in the foreground. It corresponds to the state **ABILITY_
 
 **Since:** 21
 
+<!--Device-FilterAbilityStateType-FOREGROUND = 1 << 1--><!--Device-FilterAbilityStateType-FOREGROUND = 1 << 1-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -50,6 +56,8 @@ The ability is running in the background. It corresponds to the state **ABILITY_
 
 **Since:** 21
 
+<!--Device-FilterAbilityStateType-BACKGROUND = 1 << 2--><!--Device-FilterAbilityStateType-BACKGROUND = 1 << 2-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -63,6 +71,8 @@ DESTROY = 1 << 3
 The ability has been destroyed. It corresponds to the state **ABILITY_STATE_TERMINATED** in [Ability States](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability-states).
 
 **Since:** 21
+
+<!--Device-FilterAbilityStateType-DESTROY = 1 << 3--><!--Device-FilterAbilityStateType-DESTROY = 1 << 3-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

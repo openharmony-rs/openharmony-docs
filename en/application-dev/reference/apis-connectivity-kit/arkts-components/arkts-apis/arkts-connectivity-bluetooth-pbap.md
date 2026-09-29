@@ -4,6 +4,8 @@ Provides methods to accessing bluetooth PBAP(Phone Book Access Profile)-related 
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace pbap--><!--Device-unnamed-declare namespace pbap-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -31,15 +33,6 @@ import { pbap } from '@kit.ConnectivityKit';
 | [SyncStateChangeParam](arkts-connectivity-pbap-syncstatechangeparam-i-sys.md) | Information about the phone book sync state change. |
 <!--DelEnd-->
 
-<!--Del-->
-### Enums(System API)
-
-| Name | Description |
-| --- | --- |
-| [ShareType](arkts-connectivity-pbap-sharetype-e-sys.md) | Enum for the share type. |
-| [SyncStateType](arkts-connectivity-pbap-syncstatetype-e-sys.md) | Phone book sync state type. |
-<!--DelEnd-->
-
 ### Types
 
 | Name | Description |
@@ -52,4 +45,13 @@ import { pbap } from '@kit.ConnectivityKit';
 | Name | Description |
 | --- | --- |
 | [AccessAuthorization](arkts-connectivity-pbap-accessauthorization-t-sys.md) | Indicate the phone book access authorization. |
+<!--DelEnd-->
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [ShareType](arkts-connectivity-pbap-sharetype-e-sys.md) | Enum for the share type. |
+| [SyncStateType](arkts-connectivity-pbap-syncstatetype-e-sys.md) | Phone book sync state type. |
 <!--DelEnd-->

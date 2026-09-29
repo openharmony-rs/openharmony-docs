@@ -8,6 +8,8 @@ Defines the device profile information.
 
 **Since:** 15
 
+<!--Device-distributedDeviceManager-interface DeviceProfileInfo--><!--Device-distributedDeviceManager-interface DeviceProfileInfo-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Bluetooth BLE MAC address.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-bleMac: string--><!--Device-DeviceProfileInfo-bleMac: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Bluetooth BR MAC address.
 **Type:** string
 
 **Since:** 15
+
+<!--Device-DeviceProfileInfo-brMac: string--><!--Device-DeviceProfileInfo-brMac: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -62,6 +68,8 @@ Device ID.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-deviceId: string--><!--Device-DeviceProfileInfo-deviceId: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Device name.
 **Type:** string
 
 **Since:** 15
+
+<!--Device-DeviceProfileInfo-deviceName: string--><!--Device-DeviceProfileInfo-deviceName: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -94,6 +104,8 @@ Device SN.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-deviceSn: string--><!--Device-DeviceProfileInfo-deviceSn: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Device type.
 **Type:** string
 
 **Since:** 15
+
+<!--Device-DeviceProfileInfo-deviceType: string--><!--Device-DeviceProfileInfo-deviceType: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -126,6 +140,8 @@ Firmware version.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-firmwareVersion: string--><!--Device-DeviceProfileInfo-firmwareVersion: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -142,6 +158,8 @@ Hardware version.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-hardwareVersion: string--><!--Device-DeviceProfileInfo-hardwareVersion: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -157,6 +175,8 @@ Internal product model. This parameter is left unspecified by default.
 **Type:** string
 
 **Since:** 18
+
+<!--Device-DeviceProfileInfo-internalModel?: string--><!--Device-DeviceProfileInfo-internalModel?: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -177,6 +197,8 @@ Whether the device is a local device.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-isLocalDevice: boolean--><!--Device-DeviceProfileInfo-isLocalDevice: boolean-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -192,6 +214,8 @@ MAC address.
 **Type:** string
 
 **Since:** 15
+
+<!--Device-DeviceProfileInfo-mac: string--><!--Device-DeviceProfileInfo-mac: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -209,6 +233,8 @@ Manufacturer.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-manufacturer: string--><!--Device-DeviceProfileInfo-manufacturer: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -224,6 +250,8 @@ Device model.
 **Type:** string
 
 **Since:** 15
+
+<!--Device-DeviceProfileInfo-model: string--><!--Device-DeviceProfileInfo-model: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -241,6 +269,8 @@ Modification time.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-modifyTime: string--><!--Device-DeviceProfileInfo-modifyTime: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -256,6 +286,8 @@ Product ID.
 **Type:** string
 
 **Since:** 15
+
+<!--Device-DeviceProfileInfo-productId: string--><!--Device-DeviceProfileInfo-productId: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -273,6 +305,8 @@ Product name. This parameter is left unspecified by default.
 
 **Since:** 18
 
+<!--Device-DeviceProfileInfo-productName?: string--><!--Device-DeviceProfileInfo-productName?: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -288,6 +322,8 @@ Protocol type.
 **Type:** number
 
 **Since:** 15
+
+<!--Device-DeviceProfileInfo-protocolType: int--><!--Device-DeviceProfileInfo-protocolType: int-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -305,6 +341,8 @@ Registration time.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-registerTime: string--><!--Device-DeviceProfileInfo-registerTime: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -320,6 +358,8 @@ SDK version.
 **Type:** string
 
 **Since:** 15
+
+<!--Device-DeviceProfileInfo-sdkVersion: string--><!--Device-DeviceProfileInfo-sdkVersion: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -337,6 +377,8 @@ Service list. This parameter is left unspecified by default.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-services?: Array<ServiceProfileInfo>--><!--Device-DeviceProfileInfo-services?: Array<ServiceProfileInfo>-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -352,6 +394,8 @@ Device type.
 **Type:** number
 
 **Since:** 15
+
+<!--Device-DeviceProfileInfo-setupType: int--><!--Device-DeviceProfileInfo-setupType: int-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -369,6 +413,8 @@ Share time.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-shareTime: string--><!--Device-DeviceProfileInfo-shareTime: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -384,6 +430,8 @@ Starflash MAC address.
 **Type:** string
 
 **Since:** 15
+
+<!--Device-DeviceProfileInfo-sleMac: string--><!--Device-DeviceProfileInfo-sleMac: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -401,6 +449,8 @@ Software version.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-softwareVersion: string--><!--Device-DeviceProfileInfo-softwareVersion: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -416,6 +466,8 @@ Sub-product ID. This parameter is left unspecified by default.
 **Type:** string
 
 **Since:** 15
+
+<!--Device-DeviceProfileInfo-subProductId?: string--><!--Device-DeviceProfileInfo-subProductId?: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -433,6 +485,8 @@ Registered device ID.
 
 **Since:** 15
 
+<!--Device-DeviceProfileInfo-wiseDeviceId: string--><!--Device-DeviceProfileInfo-wiseDeviceId: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -448,6 +502,8 @@ Registered user ID.
 **Type:** string
 
 **Since:** 15
+
+<!--Device-DeviceProfileInfo-wiseUserId: string--><!--Device-DeviceProfileInfo-wiseUserId: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

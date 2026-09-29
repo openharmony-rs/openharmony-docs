@@ -12,9 +12,9 @@ Defines the style of the custom dialog box.
 > 
 > - If the dialog box reaches its maximum allowable height on the screen when avoiding the soft keyboard, it reduces its height to fit.
 > 
-> It should be noted that this height adjustment is applied to the outermost container. If a child component
-> within this container has been assigned a larger fixed height, since the container does not clip its content by
-> default, parts of the dialog box may still be displayed off-screen.
+> It should be noted that this height adjustment is applied to the outermost container. If a child component within
+> this container has been assigned a larger fixed height, since the container does not clip its content by default,
+> parts of the dialog box may still be displayed off-screen.
 > 
 > - Use the custom dialog box to contain simple alert messages only. Do not use it as a page. When the dialog box avoids the soft keyboard, there is a 16 vp safe spacing between the two.
 > 
@@ -23,9 +23,11 @@ Defines the style of the custom dialog box.
 > Note: During animation playback, the page does not respond to touch, swipe, or click interactions. To disable
 > default dialog box animations, set **duration** of both **openAnimation** and **closeAnimation** to **0**.
 > 
-> - In ArkUI, dialog boxes do not close automatically when you switch pages unless you manually call **close**. To enable a dialog box to be dismissed during page navigation, consider using the [navigation subpage displayed in dialog mode](../../../ui/arkts-navigation-navdestination.md#page-display-mode) or [page-level dialog box](../../../ui/arkts-embedded-dialog.md).
+> - In ArkUI, dialog boxes do not close automatically when you switch pages unless you manually call **close**. To enable a dialog box to be dismissed during page navigation.
 
 **Since:** 7
+
+<!--Device-unnamed-declare interface CustomDialogControllerOptions--><!--Device-unnamed-declare interface CustomDialogControllerOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +44,8 @@ Callback invoked when the dialog box is closed after the Back button or mask is 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CustomDialogControllerOptions-cancel?: () => void--><!--Device-CustomDialogControllerOptions-cancel?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,6 +67,8 @@ Default value: **DialogAlignment.Default**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CustomDialogControllerOptions-alignment?: DialogAlignment--><!--Device-CustomDialogControllerOptions-alignment?: DialogAlignment-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## autoCancel
@@ -83,6 +89,8 @@ Default value: **true**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CustomDialogControllerOptions-autoCancel?: boolean--><!--Device-CustomDialogControllerOptions-autoCancel?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundBlurStyle
@@ -93,7 +101,7 @@ backgroundBlurStyle?: BlurStyle
 
 Background blur style of the dialog box.
 
-Default value: **BlurStyle.COMPONENT_ULTRA_THICK**
+Default value: **BlurStyle.NONE** (API version 26.0.0 and later); **BlurStyle.COMPONENT_ULTRA_THICK** (earlier than API version 26.0.0)
 
 **NOTE:** 
 
@@ -108,6 +116,8 @@ Setting this parameter to **BlurStyle.NONE** disables the background blur. When 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomDialogControllerOptions-backgroundBlurStyle?: BlurStyle--><!--Device-CustomDialogControllerOptions-backgroundBlurStyle?: BlurStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,6 +136,8 @@ Options for customizing the background blur style. For details about the default
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-CustomDialogControllerOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions--><!--Device-CustomDialogControllerOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,6 +165,8 @@ The background color will be visually combined with the blur effect when both pr
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CustomDialogControllerOptions-backgroundColor?: ResourceColor--><!--Device-CustomDialogControllerOptions-backgroundColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundEffect
@@ -170,6 +184,8 @@ Options for customizing the background effect. For details about the default val
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-CustomDialogControllerOptions-backgroundEffect?: BackgroundEffectOptions--><!--Device-CustomDialogControllerOptions-backgroundEffect?: BackgroundEffectOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -193,6 +209,8 @@ Default value: **Color.Black**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomDialogControllerOptions-borderColor?: ResourceColor | EdgeColors--><!--Device-CustomDialogControllerOptions-borderColor?: ResourceColor | EdgeColors-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderStyle
@@ -214,6 +232,8 @@ Default value: **BorderStyle.Solid**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomDialogControllerOptions-borderStyle?: BorderStyle | EdgeStyles--><!--Device-CustomDialogControllerOptions-borderStyle?: BorderStyle | EdgeStyles-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -241,6 +261,8 @@ If the left and right borders are greater than its width, or the top and bottom 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomDialogControllerOptions-borderWidth?: Dimension | EdgeWidths--><!--Device-CustomDialogControllerOptions-borderWidth?: Dimension | EdgeWidths-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## builder
@@ -264,6 +286,8 @@ To listen for data changes in the builder, use the @Link or @Consume decorator; 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CustomDialogControllerOptions-builder: any--><!--Device-CustomDialogControllerOptions-builder: any-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -293,6 +317,8 @@ For page transition, you are advised to use the default close animation.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CustomDialogControllerOptions-closeAnimation?: AnimateParam--><!--Device-CustomDialogControllerOptions-closeAnimation?: AnimateParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## cornerRadius
@@ -316,6 +342,8 @@ Note: The default corner radius of the background is 32 vp. This attribute must 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CustomDialogControllerOptions-cornerRadius?: Dimension | BorderRadiuses--><!--Device-CustomDialogControllerOptions-cornerRadius?: Dimension | BorderRadiuses-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -350,6 +378,8 @@ When this parameter is set to **true**:
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CustomDialogControllerOptions-customStyle?: boolean--><!--Device-CustomDialogControllerOptions-customStyle?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## displayModeInSubWindow
@@ -358,7 +388,13 @@ When this parameter is set to **true**:
 displayModeInSubWindow?: DialogDisplayMode
 ```
 
-Defines the dialog display mode when show in subwindow.
+Display mode of the dialog box in the subwindow.
+
+Default value: **DialogDisplayMode.SCREEN_BASED**
+
+**NOTE:** 
+
+This parameter is valid only when **showInSubWindow** is set to **true**.
 
 **Type:** [DialogDisplayMode](arkts-arkui-dialogdisplaymode-e.md)
 
@@ -369,6 +405,8 @@ Defines the dialog display mode when show in subwindow.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CustomDialogControllerOptions-displayModeInSubWindow?: DialogDisplayMode--><!--Device-CustomDialogControllerOptions-displayModeInSubWindow?: DialogDisplayMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -396,6 +434,8 @@ For a PC or 2-in-1 device, the dialog box is displayed on the upper half of the 
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-CustomDialogControllerOptions-enableHoverMode?: boolean--><!--Device-CustomDialogControllerOptions-enableHoverMode?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## focusable
@@ -422,6 +462,8 @@ Only dialog boxes that are displayed on top of the current window can gain focus
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-CustomDialogControllerOptions-focusable?: boolean--><!--Device-CustomDialogControllerOptions-focusable?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## gridCount
@@ -430,7 +472,7 @@ Only dialog boxes that are displayed on top of the current window can gain focus
 gridCount?: number
 ```
 
-Number of [grid columns](../../../ui/arkts-layout-development-grid-layout.md) occupied by the dialog box.
+Number of grid columns occupied by the dialog box.
 
 The default value is subject to the window size, and the maximum value is the maximum number of columns supported by the system. If this parameter is set to an invalid value, the default value is used.
 
@@ -443,6 +485,8 @@ Value range: an integer no less than 0
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CustomDialogControllerOptions-gridCount?: number--><!--Device-CustomDialogControllerOptions-gridCount?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -468,6 +512,8 @@ where the dialog box is located minus the safe area. You can decrease or increas
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomDialogControllerOptions-height?: Dimension--><!--Device-CustomDialogControllerOptions-height?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## hoverModeArea
@@ -489,6 +535,8 @@ Default value: **HoverModeAreaType.BOTTOM_SCREEN**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-CustomDialogControllerOptions-hoverModeArea?: HoverModeAreaType--><!--Device-CustomDialogControllerOptions-hoverModeArea?: HoverModeAreaType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -514,6 +562,8 @@ Overlay effect for the page-level dialog box.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-CustomDialogControllerOptions-immersiveMode?: ImmersiveMode--><!--Device-CustomDialogControllerOptions-immersiveMode?: ImmersiveMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -541,6 +591,8 @@ Default value: **true**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomDialogControllerOptions-isModal?: boolean--><!--Device-CustomDialogControllerOptions-isModal?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## keyboardAvoidDistance
@@ -565,6 +617,8 @@ Distance between the dialog box and the keyboard after keyboard avoidance is app
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-CustomDialogControllerOptions-keyboardAvoidDistance?: LengthMetrics--><!--Device-CustomDialogControllerOptions-keyboardAvoidDistance?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## keyboardAvoidMode
@@ -586,6 +640,8 @@ Default value: **KeyboardAvoidMode.DEFAULT**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomDialogControllerOptions-keyboardAvoidMode?: KeyboardAvoidMode--><!--Device-CustomDialogControllerOptions-keyboardAvoidMode?: KeyboardAvoidMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -612,6 +668,8 @@ Display level of the dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-CustomDialogControllerOptions-levelMode?: LevelMode--><!--Device-CustomDialogControllerOptions-levelMode?: LevelMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelOrder
@@ -637,6 +695,8 @@ Display order of the dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CustomDialogControllerOptions-levelOrder?: LevelOrder--><!--Device-CustomDialogControllerOptions-levelOrder?: LevelOrder-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelUniqueId
@@ -645,7 +705,7 @@ Display order of the dialog box.
 levelUniqueId?: number
 ```
 
-[Unique ID](arkts-arkui-framenode-c.md#getuniqueid) of the node under the display level for the page-level dialog box.
+Unique ID of the node under the display level for the page-level dialog box. The unique ID can be obtained via [getUniqueId](arkts-arkui-framenode-c.md#getuniqueid).
 
 Value range: a number no less than 0
 
@@ -660,6 +720,8 @@ Value range: a number no less than 0
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-CustomDialogControllerOptions-levelUniqueId?: number--><!--Device-CustomDialogControllerOptions-levelUniqueId?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -680,6 +742,8 @@ Default value: **0x33000000**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CustomDialogControllerOptions-maskColor?: ResourceColor--><!--Device-CustomDialogControllerOptions-maskColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -705,6 +769,8 @@ Default value: **{ x: 0, y: 0, width: '100%', height: '100%' }**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CustomDialogControllerOptions-maskRect?: Rectangle--><!--Device-CustomDialogControllerOptions-maskRect?: Rectangle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -725,6 +791,8 @@ Default value: **{dx: 0, dy: 0}**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CustomDialogControllerOptions-offset?: Offset--><!--Device-CustomDialogControllerOptions-offset?: Offset-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDidAppear
@@ -738,9 +806,12 @@ Event callback after the dialog box appears.
 **NOTE:** 
 
 1. The normal timing sequence is as follows: onWillAppear &gt; onDidAppear &gt; onWillDisappear &gt; onDidDisappear.
-2. You can set the callback event for changing the dialog box display effect in **onDidAppear**. The settings take effect next time the dialog box appears.
-3. When a dialog box is dismissed immediately after being shown, **onWillDisappear** may be triggered before **onDidAppear**.
-4. If the dialog box is dismissed before its entrance animation is finished, the animation will be interrupted, and **onDidAppear** will not be triggered.
+2. You can set the callback event for changing the dialog box display effect in **onDidAppear**.
+The settings take effect next time the dialog box appears.
+3. When a dialog box is dismissed immediately after being shown,  
+**onWillDisappear** may be triggered before **onDidAppear**.
+4. If the dialog box is dismissed before its entrance animation is finished, the animation will be interrupted,
+and **onDidAppear** will not be triggered.
 
 **Type:** Callback&lt;void&gt;
 
@@ -749,6 +820,8 @@ Event callback after the dialog box appears.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-CustomDialogControllerOptions-onDidAppear?: Callback<void>--><!--Device-CustomDialogControllerOptions-onDidAppear?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -771,6 +844,8 @@ Event callback after the dialog box disappears.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-CustomDialogControllerOptions-onDidDisappear?: Callback<void>--><!--Device-CustomDialogControllerOptions-onDidDisappear?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -795,6 +870,8 @@ Event callback when the dialog box is about to appear.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-CustomDialogControllerOptions-onWillAppear?: Callback<void>--><!--Device-CustomDialogControllerOptions-onWillAppear?: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillDisappear
@@ -817,6 +894,8 @@ Event callback when the dialog box is about to disappear.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-CustomDialogControllerOptions-onWillDisappear?: Callback<void>--><!--Device-CustomDialogControllerOptions-onWillDisappear?: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillDismiss
@@ -829,7 +908,8 @@ Callback for interactive closure of the dialog box.
 
 **NOTE:** 
 
-1. If this callback is registered, the dialog box will not be dismissed immediately after the user touches the mask or the Back button, presses the Esc key, or swipes left or right on the screen. The **reason** parameter in the callback is used to determine whether the dialog box can be closed. The reason returned by the component does not support the value **CLOSE_BUTTON**.
+1. If this callback is registered, the dialog box will not be dismissed immediately after
+the user touches the mask or the Back button, presses the Esc key, or swipes left or right on the screen. The **reason** parameter in the callback is used to determine whether the dialog box can be closed. The reason returned by the component does not support the value **CLOSE_BUTTON**.
 2. In the **onWillDismiss** callback, another **onWillDismiss** callback is not allowed.
 
 **Type:** Callback&lt;[DismissDialogAction](arkts-arkui-dismissdialogaction-i.md)&gt;
@@ -839,6 +919,8 @@ Callback for interactive closure of the dialog box.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomDialogControllerOptions-onWillDismiss?: Callback<DismissDialogAction>--><!--Device-CustomDialogControllerOptions-onWillDismiss?: Callback<DismissDialogAction>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -866,6 +948,8 @@ Parameters for defining the open animation of the dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CustomDialogControllerOptions-openAnimation?: AnimateParam--><!--Device-CustomDialogControllerOptions-openAnimation?: AnimateParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadow
@@ -876,7 +960,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 Shadow of the dialog box.
 
-Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.
+Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise. On other devices, the dialog box has no shadow by default.
 
 **Type:** [ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-common-comp-shadowstyle-e.md)
 
@@ -885,6 +969,8 @@ Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dial
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomDialogControllerOptions-shadow?: ShadowOptions | ShadowStyle--><!--Device-CustomDialogControllerOptions-shadow?: ShadowOptions | ShadowStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -913,6 +999,8 @@ A dialog box whose **showInSubWindow** attribute is **true** cannot trigger the 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CustomDialogControllerOptions-showInSubWindow?: boolean--><!--Device-CustomDialogControllerOptions-showInSubWindow?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -921,7 +1009,13 @@ A dialog box whose **showInSubWindow** attribute is **true** cannot trigger the 
 systemMaterial?: SystemUiMaterial
 ```
 
-System material of the dialog box. Different materials have different effects and can affect visual attributes such as the background color, border, and shadow of the dialog box.
+System material of the dialog box.
+
+**NOTE:** 
+
+- Default value: ImmersiveMaterial object whose **style** in [ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i.md) is  
+**ImmersiveStyle.ULTRA_THICK** If this parameter is set to **undefined**, the default value is used.  
+- Different materials produce distinct effects. This API impacts the following attributes:[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle), [backgroundEffect](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), and [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow). When the system material is set, the aforementioned attributes do not take effect.
 
 **Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-common-comp-systemuimaterial-t.md)
 
@@ -930,6 +1024,8 @@ System material of the dialog box. Different materials have different effects an
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CustomDialogControllerOptions-systemMaterial?: SystemUiMaterial--><!--Device-CustomDialogControllerOptions-systemMaterial?: SystemUiMaterial-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -954,5 +1050,7 @@ where the dialog box is located. You can decrease or increase the width as neede
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomDialogControllerOptions-width?: Dimension--><!--Device-CustomDialogControllerOptions-width?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

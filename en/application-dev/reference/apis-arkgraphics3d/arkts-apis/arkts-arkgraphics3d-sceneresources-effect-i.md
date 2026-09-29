@@ -12,6 +12,8 @@ Effect resource, which inherits from SceneResource. It is obtained from the crea
 
 **Since:** 21
 
+<!--Device-unnamed-export interface Effect extends SceneResource--><!--Device-unnamed-export interface Effect extends SceneResource-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## getPropertyValue
@@ -25,6 +27,8 @@ Obtains the value of the specified effect property.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Effect-getPropertyValue(propertyName: string): Object | null | undefined--><!--Device-Effect-getPropertyValue(propertyName: string): Object | null | undefined-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -72,6 +76,8 @@ Sets the value of a specified effect property.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Effect-setPropertyValue(propertyName: string, value: Object | undefined): boolean--><!--Device-Effect-setPropertyValue(propertyName: string, value: Object | undefined): boolean-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Parameters:**
@@ -101,6 +107,8 @@ Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for
 
 **Since:** 21
 
+<!--Device-Effect-readonly effectId: string--><!--Device-Effect-readonly effectId: string-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## enabled
@@ -114,5 +122,7 @@ Enabled status of the effect. true if enabled, false otherwise.
 **Type:** boolean
 
 **Since:** 21
+
+<!--Device-Effect-enabled: boolean--><!--Device-Effect-enabled: boolean-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

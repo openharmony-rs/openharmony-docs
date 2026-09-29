@@ -10,6 +10,8 @@ Defines the callback triggered on a frame-by-frame basis during a swipe-based pa
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare type GestureSwipeHandler = (index: number, event: SwiperAnimationEvent) => void--><!--Device-unnamed-declare type GestureSwipeHandler = (index: number, event: SwiperAnimationEvent) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**

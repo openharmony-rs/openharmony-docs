@@ -12,6 +12,8 @@ Material resource, which inherits from SceneResource.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface Material extends SceneResource--><!--Device-unnamed-export interface Material extends SceneResource-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## alphaCutoff
@@ -25,6 +27,8 @@ Threshold of the alpha channel. If the alpha of a pixel is greater than or equal
 **Type:** number
 
 **Since:** 20
+
+<!--Device-Material-alphaCutoff?: double--><!--Device-Material-alphaCutoff?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -42,6 +46,8 @@ Whether the material is transparent. The default value is false.
 
 **Since:** 20
 
+<!--Device-Material-blend?: Blend--><!--Device-Material-blend?: Blend-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## cullMode
@@ -56,6 +62,8 @@ Culling mode of the material, which can be used to determine whether to cull fro
 
 **Since:** 20
 
+<!--Device-Material-cullMode?: CullMode--><!--Device-Material-cullMode?: CullMode-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## materialType
@@ -69,6 +77,8 @@ Material type.
 **Type:** [MaterialType](arkts-arkgraphics3d-sceneresources-materialtype-e.md)
 
 **Since:** 12
+
+<!--Device-Material-readonly materialType: MaterialType--><!--Device-Material-readonly materialType: MaterialType-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -86,6 +96,8 @@ Polygon drawing mode of the model. The default value is FILL.
 
 **Since:** 23
 
+<!--Device-Material-polygonMode?: PolygonMode--><!--Device-Material-polygonMode?: PolygonMode-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## renderSort
@@ -100,6 +112,8 @@ Rendering order, which determines the rendering sequence of materials in the ren
 
 **Since:** 20
 
+<!--Device-Material-renderSort?: RenderSort--><!--Device-Material-renderSort?: RenderSort-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## shadowReceiver
@@ -113,5 +127,7 @@ Whether the material receives shadows. true if the material receives shadows, fa
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-Material-shadowReceiver?: boolean--><!--Device-Material-shadowReceiver?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

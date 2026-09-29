@@ -8,6 +8,8 @@ export declare class console
 
 **起始版本：** 7
 
+<!--Device-unnamed-export declare class console--><!--Device-unnamed-export declare class console-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,6 +29,8 @@ static assert(value?: Object, ...arguments: Object[]): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-console-static assert(value?: Object, ...arguments: Object[]): void--><!--Device-console-static assert(value?: Object, ...arguments: Object[]): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -40,7 +44,7 @@ static assert(value?: Object, ...arguments: Object[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## count
 
@@ -54,6 +58,8 @@ static count(label?: string): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-console-static count(label?: string): void--><!--Device-console-static count(label?: string): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -66,7 +72,7 @@ static count(label?: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## countReset
 
@@ -80,6 +86,8 @@ static countReset(label?: string): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-console-static countReset(label?: string): void--><!--Device-console-static countReset(label?: string): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -92,7 +100,7 @@ static countReset(label?: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## debug
 
@@ -107,6 +115,8 @@ static debug(message: string, ...arguments: any[]): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-console-static debug(message: string, ...arguments: any[]): void--><!--Device-console-static debug(message: string, ...arguments: any[]): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,6 +139,8 @@ static dir(dir?: Object): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-console-static dir(dir?: Object): void--><!--Device-console-static dir(dir?: Object): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -148,6 +160,8 @@ static dirxml(...arguments: Object[]): void
 **起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-console-static dirxml(...arguments: Object[]): void--><!--Device-console-static dirxml(...arguments: Object[]): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -171,6 +185,8 @@ static error(message: string, ...arguments: any[]): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-console-static error(message: string, ...arguments: any[]): void--><!--Device-console-static error(message: string, ...arguments: any[]): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -192,6 +208,8 @@ static group(...arguments: Object[]): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-console-static group(...arguments: Object[]): void--><!--Device-console-static group(...arguments: Object[]): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -211,6 +229,8 @@ static groupCollapsed(...arguments: Object[]): void
 **起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-console-static groupCollapsed(...arguments: Object[]): void--><!--Device-console-static groupCollapsed(...arguments: Object[]): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -232,6 +252,8 @@ static groupEnd(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-console-static groupEnd(): void--><!--Device-console-static groupEnd(): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 ## info
@@ -247,6 +269,8 @@ static info(message: string, ...arguments: any[]): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-console-static info(message: string, ...arguments: any[]): void--><!--Device-console-static info(message: string, ...arguments: any[]): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -271,6 +295,8 @@ static log(message: string, ...arguments: any[]): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-console-static log(message: string, ...arguments: any[]): void--><!--Device-console-static log(message: string, ...arguments: any[]): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -292,6 +318,8 @@ static table(tableData?: Object): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-console-static table(tableData?: Object): void--><!--Device-console-static table(tableData?: Object): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -312,6 +340,8 @@ static time(label?: string): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-console-static time(label?: string): void--><!--Device-console-static time(label?: string): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -324,7 +354,7 @@ static time(label?: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## timeEnd
 
@@ -338,6 +368,8 @@ static timeEnd(label?: string): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-console-static timeEnd(label?: string): void--><!--Device-console-static timeEnd(label?: string): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -350,7 +382,7 @@ static timeEnd(label?: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## timeLog
 
@@ -363,6 +395,8 @@ static timeLog(label?: string, ...arguments: Object[]): void
 **起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-console-static timeLog(label?: string, ...arguments: Object[]): void--><!--Device-console-static timeLog(label?: string, ...arguments: Object[]): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -377,7 +411,7 @@ static timeLog(label?: string, ...arguments: Object[]): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## trace
 
@@ -390,6 +424,8 @@ static trace(...arguments: Object[]): void
 **起始版本：** 10
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-console-static trace(...arguments: Object[]): void--><!--Device-console-static trace(...arguments: Object[]): void-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -411,6 +447,8 @@ static traceHybridStack(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-console-static traceHybridStack(): void--><!--Device-console-static traceHybridStack(): void-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 ## warn
@@ -426,6 +464,8 @@ static warn(message: string, ...arguments: any[]): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-console-static warn(message: string, ...arguments: any[]): void--><!--Device-console-static warn(message: string, ...arguments: any[]): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

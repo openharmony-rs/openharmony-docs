@@ -12,6 +12,8 @@ Defines the configuration options for a **RelativeTimeFormat** object. Since API
 
 **Substitutes:** [Intl.RelativeTimeFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat#options)
 
+<!--Device-intl-export interface RelativeTimeFormatInputOptions--><!--Device-intl-export interface RelativeTimeFormatInputOptions-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -40,6 +42,8 @@ The default value is **best fit**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RelativeTimeFormatInputOptions-localeMatcher?: string--><!--Device-RelativeTimeFormatInputOptions-localeMatcher?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## numeric
@@ -64,6 +68,8 @@ For details about their display effects, see [Table 23](../../../reference/apis-
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RelativeTimeFormatInputOptions-numeric?: string--><!--Device-RelativeTimeFormatInputOptions-numeric?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## style
@@ -85,5 +91,7 @@ The default value is **long**.
 **Substitutes:** [Intl.RelativeTimeFormatOptions.style](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat#style)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RelativeTimeFormatInputOptions-style?: string--><!--Device-RelativeTimeFormatInputOptions-style?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n

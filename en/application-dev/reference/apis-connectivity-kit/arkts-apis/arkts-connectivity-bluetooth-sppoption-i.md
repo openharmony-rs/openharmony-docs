@@ -12,6 +12,8 @@ Describes the spp parameters.
 
 **Substitutes:** [SppOption](arkts-connectivity-bluetoothmanager-sppoption-i.md)
 
+<!--Device-bluetooth-interface SppOption--><!--Device-bluetooth-interface SppOption-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Indicates secure channel or not
 
 **Substitutes:** [secure](arkts-connectivity-bluetoothmanager-sppoption-i.md#secure)
 
+<!--Device-SppOption-secure: boolean--><!--Device-SppOption-secure: boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## type
@@ -54,6 +58,8 @@ Spp link type [SppType](arkts-connectivity-bluetooth-spptype-e.md)
 
 **Substitutes:** [type](arkts-connectivity-bluetoothmanager-sppoption-i.md#type)
 
+<!--Device-SppOption-type: SppType--><!--Device-SppOption-type: SppType-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## uuid
@@ -71,5 +77,7 @@ Indicates the UUID in the SDP record.
 **Deprecated since:** 9
 
 **Substitutes:** [uuid](arkts-connectivity-bluetoothmanager-sppoption-i.md#uuid)
+
+<!--Device-SppOption-uuid: string--><!--Device-SppOption-uuid: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

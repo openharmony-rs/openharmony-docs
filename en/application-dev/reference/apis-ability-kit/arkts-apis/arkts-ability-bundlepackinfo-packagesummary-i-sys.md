@@ -8,6 +8,8 @@ PackageSummary: the package summary class.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface PackageSummary--><!--Device-unnamed-export interface PackageSummary-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ Bundle configuration information.
 
 **Since:** 9
 
+<!--Device-PackageSummary-readonly app: BundleConfigInfo--><!--Device-PackageSummary-readonly app: BundleConfigInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Module configuration information of the bundle.
 **Type:** Array&lt;[ModuleConfigInfo](arkts-ability-bundlepackinfo-moduleconfiginfo-i-sys.md)&gt;
 
 **Since:** 9
+
+<!--Device-PackageSummary-readonly modules: Array<ModuleConfigInfo>--><!--Device-PackageSummary-readonly modules: Array<ModuleConfigInfo>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

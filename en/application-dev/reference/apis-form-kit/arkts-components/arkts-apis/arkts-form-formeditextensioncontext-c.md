@@ -14,6 +14,8 @@ declare class FormEditExtensionContext extends UIExtensionContext
 
 **Since:** 18
 
+<!--Device-unnamed-declare class FormEditExtensionContext extends UIExtensionContext--><!--Device-unnamed-declare class FormEditExtensionContext extends UIExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## startSecondPage
@@ -27,6 +29,8 @@ Starts the widget provider page to be edited. This API uses a promise to return 
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormEditExtensionContext-startSecondPage(want: Want): Promise<AbilityResult>--><!--Device-FormEditExtensionContext-startSecondPage(want: Want): Promise<AbilityResult>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -92,6 +96,8 @@ Starts UIAbility of the application to which a widget belongs. This API uses a p
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormEditExtensionContext-startUIAbility(want: Want): Promise<void>--><!--Device-FormEditExtensionContext-startUIAbility(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

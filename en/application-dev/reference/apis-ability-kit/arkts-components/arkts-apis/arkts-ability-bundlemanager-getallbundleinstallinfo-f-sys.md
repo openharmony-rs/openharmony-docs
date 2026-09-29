@@ -20,6 +20,8 @@ Obtains the extended install information about all applications in the system. T
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function getAllBundleInstallInfo(): Promise<Array<Record<string, Object>>>--><!--Device-bundleManager-function getAllBundleInstallInfo(): Promise<Array<Record<string, Object>>>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Provides historical touch point information.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface HistoricalPoint--><!--Device-unnamed-declare interface HistoricalPoint-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## force
@@ -30,6 +32,8 @@ Value range: [0, 65535), where higher values indicate stronger pressure.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HistoricalPoint-force: number--><!--Device-HistoricalPoint-force: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -49,6 +53,8 @@ Default value: **0**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HistoricalPoint-size: number--><!--Device-HistoricalPoint-size: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ Unit: ns
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HistoricalPoint-timestamp: number--><!--Device-HistoricalPoint-timestamp: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## touchObject
@@ -87,5 +95,7 @@ Basic touch event information for the historical point.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HistoricalPoint-touchObject: TouchObject--><!--Device-HistoricalPoint-touchObject: TouchObject-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

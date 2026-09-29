@@ -18,6 +18,8 @@ Obtains the information about all main windows. This API uses a promise to retur
 
 **Required permissions:** ohos.permission.CUSTOM_SCREEN_CAPTURE
 
+<!--Device-window-function getAllMainWindowInfo(): Promise<Array<MainWindowInfo>>--><!--Device-window-function getAllMainWindowInfo(): Promise<Array<MainWindowInfo>>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Return value:**

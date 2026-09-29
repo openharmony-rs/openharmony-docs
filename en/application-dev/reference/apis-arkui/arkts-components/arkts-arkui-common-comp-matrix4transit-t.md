@@ -14,6 +14,8 @@ Import the Matrix4Transit type object for common method.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-unnamed-declare type Matrix4Transit = import('../api/@ohos.matrix4').default.Matrix4Transit--><!--Device-unnamed-declare type Matrix4Transit = import('../api/@ohos.matrix4').default.Matrix4Transit-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.matrix4').default.Matrix4Transit

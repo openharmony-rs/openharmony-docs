@@ -8,6 +8,8 @@ Sets the background luminance sampling parameters.
 
 **Since:** 23
 
+<!--Device-unnamed-export interface BackgroundLuminanceSamplingConfigs--><!--Device-unnamed-export interface BackgroundLuminanceSamplingConfigs-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -37,6 +39,8 @@ Light color brightness threshold. The value must be an integer in the range of [
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BackgroundLuminanceSamplingConfigs-brightThreshold?: number--><!--Device-BackgroundLuminanceSamplingConfigs-brightThreshold?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -56,6 +60,8 @@ Dark color brightness threshold. The value must be an integer in the range of [0
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BackgroundLuminanceSamplingConfigs-darkThreshold?: number--><!--Device-BackgroundLuminanceSamplingConfigs-darkThreshold?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,6 +83,8 @@ The component's own area is used by default.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BackgroundLuminanceSamplingConfigs-region?: Edges<LengthMetrics>--><!--Device-BackgroundLuminanceSamplingConfigs-region?: Edges<LengthMetrics>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -96,6 +104,8 @@ Color sampling interval, in milliseconds. The minimum value is 180 ms.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BackgroundLuminanceSamplingConfigs-samplingInterval?: number--><!--Device-BackgroundLuminanceSamplingConfigs-samplingInterval?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

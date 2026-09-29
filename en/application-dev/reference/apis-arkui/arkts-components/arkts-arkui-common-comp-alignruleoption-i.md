@@ -8,6 +8,8 @@ Defines the align rule options of relative container.
 
 **Since:** 9
 
+<!--Device-unnamed-declare interface AlignRuleOption--><!--Device-unnamed-declare interface AlignRuleOption-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bias
@@ -30,6 +32,8 @@ Offset of the component under the anchor constraints. The value is the ratio of 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-AlignRuleOption-bias?: Bias--><!--Device-AlignRuleOption-bias?: Bias-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -47,6 +51,8 @@ Top alignment. In versions earlier than API version 23, the input parameter type
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-AlignRuleOption-bottom?: VerticalAlignParam--><!--Device-AlignRuleOption-bottom?: VerticalAlignParam-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +72,8 @@ Center alignment in the vertical direction. In versions earlier than API version
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-AlignRuleOption-center?: VerticalAlignParam--><!--Device-AlignRuleOption-center?: VerticalAlignParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## left
@@ -83,6 +91,8 @@ Left alignment. In versions earlier than API version 23, the input parameter typ
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-AlignRuleOption-left?: HorizontalAlignParam--><!--Device-AlignRuleOption-left?: HorizontalAlignParam-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +112,8 @@ Center alignment in the horizontal direction. In versions earlier than API versi
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-AlignRuleOption-middle?: HorizontalAlignParam--><!--Device-AlignRuleOption-middle?: HorizontalAlignParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## right
@@ -120,6 +132,8 @@ Right alignment. In versions earlier than API version 23, the input parameter ty
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-AlignRuleOption-right?: HorizontalAlignParam--><!--Device-AlignRuleOption-right?: HorizontalAlignParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -137,5 +151,7 @@ Top alignment. In versions earlier than API version 23, the input parameter type
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-AlignRuleOption-top?: VerticalAlignParam--><!--Device-AlignRuleOption-top?: VerticalAlignParam-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

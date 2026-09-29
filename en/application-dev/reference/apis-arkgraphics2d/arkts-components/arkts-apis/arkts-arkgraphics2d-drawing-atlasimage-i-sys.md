@@ -8,6 +8,8 @@ Defines the atlas frame parameters for sprite sheet frame animation.
 
 **Since:** 26.0.1
 
+<!--Device-drawing-interface AtlasImage--><!--Device-drawing-interface AtlasImage-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Sprite sheet atlas image. Created through the image module as a PixelMap instanc
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AtlasImage-atlasImage: image.PixelMap--><!--Device-AtlasImage-atlasImage: image.PixelMap-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -54,6 +58,8 @@ Number of columns in the sprite sheet atlas. The value range is [1, totalFrame];
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AtlasImage-cols: int--><!--Device-AtlasImage-cols: int-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -71,6 +77,8 @@ Height of a single frame in pixels. The value range is [1, 8192]; out-of-range v
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AtlasImage-frameHeight: double--><!--Device-AtlasImage-frameHeight: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -94,6 +102,8 @@ Current frame index in the atlas. The value range is [0, totalFrame - 1]; out-of
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AtlasImage-frameIndex: double--><!--Device-AtlasImage-frameIndex: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -111,6 +121,8 @@ Width of a single frame in pixels. The value range is [1, 8192]; out-of-range va
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AtlasImage-frameWidth: double--><!--Device-AtlasImage-frameWidth: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -130,6 +142,8 @@ Interpolation mode for frame animation. NONE (0): no interpolation; each frame i
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AtlasImage-mode: AtlasInterpolationMode--><!--Device-AtlasImage-mode: AtlasInterpolationMode-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -147,6 +161,8 @@ Padding between frames in pixels, used to prevent texture bleeding at frame boun
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AtlasImage-padding: double--><!--Device-AtlasImage-padding: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -170,6 +186,8 @@ Number of rows in the sprite sheet atlas. The value range is [1, totalFrame]; ou
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AtlasImage-rows: int--><!--Device-AtlasImage-rows: int-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -191,6 +209,8 @@ Total number of frames in the atlas. The value range is [1, rows * cols]; out-of
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AtlasImage-totalFrame: int--><!--Device-AtlasImage-totalFrame: int-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

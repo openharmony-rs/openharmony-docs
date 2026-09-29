@@ -6,15 +6,15 @@
 export declare const ArcListItem: ArcListItemInterface
 ```
 
-The **ArcListItem** component is used to display individual child components in an [ArcList](arkts-arkui-arclist-comp.md#ohosarkuiarclist) component and must be used in conjunction with **ArcList**.
+A child component used to display items in an arc list. It must be used in conjunction with [ArcList](arkts-arkui-arclist-comp.md).
 
 > **NOTE:** 
-
-> - This component can be used only as a child of [ArcList](arkts-arkui-arclist-comp.md#ohosarkuiarclist).
 > 
-> - When this component is used with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), its child components are created when it is created. When this component is used with [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) or [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), or when the parent component is [ArcList](arkts-arkui-arclist-comp.md#ohosarkuiarclist), its child components are created when it is laid out.
+> - The parent component of this component can only be [ArcList](arkts-arkui-arclist-comp.md).
 > 
-> - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1 devices , tablets, and TVs, but the component can still run properly.
+> - When **ArcListItem** is used with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), its child components are created when **ArcListItem** is created. When it is used with [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) or [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), or directly as a child component of the [ArcList](arkts-arkui-arclist-comp.md) component, its child components are created when **ArcListItem** is laid out.
+> 
+> - This component can be used on Phone, PC/2in1, Tablet, TV, and Wearable devices. In API version 22 and earlier,using it on Phone, PC/2in1, Tablet, and TV generates a compilation warning, but it can run normally.
 
 ### Child Components
 
@@ -23,6 +23,8 @@ This component can contain a single child component.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-unnamed-export declare const ArcListItem: ArcListItemInterface--><!--Device-unnamed-export declare const ArcListItem: ArcListItemInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -37,5 +39,7 @@ Defines ArcListItem Component instance.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-unnamed-export declare const ArcListItemInstance: ArcListItemAttribute--><!--Device-unnamed-export declare const ArcListItemInstance: ArcListItemAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle

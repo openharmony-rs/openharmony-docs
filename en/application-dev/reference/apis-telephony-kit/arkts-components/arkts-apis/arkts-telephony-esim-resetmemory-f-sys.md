@@ -18,6 +18,8 @@ Clears all specific profiles and resets the eUICC. This API uses a promise to re
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_ESIM_STATE
 
+<!--Device-eSIM-function resetMemory(slotId: int, options?:ResetOption): Promise<ResultCode>--><!--Device-eSIM-function resetMemory(slotId: int, options?:ResetOption): Promise<ResultCode>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.

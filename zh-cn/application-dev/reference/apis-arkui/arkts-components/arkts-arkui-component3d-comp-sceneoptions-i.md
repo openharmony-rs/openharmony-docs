@@ -10,6 +10,8 @@ declare interface SceneOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface SceneOptions--><!--Device-unnamed-declare interface SceneOptions-End-->
+
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## modelType
@@ -28,6 +30,8 @@ modelType?: ModelType
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SceneOptions-modelType?: ModelType--><!--Device-SceneOptions-modelType?: ModelType-End-->
+
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## scene
@@ -43,5 +47,7 @@ scene?: ResourceStr | Scene
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SceneOptions-scene?: ResourceStr | Scene--><!--Device-SceneOptions-scene?: ResourceStr | Scene-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D

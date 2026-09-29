@@ -8,6 +8,8 @@ Mechanic device state. The state indicates whether the device is adsorbed or una
 
 **Since:** 26.2.0
 
+<!--Device-mechanicManager-export enum AdsorbState--><!--Device-mechanicManager-export enum AdsorbState-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Unknown state. Indicates that the adsorption state is unknown.
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AdsorbState-UNKNOWN = -1--><!--Device-AdsorbState-UNKNOWN = -1-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 
@@ -40,6 +44,8 @@ Adsorbed state. Indicates that the device has been adsorbed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AdsorbState-ADSORBED = 0--><!--Device-AdsorbState-ADSORBED = 0-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Unadsorbed state. Indicates that the device is not adsorbed.
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AdsorbState-UNADSORBED = 1--><!--Device-AdsorbState-UNADSORBED = 1-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 

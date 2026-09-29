@@ -8,6 +8,8 @@ declare enum PanDirection
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum PanDirection--><!--Device-unnamed-declare enum PanDirection-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -21,6 +23,8 @@ None
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanDirection-None--><!--Device-PanDirection-None-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +40,8 @@ Sliding horizontally.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PanDirection-Horizontal--><!--Device-PanDirection-Horizontal-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Left
@@ -49,6 +55,8 @@ Sliding left.
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanDirection-Left--><!--Device-PanDirection-Left-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +72,8 @@ Sliding right.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PanDirection-Right--><!--Device-PanDirection-Right-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Vertical
@@ -77,6 +87,8 @@ Vertical
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanDirection-Vertical--><!--Device-PanDirection-Vertical-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +104,8 @@ Sliding up.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PanDirection-Up--><!--Device-PanDirection-Up-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Down
@@ -106,6 +120,8 @@ Sliding Down.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PanDirection-Down--><!--Device-PanDirection-Down-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## All
@@ -119,5 +135,7 @@ Sliding in all directions.
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanDirection-All--><!--Device-PanDirection-All-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

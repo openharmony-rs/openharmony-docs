@@ -8,6 +8,8 @@ Provides the printer information.
 
 **Since:** 24
 
+<!--Device-print-interface PrinterInfo--><!--Device-print-interface PrinterInfo-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Printer capability.
 
 **Since:** 24
 
+<!--Device-PrinterInfo-capability?: PrinterCapability--><!--Device-PrinterInfo-capability?: PrinterCapability-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## description
@@ -41,6 +45,8 @@ Printer description.
 **Type:** string
 
 **Since:** 24
+
+<!--Device-PrinterInfo-description?: string--><!--Device-PrinterInfo-description?: string-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -56,6 +62,8 @@ Printer options. The value is a JSON object string.
 
 **Since:** 24
 
+<!--Device-PrinterInfo-options?: Object--><!--Device-PrinterInfo-options?: Object-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## printerIcon
@@ -69,6 +77,8 @@ Resource ID of the printer icon. The default value is **-1**.
 **Type:** number
 
 **Since:** 24
+
+<!--Device-PrinterInfo-printerIcon?: int--><!--Device-PrinterInfo-printerIcon?: int-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -84,6 +94,8 @@ Printer ID.
 
 **Since:** 24
 
+<!--Device-PrinterInfo-printerId: string--><!--Device-PrinterInfo-printerId: string-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## printerName
@@ -98,6 +110,8 @@ Printer name.
 
 **Since:** 24
 
+<!--Device-PrinterInfo-printerName: string--><!--Device-PrinterInfo-printerName: string-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## printerState
@@ -111,5 +125,7 @@ Printer state.
 **Type:** [PrinterState](arkts-basicservices-print-printerstate-e.md)
 
 **Since:** 24
+
+<!--Device-PrinterInfo-printerState: PrinterState--><!--Device-PrinterInfo-printerState: PrinterState-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

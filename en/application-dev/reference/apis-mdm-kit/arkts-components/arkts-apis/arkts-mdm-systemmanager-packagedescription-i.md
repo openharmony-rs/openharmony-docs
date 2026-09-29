@@ -8,6 +8,8 @@ Represents the description of a system update package.
 
 **Since:** 12
 
+<!--Device-systemManager-interface PackageDescription--><!--Device-systemManager-interface PackageDescription-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -29,5 +31,7 @@ Update notification defined by an enterprise.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PackageDescription-notify?: NotifyDescription--><!--Device-PackageDescription-notify?: NotifyDescription-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

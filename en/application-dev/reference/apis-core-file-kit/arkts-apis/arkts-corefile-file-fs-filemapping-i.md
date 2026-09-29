@@ -8,6 +8,8 @@ File mapping object. Before invoking the FileMapping method, you need to use the
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface FileMapping--><!--Device-unnamed-declare interface FileMapping-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Obtains the capacity of the file mapping area.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileMapping-capacity(): number--><!--Device-FileMapping-capacity(): number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -67,6 +71,8 @@ Mode reversal. That is, the limit attribute is set to the current position, and 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileMapping-flip(): void--><!--Device-FileMapping-flip(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -109,6 +115,8 @@ Obtains the upper bound of the readable and writable area of the file mapping ar
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileMapping-getLimit(): number--><!--Device-FileMapping-getLimit(): number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Return value:**
@@ -149,6 +157,8 @@ Gets the current location of the file mapping area.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileMapping-getPosition(): number--><!--Device-FileMapping-getPosition(): number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Return value:**
@@ -188,6 +198,8 @@ Synchronizes the dirty page data in the entire file mapping area to the disk fil
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileMapping-msync(): Promise<void>--><!--Device-FileMapping-msync(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -243,6 +255,8 @@ Synchronizes the dirty page data in the specified range of the file mapping area
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileMapping-msync(position: number, length: number): Promise<void>--><!--Device-FileMapping-msync(position: number, length: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -304,6 +318,8 @@ Synchronizes the dirty page data of the entire file mapping area to the disk fil
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileMapping-msyncSync(): void--><!--Device-FileMapping-msyncSync(): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -349,6 +365,8 @@ Synchronize the dirty page data in the specified range of the file mapping area 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileMapping-msyncSync(position: number, length: number): void--><!--Device-FileMapping-msyncSync(position: number, length: number): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -400,6 +418,8 @@ Reads data from the current position and moves the position backward by the numb
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileMapping-read(buffer: ArrayBuffer, length?: number): number--><!--Device-FileMapping-read(buffer: ArrayBuffer, length?: number): number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -455,6 +475,8 @@ Reads data from the specified location without affecting the current location.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileMapping-read(position: number, buffer: ArrayBuffer, length?: number): number--><!--Device-FileMapping-read(position: number, buffer: ArrayBuffer, length?: number): number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -508,6 +530,8 @@ Obtains the number of remaining bytes between the current position (position) an
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileMapping-remaining(): number--><!--Device-FileMapping-remaining(): number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Return value:**
@@ -551,6 +575,8 @@ Sets the upper bound of the readable and writable area of the file mapping area.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileMapping-setLimit(limit: number): void--><!--Device-FileMapping-setLimit(limit: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -591,6 +617,8 @@ Sets the current location of the file mapping area.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileMapping-setPosition(position: number): void--><!--Device-FileMapping-setPosition(position: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -630,6 +658,8 @@ Releases the file mapping area and use the promise asynchronous callback functio
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileMapping-unmap(): Promise<void>--><!--Device-FileMapping-unmap(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -678,6 +708,8 @@ Releases the file mapping area by using the synchronization method.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileMapping-unmapSync(): void--><!--Device-FileMapping-unmapSync(): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -712,6 +744,8 @@ Writes data from the current location and moves the location backward by the num
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileMapping-write(data: ArrayBuffer, length?: number): number--><!--Device-FileMapping-write(data: ArrayBuffer, length?: number): number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -768,6 +802,8 @@ Writes data from the specified location without affecting the current location.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileMapping-write(position: number, data: ArrayBuffer, length?: number): number--><!--Device-FileMapping-write(position: number, data: ArrayBuffer, length?: number): number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

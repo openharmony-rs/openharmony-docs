@@ -16,6 +16,8 @@ Obtains the call status.
 
 **Since:** 10
 
+<!--Device-call-function getCallStateSync(): CallState--><!--Device-call-function getCallStateSync(): CallState-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **Return value:**

@@ -16,6 +16,8 @@ declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback)
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>--><!--Device-unnamed-declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>-End-->
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |

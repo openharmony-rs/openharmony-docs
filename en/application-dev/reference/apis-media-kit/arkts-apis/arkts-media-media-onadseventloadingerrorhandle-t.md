@@ -10,6 +10,8 @@ Describes the callback function for the ad media resource loading error event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-media-type OnAdsEventLoadingErrorHandle = (adsId: string, reason: BusinessError) => void--><!--Device-media-type OnAdsEventLoadingErrorHandle = (adsId: string, reason: BusinessError) => void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**

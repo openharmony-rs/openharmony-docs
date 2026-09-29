@@ -18,6 +18,8 @@ Get the version of Baseband.
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+<!--Device-radio-function getBasebandVersion(slotId: int, callback: AsyncCallback<string>): void--><!--Device-radio-function getBasebandVersion(slotId: int, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Get the version of Baseband.
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
+
+<!--Device-radio-function getBasebandVersion(slotId: int): Promise<string>--><!--Device-radio-function getBasebandVersion(slotId: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

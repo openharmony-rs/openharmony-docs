@@ -8,6 +8,8 @@ ChipGroupSpaceOptions 定义了ChipGroup左右内边距，以及Chip与Chip之�
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface ChipGroupSpaceOptions--><!--Device-unnamed-export interface ChipGroupSpaceOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -39,6 +41,8 @@ endSpace?: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupSpaceOptions-endSpace?: Length--><!--Device-ChipGroupSpaceOptions-endSpace?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +76,8 @@ string类型：单位为fp | vp | px | lpx且数值部分大于等于0的字符�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupSpaceOptions-itemSpace?: string | number--><!--Device-ChipGroupSpaceOptions-itemSpace?: string | number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## startSpace
@@ -97,5 +103,7 @@ startSpace?: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupSpaceOptions-startSpace?: Length--><!--Device-ChipGroupSpaceOptions-startSpace?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

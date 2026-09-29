@@ -8,6 +8,8 @@ Describes the codec information.
 
 **Since:** 11
 
+<!--Device-a2dp-interface CodecInfo--><!--Device-a2dp-interface CodecInfo-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ codec bit rate.
 
 **Since:** 19
 
+<!--Device-CodecInfo-codecBitRate?: CodecBitRate--><!--Device-CodecInfo-codecBitRate?: CodecBitRate-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## codecBitsPerSample
@@ -41,6 +45,8 @@ codec bits per sample.
 **Type:** [CodecBitsPerSample](arkts-connectivity-a2dp-codecbitspersample-e.md)
 
 **Since:** 11
+
+<!--Device-CodecInfo-codecBitsPerSample: CodecBitsPerSample--><!--Device-CodecInfo-codecBitsPerSample: CodecBitsPerSample-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -56,6 +62,8 @@ codec channel mode.
 
 **Since:** 11
 
+<!--Device-CodecInfo-codecChannelMode: CodecChannelMode--><!--Device-CodecInfo-codecChannelMode: CodecChannelMode-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## codecFrameLength
@@ -69,6 +77,8 @@ codec frame length.
 **Type:** [CodecFrameLength](arkts-connectivity-a2dp-codecframelength-e.md)
 
 **Since:** 19
+
+<!--Device-CodecInfo-codecFrameLength?: CodecFrameLength--><!--Device-CodecInfo-codecFrameLength?: CodecFrameLength-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -84,6 +94,8 @@ codec sample rate.
 
 **Since:** 11
 
+<!--Device-CodecInfo-codecSampleRate: CodecSampleRate--><!--Device-CodecInfo-codecSampleRate: CodecSampleRate-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## codecType
@@ -97,5 +109,7 @@ codec type
 **Type:** [CodecType](arkts-connectivity-a2dp-codectype-e.md)
 
 **Since:** 11
+
+<!--Device-CodecInfo-codecType: CodecType--><!--Device-CodecInfo-codecType: CodecType-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

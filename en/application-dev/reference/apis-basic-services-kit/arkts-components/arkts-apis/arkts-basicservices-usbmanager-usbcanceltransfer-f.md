@@ -24,6 +24,8 @@ Cancels an asynchronous USB data transfer request. This API can be used to proac
 
 **Since:** 18
 
+<!--Device-usbManager-function usbCancelTransfer(transfer: UsbDataTransferParams): void--><!--Device-usbManager-function usbCancelTransfer(transfer: UsbDataTransferParams): void-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

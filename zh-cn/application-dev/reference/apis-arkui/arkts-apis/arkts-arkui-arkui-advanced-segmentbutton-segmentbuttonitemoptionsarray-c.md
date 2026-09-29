@@ -10,11 +10,13 @@ declare class SegmentButtonItemOptionsArray extends Array<SegmentButtonItemOptio
 > 
 > SegmentButtonItemOptionsArray仅支持保存2到5个按钮信息元素。
 
-**继承/实现关系：** SegmentButtonItemOptionsArray extends Array&lt;SegmentButtonItemOptions&gt;
+**继承/实现关系：** SegmentButtonItemOptionsArray extends Array<SegmentButtonItemOptions>
 
 **起始版本：** 11
 
 **装饰器类型：** @Observed
+
+<!--Device-unnamed-declare class SegmentButtonItemOptionsArray extends Array<SegmentButtonItemOptions>--><!--Device-unnamed-declare class SegmentButtonItemOptionsArray extends Array<SegmentButtonItemOptions>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,6 +40,8 @@ constructor(elements: SegmentButtonItemTuple)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SegmentButtonItemOptionsArray-constructor(elements: SegmentButtonItemTuple)--><!--Device-SegmentButtonItemOptionsArray-constructor(elements: SegmentButtonItemTuple)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -59,6 +63,8 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SegmentButtonItemOptionsArray-static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray--><!--Device-SegmentButtonItemOptionsArray-static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +94,8 @@ pop(): SegmentButtonItemOptions | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SegmentButtonItemOptionsArray-pop(): SegmentButtonItemOptions | undefined--><!--Device-SegmentButtonItemOptionsArray-pop(): SegmentButtonItemOptions | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -109,6 +117,8 @@ push(...items: SegmentButtonItemArray): number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SegmentButtonItemOptionsArray-push(...items: SegmentButtonItemArray): number--><!--Device-SegmentButtonItemOptionsArray-push(...items: SegmentButtonItemArray): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,6 +148,8 @@ shift(): SegmentButtonItemOptions | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SegmentButtonItemOptionsArray-shift(): SegmentButtonItemOptions | undefined--><!--Device-SegmentButtonItemOptionsArray-shift(): SegmentButtonItemOptions | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -159,6 +171,8 @@ splice(start: number, deleteCount: number, ...items: SegmentButtonItemOptions[])
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SegmentButtonItemOptionsArray-splice(start: number, deleteCount: number, ...items: SegmentButtonItemOptions[]): SegmentButtonItemOptions[]--><!--Device-SegmentButtonItemOptionsArray-splice(start: number, deleteCount: number, ...items: SegmentButtonItemOptions[]): SegmentButtonItemOptions[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,6 +203,8 @@ unshift(...items: SegmentButtonItemArray): number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SegmentButtonItemOptionsArray-unshift(...items: SegmentButtonItemArray): number--><!--Device-SegmentButtonItemOptionsArray-unshift(...items: SegmentButtonItemArray): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

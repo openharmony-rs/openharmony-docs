@@ -8,6 +8,8 @@ Enumerates the positions of an auto-fill pop-up.
 
 **Since:** 12
 
+<!--Device-unnamed-export declare enum PopupPlacement--><!--Device-unnamed-export declare enum PopupPlacement-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ The popup is on the left of the component and aligned with the left center of th
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PopupPlacement-LEFT = 0--><!--Device-PopupPlacement-LEFT = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -40,6 +44,8 @@ The popup is on the right of the component and aligned with the right center of 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PopupPlacement-RIGHT = 1--><!--Device-PopupPlacement-RIGHT = 1-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ The popup is at the top of the component and aligned with the top center of the 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PopupPlacement-TOP = 2--><!--Device-PopupPlacement-TOP = 2-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -72,6 +80,8 @@ The popup is at the bottom of the component and aligned with the bottom center o
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PopupPlacement-BOTTOM = 3--><!--Device-PopupPlacement-BOTTOM = 3-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -87,6 +97,8 @@ The popup is at the top of the component and aligned with the left edge of the c
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PopupPlacement-TOP_LEFT = 4--><!--Device-PopupPlacement-TOP_LEFT = 4-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -104,6 +116,8 @@ The popup is at the top of the component and aligned with the right edge of the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PopupPlacement-TOP_RIGHT = 5--><!--Device-PopupPlacement-TOP_RIGHT = 5-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -119,6 +133,8 @@ The popup is at the bottom of the component and aligned with the left edge of th
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PopupPlacement-BOTTOM_LEFT = 6--><!--Device-PopupPlacement-BOTTOM_LEFT = 6-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -136,6 +152,8 @@ The popup is at the bottom of the component and aligned with the right edge of t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PopupPlacement-BOTTOM_RIGHT = 7--><!--Device-PopupPlacement-BOTTOM_RIGHT = 7-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -151,6 +169,8 @@ The popup is on the left of the component and aligned with the top edge of the c
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PopupPlacement-LEFT_TOP = 8--><!--Device-PopupPlacement-LEFT_TOP = 8-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -168,6 +188,8 @@ The popup is on the left of the component and aligned with the bottom edge of th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PopupPlacement-LEFT_BOTTOM = 9--><!--Device-PopupPlacement-LEFT_BOTTOM = 9-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -183,6 +205,8 @@ The popup is on the right of the component and aligned with the top edge of the 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PopupPlacement-RIGHT_TOP = 10--><!--Device-PopupPlacement-RIGHT_TOP = 10-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -200,6 +224,8 @@ The popup is on the right of the component and aligned with the bottom edge of t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PopupPlacement-RIGHT_BOTTOM = 11--><!--Device-PopupPlacement-RIGHT_BOTTOM = 11-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -215,6 +241,8 @@ The position is unspecified.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PopupPlacement-NONE = 12--><!--Device-PopupPlacement-NONE = 12-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

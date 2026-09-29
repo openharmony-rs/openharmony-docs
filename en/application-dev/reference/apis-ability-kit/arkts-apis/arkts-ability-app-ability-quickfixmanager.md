@@ -1,8 +1,10 @@
-# @ohos.app.ability.quickFixManager
+# @ohos.app.ability.quickFixManager(quickFixManager)
 
 The quickFixManager module provides APIs for quick fix. With quick fix, you can fix bugs in your application by applying patches, which is more efficient than by updating the entire application.
 
 **Since:** 9
+
+<!--Device-unnamed-declare namespace quickFixManager--><!--Device-unnamed-declare namespace quickFixManager-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.QuickFix
 

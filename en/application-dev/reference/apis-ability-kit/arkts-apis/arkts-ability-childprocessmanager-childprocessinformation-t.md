@@ -10,6 +10,8 @@ Defines the child process information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-childProcessManager-export type ChildProcessInformation = _ChildProcessInformation--><!--Device-childProcessManager-export type ChildProcessInformation = _ChildProcessInformation-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _ChildProcessInformation

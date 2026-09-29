@@ -20,6 +20,8 @@ Unsubscribes from a notification. This API uses an asynchronous callback to retu
 - API version 20 and later: N/A
 - API versions 9 to 19: ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationSubscribe-function unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<void>): void--><!--Device-notificationSubscribe-function unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -79,6 +81,8 @@ Unsubscribes from a notification. This API uses a promise to return the result.
 **Required permissions:** 
 - API version 20 and later: N/A
 - API versions 9 to 19: ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationSubscribe-function unsubscribe(subscriber: NotificationSubscriber): Promise<void>--><!--Device-notificationSubscribe-function unsubscribe(subscriber: NotificationSubscriber): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

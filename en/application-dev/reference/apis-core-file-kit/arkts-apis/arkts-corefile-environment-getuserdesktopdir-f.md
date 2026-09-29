@@ -20,6 +20,8 @@ Obtains the sandbox path of the pre-authorized **Desktop** directory.
 - API version 12 and later: N/A
 - API version 11: ohos.permission.READ_WRITE_DESKTOP_DIRECTORY
 
+<!--Device-Environment-function getUserDesktopDir(): string--><!--Device-Environment-function getUserDesktopDir(): string-End-->
+
 **System capability:** SystemCapability.FileManagement.File.Environment.FolderObtain
 
 **Return value:**

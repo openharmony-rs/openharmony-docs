@@ -20,6 +20,8 @@ Obtains the slot ID of the SIM card currently used as the default data SIM card 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-telephonyManager-function getDefaultData(admin: Want): number--><!--Device-telephonyManager-function getDefaultData(admin: Want): number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

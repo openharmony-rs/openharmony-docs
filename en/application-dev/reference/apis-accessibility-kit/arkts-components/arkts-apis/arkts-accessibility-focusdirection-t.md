@@ -8,6 +8,8 @@ Enumerates the focus directions.
 
 **Since:** 9
 
+<!--Device-unnamed-export type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'backward'--><!--Device-unnamed-export type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'backward'-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 | Type | Description |

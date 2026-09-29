@@ -18,6 +18,8 @@ Obtains information about a specified type of keep-alive application of a user. 
 
 **Required permissions:** ohos.permission.MANAGE_APP_KEEP_ALIVE
 
+<!--Device-appManager-function getKeepAliveBundles(type: KeepAliveAppType, userId?: int): Promise<Array<KeepAliveBundleInfo>>--><!--Device-appManager-function getKeepAliveBundles(type: KeepAliveAppType, userId?: int): Promise<Array<KeepAliveBundleInfo>>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

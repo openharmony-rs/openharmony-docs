@@ -8,6 +8,8 @@ Enumerates the word break types.
 
 **Since:** 12
 
+<!--Device-text-enum WordBreak--><!--Device-text-enum WordBreak-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## NORMAL
@@ -20,7 +22,9 @@ Default mode that break words based on language-specific conventions.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-WordBreak-NORMAL = 0--><!--Device-WordBreak-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -34,7 +38,9 @@ Allows breaks within any character in non-CJK text. (CJK means Chinese, Japanese
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-WordBreak-BREAK_ALL = 1--><!--Device-WordBreak-BREAK_ALL = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -48,7 +54,9 @@ For non-CJK text, breaks lines between any two characters. If a line contains br
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-WordBreak-BREAK_WORD = 2--><!--Device-WordBreak-BREAK_WORD = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -64,6 +72,8 @@ When using this word break strategy, you need to use the `locale` attribute in [
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-WordBreak-BREAK_HYPHEN = 3--><!--Device-WordBreak-BREAK_HYPHEN = 3-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

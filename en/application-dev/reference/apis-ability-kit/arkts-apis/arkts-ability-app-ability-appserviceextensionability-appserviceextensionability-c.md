@@ -10,6 +10,8 @@ The AppServiceExtensionAbility module provides extended capabilities for backgro
 
 **Since:** 20
 
+<!--Device-unnamed-declare class AppServiceExtensionAbility extends ExtensionAbility--><!--Device-unnamed-declare class AppServiceExtensionAbility extends ExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Called when an AppServiceExtensionAbility instance is connected by calling [conn
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AppServiceExtensionAbility-onConnect(want: Want): rpc.RemoteObject--><!--Device-AppServiceExtensionAbility-onConnect(want: Want): rpc.RemoteObject-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -88,6 +92,8 @@ Called when an AppServiceExtensionAbility instance is created. Applications can 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AppServiceExtensionAbility-onCreate(want: Want): void--><!--Device-AppServiceExtensionAbility-onCreate(want: Want): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -123,6 +129,8 @@ Called when an AppServiceExtensionAbility instance is destroyed. Applications ca
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AppServiceExtensionAbility-onDestroy(): void--><!--Device-AppServiceExtensionAbility-onDestroy(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Examples**
@@ -151,6 +159,8 @@ Called when all connections to an AppServiceExtensionAbility instance are interr
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AppServiceExtensionAbility-onDisconnect(want: Want): void--><!--Device-AppServiceExtensionAbility-onDisconnect(want: Want): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -186,6 +196,8 @@ Called each time an AppServiceExtensionAbility instance is started by calling [s
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AppServiceExtensionAbility-onRequest(want: Want, startId: int): void--><!--Device-AppServiceExtensionAbility-onRequest(want: Want, startId: int): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -224,5 +236,7 @@ Context environment for an AppServiceExtensionAbility. This context inherits fro
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AppServiceExtensionAbility-context: AppServiceExtensionContext--><!--Device-AppServiceExtensionAbility-context: AppServiceExtensionContext-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

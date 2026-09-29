@@ -14,6 +14,8 @@ Represents a callback for item changes in the visible area of the **List** compo
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 19.
 
+<!--Device-unnamed-declare type OnListScrollIndexCallback = (start: number, end: number, center: number) => void--><!--Device-unnamed-declare type OnListScrollIndexCallback = (start: number, end: number, center: number) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

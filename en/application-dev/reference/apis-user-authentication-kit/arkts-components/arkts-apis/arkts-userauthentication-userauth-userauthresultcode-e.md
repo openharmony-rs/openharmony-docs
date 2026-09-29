@@ -8,6 +8,8 @@ Enumerates the authentication result codes. They include all success codes and e
 
 **Since:** 9
 
+<!--Device-userAuth-enum UserAuthResultCode--><!--Device-userAuth-enum UserAuthResultCode-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## SUCCESS
@@ -20,7 +22,9 @@ The operation is successful. It indicates that the user authentication is succes
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResultCode-SUCCESS = 12500000--><!--Device-UserAuthResultCode-SUCCESS = 12500000-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -34,7 +38,9 @@ The authentication fails. It indicates that the user characteristics do not matc
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResultCode-FAIL = 12500001--><!--Device-UserAuthResultCode-FAIL = 12500001-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -48,7 +54,9 @@ A general operation error occurred. It indicates that an unknown error occurs du
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResultCode-GENERAL_ERROR = 12500002--><!--Device-UserAuthResultCode-GENERAL_ERROR = 12500002-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -62,7 +70,9 @@ The authentication is canceled. It indicates that the user or the system cancels
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResultCode-CANCELED = 12500003--><!--Device-UserAuthResultCode-CANCELED = 12500003-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -76,7 +86,9 @@ The authentication has timed out. It indicates that the user does not complete t
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResultCode-TIMEOUT = 12500004--><!--Device-UserAuthResultCode-TIMEOUT = 12500004-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -90,7 +102,9 @@ The authentication type is not supported. It indicates that the current device d
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResultCode-TYPE_NOT_SUPPORT = 12500005--><!--Device-UserAuthResultCode-TYPE_NOT_SUPPORT = 12500005-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -104,7 +118,9 @@ The authentication trust level is not supported. It indicates that the specified
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResultCode-TRUST_LEVEL_NOT_SUPPORT = 12500006--><!--Device-UserAuthResultCode-TRUST_LEVEL_NOT_SUPPORT = 12500006-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -118,7 +134,9 @@ The system is busy. It indicates that the authentication service is busy process
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResultCode-BUSY = 12500007--><!--Device-UserAuthResultCode-BUSY = 12500007-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -132,7 +150,9 @@ Parameter verification failed. It indicates that the input parameter does not me
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-UserAuthResultCode-INVALID_PARAMETERS = 12500008--><!--Device-UserAuthResultCode-INVALID_PARAMETERS = 12500008-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -146,7 +166,9 @@ The authentication executor is locked. It indicates that the authenticator is lo
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResultCode-LOCKED = 12500009--><!--Device-UserAuthResultCode-LOCKED = 12500009-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -160,7 +182,9 @@ The user has not enrolled the specified system identity authentication credentia
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResultCode-NOT_ENROLLED = 12500010--><!--Device-UserAuthResultCode-NOT_ENROLLED = 12500010-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -174,7 +198,9 @@ The user cancels the system authentication and selects a custom authentication o
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResultCode-CANCELED_FROM_WIDGET = 12500011--><!--Device-UserAuthResultCode-CANCELED_FROM_WIDGET = 12500011-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -188,6 +214,8 @@ The PIN has expired. It indicates that the system PIN has expired. For example, 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResultCode-PIN_EXPIRED = 12500013--><!--Device-UserAuthResultCode-PIN_EXPIRED = 12500013-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

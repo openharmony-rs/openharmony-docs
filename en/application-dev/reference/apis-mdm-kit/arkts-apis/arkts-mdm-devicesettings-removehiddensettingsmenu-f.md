@@ -22,6 +22,8 @@ Since API version 26.0.0, if you call [setDisallowedPolicyForAccount](arkts-mdm-
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function removeHiddenSettingsMenu(admin: Want, menusToHidden: Array<SettingsMenu>): void--><!--Device-deviceSettings-function removeHiddenSettingsMenu(admin: Want, menusToHidden: Array<SettingsMenu>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

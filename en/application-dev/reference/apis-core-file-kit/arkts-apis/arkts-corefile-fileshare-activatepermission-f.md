@@ -18,6 +18,8 @@ Enable the URI that have been permanently authorized
 
 **Required permissions:** ohos.permission.FILE_ACCESS_PERSIST
 
+<!--Device-fileShare-function activatePermission(policies: Array<PolicyInfo>): Promise<void>--><!--Device-fileShare-function activatePermission(policies: Array<PolicyInfo>): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **Parameters:**

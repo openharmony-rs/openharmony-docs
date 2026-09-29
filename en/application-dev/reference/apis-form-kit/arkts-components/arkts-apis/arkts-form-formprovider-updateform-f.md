@@ -20,14 +20,17 @@ Updates a widget. This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
-> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the
-> refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19
-> and earlier versions, the upper limit for image files is 5, with a per-image memory limit of 2 MB. Any images
-> that exceed these limits will display abnormally.
+> Starting from API version 26.0.1, when widget refresh data is updated via shared memory, the total size of the
+> refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 30. From API version 20
+> to before API version 26.0.1, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed
+> images must not exceed 20. For API version 19 and earlier versions, the upper limit for image files is 5, with a
+> per-image memory limit of 2 MB. Any images that exceed these limits will display abnormally.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-formProvider-function updateForm(    formId: string,    formBindingData: formBindingData.FormBindingData,    callback: AsyncCallback<void>  ): void--><!--Device-formProvider-function updateForm(    formId: string,    formBindingData: formBindingData.FormBindingData,    callback: AsyncCallback<void>  ): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -89,14 +92,17 @@ Updates a widget. This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
-> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the
-> refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19
-> and earlier versions, the upper limit for image files is 5, with a per-image memory limit of 2 MB. Any images
-> that exceed these limits will display abnormally.
+> Starting from API version 26.0.1, when widget refresh data is updated via shared memory, the total size of the
+> refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 30. From API version 20
+> to before API version 26.0.1, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed
+> images must not exceed 20. For API version 19 and earlier versions, the upper limit for image files is 5, with a
+> per-image memory limit of 2 MB. Any images that exceed these limits will display abnormally.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-formProvider-function updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise<void>--><!--Device-formProvider-function updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

@@ -8,6 +8,8 @@ cookie的相关字段。
 
 **起始版本：** 23
 
+<!--Device-webview-interface WebHttpCookie--><!--Device-webview-interface WebHttpCookie-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -28,6 +30,8 @@ domain: string
 
 **起始版本：** 23
 
+<!--Device-WebHttpCookie-domain: string--><!--Device-WebHttpCookie-domain: string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## expiresDate
@@ -41,6 +45,8 @@ cookie的过期时间。时间格式详见[Date](https://developer.mozilla.org/z
 **类型：** string
 
 **起始版本：** 23
+
+<!--Device-WebHttpCookie-expiresDate: string--><!--Device-WebHttpCookie-expiresDate: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -58,6 +64,8 @@ true表示仅能通过HTTP访问，不能通过JavaScript访问，false表示可
 
 **起始版本：** 23
 
+<!--Device-WebHttpCookie-isHttpOnly: boolean--><!--Device-WebHttpCookie-isHttpOnly: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isSecure
@@ -73,6 +81,8 @@ true表示仅能通过HTTPS发送，不能通过HTTP发送，false表示可以�
 **类型：** boolean
 
 **起始版本：** 23
+
+<!--Device-WebHttpCookie-isSecure: boolean--><!--Device-WebHttpCookie-isSecure: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -90,6 +100,8 @@ true表示是session cookie，false表示不是session cookie。
 
 **起始版本：** 23
 
+<!--Device-WebHttpCookie-isSessionCookie: boolean--><!--Device-WebHttpCookie-isSessionCookie: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## name
@@ -103,6 +115,8 @@ cookie的名称。
 **类型：** string
 
 **起始版本：** 23
+
+<!--Device-WebHttpCookie-name: string--><!--Device-WebHttpCookie-name: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -118,6 +132,8 @@ cookie的路径。
 
 **起始版本：** 23
 
+<!--Device-WebHttpCookie-path: string--><!--Device-WebHttpCookie-path: string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## samesitePolicy
@@ -132,6 +148,8 @@ cookie的同站策略。
 
 **起始版本：** 23
 
+<!--Device-WebHttpCookie-samesitePolicy: WebHttpCookieSameSitePolicy--><!--Device-WebHttpCookie-samesitePolicy: WebHttpCookieSameSitePolicy-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## value
@@ -145,5 +163,7 @@ cookie的值。
 **类型：** string
 
 **起始版本：** 23
+
+<!--Device-WebHttpCookie-value: string--><!--Device-WebHttpCookie-value: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

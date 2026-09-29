@@ -8,6 +8,8 @@ Defines the callback information triggered when the web page receives an HTTP er
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnHttpErrorReceiveEvent--><!--Device-unnamed-declare interface OnHttpErrorReceiveEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## request
@@ -24,6 +26,8 @@ The information of request.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnHttpErrorReceiveEvent-request: WebResourceRequest--><!--Device-OnHttpErrorReceiveEvent-request: WebResourceRequest-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## response
@@ -39,5 +43,7 @@ Web resource response of event.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnHttpErrorReceiveEvent-response: WebResourceResponse--><!--Device-OnHttpErrorReceiveEvent-response: WebResourceResponse-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

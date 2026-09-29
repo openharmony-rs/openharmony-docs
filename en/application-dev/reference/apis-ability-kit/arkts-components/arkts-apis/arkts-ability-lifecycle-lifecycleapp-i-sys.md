@@ -10,6 +10,8 @@ interface of app lifecycle.
 
 **Since:** 7
 
+<!--Device-unnamed-export declare interface LifecycleApp--><!--Device-unnamed-export declare interface LifecycleApp-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Called when the window display mode of this ability changes, for example, from f
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleApp-onWindowDisplayModeChanged?(isShownInMultiWindow: boolean, newConfig: resourceManager.Configuration): void--><!--Device-LifecycleApp-onWindowDisplayModeChanged?(isShownInMultiWindow: boolean, newConfig: resourceManager.Configuration): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 

@@ -10,6 +10,8 @@ The following table lists the common uniform data types.
 
 **Since:** 10
 
+<!--Device-uniformTypeDescriptor-enum UniformDataType--><!--Device-uniformTypeDescriptor-enum UniformDataType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## ENTITY
@@ -25,6 +27,8 @@ This type is uncategorized.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-ENTITY = 'general.entity'--><!--Device-UniformDataType-ENTITY = 'general.entity'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -42,6 +46,8 @@ This type is uncategorized.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-OBJECT = 'general.object'--><!--Device-UniformDataType-OBJECT = 'general.object'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## COMPOSITE_OBJECT
@@ -57,6 +63,8 @@ This type belongs to **OBJECT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-COMPOSITE_OBJECT = 'general.composite-object'--><!--Device-UniformDataType-COMPOSITE_OBJECT = 'general.composite-object'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -74,7 +82,9 @@ This type belongs to **OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UniformDataType-TEXT = 'general.text'--><!--Device-UniformDataType-TEXT = 'general.text'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -92,7 +102,9 @@ This type belongs to **TEXT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UniformDataType-PLAIN_TEXT = 'general.plain-text'--><!--Device-UniformDataType-PLAIN_TEXT = 'general.plain-text'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -110,7 +122,9 @@ This type belongs to **TEXT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UniformDataType-HTML = 'general.html'--><!--Device-UniformDataType-HTML = 'general.html'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -128,7 +142,9 @@ This type belongs to **TEXT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UniformDataType-HYPERLINK = 'general.hyperlink'--><!--Device-UniformDataType-HYPERLINK = 'general.hyperlink'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -146,6 +162,8 @@ This type belongs to **TEXT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-XML = 'general.xml'--><!--Device-UniformDataType-XML = 'general.xml'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## XHTML
@@ -161,6 +179,8 @@ This type belongs to **XML**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-XHTML = 'general.xhtml'--><!--Device-UniformDataType-XHTML = 'general.xhtml'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -178,6 +198,8 @@ This type belongs to **XML**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-RSS = 'general.rss'--><!--Device-UniformDataType-RSS = 'general.rss'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## SMIL
@@ -193,6 +215,8 @@ This type belongs to **XML**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-SMIL = 'com.real.smil'--><!--Device-UniformDataType-SMIL = 'com.real.smil'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -210,6 +234,8 @@ This type belongs to **TEXT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-SOURCE_CODE = 'general.source-code'--><!--Device-UniformDataType-SOURCE_CODE = 'general.source-code'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## SCRIPT
@@ -225,6 +251,8 @@ This type belongs to **SOURCE_CODE**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-SCRIPT = 'general.script'--><!--Device-UniformDataType-SCRIPT = 'general.script'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -242,6 +270,8 @@ This type belongs to **SCRIPT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-SHELL_SCRIPT = 'general.shell-script'--><!--Device-UniformDataType-SHELL_SCRIPT = 'general.shell-script'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## CSH_SCRIPT
@@ -257,6 +287,8 @@ This type belongs to **SHELL_SCRIPT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-CSH_SCRIPT = 'general.csh-script'--><!--Device-UniformDataType-CSH_SCRIPT = 'general.csh-script'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -274,6 +306,8 @@ This type belongs to **SHELL_SCRIPT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-PERL_SCRIPT = 'general.perl-script'--><!--Device-UniformDataType-PERL_SCRIPT = 'general.perl-script'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## PHP_SCRIPT
@@ -289,6 +323,8 @@ This type belongs to **SHELL_SCRIPT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-PHP_SCRIPT = 'general.php-script'--><!--Device-UniformDataType-PHP_SCRIPT = 'general.php-script'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -306,6 +342,8 @@ This type belongs to **SHELL_SCRIPT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-PYTHON_SCRIPT = 'general.python-script'--><!--Device-UniformDataType-PYTHON_SCRIPT = 'general.python-script'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## RUBY_SCRIPT
@@ -321,6 +359,8 @@ This type belongs to **SHELL_SCRIPT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-RUBY_SCRIPT = 'general.ruby-script'--><!--Device-UniformDataType-RUBY_SCRIPT = 'general.ruby-script'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -338,6 +378,8 @@ This type belongs to **SOURCE_CODE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-TYPE_SCRIPT = 'general.type-script'--><!--Device-UniformDataType-TYPE_SCRIPT = 'general.type-script'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## JAVA_SCRIPT
@@ -353,6 +395,8 @@ This type belongs to **SOURCE_CODE**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-JAVA_SCRIPT = 'general.java-script'--><!--Device-UniformDataType-JAVA_SCRIPT = 'general.java-script'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -370,6 +414,8 @@ This type belongs to **SCRIPT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-CSS = 'general.css'--><!--Device-UniformDataType-CSS = 'general.css'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## C_HEADER
@@ -385,6 +431,8 @@ This type belongs to **SOURCE_CODE**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-C_HEADER = 'general.c-header'--><!--Device-UniformDataType-C_HEADER = 'general.c-header'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -402,6 +450,8 @@ This type belongs to **SOURCE_CODE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-C_SOURCE = 'general.c-source'--><!--Device-UniformDataType-C_SOURCE = 'general.c-source'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## C_PLUS_PLUS_HEADER
@@ -417,6 +467,8 @@ This type belongs to **SOURCE_CODE**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-C_PLUS_PLUS_HEADER = 'general.c-plus-plus-header'--><!--Device-UniformDataType-C_PLUS_PLUS_HEADER = 'general.c-plus-plus-header'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -434,6 +486,8 @@ This type belongs to **SOURCE_CODE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-C_PLUS_PLUS_SOURCE = 'general.c-plus-plus-source'--><!--Device-UniformDataType-C_PLUS_PLUS_SOURCE = 'general.c-plus-plus-source'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## JAVA_SOURCE
@@ -449,6 +503,8 @@ This type belongs to **SOURCE_CODE**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-JAVA_SOURCE = 'general.java-source'--><!--Device-UniformDataType-JAVA_SOURCE = 'general.java-source'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -466,6 +522,8 @@ This type belongs to **SOURCE_CODE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-TEX = 'general.tex'--><!--Device-UniformDataType-TEX = 'general.tex'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## MARKDOWN
@@ -481,6 +539,8 @@ This type belongs to **TEXT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-MARKDOWN = 'general.markdown'--><!--Device-UniformDataType-MARKDOWN = 'general.markdown'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -498,6 +558,8 @@ This type belongs to **TEXT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-ASC_TEXT = 'general.asc-text'--><!--Device-UniformDataType-ASC_TEXT = 'general.asc-text'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## RICH_TEXT
@@ -513,6 +575,8 @@ This type belongs to **TEXT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-RICH_TEXT = 'general.rich-text'--><!--Device-UniformDataType-RICH_TEXT = 'general.rich-text'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -530,6 +594,8 @@ This type belongs to **TEXT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-DELIMITED_VALUES_TEXT = 'general.delimited-values-text'--><!--Device-UniformDataType-DELIMITED_VALUES_TEXT = 'general.delimited-values-text'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## COMMA_SEPARATED_VALUES_TEXT
@@ -545,6 +611,8 @@ This type belongs to **DELIMITED_VALUES_TEXT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-COMMA_SEPARATED_VALUES_TEXT = 'general.comma-separated-values-text'--><!--Device-UniformDataType-COMMA_SEPARATED_VALUES_TEXT = 'general.comma-separated-values-text'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -562,6 +630,8 @@ This type belongs to **DELIMITED_VALUES_TEXT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-TAB_SEPARATED_VALUES_TEXT = 'general.tab-separated-values-text'--><!--Device-UniformDataType-TAB_SEPARATED_VALUES_TEXT = 'general.tab-separated-values-text'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## EBOOK
@@ -577,6 +647,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-EBOOK = 'general.ebook'--><!--Device-UniformDataType-EBOOK = 'general.ebook'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -594,6 +666,8 @@ This type belongs to **EBOOK**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-EPUB = 'general.epub'--><!--Device-UniformDataType-EPUB = 'general.epub'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## AZW
@@ -609,6 +683,8 @@ This type belongs to **EBOOK**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-AZW = 'com.amazon.azw'--><!--Device-UniformDataType-AZW = 'com.amazon.azw'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -626,6 +702,8 @@ This type belongs to **EBOOK**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-AZW3 = 'com.amazon.azw3'--><!--Device-UniformDataType-AZW3 = 'com.amazon.azw3'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## KFX
@@ -641,6 +719,8 @@ This type belongs to **EBOOK**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-KFX = 'com.amazon.kfx'--><!--Device-UniformDataType-KFX = 'com.amazon.kfx'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -658,6 +738,8 @@ This type belongs to **EBOOK**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-MOBI = 'com.amazon.mobi'--><!--Device-UniformDataType-MOBI = 'com.amazon.mobi'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## MEDIA
@@ -673,6 +755,8 @@ This type belongs to **OBJECT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-MEDIA = 'general.media'--><!--Device-UniformDataType-MEDIA = 'general.media'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -690,7 +774,9 @@ This type belongs to **MEDIA**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UniformDataType-IMAGE = 'general.image'--><!--Device-UniformDataType-IMAGE = 'general.image'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -708,6 +794,8 @@ This type belongs to **IMAGE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-JPEG = 'general.jpeg'--><!--Device-UniformDataType-JPEG = 'general.jpeg'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## PNG
@@ -723,6 +811,8 @@ This type belongs to **IMAGE**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-PNG = 'general.png'--><!--Device-UniformDataType-PNG = 'general.png'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -740,6 +830,8 @@ This type belongs to **IMAGE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-RAW_IMAGE = 'general.raw-image'--><!--Device-UniformDataType-RAW_IMAGE = 'general.raw-image'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## TIFF
@@ -755,6 +847,8 @@ This type belongs to **IMAGE**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-TIFF = 'general.tiff'--><!--Device-UniformDataType-TIFF = 'general.tiff'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -772,6 +866,8 @@ This type belongs to **IMAGE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-BMP = 'com.microsoft.bmp'--><!--Device-UniformDataType-BMP = 'com.microsoft.bmp'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## ICO
@@ -787,6 +883,8 @@ This type belongs to **IMAGE**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-ICO = 'com.microsoft.ico'--><!--Device-UniformDataType-ICO = 'com.microsoft.ico'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -804,6 +902,8 @@ This type belongs to **IMAGE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-PHOTOSHOP_IMAGE = 'com.adobe.photoshop-image'--><!--Device-UniformDataType-PHOTOSHOP_IMAGE = 'com.adobe.photoshop-image'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## AI_IMAGE
@@ -819,6 +919,8 @@ This type belongs to **IMAGE**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-AI_IMAGE = 'com.adobe.illustrator.ai-image'--><!--Device-UniformDataType-AI_IMAGE = 'com.adobe.illustrator.ai-image'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -836,6 +938,8 @@ This type belongs to **IMAGE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-FAX = 'general.fax'--><!--Device-UniformDataType-FAX = 'general.fax'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## JFX_FAX
@@ -851,6 +955,8 @@ This type belongs to **FAX**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-JFX_FAX = 'com.j2.jfx-fax'--><!--Device-UniformDataType-JFX_FAX = 'com.j2.jfx-fax'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -868,6 +974,8 @@ This type belongs to **FAX**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-EFX_FAX = 'com.js.efx-fax'--><!--Device-UniformDataType-EFX_FAX = 'com.js.efx-fax'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## XBITMAP_IMAGE
@@ -883,6 +991,8 @@ This type belongs to **IMAGE**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-XBITMAP_IMAGE = 'general.xbitmap-image'--><!--Device-UniformDataType-XBITMAP_IMAGE = 'general.xbitmap-image'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -900,6 +1010,8 @@ This type belongs to **IMAGE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-GIF = 'general.gif'--><!--Device-UniformDataType-GIF = 'general.gif'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## TGA_IMAGE
@@ -915,6 +1027,8 @@ This type belongs to **IMAGE**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-TGA_IMAGE = 'com.truevision.tga-image'--><!--Device-UniformDataType-TGA_IMAGE = 'com.truevision.tga-image'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -932,6 +1046,8 @@ This type belongs to **IMAGE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-SGI_IMAGE = 'com.sgi.sgi-image'--><!--Device-UniformDataType-SGI_IMAGE = 'com.sgi.sgi-image'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## OPENEXR_IMAGE
@@ -947,6 +1063,8 @@ This type belongs to **IMAGE**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-OPENEXR_IMAGE = 'com.ilm.openexr-image'--><!--Device-UniformDataType-OPENEXR_IMAGE = 'com.ilm.openexr-image'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -964,6 +1082,8 @@ This type belongs to **IMAGE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-FLASHPIX_IMAGE = 'com.kodak.flashpix.image'--><!--Device-UniformDataType-FLASHPIX_IMAGE = 'com.kodak.flashpix.image'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## WORD_DOC
@@ -979,6 +1099,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-WORD_DOC = 'com.microsoft.word.doc'--><!--Device-UniformDataType-WORD_DOC = 'com.microsoft.word.doc'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -996,6 +1118,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-EXCEL = 'com.microsoft.excel.xls'--><!--Device-UniformDataType-EXCEL = 'com.microsoft.excel.xls'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## PPT
@@ -1011,6 +1135,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-PPT = 'com.microsoft.powerpoint.ppt'--><!--Device-UniformDataType-PPT = 'com.microsoft.powerpoint.ppt'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1028,6 +1154,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-WORD_DOT = 'com.microsoft.word.dot'--><!--Device-UniformDataType-WORD_DOT = 'com.microsoft.word.dot'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## POWERPOINT_PPS
@@ -1043,6 +1171,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-POWERPOINT_PPS = 'com.microsoft.powerpoint.pps'--><!--Device-UniformDataType-POWERPOINT_PPS = 'com.microsoft.powerpoint.pps'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1060,6 +1190,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-POWERPOINT_POT = 'com.microsoft.powerpoint.pot'--><!--Device-UniformDataType-POWERPOINT_POT = 'com.microsoft.powerpoint.pot'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## EXCEL_XLT
@@ -1075,6 +1207,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-EXCEL_XLT = 'com.microsoft.excel.xlt'--><!--Device-UniformDataType-EXCEL_XLT = 'com.microsoft.excel.xlt'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1092,6 +1226,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-VISIO_VSD = 'com.microsoft.visio.vsd'--><!--Device-UniformDataType-VISIO_VSD = 'com.microsoft.visio.vsd'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## PDF
@@ -1107,6 +1243,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-PDF = 'com.adobe.pdf'--><!--Device-UniformDataType-PDF = 'com.adobe.pdf'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1124,6 +1262,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-POSTSCRIPT = 'com.adobe.postscript'--><!--Device-UniformDataType-POSTSCRIPT = 'com.adobe.postscript'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## ENCAPSULATED_POSTSCRIPT
@@ -1139,6 +1279,8 @@ This type belongs to **POSTSCRIPT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-ENCAPSULATED_POSTSCRIPT = 'com.adobe.encapsulated-postscript'--><!--Device-UniformDataType-ENCAPSULATED_POSTSCRIPT = 'com.adobe.encapsulated-postscript'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1156,7 +1298,9 @@ This type belongs to **MEDIA**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UniformDataType-VIDEO = 'general.video'--><!--Device-UniformDataType-VIDEO = 'general.video'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1174,6 +1318,8 @@ This type belongs to **VIDEO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-AVI = 'general.avi'--><!--Device-UniformDataType-AVI = 'general.avi'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## MPEG
@@ -1189,6 +1335,8 @@ This type belongs to **VIDEO**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-MPEG = 'general.mpeg'--><!--Device-UniformDataType-MPEG = 'general.mpeg'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1206,6 +1354,8 @@ This type belongs to **VIDEO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-MPEG4 = 'general.mpeg-4'--><!--Device-UniformDataType-MPEG4 = 'general.mpeg-4'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## VIDEO_3GPP
@@ -1221,6 +1371,8 @@ This type belongs to **VIDEO**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-VIDEO_3GPP = 'general.3gpp'--><!--Device-UniformDataType-VIDEO_3GPP = 'general.3gpp'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1238,6 +1390,8 @@ This type belongs to **VIDEO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-VIDEO_3GPP2 = 'general.3gpp2'--><!--Device-UniformDataType-VIDEO_3GPP2 = 'general.3gpp2'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## TS
@@ -1253,6 +1407,8 @@ This type belongs to **VIDEO**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-TS = 'general.ts'--><!--Device-UniformDataType-TS = 'general.ts'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1270,6 +1426,8 @@ This type belongs to **VIDEO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-MPEGURL_VIDEO = 'general.mpegurl-video'--><!--Device-UniformDataType-MPEGURL_VIDEO = 'general.mpegurl-video'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## WINDOWS_MEDIA_WM
@@ -1285,6 +1443,8 @@ This type belongs to **VIDEO**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-WINDOWS_MEDIA_WM = 'com.microsoft.windows-media-wm'--><!--Device-UniformDataType-WINDOWS_MEDIA_WM = 'com.microsoft.windows-media-wm'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1302,6 +1462,8 @@ This type belongs to **VIDEO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-WINDOWS_MEDIA_WMV = 'com.microsoft.windows-media-wmv'--><!--Device-UniformDataType-WINDOWS_MEDIA_WMV = 'com.microsoft.windows-media-wmv'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## WINDOWS_MEDIA_WMP
@@ -1317,6 +1479,8 @@ This type belongs to **VIDEO**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-WINDOWS_MEDIA_WMP = 'com.microsoft.windows-media-wmp'--><!--Device-UniformDataType-WINDOWS_MEDIA_WMP = 'com.microsoft.windows-media-wmp'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1334,6 +1498,8 @@ This type belongs to **VIDEO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-WINDOWS_MEDIA_WVX = 'com.microsoft.windows-media-wvx'--><!--Device-UniformDataType-WINDOWS_MEDIA_WVX = 'com.microsoft.windows-media-wvx'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## WINDOWS_MEDIA_WMX
@@ -1349,6 +1515,8 @@ This type belongs to **VIDEO**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-WINDOWS_MEDIA_WMX = 'com.microsoft.windows-media-wmx'--><!--Device-UniformDataType-WINDOWS_MEDIA_WMX = 'com.microsoft.windows-media-wmx'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1366,6 +1534,8 @@ This type belongs to **VIDEO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-REALMEDIA = 'com.real.realmedia'--><!--Device-UniformDataType-REALMEDIA = 'com.real.realmedia'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## MATROSKA_VIDEO
@@ -1381,6 +1551,8 @@ This type belongs to **VIDEO**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-MATROSKA_VIDEO = 'org.matroska.mkv'--><!--Device-UniformDataType-MATROSKA_VIDEO = 'org.matroska.mkv'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1398,6 +1570,8 @@ This type belongs to **VIDEO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-FLASH = 'com.adobe.flash'--><!--Device-UniformDataType-FLASH = 'com.adobe.flash'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## AUDIO
@@ -1414,7 +1588,9 @@ This type belongs to **MEDIA**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UniformDataType-AUDIO = 'general.audio'--><!--Device-UniformDataType-AUDIO = 'general.audio'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1432,6 +1608,8 @@ This type belongs to **AUDIO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-AAC = 'general.aac'--><!--Device-UniformDataType-AAC = 'general.aac'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## AIFF
@@ -1447,6 +1625,8 @@ This type belongs to **AUDIO**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-AIFF = 'general.aiff'--><!--Device-UniformDataType-AIFF = 'general.aiff'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1464,6 +1644,8 @@ This type belongs to **AUDIO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-ALAC = 'general.alac'--><!--Device-UniformDataType-ALAC = 'general.alac'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## FLAC
@@ -1479,6 +1661,8 @@ This type belongs to **AUDIO**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-FLAC = 'general.flac'--><!--Device-UniformDataType-FLAC = 'general.flac'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1496,6 +1680,8 @@ This type belongs to **AUDIO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-MP3 = 'general.mp3'--><!--Device-UniformDataType-MP3 = 'general.mp3'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## OGG
@@ -1511,6 +1697,8 @@ This type belongs to **AUDIO**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-OGG = 'general.ogg'--><!--Device-UniformDataType-OGG = 'general.ogg'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1528,6 +1716,8 @@ This type belongs to **AUDIO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-PCM = 'general.pcm'--><!--Device-UniformDataType-PCM = 'general.pcm'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## WINDOWS_MEDIA_WMA
@@ -1543,6 +1733,8 @@ This type belongs to **AUDIO**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-WINDOWS_MEDIA_WMA = 'com.microsoft.windows-media-wma'--><!--Device-UniformDataType-WINDOWS_MEDIA_WMA = 'com.microsoft.windows-media-wma'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1560,6 +1752,8 @@ This type belongs to **AUDIO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-WAVEFORM_AUDIO = 'com.microsoft.waveform-audio'--><!--Device-UniformDataType-WAVEFORM_AUDIO = 'com.microsoft.waveform-audio'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## WINDOWS_MEDIA_WAX
@@ -1575,6 +1769,8 @@ This type belongs to **AUDIO**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-WINDOWS_MEDIA_WAX = 'com.microsoft.windows-media-wax'--><!--Device-UniformDataType-WINDOWS_MEDIA_WAX = 'com.microsoft.windows-media-wax'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1592,6 +1788,8 @@ This type belongs to **AUDIO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-AU_AUDIO = 'general.au-audio'--><!--Device-UniformDataType-AU_AUDIO = 'general.au-audio'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## AIFC_AUDIO
@@ -1607,6 +1805,8 @@ This type belongs to **AUDIO**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-AIFC_AUDIO = 'general.aifc-audio'--><!--Device-UniformDataType-AIFC_AUDIO = 'general.aifc-audio'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1624,6 +1824,8 @@ This type belongs to **AUDIO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-MPEGURL_AUDIO = 'general.mpegurl-audio'--><!--Device-UniformDataType-MPEGURL_AUDIO = 'general.mpegurl-audio'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## MPEG_4_AUDIO
@@ -1639,6 +1841,8 @@ This type belongs to **AUDIO**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-MPEG_4_AUDIO = 'general.mpeg-4-audio'--><!--Device-UniformDataType-MPEG_4_AUDIO = 'general.mpeg-4-audio'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1656,6 +1860,8 @@ This type belongs to **AUDIO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-MP2 = 'general.mp2'--><!--Device-UniformDataType-MP2 = 'general.mp2'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## MPEG_AUDIO
@@ -1671,6 +1877,8 @@ This type belongs to **AUDIO**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-MPEG_AUDIO = 'general.mpeg-audio'--><!--Device-UniformDataType-MPEG_AUDIO = 'general.mpeg-audio'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1688,6 +1896,8 @@ This type belongs to **AUDIO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-ULAW_AUDIO = 'general.ulaw-audio'--><!--Device-UniformDataType-ULAW_AUDIO = 'general.ulaw-audio'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## SD2_AUDIO
@@ -1703,6 +1913,8 @@ This type belongs to **AUDIO**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-SD2_AUDIO = 'com.digidesign.sd2-audio'--><!--Device-UniformDataType-SD2_AUDIO = 'com.digidesign.sd2-audio'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1720,6 +1932,8 @@ This type belongs to **AUDIO**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-REALAUDIO = 'com.real.realaudio'--><!--Device-UniformDataType-REALAUDIO = 'com.real.realaudio'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## MATROSKA_AUDIO
@@ -1735,6 +1949,8 @@ This type belongs to **AUDIO**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-MATROSKA_AUDIO = 'org.matroska.mka'--><!--Device-UniformDataType-MATROSKA_AUDIO = 'org.matroska.mka'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1752,7 +1968,9 @@ This type belongs to **ENTITY**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UniformDataType-FILE = 'general.file'--><!--Device-UniformDataType-FILE = 'general.file'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1770,6 +1988,8 @@ This type belongs to **ENTITY**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-DIRECTORY = 'general.directory'--><!--Device-UniformDataType-DIRECTORY = 'general.directory'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## FOLDER
@@ -1786,7 +2006,9 @@ This type belongs to **DIRECTORY**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UniformDataType-FOLDER = 'general.folder'--><!--Device-UniformDataType-FOLDER = 'general.folder'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1804,6 +2026,8 @@ This type belongs to **ENTITY**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-SYMLINK = 'general.symlink'--><!--Device-UniformDataType-SYMLINK = 'general.symlink'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## ARCHIVE
@@ -1819,6 +2043,8 @@ This type belongs to **OBJECT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-ARCHIVE = 'general.archive'--><!--Device-UniformDataType-ARCHIVE = 'general.archive'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1836,6 +2062,8 @@ This type belongs to **ARCHIVE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-BZ2_ARCHIVE = 'general.bz2-archive'--><!--Device-UniformDataType-BZ2_ARCHIVE = 'general.bz2-archive'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## OPG
@@ -1851,6 +2079,8 @@ This type belongs to **ARCHIVE**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-OPG = 'general.opg'--><!--Device-UniformDataType-OPG = 'general.opg'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1868,6 +2098,8 @@ This type belongs to **TAR_ARCHIVE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-TAZ_ARCHIVE = 'general.taz-archive'--><!--Device-UniformDataType-TAZ_ARCHIVE = 'general.taz-archive'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## WEB_ARCHIVE
@@ -1883,6 +2115,8 @@ This type belongs to **ARCHIVE**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-WEB_ARCHIVE = 'general.web-archive'--><!--Device-UniformDataType-WEB_ARCHIVE = 'general.web-archive'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1900,6 +2134,8 @@ This type belongs to **ARCHIVE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-DISK_IMAGE = 'general.disk-image'--><!--Device-UniformDataType-DISK_IMAGE = 'general.disk-image'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## ISO
@@ -1915,6 +2151,8 @@ This type belongs to **DISK_IMAGE**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-ISO = 'general.iso'--><!--Device-UniformDataType-ISO = 'general.iso'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1932,6 +2170,8 @@ This type belongs to ARCHIVE.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-TAR_ARCHIVE = 'general.tar-archive'--><!--Device-UniformDataType-TAR_ARCHIVE = 'general.tar-archive'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## ZIP_ARCHIVE
@@ -1947,6 +2187,8 @@ This type belongs to **ARCHIVE**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-ZIP_ARCHIVE = 'general.zip-archive'--><!--Device-UniformDataType-ZIP_ARCHIVE = 'general.zip-archive'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1964,6 +2206,8 @@ This type belongs to **ARCHIVE** and **EXECUTABLE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-JAVA_ARCHIVE = 'com.sun.java-archive'--><!--Device-UniformDataType-JAVA_ARCHIVE = 'com.sun.java-archive'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## GNU_TAR_ARCHIVE
@@ -1979,6 +2223,8 @@ This type belongs to **ARCHIVE**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-GNU_TAR_ARCHIVE = 'org.gnu.gnu-tar-archive'--><!--Device-UniformDataType-GNU_TAR_ARCHIVE = 'org.gnu.gnu-tar-archive'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1996,6 +2242,8 @@ This type belongs to **ARCHIVE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-GNU_ZIP_ARCHIVE = 'org.gnu.gnu-zip-archive'--><!--Device-UniformDataType-GNU_ZIP_ARCHIVE = 'org.gnu.gnu-zip-archive'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## GNU_ZIP_TAR_ARCHIVE
@@ -2011,6 +2259,8 @@ This type belongs to **ARCHIVE**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-GNU_ZIP_TAR_ARCHIVE = 'org.gnu.gnu-zip-tar-archive'--><!--Device-UniformDataType-GNU_ZIP_TAR_ARCHIVE = 'org.gnu.gnu-zip-tar-archive'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2028,6 +2278,8 @@ This type belongs to **ARCHIVE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-OPENXML = 'org.openxmlformats.openxml'--><!--Device-UniformDataType-OPENXML = 'org.openxmlformats.openxml'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## WORDPROCESSINGML_DOCUMENT
@@ -2043,6 +2295,8 @@ This type belongs to **OPENXML** and **COMPOSITE_OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-WORDPROCESSINGML_DOCUMENT = 'org.openxmlformats.wordprocessingml.document'--><!--Device-UniformDataType-WORDPROCESSINGML_DOCUMENT = 'org.openxmlformats.wordprocessingml.document'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2060,6 +2314,8 @@ This type belongs to **OPENXML** and **COMPOSITE_OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-SPREADSHEETML_SHEET = 'org.openxmlformats.spreadsheetml.sheet'--><!--Device-UniformDataType-SPREADSHEETML_SHEET = 'org.openxmlformats.spreadsheetml.sheet'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## PRESENTATIONML_PRESENTATION
@@ -2075,6 +2331,8 @@ This type belongs to **OPENXML** and **COMPOSITE_OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-PRESENTATIONML_PRESENTATION = 'org.openxmlformats.presentationml.presentation'--><!--Device-UniformDataType-PRESENTATIONML_PRESENTATION = 'org.openxmlformats.presentationml.presentation'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2092,6 +2350,8 @@ This type belongs to **OPENXML** and **COMPOSITE_OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-DRAWINGML_VISIO = 'org.openxmlformats.drawingml.visio'--><!--Device-UniformDataType-DRAWINGML_VISIO = 'org.openxmlformats.drawingml.visio'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## DRAWINGML_TEMPLATE
@@ -2107,6 +2367,8 @@ This type belongs to **OPENXML** and **COMPOSITE_OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-DRAWINGML_TEMPLATE = 'org.openxmlformats.drawingml.template'--><!--Device-UniformDataType-DRAWINGML_TEMPLATE = 'org.openxmlformats.drawingml.template'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2124,6 +2386,8 @@ This type belongs to **OPENXML** and **COMPOSITE_OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-WORDPROCESSINGML_TEMPLATE = 'org.openxmlformats.wordprocessingml.template'--><!--Device-UniformDataType-WORDPROCESSINGML_TEMPLATE = 'org.openxmlformats.wordprocessingml.template'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## PRESENTATIONML_TEMPLATE
@@ -2139,6 +2403,8 @@ This type belongs to **OPENXML** and **COMPOSITE_OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-PRESENTATIONML_TEMPLATE = 'org.openxmlformats.presentationml.template'--><!--Device-UniformDataType-PRESENTATIONML_TEMPLATE = 'org.openxmlformats.presentationml.template'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2156,6 +2422,8 @@ This type belongs to **OPENXML** and **COMPOSITE_OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-PRESENTATIONML_SLIDESHOW = 'org.openxmlformats.presentationml.slideshow'--><!--Device-UniformDataType-PRESENTATIONML_SLIDESHOW = 'org.openxmlformats.presentationml.slideshow'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## SPREADSHEETML_TEMPLATE
@@ -2171,6 +2439,8 @@ This type belongs to **OPENXML** and **COMPOSITE_OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-SPREADSHEETML_TEMPLATE = 'org.openxmlformats.spreadsheetml.template'--><!--Device-UniformDataType-SPREADSHEETML_TEMPLATE = 'org.openxmlformats.spreadsheetml.template'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2188,6 +2458,8 @@ This type belongs to **ARCHIVE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-OPENDOCUMENT = 'org.oasis.opendocument'--><!--Device-UniformDataType-OPENDOCUMENT = 'org.oasis.opendocument'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## OPENDOCUMENT_TEXT
@@ -2203,6 +2475,8 @@ This type belongs to **OPENDOCUMENT** and **COMPOSITE_OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-OPENDOCUMENT_TEXT = 'org.oasis.opendocument.text'--><!--Device-UniformDataType-OPENDOCUMENT_TEXT = 'org.oasis.opendocument.text'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2220,6 +2494,8 @@ This type belongs to **OPENDOCUMENT** and **COMPOSITE_OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-OPENDOCUMENT_SPREADSHEET = 'org.oasis.opendocument.spreadsheet'--><!--Device-UniformDataType-OPENDOCUMENT_SPREADSHEET = 'org.oasis.opendocument.spreadsheet'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## OPENDOCUMENT_PRESENTATION
@@ -2235,6 +2511,8 @@ This type belongs to **OPENDOCUMENT** and **COMPOSITE_OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-OPENDOCUMENT_PRESENTATION = 'org.oasis.opendocument.presentation'--><!--Device-UniformDataType-OPENDOCUMENT_PRESENTATION = 'org.oasis.opendocument.presentation'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2252,6 +2530,8 @@ This type belongs to **OPENDOCUMENT** and **COMPOSITE_OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-OPENDOCUMENT_GRAPHICS = 'org.oasis.opendocument.graphics'--><!--Device-UniformDataType-OPENDOCUMENT_GRAPHICS = 'org.oasis.opendocument.graphics'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## OPENDOCUMENT_FORMULA
@@ -2267,6 +2547,8 @@ This type belongs to **OPENDOCUMENT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-OPENDOCUMENT_FORMULA = 'org.oasis.opendocument.formula'--><!--Device-UniformDataType-OPENDOCUMENT_FORMULA = 'org.oasis.opendocument.formula'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2284,6 +2566,8 @@ This type belongs to **ARCHIVE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-STUFFIT_ARCHIVE = 'com.allume.stuffit-archive'--><!--Device-UniformDataType-STUFFIT_ARCHIVE = 'com.allume.stuffit-archive'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## RAR_ARCHIVE
@@ -2299,6 +2583,8 @@ This type belongs to **ARCHIVE**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-RAR_ARCHIVE = 'com.rarlab.rar-archive'--><!--Device-UniformDataType-RAR_ARCHIVE = 'com.rarlab.rar-archive'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2316,6 +2602,8 @@ This type belongs to **ARCHIVE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-SEVEN_ZIP_ARCHIVE = 'org.7-zip.7-zip-archive'--><!--Device-UniformDataType-SEVEN_ZIP_ARCHIVE = 'org.7-zip.7-zip-archive'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## CALENDAR
@@ -2331,6 +2619,8 @@ This type belongs to **OBJECT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-CALENDAR = 'general.calendar'--><!--Device-UniformDataType-CALENDAR = 'general.calendar'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2348,6 +2638,8 @@ This type belongs to **CALENDAR** and **TEXT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-VCS = 'general.vcs'--><!--Device-UniformDataType-VCS = 'general.vcs'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## ICS
@@ -2363,6 +2655,8 @@ This type belongs to **CALENDAR** and **TEXT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-ICS = 'general.ics'--><!--Device-UniformDataType-ICS = 'general.ics'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2380,6 +2674,8 @@ This type belongs to **OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-CONTACT = 'general.contact'--><!--Device-UniformDataType-CONTACT = 'general.contact'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## DATABASE
@@ -2395,6 +2691,8 @@ This type belongs to **OBJECT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-DATABASE = 'general.database'--><!--Device-UniformDataType-DATABASE = 'general.database'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2412,6 +2710,8 @@ This type belongs to **OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-MESSAGE = 'general.message'--><!--Device-UniformDataType-MESSAGE = 'general.message'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## EXECUTABLE
@@ -2427,6 +2727,8 @@ This type belongs to **OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-EXECUTABLE = 'general.executable'--><!--Device-UniformDataType-EXECUTABLE = 'general.executable'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2444,6 +2746,8 @@ This type belongs to **EXECUTABLE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-PORTABLE_EXECUTABLE = 'com.microsoft.portable-executable'--><!--Device-UniformDataType-PORTABLE_EXECUTABLE = 'com.microsoft.portable-executable'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## SUN_JAVA_CLASS
@@ -2459,6 +2763,8 @@ This type belongs to **EXECUTABLE**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-SUN_JAVA_CLASS = 'com.sun.java-class'--><!--Device-UniformDataType-SUN_JAVA_CLASS = 'com.sun.java-class'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2476,6 +2782,8 @@ This type belongs to **OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-VCARD = 'general.vcard'--><!--Device-UniformDataType-VCARD = 'general.vcard'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## NAVIGATION
@@ -2491,6 +2799,8 @@ This type belongs to **OBJECT**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-NAVIGATION = 'general.navigation'--><!--Device-UniformDataType-NAVIGATION = 'general.navigation'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2508,6 +2818,8 @@ This type belongs to **NAVIGATION**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-LOCATION = 'general.location'--><!--Device-UniformDataType-LOCATION = 'general.location'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## FONT
@@ -2523,6 +2835,8 @@ This type belongs to **OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-FONT = 'general.font'--><!--Device-UniformDataType-FONT = 'general.font'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2540,6 +2854,8 @@ This type belongs to **FONT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-TRUETYPE_FONT = 'general.truetype-font'--><!--Device-UniformDataType-TRUETYPE_FONT = 'general.truetype-font'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## TRUETYPE_COLLECTION_FONT
@@ -2555,6 +2871,8 @@ This type belongs to **FONT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-TRUETYPE_COLLECTION_FONT = 'general.truetype-collection-font'--><!--Device-UniformDataType-TRUETYPE_COLLECTION_FONT = 'general.truetype-collection-font'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2572,6 +2890,8 @@ This type belongs to **FONT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-OPENTYPE_FONT = 'general.opentype-font'--><!--Device-UniformDataType-OPENTYPE_FONT = 'general.opentype-font'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## POSTSCRIPT_FONT
@@ -2587,6 +2907,8 @@ This type belongs to **FONT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-POSTSCRIPT_FONT = 'com.adobe.postscript-font'--><!--Device-UniformDataType-POSTSCRIPT_FONT = 'com.adobe.postscript-font'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2604,6 +2926,8 @@ This type belongs to **FONT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-POSTSCRIPT_PFB_FONT = 'com.adobe.postscript-pfb-font'--><!--Device-UniformDataType-POSTSCRIPT_PFB_FONT = 'com.adobe.postscript-pfb-font'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## POSTSCRIPT_PFA_FONT
@@ -2619,6 +2943,8 @@ This type belongs to **FONT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-POSTSCRIPT_PFA_FONT = 'com.adobe.postscript-pfa-font'--><!--Device-UniformDataType-POSTSCRIPT_PFA_FONT = 'com.adobe.postscript-pfa-font'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2636,7 +2962,9 @@ This type belongs to **OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UniformDataType-OPENHARMONY_FORM = 'openharmony.form'--><!--Device-UniformDataType-OPENHARMONY_FORM = 'openharmony.form'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2654,7 +2982,9 @@ This type belongs to **OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UniformDataType-OPENHARMONY_APP_ITEM = 'openharmony.app-item'--><!--Device-UniformDataType-OPENHARMONY_APP_ITEM = 'openharmony.app-item'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2672,7 +3002,9 @@ This type belongs to **IMAGE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UniformDataType-OPENHARMONY_PIXEL_MAP = 'openharmony.pixel-map'--><!--Device-UniformDataType-OPENHARMONY_PIXEL_MAP = 'openharmony.pixel-map'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2690,6 +3022,8 @@ This type belongs to **OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-OPENHARMONY_ATOMIC_SERVICE = 'openharmony.atomic-service'--><!--Device-UniformDataType-OPENHARMONY_ATOMIC_SERVICE = 'openharmony.atomic-service'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## OPENHARMONY_PACKAGE
@@ -2705,6 +3039,8 @@ This type belongs to **DIRECTORY**.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-OPENHARMONY_PACKAGE = 'openharmony.package'--><!--Device-UniformDataType-OPENHARMONY_PACKAGE = 'openharmony.package'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2722,6 +3058,8 @@ This type belongs to **OPENHARMONY_PACKAGE**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-OPENHARMONY_HAP = 'openharmony.hap'--><!--Device-UniformDataType-OPENHARMONY_HAP = 'openharmony.hap'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## OPENHARMONY_HDOC
@@ -2737,6 +3075,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-OPENHARMONY_HDOC = 'openharmony.hdoc'--><!--Device-UniformDataType-OPENHARMONY_HDOC = 'openharmony.hdoc'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2754,6 +3094,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-OPENHARMONY_HINOTE = 'openharmony.hinote'--><!--Device-UniformDataType-OPENHARMONY_HINOTE = 'openharmony.hinote'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## OPENHARMONY_STYLED_STRING
@@ -2769,6 +3111,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-OPENHARMONY_STYLED_STRING = 'openharmony.styled-string'--><!--Device-UniformDataType-OPENHARMONY_STYLED_STRING = 'openharmony.styled-string'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2786,6 +3130,8 @@ This type belongs to **OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-OPENHARMONY_WANT = 'openharmony.want'--><!--Device-UniformDataType-OPENHARMONY_WANT = 'openharmony.want'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## OFD
@@ -2801,6 +3147,8 @@ This type belongs to **COMPOSITE_OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-OFD = 'general.ofd'--><!--Device-UniformDataType-OFD = 'general.ofd'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2818,6 +3166,8 @@ This type belongs to **OBJECT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-CAD = 'general.cad'--><!--Device-UniformDataType-CAD = 'general.cad'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## OCTET_STREAM
@@ -2833,6 +3183,8 @@ This type belongs to **OBJECT**.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-OCTET_STREAM = 'general.octet-stream'--><!--Device-UniformDataType-OCTET_STREAM = 'general.octet-stream'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2850,6 +3202,8 @@ This type belongs to **TEXT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UniformDataType-FILE_URI = 'general.file-uri'--><!--Device-UniformDataType-FILE_URI = 'general.file-uri'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## CONTENT_FORM
@@ -2865,5 +3219,7 @@ This type belongs to **OBJECT**.
 **Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UniformDataType-CONTENT_FORM = 'general.content-form'--><!--Device-UniformDataType-CONTENT_FORM = 'general.content-form'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

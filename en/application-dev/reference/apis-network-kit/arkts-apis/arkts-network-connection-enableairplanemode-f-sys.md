@@ -18,6 +18,8 @@ Enables the airplane mode. This API uses an asynchronous callback to return the 
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
 
+<!--Device-connection-function enableAirplaneMode(callback: AsyncCallback<void>): void--><!--Device-connection-function enableAirplaneMode(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -63,6 +65,8 @@ Enables airplane mode. This API uses a promise to return the result.
 **Since:** 8
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
+
+<!--Device-connection-function enableAirplaneMode(): Promise<void>--><!--Device-connection-function enableAirplaneMode(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

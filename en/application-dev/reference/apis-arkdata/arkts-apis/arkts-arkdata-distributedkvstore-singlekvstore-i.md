@@ -8,6 +8,8 @@ Provides APIs for data management in a single KV store, such as adding data, del
 
 **Since:** 9
 
+<!--Device-distributedKVStore-interface SingleKVStore--><!--Device-distributedKVStore-interface SingleKVStore-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Backs up a distributed KV store. This API uses an asynchronous callback to retur
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-backup(file: string, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-backup(file: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -78,6 +82,8 @@ Backs up an RDB store. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-backup(file: string): Promise<void>--><!--Device-SingleKVStore-backup(file: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -128,6 +134,8 @@ Backs up a database by specifying `BackupConfig`.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-backupEx(backupConfig: BackupConfig): Promise<void>--><!--Device-SingleKVStore-backupEx(backupConfig: BackupConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -182,6 +190,8 @@ Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -242,6 +252,8 @@ Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-closeResultSet(resultSet: KVStoreResultSet): Promise<void>--><!--Device-SingleKVStore-closeResultSet(resultSet: KVStoreResultSet): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -301,6 +313,8 @@ Commits the transaction in this single KV store. This API uses an asynchronous c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-commit(callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-commit(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -348,6 +362,8 @@ Commits the transaction in this single KV store. This API uses a promise to retu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-commit(): Promise<void>--><!--Device-SingleKVStore-commit(): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -390,6 +406,8 @@ Deletes a KV pair from this KV store. This API uses an asynchronous callback to 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-delete(key: string, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-delete(key: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -453,6 +471,8 @@ Deletes a KV pair from this KV store. This API uses a promise to return the resu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-delete(key: string): Promise<void>--><!--Device-SingleKVStore-delete(key: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -514,6 +534,8 @@ Deletes a backup file. This API uses an asynchronous callback to return the resu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-deleteBackup(files: Array<string>, callback: AsyncCallback<Array<[string, int]>>): void--><!--Device-SingleKVStore-deleteBackup(files: Array<string>, callback: AsyncCallback<Array<[string, int]>>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -562,6 +584,8 @@ Deletes a backup file. This API uses a promise to return the result.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-deleteBackup(files: Array<string>): Promise<Array<[string, int]>>--><!--Device-SingleKVStore-deleteBackup(files: Array<string>): Promise<Array<[string, int]>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -612,6 +636,8 @@ Delete database backup file by specifying `BackupConfig`.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-deleteBackupEx(backupConfig: BackupConfig): Promise<void>--><!--Device-SingleKVStore-deleteBackupEx(backupConfig: BackupConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -665,6 +691,8 @@ Batch deletes KV pairs from this single KV store. This API uses an asynchronous 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-deleteBatch(keys: string[], callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-deleteBatch(keys: string[], callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -741,6 +769,8 @@ Batch deletes KV pairs from this single KV store. This API uses a promise to ret
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-deleteBatch(keys: string[]): Promise<void>--><!--Device-SingleKVStore-deleteBatch(keys: string[]): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -815,6 +845,8 @@ Sets cross-device data sync, which can be enabled or disabled. This API uses an 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-enableSync(enabled: boolean, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-enableSync(enabled: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -862,6 +894,8 @@ Sets cross-device data sync, which can be enabled or disabled. This API uses a p
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-enableSync(enabled: boolean): Promise<void>--><!--Device-SingleKVStore-enableSync(enabled: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -911,6 +945,8 @@ Obtains the value of the specified key. This API uses an asynchronous callback t
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-get(key: string, callback: AsyncCallback<boolean | string | long | double | Uint8Array>): void--><!--Device-SingleKVStore-get(key: string, callback: AsyncCallback<boolean | string | long | double | Uint8Array>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -999,6 +1035,8 @@ Obtains the value of the specified key. This API uses a promise to return the re
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-get(key: string): Promise<boolean | string | long | double | Uint8Array>--><!--Device-SingleKVStore-get(key: string): Promise<boolean | string | long | double | Uint8Array>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1091,6 +1129,8 @@ Obtains all KV pairs that match the specified key prefix. This API uses an async
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void--><!--Device-SingleKVStore-getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1164,6 +1204,8 @@ Obtains all KV pairs that match the specified key prefix. This API uses a promis
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-getEntries(keyPrefix: string): Promise<Entry[]>--><!--Device-SingleKVStore-getEntries(keyPrefix: string): Promise<Entry[]>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1239,6 +1281,8 @@ Obtains the KV pairs that match the specified **Query** object. This API uses an
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-getEntries(query: Query, callback: AsyncCallback<Entry[]>): void--><!--Device-SingleKVStore-getEntries(query: Query, callback: AsyncCallback<Entry[]>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1317,6 +1361,8 @@ Obtains the KV pairs that match the specified **Query** object. This API uses a 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-getEntries(query: Query): Promise<Entry[]>--><!--Device-SingleKVStore-getEntries(query: Query): Promise<Entry[]>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1391,6 +1437,8 @@ Obtains a result set with the specified prefix from this single KV store. This A
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-getResultSet(keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void--><!--Device-SingleKVStore-getResultSet(keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1475,6 +1523,8 @@ Obtains a result set with the specified prefix from this single KV store. This A
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-getResultSet(keyPrefix: string): Promise<KVStoreResultSet>--><!--Device-SingleKVStore-getResultSet(keyPrefix: string): Promise<KVStoreResultSet>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1555,6 +1605,8 @@ Obtains a **KVStoreResultSet** object that matches the specified **Query** objec
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-getResultSet(query: Query, callback: AsyncCallback<KVStoreResultSet>): void--><!--Device-SingleKVStore-getResultSet(query: Query, callback: AsyncCallback<KVStoreResultSet>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1630,6 +1682,8 @@ Obtains a **KVStoreResultSet** object that matches the specified **Query** objec
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-getResultSet(query: Query): Promise<KVStoreResultSet>--><!--Device-SingleKVStore-getResultSet(query: Query): Promise<KVStoreResultSet>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1700,6 +1754,8 @@ Obtains the number of results that match the specified **Query** object. This AP
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-getResultSize(query: Query, callback: AsyncCallback<int>): void--><!--Device-SingleKVStore-getResultSize(query: Query, callback: AsyncCallback<int>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1775,6 +1831,8 @@ Obtains the number of results that match the specified **Query** object. This AP
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-getResultSize(query: Query): Promise<int>--><!--Device-SingleKVStore-getResultSize(query: Query): Promise<int>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1846,6 +1904,8 @@ Obtains the security level of this KV store. This API uses an asynchronous callb
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-getSecurityLevel(callback: AsyncCallback<SecurityLevel>): void--><!--Device-SingleKVStore-getSecurityLevel(callback: AsyncCallback<SecurityLevel>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1893,6 +1953,8 @@ Obtains the security level of this KV store. This API uses a promise to return t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-getSecurityLevel(): Promise<SecurityLevel>--><!--Device-SingleKVStore-getSecurityLevel(): Promise<SecurityLevel>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -1933,6 +1995,8 @@ off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
 Unsubscribes from data changes.
 
 **Since:** 9
+
+<!--Device-SingleKVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void--><!--Device-SingleKVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1996,6 +2060,8 @@ Unsubscribes from the cross-device data sync completion events.
 
 **Since:** 9
 
+<!--Device-SingleKVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void--><!--Device-SingleKVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -2055,6 +2121,8 @@ Subscribes to data changes of the specified type.
 
 **Since:** 9
 
+<!--Device-SingleKVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void--><!--Device-SingleKVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -2099,6 +2167,8 @@ on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
 Subscribes to the cross-device data sync completion events.
 
 **Since:** 9
+
+<!--Device-SingleKVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void--><!--Device-SingleKVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -2149,6 +2219,8 @@ Adds a KV pair of the specified type to this KV store. This API uses an asynchro
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-put(key: string, value: Uint8Array | string | long | double | boolean, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-put(key: string, value: Uint8Array | string | long | double | boolean, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -2221,6 +2293,8 @@ Adds a KV pair of the specified type to this KV store. This API uses a promise t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-put(key: string, value: Uint8Array | string | long | double | boolean): Promise<void>--><!--Device-SingleKVStore-put(key: string, value: Uint8Array | string | long | double | boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -2260,6 +2334,8 @@ Batch inserts KV pairs to this single KV store. This API uses an asynchronous ca
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-putBatch(entries: Entry[], callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-putBatch(entries: Entry[], callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -2336,6 +2412,8 @@ Batch inserts KV pairs to this single KV store. This API uses a promise to retur
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-putBatch(entries: Entry[]): Promise<void>--><!--Device-SingleKVStore-putBatch(entries: Entry[]): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -2409,6 +2487,8 @@ Update the key used to encrypt the database.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-rekey(): Promise<void>--><!--Device-SingleKVStore-rekey(): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -2423,7 +2503,6 @@ Update the key used to encrypt the database.
 | --- | --- |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
-| [15100006](../errorcode-distributedKVStore.md#15100006-failed-to-update-the-kv-store-encryption-key) | Failed to update the key. |
 
 **Examples**
 
@@ -2461,6 +2540,8 @@ Deletes data of a device. This API uses an asynchronous callback to return the r
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -2542,6 +2623,8 @@ Deletes data of a device. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-removeDeviceData(deviceId: string): Promise<void>--><!--Device-SingleKVStore-removeDeviceData(deviceId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **Parameters:**
@@ -2605,6 +2688,8 @@ Restores a distributed KV store from a database file. This API uses an asynchron
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-restore(file: string, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-restore(file: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -2654,6 +2739,8 @@ Restores a distributed KV store from a database file. This API uses a promise to
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-restore(file: string): Promise<void>--><!--Device-SingleKVStore-restore(file: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -2705,6 +2792,8 @@ Restores a database by specifying `BackupConfig`.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-restoreEx(backupConfig: BackupConfig): Promise<void>--><!--Device-SingleKVStore-restoreEx(backupConfig: BackupConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -2760,6 +2849,8 @@ Rolls back the transaction in this single KV store. This API uses an asynchronou
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-rollback(callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-rollback(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -2806,6 +2897,8 @@ Rolls back the transaction in this single KV store. This API uses a promise to r
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-rollback(): Promise<void>--><!--Device-SingleKVStore-rollback(): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -2854,6 +2947,8 @@ Sets the default delay for cross-device data sync. This API uses an asynchronous
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: int, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: int, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -2909,6 +3004,8 @@ Sets the default delay for cross-device data sync. This API uses a promise to re
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: int): Promise<void>--><!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -2958,6 +3055,8 @@ Sets the data sync range. This API uses an asynchronous callback to return the r
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3010,6 +3109,8 @@ Sets the data sync range. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise<void>--><!--Device-SingleKVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -3061,6 +3162,8 @@ Starts the transaction in this single KV store. This API uses an asynchronous ca
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-startTransaction(callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-startTransaction(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3141,6 +3244,8 @@ Starts the transaction in this single KV store. This API uses a promise to retur
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SingleKVStore-startTransaction(): Promise<void>--><!--Device-SingleKVStore-startTransaction(): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -3197,6 +3302,8 @@ Starts cross-device data sync manually. For details about the sync modes of KV s
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-sync(deviceIds: string[], mode: SyncMode, delayMs?: int): void--><!--Device-SingleKVStore-sync(deviceIds: string[], mode: SyncMode, delayMs?: int): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3294,6 +3401,8 @@ Starts cross-device data sync manually. This API returns the result synchronousl
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SingleKVStore-sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: int): void--><!--Device-SingleKVStore-sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: int): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 

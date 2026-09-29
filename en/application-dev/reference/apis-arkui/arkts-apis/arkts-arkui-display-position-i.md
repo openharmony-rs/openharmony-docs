@@ -8,6 +8,8 @@ Describes a coordinate position. In the global coordinate system, the origin is 
 
 **Since:** 20
 
+<!--Device-display-interface Position--><!--Device-display-interface Position-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ X coordinate relative to the origin, measured in px. The value must be a 32-bit 
 
 **Since:** 20
 
+<!--Device-Position-x: long--><!--Device-Position-x: long-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## y
@@ -41,5 +45,7 @@ Y coordinate relative to the origin, measured in px. The value must be a 32-bit 
 **Type:** number
 
 **Since:** 20
+
+<!--Device-Position-y: long--><!--Device-Position-y: long-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

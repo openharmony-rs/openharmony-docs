@@ -8,6 +8,8 @@ declare interface ArcAlphabetIndexerInitInfo
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface ArcAlphabetIndexerInitInfo--><!--Device-unnamed-declare interface ArcAlphabetIndexerInitInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -30,6 +32,8 @@ arrayValue: string[]
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcAlphabetIndexerInitInfo-arrayValue: string[]--><!--Device-ArcAlphabetIndexerInitInfo-arrayValue: string[]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## selected
@@ -47,5 +51,7 @@ selected: number
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcAlphabetIndexerInitInfo-selected: number--><!--Device-ArcAlphabetIndexerInitInfo-selected: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

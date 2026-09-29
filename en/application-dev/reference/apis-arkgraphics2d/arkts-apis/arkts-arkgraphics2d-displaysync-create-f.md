@@ -16,7 +16,9 @@ Creates a **DisplaySync** object, through which you can set the frame rate of th
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.2.0.
+
+<!--Device-displaySync-function create(): DisplaySync--><!--Device-displaySync-function create(): DisplaySync-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

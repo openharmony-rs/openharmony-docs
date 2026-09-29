@@ -20,6 +20,8 @@ Sets the Bluetooth scan mode for a device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function setBluetoothScanMode(mode: ScanMode, duration: int): void--><!--Device-connection-function setBluetoothScanMode(mode: ScanMode, duration: int): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

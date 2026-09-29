@@ -8,6 +8,8 @@ Provides APIs for operating on a revoked certificate entry in a CRL.
 
 **Since:** 11
 
+<!--Device-cert-interface X509CRLEntry--><!--Device-cert-interface X509CRLEntry-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Obtains the issuer name of the revoked certificate.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CRLEntry-getCertIssuer(): DataBlob--><!--Device-X509CRLEntry-getCertIssuer(): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -110,7 +114,9 @@ Obtains the issuer name of the revoked certificate based on the encoding type.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-X509CRLEntry-getCertIssuer(encodingType: EncodingType): string--><!--Device-X509CRLEntry-getCertIssuer(encodingType: EncodingType): string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -196,7 +202,9 @@ Obtains the distinguished name (DN) of the issuer of the revoked certificate.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CRLEntry-getCertIssuerX500DistinguishedName(): X500DistinguishedName--><!--Device-X509CRLEntry-getCertIssuerX500DistinguishedName(): X500DistinguishedName-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -267,7 +275,9 @@ Obtains the serialized data of this revoked certificate entry. This API uses an 
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CRLEntry-getEncoded(callback: AsyncCallback<EncodingBlob>): void--><!--Device-X509CRLEntry-getEncoded(callback: AsyncCallback<EncodingBlob>): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -352,7 +362,9 @@ Obtains the serialized data of this revoked certificate entry. This API uses a p
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CRLEntry-getEncoded(): Promise<EncodingBlob>--><!--Device-X509CRLEntry-getEncoded(): Promise<EncodingBlob>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -433,7 +445,9 @@ Obtains the CRL entry extensions in DER format.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CRLEntry-getExtensions(): DataBlob--><!--Device-X509CRLEntry-getExtensions(): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -513,7 +527,9 @@ Obtains the CRL entry extension object.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CRLEntry-getExtensionsObject(): CertExtension--><!--Device-X509CRLEntry-getExtensionsObject(): CertExtension-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -651,7 +667,9 @@ Obtains the certificate's revocation date.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CRLEntry-getRevocationDate(): string--><!--Device-X509CRLEntry-getRevocationDate(): string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -728,7 +746,9 @@ Obtains the serial number of this revoked certificate.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CRLEntry-getSerialNumber(): bigint--><!--Device-X509CRLEntry-getSerialNumber(): bigint-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -805,7 +825,9 @@ Checks whether this CRL entry has extensions.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CRLEntry-hasExtensions(): boolean--><!--Device-X509CRLEntry-hasExtensions(): boolean-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -882,7 +904,9 @@ Obtains the hash value of the data in DER format.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CRLEntry-hashCode(): Uint8Array--><!--Device-X509CRLEntry-hashCode(): Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -953,7 +977,9 @@ Converts the object data into a string.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CRLEntry-toString(): string--><!--Device-X509CRLEntry-toString(): string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 

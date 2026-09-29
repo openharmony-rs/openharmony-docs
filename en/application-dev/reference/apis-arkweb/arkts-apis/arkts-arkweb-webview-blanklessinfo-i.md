@@ -8,6 +8,8 @@ Prediction information about the first screen loading of the page, mainly includ
 
 **Since:** 20
 
+<!--Device-webview-interface BlanklessInfo--><!--Device-webview-interface BlanklessInfo-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Error code of blankless loading. For details, see [WebBlanklessErrorCode](arkts-
 
 **Since:** 20
 
+<!--Device-BlanklessInfo-errCode: WebBlanklessErrorCode--><!--Device-BlanklessInfo-errCode: WebBlanklessErrorCode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## loadingTime
@@ -42,6 +46,8 @@ Predicts the loading time of the current load based on the first screen loading 
 
 **Since:** 20
 
+<!--Device-BlanklessInfo-loadingTime: number--><!--Device-BlanklessInfo-loadingTime: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## similarity
@@ -55,5 +61,7 @@ Similarity of the first screen. The similarity is calculated based on the first 
 **Type:** number
 
 **Since:** 20
+
+<!--Device-BlanklessInfo-similarity: number--><!--Device-BlanklessInfo-similarity: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

@@ -12,6 +12,8 @@ This API inherits from [ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md).
 
 **Since:** 12
 
+<!--Device-unnamed-interface RectShapeOptions extends ShapeSize--><!--Device-unnamed-interface RectShapeOptions extends ShapeSize-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -28,9 +30,9 @@ radius?: number | string | Array<number | string>
 
 Radius of the rectangle border corners.
 
-When the parameter type is number, the valid value range is [0, +∞). When the parameter type is string, the value must conform to the [Length](arkts-arkui-length-t.md) type specification.
+If the type is number, the value range is [0, +∞); if the type is string, the value is specified by [Length](arkts-arkui-length-t.md).
 
-Unit: vp.
+Unit: vp
 
 If the value is invalid, 0 vp is used.
 
@@ -43,5 +45,7 @@ If the value is invalid, 0 vp is used.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-RectShapeOptions-radius?: number | string | Array<number | string>--><!--Device-RectShapeOptions-radius?: number | string | Array<number | string>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

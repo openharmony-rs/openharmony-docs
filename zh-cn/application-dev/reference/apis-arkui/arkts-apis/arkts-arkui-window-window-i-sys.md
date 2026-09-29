@@ -10,6 +10,8 @@ interface Window
 
 **起始版本：** 6
 
+<!--Device-window-interface Window--><!--Device-window-interface Window-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
@@ -39,6 +41,8 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Window-attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWindowAttachOptions): Promise<void>--><!--Device-Window-attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWindowAttachOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -125,6 +129,8 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>): Promis
 绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-Window-bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>): Promise<void>--><!--Device-Window-bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -216,6 +222,8 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>, callbac
 
 **起始版本：** 9
 
+<!--Device-Window-bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>, callback: AsyncCallback<void>): void--><!--Device-Window-bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -303,6 +311,8 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 
 **起始版本：** 9
 
+<!--Device-Window-bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback<void>): Promise<void>--><!--Device-Window-bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback<void>): Promise<void>-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -380,6 +390,8 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用callback异步回调。
 
 **起始版本：** 9
+
+<!--Device-Window-bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback<void>, callback: AsyncCallback<void>): void--><!--Device-Window-bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback<void>, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -464,6 +476,8 @@ detachLayoutToParentWindow(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-Window-detachLayoutToParentWindow(): Promise<void>--><!--Device-Window-detachLayoutToParentWindow(): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -528,6 +542,8 @@ getRotationLocked(): boolean
 
 **起始版本：** 22
 
+<!--Device-Window-getRotationLocked(): boolean--><!--Device-Window-getRotationLocked(): boolean-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -569,6 +585,8 @@ getTransitionController(): TransitionController
 
 **起始版本：** 9
 
+<!--Device-Window-getTransitionController(): TransitionController--><!--Device-Window-getTransitionController(): TransitionController-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -602,6 +620,8 @@ hide (callback: AsyncCallback<void>): void
 隐藏当前窗口，使用callback异步回调，仅支持系统窗口与应用子窗口。
 
 **起始版本：** 7
+
+<!--Device-Window-hide (callback: AsyncCallback<void>): void--><!--Device-Window-hide (callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -647,6 +667,8 @@ hide(): Promise<void>
 
 **起始版本：** 7
 
+<!--Device-Window-hide(): Promise<void>--><!--Device-Window-hide(): Promise<void>-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -688,6 +710,8 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback<void>)
 非系统级悬浮窗口是指非系统应用创建的悬浮窗口。默认情况下，一个系统应用主窗口可以与非系统级悬浮窗口共同显示，即该主窗口可以被上层的非系统级悬浮窗口遮挡，如果设置为true，则所有的非系统级悬浮窗口都会被隐藏，此时该主窗口就不会被上层的非系统级悬浮窗口遮挡。
 
 **起始版本：** 11
+
+<!--Device-Window-hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -769,6 +793,8 @@ hideNonSystemFloatingWindows(shouldHide: boolean): Promise<void>
 非系统级悬浮窗口是指非系统应用创建的悬浮窗口。默认情况下，一个系统应用主窗口可以与非系统级悬浮窗口共同显示，即该主窗口可以被上层的非系统级悬浮窗口遮挡，如果设置为true，则所有的非系统级悬浮窗口都会被隐藏，此时该主窗口就不会被上层的非系统级悬浮窗口遮挡。
 
 **起始版本：** 11
+
+<!--Device-Window-hideNonSystemFloatingWindows(shouldHide: boolean): Promise<void>--><!--Device-Window-hideNonSystemFloatingWindows(shouldHide: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -852,6 +878,8 @@ hideWithAnimation(callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
+<!--Device-Window-hideWithAnimation(callback: AsyncCallback<void>): void--><!--Device-Window-hideWithAnimation(callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -898,6 +926,8 @@ hideWithAnimation(): Promise<void>
 
 **起始版本：** 9
 
+<!--Device-Window-hideWithAnimation(): Promise<void>--><!--Device-Window-hideWithAnimation(): Promise<void>-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -939,6 +969,8 @@ isMainWindowFullScreenAcrossDisplays(): Promise<boolean>
 判断当前窗口的主窗口是否是跨多块屏幕使用全屏模式显示，使用Promise异步回调，仅支持主窗口与应用子窗口。
 
 **起始版本：** 20
+
+<!--Device-Window-isMainWindowFullScreenAcrossDisplays(): Promise<boolean>--><!--Device-Window-isMainWindowFullScreenAcrossDisplays(): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -986,6 +1018,8 @@ off(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback?: Callback<boole
 取消监听本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化事件。
 
 **起始版本：** 20
+
+<!--Device-Window-off(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback?: Callback<boolean>): void--><!--Device-Window-off(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback?: Callback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1036,6 +1070,8 @@ on(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback: Callback<boolean
 
 **起始版本：** 20
 
+<!--Device-Window-on(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback: Callback<boolean>): void--><!--Device-Window-on(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback: Callback<boolean>): void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -1080,6 +1116,8 @@ opacity(opacity: number): void
 
 **起始版本：** 9
 
+<!--Device-Window-opacity(opacity: double): void--><!--Device-Window-opacity(opacity: double): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1120,6 +1158,8 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback<void>): void
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
 
 **起始版本：** 10
+
+<!--Device-Window-raiseAboveTarget(windowId: int, callback: AsyncCallback<void>): void--><!--Device-Window-raiseAboveTarget(windowId: int, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1199,6 +1239,8 @@ raiseAboveTarget(windowId: number): Promise<void>
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
 
 **起始版本：** 10
+
+<!--Device-Window-raiseAboveTarget(windowId: int): Promise<void>--><!--Device-Window-raiseAboveTarget(windowId: int): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1284,6 +1326,8 @@ raiseMainWindowAboveTarget(windowId: number): Promise<void>
 - 应用主窗口调用该接口调整层级后超过当前焦点窗口，则被抬升主窗口及其子窗口中，层级最高的窗口自动获焦；应用主窗口调用该接口调整层级后未超过当前焦点窗口，则焦点不做转移。
 
 **起始版本：** 20
+
+<!--Device-Window-raiseMainWindowAboveTarget(windowId: int): Promise<void>--><!--Device-Window-raiseMainWindowAboveTarget(windowId: int): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1446,6 +1490,8 @@ raiseToAppTop(callback: AsyncCallback<void>): void
 
 **起始版本：** 10
 
+<!--Device-Window-raiseToAppTop(callback: AsyncCallback<void>): void--><!--Device-Window-raiseToAppTop(callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1513,6 +1559,8 @@ requestFocus(isFocused: boolean): Promise<void>
 
 **起始版本：** 13
 
+<!--Device-Window-requestFocus(isFocused: boolean): Promise<void>--><!--Device-Window-requestFocus(isFocused: boolean): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -1563,6 +1611,8 @@ rotate(rotateOptions: RotateOptions): void
 
 **起始版本：** 9
 
+<!--Device-Window-rotate(rotateOptions: RotateOptions): void--><!--Device-Window-rotate(rotateOptions: RotateOptions): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1608,6 +1658,8 @@ scale(scaleOptions: ScaleOptions): void
 设置窗口缩放参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **起始版本：** 9
+
+<!--Device-Window-scale(scaleOptions: ScaleOptions): void--><!--Device-Window-scale(scaleOptions: ScaleOptions): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1658,6 +1710,8 @@ setBackdropBlur(radius: number): void
 
 **起始版本：** 9
 
+<!--Device-Window-setBackdropBlur(radius: double): void--><!--Device-Window-setBackdropBlur(radius: double): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1698,6 +1752,8 @@ setBackdropBlurStyle(blurStyle: BlurStyle): void
 
 **起始版本：** 9
 
+<!--Device-Window-setBackdropBlurStyle(blurStyle: BlurStyle): void--><!--Device-Window-setBackdropBlurStyle(blurStyle: BlurStyle): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1737,6 +1793,8 @@ setBlur(radius: number): void
 
 **起始版本：** 9
 
+<!--Device-Window-setBlur(radius: double): void--><!--Device-Window-setBlur(radius: double): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -1775,6 +1833,8 @@ setCornerRadius(cornerRadius: number): void
 设置窗口圆角半径。
 
 **起始版本：** 9
+
+<!--Device-Window-setCornerRadius(cornerRadius: double): void--><!--Device-Window-setCornerRadius(cornerRadius: double): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1819,6 +1879,8 @@ setDefaultDensityEnabled(enabled: boolean): void
 
 **起始版本：** 20
 
+<!--Device-Window-setDefaultDensityEnabled(enabled: boolean): void--><!--Device-Window-setDefaultDensityEnabled(enabled: boolean): void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -1857,6 +1919,8 @@ setHandwritingFlag(enable: boolean): Promise<void>
 为当前窗口添加或移除手写标志，添加该标志后窗口只响应手写笔事件，不响应触屏事件。使用Promise异步回调。
 
 **起始版本：** 12
+
+<!--Device-Window-setHandwritingFlag(enable: boolean): Promise<void>--><!--Device-Window-setHandwritingFlag(enable: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1913,6 +1977,8 @@ setMainWindowRaiseByClickEnabled(enable: boolean): Promise<void>
 点击主窗口时，默认会抬升主窗口及其子窗口。调用此接口禁止主窗口点击抬升后（即传入false），点击主窗口时不会将其及子窗口进行抬升，保持原有状态不变；点击子窗口时，主窗口会连同子窗口一起被抬升。
 
 **起始版本：** 23
+
+<!--Device-Window-setMainWindowRaiseByClickEnabled(enable: boolean): Promise<void>--><!--Device-Window-setMainWindowRaiseByClickEnabled(enable: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1986,6 +2052,8 @@ setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback<void>): void
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
 
 **起始版本：** 10
+
+<!--Device-Window-setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2071,6 +2139,8 @@ setRotationLocked(locked: boolean): Promise<void>
 
 **起始版本：** 22
 
+<!--Device-Window-setRotationLocked(locked: boolean): Promise<void>--><!--Device-Window-setRotationLocked(locked: boolean): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -2121,6 +2191,8 @@ setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): v
 
 **起始版本：** 9
 
+<!--Device-Window-setShadow(radius: double, color?: string, offsetX?: double, offsetY?: double): void--><!--Device-Window-setShadow(radius: double, color?: string, offsetX?: double, offsetY?: double): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -2164,6 +2236,8 @@ setSingleFrameComposerEnabled(enable: boolean): Promise<void>
 单帧合成渲染节点的功能主要用于跟手性要求较高的场景，使能该功能之后可以降低渲染节点的上屏延时。通过setSingleFrameComposerEnabled接口，如果enable设置为true，则使能单帧合成渲染节点的功能，否则禁止单帧合成渲染节点的功能。
 
 **起始版本：** 11
+
+<!--Device-Window-setSingleFrameComposerEnabled(enable: boolean): Promise<void>--><!--Device-Window-setSingleFrameComposerEnabled(enable: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2220,6 +2294,8 @@ setSnapshotSkip(isSkip: boolean): void
 
 **起始版本：** 9
 
+<!--Device-Window-setSnapshotSkip(isSkip: boolean): void--><!--Device-Window-setSnapshotSkip(isSkip: boolean): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -2260,6 +2336,8 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 仅对在当前场景下可见的标题栏按钮（最大化、最小化、分屏）生效。
 
 **起始版本：** 12
+
+<!--Device-Window-setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void--><!--Device-Window-setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2331,6 +2409,8 @@ setTopmost(isTopmost: boolean): Promise<void>
 
 **起始版本：** 12
 
+<!--Device-Window-setTopmost(isTopmost: boolean): Promise<void>--><!--Device-Window-setTopmost(isTopmost: boolean): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -2391,6 +2471,8 @@ setWakeUpScreen(wakeUp: boolean): void
 
 **起始版本：** 9
 
+<!--Device-Window-setWakeUpScreen(wakeUp: boolean): void--><!--Device-Window-setWakeUpScreen(wakeUp: boolean): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -2430,6 +2512,8 @@ setWaterMarkFlag(enable: boolean, callback: AsyncCallback<void>): void
 为当前窗口添加或删除安全水印标志，使用callback异步回调。
 
 **起始版本：** 10
+
+<!--Device-Window-setWaterMarkFlag(enable: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setWaterMarkFlag(enable: boolean, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2484,6 +2568,8 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 
 **起始版本：** 10
 
+<!--Device-Window-setWaterMarkFlag(enable: boolean): Promise<void>--><!--Device-Window-setWaterMarkFlag(enable: boolean): Promise<void>-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -2537,6 +2623,8 @@ setWindowMode(mode: WindowMode): Promise<void>
 设置主窗口模式，使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-Window-setWindowMode(mode: WindowMode): Promise<void>--><!--Device-Window-setWindowMode(mode: WindowMode): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2610,6 +2698,8 @@ setWindowMode(mode: WindowMode, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
+<!--Device-Window-setWindowMode(mode: WindowMode, callback: AsyncCallback<void>): void--><!--Device-Window-setWindowMode(mode: WindowMode, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -2677,6 +2767,8 @@ showWithAnimation(callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
+<!--Device-Window-showWithAnimation(callback: AsyncCallback<void>): void--><!--Device-Window-showWithAnimation(callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -2723,6 +2815,8 @@ showWithAnimation(): Promise<void>
 
 **起始版本：** 9
 
+<!--Device-Window-showWithAnimation(): Promise<void>--><!--Device-Window-showWithAnimation(): Promise<void>-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -2764,6 +2858,8 @@ translate(translateOptions: TranslateOptions): void
 设置窗口平移参数。仅支持在[自定义系统窗口的显示与隐藏动画](../../../windowmanager/system-window-stage-sys.md#自定义系统窗口的显示与隐藏动画)中使用。
 
 **起始版本：** 9
+
+<!--Device-Window-translate(translateOptions: TranslateOptions): void--><!--Device-Window-translate(translateOptions: TranslateOptions): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2810,6 +2906,8 @@ setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback<void>): v
 **起始版本：** 9
 
 **废弃版本：** 26.0.0
+
+<!--Device-Window-setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setForbidSplitMove(isForbidSplitMove: boolean, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2881,6 +2979,8 @@ setForbidSplitMove(isForbidSplitMove: boolean): Promise<void>
 **起始版本：** 9
 
 **废弃版本：** 26.0.0
+
+<!--Device-Window-setForbidSplitMove(isForbidSplitMove: boolean): Promise<void>--><!--Device-Window-setForbidSplitMove(isForbidSplitMove: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2954,6 +3054,8 @@ setWindowType(type: WindowType): Promise<void>
 
 **废弃版本：** 9
 
+<!--Device-Window-setWindowType(type: WindowType): Promise<void>--><!--Device-Window-setWindowType(type: WindowType): Promise<void>-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -2997,6 +3099,8 @@ setWindowType(type: WindowType, callback: AsyncCallback<void>): void
 **起始版本：** 7
 
 **废弃版本：** 9
+
+<!--Device-Window-setWindowType(type: WindowType, callback: AsyncCallback<void>): void--><!--Device-Window-setWindowType(type: WindowType, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

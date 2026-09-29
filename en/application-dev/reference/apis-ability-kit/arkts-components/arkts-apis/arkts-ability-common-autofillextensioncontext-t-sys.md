@@ -10,6 +10,8 @@ Level-2 module AutoFillExtensionContext.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-common-export type AutoFillExtensionContext = _AutoFillExtensionContext.default--><!--Device-common-export type AutoFillExtensionContext = _AutoFillExtensionContext.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

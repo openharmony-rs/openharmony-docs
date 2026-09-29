@@ -24,6 +24,8 @@ Obtains the list of all existing Wi-Fi configurations.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION and ohos.permission.GET_WIFI_CONFIG
 
+<!--Device-wifi-function getDeviceConfigs(): Array<WifiDeviceConfig>--><!--Device-wifi-function getDeviceConfigs(): Array<WifiDeviceConfig>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

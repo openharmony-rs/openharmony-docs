@@ -18,6 +18,8 @@ function getCarAwareness(capability: Capability, options?: CarAwarenessOptions):
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-carAwareness-function getCarAwareness(capability: Capability, options?: CarAwarenessOptions): Promise<CarAwarenessInfo[]>--><!--Device-carAwareness-function getCarAwareness(capability: Capability, options?: CarAwarenessOptions): Promise<CarAwarenessInfo[]>-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **System API:** This is a system API.

@@ -12,6 +12,8 @@ Defines ColorMetrics.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics--><!--Device-unnamed-declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/arkui/Graphics').ColorMetrics

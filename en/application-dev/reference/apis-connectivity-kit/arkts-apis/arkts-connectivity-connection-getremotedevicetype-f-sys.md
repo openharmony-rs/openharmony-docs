@@ -22,6 +22,8 @@ Get remote device custom type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getRemoteDeviceType(deviceId: string): Promise<DeviceType>--><!--Device-connection-function getRemoteDeviceType(deviceId: string): Promise<DeviceType>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

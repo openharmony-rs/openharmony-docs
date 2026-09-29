@@ -10,6 +10,8 @@ Session controller,used to control media playback and get media information
 
 **Since:** 10
 
+<!--Device-avSession-interface AVSessionController--><!--Device-avSession-interface AVSessionController-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ The userId to which the corresponding session belongs. The value should be an in
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVSessionController-readonly userId?: int--><!--Device-AVSessionController-readonly userId?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 

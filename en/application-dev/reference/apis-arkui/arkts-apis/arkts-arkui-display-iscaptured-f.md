@@ -16,7 +16,9 @@ Checks whether the device's screen content is being captured.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-display-function isCaptured(): boolean--><!--Device-display-function isCaptured(): boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -55,7 +57,9 @@ Check whether the device is captured, projected, or recorded by any app in the b
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-display-function isCaptured(bundleNameList: Array<string>): boolean--><!--Device-display-function isCaptured(bundleNameList: Array<string>): boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

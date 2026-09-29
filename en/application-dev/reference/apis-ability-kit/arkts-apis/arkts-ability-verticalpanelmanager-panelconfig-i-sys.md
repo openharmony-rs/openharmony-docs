@@ -10,6 +10,8 @@ Indicates the panel config
 
 **Since:** 20
 
+<!--Device-verticalPanelManager-interface PanelConfig--><!--Device-verticalPanelManager-interface PanelConfig-End-->
+
 **System capability:** SystemCapability.Ability.AppExtension.VerticalPanel
 
 **System API:** This is a system API.
@@ -36,6 +38,8 @@ Indicates the info about source app
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PanelConfig-sourceAppInfo: Record<string, string>--><!--Device-PanelConfig-sourceAppInfo: Record<string, string>-End-->
+
 **System capability:** SystemCapability.Ability.AppExtension.VerticalPanel
 
 **System API:** This is a system API.
@@ -53,6 +57,8 @@ The type of vertical domain
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PanelConfig-type: VerticalType--><!--Device-PanelConfig-type: VerticalType-End-->
 
 **System capability:** SystemCapability.Ability.AppExtension.VerticalPanel
 

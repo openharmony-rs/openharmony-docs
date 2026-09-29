@@ -20,6 +20,8 @@ Deactivates the SIM card in the specified slot. After deactivation, the SIM card
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-telephonyManager-function deactiveSim(admin: Want, slotId: number): void--><!--Device-telephonyManager-function deactiveSim(admin: Want, slotId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

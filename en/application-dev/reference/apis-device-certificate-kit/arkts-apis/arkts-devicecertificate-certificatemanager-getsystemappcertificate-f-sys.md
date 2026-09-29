@@ -20,6 +20,8 @@ Obtains the credential details of the system application. This API is called onl
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function getSystemAppCertificate(keyUri: string) : Promise<CMResult>--><!--Device-certificateManager-function getSystemAppCertificate(keyUri: string) : Promise<CMResult>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

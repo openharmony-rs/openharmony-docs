@@ -12,6 +12,8 @@ declare type PositionT<T> = import('../api/arkui/Graphics').PositionT<T>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type PositionT<T> = import('../api/arkui/Graphics').PositionT<T>--><!--Device-unnamed-declare type PositionT<T> = import('../api/arkui/Graphics').PositionT<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** import('../api/arkui/Graphics').PositionT&lt;T&gt;

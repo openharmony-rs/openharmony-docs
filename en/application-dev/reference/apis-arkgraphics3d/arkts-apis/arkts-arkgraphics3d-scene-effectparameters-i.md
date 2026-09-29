@@ -10,6 +10,8 @@ Special effect parameter configuration, which is used to specify the special eff
 
 **Since:** 21
 
+<!--Device-unnamed-export interface EffectParameters--><!--Device-unnamed-export interface EffectParameters-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## effectId
@@ -23,5 +25,7 @@ Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for
 **Type:** string
 
 **Since:** 21
+
+<!--Device-EffectParameters-effectId: string--><!--Device-EffectParameters-effectId: string-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

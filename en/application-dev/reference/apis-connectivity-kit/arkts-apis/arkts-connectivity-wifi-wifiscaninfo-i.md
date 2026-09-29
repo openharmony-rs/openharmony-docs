@@ -14,6 +14,8 @@ Describes the scanned Wi-Fi information.
 
 **Substitutes:** [WifiScanInfo](arkts-connectivity-wifimanager-wifiscaninfo-i.md)
 
+<!--Device-wifi-interface WifiScanInfo--><!--Device-wifi-interface WifiScanInfo-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## Modules to Import
@@ -38,6 +40,8 @@ Frequency band, 1: 2.4G, 2: 5G
 
 **Substitutes:** [band](arkts-connectivity-wifimanager-wifiscaninfo-i.md#band)
 
+<!--Device-WifiScanInfo-band: number--><!--Device-WifiScanInfo-band: number-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## bssid
@@ -55,6 +59,8 @@ Wi-Fi bssid(MAC): the length is 6
 **Deprecated since:** 9
 
 **Substitutes:** [bssid](arkts-connectivity-wifimanager-wifiscaninfo-i.md#bssid)
+
+<!--Device-WifiScanInfo-bssid: string--><!--Device-WifiScanInfo-bssid: string-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -74,6 +80,8 @@ Hotspot capability
 
 **Substitutes:** [capabilities](arkts-connectivity-wifimanager-wifiscaninfo-i.md#capabilities)
 
+<!--Device-WifiScanInfo-capabilities: string--><!--Device-WifiScanInfo-capabilities: string-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## channelWidth
@@ -91,6 +99,8 @@ Channel width
 **Deprecated since:** 9
 
 **Substitutes:** [channelWidth](arkts-connectivity-wifimanager-wifiscaninfo-i.md#channelwidth)
+
+<!--Device-WifiScanInfo-channelWidth: number--><!--Device-WifiScanInfo-channelWidth: number-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -110,6 +120,8 @@ Frequency
 
 **Substitutes:** [frequency](arkts-connectivity-wifimanager-wifiscaninfo-i.md#frequency)
 
+<!--Device-WifiScanInfo-frequency: number--><!--Device-WifiScanInfo-frequency: number-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## rssi
@@ -127,6 +139,8 @@ Received signal strength indicator (RSSI)
 **Deprecated since:** 9
 
 **Substitutes:** [rssi](arkts-connectivity-wifimanager-wifiscaninfo-i.md#rssi)
+
+<!--Device-WifiScanInfo-rssi: number--><!--Device-WifiScanInfo-rssi: number-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -146,6 +160,8 @@ Security type: reference definition of WifiSecurityType
 
 **Substitutes:** [securityType](arkts-connectivity-wifimanager-wifiscaninfo-i.md#securitytype)
 
+<!--Device-WifiScanInfo-securityType: WifiSecurityType--><!--Device-WifiScanInfo-securityType: WifiSecurityType-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## ssid
@@ -164,6 +180,8 @@ Wi-Fi SSID: the maximum length is 32
 
 **Substitutes:** [ssid](arkts-connectivity-wifimanager-wifiscaninfo-i.md#ssid)
 
+<!--Device-WifiScanInfo-ssid: string--><!--Device-WifiScanInfo-ssid: string-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## timestamp
@@ -181,5 +199,7 @@ Time stamp
 **Deprecated since:** 9
 
 **Substitutes:** [timestamp](arkts-connectivity-wifimanager-wifiscaninfo-i.md#timestamp)
+
+<!--Device-WifiScanInfo-timestamp: number--><!--Device-WifiScanInfo-timestamp: number-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA

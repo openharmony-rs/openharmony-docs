@@ -18,6 +18,8 @@ Obtains the subscription information about the notification extension of this ap
 
 **Required permissions:** ohos.permission.SUBSCRIBE_NOTIFICATION
 
+<!--Device-notificationExtensionSubscription-function getSubscribeInfo(): Promise<NotificationExtensionSubscriptionInfo[]>--><!--Device-notificationExtensionSubscription-function getSubscribeInfo(): Promise<NotificationExtensionSubscriptionInfo[]>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:** [subscribe](arkts-notification-notificationextensionsubscription-subscribe-f.md) subscribes from the notification extension.

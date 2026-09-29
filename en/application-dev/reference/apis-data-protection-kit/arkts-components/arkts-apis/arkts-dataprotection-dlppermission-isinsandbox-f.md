@@ -18,6 +18,8 @@ This API is used to determine whether the current application is running in a DL
 
 **Since:** 10
 
+<!--Device-dlpPermission-function isInSandbox(): Promise<boolean>--><!--Device-dlpPermission-function isInSandbox(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Return value:**
@@ -60,6 +62,8 @@ Checks whether this application is running in a DLP sandbox environment. This AP
 This API is used to determine whether the current application is running in a DLP sandbox environment. If it is, the system can perform operations or call APIs for sandbox applications.
 
 **Since:** 10
+
+<!--Device-dlpPermission-function isInSandbox(callback: AsyncCallback<boolean>): void--><!--Device-dlpPermission-function isInSandbox(callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

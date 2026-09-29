@@ -24,6 +24,8 @@ Obtains the disabled status of a setting item.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function getUserRestricted(admin: Want, settingsItem: string): boolean--><!--Device-restrictions-function getUserRestricted(admin: Want, settingsItem: string): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -84,6 +86,8 @@ Obtains the disabled status of the specified device setting item.
 **Required permissions:** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-restrictions-function getUserRestricted(admin: Want | null, settingsItem: SettingsForDevice): boolean--><!--Device-restrictions-function getUserRestricted(admin: Want | null, settingsItem: SettingsForDevice): boolean-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

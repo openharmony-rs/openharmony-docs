@@ -18,6 +18,8 @@ You need to call [usbManager.getAccessoryList](arkts-basicservices-usbmanager-ge
 
 **Since:** 14
 
+<!--Device-usbManager-function hasAccessoryRight(accessory: USBAccessory): boolean--><!--Device-usbManager-function hasAccessoryRight(accessory: USBAccessory): boolean-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

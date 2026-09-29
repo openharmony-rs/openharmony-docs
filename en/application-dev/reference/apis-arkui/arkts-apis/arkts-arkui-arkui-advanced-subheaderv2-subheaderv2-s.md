@@ -12,11 +12,13 @@ This component is implemented based on [state management V2](../../../ui/state-m
 > 
 > - This component can be used only in the stage model.
 > 
-> - If the **SubHeaderV2** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md#common) and [universal events](../arkts-components/arkts-arkui-common-comp.md#common) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeaderV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeaderV2** component.
+> - If the **SubHeaderV2** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeaderV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeaderV2** component.
 
 **Since:** 18
 
 **Decorator:** @ComponentV2
+
+<!--Device-unnamed-export declare struct SubHeaderV2--><!--Device-unnamed-export declare struct SubHeaderV2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +46,8 @@ Default value: **() =&gt; void**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2-titleBuilder?: SubHeaderV2TitleBuilder--><!--Device-SubHeaderV2-titleBuilder?: SubHeaderV2TitleBuilder-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## endIcon
@@ -61,6 +65,8 @@ End icon of the title. The **endIcon** attribute takes effect only when **primar
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-SubHeaderV2-readonly endIcon?: SubHeaderV2IconType--><!--Device-SubHeaderV2-readonly endIcon?: SubHeaderV2IconType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,6 +90,8 @@ Default value: **undefined**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2-readonly icon?: SubHeaderV2IconType--><!--Device-SubHeaderV2-readonly icon?: SubHeaderV2IconType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## operationItems
@@ -103,6 +111,8 @@ Default value: **undefined**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2-readonly operationItems?: SubHeaderV2OperationItem[]--><!--Device-SubHeaderV2-readonly operationItems?: SubHeaderV2OperationItem[]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,6 +134,8 @@ Default value: **SubHeaderV2OperationType.BUTTON**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2-readonly operationType?: SubHeaderV2OperationType--><!--Device-SubHeaderV2-readonly operationType?: SubHeaderV2OperationType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## select
@@ -144,6 +156,8 @@ Default value: **undefined**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2-readonly select?: SubHeaderV2Select--><!--Device-SubHeaderV2-readonly select?: SubHeaderV2Select-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -163,5 +177,7 @@ Default value: **undefined**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2-readonly title?: SubHeaderV2Title--><!--Device-SubHeaderV2-readonly title?: SubHeaderV2Title-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

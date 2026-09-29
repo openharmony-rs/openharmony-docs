@@ -12,6 +12,8 @@ NumberStyleOptions定义了列表型和紧凑型Counter的属性和事件。
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare class NumberStyleOptions extends InlineStyleOptions--><!--Device-unnamed-declare class NumberStyleOptions extends InlineStyleOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -40,6 +42,8 @@ onBlurDecrease?: () => void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NumberStyleOptions-onBlurDecrease?: () => void--><!--Device-NumberStyleOptions-onBlurDecrease?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onBlurIncrease
@@ -61,6 +65,8 @@ onBlurIncrease?: () => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NumberStyleOptions-onBlurIncrease?: () => void--><!--Device-NumberStyleOptions-onBlurIncrease?: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,6 +90,8 @@ onFocusDecrease?: () => void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NumberStyleOptions-onFocusDecrease?: () => void--><!--Device-NumberStyleOptions-onFocusDecrease?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onFocusIncrease
@@ -105,6 +113,8 @@ onFocusIncrease?: () => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NumberStyleOptions-onFocusIncrease?: () => void--><!--Device-NumberStyleOptions-onFocusIncrease?: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,5 +139,7 @@ label?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NumberStyleOptions-label?: ResourceStr--><!--Device-NumberStyleOptions-label?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

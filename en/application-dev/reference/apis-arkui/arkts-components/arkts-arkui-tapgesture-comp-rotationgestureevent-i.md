@@ -10,6 +10,8 @@ Inherits from [BaseGestureEvent](arkts-arkui-tapgesture-comp-basegestureevent-i.
 
 **Since:** 11
 
+<!--Device-unnamed-interface RotationGestureEvent extends BaseGestureEvent--><!--Device-unnamed-interface RotationGestureEvent extends BaseGestureEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## angle
@@ -35,5 +37,7 @@ With the starting line as the reference axis, clockwise rotation ranges from 0 t
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RotationGestureEvent-angle: number--><!--Device-RotationGestureEvent-angle: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines a downloadable profile.
 
 **Since:** 18
 
+<!--Device-eSIM-export interface DownloadableProfile--><!--Device-eSIM-export interface DownloadableProfile-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Access rule array.
 
 **Since:** 18
 
+<!--Device-DownloadableProfile-accessRules?: Array<AccessRule>--><!--Device-DownloadableProfile-accessRules?: Array<AccessRule>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 ## activationCode
@@ -41,6 +45,8 @@ Activation code. For a profile that does not require an activation code, the val
 **Type:** string
 
 **Since:** 18
+
+<!--Device-DownloadableProfile-activationCode: string--><!--Device-DownloadableProfile-activationCode: string-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
@@ -56,6 +62,8 @@ Carrier name.
 
 **Since:** 18
 
+<!--Device-DownloadableProfile-carrierName?: string--><!--Device-DownloadableProfile-carrierName?: string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 ## confirmationCode
@@ -69,5 +77,7 @@ Confirmation code.
 **Type:** string
 
 **Since:** 18
+
+<!--Device-DownloadableProfile-confirmationCode?: string--><!--Device-DownloadableProfile-confirmationCode?: string-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim

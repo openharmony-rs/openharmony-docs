@@ -25,6 +25,8 @@ Provides the capability of accessing application resources and system resources.
 
 **Since:** 6
 
+<!--Device-resourceManager-export interface ResourceManager--><!--Device-resourceManager-export interface ResourceManager-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Test API:** This API is used only in automated test scripts.
@@ -49,7 +51,9 @@ Loads the specified overlay resource during application runtime to implement the
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-addResource(path: string) : void--><!--Device-ResourceManager-addResource(path: string) : void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -97,7 +101,9 @@ Closes the file descriptor (fd) of the HAP where a specific rawfile in the **res
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-closeRawFd(path: string, callback: _AsyncCallback<void>): void--><!--Device-ResourceManager-closeRawFd(path: string, callback: _AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -157,7 +163,9 @@ Closes the file descriptor (fd) of the HAP where a specific rawfile in the **res
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-closeRawFd(path: string): Promise<void>--><!--Device-ResourceManager-closeRawFd(path: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -215,7 +223,9 @@ Closes the file descriptor (fd) of the HAP where the **rawfile** file in the **r
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-closeRawFdSync(path: string): void--><!--Device-ResourceManager-closeRawFdSync(path: string): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -258,87 +268,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## closeRawFileDescriptor
-
-```TypeScript
-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
-```
-
-Closes the file descriptor (fd) of a specific rawfile in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [closeRawFd](#closerawfd)(path: string, callback: _AsyncCallback&lt;void&gt;)
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
-| callback | [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-
-resourceManager.getResourceManager((error, mgr) => {
-    mgr.closeRawFileDescriptor("test.txt", (error: Error) => {
-        if (error != null) {
-            console.error("error is " + error);
-        }
-    });
-});
-```
-
-<a id="closerawfiledescriptor-1"></a>
-
-## closeRawFileDescriptor
-
-```TypeScript
-closeRawFileDescriptor(path: string): Promise<void>
-```
-
-Closes the file descriptor (fd) of a specific rawfile in the **resources/rawfile** directory. This API uses a promise to return the result.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [closeRawFd](#closerawfd-1)(path: string)
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-
-resourceManager.getResourceManager((error, mgr) => {
-    mgr.closeRawFileDescriptor("test.txt");
-});
-```
-
 ## getBoolean
 
 ```TypeScript
@@ -349,7 +278,9 @@ Obtains a Boolean value based on the specified resource ID. This API returns the
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getBoolean(resId: long): boolean--><!--Device-ResourceManager-getBoolean(resId: long): boolean-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -428,6 +359,8 @@ Obtains a Boolean value based on the specified resource object. This API returns
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getBoolean(resource: Resource): boolean--><!--Device-ResourceManager-getBoolean(resource: Resource): boolean-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -495,7 +428,9 @@ Obtains a Boolean value based on the specified resource name. This API returns t
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getBooleanByName(resName: string): boolean--><!--Device-ResourceManager-getBooleanByName(resName: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -564,7 +499,9 @@ Obtains the color value corresponding to the specified resource ID. This API use
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getColor(resId: long, callback: _AsyncCallback<long>): void--><!--Device-ResourceManager-getColor(resId: long, callback: _AsyncCallback<long>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -667,7 +604,9 @@ Obtains the color value corresponding to the specified resource ID. This API use
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getColor(resId: long): Promise<long>--><!--Device-ResourceManager-getColor(resId: long): Promise<long>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -745,6 +684,8 @@ Obtains the color value corresponding to the specified resource object. This API
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getColor(resource: Resource, callback: _AsyncCallback<number>): void--><!--Device-ResourceManager-getColor(resource: Resource, callback: _AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -816,6 +757,8 @@ Obtains the color value corresponding to the specified resource object. This API
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getColor(resource: Resource): Promise<number>--><!--Device-ResourceManager-getColor(resource: Resource): Promise<number>-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -882,7 +825,9 @@ Obtains the color value corresponding to the specified resource name. This API u
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getColorByName(resName: string, callback: _AsyncCallback<long>): void--><!--Device-ResourceManager-getColorByName(resName: string, callback: _AsyncCallback<long>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -947,7 +892,9 @@ Obtains the color value corresponding to the specified resource name. This API u
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getColorByName(resName: string): Promise<long>--><!--Device-ResourceManager-getColorByName(resName: string): Promise<long>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1015,7 +962,9 @@ Obtains a color value based on the specified resource name. This API returns the
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getColorByNameSync(resName: string) : long--><!--Device-ResourceManager-getColorByNameSync(resName: string) : long-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1084,7 +1033,9 @@ Obtains a color value based on the specified resource ID. This API returns the r
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getColorSync(resId: long) : long--><!--Device-ResourceManager-getColorSync(resId: long) : long-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1163,6 +1114,8 @@ Obtains a color value based on the specified resource object. This API returns t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getColorSync(resource: Resource) : number--><!--Device-ResourceManager-getColorSync(resource: Resource) : number-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -1230,7 +1183,9 @@ Obtains the configuration of a device. This API uses an asynchronous callback to
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getConfiguration(callback: _AsyncCallback<Configuration>): void--><!--Device-ResourceManager-getConfiguration(callback: _AsyncCallback<Configuration>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1277,7 +1232,9 @@ Obtains the configuration of a device. This API uses a promise to return the res
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getConfiguration(): Promise<Configuration>--><!--Device-ResourceManager-getConfiguration(): Promise<Configuration>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1320,7 +1277,9 @@ Obtains the device configuration. This API returns the result synchronously.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getConfigurationSync(): Configuration--><!--Device-ResourceManager-getConfigurationSync(): Configuration-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1358,7 +1317,9 @@ Obtains the device capabilities of a device. This API uses an asynchronous callb
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void--><!--Device-ResourceManager-getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1405,7 +1366,9 @@ Obtains the device capabilities of a device. This API uses a promise to return t
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getDeviceCapability(): Promise<DeviceCapability>--><!--Device-ResourceManager-getDeviceCapability(): Promise<DeviceCapability>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1448,7 +1411,9 @@ Obtains the device capability. This API returns the result synchronously.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getDeviceCapabilitySync(): DeviceCapability--><!--Device-ResourceManager-getDeviceCapabilitySync(): DeviceCapability-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1493,6 +1458,8 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ResourceManager-getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string--><!--Device-ResourceManager-getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1581,6 +1548,8 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ResourceManager-getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string | number>): string--><!--Device-ResourceManager-getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string | number>): string-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1676,6 +1645,8 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ResourceManager-getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<string | number>): string--><!--Device-ResourceManager-getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<string | number>): string-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -1757,7 +1728,9 @@ Obtains the **DrawableDescriptor** object for icon display corresponding to the 
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getDrawableDescriptor(resId: long, density?: int, type?: int): DrawableDescriptor--><!--Device-ResourceManager-getDrawableDescriptor(resId: long, density?: int, type?: int): DrawableDescriptor-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1840,6 +1813,8 @@ Obtains a **DrawableDescriptor** object for icon display based on the specified 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getDrawableDescriptor(resource: Resource, density?: number, type?: number): DrawableDescriptor--><!--Device-ResourceManager-getDrawableDescriptor(resource: Resource, density?: number, type?: number): DrawableDescriptor-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -1909,7 +1884,9 @@ Obtains the **DrawableDescriptor** object for icon display corresponding to the 
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getDrawableDescriptorByName(resName: string, density?: int, type?: int): DrawableDescriptor--><!--Device-ResourceManager-getDrawableDescriptorByName(resName: string, density?: int, type?: int): DrawableDescriptor-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -1989,6 +1966,8 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ResourceManager-getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string--><!--Device-ResourceManager-getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string | number>): string-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -2077,6 +2056,8 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ResourceManager-getIntPluralStringValueSync(resId: number, num: number,...args: Array<string | number>): string--><!--Device-ResourceManager-getIntPluralStringValueSync(resId: number, num: number,...args: Array<string | number>): string-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -2172,6 +2153,8 @@ Obtains the [plural](../../../internationalization/l10n-singular-plural.md) stri
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ResourceManager-getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<string | number>): string--><!--Device-ResourceManager-getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<string | number>): string-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -2253,7 +2236,9 @@ Obtains the language list of an application.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getLocales(includeSystem?: boolean): Array<string>--><!--Device-ResourceManager-getLocales(includeSystem?: boolean): Array<string>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -2311,168 +2296,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## getMedia
-
-```TypeScript
-getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void
-```
-
-Obtains the content of the media file corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-**Substitutes:** [getMediaContent](#getmediacontent)(resId: number, callback: _AsyncCallback&lt;Uint8Array&gt;)
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-| callback | [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md)&lt;Uint8Array&gt; | Yes | Callback used to return the media file content. |
-
-**Examples**
-
-```TypeScript
-resourceManager.getResourceManager((error, mgr) => {
-    mgr.getMedia($r('app.media.test').id, (error: Error, value: Uint8Array) => {
-        if (error != null) {
-            console.error("error is " + error);
-        } else {
-            let media = value;
-        }
-    });
-});
-```
-
-<a id="getmedia-1"></a>
-
-## getMedia
-
-```TypeScript
-getMedia(resId: number): Promise<Uint8Array>
-```
-
-Obtains the content of the media file corresponding to the specified resource ID. This API uses a promise to return the result.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-**Substitutes:** [getMediaContent](#getmediacontent)(resId: number)
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the media file content. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-resourceManager.getResourceManager((error, mgr) => {
-    mgr.getMedia($r('app.media.test').id).then((value: Uint8Array) => {
-        let media = value;
-    }).catch((error: BusinessError) => {
-        console.error("getMedia promise error is " + error);
-    });
-});
-```
-
-## getMediaBase64
-
-```TypeScript
-getMediaBase64(resId: number, callback: AsyncCallback<string>): void
-```
-
-Obtains the Base64 encoding of the image resource corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-**Substitutes:** [getMediaContentBase64](#getmediacontentbase64)(resId: number, callback: _AsyncCallback&lt;string&gt;)
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-| callback | [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the Base64 encoding of the image. |
-
-**Examples**
-
-```TypeScript
-resourceManager.getResourceManager((error, mgr) => {
-    mgr.getMediaBase64($r('app.media.test').id, ((error: Error, value: string) => {
-        if (error != null) {
-            console.error("error is " + error);
-        } else {
-            let media = value;
-        }
-    });
-});
-```
-
-<a id="getmediabase64-1"></a>
-
-## getMediaBase64
-
-```TypeScript
-getMediaBase64(resId: number): Promise<string>
-```
-
-Obtains the Base64 encoding of the image resource corresponding to the specified resource ID. This API uses a promise to return the result.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-**Substitutes:** [getMediaContentBase64](#getmediacontentbase64)(resId: number)
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-resourceManager.getResourceManager((error, mgr) => {
-    mgr.getMediaBase64($r('app.media.test').id).then((value: string) => {
-        let media = value;
-    }).catch((error: BusinessError) => {
-        console.error("getMediaBase64 promise error is " + error);
-    });
-});
-```
-
 ## getMediaBase64ByName
 
 ```TypeScript
@@ -2483,7 +2306,9 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -2540,7 +2365,9 @@ Obtains the Base64 encoding of the image resource for the specified screen densi
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaBase64ByName(resName: string, density: int, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaBase64ByName(resName: string, density: int, callback: _AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -2598,7 +2425,9 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaBase64ByName(resName: string): Promise<string>--><!--Device-ResourceManager-getMediaBase64ByName(resName: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -2658,7 +2487,9 @@ Obtains the Base64 encoding of the image resource for the specified screen densi
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaBase64ByName(resName: string, density: int): Promise<string>--><!--Device-ResourceManager-getMediaBase64ByName(resName: string, density: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -2717,7 +2548,9 @@ Obtains an image's Base64 encoding for the default or specified screen density b
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaBase64ByNameSync(resName: string, density?: int): string--><!--Device-ResourceManager-getMediaBase64ByNameSync(resName: string, density?: int): string-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -2781,7 +2614,9 @@ Obtains the content of the media file corresponding to the specified resource na
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -2838,7 +2673,9 @@ Obtains the media file content for the specified screen density based on the spe
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaByName(resName: string, density: int, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaByName(resName: string, density: int, callback: _AsyncCallback<Uint8Array>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -2896,7 +2733,9 @@ Obtains the content of the media file corresponding to the specified resource na
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaByName(resName: string): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaByName(resName: string): Promise<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -2956,7 +2795,9 @@ Obtains the media file content for the specified screen density based on the spe
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaByName(resName: string, density: int): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaByName(resName: string, density: int): Promise<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -3015,7 +2856,9 @@ Obtains the media file content for the default or specified screen density based
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaByNameSync(resName: string, density?: int): Uint8Array--><!--Device-ResourceManager-getMediaByNameSync(resName: string, density?: int): Uint8Array-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -3069,6 +2912,251 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getmediacontent-4"></a>
+
+## getMediaContent
+
+```TypeScript
+getMediaContent(resId: number, callback: _AsyncCallback<Uint8Array>): void
+```
+
+Obtains the content of the media file corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaContent(resId: long, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaContent(resId: long, callback: _AsyncCallback<Uint8Array>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | Yes | Callback used to return the media file content. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContent($r('app.media.test').id,
+                (error: BusinessError, value: Uint8Array) => {
+                    if (error != null) {
+                        console.error("error is " + error);
+                    } else {
+                        let media = value;
+                    }
+                });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getmediacontent-5"></a>
+
+## getMediaContent
+
+```TypeScript
+getMediaContent(resId: number, density: number, callback: _AsyncCallback<Uint8Array>): void
+```
+
+Obtains the media file content for the specified screen density based on the specified resource ID. This API uses an asynchronous callback to return the result.
+
+**Since:** 10
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaContent(resId: long, density: int, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaContent(resId: long, density: int, callback: _AsyncCallback<Uint8Array>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+| density | number | Yes | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md). |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | Yes | Callback used to return the media file content. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContent($r('app.media.test').id, 120, (error: BusinessError, value: Uint8Array) => {
+                if (error != null) {
+                    console.error(`callback getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
+                } else {
+                    let media = value;
+                }
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getmediacontent-6"></a>
+
+## getMediaContent
+
+```TypeScript
+getMediaContent(resId: number): Promise<Uint8Array>
+```
+
+Obtains the content of the media file corresponding to the specified resource ID. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaContent(resId: long): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaContent(resId: long): Promise<Uint8Array>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Uint8Array&gt; | Promise used to return the media file content. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContent($r('app.media.test').id).then((value: Uint8Array) => {
+                let media = value;
+            }).catch((error: BusinessError) => {
+                console.error("getMediaContent promise error is " + error);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getmediacontent-7"></a>
+
+## getMediaContent
+
+```TypeScript
+getMediaContent(resId: number, density: number): Promise<Uint8Array>
+```
+
+Obtains the media file content for the specified screen density based on the specified resource ID. This API uses a promise to return the result.
+
+**Since:** 10
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaContent(resId: long, density: int): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaContent(resId: long, density: int): Promise<Uint8Array>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+| density | number | Yes | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md). |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Uint8Array&gt; | Promise used to return the media file content. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContent($r('app.media.test').id, 120).then((value: Uint8Array) => {
+                let media = value;
+            }).catch((error: BusinessError) => {
+                console.error(`promise getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
 ## getMediaContent
 
 ```TypeScript
@@ -3086,6 +3174,8 @@ Obtains the content of the media file corresponding to the specified resource ob
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getMediaContent(resource: Resource, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaContent(resource: Resource, callback: _AsyncCallback<Uint8Array>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -3150,6 +3240,8 @@ Obtains the media file content for the specified screen density based on the spe
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getMediaContent(resource: Resource, density: number, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaContent(resource: Resource, density: number, callback: _AsyncCallback<Uint8Array>): void-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -3213,6 +3305,8 @@ Obtains the content of the media file corresponding to the specified resource ob
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getMediaContent(resource: Resource): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaContent(resource: Resource): Promise<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -3280,6 +3374,8 @@ Obtains the media file content for the specified screen density based on the spe
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getMediaContent(resource: Resource, density: number): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaContent(resource: Resource, density: number): Promise<Uint8Array>-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -3327,19 +3423,21 @@ try {
 }
 ```
 
-<a id="getmediacontent-4"></a>
+<a id="getmediacontentbase64-4"></a>
 
-## getMediaContent
+## getMediaContentBase64
 
 ```TypeScript
-getMediaContent(resId: number, callback: _AsyncCallback<Uint8Array>): void
+getMediaContentBase64(resId: number, callback: _AsyncCallback<string>): void
 ```
 
-Obtains the content of the media file corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaContentBase64(resId: long, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaContentBase64(resId: long, callback: _AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -3348,7 +3446,7 @@ Obtains the content of the media file corresponding to the specified resource ID
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | resId | number | Yes | Resource ID. |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | Yes | Callback used to return the media file content. |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | Yes | Callback used to return the Base64 encoding of the image. |
 
 **Error codes:**
 
@@ -3368,68 +3466,9 @@ export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
             // Replace 'app.media.test' with the actual resource.
-            this.context.resourceManager.getMediaContent($r('app.media.test').id,
-                (error: BusinessError, value: Uint8Array) => {
-                    if (error != null) {
-                        console.error("error is " + error);
-                    } else {
-                        let media = value;
-                    }
-                });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-<a id="getmediacontent-5"></a>
-
-## getMediaContent
-
-```TypeScript
-getMediaContent(resId: number, density: number, callback: _AsyncCallback<Uint8Array>): void
-```
-
-Obtains the media file content for the specified screen density based on the specified resource ID. This API uses an asynchronous callback to return the result.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-| density | number | Yes | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md). |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | Yes | Callback used to return the media file content. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace 'app.media.test' with the actual resource.
-            this.context.resourceManager.getMediaContent($r('app.media.test').id, 120, (error: BusinessError, value: Uint8Array) => {
+            this.context.resourceManager.getMediaContentBase64($r('app.media.test').id, (error: BusinessError, value: string) => {
                 if (error != null) {
-                    console.error(`callback getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
+                    console.error("error is " + error);
                 } else {
                     let media = value;
                 }
@@ -3437,85 +3476,27 @@ export default class EntryAbility extends UIAbility {
         } catch (error) {
             let code = (error as BusinessError).code;
             let message = (error as BusinessError).message;
-            console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
+            console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
         }
     }
 }
 ```
 
-<a id="getmediacontent-6"></a>
+<a id="getmediacontentbase64-5"></a>
 
-## getMediaContent
-
-```TypeScript
-getMediaContent(resId: number): Promise<Uint8Array>
-```
-
-Obtains the content of the media file corresponding to the specified resource ID. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the media file content. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-
-**Examples**
+## getMediaContentBase64
 
 ```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace 'app.media.test' with the actual resource.
-            this.context.resourceManager.getMediaContent($r('app.media.test').id).then((value: Uint8Array) => {
-                let media = value;
-            }).catch((error: BusinessError) => {
-                console.error("getMediaContent promise error is " + error);
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
+getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback<string>): void
 ```
 
-<a id="getmediacontent-7"></a>
-
-## getMediaContent
-
-```TypeScript
-getMediaContent(resId: number, density: number): Promise<Uint8Array>
-```
-
-Obtains the media file content for the specified screen density based on the specified resource ID. This API uses a promise to return the result.
+Obtains the Base64 encoding of the image resource corresponding to the specified resource ID and the specified screen density. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaContentBase64(resId: long, density: int, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaContentBase64(resId: long, density: int, callback: _AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -3525,12 +3506,7 @@ Obtains the media file content for the specified screen density based on the spe
 | --- | --- | --- | --- |
 | resId | number | Yes | Resource ID. |
 | density | number | Yes | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md). |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the media file content. |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | Yes | Callback used to return the Base64 encoding of the image. |
 
 **Error codes:**
 
@@ -3550,15 +3526,142 @@ export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         try {
             // Replace 'app.media.test' with the actual resource.
-            this.context.resourceManager.getMediaContent($r('app.media.test').id, 120).then((value: Uint8Array) => {
-                let media = value;
-            }).catch((error: BusinessError) => {
-                console.error(`promise getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
+            this.context.resourceManager.getMediaContentBase64($r('app.media.test').id, 120, (error: BusinessError, value: string) => {
+                if (error != null) {
+                    console.error(`callback getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
+                } else {
+                    let media = value;
+                }
             });
         } catch (error) {
             let code = (error as BusinessError).code;
             let message = (error as BusinessError).message;
-            console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
+            console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getmediacontentbase64-6"></a>
+
+## getMediaContentBase64
+
+```TypeScript
+getMediaContentBase64(resId: number): Promise<string>
+```
+
+Obtains the Base64 encoding of the image resource corresponding to the specified resource ID. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaContentBase64(resId: long): Promise<string>--><!--Device-ResourceManager-getMediaContentBase64(resId: long): Promise<string>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContentBase64($r('app.media.test').id).then((value: string) => {
+                let media = value;
+            }).catch((error: BusinessError) => {
+                console.error("getMediaContentBase64 promise error is " + error);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getmediacontentbase64-7"></a>
+
+## getMediaContentBase64
+
+```TypeScript
+getMediaContentBase64(resId: number, density: number): Promise<string>
+```
+
+Obtains the Base64 encoding of the image resource corresponding to the specified resource ID and the specified screen density. This API uses a promise to return the result.
+
+**Since:** 10
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaContentBase64(resId: long, density: int): Promise<string>--><!--Device-ResourceManager-getMediaContentBase64(resId: long, density: int): Promise<string>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+| density | number | Yes | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md). |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.media.test' with the actual resource.
+            this.context.resourceManager.getMediaContentBase64($r('app.media.test').id, 120).then((value: string) => {
+                let media = value;
+            }).catch((error: BusinessError) => {
+                console.error(`promise getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
         }
     }
 }
@@ -3581,6 +3684,8 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getMediaContentBase64(resource: Resource, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaContentBase64(resource: Resource, callback: _AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -3645,6 +3750,8 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -3708,6 +3815,8 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getMediaContentBase64(resource: Resource): Promise<string>--><!--Device-ResourceManager-getMediaContentBase64(resource: Resource): Promise<string>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -3775,6 +3884,8 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getMediaContentBase64(resource: Resource, density: number): Promise<string>--><!--Device-ResourceManager-getMediaContentBase64(resource: Resource, density: number): Promise<string>-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -3822,242 +3933,6 @@ try {
 }
 ```
 
-<a id="getmediacontentbase64-4"></a>
-
-## getMediaContentBase64
-
-```TypeScript
-getMediaContentBase64(resId: number, callback: _AsyncCallback<string>): void
-```
-
-Obtains the Base64 encoding of the image resource corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | Yes | Callback used to return the Base64 encoding of the image. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace 'app.media.test' with the actual resource.
-            this.context.resourceManager.getMediaContentBase64($r('app.media.test').id, (error: BusinessError, value: string) => {
-                if (error != null) {
-                    console.error("error is " + error);
-                } else {
-                    let media = value;
-                }
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-<a id="getmediacontentbase64-5"></a>
-
-## getMediaContentBase64
-
-```TypeScript
-getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback<string>): void
-```
-
-Obtains the Base64 encoding of the image resource corresponding to the specified resource ID and the specified screen density. This API uses an asynchronous callback to return the result.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-| density | number | Yes | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md). |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | Yes | Callback used to return the Base64 encoding of the image. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace 'app.media.test' with the actual resource.
-            this.context.resourceManager.getMediaContentBase64($r('app.media.test').id, 120, (error: BusinessError, value: string) => {
-                if (error != null) {
-                    console.error(`callback getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
-                } else {
-                    let media = value;
-                }
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-<a id="getmediacontentbase64-6"></a>
-
-## getMediaContentBase64
-
-```TypeScript
-getMediaContentBase64(resId: number): Promise<string>
-```
-
-Obtains the Base64 encoding of the image resource corresponding to the specified resource ID. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace 'app.media.test' with the actual resource.
-            this.context.resourceManager.getMediaContentBase64($r('app.media.test').id).then((value: string) => {
-                let media = value;
-            }).catch((error: BusinessError) => {
-                console.error("getMediaContentBase64 promise error is " + error);
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-<a id="getmediacontentbase64-7"></a>
-
-## getMediaContentBase64
-
-```TypeScript
-getMediaContentBase64(resId: number, density: number): Promise<string>
-```
-
-Obtains the Base64 encoding of the image resource corresponding to the specified resource ID and the specified screen density. This API uses a promise to return the result.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-| density | number | Yes | Screen density. The value **0** indicates the default screen density. For details about the values, see [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md). |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace 'app.media.test' with the actual resource.
-            this.context.resourceManager.getMediaContentBase64($r('app.media.test').id, 120).then((value: string) => {
-                let media = value;
-            }).catch((error: BusinessError) => {
-                console.error(`promise getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
 ## getMediaContentBase64Sync
 
 ```TypeScript
@@ -4068,7 +3943,9 @@ Obtains an image's Base64 encoding for the default or specified screen density b
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaContentBase64Sync(resId: long, density?: int): string--><!--Device-ResourceManager-getMediaContentBase64Sync(resId: long, density?: int): string-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -4142,6 +4019,8 @@ Obtains an image's Base64 encoding for the default or specified screen density b
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getMediaContentBase64Sync(resource: Resource, density?: number): string--><!--Device-ResourceManager-getMediaContentBase64Sync(resource: Resource, density?: number): string-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -4203,7 +4082,9 @@ Obtains the media file content for the default or specified screen density based
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getMediaContentSync(resId: long, density?: int): Uint8Array--><!--Device-ResourceManager-getMediaContentSync(resId: long, density?: int): Uint8Array-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -4277,6 +4158,8 @@ Obtains the media file content for the default or specified screen density based
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getMediaContentSync(resource: Resource, density?: number): Uint8Array--><!--Device-ResourceManager-getMediaContentSync(resource: Resource, density?: number): Uint8Array-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -4339,6 +4222,8 @@ Obtains an integer or float number based on the specified resource ID. This API 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getNumber(resId: number): number--><!--Device-ResourceManager-getNumber(resId: number): number-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -4443,6 +4328,8 @@ Obtains an integer or float number based on the specified resource object. This 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getNumber(resource: Resource): number--><!--Device-ResourceManager-getNumber(resource: Resource): number-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -4512,6 +4399,8 @@ Obtains an integer or float number based on the specified resource name. This AP
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getNumberByName(resName: string): number--><!--Device-ResourceManager-getNumberByName(resName: string): number-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -4608,7 +4497,9 @@ For both the common resource management object and the differentiated resource m
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ResourceManager-getOverrideConfiguration(): Configuration--><!--Device-ResourceManager-getOverrideConfiguration(): Configuration-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -4653,7 +4544,9 @@ The resource configuration (including the language, color mode, resolution, and 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ResourceManager-getOverrideResourceManager(configuration?: Configuration): ResourceManager--><!--Device-ResourceManager-getOverrideResourceManager(configuration?: Configuration): ResourceManager-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -4698,6 +4591,2815 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## getRawFd
+
+```TypeScript
+getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
+```
+
+Obtains the file descriptor (fd) of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> To prevent resource leakage, call [closeRawFdSync](#closerawfdsync) or
+> [closeRawFd](#closerawfd)
+> to close the fd after use.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void--><!--Device-ResourceManager-getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Test API:** This API is used only in automated test scripts.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;[RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md)&gt; | Yes | Callback used to return the fd of the HAP. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test.txt" with the actual resource.
+            this.context.resourceManager.getRawFd("test.txt", (error: BusinessError, value: resourceManager.RawFileDescriptor) => {
+                if (error != null) {
+                    console.error(`callback getRawFd failed error code: ${error.code}, message: ${error.message}.`);
+                } else {
+                    let fd = value.fd;
+                    let offset = value.offset;
+                    let length = value.length;
+                }
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getRawFd failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getrawfd-1"></a>
+
+## getRawFd
+
+```TypeScript
+getRawFd(path: string): Promise<RawFileDescriptor>
+```
+
+Obtains the file descriptor (fd) of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> To prevent resource leakage, call [closeRawFdSync](#closerawfdsync) or
+> [closeRawFd](#closerawfd)
+> to close the fd after use.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getRawFd(path: string): Promise<RawFileDescriptor>--><!--Device-ResourceManager-getRawFd(path: string): Promise<RawFileDescriptor>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Test API:** This API is used only in automated test scripts.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md)&gt; | Promise used to return the fd of the HAP. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test.txt" with the actual resource.
+            this.context.resourceManager.getRawFd("test.txt").then((value: resourceManager.RawFileDescriptor) => {
+                let fd = value.fd;
+                let offset = value.offset;
+                let length = value.length;
+            }).catch((error: BusinessError) => {
+                console.error(`promise getRawFd error error code: ${error.code}, message: ${error.message}.`);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getRawFd failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+## getRawFdSync
+
+```TypeScript
+getRawFdSync(path: string): RawFileDescriptor
+```
+
+Obtains the file descriptor (fd) of the HAP where the rawfile file in the resources/rawfile directory is located. This API is called in synchronous mode.
+
+> **NOTE:** 
+> 
+> To prevent resource leakage, call [closeRawFdSync](#closerawfdsync) or
+> [closeRawFd](#closerawfd)
+> to close the fd after use.
+
+**Since:** 10
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getRawFdSync(path: string): RawFileDescriptor--><!--Device-ResourceManager-getRawFdSync(path: string): RawFileDescriptor-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Test API:** This API is used only in automated test scripts.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md) | fd of the HAP where the rawfile is located. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test.txt" with the actual resource.
+            this.context.resourceManager.getRawFdSync("test.txt");
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getRawFdSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+## getRawFileContent
+
+```TypeScript
+getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void
+```
+
+Obtain the content of a rawfile in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Test API:** This API is used only in automated test scripts.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | Yes | Callback used to return the content of the rawfile. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test.txt" with the actual resource.
+            this.context.resourceManager.getRawFileContent("test.txt", (error: BusinessError, value: Uint8Array) => {
+                if (error != null) {
+                    console.error("error is " + error);
+                } else {
+                    let rawFile = value;
+                }
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`callback getRawFileContent failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getrawfilecontent-1"></a>
+
+## getRawFileContent
+
+```TypeScript
+getRawFileContent(path: string): Promise<Uint8Array>
+```
+
+Obtain the content of a rawfile in the **resources/rawfile** directory. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getRawFileContent(path: string): Promise<Uint8Array>--><!--Device-ResourceManager-getRawFileContent(path: string): Promise<Uint8Array>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Test API:** This API is used only in automated test scripts.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Uint8Array&gt; | Promise used to return the content of the rawfile. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test.txt" with the actual resource.
+            this.context.resourceManager.getRawFileContent("test.txt").then((value: Uint8Array) => {
+                let rawFile = value;
+            }).catch((error: BusinessError) => {
+                console.error("getRawFileContent promise error is " + error);
+            });
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`promise getRawFileContent failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+## getRawFileContentSync
+
+```TypeScript
+getRawFileContentSync(path: string): Uint8Array
+```
+
+Obtains the content of a rawfile in the **resources/rawfile** directory. This API returns the result synchronously.
+
+**Since:** 10
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getRawFileContentSync(path: string): Uint8Array--><!--Device-ResourceManager-getRawFileContentSync(path: string): Uint8Array-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Test API:** This API is used only in automated test scripts.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Uint8Array | Content of the rawfile. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test.txt" with the actual resource.
+            this.context.resourceManager.getRawFileContentSync("test.txt");
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getRawFileContentSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+## getRawFileList
+
+```TypeScript
+getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void
+```
+
+Obtains the list of directories and files in the specified subdirectory under **resources/rawfile**. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> If there is no folder or file in the directory, an exception is thrown. If there are folders and files in the
+> directory, the list of the folders and files is returned.
+
+**Since:** 10
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | rawfile subdirectory path relative to the **resources/rawfile** directory, such as **subdir**. The path must not start with a slash (/).<br>An empty string **""** indicates that the list of directories and files in the **rawfile** root directory is obtained. |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback used to return the list of directories and files in a rawfile subdirectory. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
+        // Replace "" with the actual file path in the rawfile directory.
+        this.context.resourceManager.getRawFileList("", (error: BusinessError, value: Array<string>) => {
+            if (error != null) {
+                console.error(`callback getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
+            } else {
+                console.info(`getRawFileList, result: ${JSON.stringify(value)}`);
+                // Print the output result: getRawFileList, result: ["test.txt"].
+            }
+        });
+    }
+}
+```
+
+<a id="getrawfilelist-1"></a>
+
+## getRawFileList
+
+```TypeScript
+getRawFileList(path: string): Promise<Array<string>>
+```
+
+Obtains the list of directories and files in the specified subdirectory under **resources/rawfile**. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> If there is no folder or file in the directory, an exception is thrown. If there are folders and files in the
+> directory, the list of the folders and files is returned.
+
+**Since:** 10
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getRawFileList(path: string): Promise<Array<string>>--><!--Device-ResourceManager-getRawFileList(path: string): Promise<Array<string>>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | rawfile subdirectory path relative to the **resources/rawfile** directory, such as **subdir**. The path must not start with a slash (/).<br>An empty string **""** indicates that the list of directories and files in the **rawfile** root directory is obtained. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the list of directories and files in a rawfile subdirectory. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
+        // Replace "" with the actual file path in the rawfile directory.
+        this.context.resourceManager.getRawFileList("")
+            .then((value: Array<string>) => {
+                console.info(`getRawFileList, result: ${JSON.stringify(value)}`);
+                // Print the output result: getRawFileList, result: ["test.txt"].
+            })
+            .catch((error: BusinessError) => {
+                console.error(`promise getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+    }
+}
+```
+
+## getRawFileListSync
+
+```TypeScript
+getRawFileListSync(path: string): Array<string>
+```
+
+Obtains the list of directories and files in the specified subdirectory under **resources/rawfile**. This API returns the result synchronously.
+
+> **NOTE:** 
+> 
+> If there is no folder or file in the directory, an exception is thrown. If there are folders and files in the
+> directory, the list of the folders and files is returned.
+
+**Since:** 10
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getRawFileListSync(path: string): Array<string>--><!--Device-ResourceManager-getRawFileListSync(path: string): Array<string>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | rawfile subdirectory path relative to the **resources/rawfile** directory, such as **subdir**. The path must not start with a slash (/).<br>An empty string **""** indicates that the list of directories and files in the **rawfile** root directory is obtained. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Array&lt;string&gt; | List of folders and files in the **rawfile** directory. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
+            // Replace "" with the actual file path in the rawfile directory.
+            let fileList: Array<string> = this.context.resourceManager.getRawFileListSync("");
+            console.info(`getRawFileListSync, result: ${JSON.stringify(fileList)}`);
+            // Print the output result: getRawFileListSync, result: ["test.txt"]
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getRawFileListSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+## getResourceName
+
+```TypeScript
+getResourceName(resId: number): string
+```
+
+Obtains the resource name corresponding to the specified resource ID.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ResourceManager-getResourceName(resId: long): string--><!--Device-ResourceManager-getResourceName(resId: long): string-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | Resource name corresponding to the resource ID. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.string.test' with the actual resource.
+            let resName: string = this.context.resourceManager.getResourceName($r('app.string.test').id);
+            console.info(`getResourceName, result: ${resName}`);
+            // Print the output result: getResourceName, result: test
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getResourceName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+## getStringArrayByName
+
+```TypeScript
+getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): void
+```
+
+Obtains the string array corresponding to the specified resource name. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resName | string | Yes | Resource name. |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback used to return the obtained string array. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "test" with the actual resource.
+        this.context.resourceManager.getStringArrayByName("test", (error: BusinessError, value: Array<string>) => {
+            if (error != null) {
+                console.error(`callback getStringArrayByName failed, error code: ${error.code}, message: ${error.message}.`);
+            } else {
+                let strArray = value;
+                console.info(`getStringArrayByName, result: ${value[0]}`);
+                // Print the output result: getStringArrayByName, result: I'm one of the array's values.
+            }
+        });
+    }
+}
+```
+
+<a id="getstringarraybyname-1"></a>
+
+## getStringArrayByName
+
+```TypeScript
+getStringArrayByName(resName: string): Promise<Array<string>>
+```
+
+Obtains the string array corresponding to the specified resource name. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getStringArrayByName(resName: string): Promise<Array<string>>--><!--Device-ResourceManager-getStringArrayByName(resName: string): Promise<Array<string>>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resName | string | Yes | Resource name. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the obtained string array. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "test" with the actual resource.
+        this.context.resourceManager.getStringArrayByName("test")
+            .then((value: Array<string>) => {
+                console.info(`getStringArrayByName, result: ${value[0]}`);
+                // Print the output result: getStringArrayByName, result: I'm one of the array's values.
+            })
+            .catch((error: BusinessError) => {
+                console.error(`promise getStringArrayByName failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+    }
+}
+```
+
+## getStringArrayByNameSync
+
+```TypeScript
+getStringArrayByNameSync(resName: string): Array<string>
+```
+
+Obtains the string array corresponding to the specified resource name. This API returns the result synchronously.
+
+**Since:** 10
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getStringArrayByNameSync(resName: string): Array<string>--><!--Device-ResourceManager-getStringArrayByNameSync(resName: string): Array<string>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resName | string | Yes | Resource name. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Array&lt;string&gt; | String array corresponding to the specified resource name. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            let strArray: Array<string> = this.context.resourceManager.getStringArrayByNameSync("test");
+            console.info(`getStringArrayByNameSync, result: ${strArray[0]}`);
+            // Print the output result: getStringArrayByNameSync, result: I'm one of the array's values.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getStringArrayByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getstringarrayvalue-2"></a>
+
+## getStringArrayValue
+
+```TypeScript
+getStringArrayValue(resId: number, callback: _AsyncCallback<Array<string>>): void
+```
+
+Obtains the string array corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getStringArrayValue(resId: long, callback: _AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getStringArrayValue(resId: long, callback: _AsyncCallback<Array<string>>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback used to return the obtained string array. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace 'app.strarray.test' with the actual resource.
+        this.context.resourceManager.getStringArrayValue($r('app.strarray.test').id,
+            (error: BusinessError, value: Array<string>) => {
+                if (error != null) {
+                    console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
+                } else {
+                    console.info(`getStringArrayValue, result: ${value[0]}`);
+                    // Print the output result: getStringArrayValue, result: I'm one of the array's values.
+                }
+            });
+    }
+}
+```
+
+<a id="getstringarrayvalue-3"></a>
+
+## getStringArrayValue
+
+```TypeScript
+getStringArrayValue(resId: number): Promise<Array<string>>
+```
+
+Obtains the string array corresponding to the specified resource ID. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getStringArrayValue(resId: long): Promise<Array<string>>--><!--Device-ResourceManager-getStringArrayValue(resId: long): Promise<Array<string>>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the obtained string array. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace 'app.strarray.test' with the actual resource.
+        this.context.resourceManager.getStringArrayValue($r('app.strarray.test').id)
+            .then((value: Array<string>) => {
+                console.info(`getStringArrayValue, result: ${value[0]}`);
+                // Print the output result: getStringArrayValue, result: I'm one of the array's values.
+            })
+            .catch((error: BusinessError) => {
+                console.error(`promise getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
+            });
+    }
+}
+```
+
+## getStringArrayValue
+
+```TypeScript
+getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>): void
+```
+
+Obtains the string array corresponding to the specified resource object. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Deprecated since:** 20
+
+**Substitutes:** [getStringArrayValue](#getstringarrayvalue)(resId: number, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;)
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback used to return the obtained string array. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.strarray.test').id
+};
+this.context.resourceManager.getStringArrayValue(resource, (error: BusinessError, value: Array<string>) => {
+  if (error != null) {
+    console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getStringArrayValue, result: ${value[0]}`);
+    // Print the output result: getStringArrayValue, result: I'm one of the array's values.
+  }
+});
+```
+
+<a id="getstringarrayvalue-1"></a>
+
+## getStringArrayValue
+
+```TypeScript
+getStringArrayValue(resource: Resource): Promise<Array<string>>
+```
+
+Obtains the string array corresponding to the specified resource object. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Deprecated since:** 20
+
+**Substitutes:** [getStringArrayValue](#getstringarrayvalue)(resId: number)
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getStringArrayValue(resource: Resource): Promise<Array<string>>--><!--Device-ResourceManager-getStringArrayValue(resource: Resource): Promise<Array<string>>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the obtained string array. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.strarray.test').id
+};
+this.context.resourceManager.getStringArrayValue(resource)
+  .then((value: Array<string>) => {
+    console.info(`getStringArrayValue, result: ${value[0]}`);
+    // Print the output result: getStringArrayValue, result: I'm one of the array's values.
+  })
+  .catch((error: BusinessError) => {
+    console.error(`promise getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+```
+
+## getStringArrayValueSync
+
+```TypeScript
+getStringArrayValueSync(resId: number): Array<string>
+```
+
+Obtains the string array corresponding to the specified resource ID. This API returns the result synchronously.
+
+**Since:** 10
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getStringArrayValueSync(resId: long): Array<string>--><!--Device-ResourceManager-getStringArrayValueSync(resId: long): Array<string>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Array&lt;string&gt; | String array corresponding to the specified resource ID. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.strarray.test' with the actual resource.
+            let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync($r('app.strarray.test').id);
+            console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
+            // Print the output result: getStringArrayValueSync, result: I'm one of the array's values.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getStringArrayValueSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getstringarrayvaluesync-1"></a>
+
+## getStringArrayValueSync
+
+```TypeScript
+getStringArrayValueSync(resource: Resource): Array<string>
+```
+
+Obtains a string array based on the specified resource object. This API returns the result synchronously.
+
+**Since:** 10
+
+**Deprecated since:** 20
+
+**Substitutes:** [getStringArrayValueSync](#getstringarrayvaluesync)(resId: number)
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getStringArrayValueSync(resource: Resource): Array<string>--><!--Device-ResourceManager-getStringArrayValueSync(resource: Resource): Array<string>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Array&lt;string&gt; | String array corresponding to the specified resource object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.strarray.test').id
+};
+try {
+  let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync(resource);
+  console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
+  // Print the output result: getStringArrayValueSync, result: I'm one of the array's values.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getStringArrayValueSync failed, error code: ${code}, message: ${message}.`);
+}
+```
+
+## getStringByName
+
+```TypeScript
+getStringByName(resName: string, callback: _AsyncCallback<string>): void
+```
+
+Obtains the string corresponding to the specified resource name. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getStringByName(resName: string, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getStringByName(resName: string, callback: _AsyncCallback<string>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resName | string | Yes | Resource name. |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | Yes | Callback used to return the obtained string. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "test" with the actual resource.
+        this.context.resourceManager.getStringByName("test", (error: BusinessError, value: string) => {
+            if (error != null) {
+                console.error(`callback getStringByName failed, error code: ${error.code}, message: ${error.message}.`);
+            } else {
+                console.info(`getStringByName, result: ${value}`);
+                // Print the output result: getStringByName, result: I'm a test string resource.
+            }
+        });
+    }
+}
+```
+
+<a id="getstringbyname-1"></a>
+
+## getStringByName
+
+```TypeScript
+getStringByName(resName: string): Promise<string>
+```
+
+Obtains the string corresponding to the specified resource name. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getStringByName(resName: string): Promise<string>--><!--Device-ResourceManager-getStringByName(resName: string): Promise<string>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resName | string | Yes | Resource name. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the obtained string. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "test" with the actual resource.
+        this.context.resourceManager.getStringByName("test").then((value: string) => {
+            console.info(`getStringByName, result: ${value}`);
+            // Print the output result: getStringByName, result: I'm a test string resource.
+        }).catch((error: BusinessError) => {
+            console.error(`promise getStringByName failed, error code: ${error.code}, message: ${error.message}.`);
+        });
+    }
+}
+```
+
+## getStringByNameSync
+
+```TypeScript
+getStringByNameSync(resName: string): string
+```
+
+Obtains the string corresponding to the specified resource name. This API returns the result synchronously.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getStringByNameSync(resName: string): string--><!--Device-ResourceManager-getStringByNameSync(resName: string): string-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resName | string | Yes | Resource name. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | String corresponding to the specified resource name. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            let testStr = this.context.resourceManager.getStringByNameSync("test");
+            console.info(`getStringByNameSync, result: ${testStr}`);
+            // Print the output result: getStringByNameSync, result: I'm a test string resource.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getStringByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getstringbynamesync-1"></a>
+
+## getStringByNameSync
+
+```TypeScript
+getStringByNameSync(resName: string, ...args: Array<string | number>): string
+```
+
+Obtains the string corresponding to the specified resource name, and replaces the format placeholders in the string in sequence using the **args** parameter. This API returns the result synchronously.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getStringByNameSync(resName: string, ...args: Array<string | number>): string--><!--Device-ResourceManager-getStringByNameSync(resName: string, ...args: Array<string | number>): string-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resName | string | Yes | Resource name. |
+| args | Array&lt;string &#124; number&gt; | Yes | Parameters for the formatted string resource. Supported parameter types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`. <br>**NOTE:** <br>- `%%` is escaped as `%`. For example, `%%d` is formatted as `%d`. <br>- In `%number$d`, `number` indicates the parameter index, starting from `1`. For example, `%1$d` uses `args[0]` for formatting, `%2$d` uses `args[1]`, and so on. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | Formatted string corresponding to the specified resource name. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001008](../errorcode-resource-manager.md#9001008-failed-to-format-the-resource-obtained-based-on-resname) | Failed to format the resource obtained based on the resource name. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "test" with the actual resource.
+            let testStr = this.context.resourceManager.getStringByNameSync("test", "format string", 10, 98.78);
+            console.info(`getStringByNameSync, result: ${testStr}`);
+            // Print the output result: getStringByNameSync, result: I'm a format string, format int: 10, format float: 98.78.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getStringByNameSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+## getStringSync
+
+```TypeScript
+getStringSync(resId: number): string
+```
+
+Obtains the string corresponding to the specified resource ID. This API returns the result synchronously.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getStringSync(resId: long): string--><!--Device-ResourceManager-getStringSync(resId: long): string-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | String corresponding to the specified resource ID. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.string.test' with the actual resource.
+            let testStr = this.context.resourceManager.getStringSync($r('app.string.test').id);
+            console.info(`getStringSync, result: ${testStr}`);
+            // Print the output result: getStringSync, result: I'm a test string resource.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getstringsync-1"></a>
+
+## getStringSync
+
+```TypeScript
+getStringSync(resId: number, ...args: Array<string | number>): string
+```
+
+Obtains the string corresponding to the specified resource ID, and replaces the format placeholders in the string in sequence using the **args** parameter. This API returns the result synchronously.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getStringSync(resId: number, ...args: Array<string | number>): string--><!--Device-ResourceManager-getStringSync(resId: number, ...args: Array<string | number>): string-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+| args | Array&lt;string &#124; number&gt; | Yes | Parameters for the formatted string resource. Supported parameter types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`. <br>**NOTE:** <br>- `%%` is escaped as `%`. For example, `%%d` is formatted as `%d`. <br>- In `%number$d`, `number` indicates the parameter index, starting from `1`. For example, `%1$d` uses `args[0]` for formatting, `%2$d` uses `args[1]`, and so on. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | Formatted string corresponding to the specified resource ID. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001007](../errorcode-resource-manager.md#9001007-failed-to-format-the-resource-obtained-based-on-the-current-id) | Failed to format the resource obtained based on the resource ID. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'app.string.test' with the actual resource.
+            let testStr = this.context.resourceManager.getStringSync($r('app.string.test').id, "format string", 10, 98.78);
+            console.info(`getStringSync, result: ${testStr}`);
+            // Print the output result: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getstringsync-3"></a>
+
+## getStringSync
+
+```TypeScript
+getStringSync(resource: Resource): string
+```
+
+Obtains a string based on the specified resource object. This API returns the result synchronously.
+
+**Since:** 9
+
+**Deprecated since:** 20
+
+**Substitutes:** [getStringSync](#getstringsync)(resId: number)
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getStringSync(resource: Resource): string--><!--Device-ResourceManager-getStringSync(resource: Resource): string-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | String corresponding to the specified resource object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+try {
+  let testStr = this.context.resourceManager.getStringSync(resource);
+  console.info(`getStringSync, result: ${testStr}`);
+  // Print the output result: getStringSync, result: I'm a test string resource.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
+}
+```
+
+<a id="getstringsync-4"></a>
+
+## getStringSync
+
+```TypeScript
+getStringSync(resource: Resource, ...args: Array<string | number>): string
+```
+
+Obtains the string corresponding to the specified resource object, and replaces the format placeholders in the string in sequence using the **args** parameter. This API returns the result synchronously.
+
+**Since:** 10
+
+**Deprecated since:** 20
+
+**Substitutes:** [getStringSync](#getstringsync-1)(resId: number, ...args: Array&lt;string | number&gt;)
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getStringSync(resource: Resource, ...args: Array<string | number>): string--><!--Device-ResourceManager-getStringSync(resource: Resource, ...args: Array<string | number>): string-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
+| args | Array&lt;string &#124; number&gt; | Yes | Parameters for the formatted string resource. Supported parameter types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`. <br>**NOTE:** <br>- `%%` is escaped as `%`. For example, `%%d` is formatted as `%d`. <br>- In `%number$d`, `number` indicates the parameter index, starting from `1`. For example, `%1$d` uses `args[0]` for formatting, `%2$d` uses `args[1]`, and so on. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | Formatted string corresponding to the specified resource object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+| [9001007](../errorcode-resource-manager.md#9001007-failed-to-format-the-resource-obtained-based-on-the-current-id) | Failed to format the resource obtained based on the resource ID. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
+    }
+  ]
+}
+```
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+try {
+  let testStr = this.context.resourceManager.getStringSync(resource, "format string", 10, 98.78);
+  console.info(`getStringSync, result: ${testStr}`);
+  // Print the output result: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
+}
+```
+
+<a id="getstringvalue-2"></a>
+
+## getStringValue
+
+```TypeScript
+getStringValue(resId: number, callback: _AsyncCallback<string>): void
+```
+
+Obtains the string corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getStringValue(resId: long, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getStringValue(resId: long, callback: _AsyncCallback<string>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | Yes | Callback used to return the obtained string. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace 'app.string.test' with the actual resource.
+        this.context.resourceManager.getStringValue($r('app.string.test').id).then((value: string) => {
+            console.info(`getStringValue, result: ${value}`);
+            // Print the output result: getStringValue, result: I'm a test string resource.
+        }).catch((error: BusinessError) => {
+            console.error(`promise getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+        });
+    }
+}
+```
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
+  if (error != null) {
+    console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getStringValue, result: ${value}`);
+    // Print the output result: getStringValue, result: I'm a test string resource.
+  }
+});
+```
+
+<a id="getstringvalue-3"></a>
+
+## getStringValue
+
+```TypeScript
+getStringValue(resId: number): Promise<string>
+```
+
+Obtains the string corresponding to the specified resource ID. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getStringValue(resId: long): Promise<string>--><!--Device-ResourceManager-getStringValue(resId: long): Promise<string>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the obtained string. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace 'app.string.test' with the actual resource.
+        this.context.resourceManager.getStringValue($r('app.string.test').id).then((value: string) => {
+            console.info(`getStringValue, result: ${value}`);
+            // Print the output result: getStringValue, result: I'm a test string resource.
+        }).catch((error: BusinessError) => {
+            console.error(`promise getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+        });
+    }
+}
+```
+
+## getStringValue
+
+```TypeScript
+getStringValue(resource: Resource, callback: _AsyncCallback<string>): void
+```
+
+Obtains the string corresponding to the specified resource object. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Deprecated since:** 20
+
+**Substitutes:** [getStringValue](#getstringvalue)(resId: number, callback: _AsyncCallback&lt;string&gt;)
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getStringValue(resource: Resource, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getStringValue(resource: Resource, callback: _AsyncCallback<string>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | Yes | Callback used to return the obtained string. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
+  if (error != null) {
+    console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getStringValue, result: ${value}`);
+    // Print the output result: getStringValue, result: I'm a test string resource.
+  }
+});
+```
+
+<a id="getstringvalue-1"></a>
+
+## getStringValue
+
+```TypeScript
+getStringValue(resource: Resource): Promise<string>
+```
+
+Obtains the string corresponding to the specified resource object. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Deprecated since:** 20
+
+**Substitutes:** [getStringValue](#getstringvalue)(resId: number)
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getStringValue(resource: Resource): Promise<string>--><!--Device-ResourceManager-getStringValue(resource: Resource): Promise<string>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the obtained string. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
+  if (error != null) {
+    console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getStringValue, result: ${value}`);
+    // Print the output result: getStringValue, result: I'm a test string resource.
+  }
+});
+```
+
+## getSymbol
+
+```TypeScript
+getSymbol(resId: number) : number
+```
+
+Obtains the Unicode of a [symbol](https://developer.huawei.com/consumer/en/design/harmonyos-symbol) based on the specified resource ID. This API returns the result synchronously.
+
+**Since:** 11
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getSymbol(resId: long) : long--><!--Device-ResourceManager-getSymbol(resId: long) : long-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| number | Unicode code (decimal) of the symbol. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace 'sys.symbol.message' with the actual resource.
+            let symbolValue = this.context.resourceManager.getSymbol($r('sys.symbol.message').id);
+            console.info(`getSymbol, result: ${symbolValue}`);
+            // Print the output result: getSymbol, result: 983183
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+<a id="getsymbol-1"></a>
+
+## getSymbol
+
+```TypeScript
+getSymbol(resource: Resource) : number
+```
+
+Obtains the Unicode of a [symbol](https://developer.huawei.com/consumer/en/design/harmonyos-symbol) based on the specified resource object. This API returns the result synchronously.
+
+**Since:** 11
+
+**Deprecated since:** 20
+
+**Substitutes:** [getSymbol](#getsymbol)(resId: number)
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getSymbol(resource: Resource) : number--><!--Device-ResourceManager-getSymbol(resource: Resource) : number-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| number | Unicode code (decimal) of the symbol. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
+| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('sys.symbol.message').id
+};
+try {
+  let symbolValue = this.context.resourceManager.getSymbol(resource);
+  console.info(`getSymbol, result: ${symbolValue}`);
+  // Print the output result: getSymbol, result: 983183
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
+}
+```
+
+## getSymbolByName
+
+```TypeScript
+getSymbolByName(resName: string) : number
+```
+
+Obtains the Unicode of a [symbol](https://developer.huawei.com/consumer/en/design/harmonyos-symbol) based on the specified resource name. This API returns the result synchronously.
+
+**Since:** 11
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-getSymbolByName(resName: string) : long--><!--Device-ResourceManager-getSymbolByName(resName: string) : long-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resName | string | Yes | Resource name. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| number | Unicode code (decimal) of the symbol. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
+| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
+| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Replace "message" with the actual resource.
+            let symbolValue = this.context.resourceManager.getSymbolByName("message");
+            console.info(`getSymbolByName, result: ${symbolValue}`);
+            // Print the output result: getSymbolByName, result: 983183
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`getSymbolByName failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+## isRawDir
+
+```TypeScript
+isRawDir(path: string): boolean
+```
+
+Checks whether a path is a subdirectory in the **rawfile** directory. This API returns the result synchronously.
+
+**Since:** 12
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ResourceManager-isRawDir(path: string): boolean--><!--Device-ResourceManager-isRawDir(path: string): boolean-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Test API:** This API is used only in automated test scripts.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | rawfile or subdirectory path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir**. The path must not start with a slash (/). |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Whether the path is a subdirectory in the **rawfile** directory.<br> - **true**: The path is a subdirectory in the **rawfile** directory. <br> - **false**: The path is not a subdirectory in the **rawfile** directory. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            // Assume that a non-empty folder named sub exists in the root directory (that is, /rawfile). The value of isRawDir is true in the return result.
+            // Replace "sub" with the actual directory.
+            let isRawDir = this.context.resourceManager.isRawDir("sub");
+            // Print the output result: sub isRawDir, result: true
+            console.info(`sub isRawDir, result: ${isRawDir}`);
+
+            // If the test.txt file exists in the rawfile root directory, the value of isRawDir is false.
+            // Replace "test.txt" with the actual resource.
+            isRawDir = this.context.resourceManager.isRawDir("test.txt");
+            // Print the output result: test.txt isRawDir, result: false
+            console.info(`test.txt isRawDir, result: ${isRawDir}`);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`isRawDir failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+## removeResource
+
+```TypeScript
+removeResource(path: string) : void
+```
+
+Removes the specified overlay resource during application runtime and restores the original resource before the override.
+
+> **NOTE:** 
+> 
+> Resource overwriting is not supported for the **rawfile** and **resfile** directories.
+
+**Since:** 10
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ResourceManager-removeResource(path: string) : void--><!--Device-ResourceManager-removeResource(path: string) : void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | Absolute path of the HSP or HAP resource package to be removed. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+| [9001010](../errorcode-resource-manager.md#9001010-invalid-overlay-path) | Invalid overlay path. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // Replace "/library1-default-signed.hsp" with the actual file path.
+        let path = this.context.bundleCodeDir + "/library1-default-signed.hsp";
+        try {
+            this.context.resourceManager.removeResource(path);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`removeResource failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+## updateOverrideConfiguration
+
+```TypeScript
+updateOverrideConfiguration(configuration: Configuration): void
+```
+
+Updates the configuration of a differentiated resource management object.
+
+This API updates the configuration of the differentiated resource management object, regardless of whether it is called on the common resource management object or on the differentiated one obtained via [getOverrideResourceManager](#getoverrideresourcemanager).
+
+**Since:** 12
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ResourceManager-updateOverrideConfiguration(configuration: Configuration): void--><!--Device-ResourceManager-updateOverrideConfiguration(configuration: Configuration): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| configuration | [Configuration](arkts-localization-resourcemanager-configuration-c.md) | Yes | Configuration of differentiated resources. After obtaining the configuration of differentiated resources through [getOverrideConfiguration](#getoverrideconfiguration), modify the configuration items as required, and then pass these items as input parameters to the API. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+            let resMgr = this.context.resourceManager;
+            let overrideConfig = resMgr.getOverrideConfiguration();
+            overrideConfig.colorMode = resourceManager.ColorMode.DARK;
+            let overrideResMgr = resMgr.updateOverrideConfiguration(overrideConfig);
+        } catch (error) {
+            let code = (error as BusinessError).code;
+            let message = (error as BusinessError).message;
+            console.error(`updateOverrideConfiguration failed, error code: ${code}, message: ${message}.`);
+        }
+    }
+}
+```
+
+## closeRawFileDescriptor
+
+```TypeScript
+closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
+```
+
+Closes the file descriptor (fd) of a specific rawfile in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [closeRawFd](#closerawfd)(path: string, callback: _AsyncCallback&lt;void&gt;)
+
+<!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void--><!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Test API:** This API is used only in automated test scripts.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
+| callback | [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.closeRawFileDescriptor("test.txt", (error: Error) => {
+        if (error != null) {
+            console.error("error is " + error);
+        }
+    });
+});
+```
+
+<a id="closerawfiledescriptor-1"></a>
+
+## closeRawFileDescriptor
+
+```TypeScript
+closeRawFileDescriptor(path: string): Promise<void>
+```
+
+Closes the file descriptor (fd) of a specific rawfile in the **resources/rawfile** directory. This API uses a promise to return the result.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [closeRawFd](#closerawfd-1)(path: string)
+
+<!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>--><!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Test API:** This API is used only in automated test scripts.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { resourceManager } from '@kit.LocalizationKit';
+
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.closeRawFileDescriptor("test.txt");
+});
+```
+
+## getMedia
+
+```TypeScript
+getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void
+```
+
+Obtains the content of the media file corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+**Substitutes:** [getMediaContent](#getmediacontent)(resId: number, callback: _AsyncCallback&lt;Uint8Array&gt;)
+
+<!--Device-ResourceManager-getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMedia(resId: number, callback: AsyncCallback<Uint8Array>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+| callback | [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md)&lt;Uint8Array&gt; | Yes | Callback used to return the media file content. |
+
+**Examples**
+
+```TypeScript
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getMedia($r('app.media.test').id, (error: Error, value: Uint8Array) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let media = value;
+        }
+    });
+});
+```
+
+<a id="getmedia-1"></a>
+
+## getMedia
+
+```TypeScript
+getMedia(resId: number): Promise<Uint8Array>
+```
+
+Obtains the content of the media file corresponding to the specified resource ID. This API uses a promise to return the result.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+**Substitutes:** [getMediaContent](#getmediacontent)(resId: number)
+
+<!--Device-ResourceManager-getMedia(resId: number): Promise<Uint8Array>--><!--Device-ResourceManager-getMedia(resId: number): Promise<Uint8Array>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Uint8Array&gt; | Promise used to return the media file content. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getMedia($r('app.media.test').id).then((value: Uint8Array) => {
+        let media = value;
+    }).catch((error: BusinessError) => {
+        console.error("getMedia promise error is " + error);
+    });
+});
+```
+
+## getMediaBase64
+
+```TypeScript
+getMediaBase64(resId: number, callback: AsyncCallback<string>): void
+```
+
+Obtains the Base64 encoding of the image resource corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+**Substitutes:** [getMediaContentBase64](#getmediacontentbase64)(resId: number, callback: _AsyncCallback&lt;string&gt;)
+
+<!--Device-ResourceManager-getMediaBase64(resId: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaBase64(resId: number, callback: AsyncCallback<string>): void-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+| callback | [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the Base64 encoding of the image. |
+
+**Examples**
+
+```TypeScript
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getMediaBase64($r('app.media.test').id, ((error: Error, value: string) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let media = value;
+        }
+    });
+});
+```
+
+<a id="getmediabase64-1"></a>
+
+## getMediaBase64
+
+```TypeScript
+getMediaBase64(resId: number): Promise<string>
+```
+
+Obtains the Base64 encoding of the image resource corresponding to the specified resource ID. This API uses a promise to return the result.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+**Substitutes:** [getMediaContentBase64](#getmediacontentbase64)(resId: number)
+
+<!--Device-ResourceManager-getMediaBase64(resId: number): Promise<string>--><!--Device-ResourceManager-getMediaBase64(resId: number): Promise<string>-End-->
+
+**System capability:** SystemCapability.Global.ResourceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| resId | number | Yes | Resource ID. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the Base64 encoding of the image. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getMediaBase64($r('app.media.test').id).then((value: string) => {
+        let media = value;
+    }).catch((error: BusinessError) => {
+        console.error("getMediaBase64 promise error is " + error);
+    });
+});
+```
+
 ## getPluralString
 
 ```TypeScript
@@ -4716,6 +7418,8 @@ Obtains the plural string based on the specified resource ID and the specified r
 **Deprecated since:** 9
 
 **Substitutes:** [getPluralStringValue](#getpluralstringvalue-2)(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;)
+
+<!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -4763,6 +7467,8 @@ Obtains the plural string based on the specified resource ID and the specified r
 **Deprecated since:** 9
 
 **Substitutes:** [getPluralStringValue](#getpluralstringvalue-3)(resId: number, num: number)
+
+<!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>--><!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -4813,6 +7519,8 @@ Obtains the plural string based on the specified resource name and the specified
 **Substitutes:** [getIntPluralStringByNameSync](#getintpluralstringbynamesync)(resName: string, num: number, ...args: Array&lt;string | number&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getPluralStringByName(resName: string, num: number, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getPluralStringByName(resName: string, num: number, callback: _AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -4893,6 +7601,8 @@ Obtains the plural string based on the specified resource name and the specified
 **Substitutes:** [getIntPluralStringByNameSync](#getintpluralstringbynamesync)(resName: string, num: number, ...args: Array&lt;string | number&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getPluralStringByName(resName: string, num: number): Promise<string>--><!--Device-ResourceManager-getPluralStringByName(resName: string, num: number): Promise<string>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -4976,6 +7686,8 @@ Obtains singular/plural strings based on the specified quantity and resource nam
 **Substitutes:** [getIntPluralStringByNameSync](#getintpluralstringbynamesync)(resName: string, num: number, ...args: Array&lt;string | number&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getPluralStringByNameSync(resName: string, num: number): string--><!--Device-ResourceManager-getPluralStringByNameSync(resName: string, num: number): string-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -5062,6 +7774,8 @@ Obtains the plural string based on the specified resource information and the sp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -5151,6 +7865,8 @@ Obtains the plural string based on the specified resource information and the sp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getPluralStringValue(resource: Resource, num: number): Promise<string>--><!--Device-ResourceManager-getPluralStringValue(resource: Resource, num: number): Promise<string>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -5243,6 +7959,8 @@ Obtains the plural string based on the specified resource ID and the specified r
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -5323,6 +8041,8 @@ Obtains the plural string based on the specified resource ID and the specified r
 **Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getPluralStringValue(resId: number, num: number): Promise<string>--><!--Device-ResourceManager-getPluralStringValue(resId: number, num: number): Promise<string>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -5406,6 +8126,8 @@ Obtains singular/plural strings based on the specified resource ID and quantity.
 **Substitutes:** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResourceManager-getPluralStringValueSync(resId: number, num: number): string--><!--Device-ResourceManager-getPluralStringValueSync(resId: number, num: number): string-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -5495,6 +8217,8 @@ Obtains singular/plural strings based on the specified quantity and resource obj
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-getPluralStringValueSync(resource: Resource, num: number): string--><!--Device-ResourceManager-getPluralStringValueSync(resource: Resource, num: number): string-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -5564,202 +8288,6 @@ try {
 }
 ```
 
-## getRawFd
-
-```TypeScript
-getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
-```
-
-Obtains the file descriptor (fd) of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> To prevent resource leakage, call [closeRawFdSync](#closerawfdsync) or
-> [closeRawFd](#closerawfd)
-> to close the fd after use.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;[RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md)&gt; | Yes | Callback used to return the fd of the HAP. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { resourceManager } from '@kit.LocalizationKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "test.txt" with the actual resource.
-            this.context.resourceManager.getRawFd("test.txt", (error: BusinessError, value: resourceManager.RawFileDescriptor) => {
-                if (error != null) {
-                    console.error(`callback getRawFd failed error code: ${error.code}, message: ${error.message}.`);
-                } else {
-                    let fd = value.fd;
-                    let offset = value.offset;
-                    let length = value.length;
-                }
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`callback getRawFd failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-<a id="getrawfd-1"></a>
-
-## getRawFd
-
-```TypeScript
-getRawFd(path: string): Promise<RawFileDescriptor>
-```
-
-Obtains the file descriptor (fd) of the HAP where a specific rawfile in the **resources/rawfile** directory is located. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> To prevent resource leakage, call [closeRawFdSync](#closerawfdsync) or
-> [closeRawFd](#closerawfd)
-> to close the fd after use.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md)&gt; | Promise used to return the fd of the HAP. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { resourceManager } from '@kit.LocalizationKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "test.txt" with the actual resource.
-            this.context.resourceManager.getRawFd("test.txt").then((value: resourceManager.RawFileDescriptor) => {
-                let fd = value.fd;
-                let offset = value.offset;
-                let length = value.length;
-            }).catch((error: BusinessError) => {
-                console.error(`promise getRawFd error error code: ${error.code}, message: ${error.message}.`);
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`promise getRawFd failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-## getRawFdSync
-
-```TypeScript
-getRawFdSync(path: string): RawFileDescriptor
-```
-
-Obtains the file descriptor (fd) of the HAP where the rawfile file in the resources/rawfile directory is located. This API is called in synchronous mode.
-
-> **NOTE:** 
-> 
-> To prevent resource leakage, call [closeRawFdSync](#closerawfdsync) or
-> [closeRawFd](#closerawfd)
-> to close the fd after use.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md) | fd of the HAP where the rawfile is located. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "test.txt" with the actual resource.
-            this.context.resourceManager.getRawFdSync("test.txt");
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getRawFdSync failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
 ## getRawFile
 
 ```TypeScript
@@ -5773,6 +8301,8 @@ Obtain the content of a rawfile in the **resources/rawfile** directory. This API
 **Deprecated since:** 9
 
 **Substitutes:** [getRawFileContent](#getrawfilecontent)(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;)
+
+<!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -5817,6 +8347,8 @@ Obtain the content of a rawfile in the **resources/rawfile** directory. This API
 
 **Substitutes:** [getRawFileContent](#getrawfilecontent-1)(path: string)
 
+<!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>--><!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Test API:** This API is used only in automated test scripts.
@@ -5847,178 +8379,6 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-## getRawFileContent
-
-```TypeScript
-getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void
-```
-
-Obtain the content of a rawfile in the **resources/rawfile** directory. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | Yes | Callback used to return the content of the rawfile. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "test.txt" with the actual resource.
-            this.context.resourceManager.getRawFileContent("test.txt", (error: BusinessError, value: Uint8Array) => {
-                if (error != null) {
-                    console.error("error is " + error);
-                } else {
-                    let rawFile = value;
-                }
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`callback getRawFileContent failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-<a id="getrawfilecontent-1"></a>
-
-## getRawFileContent
-
-```TypeScript
-getRawFileContent(path: string): Promise<Uint8Array>
-```
-
-Obtain the content of a rawfile in the **resources/rawfile** directory. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the content of the rawfile. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "test.txt" with the actual resource.
-            this.context.resourceManager.getRawFileContent("test.txt").then((value: Uint8Array) => {
-                let rawFile = value;
-            }).catch((error: BusinessError) => {
-                console.error("getRawFileContent promise error is " + error);
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`promise getRawFileContent failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-## getRawFileContentSync
-
-```TypeScript
-getRawFileContentSync(path: string): Uint8Array
-```
-
-Obtains the content of a rawfile in the **resources/rawfile** directory. This API returns the result synchronously.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | rawfile path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir/test.txt**. The path must not start with a slash (/). |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Uint8Array | Content of the rawfile. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "test.txt" with the actual resource.
-            this.context.resourceManager.getRawFileContentSync("test.txt");
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getRawFileContentSync failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
 ## getRawFileDescriptor
 
 ```TypeScript
@@ -6032,6 +8392,8 @@ Obtains the file descriptor (fd) of a specific rawfile in the **resources/rawfil
 **Deprecated since:** 9
 
 **Substitutes:** [getRawFd](#getrawfd)(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;)
+
+<!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void--><!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -6078,6 +8440,8 @@ Obtains the file descriptor (fd) of a specific rawfile in the **resources/rawfil
 
 **Substitutes:** [getRawFd](#getrawfd-1)(path: string)
 
+<!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>--><!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Test API:** This API is used only in automated test scripts.
@@ -6110,252 +8474,6 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-## getRawFileList
-
-```TypeScript
-getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void
-```
-
-Obtains the list of directories and files in the specified subdirectory under **resources/rawfile**. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> If there is no folder or file in the directory, an exception is thrown. If there are folders and files in the
-> directory, the list of the folders and files is returned.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | rawfile subdirectory path relative to the **resources/rawfile** directory, such as **subdir**. The path must not start with a slash (/).<br>An empty string **""** indicates that the list of directories and files in the **rawfile** root directory is obtained. |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback used to return the list of directories and files in a rawfile subdirectory. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
-        // Replace "" with the actual file path in the rawfile directory.
-        this.context.resourceManager.getRawFileList("", (error: BusinessError, value: Array<string>) => {
-            if (error != null) {
-                console.error(`callback getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
-            } else {
-                console.info(`getRawFileList, result: ${JSON.stringify(value)}`);
-                // Print the output result: getRawFileList, result: ["test.txt"].
-            }
-        });
-    }
-}
-```
-
-<a id="getrawfilelist-1"></a>
-
-## getRawFileList
-
-```TypeScript
-getRawFileList(path: string): Promise<Array<string>>
-```
-
-Obtains the list of directories and files in the specified subdirectory under **resources/rawfile**. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> If there is no folder or file in the directory, an exception is thrown. If there are folders and files in the
-> directory, the list of the folders and files is returned.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | rawfile subdirectory path relative to the **resources/rawfile** directory, such as **subdir**. The path must not start with a slash (/).<br>An empty string **""** indicates that the list of directories and files in the **rawfile** root directory is obtained. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the list of directories and files in a rawfile subdirectory. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
-        // Replace "" with the actual file path in the rawfile directory.
-        this.context.resourceManager.getRawFileList("")
-            .then((value: Array<string>) => {
-                console.info(`getRawFileList, result: ${JSON.stringify(value)}`);
-                // Print the output result: getRawFileList, result: ["test.txt"].
-            })
-            .catch((error: BusinessError) => {
-                console.error(`promise getRawFileList failed, error code: ${error.code}, message: ${error.message}.`);
-            });
-    }
-}
-```
-
-## getRawFileListSync
-
-```TypeScript
-getRawFileListSync(path: string): Array<string>
-```
-
-Obtains the list of directories and files in the specified subdirectory under **resources/rawfile**. This API returns the result synchronously.
-
-> **NOTE:** 
-> 
-> If there is no folder or file in the directory, an exception is thrown. If there are folders and files in the
-> directory, the list of the folders and files is returned.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | rawfile subdirectory path relative to the **resources/rawfile** directory, such as **subdir**. The path must not start with a slash (/).<br>An empty string **""** indicates that the list of directories and files in the **rawfile** root directory is obtained. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Array&lt;string&gt; | List of folders and files in the **rawfile** directory. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Passing "" means to obtain the list of files in the root directory (that is, /rawfile). Assume that the test.txt file exists in the root directory.
-            // Replace "" with the actual file path in the rawfile directory.
-            let fileList: Array<string> = this.context.resourceManager.getRawFileListSync("");
-            console.info(`getRawFileListSync, result: ${JSON.stringify(fileList)}`);
-            // Print the output result: getRawFileListSync, result: ["test.txt"]
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getRawFileListSync failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-## getResourceName
-
-```TypeScript
-getResourceName(resId: number): string
-```
-
-Obtains the resource name corresponding to the specified resource ID.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| string | Resource name corresponding to the resource ID. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/string.json
-{
-  "string": [
-    {
-      "name": "test",
-      "value": "I'm a test string resource."
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace 'app.string.test' with the actual resource.
-            let resName: string = this.context.resourceManager.getResourceName($r('app.string.test').id);
-            console.info(`getResourceName, result: ${resName}`);
-            // Print the output result: getResourceName, result: test
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getResourceName failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
 ## getString
 
 ```TypeScript
@@ -6369,6 +8487,8 @@ Obtains the string corresponding to the specified resource ID. This API uses an 
 **Deprecated since:** 9
 
 **Substitutes:** [getStringValue](#getstringvalue)(resId: number, callback: _AsyncCallback&lt;string&gt;)
+
+<!--Device-ResourceManager-getString(resId: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getString(resId: number, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -6408,6 +8528,8 @@ Obtains the string corresponding to the specified resource ID. This API uses a p
 **Deprecated since:** 9
 
 **Substitutes:** [getStringValue](#getstringvalue)(resId: number)
+
+<!--Device-ResourceManager-getString(resId: number): Promise<string>--><!--Device-ResourceManager-getString(resId: number): Promise<string>-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 
@@ -6451,6 +8573,8 @@ Obtains the string array corresponding to the specified resource ID. This API us
 
 **Substitutes:** [getStringArrayValue](#getstringarrayvalue)(resId: number, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
+<!--Device-ResourceManager-getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getStringArray(resId: number, callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -6490,6 +8614,8 @@ Obtains the string array corresponding to the specified resource ID. This API us
 
 **Substitutes:** [getStringArrayValue](#getstringarrayvalue)(resId: number)
 
+<!--Device-ResourceManager-getStringArray(resId: number): Promise<Array<string>>--><!--Device-ResourceManager-getStringArray(resId: number): Promise<Array<string>>-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**
@@ -6518,1769 +8644,6 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-## getStringArrayByName
-
-```TypeScript
-getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): void
-```
-
-Obtains the string array corresponding to the specified resource name. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resName | string | Yes | Resource name. |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback used to return the obtained string array. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/strarray.json
-{
-  "strarray": [
-    {
-      "name": "test",
-      "value": [
-        {
-          "value": "I'm one of the array's values."
-        }
-      ]
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Replace "test" with the actual resource.
-        this.context.resourceManager.getStringArrayByName("test", (error: BusinessError, value: Array<string>) => {
-            if (error != null) {
-                console.error(`callback getStringArrayByName failed, error code: ${error.code}, message: ${error.message}.`);
-            } else {
-                let strArray = value;
-                console.info(`getStringArrayByName, result: ${value[0]}`);
-                // Print the output result: getStringArrayByName, result: I'm one of the array's values.
-            }
-        });
-    }
-}
-```
-
-<a id="getstringarraybyname-1"></a>
-
-## getStringArrayByName
-
-```TypeScript
-getStringArrayByName(resName: string): Promise<Array<string>>
-```
-
-Obtains the string array corresponding to the specified resource name. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resName | string | Yes | Resource name. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the obtained string array. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/strarray.json
-{
-  "strarray": [
-    {
-      "name": "test",
-      "value": [
-        {
-          "value": "I'm one of the array's values."
-        }
-      ]
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Replace "test" with the actual resource.
-        this.context.resourceManager.getStringArrayByName("test")
-            .then((value: Array<string>) => {
-                console.info(`getStringArrayByName, result: ${value[0]}`);
-                // Print the output result: getStringArrayByName, result: I'm one of the array's values.
-            })
-            .catch((error: BusinessError) => {
-                console.error(`promise getStringArrayByName failed, error code: ${error.code}, message: ${error.message}.`);
-            });
-    }
-}
-```
-
-## getStringArrayByNameSync
-
-```TypeScript
-getStringArrayByNameSync(resName: string): Array<string>
-```
-
-Obtains the string array corresponding to the specified resource name. This API returns the result synchronously.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resName | string | Yes | Resource name. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Array&lt;string&gt; | String array corresponding to the specified resource name. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/strarray.json
-{
-  "strarray": [
-    {
-      "name": "test",
-      "value": [
-        {
-          "value": "I'm one of the array's values."
-        }
-      ]
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "test" with the actual resource.
-            let strArray: Array<string> = this.context.resourceManager.getStringArrayByNameSync("test");
-            console.info(`getStringArrayByNameSync, result: ${strArray[0]}`);
-            // Print the output result: getStringArrayByNameSync, result: I'm one of the array's values.
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getStringArrayByNameSync failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-## getStringArrayValue
-
-```TypeScript
-getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>): void
-```
-
-Obtains the string array corresponding to the specified resource object. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**Deprecated since:** 20
-
-**Substitutes:** [getStringArrayValue](#getstringarrayvalue)(resId: number, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback used to return the obtained string array. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/strarray.json
-{
-  "strarray": [
-    {
-      "name": "test",
-      "value": [
-        {
-          "value": "I'm one of the array's values."
-        }
-      ]
-    }
-  ]
-}
-```
-
-```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let resource: resourceManager.Resource = {
-  bundleName: "com.example.myapplication",
-  moduleName: "entry",
-  id: $r('app.strarray.test').id
-};
-this.context.resourceManager.getStringArrayValue(resource, (error: BusinessError, value: Array<string>) => {
-  if (error != null) {
-    console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
-  } else {
-    console.info(`getStringArrayValue, result: ${value[0]}`);
-    // Print the output result: getStringArrayValue, result: I'm one of the array's values.
-  }
-});
-```
-
-<a id="getstringarrayvalue-1"></a>
-
-## getStringArrayValue
-
-```TypeScript
-getStringArrayValue(resource: Resource): Promise<Array<string>>
-```
-
-Obtains the string array corresponding to the specified resource object. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Deprecated since:** 20
-
-**Substitutes:** [getStringArrayValue](#getstringarrayvalue)(resId: number)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the obtained string array. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/strarray.json
-{
-  "strarray": [
-    {
-      "name": "test",
-      "value": [
-        {
-          "value": "I'm one of the array's values."
-        }
-      ]
-    }
-  ]
-}
-```
-
-```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let resource: resourceManager.Resource = {
-  bundleName: "com.example.myapplication",
-  moduleName: "entry",
-  id: $r('app.strarray.test').id
-};
-this.context.resourceManager.getStringArrayValue(resource)
-  .then((value: Array<string>) => {
-    console.info(`getStringArrayValue, result: ${value[0]}`);
-    // Print the output result: getStringArrayValue, result: I'm one of the array's values.
-  })
-  .catch((error: BusinessError) => {
-    console.error(`promise getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
-  });
-```
-
-<a id="getstringarrayvalue-2"></a>
-
-## getStringArrayValue
-
-```TypeScript
-getStringArrayValue(resId: number, callback: _AsyncCallback<Array<string>>): void
-```
-
-Obtains the string array corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback used to return the obtained string array. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/strarray.json
-{
-  "strarray": [
-    {
-      "name": "test",
-      "value": [
-        {
-          "value": "I'm one of the array's values."
-        }
-      ]
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Replace 'app.strarray.test' with the actual resource.
-        this.context.resourceManager.getStringArrayValue($r('app.strarray.test').id,
-            (error: BusinessError, value: Array<string>) => {
-                if (error != null) {
-                    console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
-                } else {
-                    console.info(`getStringArrayValue, result: ${value[0]}`);
-                    // Print the output result: getStringArrayValue, result: I'm one of the array's values.
-                }
-            });
-    }
-}
-```
-
-<a id="getstringarrayvalue-3"></a>
-
-## getStringArrayValue
-
-```TypeScript
-getStringArrayValue(resId: number): Promise<Array<string>>
-```
-
-Obtains the string array corresponding to the specified resource ID. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the obtained string array. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/strarray.json
-{
-  "strarray": [
-    {
-      "name": "test",
-      "value": [
-        {
-          "value": "I'm one of the array's values."
-        }
-      ]
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Replace 'app.strarray.test' with the actual resource.
-        this.context.resourceManager.getStringArrayValue($r('app.strarray.test').id)
-            .then((value: Array<string>) => {
-                console.info(`getStringArrayValue, result: ${value[0]}`);
-                // Print the output result: getStringArrayValue, result: I'm one of the array's values.
-            })
-            .catch((error: BusinessError) => {
-                console.error(`promise getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
-            });
-    }
-}
-```
-
-## getStringArrayValueSync
-
-```TypeScript
-getStringArrayValueSync(resId: number): Array<string>
-```
-
-Obtains the string array corresponding to the specified resource ID. This API returns the result synchronously.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Array&lt;string&gt; | String array corresponding to the specified resource ID. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/strarray.json
-{
-  "strarray": [
-    {
-      "name": "test",
-      "value": [
-        {
-          "value": "I'm one of the array's values."
-        }
-      ]
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace 'app.strarray.test' with the actual resource.
-            let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync($r('app.strarray.test').id);
-            console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
-            // Print the output result: getStringArrayValueSync, result: I'm one of the array's values.
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getStringArrayValueSync failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-<a id="getstringarrayvaluesync-1"></a>
-
-## getStringArrayValueSync
-
-```TypeScript
-getStringArrayValueSync(resource: Resource): Array<string>
-```
-
-Obtains a string array based on the specified resource object. This API returns the result synchronously.
-
-**Since:** 10
-
-**Deprecated since:** 20
-
-**Substitutes:** [getStringArrayValueSync](#getstringarrayvaluesync)(resId: number)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Array&lt;string&gt; | String array corresponding to the specified resource object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/strarray.json
-{
-  "strarray": [
-    {
-      "name": "test",
-      "value": [
-        {
-          "value": "I'm one of the array's values."
-        }
-      ]
-    }
-  ]
-}
-```
-
-```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let resource: resourceManager.Resource = {
-  bundleName: "com.example.myapplication",
-  moduleName: "entry",
-  id: $r('app.strarray.test').id
-};
-try {
-  let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync(resource);
-  console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
-  // Print the output result: getStringArrayValueSync, result: I'm one of the array's values.
-} catch (error) {
-  let code = (error as BusinessError).code;
-  let message = (error as BusinessError).message;
-  console.error(`getStringArrayValueSync failed, error code: ${code}, message: ${message}.`);
-}
-```
-
-## getStringByName
-
-```TypeScript
-getStringByName(resName: string, callback: _AsyncCallback<string>): void
-```
-
-Obtains the string corresponding to the specified resource name. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resName | string | Yes | Resource name. |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | Yes | Callback used to return the obtained string. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/string.json
-{
-  "string": [
-    {
-      "name": "test",
-      "value": "I'm a test string resource."
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Replace "test" with the actual resource.
-        this.context.resourceManager.getStringByName("test", (error: BusinessError, value: string) => {
-            if (error != null) {
-                console.error(`callback getStringByName failed, error code: ${error.code}, message: ${error.message}.`);
-            } else {
-                console.info(`getStringByName, result: ${value}`);
-                // Print the output result: getStringByName, result: I'm a test string resource.
-            }
-        });
-    }
-}
-```
-
-<a id="getstringbyname-1"></a>
-
-## getStringByName
-
-```TypeScript
-getStringByName(resName: string): Promise<string>
-```
-
-Obtains the string corresponding to the specified resource name. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resName | string | Yes | Resource name. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the obtained string. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/string.json
-{
-  "string": [
-    {
-      "name": "test",
-      "value": "I'm a test string resource."
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Replace "test" with the actual resource.
-        this.context.resourceManager.getStringByName("test").then((value: string) => {
-            console.info(`getStringByName, result: ${value}`);
-            // Print the output result: getStringByName, result: I'm a test string resource.
-        }).catch((error: BusinessError) => {
-            console.error(`promise getStringByName failed, error code: ${error.code}, message: ${error.message}.`);
-        });
-    }
-}
-```
-
-## getStringByNameSync
-
-```TypeScript
-getStringByNameSync(resName: string): string
-```
-
-Obtains the string corresponding to the specified resource name. This API returns the result synchronously.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resName | string | Yes | Resource name. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| string | String corresponding to the specified resource name. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/string.json
-{
-  "string": [
-    {
-      "name": "test",
-      "value": "I'm a test string resource."
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "test" with the actual resource.
-            let testStr = this.context.resourceManager.getStringByNameSync("test");
-            console.info(`getStringByNameSync, result: ${testStr}`);
-            // Print the output result: getStringByNameSync, result: I'm a test string resource.
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getStringByNameSync failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-<a id="getstringbynamesync-1"></a>
-
-## getStringByNameSync
-
-```TypeScript
-getStringByNameSync(resName: string, ...args: Array<string | number>): string
-```
-
-Obtains the string corresponding to the specified resource name, and replaces the format placeholders in the string in sequence using the **args** parameter. This API returns the result synchronously.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resName | string | Yes | Resource name. |
-| args | Array&lt;string &#124; number&gt; | Yes | Parameters for the formatted string resource. Supported parameter types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`. <br>**NOTE:** <br>- `%%` is escaped as `%`. For example, `%%d` is formatted as `%d`. <br>- In `%number$d`, `number` indicates the parameter index, starting from `1`. For example, `%1$d` uses `args[0]` for formatting, `%2$d` uses `args[1]`, and so on. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| string | Formatted string corresponding to the specified resource name. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-| [9001008](../errorcode-resource-manager.md#9001008-failed-to-format-the-resource-obtained-based-on-resname) | Failed to format the resource obtained based on the resource name. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/string.json
-{
-  "string": [
-    {
-      "name": "test",
-      "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "test" with the actual resource.
-            let testStr = this.context.resourceManager.getStringByNameSync("test", "format string", 10, 98.78);
-            console.info(`getStringByNameSync, result: ${testStr}`);
-            // Print the output result: getStringByNameSync, result: I'm a format string, format int: 10, format float: 98.78.
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getStringByNameSync failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-## getStringSync
-
-```TypeScript
-getStringSync(resId: number): string
-```
-
-Obtains the string corresponding to the specified resource ID. This API returns the result synchronously.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| string | String corresponding to the specified resource ID. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/string.json
-{
-  "string": [
-    {
-      "name": "test",
-      "value": "I'm a test string resource."
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace 'app.string.test' with the actual resource.
-            let testStr = this.context.resourceManager.getStringSync($r('app.string.test').id);
-            console.info(`getStringSync, result: ${testStr}`);
-            // Print the output result: getStringSync, result: I'm a test string resource.
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-<a id="getstringsync-1"></a>
-
-## getStringSync
-
-```TypeScript
-getStringSync(resId: number, ...args: Array<string | number>): string
-```
-
-Obtains the string corresponding to the specified resource ID, and replaces the format placeholders in the string in sequence using the **args** parameter. This API returns the result synchronously.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-| args | Array&lt;string &#124; number&gt; | Yes | Parameters for the formatted string resource. Supported parameter types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`. <br>**NOTE:** <br>- `%%` is escaped as `%`. For example, `%%d` is formatted as `%d`. <br>- In `%number$d`, `number` indicates the parameter index, starting from `1`. For example, `%1$d` uses `args[0]` for formatting, `%2$d` uses `args[1]`, and so on. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| string | Formatted string corresponding to the specified resource ID. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-| [9001007](../errorcode-resource-manager.md#9001007-failed-to-format-the-resource-obtained-based-on-the-current-id) | Failed to format the resource obtained based on the resource ID. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/string.json
-{
-  "string": [
-    {
-      "name": "test",
-      "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace 'app.string.test' with the actual resource.
-            let testStr = this.context.resourceManager.getStringSync($r('app.string.test').id, "format string", 10, 98.78);
-            console.info(`getStringSync, result: ${testStr}`);
-            // Print the output result: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-<a id="getstringsync-3"></a>
-
-## getStringSync
-
-```TypeScript
-getStringSync(resource: Resource): string
-```
-
-Obtains a string based on the specified resource object. This API returns the result synchronously.
-
-**Since:** 9
-
-**Deprecated since:** 20
-
-**Substitutes:** [getStringSync](#getstringsync)(resId: number)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| string | String corresponding to the specified resource object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/string.json
-{
-  "string": [
-    {
-      "name": "test",
-      "value": "I'm a test string resource."
-    }
-  ]
-}
-```
-
-```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let resource: resourceManager.Resource = {
-  bundleName: "com.example.myapplication",
-  moduleName: "entry",
-  id: $r('app.string.test').id
-};
-try {
-  let testStr = this.context.resourceManager.getStringSync(resource);
-  console.info(`getStringSync, result: ${testStr}`);
-  // Print the output result: getStringSync, result: I'm a test string resource.
-} catch (error) {
-  let code = (error as BusinessError).code;
-  let message = (error as BusinessError).message;
-  console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
-}
-```
-
-<a id="getstringsync-4"></a>
-
-## getStringSync
-
-```TypeScript
-getStringSync(resource: Resource, ...args: Array<string | number>): string
-```
-
-Obtains the string corresponding to the specified resource object, and replaces the format placeholders in the string in sequence using the **args** parameter. This API returns the result synchronously.
-
-**Since:** 10
-
-**Deprecated since:** 20
-
-**Substitutes:** [getStringSync](#getstringsync-1)(resId: number, ...args: Array&lt;string | number&gt;)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
-| args | Array&lt;string &#124; number&gt; | Yes | Parameters for the formatted string resource. Supported parameter types include `%d`, `%f`, `%s`, `%%`, `%number$d`, `%number$f`, and `%number$s`. <br>**NOTE:** <br>- `%%` is escaped as `%`. For example, `%%d` is formatted as `%d`. <br>- In `%number$d`, `number` indicates the parameter index, starting from `1`. For example, `%1$d` uses `args[0]` for formatting, `%2$d` uses `args[1]`, and so on. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| string | Formatted string corresponding to the specified resource object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-| [9001007](../errorcode-resource-manager.md#9001007-failed-to-format-the-resource-obtained-based-on-the-current-id) | Failed to format the resource obtained based on the resource ID. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/string.json
-{
-  "string": [
-    {
-      "name": "test",
-      "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
-    }
-  ]
-}
-```
-
-```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let resource: resourceManager.Resource = {
-  bundleName: "com.example.myapplication",
-  moduleName: "entry",
-  id: $r('app.string.test').id
-};
-try {
-  let testStr = this.context.resourceManager.getStringSync(resource, "format string", 10, 98.78);
-  console.info(`getStringSync, result: ${testStr}`);
-  // Print the output result: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
-} catch (error) {
-  let code = (error as BusinessError).code;
-  let message = (error as BusinessError).message;
-  console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
-}
-```
-
-## getStringValue
-
-```TypeScript
-getStringValue(resource: Resource, callback: _AsyncCallback<string>): void
-```
-
-Obtains the string corresponding to the specified resource object. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**Deprecated since:** 20
-
-**Substitutes:** [getStringValue](#getstringvalue)(resId: number, callback: _AsyncCallback&lt;string&gt;)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | Yes | Callback used to return the obtained string. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/string.json
-{
-  "string": [
-    {
-      "name": "test",
-      "value": "I'm a test string resource."
-    }
-  ]
-}
-```
-
-```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let resource: resourceManager.Resource = {
-  bundleName: "com.example.myapplication",
-  moduleName: "entry",
-  id: $r('app.string.test').id
-};
-this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
-  if (error != null) {
-    console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-  } else {
-    console.info(`getStringValue, result: ${value}`);
-    // Print the output result: getStringValue, result: I'm a test string resource.
-  }
-});
-```
-
-<a id="getstringvalue-1"></a>
-
-## getStringValue
-
-```TypeScript
-getStringValue(resource: Resource): Promise<string>
-```
-
-Obtains the string corresponding to the specified resource object. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Deprecated since:** 20
-
-**Substitutes:** [getStringValue](#getstringvalue)(resId: number)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the obtained string. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let resource: resourceManager.Resource = {
-  bundleName: "com.example.myapplication",
-  moduleName: "entry",
-  id: $r('app.string.test').id
-};
-this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
-  if (error != null) {
-    console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-  } else {
-    console.info(`getStringValue, result: ${value}`);
-    // Print the output result: getStringValue, result: I'm a test string resource.
-  }
-});
-```
-
-<a id="getstringvalue-2"></a>
-
-## getStringValue
-
-```TypeScript
-getStringValue(resId: number, callback: _AsyncCallback<string>): void
-```
-
-Obtains the string corresponding to the specified resource ID. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | Yes | Callback used to return the obtained string. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/string.json
-{
-  "string": [
-    {
-      "name": "test",
-      "value": "I'm a test string resource."
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Replace 'app.string.test' with the actual resource.
-        this.context.resourceManager.getStringValue($r('app.string.test').id).then((value: string) => {
-            console.info(`getStringValue, result: ${value}`);
-            // Print the output result: getStringValue, result: I'm a test string resource.
-        }).catch((error: BusinessError) => {
-            console.error(`promise getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-        });
-    }
-}
-```
-
-```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let resource: resourceManager.Resource = {
-  bundleName: "com.example.myapplication",
-  moduleName: "entry",
-  id: $r('app.string.test').id
-};
-this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
-  if (error != null) {
-    console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-  } else {
-    console.info(`getStringValue, result: ${value}`);
-    // Print the output result: getStringValue, result: I'm a test string resource.
-  }
-});
-```
-
-<a id="getstringvalue-3"></a>
-
-## getStringValue
-
-```TypeScript
-getStringValue(resId: number): Promise<string>
-```
-
-Obtains the string corresponding to the specified resource ID. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the obtained string. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-// Resource file path: src/main/resources/base/element/string.json
-{
-  "string": [
-    {
-      "name": "test",
-      "value": "I'm a test string resource."
-    }
-  ]
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Replace 'app.string.test' with the actual resource.
-        this.context.resourceManager.getStringValue($r('app.string.test').id).then((value: string) => {
-            console.info(`getStringValue, result: ${value}`);
-            // Print the output result: getStringValue, result: I'm a test string resource.
-        }).catch((error: BusinessError) => {
-            console.error(`promise getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-        });
-    }
-}
-```
-
-## getSymbol
-
-```TypeScript
-getSymbol(resId: number) : number
-```
-
-Obtains the Unicode of a [symbol](https://developer.huawei.com/consumer/en/design/harmonyos-symbol) based on the specified resource ID. This API returns the result synchronously.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resId | number | Yes | Resource ID. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| number | Unicode code (decimal) of the symbol. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace 'sys.symbol.message' with the actual resource.
-            let symbolValue = this.context.resourceManager.getSymbol($r('sys.symbol.message').id);
-            console.info(`getSymbol, result: ${symbolValue}`);
-            // Print the output result: getSymbol, result: 983183
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-<a id="getsymbol-1"></a>
-
-## getSymbol
-
-```TypeScript
-getSymbol(resource: Resource) : number
-```
-
-Obtains the Unicode of a [symbol](https://developer.huawei.com/consumer/en/design/harmonyos-symbol) based on the specified resource object. This API returns the result synchronously.
-
-**Since:** 11
-
-**Deprecated since:** 20
-
-**Substitutes:** [getSymbol](#getsymbol)(resId: number)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | Yes | Resource object. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| number | Unicode code (decimal) of the symbol. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001001](../errorcode-resource-manager.md#9001001-invalid-resource-id) | Invalid resource ID. |
-| [9001002](../errorcode-resource-manager.md#9001002-matching-resource-not-found-based-on-the-current-resource-id) | No matching resource is found based on the resource ID. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let resource: resourceManager.Resource = {
-  bundleName: "com.example.myapplication",
-  moduleName: "entry",
-  id: $r('sys.symbol.message').id
-};
-try {
-  let symbolValue = this.context.resourceManager.getSymbol(resource);
-  console.info(`getSymbol, result: ${symbolValue}`);
-  // Print the output result: getSymbol, result: 983183
-} catch (error) {
-  let code = (error as BusinessError).code;
-  let message = (error as BusinessError).message;
-  console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
-}
-```
-
-## getSymbolByName
-
-```TypeScript
-getSymbolByName(resName: string) : number
-```
-
-Obtains the Unicode of a [symbol](https://developer.huawei.com/consumer/en/design/harmonyos-symbol) based on the specified resource name. This API returns the result synchronously.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| resName | string | Yes | Resource name. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| number | Unicode code (decimal) of the symbol. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001003](../errorcode-resource-manager.md#9001003-invalid-resource-name) | Invalid resource name. |
-| [9001004](../errorcode-resource-manager.md#9001004-matching-resource-not-found-based-on-the-passed-resource-name) | No matching resource is found based on the resource name. |
-| [9001006](../errorcode-resource-manager.md#9001006-circular-reference-in-resources) | The resource is referenced cyclically. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Replace "message" with the actual resource.
-            let symbolValue = this.context.resourceManager.getSymbolByName("message");
-            console.info(`getSymbolByName, result: ${symbolValue}`);
-            // Print the output result: getSymbolByName, result: 983183
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`getSymbolByName failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-## isRawDir
-
-```TypeScript
-isRawDir(path: string): boolean
-```
-
-Checks whether a path is a subdirectory in the **rawfile** directory. This API returns the result synchronously.
-
-**Since:** 12
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Test API:** This API is used only in automated test scripts.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | rawfile or subdirectory path relative to the **resources/rawfile** directory, such as **test.txt** or **subdir**. The path must not start with a slash (/). |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| boolean | Whether the path is a subdirectory in the **rawfile** directory.<br> - **true**: The path is a subdirectory in the **rawfile** directory. <br> - **false**: The path is not a subdirectory in the **rawfile** directory. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001005](../errorcode-resource-manager.md#9001005-invalid-relative-path) | Invalid relative path. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            // Assume that a non-empty folder named sub exists in the root directory (that is, /rawfile). The value of isRawDir is true in the return result.
-            // Replace "sub" with the actual directory.
-            let isRawDir = this.context.resourceManager.isRawDir("sub");
-            // Print the output result: sub isRawDir, result: true
-            console.info(`sub isRawDir, result: ${isRawDir}`);
-
-            // If the test.txt file exists in the rawfile root directory, the value of isRawDir is false.
-            // Replace "test.txt" with the actual resource.
-            isRawDir = this.context.resourceManager.isRawDir("test.txt");
-            // Print the output result: test.txt isRawDir, result: false
-            console.info(`test.txt isRawDir, result: ${isRawDir}`);
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`isRawDir failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
 ## release
 
 ```TypeScript
@@ -8295,6 +8658,8 @@ Releases an **resourceManager **object. This API is not supported currently. Cal
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ResourceManager-release()--><!--Device-ResourceManager-release()-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Examples**
@@ -8304,108 +8669,5 @@ try {
   this.context.resourceManager.release();
 } catch (error) {
   console.error("release error is " + error);
-}
-```
-
-## removeResource
-
-```TypeScript
-removeResource(path: string) : void
-```
-
-Removes the specified overlay resource during application runtime and restores the original resource before the override.
-
-> **NOTE:** 
-> 
-> Resource overwriting is not supported for the **rawfile** and **resfile** directories.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| path | string | Yes | Absolute path of the HSP or HAP resource package to be removed. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-| [9001010](../errorcode-resource-manager.md#9001010-invalid-overlay-path) | Invalid overlay path. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // Replace "/library1-default-signed.hsp" with the actual file path.
-        let path = this.context.bundleCodeDir + "/library1-default-signed.hsp";
-        try {
-            this.context.resourceManager.removeResource(path);
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`removeResource failed, error code: ${code}, message: ${message}.`);
-        }
-    }
-}
-```
-
-## updateOverrideConfiguration
-
-```TypeScript
-updateOverrideConfiguration(configuration: Configuration): void
-```
-
-Updates the configuration of a differentiated resource management object.
-
-This API updates the configuration of the differentiated resource management object, regardless of whether it is called on the common resource management object or on the differentiated one obtained via [getOverrideResourceManager](#getoverrideresourcemanager).
-
-**Since:** 12
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Global.ResourceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| configuration | [Configuration](arkts-localization-resourcemanager-configuration-c.md) | Yes | Configuration of differentiated resources. After obtaining the configuration of differentiated resources through [getOverrideConfiguration](#getoverrideconfiguration), modify the configuration items as required, and then pass these items as input parameters to the API. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
-
-**Examples**
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { resourceManager } from '@kit.LocalizationKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-            let resMgr = this.context.resourceManager;
-            let overrideConfig = resMgr.getOverrideConfiguration();
-            overrideConfig.colorMode = resourceManager.ColorMode.DARK;
-            let overrideResMgr = resMgr.updateOverrideConfiguration(overrideConfig);
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`updateOverrideConfiguration failed, error code: ${code}, message: ${message}.`);
-        }
-    }
 }
 ```

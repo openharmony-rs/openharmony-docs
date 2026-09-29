@@ -20,6 +20,8 @@ Sets the Network Time Protocol (NTP) time server. After successful configuration
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function setNTPServer(admin: Want, server: string): void--><!--Device-systemManager-function setNTPServer(admin: Want, server: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

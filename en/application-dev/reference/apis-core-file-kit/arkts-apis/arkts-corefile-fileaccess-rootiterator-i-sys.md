@@ -10,6 +10,8 @@ Provides an iterator object of the device root directory.
 
 **Deprecated since:** 23
 
+<!--Device-fileAccess-interface RootIterator--><!--Device-fileAccess-interface RootIterator-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -35,6 +37,8 @@ Obtains the next-level root directory.
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RootIterator-next(): { value: RootInfo, done: boolean }--><!--Device-RootIterator-next(): { value: RootInfo, done: boolean }-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

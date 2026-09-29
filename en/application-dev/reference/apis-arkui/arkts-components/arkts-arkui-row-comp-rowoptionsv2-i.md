@@ -8,6 +8,8 @@ Sets the spacing between child components of the **Row** component. The spacing 
 
 **Since:** 18
 
+<!--Device-unnamed-interface RowOptionsV2--><!--Device-unnamed-interface RowOptionsV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## space
@@ -41,5 +43,7 @@ The value of **space** is a number greater than or equal to 0, a string that can
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-RowOptionsV2-space?: SpaceType--><!--Device-RowOptionsV2-space?: SpaceType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -20,6 +20,8 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 **Substitutes:** [usbFunctionsToString](arkts-basicservices-usbmanager-usbfunctionstostring-f-sys.md)
 
+<!--Device-usb-function usbFunctionsToString(funcs: FunctionType): string--><!--Device-usb-function usbFunctionsToString(funcs: FunctionType): string-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

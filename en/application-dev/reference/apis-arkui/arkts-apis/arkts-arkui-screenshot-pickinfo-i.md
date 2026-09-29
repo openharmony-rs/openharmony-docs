@@ -8,6 +8,8 @@ Describes the screenshot options.
 
 **Since:** 12
 
+<!--Device-screenshot-interface PickInfo--><!--Device-screenshot-interface PickInfo-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Region of the screen to capture.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PickInfo-pickRect: Rect--><!--Device-PickInfo-pickRect: Rect-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -44,6 +48,8 @@ PixelMap object of the captured image.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PickInfo-pixelMap: image.PixelMap--><!--Device-PickInfo-pixelMap: image.PixelMap-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core

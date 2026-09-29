@@ -4,9 +4,11 @@
 declare enum DialogButtonStyle
 ```
 
-The Button Style of dialog,
+Sets the button style for dialog boxes.
 
 **Since:** 10
+
+<!--Device-unnamed-declare enum DialogButtonStyle--><!--Device-unnamed-declare enum DialogButtonStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ The Button Style of dialog,
 DEFAULT = 0
 ```
 
-Default Style.
+Blue text on white background (blue text on black background in dark theme).
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DialogButtonStyle-DEFAULT = 0--><!--Device-DialogButtonStyle-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,12 +36,14 @@ Default Style.
 HIGHLIGHT = 1
 ```
 
-Highlight Style.
+White text on blue background.
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DialogButtonStyle-HIGHLIGHT = 1--><!--Device-DialogButtonStyle-HIGHLIGHT = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

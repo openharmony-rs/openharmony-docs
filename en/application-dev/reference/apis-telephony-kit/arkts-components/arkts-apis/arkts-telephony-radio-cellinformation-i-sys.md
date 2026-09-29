@@ -8,6 +8,8 @@ Defines the cell information.
 
 **Since:** 8
 
+<!--Device-radio-export interface CellInformation--><!--Device-radio-export interface CellInformation-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Obtains signal strength under different network formats.
 
 **Since:** 8
 
+<!--Device-CellInformation-data: CdmaCellInformation | GsmCellInformation | LteCellInformation | NrCellInformation | TdscdmaCellInformation      | WcdmaCellInformation--><!--Device-CellInformation-data: CdmaCellInformation | GsmCellInformation | LteCellInformation | NrCellInformation | TdscdmaCellInformation      | WcdmaCellInformation-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Returns `true` if the user equipment (UE) is camped on the cell; returns `false`
 
 **Since:** 8
 
+<!--Device-CellInformation-isCamped: boolean--><!--Device-CellInformation-isCamped: boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -63,6 +69,8 @@ Returns a timestamp since boot, in nanoseconds.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-CellInformation-timeStamp: int--><!--Device-CellInformation-timeStamp: int-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

@@ -18,6 +18,8 @@ Unregisters the listener for printer state change events. This API uses a callba
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-print-function off(type: 'printerChange', callback?: PrinterChangeCallback): void--><!--Device-print-function off(type: 'printerChange', callback?: PrinterChangeCallback): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**

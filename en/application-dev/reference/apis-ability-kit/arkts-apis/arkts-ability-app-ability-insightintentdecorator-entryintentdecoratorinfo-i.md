@@ -10,6 +10,8 @@ Inherits from [IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecor
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface EntryIntentDecoratorInfo extends IntentDecoratorInfo--><!--Device-unnamed-declare interface EntryIntentDecoratorInfo extends IntentDecoratorInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Name of the ability bound to the intent.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-EntryIntentDecoratorInfo-abilityName: string--><!--Device-EntryIntentDecoratorInfo-abilityName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## executeMode
@@ -51,5 +55,7 @@ Execution mode of the intent call, that is, execution mode supported when the bo
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-EntryIntentDecoratorInfo-executeMode: insightIntent.ExecuteMode[]--><!--Device-EntryIntentDecoratorInfo-executeMode: insightIntent.ExecuteMode[]-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

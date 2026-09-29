@@ -8,6 +8,8 @@ Defines TCP socket connection parameters.
 
 **Since:** 7
 
+<!--Device-socket-export interface TCPConnectOptions--><!--Device-socket-export interface TCPConnectOptions-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Bound IP address and port number.
 
 **Since:** 7
 
+<!--Device-TCPConnectOptions-address: NetAddress--><!--Device-TCPConnectOptions-address: NetAddress-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## proxy
@@ -42,6 +46,8 @@ Proxy option. By default, no proxy is used.
 
 **Since:** 18
 
+<!--Device-TCPConnectOptions-proxy?: ProxyOptions--><!--Device-TCPConnectOptions-proxy?: ProxyOptions-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## timeout
@@ -55,5 +61,7 @@ Timeout duration of the TCP socket connection, in ms. The default value is **500
 **Type:** number
 
 **Since:** 7
+
+<!--Device-TCPConnectOptions-timeout?: int--><!--Device-TCPConnectOptions-timeout?: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

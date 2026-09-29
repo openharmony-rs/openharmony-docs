@@ -4,9 +4,19 @@
 export declare class ButtonOptions
 ```
 
-Declare ButtonOptions
 
-**Since:** 18
+> **NOTE:** 
+> 
+> The priority of **buttonStyle** and **role** is higher than that of **fontColor** and **background**. If
+> **buttonStyle** and **role** are at the default values, the settings of **fontColor** and **background** take
+> effect.
+> 
+> If **defaultFocus** is set for multiple buttons, the default focus is the first button in the display order that
+> has **defaultFocus** set to **true**.
+
+**Since:** 10
+
+<!--Device-unnamed-export declare class ButtonOptions--><!--Device-unnamed-export declare class ButtonOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,13 +32,15 @@ import { AlertDialog, ButtonOptions, ConfirmDialog, LoadingDialog, SelectDialog,
 action?: () => void
 ```
 
-Sets the Button Callback.
+Click event of the button.
 
-**Since:** 18
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ButtonOptions-action?: () => void--><!--Device-ButtonOptions-action?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,15 +50,19 @@ Sets the Button Callback.
 background?: ResourceColor
 ```
 
-Sets the background color of a button.
+Background color of the button.
+
+The setting follows **buttonStyle** by default.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
-**Since:** 18
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ButtonOptions-background?: ResourceColor--><!--Device-ButtonOptions-background?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,7 +72,9 @@ Sets the background color of a button.
 buttonStyle?: ButtonStyleMode
 ```
 
-Describes the Button style.
+Style of the button.
+
+Default value: **ButtonStyleMode.NORMAL** for 2-in-1 devices and **ButtonStyleMode.TEXTUAL** for other devices
 
 **Type:** [ButtonStyleMode](../arkts-components/arkts-arkui-button-comp-buttonstylemode-e.md)
 
@@ -68,6 +86,8 @@ Describes the Button style.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ButtonOptions-buttonStyle?: ButtonStyleMode--><!--Device-ButtonOptions-buttonStyle?: ButtonStyleMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## defaultFocus
@@ -76,7 +96,13 @@ Describes the Button style.
 defaultFocus?: boolean
 ```
 
-Set the default focus of a button.
+Whether the button is the default focus.
+
+**true**: The button is the default focus.
+
+**false**: The button is not the default focus.
+
+Default value: **false**.
 
 **Type:** boolean
 
@@ -88,6 +114,8 @@ Set the default focus of a button.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ButtonOptions-defaultFocus?: boolean--><!--Device-ButtonOptions-defaultFocus?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -96,15 +124,19 @@ Set the default focus of a button.
 fontColor?: ResourceColor
 ```
 
-Sets the Button Text Color.
+Font color of the button.
+
+The setting follows **buttonStyle** by default.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
-**Since:** 18
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ButtonOptions-fontColor?: ResourceColor--><!--Device-ButtonOptions-fontColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,7 +146,9 @@ Sets the Button Text Color.
 role?: ButtonRole
 ```
 
-Describes the Button role.
+Role of the button.
+
+Default value: **ButtonRole.NORMAL**
 
 **Type:** [ButtonRole](../arkts-components/arkts-arkui-button-comp-buttonrole-e.md)
 
@@ -126,6 +160,8 @@ Describes the Button role.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ButtonOptions-role?: ButtonRole--><!--Device-ButtonOptions-role?: ButtonRole-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textAlign
@@ -134,7 +170,9 @@ Describes the Button role.
 textAlign?: TextAlign
 ```
 
-Set the alignment mode for the button label.
+Alignment method of the button text.
+
+Default value: **TextAlign.Start**
 
 **Type:** [TextAlign](arkts-arkui-textalign-e.md)
 
@@ -146,6 +184,8 @@ Set the alignment mode for the button label.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-ButtonOptions-textAlign?: TextAlign--><!--Device-ButtonOptions-textAlign?: TextAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -154,14 +194,16 @@ Set the alignment mode for the button label.
 value: ResourceStr
 ```
 
-Sets the Display Content of a Button.
+Content of the button.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
-**Since:** 18
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ButtonOptions-value: ResourceStr--><!--Device-ButtonOptions-value: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

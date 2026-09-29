@@ -8,6 +8,8 @@ The **FormProvider** module provides APIs related to the widget provider. You ca
 
 **Substitutes:** [formProvider](arkts-form-app-form-formprovider.md)
 
+<!--Device-unnamed-declare namespace formProvider--><!--Device-unnamed-declare namespace formProvider-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import

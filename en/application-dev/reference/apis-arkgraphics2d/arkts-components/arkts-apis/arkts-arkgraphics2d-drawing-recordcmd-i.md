@@ -10,6 +10,8 @@ Describes a list of recorded drawing commands.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-drawing-interface RecordCmd--><!--Device-drawing-interface RecordCmd-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import

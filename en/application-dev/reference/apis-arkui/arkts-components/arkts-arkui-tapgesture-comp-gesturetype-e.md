@@ -8,6 +8,8 @@ Enumerates gesture recognizer types.
 
 **Since:** 11
 
+<!--Device-GestureControl-enum GestureType--><!--Device-GestureControl-enum GestureType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TAP_GESTURE
@@ -23,6 +25,8 @@ Tap gesture.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureType-TAP_GESTURE = 0--><!--Device-GestureType-TAP_GESTURE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Long press gesture.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GestureType-LONG_PRESS_GESTURE = 1--><!--Device-GestureType-LONG_PRESS_GESTURE = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## PAN_GESTURE
@@ -55,6 +61,8 @@ Pan gesture.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureType-PAN_GESTURE = 2--><!--Device-GestureType-PAN_GESTURE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ Pinch gesture.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GestureType-PINCH_GESTURE = 3--><!--Device-GestureType-PINCH_GESTURE = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SWIPE_GESTURE
@@ -87,6 +97,8 @@ Swipe gesture.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureType-SWIPE_GESTURE = 4--><!--Device-GestureType-SWIPE_GESTURE = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +116,8 @@ Rotation gesture.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GestureType-ROTATION_GESTURE = 5--><!--Device-GestureType-ROTATION_GESTURE = 5-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DRAG
@@ -119,6 +133,8 @@ Drag.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureType-DRAG = 6--><!--Device-GestureType-DRAG = 6-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +152,8 @@ Click.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GestureType-CLICK = 7--><!--Device-GestureType-CLICK = 7-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOX_SELECT_GESTURE
@@ -151,6 +169,8 @@ Swipe gesture used to create a selection area by dragging with the mouse within 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-GestureType-BOX_SELECT_GESTURE = 8--><!--Device-GestureType-BOX_SELECT_GESTURE = 8-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +188,8 @@ Swipe gesture used to control the scrolling behavior of a **Web** component.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-GestureType-WEB_SCROLL_GESTURE = 9--><!--Device-GestureType-WEB_SCROLL_GESTURE = 9-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXT_FIELD_SELECT_GESTURE
@@ -184,6 +206,8 @@ Swipe gesture used to select text content by dragging within an input box compon
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-GestureType-TEXT_FIELD_SELECT_GESTURE = 10--><!--Device-GestureType-TEXT_FIELD_SELECT_GESTURE = 10-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CONTEXT_MENU_HOVER_GESTURE
@@ -199,5 +223,7 @@ Context menu hover gesture. It is a special type of long-press gesture and trigg
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-GestureType-CONTEXT_MENU_HOVER_GESTURE = 11--><!--Device-GestureType-CONTEXT_MENU_HOVER_GESTURE = 11-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Enumerates application window states.
 
 **Since:** 26.0.0
 
+<!--Device-applicationManager-enum WindowState--><!--Device-applicationManager-enum WindowState-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DISCONNECT
@@ -21,6 +23,8 @@ The window has been created but is currently unavailable.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowState-DISCONNECT = 0--><!--Device-WindowState-DISCONNECT = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,6 +40,8 @@ The window has been created and is available for use.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowState-CONNECT = 1--><!--Device-WindowState-CONNECT = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## FOREGROUND
@@ -49,6 +55,8 @@ Foreground state, indicating that the window has entered the foreground display.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowState-FOREGROUND = 2--><!--Device-WindowState-FOREGROUND = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,6 +72,8 @@ Foreground active state, indicating that the window is currently displayed in th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowState-ACTIVE = 3--><!--Device-WindowState-ACTIVE = 3-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## INACTIVE
@@ -78,6 +88,8 @@ Foreground inactive state, indicating that the window is about to enter the back
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowState-INACTIVE = 4--><!--Device-WindowState-INACTIVE = 4-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## BACKGROUND
@@ -91,5 +103,7 @@ Background state, indicating that the window has been moved to the background an
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowState-BACKGROUND = 5--><!--Device-WindowState-BACKGROUND = 5-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

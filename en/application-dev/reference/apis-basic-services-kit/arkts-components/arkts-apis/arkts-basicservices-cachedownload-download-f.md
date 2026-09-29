@@ -26,6 +26,8 @@ cache type's size limit in **cacheDownload**. By default, the LRU mode is used t
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-cacheDownload-function download(url: string, options: CacheDownloadOptions): void--><!--Device-cacheDownload-function download(url: string, options: CacheDownloadOptions): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

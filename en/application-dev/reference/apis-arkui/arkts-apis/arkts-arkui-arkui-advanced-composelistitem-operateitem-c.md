@@ -8,6 +8,8 @@ Defines the type of the element on the right of the **ComposeListItem** componen
 
 **Since:** 10
 
+<!--Device-unnamed-export declare class OperateItem--><!--Device-unnamed-export declare class OperateItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ If this parameter is not set or is set to **undefined**, the arrow is not displa
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-OperateItem-arrow?: OperateIcon--><!--Device-OperateItem-arrow?: OperateIcon-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## button
@@ -53,6 +57,8 @@ If this parameter is not set or is set to **undefined**, the button is not displ
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OperateItem-button?: OperateButton--><!--Device-OperateItem-button?: OperateButton-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +80,8 @@ If this parameter is not set or is set to **undefined**, the check box is not di
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-OperateItem-checkbox?: OperateCheck--><!--Device-OperateItem-checkbox?: OperateCheck-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -93,6 +101,8 @@ If this parameter is not set or is set to **undefined**, the icon is not display
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OperateItem-icon?: OperateIcon--><!--Device-OperateItem-icon?: OperateIcon-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,6 +124,8 @@ If this parameter is not set or is set to **undefined**, the image is not displa
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-OperateItem-image?: ResourceStr--><!--Device-OperateItem-image?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## radio
@@ -133,6 +145,8 @@ If this parameter is not set or is set to **undefined**, the radio button is not
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OperateItem-radio?: OperateCheck--><!--Device-OperateItem-radio?: OperateCheck-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,6 +168,8 @@ If this parameter is not set or is set to **undefined**, the icon is not display
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-OperateItem-subIcon?: OperateIcon--><!--Device-OperateItem-subIcon?: OperateIcon-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## switch
@@ -173,6 +189,8 @@ If this parameter is not set or is set to **undefined**, the switch is not displ
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OperateItem-switch?: OperateCheck--><!--Device-OperateItem-switch?: OperateCheck-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -194,6 +212,8 @@ If this parameter is not set or is set to **undefined**, the symbol icon is not 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-OperateItem-symbolStyle?: SymbolGlyphModifier--><!--Device-OperateItem-symbolStyle?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -213,5 +233,7 @@ If this parameter is not set or is set to **undefined**, the text is not display
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OperateItem-text?: ResourceStr--><!--Device-OperateItem-text?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

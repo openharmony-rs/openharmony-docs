@@ -165,7 +165,8 @@
   - [getUserDownloadDir](arkts-corefile-environment-getuserdownloaddir-f.md)
   <!--Del-->
   - [getUserHomeDir(system api)](arkts-corefile-environment-getuserhomedir-f-sys.md)<!--DelEnd-->
-- [@ohos.file.fileAccess(User File Access and Management)](arkts-corefile-file-fileaccess.md)
+<!--Del-->
+- [@ohos.file.fileAccess(User File Access and Management)](arkts-corefile-file-fileaccess.md)<!--DelEnd-->
   <!--Del-->
   - [createFileAccessHelper(system api)](arkts-corefile-fileaccess-createfileaccesshelper-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -323,7 +324,8 @@
   - [createHash](arkts-corefile-hash-createhash-f.md)
   - [hash](arkts-corefile-hash-f.md)
   - [HashStream](arkts-corefile-hash-hashstream-c.md)
-- [@ohos.file.keyManager(User Key Management)](arkts-corefile-file-keymanager.md)
+<!--Del-->
+- [@ohos.file.keyManager(User Key Management)](arkts-corefile-file-keymanager.md)<!--DelEnd-->
   <!--Del-->
   - [deactivateUserKey(system api)](arkts-corefile-keymanager-deactivateuserkey-f-sys.md)<!--DelEnd-->
 - [@ohos.file.picker(Picker)](arkts-corefile-file-picker.md)

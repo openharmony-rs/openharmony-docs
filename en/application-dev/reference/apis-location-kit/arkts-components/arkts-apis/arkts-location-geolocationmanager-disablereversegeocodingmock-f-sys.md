@@ -20,6 +20,8 @@ Disable the reverse geocoding simulation function.
 - API version 20 and later: ohos.permission.MOCK_LOCATION
 - API versions 9 to 19: N/A
 
+<!--Device-geoLocationManager-function disableReverseGeocodingMock(): void--><!--Device-geoLocationManager-function disableReverseGeocodingMock(): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.

@@ -12,6 +12,8 @@ Enumerates the authentication security levels.
 
 **Substitutes:** [AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md)
 
+<!--Device-userAuth-type SecureLevel = 'S1' | 'S2' | 'S3' | 'S4'--><!--Device-userAuth-type SecureLevel = 'S1' | 'S2' | 'S3' | 'S4'-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 | Type | Description |

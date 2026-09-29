@@ -12,6 +12,8 @@ Defines the DND time.
 
 **Substitutes:** [DoNotDisturbDate](arkts-notification-notificationmanager-donotdisturbdate-i-sys.md)
 
+<!--Device-notification-export interface DoNotDisturbDate--><!--Device-notification-export interface DoNotDisturbDate-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -37,6 +39,8 @@ DND start time.
 
 **Substitutes:** [begin](arkts-notification-notificationmanager-donotdisturbdate-i-sys.md#begin)
 
+<!--Device-DoNotDisturbDate-begin: Date--><!--Device-DoNotDisturbDate-begin: Date-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -57,6 +61,8 @@ DND end time.
 
 **Substitutes:** [end](arkts-notification-notificationmanager-donotdisturbdate-i-sys.md#end)
 
+<!--Device-DoNotDisturbDate-end: Date--><!--Device-DoNotDisturbDate-end: Date-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -76,6 +82,8 @@ DND time type.
 **Deprecated since:** 9
 
 **Substitutes:** [type](arkts-notification-notificationmanager-donotdisturbdate-i-sys.md#type)
+
+<!--Device-DoNotDisturbDate-type: DoNotDisturbType--><!--Device-DoNotDisturbDate-type: DoNotDisturbType-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

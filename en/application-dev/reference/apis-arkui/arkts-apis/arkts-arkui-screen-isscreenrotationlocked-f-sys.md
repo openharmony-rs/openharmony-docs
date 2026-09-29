@@ -16,6 +16,8 @@ Checks whether auto rotate is locked. This API uses an asynchronous callback to 
 
 **Since:** 9
 
+<!--Device-screen-function isScreenRotationLocked(callback: AsyncCallback<boolean>): void--><!--Device-screen-function isScreenRotationLocked(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -60,6 +62,8 @@ function isScreenRotationLocked(): Promise<boolean>
 Checks whether auto rotate is locked. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-screen-function isScreenRotationLocked(): Promise<boolean>--><!--Device-screen-function isScreenRotationLocked(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

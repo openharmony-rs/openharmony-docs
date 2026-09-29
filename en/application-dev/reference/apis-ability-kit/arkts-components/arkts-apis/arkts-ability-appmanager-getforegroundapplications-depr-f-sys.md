@@ -21,6 +21,8 @@ getForegroundApplications.
 
 **Required permissions:** ohos.permission.GET_RUNNING_INFO
 
+<!--Device-appManager-function getForegroundApplications(callback: AsyncCallback<Array<AppStateData>>): void--><!--Device-appManager-function getForegroundApplications(callback: AsyncCallback<Array<AppStateData>>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -63,6 +65,8 @@ getForegroundApplications.
 **Substitutes:** [getForegroundApplications](arkts-ability-appmanager-getforegroundapplications-f-sys.md)
 
 **Required permissions:** ohos.permission.GET_RUNNING_INFO
+
+<!--Device-appManager-function getForegroundApplications(): Promise<Array<AppStateData>>--><!--Device-appManager-function getForegroundApplications(): Promise<Array<AppStateData>>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -8,6 +8,8 @@ Tabs自定义切换动画相关信息。
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface TabContentAnimatedTransition--><!--Device-unnamed-declare interface TabContentAnimatedTransition-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## timeout
@@ -36,6 +38,8 @@ timeout?: number
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-TabContentAnimatedTransition-timeout?: number--><!--Device-TabContentAnimatedTransition-timeout?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## transition
@@ -55,5 +59,7 @@ transition: Callback<TabContentTransitionProxy>
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TabContentAnimatedTransition-transition: Callback<TabContentTransitionProxy>--><!--Device-TabContentAnimatedTransition-transition: Callback<TabContentTransitionProxy>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -4,6 +4,8 @@ This module provides the application with the capabilities to install, uninstall
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-declare namespace fontManager--><!--Device-unnamed-declare namespace fontManager-End-->
+
 **System capability:** SystemCapability.Global.FontManager
 
 ## Modules to Import

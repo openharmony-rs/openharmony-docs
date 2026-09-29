@@ -8,6 +8,8 @@ Defines the device status information. It describes the current status of the co
 
 **Since:** 23
 
+<!--Device-companionDeviceAuth-interface DeviceStatus--><!--Device-companionDeviceAuth-interface DeviceStatus-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Key device information. It uniquely identifies a device, including the device ID
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceStatus-deviceKey: DeviceKey--><!--Device-DeviceStatus-deviceKey: DeviceKey-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ Device model information. It identifies the device model, such as the product mo
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceStatus-deviceModelInfo: string--><!--Device-DeviceStatus-deviceModelInfo: string-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ Device name. It is the name or alias of a device, and is displayed to the user i
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceStatus-deviceName: string--><!--Device-DeviceStatus-deviceName: string-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -88,6 +96,8 @@ Device sub-profile name. It corresponds to the nickname of the distributed accou
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceStatus-deviceSubProfileName?: string--><!--Device-DeviceStatus-deviceSubProfileName?: string-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -105,6 +115,8 @@ Device user name. It is the display name of the current user on the device, and 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceStatus-deviceUserName: string--><!--Device-DeviceStatus-deviceUserName: string-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -124,6 +136,8 @@ Device online status. The value **true** indicates that the device is online and
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceStatus-isOnline: boolean--><!--Device-DeviceStatus-isOnline: boolean-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -141,6 +155,8 @@ List of service IDs supported by the device. It indicates the service scenarios 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceStatus-supportedBusinessIds: int[]--><!--Device-DeviceStatus-supportedBusinessIds: int[]-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 

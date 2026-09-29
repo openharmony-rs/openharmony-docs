@@ -12,6 +12,8 @@ Defines the parameters for routing back.
 
 **Substitutes:** RouterOptions
 
+<!--Device-unnamed-export interface BackRouterOptions--><!--Device-unnamed-export interface BackRouterOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Data that needs to be passed to the target page during redirection.
 
 **Substitutes:** params
 
+<!--Device-BackRouterOptions-params?: Object--><!--Device-BackRouterOptions-params?: Object-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## uri
@@ -53,5 +57,7 @@ URI of the page to return to. If the specified page does not exist in the page s
 **Deprecated since:** 8
 
 **Substitutes:** url
+
+<!--Device-BackRouterOptions-uri?: string--><!--Device-BackRouterOptions-uri?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

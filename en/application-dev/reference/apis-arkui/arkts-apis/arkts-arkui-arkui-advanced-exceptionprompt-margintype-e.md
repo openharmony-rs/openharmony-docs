@@ -4,9 +4,11 @@
 export declare enum MarginType
 ```
 
-Control margin status of ExceptionPrompt. @enum { number }
+Defines the margin type.
 
-**Since:** 12
+**Since:** 11
+
+<!--Device-unnamed-export declare enum MarginType--><!--Device-unnamed-export declare enum MarginType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,19 @@ Control margin status of ExceptionPrompt. @enum { number }
 DEFAULT_MARGIN = 0
 ```
 
-Default margin of MarginType，Margin 1: references ohos_id_card_margin_start, margin 2: references ohos_id_card_margin_end.
+Default margin:
 
-**Since:** 12
+Margin 1: referenced from **ohos_id_card_margin_start**.
+
+Margin 2: referenced from **ohos_id_card_margin_end**.
+
+**Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MarginType-DEFAULT_MARGIN = 0--><!--Device-MarginType-DEFAULT_MARGIN = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,12 +40,18 @@ Default margin of MarginType，Margin 1: references ohos_id_card_margin_start, m
 FIT_MARGIN = 1
 ```
 
-Margins can be adapted of MarginType，Margin 1: references ohos_id_max_padding_start, margin 2: references ohos_id_max_padding_end.
+Adaptable margin:
 
-**Since:** 12
+Margin 1: referenced from **ohos_id_max_padding_start**.
+
+Margin 2: referenced from **ohos_id_max_padding_end**.
+
+**Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MarginType-FIT_MARGIN = 1--><!--Device-MarginType-FIT_MARGIN = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

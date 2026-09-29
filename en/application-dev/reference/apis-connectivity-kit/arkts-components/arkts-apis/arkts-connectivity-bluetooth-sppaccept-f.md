@@ -20,6 +20,8 @@ Waits for a remote device to connect.
 
 **Substitutes:** [sppAccept](arkts-connectivity-bluetoothmanager-sppaccept-f.md)
 
+<!--Device-bluetooth-function sppAccept(serverSocket: number, callback: AsyncCallback<number>): void--><!--Device-bluetooth-function sppAccept(serverSocket: number, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

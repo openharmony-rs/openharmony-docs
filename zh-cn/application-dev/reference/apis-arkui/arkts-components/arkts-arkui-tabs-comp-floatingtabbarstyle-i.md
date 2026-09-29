@@ -8,6 +8,8 @@ interface FloatingTabBarStyle
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-interface FloatingTabBarStyle--><!--Device-unnamed-interface FloatingTabBarStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## adaptToHandedness
@@ -28,6 +30,8 @@ adaptToHandedness?: boolean
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-FloatingTabBarStyle-adaptToHandedness?: boolean--><!--Device-FloatingTabBarStyle-adaptToHandedness?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## barBottomMargin
@@ -45,6 +49,8 @@ barBottomMargin?: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FloatingTabBarStyle-barBottomMargin?: Length--><!--Device-FloatingTabBarStyle-barBottomMargin?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +70,8 @@ barSideMargin?: Length
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-FloatingTabBarStyle-barSideMargin?: Length--><!--Device-FloatingTabBarStyle-barSideMargin?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## barWidth
@@ -81,6 +89,8 @@ barWidth?: FloatingTabBarWidth
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FloatingTabBarStyle-barWidth?: FloatingTabBarWidth--><!--Device-FloatingTabBarStyle-barWidth?: FloatingTabBarWidth-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,6 +110,8 @@ maskColor?: ResourceColor
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-FloatingTabBarStyle-maskColor?: ResourceColor--><!--Device-FloatingTabBarStyle-maskColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## maskHeight
@@ -118,6 +130,8 @@ maskHeight?: Length
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-FloatingTabBarStyle-maskHeight?: Length--><!--Device-FloatingTabBarStyle-maskHeight?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -135,5 +149,7 @@ systemMaterial?: UIMaterial.ImmersiveMaterial
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FloatingTabBarStyle-systemMaterial?: UIMaterial.ImmersiveMaterial--><!--Device-FloatingTabBarStyle-systemMaterial?: UIMaterial.ImmersiveMaterial-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

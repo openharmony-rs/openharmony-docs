@@ -12,6 +12,8 @@ Defines the color types of resources.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare type ResourceColor = Color | number | string | Resource--><!--Device-unnamed-declare type ResourceColor = Color | number | string | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

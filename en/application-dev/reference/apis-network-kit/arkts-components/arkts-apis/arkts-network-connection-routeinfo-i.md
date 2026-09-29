@@ -8,6 +8,8 @@ Defines network route information.
 
 **Since:** 8
 
+<!--Device-connection-export interface RouteInfo--><!--Device-connection-export interface RouteInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Destination address.
 
 **Since:** 8
 
+<!--Device-RouteInfo-destination: LinkAddress--><!--Device-RouteInfo-destination: LinkAddress-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## gateway
@@ -41,6 +45,8 @@ Gateway address.
 **Type:** [NetAddress](arkts-network-connection-netaddress-i.md)
 
 **Since:** 8
+
+<!--Device-RouteInfo-gateway: NetAddress--><!--Device-RouteInfo-gateway: NetAddress-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -56,6 +62,8 @@ Whether a gateway is present. Whether a gateway is available. The value **true**
 
 **Since:** 8
 
+<!--Device-RouteInfo-hasGateway: boolean--><!--Device-RouteInfo-hasGateway: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## interface
@@ -69,6 +77,8 @@ NIC name.
 **Type:** string
 
 **Since:** 8
+
+<!--Device-RouteInfo-interface: string--><!--Device-RouteInfo-interface: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -86,6 +96,8 @@ Note: The IPv4 default route refers to the route whose destination address is **
 
 **Since:** 8
 
+<!--Device-RouteInfo-isDefaultRoute: boolean--><!--Device-RouteInfo-isDefaultRoute: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## isExcludedRoute
@@ -99,5 +111,7 @@ Whether the route is excluded. The value **true** indicates that the route is ex
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-RouteInfo-isExcludedRoute?: boolean--><!--Device-RouteInfo-isExcludedRoute?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

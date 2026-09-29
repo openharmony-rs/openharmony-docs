@@ -20,6 +20,8 @@ Adds a list of applications that are not allowed to use a feature for a specifie
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function addDisallowedListForAccount(admin: Want, feature: string, list: Array<string>, accountId: number): void--><!--Device-restrictions-function addDisallowedListForAccount(admin: Want, feature: string, list: Array<string>, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -10,6 +10,8 @@ ProxyRule provides two methods: getSchemeFilter is used to obtain the protocol f
 
 **Since:** 15
 
+<!--Device-webview-class ProxyRule--><!--Device-webview-class ProxyRule-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Obtains the **ProxySchemeFilter** information in the proxy rule.
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-ProxyRule-getSchemeFilter(): ProxySchemeFilter--><!--Device-ProxyRule-getSchemeFilter(): ProxySchemeFilter-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -53,6 +57,8 @@ Obtains the URL specified in the proxy rule.
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-ProxyRule-getUrl(): string--><!--Device-ProxyRule-getUrl(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

@@ -17,6 +17,8 @@ This module provides APIs for word selection extension, which can implement exte
 
 **Since:** 24
 
+<!--Device-unnamed-declare class SelectionExtensionAbility--><!--Device-unnamed-declare class SelectionExtensionAbility-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Defines a callback triggered when the client connects to the **SelectionExtensio
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SelectionExtensionAbility-onConnect(want: Want): rpc.RemoteObject--><!--Device-SelectionExtensionAbility-onConnect(want: Want): rpc.RemoteObject-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -100,6 +104,8 @@ The callback is triggered only when the **SelectionExtensionAbility** is disconn
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SelectionExtensionAbility-onDisconnect(): void--><!--Device-SelectionExtensionAbility-onDisconnect(): void-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 **Examples**
@@ -131,5 +137,7 @@ Context of the **SelectionExtensionAbility**. This context is inherited from [Ex
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SelectionExtensionAbility-context: SelectionExtensionContext--><!--Device-SelectionExtensionAbility-context: SelectionExtensionContext-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection

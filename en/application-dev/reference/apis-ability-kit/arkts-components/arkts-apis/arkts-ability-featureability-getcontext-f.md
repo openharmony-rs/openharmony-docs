@@ -18,6 +18,8 @@ Obtains the application context.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-featureAbility-function getContext(): Context--><!--Device-featureAbility-function getContext(): Context-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Return value:**

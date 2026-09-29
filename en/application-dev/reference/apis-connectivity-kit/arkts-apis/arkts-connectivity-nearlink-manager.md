@@ -6,6 +6,8 @@ This module provides basic NearLink management capabilities, including enabling 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace manager--><!--Device-unnamed-declare namespace manager-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import

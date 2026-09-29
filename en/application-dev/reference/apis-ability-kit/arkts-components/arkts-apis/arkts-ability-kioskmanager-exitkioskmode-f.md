@@ -18,6 +18,8 @@ Exits kiosk mode. This API uses a promise to return the result. This API takes e
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-kioskManager-function exitKioskMode(context: UIAbilityContext): Promise<void>--><!--Device-kioskManager-function exitKioskMode(context: UIAbilityContext): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

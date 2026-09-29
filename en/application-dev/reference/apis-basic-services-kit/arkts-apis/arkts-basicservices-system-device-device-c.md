@@ -10,6 +10,8 @@ getInfo interface
 
 **Deprecated since:** 6
 
+<!--Device-unnamed-export default class Device--><!--Device-unnamed-export default class Device-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Obtains the device information. This API asynchronously reads the system device 
 **Deprecated since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-Device-static getInfo(options?: GetDeviceOptions): void--><!--Device-Device-static getInfo(options?: GetDeviceOptions): void-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 

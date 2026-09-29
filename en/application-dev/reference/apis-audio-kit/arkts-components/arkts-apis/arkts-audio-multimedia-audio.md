@@ -11,6 +11,8 @@ data.
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace audio--><!--Device-unnamed-declare namespace audio-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Multimedia.Audio.Core
 
@@ -134,6 +136,27 @@ import { audio } from '@kit.AudioKit';
 | [VolumeLimitExceededEvent](arkts-audio-audio-volumelimitexceededevent-i-sys.md) | Describes the notification event indicating that the volume exceeds the threshold. after receiving the notification, the app must send the acknowledgment result. through [confirmVolumeLimitExceeded](arkts-audio-audio-audiovolumemanager-i-sys.md#confirmvolumelimitexceeded) before continuing to adjust the volume. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [AudioCapturerChangeInfoArray](arkts-audio-audio-audiocapturerchangeinfoarray-t.md) | Defines an AudioCapturerChangeInfo array, which is read-only. |
+| [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | Defines an [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) array, which is read- only. |
+| [AudioEffectInfoArray](arkts-audio-audio-audioeffectinfoarray-t.md) | Defines an array that contains the audio effect mode corresponding to a specific audio content type (specified by **ContentType**) and audio stream usage (specified by **StreamUsage**). The [AudioEffectMode](arkts-audio-audio-audioeffectmode-e.md) array is read-only. |
+| [AudioRendererChangeInfoArray](arkts-audio-audio-audiorendererchangeinfoarray-t.md) | Defines an AudioRendererChangeInfo array, which is read-only. |
+| [AudioRendererWriteDataCallback](arkts-audio-audio-audiorendererwritedatacallback-t.md) | Defines the callback function used to write data to the audio renderer. Once the callback function finishes its execution, the audio service queues the data pointed to by **data** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **data** with the exact length of data designated for playback; otherwise, noises may occur during playback. |
+| [DeviceTypeArray](arkts-audio-audio-devicetypearray-t.md) | Defines the device type array. |
+
+<!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [ActiveStreamsVolumeInfoArray](arkts-audio-audio-activestreamsvolumeinfoarray-t-sys.md) | ActiveStreamVolumeInfo array. |
+| [StreamUsageArray](arkts-audio-audio-streamusagearray-t-sys.md) | Array of StreamUsages. |
+| [VolumeGroupInfos](arkts-audio-audio-volumegroupinfos-t-sys.md) | Array of VolumeGroupInfos, which is read-only. |
+<!--DelEnd-->
+
 ### Enums
 
 | Name | Description |
@@ -218,27 +241,6 @@ import { audio } from '@kit.AudioKit';
 | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | Enumerates tone types for player. |
 | [VolumeAdjustType](arkts-audio-audio-volumeadjusttype-e-sys.md) | Enumerates volume adjustment types. |
 | [VolumeFlag](arkts-audio-audio-volumeflag-e-sys.md) | Enumerates volume related operations. Flags should be powers of 2! |
-<!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [AudioCapturerChangeInfoArray](arkts-audio-audio-audiocapturerchangeinfoarray-t.md) | Defines an AudioCapturerChangeInfo array, which is read-only. |
-| [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | Defines an [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) array, which is read- only. |
-| [AudioEffectInfoArray](arkts-audio-audio-audioeffectinfoarray-t.md) | Defines an array that contains the audio effect mode corresponding to a specific audio content type (specified by **ContentType**) and audio stream usage (specified by **StreamUsage**). The [AudioEffectMode](arkts-audio-audio-audioeffectmode-e.md) array is read-only. |
-| [AudioRendererChangeInfoArray](arkts-audio-audio-audiorendererchangeinfoarray-t.md) | Defines an AudioRendererChangeInfo array, which is read-only. |
-| [AudioRendererWriteDataCallback](arkts-audio-audio-audiorendererwritedatacallback-t.md) | Defines the callback function used to write data to the audio renderer. Once the callback function finishes its execution, the audio service queues the data pointed to by **data** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **data** with the exact length of data designated for playback; otherwise, noises may occur during playback. |
-| [DeviceTypeArray](arkts-audio-audio-devicetypearray-t.md) | Defines the device type array. |
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [ActiveStreamsVolumeInfoArray](arkts-audio-audio-activestreamsvolumeinfoarray-t-sys.md) | ActiveStreamVolumeInfo array. |
-| [StreamUsageArray](arkts-audio-audio-streamusagearray-t-sys.md) | Array of StreamUsages. |
-| [VolumeGroupInfos](arkts-audio-audio-volumegroupinfos-t-sys.md) | Array of VolumeGroupInfos, which is read-only. |
 <!--DelEnd-->
 
 ### Constants

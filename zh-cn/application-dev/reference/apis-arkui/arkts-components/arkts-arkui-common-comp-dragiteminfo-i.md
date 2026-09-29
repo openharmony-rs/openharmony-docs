@@ -8,6 +8,8 @@ declare interface DragItemInfo
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare interface DragItemInfo--><!--Device-unnamed-declare interface DragItemInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## builder
@@ -30,6 +32,8 @@ builder传参时，建议传参格式为builder: ()=&gt;{this.customBuilder()}�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragItemInfo-builder?: CustomBuilder--><!--Device-DragItemInfo-builder?: CustomBuilder-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## extraInfo
@@ -46,6 +50,8 @@ extraInfo?: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragItemInfo-extraInfo?: string--><!--Device-DragItemInfo-extraInfo?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## pixelMap
@@ -61,5 +67,7 @@ pixelMap?: PixelMap
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragItemInfo-pixelMap?: PixelMap--><!--Device-DragItemInfo-pixelMap?: PixelMap-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

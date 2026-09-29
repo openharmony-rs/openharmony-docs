@@ -8,6 +8,8 @@ Represents a component description file.
 
 **Since:** 9
 
+<!--Device-update-export interface ComponentDescription--><!--Device-update-export interface ComponentDescription-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ How to obtain: Obtain the value of **componentId** of the corresponding componen
 
 **Since:** 9
 
+<!--Device-ComponentDescription-componentId: string--><!--Device-ComponentDescription-componentId: string-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Information about the description file.
 **Type:** [DescriptionInfo](arkts-basicservices-update-descriptioninfo-i-sys.md)
 
 **Since:** 9
+
+<!--Device-ComponentDescription-descriptionInfo: DescriptionInfo--><!--Device-ComponentDescription-descriptionInfo: DescriptionInfo-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

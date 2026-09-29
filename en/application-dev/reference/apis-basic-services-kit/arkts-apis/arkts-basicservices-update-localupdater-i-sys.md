@@ -25,6 +25,8 @@ installation.
 
 **Since:** 9
 
+<!--Device-update-export interface LocalUpdater--><!--Device-update-export interface LocalUpdater-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -62,6 +64,8 @@ Use scenarios: This method is used to upgrade the system from a local storage de
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-LocalUpdater-applyNewVersion(upgradeFiles: Array<UpgradeFile>, callback: AsyncCallback<void>): void--><!--Device-LocalUpdater-applyNewVersion(upgradeFiles: Array<UpgradeFile>, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -139,6 +143,8 @@ Use scenarios: This method is used to upgrade the system from a local storage de
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
 
+<!--Device-LocalUpdater-applyNewVersion(upgradeFiles: Array<UpgradeFile>): Promise<void>--><!--Device-LocalUpdater-applyNewVersion(upgradeFiles: Array<UpgradeFile>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -211,6 +217,8 @@ release resources in a timely manner.
 
 **Since:** 9
 
+<!--Device-LocalUpdater-off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): void--><!--Device-LocalUpdater-off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): void-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -277,6 +285,8 @@ listener when it is no longer needed.
 - Unregister the listener after the operation is complete or the final event is received.
 
 **Since:** 9
+
+<!--Device-LocalUpdater-on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): void--><!--Device-LocalUpdater-on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): void-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -349,6 +359,8 @@ successful.
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-LocalUpdater-verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: AsyncCallback<void>): void--><!--Device-LocalUpdater-verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -429,6 +441,8 @@ system may be damaged.
 **Since:** 9
 
 **Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+<!--Device-LocalUpdater-verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise<void>--><!--Device-LocalUpdater-verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

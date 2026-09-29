@@ -20,6 +20,8 @@ Checks the auto-start applications for the current user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function getAutoStartApps(admin: Want): Array<Want>--><!--Device-applicationManager-function getAutoStartApps(admin: Want): Array<Want>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -113,6 +115,8 @@ Checks the auto-start applications for the current user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function getAutoStartApps(admin: Want | null): Array<Want>--><!--Device-applicationManager-function getAutoStartApps(admin: Want | null): Array<Want>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -188,6 +192,8 @@ Checks the auto-start applications for the specified user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function getAutoStartApps(admin: Want, accountId: number): Array<Want>--><!--Device-applicationManager-function getAutoStartApps(admin: Want, accountId: number): Array<Want>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -231,6 +237,8 @@ Checks the auto-start applications for the specified user.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function getAutoStartApps(admin: Want | null, accountId: number): Array<Want>--><!--Device-applicationManager-function getAutoStartApps(admin: Want | null, accountId: number): Array<Want>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -22,6 +22,8 @@ Kiosk mode is a system-level runtime mode that restricts a device to a single ap
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function setAllowedKioskApps(admin: Want, appIdentifiers: Array<string>): void--><!--Device-applicationManager-function setAllowedKioskApps(admin: Want, appIdentifiers: Array<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

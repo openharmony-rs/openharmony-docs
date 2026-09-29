@@ -16,6 +16,8 @@ Queries whether a specified input device supports specified keys. This API uses 
 
 **Since:** 9
 
+<!--Device-inputDevice-function supportKeys(deviceId: int, keys: Array<KeyCode>, callback: AsyncCallback<Array<boolean>>): void--><!--Device-inputDevice-function supportKeys(deviceId: int, keys: Array<KeyCode>, callback: AsyncCallback<Array<boolean>>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 **Parameters:**
@@ -76,6 +78,8 @@ function supportKeys(deviceId: number, keys: Array<KeyCode>): Promise<Array<bool
 Checks whether the input device supports the specified keys. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-inputDevice-function supportKeys(deviceId: int, keys: Array<KeyCode>): Promise<Array<boolean>>--><!--Device-inputDevice-function supportKeys(deviceId: int, keys: Array<KeyCode>): Promise<Array<boolean>>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 

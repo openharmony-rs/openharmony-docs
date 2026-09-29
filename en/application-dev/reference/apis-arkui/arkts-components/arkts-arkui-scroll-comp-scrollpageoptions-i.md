@@ -8,6 +8,8 @@ Provides parameters for page scrolling behavior.
 
 **Since:** 14
 
+<!--Device-unnamed-declare interface ScrollPageOptions--><!--Device-unnamed-declare interface ScrollPageOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## animation
@@ -28,6 +30,8 @@ Whether to enable the page-turning animation.The value true means to enable the 
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-ScrollPageOptions-animation?: boolean--><!--Device-ScrollPageOptions-animation?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## next
@@ -45,5 +49,7 @@ Whether to turn to the next page.The value true means to scroll to the next page
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ScrollPageOptions-next: boolean--><!--Device-ScrollPageOptions-next: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

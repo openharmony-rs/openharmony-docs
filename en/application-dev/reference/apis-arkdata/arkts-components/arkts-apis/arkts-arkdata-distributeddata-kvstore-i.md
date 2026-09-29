@@ -12,6 +12,8 @@ Provides APIs to manage data in a KV store, for example, adding or deleting data
 
 **Substitutes:** SingleKVStore
 
+<!--Device-distributedData-interface KVStore--><!--Device-distributedData-interface KVStore-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core @version 1
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Commits the transaction in this KV store. This API uses an asynchronous callback
 **Deprecated since:** 9
 
 **Substitutes:** commit
+
+<!--Device-KVStore-commit(callback: AsyncCallback<void>): void--><!--Device-KVStore-commit(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -74,6 +78,8 @@ Commits the transaction in this KV store. This API uses a promise to return the 
 
 **Substitutes:** commit
 
+<!--Device-KVStore-commit(): Promise<void>--><!--Device-KVStore-commit(): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -110,6 +116,8 @@ Deletes a KV pair from this KV store. This API uses an asynchronous callback to 
 **Deprecated since:** 9
 
 **Substitutes:** delete
+
+<!--Device-KVStore-delete(key: string, callback: AsyncCallback<void>): void--><!--Device-KVStore-delete(key: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -162,6 +170,8 @@ Deletes a KV pair from this KV store. This API uses a promise to return the resu
 
 **Substitutes:** delete
 
+<!--Device-KVStore-delete(key: string): Promise<void>--><!--Device-KVStore-delete(key: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -211,6 +221,8 @@ Deletes KV pairs in batches from this KV store. This API uses an asynchronous ca
 **Deprecated since:** 9
 
 **Substitutes:** deleteBatch
+
+<!--Device-KVStore-deleteBatch(keys: string[], callback: AsyncCallback<void>): void--><!--Device-KVStore-deleteBatch(keys: string[], callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -267,6 +279,8 @@ Deletes KV pairs in batches from this KV store. This API uses a promise to retur
 **Deprecated since:** 9
 
 **Substitutes:** deleteBatch
+
+<!--Device-KVStore-deleteBatch(keys: string[]): Promise<void>--><!--Device-KVStore-deleteBatch(keys: string[]): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -331,6 +345,8 @@ Sets data sync, which can be enabled or disabled. This API uses an asynchronous 
 
 **Substitutes:** enableSync
 
+<!--Device-KVStore-enableSync(enabled: boolean, callback: AsyncCallback<void>): void--><!--Device-KVStore-enableSync(enabled: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -372,6 +388,8 @@ Sets data sync, which can be enabled or disabled. This API uses a promise to ret
 **Deprecated since:** 9
 
 **Substitutes:** enableSync
+
+<!--Device-KVStore-enableSync(enabled: boolean): Promise<void>--><!--Device-KVStore-enableSync(enabled: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -415,6 +433,8 @@ Unsubscribes from data changes.
 **Deprecated since:** 9
 
 **Substitutes:** off
+
+<!--Device-KVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void--><!--Device-KVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -462,6 +482,8 @@ Unsubscribes from sync completion events.
 
 **Substitutes:** off
 
+<!--Device-KVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void--><!--Device-KVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -506,6 +528,8 @@ Subscribes to data changes of the specified type.
 
 **Substitutes:** on
 
+<!--Device-KVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void--><!--Device-KVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -541,6 +565,8 @@ Subscribes to sync completion events.
 
 **Substitutes:** on
 
+<!--Device-KVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void--><!--Device-KVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -572,6 +598,8 @@ Adds a KV pair of the specified type to this KV store. This API uses an asynchro
 **Deprecated since:** 9
 
 **Substitutes:** put
+
+<!--Device-KVStore-put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncCallback<void>): void--><!--Device-KVStore-put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -618,6 +646,8 @@ Adds a KV pair of the specified type to this KV store. This API uses a promise t
 
 **Substitutes:** put
 
+<!--Device-KVStore-put(key: string, value: Uint8Array | string | number | boolean): Promise<void>--><!--Device-KVStore-put(key: string, value: Uint8Array | string | number | boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -663,6 +693,8 @@ Inserts KV pairs in batches to this KV store. This API uses an asynchronous call
 **Deprecated since:** 9
 
 **Substitutes:** putBatch
+
+<!--Device-KVStore-putBatch(entries: Entry[], callback: AsyncCallback<void>): void--><!--Device-KVStore-putBatch(entries: Entry[], callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -719,6 +751,8 @@ Inserts KV pairs in batches to this KV store. This API uses a promise to return 
 **Deprecated since:** 9
 
 **Substitutes:** putBatch
+
+<!--Device-KVStore-putBatch(entries: Entry[]): Promise<void>--><!--Device-KVStore-putBatch(entries: Entry[]): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -782,6 +816,8 @@ Rolls back the transaction in this KV store. This API uses an asynchronous callb
 
 **Substitutes:** rollback
 
+<!--Device-KVStore-rollback(callback: AsyncCallback<void>): void--><!--Device-KVStore-rollback(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -823,6 +859,8 @@ Rolls back the transaction in this KV store. This API uses a promise to return t
 
 **Substitutes:** rollback
 
+<!--Device-KVStore-rollback(): Promise<void>--><!--Device-KVStore-rollback(): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -859,6 +897,8 @@ Sets the data sync range. This API uses an asynchronous callback to return the r
 **Deprecated since:** 9
 
 **Substitutes:** setSyncRange
+
+<!--Device-KVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: AsyncCallback<void>): void--><!--Device-KVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -900,6 +940,8 @@ Sets the data sync range. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** setSyncRange
+
+<!--Device-KVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise<void>--><!--Device-KVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -946,6 +988,8 @@ Starts the transaction in this KV store. This API uses an asynchronous callback 
 **Deprecated since:** 9
 
 **Substitutes:** startTransaction
+
+<!--Device-KVStore-startTransaction(callback: AsyncCallback<void>): void--><!--Device-KVStore-startTransaction(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1007,6 +1051,8 @@ Starts the transaction in this KV store. This API uses a promise to return the r
 **Deprecated since:** 9
 
 **Substitutes:** startTransaction
+
+<!--Device-KVStore-startTransaction(): Promise<void>--><!--Device-KVStore-startTransaction(): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 

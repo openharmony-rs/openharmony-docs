@@ -8,6 +8,8 @@ export declare class TreeListenerManager
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare class TreeListenerManager--><!--Device-unnamed-export declare class TreeListenerManager-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ static getInstance(): TreeListenerManager
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TreeListenerManager-static getInstance(): TreeListenerManager--><!--Device-TreeListenerManager-static getInstance(): TreeListenerManager-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -51,6 +55,8 @@ getTreeListener(): TreeListener
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TreeListenerManager-getTreeListener(): TreeListener--><!--Device-TreeListenerManager-getTreeListener(): TreeListener-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

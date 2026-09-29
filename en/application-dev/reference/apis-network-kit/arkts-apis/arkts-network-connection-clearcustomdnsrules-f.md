@@ -18,6 +18,8 @@ Removes all custom DNS rules of the current application. This API uses an asynch
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-connection-function clearCustomDnsRules(callback: AsyncCallback<void>): void--><!--Device-connection-function clearCustomDnsRules(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -65,6 +67,8 @@ Removes all custom DNS rules of the current application. This API uses a promise
 **Since:** 11
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-connection-function clearCustomDnsRules(): Promise<void>--><!--Device-connection-function clearCustomDnsRules(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

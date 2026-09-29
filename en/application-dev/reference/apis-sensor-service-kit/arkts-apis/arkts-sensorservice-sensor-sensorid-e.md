@@ -8,6 +8,8 @@ Enumerates the sensor types.
 
 **Since:** 9
 
+<!--Device-sensor-enum SensorId--><!--Device-sensor-enum SensorId-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 ## ACCELEROMETER
@@ -16,13 +18,13 @@ Enumerates the sensor types.
 ACCELEROMETER = 1
 ```
 
-Acceleration sensor.
-
-This API can be used in atomic services since API version 11.
+Accelerometer sensor, which is used to measure the acceleration of the device. <br>**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-SensorId-ACCELEROMETER = 1--><!--Device-SensorId-ACCELEROMETER = 1-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -32,13 +34,13 @@ This API can be used in atomic services since API version 11.
 GYROSCOPE = 2
 ```
 
-Gyroscope sensor.
-
-This API can be used in atomic services since API version 11.
+Gyroscope sensor, which is used to measure the angular velocity of the device. <br>**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-SensorId-GYROSCOPE = 2--><!--Device-SensorId-GYROSCOPE = 2-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -48,9 +50,11 @@ This API can be used in atomic services since API version 11.
 AMBIENT_LIGHT = 5
 ```
 
-Ambient light sensor.
+Ambient light sensor, which is used to measure the ambient light intensity.
 
 **Since:** 9
+
+<!--Device-SensorId-AMBIENT_LIGHT = 5--><!--Device-SensorId-AMBIENT_LIGHT = 5-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -60,9 +64,11 @@ Ambient light sensor.
 MAGNETIC_FIELD = 6
 ```
 
-Magnetic field sensor.
+Magnetic field sensor, which is used to measure the ambient magnetic field strength around the device.
 
 **Since:** 9
+
+<!--Device-SensorId-MAGNETIC_FIELD = 6--><!--Device-SensorId-MAGNETIC_FIELD = 6-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -72,9 +78,11 @@ Magnetic field sensor.
 BAROMETER = 8
 ```
 
-Barometer sensor.
+Barometric pressure sensor, which is used to measure atmospheric pressure.
 
 **Since:** 9
+
+<!--Device-SensorId-BAROMETER = 8--><!--Device-SensorId-BAROMETER = 8-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -84,9 +92,11 @@ Barometer sensor.
 HALL = 10
 ```
 
-Hall effect sensor.
+Hall effect sensor, which is used to detect whether there is a magnetic force around the device.
 
 **Since:** 9
+
+<!--Device-SensorId-HALL = 10--><!--Device-SensorId-HALL = 10-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -96,9 +106,11 @@ Hall effect sensor.
 PROXIMITY = 12
 ```
 
-Proximity sensor.
+Proximity sensor, which is used to detect the proximity between an object and the device display.
 
 **Since:** 9
+
+<!--Device-SensorId-PROXIMITY = 12--><!--Device-SensorId-PROXIMITY = 12-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -108,9 +120,11 @@ Proximity sensor.
 HUMIDITY = 13
 ```
 
-Humidity sensor.
+Humidity sensor, which is used to measure the relative humidity of the environment.
 
 **Since:** 9
+
+<!--Device-SensorId-HUMIDITY = 13--><!--Device-SensorId-HUMIDITY = 13-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -120,13 +134,13 @@ Humidity sensor.
 ORIENTATION = 256
 ```
 
-Orientation sensor.
-
-This API can be used in atomic services since API version 11.
+Orientation sensor, which is used to measure the rotation angle of the device. <br>**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-SensorId-ORIENTATION = 256--><!--Device-SensorId-ORIENTATION = 256-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -136,9 +150,11 @@ This API can be used in atomic services since API version 11.
 GRAVITY = 257
 ```
 
-Gravity sensor.
+Gravity sensor, which is used to measure the gravity acceleration of the device.
 
 **Since:** 9
+
+<!--Device-SensorId-GRAVITY = 257--><!--Device-SensorId-GRAVITY = 257-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -148,9 +164,11 @@ Gravity sensor.
 LINEAR_ACCELEROMETER = 258
 ```
 
-Linear acceleration sensor.
+Linear acceleration sensor, which is used to measure the linear acceleration of the device excluding the effect of gravity.
 
 **Since:** 9
+
+<!--Device-SensorId-LINEAR_ACCELEROMETER = 258--><!--Device-SensorId-LINEAR_ACCELEROMETER = 258-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -160,9 +178,11 @@ Linear acceleration sensor.
 ROTATION_VECTOR = 259
 ```
 
-Rotation vector sensor.
+Rotation vector sensor type, which is used to describe the rotation status of the device relative to a reference direction.
 
 **Since:** 9
+
+<!--Device-SensorId-ROTATION_VECTOR = 259--><!--Device-SensorId-ROTATION_VECTOR = 259-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -172,9 +192,11 @@ Rotation vector sensor.
 AMBIENT_TEMPERATURE = 260
 ```
 
-Ambient temperature sensor.
+Ambient temperature sensor, which is used to measure the ambient temperature.
 
 **Since:** 9
+
+<!--Device-SensorId-AMBIENT_TEMPERATURE = 260--><!--Device-SensorId-AMBIENT_TEMPERATURE = 260-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -184,9 +206,11 @@ Ambient temperature sensor.
 MAGNETIC_FIELD_UNCALIBRATED = 261
 ```
 
-Uncalibrated magnetic field sensor.
+Uncalibrated magnetic field sensor, which is used to measure the uncalibrated ambient magnetic field strength and its bias.
 
 **Since:** 9
+
+<!--Device-SensorId-MAGNETIC_FIELD_UNCALIBRATED = 261--><!--Device-SensorId-MAGNETIC_FIELD_UNCALIBRATED = 261-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -196,9 +220,11 @@ Uncalibrated magnetic field sensor.
 GYROSCOPE_UNCALIBRATED = 263
 ```
 
-Uncalibrated gyroscope sensor.
+Uncalibrated gyroscope sensor, which is used to measure the uncalibrated angular velocity of the device and its bias.
 
 **Since:** 9
+
+<!--Device-SensorId-GYROSCOPE_UNCALIBRATED = 263--><!--Device-SensorId-GYROSCOPE_UNCALIBRATED = 263-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -208,9 +234,11 @@ Uncalibrated gyroscope sensor.
 SIGNIFICANT_MOTION = 264
 ```
 
-Significant motion sensor.
+Significant motion sensor, which is used to detect whether the device is moving significantly.
 
 **Since:** 9
+
+<!--Device-SensorId-SIGNIFICANT_MOTION = 264--><!--Device-SensorId-SIGNIFICANT_MOTION = 264-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -220,9 +248,11 @@ Significant motion sensor.
 PEDOMETER_DETECTION = 265
 ```
 
-Pedometer detection sensor.
+Pedometer detection sensor, which is used to detect the step counting action of a user.
 
 **Since:** 9
+
+<!--Device-SensorId-PEDOMETER_DETECTION = 265--><!--Device-SensorId-PEDOMETER_DETECTION = 265-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -232,9 +262,11 @@ Pedometer detection sensor.
 PEDOMETER = 266
 ```
 
-Pedometer sensor.
+Step counter sensor, which is used to count the number of steps a user has taken.
 
 **Since:** 9
+
+<!--Device-SensorId-PEDOMETER = 266--><!--Device-SensorId-PEDOMETER = 266-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -244,9 +276,11 @@ Pedometer sensor.
 HEART_RATE = 278
 ```
 
-Heart rate sensor.
+Heart rate sensor, which is used to measure the heart rate of a user.
 
 **Since:** 9
+
+<!--Device-SensorId-HEART_RATE = 278--><!--Device-SensorId-HEART_RATE = 278-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -256,9 +290,11 @@ Heart rate sensor.
 WEAR_DETECTION = 280
 ```
 
-Wear detection sensor.
+Wear detection sensor, which is used to detect whether the device is being worn.
 
 **Since:** 9
+
+<!--Device-SensorId-WEAR_DETECTION = 280--><!--Device-SensorId-WEAR_DETECTION = 280-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -268,9 +304,11 @@ Wear detection sensor.
 ACCELEROMETER_UNCALIBRATED = 281
 ```
 
-Uncalibrated acceleration sensor.
+Uncalibrated acceleration sensor, which is used to measure the uncalibrated acceleration of the device and its bias.
 
 **Since:** 9
+
+<!--Device-SensorId-ACCELEROMETER_UNCALIBRATED = 281--><!--Device-SensorId-ACCELEROMETER_UNCALIBRATED = 281-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -280,10 +318,10 @@ Uncalibrated acceleration sensor.
 FUSION_PRESSURE = 283
 ```
 
-Fused pressure sensor.
-
-This sensor is available only on smart watches.
+Fused pressure sensor, which is used to measure the fusion pressure value. This sensor is available only on smart watches.
 
 **Since:** 22
+
+<!--Device-SensorId-FUSION_PRESSURE = 283--><!--Device-SensorId-FUSION_PRESSURE = 283-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

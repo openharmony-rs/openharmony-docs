@@ -10,6 +10,8 @@ Defines the Localized align rule options of relative container.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface LocalizedAlignRuleOptions--><!--Device-unnamed-declare interface LocalizedAlignRuleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bias
@@ -30,6 +32,8 @@ Offset of the component under the anchor constraints. <br>The value is the ratio
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LocalizedAlignRuleOptions-bias?: Bias--><!--Device-LocalizedAlignRuleOptions-bias?: Bias-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -47,6 +51,8 @@ Bottom alignment in the vertical direction.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LocalizedAlignRuleOptions-bottom?: LocalizedVerticalAlignParam--><!--Device-LocalizedAlignRuleOptions-bottom?: LocalizedVerticalAlignParam-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +72,8 @@ Center alignment in the vertical direction.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LocalizedAlignRuleOptions-center?: LocalizedVerticalAlignParam--><!--Device-LocalizedAlignRuleOptions-center?: LocalizedVerticalAlignParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## end
@@ -83,6 +91,8 @@ Right alignment with left-to-right scripts and left alignment with right-to-left
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LocalizedAlignRuleOptions-end?: LocalizedHorizontalAlignParam--><!--Device-LocalizedAlignRuleOptions-end?: LocalizedHorizontalAlignParam-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +112,8 @@ Center alignment in the horizontal direction.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LocalizedAlignRuleOptions-middle?: LocalizedHorizontalAlignParam--><!--Device-LocalizedAlignRuleOptions-middle?: LocalizedHorizontalAlignParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -120,6 +132,8 @@ Left alignment with left-to-right scripts and right alignment with right-to-left
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LocalizedAlignRuleOptions-start?: LocalizedHorizontalAlignParam--><!--Device-LocalizedAlignRuleOptions-start?: LocalizedHorizontalAlignParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -137,5 +151,7 @@ Top alignment in the vertical direction.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LocalizedAlignRuleOptions-top?: LocalizedVerticalAlignParam--><!--Device-LocalizedAlignRuleOptions-top?: LocalizedVerticalAlignParam-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

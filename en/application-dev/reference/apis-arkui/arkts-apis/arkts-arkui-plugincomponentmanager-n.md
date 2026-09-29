@@ -8,6 +8,8 @@ Implements a plugin component manager.
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace pluginComponentManager--><!--Device-unnamed-declare namespace pluginComponentManager-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import

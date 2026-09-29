@@ -8,6 +8,8 @@ interface FormSize
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface FormSize--><!--Device-unnamed-interface FormSize-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -28,6 +30,8 @@ height的取值范围大于0，小于2^53。如果不在范围内的数值卡片
 
 **起始版本：** 18
 
+<!--Device-FormSize-height: number--><!--Device-FormSize-height: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -47,6 +51,8 @@ width的取值范围大于0，小于2^53。如果不在范围内的数值卡片�
 **类型：** number
 
 **起始版本：** 18
+
+<!--Device-FormSize-width: number--><!--Device-FormSize-width: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

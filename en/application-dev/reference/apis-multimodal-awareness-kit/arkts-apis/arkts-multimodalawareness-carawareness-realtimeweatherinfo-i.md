@@ -8,6 +8,8 @@ Interface for realtime weather response info.
 
 **Since:** 26.0.1
 
+<!--Device-carAwareness-export interface RealTimeWeatherInfo--><!--Device-carAwareness-export interface RealTimeWeatherInfo-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Indicates timestamp . Unit: milliseconds.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RealTimeWeatherInfo-timestamp: number--><!--Device-RealTimeWeatherInfo-timestamp: number-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 ## weather
@@ -45,5 +49,7 @@ Indicates current weather.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RealTimeWeatherInfo-weather: number--><!--Device-RealTimeWeatherInfo-weather: number-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness

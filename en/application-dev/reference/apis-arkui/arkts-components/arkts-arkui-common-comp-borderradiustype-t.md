@@ -12,6 +12,8 @@ Enumerates the border corner radius types.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-unnamed-type BorderRadiusType = Length | BorderRadiuses | LocalizedBorderRadiuses--><!--Device-unnamed-type BorderRadiusType = Length | BorderRadiuses | LocalizedBorderRadiuses-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

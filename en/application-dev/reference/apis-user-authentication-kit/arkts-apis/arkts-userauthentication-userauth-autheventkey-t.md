@@ -12,6 +12,8 @@ It consists of the fields in **Type** in the following table.
 
 **Deprecated since:** 11
 
+<!--Device-userAuth-type AuthEventKey = 'result' | 'tip'--><!--Device-userAuth-type AuthEventKey = 'result' | 'tip'-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 | Type | Description |

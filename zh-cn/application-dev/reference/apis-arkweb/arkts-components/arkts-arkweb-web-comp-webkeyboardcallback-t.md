@@ -10,13 +10,15 @@ type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => We
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => WebKeyboardOptions--><!--Device-unnamed-type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => WebKeyboardOptions-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyboardCallbackInfo | [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | 是 | 拦截网页拉起软键盘回调通知的入参，其中包括[WebKeyboardController](arkts-arkweb-web-comp.md#webweb控制器)、可编辑元素的属性。 |
+| keyboardCallbackInfo | [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | 是 | 拦截网页拉起软键盘回调通知的入参，其中包括[WebKeyboardController](arkts-arkweb-web-comp.md)、可编辑元素的属性。 |
 
 **返回值：**
 

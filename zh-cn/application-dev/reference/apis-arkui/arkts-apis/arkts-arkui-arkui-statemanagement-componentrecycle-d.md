@@ -12,4 +12,6 @@ export declare const ComponentRecycle: MethodDecorator
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export declare const ComponentRecycle: MethodDecorator--><!--Device-unnamed-export declare const ComponentRecycle: MethodDecorator-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

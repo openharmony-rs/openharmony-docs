@@ -8,6 +8,8 @@ Enumerates the P12 MAC digest algorithms.
 
 **Since:** 21
 
+<!--Device-cert-enum Pkcs12MacDigestAlgorithm--><!--Device-cert-enum Pkcs12MacDigestAlgorithm-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## SHA256
@@ -20,7 +22,9 @@ SHA-256.
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 21.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+
+<!--Device-Pkcs12MacDigestAlgorithm-SHA256 = 0--><!--Device-Pkcs12MacDigestAlgorithm-SHA256 = 0-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -34,7 +38,9 @@ SHA-384.
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 21.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+
+<!--Device-Pkcs12MacDigestAlgorithm-SHA384 = 1--><!--Device-Pkcs12MacDigestAlgorithm-SHA384 = 1-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -48,6 +54,8 @@ SHA-512.
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 21.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+
+<!--Device-Pkcs12MacDigestAlgorithm-SHA512 = 2--><!--Device-Pkcs12MacDigestAlgorithm-SHA512 = 2-End-->
 
 **System capability:** SystemCapability.Security.Cert

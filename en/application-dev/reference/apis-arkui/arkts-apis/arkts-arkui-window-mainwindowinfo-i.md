@@ -8,6 +8,8 @@ Describes the main window information.
 
 **Since:** 21
 
+<!--Device-window-interface MainWindowInfo--><!--Device-window-interface MainWindowInfo-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ ID of the display to which the main window belongs.
 
 **Since:** 21
 
+<!--Device-MainWindowInfo-displayId: long--><!--Device-MainWindowInfo-displayId: long-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## label
@@ -41,6 +45,8 @@ Task name of the main window.
 **Type:** string
 
 **Since:** 21
+
+<!--Device-MainWindowInfo-label: string--><!--Device-MainWindowInfo-label: string-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -56,6 +62,8 @@ Foreground/Background status of the main window. **true** if the main window is 
 
 **Since:** 21
 
+<!--Device-MainWindowInfo-showing: boolean--><!--Device-MainWindowInfo-showing: boolean-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## windowId
@@ -69,5 +77,7 @@ ID of the main window.
 **Type:** number
 
 **Since:** 21
+
+<!--Device-MainWindowInfo-windowId: int--><!--Device-MainWindowInfo-windowId: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

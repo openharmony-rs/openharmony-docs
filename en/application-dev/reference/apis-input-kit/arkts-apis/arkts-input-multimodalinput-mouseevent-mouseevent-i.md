@@ -10,6 +10,8 @@ Defines the mouse event.
 
 **Since:** 9
 
+<!--Device-unnamed-export declare interface MouseEvent extends InputEvent--><!--Device-unnamed-export declare interface MouseEvent extends InputEvent-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Enumerates mouse event types.
 
 **Since:** 9
 
+<!--Device-MouseEvent-action: Action--><!--Device-MouseEvent-action: Action-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## altKey
@@ -46,6 +50,8 @@ The value **true** indicates that the key is pressed, and the value **false** in
 
 **Since:** 9
 
+<!--Device-MouseEvent-altKey: boolean--><!--Device-MouseEvent-altKey: boolean-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## axes
@@ -60,6 +66,8 @@ Defines the mouse axis type and axis value.
 
 **Since:** 9
 
+<!--Device-MouseEvent-axes: AxisValue[]--><!--Device-MouseEvent-axes: AxisValue[]-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## button
@@ -73,6 +81,8 @@ Enumerates mouse buttons.
 **Type:** [Button](arkts-input-multimodalinput-mouseevent-button-e.md)
 
 **Since:** 9
+
+<!--Device-MouseEvent-button: Button--><!--Device-MouseEvent-button: Button-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -90,6 +100,8 @@ The value **true** indicates that capsLock is enabled, and the value **false** i
 
 **Since:** 9
 
+<!--Device-MouseEvent-capsLock: boolean--><!--Device-MouseEvent-capsLock: boolean-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## ctrlKey
@@ -105,6 +117,8 @@ The value **true** indicates that the key is pressed, and the value **false** in
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-MouseEvent-ctrlKey: boolean--><!--Device-MouseEvent-ctrlKey: boolean-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -122,6 +136,8 @@ The value **true** indicates that the key is pressed, and the value **false** in
 
 **Since:** 9
 
+<!--Device-MouseEvent-fnKey: boolean--><!--Device-MouseEvent-fnKey: boolean-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## globalX
@@ -136,6 +152,8 @@ X coordinate of the mouse event in the global coordinate system with the upper l
 
 **Since:** 20
 
+<!--Device-MouseEvent-globalX?: int--><!--Device-MouseEvent-globalX?: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## globalY
@@ -149,6 +167,8 @@ Y coordinate of the mouse event in the global coordinate system with the upper l
 **Type:** number
 
 **Since:** 20
+
+<!--Device-MouseEvent-globalY?: int--><!--Device-MouseEvent-globalY?: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -166,6 +186,8 @@ The value **true** indicates that the key is pressed, and the value **false** in
 
 **Since:** 9
 
+<!--Device-MouseEvent-logoKey: boolean--><!--Device-MouseEvent-logoKey: boolean-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## numLock
@@ -182,6 +204,8 @@ The value **true** indicates that numLock is enabled, and the value **false** in
 
 **Since:** 9
 
+<!--Device-MouseEvent-numLock: boolean--><!--Device-MouseEvent-numLock: boolean-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## pressedButtons
@@ -195,6 +219,8 @@ Button being pressed.
 **Type:** [Button](arkts-input-multimodalinput-mouseevent-button-e.md)[]
 
 **Since:** 9
+
+<!--Device-MouseEvent-pressedButtons: Button[]--><!--Device-MouseEvent-pressedButtons: Button[]-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -210,6 +236,8 @@ List of pressed keys.
 
 **Since:** 9
 
+<!--Device-MouseEvent-pressedKeys: KeyCode[]--><!--Device-MouseEvent-pressedKeys: KeyCode[]-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## rawDeltaX
@@ -223,6 +251,8 @@ X coordinate offset of the current mouse event relative to the previous event, i
 **Type:** number
 
 **Since:** 9
+
+<!--Device-MouseEvent-rawDeltaX: int--><!--Device-MouseEvent-rawDeltaX: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -238,6 +268,8 @@ Y coordinate offset of the current mouse event relative to the previous event, i
 
 **Since:** 9
 
+<!--Device-MouseEvent-rawDeltaY: int--><!--Device-MouseEvent-rawDeltaY: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## screenX
@@ -252,6 +284,8 @@ X coordinate of the mouse event in the relative coordinate system with the upper
 
 **Since:** 9
 
+<!--Device-MouseEvent-screenX: int--><!--Device-MouseEvent-screenX: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## screenY
@@ -265,6 +299,8 @@ Y coordinate of the mouse event in the relative coordinate system with the upper
 **Type:** number
 
 **Since:** 9
+
+<!--Device-MouseEvent-screenY: int--><!--Device-MouseEvent-screenY: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -282,6 +318,8 @@ The value **true** indicates that scrollLock is enabled, and the value **false**
 
 **Since:** 9
 
+<!--Device-MouseEvent-scrollLock: boolean--><!--Device-MouseEvent-scrollLock: boolean-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## shiftKey
@@ -298,6 +336,8 @@ The value **true** indicates that the key is pressed, and the value **false** in
 
 **Since:** 9
 
+<!--Device-MouseEvent-shiftKey: boolean--><!--Device-MouseEvent-shiftKey: boolean-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## toolType
@@ -311,6 +351,8 @@ Tool type.
 **Type:** [ToolType](arkts-input-multimodalinput-mouseevent-tooltype-e.md)
 
 **Since:** 11
+
+<!--Device-MouseEvent-toolType: ToolType--><!--Device-MouseEvent-toolType: ToolType-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -326,6 +368,8 @@ X coordinate in the relative coordinate system with the upper left corner of the
 
 **Since:** 9
 
+<!--Device-MouseEvent-windowX: int--><!--Device-MouseEvent-windowX: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## windowY
@@ -339,5 +383,7 @@ Y coordinate in the relative coordinate system with the upper left corner of the
 **Type:** number
 
 **Since:** 9
+
+<!--Device-MouseEvent-windowY: int--><!--Device-MouseEvent-windowY: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core

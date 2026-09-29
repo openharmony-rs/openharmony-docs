@@ -12,19 +12,19 @@ import { MarginType, PromptOptions, ExceptionPrompt } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [ExceptionPrompt](arkts-arkui-arkui-advanced-exceptionprompt-exceptionprompt-s.md) | Declare struct ExceptionPrompt higher-order component. |
+| [ExceptionPrompt](arkts-arkui-arkui-advanced-exceptionprompt-exceptionprompt-s.md) | The exception prompt component is used to show an error message when an error arises. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [PromptOptions](arkts-arkui-arkui-advanced-exceptionprompt-promptoptions-i.md) | Configuration parameter of ExceptionPrompt. @interface PromptOptions |
+| [PromptOptions](arkts-arkui-arkui-advanced-exceptionprompt-promptoptions-i.md) | Defines the exception prompt options. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [MarginType](arkts-arkui-arkui-advanced-exceptionprompt-margintype-e.md) | Control margin status of ExceptionPrompt. @enum { number } |
+| [MarginType](arkts-arkui-arkui-advanced-exceptionprompt-margintype-e.md) | Defines the margin type. |
 
 ## Examples
 

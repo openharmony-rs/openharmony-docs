@@ -10,6 +10,8 @@ Defines a callback for receiving data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-conversation-type DataCallback = (deviceId: string, msg: ArrayBuffer) => void--><!--Device-conversation-type DataCallback = (deviceId: string, msg: ArrayBuffer) => void-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.

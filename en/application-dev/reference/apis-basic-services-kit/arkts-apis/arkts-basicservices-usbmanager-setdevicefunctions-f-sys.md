@@ -18,6 +18,8 @@ Sets the current USB function list in Device mode. This API uses a promise to re
 
 **Required permissions:** ohos.permission.MANAGE_USB_CONFIG
 
+<!--Device-usbManager-function setDeviceFunctions(funcs: FunctionType): Promise<void>--><!--Device-usbManager-function setDeviceFunctions(funcs: FunctionType): Promise<void>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ PromptOptions定义options的类型。
 
 **起始版本：** 11
 
+<!--Device-unnamed-export interface PromptOptions--><!--Device-unnamed-export interface PromptOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -34,6 +36,8 @@ actionText?: ResourceStr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PromptOptions-actionText?: ResourceStr--><!--Device-PromptOptions-actionText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -53,6 +57,8 @@ icon?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PromptOptions-icon?: ResourceStr--><!--Device-PromptOptions-icon?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +84,8 @@ false：隐藏状态。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PromptOptions-isShown?: boolean--><!--Device-PromptOptions-isShown?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## marginTop
@@ -96,6 +104,8 @@ marginTop: Dimension
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PromptOptions-marginTop: Dimension--><!--Device-PromptOptions-marginTop: Dimension-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## marginType
@@ -113,6 +123,8 @@ marginType: MarginType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PromptOptions-marginType: MarginType--><!--Device-PromptOptions-marginType: MarginType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,6 +145,8 @@ symbolStyle?: SymbolGlyphModifier
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-PromptOptions-symbolStyle?: SymbolGlyphModifier--><!--Device-PromptOptions-symbolStyle?: SymbolGlyphModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,5 +177,7 @@ tip?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PromptOptions-tip?: ResourceStr--><!--Device-PromptOptions-tip?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

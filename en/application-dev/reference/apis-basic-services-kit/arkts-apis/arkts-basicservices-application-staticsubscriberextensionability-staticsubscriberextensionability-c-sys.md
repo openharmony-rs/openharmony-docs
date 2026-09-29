@@ -14,6 +14,8 @@ The typical process of this module is as follows: Inherit the base class, overri
 
 **Since:** 9
 
+<!--Device-unnamed-declare class StaticSubscriberExtensionAbility--><!--Device-unnamed-declare class StaticSubscriberExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -35,6 +37,8 @@ Defines a callback to be invoked when a common event is triggered in static mode
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StaticSubscriberExtensionAbility-onReceiveEvent(event: CommonEventData): void--><!--Device-StaticSubscriberExtensionAbility-onReceiveEvent(event: CommonEventData): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -71,6 +75,8 @@ Context of the extension ability subscribed to in static mode.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StaticSubscriberExtensionAbility-context: StaticSubscriberExtensionContext--><!--Device-StaticSubscriberExtensionAbility-context: StaticSubscriberExtensionContext-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

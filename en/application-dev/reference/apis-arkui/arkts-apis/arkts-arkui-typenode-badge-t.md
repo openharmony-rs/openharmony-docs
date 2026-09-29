@@ -12,6 +12,8 @@ Represents a FrameNode of the **Badge** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-typeNode-type Badge = TypedFrameNode<BadgeInterface, BadgeAttribute>--><!--Device-typeNode-type Badge = TypedFrameNode<BadgeInterface, BadgeAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;BadgeInterface, [BadgeAttribute](../arkts-components/arkts-arkui-badge-comp-attribute.md)&gt;

@@ -4,6 +4,8 @@ This module enables the File Manager to obtain the sync root information registe
 
 **Since:** 21
 
+<!--Device-unnamed-declare namespace cloudDiskManager--><!--Device-unnamed-declare namespace cloudDiskManager-End-->
+
 **System capability:** SystemCapability.FileManagement.CloudDiskManager
 
 **System API:** This is a system API.

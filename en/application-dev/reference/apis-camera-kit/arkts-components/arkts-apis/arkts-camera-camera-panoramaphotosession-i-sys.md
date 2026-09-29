@@ -10,6 +10,8 @@ PanoramaPhotoSession extends Session, Focus, AutoExposure, WhiteBalance, ColorEf
 
 **Since:** 12
 
+<!--Device-camera-interface PanoramaPhotoSession extends Session, Focus, AutoExposure, WhiteBalance, ColorEffect--><!--Device-camera-interface PanoramaPhotoSession extends Session, Focus, AutoExposure, WhiteBalance, ColorEffect-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ off(type: 'error', callback?: ErrorCallback): void
 Unsubscribes from HighResolutionPhotoSession error events.
 
 **Since:** 12
+
+<!--Device-PanoramaPhotoSession-off(type: 'error', callback?: ErrorCallback): void--><!--Device-PanoramaPhotoSession-off(type: 'error', callback?: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -65,6 +69,8 @@ Unsubscribes from focus state change events.
 
 **Since:** 12
 
+<!--Device-PanoramaPhotoSession-off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void--><!--Device-PanoramaPhotoSession-off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -99,6 +105,8 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to HighResolutionPhotoSession error events. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-PanoramaPhotoSession-on(type: 'error', callback: ErrorCallback): void--><!--Device-PanoramaPhotoSession-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -140,6 +148,8 @@ on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void
 Subscribes to focus state change events. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-PanoramaPhotoSession-on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void--><!--Device-PanoramaPhotoSession-on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -8,6 +8,8 @@ The **inputMonitor** module implements listening for events of input devices, in
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace inputMonitor--><!--Device-unnamed-declare namespace inputMonitor-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.

@@ -20,6 +20,8 @@ Checks the screen status of the current device. This API uses an asynchronous ca
 
 **Substitutes:** [isActive](arkts-basicservices-power-isactive-f.md)
 
+<!--Device-power-function isScreenOn(callback: AsyncCallback<boolean>): void--><!--Device-power-function isScreenOn(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **Parameters:**
@@ -56,6 +58,8 @@ Checks the screen status of the current device. This API uses a promise to retur
 **Deprecated since:** 9
 
 **Substitutes:** [isActive](arkts-basicservices-power-isactive-f.md)
+
+<!--Device-power-function isScreenOn(): Promise<boolean>--><!--Device-power-function isScreenOn(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 

@@ -1,4 +1,4 @@
-# @ohos.app.ability.Ability
+# @ohos.app.ability.Ability(Ability Base Class)
 
 ## Modules to Import
 

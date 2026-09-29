@@ -8,6 +8,8 @@ Describes the properties and behavior of the arc dot navigation indicator.
 
 **Since:** 18
 
+<!--Device-unnamed-export class ArcDotIndicator--><!--Device-unnamed-export class ArcDotIndicator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Sets the direction of the arc navigation indicator.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcDotIndicator-arcDirection(direction: Optional<ArcDirection>): ArcDotIndicator--><!--Device-ArcDotIndicator-arcDirection(direction: Optional<ArcDirection>): ArcDotIndicator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -54,6 +58,8 @@ Sets the color of the arc navigation indicator when it is long-pressed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcDotIndicator-backgroundColor(color: Optional<ResourceColor>): ArcDotIndicator--><!--Device-ArcDotIndicator-backgroundColor(color: Optional<ResourceColor>): ArcDotIndicator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
@@ -80,6 +86,8 @@ A constructor used to create an **ArcDotIndicator** instance.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcDotIndicator-constructor()--><!--Device-ArcDotIndicator-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## itemColor
@@ -93,6 +101,8 @@ Sets the color of the unselected navigation points in the arc navigation indicat
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcDotIndicator-itemColor(color: Optional<ResourceColor>): ArcDotIndicator--><!--Device-ArcDotIndicator-itemColor(color: Optional<ResourceColor>): ArcDotIndicator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -120,6 +130,8 @@ Sets the mask gradient color of the arc navigation indicator.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcDotIndicator-maskColor(color: Optional<LinearGradient>): ArcDotIndicator--><!--Device-ArcDotIndicator-maskColor(color: Optional<LinearGradient>): ArcDotIndicator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
@@ -145,6 +157,8 @@ Sets the color of the selected navigation point in the arc navigation indicator.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcDotIndicator-selectedItemColor(color: Optional<ResourceColor>): ArcDotIndicator--><!--Device-ArcDotIndicator-selectedItemColor(color: Optional<ResourceColor>): ArcDotIndicator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 

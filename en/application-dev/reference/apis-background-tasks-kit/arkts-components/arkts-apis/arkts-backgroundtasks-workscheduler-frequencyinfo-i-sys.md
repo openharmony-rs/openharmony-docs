@@ -8,6 +8,8 @@ Execution frequency information.
 
 **Since:** 26.0.1
 
+<!--Device-workScheduler-export interface FrequencyInfo--><!--Device-workScheduler-export interface FrequencyInfo-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Set app exec interval, in milliseconds. Unit:ms.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FrequencyInfo-interval: int--><!--Device-FrequencyInfo-interval: int-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ App uid. The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FrequencyInfo-uid: int--><!--Device-FrequencyInfo-uid: int-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ ID of the deferred task. The value should be an integer.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FrequencyInfo-workId: int--><!--Device-FrequencyInfo-workId: int-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 

@@ -10,6 +10,8 @@ The **audioSourceType** and **videoSourceType** parameters are used to distingui
 
 **Since:** 9
 
+<!--Device-media-interface AVRecorderConfig--><!--Device-media-interface AVRecorderConfig-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Meta source types, details see @MetaSourceType .
 **Type:** Array&lt;[MetaSourceType](arkts-media-media-metasourcetype-e-sys.md)&gt;
 
 **Since:** 12
+
+<!--Device-AVRecorderConfig-metaSourceTypes?: Array<MetaSourceType>--><!--Device-AVRecorderConfig-metaSourceTypes?: Array<MetaSourceType>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 

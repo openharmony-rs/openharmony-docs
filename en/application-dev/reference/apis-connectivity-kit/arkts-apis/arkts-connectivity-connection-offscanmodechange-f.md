@@ -20,6 +20,8 @@ Unsubscribe to an event indicating that the scanning mode of the local device ha
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function offScanModeChange(callback?: Callback<ScanMode>): void--><!--Device-connection-function offScanModeChange(callback?: Callback<ScanMode>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

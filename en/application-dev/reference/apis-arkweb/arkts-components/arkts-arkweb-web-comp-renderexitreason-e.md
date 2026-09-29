@@ -8,6 +8,8 @@ Enumerates the reasons why the rendering process exits.
 
 **Since:** 9
 
+<!--Device-unnamed-declare enum RenderExitReason--><!--Device-unnamed-declare enum RenderExitReason-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ProcessAbnormalTermination
@@ -21,6 +23,8 @@ The rendering process exited abnormally. Possible causes include rendering proce
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RenderExitReason-ProcessAbnormalTermination = 0--><!--Device-RenderExitReason-ProcessAbnormalTermination = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ The rendering process receives a SIGKILL message or is manually terminated.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RenderExitReason-ProcessWasKilled = 1--><!--Device-RenderExitReason-ProcessWasKilled = 1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ProcessCrashed
@@ -49,6 +55,8 @@ The rendering process crashes due to segmentation or other errors.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RenderExitReason-ProcessCrashed = 2--><!--Device-RenderExitReason-ProcessCrashed = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -64,6 +72,8 @@ The program memory is insufficient.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RenderExitReason-ProcessOom = 3--><!--Device-RenderExitReason-ProcessOom = 3-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ProcessExitUnknown
@@ -77,5 +87,7 @@ Other reasons, such as rendering process spawning failure.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RenderExitReason-ProcessExitUnknown = 4--><!--Device-RenderExitReason-ProcessExitUnknown = 4-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

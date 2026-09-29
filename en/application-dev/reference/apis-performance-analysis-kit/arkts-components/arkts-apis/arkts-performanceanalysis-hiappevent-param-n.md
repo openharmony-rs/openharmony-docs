@@ -14,6 +14,8 @@ Provides parameter name constants.
 
 **Since:** 9
 
+<!--Device-hiAppEvent-namespace param--><!--Device-hiAppEvent-namespace param-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import

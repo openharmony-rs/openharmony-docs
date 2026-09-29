@@ -42,6 +42,8 @@ or on the screen.
 
 **Since:** 9
 
+<!--Device-update-function getRestorer(): Restorer--><!--Device-update-function getRestorer(): Restorer-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.

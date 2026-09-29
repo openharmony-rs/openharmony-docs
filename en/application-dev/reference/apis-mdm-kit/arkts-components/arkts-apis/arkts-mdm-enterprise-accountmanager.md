@@ -9,6 +9,8 @@ This module provides device account management capabilities, including forbiddin
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace accountManager--><!--Device-unnamed-declare namespace accountManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

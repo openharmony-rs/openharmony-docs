@@ -4,6 +4,8 @@ The **notificationExtensionSubscription** module provides capabilities for manag
 
 **Since:** 22
 
+<!--Device-unnamed-declare namespace notificationExtensionSubscription--><!--Device-unnamed-declare namespace notificationExtensionSubscription-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## Modules to Import
@@ -36,13 +38,8 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 | [getUserGrantedState](arkts-notification-notificationextensionsubscription-getusergrantedstate-f-sys.md) | Obtains the enabling state of the **Allow access to notifications on this device** switch of a specified application. This API uses a promise to return the result. |
 | [setUserGrantedBundleState](arkts-notification-notificationextensionsubscription-setusergrantedbundlestate-f-sys.md) | Sets the enabling state of device notification access for the specified application. This API uses a promise to return the result. |
 | [setUserGrantedState](arkts-notification-notificationextensionsubscription-setusergrantedstate-f-sys.md) | Sets the enabling state of the **Allow access to notifications on this device** switch for a specified application. This API uses a promise to return the result. |
+| [subscribeNotification](arkts-notification-notificationextensionsubscription-subscribenotification-f-sys.md) | Subscribes to notifications based on the priority strategy. This API uses a promise to return the result. |
 <!--DelEnd-->
-
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [SubscribeType](arkts-notification-notificationextensionsubscription-subscribetype-e.md) | Describes the type that enables notification extension subscription. |
 
 ### Types
 
@@ -53,3 +50,9 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 | [NotificationExtensionSubscriptionInfo](arkts-notification-notificationextensionsubscription-notificationextensionsubscriptioninfo-t.md) | Describes the information about the notification extension subscription. |
 | [NotificationInfo](arkts-notification-notificationextensionsubscription-notificationinfo-t.md) | Describes the notification information delivered to the [onReceiveMessage](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions. |
 | [UserGrantSetting](arkts-notification-notificationextensionsubscription-usergrantsetting-t.md) | Describes the user authorization settings. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [SubscribeType](arkts-notification-notificationextensionsubscription-subscribetype-e.md) | Describes the type that enables notification extension subscription. |

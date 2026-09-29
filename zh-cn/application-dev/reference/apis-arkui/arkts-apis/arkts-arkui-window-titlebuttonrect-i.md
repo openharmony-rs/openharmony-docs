@@ -8,6 +8,8 @@ interface TitleButtonRect
 
 **起始版本：** 11
 
+<!--Device-window-interface TitleButtonRect--><!--Device-window-interface TitleButtonRect-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,7 +30,9 @@ height: number
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TitleButtonRect-height: int--><!--Device-TitleButtonRect-height: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -44,7 +48,9 @@ right: number
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TitleButtonRect-right: int--><!--Device-TitleButtonRect-right: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -60,7 +66,9 @@ top: number
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TitleButtonRect-top: int--><!--Device-TitleButtonRect-top: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -76,6 +84,8 @@ width: number
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TitleButtonRect-width: int--><!--Device-TitleButtonRect-width: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

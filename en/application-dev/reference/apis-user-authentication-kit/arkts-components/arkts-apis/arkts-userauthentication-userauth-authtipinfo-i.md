@@ -8,6 +8,8 @@ Represents the intermediate authentication status. This API is used to describe 
 
 **Since:** 20
 
+<!--Device-userAuth-interface AuthTipInfo--><!--Device-userAuth-interface AuthTipInfo-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Intermediate status. It indicates the specific intermediate status type, such as
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-AuthTipInfo-tipCode: UserAuthTipCode--><!--Device-AuthTipInfo-tipCode: UserAuthTipCode-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -44,6 +48,8 @@ Authentication type of the intermediate status. It indicates the authentication 
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-AuthTipInfo-tipType: UserAuthType--><!--Device-AuthTipInfo-tipType: UserAuthType-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

@@ -20,6 +20,8 @@ Subscribe location changed.
 **Required permissions:** 
 - API version 23 and later: ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-geoLocationManager-function onLocationChange(request: LocationRequest | ContinuousLocationRequest,  callback: Callback<Location>): void--><!--Device-geoLocationManager-function onLocationChange(request: LocationRequest | ContinuousLocationRequest,  callback: Callback<Location>): void-End-->
+
 **System capability:** 
 - API version 23 and later: SystemCapability.Location.Location.Core
 

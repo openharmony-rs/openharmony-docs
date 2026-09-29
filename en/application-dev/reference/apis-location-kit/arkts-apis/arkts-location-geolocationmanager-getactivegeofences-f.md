@@ -18,6 +18,8 @@ Get all active fences.
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-geoLocationManager-function getActiveGeoFences(): Promise<Map<int, Geofence>>--><!--Device-geoLocationManager-function getActiveGeoFences(): Promise<Map<int, Geofence>>-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **Return value:**

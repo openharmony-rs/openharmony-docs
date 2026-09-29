@@ -6,6 +6,8 @@ export interface BluetoothDevice
 
 **Since:** 6
 
+<!--Device-unnamed-export interface BluetoothDevice--><!--Device-unnamed-export interface BluetoothDevice-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Lite
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Address of BluetoothDevice
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-BluetoothDevice-addr: string--><!--Device-BluetoothDevice-addr: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Lite
 
 ## addrType
@@ -43,6 +47,8 @@ The addrType of address, may be public or random
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-BluetoothDevice-addrType: 'public' | 'random'--><!--Device-BluetoothDevice-addrType: 'public' | 'random'-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Lite
 
@@ -60,6 +66,8 @@ The data of BluetoothDevice
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-BluetoothDevice-data: string--><!--Device-BluetoothDevice-data: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Lite
 
 ## rssi
@@ -76,6 +84,8 @@ RSSI of the remote device
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-BluetoothDevice-rssi: number--><!--Device-BluetoothDevice-rssi: number-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Lite
 
 ## txpower
@@ -91,5 +101,7 @@ Transmission power level for advertising
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-BluetoothDevice-txpower: string--><!--Device-BluetoothDevice-txpower: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Lite

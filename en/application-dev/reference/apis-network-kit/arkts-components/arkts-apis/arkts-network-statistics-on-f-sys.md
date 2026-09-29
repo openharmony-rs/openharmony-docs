@@ -18,6 +18,8 @@ Subscribes to traffic change events. This API uses an asynchronous callback to r
 
 **Required permissions:** ohos.permission.GET_NETWORK_STATS
 
+<!--Device-statistics-function on(type: 'netStatsChange', callback: Callback<NetStatsChangeInfo>): void--><!--Device-statistics-function on(type: 'netStatsChange', callback: Callback<NetStatsChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.

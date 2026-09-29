@@ -22,6 +22,8 @@ No permission is required for obtaining the caller's own information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function getAppProvisionInfoInDevice(bundleName: string, userId: int): Promise<Array<AppProvisionInfo>>--><!--Device-bundleManager-function getAppProvisionInfoInDevice(bundleName: string, userId: int): Promise<Array<AppProvisionInfo>>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

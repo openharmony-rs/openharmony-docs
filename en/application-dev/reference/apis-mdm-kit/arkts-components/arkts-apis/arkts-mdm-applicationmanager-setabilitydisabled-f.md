@@ -20,6 +20,8 @@ Sets whether to disable the Ability component of a specified application (system
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function setAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityName: string, isDisabled: boolean): void--><!--Device-applicationManager-function setAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityName: string, isDisabled: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

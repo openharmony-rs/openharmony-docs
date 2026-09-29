@@ -10,6 +10,8 @@ Describes the focus axis event object. Inherits from [BaseEvent](arkts-arkui-com
 
 **Since:** 15
 
+<!--Device-unnamed-declare interface FocusAxisEvent extends BaseEvent--><!--Device-unnamed-declare interface FocusAxisEvent extends BaseEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## axisMap
@@ -28,6 +30,8 @@ Axis value table of the focus axis event.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-FocusAxisEvent-axisMap: Map<AxisModel, number>--><!--Device-FocusAxisEvent-axisMap: Map<AxisModel, number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## stopPropagation
@@ -45,5 +49,7 @@ Blocks [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-FocusAxisEvent-stopPropagation: Callback<void>--><!--Device-FocusAxisEvent-stopPropagation: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

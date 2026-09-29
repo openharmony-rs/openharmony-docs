@@ -16,6 +16,8 @@ Checks whether the called number is an emergency number based on the phone numbe
 
 **Since:** 7
 
+<!--Device-call-function isEmergencyPhoneNumber(phoneNumber: string, options: EmergencyNumberOptions, callback: AsyncCallback<boolean>): void--><!--Device-call-function isEmergencyPhoneNumber(phoneNumber: string, options: EmergencyNumberOptions, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **Parameters:**
@@ -63,6 +65,8 @@ function isEmergencyPhoneNumber(phoneNumber: string, options?: EmergencyNumberOp
 Checks whether the called number is an emergency number based on the phone number. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-call-function isEmergencyPhoneNumber(phoneNumber: string, options?: EmergencyNumberOptions): Promise<boolean>--><!--Device-call-function isEmergencyPhoneNumber(phoneNumber: string, options?: EmergencyNumberOptions): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -114,6 +118,8 @@ function isEmergencyPhoneNumber(phoneNumber: string, callback: AsyncCallback<boo
 Checks whether the called number is an emergency number. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
+
+<!--Device-call-function isEmergencyPhoneNumber(phoneNumber: string, callback: AsyncCallback<boolean>): void--><!--Device-call-function isEmergencyPhoneNumber(phoneNumber: string, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

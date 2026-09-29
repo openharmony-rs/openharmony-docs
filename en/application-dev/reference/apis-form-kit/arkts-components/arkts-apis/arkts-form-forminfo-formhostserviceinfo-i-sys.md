@@ -8,6 +8,8 @@ FormHostServiceInfo
 
 **Since:** 26.0.1
 
+<!--Device-formInfo-interface FormHostServiceInfo--><!--Device-formInfo-interface FormHostServiceInfo-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The custom data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormHostServiceInfo-customData?: Record<string, string>--><!--Device-FormHostServiceInfo-customData?: Record<string, string>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ The display Id.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormHostServiceInfo-displayId: string--><!--Device-FormHostServiceInfo-displayId: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -68,6 +74,8 @@ The service display name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormHostServiceInfo-serviceDisplayName: string--><!--Device-FormHostServiceInfo-serviceDisplayName: string-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ The service name.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormHostServiceInfo-serviceName: string--><!--Device-FormHostServiceInfo-serviceName: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

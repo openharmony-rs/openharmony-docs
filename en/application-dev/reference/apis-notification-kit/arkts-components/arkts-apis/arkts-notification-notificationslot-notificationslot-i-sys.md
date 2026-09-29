@@ -8,6 +8,8 @@ The **NotificationSlot** module provides APIs for defining the notification slot
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NotificationSlot--><!--Device-unnamed-export interface NotificationSlot-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## authorizedStatus
@@ -24,6 +26,8 @@ Authorization status.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-NotificationSlot-readonly authorizedStatus?: int--><!--Device-NotificationSlot-readonly authorizedStatus?: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -48,6 +52,8 @@ opposite.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-NotificationSlot-readonly reminderMode?: int--><!--Device-NotificationSlot-readonly reminderMode?: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

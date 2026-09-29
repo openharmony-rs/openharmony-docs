@@ -1,4 +1,4 @@
-# DepthComponent (System API)
+# DepthComponent(System API) (System API)
 
 Defines DepthComponent Component.
 
@@ -15,6 +15,8 @@ Defines the DepthComponent constructor.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-DepthComponentInterface-(background: ResourceStr | PixelMap, options?: DepthComponentOptions): DepthComponentAttribute--><!--Device-DepthComponentInterface-(background: ResourceStr | PixelMap, options?: DepthComponentOptions): DepthComponentAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,24 +35,24 @@ Defines the DepthComponent constructor.
 
 | Name | Description |
 | --- | --- |
-| [CameraBufferCrop](arkts-arkui-depthcomponent-comp-camerabuffercrop-i-sys.md) | Camera buffer crop parameters. |
-| [CropOffset](arkts-arkui-depthcomponent-comp-cropoffset-i-sys.md) | 2D offset for crop frame. |
-| [DepthCameraParams](arkts-arkui-depthcomponent-comp-depthcameraparams-i-sys.md) | Camera parameters struct. |
-| [DepthComponentCompleteEvent](arkts-arkui-depthcomponent-comp-depthcomponentcompleteevent-i-sys.md) | Information about the background resource loaded successfully. |
-| [DepthComponentErrorEvent](arkts-arkui-depthcomponent-comp-depthcomponenterrorevent-i-sys.md) | Information about the background resource loading error. |
-| [DepthComponentOptions](arkts-arkui-depthcomponent-comp-depthcomponentoptions-i-sys.md) | Defines the options of DepthComponent. |
-| [DepthLightParams](arkts-arkui-depthcomponent-comp-depthlightparams-i-sys.md) | Lighting parameters struct. |
+| [CameraBufferCrop](arkts-arkui-depthcomponent-comp-camerabuffercrop-i-sys.md) | Provides camera buffer crop parameters. |
+| [CropOffset](arkts-arkui-depthcomponent-comp-cropoffset-i-sys.md) | Provides crop offset. |
+| [DepthCameraParams](arkts-arkui-depthcomponent-comp-depthcameraparams-i-sys.md) | Provides camera parameters. |
+| [DepthComponentCompleteEvent](arkts-arkui-depthcomponent-comp-depthcomponentcompleteevent-i-sys.md) | Provides the event information about the successful loading of the background resource. |
+| [DepthComponentErrorEvent](arkts-arkui-depthcomponent-comp-depthcomponenterrorevent-i-sys.md) | Provides the event information about the background resource load failure. |
+| [DepthComponentOptions](arkts-arkui-depthcomponent-comp-depthcomponentoptions-i-sys.md) | Provides configuration options of **DepthComponent**. |
+| [DepthLightParams](arkts-arkui-depthcomponent-comp-depthlightparams-i-sys.md) | Provides lighting parameters. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [DepthComponentCompleteCallback](arkts-arkui-depthcomponent-comp-depthcomponentcompletecallback-t-sys.md) | Callback invoked when the background resource is loaded successfully. |
-| [DepthComponentErrorCallback](arkts-arkui-depthcomponent-comp-depthcomponenterrorcallback-t-sys.md) | Callback invoked when an error occurs during background resource loading. |
-| [DepthMapCallback](arkts-arkui-depthcomponent-comp-depthmapcallback-t-sys.md) | Callback invoked when the depth map resource is loaded. |
+| [DepthComponentCompleteCallback](arkts-arkui-depthcomponent-comp-depthcomponentcompletecallback-t-sys.md) | type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) =&gt; void |
+| [DepthComponentErrorCallback](arkts-arkui-depthcomponent-comp-depthcomponenterrorcallback-t-sys.md) | type DepthComponentErrorCallback = (error: DepthComponentErrorEvent) =&gt; void |
+| [DepthMapCallback](arkts-arkui-depthcomponent-comp-depthmapcallback-t-sys.md) | type DepthMapCallback = (error: BusinessError&lt;void&gt;) =&gt; void |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [DepthSpaceType](arkts-arkui-depthcomponent-comp-depthspacetype-e-sys.md) | Depth space type enumeration. |
+| [DepthSpaceType](arkts-arkui-depthcomponent-comp-depthspacetype-e-sys.md) | Enumerates depth space types. |

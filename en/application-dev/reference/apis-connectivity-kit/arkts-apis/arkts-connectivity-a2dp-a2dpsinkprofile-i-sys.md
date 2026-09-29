@@ -10,6 +10,8 @@ Manage a2dp sink profile.
 
 **Since:** 26.0.1
 
+<!--Device-a2dp-interface A2dpSinkProfile extends BaseProfile--><!--Device-a2dp-interface A2dpSinkProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Initiate an a2dp sink connection to a remote device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-A2dpSinkProfile-connect(deviceId: string): void--><!--Device-A2dpSinkProfile-connect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -69,6 +73,8 @@ Disconnect the a2dp sink connection with the remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-A2dpSinkProfile-disconnect(deviceId: string): void--><!--Device-A2dpSinkProfile-disconnect(deviceId: string): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -104,6 +110,8 @@ Obtain the playing state of device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-A2dpSinkProfile-getPlayingState(deviceId: string): PlayingState--><!--Device-A2dpSinkProfile-getPlayingState(deviceId: string): PlayingState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

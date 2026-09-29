@@ -12,6 +12,8 @@ Profile state change parameters.
 
 **Substitutes:** [StateChangeParam](arkts-connectivity-bluetoothmanager-statechangeparam-i.md)
 
+<!--Device-bluetooth-interface StateChangeParam--><!--Device-bluetooth-interface StateChangeParam-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ The address of device
 
 **Substitutes:** [deviceId](arkts-connectivity-bluetoothmanager-statechangeparam-i.md#deviceid)
 
+<!--Device-StateChangeParam-deviceId: string--><!--Device-StateChangeParam-deviceId: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## state
@@ -53,5 +57,7 @@ Profile state value
 **Deprecated since:** 9
 
 **Substitutes:** [state](arkts-connectivity-bluetoothmanager-statechangeparam-i.md#state)
+
+<!--Device-StateChangeParam-state: ProfileConnectionState--><!--Device-StateChangeParam-state: ProfileConnectionState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

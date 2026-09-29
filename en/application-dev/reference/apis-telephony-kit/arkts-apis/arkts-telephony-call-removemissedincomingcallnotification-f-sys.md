@@ -18,6 +18,8 @@ Removes missed call notifications. This API uses an asynchronous callback to ret
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE and ohos.permission.READ_CALL_LOG and ohos.permission.WRITE_CALL_LOG
 
+<!--Device-call-function removeMissedIncomingCallNotification(callback: AsyncCallback<void>): void--><!--Device-call-function removeMissedIncomingCallNotification(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Removes missed call notifications. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE and ohos.permission.READ_CALL_LOG and ohos.permission.WRITE_CALL_LOG
+
+<!--Device-call-function removeMissedIncomingCallNotification(): Promise<void>--><!--Device-call-function removeMissedIncomingCallNotification(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

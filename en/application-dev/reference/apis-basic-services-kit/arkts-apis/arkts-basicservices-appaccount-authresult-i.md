@@ -8,6 +8,8 @@ Defines the authentication result.
 
 **Since:** 9
 
+<!--Device-appAccount-interface AuthResult--><!--Device-appAccount-interface AuthResult-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Information about the account to which the token belongs. By default, no value i
 
 **Since:** 9
 
+<!--Device-AuthResult-account?: AppAccountInfo--><!--Device-AuthResult-account?: AppAccountInfo-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## tokenInfo
@@ -41,5 +45,7 @@ Token information. By default, no value is passed in.
 **Type:** [AuthTokenInfo](arkts-basicservices-appaccount-authtokeninfo-i.md)
 
 **Since:** 9
+
+<!--Device-AuthResult-tokenInfo?: AuthTokenInfo--><!--Device-AuthResult-tokenInfo?: AuthTokenInfo-End-->
 
 **System capability:** SystemCapability.Account.AppAccount

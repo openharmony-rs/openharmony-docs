@@ -10,6 +10,8 @@ For details about the demo of obtaining audio or video metadata and video thumbn
 
 **Since:** 11
 
+<!--Device-media-interface AVMetadataExtractor--><!--Device-media-interface AVMetadataExtractor-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 ## Modules to Import
@@ -27,6 +29,8 @@ getFrameIndexByTime(timeUs: number): Promise<number>
 Obtains the video frame number corresponding to a video timestamp. Only MP4 video files are supported.
 
 **Since:** 12
+
+<!--Device-AVMetadataExtractor-getFrameIndexByTime(timeUs: long): Promise<int>--><!--Device-AVMetadataExtractor-getFrameIndexByTime(timeUs: long): Promise<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -74,6 +78,8 @@ getTimeByFrameIndex(index: number): Promise<number>
 Obtains the video timestamp corresponding to a video frame number. Only MP4 video files are supported.
 
 **Since:** 12
+
+<!--Device-AVMetadataExtractor-getTimeByFrameIndex(index: int): Promise<long>--><!--Device-AVMetadataExtractor-getTimeByFrameIndex(index: int): Promise<long>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVMetadataExtractor
 

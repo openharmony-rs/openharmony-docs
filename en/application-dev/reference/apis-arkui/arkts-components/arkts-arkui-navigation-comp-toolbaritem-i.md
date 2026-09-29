@@ -8,6 +8,8 @@ Provides customizable parameters of the toolbar.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface ToolbarItem--><!--Device-unnamed-declare interface ToolbarItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -23,6 +25,8 @@ Callback invoked when the menu item is selected.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ToolbarItem-action?: () => void--><!--Device-ToolbarItem-action?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ Icon path of the toolbar item in the active state.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ToolbarItem-activeIcon?: ResourceStr--><!--Device-ToolbarItem-activeIcon?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## activeSymbolIcon
@@ -60,6 +66,8 @@ Symbol icon for a single option on the menu bar when it is in active state. It h
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ToolbarItem-activeSymbolIcon?: SymbolGlyphModifier--><!--Device-ToolbarItem-activeSymbolIcon?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -77,6 +85,8 @@ Icon path of the toolbar item.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ToolbarItem-icon?: ResourceStr--><!--Device-ToolbarItem-icon?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +108,8 @@ Default value: **ToolbarItemStatus.NORMAL**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ToolbarItem-status?: ToolbarItemStatus--><!--Device-ToolbarItem-status?: ToolbarItemStatus-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolIcon
@@ -116,6 +128,8 @@ Symbol icon for a single option on the toolbar. It has higher priority than **ic
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ToolbarItem-symbolIcon?: SymbolGlyphModifier--><!--Device-ToolbarItem-symbolIcon?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -133,5 +147,7 @@ Text of the toolbar item.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ToolbarItem-value: ResourceStr--><!--Device-ToolbarItem-value: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

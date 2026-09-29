@@ -24,6 +24,8 @@ Queries whether HDC is disabled. This API uses an asynchronous callback to retur
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function isHdcDisabled(admin: Want, callback: AsyncCallback<boolean>): void--><!--Device-restrictions-function isHdcDisabled(admin: Want, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -86,6 +88,8 @@ Queries whether HDC is disabled. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-restrictions-function isHdcDisabled(admin: Want): Promise<boolean>--><!--Device-restrictions-function isHdcDisabled(admin: Want): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -8,6 +8,8 @@ Defines the struct of CustomTheme.
 
 **Since:** 12
 
+<!--Device-unnamed-export declare interface CustomTheme--><!--Device-unnamed-export declare interface CustomTheme-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Define tokens associated with color resources..
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomTheme-colors?: CustomColors--><!--Device-CustomTheme-colors?: CustomColors-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## darkColors
@@ -51,5 +55,7 @@ Define tokens associated with dark mode color resources.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-CustomTheme-darkColors?: CustomDarkColors--><!--Device-CustomTheme-darkColors?: CustomDarkColors-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

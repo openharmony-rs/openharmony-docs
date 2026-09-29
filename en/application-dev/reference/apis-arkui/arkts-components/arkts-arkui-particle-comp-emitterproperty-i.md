@@ -4,11 +4,11 @@
 interface EmitterProperty
 ```
 
-Defines the emitter property.
-
-@interface EmitterProperty
+Sets the emitter attributes.
 
 **Since:** 12
+
+<!--Device-unnamed-interface EmitterProperty--><!--Device-unnamed-interface EmitterProperty-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,7 +18,9 @@ Defines the emitter property.
 annulusRegion?: ParticleAnnulusRegion
 ```
 
-the description of the annulus region. This parameter is valid only for emitter whose shape is annulus.
+Ring emitter parameters. This parameter takes effect only when the shape of the emitter corresponding to the **index** is annulus. For a annulus emitter, **position** and **size** do not take effect.
+
+**Atomic service API:** This API is supported in atomic services since API version 20.
 
 **Type:** [ParticleAnnulusRegion](arkts-arkui-particle-comp-particleannulusregion-i.md)
 
@@ -28,6 +30,8 @@ the description of the annulus region. This parameter is valid only for emitter 
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-EmitterProperty-annulusRegion?: ParticleAnnulusRegion--><!--Device-EmitterProperty-annulusRegion?: ParticleAnnulusRegion-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## emitRate
@@ -36,9 +40,11 @@ the description of the annulus region. This parameter is valid only for emitter 
 emitRate?: number
 ```
 
-Emit rate, that is, the number of particles emitted per second.
+Emission rate of the emitter, that is, the number of particles emitted per second.
 
-If no value is passed in, the current emit rate is retained. If a value less than 0 is passed in, the default value **5** is used. The **emitRate** value can significantly impact performance when it exceeds 5000; you are advised to set it to be less than 5000.
+If this parameter is not passed, the current emission rate is retained. If the passed value is less than 0, the default value 5 is used. An **emitRate** value greater than 5000 may have a significant impact on performance and a sharp drop in frame rate. It is recommended to set this parameter to a value less than 5000.
+
+**Atomic service API:** This API is supported in atomic services since API version 12.
 
 **Type:** number
 
@@ -47,6 +53,8 @@ If no value is passed in, the current emit rate is retained. If a value less tha
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-EmitterProperty-emitRate?: number--><!--Device-EmitterProperty-emitRate?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,7 +64,9 @@ If no value is passed in, the current emit rate is retained. If a value less tha
 index: number
 ```
 
-Index of the emitter based on the index array of the emitters in the initialization parameters. The value is rounded to the nearest whole number. The default value **0** is used in case of exceptions.
+Index, rounded to an integer, which specifies the corresponding emitter by the array index of the emitter in the initialization parameters. The default value is 0 for an invalid value.
+
+**Atomic service API:** This API is supported in atomic services since API version 12.
 
 **Type:** number
 
@@ -66,6 +76,8 @@ Index of the emitter based on the index array of the emitters in the initializat
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EmitterProperty-index: number--><!--Device-EmitterProperty-index: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## position
@@ -74,11 +86,13 @@ Index of the emitter based on the index array of the emitters in the initializat
 position?: PositionT<number>
 ```
 
-Array of emitter positions. Only the number type is supported.
+Emitter position. Only the number type is supported.
 
-If no value is passed in, the current emitter position is retained. Two valid values must be passed in; if either is an invalid value, **position** will not take effect.
+If this parameter is not passed, the current emitter position is retained. Two valid parameters must be passed. If either of them is invalid, **position** does not take effect. When the shape of the emitter corresponding to the **index** is annulus (**ANNULUS**), **position** does not take effect.
 
-Value range of **x** and **y**: (-∞, +∞).
+Value range of x and y: (-∞, +∞).
+
+**Atomic service API:** This API is supported in atomic services since API version 12.
 
 **Type:** [PositionT](arkts-arkui-particle-comp-positiont-t.md)&lt;number&gt;
 
@@ -88,6 +102,8 @@ Value range of **x** and **y**: (-∞, +∞).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EmitterProperty-position?: PositionT<number>--><!--Device-EmitterProperty-position?: PositionT<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -96,9 +112,11 @@ Value range of **x** and **y**: (-∞, +∞).
 size?: SizeT<number>
 ```
 
-Size of the emit window. Only the number type is supported.
+Size of the emitter. Only the number type is supported.
 
-If no value is passed in, the current emitter window size is retained. Two valid values greater than 0 must be passed in; if either is an invalid value, **size** will not take effect.
+If this parameter is not passed, the current emitter size is retained. Two valid parameters greater than 0 must be passed. If either of them is invalid, **size** does not take effect. When the shape of the emitter corresponding to the index is annulus (**ANNULUS**), **size** does not take effect.
+
+**Atomic service API:** This API is supported in atomic services since API version 12.
 
 **Type:** [SizeT](arkts-arkui-particle-comp-sizet-t.md)&lt;number&gt;
 
@@ -107,5 +125,7 @@ If no value is passed in, the current emitter window size is retained. Two valid
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-EmitterProperty-size?: SizeT<number>--><!--Device-EmitterProperty-size?: SizeT<number>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

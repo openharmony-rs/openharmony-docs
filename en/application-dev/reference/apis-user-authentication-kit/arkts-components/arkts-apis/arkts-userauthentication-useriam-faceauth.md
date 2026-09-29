@@ -10,6 +10,8 @@ This module applies to the following scenarios:
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace faceAuth--><!--Device-unnamed-declare namespace faceAuth-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.FaceAuth
 
 ## Modules to Import

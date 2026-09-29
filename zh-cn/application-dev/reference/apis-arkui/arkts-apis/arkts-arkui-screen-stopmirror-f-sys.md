@@ -16,6 +16,8 @@ function stopMirror(mirrorScreen:Array<number>, callback: AsyncCallback<void>): 
 
 **起始版本：** 10
 
+<!--Device-screen-function stopMirror(mirrorScreen:Array<long>, callback: AsyncCallback<void>): void--><!--Device-screen-function stopMirror(mirrorScreen:Array<long>, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -65,6 +67,8 @@ function stopMirror(mirrorScreen:Array<number>): Promise<void>
 停止屏幕的镜像模式，使用Promise异步回调。
 
 **起始版本：** 10
+
+<!--Device-screen-function stopMirror(mirrorScreen:Array<long>): Promise<void>--><!--Device-screen-function stopMirror(mirrorScreen:Array<long>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

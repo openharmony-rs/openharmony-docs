@@ -18,6 +18,8 @@ Creates a file mapping object based on a file descriptor or file object, using p
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare function mmap(file: number | File, mode: MappingMode, offset: number, size: number): Promise<FileMapping>--><!--Device-unnamed-declare function mmap(file: number | File, mode: MappingMode, offset: number, size: number): Promise<FileMapping>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

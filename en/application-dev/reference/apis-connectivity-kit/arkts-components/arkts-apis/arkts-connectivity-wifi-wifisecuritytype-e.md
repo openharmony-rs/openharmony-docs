@@ -14,6 +14,8 @@ Describes the wifi security type.
 
 **Substitutes:** [WifiSecurityType](arkts-connectivity-wifimanager-wifisecuritytype-e.md)
 
+<!--Device-wifi-enum WifiSecurityType--><!--Device-wifi-enum WifiSecurityType-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.Core
 
 ## WIFI_SEC_TYPE_INVALID
@@ -29,6 +31,8 @@ Invalid security type
 **Deprecated since:** 9
 
 **Substitutes:** [WIFI_SEC_TYPE_INVALID](arkts-connectivity-wifimanager-wifisecuritytype-e.md#wifi_sec_type_invalid)
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_INVALID = 0--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_INVALID = 0-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.Core
 
@@ -46,6 +50,8 @@ Open
 
 **Substitutes:** [WIFI_SEC_TYPE_OPEN](arkts-connectivity-wifimanager-wifisecuritytype-e.md#wifi_sec_type_open)
 
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_OPEN = 1--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_OPEN = 1-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.Core
 
 ## WIFI_SEC_TYPE_WEP
@@ -61,6 +67,8 @@ Wired Equivalent Privacy (WEP)
 **Deprecated since:** 9
 
 **Substitutes:** [WIFI_SEC_TYPE_WEP](arkts-connectivity-wifimanager-wifisecuritytype-e.md#wifi_sec_type_wep)
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.Core
 
@@ -78,6 +86,8 @@ Pre-shared key (PSK)
 
 **Substitutes:** [WIFI_SEC_TYPE_PSK](arkts-connectivity-wifimanager-wifisecuritytype-e.md#wifi_sec_type_psk)
 
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_PSK = 3--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_PSK = 3-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.Core
 
 ## WIFI_SEC_TYPE_SAE
@@ -93,5 +103,7 @@ Simultaneous Authentication of Equals (SAE)
 **Deprecated since:** 9
 
 **Substitutes:** [WIFI_SEC_TYPE_SAE](arkts-connectivity-wifimanager-wifisecuritytype-e.md#wifi_sec_type_sae)
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_SAE = 4--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_SAE = 4-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.Core

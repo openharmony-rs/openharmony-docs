@@ -8,6 +8,8 @@ Returns notification information carrying system property values.
 
 **Since:** 7
 
+<!--Device-unnamed-export interface SubscribeCallbackData--><!--Device-unnamed-export interface SubscribeCallbackData-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Notification classification information. It exists only when **enableClassificat
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SubscribeCallbackData-readonly notificationClassification?: NotificationClassification--><!--Device-SubscribeCallbackData-readonly notificationClassification?: NotificationClassification-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -45,6 +49,8 @@ Reason for deletion. The options are as follows:
 
 **Since:** 7
 
+<!--Device-SubscribeCallbackData-readonly reason?: int--><!--Device-SubscribeCallbackData-readonly reason?: int-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -60,6 +66,8 @@ Notification content.
 **Type:** [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)
 
 **Since:** 7
+
+<!--Device-SubscribeCallbackData-readonly request: NotificationRequest--><!--Device-SubscribeCallbackData-readonly request: NotificationRequest-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -77,6 +85,8 @@ Notification sorting information.
 
 **Since:** 7
 
+<!--Device-SubscribeCallbackData-readonly sortingMap?: NotificationSortingMap--><!--Device-SubscribeCallbackData-readonly sortingMap?: NotificationSortingMap-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ Notification sound.
 
 **Since:** 7
 
+<!--Device-SubscribeCallbackData-readonly sound?: string--><!--Device-SubscribeCallbackData-readonly sound?: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -108,6 +120,8 @@ Notification vibration.
 **Type:** Array&lt;number&gt;
 
 **Since:** 7
+
+<!--Device-SubscribeCallbackData-readonly vibrationValues?: Array<long>--><!--Device-SubscribeCallbackData-readonly vibrationValues?: Array<long>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -126,6 +140,8 @@ Voice broadcast content of the notification.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SubscribeCallbackData-readonly voiceContent?: VoiceContent--><!--Device-SubscribeCallbackData-readonly voiceContent?: VoiceContent-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

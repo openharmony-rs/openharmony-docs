@@ -16,6 +16,8 @@ function setFoldDisplayMode(mode: FoldDisplayMode): void
 
 **起始版本：** 10
 
+<!--Device-display-function setFoldDisplayMode(mode: FoldDisplayMode): void--><!--Device-display-function setFoldDisplayMode(mode: FoldDisplayMode): void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -60,6 +62,8 @@ function setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 更改可折叠设备的显示模式，并指明更改原因。
 
 **起始版本：** 19
+
+<!--Device-display-function setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void--><!--Device-display-function setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

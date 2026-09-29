@@ -8,6 +8,8 @@ Defines the callback information for the first content paint on the web page, in
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnFirstContentfulPaintEvent--><!--Device-unnamed-declare interface OnFirstContentfulPaintEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## firstContentfulPaintMs
@@ -24,6 +26,8 @@ Time between navigation and when the content is first rendered, in milliseconds.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnFirstContentfulPaintEvent-firstContentfulPaintMs: number--><!--Device-OnFirstContentfulPaintEvent-firstContentfulPaintMs: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## navigationStartTick
@@ -39,5 +43,7 @@ Navigation start time, in microseconds.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnFirstContentfulPaintEvent-navigationStartTick: number--><!--Device-OnFirstContentfulPaintEvent-navigationStartTick: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

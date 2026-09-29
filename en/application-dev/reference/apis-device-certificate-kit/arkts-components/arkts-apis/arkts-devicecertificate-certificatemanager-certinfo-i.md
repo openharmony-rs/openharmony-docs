@@ -8,6 +8,8 @@ Represents detailed information about a certificate.
 
 **Since:** 11
 
+<!--Device-certificateManager-export interface CertInfo--><!--Device-certificateManager-export interface CertInfo-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Binary data of a certificate. The value contains up to 8196 bytes.
 
 **Since:** 11
 
+<!--Device-CertInfo-cert: Uint8Array--><!--Device-CertInfo-cert: Uint8Array-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## certAlias
@@ -41,6 +45,8 @@ Alias of a certificate. The value contains up to 128 bytes.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-CertInfo-certAlias: string--><!--Device-CertInfo-certAlias: string-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -56,6 +62,8 @@ Fingerprint of a certificate. The value contains up to 128 bytes.
 
 **Since:** 11
 
+<!--Device-CertInfo-fingerprintSha256: string--><!--Device-CertInfo-fingerprintSha256: string-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## issuerName
@@ -69,6 +77,8 @@ Name of the certificate issuer. The value contains up to 256 bytes.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-CertInfo-issuerName: string--><!--Device-CertInfo-issuerName: string-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -84,6 +94,8 @@ Expiry date of a certificate. The value contains up to 32 bytes.
 
 **Since:** 11
 
+<!--Device-CertInfo-notAfter: string--><!--Device-CertInfo-notAfter: string-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## notBefore
@@ -97,6 +109,8 @@ Start date of a certificate. The value contains up to 32 bytes.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-CertInfo-notBefore: string--><!--Device-CertInfo-notBefore: string-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -112,6 +126,8 @@ Serial number of a certificate. The value contains up to 64 bytes. The value is 
 
 **Since:** 11
 
+<!--Device-CertInfo-serial: string--><!--Device-CertInfo-serial: string-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## state
@@ -125,6 +141,8 @@ Certificate state. The value **true** indicates that the certificate is enabled,
 **Type:** boolean
 
 **Since:** 11
+
+<!--Device-CertInfo-state: boolean--><!--Device-CertInfo-state: boolean-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -140,6 +158,8 @@ Name of the certificate subject. The value contains up to 1024 bytes.
 
 **Since:** 11
 
+<!--Device-CertInfo-subjectName: string--><!--Device-CertInfo-subjectName: string-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## uri
@@ -153,5 +173,7 @@ Unique identifier of a certificate. The value contains up to 256 bytes.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-CertInfo-uri: string--><!--Device-CertInfo-uri: string-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager

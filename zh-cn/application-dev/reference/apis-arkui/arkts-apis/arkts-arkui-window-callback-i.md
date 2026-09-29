@@ -8,6 +8,8 @@ Defines the window callback.
 
 **起始版本：** 15
 
+<!--Device-unnamed-declare interface Callback<T, V = void>--><!--Device-unnamed-declare interface Callback<T, V = void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -27,6 +29,8 @@ Defines the callback info.
 **起始版本：** 15
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-Callback-(data: T): V--><!--Device-Callback-(data: T): V-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

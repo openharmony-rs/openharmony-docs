@@ -14,6 +14,8 @@ Defines a color filter.
 
 **Since:** 11
 
+<!--Device-drawing-class ColorFilter--><!--Device-drawing-class ColorFilter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -31,6 +33,8 @@ static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): Color
 Creates a **ColorFilter** object with a given color and blend mode.
 
 **Since:** 11
+
+<!--Device-ColorFilter-static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): ColorFilter--><!--Device-ColorFilter-static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): ColorFilter-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -74,6 +78,8 @@ Creates a **ColorFilter** object with a given color and blend mode.
 
 **Since:** 18
 
+<!--Device-ColorFilter-static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMode): ColorFilter--><!--Device-ColorFilter-static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMode): ColorFilter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -112,6 +118,8 @@ static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFi
 Creates a **ColorFilter** object by combining another two color filters.
 
 **Since:** 11
+
+<!--Device-ColorFilter-static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFilter--><!--Device-ColorFilter-static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFilter-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -155,6 +163,8 @@ Creates a lighting color filter. It multiplies the RGB channel values by one col
 
 **Since:** 20
 
+<!--Device-ColorFilter-static createLightingColorFilter(mutColor: common2D.Color | number, addColor: common2D.Color | number): ColorFilter--><!--Device-ColorFilter-static createLightingColorFilter(mutColor: common2D.Color | number, addColor: common2D.Color | number): ColorFilter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -189,6 +199,8 @@ Creates a **ColorFilter** object that applies the sRGB gamma curve to the RGB ch
 
 **Since:** 11
 
+<!--Device-ColorFilter-static createLinearToSRGBGamma(): ColorFilter--><!--Device-ColorFilter-static createLinearToSRGBGamma(): ColorFilter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -215,6 +227,8 @@ Creates a **ColorFilter** object that multiplies the luma into the alpha channel
 
 **Since:** 11
 
+<!--Device-ColorFilter-static createLumaColorFilter(): ColorFilter--><!--Device-ColorFilter-static createLumaColorFilter(): ColorFilter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -240,6 +254,8 @@ static createMatrixColorFilter(matrix: Array<number>): ColorFilter
 Creates a color filter object with a 4*5 color matrix.
 
 **Since:** 12
+
+<!--Device-ColorFilter-static createMatrixColorFilter(matrix: Array<double>): ColorFilter--><!--Device-ColorFilter-static createMatrixColorFilter(matrix: Array<double>): ColorFilter-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -284,6 +300,8 @@ static createSRGBGammaToLinear(): ColorFilter
 Creates a **ColorFilter** object that applies the RGB channels to the sRGB gamma curve.
 
 **Since:** 11
+
+<!--Device-ColorFilter-static createSRGBGammaToLinear(): ColorFilter--><!--Device-ColorFilter-static createSRGBGammaToLinear(): ColorFilter-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

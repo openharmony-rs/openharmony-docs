@@ -12,6 +12,8 @@ declare interface SheetOptions extends BindOptions
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface SheetOptions extends BindOptions--><!--Device-unnamed-declare interface SheetOptions extends BindOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## blurSnapshot
@@ -33,6 +35,8 @@ blurSnapshot?: BlurSnapshotOptions
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SheetOptions-blurSnapshot?: BlurSnapshotOptions--><!--Device-SheetOptions-blurSnapshot?: BlurSnapshotOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ edgeLightMode?: EdgeLightMode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-SheetOptions-edgeLightMode?: EdgeLightMode--><!--Device-SheetOptions-edgeLightMode?: EdgeLightMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -79,6 +85,8 @@ offset?: Position
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SheetOptions-offset?: Position--><!--Device-SheetOptions-offset?: Position-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

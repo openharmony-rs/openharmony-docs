@@ -8,6 +8,8 @@ Enumerates the intermediate states of identity authentication. This enum is used
 
 **Since:** 20
 
+<!--Device-userAuth-enum UserAuthTipCode--><!--Device-userAuth-enum UserAuthTipCode-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## COMPARE_FAILURE
@@ -20,7 +22,9 @@ The authentication fails. This state occurs because the user's biometric feature
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-UserAuthTipCode-COMPARE_FAILURE = 1--><!--Device-UserAuthTipCode-COMPARE_FAILURE = 1-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -34,7 +38,9 @@ The authentication has timed out. This state usually occurs because the user has
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-UserAuthTipCode-TIMEOUT = 2--><!--Device-UserAuthTipCode-TIMEOUT = 2-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -48,7 +54,9 @@ The authentication is temporarily locked. When this state occurs, users can atte
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-UserAuthTipCode-TEMPORARILY_LOCKED = 3--><!--Device-UserAuthTipCode-TEMPORARILY_LOCKED = 3-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -62,7 +70,9 @@ The authentication is permanently locked. When this state occurs, automatic unlo
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-UserAuthTipCode-PERMANENTLY_LOCKED = 4--><!--Device-UserAuthTipCode-PERMANENTLY_LOCKED = 4-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -76,7 +86,9 @@ The identity authentication page is loaded. This state indicates that the authen
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-UserAuthTipCode-WIDGET_LOADED = 5--><!--Device-UserAuthTipCode-WIDGET_LOADED = 5-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -90,7 +102,9 @@ The current identity authentication page is switched to another authentication p
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-UserAuthTipCode-WIDGET_RELEASED = 6--><!--Device-UserAuthTipCode-WIDGET_RELEASED = 6-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -104,6 +118,8 @@ The authentication fails and authentication freezing is triggered. This state in
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-UserAuthTipCode-COMPARE_FAILURE_WITH_FROZEN = 7--><!--Device-UserAuthTipCode-COMPARE_FAILURE_WITH_FROZEN = 7-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

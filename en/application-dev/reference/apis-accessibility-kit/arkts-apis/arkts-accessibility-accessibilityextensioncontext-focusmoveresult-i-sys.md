@@ -8,6 +8,8 @@ Return value type of the accessibility node query.
 
 **Since:** 23
 
+<!--Device-unnamed-export declare interface FocusMoveResult--><!--Device-unnamed-export declare interface FocusMoveResult-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ Result type of the accessibility node query.
 
 **Since:** 23
 
+<!--Device-FocusMoveResult-result: FocusMoveResultCode--><!--Device-FocusMoveResult-result: FocusMoveResultCode-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ List of accessibility nodes returned by the query.
 **Type:** Array&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt;
 
 **Since:** 23
+
+<!--Device-FocusMoveResult-target: Array<AccessibilityElement>--><!--Device-FocusMoveResult-target: Array<AccessibilityElement>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

@@ -8,6 +8,8 @@ Defines a **RunningLock** object.
 
 **Since:** 7
 
+<!--Device-runningLock-class RunningLock--><!--Device-runningLock-class RunningLock-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Holds a running lock.
 **Since:** 9
 
 **Required permissions:** ohos.permission.RUNNING_LOCK
+
+<!--Device-RunningLock-hold(timeout: int): void--><!--Device-RunningLock-hold(timeout: int): void-End-->
 
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
@@ -84,6 +88,8 @@ Checks whether this running lock is being held.
 
 **Since:** 9
 
+<!--Device-RunningLock-isHolding(): boolean--><!--Device-RunningLock-isHolding(): boolean-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **Return value:**
@@ -119,78 +125,6 @@ class RunningLockTest {
 }
 ```
 
-## isUsed
-
-```TypeScript
-isUsed(): boolean
-```
-
-Checks whether this running lock is used.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [isHolding](#isholding)
-
-**System capability:** SystemCapability.PowerManager.PowerManager.Core
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| boolean | Returns true if the lock is held or in use; returns false if the lock has been released. |
-
-**Examples**
-
-```TypeScript
-runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND)
-.then((lock: runningLock.RunningLock) => {
-    let isUsed = lock.isUsed();
-    console.info('check running lock used status: ' + isUsed);
-})
-.catch((err: Error) => {
-    console.error('check running lock used status failed, err: ' + err);
-});
-```
-
-## lock
-
-```TypeScript
-lock(timeout: number): void
-```
-
-Locks and holds a **RunningLock** object.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [hold](#hold)
-
-**Required permissions:** ohos.permission.RUNNING_LOCK
-
-**System capability:** SystemCapability.PowerManager.PowerManager.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| timeout | number | Yes | Duration for locking and holding the **RunningLock** object, in ms. |
-
-**Examples**
-
-```TypeScript
-runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND)
-.then((lock: runningLock.RunningLock) => {
-    lock.lock(500);
-    console.info('create running lock and lock success');
-})
-.catch((err: Error) => {
-    console.error('create running lock failed, err: ' + err);
-});
-```
-
 ## unhold
 
 ```TypeScript
@@ -202,6 +136,8 @@ Releases this running lock.
 **Since:** 9
 
 **Required permissions:** ohos.permission.RUNNING_LOCK
+
+<!--Device-RunningLock-unhold(): void--><!--Device-RunningLock-unhold(): void-End-->
 
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
@@ -242,6 +178,82 @@ class RunningLockTest {
 }
 ```
 
+## isUsed
+
+```TypeScript
+isUsed(): boolean
+```
+
+Checks whether this running lock is used.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [isHolding](#isholding)
+
+<!--Device-RunningLock-isUsed(): boolean--><!--Device-RunningLock-isUsed(): boolean-End-->
+
+**System capability:** SystemCapability.PowerManager.PowerManager.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Returns true if the lock is held or in use; returns false if the lock has been released. |
+
+**Examples**
+
+```TypeScript
+runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND)
+.then((lock: runningLock.RunningLock) => {
+    let isUsed = lock.isUsed();
+    console.info('check running lock used status: ' + isUsed);
+})
+.catch((err: Error) => {
+    console.error('check running lock used status failed, err: ' + err);
+});
+```
+
+## lock
+
+```TypeScript
+lock(timeout: number): void
+```
+
+Locks and holds a **RunningLock** object.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [hold](#hold)
+
+**Required permissions:** ohos.permission.RUNNING_LOCK
+
+<!--Device-RunningLock-lock(timeout: number): void--><!--Device-RunningLock-lock(timeout: number): void-End-->
+
+**System capability:** SystemCapability.PowerManager.PowerManager.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| timeout | number | Yes | Duration for locking and holding the **RunningLock** object, in ms. |
+
+**Examples**
+
+```TypeScript
+runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.BACKGROUND)
+.then((lock: runningLock.RunningLock) => {
+    lock.lock(500);
+    console.info('create running lock and lock success');
+})
+.catch((err: Error) => {
+    console.error('create running lock failed, err: ' + err);
+});
+```
+
 ## unlock
 
 ```TypeScript
@@ -257,6 +269,8 @@ Releases this running lock.
 **Substitutes:** [unhold](#unhold)
 
 **Required permissions:** ohos.permission.RUNNING_LOCK
+
+<!--Device-RunningLock-unlock(): void--><!--Device-RunningLock-unlock(): void-End-->
 
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 

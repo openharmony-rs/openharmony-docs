@@ -10,6 +10,8 @@ Get form rect info callback
 
 **Since:** 20
 
+<!--Device-formInfo-type GetFormRectInfoCallback = (formId: string) => Promise<formInfo.Rect>--><!--Device-formInfo-type GetFormRectInfoCallback = (formId: string) => Promise<formInfo.Rect>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

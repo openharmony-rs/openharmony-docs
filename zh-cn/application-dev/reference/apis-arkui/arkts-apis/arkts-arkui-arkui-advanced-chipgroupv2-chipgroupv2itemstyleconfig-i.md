@@ -8,6 +8,8 @@ ChipGroupV2ItemStyleConfig定义了ChipV2的共通属性配置。
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface ChipGroupV2ItemStyleConfig--><!--Device-unnamed-export interface ChipGroupV2ItemStyleConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ ChipV2背景颜色。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2ItemStyleConfig-backgroundColor?: ColorMetrics--><!--Device-ChipGroupV2ItemStyleConfig-backgroundColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundSystemMaterial
@@ -55,6 +59,8 @@ backgroundSystemMaterial?: uiMaterial.Material
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2ItemStyleConfig-backgroundSystemMaterial?: uiMaterial.Material--><!--Device-ChipGroupV2ItemStyleConfig-backgroundSystemMaterial?: uiMaterial.Material-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +84,8 @@ ChipV2文字颜色。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2ItemStyleConfig-fontColor?: ColorMetrics--><!--Device-ChipGroupV2ItemStyleConfig-fontColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedBackgroundColor
@@ -100,6 +108,8 @@ ChipV2选中时的背景颜色。设置后，当ChipV2被选中时，背景会�
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2ItemStyleConfig-selectedBackgroundColor?: ColorMetrics--><!--Device-ChipGroupV2ItemStyleConfig-selectedBackgroundColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedBackgroundSystemMaterial
@@ -119,6 +129,8 @@ selectedBackgroundSystemMaterial?: uiMaterial.Material
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2ItemStyleConfig-selectedBackgroundSystemMaterial?: uiMaterial.Material--><!--Device-ChipGroupV2ItemStyleConfig-selectedBackgroundSystemMaterial?: uiMaterial.Material-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,6 +154,8 @@ ChipV2选中时的文字颜色。设置后，当ChipV2被选中时，label文本
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2ItemStyleConfig-selectedFontColor?: ColorMetrics--><!--Device-ChipGroupV2ItemStyleConfig-selectedFontColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -163,5 +177,7 @@ ChipV2尺寸，使用时需要从ChipV2组件引入ChipV2Size类型。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2ItemStyleConfig-size?: ChipV2Size | SizeT<LengthMetrics>--><!--Device-ChipGroupV2ItemStyleConfig-size?: ChipV2Size | SizeT<LengthMetrics>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -16,6 +16,8 @@ Obtains the debugging state of an application process.
 
 **Since:** 12
 
+<!--Device-hidebug-function isDebugState(): boolean--><!--Device-hidebug-function isDebugState(): boolean-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value:**

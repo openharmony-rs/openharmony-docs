@@ -36,6 +36,8 @@ Enumerates the flags of intent information ([InsightIntentInfo](arkts-ability-in
 
 **Since:** 20
 
+<!--Device-insightIntentDriver-enum GetInsightIntentFlag--><!--Device-insightIntentDriver-enum GetInsightIntentFlag-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -51,6 +53,8 @@ Used to query all intent information (except entities) in [InsightIntentInfo](ar
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GetInsightIntentFlag-GET_FULL_INSIGHT_INTENT = 0x00000001--><!--Device-GetInsightIntentFlag-GET_FULL_INSIGHT_INTENT = 0x00000001-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -68,6 +72,8 @@ Used to query brief intent information in [InsightIntentInfo](arkts-ability-insi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GetInsightIntentFlag-GET_SUMMARY_INSIGHT_INTENT = 0x00000002--><!--Device-GetInsightIntentFlag-GET_SUMMARY_INSIGHT_INTENT = 0x00000002-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -83,6 +89,8 @@ Used to query [EntityInfo](arkts-ability-insightintentdriver-entityinfo-i-sys.md
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GetInsightIntentFlag-GET_ENTITY_INFO = 0x00000004--><!--Device-GetInsightIntentFlag-GET_ENTITY_INFO = 0x00000004-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

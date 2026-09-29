@@ -16,6 +16,8 @@ Converts host names from ASCII to Unicode using the Punycode encoding mode and u
 
 **Since:** 23
 
+<!--Device-connection-function getDnsUnicode(host: string, flag?: ConversionProcess): string--><!--Device-connection-function getDnsUnicode(host: string, flag?: ConversionProcess): string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

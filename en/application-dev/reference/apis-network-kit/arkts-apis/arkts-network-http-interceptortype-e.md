@@ -8,13 +8,15 @@ Enumerates the types of HTTP interceptors.
 
 | Name | Value|Description |  
 | ------ | --|-------------------------------------- |  
-| [INITIAL_REQUEST](arkts-network-http-interceptortype-e.md) |'INITIAL_REQUEST' |Intercepts after the initial HTTP request is assembled.|
-| [REDIRECTION](arkts-network-http-interceptortype-e.md) | 'REDIRECTION' |Intercepts when a redirection response is received.|
-| [CACHE_CHECKED](arkts-network-http-interceptortype-e.md) | 'READ_CACHE' |Intercepts when the HTTP cache is checked and hit.|
-| [NETWORK_CONNECT](arkts-network-http-interceptortype-e.md) | 'CONNECT_NETWORK' |Intercepts before the network request is sent.|
-| [FINAL_RESPONSE](arkts-network-http-interceptortype-e.md) | 'FINAL_RESPONSE' |Intercepts when the final HTTP response is obtained.|
+| INITIAL_REQUEST |'INITIAL_REQUEST' |Intercepts after the initial HTTP request is assembled.|
+| REDIRECTION | 'REDIRECTION' |Intercepts when a redirection response is received.|
+| CACHE_CHECKED | 'READ_CACHE' |Intercepts when the HTTP cache is checked and hit.|
+| NETWORK_CONNECT | 'CONNECT_NETWORK' |Intercepts before the network request is sent.|
+| FINAL_RESPONSE | 'FINAL_RESPONSE' |Intercepts when the final HTTP response is obtained.|
 
 **Since:** 22
+
+<!--Device-http-export enum InterceptorType--><!--Device-http-export enum InterceptorType-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -30,6 +32,8 @@ Intercept after the initial HTTP request is assembled.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-InterceptorType-INITIAL_REQUEST = 'INITIAL_REQUEST'--><!--Device-InterceptorType-INITIAL_REQUEST = 'INITIAL_REQUEST'-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## REDIRECTION
@@ -43,6 +47,8 @@ Intercept when we get a redirection responsed and is going to send another reque
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-InterceptorType-REDIRECTION = 'REDIRECTION'--><!--Device-InterceptorType-REDIRECTION = 'REDIRECTION'-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -58,6 +64,8 @@ Intercept after we checked the HTTP cache.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-InterceptorType-CACHE_CHECKED = 'READ_CACHE'--><!--Device-InterceptorType-CACHE_CHECKED = 'READ_CACHE'-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## NETWORK_CONNECT
@@ -72,6 +80,8 @@ Intercept when we perform network connection, such as TLS and TCP.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-InterceptorType-NETWORK_CONNECT = 'CONNECT_NETWORK'--><!--Device-InterceptorType-NETWORK_CONNECT = 'CONNECT_NETWORK'-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## FINAL_RESPONSE
@@ -85,5 +95,7 @@ Intercept when we get the final HTTP response.
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-InterceptorType-FINAL_RESPONSE = 'FINAL_RESPONSE'--><!--Device-InterceptorType-FINAL_RESPONSE = 'FINAL_RESPONSE'-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

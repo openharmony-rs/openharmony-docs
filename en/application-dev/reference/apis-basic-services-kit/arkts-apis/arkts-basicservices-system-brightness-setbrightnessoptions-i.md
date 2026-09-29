@@ -10,6 +10,8 @@ Options for setting the screen brightness.
 
 **Deprecated since:** 7
 
+<!--Device-unnamed-export interface SetBrightnessOptions--><!--Device-unnamed-export interface SetBrightnessOptions-End-->
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Called when an API call is complete.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-SetBrightnessOptions-complete?: () => void--><!--Device-SetBrightnessOptions-complete?: () => void-End-->
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## fail
@@ -47,6 +51,8 @@ Called when an API call has failed. **data** indicates the error information, an
 **Deprecated since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-SetBrightnessOptions-fail?: (data: string, code: number) => void--><!--Device-SetBrightnessOptions-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -71,6 +77,8 @@ Called when an API call is successful.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-SetBrightnessOptions-success?: () => void--><!--Device-SetBrightnessOptions-success?: () => void-End-->
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## value
@@ -93,5 +101,7 @@ Screen brightness. The value is an integer ranging from **1** to **255**.
 **Deprecated since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-SetBrightnessOptions-value: number--><!--Device-SetBrightnessOptions-value: number-End-->
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite

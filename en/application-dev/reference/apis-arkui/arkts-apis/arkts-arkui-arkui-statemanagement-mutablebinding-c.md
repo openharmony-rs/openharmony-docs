@@ -8,6 +8,8 @@ Represents a generic class for mutable data binding, which allows the read and w
 
 **Since:** 20
 
+<!--Device-unnamed-export declare class MutableBinding<T>--><!--Device-unnamed-export declare class MutableBinding<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -22,7 +24,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 get value(): T
 ```
 
-Obtains a bound value.
+Provides a **get** accessor to obtain the current bound value.
 
 **Type:** T
 
@@ -31,6 +33,8 @@ Obtains a bound value.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-MutableBinding-get value(): T--><!--Device-MutableBinding-get value(): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,5 +51,7 @@ Provides the **set** accessor to set a new value for the current bound value. Th
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-MutableBinding-set value(newValue: T)--><!--Device-MutableBinding-set value(newValue: T)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Image animator element @interface ImageAnimatorElement
 
 **Since:** 4
 
+<!--Device-unnamed-export interface ImageAnimatorElement--><!--Device-unnamed-export interface ImageAnimatorElement-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## getState
@@ -21,6 +23,8 @@ Obtains the playback state. Available values are as follows: Playing Paused Stop
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ImageAnimatorElement-getState(): "Playing" | "Paused" | "Stopped"--><!--Device-ImageAnimatorElement-getState(): "Playing" | "Paused" | "Stopped"-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -42,6 +46,8 @@ Pauses the frame animation playback of an image.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-ImageAnimatorElement-pause(): void--><!--Device-ImageAnimatorElement-pause(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## resume
@@ -55,6 +61,8 @@ Resumes the frame animation playback of an image.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ImageAnimatorElement-resume(): void--><!--Device-ImageAnimatorElement-resume(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -70,6 +78,8 @@ Starts to play the frame animation of an image. If this method is called again, 
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-ImageAnimatorElement-start(): void--><!--Device-ImageAnimatorElement-start(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## stop
@@ -83,5 +93,7 @@ Stops the frame animation playback of an image.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ImageAnimatorElement-stop(): void--><!--Device-ImageAnimatorElement-stop(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite

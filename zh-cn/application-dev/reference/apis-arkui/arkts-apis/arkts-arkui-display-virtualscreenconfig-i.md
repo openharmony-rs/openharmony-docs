@@ -8,6 +8,8 @@ interface VirtualScreenConfig
 
 **起始版本：** 16
 
+<!--Device-display-interface VirtualScreenConfig--><!--Device-display-interface VirtualScreenConfig-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,6 +30,8 @@ density: number
 
 **起始版本：** 16
 
+<!--Device-VirtualScreenConfig-density: double--><!--Device-VirtualScreenConfig-density: double-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## height
@@ -41,6 +45,8 @@ height: number
 **类型：** number
 
 **起始版本：** 16
+
+<!--Device-VirtualScreenConfig-height: long--><!--Device-VirtualScreenConfig-height: long-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -56,6 +62,8 @@ name: string
 
 **起始版本：** 16
 
+<!--Device-VirtualScreenConfig-name: string--><!--Device-VirtualScreenConfig-name: string-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## supportsFocus
@@ -69,6 +77,8 @@ supportsFocus?: boolean
 **类型：** boolean
 
 **起始版本：** 22
+
+<!--Device-VirtualScreenConfig-supportsFocus?: boolean--><!--Device-VirtualScreenConfig-supportsFocus?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -84,6 +94,8 @@ surfaceId: string
 
 **起始版本：** 16
 
+<!--Device-VirtualScreenConfig-surfaceId: string--><!--Device-VirtualScreenConfig-surfaceId: string-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## width
@@ -97,5 +109,7 @@ width: number
 **类型：** number
 
 **起始版本：** 16
+
+<!--Device-VirtualScreenConfig-width: long--><!--Device-VirtualScreenConfig-width: long-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

@@ -19,6 +19,8 @@ Synchronizes a file. This API uses a promise to return the result.
 
 **Substitutes:** [fsync](arkts-corefile-file-fs-fsync-f.md)
 
+<!--Device-unnamed-declare function fsync(fd: number): Promise<void>--><!--Device-unnamed-declare function fsync(fd: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -49,6 +51,8 @@ Synchronizes a file. This API uses an asynchronous callback to return the result
 **Deprecated since:** 9
 
 **Substitutes:** [fsync](arkts-corefile-file-fs-fsync-f.md)
+
+<!--Device-unnamed-declare function fsync(fd: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function fsync(fd: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

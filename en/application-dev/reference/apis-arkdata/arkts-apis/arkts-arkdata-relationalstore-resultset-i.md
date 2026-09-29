@@ -12,6 +12,8 @@ For the following APIs, you should use either [query] [query](arkts-arkdata-rela
 
 **Since:** 9
 
+<!--Device-relationalStore-interface ResultSet--><!--Device-relationalStore-interface ResultSet-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ close(): void
 Closes this **resultSet** to release memory. If the **resultSet** is not closed, FD or memory leaks may occur.
 
 **Since:** 9
+
+<!--Device-ResultSet-close(): void--><!--Device-ResultSet-close(): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -50,6 +54,8 @@ getAsset(columnIndex: number): Asset
 Obtains the value from the specified column in the current row, and returns the value in the [Asset](arkts-arkdata-relationalstore-asset-i.md) format. If the type of the value in the column is **Asset**, the value of the Asset type is returned. If the value in the column is null, **null** is returned. If the value in the column is of other types, 14800000 is returned.
 
 **Since:** 10
+
+<!--Device-ResultSet-getAsset(columnIndex: int): Asset--><!--Device-ResultSet-getAsset(columnIndex: int): Asset-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -107,6 +113,8 @@ getAssets(columnIndex: number): Assets
 Obtains the value from the specified column in the current row, and returns the value in the [Assets](arkts-arkdata-relationalstore-assets-t.md) format. If the type of the value in the column is **Assets**, the value of the Assets type is returned. If the value in the column is null, **null** is returned. If the value in the column is of other types, 14800000 is returned.
 
 **Since:** 10
+
+<!--Device-ResultSet-getAssets(columnIndex: int): Assets--><!--Device-ResultSet-getAssets(columnIndex: int): Assets-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -167,6 +175,8 @@ If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BL
 
 **Since:** 9
 
+<!--Device-ResultSet-getBlob(columnIndex: int): Uint8Array--><!--Device-ResultSet-getBlob(columnIndex: int): Uint8Array-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -223,6 +233,8 @@ getColumnIndex(columnName: string): number
 Obtains the column index based on the column name.
 
 **Since:** 9
+
+<!--Device-ResultSet-getColumnIndex(columnName: string): int--><!--Device-ResultSet-getColumnIndex(columnName: string): int-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -283,6 +295,8 @@ getColumnName(columnIndex: number): string
 Obtains the column name based on the column index.
 
 **Since:** 9
+
+<!--Device-ResultSet-getColumnName(columnIndex: int): string--><!--Device-ResultSet-getColumnName(columnIndex: int): string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -347,6 +361,8 @@ The column names are returned in a string array. The sequence of strings in the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ResultSet-getColumnNames(): Array<string>--><!--Device-ResultSet-getColumnNames(): Array<string>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -392,6 +408,8 @@ getColumnType(columnIdentifier: number | string): Promise<ColumnType>
 Obtains the column type based on the specified column index or column name. This API uses a promise to return the result.
 
 **Since:** 18
+
+<!--Device-ResultSet-getColumnType(columnIdentifier: int | string): Promise<ColumnType>--><!--Device-ResultSet-getColumnType(columnIdentifier: int | string): Promise<ColumnType>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -458,6 +476,8 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 Obtains the column type based on the specified column index or column name. This API returns the result synchronously.
 
 **Since:** 18
+
+<!--Device-ResultSet-getColumnTypeSync(columnIdentifier: int | string): ColumnType--><!--Device-ResultSet-getColumnTypeSync(columnIdentifier: int | string): ColumnType-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -527,6 +547,8 @@ Obtains the values of all columns in this row.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ResultSet-getCurrentRowData(): RowData--><!--Device-ResultSet-getCurrentRowData(): RowData-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -576,6 +598,8 @@ Obtains the value from the specified column in the current row, and returns a va
 If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, a value of Double type will be returned. If the column is null/empty, **0.0** will be returned. If the value is of any other type, 14800000 will be returned.
 
 **Since:** 9
+
+<!--Device-ResultSet-getDouble(columnIndex: int): double--><!--Device-ResultSet-getDouble(columnIndex: int): double-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -642,6 +666,8 @@ If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BL
 
 **Since:** 9
 
+<!--Device-ResultSet-getLong(columnIndex: int): long--><!--Device-ResultSet-getLong(columnIndex: int): long-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -705,6 +731,8 @@ Obtains this row.
 
 **Since:** 11
 
+<!--Device-ResultSet-getRow(): ValuesBucket--><!--Device-ResultSet-getRow(): ValuesBucket-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -754,6 +782,8 @@ getRows(maxCount: number, position?: number): Promise<Array<ValuesBucket>>
 Obtains a specified amount of data from the result set. This API uses a promise to return the result. Do not call this API concurrently with other APIs of [ResultSet](arkts-arkdata-data-relationalstore.md). Otherwise, unexpected data may be obtained.
 
 **Since:** 18
+
+<!--Device-ResultSet-getRows(maxCount: int, position?: int): Promise<Array<ValuesBucket>>--><!--Device-ResultSet-getRows(maxCount: int, position?: int): Promise<Array<ValuesBucket>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -832,6 +862,8 @@ Obtains data of a specified number of rows from the specified position. This API
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ResultSet-getRowsData(maxCount: int, position?: int): Promise<RowsData>--><!--Device-ResultSet-getRowsData(maxCount: int, position?: int): Promise<RowsData>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -914,6 +946,8 @@ getSendableRow(): sendableRelationalStore.ValuesBucket
 Obtains the sendable data from the current row. The sendable data can be passed across threads.
 
 **Since:** 12
+
+<!--Device-ResultSet-getSendableRow(): sendableRelationalStore.ValuesBucket--><!--Device-ResultSet-getSendableRow(): sendableRelationalStore.ValuesBucket-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1009,6 +1043,8 @@ If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BL
 
 **Since:** 9
 
+<!--Device-ResultSet-getString(columnIndex: int): string--><!--Device-ResultSet-getString(columnIndex: int): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -1065,6 +1101,8 @@ getValue(columnIndex: number): ValueType
 Obtains the value from the specified column in the current row. If the value type is any of **ValueType**, the value of the corresponding type will be returned. Otherwise, 14800000 will be returned. If the value type is INTEGER and the value is greater than **Number.MAX_SAFE_INTEGER** or less than **Number.MIN_SAFE_INTEGER**, you are advised to use the [getString](#getstring) API to obtain the value without losing precision.
 
 **Since:** 12
+
+<!--Device-ResultSet-getValue(columnIndex: int): ValueType--><!--Device-ResultSet-getValue(columnIndex: int): ValueType-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1129,6 +1167,8 @@ Moves the result set pointer based on the offset specified.
 
 **Since:** 9
 
+<!--Device-ResultSet-goTo(offset: int): boolean--><!--Device-ResultSet-goTo(offset: int): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -1186,6 +1226,8 @@ Moves to the first row of the result set.
 
 **Since:** 9
 
+<!--Device-ResultSet-goToFirstRow(): boolean--><!--Device-ResultSet-goToFirstRow(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -1235,6 +1277,8 @@ goToLastRow(): boolean
 Moves to the last row of the result set.
 
 **Since:** 9
+
+<!--Device-ResultSet-goToLastRow(): boolean--><!--Device-ResultSet-goToLastRow(): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1286,6 +1330,8 @@ Moves to the next row in the result set.
 
 **Since:** 9
 
+<!--Device-ResultSet-goToNextRow(): boolean--><!--Device-ResultSet-goToNextRow(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -1336,6 +1382,8 @@ Moves to the previous row in the result set.
 
 **Since:** 9
 
+<!--Device-ResultSet-goToPreviousRow(): boolean--><!--Device-ResultSet-goToPreviousRow(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -1385,6 +1433,8 @@ goToRow(position: number): boolean
 Moves to the specified row in the result set.
 
 **Since:** 9
+
+<!--Device-ResultSet-goToRow(position: int): boolean--><!--Device-ResultSet-goToRow(position: int): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1442,6 +1492,8 @@ isColumnNull(columnIndex: number): boolean
 Checks whether the value in the specified column is null.
 
 **Since:** 9
+
+<!--Device-ResultSet-isColumnNull(columnIndex: int): boolean--><!--Device-ResultSet-isColumnNull(columnIndex: int): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1508,6 +1560,8 @@ Number of columns in the result set.
 
 **Since:** 9
 
+<!--Device-ResultSet-columnCount: int--><!--Device-ResultSet-columnCount: int-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## columnNames
@@ -1521,6 +1575,8 @@ Names of all columns in the result set. If the result set contains duplicate col
 **Type:** Array&lt;string&gt;
 
 **Since:** 9
+
+<!--Device-ResultSet-columnNames: Array<string>--><!--Device-ResultSet-columnNames: Array<string>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1536,6 +1592,8 @@ Whether the result set pointer is in the first row (the row index is **0**). The
 
 **Since:** 9
 
+<!--Device-ResultSet-isAtFirstRow: boolean--><!--Device-ResultSet-isAtFirstRow: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## isAtLastRow
@@ -1549,6 +1607,8 @@ Whether the result set pointer is in the last row. The value **true** means the 
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-ResultSet-isAtLastRow: boolean--><!--Device-ResultSet-isAtLastRow: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1564,6 +1624,8 @@ Whether the result set is closed. The value **true** means the result set is clo
 
 **Since:** 9
 
+<!--Device-ResultSet-isClosed: boolean--><!--Device-ResultSet-isClosed: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## isEnded
@@ -1577,6 +1639,8 @@ Whether the result set pointer is after the last row. The value **true** means t
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-ResultSet-isEnded: boolean--><!--Device-ResultSet-isEnded: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1592,6 +1656,8 @@ Whether the result set pointer is moved. The value **true** means the pointer is
 
 **Since:** 9
 
+<!--Device-ResultSet-isStarted: boolean--><!--Device-ResultSet-isStarted: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## rowCount
@@ -1605,6 +1671,8 @@ Number of rows in the result set.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ResultSet-rowCount: int--><!--Device-ResultSet-rowCount: int-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1621,5 +1689,7 @@ Default value: **-1**. The index position starts from **0**.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ResultSet-rowIndex: int--><!--Device-ResultSet-rowIndex: int-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

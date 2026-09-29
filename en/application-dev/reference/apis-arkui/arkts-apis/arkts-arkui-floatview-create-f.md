@@ -18,6 +18,8 @@ Creates a float view controller. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-floatView-function create(config: FloatViewConfiguration): Promise<FloatViewController>--><!--Device-floatView-function create(config: FloatViewConfiguration): Promise<FloatViewController>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**

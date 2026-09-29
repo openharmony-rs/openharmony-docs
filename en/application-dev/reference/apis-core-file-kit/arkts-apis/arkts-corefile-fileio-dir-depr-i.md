@@ -12,6 +12,8 @@ Manages directories. Before calling a method of the **Dir** class, use the **ope
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
+<!--Device-unnamed-declare interface Dir--><!--Device-unnamed-declare interface Dir-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Closes a directory. This API uses a promise to return the result. After a direct
 **Deprecated since:** 9
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
+
+<!--Device-Dir-close(): Promise<void>--><!--Device-Dir-close(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -66,6 +70,8 @@ Closes a directory. This API uses an asynchronous callback to return the result.
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
+<!--Device-Dir-close(callback: AsyncCallback<void>): void--><!--Device-Dir-close(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -97,6 +103,8 @@ Closes a directory. After a directory is closed, the file descriptor in **Dir** 
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
+<!--Device-Dir-closeSync(): void--><!--Device-Dir-closeSync(): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Examples**
@@ -118,6 +126,8 @@ Reads the next directory entry. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
+
+<!--Device-Dir-read(): Promise<Dirent>--><!--Device-Dir-read(): Promise<Dirent>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -154,6 +164,8 @@ Reads the next directory entry. This API uses an asynchronous callback to return
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
+<!--Device-Dir-read(callback: AsyncCallback<Dirent>): void--><!--Device-Dir-read(callback: AsyncCallback<Dirent>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -187,6 +199,8 @@ Reads the next directory entry. This API returns the result synchronously.
 **Deprecated since:** 9
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
+
+<!--Device-Dir-readSync(): Dirent--><!--Device-Dir-readSync(): Dirent-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

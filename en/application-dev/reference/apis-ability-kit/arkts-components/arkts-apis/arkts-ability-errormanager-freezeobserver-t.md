@@ -8,6 +8,8 @@ Defines an observer for the main thread freeze event of the application. It is u
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-errorManager-export type FreezeObserver = () => void--><!--Device-errorManager-export type FreezeObserver = () => void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

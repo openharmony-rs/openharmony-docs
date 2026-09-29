@@ -20,6 +20,8 @@ This API can only be used in the main thread. If a thread error occurs, an error
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-errorManager-function on(type: 'error', observer: ErrorObserver): number--><!--Device-errorManager-function on(type: 'error', observer: ErrorObserver): number-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -86,6 +88,8 @@ This API can only be used in the main thread. If a thread error occurs, an error
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-errorManager-function on(type: 'loopObserver', timeout: number, observer: LoopObserver): void--><!--Device-errorManager-function on(type: 'loopObserver', timeout: number, observer: LoopObserver): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -138,6 +142,8 @@ This API can only be used in the main thread. If a thread error occurs, an error
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-errorManager-function on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void--><!--Device-errorManager-function on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -189,6 +195,8 @@ Registers a rejected promise observer with any thread in the process. Once regis
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-errorManager-function on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void--><!--Device-errorManager-function on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -254,6 +262,8 @@ This API can only be used in the main thread. If a thread error occurs, an error
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-errorManager-function on(type: 'freeze', observer: FreezeObserver): void--><!--Device-errorManager-function on(type: 'freeze', observer: FreezeObserver): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -299,6 +309,8 @@ Registers a global error observer via the **errorManager.on** API within any thr
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-errorManager-function on(type: 'globalErrorOccurred', observer: GlobalObserver): void--><!--Device-errorManager-function on(type: 'globalErrorOccurred', observer: GlobalObserver): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

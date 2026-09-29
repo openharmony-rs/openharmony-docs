@@ -13,6 +13,8 @@ declare enum HitTestMode
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare enum HitTestMode--><!--Device-unnamed-declare enum HitTestMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Default
@@ -30,6 +32,8 @@ Default
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-HitTestMode-Default--><!--Device-HitTestMode-Default-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +53,8 @@ Block
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-HitTestMode-Block--><!--Device-HitTestMode-Block-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Transparent
@@ -66,6 +72,8 @@ Transparent
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-HitTestMode-Transparent--><!--Device-HitTestMode-Transparent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,6 +93,8 @@ None
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-HitTestMode-None--><!--Device-HitTestMode-None-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BLOCK_HIERARCHY
@@ -103,6 +113,8 @@ BLOCK_HIERARCHY
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-HitTestMode-BLOCK_HIERARCHY--><!--Device-HitTestMode-BLOCK_HIERARCHY-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BLOCK_DESCENDANTS
@@ -120,5 +132,7 @@ BLOCK_DESCENDANTS
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-HitTestMode-BLOCK_DESCENDANTS--><!--Device-HitTestMode-BLOCK_DESCENDANTS-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

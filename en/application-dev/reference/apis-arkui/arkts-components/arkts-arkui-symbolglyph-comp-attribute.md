@@ -4,13 +4,13 @@
 declare class SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>
 ```
 
-The [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md) are supported. For text attributes, only the following attributes are supported.
-
-The [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md) are supported.
+The [universal attributes](arkts-arkui-common-comp.md) are supported. For text attributes, only the following attributes are supported.
 
 **Inheritance/Implementation:** SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>
 
 **Since:** 11
+
+<!--Device-unnamed-declare class SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>--><!--Device-unnamed-declare class SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,11 +20,15 @@ The [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-gener
 effectStrategy(value: SymbolEffectStrategy)
 ```
 
-Sets the effect strategy of the **SymbolGlyph** component.
+Sets the effect strategy of the **SymbolGlyph** component. If this API is not used, the default effect strategy is **SymbolEffectStrategy.NONE**.
 
 > **NOTE:** 
 > 
-> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
+> - Since API version 12, this API is supported in [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
+> 
+> - For animation attributes, only the **effectStrategy** attribute or a single **symbolEffect** attribute is supported. Mixing multiple animation attributes is not supported.
+> 
+> - This API supports only the three preset animation types: NONE, SCALE, and HIERARCHICAL. After being set, the animation plays automatically. To use richer animation types (such as appear, disappear, bounce, replacement, and pulse animations) or to control the playback state and trigger timing of the animation, use the [symbolEffect](#symboleffect) API. The two cannot be used at the same time. For details, see the description of the [symbolEffect](#symboleffect) API.
 
 **Since:** 11
 
@@ -34,13 +38,15 @@ Sets the effect strategy of the **SymbolGlyph** component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-SymbolGlyphAttribute-effectStrategy(value: SymbolEffectStrategy): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-effectStrategy(value: SymbolEffectStrategy): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SymbolEffectStrategy](arkts-arkui-symbolglyph-comp-symboleffectstrategy-e.md) | Yes | Effect strategy of the **SymbolGlyph** component.<br>Default value: **SymbolEffectStrategy.NONE** |
+| value | [SymbolEffectStrategy](arkts-arkui-symbolglyph-comp-symboleffectstrategy-e.md) | Yes | Animation strategy of the SymbolGlyph component. |
 
 ## fontColor
 
@@ -48,7 +54,7 @@ Sets the effect strategy of the **SymbolGlyph** component.
 fontColor(value: Array<ResourceColor>)
 ```
 
-Sets the color of the **SymbolGlyph** component.
+Sets the font color of the **SymbolGlyph** component.
 
 > **NOTE:** 
 > 
@@ -62,13 +68,15 @@ Sets the color of the **SymbolGlyph** component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-SymbolGlyphAttribute-fontColor(value: Array<ResourceColor>): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-fontColor(value: Array<ResourceColor>): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Color of the **SymbolGlyph** component.<br> Default value: depending on the rendering strategy |
+| value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Font color of the SymbolGlyph component. <br> When value is undefined, the default color of the icon is used, and the default color follows the theme. <br>The color setting effect varies with the rendering strategy. For details, see [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md). |
 
 <a id="fontcolor-1"></a>
 
@@ -78,7 +86,11 @@ Sets the color of the **SymbolGlyph** component.
 fontColor(value: Array<ResourceColor | ColorMetrics> | undefined)
 ```
 
-Called when the SymbolGlyph color is set.
+Sets the font color of the **SymbolGlyph** component. Compared with the [fontColor](#fontcolor) API, this API supports passing in a parameter of the [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md) type.
+
+> **NOTE:** 
+> 
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 26.0.0
 
@@ -88,13 +100,15 @@ Called when the SymbolGlyph color is set.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-SymbolGlyphAttribute-fontColor(value: Array<ResourceColor | ColorMetrics> | undefined): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-fontColor(value: Array<ResourceColor | ColorMetrics> | undefined): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; ColorMetrics&gt; &#124; undefined | Yes |  |
+| value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; ColorMetrics&gt; &#124; undefined | Yes | Color of the **SymbolGlyph** component. An array of the `ResourceColor` or `ColorMetrics` type is supported. <br> When **value** is **undefined**, the default color of the icon is used, and the default color follows the theme. |
 
 ## fontSize
 
@@ -102,9 +116,9 @@ Called when the SymbolGlyph color is set.
 fontSize(value: number | string | Resource)
 ```
 
-Sets the size of the **SymbolGlyph** component. When using the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
+Sets the font size of the **SymbolGlyph** component. When the string type is used, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
 
-The display size of the symbol glyph is controlled by the **fontSize** setting. Once **width** or **height** is specified, other universal attributes will only affect the size of the component's placeholder, not the symbol glyph itself.
+The display size of the icon is controlled by **fontSize**. After **width** or **height** is set, other universal attributes only take effect on the placeholder size of the component. If this API is not used, the default font size is 16fp.
 
 > **NOTE:** 
 > 
@@ -118,13 +132,15 @@ The display size of the symbol glyph is controlled by the **fontSize** setting. 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-SymbolGlyphAttribute-fontSize(value: number | string | Resource): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-fontSize(value: number | string | Resource): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Size of the **SymbolGlyph** component.<br>Default value: **16fp**<br> Unit: fp<br>Percentage strings are not supported. |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Font size of the SymbolGlyph component. <br>Value range: [0, +∞) <br>Unit: [fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units) <br>Percentage strings are not supported. |
 
 ## fontWeight
 
@@ -132,7 +148,7 @@ The display size of the symbol glyph is controlled by the **fontSize** setting. 
 fontWeight(value: number | FontWeight | string)
 ```
 
-Sets the font weight of the **SymbolGlyph** component. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings of the number type are supported, for example, **"400"**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**.
+Sets the font weight of the **SymbolGlyph** component. If this API is not used, the default font weight is **FontWeight.Normal** (normal weight, corresponding to the value 400).
 
 The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 
@@ -148,13 +164,15 @@ The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-SymbolGlyphAttribute-fontWeight(value: number | FontWeight | string): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-fontWeight(value: number | FontWeight | string): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Font weight of the **SymbolGlyph** component.<br>Default value: **FontWeight.Normal** |
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Font weight of the SymbolGlyph component.<br>The value of the number type ranges from 100 to 900, with an interval of 100. The default value is 400. A larger value indicates a heavier font. The string type supports the string form of the number type value, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. If the value is set too large, the font may be truncated in different fonts. <br>**Note:** <br>If a value outside the value range is passed, the default value is used. If a value that does not meet the interval requirement is passed, the default value is also used (only values that are integer multiples of 100 are supported). |
 
 <a id="fontweight-1"></a>
 
@@ -164,7 +182,7 @@ The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 fontWeight(value: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
 ```
 
-Used to set the font weight of symbolGlyph.
+Sets the font weight of the symbol glyph in the **SymbolGlyph** component. It supports configuring, through **FontWeightConfigs**, whether to enable variable font weight adjustment (after which fine-grained font weight values that are not integer multiples of 100, such as 220 and 660, can be set) and whether to automatically update the font weight based on the device font weight level (after which the component font weight is automatically adjusted with the system font weight setting). If this API is not used, the default font weight is **FontWeight.Normal** (normal weight, corresponding to the value 400).
 
 **Since:** 26.0.0
 
@@ -174,14 +192,16 @@ Used to set the font weight of symbolGlyph.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-SymbolGlyphAttribute-fontWeight(value: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-fontWeight(value: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | the symbolGlyph font weight. For the number type, the value range is [100, 900]. When enableVariableFontWeight in fontWeightConfigs is **false**, the value must be a multiple of 100; when **true**, any integer within [100, 900] is supported. The default value is **FontWeight.Normal**. |
-| fontWeightConfigs | [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md) | No | the configuration of font weight. If not specified, the default values of FontWeightConfigs are used: enableVariableFontWeight defaults to **false**, and enableDeviceFontWeightCategory defaults to **true**. |
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the symbol glyph in the **SymbolGlyph** component.<br>For the number type, the value range is [100, 900], with an interval of 100. The default value is 400. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in **FontWeight**. If the value is set too large, the font may be truncated in different fonts. <br>If the value passed in is out of the value range, the default value is used. If the value passed in does not meet the interval requirement, the passed-in value is used when **enableVariableFontWeight** of **fontWeightConfigs** is set to **true**; otherwise, the default value is used. |
+| fontWeightConfigs | [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md) | No | Font weight configuration. Pass this parameter when variable font weight adjustment (setting fine-grained font weight values that are not integer multiples of 100, such as 220 and 660) or automatic font weight update based on the device font weight level is required. The default value is inherited from [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md). |
 
 ## maxFontScale
 
@@ -189,7 +209,7 @@ Used to set the font weight of symbolGlyph.
 maxFontScale(scale: Optional<number|Resource>)
 ```
 
-Sets the maximum font scale factor for the **SymbolGlyph** component.
+Sets the maximum font scale factor of the SymbolGlyph component. Applicable to scenarios where you need to prevent icons from exceeding the layout container or breaking interface consistency when the user's font scale setting is too large, for example, limiting the maximum display size of icons in a small-sized container.
 
 **Since:** 18
 
@@ -197,13 +217,15 @@ Sets the maximum font scale factor for the **SymbolGlyph** component.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SymbolGlyphAttribute-maxFontScale(scale: Optional<number|Resource>): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-maxFontScale(scale: Optional<number|Resource>): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Maximum font scale factor for the **SymbolGlyph** component.<br>Value range: [1, +∞)<br>**NOTE:** <br>A value less than 1 is handled as **1**. Abnormal values are ineffective by default. |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Maximum font scale factor of the SymbolGlyph component.<br>Value range: [1, +∞) <br>**Note:** <br>If the set value is less than 1, it is processed as 1. If not set, the maximum scale factor is not limited. |
 
 ## minFontScale
 
@@ -211,7 +233,7 @@ Sets the maximum font scale factor for the **SymbolGlyph** component.
 minFontScale(scale: Optional<number|Resource>)
 ```
 
-Sets the minimum font scale factor for the **SymbolGlyph** component.
+Sets the minimum font scale factor of the SymbolGlyph component. Applicable to scenarios where you need to prevent icons from becoming unrecognizable when the user's font scale setting is too small, for example, ensuring that icons maintain a minimum readable size under any system font setting.
 
 **Since:** 18
 
@@ -219,13 +241,15 @@ Sets the minimum font scale factor for the **SymbolGlyph** component.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SymbolGlyphAttribute-minFontScale(scale: Optional<number|Resource>): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-minFontScale(scale: Optional<number|Resource>): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Minimum font scale factor for the **SymbolGlyph** component.<br>Value range: [0, 1]<br>The value **0** results in the minimum scaling.<br>**NOTE:** <br>A value less than 0 is handled as 0. A value greater than 1 is handled as 1. Abnormal values are ineffective by default. |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Minimum font scale factor of the SymbolGlyph component.<br>Value range: [0, 1] <br>When set to 0, the scale is minimized. <br>**Note:** <br>When the set value is less than 0, it is treated as 0. When the set value is greater than 1, it is treated as 1. Invalid values do not take effect by default. When not set, the minimum scale factor is not limited. |
 
 ## renderingStrategy
 
@@ -233,7 +257,7 @@ Sets the minimum font scale factor for the **SymbolGlyph** component.
 renderingStrategy(value: SymbolRenderingStrategy)
 ```
 
-Sets the rendering strategy of the **SymbolGlyph** component.
+Sets the rendering strategy of the **SymbolGlyph** component. If this API is not used, the default rendering strategy is **SymbolRenderingStrategy.SINGLE**.
 
 > **NOTE:** 
 > 
@@ -247,13 +271,15 @@ Sets the rendering strategy of the **SymbolGlyph** component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-SymbolGlyphAttribute-renderingStrategy(value: SymbolRenderingStrategy): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-renderingStrategy(value: SymbolRenderingStrategy): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md) | Yes | Rendering strategy of the **SymbolGlyph** component.<br>Default value: **SymbolRenderingStrategy.SINGLE** |
+| value | [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md) | Yes | Rendering strategy of the SymbolGlyph component. |
 
 ## shaderStyle
 
@@ -263,7 +289,7 @@ shaderStyle(shader: Array<ShaderStyle | undefined> | ShaderStyle)
 
 Applies a gradient or solid color shader effect to the **SymbolGlyph** component.
 
-This API supports [RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md), [LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md), and [ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md). When set, **shaderStyle** takes precedence over [fontColor](arkts-arkui-symbolspan-comp-attribute.md#fontcolor) and any AI-based styling. To apply a simple solid color, using [fontColor](arkts-arkui-symbolspan-comp-attribute.md#fontcolor) is recommended.
+Can be displayed as a radial gradient [RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md), a linear gradient [LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md), or a solid color [ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md). The priority of shaderStyle is higher than that of [fontColor](#fontcolor) and AI recognition. For solid colors, [fontColor](#fontcolor) is recommended.
 
 **Since:** 20
 
@@ -271,13 +297,15 @@ This API supports [RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradient
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SymbolGlyphAttribute-shaderStyle(shader: Array<ShaderStyle | undefined> | ShaderStyle): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-shaderStyle(shader: Array<ShaderStyle | undefined> | ShaderStyle): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| shader | Array&lt;[ShaderStyle](../arkts-apis/arkts-arkui-shaderstyle-c.md) &#124; undefined&gt; &#124; [ShaderStyle](../arkts-apis/arkts-arkui-shaderstyle-c.md) | Yes | Shader effect.<br>Input types and behavior:<br> Single **ShaderStyle** object: applies the specified effect to all layers. Array of **ShaderStyle** objects: applies the specified effect to the corresponding layer. Array of **undefined**: applies the default **SymbolGlyph** color to the corresponding layer. Layers unset retain their default color.<br> Based on the input, the system applies a radial gradient ([RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md)), linear gradient ([LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md)), or solid color ([ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md)) to the **SymbolGlyph** component.<br>**NOTE:** <br>Unit: vp<br>Specify the center point and radius using percentages. If a non-percentage value (e.g., **10px**) is provided, it will be interpreted as 1000%.<br>You are advised to specify the radius using percentages.<br>Percentages are relative to the icon's size. The recommended value range is [0, 1). |
+| shader | Array&lt;[ShaderStyle](../arkts-apis/arkts-arkui-shaderstyle-c.md) &#124; undefined&gt; &#124; [ShaderStyle](../arkts-apis/arkts-arkui-shaderstyle-c.md) | Yes | Radial gradient, linear gradient, or solid color. <br>When a ShaderStyle is passed in, it covers all layers. When an array is passed in, if a data item is ShaderStyle, it is applied to that layer; if an array item is undefined, that layer uses the default color of SymbolGlyph, and layers that are not set also use the default color. Based on the passed-in parameter, the radial gradient [RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md), linear gradient [LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md), or solid color [ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md) is processed accordingly, and finally set on the SymbolGlyph component to display a gradient color effect. <br>**NOTE:** <br>Use a percentage for the center point. If a non-percentage value (for example, 10PX) is used, the effect is equivalent to setting 1000%. <br>It is recommended to use a percentage for the radius. <br>The percentage is based on the icon size. The recommended value range is [0, 1). |
 
 ## symbolEffect
 
@@ -285,7 +313,12 @@ This API supports [RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradient
 symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean)
 ```
 
-Sets the symbol effect and effect state for the **SymbolGlyph** component.
+Sets the effect strategy and playback state of the **SymbolGlyph** component. If this API is not used, the default animation is a **SymbolEffect** object, and the default playback state is **false**.
+
+> **NOTE:** 
+> 
+> For animation attributes, only the **effectStrategy** attribute or a single **symbolEffect** attribute is
+> supported. Mixing multiple animation attributes is not supported.
 
 **Since:** 12
 
@@ -295,14 +328,16 @@ Sets the symbol effect and effect state for the **SymbolGlyph** component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-SymbolGlyphAttribute-symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| symbolEffect | [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md) | Yes | Symbol effect of the **SymbolGlyph** component.<br>Default value: [SymbolEffect](#symboleffect) |
-| isActive | boolean | No | Whether the effect is active.<br>**true**: playing. **false**: not playing.<br> Default value: **false**. |
+| symbolEffect | [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md) | Yes | Animation strategy of the SymbolGlyph component. |
+| isActive | boolean | No | Playback state of the SymbolGlyph component animation.<br>The value **true** means to play, and **false** means not to play. |
 
 <a id="symboleffect-1"></a>
 
@@ -312,7 +347,7 @@ Sets the symbol effect and effect state for the **SymbolGlyph** component.
 symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number)
 ```
 
-Sets the symbol effect and effect trigger for the **SymbolGlyph** component.
+Sets the effect strategy and playback trigger of the **SymbolGlyph** component. If this API is not used, the default animation is a **SymbolEffect** object, and the default trigger value is -1.
 
 **Since:** 12
 
@@ -322,14 +357,16 @@ Sets the symbol effect and effect trigger for the **SymbolGlyph** component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-SymbolGlyphAttribute-symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| symbolEffect | [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md) | Yes | Symbol effect of the **SymbolGlyph** component.<br>Default value: [SymbolEffect](#symboleffect) |
-| triggerValue | number | No | Value that, when changed, initiates the animation of the **SymbolGlyph** component.<br>To prevent the motion effect from triggering initially, set it to **-1**. |
+| symbolEffect | [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md) | Yes | Animation strategy of the SymbolGlyph component. |
+| triggerValue | number | No | Trigger for playing the animation of the SymbolGlyph component. The animation is triggered when the value changes.<br>Set this parameter to -1 if you do not want to trigger the animation on the first time. |
 
 ## symbolShadow
 
@@ -337,7 +374,7 @@ Sets the symbol effect and effect trigger for the **SymbolGlyph** component.
 symbolShadow(shadow: Optional<ShadowOptions>)
 ```
 
-Sets the shadow effect of the **SymbolGlyph** component.
+Sets the shadow effect of the SymbolGlyph component. When this interface is not used to set the shadow, the default shadow effect is {radius: 0, color: Color.Black, offsetX: 0, offsetY: 0}.
 
 **Since:** 20
 
@@ -347,10 +384,12 @@ Sets the shadow effect of the **SymbolGlyph** component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-SymbolGlyphAttribute-symbolShadow(shadow: Optional<ShadowOptions>): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-symbolShadow(shadow: Optional<ShadowOptions>): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| shadow | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | Yes | Shadow effect of the **SymbolGlyph** component.<br>Unit: vp<br>Default value: {<br>radius: 0,<br>color: Color.Black<br>offsetX: 0,<br>offsetY: 0<br>} <br>The **fill** and **type** attributes, as well as the enumerated values of **ColoringStrategy** within the **color **attribute, are not supported. |
+| shadow | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | Yes | Shadow effect of the SymbolGlyph component. <br>Unit: [vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units) <br>**Note:** <br>Only the radius, color, offsetX, and offsetY attributes in ShadowOptions are supported. The fill and type attributes and the ColoringStrategy enum values in color are not supported. |

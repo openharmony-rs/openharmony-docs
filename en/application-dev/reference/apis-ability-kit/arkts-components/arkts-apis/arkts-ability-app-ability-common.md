@@ -7,6 +7,8 @@ You can use this module to reference the ability public module class.
 **Model restriction:** 
 - API version 11 and later: This API can be used in both the stage model and FA model.
 
+<!--Device-unnamed-declare namespace common--><!--Device-unnamed-declare namespace common-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import

@@ -8,6 +8,8 @@ Describes the button displayed for a reminder.
 
 **Since:** 9
 
+<!--Device-reminderAgentManager-interface ActionButton--><!--Device-reminderAgentManager-interface ActionButton-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Text on the button.
 
 **Since:** 9
 
+<!--Device-ActionButton-title: string--><!--Device-ActionButton-title: string-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## titleResource
@@ -42,6 +46,8 @@ Resource ID of the title. This parameter is used to read the title information a
 
 **Since:** 11
 
+<!--Device-ActionButton-titleResource?: string--><!--Device-ActionButton-titleResource?: string-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## type
@@ -55,5 +61,7 @@ Button type.
 **Type:** [ActionButtonType](arkts-backgroundtasks-reminderagentmanager-actionbuttontype-e.md)
 
 **Since:** 9
+
+<!--Device-ActionButton-type: ActionButtonType--><!--Device-ActionButton-type: ActionButtonType-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent

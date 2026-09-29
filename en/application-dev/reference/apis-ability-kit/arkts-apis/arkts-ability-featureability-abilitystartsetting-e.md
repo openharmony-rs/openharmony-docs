@@ -10,6 +10,8 @@ The value is obtained through **featureAbility.AbilityStartSetting**.
 
 **Since:** 7
 
+<!--Device-featureAbility-export enum AbilityStartSetting--><!--Device-featureAbility-export enum AbilityStartSetting-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## BOUNDS_KEY
@@ -23,6 +25,8 @@ Ability window size.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AbilityStartSetting-BOUNDS_KEY = 'abilityBounds'--><!--Device-AbilityStartSetting-BOUNDS_KEY = 'abilityBounds'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -38,6 +42,8 @@ Ability window display mode.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AbilityStartSetting-WINDOW_MODE_KEY = 'windowMode'--><!--Device-AbilityStartSetting-WINDOW_MODE_KEY = 'windowMode'-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## DISPLAY_ID_KEY
@@ -51,5 +57,7 @@ Display device ID.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AbilityStartSetting-DISPLAY_ID_KEY = 'displayId'--><!--Device-AbilityStartSetting-DISPLAY_ID_KEY = 'displayId'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel

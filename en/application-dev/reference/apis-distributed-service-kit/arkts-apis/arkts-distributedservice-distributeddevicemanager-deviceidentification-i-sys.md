@@ -10,6 +10,8 @@ Struct for distributed device identification.
 
 **Since:** 24
 
+<!--Device-distributedDeviceManager-interface DeviceIdentification--><!--Device-distributedDeviceManager-interface DeviceIdentification-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Anonymized device ID for application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceIdentification-deviceId: string--><!--Device-DeviceIdentification-deviceId: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -53,6 +57,8 @@ Unique device ID (UDID).
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC and ohos.permission.ACCESS_SERVICE_DM and ohos.permission.sec.ACCESS_UDID
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceIdentification-udid: string--><!--Device-DeviceIdentification-udid: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

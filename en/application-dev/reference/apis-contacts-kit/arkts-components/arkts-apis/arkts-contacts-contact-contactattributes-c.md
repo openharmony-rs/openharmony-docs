@@ -8,6 +8,8 @@ Provides a list of contact attributes, which are generally used as arguments. If
 
 **Since:** 7
 
+<!--Device-contact-class ContactAttributes--><!--Device-contact-class ContactAttributes-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## Modules to Import
@@ -29,5 +31,7 @@ Indicates the contact attributes.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ContactAttributes-attributes: Attribute[]--><!--Device-ContactAttributes-attributes: Attribute[]-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData

@@ -10,6 +10,8 @@ Describes the rendering parameters.
 
 **Since:** 15
 
+<!--Device-unnamed-export interface RenderParameters--><!--Device-unnamed-export interface RenderParameters-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## alwaysRender
@@ -23,5 +25,7 @@ Whether to render every frame. The value true means to render every frame, and f
 **Type:** boolean
 
 **Since:** 15
+
+<!--Device-RenderParameters-alwaysRender?: boolean--><!--Device-RenderParameters-alwaysRender?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

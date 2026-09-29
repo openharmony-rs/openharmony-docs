@@ -20,6 +20,8 @@ No permission is required when the caller clears its own cache.
 
 **Required permissions:** ohos.permission.REMOVE_CACHE_FILES
 
+<!--Device-bundleManager-function cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback<void>): void--><!--Device-bundleManager-function cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -80,6 +82,8 @@ No permission is required when the caller clears its own cache.
 **Since:** 9
 
 **Required permissions:** ohos.permission.REMOVE_CACHE_FILES
+
+<!--Device-bundleManager-function cleanBundleCacheFiles(bundleName: string): Promise<void>--><!--Device-bundleManager-function cleanBundleCacheFiles(bundleName: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -144,6 +148,8 @@ No permission is required when the caller clears its own cache.
 **Since:** 15
 
 **Required permissions:** ohos.permission.REMOVE_CACHE_FILES
+
+<!--Device-bundleManager-function cleanBundleCacheFiles(bundleName: string, appIndex: int): Promise<void>--><!--Device-bundleManager-function cleanBundleCacheFiles(bundleName: string, appIndex: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

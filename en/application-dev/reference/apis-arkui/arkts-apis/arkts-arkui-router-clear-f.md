@@ -26,6 +26,8 @@ Clears all historical pages in the stack and retains only the current page at th
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-router-function clear(): void--><!--Device-router-function clear(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Examples**

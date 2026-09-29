@@ -17,6 +17,8 @@ new<T extends object>(target: T): WeakRef<T>
 
 Creates a WeakRef instance for the given target object.
 
+<!--Device-WeakRefConstructor-new<T extends object>(target: T): WeakRef<T>--><!--Device-WeakRefConstructor-new<T extends object>(target: T): WeakRef<T>-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

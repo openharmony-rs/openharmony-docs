@@ -8,6 +8,8 @@ Defines the group notification information.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface GroupInfo--><!--Device-unnamed-export interface GroupInfo-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Group title displayed after notifications are grouped. This parameter is valid o
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GroupInfo-groupTitle?: string--><!--Device-GroupInfo-groupTitle?: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -45,6 +49,8 @@ Whether to use the **smallIcon** field in NotificationRequest as the group icon 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GroupInfo-isGroupIcon?: boolean--><!--Device-GroupInfo-isGroupIcon?: boolean-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

@@ -18,6 +18,8 @@ Enables or disables static subscription for an app. This API uses an asynchronou
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-commonEventManager-function setStaticSubscriberState(enable: boolean, callback: AsyncCallback<void>): void--><!--Device-commonEventManager-function setStaticSubscriberState(enable: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -66,6 +68,8 @@ Enables or disables static subscription for an app. This API uses a promise to r
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-commonEventManager-function setStaticSubscriberState(enable: boolean): Promise<void>--><!--Device-commonEventManager-function setStaticSubscriberState(enable: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -118,6 +122,8 @@ Enables or disables static subscription to a common event for the current app. T
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-commonEventManager-function setStaticSubscriberState(enable: boolean, events?: Array<string>): Promise<void>--><!--Device-commonEventManager-function setStaticSubscriberState(enable: boolean, events?: Array<string>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 

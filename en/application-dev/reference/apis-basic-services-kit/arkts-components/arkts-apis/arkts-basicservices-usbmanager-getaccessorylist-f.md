@@ -16,6 +16,8 @@ Obtains the list of USB accessories connected to the host.
 
 **Since:** 14
 
+<!--Device-usbManager-function getAccessoryList(): Array<Readonly<USBAccessory>>--><!--Device-usbManager-function getAccessoryList(): Array<Readonly<USBAccessory>>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Return value:**

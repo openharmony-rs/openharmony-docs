@@ -20,6 +20,8 @@ Adds the applications that are not allowed to be uninstalled by the current or s
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function addDisallowedUninstallBundlesSync(admin: Want, appIds: Array<string>, accountId?: number): void--><!--Device-bundleManager-function addDisallowedUninstallBundlesSync(admin: Want, appIds: Array<string>, accountId?: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

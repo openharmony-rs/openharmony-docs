@@ -8,6 +8,8 @@ Domain account policy.
 
 **Since:** 19
 
+<!--Device-accountManager-interface DomainAccountPolicy--><!--Device-accountManager-interface DomainAccountPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -32,6 +34,8 @@ The default value is **-1**, indicating that the token is permanently valid. The
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DomainAccountPolicy-authenticationValidityPeriod?: number--><!--Device-DomainAccountPolicy-authenticationValidityPeriod?: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## passwordExpirationNotification
@@ -52,6 +56,8 @@ The default value is **0**, indicating that the system does not display a messag
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DomainAccountPolicy-passwordExpirationNotification?: number--><!--Device-DomainAccountPolicy-passwordExpirationNotification?: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## passwordValidityPeriod
@@ -70,6 +76,8 @@ The default value is **-1**, indicating that the domain account password is perm
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DomainAccountPolicy-passwordValidityPeriod?: number--><!--Device-DomainAccountPolicy-passwordValidityPeriod?: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## supportUKeyAuthentication
@@ -87,5 +95,7 @@ If set to **true**, the domain account supports USB key authentication for login
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DomainAccountPolicy-supportUKeyAuthentication?: boolean--><!--Device-DomainAccountPolicy-supportUKeyAuthentication?: boolean-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

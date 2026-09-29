@@ -20,6 +20,8 @@ Deletes the APN. This API is suitable for enterprise mobile network configuratio
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function deleteApn(admin: Want, apnId: string): void--><!--Device-networkManager-function deleteApn(admin: Want, apnId: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -8,6 +8,8 @@ declare enum AISessionType
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare enum AISessionType--><!--Device-unnamed-declare enum AISessionType-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## TRANSLATOR
@@ -21,6 +23,8 @@ TRANSLATOR = 1
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AISessionType-TRANSLATOR = 1--><!--Device-AISessionType-TRANSLATOR = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ LANGUAGE_DETECTOR = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AISessionType-LANGUAGE_DETECTOR = 2--><!--Device-AISessionType-LANGUAGE_DETECTOR = 2-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SUMMARIZER
@@ -49,6 +55,8 @@ SUMMARIZER = 3
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AISessionType-SUMMARIZER = 3--><!--Device-AISessionType-SUMMARIZER = 3-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,6 +72,8 @@ WRITER = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AISessionType-WRITER = 4--><!--Device-AISessionType-WRITER = 4-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## REWRITER
@@ -77,6 +87,8 @@ REWRITER = 5
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AISessionType-REWRITER = 5--><!--Device-AISessionType-REWRITER = 5-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -92,6 +104,8 @@ PROMPT = 6
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AISessionType-PROMPT = 6--><!--Device-AISessionType-PROMPT = 6-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## PROOFREADER
@@ -105,5 +119,7 @@ PROOFREADER = 7
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AISessionType-PROOFREADER = 7--><!--Device-AISessionType-PROOFREADER = 7-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

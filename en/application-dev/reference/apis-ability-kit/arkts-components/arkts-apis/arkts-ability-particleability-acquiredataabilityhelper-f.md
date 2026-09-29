@@ -25,6 +25,8 @@ Obtains a dataAbilityHelper object.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-particleAbility-function acquireDataAbilityHelper(uri: string): DataAbilityHelper--><!--Device-particleAbility-function acquireDataAbilityHelper(uri: string): DataAbilityHelper-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**

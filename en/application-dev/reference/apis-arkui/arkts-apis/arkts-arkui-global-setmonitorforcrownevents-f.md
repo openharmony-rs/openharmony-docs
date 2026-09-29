@@ -12,6 +12,8 @@ Sets a digital crown events listener for current page, only be supported on the 
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-export declare function setMonitorForCrownEvents(handler: Function): void--><!--Device-unnamed-export declare function setMonitorForCrownEvents(handler: Function): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **Parameters:**

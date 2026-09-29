@@ -14,6 +14,8 @@ Defines layout information for the hover state.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface HoverModeRegionLayoutOptions--><!--Device-unnamed-export interface HoverModeRegionLayoutOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -40,6 +42,8 @@ Default value: `ExtraRegionPosition.TOP`
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HoverModeRegionLayoutOptions-extraRegionPosition?: ExtraRegionPosition--><!--Device-HoverModeRegionLayoutOptions-extraRegionPosition?: ExtraRegionPosition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## horizontalSplitRatio
@@ -60,6 +64,8 @@ Default value: [PresetSplitRatio](arkts-arkui-arkui-advanced-foldsplitcontainer-
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HoverModeRegionLayoutOptions-horizontalSplitRatio?: number--><!--Device-HoverModeRegionLayoutOptions-horizontalSplitRatio?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## showExtraRegion
@@ -79,5 +85,7 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HoverModeRegionLayoutOptions-showExtraRegion?: boolean--><!--Device-HoverModeRegionLayoutOptions-showExtraRegion?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

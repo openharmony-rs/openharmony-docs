@@ -16,6 +16,8 @@ Obtains the supported encoding formats, represented by MIME types.
 
 **Since:** 20
 
+<!--Device-image-function getImagePackerSupportedFormats(): string[]--><!--Device-image-function getImagePackerSupportedFormats(): string[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 **Return value:**

@@ -20,6 +20,8 @@ Adds a network packet filtering rule for the device. Only IPv4 is supported. Thi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function addIptablesFilterRule(admin: Want, filterRule: AddFilterRule, callback: AsyncCallback<void>): void--><!--Device-networkManager-function addIptablesFilterRule(admin: Want, filterRule: AddFilterRule, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -92,6 +94,8 @@ Adds a network packet filtering rule for the device. Only IPv4 is supported. Thi
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-networkManager-function addIptablesFilterRule(admin: Want, filterRule: AddFilterRule): Promise<void>--><!--Device-networkManager-function addIptablesFilterRule(admin: Want, filterRule: AddFilterRule): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

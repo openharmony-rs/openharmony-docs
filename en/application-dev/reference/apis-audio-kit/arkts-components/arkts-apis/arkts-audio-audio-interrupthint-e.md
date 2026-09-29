@@ -14,6 +14,8 @@ You can determine whether the operation is forcibly performed by the system base
 
 **Since:** 7
 
+<!--Device-audio-enum InterruptHint--><!--Device-audio-enum InterruptHint-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## INTERRUPT_HINT_NONE
@@ -26,7 +28,9 @@ None.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-InterruptHint-INTERRUPT_HINT_NONE = 0--><!--Device-InterruptHint-INTERRUPT_HINT_NONE = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -42,7 +46,9 @@ This operation cannot be forcibly performed by the system, and the corresponding
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-InterruptHint-INTERRUPT_HINT_RESUME = 1--><!--Device-InterruptHint-INTERRUPT_HINT_RESUME = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -58,7 +64,9 @@ When the audio focus is available, the **INTERRUPT_HINT_RESUME** event is receiv
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-InterruptHint-INTERRUPT_HINT_PAUSE = 2--><!--Device-InterruptHint-INTERRUPT_HINT_PAUSE = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -72,7 +80,9 @@ A hint is displayed, indicating that the audio stream stops and the audio focus 
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-InterruptHint-INTERRUPT_HINT_STOP = 3--><!--Device-InterruptHint-INTERRUPT_HINT_STOP = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -86,7 +96,9 @@ A hint is displayed, indicating that audio ducking starts and the audio is playe
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-InterruptHint-INTERRUPT_HINT_DUCK = 4--><!--Device-InterruptHint-INTERRUPT_HINT_DUCK = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -100,7 +112,9 @@ A hint is displayed, indicating that audio ducking ends and the audio is played 
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-InterruptHint-INTERRUPT_HINT_UNDUCK = 5--><!--Device-InterruptHint-INTERRUPT_HINT_UNDUCK = 5-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -114,6 +128,8 @@ A hint is displayed, indicating that the audio is muted.
 
 **Since:** 20
 
+<!--Device-InterruptHint-INTERRUPT_HINT_MUTE = 6--><!--Device-InterruptHint-INTERRUPT_HINT_MUTE = 6-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## INTERRUPT_HINT_UNMUTE
@@ -125,5 +141,7 @@ INTERRUPT_HINT_UNMUTE = 7
 A hint is displayed, indicating that the audio is unmuted.
 
 **Since:** 20
+
+<!--Device-InterruptHint-INTERRUPT_HINT_UNMUTE = 7--><!--Device-InterruptHint-INTERRUPT_HINT_UNMUTE = 7-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer

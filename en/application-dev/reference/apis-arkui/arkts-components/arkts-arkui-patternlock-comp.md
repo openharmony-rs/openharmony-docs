@@ -1,8 +1,10 @@
 # PatternLock
 
-The **PatternLock** component allows users to use a pattern password for authentication. It enters the input state once a finger is pressed against it, and exits the input state and completes the input once the finger leaves the screen.
+**PatternLock** is a pattern‑password lock component that allows password input via a nine-cell grid pattern for password verification scenarios. The component supports customizing appearance attributes such as the size of the nine‑cell grid, styles of dots and connecting lines, and colors for selected/active states. It provides real‑time feedback during password entry and allows setting status for password verification results (success/failure). Input mode is triggered when a finger presses down within the **PatternLock** component area; password input completes and input mode ends when the finger lifts off the screen.
 
-> **NOTE** > > - If you require additional features, use > [custom components](../../../ui/state-management/arkts-create-custom-components.md). For example, the custom > component<!--RP1--> > [CustomPatternLock](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/CustomPatternLock) > <!--RP1End--> implements the pattern lock function using the [Canvas](arkts-arkui-canvas-comp.md#canvas) component. You can extend its > functionality as required.
+> **NOTE:** 
+> 
+> - If you require additional features, use [custom components](../../../ui/state-management/arkts-create-custom-components.md). For example, the custom component<!--RP1-->[CustomPatternLock](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/CustomPatternLock)<!--RP1End--> implements the pattern password lock feature through the [Canvas](arkts-arkui-canvas-comp.md) component, based on which you can extend the features as needed.
 
 ## Child Components
 
@@ -20,13 +22,15 @@ Creates a pattern lock component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PatternLockInterface-(controller?: PatternLockController): PatternLockAttribute--><!--Device-PatternLockInterface-(controller?: PatternLockController): PatternLockAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| controller | [PatternLockController](arkts-arkui-patternlock-comp-patternlockcontroller-c.md) | No | Controller of a component to reset the component status. |
+| controller | [PatternLockController](arkts-arkui-patternlock-comp-patternlockcontroller-c.md) | No | Sets the controller of the PatternLock component, which is used to reset the component state and set the pattern password state. Pass this parameter when the component state needs to be controlled programmatically (for example, resetting the password lock or setting the password verification result). If this parameter is not passed, the component state cannot be manually operated through the controller (that is, methods such as reset() and setChallengeResult() cannot be called). |
 
 ## Summary
 

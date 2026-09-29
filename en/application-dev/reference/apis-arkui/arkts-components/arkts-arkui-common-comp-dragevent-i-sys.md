@@ -8,6 +8,8 @@ Provides information about the drag event.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface DragEvent--><!--Device-unnamed-declare interface DragEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableInternalDropAnimation
@@ -21,6 +23,8 @@ Sets whether to enable the system's built-in drop animation effect. This API is 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DragEvent-enableInternalDropAnimation(configuration: string): void--><!--Device-DragEvent-enableInternalDropAnimation(configuration: string): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ Sets a callback to be executed after the follow-hand morph drop animation is com
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DragEvent-executeFollowHandMorphDropAnimation(onAnimationFinished: Callback<void>, animationOption?: string): void--><!--Device-DragEvent-executeFollowHandMorphDropAnimation(onAnimationFinished: Callback<void>, animationOption?: string): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -88,6 +94,8 @@ Default value: **DEFAULT**
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DragEvent-dragAnimationType?: DragAnimationType--><!--Device-DragEvent-dragAnimationType?: DragAnimationType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

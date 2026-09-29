@@ -14,6 +14,8 @@ Defines the EllipseShape type.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-unnamed-declare type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape--><!--Device-unnamed-declare type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.arkui.shape').EllipseShape

@@ -8,6 +8,8 @@ Defines a dataset element used in privacy search. Each element contains a key fo
 
 **Since:** 26.0.1
 
+<!--Device-privacyComputation-interface Element--><!--Device-privacyComputation-interface Element-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## Modules to Import
@@ -31,6 +33,8 @@ The key of the dataset element, used for matching against the privacy target.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-Element-elemKey: Uint8Array--><!--Device-Element-elemKey: Uint8Array-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## elemValue
@@ -49,6 +53,8 @@ The value associated with the element key. This field is used in PIR protocol to
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-Element-elemValue?: Uint8Array--><!--Device-Element-elemValue?: Uint8Array-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## hashAlg
@@ -66,5 +72,7 @@ The hash algorithm used for hashing the element key. If not specified, the eleme
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-Element-hashAlg?: HashAlg--><!--Device-Element-hashAlg?: HashAlg-End-->
 
 **System capability:** SystemCapability.Security.Asset

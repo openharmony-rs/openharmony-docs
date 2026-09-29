@@ -10,6 +10,8 @@ Triggered to encapsulate the data sent by the started ability.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare type ReceiveCallback = import('../api/@ohos.base').Callback<Record<string, Object>>--><!--Device-unnamed-declare type ReceiveCallback = import('../api/@ohos.base').Callback<Record<string, Object>>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

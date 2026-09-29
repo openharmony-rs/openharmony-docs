@@ -4,6 +4,8 @@ The util module provides common utility functions, such as [TextEncoder](arkts-a
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace util--><!--Device-unnamed-declare namespace util-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -64,14 +66,14 @@ import { util } from '@kit.ArkTS';
 | [ScopeComparable](arkts-arkts-util-scopecomparable-i.md) | The values of the **ScopeComparable** type are used to implement the **compareTo** method. Therefore, ensure that the input parameters are comparable. |
 | [TextDecoderOptions](arkts-arkts-util-textdecoderoptions-i.md) | Describes decoding-related options, which include **fatal** and **ignoreBOM**. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [Type](arkts-arkts-util-type-e.md) | Enumerates the Base64 encoding formats. |
-
 ### Types
 
 | Name | Description |
 | --- | --- |
 | [ScopeType](arkts-arkts-util-scopetype-t.md) | Defines the type of values in a **Scope** object. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [Type](arkts-arkts-util-type-e.md) | Enumerates the Base64 encoding formats. |

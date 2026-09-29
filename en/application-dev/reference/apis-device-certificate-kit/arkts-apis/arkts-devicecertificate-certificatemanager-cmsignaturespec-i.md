@@ -8,6 +8,8 @@ Represents a set of parameters used for signing or signature verification, inclu
 
 **Since:** 11
 
+<!--Device-certificateManager-export interface CMSignatureSpec--><!--Device-certificateManager-export interface CMSignatureSpec-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Digest algorithm. Default value: CM_DIGEST_SHA256: indicates that the SHA256 dig
 
 **Since:** 11
 
+<!--Device-CMSignatureSpec-digest?: CmKeyDigest--><!--Device-CMSignatureSpec-digest?: CmKeyDigest-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## padding
@@ -42,6 +46,8 @@ Enumeration representing the padding mode. Default value: CM_PADDING_PSS: indica
 
 **Since:** 11
 
+<!--Device-CMSignatureSpec-padding?: CmKeyPadding--><!--Device-CMSignatureSpec-padding?: CmKeyPadding-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## purpose
@@ -55,5 +61,7 @@ Purpose of using the key.
 **Type:** [CmKeyPurpose](arkts-devicecertificate-certificatemanager-cmkeypurpose-e.md)
 
 **Since:** 11
+
+<!--Device-CMSignatureSpec-purpose: CmKeyPurpose--><!--Device-CMSignatureSpec-purpose: CmKeyPurpose-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager

@@ -8,6 +8,8 @@ interface RequestEventResult
 
 **起始版本：** 8
 
+<!--Device-pluginComponentManager-interface RequestEventResult--><!--Device-pluginComponentManager-interface RequestEventResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ data?: KVObject
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RequestEventResult-data?: KVObject--><!--Device-RequestEventResult-data?: KVObject-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## extraData
@@ -46,6 +50,8 @@ request事件中传递的附加数据。该字段为可选字段，不提供时�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RequestEventResult-extraData?: KVObject--><!--Device-RequestEventResult-extraData?: KVObject-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## template
@@ -61,5 +67,7 @@ template?: string
 **起始版本：** 8
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RequestEventResult-template?: string--><!--Device-RequestEventResult-template?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

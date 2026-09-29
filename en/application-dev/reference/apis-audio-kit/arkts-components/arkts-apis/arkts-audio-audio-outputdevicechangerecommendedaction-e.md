@@ -10,6 +10,8 @@ Common scenario example: switching between a headset and a loudspeaker device. U
 
 **Since:** 20
 
+<!--Device-audio-enum OutputDeviceChangeRecommendedAction--><!--Device-audio-enum OutputDeviceChangeRecommendedAction-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## DEVICE_CHANGE_RECOMMEND_TO_CONTINUE
@@ -22,6 +24,8 @@ Suggests continuing playback. (This event serves as a playback maintenance indic
 
 **Since:** 20
 
+<!--Device-OutputDeviceChangeRecommendedAction-DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0--><!--Device-OutputDeviceChangeRecommendedAction-DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## DEVICE_CHANGE_RECOMMEND_TO_STOP
@@ -33,5 +37,7 @@ DEVICE_CHANGE_RECOMMEND_TO_STOP = 1
 Suggests stopping playback.
 
 **Since:** 20
+
+<!--Device-OutputDeviceChangeRecommendedAction-DEVICE_CHANGE_RECOMMEND_TO_STOP = 1--><!--Device-OutputDeviceChangeRecommendedAction-DEVICE_CHANGE_RECOMMEND_TO_STOP = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

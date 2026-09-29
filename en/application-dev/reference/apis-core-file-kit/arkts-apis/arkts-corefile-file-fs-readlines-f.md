@@ -16,6 +16,8 @@ Reads the text content of a file line by line. This API uses a promise to return
 
 **Since:** 11
 
+<!--Device-unnamed-declare function readLines(filePath: string, options?: Options): Promise<ReaderIterator>--><!--Device-unnamed-declare function readLines(filePath: string, options?: Options): Promise<ReaderIterator>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -62,6 +64,8 @@ Reads a file text line by line. This API uses an asynchronous callback to return
 
 **Since:** 11
 
+<!--Device-unnamed-declare function readLines(filePath: string, callback: AsyncCallback<ReaderIterator>): void--><!--Device-unnamed-declare function readLines(filePath: string, callback: AsyncCallback<ReaderIterator>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -100,6 +104,8 @@ declare function readLines(filePath: string, options: Options, callback: AsyncCa
 Reads a file text line by line. This API uses an asynchronous callback to return the result. Only the files in UTF-8 format are supported.
 
 **Since:** 11
+
+<!--Device-unnamed-declare function readLines(filePath: string, options: Options, callback: AsyncCallback<ReaderIterator>): void--><!--Device-unnamed-declare function readLines(filePath: string, options: Options, callback: AsyncCallback<ReaderIterator>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

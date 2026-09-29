@@ -10,6 +10,8 @@ Description of the AVMusicTemplate.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-interface AVMusicTemplateDescriptor--><!--Device-avMusicTemplate-interface AVMusicTemplateDescriptor-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ App package name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMusicTemplateDescriptor-bundleName: string--><!--Device-AVMusicTemplateDescriptor-bundleName: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **System API:** This is a system API.
@@ -52,6 +56,8 @@ Unique id of the AVMusicTemplate.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMusicTemplateDescriptor-sessionId: string--><!--Device-AVMusicTemplateDescriptor-sessionId: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **System API:** This is a system API.
@@ -69,6 +75,8 @@ The user id.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVMusicTemplateDescriptor-userId: int--><!--Device-AVMusicTemplateDescriptor-userId: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 

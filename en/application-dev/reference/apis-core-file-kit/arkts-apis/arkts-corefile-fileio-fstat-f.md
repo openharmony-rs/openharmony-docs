@@ -19,6 +19,8 @@ Obtains file status based on the file descriptor. This API uses a promise to ret
 
 **Substitutes:** [stat](arkts-corefile-file-fs-stat-f.md)
 
+<!--Device-unnamed-declare function fstat(fd: number): Promise<Stat>--><!--Device-unnamed-declare function fstat(fd: number): Promise<Stat>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -49,6 +51,8 @@ Obtains file status based on the file descriptor. This API uses an asynchronous 
 **Deprecated since:** 9
 
 **Substitutes:** [stat](arkts-corefile-file-fs-stat-f.md)
+
+<!--Device-unnamed-declare function fstat(fd: number, callback: AsyncCallback<Stat>): void--><!--Device-unnamed-declare function fstat(fd: number, callback: AsyncCallback<Stat>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

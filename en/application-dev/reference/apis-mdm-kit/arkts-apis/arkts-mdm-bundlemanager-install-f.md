@@ -29,6 +29,8 @@ This API can be used to install only applications of the **enterprise_mdm** (MDM
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function install(admin: Want, hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>--><!--Device-bundleManager-function install(admin: Want, hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

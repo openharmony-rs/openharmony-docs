@@ -16,6 +16,8 @@ Checks whether the mouse pointer is visible in the current window. This API retu
 
 **Since:** 10
 
+<!--Device-pointer-function isPointerVisibleSync(): boolean--><!--Device-pointer-function isPointerVisibleSync(): boolean-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **Return value:**

@@ -9,13 +9,15 @@ The module provides application information. Unless otherwise specified, the inf
 > **NOTE:** 
 > 
 > The APIs of this module have been deprecated since API version 9. You are advised to use
-> [bundleManager-ApplicationInfo](#applicationinfo) instead.
+> [bundleManager-ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [ApplicationInfo](#applicationinfo)
+**Substitutes:** [ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)
+
+<!--Device-unnamed-export interface ApplicationInfo--><!--Device-unnamed-export interface ApplicationInfo-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -37,6 +39,8 @@ Access token ID of the application.
 
 **Substitutes:** accessTokenId
 
+<!--Device-ApplicationInfo-readonly accessTokenId: number--><!--Device-ApplicationInfo-readonly accessTokenId: number-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## codePath
@@ -56,6 +60,8 @@ Installation directory of the application. Do not access resource files using co
 **Deprecated since:** 9
 
 **Substitutes:** codePath
+
+<!--Device-ApplicationInfo-readonly codePath: string--><!--Device-ApplicationInfo-readonly codePath: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -77,6 +83,8 @@ Application description.
 
 **Substitutes:** description
 
+<!--Device-ApplicationInfo-readonly description: string--><!--Device-ApplicationInfo-readonly description: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## descriptionId
@@ -96,6 +104,8 @@ ID of the application description.
 **Deprecated since:** 9
 
 **Substitutes:** descriptionId
+
+<!--Device-ApplicationInfo-readonly descriptionId: number--><!--Device-ApplicationInfo-readonly descriptionId: number-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -117,6 +127,8 @@ Whether the application is enabled. **true** if enabled, **false** otherwise.
 
 **Substitutes:** enabled
 
+<!--Device-ApplicationInfo-readonly enabled: boolean--><!--Device-ApplicationInfo-readonly enabled: boolean-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## entityType
@@ -135,6 +147,8 @@ Type of the application, for example, gaming, social networking, movies, and new
 
 **Deprecated since:** 9
 
+<!--Device-ApplicationInfo-readonly entityType: string--><!--Device-ApplicationInfo-readonly entityType: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## entryDir
@@ -152,6 +166,8 @@ Path for storing application files. Do not access resource files using concatena
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-ApplicationInfo-readonly entryDir: string--><!--Device-ApplicationInfo-readonly entryDir: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -173,6 +189,8 @@ Application icon.
 
 **Substitutes:** icon
 
+<!--Device-ApplicationInfo-readonly icon: string--><!--Device-ApplicationInfo-readonly icon: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## iconId
@@ -192,6 +210,8 @@ ID of the application icon.
 **Deprecated since:** 9
 
 **Substitutes:** iconId
+
+<!--Device-ApplicationInfo-readonly iconId: string--><!--Device-ApplicationInfo-readonly iconId: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -213,6 +233,8 @@ Application label.
 
 **Substitutes:** label
 
+<!--Device-ApplicationInfo-readonly label: string--><!--Device-ApplicationInfo-readonly label: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## labelId
@@ -232,6 +254,8 @@ ID of the application label.
 **Deprecated since:** 9
 
 **Substitutes:** labelId
+
+<!--Device-ApplicationInfo-readonly labelId: string--><!--Device-ApplicationInfo-readonly labelId: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -255,6 +279,8 @@ The value is obtained by passing in GET_APPLICATION_INFO_WITH_METADATA to [bundl
 
 **Substitutes:** metadataArray
 
+<!--Device-ApplicationInfo-readonly metaData: Map<string, Array<CustomizeData>>--><!--Device-ApplicationInfo-readonly metaData: Map<string, Array<CustomizeData>>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## moduleInfos
@@ -275,6 +301,8 @@ Application module information.
 
 **Substitutes:** hapModulesInfo
 
+<!--Device-ApplicationInfo-readonly moduleInfos: Array<ModuleInfo>--><!--Device-ApplicationInfo-readonly moduleInfos: Array<ModuleInfo>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## moduleSourceDirs
@@ -292,6 +320,8 @@ Relative paths for storing application resources. Do not access resource files u
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-ApplicationInfo-readonly moduleSourceDirs: Array<string>--><!--Device-ApplicationInfo-readonly moduleSourceDirs: Array<string>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -312,6 +342,8 @@ Application name.
 **Deprecated since:** 9
 
 **Substitutes:** name
+
+<!--Device-ApplicationInfo-readonly name: string--><!--Device-ApplicationInfo-readonly name: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -335,6 +367,8 @@ The value is obtained by passing in GET_APPLICATION_INFO_WITH_PERMISSION to [bun
 
 **Substitutes:** permissions
 
+<!--Device-ApplicationInfo-readonly permissions: Array<string>--><!--Device-ApplicationInfo-readonly permissions: Array<string>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## process
@@ -354,6 +388,8 @@ Process name.
 **Deprecated since:** 9
 
 **Substitutes:** process
+
+<!--Device-ApplicationInfo-readonly process: string--><!--Device-ApplicationInfo-readonly process: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -375,6 +411,8 @@ Whether the application is removable. **true** if removable, **false** otherwise
 
 **Substitutes:** removable
 
+<!--Device-ApplicationInfo-readonly removable: boolean--><!--Device-ApplicationInfo-readonly removable: boolean-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## supportedModes
@@ -392,6 +430,8 @@ Modes supported by the application. Currently, only the **drive** mode is define
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-ApplicationInfo-readonly supportedModes: number--><!--Device-ApplicationInfo-readonly supportedModes: number-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -413,6 +453,8 @@ Whether the application is a system application. **true** if yes, **false** othe
 
 **Substitutes:** systemApp
 
+<!--Device-ApplicationInfo-readonly systemApp: boolean--><!--Device-ApplicationInfo-readonly systemApp: boolean-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## uid
@@ -432,5 +474,7 @@ UID of the application.
 **Deprecated since:** 9
 
 **Substitutes:** uid
+
+<!--Device-ApplicationInfo-readonly uid: number--><!--Device-ApplicationInfo-readonly uid: number-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

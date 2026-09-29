@@ -18,6 +18,8 @@ Obtains the default application based on a system-defined application type, a fi
 
 **Required permissions:** ohos.permission.GET_DEFAULT_APPLICATION
 
+<!--Device-defaultAppManager-function getDefaultApplicationSync(type: string, userId?: int): BundleInfo--><!--Device-defaultAppManager-function getDefaultApplicationSync(type: string, userId?: int): BundleInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
 **System API:** This is a system API.

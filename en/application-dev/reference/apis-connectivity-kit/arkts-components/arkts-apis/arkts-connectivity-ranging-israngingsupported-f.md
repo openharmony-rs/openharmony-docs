@@ -18,6 +18,8 @@ Checks whether the current device supports the ranging feature.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ranging-function isRangingSupported(): boolean--><!--Device-ranging-function isRangingSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 **Return value:**

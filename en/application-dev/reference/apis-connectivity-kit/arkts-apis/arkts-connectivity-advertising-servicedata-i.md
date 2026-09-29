@@ -8,6 +8,8 @@ Represents the service data.
 
 **Since:** 26.0.0
 
+<!--Device-advertising-interface ServiceData--><!--Device-advertising-interface ServiceData-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Service data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceData-serviceData: ArrayBuffer--><!--Device-ServiceData-serviceData: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## serviceUuid
@@ -45,5 +49,7 @@ Service UUID. A UUID must contain 36 characters, including 32 hexadecimal digits
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceData-serviceUuid: string--><!--Device-ServiceData-serviceUuid: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

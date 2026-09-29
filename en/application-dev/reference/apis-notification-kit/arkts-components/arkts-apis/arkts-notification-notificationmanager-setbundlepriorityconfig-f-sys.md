@@ -18,6 +18,8 @@ Sets the priority configuration of an application.
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function setBundlePriorityConfig(bundle: BundleOption, value: string): Promise<void>--><!--Device-notificationManager-function setBundlePriorityConfig(bundle: BundleOption, value: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

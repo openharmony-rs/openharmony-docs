@@ -16,6 +16,8 @@ Controls whether a watermark image is displayed on the screen. This API uses a p
 
 **Since:** 10
 
+<!--Device-window-function setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean): Promise<void>--><!--Device-window-function setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -87,6 +89,8 @@ Set watermark image.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-window-function setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, priority: int): Promise<void>--><!--Device-window-function setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, priority: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -155,6 +159,8 @@ function setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, callback: 
 Controls whether a watermark image is displayed on the screen. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-window-function setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, callback: AsyncCallback<void>): void--><!--Device-window-function setWaterMarkImage(pixelMap: image.PixelMap, enable: boolean, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

@@ -18,6 +18,8 @@ Sets retry options for all tasks. Used when task-specific retry configuration is
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-cacheDownload-function setGlobalRetryOptions(options?: RetryOptions): void--><!--Device-cacheDownload-function setGlobalRetryOptions(options?: RetryOptions): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

@@ -14,6 +14,8 @@ interface PreviewParams
 
 **起始版本：** 9
 
+<!--Device-unnamed-interface PreviewParams--><!--Device-unnamed-interface PreviewParams-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorMode
@@ -32,6 +34,8 @@ colorMode?: string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-PreviewParams-colorMode?: string--><!--Device-PreviewParams-colorMode?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## deviceType
@@ -40,7 +44,7 @@ colorMode?: string
 deviceType?: string
 ```
 
-组件预览渲染的设备类型，默认为Phone。设备类型枚举值参考deviceTypes标签。
+组件预览渲染的设备类型，默认为Phone。设备类型枚举值参考[deviceTypes标签](docroot:./../../../quick-start/module-configuration-file.md#devicetypes标签)。
 
 **类型：** string
 
@@ -51,6 +55,8 @@ deviceType?: string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PreviewParams-deviceType?: string--><!--Device-PreviewParams-deviceType?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ dpi?: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-PreviewParams-dpi?: number--><!--Device-PreviewParams-dpi?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -89,6 +97,8 @@ height?: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PreviewParams-height?: number--><!--Device-PreviewParams-height?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +118,8 @@ locale?: string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-PreviewParams-locale?: string--><!--Device-PreviewParams-locale?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## orientation
@@ -125,6 +137,8 @@ orientation?: string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PreviewParams-orientation?: string--><!--Device-PreviewParams-orientation?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,6 +158,8 @@ roundScreen?: boolean
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-PreviewParams-roundScreen?: boolean--><!--Device-PreviewParams-roundScreen?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -162,6 +178,8 @@ title?: string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-PreviewParams-title?: string--><!--Device-PreviewParams-title?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -179,5 +197,7 @@ width?: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PreviewParams-width?: number--><!--Device-PreviewParams-width?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

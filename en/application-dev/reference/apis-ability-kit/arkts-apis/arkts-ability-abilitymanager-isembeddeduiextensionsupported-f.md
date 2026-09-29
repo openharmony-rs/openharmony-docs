@@ -18,6 +18,8 @@ Indicates whether the current device supports EmbeddedUIExtensionAbility.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-abilityManager-function isEmbeddedUIExtensionSupported(): boolean--><!--Device-abilityManager-function isEmbeddedUIExtensionSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**

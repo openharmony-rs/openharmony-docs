@@ -12,7 +12,7 @@ The ability to be started must be a UIExtensionAbility, an extension ability wit
 
 The width and height of the component must be explicitly set to non-zero valid values.
 
-The scenario where scrolling continues after the edge is reached is not supported. When both the **UIExtensionComponent** host and the UIExtensionAbility support content scrolling, gesture-based scrolling will cause simultaneous responses from both inside and outside the **UIExtensionComponent**. This includes, but is not limited to, scrollable containers such as [Scroll](arkts-arkui-scroll-comp.md#scroll), [Swiper](arkts-arkui-swiper-comp.md#swiper), [List](arkts-arkui-list-comp.md#list), and [Grid](arkts-arkui-grid-comp.md#grid). For details about how to avoid the simultaneous scrolling inside and outside the **UIExtensionComponent**, see [Example 2](../../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#example-2-isolating-scrolling-inside-and-outside-of-uiextensioncomponent).
+The scenario where scrolling continues after the edge is reached is not supported. When both the **UIExtensionComponent** host and the UIExtensionAbility support content scrolling, gesture-based scrolling will cause simultaneous responses from both inside and outside the **UIExtensionComponent**. This includes, but is not limited to, scrollable containers such as [Scroll](arkts-arkui-scroll-comp.md), [Swiper](arkts-arkui-swiper-comp.md), [List](arkts-arkui-list-comp.md), and [Grid](arkts-arkui-grid-comp.md). For details about how to avoid the simultaneous scrolling inside and outside the **UIExtensionComponent**, see [Example 2](../../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#example-2-isolating-scrolling-inside-and-outside-of-uiextensioncomponent).
 
 ## Child Components
 
@@ -32,6 +32,8 @@ Construct the UIExtensionComponent.<br> Called when the UIExtensionComponent is 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionComponentInterface-(    want: import('../api/@ohos.app.ability.Want').default,    options?: UIExtensionOptions  ): UIExtensionComponentAttribute--><!--Device-UIExtensionComponentInterface-(    want: import('../api/@ohos.app.ability.Want').default,    options?: UIExtensionOptions  ): UIExtensionComponentAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

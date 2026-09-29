@@ -19,6 +19,8 @@ Switches an active perception advertiser to high frequency for 10 seconds. After
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-softbusBase-function setPerceptionAdvHighFreq(type: PerceptionType, customData?: ArrayBuffer): Promise<void>--><!--Device-softbusBase-function setPerceptionAdvHighFreq(type: PerceptionType, customData?: ArrayBuffer): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.

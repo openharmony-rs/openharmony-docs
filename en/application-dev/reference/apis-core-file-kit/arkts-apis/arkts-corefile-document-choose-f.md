@@ -17,6 +17,8 @@ Chooses files of the specified types. This API uses a promise to return the resu
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare function choose(types?: string[]): Promise<string>--><!--Device-unnamed-declare function choose(types?: string[]): Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **Parameters:**
@@ -46,6 +48,8 @@ Chooses a file. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare function choose(callback: AsyncCallback<string>): void--><!--Device-unnamed-declare function choose(callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **Parameters:**
@@ -68,6 +72,8 @@ Chooses files of the specified types. This API uses an asynchronous callback to 
 **Since:** 6
 
 **Deprecated since:** 9
+
+<!--Device-unnamed-declare function choose(types: string[], callback: AsyncCallback<string>): void--><!--Device-unnamed-declare function choose(types: string[], callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

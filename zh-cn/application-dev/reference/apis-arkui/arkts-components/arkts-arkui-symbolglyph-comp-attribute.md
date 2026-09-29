@@ -4,11 +4,13 @@
 declare class SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>
 ```
 
-支持通用属性，不支持文本通用属性，仅支持以下特有属性：
+支持[通用属性](arkts-arkui-common-comp.md)，不支持文本通用属性，仅支持以下特有属性：
 
-**继承/实现关系：** SymbolGlyphAttribute extends CommonMethod&lt;SymbolGlyphAttribute&gt;
+**继承/实现关系：** SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>
 
 **起始版本：** 11
+
+<!--Device-unnamed-declare class SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>--><!--Device-unnamed-declare class SymbolGlyphAttribute extends CommonMethod<SymbolGlyphAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,6 +37,8 @@ effectStrategy(value: SymbolEffectStrategy)
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SymbolGlyphAttribute-effectStrategy(value: SymbolEffectStrategy): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-effectStrategy(value: SymbolEffectStrategy): SymbolGlyphAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,6 +67,8 @@ fontColor(value: Array<ResourceColor>)
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SymbolGlyphAttribute-fontColor(value: Array<ResourceColor>): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-fontColor(value: Array<ResourceColor>): SymbolGlyphAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +100,8 @@ fontColor(value: Array<ResourceColor | ColorMetrics> | undefined)
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SymbolGlyphAttribute-fontColor(value: Array<ResourceColor | ColorMetrics> | undefined): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-fontColor(value: Array<ResourceColor | ColorMetrics> | undefined): SymbolGlyphAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -124,13 +132,15 @@ fontSize(value: number | string | Resource)
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SymbolGlyphAttribute-fontSize(value: number | string | Resource): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-fontSize(value: number | string | Resource): SymbolGlyphAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolGlyph组件字体大小。<br>取值范围：[0, +∞) <br>单位：fp <br>不支持设置百分比字符串。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolGlyph组件字体大小。<br>取值范围：[0, +∞) <br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>不支持设置百分比字符串。 |
 
 ## fontWeight
 
@@ -153,6 +163,8 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SymbolGlyphAttribute-fontWeight(value: number | FontWeight | string): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-fontWeight(value: number | FontWeight | string): SymbolGlyphAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,6 +192,8 @@ fontWeight(value: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWei
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SymbolGlyphAttribute-fontWeight(value: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-fontWeight(value: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs): SymbolGlyphAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -203,6 +217,8 @@ maxFontScale(scale: Optional<number|Resource>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SymbolGlyphAttribute-maxFontScale(scale: Optional<number|Resource>): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-maxFontScale(scale: Optional<number|Resource>): SymbolGlyphAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -224,6 +240,8 @@ minFontScale(scale: Optional<number|Resource>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SymbolGlyphAttribute-minFontScale(scale: Optional<number|Resource>): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-minFontScale(scale: Optional<number|Resource>): SymbolGlyphAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -253,6 +271,8 @@ renderingStrategy(value: SymbolRenderingStrategy)
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SymbolGlyphAttribute-renderingStrategy(value: SymbolRenderingStrategy): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-renderingStrategy(value: SymbolRenderingStrategy): SymbolGlyphAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -276,6 +296,8 @@ shaderStyle(shader: Array<ShaderStyle | undefined> | ShaderStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SymbolGlyphAttribute-shaderStyle(shader: Array<ShaderStyle | undefined> | ShaderStyle): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-shaderStyle(shader: Array<ShaderStyle | undefined> | ShaderStyle): SymbolGlyphAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -305,6 +327,8 @@ symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean)
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SymbolGlyphAttribute-symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean): SymbolGlyphAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -332,6 +356,8 @@ symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number)
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SymbolGlyphAttribute-symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number): SymbolGlyphAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -357,10 +383,12 @@ symbolShadow(shadow: Optional<ShadowOptions>)
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SymbolGlyphAttribute-symbolShadow(shadow: Optional<ShadowOptions>): SymbolGlyphAttribute--><!--Device-SymbolGlyphAttribute-symbolShadow(shadow: Optional<ShadowOptions>): SymbolGlyphAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shadow | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | SymbolGlyph组件的阴影效果。<br>单位：vp <br>**说明：** <br>仅支持ShadowOptions中的radius、color、offsetX、offsetY属性，不支持fill、type属性和color中的ColoringStrategy枚举值。 |
+| shadow | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | SymbolGlyph组件的阴影效果。<br>单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>**说明：** <br>仅支持ShadowOptions中的radius、color、offsetX、offsetY属性，不支持fill、type属性和color中的ColoringStrategy枚举值。 |

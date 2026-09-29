@@ -22,6 +22,8 @@ Before you do this, call [usb.getDevices](arkts-basicservices-usb-getdevices-f.m
 
 **Substitutes:** [getFileDescriptor](arkts-basicservices-usbmanager-getfiledescriptor-f.md)
 
+<!--Device-usb-function getFileDescriptor(pipe: USBDevicePipe): number--><!--Device-usb-function getFileDescriptor(pipe: USBDevicePipe): number-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

@@ -10,6 +10,8 @@ Describes the rotation vector sensor data. It extends from [Response](arkts-sens
 
 **Since:** 8
 
+<!--Device-sensor-interface RotationVectorResponse extends Response--><!--Device-sensor-interface RotationVectorResponse extends Response-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 ## Modules to Import
@@ -24,11 +26,13 @@ import { sensor } from '@kit.SensorServiceKit';
 w: number
 ```
 
-Scalar, which describes the rotation status of the device relative to a reference direction, in radians
+Scalar component of the rotation vector, which describes the rotation status of the device relative to a reference direction. Unit: radian.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-RotationVectorResponse-w: double--><!--Device-RotationVectorResponse-w: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -38,11 +42,13 @@ Scalar, which describes the rotation status of the device relative to a referenc
 x: number
 ```
 
-X-component of the rotation vector.
+X-axis component of the rotation vector, indicating the projection of the device rotation status on the X axis.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-RotationVectorResponse-x: double--><!--Device-RotationVectorResponse-x: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -52,11 +58,13 @@ X-component of the rotation vector.
 y: number
 ```
 
-Y-component of the rotation vector.
+Y-axis component of the rotation vector, indicating the projection of the device rotation status on the Y axis.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-RotationVectorResponse-y: double--><!--Device-RotationVectorResponse-y: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -66,10 +74,12 @@ Y-component of the rotation vector.
 z: number
 ```
 
-Z-component of the rotation vector.
+Z-axis component of the rotation vector, indicating the projection of the device rotation status on the z-axis.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-RotationVectorResponse-z: double--><!--Device-RotationVectorResponse-z: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

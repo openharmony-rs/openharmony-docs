@@ -18,6 +18,8 @@ Checks whether the main window of this ability has the focus. This API uses an a
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-featureAbility-function hasWindowFocus(callback: AsyncCallback<boolean>): void--><!--Device-featureAbility-function hasWindowFocus(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -55,6 +57,8 @@ Checks whether the main window of this ability has the focus. This API uses a pr
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-featureAbility-function hasWindowFocus(): Promise<boolean>--><!--Device-featureAbility-function hasWindowFocus(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 

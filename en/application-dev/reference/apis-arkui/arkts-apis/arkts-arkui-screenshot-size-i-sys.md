@@ -8,6 +8,8 @@ Describes the size of the screen region to capture.
 
 **Since:** 7
 
+<!--Device-screenshot-interface Size--><!--Device-screenshot-interface Size-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Height of the screen region to capture, in px. The value must be a positive inte
 
 **Since:** 7
 
+<!--Device-Size-height: long--><!--Device-Size-height: long-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Width of the screen region to capture, in px. The value must be a positive integ
 **Type:** number
 
 **Since:** 7
+
+<!--Device-Size-width: long--><!--Device-Size-width: long-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

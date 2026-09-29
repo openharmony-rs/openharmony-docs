@@ -8,6 +8,8 @@ Defines the quick fix information at the application level.
 
 **Since:** 9
 
+<!--Device-quickFixManager-export interface ApplicationQuickFixInfo--><!--Device-quickFixManager-export interface ApplicationQuickFixInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.QuickFix
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Bundle name.
 
 **Since:** 9
 
+<!--Device-ApplicationQuickFixInfo-readonly bundleName: string--><!--Device-ApplicationQuickFixInfo-readonly bundleName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.QuickFix
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Internal version number of the application.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ApplicationQuickFixInfo-readonly bundleVersionCode: long--><!--Device-ApplicationQuickFixInfo-readonly bundleVersionCode: long-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -62,6 +68,8 @@ Version number of the application that is shown to users.
 
 **Since:** 9
 
+<!--Device-ApplicationQuickFixInfo-readonly bundleVersionName: string--><!--Device-ApplicationQuickFixInfo-readonly bundleVersionName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.QuickFix
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Quick fix information at the HAP file level.
 **Type:** Array&lt;[HapModuleQuickFixInfo](arkts-ability-quickfixmanager-hapmodulequickfixinfo-i-sys.md)&gt;
 
 **Since:** 9
+
+<!--Device-ApplicationQuickFixInfo-readonly hapModuleQuickFixInfo: Array<HapModuleQuickFixInfo>--><!--Device-ApplicationQuickFixInfo-readonly hapModuleQuickFixInfo: Array<HapModuleQuickFixInfo>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.QuickFix
 
@@ -94,6 +104,8 @@ Version code of the quick fix patch package.
 
 **Since:** 9
 
+<!--Device-ApplicationQuickFixInfo-readonly quickFixVersionCode: long--><!--Device-ApplicationQuickFixInfo-readonly quickFixVersionCode: long-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.QuickFix
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Text description of the version number of the quick fix patch package.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-ApplicationQuickFixInfo-readonly quickFixVersionName: string--><!--Device-ApplicationQuickFixInfo-readonly quickFixVersionName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.QuickFix
 

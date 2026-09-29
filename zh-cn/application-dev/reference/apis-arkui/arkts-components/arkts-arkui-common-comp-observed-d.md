@@ -16,4 +16,6 @@ declare const Observed: ClassDecorator
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare const Observed: ClassDecorator--><!--Device-unnamed-declare const Observed: ClassDecorator-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

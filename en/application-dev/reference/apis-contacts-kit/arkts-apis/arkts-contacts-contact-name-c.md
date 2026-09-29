@@ -8,6 +8,8 @@ Defines a contact's name.
 
 **Since:** 7
 
+<!--Device-contact-class Name--><!--Device-contact-class Name-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Family name.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Name-familyName?: string--><!--Device-Name-familyName?: string-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## familyNamePhonetic
@@ -45,6 +49,8 @@ Family name in pinyin.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Name-familyNamePhonetic?: string--><!--Device-Name-familyNamePhonetic?: string-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -62,6 +68,8 @@ Full name of the contact.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Name-fullName: string--><!--Device-Name-fullName: string-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## givenName
@@ -77,6 +85,8 @@ Given name of the contact.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Name-givenName?: string--><!--Device-Name-givenName?: string-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -94,6 +104,8 @@ Given name of the contact in pinyin.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Name-givenNamePhonetic?: string--><!--Device-Name-givenNamePhonetic?: string-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## hasName
@@ -109,6 +121,8 @@ Whether the contact information contains the name. The value **true** indicates 
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Name-hasName?: boolean--><!--Device-Name-hasName?: boolean-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -126,6 +140,8 @@ Middle name of the contact.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Name-middleName?: string--><!--Device-Name-middleName?: string-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## middleNamePhonetic
@@ -141,6 +157,8 @@ Middle name of the contact in pinyin.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Name-middleNamePhonetic?: string--><!--Device-Name-middleNamePhonetic?: string-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -158,6 +176,8 @@ Prefix of the contact name.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Name-namePrefix?: string--><!--Device-Name-namePrefix?: string-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## nameSuffix
@@ -173,5 +193,7 @@ Suffix of the contact name.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Name-nameSuffix?: string--><!--Device-Name-nameSuffix?: string-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData

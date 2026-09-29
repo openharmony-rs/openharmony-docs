@@ -8,6 +8,8 @@ The module defines the operation on DataAbilities. It can be used as an input pa
 
 **Since:** 7
 
+<!--Device-unnamed-export interface DataAbilityOperation--><!--Device-unnamed-export interface DataAbilityOperation-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## expectedCount
@@ -23,6 +25,8 @@ Indicates the expected number of rows to update or delete.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-DataAbilityOperation-expectedCount?: number--><!--Device-DataAbilityOperation-expectedCount?: number-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -40,6 +44,8 @@ Specifies whether a batch operation can be interrupted.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-DataAbilityOperation-interrupted?: boolean--><!--Device-DataAbilityOperation-interrupted?: boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## predicates
@@ -55,6 +61,8 @@ Indicates the filter criteria to set. If this parameter is null, all data record
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-DataAbilityOperation-predicates?: dataAbility.DataAbilityPredicates--><!--Device-DataAbilityOperation-predicates?: dataAbility.DataAbilityPredicates-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -72,6 +80,8 @@ Indicates the back reference to be used as a filter criterion in predicates.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-DataAbilityOperation-predicatesBackReferences?: Map<number, number>--><!--Device-DataAbilityOperation-predicatesBackReferences?: Map<number, number>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## type
@@ -87,6 +97,8 @@ Indicates a operation type.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-DataAbilityOperation-type: featureAbility.DataAbilityOperationType--><!--Device-DataAbilityOperation-type: featureAbility.DataAbilityOperationType-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -104,6 +116,8 @@ Indicates the path of data to operate.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-DataAbilityOperation-uri: string--><!--Device-DataAbilityOperation-uri: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## valueBackReferences
@@ -120,6 +134,8 @@ Indicates the valuesBucket object containing a set of key-value pairs.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-DataAbilityOperation-valueBackReferences?: rdb.ValuesBucket--><!--Device-DataAbilityOperation-valueBackReferences?: rdb.ValuesBucket-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## valuesBucket
@@ -135,5 +151,7 @@ Indicates the data values to be set.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-DataAbilityOperation-valuesBucket?: rdb.ValuesBucket--><!--Device-DataAbilityOperation-valuesBucket?: rdb.ValuesBucket-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel

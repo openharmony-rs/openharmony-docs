@@ -8,6 +8,8 @@ Describes the window size, in px.
 
 **Since:** 7
 
+<!--Device-window-interface Size--><!--Device-window-interface Size-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Window height, in px. The value must be an integer.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Size-height: int--><!--Device-Size-height: int-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -44,6 +48,8 @@ Window width, in px. The value must be an integer.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Size-width: int--><!--Device-Size-width: int-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core

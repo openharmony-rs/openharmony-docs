@@ -8,6 +8,8 @@ Enumerates color space types for specifying color rendering modes.
 
 **Since:** 20
 
+<!--Device-unnamed-declare enum ColorSpace--><!--Device-unnamed-declare enum ColorSpace-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SRGB
@@ -24,6 +26,8 @@ Standard RGB color space, suitable for most display devices.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ColorSpace-SRGB = 0--><!--Device-ColorSpace-SRGB = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DISPLAY_P3
@@ -39,5 +43,7 @@ Display P3 color space with wider gamut, designed for high-end display devices.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ColorSpace-DISPLAY_P3 = 1--><!--Device-ColorSpace-DISPLAY_P3 = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

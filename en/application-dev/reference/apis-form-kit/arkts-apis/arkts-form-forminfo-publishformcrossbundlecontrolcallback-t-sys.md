@@ -12,6 +12,8 @@ publish form cross bundle control callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formInfo-type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo) => boolean--><!--Device-formInfo-type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo) => boolean-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

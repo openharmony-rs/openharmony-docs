@@ -11,6 +11,8 @@ TextMenuController用于控制文本选择菜单的行为，支持设置菜单�
 
 **起始版本：** 16
 
+<!--Device-unnamed-export class TextMenuController--><!--Device-unnamed-export class TextMenuController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -42,7 +44,7 @@ static disableMenuItems(items: Array<TextMenuItemId>): void
 > - 此接口调用后将影响文本组件的接口[editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions)，其回调方法[onCreateMenu](arkts-arkui-editmenuoptions-i.md#oncreatemenu)的入参列表中不包含被屏蔽的菜单选项。
 > 
 > 
-> - 涉及文本选择菜单的组件有 Text、TextArea、TextInput、Search、RichEditor、Web。
+> - 涉及文本选择菜单的组件有 [Text](../arkts-components/arkts-arkui-text-comp.md)、[TextArea](../arkts-components/arkts-arkui-textarea-comp.md)、[TextInput](../arkts-components/arkts-arkui-textinput-comp.md)、[Search](../arkts-components/arkts-arkui-search-comp.md)、[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md)、[Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md)。
 > 
 > 
 > - 系统服务菜单项指除[TextMenuItemId](arkts-arkui-textmenuitemid-c.md)中的复制、剪切、全选、粘贴以外的菜单项。
@@ -70,6 +72,8 @@ static disableMenuItems(items: Array<TextMenuItemId>): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextMenuController-static disableMenuItems(items: Array<TextMenuItemId>): void--><!--Device-TextMenuController-static disableMenuItems(items: Array<TextMenuItemId>): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,7 +148,7 @@ static disableSystemServiceMenuItems(disable: boolean): void
 > - 此接口调用后将影响文本组件的接口[editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions)，其回调方法onCreateMenu的入参列表中不包含被屏蔽的菜单选项。
 > 
 > 
-> - 涉及文本选择菜单的组件有 Text、TextArea、TextInput、Search、RichEditor、Web。
+> - 涉及文本选择菜单的组件有 [Text](../arkts-components/arkts-arkui-text-comp.md)、TextArea、[TextInput](../arkts-components/arkts-arkui-textinput-comp.md)、Search、[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md)、Web。
 > 
 > 
 > - 系统服务菜单项指除[TextMenuItemId](arkts-arkui-textmenuitemid-c.md)中的复制、剪切、全选、粘贴以外的菜单项。
@@ -172,6 +176,8 @@ static disableSystemServiceMenuItems(disable: boolean): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextMenuController-static disableSystemServiceMenuItems(disable: boolean): void--><!--Device-TextMenuController-static disableSystemServiceMenuItems(disable: boolean): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,6 +245,8 @@ setMenuOptions(options: TextMenuOptions): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本16开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextMenuController-setMenuOptions(options: TextMenuOptions): void--><!--Device-TextMenuController-setMenuOptions(options: TextMenuOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

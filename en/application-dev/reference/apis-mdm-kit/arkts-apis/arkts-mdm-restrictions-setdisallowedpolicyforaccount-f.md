@@ -24,6 +24,8 @@ Disallows a feature for a specified user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: boolean, accountId: number): void--><!--Device-restrictions-function setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: boolean, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -81,6 +83,8 @@ Disallows a feature for a specified user.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-restrictions-function setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number): void--><!--Device-restrictions-function setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -2,7 +2,7 @@
 
 The responsive grid layout provides rules for layout design and resolves issues of dynamic layout across devices with different sizes, thereby ensuring layout consistency across layouts on different devices.
 
-The **GridRow** component is used in a grid layout, together with its child component [GridCol](arkts-arkui-gridcol-comp.md#grid_col).
+The **GridRow** component is used in a grid layout, together with its child component [GridCol](arkts-arkui-gridcol-comp.md).
 
 It supports dynamically adjusting the number of columns and gutter sizes based on device sizes and breakpoints to implement responsive layout.
 
@@ -24,13 +24,15 @@ Defines a grid row layout container. It can only be used with grid child compone
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-GridRowInterface-(option?: GridRowOptions): GridRowAttribute--><!--Device-GridRowInterface-(option?: GridRowOptions): GridRowAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| option | [GridRowOptions](arkts-arkui-gridrow-comp-gridrowoptions-i.md) | No | Layout options of the grid row layout container. This parameter is passed when you need to customize the grid layout (such as setting the number of columns, gutter, breakpoint positions, and arrangement direction). If not passed, the default configuration is used. **GridRow** must be used together with [GridCol](arkts-arkui-gridcol-comp.md#grid_col) child components. |
+| option | [GridRowOptions](arkts-arkui-gridrow-comp-gridrowoptions-i.md) | No | Layout options of the grid row layout container. This parameter is passed when you need to customize the grid layout (such as setting the number of columns, gutter, breakpoint positions, and arrangement direction). If not passed, the default configuration is used. **GridRow** must be used together with [GridCol](arkts-arkui-gridcol-comp.md) child components. |
 
 ## Summary
 

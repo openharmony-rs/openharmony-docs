@@ -6,6 +6,8 @@ It can be used to verify the HTTPS certificate chain of the application server ,
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace certificateManager--><!--Device-unnamed-declare namespace certificateManager-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## Modules to Import

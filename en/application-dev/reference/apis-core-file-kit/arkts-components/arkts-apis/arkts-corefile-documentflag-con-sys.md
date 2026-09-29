@@ -14,6 +14,8 @@ Directory.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DocumentFlag-const REPRESENTS_DIR = 0b10--><!--Device-DocumentFlag-const REPRESENTS_DIR = 0b10-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ File.
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DocumentFlag-const REPRESENTS_FILE = 0b1--><!--Device-DocumentFlag-const REPRESENTS_FILE = 0b1-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -50,6 +54,8 @@ The device supports read.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DocumentFlag-const SUPPORTS_READ = 0b100--><!--Device-DocumentFlag-const SUPPORTS_READ = 0b100-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ The device supports write.
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DocumentFlag-const SUPPORTS_WRITE = 0b1000--><!--Device-DocumentFlag-const SUPPORTS_WRITE = 0b1000-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

@@ -18,6 +18,8 @@ Obtain the number of cached GNSS locations reported at a time.
 
 **Required permissions:** ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-geoLocationManager-function getCachedGnssLocationsSize(callback: AsyncCallback<int>): void--><!--Device-geoLocationManager-function getCachedGnssLocationsSize(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 **Parameters:**
@@ -69,6 +71,8 @@ Obtain the number of cached GNSS locations.
 **Since:** 9
 
 **Required permissions:** ohos.permission.APPROXIMATELY_LOCATION
+
+<!--Device-geoLocationManager-function getCachedGnssLocationsSize(): Promise<int>--><!--Device-geoLocationManager-function getCachedGnssLocationsSize(): Promise<int>-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 

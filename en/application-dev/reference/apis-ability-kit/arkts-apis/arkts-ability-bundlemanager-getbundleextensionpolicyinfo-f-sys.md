@@ -20,6 +20,8 @@ Obtains the bundle extension policy information of a specified application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function getBundleExtensionPolicyInfo(bundleName: string, userId: int): BundleExtensionPolicyInfo--><!--Device-bundleManager-function getBundleExtensionPolicyInfo(bundleName: string, userId: int): BundleExtensionPolicyInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

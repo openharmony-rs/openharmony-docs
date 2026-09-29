@@ -8,6 +8,8 @@ EntityInfo inherits from [IntentEntityDecoratorInfo](arkts-ability-app-ability-i
 
 **Since:** 20
 
+<!--Device-insightIntentDriver-interface EntityInfo--><!--Device-insightIntentDriver-interface EntityInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Class name decorated by [@InsightIntentEntity](../../../reference/apis-ability-k
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EntityInfo-readonly className: string--><!--Device-EntityInfo-readonly className: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Category of the intent entity.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EntityInfo-readonly entityCategory: string--><!--Device-EntityInfo-readonly entityCategory: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -68,6 +74,8 @@ ID of the intent entity.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EntityInfo-readonly entityId: string--><!--Device-EntityInfo-readonly entityId: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ The entity is queryable.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EntityInfo-readonly isQueryable?: boolean--><!--Device-EntityInfo-readonly isQueryable?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -104,6 +114,8 @@ Data format of intent entity parameters.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EntityInfo-readonly parameters: Record<string, Object>--><!--Device-EntityInfo-readonly parameters: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -122,6 +134,8 @@ Parent class name decorated by [@InsightIntentEntity](../../../reference/apis-ab
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EntityInfo-readonly parentClassName: string--><!--Device-EntityInfo-readonly parentClassName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -139,6 +153,8 @@ Support query properties.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EntityInfo-readonly supportedQueryProperties?: string[]--><!--Device-EntityInfo-readonly supportedQueryProperties?: string[]-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

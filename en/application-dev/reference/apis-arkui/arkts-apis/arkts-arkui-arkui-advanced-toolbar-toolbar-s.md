@@ -10,11 +10,13 @@ The **Toolbar** component is designed to present a set of action options related
 > 
 > - This component can be used only in the stage model.
 > 
-> - If the **ToolBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md#common) and [universal events](../arkts-components/arkts-arkui-common-comp.md#common) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **ToolBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ToolBar** component.
+> - If the **ToolBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **ToolBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ToolBar** component.
 
 **Since:** 10
 
 **Decorator:** @Component
+
+<!--Device-unnamed-export declare struct ToolBar--><!--Device-unnamed-export declare struct ToolBar-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +48,8 @@ The default value is **-1**, indicating that there is no active item. Values les
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ToolBar-activateIndex?: number--><!--Device-ToolBar-activateIndex?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## controller
@@ -63,6 +67,8 @@ Toolbar controller, which cannot be used for controlling individual toolbar item
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ToolBar-controller: TabsController--><!--Device-ToolBar-controller: TabsController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,6 +92,8 @@ Default value: system default value
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-ToolBar-dividerModifier?: DividerModifier--><!--Device-ToolBar-dividerModifier?: DividerModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## toolBarList
@@ -105,6 +113,8 @@ Toolbar list.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ToolBar-toolBarList: ToolBarOptions--><!--Device-ToolBar-toolBarList: ToolBarOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,5 +145,7 @@ Whether to display the pressed state: yes
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-ToolBar-toolBarModifier?: ToolBarModifier--><!--Device-ToolBar-toolBarModifier?: ToolBarModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

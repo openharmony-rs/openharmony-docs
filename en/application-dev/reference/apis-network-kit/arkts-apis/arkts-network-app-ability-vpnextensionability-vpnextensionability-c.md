@@ -10,6 +10,8 @@ This module provides the context required for APIs to access the resources of a 
 
 **Since:** 11
 
+<!--Device-unnamed-export default class VpnExtensionAbility--><!--Device-unnamed-export default class VpnExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Represents the callback triggered when the extended VPN is initialized.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VpnExtensionAbility-onCreate(want: Want): void--><!--Device-VpnExtensionAbility-onCreate(want: Want): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -68,6 +72,8 @@ Represents the callback triggered when the extended VPN is destroyed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-VpnExtensionAbility-onDestroy(): void--><!--Device-VpnExtensionAbility-onDestroy(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Examples**
@@ -95,5 +101,7 @@ Specified context.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VpnExtensionAbility-context: VpnExtensionContext--><!--Device-VpnExtensionAbility-context: VpnExtensionContext-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

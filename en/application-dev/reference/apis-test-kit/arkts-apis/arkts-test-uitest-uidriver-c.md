@@ -12,6 +12,8 @@ The **UiDriver** class is the main entry to the UiTest framework. It provides AP
 
 **Substitutes:** [Driver](arkts-test-uitest-driver-c.md)
 
+<!--Device-unnamed-declare class UiDriver--><!--Device-unnamed-declare class UiDriver-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -36,6 +38,8 @@ Asserts that a component that matches the given attributes exists on the current
 **Deprecated since:** 9
 
 **Substitutes:** [assertComponentExist](arkts-test-uitest-driver-c.md#assertcomponentexist)
+
+<!--Device-UiDriver-assertComponentExist(by: By): Promise<void>--><!--Device-UiDriver-assertComponentExist(by: By): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -87,6 +91,8 @@ Clicks a specific point of this **UiDriver** object based on the given coordinat
 
 **Substitutes:** [click](arkts-test-uitest-component-c.md#click)
 
+<!--Device-UiDriver-click(x: number, y: number): Promise<void>--><!--Device-UiDriver-click(x: number, y: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -135,6 +141,8 @@ Creates a **UiDriver** object and returns the object created. This API is a stat
 
 **Substitutes:** [create](arkts-test-uitest-driver-c.md#create)
 
+<!--Device-UiDriver-static create(): UiDriver--><!--Device-UiDriver-static create(): UiDriver-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -169,6 +177,8 @@ Delays a duration of time. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [delayMs](arkts-test-uitest-driver-c.md#delayms)
+
+<!--Device-UiDriver-delayMs(duration: number): Promise<void>--><!--Device-UiDriver-delayMs(duration: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -211,6 +221,8 @@ Double-clicks a specific point of this **UiDriver** object based on the given co
 **Deprecated since:** 9
 
 **Substitutes:** [doubleClick](arkts-test-uitest-component-c.md#doubleclick)
+
+<!--Device-UiDriver-doubleClick(x: number, y: number): Promise<void>--><!--Device-UiDriver-doubleClick(x: number, y: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -255,6 +267,8 @@ Searches this **UiDriver** object for the target component that matches the give
 
 **Substitutes:** [findComponent](arkts-test-uitest-driver-c.md#findcomponent)(on: On)
 
+<!--Device-UiDriver-findComponent(by: By): Promise<UiComponent>--><!--Device-UiDriver-findComponent(by: By): Promise<UiComponent>-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -297,6 +311,8 @@ Searches this **UiDriver** object for all components that match the given attrib
 
 **Substitutes:** [findComponents](arkts-test-uitest-driver-c.md#findcomponents)(on: On)
 
+<!--Device-UiDriver-findComponents(by: By): Promise<Array<UiComponent>>--><!--Device-UiDriver-findComponents(by: By): Promise<Array<UiComponent>>-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -338,6 +354,8 @@ Long-clicks a specific point of this **UiDriver** object based on the given coor
 **Deprecated since:** 9
 
 **Substitutes:** [longClick](arkts-test-uitest-component-c.md#longclick)
+
+<!--Device-UiDriver-longClick(x: number, y: number): Promise<void>--><!--Device-UiDriver-longClick(x: number, y: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -382,6 +400,8 @@ Presses the Back button on this **UiDriver** object. This API uses a promise to 
 
 **Substitutes:** [pressBack](arkts-test-uitest-driver-c.md#pressback)()
 
+<!--Device-UiDriver-pressBack(): Promise<void>--><!--Device-UiDriver-pressBack(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -417,6 +437,8 @@ Captures the current screen of this **UiDriver** object and saves it as a PNG im
 **Deprecated since:** 9
 
 **Substitutes:** [screenCap](arkts-test-uitest-driver-c.md#screencap)(savePath: string)
+
+<!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>--><!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -459,6 +481,8 @@ Swipes on this **UiDriver** object from the start point to the end point based o
 **Deprecated since:** 9
 
 **Substitutes:** [swipe](arkts-test-uitest-driver-c.md#swipe)
+
+<!--Device-UiDriver-swipe(startx: number, starty: number, endx: number, endy: number): Promise<void>--><!--Device-UiDriver-swipe(startx: number, starty: number, endx: number, endy: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -504,6 +528,8 @@ Triggers a key event by passing the key code value. This API uses a promise to r
 **Deprecated since:** 9
 
 **Substitutes:** [triggerKey](arkts-test-uitest-driver-c.md#triggerkey)(keyCode: number)
+
+<!--Device-UiDriver-triggerKey(keyCode: number): Promise<void>--><!--Device-UiDriver-triggerKey(keyCode: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

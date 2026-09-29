@@ -10,11 +10,11 @@ Not supported
 
 ## Attributes
 
-The [universal attributes](../arkts-components/arkts-arkui-common-comp.md#common) are not supported.
+The [universal attributes](../arkts-components/arkts-arkui-common-comp.md) are not supported.
 
 ## Events
 
-The [universal events](../arkts-components/arkts-arkui-common-comp.md#common) are not supported.
+The [universal events](../arkts-components/arkts-arkui-common-comp.md) are not supported.
 
 ## Modules to Import
 

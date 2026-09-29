@@ -12,6 +12,8 @@ Inherits from [IconCommonOptions](arkts-arkui-arkui-advanced-chip-iconcommonopti
 
 **Since:** 11
 
+<!--Device-unnamed-export interface SuffixIconOptions extends IconCommonOptions--><!--Device-unnamed-export interface SuffixIconOptions extends IconCommonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -36,6 +38,8 @@ When the value is **undefined**, no suffix icon event is set.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SuffixIconOptions-action?: () => void--><!--Device-SuffixIconOptions-action?: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -57,6 +61,8 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-SuffixIconOptions-accessibilityDescription?: ResourceStr--><!--Device-SuffixIconOptions-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +98,8 @@ When the value is undefined, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-SuffixIconOptions-accessibilityLevel?: string--><!--Device-SuffixIconOptions-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -113,5 +121,7 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-SuffixIconOptions-accessibilityText?: ResourceStr--><!--Device-SuffixIconOptions-accessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

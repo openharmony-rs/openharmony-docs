@@ -8,6 +8,8 @@ Describe the type of Bluetooth address.
 
 **Since:** 21
 
+<!--Device-common-export interface BluetoothAddress--><!--Device-common-export interface BluetoothAddress-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ The string of the Bluetooth address.
 
 **Since:** 21
 
+<!--Device-BluetoothAddress-address: string--><!--Device-BluetoothAddress-address: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## addressType
@@ -42,6 +46,8 @@ The type of the Bluetooth address.
 
 **Since:** 21
 
+<!--Device-BluetoothAddress-addressType: BluetoothAddressType--><!--Device-BluetoothAddress-addressType: BluetoothAddressType-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## rawAddressType
@@ -55,5 +61,7 @@ Address type defined by the Bluetooth Core Specification. It is used only when t
 **Type:** [BluetoothRawAddressType](arkts-connectivity-common-bluetoothrawaddresstype-e.md)
 
 **Since:** 23
+
+<!--Device-BluetoothAddress-rawAddressType?: BluetoothRawAddressType--><!--Device-BluetoothAddress-rawAddressType?: BluetoothRawAddressType-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

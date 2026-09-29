@@ -8,6 +8,8 @@ Enumerates the global switch types.
 
 **Since:** 12
 
+<!--Device-abilityAccessCtrl-export enum SwitchType--><!--Device-abilityAccessCtrl-export enum SwitchType-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 ## CAMERA
@@ -22,7 +24,9 @@ Global switch of the camera.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SwitchType-CAMERA = 0--><!--Device-SwitchType-CAMERA = 0-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -38,7 +42,9 @@ Global switch of the microphone.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SwitchType-MICROPHONE = 1--><!--Device-SwitchType-MICROPHONE = 1-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -54,6 +60,8 @@ Global switch of the location service.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SwitchType-LOCATION = 2--><!--Device-SwitchType-LOCATION = 2-End-->
 
 **System capability:** SystemCapability.Security.AccessToken

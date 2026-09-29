@@ -6,6 +6,8 @@ This module provides the capabilities of connecting to and managing NearLink rem
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace remoteDevice--><!--Device-unnamed-declare namespace remoteDevice-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -57,14 +59,6 @@ import { remoteDevice } from '@kit.ConnectivityKit';
 | [RemoteDevice](arkts-connectivity-remotedevice-remotedevice-i-sys.md) | Provides the method for operating on a remote device. Before using this method, you need to call [remoteDevice.createRemoteDevice](arkts-connectivity-remotedevice-createremotedevice-f.md) to create a [RemoteDevice](arkts-connectivity-remotedevice-remotedevice-i.md) instance. You need to create only one instance for a device. |
 <!--DelEnd-->
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [ConnectionReason](arkts-connectivity-remotedevice-connectionreason-e.md) | Enum for the connection reason. |
-| [PairingReason](arkts-connectivity-remotedevice-pairingreason-e.md) | Enum for the pairing reason. |
-| [PairingType](arkts-connectivity-remotedevice-pairingtype-e.md) | Enumerates the NearLink pairing types. |
-
 ### Types
 
 | Name | Description |
@@ -81,3 +75,11 @@ import { remoteDevice } from '@kit.ConnectivityKit';
 | --- | --- |
 | [ConnectionInterval](arkts-connectivity-remotedevice-connectioninterval-t-sys.md) | Enumerates the connection intervals. |
 <!--DelEnd-->
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [ConnectionReason](arkts-connectivity-remotedevice-connectionreason-e.md) | Enum for the connection reason. |
+| [PairingReason](arkts-connectivity-remotedevice-pairingreason-e.md) | Enum for the pairing reason. |
+| [PairingType](arkts-connectivity-remotedevice-pairingtype-e.md) | Enumerates the NearLink pairing types. |

@@ -8,6 +8,8 @@ declare interface MenuGridStyleOptions
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare interface MenuGridStyleOptions--><!--Device-unnamed-declare interface MenuGridStyleOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## count
@@ -37,6 +39,8 @@ count?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuGridStyleOptions-count?: number--><!--Device-MenuGridStyleOptions-count?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +72,8 @@ horizontalSize?: number
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-MenuGridStyleOptions-horizontalSize?: number--><!--Device-MenuGridStyleOptions-horizontalSize?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## position
@@ -89,5 +95,7 @@ position?: MenuGridPosition
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuGridStyleOptions-position?: MenuGridPosition--><!--Device-MenuGridStyleOptions-position?: MenuGridPosition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

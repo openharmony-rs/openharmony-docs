@@ -18,6 +18,8 @@ This API is used to query the badge number displayed on the current application'
 
 **Since:** 22
 
+<!--Device-notificationManager-function getBadgeNumber(): Promise<long>--><!--Device-notificationManager-function getBadgeNumber(): Promise<long>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) sets the notification badge number.

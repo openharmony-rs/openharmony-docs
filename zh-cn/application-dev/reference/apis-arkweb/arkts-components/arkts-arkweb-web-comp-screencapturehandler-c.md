@@ -14,6 +14,8 @@ ScreenCaptureHandler 是 Web 组件提供的屏幕捕获权限处理类，用于
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare class ScreenCaptureHandler--><!--Device-unnamed-declare class ScreenCaptureHandler-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -27,6 +29,8 @@ ScreenCaptureHandler的构造函数。
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScreenCaptureHandler-constructor()--><!--Device-ScreenCaptureHandler-constructor()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -42,6 +46,8 @@ deny(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ScreenCaptureHandler-deny(): void--><!--Device-ScreenCaptureHandler-deny(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## getOrigin
@@ -55,6 +61,8 @@ getOrigin(): string
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScreenCaptureHandler-getOrigin(): string--><!--Device-ScreenCaptureHandler-getOrigin(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -75,6 +83,8 @@ grant(config: ScreenCaptureConfig): void
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScreenCaptureHandler-grant(config: ScreenCaptureConfig): void--><!--Device-ScreenCaptureHandler-grant(config: ScreenCaptureConfig): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

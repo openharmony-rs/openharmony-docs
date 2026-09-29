@@ -8,6 +8,8 @@ export declare enum ItemState
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare enum ItemState--><!--Device-unnamed-export declare enum ItemState-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ENABLE
@@ -23,6 +25,8 @@ ENABLE = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ItemState-ENABLE = 1--><!--Device-ItemState-ENABLE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ DISABLE = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ItemState-DISABLE = 2--><!--Device-ItemState-DISABLE = 2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ACTIVATE
@@ -55,5 +61,7 @@ ACTIVATE = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ItemState-ACTIVATE = 3--><!--Device-ItemState-ACTIVATE = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -10,6 +10,8 @@ ScrollOffset
 
 **Since:** 6
 
+<!--Device-unnamed-export interface ScrollOffset--><!--Device-unnamed-export interface ScrollOffset-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -26,6 +28,8 @@ Scrolling offset in the x-axis, in px.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-ScrollOffset-x: number--><!--Device-ScrollOffset-x: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -41,5 +45,7 @@ Scrolling offset in the y-axis, in px.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ScrollOffset-y: number--><!--Device-ScrollOffset-y: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

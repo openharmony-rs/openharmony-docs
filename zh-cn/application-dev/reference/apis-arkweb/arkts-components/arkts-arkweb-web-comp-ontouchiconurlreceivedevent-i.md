@@ -8,6 +8,8 @@ declare interface OnTouchIconUrlReceivedEvent
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface OnTouchIconUrlReceivedEvent--><!--Device-unnamed-declare interface OnTouchIconUrlReceivedEvent-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## precomposed
@@ -26,6 +28,8 @@ true表示对应apple-touch-icon为预合成，false表示对应apple-touch-icon
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-OnTouchIconUrlReceivedEvent-precomposed: boolean--><!--Device-OnTouchIconUrlReceivedEvent-precomposed: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## url
@@ -41,5 +45,7 @@ url: string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnTouchIconUrlReceivedEvent-url: string--><!--Device-OnTouchIconUrlReceivedEvent-url: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

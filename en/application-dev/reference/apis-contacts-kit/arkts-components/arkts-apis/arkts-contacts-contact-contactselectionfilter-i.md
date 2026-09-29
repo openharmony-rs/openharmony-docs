@@ -8,6 +8,8 @@ Defines the contact selection filter.
 
 **Since:** 15
 
+<!--Device-contact-interface ContactSelectionFilter--><!--Device-contact-interface ContactSelectionFilter-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Filter criteria.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-ContactSelectionFilter-filterClause: FilterClause--><!--Device-ContactSelectionFilter-filterClause: FilterClause-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 ## filterType
@@ -45,5 +49,7 @@ Filter type.
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-ContactSelectionFilter-filterType: FilterType--><!--Device-ContactSelectionFilter-filterType: FilterType-End-->
 
 **System capability:** SystemCapability.Applications.Contacts

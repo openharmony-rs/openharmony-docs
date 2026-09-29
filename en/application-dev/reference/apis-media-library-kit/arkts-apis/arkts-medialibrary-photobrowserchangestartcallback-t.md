@@ -12,6 +12,8 @@ Callback to be invoked when a grid view switches to the photo browser page or th
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-unnamed-export type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void--><!--Device-unnamed-export type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters:**

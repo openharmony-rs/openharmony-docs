@@ -8,6 +8,8 @@ Enumerates the portrait effects.
 
 **Since:** 10
 
+<!--Device-camera-enum PortraitEffect--><!--Device-camera-enum PortraitEffect-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ OFF = 0
 Disabled.
 
 **Since:** 10
+
+<!--Device-PortraitEffect-OFF = 0--><!--Device-PortraitEffect-OFF = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -36,6 +40,8 @@ Circles.
 
 **Since:** 10
 
+<!--Device-PortraitEffect-CIRCLES = 1--><!--Device-PortraitEffect-CIRCLES = 1-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -49,6 +55,8 @@ HEART = 2
 Heart-shaped.
 
 **Since:** 11
+
+<!--Device-PortraitEffect-HEART = 2--><!--Device-PortraitEffect-HEART = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -64,6 +72,8 @@ Rotated.
 
 **Since:** 11
 
+<!--Device-PortraitEffect-ROTATED = 3--><!--Device-PortraitEffect-ROTATED = 3-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -78,6 +88,8 @@ Studio light.
 
 **Since:** 11
 
+<!--Device-PortraitEffect-STUDIO = 4--><!--Device-PortraitEffect-STUDIO = 4-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -91,6 +103,8 @@ THEATER = 5
 Theater light.
 
 **Since:** 11
+
+<!--Device-PortraitEffect-THEATER = 5--><!--Device-PortraitEffect-THEATER = 5-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

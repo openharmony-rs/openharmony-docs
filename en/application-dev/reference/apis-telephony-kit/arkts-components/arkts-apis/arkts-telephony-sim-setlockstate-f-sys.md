@@ -18,6 +18,8 @@ Set the lock status of the SIM card in the specified slot.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-sim-function setLockState(slotId: int, options: LockInfo, callback: AsyncCallback<LockStatusResponse>): void--><!--Device-sim-function setLockState(slotId: int, options: LockInfo, callback: AsyncCallback<LockStatusResponse>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -74,6 +76,8 @@ Set the lock status of the SIM card in the specified slot.
 **Since:** 7
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-sim-function setLockState(slotId: int, options: LockInfo): Promise<LockStatusResponse>--><!--Device-sim-function setLockState(slotId: int, options: LockInfo): Promise<LockStatusResponse>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

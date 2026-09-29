@@ -16,6 +16,8 @@ Obtains the coordinate system types supported by geofence.
 
 **Since:** 12
 
+<!--Device-geoLocationManager-function getGeofenceSupportedCoordTypes(): Array<CoordinateSystemType>--><!--Device-geoLocationManager-function getGeofenceSupportedCoordTypes(): Array<CoordinateSystemType>-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **Return value:**

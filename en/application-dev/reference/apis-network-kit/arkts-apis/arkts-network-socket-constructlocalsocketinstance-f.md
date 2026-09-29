@@ -16,6 +16,8 @@ Creates a **LocalSocket** object.
 
 **Since:** 11
 
+<!--Device-socket-function constructLocalSocketInstance(): LocalSocket--><!--Device-socket-function constructLocalSocketInstance(): LocalSocket-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**

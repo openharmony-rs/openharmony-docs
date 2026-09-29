@@ -8,6 +8,8 @@ Describes the codec type.
 
 **Since:** 11
 
+<!--Device-a2dp-enum CodecType--><!--Device-a2dp-enum CodecType-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## CODEC_TYPE_INVALID
@@ -19,6 +21,8 @@ CODEC_TYPE_INVALID = -1
 invalid codec type.
 
 **Since:** 11
+
+<!--Device-CodecType-CODEC_TYPE_INVALID = -1--><!--Device-CodecType-CODEC_TYPE_INVALID = -1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -32,6 +36,8 @@ SBC - Sub-band coding.
 
 **Since:** 11
 
+<!--Device-CodecType-CODEC_TYPE_SBC = 0--><!--Device-CodecType-CODEC_TYPE_SBC = 0-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## CODEC_TYPE_AAC
@@ -43,6 +49,8 @@ CODEC_TYPE_AAC = 1
 AAC - Advanced Audio Coding.
 
 **Since:** 11
+
+<!--Device-CodecType-CODEC_TYPE_AAC = 1--><!--Device-CodecType-CODEC_TYPE_AAC = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -56,6 +64,8 @@ L2HC.
 
 **Since:** 11
 
+<!--Device-CodecType-CODEC_TYPE_L2HC = 2--><!--Device-CodecType-CODEC_TYPE_L2HC = 2-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## CODEC_TYPE_L2HCST
@@ -68,6 +78,8 @@ L2HCST.
 
 **Since:** 13
 
+<!--Device-CodecType-CODEC_TYPE_L2HCST = 3--><!--Device-CodecType-CODEC_TYPE_L2HCST = 3-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## CODEC_TYPE_LDAC
@@ -79,5 +91,7 @@ CODEC_TYPE_LDAC = 4
 LDAC.
 
 **Since:** 13
+
+<!--Device-CodecType-CODEC_TYPE_LDAC = 4--><!--Device-CodecType-CODEC_TYPE_LDAC = 4-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

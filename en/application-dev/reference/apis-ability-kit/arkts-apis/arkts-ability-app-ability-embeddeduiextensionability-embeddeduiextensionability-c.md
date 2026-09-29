@@ -12,6 +12,8 @@ EmbeddedUIExtensionAbility is a component that enables cross-process UI embeddin
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export default class EmbeddedUIExtensionAbility extends UIExtensionAbility--><!--Device-unnamed-export default class EmbeddedUIExtensionAbility extends UIExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import

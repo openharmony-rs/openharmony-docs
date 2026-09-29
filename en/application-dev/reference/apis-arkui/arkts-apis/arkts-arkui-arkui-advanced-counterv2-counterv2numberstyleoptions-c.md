@@ -6,9 +6,13 @@ declare class CounterV2NumberStyleOptions extends CounterV2InlineStyleOptions
 
 Defines the attributes and events of the list and compact **CounterV2**.
 
+This API inherits from [CounterV2InlineStyleOptions](arkts-arkui-arkui-advanced-counterv2-counterv2inlinestyleoptions-c.md) and contains all attributes of the parent API and [CounterV2CommonOptions](arkts-arkui-arkui-advanced-counterv2-counterv2commonoptions-c.md). This topic only describes the newly added attributes. For inherited attributes, see the parent API.
+
 **Inheritance/Implementation:** CounterV2NumberStyleOptions extends [CounterV2InlineStyleOptions](arkts-arkui-arkui-advanced-counterv2-counterv2inlinestyleoptions-c.md)
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-declare class CounterV2NumberStyleOptions extends CounterV2InlineStyleOptions--><!--Device-unnamed-declare class CounterV2NumberStyleOptions extends CounterV2InlineStyleOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,6 +42,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CounterV2NumberStyleOptions-onBlurDecrease?: VoidCallback--><!--Device-CounterV2NumberStyleOptions-onBlurDecrease?: VoidCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onBlurIncrease
@@ -59,6 +65,8 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CounterV2NumberStyleOptions-onBlurIncrease?: VoidCallback--><!--Device-CounterV2NumberStyleOptions-onBlurIncrease?: VoidCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +90,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CounterV2NumberStyleOptions-onFocusDecrease?: VoidCallback--><!--Device-CounterV2NumberStyleOptions-onFocusDecrease?: VoidCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onFocusIncrease
@@ -103,6 +113,8 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CounterV2NumberStyleOptions-onFocusIncrease?: VoidCallback--><!--Device-CounterV2NumberStyleOptions-onFocusIncrease?: VoidCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,5 +139,7 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CounterV2NumberStyleOptions-label?: ResourceStr--><!--Device-CounterV2NumberStyleOptions-label?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

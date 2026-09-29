@@ -8,6 +8,8 @@ Defines an accessibility virtual node.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export declare interface AccessibilityVirtualNode--><!--Device-unnamed-export declare interface AccessibilityVirtualNode-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -28,6 +30,8 @@ Default value: false.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityVirtualNode-accessibilityFocused?: boolean--><!--Device-AccessibilityVirtualNode-accessibilityFocused?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Default value: true.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityVirtualNode-accessibilityGroup?: boolean--><!--Device-AccessibilityVirtualNode-accessibilityGroup?: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -74,6 +80,8 @@ Accessibility level of the component.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityVirtualNode-accessibilityLevel?: string--><!--Device-AccessibilityVirtualNode-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -91,6 +99,8 @@ Accessibility text information of the element.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityVirtualNode-accessibilityText?: string--><!--Device-AccessibilityVirtualNode-accessibilityText?: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -112,6 +122,8 @@ Default value: false.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityVirtualNode-checkable?: boolean--><!--Device-AccessibilityVirtualNode-checkable?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -132,6 +144,8 @@ Default value: false.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityVirtualNode-checked?: boolean--><!--Device-AccessibilityVirtualNode-checked?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -149,6 +163,8 @@ List of child element IDs of the component.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityVirtualNode-childNodeIds?: Array<long>--><!--Device-AccessibilityVirtualNode-childNodeIds?: Array<long>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -170,6 +186,8 @@ Default value: false.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityVirtualNode-clickable?: boolean--><!--Device-AccessibilityVirtualNode-clickable?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -187,6 +205,8 @@ Custom component type.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityVirtualNode-customComponentType?: string--><!--Device-AccessibilityVirtualNode-customComponentType?: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -208,6 +228,8 @@ Default value: -1.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityVirtualNode-elementId?: long--><!--Device-AccessibilityVirtualNode-elementId?: long-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -228,6 +250,8 @@ Corresponds to the isEnable attribute of AccessibilityElement. Default value: fa
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityVirtualNode-enabled?: boolean--><!--Device-AccessibilityVirtualNode-enabled?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -246,6 +270,8 @@ Parent element ID of the component.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityVirtualNode-parentId?: long--><!--Device-AccessibilityVirtualNode-parentId?: long-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -263,6 +289,8 @@ Area of the element (relative to the parent node).
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityVirtualNode-rect?: Rect--><!--Device-AccessibilityVirtualNode-rect?: Rect-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -284,6 +312,8 @@ Default value: false.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityVirtualNode-selected?: boolean--><!--Device-AccessibilityVirtualNode-selected?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -301,6 +331,8 @@ Supported action names.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityVirtualNode-supportedActionNames?: Array<string>--><!--Device-AccessibilityVirtualNode-supportedActionNames?: Array<string>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -320,6 +352,8 @@ Text content of the element.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityVirtualNode-text?: string--><!--Device-AccessibilityVirtualNode-text?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -338,6 +372,8 @@ Simulated touch position.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityVirtualNode-touchPosition?: TouchPosition--><!--Device-AccessibilityVirtualNode-touchPosition?: TouchPosition-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -355,6 +391,8 @@ Custom virtual node ID of the element.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityVirtualNode-virtualNodeId: long--><!--Device-AccessibilityVirtualNode-virtualNodeId: long-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

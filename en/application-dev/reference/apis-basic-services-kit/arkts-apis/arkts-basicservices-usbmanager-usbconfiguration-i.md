@@ -8,6 +8,8 @@ Represents the USB configuration. One [USBDevice](arkts-basicservices-usbmanager
 
 **Since:** 9
 
+<!--Device-usbManager-interface USBConfiguration--><!--Device-usbManager-interface USBConfiguration-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Configuration attributes, indicating features such as the power supply mode and 
 
 **Since:** 9
 
+<!--Device-USBConfiguration-attributes: int--><!--Device-USBConfiguration-attributes: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## id
@@ -41,6 +45,8 @@ Unique ID of the USB configuration.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-USBConfiguration-id: int--><!--Device-USBConfiguration-id: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -56,6 +62,8 @@ List of supported interfaces.
 
 **Since:** 9
 
+<!--Device-USBConfiguration-interfaces: Array<USBInterface>--><!--Device-USBConfiguration-interfaces: Array<USBInterface>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## isRemoteWakeup
@@ -69,6 +77,8 @@ Whether remote wakeup is supported. **true** if supported, and **false** otherwi
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-USBConfiguration-isRemoteWakeup: boolean--><!--Device-USBConfiguration-isRemoteWakeup: boolean-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -84,6 +94,8 @@ Whether an independent power supply is supported. **true** if supported, and **f
 
 **Since:** 9
 
+<!--Device-USBConfiguration-isSelfPowered: boolean--><!--Device-USBConfiguration-isSelfPowered: boolean-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## maxPower
@@ -98,6 +110,8 @@ Maximum power consumption, in mA.
 
 **Since:** 9
 
+<!--Device-USBConfiguration-maxPower: int--><!--Device-USBConfiguration-maxPower: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## name
@@ -111,5 +125,7 @@ Configuration name, which can be an empty string.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-USBConfiguration-name: string--><!--Device-USBConfiguration-name: string-End-->
 
 **System capability:** SystemCapability.USB.USBManager

@@ -10,6 +10,8 @@ Describes the settings for color fringing. It is unavailable when RenderingPipel
 
 **Since:** 22
 
+<!--Device-unnamed-export interface ColorFringeSettings--><!--Device-unnamed-export interface ColorFringeSettings-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## intensity
@@ -25,5 +27,7 @@ Strength of the effect. The value ranges from 0 to 1. The default value is 0.2.
 **Default:** 0.2
 
 **Since:** 22
+
+<!--Device-ColorFringeSettings-intensity?: double--><!--Device-ColorFringeSettings-intensity?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

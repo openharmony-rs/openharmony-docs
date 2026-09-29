@@ -10,6 +10,8 @@ declare interface TextPickerDialogOptionsExt extends TextPickerOptions
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare interface TextPickerDialogOptionsExt extends TextPickerOptions--><!--Device-unnamed-declare interface TextPickerDialogOptionsExt extends TextPickerOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## distortionMode
@@ -36,6 +38,8 @@ distortionMode?: DistortionMode
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextPickerDialogOptionsExt-distortionMode?: DistortionMode--><!--Device-TextPickerDialogOptionsExt-distortionMode?: DistortionMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,6 +69,8 @@ edgeLightMode?: EdgeLightMode
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextPickerDialogOptionsExt-edgeLightMode?: EdgeLightMode--><!--Device-TextPickerDialogOptionsExt-edgeLightMode?: EdgeLightMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

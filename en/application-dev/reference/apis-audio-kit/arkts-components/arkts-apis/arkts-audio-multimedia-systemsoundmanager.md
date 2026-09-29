@@ -4,6 +4,8 @@ This module provides basic capabilities for managing system sound effects, inclu
 
 **Since:** 23
 
+<!--Device-unnamed-declare namespace systemSoundManager--><!--Device-unnamed-declare namespace systemSoundManager-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 ## Modules to Import
@@ -40,6 +42,25 @@ import { systemSoundManager } from '@kit.AudioKit';
 | [ToneHapticsSettings](arkts-audio-systemsoundmanager-tonehapticssettings-i-sys.md) | Haptics settings in tone scenario. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [SystemSoundPlayer](arkts-audio-systemsoundmanager-systemsoundplayer-t.md) | Represents the system sound effect player object. |
+
+<!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [RingtoneOptions](arkts-audio-systemsoundmanager-ringtoneoptions-t-sys.md) | Interface for ringtone options. |
+| [RingtonePlayer](arkts-audio-systemsoundmanager-ringtoneplayer-t-sys.md) | Ringtone player object. |
+| [SystemToneOptions](arkts-audio-systemsoundmanager-systemtoneoptions-t-sys.md) | System tone options. |
+| [SystemTonePlayer](arkts-audio-systemsoundmanager-systemtoneplayer-t-sys.md) | SystemTone player object. |
+| [ToneAttrsArray](arkts-audio-systemsoundmanager-toneattrsarray-t-sys.md) | Array of tone attributes. |
+| [ToneHapticsAttrsArray](arkts-audio-systemsoundmanager-tonehapticsattrsarray-t-sys.md) | Type definition of tone haptics array. |
+<!--DelEnd-->
+
 ### Enums
 
 | Name | Description |
@@ -59,25 +80,6 @@ import { systemSoundManager } from '@kit.AudioKit';
 | [ToneHapticsFeature](arkts-audio-systemsoundmanager-tonehapticsfeature-e-sys.md) | Definition of haptics feature in tone scenario. |
 | [ToneHapticsMode](arkts-audio-systemsoundmanager-tonehapticsmode-e-sys.md) | Enum for haptics mode in tone scenario. |
 | [ToneHapticsType](arkts-audio-systemsoundmanager-tonehapticstype-e-sys.md) | Enum for haptics in tone scenario. |
-<!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [SystemSoundPlayer](arkts-audio-systemsoundmanager-systemsoundplayer-t.md) | Represents the system sound effect player object. |
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [RingtoneOptions](arkts-audio-systemsoundmanager-ringtoneoptions-t-sys.md) | Interface for ringtone options. |
-| [RingtonePlayer](arkts-audio-systemsoundmanager-ringtoneplayer-t-sys.md) | Ringtone player object. |
-| [SystemToneOptions](arkts-audio-systemsoundmanager-systemtoneoptions-t-sys.md) | System tone options. |
-| [SystemTonePlayer](arkts-audio-systemsoundmanager-systemtoneplayer-t-sys.md) | SystemTone player object. |
-| [ToneAttrsArray](arkts-audio-systemsoundmanager-toneattrsarray-t-sys.md) | Array of tone attributes. |
-| [ToneHapticsAttrsArray](arkts-audio-systemsoundmanager-tonehapticsattrsarray-t-sys.md) | Type definition of tone haptics array. |
 <!--DelEnd-->
 
 <!--Del-->

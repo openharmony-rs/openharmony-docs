@@ -12,6 +12,8 @@ In addition to the [universal events](arkts-arkui-common-comp-commonmethod-c.md)
 
 **Since:** 9
 
+<!--Device-unnamed-declare class GridRowAttribute extends CommonMethod<GridRowAttribute>--><!--Device-unnamed-declare class GridRowAttribute extends CommonMethod<GridRowAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## alignItems
@@ -29,6 +31,8 @@ Sets the alignment mode of **GridCol** within **GridRow** along the cross axis. 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-GridRowAttribute-alignItems(value: ItemAlign): GridRowAttribute--><!--Device-GridRowAttribute-alignItems(value: ItemAlign): GridRowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +59,8 @@ Triggered when the breakpoint changes. The **breakpoints** parameter received by
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridRowAttribute-onBreakpointChange(callback: (breakpoints: string) => void): GridRowAttribute--><!--Device-GridRowAttribute-onBreakpointChange(callback: (breakpoints: string) => void): GridRowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

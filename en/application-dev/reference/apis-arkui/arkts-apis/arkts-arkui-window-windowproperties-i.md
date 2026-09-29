@@ -8,6 +8,8 @@ Describes the window properties.
 
 **Since:** 6
 
+<!--Device-window-interface WindowProperties--><!--Device-window-interface WindowProperties-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## Modules to Import
@@ -28,25 +30,9 @@ Screen brightness of the window. The brightness can be set by calling [setWindow
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**System capability:** SystemCapability.WindowManager.WindowManager.Core
-
-## dimBehindValue
-
-```TypeScript
-dimBehindValue: number
-```
-
-Dimness of the window that is not on top. The value is a floating-point number in the range [0.0, 1.0], and the value **1.0** means the dimmest.
-
-Note: This property is supported since API version 7 and deprecated since API version 9. Currently, no substitute is available.
-
-**Type:** number
-
-**Since:** 7
-
-**Deprecated since:** 9
+<!--Device-WindowProperties-brightness: double--><!--Device-WindowProperties-brightness: double-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,7 +48,9 @@ ID of the screen where the window is located. By default, the ID of the main scr
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowProperties-displayId?: long--><!--Device-WindowProperties-displayId?: long-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -78,7 +66,9 @@ Size of the rectangle that can be drawn in the window. The upper boundary and le
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowProperties-drawableRect: Rect--><!--Device-WindowProperties-drawableRect: Rect-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -94,7 +84,9 @@ Whether the window is focusable. **true** if focusable, **false** otherwise.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowProperties-focusable: boolean--><!--Device-WindowProperties-focusable: boolean-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -110,6 +102,8 @@ Window size in the global coordinate system. In extended screen scenarios, the t
 
 **Since:** 20
 
+<!--Device-WindowProperties-globalDisplayRect?: Rect--><!--Device-WindowProperties-globalDisplayRect?: Rect-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## id
@@ -124,7 +118,9 @@ Window ID. The value is an integer.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowProperties-id: int--><!--Device-WindowProperties-id: int-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -140,7 +136,9 @@ Whether the status bar is hidden when **isLayoutFullScreen** is set to **true**.
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowProperties-isFullScreen: boolean--><!--Device-WindowProperties-isFullScreen: boolean-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -156,7 +154,9 @@ Whether the screen is always on. **true** if always on, **false** otherwise.
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-WindowProperties-isKeepScreenOn: boolean--><!--Device-WindowProperties-isKeepScreenOn: boolean-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -176,7 +176,9 @@ In other cases, the return value is **false**.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowProperties-isLayoutFullScreen: boolean--><!--Device-WindowProperties-isLayoutFullScreen: boolean-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -192,7 +194,121 @@ Whether the window is in privacy mode. **true** if the window is in privacy mode
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowProperties-isPrivacyMode: boolean--><!--Device-WindowProperties-isPrivacyMode: boolean-End-->
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+## isTransparent
+
+```TypeScript
+isTransparent: boolean
+```
+
+Whether the window background is transparent. **true** if transparent, **false** otherwise.
+
+**Type:** boolean
+
+**Since:** 7
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowProperties-isTransparent: boolean--><!--Device-WindowProperties-isTransparent: boolean-End-->
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+## name
+
+```TypeScript
+name?: string
+```
+
+Window name. The default value is an empty string.
+
+**Type:** string
+
+**Since:** 18
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-WindowProperties-name?: string--><!--Device-WindowProperties-name?: string-End-->
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+## touchable
+
+```TypeScript
+touchable: boolean
+```
+
+Whether the window is touchable. **true** if touchable, **false** otherwise.
+
+**Type:** boolean
+
+**Since:** 7
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowProperties-touchable: boolean--><!--Device-WindowProperties-touchable: boolean-End-->
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+## windowRect
+
+```TypeScript
+windowRect: Rect
+```
+
+Window size, which can be obtained from the page lifecycle [onPageShow](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#onpageshow) or the application lifecycle [onForeground](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground).
+
+**Type:** [Rect](arkts-arkui-window-rect-i.md)
+
+**Since:** 7
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-WindowProperties-windowRect: Rect--><!--Device-WindowProperties-windowRect: Rect-End-->
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+## windowType
+
+```TypeScript
+windowType?: WindowType
+```
+
+Window type
+
+**Type:** [WindowType](arkts-arkui-window-windowtype-e.md)
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-WindowProperties-windowType?: WindowType--><!--Device-WindowProperties-windowType?: WindowType-End-->
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+## dimBehindValue
+
+```TypeScript
+dimBehindValue: number
+```
+
+Dimness of the window that is not on top. The value is a floating-point number in the range [0.0, 1.0], and the value **1.0** means the dimmest.
+
+Note: This property is supported since API version 7 and deprecated since API version 9. Currently, no substitute is available.
+
+**Type:** number
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+<!--Device-WindowProperties-dimBehindValue: number--><!--Device-WindowProperties-dimBehindValue: number-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -212,53 +328,7 @@ Note: This property is supported since API version 7 and deprecated since API ve
 
 **Deprecated since:** 9
 
-**System capability:** SystemCapability.WindowManager.WindowManager.Core
-
-## isTransparent
-
-```TypeScript
-isTransparent: boolean
-```
-
-Whether the window background is transparent. **true** if transparent, **false** otherwise.
-
-**Type:** boolean
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.WindowManager.WindowManager.Core
-
-## name
-
-```TypeScript
-name?: string
-```
-
-Window name. The default value is an empty string.
-
-**Type:** string
-
-**Since:** 18
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-**System capability:** SystemCapability.WindowManager.WindowManager.Core
-
-## touchable
-
-```TypeScript
-touchable: boolean
-```
-
-Whether the window is touchable. **true** if touchable, **false** otherwise.
-
-**Type:** boolean
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
+<!--Device-WindowProperties-isRoundCorner: boolean--><!--Device-WindowProperties-isRoundCorner: boolean-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -278,40 +348,8 @@ Window type.
 
 **Substitutes:** [windowType](#windowtype)
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**System capability:** SystemCapability.WindowManager.WindowManager.Core
-
-## windowRect
-
-```TypeScript
-windowRect: Rect
-```
-
-Window size, which can be obtained from the page lifecycle [onPageShow](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#onpageshow) or the application lifecycle [onForeground](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onforeground).
-
-**Type:** [Rect](arkts-arkui-window-rect-i.md)
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.WindowManager.WindowManager.Core
-
-## windowType
-
-```TypeScript
-windowType?: WindowType
-```
-
-Window type
-
-**Type:** [WindowType](arkts-arkui-window-windowtype-e.md)
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+<!--Device-WindowProperties-type: WindowType--><!--Device-WindowProperties-type: WindowType-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core

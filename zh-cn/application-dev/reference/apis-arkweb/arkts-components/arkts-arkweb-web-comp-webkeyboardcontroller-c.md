@@ -8,6 +8,8 @@ WebKeyboardController是ArkWeb提供的用于控制Web组件自定义键盘行�
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare class WebKeyboardController--><!--Device-unnamed-declare class WebKeyboardController-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## close
@@ -19,6 +21,8 @@ close(): void
 关闭自定义键盘。
 
 **起始版本：** 12
+
+<!--Device-WebKeyboardController-close(): void--><!--Device-WebKeyboardController-close(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -34,6 +38,8 @@ WebKeyboardController的构造函数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebKeyboardController-constructor()--><!--Device-WebKeyboardController-constructor()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## deleteBackward
@@ -45,6 +51,8 @@ deleteBackward(length: number): void
 删除光标后面的指定长度字符。
 
 **起始版本：** 12
+
+<!--Device-WebKeyboardController-deleteBackward(length: number): void--><!--Device-WebKeyboardController-deleteBackward(length: number): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,6 +72,8 @@ deleteForward(length: number): void
 
 **起始版本：** 12
 
+<!--Device-WebKeyboardController-deleteForward(length: number): void--><!--Device-WebKeyboardController-deleteForward(length: number): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -82,6 +92,8 @@ Web输入框中插入字符。
 
 **起始版本：** 12
 
+<!--Device-WebKeyboardController-insertText(text: string): void--><!--Device-WebKeyboardController-insertText(text: string): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -99,6 +111,8 @@ sendFunctionKey(key: number): void
 插入功能按键，目前仅支持Enter键类型，取值见[EnterKeyType](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-enterkeytype-e.md)。
 
 **起始版本：** 12
+
+<!--Device-WebKeyboardController-sendFunctionKey(key: number): void--><!--Device-WebKeyboardController-sendFunctionKey(key: number): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

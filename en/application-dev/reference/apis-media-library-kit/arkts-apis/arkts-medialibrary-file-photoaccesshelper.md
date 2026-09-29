@@ -4,6 +4,8 @@ The module provides APIs for album management, including creating an album and a
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace photoAccessHelper--><!--Device-unnamed-declare namespace photoAccessHelper-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -47,10 +49,10 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [PhotoSelectResult](arkts-medialibrary-photoaccesshelper-photoselectresult-c.md) | Defines information about the images or videos selected. |
 | [PhotoViewMimeTypeFileSizeFilter](arkts-medialibrary-photoaccesshelper-photoviewmimetypefilesizefilter-c.md) | Describes the settings for filtering media files by type and size. |
 | [PhotoViewPicker](arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md) | PhotoViewPicker provides APIs for the user to select images and videos. Before using the APIs of PhotoViewPicker, you need to create a PhotoViewPicker instance. |
-| [RecentPhotoInfo](arkts-medialibrary-photoaccesshelper-recentphotoinfo-c.md) | Recent photo info |
-| [RecentPhotoOptions](arkts-medialibrary-photoaccesshelper-recentphotooptions-c.md) | RecentPhotoOptions Object |
+| [RecentPhotoInfo](arkts-medialibrary-photoaccesshelper-recentphotoinfo-c.md) | Describes the information about the recent image or video. |
+| [RecentPhotoOptions](arkts-medialibrary-photoaccesshelper-recentphotooptions-c.md) | Represents the configuration options of the recent images or videos. |
 | [RecommendationOptions](arkts-medialibrary-photoaccesshelper-recommendationoptions-c.md) | Defines the image recommendation options. The image recommendation feature depends on the image data analysis capability, which varies with devices. |
-| [RequestReadPermissionResult](arkts-medialibrary-photoaccesshelper-requestreadpermissionresult-c.md) | Request read permission result |
+| [RequestReadPermissionResult](arkts-medialibrary-photoaccesshelper-requestreadpermissionresult-c.md) | Describes the authorized URIs and invalid URIs. |
 | [VideoDurationFilter](arkts-medialibrary-photoaccesshelper-videodurationfilter-c.md) | Describes the configuration for video duration filtering. |
 
 <!--Del-->
@@ -128,16 +130,20 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [AnalysisToolResult](arkts-medialibrary-photoaccesshelper-analysistoolresult-i-sys.md) | Result of an analysis tool execution. |
 | [BatchOperationOptions](arkts-medialibrary-photoaccesshelper-batchoperationoptions-i-sys.md) | Batch operation options |
 | [ChangeData](arkts-medialibrary-photoaccesshelper-changedata-i-sys.md) | Defines the return value of the listener callback. |
+| [CleanupSize](arkts-medialibrary-photoaccesshelper-cleanupsize-i-sys.md) | ROM revenue. |
 | [CloudAssetDownloadProgressInfo](arkts-medialibrary-photoaccesshelper-cloudassetdownloadprogressinfo-i-sys.md) | Describes the progress information about a batch download. |
 | [CloudAssetDownloadStatus](arkts-medialibrary-photoaccesshelper-cloudassetdownloadstatus-i-sys.md) | Describes the status information about a batch download. |
 | [CloudEnhancementTaskState](arkts-medialibrary-photoaccesshelper-cloudenhancementtaskstate-i-sys.md) | Represents the cloud enhancement task information, which includes the cloud enhancement task state and other information related to certain states. |
 | [CloudMediaAssetStatus](arkts-medialibrary-photoaccesshelper-cloudmediaassetstatus-i-sys.md) | Describes the details of a cloud media asset download task. It is the return value of the API used by applications to obtain the cloud asset download task status. |
 | [ContextMap](arkts-medialibrary-photoaccesshelper-contextmap-i-sys.md) | Provides APIs for input Context Map. |
 | [DeepOptimizeSpaceProgress](arkts-medialibrary-photoaccesshelper-deepoptimizespaceprogress-i-sys.md) | Defines the DeepOptimizeSpaceProgress data structure. |
+| [DirtyDataResultInfo](arkts-medialibrary-photoaccesshelper-dirtydataresultinfo-i-sys.md) | Dirty data query results. |
 | [Entity](arkts-medialibrary-photoaccesshelper-entity-i-sys.md) | Provides APIs for output Entity. |
 | [FormInfo](arkts-medialibrary-photoaccesshelper-forminfo-i-sys.md) | Defines the Gallery widget information. |
 | [FusionAssetsInfo](arkts-medialibrary-photoaccesshelper-fusionassetsinfo-i-sys.md) | Fusion assets information. |
 | [GalleryFormInfo](arkts-medialibrary-photoaccesshelper-galleryforminfo-i-sys.md) | Defines the Gallery widget information. |
+| [IntervalInfo](arkts-medialibrary-photoaccesshelper-intervalinfo-i-sys.md) | Interval information. |
+| [LocalEnhancementTaskState](arkts-medialibrary-photoaccesshelper-localenhancementtaskstate-i-sys.md) | Local AI-enhanced task status. |
 | [MovingPhoto](arkts-medialibrary-photoaccesshelper-movingphoto-i-sys.md) | MovingPhoto provides APIs for managing a moving photo instance. |
 | [Options](arkts-medialibrary-photoaccesshelper-options-i-sys.md) | Provides APIs for input Options. |
 | [PhotoAccessHelper](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md) | Helper functions to access photos and albums. |
@@ -161,6 +167,25 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [ToolInvokeConfig](arkts-medialibrary-photoaccesshelper-toolinvokeconfig-i-sys.md) | Configuration for invoking an analysis tool. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [MemberType](arkts-medialibrary-photoaccesshelper-membertype-t.md) | Defines the types of the PhotoAsset members. |
+| [OperationValueType](arkts-medialibrary-photoaccesshelper-operationvaluetype-t.md) | Defines the values needed for matching different predicates. |
+| [PhotoAssetParams](arkts-medialibrary-photoaccesshelper-photoassetparams-t.md) | Defines the array of record types that map file property names to their values. |
+
+<!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [ProgressListener](arkts-medialibrary-photoaccesshelper-progresslistener-t-sys.md) | Indicates the type of the progress of batch operation. |
+| [ResultListener](arkts-medialibrary-photoaccesshelper-resultlistener-t-sys.md) | Indicates the type of the result of batch operation. |
+| [ValuesBucket](arkts-medialibrary-photoaccesshelper-valuesbucket-t-sys.md) | Defines the type of key and value in a KV pair. |
+| [ValueType](arkts-medialibrary-photoaccesshelper-valuetype-t-sys.md) | Defines the type of value in a KV pair. The type varies with the parameter function. |
+<!--DelEnd-->
+
 ### Enums
 
 | Name | Description |
@@ -174,17 +199,17 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [DefaultChangeUri](arkts-medialibrary-photoaccesshelper-defaultchangeuri-e.md) | Enumerates the **DefaultChangeUri** subtypes. |
 | [DeliveryMode](arkts-medialibrary-photoaccesshelper-deliverymode-e.md) | Enumerates the asset delivery modes. |
 | [DynamicRangeType](arkts-medialibrary-photoaccesshelper-dynamicrangetype-e.md) | Enumerates the dynamic range types of media assets. |
-| [FilterOperator](arkts-medialibrary-photoaccesshelper-filteroperator-e.md) | Enumeration type of filter operator. |
-| [GridLevel](arkts-medialibrary-photoaccesshelper-gridlevel-e.md) | Enumeration type of grid level. |
-| [GridPinchModeType](arkts-medialibrary-photoaccesshelper-gridpinchmodetype-e.md) | Enumeration type of grid pinch mode. |
+| [FilterOperator](arkts-medialibrary-photoaccesshelper-filteroperator-e.md) | Enumerates the operators that can be used for filtering. |
+| [GridLevel](arkts-medialibrary-photoaccesshelper-gridlevel-e.md) | Enumerates the levels of grid columns after Picker is started. |
+| [GridPinchModeType](arkts-medialibrary-photoaccesshelper-gridpinchmodetype-e.md) | Enumerates the grid pinch mode types. |
 | [ImageFileType](arkts-medialibrary-photoaccesshelper-imagefiletype-e.md) | Enumerates the types of image files to save. |
 | [MediaAssetPermissionState](arkts-medialibrary-photoaccesshelper-mediaassetpermissionstate-e.md) | Enumeration of permission level for an application to access asset. |
-| [MovingPhotoBadgeStateType](arkts-medialibrary-photoaccesshelper-movingphotobadgestatetype-e.md) | Enumerates the types of the moving photo badge. |
+| [MovingPhotoBadgeStateType](arkts-medialibrary-photoaccesshelper-movingphotobadgestatetype-e.md) | Enumerates the states of moving photo badges. |
 | [NotifyChangeType](arkts-medialibrary-photoaccesshelper-notifychangetype-e.md) | Enumerates the types of changes that trigger the media asset or album change events. |
 | [NotifyType](arkts-medialibrary-photoaccesshelper-notifytype-e.md) | Enumerates the notification event types. |
 | [OperationType](arkts-medialibrary-photoaccesshelper-operationtype-e.md) | Enumerates the predicates. |
 | [PhotoKeys](arkts-medialibrary-photoaccesshelper-photokeys-e.md) | Defines the key information about an image or video file. |
-| [PhotoSource](arkts-medialibrary-photoaccesshelper-photosource-e.md) | Enumeration of PhotoSource type |
+| [PhotoSource](arkts-medialibrary-photoaccesshelper-photosource-e.md) | Enumerates the sources of the image or video data. |
 | [PhotoSubtype](arkts-medialibrary-photoaccesshelper-photosubtype-e.md) | Enumerates the [PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md) types. |
 | [PhotoType](arkts-medialibrary-photoaccesshelper-phototype-e.md) | Enumerates the media file types. |
 | [PhotoViewMIMETypes](arkts-medialibrary-photoaccesshelper-photoviewmimetypes-e.md) | Enumerates the media file types. |
@@ -194,8 +219,8 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [PreferredCompatibleMode](arkts-medialibrary-photoaccesshelper-preferredcompatiblemode-e.md) | Preferred compatible mode. |
 | [RecommendationType](arkts-medialibrary-photoaccesshelper-recommendationtype-e.md) | Enumerates the types of recommended images. |
 | [ResourceType](arkts-medialibrary-photoaccesshelper-resourcetype-e.md) | Enumerates the types of the resources to write. |
-| [SceneType](arkts-medialibrary-photoaccesshelper-scenetype-e.md) | Enumeration type of scene. |
-| [SingleSelectionMode](arkts-medialibrary-photoaccesshelper-singleselectionmode-e.md) | Enumeration type of single selection mode |
+| [SceneType](arkts-medialibrary-photoaccesshelper-scenetype-e.md) | Enumerates the scene types of the moving photo playback. |
+| [SingleSelectionMode](arkts-medialibrary-photoaccesshelper-singleselectionmode-e.md) | Enumerates the single selection mode types. |
 | [VideoMode](arkts-medialibrary-photoaccesshelper-videomode-e.md) | Enumerates the log modes of video files. |
 
 <!--Del-->
@@ -255,23 +280,4 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | [ThumbnailVisibility](arkts-medialibrary-photoaccesshelper-thumbnailvisibility-e-sys.md) | Enumerates the visibility statuses of thumbnails. |
 | [VideoEnhancementType](arkts-medialibrary-photoaccesshelper-videoenhancementtype-e-sys.md) | Enumerates the types of segmented video enhancement. |
 | [WatermarkType](arkts-medialibrary-photoaccesshelper-watermarktype-e-sys.md) | Enumerates the watermark editable flags. |
-<!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [MemberType](arkts-medialibrary-photoaccesshelper-membertype-t.md) | Defines the types of the PhotoAsset members. |
-| [OperationValueType](arkts-medialibrary-photoaccesshelper-operationvaluetype-t.md) | Indicates possible value types |
-| [PhotoAssetParams](arkts-medialibrary-photoaccesshelper-photoassetparams-t.md) | Defines the array of record types that map file property names to their values. |
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [ProgressListener](arkts-medialibrary-photoaccesshelper-progresslistener-t-sys.md) | Indicates the type of the progress of batch operation. |
-| [ResultListener](arkts-medialibrary-photoaccesshelper-resultlistener-t-sys.md) | Indicates the type of the result of batch operation. |
-| [ValuesBucket](arkts-medialibrary-photoaccesshelper-valuesbucket-t-sys.md) | Defines the type of key and value in a KV pair. |
-| [ValueType](arkts-medialibrary-photoaccesshelper-valuetype-t-sys.md) | Defines the type of value in a KV pair. The type varies with the parameter function. |
 <!--DelEnd-->

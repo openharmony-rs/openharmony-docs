@@ -17,6 +17,8 @@ apply<T>(this: new () => T, thisArg: T): void
 
 Calls the function with the specified object as the this value and the elements of specified array as the arguments.
 
+<!--Device-NewableFunction-apply<T>(this: new () => T, thisArg: T): void--><!--Device-NewableFunction-apply<T>(this: new () => T, thisArg: T): void-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -47,6 +49,8 @@ bind<T>(this: T, thisArg: any): T
 ```
 
 For a given function, creates a bound function that has the same body as the original function. The this object of the bound function is associated with the specified object, and has the specified initial parameters.
+
+<!--Device-NewableFunction-bind<T>(this: T, thisArg: any): T--><!--Device-NewableFunction-bind<T>(this: T, thisArg: any): T-End-->
 
 **Parameters:**
 
@@ -148,6 +152,8 @@ call<T, A extends any[]>(this: new (...args: A) => T, thisArg: T, ...args: A): v
 ```
 
 Calls the function with the specified object as the this value and the specified rest arguments as the arguments.
+
+<!--Device-NewableFunction-call<T, A extends any[]>(this: new (...args: A) => T, thisArg: T, ...args: A): void--><!--Device-NewableFunction-call<T, A extends any[]>(this: new (...args: A) => T, thisArg: T, ...args: A): void-End-->
 
 **Parameters:**
 

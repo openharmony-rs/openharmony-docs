@@ -18,6 +18,8 @@ Sets the audio device for a call. This API uses an asynchronous callback to retu
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function setAudioDevice(device: AudioDevice, callback: AsyncCallback<void>): void--><!--Device-call-function setAudioDevice(device: AudioDevice, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Sets the audio device for a call. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function setAudioDevice(device: AudioDevice): Promise<void>--><!--Device-call-function setAudioDevice(device: AudioDevice): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

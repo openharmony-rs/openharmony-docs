@@ -8,6 +8,8 @@ declare enum Direction
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum Direction--><!--Device-unnamed-declare enum Direction-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Ltr
@@ -25,6 +27,8 @@ Ltr
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Direction-Ltr--><!--Device-Direction-Ltr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Rtl
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-Direction-Rtl--><!--Device-Direction-Rtl-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Auto
@@ -61,5 +67,7 @@ Auto
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Direction-Auto--><!--Device-Direction-Auto-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

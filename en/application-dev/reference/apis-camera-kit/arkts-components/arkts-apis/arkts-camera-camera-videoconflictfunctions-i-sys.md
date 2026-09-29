@@ -10,6 +10,8 @@ Video Conflict Functions object.
 
 **Since:** 13
 
+<!--Device-camera-interface VideoConflictFunctions extends ZoomQuery, MacroQuery--><!--Device-camera-interface VideoConflictFunctions extends ZoomQuery, MacroQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.

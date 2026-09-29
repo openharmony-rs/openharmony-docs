@@ -18,6 +18,8 @@ Checks whether the priority notification for a specified application is enabled.
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function isPriorityEnabledByBundle(bundle: BundleOption): Promise<PriorityEnableStatus>--><!--Device-notificationManager-function isPriorityEnabledByBundle(bundle: BundleOption): Promise<PriorityEnableStatus>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

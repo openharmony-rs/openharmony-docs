@@ -8,6 +8,8 @@ Specifies the list of field names to return after returning-related APIs are cal
 
 **Since:** 23
 
+<!--Device-relationalStore-interface ReturningConfig--><!--Device-relationalStore-interface ReturningConfig-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Fields returned in the result set. One to four fields are supported for input. N
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ReturningConfig-columns: Array<string>--><!--Device-ReturningConfig-columns: Array<string>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## maxReturningCount
@@ -45,5 +49,7 @@ Maximum number of rows returned in the result set. The default value is **1024**
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ReturningConfig-maxReturningCount?: int--><!--Device-ReturningConfig-maxReturningCount?: int-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

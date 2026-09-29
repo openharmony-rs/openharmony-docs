@@ -17,4 +17,6 @@ This decorator must be used together with the [@InsightIntentFunction](arkts-abi
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-unnamed-export declare const InsightIntentFunctionMethod: ((intentInfo: FunctionIntentDecoratorInfo) => MethodDecorator)--><!--Device-unnamed-export declare const InsightIntentFunctionMethod: ((intentInfo: FunctionIntentDecoratorInfo) => MethodDecorator)-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

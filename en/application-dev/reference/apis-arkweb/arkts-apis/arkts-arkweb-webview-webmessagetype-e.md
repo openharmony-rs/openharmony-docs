@@ -8,6 +8,8 @@ Enumerates the data types supported by the [WebMessagePort](arkts-arkweb-webview
 
 **Since:** 10
 
+<!--Device-webview-enum WebMessageType--><!--Device-webview-enum WebMessageType-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## NOT_SUPPORT
@@ -21,6 +23,8 @@ Unsupported data type.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessageType-NOT_SUPPORT = 0--><!--Device-WebMessageType-NOT_SUPPORT = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ String type.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMessageType-STRING = 1--><!--Device-WebMessageType-STRING = 1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## NUMBER
@@ -49,6 +55,8 @@ Number type.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessageType-NUMBER = 2--><!--Device-WebMessageType-NUMBER = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -64,6 +72,8 @@ Boolean type.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMessageType-BOOLEAN = 3--><!--Device-WebMessageType-BOOLEAN = 3-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ARRAY_BUFFER
@@ -77,6 +87,8 @@ Raw binary data buffer.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessageType-ARRAY_BUFFER = 4--><!--Device-WebMessageType-ARRAY_BUFFER = 4-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -92,6 +104,8 @@ Array type.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMessageType-ARRAY = 5--><!--Device-WebMessageType-ARRAY = 5-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERROR
@@ -105,5 +119,7 @@ Error object type.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessageType-ERROR = 6--><!--Device-WebMessageType-ERROR = 6-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

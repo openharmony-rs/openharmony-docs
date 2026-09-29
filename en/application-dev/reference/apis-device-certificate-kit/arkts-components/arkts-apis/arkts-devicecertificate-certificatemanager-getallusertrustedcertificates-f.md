@@ -18,6 +18,8 @@ Obtains all user trusted root CA certificates of the device. This API uses a pro
 
 **Required permissions:** ohos.permission.ACCESS_CERT_MANAGER
 
+<!--Device-certificateManager-function getAllUserTrustedCertificates(): Promise<CMResult>--><!--Device-certificateManager-function getAllUserTrustedCertificates(): Promise<CMResult>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **Return value:**
@@ -72,6 +74,8 @@ Obtains the user root CA certificates based on the certificate scope. This API u
 **Since:** 18
 
 **Required permissions:** ohos.permission.ACCESS_CERT_MANAGER
+
+<!--Device-certificateManager-function getAllUserTrustedCertificates(scope: CertScope): Promise<CMResult>--><!--Device-certificateManager-function getAllUserTrustedCertificates(scope: CertScope): Promise<CMResult>-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 

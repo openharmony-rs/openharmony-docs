@@ -8,6 +8,8 @@ Defines the configuration options for the **ContainerReader** component, used to
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface ContainerReaderInfo--><!--Device-unnamed-export interface ContainerReaderInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -38,6 +40,8 @@ This parameter supports two-way binding through [!!](../../../ui/state-managemen
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-ContainerReaderInfo-heightBreakpoint?: HeightBreakpoint--><!--Device-ContainerReaderInfo-heightBreakpoint?: HeightBreakpoint-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -62,6 +66,8 @@ This parameter supports two-way binding through [!!](../../../ui/state-managemen
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-ContainerReaderInfo-size: Size--><!--Device-ContainerReaderInfo-size: Size-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## widthBreakpoint
@@ -85,5 +91,7 @@ This parameter supports two-way binding through [!!](../../../ui/state-managemen
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-ContainerReaderInfo-widthBreakpoint?: WidthBreakpoint--><!--Device-ContainerReaderInfo-widthBreakpoint?: WidthBreakpoint-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

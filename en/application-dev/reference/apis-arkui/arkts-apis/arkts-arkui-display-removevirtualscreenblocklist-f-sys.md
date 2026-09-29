@@ -16,6 +16,8 @@ Removes windows from the list of windows that are not allowed to be displayed du
 
 **Since:** 18
 
+<!--Device-display-function removeVirtualScreenBlocklist(windowIds: Array<int>): Promise<void>--><!--Device-display-function removeVirtualScreenBlocklist(windowIds: Array<int>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.

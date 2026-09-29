@@ -6,7 +6,7 @@
 
 ## 属性
 
-不支持通用属性。
+不支持[通用属性](../arkts-components/arkts-arkui-common-comp.md)。
 
 ## 导入模块
 

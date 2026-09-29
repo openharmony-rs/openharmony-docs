@@ -20,6 +20,8 @@ Unsubscribe location changed.
 - API version 25 and later: N/A
 - API versions 23 to 24: ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-geoLocationManager-function offLocationChange(callback?: Callback<Location>): void--><!--Device-geoLocationManager-function offLocationChange(callback?: Callback<Location>): void-End-->
+
 **System capability:** 
 - API version 23 and later: SystemCapability.Location.Location.Core
 

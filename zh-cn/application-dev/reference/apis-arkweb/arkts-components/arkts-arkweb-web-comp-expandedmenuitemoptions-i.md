@@ -12,6 +12,8 @@ declare interface ExpandedMenuItemOptions
 
 **替代接口：** [editMenuOptions](arkts-arkweb-web-comp-attribute.md#editmenuoptions)
 
+<!--Device-unnamed-declare interface ExpandedMenuItemOptions--><!--Device-unnamed-declare interface ExpandedMenuItemOptions-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## action
@@ -29,6 +31,8 @@ action: (selectedText: {plainText: string}) => void
 **替代接口：** [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-editmenuoptions-i.md)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ExpandedMenuItemOptions-action: (selectedText: {plainText: string}) => void--><!--Device-ExpandedMenuItemOptions-action: (selectedText: {plainText: string}) => void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -56,6 +60,8 @@ content: ResourceStr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ExpandedMenuItemOptions-content: ResourceStr--><!--Device-ExpandedMenuItemOptions-content: ResourceStr-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## startIcon
@@ -75,5 +81,7 @@ startIcon?: ResourceStr
 **替代接口：** [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-editmenuoptions-i.md)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ExpandedMenuItemOptions-startIcon?: ResourceStr--><!--Device-ExpandedMenuItemOptions-startIcon?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

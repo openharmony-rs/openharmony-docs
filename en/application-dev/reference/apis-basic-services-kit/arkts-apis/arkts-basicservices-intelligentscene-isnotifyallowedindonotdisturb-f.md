@@ -20,6 +20,8 @@ Checks whether calling bundle is allow notify(e.g. sound & vibration) when syste
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-intelligentScene-function isNotifyAllowedInDoNotDisturb(): Promise<boolean>--><!--Device-intelligentScene-function isNotifyAllowedInDoNotDisturb(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Applications.IntelligentScene
 
 **Return value:**

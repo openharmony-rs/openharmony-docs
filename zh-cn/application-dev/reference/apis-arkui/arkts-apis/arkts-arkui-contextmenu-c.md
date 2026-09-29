@@ -8,6 +8,8 @@ declare class ContextMenu
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class ContextMenu--><!--Device-unnamed-declare class ContextMenu-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## close
@@ -35,5 +37,7 @@ static close()
 **替代接口：** close
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenu-static close()--><!--Device-ContextMenu-static close()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

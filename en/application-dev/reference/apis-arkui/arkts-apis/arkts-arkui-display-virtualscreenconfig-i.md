@@ -8,6 +8,8 @@ Describes the virtual screen parameters.
 
 **Since:** 16
 
+<!--Device-display-interface VirtualScreenConfig--><!--Device-display-interface VirtualScreenConfig-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Density of the virtual screen, in px. The value is a floating-point number.
 
 **Since:** 16
 
+<!--Device-VirtualScreenConfig-density: double--><!--Device-VirtualScreenConfig-density: double-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## height
@@ -41,6 +45,8 @@ Height of the virtual screen, in px. The value must be a positive integer.
 **Type:** number
 
 **Since:** 16
+
+<!--Device-VirtualScreenConfig-height: long--><!--Device-VirtualScreenConfig-height: long-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -56,6 +62,8 @@ Name of the virtual screen, which can be customized.
 
 **Since:** 16
 
+<!--Device-VirtualScreenConfig-name: string--><!--Device-VirtualScreenConfig-name: string-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## supportsFocus
@@ -69,6 +77,8 @@ Whether the virtual screen is focusable. **true** if focusable, **false** otherw
 **Type:** boolean
 
 **Since:** 22
+
+<!--Device-VirtualScreenConfig-supportsFocus?: boolean--><!--Device-VirtualScreenConfig-supportsFocus?: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -84,6 +94,8 @@ Surface ID of the virtual screen, which can be customized. The maximum length fo
 
 **Since:** 16
 
+<!--Device-VirtualScreenConfig-surfaceId: string--><!--Device-VirtualScreenConfig-surfaceId: string-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## width
@@ -97,5 +109,7 @@ Width of the virtual screen, in px. The value must be a positive integer.
 **Type:** number
 
 **Since:** 16
+
+<!--Device-VirtualScreenConfig-width: long--><!--Device-VirtualScreenConfig-width: long-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

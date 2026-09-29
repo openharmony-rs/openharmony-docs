@@ -10,6 +10,8 @@ Before calling any of the following APIs, you must use [buildLineTypeset()](arkt
 
 **Since:** 18
 
+<!--Device-text-class LineTypeset--><!--Device-text-class LineTypeset-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Generates a text line object based on the specified layout range.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-LineTypeset-createLine(startIndex: int, count: int): TextLine--><!--Device-LineTypeset-createLine(startIndex: int, count: int): TextLine-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -70,7 +74,9 @@ Obtains the number of characters that can fit in the layout from the specified p
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-LineTypeset-getLineBreak(startIndex: int, width: double): int--><!--Device-LineTypeset-getLineBreak(startIndex: int, width: double): int-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

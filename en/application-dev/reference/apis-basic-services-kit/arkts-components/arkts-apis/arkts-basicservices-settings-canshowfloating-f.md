@@ -18,6 +18,8 @@ Checks whether a specified application can show as a floating window.
 
 **Deprecated since:** 26.0.0
 
+<!--Device-settings-function canShowFloating(callback: AsyncCallback<boolean>): void--><!--Device-settings-function canShowFloating(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**
@@ -52,6 +54,8 @@ Checks whether a specified application can show as a floating window.
 **Since:** 7
 
 **Deprecated since:** 26.0.0
+
+<!--Device-settings-function canShowFloating(): Promise<boolean>--><!--Device-settings-function canShowFloating(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 

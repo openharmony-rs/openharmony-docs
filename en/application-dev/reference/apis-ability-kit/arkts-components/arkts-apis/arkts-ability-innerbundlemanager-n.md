@@ -20,6 +20,8 @@ The module provides APIs for the Home Screen application.
 
 **Substitutes:** [launcherBundleManager](arkts-ability-bundle-launcherbundlemanager.md)
 
+<!--Device-unnamed-declare namespace innerBundleManager--><!--Device-unnamed-declare namespace innerBundleManager-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.

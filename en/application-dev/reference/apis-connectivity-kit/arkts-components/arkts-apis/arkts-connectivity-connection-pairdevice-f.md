@@ -20,7 +20,9 @@ Starts pairing with a remote Bluetooth device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-connection-function pairDevice(deviceId: string, callback: AsyncCallback<void>): void--><!--Device-connection-function pairDevice(deviceId: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -73,7 +75,9 @@ Starts pairing with a remote Bluetooth device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-connection-function pairDevice(deviceId: string): Promise<void>--><!--Device-connection-function pairDevice(deviceId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -133,6 +137,8 @@ Starts pairing with a remote Bluetooth device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-connection-function pairDevice(deviceId: BluetoothAddress): Promise<void>--><!--Device-connection-function pairDevice(deviceId: BluetoothAddress): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

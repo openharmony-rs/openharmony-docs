@@ -16,6 +16,8 @@ Checks whether the system supports vector stores.
 
 **Since:** 18
 
+<!--Device-relationalStore-function isVectorSupported(): boolean--><!--Device-relationalStore-function isVectorSupported(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**

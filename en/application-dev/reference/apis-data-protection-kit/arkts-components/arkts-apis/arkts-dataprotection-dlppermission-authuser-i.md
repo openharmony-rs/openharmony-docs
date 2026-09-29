@@ -8,6 +8,8 @@ Represents the user authorization information.
 
 **Since:** 21
 
+<!--Device-dlpPermission-export interface AuthUser--><!--Device-dlpPermission-export interface AuthUser-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Account of the user who can access the DLP file. The value contains a maximum of
 
 **Since:** 21
 
+<!--Device-AuthUser-authAccount: string--><!--Device-AuthUser-authAccount: string-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## authAccountType
@@ -41,6 +45,8 @@ Type of the account.
 **Type:** [AccountType](arkts-dataprotection-dlppermission-accounttype-e.md)
 
 **Since:** 21
+
+<!--Device-AuthUser-authAccountType: AccountType--><!--Device-AuthUser-authAccountType: AccountType-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -56,6 +62,8 @@ Permission granted to the user.
 
 **Since:** 21
 
+<!--Device-AuthUser-dlpFileAccess: DLPFileAccess--><!--Device-AuthUser-dlpFileAccess: DLPFileAccess-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## permExpiryTime
@@ -69,5 +77,7 @@ Time when the authorization expires. The value must be greater than or equal to 
 **Type:** number
 
 **Since:** 21
+
+<!--Device-AuthUser-permExpiryTime: number--><!--Device-AuthUser-permExpiryTime: number-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention

@@ -30,6 +30,8 @@ Changes the dump heap snapshot from the thread-level to the process-level.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-hidebug-function setProcDumpInSharedOOM(enable: boolean): void--><!--Device-hidebug-function setProcDumpInSharedOOM(enable: boolean): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Parameters:**

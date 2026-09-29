@@ -16,6 +16,8 @@ Obtains the remaining time of a transient task. This API uses an asynchronous ca
 
 **Since:** 9
 
+<!--Device-backgroundTaskManager-function getRemainingDelayTime(requestId: int, callback: AsyncCallback<int>): void--><!--Device-backgroundTaskManager-function getRemainingDelayTime(requestId: int, callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **Parameters:**
@@ -65,6 +67,8 @@ function getRemainingDelayTime(requestId: number): Promise<number>
 Obtains the remaining time of a transient task. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-backgroundTaskManager-function getRemainingDelayTime(requestId: int): Promise<int>--><!--Device-backgroundTaskManager-function getRemainingDelayTime(requestId: int): Promise<int>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 

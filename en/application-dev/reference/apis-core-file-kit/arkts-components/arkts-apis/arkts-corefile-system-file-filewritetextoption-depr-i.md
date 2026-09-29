@@ -10,6 +10,8 @@ Defines the options used in writeText().
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export interface FileWriteTextOption--><!--Device-unnamed-export interface FileWriteTextOption-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Callback invoked when the API call is complete.
 
 **Deprecated since:** 10
 
+<!--Device-FileWriteTextOption-complete?: () => void--><!--Device-FileWriteTextOption-complete?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## fail
@@ -42,6 +46,8 @@ Callback invoked when the API call fails. **data** indicates the error informati
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileWriteTextOption-fail?: (data: string, code: number) => void--><!--Device-FileWriteTextOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -64,6 +70,8 @@ Callback invoked when the API call is successful.
 
 **Deprecated since:** 10
 
+<!--Device-FileWriteTextOption-success?: () => void--><!--Device-FileWriteTextOption-success?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## append
@@ -79,6 +87,8 @@ Whether to enable the append mode. The default value is **false**. The value **t
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileWriteTextOption-append?: boolean--><!--Device-FileWriteTextOption-append?: boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -96,6 +106,8 @@ Encoding format. The default format is **UTF-8**.
 
 **Deprecated since:** 10
 
+<!--Device-FileWriteTextOption-encoding?: string--><!--Device-FileWriteTextOption-encoding?: string-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## text
@@ -111,6 +123,8 @@ String to write into the file.
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileWriteTextOption-text: string--><!--Device-FileWriteTextOption-text: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -129,5 +143,7 @@ URI of a local file. If it does not exist, a file will be created. Restricted by
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileWriteTextOption-uri: string--><!--Device-FileWriteTextOption-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite

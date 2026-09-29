@@ -25,6 +25,8 @@ Closes the serial port device. Call [requestSerialRight](arkts-basicservices-ser
 
 **Since:** 19
 
+<!--Device-serialManager-function close(portId: int): void--><!--Device-serialManager-function close(portId: int): void-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 **Parameters:**

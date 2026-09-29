@@ -8,6 +8,8 @@ Enumerates the touch event types.
 
 **Since:** 9
 
+<!--Device-unnamed-export declare enum Action--><!--Device-unnamed-export declare enum Action-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## CANCEL
@@ -19,6 +21,8 @@ CANCEL = 0
 Touch canceled. The **DOWN** event of the touchscreen is interrupted unexpectedly and does not close normally. For example, the **CANCEL** event is triggered when the finger is pressed but not lifted, the screen is rotated or folded, or a new hover occurs.
 
 **Since:** 9
+
+<!--Device-Action-CANCEL = 0--><!--Device-Action-CANCEL = 0-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -32,6 +36,8 @@ Touch down.
 
 **Since:** 9
 
+<!--Device-Action-DOWN = 1--><!--Device-Action-DOWN = 1-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## MOVE
@@ -44,6 +50,8 @@ Touch moved.
 
 **Since:** 9
 
+<!--Device-Action-MOVE = 2--><!--Device-Action-MOVE = 2-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## UP
@@ -55,6 +63,8 @@ UP = 3
 Touch up.
 
 **Since:** 9
+
+<!--Device-Action-UP = 3--><!--Device-Action-UP = 3-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -72,6 +82,8 @@ Drag started.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Action-PULL_DOWN = 4--><!--Device-Action-PULL_DOWN = 4-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## PULL_MOVE
@@ -88,6 +100,8 @@ Dragging.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Action-PULL_MOVE = 5--><!--Device-Action-PULL_MOVE = 5-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## PULL_UP
@@ -103,5 +117,7 @@ Drag ended.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Action-PULL_UP = 6--><!--Device-Action-PULL_UP = 6-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core

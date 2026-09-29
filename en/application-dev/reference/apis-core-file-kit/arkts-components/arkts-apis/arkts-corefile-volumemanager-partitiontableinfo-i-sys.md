@@ -8,6 +8,8 @@ Partition table information.
 
 **Since:** 26.0.0
 
+<!--Device-volumeManager-export interface PartitionTableInfo--><!--Device-volumeManager-export interface PartitionTableInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Alignment sector.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PartitionTableInfo-alignSector: int--><!--Device-PartitionTableInfo-alignSector: int-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Disk ID.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PartitionTableInfo-diskId: string--><!--Device-PartitionTableInfo-diskId: string-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
@@ -68,6 +74,8 @@ Number of partitions.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PartitionTableInfo-partitionCount: int--><!--Device-PartitionTableInfo-partitionCount: int-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Array of partition information.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PartitionTableInfo-partitions: Array<PartitionInfo>--><!--Device-PartitionTableInfo-partitions: Array<PartitionInfo>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
@@ -104,6 +114,8 @@ Sector size in bytes.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PartitionTableInfo-sectorSize: int--><!--Device-PartitionTableInfo-sectorSize: int-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -122,6 +134,8 @@ Partition table type, such as 'gpt' or 'mbr'.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PartitionTableInfo-tableType: string--><!--Device-PartitionTableInfo-tableType: string-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -139,6 +153,8 @@ Total number of sectors.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PartitionTableInfo-totalSector: long--><!--Device-PartitionTableInfo-totalSector: long-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 

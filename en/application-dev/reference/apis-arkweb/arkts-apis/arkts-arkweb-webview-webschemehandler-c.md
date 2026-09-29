@@ -10,6 +10,8 @@ WebSchemeHandler works in conjunction with [WebSchemeHandlerRequest](arkts-arkwe
 
 **Since:** 12
 
+<!--Device-webview-class WebSchemeHandler--><!--Device-webview-class WebSchemeHandler-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Called when a request starts. In this callback, you can determine whether to int
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandler-onRequestStart(      callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void--><!--Device-WebSchemeHandler-onRequestStart(      callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -160,6 +164,8 @@ Called when the request is complete. This callback is triggered only when the [o
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandler-onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void--><!--Device-WebSchemeHandler-onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

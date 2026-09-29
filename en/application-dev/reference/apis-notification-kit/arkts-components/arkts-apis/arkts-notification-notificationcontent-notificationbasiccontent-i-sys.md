@@ -8,6 +8,8 @@ Describes the basic text notification, which is used to display the title and bo
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NotificationBasicContent--><!--Device-unnamed-export interface NotificationBasicContent-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## structuredText
@@ -21,6 +23,8 @@ Structured notification. Currently, only service reminder messages can be displa
 **Type:** Map&lt;string, string&gt;
 
 **Since:** 21
+
+<!--Device-NotificationBasicContent-structuredText?: Map<string, string>--><!--Device-NotificationBasicContent-structuredText?: Map<string, string>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

@@ -27,6 +27,8 @@ axis. If it does not have a cross axis size specified, it will fill up the paren
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-BlankInterface-(min?: number | string): BlankAttribute--><!--Device-BlankInterface-(min?: number | string): BlankAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

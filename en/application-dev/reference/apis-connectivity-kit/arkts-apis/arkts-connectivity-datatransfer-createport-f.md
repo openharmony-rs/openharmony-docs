@@ -20,6 +20,8 @@ Registers a port channel. A port channel can be used to connect to a remote devi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dataTransfer-function createPort(uuid: string): void--><!--Device-dataTransfer-function createPort(uuid: string): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

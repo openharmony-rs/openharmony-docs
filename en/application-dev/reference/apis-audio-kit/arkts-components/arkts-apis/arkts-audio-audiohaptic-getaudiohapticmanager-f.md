@@ -16,6 +16,8 @@ Obtains an [AudioHapticManager](arkts-audio-audiohaptic-audiohapticmanager-i.md)
 
 **Since:** 11
 
+<!--Device-audioHaptic-function getAudioHapticManager(): AudioHapticManager--><!--Device-audioHaptic-function getAudioHapticManager(): AudioHapticManager-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 **Return value:**

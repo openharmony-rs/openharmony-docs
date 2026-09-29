@@ -18,6 +18,8 @@ Enables or disables an application. This API returns the result synchronously.
 
 **Required permissions:** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
+<!--Device-bundleManager-function setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void--><!--Device-bundleManager-function setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Set whether an application is enabled or disabled, with control over whether the
 **Required permissions:** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bundleManager-function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled: boolean, killProcess: boolean): void--><!--Device-bundleManager-function setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled: boolean, killProcess: boolean): void-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

@@ -10,6 +10,8 @@ Defines the information of the modal UIExtension to be displayed as the interact
 
 **Since:** 26.0.1
 
+<!--Device-insightIntent-interface InteractionModalUIExtension extends InteractionUI--><!--Device-insightIntent-interface InteractionModalUIExtension extends InteractionUI-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Ability name of the target UIExtension ability.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteractionModalUIExtension-abilityName: string--><!--Device-InteractionModalUIExtension-abilityName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Bundle name of the target UIExtension ability.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteractionModalUIExtension-bundleName: string--><!--Device-InteractionModalUIExtension-bundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -70,6 +76,8 @@ Type of the interaction UI. The value is fixed to 'MODAL_UIEXTENSION'.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteractionModalUIExtension-interactionUIType: 'MODAL_UIEXTENSION'--><!--Device-InteractionModalUIExtension-interactionUIType: 'MODAL_UIEXTENSION'-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -87,6 +95,8 @@ Module name of the target UIExtension ability.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteractionModalUIExtension-moduleName: string--><!--Device-InteractionModalUIExtension-moduleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -106,6 +116,8 @@ Parameters passed to the target UIExtension ability.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteractionModalUIExtension-parameters: Record<string, Object>--><!--Device-InteractionModalUIExtension-parameters: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -124,6 +136,8 @@ Type of the UIExtension ability.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteractionModalUIExtension-uiExtensionType: string--><!--Device-InteractionModalUIExtension-uiExtensionType: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -141,6 +155,8 @@ URI information passed to the target UIExtension ability for data processing.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteractionModalUIExtension-uri: string--><!--Device-InteractionModalUIExtension-uri: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

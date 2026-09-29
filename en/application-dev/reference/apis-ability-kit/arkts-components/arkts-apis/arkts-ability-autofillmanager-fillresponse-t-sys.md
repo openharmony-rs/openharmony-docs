@@ -10,6 +10,8 @@ Defines the information about the response to an auto-fill request.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-autoFillManager-export type FillResponse = _AutoFillRequest.FillResponse--><!--Device-autoFillManager-export type FillResponse = _AutoFillRequest.FillResponse-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.

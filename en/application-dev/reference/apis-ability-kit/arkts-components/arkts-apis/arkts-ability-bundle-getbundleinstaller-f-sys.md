@@ -22,6 +22,8 @@ Obtains the installation package. This API uses an asynchronous callback to retu
 
 **Required permissions:** ohos.permission.INSTALL_BUNDLE
 
+<!--Device-bundle-function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void--><!--Device-bundle-function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -75,6 +77,8 @@ Obtains the installation package. This API uses a promise to return the result.
 **Substitutes:** null
 
 **Required permissions:** ohos.permission.INSTALL_BUNDLE
+
+<!--Device-bundle-function getBundleInstaller(): Promise<BundleInstaller>--><!--Device-bundle-function getBundleInstaller(): Promise<BundleInstaller>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

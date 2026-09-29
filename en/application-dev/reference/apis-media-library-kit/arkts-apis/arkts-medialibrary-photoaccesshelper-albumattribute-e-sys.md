@@ -8,6 +8,8 @@ Album operation attribute.
 
 **Since:** 26.0.0
 
+<!--Device-photoAccessHelper-enum AlbumAttribute--><!--Device-photoAccessHelper-enum AlbumAttribute-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ The album nickname operation attribute.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AlbumAttribute-NICK_NAME_ATTR = 'nickname'--><!--Device-AlbumAttribute-NICK_NAME_ATTR = 'nickname'-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,6 +44,8 @@ The album extra_info operation attribute.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AlbumAttribute-EXTRA_INFO_ATTR = 'extra_info'--><!--Device-AlbumAttribute-EXTRA_INFO_ATTR = 'extra_info'-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ The album is_removed operation attribute.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AlbumAttribute-IS_REMOVED_ATTR = 'is_removed'--><!--Device-AlbumAttribute-IS_REMOVED_ATTR = 'is_removed'-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -72,6 +80,8 @@ The album friend_id operation attribute.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AlbumAttribute-FRIEND_ID_ATTR = 'friend_id'--><!--Device-AlbumAttribute-FRIEND_ID_ATTR = 'friend_id'-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -87,6 +97,8 @@ The album contact_info operation attribute.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AlbumAttribute-CONTACT_INFO_ATTR = 'contact_info'--><!--Device-AlbumAttribute-CONTACT_INFO_ATTR = 'contact_info'-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

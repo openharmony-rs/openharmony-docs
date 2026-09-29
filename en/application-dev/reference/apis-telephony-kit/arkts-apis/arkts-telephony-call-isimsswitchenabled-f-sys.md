@@ -16,6 +16,8 @@ Checks whether the IMS service is enabled. This API uses an asynchronous callbac
 
 **Since:** 8
 
+<!--Device-call-function isImsSwitchEnabled(slotId: int, callback: AsyncCallback<boolean>): void--><!--Device-call-function isImsSwitchEnabled(slotId: int, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ function isImsSwitchEnabled(slotId: number): Promise<boolean>
 Checks whether the IMS service is enabled. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-call-function isImsSwitchEnabled(slotId: int): Promise<boolean>--><!--Device-call-function isImsSwitchEnabled(slotId: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

@@ -8,6 +8,8 @@ Represents the parameter of the constructor used to create a **PathShape** objec
 
 **Since:** 12
 
+<!--Device-unnamed-interface PathShapeOptions--><!--Device-unnamed-interface PathShapeOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -22,7 +24,7 @@ import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 commands?: string
 ```
 
-Path drawing commands. For more about the commands, see [commands](../arkts-components/arkts-arkui-path-comp-attribute.md#commands).
+Commands for drawing the path. The default value is an empty string, and no path is drawn when this parameter is not set.
 
 **Type:** string
 
@@ -33,5 +35,7 @@ Path drawing commands. For more about the commands, see [commands](../arkts-comp
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-PathShapeOptions-commands?: string--><!--Device-PathShapeOptions-commands?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

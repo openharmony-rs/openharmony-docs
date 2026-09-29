@@ -18,6 +18,8 @@ Get the connected VPN App Info.
 
 **Required permissions:** ohos.permission.MANAGE_VPN
 
+<!--Device-vpn-function getConnectedVpnAppInfo(): Promise<Array<string>>--><!--Device-vpn-function getConnectedVpnAppInfo(): Promise<Array<string>>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 **System API:** This is a system API.

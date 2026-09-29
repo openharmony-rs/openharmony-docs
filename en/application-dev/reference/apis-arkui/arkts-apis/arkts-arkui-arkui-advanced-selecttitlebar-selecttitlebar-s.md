@@ -10,11 +10,13 @@ The **SelectTitleBar** component represents a drop-down menu title bar used for 
 > 
 > - This component can be used only in the stage model.
 > 
-> - If the **SelectTitleBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md#common) and [universal events](../arkts-components/arkts-arkui-common-comp.md#common) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SelectTitleBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SelectTitleBar** component.
+> - If the **SelectTitleBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SelectTitleBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SelectTitleBar** component.
 
 **Since:** 10
 
 **Decorator:** @Component
+
+<!--Device-unnamed-export declare struct SelectTitleBar--><!--Device-unnamed-export declare struct SelectTitleBar-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +48,8 @@ The maximum number of messages is 99. If this limit is exceeded, only **99+** is
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SelectTitleBar-badgeValue?: number--><!--Device-SelectTitleBar-badgeValue?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## hidesBackButton
@@ -66,6 +70,8 @@ Default value: **false**. **true** to hide, **false** to show.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SelectTitleBar-hidesBackButton?: boolean--><!--Device-SelectTitleBar-hidesBackButton?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## menuItems
@@ -83,6 +89,8 @@ List of menu items on the right side of the title bar. This parameter is passed 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectTitleBar-menuItems?: Array<SelectTitleBarMenuItem>--><!--Device-SelectTitleBar-menuItems?: Array<SelectTitleBarMenuItem>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +110,8 @@ Callback invoked when an option in the drop-down menu is selected. The index of 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SelectTitleBar-onSelected?: ((index: number) => void)--><!--Device-SelectTitleBar-onSelected?: ((index: number) => void)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## options
@@ -119,6 +129,8 @@ Options in the drop-down menu.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectTitleBar-options: Array<SelectOption>--><!--Device-SelectTitleBar-options: Array<SelectOption>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,6 +154,8 @@ The index of the first item is 0. If this attribute is not set, the default valu
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SelectTitleBar-selected: number--><!--Device-SelectTitleBar-selected: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## subtitle
@@ -159,5 +173,7 @@ Subtitle, used to display supplementary information. This parameter is passed to
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectTitleBar-subtitle?: ResourceStr--><!--Device-SelectTitleBar-subtitle?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -20,6 +20,8 @@ Get the current input method of a specified user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-inputMethod-function getCurrentInputMethod(userId?: int): InputMethodProperty--><!--Device-inputMethod-function getCurrentInputMethod(userId?: int): InputMethodProperty-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API:** This is a system API.

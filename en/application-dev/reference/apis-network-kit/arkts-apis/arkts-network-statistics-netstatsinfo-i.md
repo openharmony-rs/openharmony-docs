@@ -8,6 +8,8 @@ Defines the historical traffic information.
 
 **Since:** 22
 
+<!--Device-statistics-export interface NetStatsInfo--><!--Device-statistics-export interface NetStatsInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Downlink traffic data (unit: bytes).
 
 **Since:** 22
 
+<!--Device-NetStatsInfo-rxBytes: long--><!--Device-NetStatsInfo-rxBytes: long-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## rxPackets
@@ -41,6 +45,8 @@ Number of downlink packets.
 **Type:** number
 
 **Since:** 22
+
+<!--Device-NetStatsInfo-rxPackets: long--><!--Device-NetStatsInfo-rxPackets: long-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -56,6 +62,8 @@ Uplink traffic data (unit: bytes).
 
 **Since:** 22
 
+<!--Device-NetStatsInfo-txBytes: long--><!--Device-NetStatsInfo-txBytes: long-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## txPackets
@@ -69,5 +77,7 @@ Number of uplink packets.
 **Type:** number
 
 **Since:** 22
+
+<!--Device-NetStatsInfo-txPackets: long--><!--Device-NetStatsInfo-txPackets: long-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

@@ -18,6 +18,8 @@ Pushes the component and data to the component user.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-pluginComponentManager-function push(param: PushParameters, callback: AsyncCallback<void>): void--><!--Device-pluginComponentManager-function push(param: PushParameters, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

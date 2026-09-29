@@ -17,6 +17,8 @@ toLocaleString(locales?: Intl.LocalesArgument, options?: Intl.NumberFormatOption
 
 Converts a number to a string by using the current or specified locale.
 
+<!--Device-Number-toLocaleString(locales?: Intl.LocalesArgument, options?: Intl.NumberFormatOptions): string--><!--Device-Number-toLocaleString(locales?: Intl.LocalesArgument, options?: Intl.NumberFormatOptions): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

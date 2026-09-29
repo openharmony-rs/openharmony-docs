@@ -8,6 +8,8 @@ Describes memory information of the application process.
 
 **Since:** 12
 
+<!--Device-hidebug-interface NativeMemInfo--><!--Device-hidebug-interface NativeMemInfo-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## Modules to Import
@@ -28,6 +30,8 @@ The size of the private clean memory, in kilobyte
 
 **Since:** 12
 
+<!--Device-NativeMemInfo-privateClean: bigint--><!--Device-NativeMemInfo-privateClean: bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## privateDirty
@@ -41,6 +45,8 @@ The size of the private dirty memory, in kilobyte
 **Type:** bigint
 
 **Since:** 12
+
+<!--Device-NativeMemInfo-privateDirty: bigint--><!--Device-NativeMemInfo-privateDirty: bigint-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -56,6 +62,8 @@ Process proportional set size memory, in kilobyte
 
 **Since:** 12
 
+<!--Device-NativeMemInfo-pss: bigint--><!--Device-NativeMemInfo-pss: bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## rss
@@ -69,6 +77,8 @@ Resident set size, in kilobyte
 **Type:** bigint
 
 **Since:** 12
+
+<!--Device-NativeMemInfo-rss: bigint--><!--Device-NativeMemInfo-rss: bigint-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -84,6 +94,8 @@ The size of the shared clean memory, in kilobyte
 
 **Since:** 12
 
+<!--Device-NativeMemInfo-sharedClean: bigint--><!--Device-NativeMemInfo-sharedClean: bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## sharedDirty
@@ -98,6 +110,8 @@ The size of the shared dirty memory, in kilobyte
 
 **Since:** 12
 
+<!--Device-NativeMemInfo-sharedDirty: bigint--><!--Device-NativeMemInfo-sharedDirty: bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## vss
@@ -111,5 +125,7 @@ Virtual set size memory, in kilobyte
 **Type:** bigint
 
 **Since:** 12
+
+<!--Device-NativeMemInfo-vss: bigint--><!--Device-NativeMemInfo-vss: bigint-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug

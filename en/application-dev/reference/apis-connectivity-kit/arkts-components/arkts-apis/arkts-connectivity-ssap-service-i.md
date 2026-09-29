@@ -8,6 +8,8 @@ Represents the NearLink service.
 
 **Since:** 26.0.0
 
+<!--Device-ssap-interface Service--><!--Device-ssap-interface Service-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Properties of a service.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Service-properties: Property[]--><!--Device-Service-properties: Property[]-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## serviceUuid
@@ -45,5 +49,7 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Service-serviceUuid: string--><!--Device-Service-serviceUuid: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

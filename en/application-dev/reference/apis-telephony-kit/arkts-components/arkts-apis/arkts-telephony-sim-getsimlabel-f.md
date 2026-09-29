@@ -19,6 +19,8 @@ Checks the mapping between card slot IDs and SIM cards.
 
 **Since:** 20
 
+<!--Device-sim-function getSimLabel(slotId: int, callback: AsyncCallback<SimLabel>): void--><!--Device-sim-function getSimLabel(slotId: int, callback: AsyncCallback<SimLabel>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -60,6 +62,8 @@ function getSimLabel(slotId: number): Promise<SimLabel>
 Obtains the SIM card label. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-sim-function getSimLabel(slotId: int): Promise<SimLabel>--><!--Device-sim-function getSimLabel(slotId: int): Promise<SimLabel>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

@@ -19,6 +19,8 @@ Starts perception advertising or updates the custom payload carried in the adver
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-softbusBase-function startPerceptionAdv(type: PerceptionType, customData?: ArrayBuffer): Promise<void>--><!--Device-softbusBase-function startPerceptionAdv(type: PerceptionType, customData?: ArrayBuffer): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.

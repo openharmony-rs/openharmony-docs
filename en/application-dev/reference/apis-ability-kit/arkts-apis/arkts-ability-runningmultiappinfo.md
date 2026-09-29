@@ -1,4 +1,4 @@
-# RunningMultiAppInfo
+# RunningMultiAppInfo(RunningMultiAppInfo)
 
 ## Summary
 

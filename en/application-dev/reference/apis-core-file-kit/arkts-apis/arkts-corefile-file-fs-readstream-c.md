@@ -12,6 +12,8 @@ The data obtained by **ReadStream** is a decoded string. Currently, only the UTF
 
 **Since:** 12
 
+<!--Device-unnamed-declare class ReadStream extends stream.Readable--><!--Device-unnamed-declare class ReadStream extends stream.Readable-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -29,6 +31,8 @@ close(): void
 Closes this readable stream.
 
 **Since:** 12
+
+<!--Device-ReadStream-close(): void--><!--Device-ReadStream-close(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -61,6 +65,8 @@ The ReadStream constructor.
 
 **Since:** 12
 
+<!--Device-ReadStream-constructor()--><!--Device-ReadStream-constructor()-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## seek
@@ -72,6 +78,8 @@ seek(offset: number, whence?: WhenceType): number
 Adjusts the position of the readable stream offset pointer.
 
 **Since:** 12
+
+<!--Device-ReadStream-seek(offset: number, whence?: WhenceType): number--><!--Device-ReadStream-seek(offset: number, whence?: WhenceType): number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -119,6 +127,8 @@ Number of bytes read by the readable stream.
 
 **Since:** 12
 
+<!--Device-ReadStream-readonly bytesRead: number--><!--Device-ReadStream-readonly bytesRead: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -138,6 +148,8 @@ Path of the file corresponding to the readable stream.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-ReadStream-readonly path: string--><!--Device-ReadStream-readonly path: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

@@ -8,6 +8,8 @@ Defines the parameter used to execute an intent call.
 
 **Since:** 11
 
+<!--Device-insightIntentDriver-interface ExecuteParam--><!--Device-insightIntentDriver-interface ExecuteParam-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Name of the ability to be called. If an intent defined by the [@InsightIntentLin
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExecuteParam-abilityName: string--><!--Device-ExecuteParam-abilityName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Name of the bundle to which the ability to be called belongs.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecuteParam-bundleName: string--><!--Device-ExecuteParam-bundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -68,6 +74,8 @@ Indicates the device identifier. Obtained from [getAvailableDeviceListSync](../.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExecuteParam-deviceId?: string--><!--Device-ExecuteParam-deviceId?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -86,6 +94,8 @@ Physical screen ID specified during intent call. The value must be an integer. T
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExecuteParam-displayId?: long--><!--Device-ExecuteParam-displayId?: long-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -103,6 +113,8 @@ Intent execution mode. If an intent defined by the [@InsightIntentLink](../../..
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecuteParam-executeMode: insightIntent.ExecuteMode--><!--Device-ExecuteParam-executeMode: insightIntent.ExecuteMode-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -126,6 +138,8 @@ This parameter supports only **FLAG_AUTH_READ_URI_PERMISSION**, **FLAG_AUTH_WRIT
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExecuteParam-flags?: int--><!--Device-ExecuteParam-flags?: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -143,6 +157,8 @@ Intent name.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecuteParam-insightIntentName: string--><!--Device-ExecuteParam-insightIntentName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -162,6 +178,8 @@ Intent call parameter.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExecuteParam-insightIntentParam: Record<string, Object>--><!--Device-ExecuteParam-insightIntentParam: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -180,6 +198,8 @@ Name of the module to which the ability belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExecuteParam-moduleName: string--><!--Device-ExecuteParam-moduleName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -197,6 +217,8 @@ Indicates the tool call ID. Used to associate this intent execute with a test st
 **Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecuteParam-toolCallId?: string--><!--Device-ExecuteParam-toolCallId?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -217,6 +239,8 @@ List of URIs authorized by the intent caller to the intent executor during the c
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecuteParam-uris?: Array<string>--><!--Device-ExecuteParam-uris?: Array<string>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -239,6 +263,8 @@ If the user ID of the calling application is different from the user ID of the i
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecuteParam-userId?: int--><!--Device-ExecuteParam-userId?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -1,8 +1,10 @@
 # DataPanel
 
-The **DataPanel** component is used to display proportions in a chart.
+The **DataPanel** component is used to display the proportions of multiple data items in a chart. It supports two display types: circle and linear. You can customize visual effects such as the color, shadow, and background. It is applicable to data visualization scenarios such as storage capacity, task progress, and resource proportions, helping users intuitively understand data distribution.
 
-> **NOTE** > > - This component supports [WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component) since API version 26.0.0
+> **NOTE:** 
+> 
+> - This component supports [WithTheme](arkts-arkui-withtheme-comp.md) since API version 26.0.0.
 
 ## Child Components
 
@@ -22,13 +24,15 @@ Creates a data panel component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-DataPanelInterface-(options: DataPanelOptions): DataPanelAttribute--><!--Device-DataPanelInterface-(options: DataPanelOptions): DataPanelAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [DataPanelOptions](arkts-arkui-datapanel-comp-datapaneloptions-i.md) | Yes | Parameters of the data panel. |
+| options | [DataPanelOptions](arkts-arkui-datapanel-comp-datapaneloptions-i.md) | Yes | Data panel configuration options, used to set the data value list, maximum value, and type of the data panel. |
 
 ## Summary
 
@@ -37,7 +41,7 @@ Creates a data panel component.
 | Name | Description |
 | --- | --- |
 | [ColorStop](arkts-arkui-datapanel-comp-colorstop-i.md) | Describes the gradient color stop. |
-| [DataPanelConfiguration](arkts-arkui-datapanel-comp-datapanelconfiguration-i.md) | You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md). |
+| [DataPanelConfiguration](arkts-arkui-datapanel-comp-datapanelconfiguration-i.md) | You need a custom class to implement the **ContentModifier** API. It inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md). |
 | [DataPanelOptions](arkts-arkui-datapanel-comp-datapaneloptions-i.md) | Defines data panel configuration options. |
 | [DataPanelShadowOptions](arkts-arkui-datapanel-comp-datapanelshadowoptions-i.md) | Inherits from [MultiShadowOptions](arkts-arkui-common-comp-multishadowoptions-i.md) and has all properties of **MultiShadowOptions**. |
 

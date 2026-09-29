@@ -8,6 +8,8 @@ Enumerates the types of transaction objects that can be created. Use the enum na
 
 **Since:** 14
 
+<!--Device-relationalStore-enum TransactionType--><!--Device-relationalStore-enum TransactionType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## DEFERRED
@@ -19,6 +21,8 @@ DEFERRED = 0
 Deferred transaction object. When a deferred transaction object is created, automatic commit is disabled and no transaction will start. A read or write transaction starts only when the first read or write operation is performed.
 
 **Since:** 14
+
+<!--Device-TransactionType-DEFERRED = 0--><!--Device-TransactionType-DEFERRED = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -32,6 +36,8 @@ Immediate transaction object. When an immediate transaction object is created, a
 
 **Since:** 14
 
+<!--Device-TransactionType-IMMEDIATE = 1--><!--Device-TransactionType-IMMEDIATE = 1-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## EXCLUSIVE
@@ -43,5 +49,7 @@ EXCLUSIVE = 2
 Exclusive transaction object. In WAL mode, the exclusive transaction object is the same as the immediate transaction object. In other log modes, this type of transaction can prevent the database from being read by other connections during the transaction.
 
 **Since:** 14
+
+<!--Device-TransactionType-EXCLUSIVE = 2--><!--Device-TransactionType-EXCLUSIVE = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

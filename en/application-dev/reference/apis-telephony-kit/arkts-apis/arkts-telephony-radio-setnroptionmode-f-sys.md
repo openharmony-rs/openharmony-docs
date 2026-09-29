@@ -18,6 +18,8 @@ Set the NR option mode.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-radio-function setNROptionMode(slotId: int, mode: NROptionMode, callback: AsyncCallback<void>): void--><!--Device-radio-function setNROptionMode(slotId: int, mode: NROptionMode, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Set the NR option mode.
 **Since:** 10
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-radio-function setNROptionMode(slotId: int, mode: NROptionMode): Promise<void>--><!--Device-radio-function setNROptionMode(slotId: int, mode: NROptionMode): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

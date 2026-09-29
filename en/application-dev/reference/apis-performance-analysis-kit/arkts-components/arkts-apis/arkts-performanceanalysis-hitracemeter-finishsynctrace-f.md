@@ -18,7 +18,9 @@ The **level** used in **finishSyncTrace** must be the same as that of [startSync
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-hiTraceMeter-function finishSyncTrace(level: HiTraceOutputLevel): void--><!--Device-hiTraceMeter-function finishSyncTrace(level: HiTraceOutputLevel): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 

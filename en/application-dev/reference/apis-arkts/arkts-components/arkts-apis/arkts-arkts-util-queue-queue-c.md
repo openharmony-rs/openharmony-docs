@@ -8,6 +8,8 @@ Queue follows the principle of First In First Out (FIFO). It supports insertion 
 
 **Since:** 8
 
+<!--Device-unnamed-declare class Queue<T>--><!--Device-unnamed-declare class Queue<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ returns an iterator.Each item of the iterator is a Javascript Object
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Queue-[Symbol.iterator](): IterableIterator<T>--><!--Device-Queue-[Symbol.iterator](): IterableIterator<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -83,7 +87,9 @@ Adds an element at the end of this Queue.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Queue-add(element: T): boolean--><!--Device-Queue-add(element: T): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -132,7 +138,9 @@ A constructor used to create a **Queue** instance.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Queue-constructor()--><!--Device-Queue-constructor()-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -159,6 +167,8 @@ Uses a callback to traverse each element in the **Queue** instance.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Queue-forEach(callbackFn: (value: T, index?: number, Queue?: Queue<T>) => void, thisArg?: Object): void--><!--Device-Queue-forEach(callbackFn: (value: T, index?: number, Queue?: Queue<T>) => void, thisArg?: Object): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -202,7 +212,9 @@ Obtains the first element of this Queue.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Queue-getFirst(): T--><!--Device-Queue-getFirst(): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -241,7 +253,9 @@ Removes the first element from this Queue.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Queue-pop(): T--><!--Device-Queue-pop(): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -284,5 +298,7 @@ Number of elements in a Queue.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Queue-length: number--><!--Device-Queue-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

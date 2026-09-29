@@ -20,6 +20,8 @@ Converts a SendableContext object to an AbilityStageContext object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-sendableContextManager-function convertToAbilityStageContext(sendableContext: SendableContext): common.AbilityStageContext--><!--Device-sendableContextManager-function convertToAbilityStageContext(sendableContext: SendableContext): common.AbilityStageContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

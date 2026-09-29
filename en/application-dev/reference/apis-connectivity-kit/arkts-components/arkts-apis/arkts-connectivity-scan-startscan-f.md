@@ -20,6 +20,8 @@ Starts NearLink scanning. This API uses a promise to return the result. You need
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-scan-function startScan(filters: ScanFilters[] | null, options?: ScanOptions): Promise<void>--><!--Device-scan-function startScan(filters: ScanFilters[] | null, options?: ScanOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

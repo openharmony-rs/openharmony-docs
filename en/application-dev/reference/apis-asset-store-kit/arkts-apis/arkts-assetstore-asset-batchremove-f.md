@@ -20,6 +20,8 @@ Only assets with the same [GROUP_ID](arkts-assetstore-asset-tag-e.md#group_id) a
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-asset-function batchRemove(assetsToBeRemoved: Array<AssetMap>): Promise<void>--><!--Device-asset-function batchRemove(assetsToBeRemoved: Array<AssetMap>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**

@@ -20,6 +20,8 @@ CanvasRenderingContext2D对象与Canvas组件绑定后，可在Canvas组件上�
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class CanvasRenderingContext2D extends CanvasRenderer--><!--Device-unnamed-declare class CanvasRenderingContext2D extends CanvasRenderer-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -37,6 +39,8 @@ constructor(settings?: RenderingContextSettings)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderingContext2D-constructor(settings?: RenderingContextSettings)--><!--Device-CanvasRenderingContext2D-constructor(settings?: RenderingContextSettings)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +110,8 @@ constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderingContext2D-constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)--><!--Device-CanvasRenderingContext2D-constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -129,7 +135,7 @@ static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, o
 
 > **说明：** 
 > 
-> - 从该接口获取的CanvasRenderingContext2D对象不允许作为参数创建Canvas组件，否则会导致应用崩溃。
+> - 从该接口获取的CanvasRenderingContext2D对象不允许作为参数创建[Canvas](arkts-arkui-canvas-comp.md)组件，否则会导致应用崩溃。
 > 
 > - 当入参的DrawingRenderingContext对象未绑定Canvas组件时，将返回错误码。
 
@@ -138,6 +144,8 @@ static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, o
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-CanvasRenderingContext2D-static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, options?: RenderingContextOptions): CanvasRenderingContext2D--><!--Device-CanvasRenderingContext2D-static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, options?: RenderingContextOptions): CanvasRenderingContext2D-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -202,6 +210,8 @@ off(type: 'onAttach', callback?: Callback<void>): void
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-CanvasRenderingContext2D-off(type: 'onAttach', callback?: Callback<void>): void--><!--Device-CanvasRenderingContext2D-off(type: 'onAttach', callback?: Callback<void>): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -215,7 +225,7 @@ off(type: 'onAttach', callback?: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## off('onDetach')
 
@@ -231,6 +241,8 @@ off(type: 'onDetach', callback?: Callback<void>): void
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-CanvasRenderingContext2D-off(type: 'onDetach', callback?: Callback<void>): void--><!--Device-CanvasRenderingContext2D-off(type: 'onDetach', callback?: Callback<void>): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -244,7 +256,7 @@ off(type: 'onDetach', callback?: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -365,6 +377,8 @@ on(type: 'onAttach', callback: Callback<void>): void
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-CanvasRenderingContext2D-on(type: 'onAttach', callback: Callback<void>): void--><!--Device-CanvasRenderingContext2D-on(type: 'onAttach', callback: Callback<void>): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -378,7 +392,7 @@ on(type: 'onAttach', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## on('onDetach')
 
@@ -402,6 +416,8 @@ on(type: 'onDetach', callback: Callback<void>): void
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-CanvasRenderingContext2D-on(type: 'onDetach', callback: Callback<void>): void--><!--Device-CanvasRenderingContext2D-on(type: 'onDetach', callback: Callback<void>): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -415,7 +431,7 @@ on(type: 'onDetach', callback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## startImageAnalyzer
 
@@ -443,6 +459,8 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CanvasRenderingContext2D-startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>--><!--Device-CanvasRenderingContext2D-startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -461,9 +479,9 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 110001 | Image analysis feature is unsupported. |
-| 110002 | Image analysis is currently being executed. |
-| 110003 | Image analysis is stopped. |
+| [110001](../arkui-ts/errorcode-image-analyzer.md#110001-ai图像分析功能不支持) | Image analysis feature is unsupported. |
+| [110002](../arkui-ts/errorcode-image-analyzer.md#110002-ai图像分析正在进行中) | Image analysis is currently being executed. |
+| [110003](../arkui-ts/errorcode-image-analyzer.md#110003-ai图像分析已停止) | Image analysis is stopped. |
 
 ## stopImageAnalyzer
 
@@ -484,6 +502,8 @@ stopImageAnalyzer(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CanvasRenderingContext2D-stopImageAnalyzer(): void--><!--Device-CanvasRenderingContext2D-stopImageAnalyzer(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -569,6 +589,8 @@ toDataURL(type?: string, quality?: any): string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderingContext2D-toDataURL(type?: string, quality?: any): string--><!--Device-CanvasRenderingContext2D-toDataURL(type?: string, quality?: any): string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -631,6 +653,8 @@ readonly canvas: FrameNode
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-CanvasRenderingContext2D-readonly canvas: FrameNode--><!--Device-CanvasRenderingContext2D-readonly canvas: FrameNode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -653,6 +677,8 @@ readonly height: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasRenderingContext2D-readonly height: number--><!--Device-CanvasRenderingContext2D-readonly height: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -674,5 +700,7 @@ readonly width: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CanvasRenderingContext2D-readonly width: number--><!--Device-CanvasRenderingContext2D-readonly width: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

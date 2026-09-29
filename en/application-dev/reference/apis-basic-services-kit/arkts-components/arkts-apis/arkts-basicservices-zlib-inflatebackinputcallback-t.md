@@ -10,6 +10,8 @@ A callback function for reading input data provided by a user. When the decompre
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-zlib-type InflateBackInputCallback = (inDesc: object) => ArrayBuffer--><!--Device-zlib-type InflateBackInputCallback = (inDesc: object) => ArrayBuffer-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 **Parameters:**

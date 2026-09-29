@@ -8,6 +8,8 @@ Enumerates the intent types defined by the intent decorator. You can obtain the 
 
 **Since:** 20
 
+<!--Device-insightIntentDriver-enum InsightIntentType--><!--Device-insightIntentDriver-enum InsightIntentType-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ A decorator of the [@InsightIntentLink](../../../reference/apis-ability-kit/js-a
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentType-LINK = '@InsightIntentLink'--><!--Device-InsightIntentType-LINK = '@InsightIntentLink'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -40,6 +44,8 @@ A decorator of the [@InsightIntentPage](../../../reference/apis-ability-kit/js-a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentType-PAGE = '@InsightIntentPage'--><!--Device-InsightIntentType-PAGE = '@InsightIntentPage'-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ A decorator of the [@InsightIntentEntry](../../../reference/apis-ability-kit/js-
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentType-ENTRY = '@InsightIntentEntry'--><!--Device-InsightIntentType-ENTRY = '@InsightIntentEntry'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -72,6 +80,8 @@ A decorator of the [@InsightIntentFunctionMethod](../../../reference/apis-abilit
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentType-FUNCTION = '@InsightIntentFunctionMethod'--><!--Device-InsightIntentType-FUNCTION = '@InsightIntentFunctionMethod'-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -87,6 +97,8 @@ A decorator of the [@InsightIntentForm](../../../reference/apis-ability-kit/js-a
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentType-FORM = '@InsightIntentForm'--><!--Device-InsightIntentType-FORM = '@InsightIntentForm'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

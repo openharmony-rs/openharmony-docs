@@ -4,11 +4,11 @@
 declare enum DisturbanceFieldShape
 ```
 
-Defines particle disturbance shape.
-
-@enum { number }
+Defines the shape of the disturbance field.
 
 **Since:** 12
+
+<!--Device-unnamed-declare enum DisturbanceFieldShape--><!--Device-unnamed-declare enum DisturbanceFieldShape-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,6 +26,8 @@ Rectangle.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DisturbanceFieldShape-RECT = 0--><!--Device-DisturbanceFieldShape-RECT = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CIRCLE
@@ -42,6 +44,8 @@ Circle.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DisturbanceFieldShape-CIRCLE = 1--><!--Device-DisturbanceFieldShape-CIRCLE = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ELLIPSE
@@ -57,5 +61,7 @@ Ellipse.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DisturbanceFieldShape-ELLIPSE = 2--><!--Device-DisturbanceFieldShape-ELLIPSE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

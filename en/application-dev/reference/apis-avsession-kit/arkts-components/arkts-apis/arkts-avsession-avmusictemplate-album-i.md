@@ -12,6 +12,8 @@ The definition of Album.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-interface Album extends MediaEntity--><!--Device-avMusicTemplate-interface Album extends MediaEntity-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Total number of episodes in the program
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Album-episodeCounts?: string--><!--Device-Album-episodeCounts?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## favSubscribeData
@@ -49,6 +53,8 @@ Favorite/Subscribe information.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Album-favSubscribeData: FavoriteData--><!--Device-Album-favSubscribeData: FavoriteData-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -66,6 +72,8 @@ Play counts.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Album-playCounts: string--><!--Device-Album-playCounts: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## singer
@@ -81,5 +89,7 @@ Singer name.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Album-singer: string--><!--Device-Album-singer: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

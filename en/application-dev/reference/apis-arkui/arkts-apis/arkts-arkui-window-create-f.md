@@ -24,6 +24,8 @@ The child window created uses an [immersive layout](../../../windowmanager/windo
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-window-function create(id: string, type: WindowType, callback: AsyncCallback<Window>): void--><!--Device-window-function create(id: string, type: WindowType, callback: AsyncCallback<Window>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **Parameters:**
@@ -72,6 +74,8 @@ The child window created uses an [immersive layout](../../../windowmanager/windo
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-window-function create(id: string, type: WindowType): Promise<Window>--><!--Device-window-function create(id: string, type: WindowType): Promise<Window>-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **Parameters:**
@@ -118,6 +122,8 @@ Creates a system window. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-1)(config: Configuration)
+
+<!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>--><!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -166,6 +172,8 @@ Creates a system window. This API uses an asynchronous callback to return the re
 **Deprecated since:** 9
 
 **Substitutes:** [createWindow](arkts-arkui-window-createwindow-f.md)(config: Configuration, callback: AsyncCallback&lt;Window&gt;)
+
+<!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback<Window>): void--><!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback<Window>): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

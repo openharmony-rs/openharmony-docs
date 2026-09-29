@@ -18,6 +18,8 @@ Checks whether the application specified by **bundleName** is in the idle state.
 
 **Deprecated since:** 9
 
+<!--Device-bundleState-function isIdleState(bundleName: string, callback: AsyncCallback<boolean>): void--><!--Device-bundleState-function isIdleState(bundleName: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
 **Parameters:**
@@ -56,6 +58,8 @@ Checks whether the application specified by **bundleName** is in the idle state.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-bundleState-function isIdleState(bundleName: string): Promise<boolean>--><!--Device-bundleState-function isIdleState(bundleName: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 

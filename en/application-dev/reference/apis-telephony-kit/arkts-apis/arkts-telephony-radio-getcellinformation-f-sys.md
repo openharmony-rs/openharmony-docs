@@ -18,6 +18,8 @@ Get the current cell information.
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-radio-function getCellInformation(slotId: int, callback: AsyncCallback<Array<CellInformation>>): void--><!--Device-radio-function getCellInformation(slotId: int, callback: AsyncCallback<Array<CellInformation>>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Get the current cell information.
 **Since:** 8
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
+
+<!--Device-radio-function getCellInformation(slotId?: int): Promise<Array<CellInformation>>--><!--Device-radio-function getCellInformation(slotId?: int): Promise<Array<CellInformation>>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -126,6 +130,8 @@ Get the current cell information.
 **Since:** 8
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
+
+<!--Device-radio-function getCellInformation(callback: AsyncCallback<Array<CellInformation>>): void--><!--Device-radio-function getCellInformation(callback: AsyncCallback<Array<CellInformation>>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

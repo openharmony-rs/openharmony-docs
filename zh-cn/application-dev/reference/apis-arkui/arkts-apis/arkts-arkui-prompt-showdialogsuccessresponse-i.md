@@ -12,6 +12,8 @@ interface ShowDialogSuccessResponse
 
 **替代接口：** [ShowDialogSuccessResponse](arkts-arkui-promptaction-showdialogsuccessresponse-i.md)
 
+<!--Device-prompt-interface ShowDialogSuccessResponse--><!--Device-prompt-interface ShowDialogSuccessResponse-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -37,5 +39,7 @@ index: number
 **替代接口：** [index](arkts-arkui-promptaction-showdialogsuccessresponse-i.md#index)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-ShowDialogSuccessResponse-index: number--><!--Device-ShowDialogSuccessResponse-index: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

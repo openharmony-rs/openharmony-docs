@@ -18,6 +18,8 @@ Whether desktop lyric feature is supported.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avSession-function isDesktopLyricSupported(): Promise<boolean>--><!--Device-avSession-function isDesktopLyricSupported(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 **Return value:**

@@ -10,6 +10,8 @@ The type of the priority key can be number or string
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-relationalStore-type PRIKeyType = long | double | string--><!--Device-relationalStore-type PRIKeyType = long | double | string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | Type | Description |

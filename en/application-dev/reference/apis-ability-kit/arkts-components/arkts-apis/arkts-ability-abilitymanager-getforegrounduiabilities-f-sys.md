@@ -18,6 +18,8 @@ Obtains the information about the UIAbility components of an application that is
 
 **Required permissions:** ohos.permission.GET_RUNNING_INFO
 
+<!--Device-abilityManager-function getForegroundUIAbilities(callback: AsyncCallback<Array<AbilityStateData>>): void--><!--Device-abilityManager-function getForegroundUIAbilities(callback: AsyncCallback<Array<AbilityStateData>>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -66,6 +68,8 @@ Obtains the information about the UIAbility components of an application that is
 **Since:** 11
 
 **Required permissions:** ohos.permission.GET_RUNNING_INFO
+
+<!--Device-abilityManager-function getForegroundUIAbilities(): Promise<Array<AbilityStateData>>--><!--Device-abilityManager-function getForegroundUIAbilities(): Promise<Array<AbilityStateData>>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

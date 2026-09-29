@@ -10,6 +10,8 @@ Defines the types of the key and value in a KV pair. This type is not multi-thre
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export type ValuesBucket = Record<string, ValueType | Uint8Array | null>--><!--Device-unnamed-export type ValuesBucket = Record<string, ValueType | Uint8Array | null>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Type:** Record&lt;string, [ValueType](arkts-arkdata-valuetype-t.md) | Uint8Array | null&gt;

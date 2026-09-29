@@ -8,6 +8,8 @@ Enumerates TLS protocol versions.
 
 **Since:** 9
 
+<!--Device-socket-export enum Protocol--><!--Device-socket-export enum Protocol-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## TLSv12
@@ -20,6 +22,8 @@ TLSv1.2.
 
 **Since:** 9
 
+<!--Device-Protocol-TLSv12 = "TLSv1.2"--><!--Device-Protocol-TLSv12 = "TLSv1.2"-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## TLSv13
@@ -31,5 +35,7 @@ TLSv13 = "TLSv1.3"
 TLSv1.3.
 
 **Since:** 9
+
+<!--Device-Protocol-TLSv13 = "TLSv1.3"--><!--Device-Protocol-TLSv13 = "TLSv1.3"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

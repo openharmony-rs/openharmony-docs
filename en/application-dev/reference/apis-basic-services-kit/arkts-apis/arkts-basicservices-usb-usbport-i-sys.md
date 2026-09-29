@@ -12,6 +12,8 @@ Represents a USB port.
 
 **Substitutes:** [USBPort](arkts-basicservices-usbmanager-usbport-i-sys.md)
 
+<!--Device-usb-interface USBPort--><!--Device-usb-interface USBPort-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -38,6 +40,8 @@ Unique identifier of a USB port.
 
 **Substitutes:** [id](arkts-basicservices-usbmanager-usbport-i-sys.md#id)
 
+<!--Device-USBPort-id: number--><!--Device-USBPort-id: number-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -58,6 +62,8 @@ USB port role.
 
 **Substitutes:** [status](arkts-basicservices-usbmanager-usbport-i-sys.md#status)
 
+<!--Device-USBPort-status: USBPortStatus--><!--Device-USBPort-status: USBPortStatus-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -77,6 +83,8 @@ Numeric mask combination for the supported mode list.
 **Deprecated since:** 9
 
 **Substitutes:** [supportedModes](arkts-basicservices-usbmanager-usbport-i-sys.md#supportedmodes)
+
+<!--Device-USBPort-supportedModes: PortModeType--><!--Device-USBPort-supportedModes: PortModeType-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 

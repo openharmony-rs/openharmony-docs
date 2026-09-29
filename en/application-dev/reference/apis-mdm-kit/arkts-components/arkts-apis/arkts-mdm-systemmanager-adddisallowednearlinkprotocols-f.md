@@ -20,6 +20,8 @@ Adds a list of NearLink protocols that are not allowed to be used for a specifie
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function addDisallowedNearLinkProtocols(admin: Want, protocols: Array<NearLinkProtocol>, accountId: number): void--><!--Device-systemManager-function addDisallowedNearLinkProtocols(admin: Want, protocols: Array<NearLinkProtocol>, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

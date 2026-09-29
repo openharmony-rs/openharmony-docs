@@ -8,6 +8,8 @@ Enumerates the connection states with a remote device.
 
 **Since:** 26.0.0
 
+<!--Device-nearlinkConstant-export enum ConnectionState--><!--Device-nearlinkConstant-export enum ConnectionState-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## STATE_CONNECTING
@@ -21,6 +23,8 @@ Connecting.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionState-STATE_CONNECTING = 0--><!--Device-ConnectionState-STATE_CONNECTING = 0-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -36,6 +40,8 @@ Connected.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionState-STATE_CONNECTED = 1--><!--Device-ConnectionState-STATE_CONNECTED = 1-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## STATE_DISCONNECTING
@@ -50,6 +56,8 @@ Disconnecting.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionState-STATE_DISCONNECTING = 2--><!--Device-ConnectionState-STATE_DISCONNECTING = 2-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## STATE_DISCONNECTED
@@ -63,5 +71,7 @@ Disconnected.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionState-STATE_DISCONNECTED = 3--><!--Device-ConnectionState-STATE_DISCONNECTED = 3-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

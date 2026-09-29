@@ -12,6 +12,8 @@ Enumerates the [FileAsset](arkts-corefile-userfilemanager-fileasset-i-sys.md) ty
 
 **Substitutes:** PhotoSubType
 
+<!--Device-userFileManager-enum PhotoSubType--><!--Device-userFileManager-enum PhotoSubType-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Default (photo) type.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** DEFAULT
+
+<!--Device-PhotoSubType-DEFAULT = 0--><!--Device-PhotoSubType-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -48,6 +52,8 @@ Screenshots and screen recording files.
 
 **Substitutes:** SCREENSHOT
 
+<!--Device-PhotoSubType-SCREENSHOT = 1--><!--Device-PhotoSubType-SCREENSHOT = 1-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -65,6 +71,8 @@ Photos and videos taken by a camera.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** SOURCE_GENERIC
+
+<!--Device-PhotoSubType-CAMERA = 2--><!--Device-PhotoSubType-CAMERA = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

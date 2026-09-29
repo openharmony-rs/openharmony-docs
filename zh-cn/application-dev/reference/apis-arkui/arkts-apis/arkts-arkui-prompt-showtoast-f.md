@@ -22,6 +22,8 @@ function showToast(options: ShowToastOptions): void
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-prompt-function showToast(options: ShowToastOptions): void--><!--Device-prompt-function showToast(options: ShowToastOptions): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

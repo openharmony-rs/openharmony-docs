@@ -10,6 +10,8 @@ The class of a running form information.
 
 **Since:** 20
 
+<!--Device-formInfo-interface RunningFormInfo--><!--Device-formInfo-interface RunningFormInfo-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Obtains the extra data of the this form.
 
 **Since:** 12
 
+<!--Device-RunningFormInfo-readonly extraData?: Record<string, Object>--><!--Device-RunningFormInfo-readonly extraData?: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Obtains the description of this form.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-RunningFormInfo-readonly formDescription: string--><!--Device-RunningFormInfo-readonly formDescription: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -66,6 +72,8 @@ Obtains the stage of form use.
 
 **Since:** 11
 
+<!--Device-RunningFormInfo-readonly formUsageState: FormUsageState--><!--Device-RunningFormInfo-readonly formUsageState: FormUsageState-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -84,6 +92,8 @@ Obtains the bundle name of the form host application.
 
 **Since:** 10
 
+<!--Device-RunningFormInfo-readonly hostBundleName: string--><!--Device-RunningFormInfo-readonly hostBundleName: string-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -101,6 +111,8 @@ Obtains the visibility of this form.
 **Default:** -
 
 **Since:** 10
+
+<!--Device-RunningFormInfo-readonly visibilityType: VisibilityType--><!--Device-RunningFormInfo-readonly visibilityType: VisibilityType-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

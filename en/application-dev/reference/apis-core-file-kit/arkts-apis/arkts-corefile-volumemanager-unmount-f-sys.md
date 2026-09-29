@@ -18,6 +18,8 @@ Unmounts a volume. This API uses an asynchronous callback to return the result.
 
 **Required permissions:** ohos.permission.MOUNT_UNMOUNT_MANAGER
 
+<!--Device-volumeManager-function unmount(volumeId: string, callback: AsyncCallback<void>): void--><!--Device-volumeManager-function unmount(volumeId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -57,6 +59,8 @@ Unmounts a volume. This API uses a promise to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.MOUNT_UNMOUNT_MANAGER
+
+<!--Device-volumeManager-function unmount(volumeId: string): Promise<void>--><!--Device-volumeManager-function unmount(volumeId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 

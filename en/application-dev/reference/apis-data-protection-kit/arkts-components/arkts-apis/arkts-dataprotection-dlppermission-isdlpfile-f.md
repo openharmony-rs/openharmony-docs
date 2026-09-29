@@ -18,6 +18,8 @@ During file processing, the system checks whether the file is a DLP file and the
 
 **Since:** 10
 
+<!--Device-dlpPermission-function isDLPFile(fd: number): Promise<boolean>--><!--Device-dlpPermission-function isDLPFile(fd: number): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**
@@ -75,6 +77,8 @@ Checks whether a file is a DLP file based on the FD. After the API is successful
 During file processing, the system checks whether the file is a DLP file and then determines the subsequent processing policy. For example, whether to open the file in a DLP sandbox.
 
 **Since:** 10
+
+<!--Device-dlpPermission-function isDLPFile(fd: number, callback: AsyncCallback<boolean>): void--><!--Device-dlpPermission-function isDLPFile(fd: number, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

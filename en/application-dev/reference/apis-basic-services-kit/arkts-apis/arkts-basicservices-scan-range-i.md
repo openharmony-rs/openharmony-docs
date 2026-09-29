@@ -8,6 +8,8 @@ Defines the range.
 
 **Since:** 20
 
+<!--Device-scan-interface Range--><!--Device-scan-interface Range-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Maximum value.
 
 **Since:** 20
 
+<!--Device-Range-maxValue: int--><!--Device-Range-maxValue: int-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## minValue
@@ -42,6 +46,8 @@ Minimum value.
 
 **Since:** 20
 
+<!--Device-Range-minValue: int--><!--Device-Range-minValue: int-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## quantValue
@@ -55,5 +61,7 @@ Quantized value.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-Range-quantValue: int--><!--Device-Range-quantValue: int-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

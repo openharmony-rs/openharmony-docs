@@ -8,6 +8,8 @@ Enumerates the signature types of the key generated or imported.
 
 **Since:** 9
 
+<!--Device-huks-export enum HuksSecureSignType--><!--Device-huks-export enum HuksSecureSignType-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_SECURE_SIGN_WITH_AUTHINFO
@@ -25,5 +27,7 @@ The carried authentication information includes identity information. You need t
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksSecureSignType-HUKS_SECURE_SIGN_WITH_AUTHINFO = 1--><!--Device-HuksSecureSignType-HUKS_SECURE_SIGN_WITH_AUTHINFO = 1-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension

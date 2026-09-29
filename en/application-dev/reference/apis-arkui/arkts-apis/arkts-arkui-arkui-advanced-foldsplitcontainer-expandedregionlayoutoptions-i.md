@@ -8,6 +8,8 @@ Defines layout information for the expanded state.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface ExpandedRegionLayoutOptions--><!--Device-unnamed-export interface ExpandedRegionLayoutOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Default value: `ExtraRegionPosition.TOP`
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ExpandedRegionLayoutOptions-extraRegionPosition?: ExtraRegionPosition--><!--Device-ExpandedRegionLayoutOptions-extraRegionPosition?: ExtraRegionPosition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## horizontalSplitRatio
@@ -53,6 +57,8 @@ Default value: [PresetSplitRatio](arkts-arkui-arkui-advanced-foldsplitcontainer-
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ExpandedRegionLayoutOptions-horizontalSplitRatio?: number--><!--Device-ExpandedRegionLayoutOptions-horizontalSplitRatio?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +80,8 @@ Default value: **true**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ExpandedRegionLayoutOptions-isExtraRegionPerpendicular?: boolean--><!--Device-ExpandedRegionLayoutOptions-isExtraRegionPerpendicular?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## verticalSplitRatio
@@ -93,5 +101,7 @@ Default value: [PresetSplitRatio](arkts-arkui-arkui-advanced-foldsplitcontainer-
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ExpandedRegionLayoutOptions-verticalSplitRatio?: number--><!--Device-ExpandedRegionLayoutOptions-verticalSplitRatio?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -12,6 +12,8 @@ Describes the notification button, which is used to display an interactive butto
 
 **Since:** 11
 
+<!--Device-unnamed-export interface NotificationButton--><!--Device-unnamed-export interface NotificationButton-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## icons
@@ -25,6 +27,8 @@ List of button icons, corresponding one-to-one with **names**, with each icon di
 **Type:** Array&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt;
 
 **Since:** 11
+
+<!--Device-NotificationButton-icons?: Array<image.PixelMap>--><!--Device-NotificationButton-icons?: Array<image.PixelMap>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -40,6 +44,8 @@ List of button icon resources, corresponding one-to-one with **names** via Resou
 
 **Since:** 12
 
+<!--Device-NotificationButton-iconsResource?: Array<Resource>--><!--Device-NotificationButton-iconsResource?: Array<Resource>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## names
@@ -53,5 +59,7 @@ List of button names. Each name corresponds to the text displayed on a notificat
 **Type:** Array&lt;string&gt;
 
 **Since:** 11
+
+<!--Device-NotificationButton-names?: Array<string>--><!--Device-NotificationButton-names?: Array<string>-End-->
 
 **System capability:** SystemCapability.Notification.Notification

@@ -4,6 +4,8 @@ The autoStartupManager module provides APIs for an application to query whether 
 
 **Since:** 21
 
+<!--Device-unnamed-declare namespace autoStartupManager--><!--Device-unnamed-declare namespace autoStartupManager-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import

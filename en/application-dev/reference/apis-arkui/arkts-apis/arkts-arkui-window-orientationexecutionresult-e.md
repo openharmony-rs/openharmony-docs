@@ -8,6 +8,8 @@ Type of execution result of setting preferred orientation
 
 **Since:** 26.0.0
 
+<!--Device-window-enum OrientationExecutionResult--><!--Device-window-enum OrientationExecutionResult-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## ORIENTATION_APPLIED
@@ -22,7 +24,9 @@ Orientation policy is applied.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-OrientationExecutionResult-ORIENTATION_APPLIED = 0--><!--Device-OrientationExecutionResult-ORIENTATION_APPLIED = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -38,7 +42,9 @@ Orientation policy is ignored.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-OrientationExecutionResult-ORIENTATION_IGNORED = 1--><!--Device-OrientationExecutionResult-ORIENTATION_IGNORED = 1-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -54,6 +60,8 @@ Orientation policy is pending and will be applied soon.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-OrientationExecutionResult-ORIENTATION_PENDING = 2--><!--Device-OrientationExecutionResult-ORIENTATION_PENDING = 2-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

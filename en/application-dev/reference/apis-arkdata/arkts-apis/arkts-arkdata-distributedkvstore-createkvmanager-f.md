@@ -18,6 +18,8 @@ Creates a **KVManager** instance for KV store management.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-distributedKVStore-function createKVManager(config: KVManagerConfig): KVManager--><!--Device-distributedKVStore-function createKVManager(config: KVManagerConfig): KVManager-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**

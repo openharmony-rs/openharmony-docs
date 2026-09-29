@@ -16,6 +16,8 @@ Indicates the list of radio signals to be disabled when airplane mode is enabled
 
 **Deprecated since:** 21
 
+<!--Device-wireless-const AIRPLANE_MODE_RADIOS: string--><!--Device-wireless-const AIRPLANE_MODE_RADIOS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## BLUETOOTH_DISCOVER_ABILITY_STATUS
@@ -33,6 +35,8 @@ If the value is `0`, the device cannot be connected or discovered. If the value 
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-wireless-const BLUETOOTH_DISCOVER_ABILITY_STATUS: string--><!--Device-wireless-const BLUETOOTH_DISCOVER_ABILITY_STATUS: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -52,6 +56,8 @@ Indicates the duration (in seconds) that the device can be discovered through Bl
 
 **Deprecated since:** 21
 
+<!--Device-wireless-const BLUETOOTH_DISCOVER_TIMEOUT: string--><!--Device-wireless-const BLUETOOTH_DISCOVER_TIMEOUT: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## BLUETOOTH_RADIO
@@ -67,6 +73,8 @@ A constant of `AIRPLANE_MODE_RADIOS` to indicate that Bluetooth is disabled in a
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-wireless-const BLUETOOTH_RADIO: string--><!--Device-wireless-const BLUETOOTH_RADIO: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -86,6 +94,8 @@ Specifies whether Bluetooth is enabled.
 
 **Deprecated since:** 21
 
+<!--Device-wireless-const BLUETOOTH_STATUS: string--><!--Device-wireless-const BLUETOOTH_STATUS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## CELL_RADIO
@@ -102,6 +112,8 @@ A constant of `AIRPLANE_MODE_RADIOS` to indicate that cellular radio is disabled
 
 **Deprecated since:** 21
 
+<!--Device-wireless-const CELL_RADIO: string--><!--Device-wireless-const CELL_RADIO: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## NFC_RADIO
@@ -117,6 +129,8 @@ A constant of `AIRPLANE_MODE_RADIOS` to indicate that NFC is disabled in airplan
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-wireless-const NFC_RADIO: string--><!--Device-wireless-const NFC_RADIO: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -136,6 +150,8 @@ Specifies whether the Wi-Fi configuration created by the application of the devi
 
 **Deprecated since:** 21
 
+<!--Device-wireless-const OWNER_LOCKDOWN_WIFI_CFG: string--><!--Device-wireless-const OWNER_LOCKDOWN_WIFI_CFG: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## WIFI_DHCP_MAX_RETRY_COUNT
@@ -152,6 +168,8 @@ Indicates the maximum number of attempts to obtain an IP address from the DHCP s
 
 **Deprecated since:** 21
 
+<!--Device-wireless-const WIFI_DHCP_MAX_RETRY_COUNT: string--><!--Device-wireless-const WIFI_DHCP_MAX_RETRY_COUNT: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## WIFI_RADIO
@@ -167,6 +185,8 @@ A constant of `AIRPLANE_MODE_RADIOS` to indicate that Wi-Fi is disabled in airpl
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-wireless-const WIFI_RADIO: string--><!--Device-wireless-const WIFI_RADIO: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -186,6 +206,8 @@ Specifies whether Wi-Fi is enabled.
 
 **Deprecated since:** 21
 
+<!--Device-wireless-const WIFI_STATUS: string--><!--Device-wireless-const WIFI_STATUS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## WIFI_TO_MOBILE_DATA_AWAKE_TIMEOUT
@@ -201,6 +223,8 @@ Indicates the maximum duration to hold a wake lock when waiting for the mobile d
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-wireless-const WIFI_TO_MOBILE_DATA_AWAKE_TIMEOUT: string--><!--Device-wireless-const WIFI_TO_MOBILE_DATA_AWAKE_TIMEOUT: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -219,5 +243,7 @@ Specifies whether Wi-Fi watchdog is enabled.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-wireless-const WIFI_WATCHDOG_STATUS: string--><!--Device-wireless-const WIFI_WATCHDOG_STATUS: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core

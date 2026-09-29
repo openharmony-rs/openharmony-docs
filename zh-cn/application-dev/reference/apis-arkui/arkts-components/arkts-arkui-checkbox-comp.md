@@ -26,6 +26,8 @@ Checkbox(options?: CheckboxOptions)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CheckboxInterface-(options?: CheckboxOptions): CheckboxAttribute--><!--Device-CheckboxInterface-(options?: CheckboxOptions): CheckboxAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
@@ -136,7 +138,7 @@ struct Index {
 
 ### 示例3（自定义多选框样式）
 
-该示例通过contentModifier属性实现自定义多选框样式，自定义样式实现了一个五边形多选框。选中时，内部显示红色三角图案，标题显示"选中"；取消选中时，红色三角图案消失，标题显示"非选中"。
+该示例通过[contentModifier](#contentmodifier12)属性实现自定义多选框样式，自定义样式实现了一个五边形多选框。选中时，内部显示红色三角图案，标题显示"选中"；取消选中时，红色三角图案消失，标题显示"非选中"。
 
 
 

@@ -14,6 +14,8 @@ Defines a union type for **Repeat** data source parameters.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-unnamed-declare type RepeatArray<T> = Array<T> | ReadonlyArray<T> | Readonly<Array<T>>--><!--Device-unnamed-declare type RepeatArray<T> = Array<T> | ReadonlyArray<T> | Readonly<Array<T>>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

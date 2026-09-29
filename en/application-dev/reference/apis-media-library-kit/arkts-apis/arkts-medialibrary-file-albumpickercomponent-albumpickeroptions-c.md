@@ -8,6 +8,8 @@ Represents the **AlbumPicker** configuration.
 
 **Since:** 12
 
+<!--Device-unnamed-export declare class AlbumPickerOptions--><!--Device-unnamed-export declare class AlbumPickerOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Type of the filter. You can use it to display images, videos, or both. If this p
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-AlbumPickerOptions-filterType?: photoAccessHelper.PhotoViewMIMETypes--><!--Device-AlbumPickerOptions-filterType?: photoAccessHelper.PhotoViewMIMETypes-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## fontSize
@@ -46,6 +50,8 @@ Font size. For details about the value range, see [fontSize](../../apis-arkui/ar
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-AlbumPickerOptions-fontSize?: number | string--><!--Device-AlbumPickerOptions-fontSize?: number | string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## themeColorMode
@@ -61,5 +67,7 @@ Theme color of the album page. The options are **AUTO**, **Light**, and **Dark**
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AlbumPickerOptions-themeColorMode?: PickerColorMode--><!--Device-AlbumPickerOptions-themeColorMode?: PickerColorMode-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

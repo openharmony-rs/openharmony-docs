@@ -20,6 +20,8 @@ Connects the current ability to the specified web native message extension abili
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-webNativeMessagingExtensionManager-function connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): number--><!--Device-webNativeMessagingExtensionManager-function connectNative(context: UIAbilityContext, want: Want, callback: WebExtensionConnectionCallback): number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

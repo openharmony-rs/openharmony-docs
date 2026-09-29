@@ -20,6 +20,8 @@ Obtains the authorization information of a continuous task.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-backgroundTaskManager-function getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult--><!--Device-backgroundTaskManager-function getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **System API:** This is a system API.

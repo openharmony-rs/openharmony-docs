@@ -8,6 +8,8 @@ Represents the holiday information.
 
 **Since:** 11
 
+<!--Device-i18n-export interface HolidayInfoItem--><!--Device-i18n-export interface HolidayInfoItem-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Holiday name.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HolidayInfoItem-baseName: string--><!--Device-HolidayInfoItem-baseName: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -44,7 +48,9 @@ Day of the holiday.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HolidayInfoItem-day: int--><!--Device-HolidayInfoItem-day: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -60,7 +66,9 @@ Local names of the holiday.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HolidayInfoItem-localNames?: Array<HolidayLocalName>--><!--Device-HolidayInfoItem-localNames?: Array<HolidayLocalName>-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -76,7 +84,9 @@ Month of the holiday.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HolidayInfoItem-month: int--><!--Device-HolidayInfoItem-month: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -92,6 +102,8 @@ Year of the holiday.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HolidayInfoItem-year: int--><!--Device-HolidayInfoItem-year: int-End-->
 
 **System capability:** SystemCapability.Global.I18n

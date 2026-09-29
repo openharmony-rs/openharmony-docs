@@ -8,6 +8,8 @@ Provides APIs for querying and updating the login state of a distributed account
 
 **Since:** 7
 
+<!--Device-distributedAccount-interface DistributedAccountAbility--><!--Device-distributedAccount-interface DistributedAccountAbility-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Obtains the distributed account information. This API uses an asynchronous callb
 **Since:** 9
 
 **Required permissions:** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS or ohos.permission.GET_DISTRIBUTED_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DistributedAccountAbility-getOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void--><!--Device-DistributedAccountAbility-getOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -80,6 +84,8 @@ Obtains the distributed account information. This API uses a promise to return t
 
 **Required permissions:** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS or ohos.permission.GET_DISTRIBUTED_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DistributedAccountAbility-getOsAccountDistributedInfo(): Promise<DistributedInfo>--><!--Device-DistributedAccountAbility-getOsAccountDistributedInfo(): Promise<DistributedInfo>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **Return value:**
@@ -114,99 +120,6 @@ try {
 }
 ```
 
-## queryOsAccountDistributedInfo
-
-```TypeScript
-queryOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void
-```
-
-Queries the distributed account information. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getOsAccountDistributedInfo](#getosaccountdistributedinfo)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getOsAccountDistributedInfo](#getosaccountdistributedinfo)(callback: AsyncCallback&lt;DistributedInfo&gt;)
-
-**Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[DistributedInfo](arkts-basicservices-distributedaccount-distributedinfo-i.md)&gt; | Yes | Callback used to return the result. If the distributed account information is obtained successfully, **err** is **undefined** and **data** is the distributed account information obtained. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Obtain a DistributedAccountAbility instance.
-const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-accountAbility.queryOsAccountDistributedInfo(
-  (err: BusinessError, data: distributedAccount.DistributedInfo) => {
-    if (err) {
-      console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('distributed information: ' + JSON.stringify(data));
-    }
-  });
-```
-
-<a id="queryosaccountdistributedinfo-1"></a>
-
-## queryOsAccountDistributedInfo
-
-```TypeScript
-queryOsAccountDistributedInfo(): Promise<DistributedInfo>
-```
-
-Queries the distributed account information. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getOsAccountDistributedInfo](#getosaccountdistributedinfo)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getOsAccountDistributedInfo](#getosaccountdistributedinfo)()
-
-**Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[DistributedInfo](arkts-basicservices-distributedaccount-distributedinfo-i.md)&gt; | Promise used to return the distributed account information obtained. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Obtain a DistributedAccountAbility instance.
-const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
-accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-  console.info('distributed information: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## setOsAccountDistributedInfo
 
 ```TypeScript
@@ -218,6 +131,8 @@ Sets the distributed account information. This API uses an asynchronous callback
 **Since:** 9
 
 **Required permissions:** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS
+
+<!--Device-DistributedAccountAbility-setOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallback<void>): void--><!--Device-DistributedAccountAbility-setOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -277,6 +192,8 @@ Sets the distributed account information. This API uses a promise to return the 
 
 **Required permissions:** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS
 
+<!--Device-DistributedAccountAbility-setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>--><!--Device-DistributedAccountAbility-setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **Parameters:**
@@ -324,6 +241,103 @@ try {
 }
 ```
 
+## queryOsAccountDistributedInfo
+
+```TypeScript
+queryOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void
+```
+
+Queries the distributed account information. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [getOsAccountDistributedInfo](#getosaccountdistributedinfo)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getOsAccountDistributedInfo](#getosaccountdistributedinfo)(callback: AsyncCallback&lt;DistributedInfo&gt;)
+
+**Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DistributedAccountAbility-queryOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void--><!--Device-DistributedAccountAbility-queryOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[DistributedInfo](arkts-basicservices-distributedaccount-distributedinfo-i.md)&gt; | Yes | Callback used to return the result. If the distributed account information is obtained successfully, **err** is **undefined** and **data** is the distributed account information obtained. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain a DistributedAccountAbility instance.
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+accountAbility.queryOsAccountDistributedInfo(
+  (err: BusinessError, data: distributedAccount.DistributedInfo) => {
+    if (err) {
+      console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('distributed information: ' + JSON.stringify(data));
+    }
+  });
+```
+
+<a id="queryosaccountdistributedinfo-1"></a>
+
+## queryOsAccountDistributedInfo
+
+```TypeScript
+queryOsAccountDistributedInfo(): Promise<DistributedInfo>
+```
+
+Queries the distributed account information. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [getOsAccountDistributedInfo](#getosaccountdistributedinfo)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getOsAccountDistributedInfo](#getosaccountdistributedinfo)()
+
+**Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DistributedAccountAbility-queryOsAccountDistributedInfo(): Promise<DistributedInfo>--><!--Device-DistributedAccountAbility-queryOsAccountDistributedInfo(): Promise<DistributedInfo>-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[DistributedInfo](arkts-basicservices-distributedaccount-distributedinfo-i.md)&gt; | Promise used to return the distributed account information obtained. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain a DistributedAccountAbility instance.
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
+  console.info('distributed information: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## updateOsAccountDistributedInfo
 
 ```TypeScript
@@ -345,6 +359,8 @@ Updates the distributed account information. This API uses an asynchronous callb
 **Substitutes:** [setOsAccountDistributedInfo](#setosaccountdistributedinfo)(accountInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+<!--Device-DistributedAccountAbility-updateOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallback<void>): void--><!--Device-DistributedAccountAbility-updateOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -397,6 +413,8 @@ Updates the distributed account information. This API uses a promise to return t
 **Substitutes:** [setOsAccountDistributedInfo](#setosaccountdistributedinfo-1)(accountInfo: DistributedInfo)
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+<!--Device-DistributedAccountAbility-updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>--><!--Device-DistributedAccountAbility-updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

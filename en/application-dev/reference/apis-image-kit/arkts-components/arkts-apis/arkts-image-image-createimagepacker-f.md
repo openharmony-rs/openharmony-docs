@@ -18,7 +18,9 @@ Images occupy a large amount of memory. When you finish using an ImagePacker ins
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-image-function createImagePacker(): ImagePacker--><!--Device-image-function createImagePacker(): ImagePacker-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 

@@ -8,6 +8,8 @@ Represents the subscription ID information.
 
 **Since:** 11
 
+<!--Device-cloudExtension-export interface SubscribeId--><!--Device-cloudExtension-export interface SubscribeId-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Name of the database on the server.
 
 **Since:** 11
 
+<!--Device-SubscribeId-databaseAlias: string--><!--Device-SubscribeId-databaseAlias: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Subscription ID.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-SubscribeId-id: string--><!--Device-SubscribeId-id: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 

@@ -10,6 +10,8 @@ This API is used as a callback input parameter of [onAdminPolicyChanged](arkts-m
 
 **Since:** 26.0.0
 
+<!--Device-common-export interface PolicyChangedEvent--><!--Device-common-export interface PolicyChangedEvent-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -32,6 +34,8 @@ App bundle name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PolicyChangedEvent-bundleName: string--><!--Device-PolicyChangedEvent-bundleName: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## functionName
@@ -47,6 +51,8 @@ API name. For example, if the [setPasswordPolicy](arkts-mdm-securitymanager-setp
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PolicyChangedEvent-functionName: string--><!--Device-PolicyChangedEvent-functionName: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,6 +70,8 @@ Input parameter value (excluding the **admin** parameter) when an API is called.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PolicyChangedEvent-parameters: string--><!--Device-PolicyChangedEvent-parameters: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## time
@@ -79,5 +87,7 @@ Timestamp when an API is called, in milliseconds.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PolicyChangedEvent-time: number--><!--Device-PolicyChangedEvent-time: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

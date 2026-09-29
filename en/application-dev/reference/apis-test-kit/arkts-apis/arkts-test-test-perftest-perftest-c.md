@@ -8,6 +8,8 @@ Represents the general entry of the white-box performance test framework. It pro
 
 **Since:** 20
 
+<!--Device-unnamed-declare class PerfTest--><!--Device-unnamed-declare class PerfTest-End-->
+
 **System capability:** SystemCapability.Test.PerfTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -28,7 +30,9 @@ Creates a [PerfTest](arkts-test-test-perftest-perftest-c.md) object and returns 
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfTest-static create(strategy: PerfTestStrategy): PerfTest--><!--Device-PerfTest-static create(strategy: PerfTestStrategy): PerfTest-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 
@@ -94,7 +98,9 @@ Destroys the **PerfTest** object to release the resources occupied by the object
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfTest-destroy(): void--><!--Device-PerfTest-destroy(): void-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 
@@ -141,7 +147,9 @@ Obtains the measurement data of a specified performance metric. This method must
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfTest-getMeasureResult(metric: PerfMetric): PerfMeasureResult--><!--Device-PerfTest-getMeasureResult(metric: PerfMetric): PerfMeasureResult-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 
@@ -202,7 +210,9 @@ Runs a performance test, iteratively executes test code segments based on the co
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfTest-run(): Promise<void>--><!--Device-PerfTest-run(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 

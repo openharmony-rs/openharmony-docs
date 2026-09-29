@@ -8,6 +8,8 @@ Defines the callback triggered when the web page requests the user to create a w
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnWindowNewEvent--><!--Device-unnamed-declare interface OnWindowNewEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## handler
@@ -23,6 +25,8 @@ handler: ControllerHandler
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnWindowNewEvent-handler: ControllerHandler--><!--Device-OnWindowNewEvent-handler: ControllerHandler-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -40,6 +44,8 @@ Whether to open the target URL in a new window. The value **true** means to open
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnWindowNewEvent-isAlert: boolean--><!--Device-OnWindowNewEvent-isAlert: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## isUserTrigger
@@ -56,6 +62,8 @@ Whether the creation is triggered by the user. The value **true** means that the
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnWindowNewEvent-isUserTrigger: boolean--><!--Device-OnWindowNewEvent-isUserTrigger: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## targetUrl
@@ -71,5 +79,7 @@ Target URL.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnWindowNewEvent-targetUrl: string--><!--Device-OnWindowNewEvent-targetUrl: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

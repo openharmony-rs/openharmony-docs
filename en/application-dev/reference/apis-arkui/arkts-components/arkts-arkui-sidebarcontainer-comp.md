@@ -2,9 +2,10 @@
 
 The **SideBarContainer** component contains a sidebar and content area as its child components. The sidebar is the first child component and can be shown or hidden as needed. The content area is the second child component.
 
-> **NOTE**
+> **NOTE:** 
 
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate > their
+> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate
+> their
 
 ## Child Components
 
@@ -31,6 +32,8 @@ Creates a sidebar container.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SideBarContainerInterface-(type?: SideBarContainerType): SideBarContainerAttribute--><!--Device-SideBarContainerInterface-(type?: SideBarContainerType): SideBarContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

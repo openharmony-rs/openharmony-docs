@@ -8,6 +8,8 @@ Defines the home page **NavDestination** information.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface HomePathInfo--><!--Device-unnamed-declare interface HomePathInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -26,6 +28,8 @@ Name of the home page **NavDestination**.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-HomePathInfo-name: string--><!--Device-HomePathInfo-name: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## param
@@ -43,5 +47,7 @@ Detailed parameters of the home page **NavDestination**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-HomePathInfo-param?: Object--><!--Device-HomePathInfo-param?: Object-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

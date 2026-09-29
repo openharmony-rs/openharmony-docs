@@ -8,6 +8,8 @@ Plugin component request parameters which is used in request function.
 
 **Since:** 9
 
+<!--Device-pluginComponentManager-interface RequestParameterForStage--><!--Device-pluginComponentManager-interface RequestParameterForStage-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Defines data.
 
 **Since:** 9
 
+<!--Device-RequestParameterForStage-data: KVObject--><!--Device-RequestParameterForStage-data: KVObject-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Defines jsonPath.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-RequestParameterForStage-jsonPath?: string--><!--Device-RequestParameterForStage-jsonPath?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +68,8 @@ Defines name.
 
 **Since:** 9
 
+<!--Device-RequestParameterForStage-name: string--><!--Device-RequestParameterForStage-name: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -78,6 +86,8 @@ Defines owner.
 
 **Since:** 9
 
+<!--Device-RequestParameterForStage-owner: Want--><!--Device-RequestParameterForStage-owner: Want-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ Defines target.
 **Type:** [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)
 
 **Since:** 9
+
+<!--Device-RequestParameterForStage-target: Want--><!--Device-RequestParameterForStage-target: Want-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

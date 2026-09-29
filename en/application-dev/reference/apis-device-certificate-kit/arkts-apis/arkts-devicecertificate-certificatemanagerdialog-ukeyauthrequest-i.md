@@ -8,6 +8,8 @@ USB key PIN authentication request.
 
 **Since:** 22
 
+<!--Device-certificateManagerDialog-export interface UkeyAuthRequest--><!--Device-certificateManagerDialog-export interface UkeyAuthRequest-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The customized data transferred to the Ukey authentication dialog box. Generally
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UkeyAuthRequest-customData?: Uint8Array--><!--Device-UkeyAuthRequest-customData?: Uint8Array-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## keyUri
@@ -46,6 +50,8 @@ Unique identifier of the USB Key credential. The value contains up to 256 bytes.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UkeyAuthRequest-keyUri: string--><!--Device-UkeyAuthRequest-keyUri: string-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## timeoutDuration
@@ -61,5 +67,7 @@ The timeout duration for operations in the Ukey authentication dialog box. Unit:
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UkeyAuthRequest-timeoutDuration?: int--><!--Device-UkeyAuthRequest-timeoutDuration?: int-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog

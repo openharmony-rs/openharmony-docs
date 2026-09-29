@@ -16,6 +16,8 @@ Obtains the system load level. This API uses a promise to return the result.
 
 **Since:** 12
 
+<!--Device-systemLoad-function getLevel(): Promise<SystemLoadLevel>--><!--Device-systemLoad-function getLevel(): Promise<SystemLoadLevel>-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
 **Return value:**

@@ -8,6 +8,8 @@ Defines the **LeakWatcherConfig** object, which contains multiple configurable p
 
 **Since:** 24
 
+<!--Device-jsLeakWatcher-export interface LeakWatcherConfig--><!--Device-jsLeakWatcher-export interface LeakWatcherConfig-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 ## Modules to Import
@@ -34,6 +36,8 @@ The default threshold is **1**.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-LeakWatcherConfig-bgLeakCountThreshold?: int--><!--Device-LeakWatcherConfig-bgLeakCountThreshold?: int-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 ## checkInterval
@@ -56,6 +60,8 @@ Currently, the performance overhead of JSLeakWatcher is high, which may cause ap
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-LeakWatcherConfig-checkInterval?: int--><!--Device-LeakWatcherConfig-checkInterval?: int-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 ## dumpHeapWaitTimeMs
@@ -77,6 +83,8 @@ By default, the dump is performed 5 seconds after the GC ends.
 **Since:** 24
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-LeakWatcherConfig-dumpHeapWaitTimeMs?: int--><!--Device-LeakWatcherConfig-dumpHeapWaitTimeMs?: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
@@ -102,6 +110,8 @@ The default value is an empty array.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-LeakWatcherConfig-exclusionList?: Array<string>--><!--Device-LeakWatcherConfig-exclusionList?: Array<string>-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 ## fgLeakCountThreshold
@@ -122,6 +132,8 @@ The default threshold is **5**.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-LeakWatcherConfig-fgLeakCountThreshold?: int--><!--Device-LeakWatcherConfig-fgLeakCountThreshold?: int-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 ## maxStoredHeapDumps
@@ -140,6 +152,8 @@ By default, 10 .rawheap files and 10 .jsleaklist files are saved.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-LeakWatcherConfig-maxStoredHeapDumps?: int--><!--Device-LeakWatcherConfig-maxStoredHeapDumps?: int-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 ## monitorObjectTypes
@@ -157,6 +171,8 @@ By default, all component types are monitored.
 **Since:** 24
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-LeakWatcherConfig-monitorObjectTypes: MonitorObjectType--><!--Device-LeakWatcherConfig-monitorObjectTypes: MonitorObjectType-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
@@ -179,5 +195,7 @@ The default value is an empty array.
 **Since:** 24
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-LeakWatcherConfig-objectUniqueIDs?: Array<int>--><!--Device-LeakWatcherConfig-objectUniqueIDs?: Array<int>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiChecker

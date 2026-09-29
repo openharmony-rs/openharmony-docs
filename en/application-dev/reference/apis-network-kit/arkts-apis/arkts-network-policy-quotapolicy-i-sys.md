@@ -8,6 +8,8 @@ Defines the network quota policy.
 
 **Since:** 10
 
+<!--Device-policy-export interface QuotaPolicy--><!--Device-policy-export interface QuotaPolicy-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Last time when the quota was exhausted. Default value: **-1**.
 
 **Since:** 10
 
+<!--Device-QuotaPolicy-lastLimitRemind?: long--><!--Device-QuotaPolicy-lastLimitRemind?: long-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Last time when an alarm was generated. Default value: **-1**.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-QuotaPolicy-lastWarningRemind?: long--><!--Device-QuotaPolicy-lastWarningRemind?: long-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -62,6 +68,8 @@ Action to take when the data volume quota is reached.
 
 **Since:** 10
 
+<!--Device-QuotaPolicy-limitAction: LimitAction--><!--Device-QuotaPolicy-limitAction: LimitAction-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Data volume quota.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-QuotaPolicy-limitBytes: long--><!--Device-QuotaPolicy-limitBytes: long-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -94,6 +104,8 @@ Whether the network is a metered network. The value **true** indicates that the 
 
 **Since:** 10
 
+<!--Device-QuotaPolicy-metered: boolean--><!--Device-QuotaPolicy-metered: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -110,6 +122,8 @@ Metering period for the quota limit. **D1**, **M1**, and **Y1** indicate one day
 
 **Since:** 10
 
+<!--Device-QuotaPolicy-periodDuration: string--><!--Device-QuotaPolicy-periodDuration: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -125,6 +139,8 @@ Data volume threshold for generating an alarm.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-QuotaPolicy-warningBytes: long--><!--Device-QuotaPolicy-warningBytes: long-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

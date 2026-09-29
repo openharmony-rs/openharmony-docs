@@ -16,6 +16,8 @@ Get the option mode of NR.
 
 **Since:** 10
 
+<!--Device-radio-function getNROptionMode(slotId: int, callback: AsyncCallback<NROptionMode>): void--><!--Device-radio-function getNROptionMode(slotId: int, callback: AsyncCallback<NROptionMode>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ function getNROptionMode(slotId: number): Promise<NROptionMode>
 Get the option mode of NR.
 
 **Since:** 10
+
+<!--Device-radio-function getNROptionMode(slotId: int): Promise<NROptionMode>--><!--Device-radio-function getNROptionMode(slotId: int): Promise<NROptionMode>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

@@ -8,6 +8,8 @@ VisualEffect class, used to apply background color blending, border lighting, co
 
 **Since:** 12
 
+<!--Device-uiEffect-interface VisualEffect--><!--Device-uiEffect-interface VisualEffect-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -26,7 +28,9 @@ A blender for changing the background color of the component. Currently, only th
 
 **Since:** 12
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-VisualEffect-backgroundColorBlender(blender: BrightnessBlender): VisualEffect--><!--Device-VisualEffect-backgroundColorBlender(blender: BrightnessBlender): VisualEffect-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -66,6 +70,8 @@ borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIn
 Adds a 3D lighting effect to the border of a rounded rectangle component.
 
 **Since:** 20
+
+<!--Device-VisualEffect-borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,      borderWidth: double): VisualEffect--><!--Device-VisualEffect-borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIntensity: double,      borderWidth: double): VisualEffect-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -145,6 +151,8 @@ colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths:
 Adds a color gradient effect to the component.
 
 **Since:** 20
+
+<!--Device-VisualEffect-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,      alphaMask?: Mask): VisualEffect--><!--Device-VisualEffect-colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths: Array<double>,      alphaMask?: Mask): VisualEffect-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -234,6 +242,8 @@ capture, such as systemMaterial, backgroundEffect, brightness, and blur, will no
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-VisualEffect-distortionCollapse(distortionParam: DistortionParam): VisualEffect--><!--Device-VisualEffect-distortionCollapse(distortionParam: DistortionParam): VisualEffect-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -295,6 +305,8 @@ Adds a glass marble effect to the component. The glass marble effect composites 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-VisualEffect-glassMarbleEffect(material: GlassMarbleMaterialParam, marbleShell: GlassMarbleSphereParam | Mask,      content?: GlassMarbleContentParam): VisualEffect--><!--Device-VisualEffect-glassMarbleEffect(material: GlassMarbleMaterialParam, marbleShell: GlassMarbleSphereParam | Mask,      content?: GlassMarbleContentParam): VisualEffect-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -323,6 +335,8 @@ liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMa
 Adds a material effect to the component. The material effect simulates the optical properties (refraction, reflection) and dynamic perturbation effects of physical materials to achieve visual representations of glass, metal, and other materials. It can be used for scenarios such as glass-textured UI, fluid material animation, frosted glass effects, etc.
 
 **Since:** 22
+
+<!--Device-VisualEffect-liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask,      brightnessParam?: BrightnessParam): VisualEffect--><!--Device-VisualEffect-liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask,      brightnessParam?: BrightnessParam): VisualEffect-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

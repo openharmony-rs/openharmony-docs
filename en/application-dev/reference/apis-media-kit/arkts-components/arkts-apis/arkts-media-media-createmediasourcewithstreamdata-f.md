@@ -18,6 +18,8 @@ Creates a multi-bitrate media source for streaming media. Currently, only the HT
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-media-function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSource--><!--Device-media-function createMediaSourceWithStreamData(streams: Array<MediaStream>): MediaSource-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Parameters:**

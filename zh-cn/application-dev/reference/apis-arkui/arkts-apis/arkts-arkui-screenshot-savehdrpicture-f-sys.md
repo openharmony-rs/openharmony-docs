@@ -24,6 +24,8 @@ function saveHdrPicture(options?: HdrScreenshotOptions): Promise<Array<image.Pix
 - API版本22+：ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING
 - API版本20-21：ohos.permission.CAPTURE_SCREEN
 
+<!--Device-screenshot-function saveHdrPicture(options?: HdrScreenshotOptions): Promise<Array<image.PixelMap>>--><!--Device-screenshot-function saveHdrPicture(options?: HdrScreenshotOptions): Promise<Array<image.PixelMap>>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。

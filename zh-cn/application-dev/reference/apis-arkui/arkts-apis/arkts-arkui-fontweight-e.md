@@ -8,6 +8,8 @@ declare enum FontWeight
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum FontWeight--><!--Device-unnamed-declare enum FontWeight-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Lighter
@@ -23,6 +25,8 @@ Lighter = 0
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FontWeight-Lighter = 0--><!--Device-FontWeight-Lighter = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Normal = 1
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-FontWeight-Normal = 1--><!--Device-FontWeight-Normal = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Regular
@@ -55,6 +61,8 @@ Regular = 2
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FontWeight-Regular = 2--><!--Device-FontWeight-Regular = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ Medium = 3
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-FontWeight-Medium = 3--><!--Device-FontWeight-Medium = 3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Bold
@@ -88,6 +98,8 @@ Bold = 4
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-FontWeight-Bold = 4--><!--Device-FontWeight-Bold = 4-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Bolder
@@ -103,5 +115,7 @@ Bolder = 5
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FontWeight-Bolder = 5--><!--Device-FontWeight-Bolder = 5-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

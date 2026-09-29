@@ -12,6 +12,8 @@ Provides APIs for symmetric key operations. It is a child class of [Key](arkts-c
 
 **Since:** 9
 
+<!--Device-cryptoFramework-interface SymKey extends Key--><!--Device-cryptoFramework-interface SymKey extends Key-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Key.SymKey
 - API versions 9 to 11: SystemCapability.Security.CryptoFramework
@@ -32,7 +34,9 @@ Clears the key data in memory. This API returns the result synchronously. Call t
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SymKey-clearMem(): void--><!--Device-SymKey-clearMem(): void-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Key.SymKey

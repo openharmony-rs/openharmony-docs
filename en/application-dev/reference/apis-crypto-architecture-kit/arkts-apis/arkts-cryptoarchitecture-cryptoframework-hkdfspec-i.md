@@ -21,6 +21,8 @@ Defines the child class of [KdfSpec](arkts-cryptoarchitecture-cryptoframework-kd
 
 **Since:** 12
 
+<!--Device-cryptoFramework-interface HKDFSpec extends KdfSpec--><!--Device-cryptoFramework-interface HKDFSpec extends KdfSpec-End-->
+
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf
 
 ## Modules to Import
@@ -41,7 +43,9 @@ Information used to expand the key.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HKDFSpec-info: Uint8Array--><!--Device-HKDFSpec-info: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -57,7 +61,9 @@ Key material.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HKDFSpec-key: string | Uint8Array--><!--Device-HKDFSpec-key: string | Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -73,7 +79,9 @@ Length of the derived key, in bytes.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HKDFSpec-keySize: int--><!--Device-HKDFSpec-keySize: int-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -89,6 +97,8 @@ Salt value.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HKDFSpec-salt: Uint8Array--><!--Device-HKDFSpec-salt: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Kdf

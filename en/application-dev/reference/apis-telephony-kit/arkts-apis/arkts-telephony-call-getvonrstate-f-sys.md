@@ -18,6 +18,8 @@ Obtains the status of the VoNR switch. This API uses an asynchronous callback to
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+<!--Device-call-function getVoNRState(slotId: int, callback: AsyncCallback<VoNRState>): void--><!--Device-call-function getVoNRState(slotId: int, callback: AsyncCallback<VoNRState>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Obtains the status of the VoNR switch. This API uses a promise to return the res
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
+
+<!--Device-call-function getVoNRState(slotId: int): Promise<VoNRState>--><!--Device-call-function getVoNRState(slotId: int): Promise<VoNRState>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

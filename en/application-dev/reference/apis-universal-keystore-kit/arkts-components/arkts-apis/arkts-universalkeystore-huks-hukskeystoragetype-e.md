@@ -8,6 +8,8 @@ Enumerates the key storage modes.
 
 **Since:** 8
 
+<!--Device-huks-export enum HuksKeyStorageType--><!--Device-huks-export enum HuksKeyStorageType-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_STORAGE_TEMP
@@ -25,6 +27,8 @@ Note: This tag is supported since API version 8 and deprecated since API version
 **Deprecated since:** 10
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-HuksKeyStorageType-HUKS_STORAGE_TEMP = 0--><!--Device-HuksKeyStorageType-HUKS_STORAGE_TEMP = 0-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -44,6 +48,8 @@ Note: This tag is supported since API version 8 and deprecated since API version
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-HuksKeyStorageType-HUKS_STORAGE_PERSISTENT = 1--><!--Device-HuksKeyStorageType-HUKS_STORAGE_PERSISTENT = 1-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_STORAGE_ONLY_USED_IN_HUKS
@@ -59,6 +65,8 @@ The key derived from the master key is stored in the HUKS and managed by the HUK
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeyStorageType-HUKS_STORAGE_ONLY_USED_IN_HUKS = 2--><!--Device-HuksKeyStorageType-HUKS_STORAGE_ONLY_USED_IN_HUKS = 2-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
@@ -77,6 +85,8 @@ The key derived from the master key is exported to the service, and not managed 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeyStorageType-HUKS_STORAGE_KEY_EXPORT_ALLOWED = 3--><!--Device-HuksKeyStorageType-HUKS_STORAGE_KEY_EXPORT_ALLOWED = 3-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core

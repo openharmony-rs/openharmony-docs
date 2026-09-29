@@ -1,8 +1,10 @@
-# @ohos.calendarManager
+# @ohos.calendarManager(Calendar Manager)
 
 The calendarManager module provides APIs for calendar and event management, including those for creating, deleting, modifying, and querying calendars and events.
 
 **Since:** 10
+
+<!--Device-unnamed-declare namespace calendarManager--><!--Device-unnamed-declare namespace calendarManager-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 

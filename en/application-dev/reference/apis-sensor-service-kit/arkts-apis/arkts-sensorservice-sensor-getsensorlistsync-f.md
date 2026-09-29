@@ -16,6 +16,8 @@ Obtains information about all sensors on the device. This API returns the result
 
 **Since:** 12
 
+<!--Device-sensor-function getSensorListSync(): Array<Sensor>--><!--Device-sensor-function getSensorListSync(): Array<Sensor>-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Return value:**

@@ -20,6 +20,8 @@ Reset the specified network management policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-policy-function restoreAllPolicies(iccid: string): Promise<void>--><!--Device-policy-function restoreAllPolicies(iccid: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.

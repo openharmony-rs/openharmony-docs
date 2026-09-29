@@ -16,6 +16,8 @@ Obtains the rotation matrix from a rotation vector. This API uses an asynchronou
 
 **Since:** 9
 
+<!--Device-sensor-function getRotationMatrix(rotationVector: Array<double>, callback: AsyncCallback<Array<double>>): void--><!--Device-sensor-function getRotationMatrix(rotationVector: Array<double>, callback: AsyncCallback<Array<double>>): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -68,6 +70,8 @@ function getRotationMatrix(rotationVector: Array<number>): Promise<Array<number>
 Obtains the rotation matrix from a rotation vector. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-sensor-function getRotationMatrix(rotationVector: Array<double>): Promise<Array<double>>--><!--Device-sensor-function getRotationMatrix(rotationVector: Array<double>): Promise<Array<double>>-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -126,6 +130,8 @@ Obtains the rotation matrix based on a gravity vector and geomagnetic vector. Th
 
 **Since:** 9
 
+<!--Device-sensor-function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>, callback: AsyncCallback<RotationMatrixResponse>): void--><!--Device-sensor-function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>, callback: AsyncCallback<RotationMatrixResponse>): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -179,6 +185,8 @@ Obtains the rotation matrix based on a gravity vector and geomagnetic vector. Th
 
 **Since:** 9
 
+<!--Device-sensor-function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>): Promise<RotationMatrixResponse>--><!--Device-sensor-function getRotationMatrix(gravity: Array<double>, geomagnetic: Array<double>): Promise<RotationMatrixResponse>-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -192,7 +200,7 @@ Obtains the rotation matrix based on a gravity vector and geomagnetic vector. Th
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[RotationMatrixResponse](arkts-sensorservice-sensor-rotationmatrixresponse-i.md)&gt; | Promise used to return the rotation matrix. |
+| Promise&lt;[RotationMatrixResponse](arkts-sensorservice-sensor-rotationmatrixresponse-i.md)&gt; | Promise used to return the rotation matrix. The **RotationMatrixResponse** object contains the rotation matrix and tilt matrix of the device, which can be used to calculate the posture and orientation of the device. |
 
 **Error codes:**
 

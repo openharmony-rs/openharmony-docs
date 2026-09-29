@@ -8,6 +8,8 @@ Country code structure.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-export interface CountryCode--><!--Device-geoLocationManager-export interface CountryCode-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Country code character string.
 
 **Since:** 9
 
+<!--Device-CountryCode-country: string--><!--Device-CountryCode-country: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## type
@@ -41,5 +45,7 @@ Country code source.
 **Type:** [CountryCodeType](arkts-location-geolocationmanager-countrycodetype-e.md)
 
 **Since:** 9
+
+<!--Device-CountryCode-type: CountryCodeType--><!--Device-CountryCode-type: CountryCodeType-End-->
 
 **System capability:** SystemCapability.Location.Location.Core

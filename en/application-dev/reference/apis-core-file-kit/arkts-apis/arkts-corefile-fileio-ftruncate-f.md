@@ -19,6 +19,8 @@ Truncates a file based on the file descriptor. This API uses a promise to return
 
 **Substitutes:** [truncate](arkts-corefile-file-fs-truncate-f.md)
 
+<!--Device-unnamed-declare function ftruncate(fd: number, len?: number): Promise<void>--><!--Device-unnamed-declare function ftruncate(fd: number, len?: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -51,6 +53,8 @@ Truncates a file based on the file descriptor. This API uses an asynchronous cal
 
 **Substitutes:** [truncate](arkts-corefile-file-fs-truncate-f.md)
 
+<!--Device-unnamed-declare function ftruncate(fd: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function ftruncate(fd: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -76,6 +80,8 @@ Truncates a file based on the file descriptor. This API uses an asynchronous cal
 **Deprecated since:** 9
 
 **Substitutes:** [truncate](arkts-corefile-file-fs-truncate-f.md)
+
+<!--Device-unnamed-declare function ftruncate(fd: number, len: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function ftruncate(fd: number, len: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

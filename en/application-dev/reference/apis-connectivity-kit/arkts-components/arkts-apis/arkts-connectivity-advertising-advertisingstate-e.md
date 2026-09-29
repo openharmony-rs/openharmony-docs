@@ -8,6 +8,8 @@ Enumerates the advertising states.
 
 **Since:** 26.0.0
 
+<!--Device-advertising-enum AdvertisingState--><!--Device-advertising-enum AdvertisingState-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## STARTED
@@ -22,6 +24,8 @@ Advertising started.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AdvertisingState-STARTED = 1--><!--Device-AdvertisingState-STARTED = 1-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## STOPPED
@@ -35,5 +39,7 @@ Advertising stopped.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AdvertisingState-STOPPED = 2--><!--Device-AdvertisingState-STOPPED = 2-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

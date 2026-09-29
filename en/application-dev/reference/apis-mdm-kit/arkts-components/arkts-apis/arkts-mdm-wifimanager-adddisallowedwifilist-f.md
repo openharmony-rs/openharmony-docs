@@ -27,6 +27,8 @@ You can resolve the conflict by removing the allowed Wi-Fi networks through [rem
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function addDisallowedWifiList(admin: Want, list: Array<WifiAccessInfo>): void--><!--Device-wifiManager-function addDisallowedWifiList(admin: Want, list: Array<WifiAccessInfo>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

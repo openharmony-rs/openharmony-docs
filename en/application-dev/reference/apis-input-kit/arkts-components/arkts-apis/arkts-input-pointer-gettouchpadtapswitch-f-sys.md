@@ -16,6 +16,8 @@ Obtains the touchpad tap switch state. This API uses an asynchronous callback to
 
 **Since:** 10
 
+<!--Device-pointer-function getTouchpadTapSwitch(callback: AsyncCallback<boolean>): void--><!--Device-pointer-function getTouchpadTapSwitch(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getTouchpadTapSwitch(): Promise<boolean>
 Obtains the touchpad tap switch state. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function getTouchpadTapSwitch(): Promise<boolean>--><!--Device-pointer-function getTouchpadTapSwitch(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

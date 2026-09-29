@@ -8,6 +8,8 @@ An enumeration representing the scope of font application.
 
 **Since:** 26.0.1
 
+<!--Device-fontManager-enum FontScope--><!--Device-fontManager-enum FontScope-End-->
+
 **System capability:** SystemCapability.Global.FontManager
 
 ## APP
@@ -22,6 +24,8 @@ Application-level font. The lifecycle of the font follows that of the applicatio
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FontScope-APP = 0--><!--Device-FontScope-APP = 0-End-->
+
 **System capability:** SystemCapability.Global.FontManager
 
 ## SESSION
@@ -35,5 +39,7 @@ Session-level font. The lifecycle of a font is not bound to that of the applicat
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FontScope-SESSION = 1--><!--Device-FontScope-SESSION = 1-End-->
 
 **System capability:** SystemCapability.Global.FontManager

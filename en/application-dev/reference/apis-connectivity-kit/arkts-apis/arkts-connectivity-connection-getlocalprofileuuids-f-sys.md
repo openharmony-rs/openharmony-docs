@@ -20,6 +20,8 @@ Obtains the profile UUIDs supported by the local device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getLocalProfileUuids(callback: AsyncCallback<Array<ProfileUuids>>): void--><!--Device-connection-function getLocalProfileUuids(callback: AsyncCallback<Array<ProfileUuids>>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -71,6 +73,8 @@ Obtains the profile UUIDs supported by the local device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-connection-function getLocalProfileUuids(): Promise<Array<ProfileUuids>>--><!--Device-connection-function getLocalProfileUuids(): Promise<Array<ProfileUuids>>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

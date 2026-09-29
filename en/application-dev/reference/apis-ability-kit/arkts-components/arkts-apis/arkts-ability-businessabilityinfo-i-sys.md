@@ -10,6 +10,8 @@ Contains basic business ability information.
 
 **Since:** 10
 
+<!--Device-unnamed-export interface BusinessAbilityInfo--><!--Device-unnamed-export interface BusinessAbilityInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Obtains configuration information about an application
 **Type:** [ApplicationInfo](arkts-ability-applicationinfo-i.md)
 
 **Since:** 10
+
+<!--Device-BusinessAbilityInfo-readonly applicationInfo: ApplicationInfo--><!--Device-BusinessAbilityInfo-readonly applicationInfo: ApplicationInfo-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -42,6 +46,8 @@ Indicates the name of the bundle
 
 **Since:** 10
 
+<!--Device-BusinessAbilityInfo-readonly bundleName: string--><!--Device-BusinessAbilityInfo-readonly bundleName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -57,6 +63,8 @@ Enumerates types of the business ability info
 **Type:** [businessAbilityRouter.BusinessType](arkts-ability-businessabilityrouter-businesstype-e-sys.md)
 
 **Since:** 10
+
+<!--Device-BusinessAbilityInfo-readonly businessType: businessAbilityRouter.BusinessType--><!--Device-BusinessAbilityInfo-readonly businessType: businessAbilityRouter.BusinessType-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -74,6 +82,8 @@ Indicates the description id of the business ability info
 
 **Since:** 10
 
+<!--Device-BusinessAbilityInfo-readonly descriptionId: int--><!--Device-BusinessAbilityInfo-readonly descriptionId: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -89,6 +99,8 @@ Indicates the icon id of the business ability info
 **Type:** number
 
 **Since:** 10
+
+<!--Device-BusinessAbilityInfo-readonly iconId: int--><!--Device-BusinessAbilityInfo-readonly iconId: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -106,6 +118,8 @@ Indicates the label id of the business ability info
 
 **Since:** 10
 
+<!--Device-BusinessAbilityInfo-readonly labelId: int--><!--Device-BusinessAbilityInfo-readonly labelId: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -122,6 +136,8 @@ Indicates the name of the module
 
 **Since:** 10
 
+<!--Device-BusinessAbilityInfo-readonly moduleName: string--><!--Device-BusinessAbilityInfo-readonly moduleName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -137,6 +153,8 @@ Indicates the name of the business ability info
 **Type:** string
 
 **Since:** 10
+
+<!--Device-BusinessAbilityInfo-readonly name: string--><!--Device-BusinessAbilityInfo-readonly name: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

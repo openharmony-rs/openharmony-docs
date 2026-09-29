@@ -12,6 +12,8 @@ The number of application fault logs stored in the system is limited by the syst
 
 **Substitutes:** hiAppEvent
 
+<!--Device-unnamed-declare namespace FaultLogger--><!--Device-unnamed-declare namespace FaultLogger-End-->
+
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 ## Modules to Import

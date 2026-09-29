@@ -8,6 +8,8 @@ TextInput、TextArea、Search的基础控制器。
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare abstract class TextContentControllerBase--><!--Device-unnamed-declare abstract class TextContentControllerBase-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getText
@@ -23,6 +25,8 @@ getText(range?: TextRange): string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextContentControllerBase-getText(range?: TextRange): string--><!--Device-TextContentControllerBase-getText(range?: TextRange): string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

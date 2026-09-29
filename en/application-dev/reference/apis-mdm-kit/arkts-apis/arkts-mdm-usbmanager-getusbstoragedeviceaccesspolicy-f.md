@@ -23,6 +23,8 @@ Obtains the access policy of the USB storage device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-usbManager-function getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy--><!--Device-usbManager-function getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -81,6 +83,8 @@ Obtains the USB storage device (baseClass = 0x08) access policy.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_USB or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-usbManager-function getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy--><!--Device-usbManager-function getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -8,6 +8,8 @@ Represents the factory reset strategy, which contains the **scope** (reset scope
 
 **Since:** 26.0.0
 
+<!--Device-update-export interface FactoryResetStrategy--><!--Device-update-export interface FactoryResetStrategy-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Reset scope. The value **DATA** indicates that only data in the user partition i
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FactoryResetStrategy-scope: FactoryResetScope--><!--Device-FactoryResetStrategy-scope: FactoryResetScope-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Reset strategy, which specifies the specific strategy for the reset operation. T
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FactoryResetStrategy-strategy: string--><!--Device-FactoryResetStrategy-strategy: string-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

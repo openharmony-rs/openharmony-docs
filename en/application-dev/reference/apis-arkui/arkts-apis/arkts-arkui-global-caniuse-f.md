@@ -12,6 +12,8 @@ Defining syscap function.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-export declare function canIUse(syscap: string): boolean--><!--Device-unnamed-export declare function canIUse(syscap: string): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **Parameters:**

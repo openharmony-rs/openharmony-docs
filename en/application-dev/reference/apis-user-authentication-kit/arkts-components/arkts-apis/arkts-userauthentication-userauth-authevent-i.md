@@ -12,6 +12,8 @@ Provides an asynchronous callback to return the authentication event information
 
 **Substitutes:** [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md)
 
+<!--Device-userAuth-interface AuthEvent--><!--Device-userAuth-interface AuthEvent-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Called to return the authentication result or authentication tip information.
 **Deprecated since:** 11
 
 **Substitutes:** [onResult](arkts-userauthentication-userauth-iauthcallback-i.md#onresult)(result: UserAuthResult)
+
+<!--Device-AuthEvent-callback(result: EventInfo): void--><!--Device-AuthEvent-callback(result: EventInfo): void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

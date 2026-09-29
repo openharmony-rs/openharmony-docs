@@ -8,6 +8,8 @@ interface VirtualScreenOption
 
 **起始版本：** 9
 
+<!--Device-screen-interface VirtualScreenOption--><!--Device-screen-interface VirtualScreenOption-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,6 +32,8 @@ density: number
 
 **起始版本：** 9
 
+<!--Device-VirtualScreenOption-density: double--><!--Device-VirtualScreenOption-density: double-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -45,6 +49,8 @@ height: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-VirtualScreenOption-height: long--><!--Device-VirtualScreenOption-height: long-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,6 +68,8 @@ name: string
 
 **起始版本：** 9
 
+<!--Device-VirtualScreenOption-name: string--><!--Device-VirtualScreenOption-name: string-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -78,6 +86,8 @@ supportsFocus?: boolean
 
 **起始版本：** 22
 
+<!--Device-VirtualScreenOption-supportsFocus?: boolean--><!--Device-VirtualScreenOption-supportsFocus?: boolean-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -93,6 +103,8 @@ surfaceId: string
 **类型：** string
 
 **起始版本：** 9
+
+<!--Device-VirtualScreenOption-surfaceId: string--><!--Device-VirtualScreenOption-surfaceId: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -112,6 +124,8 @@ userId?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-VirtualScreenOption-userId?: int--><!--Device-VirtualScreenOption-userId?: int-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -127,6 +141,8 @@ width: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-VirtualScreenOption-width: long--><!--Device-VirtualScreenOption-width: long-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

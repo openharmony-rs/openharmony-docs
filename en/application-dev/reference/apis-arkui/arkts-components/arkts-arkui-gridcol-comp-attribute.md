@@ -12,6 +12,8 @@ The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Since:** 9
 
+<!--Device-unnamed-declare class GridColAttribute extends CommonMethod<GridColAttribute>--><!--Device-unnamed-declare class GridColAttribute extends CommonMethod<GridColAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## gridColOffset
@@ -27,6 +29,8 @@ Sets the number of columns by which the grid child component is offset relative 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridColAttribute-gridColOffset(value: number | GridColColumnOption): GridColAttribute--><!--Device-GridColAttribute-gridColOffset(value: number | GridColColumnOption): GridColAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ Sets the display order of the grid child component. Grid child components are so
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-GridColAttribute-order(value: number | GridColColumnOption): GridColAttribute--><!--Device-GridColAttribute-order(value: number | GridColColumnOption): GridColAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -71,6 +77,8 @@ Sets the number of columns occupied by the grid child component. After the call 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridColAttribute-span(value: number | GridColColumnOption): GridColAttribute--><!--Device-GridColAttribute-span(value: number | GridColColumnOption): GridColAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

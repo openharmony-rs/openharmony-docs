@@ -18,6 +18,8 @@ Removes the backup data for a specified application under a given user. This API
 
 **Required permissions:** ohos.permission.CLEAN_APPLICATION_DATA
 
+<!--Device-bundleManager-function removeBackupBundleData(bundleName: string, userId: int, appIndex: int): Promise<void>--><!--Device-bundleManager-function removeBackupBundleData(bundleName: string, userId: int, appIndex: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ enum DisplaySourceMode
 
 **起始版本：** 19
 
+<!--Device-display-enum DisplaySourceMode--><!--Device-display-enum DisplaySourceMode-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## MAIN
@@ -20,7 +22,9 @@ MAIN = 1
 
 **起始版本：** 19
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-DisplaySourceMode-MAIN = 1--><!--Device-DisplaySourceMode-MAIN = 1-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -34,7 +38,9 @@ NONE = 0
 
 **起始版本：** 19
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-DisplaySourceMode-NONE = 0--><!--Device-DisplaySourceMode-NONE = 0-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -48,7 +54,9 @@ EXTEND = 3
 
 **起始版本：** 19
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-DisplaySourceMode-EXTEND = 3--><!--Device-DisplaySourceMode-EXTEND = 3-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -62,7 +70,9 @@ MIRROR = 2
 
 **起始版本：** 19
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-DisplaySourceMode-MIRROR = 2--><!--Device-DisplaySourceMode-MIRROR = 2-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -76,6 +86,8 @@ ALONE = 4
 
 **起始版本：** 19
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-DisplaySourceMode-ALONE = 4--><!--Device-DisplaySourceMode-ALONE = 4-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

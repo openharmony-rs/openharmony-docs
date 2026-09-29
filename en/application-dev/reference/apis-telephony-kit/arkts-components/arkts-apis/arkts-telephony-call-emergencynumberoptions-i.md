@@ -8,6 +8,8 @@ Provides an option for determining whether a number is an emergency number for t
 
 **Since:** 7
 
+<!--Device-call-export interface EmergencyNumberOptions--><!--Device-call-export interface EmergencyNumberOptions-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 ## Modules to Import
@@ -30,5 +32,7 @@ Card slot ID.
 **Type:** number
 
 **Since:** 7
+
+<!--Device-EmergencyNumberOptions-slotId?: int--><!--Device-EmergencyNumberOptions-slotId?: int-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager

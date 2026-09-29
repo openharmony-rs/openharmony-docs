@@ -26,6 +26,8 @@ Obtains the network proxy for a specified user. This API is suitable for network
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function getGlobalProxyForAccount(admin: Want | null, accountId: number): connection.HttpProxy--><!--Device-networkManager-function getGlobalProxyForAccount(admin: Want | null, accountId: number): connection.HttpProxy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

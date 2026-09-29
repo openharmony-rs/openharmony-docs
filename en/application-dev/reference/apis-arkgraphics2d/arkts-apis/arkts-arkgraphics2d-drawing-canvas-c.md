@@ -18,6 +18,8 @@ A carrier that carries the drawn content and drawing status.
 
 **Since:** 11
 
+<!--Device-drawing-class Canvas--><!--Device-drawing-class Canvas-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -40,6 +42,8 @@ Attaches a brush to the canvas. When you draw on the canvas, the brush's style i
 > effect in the subsequent drawing.
 
 **Since:** 11
+
+<!--Device-Canvas-attachBrush(brush: Brush): void--><!--Device-Canvas-attachBrush(brush: Brush): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -88,6 +92,8 @@ Attaches a pen to the canvas. When you draw on the canvas, the pen's style is us
 
 **Since:** 11
 
+<!--Device-Canvas-attachPen(pen: Pen): void--><!--Device-Canvas-attachPen(pen: Pen): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -131,6 +137,8 @@ Clears the canvas with a given color. This API has the same effect as [drawColor
 
 **Since:** 12
 
+<!--Device-Canvas-clear(color: common2D.Color): void--><!--Device-Canvas-clear(color: common2D.Color): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -172,6 +180,8 @@ Clears the canvas with a given color.
 
 **Since:** 18
 
+<!--Device-Canvas-clear(color: common2D.Color | int): void--><!--Device-Canvas-clear(color: common2D.Color | int): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -204,6 +214,8 @@ clipPath(path: Path, clipOp?: ClipOp, doAntiAlias?: boolean): void
 Clips the drawable area of the canvas using a custom path.
 
 **Since:** 12
+
+<!--Device-Canvas-clipPath(path: Path, clipOp?: ClipOp, doAntiAlias?: boolean): void--><!--Device-Canvas-clipPath(path: Path, clipOp?: ClipOp, doAntiAlias?: boolean): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -250,6 +262,8 @@ Clips the drawable area of the canvas using a rectangle.
 
 **Since:** 12
 
+<!--Device-Canvas-clipRect(rect: common2D.Rect, clipOp?: ClipOp, doAntiAlias?: boolean): void--><!--Device-Canvas-clipRect(rect: common2D.Rect, clipOp?: ClipOp, doAntiAlias?: boolean): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -290,6 +304,8 @@ clipRegion(region: Region, clipOp?: ClipOp): void
 Clips a region on the canvas.
 
 **Since:** 12
+
+<!--Device-Canvas-clipRegion(region: Region, clipOp?: ClipOp): void--><!--Device-Canvas-clipRegion(region: Region, clipOp?: ClipOp): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -333,6 +349,8 @@ clipRoundRect(roundRect: RoundRect, clipOp?: ClipOp, doAntiAlias?: boolean): voi
 Clips a rounded rectangle on the canvas.
 
 **Since:** 12
+
+<!--Device-Canvas-clipRoundRect(roundRect: RoundRect, clipOp?: ClipOp, doAntiAlias?: boolean): void--><!--Device-Canvas-clipRoundRect(roundRect: RoundRect, clipOp?: ClipOp, doAntiAlias?: boolean): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -378,6 +396,8 @@ Multiplies the current canvas matrix by the incoming matrix on the left. This AP
 
 **Since:** 12
 
+<!--Device-Canvas-concatMatrix(matrix: Matrix): void--><!--Device-Canvas-concatMatrix(matrix: Matrix): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -419,7 +439,9 @@ Creates a **Canvas** object that uses a **PixelMap** as the drawing target.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Canvas-constructor(pixelmap: image.PixelMap)--><!--Device-Canvas-constructor(pixelmap: image.PixelMap)-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -465,6 +487,8 @@ Detaches the brush from the canvas. When you draw on the canvas, the brush is no
 
 **Since:** 11
 
+<!--Device-Canvas-detachBrush(): void--><!--Device-Canvas-detachBrush(): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Examples**
@@ -494,6 +518,8 @@ detachPen(): void
 Detaches the pen from the canvas. When you draw on the canvas, the pen is no longer used to outline shapes.
 
 **Since:** 11
+
+<!--Device-Canvas-detachPen(): void--><!--Device-Canvas-detachPen(): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -525,6 +551,8 @@ drawArc(arc: common2D.Rect, startAngle: number, sweepAngle: number): void
 Draws an arc on the canvas. with the start angle and sweep angle specified. If the absolute value of the sweep angle exceeds 360 degrees, an ellipse is drawn.
 
 **Since:** 12
+
+<!--Device-Canvas-drawArc(arc: common2D.Rect, startAngle: double, sweepAngle: double): void--><!--Device-Canvas-drawArc(arc: common2D.Rect, startAngle: double, sweepAngle: double): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -573,6 +601,8 @@ Draws an arc on the canvas. It enables you to define the start angle, sweep angl
 
 **Since:** 18
 
+<!--Device-Canvas-drawArcWithCenter(arc: common2D.Rect, startAngle: double, sweepAngle: double, useCenter: boolean): void--><!--Device-Canvas-drawArcWithCenter(arc: common2D.Rect, startAngle: double, sweepAngle: double, useCenter: boolean): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -615,6 +645,8 @@ Uses a brush to fill the drawable area of the canvas.
 
 **Since:** 12
 
+<!--Device-Canvas-drawBackground(brush: Brush): void--><!--Device-Canvas-drawBackground(brush: Brush): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -655,6 +687,8 @@ drawCircle(x: number, y: number, radius: number): void
 Draws a circle. If the radius is less than or equal to zero, nothing is drawn. By default, black is used for filling.
 
 **Since:** 11
+
+<!--Device-Canvas-drawCircle(x: double, y: double, radius: double): void--><!--Device-Canvas-drawCircle(x: double, y: double, radius: double): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -700,6 +734,8 @@ drawColor(color: common2D.Color, blendMode?: BlendMode): void
 Fills the drawable area of the canvas with the specified color and [BlendMode](arkts-arkgraphics2d-drawing-blendmode-e.md).
 
 **Since:** 11
+
+<!--Device-Canvas-drawColor(color: common2D.Color, blendMode?: BlendMode): void--><!--Device-Canvas-drawColor(color: common2D.Color, blendMode?: BlendMode): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -748,6 +784,8 @@ Fills the drawable area of the canvas with the specified color and [BlendMode](a
 
 **Since:** 12
 
+<!--Device-Canvas-drawColor(alpha: int, red: int, green: int, blue: int, blendMode?: BlendMode): void--><!--Device-Canvas-drawColor(alpha: int, red: int, green: int, blue: int, blendMode?: BlendMode): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -792,6 +830,8 @@ Fills the drawable area of the canvas with the specified color and [BlendMode](a
 
 **Since:** 18
 
+<!--Device-Canvas-drawColor(color: int, blendMode?: BlendMode): void--><!--Device-Canvas-drawColor(color: int, blendMode?: BlendMode): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -833,6 +873,8 @@ Draws the array of glyphs with specified font. Nothing is drawn if glyphCount is
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Canvas-drawGlyphs(glyphIds: Array<int>, glyphIdOffset: int, positions: Array<common2D.Point>,      positionOffset: int, glyphCount: int, font: Font): void--><!--Device-Canvas-drawGlyphs(glyphIds: Array<int>, glyphIdOffset: int, positions: Array<common2D.Point>,      positionOffset: int, glyphCount: int, font: Font): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -890,6 +932,8 @@ drawImage(pixelmap: image.PixelMap, left: number, top: number, samplingOptions?:
 Draws an image. The coordinates of the upper left corner of the image are (left, top).
 
 **Since:** 11
+
+<!--Device-Canvas-drawImage(pixelmap: image.PixelMap, left: double, top: double, samplingOptions?: SamplingOptions): void--><!--Device-Canvas-drawImage(pixelmap: image.PixelMap, left: double, top: double, samplingOptions?: SamplingOptions): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -958,6 +1002,8 @@ Splits an image into multiple sections based on the lattice object's configurati
 The intersections of even-numbered rows and columns (starting from 0) are fixed points. If the fixed lattice area fits within the target rectangle, it will be drawn without scaling. Otherwise, it will be scaled proportionally to fit the target rectangle. Any remaining space will be filled by stretching or compressing the remaining sections to cover the entire target rectangle.
 
 **Since:** 18
+
+<!--Device-Canvas-drawImageLattice(pixelmap: image.PixelMap, lattice: Lattice, dstRect: common2D.Rect,      filterMode: FilterMode): void--><!--Device-Canvas-drawImageLattice(pixelmap: image.PixelMap, lattice: Lattice, dstRect: common2D.Rect,      filterMode: FilterMode): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1047,6 +1093,8 @@ If the four corner sections are smaller than the target rectangle, they will be 
 
 **Since:** 18
 
+<!--Device-Canvas-drawImageNine(pixelmap: image.PixelMap, center: common2D.Rect, dstRect: common2D.Rect,      filterMode: FilterMode): void--><!--Device-Canvas-drawImageNine(pixelmap: image.PixelMap, center: common2D.Rect, dstRect: common2D.Rect,      filterMode: FilterMode): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -1130,6 +1178,8 @@ Draws an image onto a specified area of the canvas.
 
 **Since:** 12
 
+<!--Device-Canvas-drawImageRect(pixelmap: image.PixelMap, dstRect: common2D.Rect, samplingOptions?: SamplingOptions): void--><!--Device-Canvas-drawImageRect(pixelmap: image.PixelMap, dstRect: common2D.Rect, samplingOptions?: SamplingOptions): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -1195,6 +1245,8 @@ drawImageRectWithSrc(pixelmap: image.PixelMap, srcRect: common2D.Rect, dstRect: 
 Draws a portion of an image onto a specified area of the canvas.
 
 **Since:** 12
+
+<!--Device-Canvas-drawImageRectWithSrc(pixelmap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect,      samplingOptions?: SamplingOptions, constraint?: SrcRectConstraint): void--><!--Device-Canvas-drawImageRectWithSrc(pixelmap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect,      samplingOptions?: SamplingOptions, constraint?: SrcRectConstraint): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1264,6 +1316,8 @@ Draws a line segment from the start point to the end point. If the coordinates o
 
 **Since:** 11
 
+<!--Device-Canvas-drawLine(x0: double, y0: double, x1: double, y1: double): void--><!--Device-Canvas-drawLine(x0: double, y0: double, x1: double, y1: double): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -1310,6 +1364,8 @@ Draws two nested rounded rectangles. The outer rectangle boundary must contain t
 
 **Since:** 12
 
+<!--Device-Canvas-drawNestedRoundRect(outer: RoundRect, inner: RoundRect): void--><!--Device-Canvas-drawNestedRoundRect(outer: RoundRect, inner: RoundRect): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -1353,6 +1409,8 @@ drawOval(oval: common2D.Rect): void
 Draws an oval on the canvas, where the shape and position of the oval are defined by its bounding rectangle.
 
 **Since:** 12
+
+<!--Device-Canvas-drawOval(oval: common2D.Rect): void--><!--Device-Canvas-drawOval(oval: common2D.Rect): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1398,6 +1456,8 @@ drawPath(path: Path): void
 Draws a custom path, which contains a set of path outlines. Each path outline can be open or closed.
 
 **Since:** 11
+
+<!--Device-Canvas-drawPath(path: Path): void--><!--Device-Canvas-drawPath(path: Path): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1446,6 +1506,8 @@ drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number
 Draws a **PixelMap** based on a mesh, with the mesh vertices evenly distributed across the **PixelMap**. (This API works with brushes but not pens.)
 
 **Since:** 12
+
+<!--Device-Canvas-drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: int, meshHeight: int,      vertices: Array<double>, vertOffset: int, colors: Array<int> | null, colorOffset: int): void--><!--Device-Canvas-drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: int, meshHeight: int,      vertices: Array<double>, vertOffset: int, colors: Array<int> | null, colorOffset: int): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1518,6 +1580,8 @@ Draws a point.
 
 **Since:** 11
 
+<!--Device-Canvas-drawPoint(x: double, y: double): void--><!--Device-Canvas-drawPoint(x: double, y: double): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -1561,6 +1625,8 @@ drawPoints(points: Array<common2D.Point>, mode?: PointMode): void
 Draws a group of points, line segments, or polygons on the canvas, with the specified drawing mode. An array is used to hold these points.
 
 **Since:** 12
+
+<!--Device-Canvas-drawPoints(points: Array<common2D.Point>, mode?: PointMode): void--><!--Device-Canvas-drawPoints(points: Array<common2D.Point>, mode?: PointMode): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1609,6 +1675,8 @@ Replays drawing commands.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Canvas-drawRecordCmd(recordCmd: RecordCmd): void--><!--Device-Canvas-drawRecordCmd(recordCmd: RecordCmd): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -1626,6 +1694,8 @@ drawRect(rect: common2D.Rect): void
 Draws a rectangle. By default, black is used for filling.
 
 **Since:** 11
+
+<!--Device-Canvas-drawRect(rect: common2D.Rect): void--><!--Device-Canvas-drawRect(rect: common2D.Rect): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1671,6 +1741,8 @@ drawRect(left: number, top: number, right: number, bottom: number): void
 Draws a rectangle. By default, black is used for filling. This API provides better performance than [drawRect](#drawrect) and is recommended.
 
 **Since:** 12
+
+<!--Device-Canvas-drawRect(left: double, top: double, right: double, bottom: double): void--><!--Device-Canvas-drawRect(left: double, top: double, right: double, bottom: double): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1719,6 +1791,8 @@ Draws a region.
 
 **Since:** 12
 
+<!--Device-Canvas-drawRegion(region: Region): void--><!--Device-Canvas-drawRegion(region: Region): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -1764,6 +1838,8 @@ Draws a rounded rectangle.
 
 **Since:** 12
 
+<!--Device-Canvas-drawRoundRect(roundRect: RoundRect): void--><!--Device-Canvas-drawRoundRect(roundRect: RoundRect): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -1804,6 +1880,8 @@ drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Poin
 Draws a spot shadow and uses a given path to outline the ambient shadow.
 
 **Since:** 12
+
+<!--Device-Canvas-drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Point3d, lightRadius: double,      ambientColor: common2D.Color, spotColor: common2D.Color, flag: ShadowFlag) : void--><!--Device-Canvas-drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Point3d, lightRadius: double,      ambientColor: common2D.Color, spotColor: common2D.Color, flag: ShadowFlag) : void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1869,6 +1947,8 @@ Draws a spot shadow and uses a given path to outline the ambient shadow.
 
 **Since:** 18
 
+<!--Device-Canvas-drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Point3d, lightRadius: double,      ambientColor: common2D.Color | int, spotColor: common2D.Color | int, flag: ShadowFlag) : void--><!--Device-Canvas-drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Point3d, lightRadius: double,      ambientColor: common2D.Color | int, spotColor: common2D.Color | int, flag: ShadowFlag) : void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -1918,6 +1998,8 @@ Draws a single character. If the typeface of the current font does not support t
 
 **Since:** 12
 
+<!--Device-Canvas-drawSingleCharacter(text: string, font: Font, x: double, y: double): void--><!--Device-Canvas-drawSingleCharacter(text: string, font: Font, x: double, y: double): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -1965,6 +2047,8 @@ drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, 
 Draws a single character with font features. If the typeface of the current font does not support the character to draw, the system typeface is used to draw the character.
 
 **Since:** 20
+
+<!--Device-Canvas-drawSingleCharacterWithFeatures(text: string, font: Font, x: double, y: double, features: Array<FontFeature>): void--><!--Device-Canvas-drawSingleCharacterWithFeatures(text: string, font: Font, x: double, y: double, features: Array<FontFeature>): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -2017,6 +2101,8 @@ Draws a text blob. If the typeface used to construct **blob** does not support a
 
 **Since:** 11
 
+<!--Device-Canvas-drawTextBlob(blob: TextBlob, x: double, y: double): void--><!--Device-Canvas-drawTextBlob(blob: TextBlob, x: double, y: double): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -2065,6 +2151,8 @@ drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array<commo
 Draws a triangle mesh described by the vertex array.
 
 **Since:** 23
+
+<!--Device-Canvas-drawVertices(vertexMode: VertexMode, vertexCount: int, positions: Array<common2D.Point>,      texs: Array<common2D.Point> | null, colors: Array<int> | null, indexCount: int,      indices: Array<int> | null, mode: BlendMode): void--><!--Device-Canvas-drawVertices(vertexMode: VertexMode, vertexCount: int, positions: Array<common2D.Point>,      texs: Array<common2D.Point> | null, colors: Array<int> | null, indexCount: int,      indices: Array<int> | null, mode: BlendMode): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -2127,6 +2215,8 @@ Obtains the canvas height.
 
 **Since:** 12
 
+<!--Device-Canvas-getHeight(): int--><!--Device-Canvas-getHeight(): int-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -2159,6 +2249,8 @@ getLocalClipBounds(): common2D.Rect
 Obtains the bounds of the cropping region of the canvas.
 
 **Since:** 12
+
+<!--Device-Canvas-getLocalClipBounds(): common2D.Rect--><!--Device-Canvas-getLocalClipBounds(): common2D.Rect-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -2200,6 +2292,8 @@ Obtains the number of canvas states (canvas matrix and clipping area) saved in t
 
 **Since:** 12
 
+<!--Device-Canvas-getSaveCount(): int--><!--Device-Canvas-getSaveCount(): int-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -2240,6 +2334,8 @@ Obtains the canvas matrix.
 
 **Since:** 12
 
+<!--Device-Canvas-getTotalMatrix(): Matrix--><!--Device-Canvas-getTotalMatrix(): Matrix-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -2275,6 +2371,8 @@ Obtains the canvas width.
 
 **Since:** 12
 
+<!--Device-Canvas-getWidth(): int--><!--Device-Canvas-getWidth(): int-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -2307,6 +2405,8 @@ isClipEmpty(): boolean
 Checks whether the region that can be drawn is empty after clipping.
 
 **Since:** 12
+
+<!--Device-Canvas-isClipEmpty(): boolean--><!--Device-Canvas-isClipEmpty(): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -2346,6 +2446,8 @@ Checks whether the current layer that drawn into the device is opaque.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Canvas-isOpaque(): boolean--><!--Device-Canvas-isOpaque(): boolean-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -2381,6 +2483,8 @@ quickRejectPath(path: Path): boolean
 Checks whether the path is not intersecting with the canvas area. The canvas area includes its boundaries.
 
 **Since:** 18
+
+<!--Device-Canvas-quickRejectPath(path: Path): boolean--><!--Device-Canvas-quickRejectPath(path: Path): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -2428,6 +2532,8 @@ Checks whether the rectangle is not intersecting with the canvas area. The canva
 
 **Since:** 18
 
+<!--Device-Canvas-quickRejectRect(rect: common2D.Rect): boolean--><!--Device-Canvas-quickRejectRect(rect: common2D.Rect): boolean-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -2473,6 +2579,8 @@ Resets the clip status.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Canvas-resetClip(): void--><!--Device-Canvas-resetClip(): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Examples**
@@ -2501,6 +2609,8 @@ Resets the matrix of this canvas to an identity matrix.
 
 **Since:** 12
 
+<!--Device-Canvas-resetMatrix(): void--><!--Device-Canvas-resetMatrix(): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Examples**
@@ -2527,6 +2637,8 @@ restore(): void
 Restores the canvas state (canvas matrix and clipping area) saved on the top of the stack.
 
 **Since:** 12
+
+<!--Device-Canvas-restore(): void--><!--Device-Canvas-restore(): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -2559,6 +2671,8 @@ restoreToCount(count: number): void
 Restores the canvas state (canvas matrix and clipping area) to a specified number.
 
 **Since:** 12
+
+<!--Device-Canvas-restoreToCount(count: int): void--><!--Device-Canvas-restoreToCount(count: int): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -2610,6 +2724,8 @@ Applies a rotation matrix on top of the current canvas matrix (identity matrix b
 
 **Since:** 12
 
+<!--Device-Canvas-rotate(degrees: double, sx: double, sy: double) : void--><!--Device-Canvas-rotate(degrees: double, sx: double, sy: double) : void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -2656,6 +2772,8 @@ Saves the canvas states (canvas matrix and drawable area) to the top of the stac
 
 **Since:** 12
 
+<!--Device-Canvas-save(): int--><!--Device-Canvas-save(): int-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -2689,6 +2807,8 @@ saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): number
 Saves the matrix and cropping region of the canvas, and allocates a **PixelMap** for subsequent drawing. If you call [restore](#restore), changes made to the matrix and clipping region are discarded, and the PixelMap is drawn.
 
 **Since:** 12
+
+<!--Device-Canvas-saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): long--><!--Device-Canvas-saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): long-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -2754,6 +2874,8 @@ Applies a scaling matrix on top of the current canvas matrix (identity matrix by
 
 **Since:** 12
 
+<!--Device-Canvas-scale(sx: double, sy: double): void--><!--Device-Canvas-scale(sx: double, sy: double): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -2799,6 +2921,8 @@ Sets a matrix for the canvas. Subsequent drawing and clipping operations will be
 
 **Since:** 12
 
+<!--Device-Canvas-setMatrix(matrix: Matrix): void--><!--Device-Canvas-setMatrix(matrix: Matrix): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -2839,6 +2963,8 @@ skew(sx: number, sy: number) : void
 Applies a skewing matrix on top of the current canvas matrix (identity matrix by default). Subsequent drawing and clipping operations will automatically have a skewing effect applied to the shapes and positions.
 
 **Since:** 12
+
+<!--Device-Canvas-skew(sx: double, sy: double) : void--><!--Device-Canvas-skew(sx: double, sy: double) : void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -2884,6 +3010,8 @@ translate(dx: number, dy: number): void
 Applies a translation matrix on top of the current canvas matrix (identity matrix by default). Subsequent drawing and clipping operations will automatically have a translation effect applied to the shapes and positions.
 
 **Since:** 12
+
+<!--Device-Canvas-translate(dx: double, dy: double): void--><!--Device-Canvas-translate(dx: double, dy: double): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

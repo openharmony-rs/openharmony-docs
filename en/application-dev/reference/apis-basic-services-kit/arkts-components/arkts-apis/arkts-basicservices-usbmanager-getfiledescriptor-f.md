@@ -16,6 +16,8 @@ Obtains a file descriptor. If the USB service is abnormal, an error code may be 
 
 **Since:** 9
 
+<!--Device-usbManager-function getFileDescriptor(pipe: USBDevicePipe): int--><!--Device-usbManager-function getFileDescriptor(pipe: USBDevicePipe): int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

@@ -21,6 +21,8 @@ Checks whether touch guide mode is enabled. This API uses an asynchronous callba
 
 **Substitutes:** [isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md)
 
+<!--Device-accessibility-function isOpenTouchGuide(callback: AsyncCallback<boolean>): void--><!--Device-accessibility-function isOpenTouchGuide(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Vision
 
 **Parameters:**
@@ -60,6 +62,8 @@ Checks whether touch guide mode is enabled. This API uses a promise to return th
 **Deprecated since:** 10
 
 **Substitutes:** [isOpenTouchGuideSync](arkts-accessibility-accessibility-isopentouchguidesync-f.md)
+
+<!--Device-accessibility-function isOpenTouchGuide(): Promise<boolean>--><!--Device-accessibility-function isOpenTouchGuide(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Vision
 

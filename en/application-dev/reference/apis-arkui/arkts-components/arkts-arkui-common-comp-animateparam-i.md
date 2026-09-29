@@ -8,6 +8,8 @@ Defines parameters related to animation effects.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface AnimateParam--><!--Device-unnamed-declare interface AnimateParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onFinish
@@ -25,6 +27,8 @@ If the transition animation is disabled in the developer options and **tempo** i
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-AnimateParam-onFinish?: () => void--><!--Device-AnimateParam-onFinish?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,6 +94,8 @@ Default value: **Curve.EaseInOut**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-AnimateParam-curve?: Curve | string | ICurve--><!--Device-AnimateParam-curve?: Curve | string | ICurve-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## delay
@@ -115,6 +121,8 @@ Note: 1. A non-negative **delay** defers the start of the animation. A negative 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AnimateParam-delay?: number--><!--Device-AnimateParam-delay?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,6 +153,8 @@ Note: 1. Before API 26.0.0, the maximum animation duration for an ArkTS widget i
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-AnimateParam-duration?: number--><!--Device-AnimateParam-duration?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## expectedFrameRateRange
@@ -162,6 +172,8 @@ Expected frame rate range of the animation.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AnimateParam-expectedFrameRateRange?: ExpectedFrameRateRange--><!--Device-AnimateParam-expectedFrameRateRange?: ExpectedFrameRateRange-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,6 +196,8 @@ Default value: **FinishCallbackType.REMOVED**
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-AnimateParam-finishCallbackType?: FinishCallbackType--><!--Device-AnimateParam-finishCallbackType?: FinishCallbackType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -208,6 +222,8 @@ Note: Floating-point values are floored to integers. For example, if the value s
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AnimateParam-iterations?: number--><!--Device-AnimateParam-iterations?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,6 +256,8 @@ Default value: **PlayMode.Normal**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-AnimateParam-playMode?: PlayMode--><!--Device-AnimateParam-playMode?: PlayMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## tempo
@@ -265,5 +283,7 @@ Note: Values less than 0 are clamped to **0**.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AnimateParam-tempo?: number--><!--Device-AnimateParam-tempo?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

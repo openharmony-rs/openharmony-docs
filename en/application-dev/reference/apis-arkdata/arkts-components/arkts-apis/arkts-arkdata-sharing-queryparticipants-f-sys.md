@@ -16,6 +16,8 @@ Queries the participants of the specified shared data. This API uses an asynchro
 
 **Since:** 11
 
+<!--Device-sharing-function queryParticipants(sharingResource: string, callback: AsyncCallback<Result<Array<Participant>>>): void--><!--Device-sharing-function queryParticipants(sharingResource: string, callback: AsyncCallback<Result<Array<Participant>>>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -61,6 +63,8 @@ function queryParticipants(sharingResource: string): Promise<Result<Array<Partic
 Queries the participants of the specified shared data. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-sharing-function queryParticipants(sharingResource: string): Promise<Result<Array<Participant>>>--><!--Device-sharing-function queryParticipants(sharingResource: string): Promise<Result<Array<Participant>>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

@@ -20,6 +20,8 @@ Adds the authorization for the app to access the device. System applications are
 
 **Required permissions:** ohos.permission.MANAGE_USB_CONFIG
 
+<!--Device-usbManager-function addDeviceAccessRight(tokenId: string, deviceName: string): boolean--><!--Device-usbManager-function addDeviceAccessRight(tokenId: string, deviceName: string): boolean-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

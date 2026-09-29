@@ -8,6 +8,8 @@ Provides APIs that support Aspect Oriented Programming (AOP). These APIs can be 
 
 **Since:** 11
 
+<!--Device-util-class Aspect--><!--Device-util-class Aspect-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Inserts a function after a method of a class object. The final return value is t
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Aspect-static addAfter(targetClass: Object, methodName: string, isStatic: boolean, after: Function): void--><!--Device-Aspect-static addAfter(targetClass: Object, methodName: string, isStatic: boolean, after: Function): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -106,6 +110,8 @@ Inserts a function before a method of a class object. The inserted function is e
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Aspect-static addBefore(targetClass: Object, methodName: string, isStatic: boolean, before: Function): void--><!--Device-Aspect-static addBefore(targetClass: Object, methodName: string, isStatic: boolean, before: Function): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -194,6 +200,8 @@ Replaces a method of a class object with another function. After the replacement
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Aspect-static replace(targetClass: Object, methodName: string, isStatic: boolean, instead: Function) : void--><!--Device-Aspect-static replace(targetClass: Object, methodName: string, isStatic: boolean, instead: Function) : void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

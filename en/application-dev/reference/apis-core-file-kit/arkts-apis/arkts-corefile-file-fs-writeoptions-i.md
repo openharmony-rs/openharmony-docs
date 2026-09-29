@@ -10,6 +10,8 @@ Defines the options used in **write()**. It inherits from [Options](arkts-corefi
 
 **Since:** 11
 
+<!--Device-unnamed-export interface WriteOptions extends Options--><!--Device-unnamed-export interface WriteOptions extends Options-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Length of the data to write, in bytes. This parameter is optional. The default v
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WriteOptions-length?: number--><!--Device-WriteOptions-length?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## offset
@@ -47,5 +51,7 @@ Start position of the file to write, in bytes. This parameter is optional. By de
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WriteOptions-offset?: number--><!--Device-WriteOptions-offset?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

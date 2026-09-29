@@ -18,6 +18,8 @@ Set the dfx data of car key.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void--><!--Device-connection-function setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

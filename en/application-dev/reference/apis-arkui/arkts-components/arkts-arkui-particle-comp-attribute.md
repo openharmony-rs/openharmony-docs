@@ -4,13 +4,15 @@
 declare class ParticleAttribute extends CommonMethod<ParticleAttribute>
 ```
 
-Defines the Particle component attribute functions.
+In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-@extends CommonMethod&lt;ParticleAttribute&gt;
+The [universal events](arkts-arkui-common-comp.md) are supported.
 
 **Inheritance/Implementation:** ParticleAttribute extends CommonMethod<ParticleAttribute>
 
 **Since:** 10
+
+<!--Device-unnamed-declare class ParticleAttribute extends CommonMethod<ParticleAttribute>--><!--Device-unnamed-declare class ParticleAttribute extends CommonMethod<ParticleAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,13 +30,15 @@ Sets the disturbance fields.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ParticleAttribute-disturbanceFields(fields: Array<DisturbanceFieldOptions>): ParticleAttribute--><!--Device-ParticleAttribute-disturbanceFields(fields: Array<DisturbanceFieldOptions>): ParticleAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fields | Array&lt;[DisturbanceFieldOptions](arkts-arkui-particle-comp-disturbancefieldoptions-i.md)&gt; | Yes | Array of disturbance fields. |
+| fields | Array&lt;[DisturbanceFieldOptions](arkts-arkui-particle-comp-disturbancefieldoptions-i.md)&gt; | Yes | Array of disturbance fields. Used to set the disturbance effect on the particle motion trajectory. By configuring multiple disturbance fields, repulsive or attractive forces can be applied to particles to change their motion trajectories. |
 
 ## emitter
 
@@ -42,7 +46,7 @@ Sets the disturbance fields.
 emitter(value: Array<EmitterProperty>)
 ```
 
-Sets the emitter parameters.
+Supports dynamic update of emitter properties. Use the index in **EmitterProperty** to specify the emitter to update (based on the array index of the emitter in the initialization parameters), and dynamically update the emission rate, position, size, and annular area parameters of the emitter. You must first create a particle animation and configure the emitter through the **Particle** API, and then dynamically update the parameters of the corresponding emitter through the **emitter()** property. The **emitter()** property only updates the parameters of existing emitters and cannot add new emitters.
 
 **Since:** 12
 
@@ -50,13 +54,15 @@ Sets the emitter parameters.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ParticleAttribute-emitter(value: Array<EmitterProperty>): ParticleAttribute--><!--Device-ParticleAttribute-emitter(value: Array<EmitterProperty>): ParticleAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;[EmitterProperty](arkts-arkui-particle-comp-emitterproperty-i.md)&gt; | Yes | Array of emitter parameters to set. |
+| value | Array&lt;[EmitterProperty](arkts-arkui-particle-comp-emitterproperty-i.md)&gt; | Yes | Array of emitter parameters to be updated. |
 
 ## rippleFields
 
@@ -64,7 +70,7 @@ Sets the emitter parameters.
 rippleFields(fields: Array<RippleFieldOptions> | undefined)
 ```
 
-Sets the particle wave field. The wave field applies a force that changes according to the waveform to particles within the affected range, producing an effect similar to the spreading of ripples.
+Sets the particle ripple field. The ripple field applies a force that changes in a waveform manner to particles within its influence range, producing an effect similar to ripple diffusion.
 
 **Since:** 22
 
@@ -72,13 +78,15 @@ Sets the particle wave field. The wave field applies a force that changes accord
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-ParticleAttribute-rippleFields(fields: Array<RippleFieldOptions> | undefined): ParticleAttribute--><!--Device-ParticleAttribute-rippleFields(fields: Array<RippleFieldOptions> | undefined): ParticleAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fields | Array&lt;[RippleFieldOptions](arkts-arkui-particle-comp-ripplefieldoptions-i.md)&gt; &#124; undefined | Yes | Particle wave field array. You can set multiple particle wave fields in array form. If this parameter is set to undefined, no wave field is available. |
+| fields | Array&lt;[RippleFieldOptions](arkts-arkui-particle-comp-ripplefieldoptions-i.md)&gt; &#124; undefined | Yes | Array of particle ripple fields. Multiple particle ripple fields can be set in the array form. When set to **undefined**, it indicates no ripple field. |
 
 ## velocityFields
 
@@ -86,7 +94,7 @@ Sets the particle wave field. The wave field applies a force that changes accord
 velocityFields(fields: Array<VelocityFieldOptions> | undefined)
 ```
 
-Sets the particle velocity field. The velocity field applies a force to particles within the affected range, so that the particles move at the velocity specified by the velocity field in addition to their original velocity.
+Sets the particle velocity field. The velocity field applies a force to particles within its influence range, so that the velocity specified by the velocity field is superimposed on the original velocity of the particles.
 
 **Since:** 22
 
@@ -94,10 +102,12 @@ Sets the particle velocity field. The velocity field applies a force to particle
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-ParticleAttribute-velocityFields(fields: Array<VelocityFieldOptions> | undefined): ParticleAttribute--><!--Device-ParticleAttribute-velocityFields(fields: Array<VelocityFieldOptions> | undefined): ParticleAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fields | Array&lt;[VelocityFieldOptions](arkts-arkui-particle-comp-velocityfieldoptions-i.md)&gt; &#124; undefined | Yes | Particle velocity field array. You can set multiple particle velocity fields in array form. If this parameter is set to undefined, there is no velocity field. |
+| fields | Array&lt;[VelocityFieldOptions](arkts-arkui-particle-comp-velocityfieldoptions-i.md)&gt; &#124; undefined | Yes | Array of particle velocity fields. Multiple particle velocity fields can be set in array form. When set to **undefined**, it indicates no velocity field. |

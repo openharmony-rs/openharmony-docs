@@ -8,6 +8,8 @@ Do Not Disturb profile.
 
 **Since:** 12
 
+<!--Device-notificationManager-export interface DoNotDisturbProfile--><!--Device-notificationManager-export interface DoNotDisturbProfile-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ ID of the Do Not Disturb profile.
 
 **Since:** 12
 
+<!--Device-DoNotDisturbProfile-id: long--><!--Device-DoNotDisturbProfile-id: long-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Name of the Do Not Disturb profile.
 
 **Since:** 12
 
+<!--Device-DoNotDisturbProfile-name: string--><!--Device-DoNotDisturbProfile-name: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Trustlist in Do Not Disturb profile.
 **Type:** Array&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)&gt;
 
 **Since:** 12
+
+<!--Device-DoNotDisturbProfile-trustlist?: Array<BundleOption>--><!--Device-DoNotDisturbProfile-trustlist?: Array<BundleOption>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

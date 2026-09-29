@@ -10,6 +10,8 @@ Manifest file information in incremental data. FileManifestData is useful when d
 
 **Since:** 12
 
+<!--Device-backup-interface FileManifestData--><!--Device-backup-interface FileManifestData-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ A file descriptor for the manifest file that holds the data
 **Type:** number
 
 **Since:** 12
+
+<!--Device-FileManifestData-manifestFd: int--><!--Device-FileManifestData-manifestFd: int-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 

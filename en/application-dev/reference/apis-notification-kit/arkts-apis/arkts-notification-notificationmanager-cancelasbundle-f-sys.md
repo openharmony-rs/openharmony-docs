@@ -23,6 +23,8 @@ Cancels a notification published through the reminder agent. This API uses an as
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
+<!--Device-notificationManager-function cancelAsBundle(    id: int,    representativeBundle: string,    userId: int,    callback: AsyncCallback<void>  ): void--><!--Device-notificationManager-function cancelAsBundle(    id: int,    representativeBundle: string,    userId: int,    callback: AsyncCallback<void>  ): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -84,6 +86,8 @@ Cancels a notification published through the reminder agent. This API uses a pro
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+
+<!--Device-notificationManager-function cancelAsBundle(id: int, representativeBundle: string, userId: int): Promise<void>--><!--Device-notificationManager-function cancelAsBundle(id: int, representativeBundle: string, userId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -147,6 +151,8 @@ Cancels a notification published through the reminder agent. This API uses a pro
 **Since:** 12
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+
+<!--Device-notificationManager-function cancelAsBundle(representativeBundle: BundleOption, id: int): Promise<void>--><!--Device-notificationManager-function cancelAsBundle(representativeBundle: BundleOption, id: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

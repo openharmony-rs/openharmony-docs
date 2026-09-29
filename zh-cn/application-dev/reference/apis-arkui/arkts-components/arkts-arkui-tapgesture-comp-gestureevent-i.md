@@ -10,6 +10,8 @@ interface GestureEvent extends BaseEvent
 
 **起始版本：** 7
 
+<!--Device-unnamed-interface GestureEvent extends BaseEvent--><!--Device-unnamed-interface GestureEvent extends BaseEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## angle
@@ -34,6 +36,8 @@ angle: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureEvent-angle: number--><!--Device-GestureEvent-angle: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fingerInfos
@@ -56,6 +60,8 @@ fingerInfos只会记录参与触摸的有效手指信息，先按下但未参与
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureEvent-fingerInfos?: FingerInfo[]--><!--Device-GestureEvent-fingerInfos?: FingerInfo[]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fingerList
@@ -77,6 +83,8 @@ fingerList: FingerInfo[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureEvent-fingerList: FingerInfo[]--><!--Device-GestureEvent-fingerList: FingerInfo[]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offsetX
@@ -94,6 +102,8 @@ offsetX: number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureEvent-offsetX: number--><!--Device-GestureEvent-offsetX: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,6 +123,8 @@ offsetY: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureEvent-offsetY: number--><!--Device-GestureEvent-offsetY: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## pinchCenterX
@@ -130,6 +142,8 @@ pinchCenterX: number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureEvent-pinchCenterX: number--><!--Device-GestureEvent-pinchCenterX: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -149,6 +163,8 @@ pinchCenterY: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureEvent-pinchCenterY: number--><!--Device-GestureEvent-pinchCenterY: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## repeat
@@ -164,6 +180,8 @@ repeat: boolean
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureEvent-repeat: boolean--><!--Device-GestureEvent-repeat: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -183,6 +201,8 @@ scale: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureEvent-scale: number--><!--Device-GestureEvent-scale: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## speed
@@ -200,6 +220,8 @@ speed: number
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureEvent-speed: number--><!--Device-GestureEvent-speed: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -219,6 +241,8 @@ tapLocation?: EventLocationInfo
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureEvent-tapLocation?: EventLocationInfo--><!--Device-GestureEvent-tapLocation?: EventLocationInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocity
@@ -227,7 +251,7 @@ tapLocation?: EventLocationInfo
 velocity: number
 ```
 
-用于PanGesture手势中，获取当前手势的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。
+用于[PanGesture](arkts-arkui-tapgesture-comp-con.md#pangesture)手势中，获取当前手势的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。
 
 取值范围：[0, +∞)
 
@@ -239,6 +263,8 @@ velocity: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureEvent-velocity: number--><!--Device-GestureEvent-velocity: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocityX
@@ -247,7 +273,7 @@ velocity: number
 velocityX: number
 ```
 
-用于PanGesture手势中，获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。
+用于[PanGesture](arkts-arkui-tapgesture-comp-con.md#pangesture)手势中，获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。
 
 取值范围：(-∞, +∞)
 
@@ -258,6 +284,8 @@ velocityX: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureEvent-velocityX: number--><!--Device-GestureEvent-velocityX: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -267,7 +295,7 @@ velocityX: number
 velocityY: number
 ```
 
-用于PanGesture手势中，获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。
+用于[PanGesture](arkts-arkui-tapgesture-comp-con.md#pangesture)手势中，获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。
 
 取值范围：(-∞, +∞)
 
@@ -278,5 +306,7 @@ velocityY: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureEvent-velocityY: number--><!--Device-GestureEvent-velocityY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

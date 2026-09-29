@@ -18,6 +18,8 @@ Creates a **RemoteDevice** instance.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-remoteDevice-function createRemoteDevice(address: string): RemoteDevice--><!--Device-remoteDevice-function createRemoteDevice(address: string): RemoteDevice-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

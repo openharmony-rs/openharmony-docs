@@ -8,6 +8,8 @@ Describes the configuration of the edit box.
 
 **Since:** 10
 
+<!--Device-inputMethod-export interface TextConfig--><!--Device-inputMethod-export interface TextConfig-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Whether to capitalize the first letter in the edit box. If it is not set or is s
 
 **Since:** 20
 
+<!--Device-TextConfig-capitalizeMode?: CapitalizeMode--><!--Device-TextConfig-capitalizeMode?: CapitalizeMode-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## cursorInfo
@@ -43,6 +47,8 @@ Cursor information.
 **Type:** [CursorInfo](arkts-ime-inputmethod-cursorinfo-i.md)
 
 **Since:** 10
+
+<!--Device-TextConfig-cursorInfo?: CursorInfo--><!--Device-TextConfig-cursorInfo?: CursorInfo-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -58,6 +64,8 @@ Edit box attribute.
 
 **Since:** 10
 
+<!--Device-TextConfig-inputAttribute: InputAttribute--><!--Device-TextConfig-inputAttribute: InputAttribute-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## newEditBox
@@ -71,6 +79,8 @@ Whether the edit box is new. The value **true** means the edit box is new; the v
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-TextConfig-newEditBox?: boolean--><!--Device-TextConfig-newEditBox?: boolean-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -86,6 +96,8 @@ Text selection range.
 
 **Since:** 10
 
+<!--Device-TextConfig-selection?: Range--><!--Device-TextConfig-selection?: Range-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## windowId
@@ -99,5 +111,7 @@ ID of the window where the edit box is located. The value must be an integer. <b
 **Type:** number
 
 **Since:** 10
+
+<!--Device-TextConfig-windowId?: int--><!--Device-TextConfig-windowId?: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

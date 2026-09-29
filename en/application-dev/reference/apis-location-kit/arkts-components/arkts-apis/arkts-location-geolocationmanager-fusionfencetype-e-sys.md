@@ -8,6 +8,8 @@ Enum for fusion fence type.
 
 **Since:** 26.0.0
 
+<!--Device-geoLocationManager-export enum FusionFenceType--><!--Device-geoLocationManager-export enum FusionFenceType-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Indicates the GNSS fence.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FusionFenceType-GNSS = 1--><!--Device-FusionFenceType-GNSS = 1-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -40,6 +44,8 @@ Indicates the cellular fence.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FusionFenceType-CELLULAR = 2--><!--Device-FusionFenceType-CELLULAR = 2-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **System API:** This is a system API.
@@ -56,6 +62,8 @@ Indicates the Wi-Fi fence.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FusionFenceType-WIFI = 4--><!--Device-FusionFenceType-WIFI = 4-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **System API:** This is a system API.
@@ -71,6 +79,8 @@ Indicates the Bluetooth fence.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FusionFenceType-BLUETOOTH = 8--><!--Device-FusionFenceType-BLUETOOTH = 8-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 

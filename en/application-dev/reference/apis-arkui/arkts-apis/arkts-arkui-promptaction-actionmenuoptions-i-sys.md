@@ -8,6 +8,8 @@ Describes the options for showing the action menu.
 
 **Since:** 9
 
+<!--Device-promptAction-interface ActionMenuOptions--><!--Device-promptAction-interface ActionMenuOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Sets the distortion animation Mode of the dialog.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ActionMenuOptions-distortionMode?: DistortionMode--><!--Device-ActionMenuOptions-distortionMode?: DistortionMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Sets the edgeLight animation Mode of the dialog.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ActionMenuOptions-edgeLightMode?: EdgeLightMode--><!--Device-ActionMenuOptions-edgeLightMode?: EdgeLightMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

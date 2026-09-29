@@ -16,6 +16,8 @@ Obtains the touchpad right-click menu type. This API uses an asynchronous callba
 
 **Since:** 10
 
+<!--Device-pointer-function getTouchpadRightClickType(callback: AsyncCallback<RightClickType>): void--><!--Device-pointer-function getTouchpadRightClickType(callback: AsyncCallback<RightClickType>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getTouchpadRightClickType(): Promise<RightClickType>
 Obtains the touchpad right-click menu type. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function getTouchpadRightClickType(): Promise<RightClickType>--><!--Device-pointer-function getTouchpadRightClickType(): Promise<RightClickType>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

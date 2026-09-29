@@ -8,6 +8,8 @@ Represents the extension information of an input method.
 
 **Since:** 22
 
+<!--Device-unnamed-export interface InputMethodExtraConfig--><!--Device-unnamed-export interface InputMethodExtraConfig-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Input method extension information, which is used to store custom key-value pair
 **Type:** Record&lt;string, [CustomValueType](arkts-ime-customvaluetype-t.md)&gt;
 
 **Since:** 22
+
+<!--Device-InputMethodExtraConfig-customSettings: Record<string, CustomValueType>--><!--Device-InputMethodExtraConfig-customSettings: Record<string, CustomValueType>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

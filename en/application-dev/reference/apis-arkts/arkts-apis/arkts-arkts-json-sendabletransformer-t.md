@@ -15,6 +15,8 @@ When used as a parameter of [parseSendable](arkts-arkts-json-parsesendable-f.md)
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-json-type SendableTransformer = (this: ISendable, key: string,    value: ISendable | undefined | null) => ISendable | undefined | null--><!--Device-json-type SendableTransformer = (this: ISendable, key: string,    value: ISendable | undefined | null) => ISendable | undefined | null-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

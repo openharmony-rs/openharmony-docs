@@ -12,6 +12,8 @@ Defines the UserFileManager class and provides functions to access the data in u
 
 **Substitutes:** [PhotoAccessHelper](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md)
 
+<!--Device-userFileManager-interface UserFileManager--><!--Device-userFileManager-interface UserFileManager-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -47,6 +49,8 @@ The album name must meet the following requirements:
 **Substitutes:** [createAlbumRequest](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c-sys.md#createalbumrequest)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+<!--Device-UserFileManager-createAlbum(name: string, callback: AsyncCallback<Album>): void--><!--Device-UserFileManager-createAlbum(name: string, callback: AsyncCallback<Album>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -105,6 +109,8 @@ The album name must meet the following requirements:
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
 
+<!--Device-UserFileManager-createAlbum(name: string): Promise<Album>--><!--Device-UserFileManager-createAlbum(name: string): Promise<Album>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -152,6 +158,8 @@ Creates an audio asset. This API uses an asynchronous callback to return the res
 **Deprecated since:** 26.0.0
 
 **Required permissions:** ohos.permission.WRITE_AUDIO
+
+<!--Device-UserFileManager-createAudioAsset(displayName: string, callback: AsyncCallback<FileAsset>): void--><!--Device-UserFileManager-createAudioAsset(displayName: string, callback: AsyncCallback<FileAsset>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -205,6 +213,8 @@ Creates an audio asset. This API uses a promise to return the result.
 **Deprecated since:** 26.0.0
 
 **Required permissions:** ohos.permission.WRITE_AUDIO
+
+<!--Device-UserFileManager-createAudioAsset(displayName: string): Promise<FileAsset>--><!--Device-UserFileManager-createAudioAsset(displayName: string): Promise<FileAsset>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -261,6 +271,8 @@ Creates an image or video asset with the specified file name and URI. This API u
 **Substitutes:** [createAsset](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#createasset)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+<!--Device-UserFileManager-createPhotoAsset(displayName: string, albumUri: string, callback: AsyncCallback<FileAsset>): void--><!--Device-UserFileManager-createPhotoAsset(displayName: string, albumUri: string, callback: AsyncCallback<FileAsset>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -326,6 +338,8 @@ Creates an image or video asset with the specified file name. This API uses an a
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
 
+<!--Device-UserFileManager-createPhotoAsset(displayName: string, callback: AsyncCallback<FileAsset>): void--><!--Device-UserFileManager-createPhotoAsset(displayName: string, callback: AsyncCallback<FileAsset>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -380,6 +394,8 @@ Creates an image or video asset with the specified file name and album URI. This
 **Substitutes:** [createAsset](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#createasset)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+<!--Device-UserFileManager-createPhotoAsset(displayName: string, albumUri?: string): Promise<FileAsset>--><!--Device-UserFileManager-createPhotoAsset(displayName: string, albumUri?: string): Promise<FileAsset>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -439,6 +455,8 @@ Creates an image or video asset with the specified file name and options. This A
 **Substitutes:** [createAsset](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#createasset)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+<!--Device-UserFileManager-createPhotoAsset(displayName: string, createOption: PhotoCreateOptions): Promise<FileAsset>--><!--Device-UserFileManager-createPhotoAsset(displayName: string, createOption: PhotoCreateOptions): Promise<FileAsset>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -502,6 +520,8 @@ Creates an image or video asset with the specified file name and options. This A
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
 
+<!--Device-UserFileManager-createPhotoAsset(displayName: string, createOption: PhotoCreateOptions, callback: AsyncCallback<FileAsset>): void--><!--Device-UserFileManager-createPhotoAsset(displayName: string, createOption: PhotoCreateOptions, callback: AsyncCallback<FileAsset>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -558,6 +578,8 @@ Deletes a media file. This API uses an asynchronous callback to return the resul
 **Substitutes:** [deleteAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c.md#deleteassets)
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.READ_AUDIO and ohos.permission.WRITE_AUDIO
+
+<!--Device-UserFileManager-delete(uri: string, callback: AsyncCallback<void>): void--><!--Device-UserFileManager-delete(uri: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -630,6 +652,8 @@ Deletes media assets. The deleted assets are moved to the trash. This API uses a
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.READ_AUDIO and ohos.permission.WRITE_AUDIO
 
+<!--Device-UserFileManager-delete(uri: string): Promise<void>--><!--Device-UserFileManager-delete(uri: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -697,6 +721,8 @@ Deletes user albums. This API uses an asynchronous callback to return the result
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
 
+<!--Device-UserFileManager-deleteAlbums(albums: Array<Album>, callback: AsyncCallback<void>): void--><!--Device-UserFileManager-deleteAlbums(albums: Array<Album>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -755,6 +781,8 @@ Deletes user albums. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
 
+<!--Device-UserFileManager-deleteAlbums(albums: Array<Album>): Promise<void>--><!--Device-UserFileManager-deleteAlbums(albums: Array<Album>): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -812,6 +840,8 @@ Obtains information about online peer devices. This API uses an asynchronous cal
 
 **Deprecated since:** 26.0.0
 
+<!--Device-UserFileManager-getActivePeers(callback: AsyncCallback<Array<PeerInfo>>): void--><!--Device-UserFileManager-getActivePeers(callback: AsyncCallback<Array<PeerInfo>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.DistributedCore
 
 **System API:** This is a system API.
@@ -855,6 +885,8 @@ Obtains the information about online peer devices. This API uses a promise to re
 **Since:** 9
 
 **Deprecated since:** 26.0.0
+
+<!--Device-UserFileManager-getActivePeers(): Promise<Array<PeerInfo>>--><!--Device-UserFileManager-getActivePeers(): Promise<Array<PeerInfo>>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -913,6 +945,8 @@ Before the operation, ensure that the albums to obtain exist.
 **Substitutes:** getAlbums
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+<!--Device-UserFileManager-getAlbums(      type: AlbumType,      subType: AlbumSubType,      options: FetchOptions,      callback: AsyncCallback<FetchResult<Album>>    ): void--><!--Device-UserFileManager-getAlbums(      type: AlbumType,      subType: AlbumSubType,      options: FetchOptions,      callback: AsyncCallback<FetchResult<Album>>    ): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -987,6 +1021,8 @@ Before the operation, ensure that the albums to obtain exist.
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
 
+<!--Device-UserFileManager-getAlbums(type: AlbumType, subType: AlbumSubType, callback: AsyncCallback<FetchResult<Album>>): void--><!--Device-UserFileManager-getAlbums(type: AlbumType, subType: AlbumSubType, callback: AsyncCallback<FetchResult<Album>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -1050,6 +1086,8 @@ Before the operation, ensure that the albums to obtain exist.
 **Substitutes:** getAlbums
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+<!--Device-UserFileManager-getAlbums(type: AlbumType, subType: AlbumSubType, options?: FetchOptions): Promise<FetchResult<Album>>--><!--Device-UserFileManager-getAlbums(type: AlbumType, subType: AlbumSubType, options?: FetchOptions): Promise<FetchResult<Album>>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1118,6 +1156,8 @@ Obtains information about all peer devices. This API uses an asynchronous callba
 
 **Deprecated since:** 26.0.0
 
+<!--Device-UserFileManager-getAllPeers(callback: AsyncCallback<Array<PeerInfo>>): void--><!--Device-UserFileManager-getAllPeers(callback: AsyncCallback<Array<PeerInfo>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.DistributedCore
 
 **System API:** This is a system API.
@@ -1161,6 +1201,8 @@ Obtains the information about all peer devices. This API uses a promise to retur
 **Since:** 9
 
 **Deprecated since:** 26.0.0
+
+<!--Device-UserFileManager-getAllPeers(): Promise<Array<PeerInfo>>--><!--Device-UserFileManager-getAllPeers(): Promise<Array<PeerInfo>>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.DistributedCore
 
@@ -1209,6 +1251,8 @@ Obtains audio assets. This API uses an asynchronous callback to return the resul
 **Deprecated since:** 26.0.0
 
 **Required permissions:** ohos.permission.READ_AUDIO
+
+<!--Device-UserFileManager-getAudioAssets(options: FetchOptions, callback: AsyncCallback<FetchResult<FileAsset>>): void--><!--Device-UserFileManager-getAudioAssets(options: FetchOptions, callback: AsyncCallback<FetchResult<FileAsset>>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1271,6 +1315,8 @@ Obtains an audio asset. This API uses a promise to return the result.
 **Deprecated since:** 26.0.0
 
 **Required permissions:** ohos.permission.READ_AUDIO
+
+<!--Device-UserFileManager-getAudioAssets(options: FetchOptions): Promise<FetchResult<FileAsset>>--><!--Device-UserFileManager-getAudioAssets(options: FetchOptions): Promise<FetchResult<FileAsset>>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1343,6 +1389,8 @@ This API will be deprecated. Use [getAlbums](#getalbums) instead.
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
 
+<!--Device-UserFileManager-getPhotoAlbums(options: AlbumFetchOptions, callback: AsyncCallback<FetchResult<Album>>): void--><!--Device-UserFileManager-getPhotoAlbums(options: AlbumFetchOptions, callback: AsyncCallback<FetchResult<Album>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -1413,6 +1461,8 @@ This API will be deprecated. Use [getAlbums](#getalbums) instead.
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
 
+<!--Device-UserFileManager-getPhotoAlbums(options: AlbumFetchOptions): Promise<FetchResult<Album>>--><!--Device-UserFileManager-getPhotoAlbums(options: AlbumFetchOptions): Promise<FetchResult<Album>>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -1474,6 +1524,8 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 **Substitutes:** [getAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets)
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+<!--Device-UserFileManager-getPhotoAssets(options: FetchOptions, callback: AsyncCallback<FetchResult<FileAsset>>): void--><!--Device-UserFileManager-getPhotoAssets(options: FetchOptions, callback: AsyncCallback<FetchResult<FileAsset>>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1538,6 +1590,8 @@ Obtains image and video assets. This API uses a promise to return the result.
 **Substitutes:** [getAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets)
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+<!--Device-UserFileManager-getPhotoAssets(options: FetchOptions): Promise<FetchResult<FileAsset>>--><!--Device-UserFileManager-getPhotoAssets(options: FetchOptions): Promise<FetchResult<FileAsset>>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1605,6 +1659,8 @@ Obtains the index of an image or video in an album. This API uses an asynchronou
 **Substitutes:** [getPhotoIndex](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#getphotoindex)
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+<!--Device-UserFileManager-getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions, callback: AsyncCallback<number>): void--><!--Device-UserFileManager-getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions, callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1683,6 +1739,8 @@ Obtains the index of an image or video in an album. This API uses a promise to r
 **Substitutes:** [getPhotoIndex](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#getphotoindex)
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+<!--Device-UserFileManager-getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promise<number>--><!--Device-UserFileManager-getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promise<number>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1770,6 +1828,8 @@ This API will be deprecated. Use [getAlbums](#getalbums) instead.
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
 
+<!--Device-UserFileManager-getPrivateAlbum(type: PrivateAlbumType, callback: AsyncCallback<FetchResult<PrivateAlbum>>): void--><!--Device-UserFileManager-getPrivateAlbum(type: PrivateAlbumType, callback: AsyncCallback<FetchResult<PrivateAlbum>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -1825,6 +1885,8 @@ This API will be deprecated. Use [getAlbums](#getalbums) instead.
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
 
+<!--Device-UserFileManager-getPrivateAlbum(type: PrivateAlbumType): Promise<FetchResult<PrivateAlbum>>--><!--Device-UserFileManager-getPrivateAlbum(type: PrivateAlbumType): Promise<FetchResult<PrivateAlbum>>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -1878,7 +1940,9 @@ This API will be deprecated. Use [off](#off-1) instead.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [off](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#offmedialibraryavailability)
+**Substitutes:** [off](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#off)
+
+<!--Device-UserFileManager-off(type: ChangeEvent, callback?: Callback<void>): void--><!--Device-UserFileManager-off(type: ChangeEvent, callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1940,6 +2004,8 @@ Unregisters the listener for the specified URI. Multiple callbacks can be regist
 **Deprecated since:** 26.0.0
 
 **Substitutes:** unregisterChange
+
+<!--Device-UserFileManager-off(uri: string, callback?: Callback<ChangeData>): void--><!--Device-UserFileManager-off(uri: string, callback?: Callback<ChangeData>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2015,7 +2081,9 @@ This API will be deprecated. Use [on](#on-1) instead.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [on](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#onmedialibraryavailability)
+**Substitutes:** [on](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#on)
+
+<!--Device-UserFileManager-on(type: ChangeEvent, callback: Callback<void>): void--><!--Device-UserFileManager-on(type: ChangeEvent, callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2075,6 +2143,8 @@ Registers a listener for the specified URI. This API uses an asynchronous callba
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [registerChange](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#registerchange)
+
+<!--Device-UserFileManager-on(uri: string, forSubUri: boolean, callback: Callback<ChangeData>): void--><!--Device-UserFileManager-on(uri: string, forSubUri: boolean, callback: Callback<ChangeData>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -2152,6 +2222,8 @@ Call this API when the APIs in the **UserFileManager** instance are no longer us
 
 **Substitutes:** [release](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#release)
 
+<!--Device-UserFileManager-release(callback: AsyncCallback<void>): void--><!--Device-UserFileManager-release(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -2196,6 +2268,8 @@ Call this API when the APIs in the **UserFileManager** instance are no longer us
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [release](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#release)
+
+<!--Device-UserFileManager-release(): Promise<void>--><!--Device-UserFileManager-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

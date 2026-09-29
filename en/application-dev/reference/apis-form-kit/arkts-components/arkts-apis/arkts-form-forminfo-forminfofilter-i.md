@@ -10,6 +10,8 @@ The optional options used as filters to ask getFormsInfo to return formInfos fro
 
 **Since:** 9
 
+<!--Device-formInfo-interface FormInfoFilter--><!--Device-formInfo-interface FormInfoFilter-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -30,6 +32,8 @@ optional moduleName that used to ask getFormsInfo to return form infos with the 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormInfoFilter-moduleName?: string--><!--Device-FormInfoFilter-moduleName?: string-End-->
 
 **System capability:** SystemCapability.Ability.Form

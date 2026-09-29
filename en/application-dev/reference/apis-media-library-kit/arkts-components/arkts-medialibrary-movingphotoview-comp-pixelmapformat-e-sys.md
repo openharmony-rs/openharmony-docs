@@ -10,6 +10,8 @@ Enumerates pixel map formats.
 
 **Since:** 14
 
+<!--Device-unnamed-export declare enum PixelMapFormat--><!--Device-unnamed-export declare enum PixelMapFormat-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ NV21 = 2
 Indicates that the storage order is to store Y first and then V U alternately each occupies 8 bits and are stored from the higher-order to the lower-order bits.
 
 **Since:** 14
+
+<!--Device-PixelMapFormat-NV21 = 2--><!--Device-PixelMapFormat-NV21 = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -38,6 +42,8 @@ Indicates that each pixel is stored on 32 bits. Each pixel contains 4 components
 
 **Since:** 14
 
+<!--Device-PixelMapFormat-RGBA_8888 = 1--><!--Device-PixelMapFormat-RGBA_8888 = 1-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -51,6 +57,8 @@ UNKNOWN = 0
 Indicates an unknown format.
 
 **Since:** 14
+
+<!--Device-PixelMapFormat-UNKNOWN = 0--><!--Device-PixelMapFormat-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

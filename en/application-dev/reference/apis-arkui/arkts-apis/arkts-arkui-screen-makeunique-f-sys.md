@@ -16,6 +16,8 @@ Sets the screen to independent display mode. This API uses a promise to return t
 
 **Since:** 18
 
+<!--Device-screen-function makeUnique(uniqueScreen: Array<long>): Promise<Array<long>>--><!--Device-screen-function makeUnique(uniqueScreen: Array<long>): Promise<Array<long>>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.

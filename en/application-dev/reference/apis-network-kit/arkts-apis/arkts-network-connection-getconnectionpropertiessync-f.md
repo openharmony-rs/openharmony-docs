@@ -20,6 +20,8 @@ Obtains the connection information of the data network specified by **NetHandle*
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-connection-function getConnectionPropertiesSync(netHandle: NetHandle): ConnectionProperties--><!--Device-connection-function getConnectionPropertiesSync(netHandle: NetHandle): ConnectionProperties-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

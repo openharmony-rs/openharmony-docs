@@ -4,9 +4,11 @@
 declare interface TextDataDetectorConfig
 ```
 
-该配置只支持Text组件和RichEditor组件。
+该配置只支持[Text](../arkts-components/arkts-arkui-text-comp.md)组件和[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md)组件。
 
 **起始版本：** 11
+
+<!--Device-unnamed-declare interface TextDataDetectorConfig--><!--Device-unnamed-declare interface TextDataDetectorConfig-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ color?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextDataDetectorConfig-color?: ResourceColor--><!--Device-TextDataDetectorConfig-color?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ decoration?: DecorationStyleInterface
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextDataDetectorConfig-decoration?: DecorationStyleInterface--><!--Device-TextDataDetectorConfig-decoration?: DecorationStyleInterface-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enablePreviewMenu
@@ -82,6 +88,8 @@ enablePreviewMenu?: boolean
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextDataDetectorConfig-enablePreviewMenu?: boolean--><!--Device-TextDataDetectorConfig-enablePreviewMenu?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDetectResultUpdate
@@ -102,6 +110,8 @@ onDetectResultUpdate?: Callback<string>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextDataDetectorConfig-onDetectResultUpdate?: Callback<string>--><!--Device-TextDataDetectorConfig-onDetectResultUpdate?: Callback<string>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## types
@@ -119,5 +129,7 @@ types: TextDataDetectorType[]
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextDataDetectorConfig-types: TextDataDetectorType[]--><!--Device-TextDataDetectorConfig-types: TextDataDetectorType[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

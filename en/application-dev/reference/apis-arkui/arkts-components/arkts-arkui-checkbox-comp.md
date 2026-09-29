@@ -1,8 +1,13 @@
 # Checkbox
 
-**Checkbox** is a component that is used to enable or disable an option.
+Provides the **Checkbox** component for selection among multiple options.
 
-> **NOTE** > > Since API version 11, the default style of the **Checkbox** component is changed from rounded square to circle.
+> **NOTE:** 
+> 
+> Since API version 11, the default style of the **Checkbox** component is changed from rounded square to circle.
+> 
+> By default, this component has a [margin](arkts-arkui-common-comp-commonmethod-c.md#margin) of {&nbsp;top: '14px',&nbsp;right: '14px',&
+> nbsp;bottom: '14px',&nbsp;left: '14px' }.
 
 ## Child Components
 
@@ -14,7 +19,7 @@ Not supported
 Checkbox(options?: CheckboxOptions)
 ```
 
-Creates a check box.
+Provides **Checkbox** component for selection among multiple options.
 
 **Since:** 8
 
@@ -24,13 +29,15 @@ Creates a check box.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CheckboxInterface-(options?: CheckboxOptions): CheckboxAttribute--><!--Device-CheckboxInterface-(options?: CheckboxOptions): CheckboxAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [CheckboxOptions](arkts-arkui-checkbox-comp-checkboxoptions-i.md) | No | Check box parameters. |
+| options | [CheckboxOptions](arkts-arkui-checkbox-comp-checkboxoptions-i.md) | No | Checkbox parameters. If this parameter is not passed, the check box uses the default configuration. |
 
 ## Summary
 
@@ -38,14 +45,14 @@ Creates a check box.
 
 | Name | Description |
 | --- | --- |
-| [CheckBoxConfiguration](arkts-arkui-checkbox-comp-checkboxconfiguration-i.md) | You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md). |
+| [CheckBoxConfiguration](arkts-arkui-checkbox-comp-checkboxconfiguration-i.md) | You need a custom class to implement the **ContentModifier** API. It inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md). |
 | [CheckboxOptions](arkts-arkui-checkbox-comp-checkboxoptions-i.md) | Provides information about the check box. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [OnCheckboxChangeCallback](arkts-arkui-checkbox-comp-oncheckboxchangecallback-t.md) | Represents the callback invoked when the selected state of the check box changes. |
+| [OnCheckboxChangeCallback](arkts-arkui-checkbox-comp-oncheckboxchangecallback-t.md) | Invoked when the selected state of the check box changes. |
 
 ## Examples
 

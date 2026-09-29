@@ -20,6 +20,8 @@ Adds the auto-start applications for the current user. Applications added to the
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function addAutoStartApps(admin: Want, autoStartApps: Array<Want>): void--><!--Device-applicationManager-function addAutoStartApps(admin: Want, autoStartApps: Array<Want>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -88,6 +90,8 @@ Applications can be added to the auto-start list via this API and the [addAutoSt
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function addAutoStartApps(admin: Want, autoStartApps: Array<Want>, accountId: number, disallowModify: boolean): void--><!--Device-applicationManager-function addAutoStartApps(admin: Want, autoStartApps: Array<Want>, accountId: number, disallowModify: boolean): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -16,6 +16,8 @@ Obtains the power consumption of an application, in unit of mAh.
 
 **Since:** 8
 
+<!--Device-batteryStats-function getAppPowerValue(uid: int): double--><!--Device-batteryStats-function getAppPowerValue(uid: int): double-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryStatistics
 
 **System API:** This is a system API.

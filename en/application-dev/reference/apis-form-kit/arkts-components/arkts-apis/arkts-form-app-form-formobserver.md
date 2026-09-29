@@ -6,6 +6,8 @@ Interface of formObserver.
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace formObserver--><!--Device-unnamed-declare namespace formObserver-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

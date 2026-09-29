@@ -4,11 +4,13 @@
 declare class RepeatAttribute<T> extends DynamicNode<RepeatAttribute<T>>
 ```
 
-除支持拖拽排序属性外，还支持以下属性。
+除支持[拖拽排序](arkts-arkui-common-comp.md)属性外，还支持以下属性。
 
-**继承/实现关系：** RepeatAttribute extends DynamicNode&lt;RepeatAttribute&lt;T&gt;&gt;
+**继承/实现关系：** RepeatAttribute extends DynamicNode<RepeatAttribute<T>>
 
 **起始版本：** 12
+
+<!--Device-unnamed-declare class RepeatAttribute<T> extends DynamicNode<RepeatAttribute<T>>--><!--Device-unnamed-declare class RepeatAttribute<T> extends DynamicNode<RepeatAttribute<T>>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,6 +37,8 @@ each(itemGenerator: (repeatItem: RepeatItem<T>) => void)
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RepeatAttribute-each(itemGenerator: (repeatItem: RepeatItem<T>) => void): RepeatAttribute<T>--><!--Device-RepeatAttribute-each(itemGenerator: (repeatItem: RepeatItem<T>) => void): RepeatAttribute<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ key(keyGenerator: (item: T, index: number) => string)
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RepeatAttribute-key(keyGenerator: (item: T, index: number) => string): RepeatAttribute<T>--><!--Device-RepeatAttribute-key(keyGenerator: (item: T, index: number) => string): RepeatAttribute<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -91,6 +97,8 @@ template(type: string, itemBuilder: RepeatItemBuilder<T>, templateOptions?: Temp
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RepeatAttribute-template(type: string, itemBuilder: RepeatItemBuilder<T>, templateOptions?: TemplateOptions): RepeatAttribute<T>--><!--Device-RepeatAttribute-template(type: string, itemBuilder: RepeatItemBuilder<T>, templateOptions?: TemplateOptions): RepeatAttribute<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,6 +128,8 @@ templateId(typedFunc: TemplateTypedFunc<T>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RepeatAttribute-templateId(typedFunc: TemplateTypedFunc<T>): RepeatAttribute<T>--><!--Device-RepeatAttribute-templateId(typedFunc: TemplateTypedFunc<T>): RepeatAttribute<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -145,6 +155,8 @@ virtualScroll(virtualScrollOptions?: VirtualScrollOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RepeatAttribute-virtualScroll(virtualScrollOptions?: VirtualScrollOptions): RepeatAttribute<T>--><!--Device-RepeatAttribute-virtualScroll(virtualScrollOptions?: VirtualScrollOptions): RepeatAttribute<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

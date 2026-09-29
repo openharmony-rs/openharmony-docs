@@ -8,6 +8,8 @@ Represents the cloud information.
 
 **Since:** 11
 
+<!--Device-cloudExtension-export interface CloudInfo--><!--Device-cloudExtension-export interface CloudInfo-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Brief application information.
 
 **Since:** 11
 
+<!--Device-CloudInfo-apps: Record<string, AppBriefInfo>--><!--Device-CloudInfo-apps: Record<string, AppBriefInfo>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Cloud service information.
 **Type:** [ServiceInfo](arkts-arkdata-cloudextension-serviceinfo-i-sys.md)
 
 **Since:** 11
+
+<!--Device-CloudInfo-cloudInfo: ServiceInfo--><!--Device-CloudInfo-cloudInfo: ServiceInfo-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 

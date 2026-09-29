@@ -4,6 +4,8 @@ The **netFirewall** module implements the network firewall functionality for app
 
 **Since:** 14
 
+<!--Device-unnamed-declare namespace netFirewall--><!--Device-unnamed-declare namespace netFirewall-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## Modules to Import

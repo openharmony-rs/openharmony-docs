@@ -8,6 +8,8 @@ Provides visibility information about the same-layer tag, including the visibili
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface NativeEmbedVisibilityInfo--><!--Device-unnamed-declare interface NativeEmbedVisibilityInfo-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## embedId
@@ -21,6 +23,8 @@ ID of the same-layer rendered tag.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-NativeEmbedVisibilityInfo-embedId: string--><!--Device-NativeEmbedVisibilityInfo-embedId: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -37,5 +41,7 @@ The value **true** indicates that the same-layer tag is visible, and **false** i
 **Type:** boolean
 
 **Since:** 12
+
+<!--Device-NativeEmbedVisibilityInfo-visibility: boolean--><!--Device-NativeEmbedVisibilityInfo-visibility: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

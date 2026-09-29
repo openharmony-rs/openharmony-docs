@@ -12,6 +12,8 @@ Defines the **EnableAlertBeforeBackPage** parameter.
 
 **Substitutes:** [EnableAlertOptions](arkts-arkui-router-enablealertoptions-i.md)
 
+<!--Device-unnamed-export interface EnableAlertBeforeBackPageOptions--><!--Device-unnamed-export interface EnableAlertBeforeBackPageOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Called when the **Cancel** button in the confirm dialog box is clicked. **errMsg
 **Deprecated since:** 8
 
 **Substitutes:** [EnableAlertOptions](arkts-arkui-router-enablealertoptions-i.md)
+
+<!--Device-EnableAlertBeforeBackPageOptions-cancel?: (errMsg: string) => void--><!--Device-EnableAlertBeforeBackPageOptions-cancel?: (errMsg: string) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Called when the dialog box is closed.
 
 **Substitutes:** [EnableAlertOptions](arkts-arkui-router-enablealertoptions-i.md)
 
+<!--Device-EnableAlertBeforeBackPageOptions-complete?: () => void--><!--Device-EnableAlertBeforeBackPageOptions-complete?: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## success
@@ -71,6 +77,8 @@ Called when the **OK** button in the confirm dialog box is clicked. **errMsg** i
 **Deprecated since:** 8
 
 **Substitutes:** [EnableAlertOptions](arkts-arkui-router-enablealertoptions-i.md)
+
+<!--Device-EnableAlertBeforeBackPageOptions-success?: (errMsg: string) => void--><!--Device-EnableAlertBeforeBackPageOptions-success?: (errMsg: string) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,5 +103,7 @@ Content displayed in the confirm dialog box.
 **Deprecated since:** 8
 
 **Substitutes:** message
+
+<!--Device-EnableAlertBeforeBackPageOptions-message: string--><!--Device-EnableAlertBeforeBackPageOptions-message: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

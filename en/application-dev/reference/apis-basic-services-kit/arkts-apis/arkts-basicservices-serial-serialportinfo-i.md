@@ -8,6 +8,8 @@ Describes the serial port information.
 
 **Since:** 26.0.0
 
+<!--Device-serial-interface SerialPortInfo--><!--Device-serial-interface SerialPortInfo-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Manufacturer name of the USB virtual serial port.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialPortInfo-manufacturer?: string--><!--Device-SerialPortInfo-manufacturer?: string-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 ## portName
@@ -45,6 +49,8 @@ Port name.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialPortInfo-portName: string--><!--Device-SerialPortInfo-portName: string-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 
@@ -62,6 +68,8 @@ Product ID of the USB virtual serial port.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialPortInfo-productId?: int--><!--Device-SerialPortInfo-productId?: int-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 ## vendorId
@@ -77,5 +85,7 @@ Vendor ID of the USB virtual serial port.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialPortInfo-vendorId?: int--><!--Device-SerialPortInfo-vendorId?: int-End-->
 
 **System capability:** SystemCapability.BusManager.Serial

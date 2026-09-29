@@ -8,6 +8,8 @@ Represents gesture path information, used to simulate user touch gestures (such 
 
 **Since:** 9
 
+<!--Device-unnamed-export declare class GesturePath--><!--Device-unnamed-export declare class GesturePath-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Creates a gesture path object by passing in the total gesture duration. After cr
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-GesturePath-constructor(durationTime: long)--><!--Device-GesturePath-constructor(durationTime: long)-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -59,6 +63,8 @@ Total gesture duration, in ms. The value must be greater than 0.
 
 **Since:** 9
 
+<!--Device-GesturePath-durationTime: long--><!--Device-GesturePath-durationTime: long-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## points
@@ -72,5 +78,7 @@ Sequence of touch points on the gesture path, used to form the movement trajecto
 **Type:** Array&lt;[GesturePoint](arkts-accessibility-accessibility-gesturepoint-gesturepoint-c.md)&gt;
 
 **Since:** 9
+
+<!--Device-GesturePath-points: Array<GesturePoint>--><!--Device-GesturePath-points: Array<GesturePoint>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core

@@ -13,6 +13,8 @@ Intended only for the **UIExtensionComponent** that has process isolation requir
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace uiExtensionHost--><!--Device-unnamed-declare namespace uiExtensionHost-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

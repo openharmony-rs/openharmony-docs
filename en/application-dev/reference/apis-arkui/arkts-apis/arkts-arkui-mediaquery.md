@@ -10,6 +10,8 @@ The **mediaquery** module provides different styles for different media types.
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace mediaquery--><!--Device-unnamed-declare namespace mediaquery-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import

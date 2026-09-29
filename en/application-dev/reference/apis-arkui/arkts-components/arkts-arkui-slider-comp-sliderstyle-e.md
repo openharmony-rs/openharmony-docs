@@ -18,6 +18,8 @@ Enumerates the display styles of the slider thumb relative to the track. For det
 
 **Since:** 7
 
+<!--Device-unnamed-declare enum SliderStyle--><!--Device-unnamed-declare enum SliderStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## OutSet
@@ -35,6 +37,8 @@ The thumb is on the track.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-SliderStyle-OutSet--><!--Device-SliderStyle-OutSet-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ The thumb is in the track.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SliderStyle-InSet--><!--Device-SliderStyle-InSet-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## NONE
@@ -71,5 +77,7 @@ There is no thumb.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-SliderStyle-NONE--><!--Device-SliderStyle-NONE-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

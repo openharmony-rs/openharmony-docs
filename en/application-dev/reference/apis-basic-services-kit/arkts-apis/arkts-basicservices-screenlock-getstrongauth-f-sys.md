@@ -18,6 +18,8 @@ Obtain strong authentication reason flags for os account local userId.
 
 **Required permissions:** ohos.permission.ACCESS_SCREEN_LOCK
 
+<!--Device-screenLock-function getStrongAuth(userId: int): int--><!--Device-screenLock-function getStrongAuth(userId: int): int-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **System API:** This is a system API.

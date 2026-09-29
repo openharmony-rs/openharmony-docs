@@ -30,6 +30,8 @@ Creates and displays an action menu. This API uses an asynchronous callback to r
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-promptAction-function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>): void--><!--Device-promptAction-function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -202,6 +204,8 @@ Creates and displays an action menu in the given settings. This API uses a promi
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-promptAction-function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>--><!--Device-promptAction-function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

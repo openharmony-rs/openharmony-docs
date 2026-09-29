@@ -22,6 +22,8 @@ Canceling a P2P connection.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifi-function p2pCancelConnect(): boolean--><!--Device-wifi-function p2pCancelConnect(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Return value:**

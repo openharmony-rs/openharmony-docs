@@ -8,6 +8,8 @@ Enumerates the states of a page during routing. **RouterPageState** is used in [
 
 **Since:** 11
 
+<!--Device-uiObserver-export enum RouterPageState--><!--Device-uiObserver-export enum RouterPageState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ABOUT_TO_APPEAR
@@ -23,6 +25,8 @@ The page is about to be displayed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RouterPageState-ABOUT_TO_APPEAR = 0--><!--Device-RouterPageState-ABOUT_TO_APPEAR = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ The page is about to be destroyed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RouterPageState-ABOUT_TO_DISAPPEAR = 1--><!--Device-RouterPageState-ABOUT_TO_DISAPPEAR = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ON_PAGE_SHOW
@@ -55,6 +61,8 @@ The page is displayed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RouterPageState-ON_PAGE_SHOW = 2--><!--Device-RouterPageState-ON_PAGE_SHOW = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ The page is hidden.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RouterPageState-ON_PAGE_HIDE = 3--><!--Device-RouterPageState-ON_PAGE_HIDE = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ON_BACK_PRESS
@@ -87,5 +97,7 @@ The page is returned.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RouterPageState-ON_BACK_PRESS = 4--><!--Device-RouterPageState-ON_BACK_PRESS = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

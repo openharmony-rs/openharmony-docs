@@ -8,6 +8,8 @@ Defines a number mark.
 
 **Since:** 12
 
+<!--Device-call-export interface NumberMarkInfo--><!--Device-call-export interface NumberMarkInfo-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -33,6 +35,8 @@ Whether the number mark is from the cloud. The default value is **false**.
 
 **Since:** 12
 
+<!--Device-NumberMarkInfo-isCloud?: boolean--><!--Device-NumberMarkInfo-isCloud?: boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ Mark content. When **markType** is set to **MARK_TYPE_ENTERPRISE**, the returned
 **Type:** string
 
 **Since:** 12
+
+<!--Device-NumberMarkInfo-markContent?: string--><!--Device-NumberMarkInfo-markContent?: string-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -65,6 +71,8 @@ Mark count.
 
 **Since:** 12
 
+<!--Device-NumberMarkInfo-markCount?: int--><!--Device-NumberMarkInfo-markCount?: int-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -80,6 +88,8 @@ Mark details. When **markType** is set to **MARK_TYPE_ENTERPRISE**, the value of
 **Type:** string
 
 **Since:** 14
+
+<!--Device-NumberMarkInfo-markDetails?: string--><!--Device-NumberMarkInfo-markDetails?: string-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -97,6 +107,8 @@ Mark source.
 
 **Since:** 12
 
+<!--Device-NumberMarkInfo-markSource?: string--><!--Device-NumberMarkInfo-markSource?: string-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -112,6 +124,8 @@ Mark type.
 **Type:** [MarkType](arkts-telephony-call-marktype-e-sys.md)
 
 **Since:** 12
+
+<!--Device-NumberMarkInfo-markType: MarkType--><!--Device-NumberMarkInfo-markType: MarkType-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

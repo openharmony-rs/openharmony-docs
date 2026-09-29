@@ -8,6 +8,8 @@ Application instance
 
 **Since:** 20
 
+<!--Device-securityManager-export interface ApplicationInstance--><!--Device-securityManager-export interface ApplicationInstance-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ User ID, which must be greater than or equal to 0. You can call [getOsAccountLoc
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInstance-accountId: number--><!--Device-ApplicationInstance-accountId: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## appIdentifier
@@ -45,6 +49,8 @@ The [unique identifier](../../apis-ability-kit/arkts-apis/arkts-ability-bundlein
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInstance-appIdentifier: string--><!--Device-ApplicationInstance-appIdentifier: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -63,5 +69,7 @@ If **appIndex** is set to **0**, the main application is used. If **appIndex** i
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInstance-appIndex: number--><!--Device-ApplicationInstance-appIndex: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

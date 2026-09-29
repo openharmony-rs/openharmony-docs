@@ -10,6 +10,8 @@ interface SwipeGestureHandlerOptions extends BaseHandlerOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface SwipeGestureHandlerOptions extends BaseHandlerOptions--><!--Device-unnamed-interface SwipeGestureHandlerOptions extends BaseHandlerOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -29,6 +31,8 @@ direction?: SwipeDirection
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwipeGestureHandlerOptions-direction?: SwipeDirection--><!--Device-SwipeGestureHandlerOptions-direction?: SwipeDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ fingers?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwipeGestureHandlerOptions-fingers?: number--><!--Device-SwipeGestureHandlerOptions-fingers?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,5 +81,7 @@ speed?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwipeGestureHandlerOptions-speed?: number--><!--Device-SwipeGestureHandlerOptions-speed?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

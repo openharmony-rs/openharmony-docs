@@ -8,6 +8,8 @@ declare enum ScrollSnapAnimationSpeed
 
 **起始版本：** 22
 
+<!--Device-unnamed-declare enum ScrollSnapAnimationSpeed--><!--Device-unnamed-declare enum ScrollSnapAnimationSpeed-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NORMAL
@@ -24,6 +26,8 @@ NORMAL = 0
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-ScrollSnapAnimationSpeed-NORMAL = 0--><!--Device-ScrollSnapAnimationSpeed-NORMAL = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SLOW
@@ -39,5 +43,7 @@ SLOW = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScrollSnapAnimationSpeed-SLOW = 1--><!--Device-ScrollSnapAnimationSpeed-SLOW = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

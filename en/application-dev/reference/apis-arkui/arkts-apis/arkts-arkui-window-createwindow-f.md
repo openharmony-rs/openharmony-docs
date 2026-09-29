@@ -24,7 +24,9 @@ In freeform window mode, the child window created uses an immersive layout when 
 - API version 12 and later: ohos.permission.SYSTEM_FLOAT_WINDOW
 - API versions 9 to 11: N/A
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-window-function createWindow(config: Configuration, callback: AsyncCallback<Window>): void--><!--Device-window-function createWindow(config: Configuration, callback: AsyncCallback<Window>): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -103,7 +105,9 @@ In freeform window mode, the child window created uses an immersive layout when 
 - API version 12 and later: ohos.permission.SYSTEM_FLOAT_WINDOW
 - API versions 9 to 11: N/A
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-window-function createWindow(config: Configuration): Promise<Window>--><!--Device-window-function createWindow(config: Configuration): Promise<Window>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

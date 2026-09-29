@@ -1,10 +1,12 @@
-# @ohos.multimodalAwareness.onScreen
+# @ohos.multimodalAwareness.onScreen(Onscreen awareness)
 
 This module provides the onscreen awareness capability.
 
 > **NOTE:** &gt;
 
 **Since:** 20
+
+<!--Device-unnamed-declare namespace onScreen--><!--Device-unnamed-declare namespace onScreen-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 

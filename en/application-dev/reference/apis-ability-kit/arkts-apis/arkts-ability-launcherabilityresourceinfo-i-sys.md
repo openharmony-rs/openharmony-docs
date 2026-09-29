@@ -12,6 +12,8 @@ The module provides resource information of the entry ability of an application,
 
 **Since:** 11
 
+<!--Device-unnamed-export interface LauncherAbilityResourceInfo--><!--Device-unnamed-export interface LauncherAbilityResourceInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ Name of the entry ability.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-LauncherAbilityResourceInfo-readonly abilityName: string--><!--Device-LauncherAbilityResourceInfo-readonly abilityName: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -44,6 +48,8 @@ Index of an application clone.
 
 **Since:** 12
 
+<!--Device-LauncherAbilityResourceInfo-readonly appIndex: int--><!--Device-LauncherAbilityResourceInfo-readonly appIndex: int-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
 **System API:** This is a system API.
@@ -59,6 +65,8 @@ Bundle name of the application.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-LauncherAbilityResourceInfo-readonly bundleName: string--><!--Device-LauncherAbilityResourceInfo-readonly bundleName: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -76,6 +84,8 @@ readonly drawableDescriptor: DrawableDescriptor
 
 **Since:** 12
 
+<!--Device-LauncherAbilityResourceInfo-readonly drawableDescriptor: DrawableDescriptor--><!--Device-LauncherAbilityResourceInfo-readonly drawableDescriptor: DrawableDescriptor-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
 **System API:** This is a system API.
@@ -91,6 +101,8 @@ Application icon, which is encoded using Base64.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-LauncherAbilityResourceInfo-readonly icon: string--><!--Device-LauncherAbilityResourceInfo-readonly icon: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
@@ -108,6 +120,8 @@ Application label.
 
 **Since:** 11
 
+<!--Device-LauncherAbilityResourceInfo-readonly label: string--><!--Device-LauncherAbilityResourceInfo-readonly label: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
 **System API:** This is a system API.
@@ -123,6 +137,8 @@ Module name of the application.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-LauncherAbilityResourceInfo-readonly moduleName: string--><!--Device-LauncherAbilityResourceInfo-readonly moduleName: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 

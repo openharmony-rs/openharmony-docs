@@ -18,6 +18,8 @@ Sets the voice mail information.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-sim-function setVoiceMailInfo(slotId: int, mailName: string, mailNumber: string, callback: AsyncCallback<void>): void--><!--Device-sim-function setVoiceMailInfo(slotId: int, mailName: string, mailNumber: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Sets the voice mail information.
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-sim-function setVoiceMailInfo(slotId: int, mailName: string, mailNumber: string): Promise<void>--><!--Device-sim-function setVoiceMailInfo(slotId: int, mailName: string, mailNumber: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

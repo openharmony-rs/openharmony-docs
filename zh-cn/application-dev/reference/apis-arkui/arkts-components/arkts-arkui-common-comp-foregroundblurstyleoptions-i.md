@@ -14,4 +14,6 @@ declare interface ForegroundBlurStyleOptions extends BlurStyleOptions
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare interface ForegroundBlurStyleOptions extends BlurStyleOptions--><!--Device-unnamed-declare interface ForegroundBlurStyleOptions extends BlurStyleOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

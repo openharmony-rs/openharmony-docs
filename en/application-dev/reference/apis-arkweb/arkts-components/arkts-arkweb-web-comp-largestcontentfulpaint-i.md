@@ -8,6 +8,8 @@ Provides detailed information about the largest contentful paint on the web page
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface LargestContentfulPaint--><!--Device-unnamed-declare interface LargestContentfulPaint-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## imageBPP
@@ -23,6 +25,8 @@ Number of pixels of the maximum image.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LargestContentfulPaint-imageBPP?: number--><!--Device-LargestContentfulPaint-imageBPP?: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -40,6 +44,8 @@ End time of the loading of the maximum image, in milliseconds.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LargestContentfulPaint-largestImageLoadEndTime?: number--><!--Device-LargestContentfulPaint-largestImageLoadEndTime?: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## largestImageLoadStartTime
@@ -55,6 +61,8 @@ Start time of the loading of the maximum image, in milliseconds.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LargestContentfulPaint-largestImageLoadStartTime?: number--><!--Device-LargestContentfulPaint-largestImageLoadStartTime?: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -72,6 +80,8 @@ Loading time of the maximum image, in milliseconds.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LargestContentfulPaint-largestImagePaintTime?: number--><!--Device-LargestContentfulPaint-largestImagePaintTime?: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## largestTextPaintTime
@@ -88,6 +98,8 @@ Loading time of the maximum text, in milliseconds.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LargestContentfulPaint-largestTextPaintTime?: number--><!--Device-LargestContentfulPaint-largestTextPaintTime?: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## navigationStartTime
@@ -103,5 +115,7 @@ Start time of the navigation, in microseconds.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LargestContentfulPaint-navigationStartTime?: number--><!--Device-LargestContentfulPaint-navigationStartTime?: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

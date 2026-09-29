@@ -8,6 +8,8 @@ Provides parameters for system adaptive adjustments. By default, the system perf
 
 **Since:** 19
 
+<!--Device-unnamed-declare interface SystemAdaptiveOptions--><!--Device-unnamed-declare interface SystemAdaptiveOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## disableSystemAdaptation
@@ -29,5 +31,7 @@ Default value: **false**
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 19.
+
+<!--Device-SystemAdaptiveOptions-disableSystemAdaptation?: boolean--><!--Device-SystemAdaptiveOptions-disableSystemAdaptation?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

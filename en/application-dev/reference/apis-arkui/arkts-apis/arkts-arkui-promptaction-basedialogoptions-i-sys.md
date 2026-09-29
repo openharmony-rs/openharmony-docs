@@ -8,6 +8,8 @@ Defines the options of the dialog box.
 
 **Since:** 11
 
+<!--Device-promptAction-interface BaseDialogOptions--><!--Device-promptAction-interface BaseDialogOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Sets the distortion animation Mode of the dialog.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BaseDialogOptions-distortionMode?: DistortionMode--><!--Device-BaseDialogOptions-distortionMode?: DistortionMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Sets the edgeLight animation Mode of the dialog.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BaseDialogOptions-edgeLightMode?: EdgeLightMode--><!--Device-BaseDialogOptions-edgeLightMode?: EdgeLightMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

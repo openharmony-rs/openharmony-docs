@@ -15,6 +15,8 @@ The **file.recent** module provides APIs for managing the list of recently acces
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace recent--><!--Device-unnamed-declare namespace recent-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Describes the profile of depth data. It inherits from [Profile](arkts-camera-cam
 
 **Since:** 13
 
+<!--Device-camera-interface DepthProfile--><!--Device-camera-interface DepthProfile-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Accuracy of the depth data, which can be either relative accuracy or absolute ac
 
 **Since:** 13
 
+<!--Device-DepthProfile-readonly dataAccuracy: DepthDataAccuracy--><!--Device-DepthProfile-readonly dataAccuracy: DepthDataAccuracy-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Camera output format.
 
 **Since:** 13
 
+<!--Device-DepthProfile-readonly format: CameraFormat--><!--Device-DepthProfile-readonly format: CameraFormat-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Depth data resolution.
 **Type:** Size
 
 **Since:** 13
+
+<!--Device-DepthProfile-readonly size: Size--><!--Device-DepthProfile-readonly size: Size-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

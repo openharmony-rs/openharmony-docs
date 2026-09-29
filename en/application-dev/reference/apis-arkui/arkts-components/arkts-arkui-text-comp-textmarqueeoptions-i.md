@@ -8,6 +8,8 @@ Describes the initialization options of the **Marquee** component.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface TextMarqueeOptions--><!--Device-unnamed-declare interface TextMarqueeOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## delay
@@ -17,6 +19,8 @@ delay?: number
 ```
 
 Time interval between scroll movements.
+
+The value range is [0, +∞). If the value is a negative number, the default value is used.
 
 Default value: **0**
 
@@ -29,6 +33,8 @@ Unit: millisecond
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TextMarqueeOptions-delay?: number--><!--Device-TextMarqueeOptions-delay?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +60,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextMarqueeOptions-fadeout?: boolean--><!--Device-TextMarqueeOptions-fadeout?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fromStart
@@ -76,6 +84,8 @@ Default value: **true**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextMarqueeOptions-fromStart?: boolean--><!--Device-TextMarqueeOptions-fromStart?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## loop
@@ -96,6 +106,8 @@ Default value: **-1**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextMarqueeOptions-loop?: number--><!--Device-TextMarqueeOptions-loop?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## marqueeStartPolicy
@@ -106,7 +118,7 @@ marqueeStartPolicy?: MarqueeStartPolicy
 
 Policy for starting the marquee. This attribute takes effect only when **start** is set to **true**.
 
-Default value: **MarqueeStartPolicy.DEFAULT**
+Default value: **MarqueeStartPolicy.ON_FOCUS** for TVs and **MarqueeStartPolicy.DEFAULT** for other devices
 
 **Type:** [MarqueeStartPolicy](arkts-arkui-text-comp-marqueestartpolicy-e.md)
 
@@ -115,6 +127,8 @@ Default value: **MarqueeStartPolicy.DEFAULT**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TextMarqueeOptions-marqueeStartPolicy?: MarqueeStartPolicy--><!--Device-TextMarqueeOptions-marqueeStartPolicy?: MarqueeStartPolicy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,6 +152,8 @@ Default value: **MarqueeUpdatePolicy.DEFAULT**
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-TextMarqueeOptions-marqueeUpdatePolicy?: MarqueeUpdatePolicy--><!--Device-TextMarqueeOptions-marqueeUpdatePolicy?: MarqueeUpdatePolicy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## spacing
@@ -146,9 +162,11 @@ Default value: **MarqueeUpdatePolicy.DEFAULT**
 spacing?: LengthMetrics
 ```
 
-Spacing between two marquee rounds. If the unit of **LengthMetrics** is **PERCENT**, the current setting does not take effect and the default value is used.
+Spacing between two rounds of the marquee. Unit: vp. When the unit attribute of the LengthMetrics object is LengthUnit.PERCENT, the current setting does not take effect and the default value is used.
 
-Default value: **48.0vp**
+Default value: 48.0vp
+
+**Atomic service API:** Since API version 23, this API can be used in atomic services.
 
 **Type:** LengthMetrics
 
@@ -157,6 +175,8 @@ Default value: **48.0vp**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-TextMarqueeOptions-spacing?: LengthMetrics--><!--Device-TextMarqueeOptions-spacing?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,6 +198,8 @@ Whether to start the marquee.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextMarqueeOptions-start: boolean--><!--Device-TextMarqueeOptions-start: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## step
@@ -188,6 +210,10 @@ step?: number
 
 Step length of the scrolling animation text.
 
+Unit: vp
+
+Value range: (0, Text width]. If this parameter is set to a value less than or equal to 0, the default value is used.
+
 Default value: **4.0** (in vp)
 
 **Type:** number
@@ -197,5 +223,7 @@ Default value: **4.0** (in vp)
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TextMarqueeOptions-step?: number--><!--Device-TextMarqueeOptions-step?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -14,6 +14,8 @@ Manager a2dp source profile.
 
 **Substitutes:** [A2dpSourceProfile](arkts-connectivity-bluetoothmanager-a2dpsourceprofile-i.md)
 
+<!--Device-bluetooth-interface A2dpSourceProfile extends BaseProfile--><!--Device-bluetooth-interface A2dpSourceProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Connect to device with a2dp.
 **Substitutes:** [connect](arkts-connectivity-bluetoothmanager-a2dpsourceprofile-i.md#connect)
 
 **Required permissions:** ohos.permission.DISCOVER_BLUETOOTH
+
+<!--Device-A2dpSourceProfile-connect(device: string): boolean--><!--Device-A2dpSourceProfile-connect(device: string): boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -75,6 +79,8 @@ Disconnect to device with a2dp.
 
 **Required permissions:** ohos.permission.DISCOVER_BLUETOOTH
 
+<!--Device-A2dpSourceProfile-disconnect(device: string): boolean--><!--Device-A2dpSourceProfile-disconnect(device: string): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -109,6 +115,8 @@ Obtains the playing state of device.
 **Deprecated since:** 9
 
 **Substitutes:** [getPlayingState](arkts-connectivity-bluetoothmanager-a2dpsourceprofile-i.md#getplayingstate)
+
+<!--Device-A2dpSourceProfile-getPlayingState(device: string): PlayingState--><!--Device-A2dpSourceProfile-getPlayingState(device: string): PlayingState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -145,6 +153,8 @@ Unsubscribe the event reported when the profile connection state changes .
 
 **Substitutes:** connectionStateChange
 
+<!--Device-A2dpSourceProfile-off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void--><!--Device-A2dpSourceProfile-off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -167,6 +177,8 @@ Subscribe the event reported when the profile connection state changes .
 **Deprecated since:** 9
 
 **Substitutes:** connectionStateChange
+
+<!--Device-A2dpSourceProfile-on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void--><!--Device-A2dpSourceProfile-on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

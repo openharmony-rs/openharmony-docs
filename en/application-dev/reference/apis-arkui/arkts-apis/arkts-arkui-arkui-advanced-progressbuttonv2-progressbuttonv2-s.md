@@ -10,6 +10,8 @@ Declare Component ProgressButtonV2
 
 **Decorator:** @ComponentV2
 
+<!--Device-unnamed-export declare struct ProgressButtonV2--><!--Device-unnamed-export declare struct ProgressButtonV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Sets the ProgressButtonV2 onClicked.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ProgressButtonV2-readonly onClicked: ClickCallback--><!--Device-ProgressButtonV2-readonly onClicked: ClickCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorOptions
@@ -49,6 +53,8 @@ Set Color options of the ProgressButtonV2.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ProgressButtonV2-colorOptions?: ProgressButtonV2Color--><!--Device-ProgressButtonV2-colorOptions?: ProgressButtonV2Color-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ Sets the ProgressButtonV2 content.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ProgressButtonV2-readonly content: ResourceStr--><!--Device-ProgressButtonV2-readonly content: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isEnabled
@@ -87,6 +95,8 @@ Sets the ProgressButtonV2 isEnabled state.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ProgressButtonV2-readonly isEnabled: boolean--><!--Device-ProgressButtonV2-readonly isEnabled: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +118,8 @@ Sets the ProgressButtonV2 progress.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ProgressButtonV2-readonly progress: number--><!--Device-ProgressButtonV2-readonly progress: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## progressButtonRadius
@@ -126,6 +138,8 @@ Set border rounded corner radius of progress.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ProgressButtonV2-progressButtonRadius?: LengthMetrics--><!--Device-ProgressButtonV2-progressButtonRadius?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## progressButtonWidth
@@ -143,5 +157,7 @@ Sets the ProgressButtonV2 progressButtonWidth.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ProgressButtonV2-progressButtonWidth?: LengthMetrics--><!--Device-ProgressButtonV2-progressButtonWidth?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

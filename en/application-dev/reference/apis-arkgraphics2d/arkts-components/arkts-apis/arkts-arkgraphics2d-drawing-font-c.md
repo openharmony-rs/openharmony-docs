@@ -14,6 +14,8 @@ Describes the attributes used for text rendering, such as size and typeface.
 
 **Since:** 11
 
+<!--Device-drawing-class Font--><!--Device-drawing-class Font-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -32,7 +34,9 @@ Obtains the number of glyphs represented by text.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-countText(text: string): int--><!--Device-Font-countText(text: string): int-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -75,6 +79,8 @@ Obtains the outline path of a glyph.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Font-createPathForGlyph(index: number): Path--><!--Device-Font-createPathForGlyph(index: number): Path-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -121,7 +127,9 @@ Enables emboldened fonts.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-enableEmbolden(isEmbolden: boolean): void--><!--Device-Font-enableEmbolden(isEmbolden: boolean): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -156,7 +164,9 @@ Enables linear font scaling.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-enableLinearMetrics(isLinearMetrics: boolean): void--><!--Device-Font-enableLinearMetrics(isLinearMetrics: boolean): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -191,7 +201,9 @@ Enables subpixel font rendering.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-enableSubpixel(isSubpixel: boolean): void--><!--Device-Font-enableSubpixel(isSubpixel: boolean): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -227,6 +239,8 @@ Obtains the rectangular bounding box of each glyph in an array.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Font-getBounds(glyphs: Array<number>): Array<common2D.Rect>--><!--Device-Font-getBounds(glyphs: Array<number>): Array<common2D.Rect>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -269,6 +283,8 @@ Obtains the font edging effect.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-Font-getEdging(): FontEdging--><!--Device-Font-getEdging(): FontEdging-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -297,6 +313,8 @@ Obtains the font hinting effect.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Font-getHinting(): FontHinting--><!--Device-Font-getHinting(): FontHinting-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -327,6 +345,8 @@ Obtains the font metrics of the typeface.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-Font-getMetrics(): FontMetrics--><!--Device-Font-getMetrics(): FontMetrics-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -354,7 +374,9 @@ Obtains the horizontal scale ratio of this font.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-getScaleX(): double--><!--Device-Font-getScaleX(): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -384,7 +406,9 @@ Obtains the font size.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-getSize(): double--><!--Device-Font-getSize(): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -414,7 +438,9 @@ Obtains the horizontal skew factor of this font.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-getSkewX(): double--><!--Device-Font-getSkewX(): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -445,6 +471,8 @@ Obtains the outline path of a text.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Font-getTextPath(text: string, byteLength: number, x: number, y: number): Path--><!--Device-Font-getTextPath(text: string, byteLength: number, x: number, y: number): Path-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -501,6 +529,8 @@ Gets the path outline for the given text with font fallback support.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Font-getTextPathWithFallback(text: string, byteLength: number, x: number, y: number): Path--><!--Device-Font-getTextPathWithFallback(text: string, byteLength: number, x: number, y: number): Path-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -553,6 +583,8 @@ Obtains the typeface.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-Font-getTypeface(): Typeface--><!--Device-Font-getTypeface(): Typeface-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -581,6 +613,8 @@ Obtains the width of each glyph in an array.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Font-getWidths(glyphs: Array<number>): Array<number>--><!--Device-Font-getWidths(glyphs: Array<number>): Array<number>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -626,7 +660,9 @@ Checks whether baselines are requested to be snapped to pixels when the current 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-isBaselineSnap(): boolean--><!--Device-Font-isBaselineSnap(): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -657,7 +693,9 @@ Checks whether bitmaps are used in this font.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-isEmbeddedBitmaps(): boolean--><!--Device-Font-isEmbeddedBitmaps(): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -688,7 +726,9 @@ Checks whether the bold effect is set for this font.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-isEmbolden(): boolean--><!--Device-Font-isEmbolden(): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -718,7 +758,9 @@ Checks whether auto hinting is forcibly used.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-isForceAutoHinting(): boolean--><!--Device-Font-isForceAutoHinting(): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -749,7 +791,9 @@ Checks whether linear scaling is used for this font.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-isLinearMetrics(): boolean--><!--Device-Font-isLinearMetrics(): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -779,7 +823,9 @@ Checks whether sub-pixel rendering is used for a font.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-isSubpixel(): boolean--><!--Device-Font-isSubpixel(): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -809,7 +855,9 @@ Checks whether the font follows the theme font. By default, the font follows the
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-isThemeFontFollowed(): boolean--><!--Device-Font-isThemeFontFollowed(): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -839,7 +887,9 @@ Measures the width of a single character. If the typeface of the current font do
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-measureSingleCharacter(text: string): double--><!--Device-Font-measureSingleCharacter(text: string): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -887,7 +937,9 @@ Measures the width of a single character with font features. If the typeface of 
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-measureSingleCharacterWithFeatures(text: string, features: Array<FontFeature>): double--><!--Device-Font-measureSingleCharacterWithFeatures(text: string, features: Array<FontFeature>): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -942,7 +994,9 @@ Measures the text width.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-measureText(text: string, encoding: TextEncoding): double--><!--Device-Font-measureText(text: string, encoding: TextEncoding): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -986,6 +1040,8 @@ Measures the width of text with font fallback support. When the typeface of the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Font-measureTextWithFallback(text: string, encoding: TextEncoding): number--><!--Device-Font-measureTextWithFallback(text: string, encoding: TextEncoding): number-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -1017,7 +1073,9 @@ Sets whether to request that baselines be snapped to pixels when the current can
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-setBaselineSnap(isBaselineSnap: boolean): void--><!--Device-Font-setBaselineSnap(isBaselineSnap: boolean): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1053,7 +1111,9 @@ Sets a font edging effect.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-setEdging(edging: FontEdging): void--><!--Device-Font-setEdging(edging: FontEdging): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1088,7 +1148,9 @@ Sets whether to use bitmaps in this font.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void--><!--Device-Font-setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1125,7 +1187,9 @@ Sets whether to forcibly use auto hinting, that is, whether to always hint glyph
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-setForceAutoHinting(isForceAutoHinting: boolean): void--><!--Device-Font-setForceAutoHinting(isForceAutoHinting: boolean): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1162,7 +1226,9 @@ Sets a font hinting effect.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-setHinting(hinting: FontHinting): void--><!--Device-Font-setHinting(hinting: FontHinting): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1197,7 +1263,9 @@ Sets a horizontal scale factor for this font.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-setScaleX(scaleX: double): void--><!--Device-Font-setScaleX(scaleX: double): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1245,7 +1313,9 @@ Sets the font size.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-setSize(textSize: double): void--><!--Device-Font-setSize(textSize: double): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1280,7 +1350,9 @@ Sets a horizontal skew factor for this font.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-setSkewX(skewX: double): void--><!--Device-Font-setSkewX(skewX: double): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1328,7 +1400,9 @@ Sets whether to follow the theme font. When **followed** is set to **true**, the
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-setThemeFontFollowed(followed: boolean): void--><!--Device-Font-setThemeFontFollowed(followed: boolean): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1364,7 +1438,9 @@ Sets the typeface style (including attributes such as font name, weight, and ita
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Font-setTypeface(typeface: Typeface): void--><!--Device-Font-setTypeface(typeface: Typeface): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1400,6 +1476,8 @@ Converts text into glyph indexes.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Font-textToGlyphs(text: string, glyphCount?: number): Array<number>--><!--Device-Font-textToGlyphs(text: string, glyphCount?: number): Array<number>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -1444,6 +1522,8 @@ Converts text into glyph indices with font fallback support. When the typeface o
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Font-textToGlyphsWithFallback(text: string, glyphCount?: number): Array<TypefaceFallbackInfo>--><!--Device-Font-textToGlyphsWithFallback(text: string, glyphCount?: number): Array<TypefaceFallbackInfo>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

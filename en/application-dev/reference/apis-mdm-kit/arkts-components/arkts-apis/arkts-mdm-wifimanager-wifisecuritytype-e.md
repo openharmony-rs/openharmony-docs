@@ -8,6 +8,8 @@ Enumerates the Wi-Fi security types.
 
 **Since:** 12
 
+<!--Device-wifiManager-enum WifiSecurityType--><!--Device-wifiManager-enum WifiSecurityType-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## WIFI_SEC_TYPE_INVALID
@@ -21,6 +23,8 @@ Invalid security type. For example, airport public Wi-Fi.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_INVALID = 0--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_INVALID = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,6 +40,8 @@ Open security type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_OPEN = 1--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_OPEN = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## WIFI_SEC_TYPE_WEP
@@ -49,6 +55,8 @@ Wired Equivalent Privacy (WEP).
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,6 +72,8 @@ PSK. For example, home and small office Wi-Fi.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_PSK = 3--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_PSK = 3-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## WIFI_SEC_TYPE_SAE
@@ -77,6 +87,8 @@ Simultaneous Authentication of Equals (SAE). For example, smart home and small- 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_SAE = 4--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_SAE = 4-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -92,6 +104,8 @@ EAP. For example, large enterprise authentication and university campus networks
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP = 5--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP = 5-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## WIFI_SEC_TYPE_EAP_SUITE_B
@@ -105,6 +119,8 @@ Suite B 192-bit encryption. After the setting, Wi-Fi will use Suite-B 192-bit hi
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP_SUITE_B = 6--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP_SUITE_B = 6-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -120,6 +136,8 @@ Opportunistic Wireless Encryption (OWE). For example, public Wi-Fi in a coffee s
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_OWE = 7--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_OWE = 7-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## WIFI_SEC_TYPE_WAPI_CERT
@@ -134,6 +152,8 @@ WLAN Authentication and Privacy Infrastructure (WAPI) in certificate-based mode 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_WAPI_CERT = 8--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WAPI_CERT = 8-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## WIFI_SEC_TYPE_WAPI_PSK
@@ -147,5 +167,7 @@ WAPI-PSK.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_WAPI_PSK = 9--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WAPI_PSK = 9-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

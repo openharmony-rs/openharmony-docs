@@ -16,6 +16,8 @@ export interface DownloadRequestOptions
 
 **Substitutes:** [UploadConfig](arkts-basicservices-request-uploadconfig-i.md)
 
+<!--Device-unnamed-export interface DownloadRequestOptions--><!--Device-unnamed-export interface DownloadRequestOptions-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## Modules to Import
@@ -38,6 +40,8 @@ Called when API call is complete.
 
 **Substitutes:** on
 
+<!--Device-DownloadRequestOptions-complete?: () => void--><!--Device-DownloadRequestOptions-complete?: () => void-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## fail
@@ -53,6 +57,8 @@ Called when downloading fails.
 **Deprecated since:** 9
 
 **Substitutes:** on
+
+<!--Device-DownloadRequestOptions-fail?: (data: any, code: number) => void--><!--Device-DownloadRequestOptions-fail?: (data: any, code: number) => void-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -76,6 +82,8 @@ Called when the files are successfully downloaded.
 **Deprecated since:** 9
 
 **Substitutes:** on
+
+<!--Device-DownloadRequestOptions-success?: (data: DownloadResponse) => void--><!--Device-DownloadRequestOptions-success?: (data: DownloadResponse) => void-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -101,6 +109,8 @@ Download description. The default value is the file name.
 
 **Substitutes:** description
 
+<!--Device-DownloadRequestOptions-description?: string--><!--Device-DownloadRequestOptions-description?: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## filename
@@ -118,6 +128,8 @@ Name of the file to downloaded. The value is obtained from the current request o
 **Deprecated since:** 9
 
 **Substitutes:** saveas
+
+<!--Device-DownloadRequestOptions-filename?: string--><!--Device-DownloadRequestOptions-filename?: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -137,6 +149,8 @@ Request header.
 
 **Substitutes:** headers
 
+<!--Device-DownloadRequestOptions-header?: string--><!--Device-DownloadRequestOptions-header?: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## url
@@ -154,5 +168,7 @@ Resource URL.
 **Deprecated since:** 9
 
 **Substitutes:** url
+
+<!--Device-DownloadRequestOptions-url: string--><!--Device-DownloadRequestOptions-url: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Download

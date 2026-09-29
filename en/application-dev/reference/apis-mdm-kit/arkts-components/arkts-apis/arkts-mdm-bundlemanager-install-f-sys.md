@@ -24,6 +24,8 @@ Installs specified applications. This API uses an asynchronous callback to retur
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function install(admin: Want, hapFilePaths: Array<string>, callback: AsyncCallback<void>): void--><!--Device-bundleManager-function install(admin: Want, hapFilePaths: Array<string>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -90,6 +92,8 @@ Installs applications with specified parameters. This API uses an asynchronous c
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bundleManager-function install(admin: Want, hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void--><!--Device-bundleManager-function install(admin: Want, hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -8,6 +8,8 @@ Defines the PiP status data.
 
 **Since:** 11
 
+<!--Device-camera-interface SketchStatusData--><!--Device-camera-interface SketchStatusData-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Offset of PiP.
 
 **Since:** 20
 
+<!--Device-SketchStatusData-centerPointOffset: Point--><!--Device-SketchStatusData-centerPointOffset: Point-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Zoom ratio of PiP.
 
 **Since:** 11
 
+<!--Device-SketchStatusData-sketchRatio: double--><!--Device-SketchStatusData-sketchRatio: double-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Status of PiP. The options are 0 (stopped), 1 (started), 2 (stopping), and 3 (st
 **Type:** number
 
 **Since:** 11
+
+<!--Device-SketchStatusData-status: int--><!--Device-SketchStatusData-status: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

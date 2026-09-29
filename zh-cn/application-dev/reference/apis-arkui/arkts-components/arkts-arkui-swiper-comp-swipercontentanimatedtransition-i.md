@@ -8,6 +8,8 @@ Swiper自定义切换动画相关信息。
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface SwiperContentAnimatedTransition--><!--Device-unnamed-declare interface SwiperContentAnimatedTransition-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## timeout
@@ -30,6 +32,8 @@ Swiper自定义切换动画超时时间。从页面执行默认动画（页面�
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperContentAnimatedTransition-timeout?: number--><!--Device-SwiperContentAnimatedTransition-timeout?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## transition
@@ -49,5 +53,7 @@ transition: Callback<SwiperContentTransitionProxy>
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperContentAnimatedTransition-transition: Callback<SwiperContentTransitionProxy>--><!--Device-SwiperContentAnimatedTransition-transition: Callback<SwiperContentTransitionProxy>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

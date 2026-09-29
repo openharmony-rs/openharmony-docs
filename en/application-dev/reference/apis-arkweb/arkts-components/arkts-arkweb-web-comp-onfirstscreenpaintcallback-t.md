@@ -8,6 +8,8 @@ This callback is triggered when the first screen rendering is detected to be com
 
 **Since:** 23
 
+<!--Device-unnamed-type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void--><!--Device-unnamed-type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

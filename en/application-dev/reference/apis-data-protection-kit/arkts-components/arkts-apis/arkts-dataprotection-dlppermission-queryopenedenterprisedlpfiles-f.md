@@ -28,6 +28,8 @@ This API is called when the system needs to manage or track enterprise DLP files
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dlpPermission-function queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<Array<string>>--><!--Device-dlpPermission-function queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<Array<string>>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**

@@ -8,6 +8,8 @@ Describes the options for showing the action menu.
 
 **Since:** 9
 
+<!--Device-promptAction-interface ActionMenuOptions--><!--Device-promptAction-interface ActionMenuOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -39,6 +41,8 @@ Array of menu item buttons. The array structure is **{text:'button', color: '\#6
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ActionMenuOptions-buttons: [            Button,            Button?,            Button?,            Button?,            Button?,            Button?        ]--><!--Device-ActionMenuOptions-buttons: [            Button,            Button?,            Button?,            Button?,            Button?,            Button?        ]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## immersiveMode
@@ -58,6 +62,8 @@ Overlay effect for the page-level menu. <br>**NOTE:** <br>- Default value: **Imm
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-ActionMenuOptions-immersiveMode?: ImmersiveMode--><!--Device-ActionMenuOptions-immersiveMode?: ImmersiveMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,6 +85,8 @@ Whether the menu is a modal, which has a mask applied and does not allow for int
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ActionMenuOptions-isModal?: boolean--><!--Device-ActionMenuOptions-isModal?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelMode
@@ -99,6 +107,8 @@ Display level mode of the menu. <br>**NOTE:** <br>- Default value: **LevelMode.O
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-ActionMenuOptions-levelMode?: LevelMode--><!--Device-ActionMenuOptions-levelMode?: LevelMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelUniqueId
@@ -116,6 +126,8 @@ Unique ID of the node under the display level for the page-level menu. <br>Value
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-ActionMenuOptions-levelUniqueId?: number--><!--Device-ActionMenuOptions-levelUniqueId?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,6 +147,8 @@ Callback invoked after the menu appears. <br>**NOTE:** <br>1. The normal timing 
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ActionMenuOptions-onDidAppear?: Callback<void>--><!--Device-ActionMenuOptions-onDidAppear?: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDidDisappear
@@ -152,6 +166,8 @@ Callback invoked after the menu disappears. <br>**NOTE:** <br>1. The normal timi
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ActionMenuOptions-onDidDisappear?: Callback<void>--><!--Device-ActionMenuOptions-onDidDisappear?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,6 +187,8 @@ Callback invoked before the menu appearance animation.<br>**NOTE:** <br>1. The n
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ActionMenuOptions-onWillAppear?: Callback<void>--><!--Device-ActionMenuOptions-onWillAppear?: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillDisappear
@@ -188,6 +206,8 @@ Callback invoked before the menu disappearance animation. <br>**NOTE:** <br>1. T
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ActionMenuOptions-onWillDisappear?: Callback<void>--><!--Device-ActionMenuOptions-onWillDisappear?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,6 +229,8 @@ Whether to show the menu in a subwindow when the menu needs to be displayed outs
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ActionMenuOptions-showInSubWindow?: boolean--><!--Device-ActionMenuOptions-showInSubWindow?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -227,6 +249,8 @@ System material of the dialog box. Different materials have different effects an
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ActionMenuOptions-systemMaterial?: SystemUiMaterial--><!--Device-ActionMenuOptions-systemMaterial?: SystemUiMaterial-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -244,5 +268,7 @@ Title of the dialog box.<br>Default value: **undefined**, which indicates that n
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ActionMenuOptions-title?: string | Resource--><!--Device-ActionMenuOptions-title?: string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

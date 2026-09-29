@@ -12,6 +12,8 @@ Describes the rectangle that contains the text.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-unnamed-declare type TextBox = import('../api/@ohos.graphics.text').default.TextBox--><!--Device-unnamed-declare type TextBox = import('../api/@ohos.graphics.text').default.TextBox-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.graphics.text').default.TextBox

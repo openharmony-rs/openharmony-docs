@@ -8,6 +8,8 @@ class of print extension ability.
 
 **Since:** 14
 
+<!--Device-unnamed-declare class PrintExtensionAbility--><!--Device-unnamed-declare class PrintExtensionAbility-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Called once to request preview and send result to Print SA.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PrintExtensionAbility-onRequestPreview(jobInfo: print.PrintJob): string--><!--Device-PrintExtensionAbility-onRequestPreview(jobInfo: print.PrintJob): string-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

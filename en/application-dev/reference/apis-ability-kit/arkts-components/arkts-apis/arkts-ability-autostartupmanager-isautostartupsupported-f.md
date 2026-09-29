@@ -18,6 +18,8 @@ Check whether the current device supports auto startup on this device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-autoStartupManager-function isAutoStartupSupported(): boolean--><!--Device-autoStartupManager-function isAutoStartupSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**

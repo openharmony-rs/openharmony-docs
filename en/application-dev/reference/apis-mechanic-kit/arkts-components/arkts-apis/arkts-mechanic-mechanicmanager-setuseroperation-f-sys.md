@@ -18,6 +18,8 @@ Sets a user operation.
 
 **Required permissions:** ohos.permission.CONNECT_MECHANIC_HARDWARE
 
+<!--Device-mechanicManager-function setUserOperation(operation: Operation, mac: string, params: string): void--><!--Device-mechanicManager-function setUserOperation(operation: Operation, mac: string, params: string): void-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.

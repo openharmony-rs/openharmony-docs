@@ -8,6 +8,8 @@ Sets the upgrade policy to control the upgrade behavior.
 
 **Since:** 9
 
+<!--Device-update-export interface UpgradePolicy--><!--Device-update-export interface UpgradePolicy-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ This parameter is optional and is used when the automatic upgrade needs to be pe
 
 **Since:** 9
 
+<!--Device-UpgradePolicy-autoUpgradePeriods: Array<UpgradePeriod>--><!--Device-UpgradePolicy-autoUpgradePeriods: Array<UpgradePeriod>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ The value **true** indicates that automatic upgrade is enabled, which is applica
 
 **Since:** 9
 
+<!--Device-UpgradePolicy-autoUpgradeStrategy: boolean--><!--Device-UpgradePolicy-autoUpgradeStrategy: boolean-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ The value **true** indicates that automatic download is enabled, which is applic
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-UpgradePolicy-downloadStrategy: boolean--><!--Device-UpgradePolicy-downloadStrategy: boolean-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

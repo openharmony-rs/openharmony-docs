@@ -22,6 +22,8 @@ Sets extended attributes of the network specified by **netHandle** to indicate i
 
 **Required permissions:** ohos.permission.SET_NET_EXT_ATTRIBUTE
 
+<!--Device-connection-function setNetExtAttributeSync(netHandle: NetHandle, netExtAttribute: string): void--><!--Device-connection-function setNetExtAttributeSync(netHandle: NetHandle, netExtAttribute: string): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

@@ -20,6 +20,8 @@ Sets the update policy. After the setting is successful, the system performs OTA
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function setOtaUpdatePolicy(admin: Want, policy: OtaUpdatePolicy): void--><!--Device-systemManager-function setOtaUpdatePolicy(admin: Want, policy: OtaUpdatePolicy): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

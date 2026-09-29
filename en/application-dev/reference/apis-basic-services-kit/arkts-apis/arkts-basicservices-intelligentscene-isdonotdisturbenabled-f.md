@@ -20,6 +20,8 @@ Checks whether Do Not Disturb is enabled on this device. The Do Not Disturb stat
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-intelligentScene-function isDoNotDisturbEnabled(): Promise<boolean>--><!--Device-intelligentScene-function isDoNotDisturbEnabled(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Applications.IntelligentScene
 
 **Return value:**

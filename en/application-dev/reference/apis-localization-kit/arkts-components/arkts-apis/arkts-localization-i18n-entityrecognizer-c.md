@@ -8,6 +8,8 @@ Provides entity recognition capabilities, which can be used to obtain the type a
 
 **Since:** 11
 
+<!--Device-i18n-export class EntityRecognizer--><!--Device-i18n-export class EntityRecognizer-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Creates an **entityRecognizer** object. This object is used to recognize entitie
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-EntityRecognizer-constructor(locale?: string)--><!--Device-EntityRecognizer-constructor(locale?: string)-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -67,7 +71,9 @@ Obtains entity information in the **text** object.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-EntityRecognizer-findEntityInfo(text: string): Array<EntityInfoItem>--><!--Device-EntityRecognizer-findEntityInfo(text: string): Array<EntityInfoItem>-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

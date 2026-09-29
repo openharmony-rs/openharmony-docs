@@ -18,6 +18,8 @@ Registers a listener for the printer change events. This API uses a callback to 
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-print-function on(type: 'printerChange', callback: PrinterChangeCallback): void--><!--Device-print-function on(type: 'printerChange', callback: PrinterChangeCallback): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**

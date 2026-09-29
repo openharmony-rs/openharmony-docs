@@ -8,6 +8,8 @@ Defines the constraint source type.
 
 **Since:** 9
 
+<!--Device-osAccount-interface ConstraintSourceTypeInfo--><!--Device-osAccount-interface ConstraintSourceTypeInfo-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ ID of the target OS account.
 
 **Since:** 9
 
+<!--Device-ConstraintSourceTypeInfo-localId: int--><!--Device-ConstraintSourceTypeInfo-localId: int-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Type of the constraint source.
 **Type:** [ConstraintSourceType](arkts-basicservices-osaccount-constraintsourcetype-e-sys.md)
 
 **Since:** 9
+
+<!--Device-ConstraintSourceTypeInfo-type: ConstraintSourceType--><!--Device-ConstraintSourceTypeInfo-type: ConstraintSourceType-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

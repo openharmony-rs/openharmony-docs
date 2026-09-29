@@ -8,6 +8,8 @@ Defines the return result of intent execution. The [generic type](../../../quick
 
 **Since:** 20
 
+<!--Device-insightIntent-interface IntentResult<T>--><!--Device-insightIntent-interface IntentResult<T>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Interaction information returned after the intent execution completes.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-IntentResult-interactionInfo?: InteractionInfo--><!--Device-IntentResult-interactionInfo?: InteractionInfo-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

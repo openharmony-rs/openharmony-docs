@@ -20,6 +20,8 @@ Obtains a special [AudioCapturer](arkts-audio-audio-audiocapturer-i.md) instance
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-audio-function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise<AudioCapturer | null>--><!--Device-audio-function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise<AudioCapturer | null>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.

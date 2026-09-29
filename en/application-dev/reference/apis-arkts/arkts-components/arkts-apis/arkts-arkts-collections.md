@@ -8,6 +8,8 @@ The collections module provides ArkTS containers for efficient data transfer in 
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace collections--><!--Device-unnamed-declare namespace collections-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import

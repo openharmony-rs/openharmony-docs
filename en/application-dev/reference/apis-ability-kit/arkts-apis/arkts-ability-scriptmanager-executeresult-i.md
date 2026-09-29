@@ -8,6 +8,8 @@ Result of arkTS script execution.
 
 **Since:** 26.0.0
 
+<!--Device-scriptManager-interface ExecuteResult--><!--Device-scriptManager-interface ExecuteResult-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Indicates result code. The value range is all integers.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ExecuteResult-code: number--><!--Device-ExecuteResult-code: number-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 ## flags
@@ -49,6 +53,8 @@ Indicates the URIs read and write permissions which consistent with flags, flags
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ExecuteResult-flags?: number--><!--Device-ExecuteResult-flags?: number-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -68,6 +74,8 @@ Indicates execute result.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ExecuteResult-result?: Record<string, Object>--><!--Device-ExecuteResult-result?: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 ## uris
@@ -85,5 +93,7 @@ Indicates the URIs will be authorized to the caller.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ExecuteResult-uris?: Array<string>--><!--Device-ExecuteResult-uris?: Array<string>-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core

@@ -8,6 +8,8 @@ declare enum TextInputStyle
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare enum TextInputStyle--><!--Device-unnamed-declare enum TextInputStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Default
@@ -21,6 +23,8 @@ Default
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputStyle-Default--><!--Device-TextInputStyle-Default-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,5 +47,7 @@ Inline
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputStyle-Inline--><!--Device-TextInputStyle-Inline-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

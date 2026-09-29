@@ -4,11 +4,11 @@
 interface EmitterOptions<PARTICLE extends ParticleType>
 ```
 
-Particle emitter configuration.
-
-@interface EmitterOptions
+Defines the configuration options of the particle emitter.
 
 **Since:** 10
+
+<!--Device-unnamed-interface EmitterOptions<PARTICLE extends ParticleType>--><!--Device-unnamed-interface EmitterOptions<PARTICLE extends ParticleType>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,7 +18,9 @@ Particle emitter configuration.
 annulusRegion?: ParticleAnnulusRegion
 ```
 
-Annulus emitter parameters. This parameter takes effect only when the emitter shape is annulus (that is, the shape parameter is ParticleEmitterShape.ANNULUS). For an annulus emitter, the shape information must be specified by the annulusRegion parameter, and the position and size parameters do not take effect.
+Ring emitter parameter. It takes effect only when the emitter shape is annulus (that is, the **shape** parameter is **ParticleEmitterShape.ANNULUS**). For a annulus emitter, the shape information must be specified through the **annulusRegion** parameter, and **position** and **size** do not take effect. When it is not set, the emitter does not use the annulus region parameter.
+
+**Atomic service API:** Since API version 20, this API is supported in atomic services.
 
 **Type:** [ParticleAnnulusRegion](arkts-arkui-particle-comp-particleannulusregion-i.md)
 
@@ -30,6 +32,8 @@ Annulus emitter parameters. This parameter takes effect only when the emitter sh
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-EmitterOptions-annulusRegion?: ParticleAnnulusRegion--><!--Device-EmitterOptions-annulusRegion?: ParticleAnnulusRegion-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## emitRate
@@ -38,11 +42,9 @@ Annulus emitter parameters. This parameter takes effect only when the emitter sh
 emitRate?: number
 ```
 
-Emit rate (that is, the number of particles emitted per second).
+Emission rate of the emitter (that is, the number of particles emitted per second). Default value: **5**. When the value is less than 0, the default value **5** is used. When **emitRate** exceeds 5000, performance is severely affected and the frame rate may drop significantly. It is recommended to set this parameter to a value less than 5000.
 
-Default value: **5**. If the value specified is less than 0, the default value is used.
-
-The **emitRate** value can significantly impact performance when it exceeds 5000; you are advised to set it to be less than 5000.
+**Atomic service API:** Since API version 11, this API is supported in atomic services.
 
 **Type:** number
 
@@ -54,6 +56,8 @@ The **emitRate** value can significantly impact performance when it exceeds 5000
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EmitterOptions-emitRate?: number--><!--Device-EmitterOptions-emitRate?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## particle
@@ -64,21 +68,24 @@ particle: EmitterParticleOptions<PARTICLE>
 
 Particle configuration.
 
-- **type**: particle type, which can be **IMAGE** or **POINT**.  
-- **config**: configuration of the particle type.  
-- The value type of **config** is subject to the value of **type**.
+-**type** indicates the particle type, which can be an image or a point.
 
-1. If the type is ParticleType.POINT, the config type is [PointParticleParameters](arkts-arkui-particle-comp-pointparticleparameters-i.md).
-2. If the type is ParticleType.IMAGE, the config type is [ImageParticleParameters](arkts-arkui-particle-comp-imageparticleparameters-i.md).
+-**config** indicates the configuration of the corresponding type.
 
-- **count**: number of particles. The value is greater than or equal to -1. The value **-1** indicates that the  
-number of particles is infinite.  
-- **lifetime**: lifetime of a single particle. The default value is **1000** (that is, 1000 ms, 1s). The value is  
-greater than or equal to -1. The value **-1** indicates that the lifetime of the particle is infinite. If the value specified is less than **-1**, the default value is used.
+-The **config** type is related to the **type** value:
 
-Note: If you do not want the animation to keep playing, you are advised not to set the lifetime to –1, which may greatly affect the performance.
+1. If **type** is **ParticleType.POINT**, the **config** type is [PointParticleParameters](arkts-arkui-particle-comp-pointparticleparameters-i.md).
+2. If **type** is **ParticleType.IMAGE**, the **config** type is [ImageParticleParameters](arkts-arkui-particle-comp-imageparticleparameters-i.md).
 
-The **lifeTimeRange** parameter indicates the range of the particle lifetime. After this parameter is set, the lifetime of a particle is a random integer within the range of [lifetime – lifeTimeRange, lifetime + lifeTimeRange]. The default value of lifeTimeRange is 0. The value ranges from 0 to positive infinity. If it is set to a negative value, the default value is used.
+-**count** indicates the total number of emitted particles. The value of **count** must be greater than or equal to -1. When **count** is -1, the total number of particles is infinite.
+
+-**lifetime** indicates the lifecycle of a single particle. The default value is **1000** (that is, 1000 ms, 1 s). The value of lifetime must be greater than or equal to -1. When **lifetime** is -1, the particle lifecycle is infinite. When **lifetime** is less than -1, the default value is used.
+
+**Note:** If the animation does not need to play continuously, it is recommended not to set the lifecycle to -1, as this may cause significant performance impact.
+
+**lifetimeRange** indicates the value range of the particle lifecycle. After **lifetimeRange** is set, the particle lifecycle is a random integer in [lifetime - lifetimeRange, lifetime + lifetimeRange]. The default value of **lifetimeRange** is **0**, and the value range is [0, +∞). When it is set to a negative value, the default value is used.
+
+**Atomic service API:** Since API version 11, this API is supported in atomic services.
 
 **Type:** [EmitterParticleOptions](arkts-arkui-particle-comp-emitterparticleoptions-i.md)&lt;PARTICLE&gt;
 
@@ -88,6 +95,8 @@ The **lifeTimeRange** parameter indicates the range of the particle lifetime. Af
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EmitterOptions-particle: EmitterParticleOptions<PARTICLE>--><!--Device-EmitterOptions-particle: EmitterParticleOptions<PARTICLE>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## position
@@ -96,9 +105,11 @@ The **lifeTimeRange** parameter indicates the range of the particle lifetime. Af
 position?: ParticleTuple<Dimension, Dimension>
 ```
 
-Emitter position (distance from the upper left corner of the component). The first parameter indicates the relative offset along the x-axis, and the second parameter indicates the relative offset along the y-axis.
+Emitter position (the position relative to the upper left corner of the component. The first parameter is the relative offset in the x direction, and the second parameter is the relative offset in the y direction.). When the emitter shape is annular (that is, **shape** is **ParticleEmitterShape.ANNULUS**), this property does not take effect, and the shape information must be specified through the **annulusRegion** parameter.
 
-Default value: **[0.0, 0.0]**
+Default value: `[0.0, 0.0]`
+
+**Atomic service API:** Since API version 11, this API is supported in atomic services.
 
 **Type:** [ParticleTuple](arkts-arkui-particle-comp-particletuple-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md), [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt;
 
@@ -110,6 +121,8 @@ Default value: **[0.0, 0.0]**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EmitterOptions-position?: ParticleTuple<Dimension, Dimension>--><!--Device-EmitterOptions-position?: ParticleTuple<Dimension, Dimension>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## shape
@@ -118,9 +131,11 @@ Default value: **[0.0, 0.0]**
 shape?: ParticleEmitterShape
 ```
 
-Shape of emitter.
+Shape of the emitter.
 
-Default value: ParticleEmitterShape.RECTANGLE
+Default value: **ParticleEmitterShape.RECTANGLE**
+
+**Atomic service API:** Since API version 11, this API is supported in atomic services.
 
 **Type:** [ParticleEmitterShape](arkts-arkui-particle-comp-particleemittershape-e.md)
 
@@ -132,6 +147,8 @@ Default value: ParticleEmitterShape.RECTANGLE
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EmitterOptions-shape?: ParticleEmitterShape--><!--Device-EmitterOptions-shape?: ParticleEmitterShape-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -140,9 +157,11 @@ Default value: ParticleEmitterShape.RECTANGLE
 size?: ParticleTuple<Dimension, Dimension>
 ```
 
-Size of the emit window. The first parameter indicates the emitter width, and the second parameter indicates the emitter height.
+Size of the emitter. The first parameter is the emitter width, and the second parameter is the emitter height. When the emitter shape is annulus (that is, **shape** is **ParticleEmitterShape.ANNULUS**), this property does not take effect, and the shape information must be specified through the **annulusRegion** parameter.
 
-Default value: **['100%','100%']** (that is, the emission window occupies the entire Particle component.)
+Default value: `['100%','100%']` (that is, the emission window occupies the entire **Particle** component)
+
+**Atomic service API:** Since API version 11, this API is supported in atomic services.
 
 **Type:** [ParticleTuple](arkts-arkui-particle-comp-particletuple-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md), [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt;
 
@@ -153,5 +172,7 @@ Default value: **['100%','100%']** (that is, the emission window occupies the en
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-EmitterOptions-size?: ParticleTuple<Dimension, Dimension>--><!--Device-EmitterOptions-size?: ParticleTuple<Dimension, Dimension>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

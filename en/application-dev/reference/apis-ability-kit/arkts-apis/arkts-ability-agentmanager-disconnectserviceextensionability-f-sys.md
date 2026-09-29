@@ -18,6 +18,8 @@ Disconnects an AgentExtensionAbility from a ServiceExtensionAbility, in contrast
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-agentManager-function disconnectServiceExtensionAbility(context: AgentExtensionContext, connectId: long): Promise<void>--><!--Device-agentManager-function disconnectServiceExtensionAbility(context: AgentExtensionContext, connectId: long): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

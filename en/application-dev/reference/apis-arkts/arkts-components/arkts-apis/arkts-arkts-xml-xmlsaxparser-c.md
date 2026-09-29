@@ -8,6 +8,8 @@ The XmlSAXParser provides the capability of parsing XML in a streaming manner.
 
 **Since:** 24
 
+<!--Device-xml-class XmlSAXParser--><!--Device-xml-class XmlSAXParser-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Creates and returns an XmlSAXParser instance.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-XmlSAXParser-constructor(inputStream: stream.Readable, encoding?: string)--><!--Device-XmlSAXParser-constructor(inputStream: stream.Readable, encoding?: string)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -51,7 +55,9 @@ Creates and returns an XmlSAXParser instance.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-XmlSAXParser-parse(xmlSAXHandler: XmlSAXHandler): void--><!--Device-XmlSAXParser-parse(xmlSAXHandler: XmlSAXHandler): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

@@ -4,11 +4,11 @@
 export interface TextChangeEventInfo
 ```
 
-Text change event info
-
-@interface TextChangeEventInfo
+Provides information about text changes in input fields.
 
 **Since:** 22
+
+<!--Device-uiObserver-export interface TextChangeEventInfo--><!--Device-uiObserver-export interface TextChangeEventInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +24,7 @@ import { uiObserver } from '@kit.ArkUI';
 content: string
 ```
 
-Current content of text field component .
+Text content after the change.
 
 **Type:** string
 
@@ -33,6 +33,8 @@ Current content of text field component .
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-TextChangeEventInfo-content: string--><!--Device-TextChangeEventInfo-content: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +44,7 @@ Current content of text field component .
 id: string
 ```
 
-The id of text input component.
+ID of the text input component.
 
 **Type:** string
 
@@ -52,6 +54,8 @@ The id of text input component.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-TextChangeEventInfo-id: string--><!--Device-TextChangeEventInfo-id: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## uniqueId
@@ -60,7 +64,7 @@ The id of text input component.
 uniqueId: number
 ```
 
-The uniqueId of the text input component.
+Unique ID of the text input component.
 
 **Type:** number
 
@@ -69,5 +73,7 @@ The uniqueId of the text input component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-TextChangeEventInfo-uniqueId: number--><!--Device-TextChangeEventInfo-uniqueId: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

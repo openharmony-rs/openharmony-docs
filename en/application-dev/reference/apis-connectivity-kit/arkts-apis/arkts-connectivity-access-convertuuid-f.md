@@ -16,6 +16,8 @@ Convert 2-byte and 4-byte UUID strings to the 16-byte UUID string standard used 
 
 **Since:** 22
 
+<!--Device-access-function convertUuid(uuid: string): string--><!--Device-access-function convertUuid(uuid: string): string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

@@ -10,6 +10,8 @@ Provides methods for setting time and date formats.
 
 **Since:** 7
 
+<!--Device-settings-namespace date--><!--Device-settings-namespace date-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## Modules to Import

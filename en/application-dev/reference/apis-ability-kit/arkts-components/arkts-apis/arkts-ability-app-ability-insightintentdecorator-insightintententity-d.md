@@ -12,4 +12,6 @@ Decorates a class that inherits from [IntentEntity](arkts-ability-insightintent-
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-unnamed-export declare const InsightIntentEntity: ((intentEntityInfo: IntentEntityDecoratorInfo) => ClassDecorator)--><!--Device-unnamed-export declare const InsightIntentEntity: ((intentEntityInfo: IntentEntityDecoratorInfo) => ClassDecorator)-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

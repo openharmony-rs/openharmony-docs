@@ -20,6 +20,8 @@ Creates an ImageCreator instance by specifying the image width, height, format, 
 
 **Substitutes:** [createImageCreator](arkts-image-image-createimagecreator-f.md)(size: Size, format: ImageFormat, capacity: number)
 
+<!--Device-image-function createImageCreator(width: number, height: number, format: number, capacity: number): ImageCreator--><!--Device-image-function createImageCreator(width: number, height: number, format: number, capacity: number): ImageCreator-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator
 
 **Parameters:**
@@ -55,6 +57,8 @@ function createImageCreator(size: Size, format: ImageFormat, capacity: number): 
 Creates an ImageCreator instance by specifying the image size, format, and capacity. Images occupy a large amount of memory. When you finish using an ImageCreator instance, call [release](arkts-image-image-imagecreator-i.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 11
+
+<!--Device-image-function createImageCreator(size: Size, format: ImageFormat, capacity: int): ImageCreator--><!--Device-image-function createImageCreator(size: Size, format: ImageFormat, capacity: int): ImageCreator-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageCreator
 

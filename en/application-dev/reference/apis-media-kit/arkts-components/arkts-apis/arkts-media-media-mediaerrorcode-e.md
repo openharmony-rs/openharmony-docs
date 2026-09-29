@@ -12,6 +12,8 @@ Enumerates the media error codes.
 
 **Substitutes:** [AVErrorCode](arkts-media-media-averrorcode-e.md)
 
+<!--Device-media-enum MediaErrorCode--><!--Device-media-enum MediaErrorCode-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## MSERR_OK
@@ -27,6 +29,8 @@ The operation is successful.
 **Deprecated since:** 11
 
 **Substitutes:** [AVERR_OK](arkts-media-media-averrorcode-e.md#averr_ok)
+
+<!--Device-MediaErrorCode-MSERR_OK = 0--><!--Device-MediaErrorCode-MSERR_OK = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -44,6 +48,8 @@ Failed to allocate memory. The system may have no available memory.
 
 **Substitutes:** [AVERR_NO_MEMORY](arkts-media-media-averrorcode-e.md#averr_no_memory)
 
+<!--Device-MediaErrorCode-MSERR_NO_MEMORY = 1--><!--Device-MediaErrorCode-MSERR_NO_MEMORY = 1-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## MSERR_OPERATION_NOT_PERMIT
@@ -59,6 +65,8 @@ No permission to perform the operation.
 **Deprecated since:** 11
 
 **Substitutes:** [AVERR_OPERATE_NOT_PERMIT](arkts-media-media-averrorcode-e.md#averr_operate_not_permit)
+
+<!--Device-MediaErrorCode-MSERR_OPERATION_NOT_PERMIT = 2--><!--Device-MediaErrorCode-MSERR_OPERATION_NOT_PERMIT = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -76,6 +84,8 @@ Invalid input parameter.
 
 **Substitutes:** [AVERR_INVALID_PARAMETER](arkts-media-media-averrorcode-e.md#averr_invalid_parameter)
 
+<!--Device-MediaErrorCode-MSERR_INVALID_VAL = 3--><!--Device-MediaErrorCode-MSERR_INVALID_VAL = 3-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## MSERR_IO
@@ -91,6 +101,8 @@ An I/O error occurs.
 **Deprecated since:** 11
 
 **Substitutes:** [AVERR_IO](arkts-media-media-averrorcode-e.md#averr_io)
+
+<!--Device-MediaErrorCode-MSERR_IO = 4--><!--Device-MediaErrorCode-MSERR_IO = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -108,6 +120,8 @@ The operation times out.
 
 **Substitutes:** [AVERR_TIMEOUT](arkts-media-media-averrorcode-e.md#averr_timeout)
 
+<!--Device-MediaErrorCode-MSERR_TIMEOUT = 5--><!--Device-MediaErrorCode-MSERR_TIMEOUT = 5-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## MSERR_UNKNOWN
@@ -123,6 +137,8 @@ An unknown error occurs.
 **Deprecated since:** 11
 
 **Substitutes:** [AVERR_INVALID_PARAMETER](arkts-media-media-averrorcode-e.md#averr_invalid_parameter)
+
+<!--Device-MediaErrorCode-MSERR_UNKNOWN = 6--><!--Device-MediaErrorCode-MSERR_UNKNOWN = 6-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -140,6 +156,8 @@ Invalid server.
 
 **Substitutes:** [AVERR_SERVICE_DIED](arkts-media-media-averrorcode-e.md#averr_service_died)
 
+<!--Device-MediaErrorCode-MSERR_SERVICE_DIED = 7--><!--Device-MediaErrorCode-MSERR_SERVICE_DIED = 7-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## MSERR_INVALID_STATE
@@ -156,6 +174,8 @@ The operation is not allowed in the current state.
 
 **Substitutes:** [AVERR_INVALID_PARAMETER](arkts-media-media-averrorcode-e.md#averr_invalid_parameter)
 
+<!--Device-MediaErrorCode-MSERR_INVALID_STATE = 8--><!--Device-MediaErrorCode-MSERR_INVALID_STATE = 8-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## MSERR_UNSUPPORTED
@@ -171,5 +191,7 @@ The operation is not supported in the current version.
 **Deprecated since:** 11
 
 **Substitutes:** [AVERR_UNSUPPORT_CAPABILITY](arkts-media-media-averrorcode-e.md#averr_unsupport_capability)
+
+<!--Device-MediaErrorCode-MSERR_UNSUPPORTED = 9--><!--Device-MediaErrorCode-MSERR_UNSUPPORTED = 9-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core

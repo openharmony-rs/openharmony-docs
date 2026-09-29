@@ -18,6 +18,8 @@ Obtains all the application information in the system based on the given applica
 
 **Required permissions:** ohos.permission.GET_INSTALLED_BUNDLE_LIST
 
+<!--Device-bundleManager-function getAllApplicationInfo(appFlags: int, callback: AsyncCallback<Array<ApplicationInfo>>): void--><!--Device-bundleManager-function getAllApplicationInfo(appFlags: int, callback: AsyncCallback<Array<ApplicationInfo>>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -75,6 +77,8 @@ Obtains all the application information in the system based on the given applica
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_INSTALLED_BUNDLE_LIST
+
+<!--Device-bundleManager-function getAllApplicationInfo(appFlags: int,    userId: int, callback: AsyncCallback<Array<ApplicationInfo>>): void--><!--Device-bundleManager-function getAllApplicationInfo(appFlags: int,    userId: int, callback: AsyncCallback<Array<ApplicationInfo>>): void-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -135,6 +139,8 @@ Obtains all the application information in the system based on the given applica
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_INSTALLED_BUNDLE_LIST
+
+<!--Device-bundleManager-function getAllApplicationInfo(appFlags: int, userId?: int): Promise<Array<ApplicationInfo>>--><!--Device-bundleManager-function getAllApplicationInfo(appFlags: int, userId?: int): Promise<Array<ApplicationInfo>>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

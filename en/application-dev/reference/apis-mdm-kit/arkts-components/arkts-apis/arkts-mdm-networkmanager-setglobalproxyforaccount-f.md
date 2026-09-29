@@ -20,6 +20,8 @@ Sets the network proxy for a specified user. This API is suitable for network ma
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function setGlobalProxyForAccount(admin: Want, httpProxy: connection.HttpProxy, accountId: number): void--><!--Device-networkManager-function setGlobalProxyForAccount(admin: Want, httpProxy: connection.HttpProxy, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

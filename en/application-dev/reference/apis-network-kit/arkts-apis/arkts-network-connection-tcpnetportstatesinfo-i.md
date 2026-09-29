@@ -8,6 +8,8 @@ Describes the TCP port state information.
 
 **Since:** 24
 
+<!--Device-connection-export interface TcpNetPortStatesInfo--><!--Device-connection-export interface TcpNetPortStatesInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Local IP address of the TCP network.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TcpNetPortStatesInfo-tcpLocalIp: string--><!--Device-TcpNetPortStatesInfo-tcpLocalIp: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## tcpLocalPort
@@ -45,6 +49,8 @@ Local port of the TCP network. The value range is [0, 65535].
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpNetPortStatesInfo-tcpLocalPort: int--><!--Device-TcpNetPortStatesInfo-tcpLocalPort: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -62,6 +68,8 @@ PID of the process that listens for the TCP port.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TcpNetPortStatesInfo-tcpPid: int--><!--Device-TcpNetPortStatesInfo-tcpPid: int-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## tcpRemoteIp
@@ -77,6 +85,8 @@ Remote IP address of the TCP network.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpNetPortStatesInfo-tcpRemoteIp: string--><!--Device-TcpNetPortStatesInfo-tcpRemoteIp: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -94,6 +104,8 @@ Remote port of the TCP network. The value range is [0, 65535].
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TcpNetPortStatesInfo-tcpRemotePort: int--><!--Device-TcpNetPortStatesInfo-tcpRemotePort: int-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## tcpState
@@ -110,6 +122,8 @@ TCP network status.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TcpNetPortStatesInfo-tcpState: TcpState--><!--Device-TcpNetPortStatesInfo-tcpState: TcpState-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## tcpUid
@@ -125,5 +139,7 @@ UID of the user who listens for the TCP port.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpNetPortStatesInfo-tcpUid: int--><!--Device-TcpNetPortStatesInfo-tcpUid: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

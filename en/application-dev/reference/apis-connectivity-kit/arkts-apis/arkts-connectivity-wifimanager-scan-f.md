@@ -22,6 +22,8 @@ Scan Wi-Fi hotspot.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-wifiManager-function scan(): void--><!--Device-wifiManager-function scan(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Error codes:**

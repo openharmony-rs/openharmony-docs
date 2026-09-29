@@ -20,6 +20,8 @@ Query all printer ppds.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-print-function queryAllPrinterPpds(): Promise<PpdInfo[]>--><!--Device-print-function queryAllPrinterPpds(): Promise<PpdInfo[]>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ interface FormCallbackInfo
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface FormCallbackInfo--><!--Device-unnamed-interface FormCallbackInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -28,6 +30,8 @@ id: number
 
 **起始版本：** 12
 
+<!--Device-FormCallbackInfo-id: number--><!--Device-FormCallbackInfo-id: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -44,6 +48,8 @@ idString: string
 
 **起始版本：** 12
 
+<!--Device-FormCallbackInfo-idString: string--><!--Device-FormCallbackInfo-idString: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -59,6 +65,8 @@ isLocked: boolean
 **类型：** boolean
 
 **起始版本：** 22
+
+<!--Device-FormCallbackInfo-isLocked: boolean--><!--Device-FormCallbackInfo-isLocked: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

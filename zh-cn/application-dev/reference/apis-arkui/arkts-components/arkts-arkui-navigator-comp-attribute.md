@@ -6,13 +6,15 @@ declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>
 
 Navigator的属性。
 
-**继承/实现关系：** NavigatorAttribute extends CommonMethod&lt;NavigatorAttribute&gt;
+**继承/实现关系：** NavigatorAttribute extends CommonMethod<NavigatorAttribute>
 
 **起始版本：** 7
 
 **废弃版本：** 13
 
-**替代接口：** Navigation
+**替代接口：** [Navigation](arkts-arkui-navigation-comp.md)
+
+<!--Device-unnamed-declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>--><!--Device-unnamed-declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,9 +30,11 @@ active(value: boolean)
 
 **废弃版本：** 13
 
-**替代接口：** Navigation
+**替代接口：** [Navigation](arkts-arkui-navigation-comp.md)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigatorAttribute-active(value: boolean): NavigatorAttribute--><!--Device-NavigatorAttribute-active(value: boolean): NavigatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ params(value: object)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigatorAttribute-params(value: object): NavigatorAttribute--><!--Device-NavigatorAttribute-params(value: object): NavigatorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -78,9 +84,11 @@ target(value: string)
 
 **废弃版本：** 13
 
-**替代接口：** Navigation
+**替代接口：** [Navigation](arkts-arkui-navigation-comp.md)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigatorAttribute-target(value: string): NavigatorAttribute--><!--Device-NavigatorAttribute-target(value: string): NavigatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,9 +112,11 @@ type(value: NavigationType)
 
 **废弃版本：** 13
 
-**替代接口：** Navigation
+**替代接口：** [Navigation](arkts-arkui-navigation-comp.md)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigatorAttribute-type(value: NavigationType): NavigatorAttribute--><!--Device-NavigatorAttribute-type(value: NavigationType): NavigatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

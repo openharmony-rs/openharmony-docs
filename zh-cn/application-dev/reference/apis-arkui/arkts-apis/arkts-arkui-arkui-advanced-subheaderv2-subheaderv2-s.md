@@ -12,7 +12,7 @@ export declare struct SubHeaderV2
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 如果SubHeaderV2设置通用属性和通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeaderV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeaderV2设置通用属性和通用事件。
+> - 如果SubHeaderV2设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeaderV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeaderV2设置通用属性和通用事件。
 
 ## 子组件
 
@@ -21,6 +21,8 @@ export declare struct SubHeaderV2
 **起始版本：** 18
 
 **装饰器类型：** @ComponentV2
+
+<!--Device-unnamed-export declare struct SubHeaderV2--><!--Device-unnamed-export declare struct SubHeaderV2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +50,8 @@ titleBuilder?: SubHeaderV2TitleBuilder
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2-titleBuilder?: SubHeaderV2TitleBuilder--><!--Device-SubHeaderV2-titleBuilder?: SubHeaderV2TitleBuilder-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## endIcon
@@ -65,6 +69,8 @@ readonly endIcon?: SubHeaderV2IconType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2-readonly endIcon?: SubHeaderV2IconType--><!--Device-SubHeaderV2-readonly endIcon?: SubHeaderV2IconType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +94,8 @@ readonly icon?: SubHeaderV2IconType
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2-readonly icon?: SubHeaderV2IconType--><!--Device-SubHeaderV2-readonly icon?: SubHeaderV2IconType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## operationItems
@@ -110,6 +118,8 @@ readonly operationItems?: SubHeaderV2OperationItem[]
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2-readonly operationItems?: SubHeaderV2OperationItem[]--><!--Device-SubHeaderV2-readonly operationItems?: SubHeaderV2OperationItem[]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## operationType
@@ -129,6 +139,8 @@ readonly operationType?: SubHeaderV2OperationType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2-readonly operationType?: SubHeaderV2OperationType--><!--Device-SubHeaderV2-readonly operationType?: SubHeaderV2OperationType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,6 +162,8 @@ readonly select?: SubHeaderV2Select
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2-readonly select?: SubHeaderV2Select--><!--Device-SubHeaderV2-readonly select?: SubHeaderV2Select-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -169,5 +183,7 @@ readonly title?: SubHeaderV2Title
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2-readonly title?: SubHeaderV2Title--><!--Device-SubHeaderV2-readonly title?: SubHeaderV2Title-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

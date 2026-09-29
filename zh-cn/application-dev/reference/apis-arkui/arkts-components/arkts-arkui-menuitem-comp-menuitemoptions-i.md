@@ -8,6 +8,8 @@ Menu中的菜单项信息。
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare interface MenuItemOptions--><!--Device-unnamed-declare interface MenuItemOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## builder
@@ -25,6 +27,8 @@ builder?: CustomBuilder
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuItemOptions-builder?: CustomBuilder--><!--Device-MenuItemOptions-builder?: CustomBuilder-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ MenuItem的内容。默认为空字符串。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-MenuItemOptions-content?: ResourceStr--><!--Device-MenuItemOptions-content?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## endIcon
@@ -61,6 +67,8 @@ MenuItem的末尾图标。不支持Symbol图标。使用Symbol图标时，须使
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuItemOptions-endIcon?: ResourceStr--><!--Device-MenuItemOptions-endIcon?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +88,8 @@ MenuItem结束的标签信息，如快捷方式Ctrl+C等。默认不显示标签
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-MenuItemOptions-labelInfo?: ResourceStr--><!--Device-MenuItemOptions-labelInfo?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## startIcon
@@ -97,6 +107,8 @@ MenuItem的起始图标。不支持Symbol图标。使用Symbol图标时，须使
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuItemOptions-startIcon?: ResourceStr--><!--Device-MenuItemOptions-startIcon?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,6 +128,8 @@ MenuItem末尾的Symbol图标。配置该项时，原先endIcon图标不显示�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-MenuItemOptions-symbolEndIcon?: SymbolGlyphModifier--><!--Device-MenuItemOptions-symbolEndIcon?: SymbolGlyphModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolStartIcon
@@ -133,5 +147,7 @@ MenuItem起始的Symbol图标。配置该项时，原先startIcon图标不显示
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuItemOptions-symbolStartIcon?: SymbolGlyphModifier--><!--Device-MenuItemOptions-symbolStartIcon?: SymbolGlyphModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

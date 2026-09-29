@@ -8,6 +8,8 @@ Describes the data of a common event. The **CommonEventData** module is used to 
 
 **Since:** 7
 
+<!--Device-unnamed-export interface CommonEventData--><!--Device-unnamed-export interface CommonEventData-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 ## bundleName
@@ -22,7 +24,9 @@ Bundle name of the common event publisher. The default value is an empty string.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-CommonEventData-bundleName?: string--><!--Device-CommonEventData-bundleName?: string-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -40,7 +44,9 @@ Common event data received by the subscriber. The value of this field is the sam
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-CommonEventData-code?: int--><!--Device-CommonEventData-code?: int-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -56,7 +62,9 @@ Common event data received by the subscriber. The data size cannot exceed 64 KB.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-CommonEventData-data?: string--><!--Device-CommonEventData-data?: string-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -72,7 +80,9 @@ Name of the common event that is being received.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-CommonEventData-event: string--><!--Device-CommonEventData-event: string-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -89,5 +99,7 @@ Additional information about the common event received by the subscriber. The va
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonEventData-parameters?: { [key: string]: any }--><!--Device-CommonEventData-parameters?: { [key: string]: any }-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent

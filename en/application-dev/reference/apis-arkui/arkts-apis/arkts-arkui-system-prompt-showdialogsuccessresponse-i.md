@@ -4,11 +4,11 @@
 export interface ShowDialogSuccessResponse
 ```
 
-Defines the response of ShowDialog.
+Defines the dialog box response result.
 
-@interface ShowDialogSuccessResponse
+**Since:** 3
 
-**Since:** 11
+<!--Device-unnamed-export interface ShowDialogSuccessResponse--><!--Device-unnamed-export interface ShowDialogSuccessResponse-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,14 +24,16 @@ import { Prompt, Button, ShowActionMenuOptions, ShowDialogOptions, ShowDialogSuc
 index: number
 ```
 
-Defines the index of data.
+Index of the clicked button.
 
 **Type:** number
 
-**Since:** 11
+**Since:** 3
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ShowDialogSuccessResponse-index: number--><!--Device-ShowDialogSuccessResponse-index: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

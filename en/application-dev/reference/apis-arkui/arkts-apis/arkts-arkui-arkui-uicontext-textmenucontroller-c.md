@@ -4,14 +4,18 @@
 export class TextMenuController
 ```
 
-Provides the capability to control text menus.
+The TextMenuController class is used to control the behavior of the text selection menu. It supports setting menu display options (such as displaying in a separate window with priority), disabling system service menu items or specific menu items. It is applicable to app scenarios where the text selection menu display mode needs to be customized or specific menu functions need to be restricted, such as disabling translation, search, and other functions in specific business scenarios.
 
 > **NOTE:** 
 > 
-> - In the following non-static API examples, you must first use [getTextMenuController()](arkts-arkui-arkui-uicontext-uicontext-c.md#gettextmenucontroller) in **UIContext** to obtain a
-> **TextMenuController** instance, and then call the APIs using the obtained instance.
+> - The initial APIs of this class are supported since API version 16.
+> 
+> - **setMenuOptions** is a non-static API. You need to first use the [getTextMenuController()](arkts-arkui-arkui-uicontext-uicontext-c.md#gettextmenucontroller) method in UIContext to obtain a TextMenuController instance, and then call the corresponding method through this instance. **disableSystemServiceMenuItems** and
+> **disableMenuItems** are static methods and can be called directly through the TextMenuController class.
 
 **Since:** 16
+
+<!--Device-unnamed-export class TextMenuController--><!--Device-unnamed-export class TextMenuController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,36 +34,38 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 static disableMenuItems(items: Array<TextMenuItemId>): void
 ```
 
-Disables specified system service menu items in the text selection menu.
+Disables specified system service menu items in the text selection menu. This is applicable to scenarios where specific menu functions need to be disabled on demand, for example, disabling the search and translation menus to simplify the user interface or restrict access to external services. If not set through this API, no menu items are disabled by default.
 
 > **NOTE:** 
 > 
-> - This API takes effect globally for the entire application process after being called.
+> - This API takes effect globally for the entire app process after being called.
 > 
 > - This API can be used in [UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md).
 > 
-> - After this API is called, the [editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions) API of text components will be affected. The parameter list of its [onCreateMenu](arkts-arkui-editmenuoptions-i.md#oncreatemenu) callback will not include the disabled menu options.
+> - After this API is called, it affects the text component's API [editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions), and the input parameter list of its callback method [onCreateMenu](arkts-arkui-editmenuoptions-i.md#oncreatemenu) does not include the disabled menu options.
 > 
-> - Components involving text selection menus include the following: [Text](../arkts-components/arkts-arkui-text-comp.md#text),[TextArea](../arkts-components/arkts-arkui-textarea-comp.md#text_area), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input),[Search](../arkts-components/arkts-arkui-search-comp.md#search), [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor), and [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md#web).
+> - Components involving the text selection menu include [Text](../arkts-components/arkts-arkui-text-comp.md),[TextArea](../arkts-components/arkts-arkui-textarea-comp.md), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md),[Search](../arkts-components/arkts-arkui-search-comp.md), [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md), and [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md).
 > 
 > - System service menu items refer to menu items other than copy, cut, select all, and paste in [TextMenuItemId](arkts-arkui-textmenuitemid-c.md).
 > 
-> - When both **disableSystemServiceMenuItems** and **disableMenuItems** are set, the earlier-set
-> **disableSystemServiceMenuItems** takes precedence.
+> - When both disableSystemServiceMenuItems and disableMenuItems are set, the setting result of disableSystemServiceMenuItems that is set first prevails.
 > 
-> - This API takes effect globally, and multiple calls are subject to the last call.
+> - When this API is used, it takes effect globally, and if called multiple times, the last call prevails.
 > 
-> - Disabling a first-level menu item will also disable all its second-level menu items. For example, disabling the first-level menu item **autoFill** (parent item) in [TextMenuItemId](arkts-arkui-textmenuitemid-c.md) will simultaneously disable the second-level menu item **passwordVault** (child item) in **TextMenuItemId**.
+> - Disabling a first-level menu item also disables all its second-level menu items. For example, disabling the first-level menu item autoFill (parent menu item) in [TextMenuItemId](arkts-arkui-textmenuitemid-c.md) also disables the second-level menu item passwordVault (child menu item).
 > 
-> - Disabling individual second-level menu items is not supported. If required, this can be achieved by disabling the corresponding first-level menu item.
+> - Disabling second-level menu items is not supported. If needed, this can be achieved by disabling the corresponding first-level menu item.
 > 
-> - Disabled menus can be restored in the following ways:
+> - The disabled menu can be restored in the following three ways:
 > 
-> - If only **disableSystemServiceMenuItems(true)** is used to disable menus, set it to **false** to restore.
 > 
-> - If only **disableMenuItems** is used to disable menus, set it to an empty array to restore.
 > 
-> - If both **disableSystemServiceMenuItems** and **disableMenuItems** are used, set the former to **false** and the latter to an empty array to restore.
+> - If only disableSystemServiceMenuItems(true) is used to disable the menu, set it to false to restore the menu.
+> 
+> 
+> - If only disableMenuItems is used to disable the menu, set it to an empty array to restore the menu.
+> 
+> - If both disableSystemServiceMenuItems and disableMenuItems are used, set the former to false and the latter to an empty array to restore the menu.
 
 **Since:** 20
 
@@ -67,13 +73,15 @@ Disables specified system service menu items in the text selection menu.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TextMenuController-static disableMenuItems(items: Array<TextMenuItemId>): void--><!--Device-TextMenuController-static disableMenuItems(items: Array<TextMenuItemId>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| items | Array&lt;[TextMenuItemId](arkts-arkui-textmenuitemid-c.md)&gt; | Yes | List of menu items to disable. |
+| items | Array&lt;[TextMenuItemId](arkts-arkui-textmenuitemid-c.md)&gt; | Yes | List of disabled menu items. Only system service menu items (excluding copy, cut, select all, and paste) can be disabled. Disabling a first-level menu item also disables all its second-level menu items. Second-level menu items cannot be disabled directly. |
 
 **Examples**
 
@@ -126,32 +134,34 @@ struct Index {
 static disableSystemServiceMenuItems(disable: boolean): void
 ```
 
-Disables all system service menu items in the text selection menu.
+Disables all system service menu items in the text selection menu. This is applicable to scenarios where the text selection menu needs to be fully customized, for example, in enterprise security apps where only basic functions such as copy, cut, select all, and paste are retained, and service menus such as search, translation, and share that may involve outgoing data transmission are disabled. If not set through this API, system service menu items are not disabled by default.
 
 > **NOTE:** 
 > 
-> - This API takes effect globally for the entire application process after being called.
+> - This API takes effect globally for the entire app process after being called.
 > 
 > - This API can be used in [UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md).
 > 
-> - After this API is called, the [editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions) API of text components will be affected. The parameter list of its [onCreateMenu](arkts-arkui-editmenuoptions-i.md#oncreatemenu) callback will not include the disabled menu options.
+> - After this API is called, it affects the text component's API [editMenuOptions](../arkts-components/arkts-arkui-text-comp-attribute.md#editmenuoptions), and the input parameter list of its callback method [onCreateMenu](arkts-arkui-editmenuoptions-i.md#oncreatemenu) does not include the disabled menu options.
 > 
-> - Components involving text selection menus include the following: [Text](../arkts-components/arkts-arkui-text-comp.md#text),[TextArea](../arkts-components/arkts-arkui-textarea-comp.md#text_area), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input),[Search](../arkts-components/arkts-arkui-search-comp.md#search), [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor), and [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md#web).
+> - Components involving the text selection menu include [Text](../arkts-components/arkts-arkui-text-comp.md),[TextArea](../arkts-components/arkts-arkui-textarea-comp.md), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md),[Search](../arkts-components/arkts-arkui-search-comp.md), [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md), and [Web](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp.md).
 > 
 > - System service menu items refer to menu items other than copy, cut, select all, and paste in [TextMenuItemId](arkts-arkui-textmenuitemid-c.md).
 > 
-> - When both **disableSystemServiceMenuItems** and **disableMenuItems** are set, the earlier-set
-> **disableSystemServiceMenuItems** takes precedence.
+> - When both disableSystemServiceMenuItems and disableMenuItems are set, the method called first takes precedence.For example, if disableSystemServiceMenuItems(true) is called first and then disableMenuItems([...]) is called,the setting of disableSystemServiceMenuItems prevails. Conversely, if disableMenuItems([...]) is called first,the setting of disableMenuItems prevails. It is recommended to use only one of the two methods based on the actual disabling scope requirements and avoid calling both.
 > 
-> - This API takes effect globally, and multiple calls are subject to the last call.
+> - When this API is used, it takes effect globally, and if called multiple times, the last call prevails.
 > 
-> - Disabled menus can be restored in the following ways:
+> - The disabled menu can be restored in the following three ways:
 > 
-> - If only **disableSystemServiceMenuItems(true)** is used to disable menus, set it to **false** to restore.
 > 
-> - If only **disableMenuItems** is used to disable menus, set it to an empty array to restore.
 > 
-> - If both **disableSystemServiceMenuItems** and **disableMenuItems** are used, set the former to **false** and the latter to an empty array to restore.
+> - If only disableSystemServiceMenuItems(true) is used to disable the menu, set it to false to restore the menu.
+> 
+> 
+> - If only disableMenuItems is used to disable the menu, set it to an empty array to restore the menu.
+> 
+> - If both disableSystemServiceMenuItems and disableMenuItems are used, set the former to false and the latter to an empty array to restore the menu.
 
 **Since:** 20
 
@@ -159,13 +169,15 @@ Disables all system service menu items in the text selection menu.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TextMenuController-static disableSystemServiceMenuItems(disable: boolean): void--><!--Device-TextMenuController-static disableSystemServiceMenuItems(disable: boolean): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| disable | boolean | Yes | Whether to disable system service menu items. The value **true** means to disable system service menu items, and **false** means the opposite. |
+| disable | boolean | Yes | Whether to disable the system service menu item. The value **true** indicates yes, and **false** indicates no. |
 
 **Examples**
 
@@ -218,7 +230,7 @@ struct Index {
 setMenuOptions(options: TextMenuOptions): void
 ```
 
-Sets menu options.
+Sets menu options. For example, when the text selection menu needs to be displayed in a separate window with priority under a specific UIContext, the menu display mode can be set through this API. If not set through this API, the text selection menu is displayed in the current window by default (showMode is TextMenuShowMode.DEFAULT).
 
 **Since:** 16
 
@@ -226,13 +238,15 @@ Sets menu options.
 
 **Atomic service API:** This API can be used in atomic services since API version 16.
 
+<!--Device-TextMenuController-setMenuOptions(options: TextMenuOptions): void--><!--Device-TextMenuController-setMenuOptions(options: TextMenuOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [TextMenuOptions](arkts-arkui-textmenuoptions-i.md) | Yes | Menu options.<br>Default value: {showMode: TextMenuShowMode.DEFAULT}. |
+| options | [TextMenuOptions](arkts-arkui-textmenuoptions-i.md) | Yes | Menu options for controlling the display mode of the text selection menu. |
 
 **Examples**
 

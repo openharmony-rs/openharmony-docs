@@ -8,6 +8,8 @@ Defines the predicates for an RDB store. This class determines whether the condi
 
 **Since:** 9
 
+<!--Device-relationalStore-class RdbPredicates--><!--Device-relationalStore-class RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ and(): RdbPredicates
 Creates an **RdbPredicates** object to add the AND condition.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-and(): RdbPredicates--><!--Device-RdbPredicates-and(): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -53,6 +57,8 @@ beginsWith(field: string, value: string): RdbPredicates
 Creates an **RdbPredicates** object to search for the records in the specified column that begin with the given value.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-beginsWith(field: string, value: string): RdbPredicates--><!--Device-RdbPredicates-beginsWith(field: string, value: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -93,6 +99,8 @@ Creates an **RdbPredicates** object to add a left parenthesis.
 
 **Since:** 9
 
+<!--Device-RdbPredicates-beginWrap(): RdbPredicates--><!--Device-RdbPredicates-beginWrap(): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -122,6 +130,8 @@ between(field: string, low: ValueType, high: ValueType): RdbPredicates
 Creates an **RdbPredicates** object to search for the records that are within the given range (including the min. and max. values) in the specified column.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-between(field: string, low: ValueType, high: ValueType): RdbPredicates--><!--Device-RdbPredicates-between(field: string, low: ValueType, high: ValueType): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -163,6 +173,8 @@ Defines a constructor used to create an **RdbPredicates** object.
 
 **Since:** 9
 
+<!--Device-RdbPredicates-constructor(name: string)--><!--Device-RdbPredicates-constructor(name: string)-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -192,6 +204,8 @@ contains(field: string, value: string): RdbPredicates
 Creates an **RdbPredicates** object to search for the records in the specified column that contain the given value.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-contains(field: string, value: string): RdbPredicates--><!--Device-RdbPredicates-contains(field: string, value: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -232,6 +246,8 @@ Creates an **RdbPredicates** object to filter out duplicate records.
 
 **Since:** 9
 
+<!--Device-RdbPredicates-distinct(): RdbPredicates--><!--Device-RdbPredicates-distinct(): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -256,6 +272,8 @@ endsWith(field: string, value: string): RdbPredicates
 Creates an **RdbPredicates** object to search for the records in the specified column that end with the given value.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-endsWith(field: string, value: string): RdbPredicates--><!--Device-RdbPredicates-endsWith(field: string, value: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -296,6 +314,8 @@ Creates an **RdbPredicates** object to add a right parenthesis.
 
 **Since:** 9
 
+<!--Device-RdbPredicates-endWrap(): RdbPredicates--><!--Device-RdbPredicates-endWrap(): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -325,6 +345,8 @@ equalTo(field: string, value: ValueType): RdbPredicates
 Creates an **RdbPredicates** object to search for the records in the specified column that are equal to the given value.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-equalTo(field: string, value: ValueType): RdbPredicates--><!--Device-RdbPredicates-equalTo(field: string, value: ValueType): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -365,6 +387,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 **Since:** 9
 
+<!--Device-RdbPredicates-glob(field: string, value: string): RdbPredicates--><!--Device-RdbPredicates-glob(field: string, value: string): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -403,6 +427,8 @@ greaterThan(field: string, value: ValueType): RdbPredicates
 Creates an **RdbPredicates** object to search for the records that are greater than the given value in the specified column.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-greaterThan(field: string, value: ValueType): RdbPredicates--><!--Device-RdbPredicates-greaterThan(field: string, value: ValueType): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -443,6 +469,8 @@ Creates an **RdbPredicates** object to search for the records that are greater t
 
 **Since:** 9
 
+<!--Device-RdbPredicates-greaterThanOrEqualTo(field: string, value: ValueType): RdbPredicates--><!--Device-RdbPredicates-greaterThanOrEqualTo(field: string, value: ValueType): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -482,6 +510,8 @@ Creates a **RdbPredicates** object to group the query results based on the speci
 
 **Since:** 9
 
+<!--Device-RdbPredicates-groupBy(fields: Array<string>): RdbPredicates--><!--Device-RdbPredicates-groupBy(fields: Array<string>): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -519,6 +549,8 @@ Filters for group data that meets the conditions.
 
 **Since:** 20
 
+<!--Device-RdbPredicates-having(conditions: string, args?: Array<ValueType>): RdbPredicates--><!--Device-RdbPredicates-having(conditions: string, args?: Array<ValueType>): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -555,6 +587,8 @@ Creates an **RdbPredicates** object to search for the records that are in the gi
 > **value** array is empty to avoid misoperations.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-in(field: string, value: Array<ValueType>): RdbPredicates--><!--Device-RdbPredicates-in(field: string, value: Array<ValueType>): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -595,6 +629,8 @@ Creates an **RdbPredicates** object to specify all remote devices on the network
 
 **Since:** 9
 
+<!--Device-RdbPredicates-inAllDevices(): RdbPredicates--><!--Device-RdbPredicates-inAllDevices(): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -626,6 +662,8 @@ Creates an **RdbPredicates** object to specify the remote devices to connect on 
 > data will be synced to all devices on the network by default.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-inDevices(devices: Array<string>): RdbPredicates--><!--Device-RdbPredicates-inDevices(devices: Array<string>): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -682,6 +720,8 @@ Creates a **RdbPredicates** object to specify the index column.
 
 **Since:** 9
 
+<!--Device-RdbPredicates-indexedBy(field: string): RdbPredicates--><!--Device-RdbPredicates-indexedBy(field: string): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -718,6 +758,8 @@ isNotNull(field: string): RdbPredicates
 Creates an **RdbPredicates** object to search for the records in the specified column that are not **null**.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-isNotNull(field: string): RdbPredicates--><!--Device-RdbPredicates-isNotNull(field: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -756,6 +798,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 **Since:** 9
 
+<!--Device-RdbPredicates-isNull(field: string): RdbPredicates--><!--Device-RdbPredicates-isNull(field: string): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -792,6 +836,8 @@ lessThan(field: string, value: ValueType): RdbPredicates
 Creates an **RdbPredicates** object to search for the records that are less than the given value in the specified column.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-lessThan(field: string, value: ValueType): RdbPredicates--><!--Device-RdbPredicates-lessThan(field: string, value: ValueType): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -832,6 +878,8 @@ Creates an **RdbPredicates** object to search for the records that are less than
 
 **Since:** 9
 
+<!--Device-RdbPredicates-lessThanOrEqualTo(field: string, value: ValueType): RdbPredicates--><!--Device-RdbPredicates-lessThanOrEqualTo(field: string, value: ValueType): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -870,6 +918,8 @@ like(field: string, value: string): RdbPredicates
 Creates an **RdbPredicates** object to search for the records in the specified column that are similar to the given value.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-like(field: string, value: string): RdbPredicates--><!--Device-RdbPredicates-like(field: string, value: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -910,6 +960,8 @@ Creates a **RdbPredicates** object to limit the number of records.
 
 **Since:** 9
 
+<!--Device-RdbPredicates-limitAs(value: int): RdbPredicates--><!--Device-RdbPredicates-limitAs(value: int): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -946,6 +998,8 @@ notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates
 Creates an **RdbPredicates** object to search for the records that are out of the given range (excluding the min. and max. values) in the specified column.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates--><!--Device-RdbPredicates-notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -987,6 +1041,8 @@ Creates an **RdbPredicates** object to search for the records that do not contai
 
 **Since:** 12
 
+<!--Device-RdbPredicates-notContains(field: string, value: string): RdbPredicates--><!--Device-RdbPredicates-notContains(field: string, value: string): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -1025,6 +1081,8 @@ notEqualTo(field: string, value: ValueType): RdbPredicates
 Creates an **RdbPredicates** object to search for the records in the specified column that are not equal to the given value.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-notEqualTo(field: string, value: ValueType): RdbPredicates--><!--Device-RdbPredicates-notEqualTo(field: string, value: ValueType): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1065,6 +1123,8 @@ Creates an **RdbPredicates** object to search for the records that are out of th
 
 **Since:** 9
 
+<!--Device-RdbPredicates-notIn(field: string, value: Array<ValueType>): RdbPredicates--><!--Device-RdbPredicates-notIn(field: string, value: Array<ValueType>): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -1103,6 +1163,8 @@ notLike(field: string, value: string): RdbPredicates
 Creates an **RdbPredicates** object to search for the records in the specified column that are not similar to the given value.
 
 **Since:** 12
+
+<!--Device-RdbPredicates-notLike(field: string, value: string): RdbPredicates--><!--Device-RdbPredicates-notLike(field: string, value: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1143,6 +1205,8 @@ Creates an **RdbPredicates** object to set the start position of the query resul
 
 **Since:** 9
 
+<!--Device-RdbPredicates-offsetAs(rowOffset: int): RdbPredicates--><!--Device-RdbPredicates-offsetAs(rowOffset: int): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -1180,6 +1244,8 @@ Creates an **RdbPredicates** object to add the OR condition.
 
 **Since:** 9
 
+<!--Device-RdbPredicates-or(): RdbPredicates--><!--Device-RdbPredicates-or(): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -1207,6 +1273,8 @@ orderByAsc(field: string): RdbPredicates
 Creates an **RdbPredicates** object to sort the records in the specified column in ascending order.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-orderByAsc(field: string): RdbPredicates--><!--Device-RdbPredicates-orderByAsc(field: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1244,6 +1312,8 @@ orderByDesc(field: string): RdbPredicates
 Creates an **RdbPredicates** object to sort the records in the specified column in descending order.
 
 **Since:** 9
+
+<!--Device-RdbPredicates-orderByDesc(field: string): RdbPredicates--><!--Device-RdbPredicates-orderByDesc(field: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

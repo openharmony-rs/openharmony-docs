@@ -26,6 +26,8 @@ Creates an exact timer. This API uses a promise to return the timer ID.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function createExactTimer(config: ExactTimerConfig): Promise<number>--><!--Device-systemManager-function createExactTimer(config: ExactTimerConfig): Promise<number>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

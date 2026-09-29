@@ -12,6 +12,8 @@ The query media entity event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avMusicTemplate-type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise<PageMediaEntity>--><!--Device-avMusicTemplate-type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise<PageMediaEntity>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **Parameters:**

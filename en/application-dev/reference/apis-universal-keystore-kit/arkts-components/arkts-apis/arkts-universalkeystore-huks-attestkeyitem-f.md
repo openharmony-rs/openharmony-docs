@@ -14,13 +14,13 @@ function attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCa
 
 Attests a key. This API uses an asynchronous callback to return the result.
 
-&lt;!--RP6--&gt;  
+<!--RP6-->  
 > **NOTE:** 
 > 
 > The certificate chain generated during non-anonymous certificate key attestation may contain the device
 > identifier (confirm the specific implementation with the vendor). If the device identifier is included, you can
 > determine its use, retention, and destruction. It is recommended that you describe the use purpose, retention
-> policy, and destruction method in the privacy statement. &lt;!--RP6End--&gt;
+> policy, and destruction method in the privacy statement. <!--RP6End-->
 
 **Since:** 9
 
@@ -28,6 +28,8 @@ Attests a key. This API uses an asynchronous callback to return the result.
 - API version 26 and later: ohos.permission.ATTEST_KEY or ohos.permission.ENTERPRISE_ATTEST_KEY
 - API version 11 and later: ohos.permission.ATTEST_KEY
 - API versions 9 to 10: N/A
+
+<!--Device-huks-function attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksReturnResult>): void--><!--Device-huks-function attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksReturnResult>): void-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -159,13 +161,13 @@ function attestKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksRetu
 
 Attests a key. This API uses a promise to return the result.
 
-&lt;!--RP6--&gt;  
+<!--RP6-->  
 > **NOTE:** 
 > 
 > The certificate chain generated during non-anonymous certificate key attestation may contain the device
 > identifier (confirm the specific implementation with the vendor). If the device identifier is included, you can
 > determine its use, retention, and destruction. It is recommended that you describe the use purpose, retention
-> policy, and destruction method in the privacy statement. &lt;!--RP6End--&gt;
+> policy, and destruction method in the privacy statement. <!--RP6End-->
 
 **Since:** 9
 
@@ -173,6 +175,8 @@ Attests a key. This API uses a promise to return the result.
 - API version 26 and later: ohos.permission.ATTEST_KEY or ohos.permission.ENTERPRISE_ATTEST_KEY
 - API version 11 and later: ohos.permission.ATTEST_KEY
 - API versions 9 to 10: N/A
+
+<!--Device-huks-function attestKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksReturnResult>--><!--Device-huks-function attestKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksReturnResult>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

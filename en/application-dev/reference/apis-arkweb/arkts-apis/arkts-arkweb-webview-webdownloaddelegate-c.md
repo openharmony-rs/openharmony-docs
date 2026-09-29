@@ -10,6 +10,8 @@ WebDownloadDelegate defines four download lifecycle callbacks: [onBeforeDownload
 
 **Since:** 11
 
+<!--Device-webview-class WebDownloadDelegate--><!--Device-webview-class WebDownloadDelegate-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -39,6 +41,8 @@ Invoked to notify the app before the download starts. The app must call **WebDow
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadDelegate-onBeforeDownload(callback: Callback<WebDownloadItem>): void--><!--Device-WebDownloadDelegate-onBeforeDownload(callback: Callback<WebDownloadItem>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -148,6 +152,8 @@ Callback invoked when the download fails. The app can obtain detailed informatio
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebDownloadDelegate-onDownloadFailed(callback: Callback<WebDownloadItem>): void--><!--Device-WebDownloadDelegate-onDownloadFailed(callback: Callback<WebDownloadItem>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -256,6 +262,8 @@ Callback invoked when the download is complete. The app can obtain the informati
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebDownloadDelegate-onDownloadFinish(callback: Callback<WebDownloadItem>): void--><!--Device-WebDownloadDelegate-onDownloadFinish(callback: Callback<WebDownloadItem>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -363,6 +371,8 @@ Callback invoked during the download process. The app can obtain information suc
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadDelegate-onDownloadUpdated(callback: Callback<WebDownloadItem>): void--><!--Device-WebDownloadDelegate-onDownloadUpdated(callback: Callback<WebDownloadItem>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

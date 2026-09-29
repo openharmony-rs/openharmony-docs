@@ -12,6 +12,8 @@ Defines the values of **mode** used in **FileInfo**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-fileExtensionInfo-namespace DocumentFlag--><!--Device-fileExtensionInfo-namespace DocumentFlag-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.

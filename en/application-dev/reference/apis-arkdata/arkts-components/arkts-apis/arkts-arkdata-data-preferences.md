@@ -9,6 +9,8 @@ The **Preferences** module provides APIs for processing data in the form of key-
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace preferences--><!--Device-unnamed-declare namespace preferences-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core @name preferences
 
 ## Modules to Import
@@ -47,17 +49,17 @@ import { preferences } from '@kit.ArkData';
 | [Options](arkts-arkdata-preferences-options-i.md) | Represents the configuration of a **Preferences** instance. |
 | [Preferences](arkts-arkdata-preferences-preferences-i.md) | Provides APIs for obtaining and modifying the stored data. Before calling any API of **Preferences**, you must obtain a **Preferences** instance by using [preferences.getPreferences](arkts-arkdata-preferences-getpreferences-f.md). |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [StorageType](arkts-arkdata-preferences-storagetype-e.md) | Enumerates the storage types of preferences. |
-
 ### Types
 
 | Name | Description |
 | --- | --- |
 | [ValueType](arkts-arkdata-preferences-valuetype-t.md) | Enumerates the value types. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [StorageType](arkts-arkdata-preferences-storagetype-e.md) | Enumerates the storage types of preferences. |
 
 ### Constants
 

@@ -18,6 +18,8 @@ Checks whether a specified feature is supported.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-common-function isFeatureSupported(feature: ManagedFeature): boolean--><!--Device-common-function isFeatureSupported(feature: ManagedFeature): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

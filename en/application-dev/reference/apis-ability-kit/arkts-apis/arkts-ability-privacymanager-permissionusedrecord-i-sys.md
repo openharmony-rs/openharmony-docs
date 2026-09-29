@@ -8,6 +8,8 @@ Represents the access records of a permission.
 
 **Since:** 9
 
+<!--Device-privacyManager-interface PermissionUsedRecord--><!--Device-privacyManager-interface PermissionUsedRecord-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Total number of accesses for this permission, indicating the cumulative number o
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedRecord-accessCount: int--><!--Device-PermissionUsedRecord-accessCount: int-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -52,6 +56,8 @@ Default value: Query the last 10 successful access records.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedRecord-accessRecords: Array<UsedRecordDetail>--><!--Device-PermissionUsedRecord-accessRecords: Array<UsedRecordDetail>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -69,6 +75,8 @@ Extension identity, with a maximum length of 48 characters.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PermissionUsedRecord-enhancedIdentity?: string--><!--Device-PermissionUsedRecord-enhancedIdentity?: string-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -88,6 +96,8 @@ Last access duration. Unit: milliseconds.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedRecord-lastAccessDuration: long--><!--Device-PermissionUsedRecord-lastAccessDuration: long-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -105,6 +115,8 @@ Last time when the permission was accessed. Unit: milliseconds.
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionUsedRecord-lastAccessTime: long--><!--Device-PermissionUsedRecord-lastAccessTime: long-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -124,6 +136,8 @@ Last time when the access to the permission was rejected. Unit: milliseconds.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedRecord-lastRejectTime: long--><!--Device-PermissionUsedRecord-lastRejectTime: long-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -142,6 +156,8 @@ Permission name, used to identify the sensitive permission corresponding to the 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedRecord-permissionName: Permissions--><!--Device-PermissionUsedRecord-permissionName: Permissions-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -159,6 +175,8 @@ Total number of rejections for this permission, indicating the cumulative number
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionUsedRecord-rejectCount: int--><!--Device-PermissionUsedRecord-rejectCount: int-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -179,6 +197,8 @@ Default value: Query the last 10 failed or rejected records.
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionUsedRecord-rejectRecords: Array<UsedRecordDetail>--><!--Device-PermissionUsedRecord-rejectRecords: Array<UsedRecordDetail>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

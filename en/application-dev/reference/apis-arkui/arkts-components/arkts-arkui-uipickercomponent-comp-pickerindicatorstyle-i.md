@@ -4,9 +4,11 @@
 declare interface PickerIndicatorStyle
 ```
 
-Sets parameters of the selected item indicator style.
+Describes the parameters of the selected item indicator style.
 
 **Since:** 22
+
+<!--Device-unnamed-declare interface PickerIndicatorStyle--><!--Device-unnamed-declare interface PickerIndicatorStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,11 +20,11 @@ backgroundColor?: ResourceColor
 
 Background color of the selected item.
 
-Default value: 'sys.color.comp_background_tertiary'
+Default value: **'sys.color.comp_background_tertiary'**
 
 **NOTE:** 
 
-This parameter takes effect only when **type** is set to **PickerIndicatorType.BACKGROUND**.
+This attribute takes effect when **type** is **PickerIndicatorType.BACKGROUND**.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -34,6 +36,8 @@ This parameter takes effect only when **type** is set to **PickerIndicatorType.B
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-PickerIndicatorStyle-backgroundColor?: ResourceColor--><!--Device-PickerIndicatorStyle-backgroundColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderRadius
@@ -42,20 +46,20 @@ This parameter takes effect only when **type** is set to **PickerIndicatorType.B
 borderRadius?: LengthMetrics | BorderRadiuses | LocalizedBorderRadiuses
 ```
 
-Background border radius of the selected item.
+Corner radius of the selected item background.
 
-Value range: no more than half of the smaller value between the width and height of the selected item. If the value Default value: { value:12, unit:LengthUnit.vp }, meaning 12 vp for all corners
+Default value: **{ value:12, unit:LengthUnit.vp }**, which means all four corner radii are 12 vp.
 
-is less than 0, the default value is used. If the value is greater than the maximum value, the maximum value is used.
+Value range: Let x be the smaller of the width and height of the selected item. The maximum value does not exceed half of x. When the value is less than 0, the default value is used; when the value is greater than the maximum value, the maximum value is used.
 
-NOTE
+**NOTE:** 
 
-1. This parameter takes effect only when **type** is set to **PickerIndicatorType.BACKGROUND**.
-2. [LengthMetrics](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md): Sets the size and unit of the four corner radii
-in a unified manner.
-3. [BorderRadiuses](../arkts-apis/arkts-arkui-borderradiuses-t.md): Sets the size (unit: vp) of the four corner radii individually.
-4. [LocalizedBorderRadiuses](../arkts-apis/arkts-arkui-localizedborderradiuses-i.md): Sets the size and unit of the four corner radii
-individually.
+1. This attribute takes effect when **type** is **PickerIndicatorType.BACKGROUND**.
+2. [LengthMetrics](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md): sets the size and unit of all four corner radii
+uniformly.
+3. [BorderRadiuses](../arkts-apis/arkts-arkui-borderradiuses-t.md): sets the size of the four corner radii separately (in vp).
+4. [LocalizedBorderRadiuses](../arkts-apis/arkts-arkui-localizedborderradiuses-i.md): sets the size and unit of the four corner radii
+separately.
 
 **Type:** LengthMetrics &#124; [BorderRadiuses](../arkts-apis/arkts-arkui-borderradiuses-t.md) &#124; [LocalizedBorderRadiuses](../arkts-apis/arkts-arkui-localizedborderradiuses-i.md)
 
@@ -67,6 +71,8 @@ individually.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-PickerIndicatorStyle-borderRadius?: LengthMetrics | BorderRadiuses | LocalizedBorderRadiuses--><!--Device-PickerIndicatorStyle-borderRadius?: LengthMetrics | BorderRadiuses | LocalizedBorderRadiuses-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## dividerColor
@@ -77,11 +83,11 @@ dividerColor?: ResourceColor
 
 Color of the divider.
 
-Default value: 'sys.color.comp_divider'
+Default value: **'sys.color.comp_divider'**
 
 **NOTE:** 
 
-This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.
+This attribute takes effect when type is **PickerIndicatorType.DIVIDER**.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -93,6 +99,8 @@ This parameter takes effect only when **type** is set to **PickerIndicatorType.D
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-PickerIndicatorStyle-dividerColor?: ResourceColor--><!--Device-PickerIndicatorStyle-dividerColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## endMargin
@@ -103,15 +111,15 @@ endMargin?: LengthMetrics
 
 Distance between the divider and the end edge of the **UIPickerComponent** container.
 
-Default value: 0
+Default value: **0**
 
-Unit: same as that of **LengthMetrics**
+Unit: same as **LengthMetrics**.
 
-Value range: The sum of **startMargin** and **endMargin** must not exceed the width of the **UIPickerComponent** container. If the value is less than 0 or the sum of **startMargin** and **endMargin** exceeds the width of the **UIPickerComponent** container, the default value is used. Percentages are not supported.
+Value range: The sum of **startMargin** and **endMargin** must not exceed the width of the **UIPickerComponent** container. When the value is less than 0 or the sum of **startMargin** and **endMargin** exceeds the width of the **UIPickerComponent** container, the default value is used. The percentage type is not supported.
 
 **NOTE:** 
 
-This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.
+This attribute takes effect when **type** is **PickerIndicatorType.DIVIDER**.
 
 **Type:** LengthMetrics
 
@@ -122,6 +130,8 @@ This parameter takes effect only when **type** is set to **PickerIndicatorType.D
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-PickerIndicatorStyle-endMargin?: LengthMetrics--><!--Device-PickerIndicatorStyle-endMargin?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,15 +143,15 @@ startMargin?: LengthMetrics
 
 Distance between the divider and the start edge of the **UIPickerComponent** container.
 
-Default value: 0
+Default value: **0**
 
-Unit: same as that of **LengthMetrics**
+Unit: same as **LengthMetrics**.
 
-Value range: The sum of **startMargin** and **endMargin** must not exceed the width of the **UIPickerComponent** container. If the value is less than 0 or the sum of **startMargin** and **endMargin** exceeds the width of the **UIPickerComponent** container, the default value is used. Percentages are not supported.
+Value range: The sum of **startMargin** and **endMargin** must not exceed the width of the **UIPickerComponent** container. When the value is less than 0 or the sum of **startMargin** and **endMargin** exceeds the width of the **UIPickerComponent** container, the default value is used. The percentage type is not supported.
 
-NOTE
+**NOTE:** 
 
-This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.
+This attribute takes effect when **type** is **PickerIndicatorType.DIVIDER**.
 
 **Type:** LengthMetrics
 
@@ -153,6 +163,8 @@ This parameter takes effect only when **type** is set to **PickerIndicatorType.D
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-PickerIndicatorStyle-startMargin?: LengthMetrics--><!--Device-PickerIndicatorStyle-startMargin?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeWidth
@@ -161,19 +173,19 @@ This parameter takes effect only when **type** is set to **PickerIndicatorType.D
 strokeWidth?: LengthMetrics
 ```
 
-Stroke width of the divider.
+Line width of the divider.
 
-Default value: 2.0px.
+Default value: **{ value: 2.0, unit: LengthUnit.px }**
 
-Unit: same as that of **LengthMetrics**
+Unit: same as **LengthMetrics**.
 
-Value range: [0, half the height of the selected item (that is, 20 vp)]. If the value of **strokeWidth** is less than 0 or greater than half the height of the selected item, the default value is used. Percentages are not supported.
+Value range: [0, half of the selected item height]. When **strokeWidth** is less than 0 or greater than half of the selected item height, the default value is used. Note: The selected item height can be set through the **itemHeight** attribute, and the default value is 40 vp, in which case the upper limit of the value range is 20 vp; when **itemHeight** is set to another value, the upper limit changes accordingly. The percentage type is not supported.
 
-NOTE
+**NOTE:** 
 
-1. This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.
-2. If this parameter is set in **LengthMetrics.resource** mode, the value of a non-length attribute will be treated
-as 0 vp.
+1. This attribute takes effect when type is **PickerIndicatorType.DIVIDER**.
+2. When the value is set through **LengthMetrics.resource**, a value of a non-length attribute is processed as
+0 vp.
 
 **Type:** LengthMetrics
 
@@ -185,6 +197,8 @@ as 0 vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-PickerIndicatorStyle-strokeWidth?: LengthMetrics--><!--Device-PickerIndicatorStyle-strokeWidth?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -195,9 +209,9 @@ type: PickerIndicatorType
 
 Type of the selected item indicator.
 
-Default value: PickerIndicatorType.BACKGROUND
+Default value: **PickerIndicatorType.BACKGROUND**
 
-If the value of **type** is a decimal number, the integer after rounding down is used. If the value of **type** is not within the value range of **PickerIndicatorType**, the default value is used.
+When the value of **type** is a decimal, the value rounded down is used; when the value of **type** is not within the **PickerIndicatorType** enum range, the default value is used.
 
 **Type:** [PickerIndicatorType](arkts-arkui-uipickercomponent-comp-pickerindicatortype-e.md)
 
@@ -208,5 +222,7 @@ If the value of **type** is a decimal number, the integer after rounding down is
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-PickerIndicatorStyle-type: PickerIndicatorType--><!--Device-PickerIndicatorStyle-type: PickerIndicatorType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

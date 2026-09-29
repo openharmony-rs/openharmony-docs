@@ -8,6 +8,8 @@ Enumerates the application states. This enum can be used together with [AbilityS
 
 **Since:** 9
 
+<!--Device-appManager-export enum ApplicationState--><!--Device-appManager-export enum ApplicationState-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ STATE_CREATE
 The application is being created.
 
 **Since:** 9
+
+<!--Device-ApplicationState-STATE_CREATE--><!--Device-ApplicationState-STATE_CREATE-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -36,6 +40,8 @@ The application is running in the foreground.
 
 **Since:** 9
 
+<!--Device-ApplicationState-STATE_FOREGROUND--><!--Device-ApplicationState-STATE_FOREGROUND-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -49,6 +55,8 @@ STATE_ACTIVE
 The application is active.
 
 **Since:** 9
+
+<!--Device-ApplicationState-STATE_ACTIVE--><!--Device-ApplicationState-STATE_ACTIVE-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -64,6 +72,8 @@ The application is running in the background.
 
 **Since:** 9
 
+<!--Device-ApplicationState-STATE_BACKGROUND--><!--Device-ApplicationState-STATE_BACKGROUND-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -77,6 +87,8 @@ STATE_DESTROY
 The application is being destroyed.
 
 **Since:** 9
+
+<!--Device-ApplicationState-STATE_DESTROY--><!--Device-ApplicationState-STATE_DESTROY-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

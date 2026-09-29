@@ -25,6 +25,8 @@ Queries network probe results. If an exception (for example, network disconnecti
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function queryProbeResult(destination: string, duration: int): Promise<ProbeResultInfo>--><!--Device-connection-function queryProbeResult(destination: string, duration: int): Promise<ProbeResultInfo>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

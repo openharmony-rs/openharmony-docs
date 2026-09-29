@@ -16,6 +16,8 @@ Creates a PixelMap object from surface id.
 
 **Since:** 11
 
+<!--Device-image-function createPixelMapFromSurface(surfaceId: string, region: Region): Promise<PixelMap>--><!--Device-image-function createPixelMapFromSurface(surfaceId: string, region: Region): Promise<PixelMap>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -66,6 +68,8 @@ function createPixelMapFromSurface(surfaceId: string): Promise<PixelMap>
 Creates a PixelMap object from surface id.
 
 **Since:** 15
+
+<!--Device-image-function createPixelMapFromSurface(surfaceId: string): Promise<PixelMap>--><!--Device-image-function createPixelMapFromSurface(surfaceId: string): Promise<PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

@@ -8,6 +8,8 @@ Represents an exception message about the SQL statement executed by the database
 
 **Since:** 20
 
+<!--Device-relationalStore-interface ExceptionMessage--><!--Device-relationalStore-interface ExceptionMessage-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Error code returned by the executed SQL statement. For details about the values 
 
 **Since:** 20
 
+<!--Device-ExceptionMessage-code: int--><!--Device-ExceptionMessage-code: int-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## message
@@ -42,6 +46,8 @@ Exception message returned by the executed SQL statement.
 
 **Since:** 20
 
+<!--Device-ExceptionMessage-message: string--><!--Device-ExceptionMessage-message: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## sql
@@ -55,5 +61,7 @@ SQL statement that reports the error.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-ExceptionMessage-sql: string--><!--Device-ExceptionMessage-sql: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

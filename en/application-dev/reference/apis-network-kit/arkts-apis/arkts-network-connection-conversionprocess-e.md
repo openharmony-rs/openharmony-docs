@@ -8,6 +8,8 @@ Enumerates the parameters of the ASCII/Unicode transcoding process.
 
 **Since:** 23
 
+<!--Device-connection-export enum ConversionProcess--><!--Device-connection-export enum ConversionProcess-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## NO_CONFIGURATION
@@ -19,6 +21,8 @@ NO_CONFIGURATION = 0
 Only domain names with assigned Unicode code points can be converted. (Unicode assigns a unique number to each character. This number is called a code point.)
 
 **Since:** 23
+
+<!--Device-ConversionProcess-NO_CONFIGURATION = 0--><!--Device-ConversionProcess-NO_CONFIGURATION = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -32,6 +36,8 @@ Allows the translation of domain names that contain unassigned Unicode code poin
 
 **Since:** 23
 
+<!--Device-ConversionProcess-ALLOW_UNASSIGNED = 1--><!--Device-ConversionProcess-ALLOW_UNASSIGNED = 1-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## USE_STD3_ASCII_RULES
@@ -43,5 +49,7 @@ USE_STD3_ASCII_RULES = 2
 During the conversion, the STD-3 ASCII rule (RFC 1123 standard) is forcibly used to check the generated ASCII domain name.
 
 **Since:** 23
+
+<!--Device-ConversionProcess-USE_STD3_ASCII_RULES = 2--><!--Device-ConversionProcess-USE_STD3_ASCII_RULES = 2-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

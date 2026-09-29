@@ -8,6 +8,8 @@ Describes the filter conditions for track selection.
 
 **Since:** 26.0.0
 
+<!--Device-media-interface TrackSelectionFilter--><!--Device-media-interface TrackSelectionFilter-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Maximum allowed audio bitrate. The value should be an integer.Value constraint:T
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TrackSelectionFilter-maxAudioBitrate?: int--><!--Device-TrackSelectionFilter-maxAudioBitrate?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## maxAudioChannels
@@ -45,6 +49,8 @@ Maximum allowed audio channel count. The value should be an integer.Value constr
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TrackSelectionFilter-maxAudioChannels?: int--><!--Device-TrackSelectionFilter-maxAudioChannels?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -62,6 +68,8 @@ Maximum allowed video bitrate. The value should be an integer.Value constraint:T
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TrackSelectionFilter-maxVideoBitrate?: int--><!--Device-TrackSelectionFilter-maxVideoBitrate?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## maxVideoFrameRate
@@ -77,6 +85,8 @@ Maximum allowed video frame rate. The value should be an integer.Value constrain
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TrackSelectionFilter-maxVideoFrameRate?: int--><!--Device-TrackSelectionFilter-maxVideoFrameRate?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -94,6 +104,8 @@ Maximum allowed video resolution. <br>Default value:If not specified, the maximu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TrackSelectionFilter-maxVideoResolution?: VideoSize--><!--Device-TrackSelectionFilter-maxVideoResolution?: VideoSize-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## minAudioBitrate
@@ -109,6 +121,8 @@ Minimum allowed audio bitrate. The value should be an integer.Value constraint:T
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TrackSelectionFilter-minAudioBitrate?: int--><!--Device-TrackSelectionFilter-minAudioBitrate?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -126,6 +140,8 @@ Minimum allowed video bitrate. The value should be an integer.Value constraint:T
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TrackSelectionFilter-minVideoBitrate?: int--><!--Device-TrackSelectionFilter-minVideoBitrate?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## minVideoFrameRate
@@ -141,6 +157,8 @@ Minimum allowed video frame rate. The value should be an integer.Value constrain
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TrackSelectionFilter-minVideoFrameRate?: int--><!--Device-TrackSelectionFilter-minVideoFrameRate?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -158,6 +176,8 @@ Minimum allowed video resolution. <br>Default value:If not specified, the minimu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TrackSelectionFilter-minVideoResolution?: VideoSize--><!--Device-TrackSelectionFilter-minVideoResolution?: VideoSize-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## preferredAudioLanguages
@@ -173,6 +193,8 @@ The preferred languages for audio tracks. Multiple languages are arranged in the
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TrackSelectionFilter-preferredAudioLanguages?: Array<string>--><!--Device-TrackSelectionFilter-preferredAudioLanguages?: Array<string>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -190,6 +212,8 @@ Indicates the preferred encoding MIME type of the audio track. Multiple MIMEs ar
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TrackSelectionFilter-preferredAudioMimeTypes?: Array<string>--><!--Device-TrackSelectionFilter-preferredAudioMimeTypes?: Array<string>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## preferredSubtitleLanguages
@@ -206,6 +230,8 @@ Preferred language set for subtitles. Multiple languages are arranged in the ord
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TrackSelectionFilter-preferredSubtitleLanguages?: Array<string>--><!--Device-TrackSelectionFilter-preferredSubtitleLanguages?: Array<string>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## preferredVideoMimeTypes
@@ -221,5 +247,7 @@ The preferred sample MIME types for video tracks in order of preference, Multipl
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TrackSelectionFilter-preferredVideoMimeTypes?: Array<string>--><!--Device-TrackSelectionFilter-preferredVideoMimeTypes?: Array<string>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core

@@ -22,6 +22,8 @@ Removes a P2P group.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifi-function removeGroup(): boolean--><!--Device-wifi-function removeGroup(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Return value:**

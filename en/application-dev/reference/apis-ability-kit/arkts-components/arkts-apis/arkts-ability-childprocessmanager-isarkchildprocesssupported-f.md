@@ -18,6 +18,8 @@ Checks whether the caller is allowed to create ark child processes on this devic
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-childProcessManager-function isArkChildProcessSupported(): boolean--><!--Device-childProcessManager-function isArkChildProcessSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**

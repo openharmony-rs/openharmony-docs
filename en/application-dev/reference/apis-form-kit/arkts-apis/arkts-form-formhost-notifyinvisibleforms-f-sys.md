@@ -18,6 +18,8 @@ Instructs the widget framework to make a widget invisible. After this API is cal
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function notifyInvisibleForms(formIds: Array<string>, callback: AsyncCallback<void>): void--><!--Device-formHost-function notifyInvisibleForms(formIds: Array<string>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -54,6 +56,8 @@ Instructs the widget framework to make a widget invisible. After this API is cal
 **Since:** 9
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
+
+<!--Device-formHost-function notifyInvisibleForms(formIds: Array<string>): Promise<void>--><!--Device-formHost-function notifyInvisibleForms(formIds: Array<string>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

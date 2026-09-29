@@ -4,11 +4,13 @@
 declare class CircleAttribute extends CommonShapeMethod<CircleAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及图形绘制通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)外，还支持以下属性：
 
-**继承/实现关系：** CircleAttribute extends CommonShapeMethod&lt;CircleAttribute&gt;
+**继承/实现关系：** CircleAttribute extends CommonShapeMethod<CircleAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class CircleAttribute extends CommonShapeMethod<CircleAttribute>--><!--Device-unnamed-declare class CircleAttribute extends CommonShapeMethod<CircleAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ fill(value: ResourceColor | ColorMetrics)
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CircleAttribute-fill(value: ResourceColor | ColorMetrics): CircleAttribute--><!--Device-CircleAttribute-fill(value: ResourceColor | ColorMetrics): CircleAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ stroke(value: ResourceColor | ColorMetrics)
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CircleAttribute-stroke(value: ResourceColor | ColorMetrics): CircleAttribute--><!--Device-CircleAttribute-stroke(value: ResourceColor | ColorMetrics): CircleAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

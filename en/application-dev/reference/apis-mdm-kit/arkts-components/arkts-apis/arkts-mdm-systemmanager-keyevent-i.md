@@ -8,6 +8,8 @@ Enumerates key events. When the [EnterpriseAdminExtensionAbility.onKeyEvent](ark
 
 **Since:** 23
 
+<!--Device-systemManager-interface KeyEvent--><!--Device-systemManager-interface KeyEvent-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Time when the key action occurs. The value is a microsecond-level timestamp afte
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-KeyEvent-actionTime: number--><!--Device-KeyEvent-actionTime: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## keyAction
@@ -45,6 +49,8 @@ Key action.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyEvent-keyAction: KeyAction--><!--Device-KeyEvent-keyAction: KeyAction-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -62,6 +68,8 @@ Key code.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-KeyEvent-keyCode: KeyCode--><!--Device-KeyEvent-keyCode: KeyCode-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## keyItems
@@ -77,5 +85,7 @@ Information about other keys that are being pressed when the current key event o
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyEvent-keyItems: Array<KeyItem>--><!--Device-KeyEvent-keyItems: Array<KeyItem>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

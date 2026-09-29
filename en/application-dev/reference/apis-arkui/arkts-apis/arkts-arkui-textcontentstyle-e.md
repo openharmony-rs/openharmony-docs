@@ -4,9 +4,11 @@
 declare enum TextContentStyle
 ```
 
-The polymorphic style of the text box.
+Sets the polymorphic style of the text box.
 
 **Since:** 10
+
+<!--Device-unnamed-declare enum TextContentStyle--><!--Device-unnamed-declare enum TextContentStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ The polymorphic style of the text box.
 DEFAULT
 ```
 
-Default style. The caret width is fixed at 1.5 vp, and the caret height is subject to the background height and font size of the selected text.
+Default style. The caret width is 1.5 vp, and the caret height is subject to the background height and font size of the selected text.
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TextContentStyle-DEFAULT--><!--Device-TextContentStyle-DEFAULT-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,18 +36,20 @@ Default style. The caret width is fixed at 1.5 vp, and the caret height is subje
 INLINE
 ```
 
-Inline input style. The background height of the selected text is the same as the height of the text box.
+Inline input style, also known as inline mode. The text selection background height is the same as the input box height.
 
-This style is used in scenarios where editing and non-editing states are obvious, for example, renaming in the file list view.
+Inline input is used in scenarios where there is a clear distinction between editing and non-editing states, for example, renaming in a file list view.
 
-The **showError** attribute is not supported for this style.
+The **showError** attribute is not supported.
 
-This style does not allow for text dragging and dropping.
+In inline mode, dragging text is not supported.
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TextContentStyle-INLINE--><!--Device-TextContentStyle-INLINE-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ interface ColorModeOptions
 
 **起始版本：** 23
 
+<!--Device-componentSnapshot-interface ColorModeOptions--><!--Device-componentSnapshot-interface ColorModeOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -40,6 +42,8 @@ colorSpace?: colorSpaceManager.ColorSpace
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-ColorModeOptions-colorSpace?: colorSpaceManager.ColorSpace--><!--Device-ColorModeOptions-colorSpace?: colorSpaceManager.ColorSpace-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isAuto
@@ -69,5 +73,7 @@ isAuto?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorModeOptions-isAuto?: boolean--><!--Device-ColorModeOptions-isAuto?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

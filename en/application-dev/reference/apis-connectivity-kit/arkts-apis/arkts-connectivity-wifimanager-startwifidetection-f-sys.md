@@ -18,6 +18,8 @@ Start Wi-Fi network detection
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifiManager-function startWifiDetection(): void--><!--Device-wifiManager-function startWifiDetection(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

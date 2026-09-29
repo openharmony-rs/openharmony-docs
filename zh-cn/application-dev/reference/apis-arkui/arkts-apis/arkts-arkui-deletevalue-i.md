@@ -8,6 +8,8 @@ declare interface DeleteValue
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface DeleteValue--><!--Device-unnamed-declare interface DeleteValue-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## deleteOffset
@@ -25,6 +27,8 @@ deleteOffset: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DeleteValue-deleteOffset: number--><!--Device-DeleteValue-deleteOffset: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ deleteValue: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DeleteValue-deleteValue: string--><!--Device-DeleteValue-deleteValue: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -61,5 +67,7 @@ direction: TextDeleteDirection
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DeleteValue-direction: TextDeleteDirection--><!--Device-DeleteValue-direction: TextDeleteDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

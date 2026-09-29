@@ -24,6 +24,8 @@ Obtains the value of the specified system parameter key.
 
 **Since:** 9
 
+<!--Device-systemParameterEnhance-function getSync(key: string, def?: string): string--><!--Device-systemParameterEnhance-function getSync(key: string, def?: string): string-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo
 
 **System API:** This is a system API.

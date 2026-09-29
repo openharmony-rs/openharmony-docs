@@ -8,6 +8,8 @@ Scan report type used during scan.
 
 **Since:** 15
 
+<!--Device-ble-enum ScanReportType--><!--Device-ble-enum ScanReportType-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## ON_FOUND
@@ -22,7 +24,9 @@ The found of advertisement packet.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-ScanReportType-ON_FOUND = 1--><!--Device-ScanReportType-ON_FOUND = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -38,7 +42,9 @@ The lost of advertisement packet.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-ScanReportType-ON_LOST = 2--><!--Device-ScanReportType-ON_LOST = 2-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -54,6 +60,8 @@ The type of advertisement packet reported in batch mode.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-ScanReportType-ON_BATCH = 3--><!--Device-ScanReportType-ON_BATCH = 3-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

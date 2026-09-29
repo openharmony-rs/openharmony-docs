@@ -19,6 +19,8 @@ Obtains the screenshots of one or more main windows specified by **windowId**. T
 
 **Required permissions:** ohos.permission.CUSTOM_SCREEN_CAPTURE
 
+<!--Device-window-function getMainWindowSnapshot(windowId: Array<int>, config: WindowSnapshotConfiguration):    Promise<Array<image.PixelMap | undefined>>--><!--Device-window-function getMainWindowSnapshot(windowId: Array<int>, config: WindowSnapshotConfiguration):    Promise<Array<image.PixelMap | undefined>>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**

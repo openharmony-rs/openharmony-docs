@@ -25,6 +25,8 @@ Subscribes to the state changes of flash alerts mode. This API uses an asynchron
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accessibility-function onFlashReminderStateChange(callback: Callback<boolean>): void--><!--Device-accessibility-function onFlashReminderStateChange(callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**

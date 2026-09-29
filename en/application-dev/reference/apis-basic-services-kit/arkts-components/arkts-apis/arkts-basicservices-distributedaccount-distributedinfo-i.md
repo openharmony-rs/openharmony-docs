@@ -8,6 +8,8 @@ Represents the distributed account information about an OS account.
 
 **Since:** 7
 
+<!--Device-distributedAccount-interface DistributedInfo--><!--Device-distributedAccount-interface DistributedInfo-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Avatar of the distributed account. Set this parameter when the user avatar needs
 **Type:** string
 
 **Since:** 9
+
+<!--Device-DistributedInfo-avatar?: string--><!--Device-DistributedInfo-avatar?: string-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -50,6 +54,8 @@ Login state of the distributed account. The state can be login, logout, token in
 
 **Since:** 7
 
+<!--Device-DistributedInfo-event: string--><!--Device-DistributedInfo-event: string-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## id
@@ -63,6 +69,8 @@ UID of the distributed account. It must be a non-null string.
 **Type:** string
 
 **Since:** 7
+
+<!--Device-DistributedInfo-id: string--><!--Device-DistributedInfo-id: string-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -78,6 +86,8 @@ Name of the distributed account. It must be a non-null string.
 
 **Since:** 7
 
+<!--Device-DistributedInfo-name: string--><!--Device-DistributedInfo-name: string-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## nickname
@@ -91,6 +101,8 @@ Nickname of the distributed account. Set this parameter when the user nickname n
 **Type:** string
 
 **Since:** 9
+
+<!--Device-DistributedInfo-nickname?: string--><!--Device-DistributedInfo-nickname?: string-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -106,6 +118,8 @@ Scalable data about the distributed account. Set this parameter when customized 
 
 **Since:** 8
 
+<!--Device-DistributedInfo-scalableData?: object--><!--Device-DistributedInfo-scalableData?: object-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## status
@@ -119,5 +133,7 @@ Status of the distributed account. The value is of the enumerated type. This par
 **Type:** [DistributedAccountStatus](arkts-basicservices-distributedaccount-distributedaccountstatus-e.md)
 
 **Since:** 10
+
+<!--Device-DistributedInfo-readonly status?: DistributedAccountStatus--><!--Device-DistributedInfo-readonly status?: DistributedAccountStatus-End-->
 
 **System capability:** SystemCapability.Account.OsAccount

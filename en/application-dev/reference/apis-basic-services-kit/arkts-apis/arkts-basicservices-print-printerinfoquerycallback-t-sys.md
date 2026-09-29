@@ -10,6 +10,8 @@ Defines the callback type used in registering to listen for printerInfoQuery eve
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-print-type PrinterInfoQueryCallback = (printerInfo: PrinterInformation, ppdInfo: PpdInfo[]) => void--><!--Device-print-type PrinterInfoQueryCallback = (printerInfo: PrinterInformation, ppdInfo: PpdInfo[]) => void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.

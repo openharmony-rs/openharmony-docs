@@ -17,6 +17,8 @@ Changes the file owner (owner of the symbolic link, not the file referred to by 
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare function lchown(path: string, uid: number, gid: number): Promise<void>--><!--Device-unnamed-declare function lchown(path: string, uid: number, gid: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -47,6 +49,8 @@ Changes the file owner (owner of the symbolic link, not the file referred to by 
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-unnamed-declare function lchown(path: string, uid: number, gid: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function lchown(path: string, uid: number, gid: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

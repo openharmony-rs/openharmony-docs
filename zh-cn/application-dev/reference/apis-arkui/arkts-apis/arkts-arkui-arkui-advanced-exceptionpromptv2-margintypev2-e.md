@@ -8,6 +8,8 @@ export declare enum MarginTypeV2
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export declare enum MarginTypeV2--><!--Device-unnamed-export declare enum MarginTypeV2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT_MARGIN
@@ -28,6 +30,8 @@ DEFAULT_MARGIN = 0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-MarginTypeV2-DEFAULT_MARGIN = 0--><!--Device-MarginTypeV2-DEFAULT_MARGIN = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FIT_MARGIN
@@ -47,5 +51,7 @@ FIT_MARGIN = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-MarginTypeV2-FIT_MARGIN = 1--><!--Device-MarginTypeV2-FIT_MARGIN = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

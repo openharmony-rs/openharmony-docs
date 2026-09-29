@@ -8,6 +8,8 @@ The AbilityStateData module defines a struct for ability state information. Once
 
 **Since:** 14
 
+<!--Device-unnamed-declare class AbilityStateData--><!--Device-unnamed-declare class AbilityStateData-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## abilityName
@@ -21,6 +23,8 @@ Ability name.
 **Type:** string
 
 **Since:** 14
+
+<!--Device-AbilityStateData-abilityName: string--><!--Device-AbilityStateData-abilityName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -36,6 +40,8 @@ abilityType: number
 
 **Since:** 14
 
+<!--Device-AbilityStateData-abilityType: int--><!--Device-AbilityStateData-abilityType: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## appCloneIndex
@@ -49,6 +55,8 @@ Index of an [application clone](../../../quick-start/app-clone.md). The value **
 **Type:** number
 
 **Since:** 14
+
+<!--Device-AbilityStateData-appCloneIndex?: int--><!--Device-AbilityStateData-appCloneIndex?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -64,6 +72,8 @@ Bundle name.
 
 **Since:** 14
 
+<!--Device-AbilityStateData-bundleName: string--><!--Device-AbilityStateData-bundleName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## callerBundleName
@@ -77,6 +87,8 @@ Bundle name of the application that triggers the creation of the ability.
 **Type:** string
 
 **Since:** 23
+
+<!--Device-AbilityStateData-callerBundleName?: string--><!--Device-AbilityStateData-callerBundleName?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -96,6 +108,8 @@ Whether the ability belongs to an atomic service.
 
 **Since:** 14
 
+<!--Device-AbilityStateData-isAtomicService: boolean--><!--Device-AbilityStateData-isAtomicService: boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## moduleName
@@ -110,6 +124,8 @@ Module name to which the ability belongs.
 
 **Since:** 14
 
+<!--Device-AbilityStateData-moduleName: string--><!--Device-AbilityStateData-moduleName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## pid
@@ -123,6 +139,8 @@ Process ID.
 **Type:** number
 
 **Since:** 14
+
+<!--Device-AbilityStateData-pid: int--><!--Device-AbilityStateData-pid: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -141,6 +159,8 @@ Ability state.
 
 **Since:** 14
 
+<!--Device-AbilityStateData-state: int--><!--Device-AbilityStateData-state: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## uid
@@ -154,5 +174,7 @@ UID of the application.
 **Type:** number
 
 **Since:** 14
+
+<!--Device-AbilityStateData-uid: int--><!--Device-AbilityStateData-uid: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

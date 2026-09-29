@@ -8,6 +8,8 @@ declare enum ImageFit
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum ImageFit--><!--Device-unnamed-declare enum ImageFit-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Contain
@@ -27,6 +29,8 @@ Contain
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageFit-Contain--><!--Device-ImageFit-Contain-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ Cover
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageFit-Cover--><!--Device-ImageFit-Cover-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Auto
@@ -67,6 +73,8 @@ Auto
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageFit-Auto--><!--Device-ImageFit-Auto-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +96,8 @@ Fill
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageFit-Fill--><!--Device-ImageFit-Fill-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ScaleDown
@@ -107,6 +117,8 @@ ScaleDown
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageFit-ScaleDown--><!--Device-ImageFit-ScaleDown-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +140,8 @@ None
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageFit-None--><!--Device-ImageFit-None-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOP_START
@@ -147,6 +161,8 @@ TOP_START = 7
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageFit-TOP_START = 7--><!--Device-ImageFit-TOP_START = 7-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +184,8 @@ TOP = 8
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageFit-TOP = 8--><!--Device-ImageFit-TOP = 8-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOP_END
@@ -187,6 +205,8 @@ TOP_END = 9
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageFit-TOP_END = 9--><!--Device-ImageFit-TOP_END = 9-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -208,6 +228,8 @@ START = 10
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageFit-START = 10--><!--Device-ImageFit-START = 10-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CENTER
@@ -227,6 +249,8 @@ CENTER = 11
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageFit-CENTER = 11--><!--Device-ImageFit-CENTER = 11-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -248,6 +272,8 @@ END = 12
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageFit-END = 12--><!--Device-ImageFit-END = 12-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM_START
@@ -267,6 +293,8 @@ BOTTOM_START = 13
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageFit-BOTTOM_START = 13--><!--Device-ImageFit-BOTTOM_START = 13-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -288,6 +316,8 @@ BOTTOM = 14
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageFit-BOTTOM = 14--><!--Device-ImageFit-BOTTOM = 14-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM_END
@@ -308,6 +338,8 @@ BOTTOM_END = 15
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageFit-BOTTOM_END = 15--><!--Device-ImageFit-BOTTOM_END = 15-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MATRIX
@@ -323,5 +355,7 @@ MATRIX = 16
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-ImageFit-MATRIX = 16--><!--Device-ImageFit-MATRIX = 16-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

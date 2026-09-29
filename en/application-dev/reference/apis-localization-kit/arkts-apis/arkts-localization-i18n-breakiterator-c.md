@@ -8,6 +8,8 @@ Provides text line breaking capabilities, such as obtaining, moving, and identif
 
 **Since:** 8
 
+<!--Device-i18n-export class BreakIterator--><!--Device-i18n-export class BreakIterator-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Obtains the position of the break iterator in the text.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-BreakIterator-current(): int--><!--Device-BreakIterator-current(): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -56,7 +60,9 @@ Moves the break iterator to the first line break point, which is always at the b
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-BreakIterator-first(): int--><!--Device-BreakIterator-first(): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -86,7 +92,9 @@ Moves the line break iterator to the line break point after the specified positi
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-BreakIterator-following(offset: int): int--><!--Device-BreakIterator-following(offset: int): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -124,7 +132,9 @@ Obtains the text processed by the **BreakIterator** object.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-BreakIterator-getLineBreakText(): string--><!--Device-BreakIterator-getLineBreakText(): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -154,7 +164,9 @@ Checks whether the specified position is a line break point.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-BreakIterator-isBoundary(offset: int): boolean--><!--Device-BreakIterator-isBoundary(offset: int): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -191,7 +203,9 @@ Moves the break iterator to the last line break point, which is always the next 
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-BreakIterator-last(): int--><!--Device-BreakIterator-last(): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -221,7 +235,9 @@ Moves the break iterator backward by the specified number of line break points.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-BreakIterator-next(index?: int): int--><!--Device-BreakIterator-next(index?: int): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -259,7 +275,9 @@ Moves the break iterator foreward by one line break point.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-BreakIterator-previous(): int--><!--Device-BreakIterator-previous(): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -291,7 +309,9 @@ Sets the text to be processed by the **BreakIterator** object.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-BreakIterator-setLineBreakText(text: string): void--><!--Device-BreakIterator-setLineBreakText(text: string): void-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

@@ -8,6 +8,8 @@ The item in the playlist of the session
 
 **Since:** 10
 
+<!--Device-avSession-interface AVQueueItem--><!--Device-avSession-interface AVQueueItem-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ The media description of the item in the playlist.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVQueueItem-description?: AVMediaDescription--><!--Device-AVQueueItem-description?: AVMediaDescription-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -44,6 +48,8 @@ Sequence number of the item in the playlist.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVQueueItem-itemId: int--><!--Device-AVQueueItem-itemId: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core

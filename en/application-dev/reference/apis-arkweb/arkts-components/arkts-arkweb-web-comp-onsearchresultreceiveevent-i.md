@@ -8,6 +8,8 @@ Defines the callback information for the search result on the web page, includin
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnSearchResultReceiveEvent--><!--Device-unnamed-declare interface OnSearchResultReceiveEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## activeMatchOrdinal
@@ -23,6 +25,8 @@ Sequence number of the current match, which starts from 0.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnSearchResultReceiveEvent-activeMatchOrdinal: number--><!--Device-OnSearchResultReceiveEvent-activeMatchOrdinal: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -44,6 +48,8 @@ This method may be called back multiple times until isDoneCounting is **true**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnSearchResultReceiveEvent-isDoneCounting: boolean--><!--Device-OnSearchResultReceiveEvent-isDoneCounting: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## numberOfMatches
@@ -59,5 +65,7 @@ Total number of matches.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnSearchResultReceiveEvent-numberOfMatches: number--><!--Device-OnSearchResultReceiveEvent-numberOfMatches: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

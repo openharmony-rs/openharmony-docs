@@ -20,6 +20,8 @@ Subscribes to controls on cross-bundle widget addition to the home screen. This 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formProvider-function onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void--><!--Device-formProvider-function onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

@@ -4,6 +4,8 @@ The **networkSecurity** module provides the network security verification capabi
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace networkSecurity--><!--Device-unnamed-declare namespace networkSecurity-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import

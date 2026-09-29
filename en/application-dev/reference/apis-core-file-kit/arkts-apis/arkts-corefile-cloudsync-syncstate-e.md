@@ -13,6 +13,8 @@ Enumerates the device-cloud sync states.
 
 **Since:** 12
 
+<!--Device-cloudSync-enum SyncState--><!--Device-cloudSync-enum SyncState-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## UPLOADING
@@ -24,6 +26,8 @@ UPLOADING = 0
 The file is being uploaded.
 
 **Since:** 12
+
+<!--Device-SyncState-UPLOADING = 0--><!--Device-SyncState-UPLOADING = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -37,6 +41,8 @@ Upload failed.
 
 **Since:** 12
 
+<!--Device-SyncState-UPLOAD_FAILED = 1--><!--Device-SyncState-UPLOAD_FAILED = 1-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## DOWNLOADING
@@ -48,6 +54,8 @@ DOWNLOADING = 2
 The file is being downloaded.
 
 **Since:** 12
+
+<!--Device-SyncState-DOWNLOADING = 2--><!--Device-SyncState-DOWNLOADING = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -61,6 +69,8 @@ Download failed.
 
 **Since:** 12
 
+<!--Device-SyncState-DOWNLOAD_FAILED = 3--><!--Device-SyncState-DOWNLOAD_FAILED = 3-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## COMPLETED
@@ -73,6 +83,8 @@ Sync completed.
 
 **Since:** 12
 
+<!--Device-SyncState-COMPLETED = 4--><!--Device-SyncState-COMPLETED = 4-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## STOPPED
@@ -84,5 +96,7 @@ STOPPED = 5
 Sync stopped.
 
 **Since:** 12
+
+<!--Device-SyncState-STOPPED = 5--><!--Device-SyncState-STOPPED = 5-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

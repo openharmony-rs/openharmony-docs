@@ -22,6 +22,8 @@ Disables refueling awareness.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-carAwareness-function offRefueling(callback?: Callback<RefuelingInfo>): void--><!--Device-carAwareness-function offRefueling(callback?: Callback<RefuelingInfo>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **Parameters:**

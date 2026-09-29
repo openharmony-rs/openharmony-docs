@@ -8,6 +8,8 @@ Represents a component on the UI and provides APIs for obtaining component attri
 
 **Since:** 9
 
+<!--Device-unnamed-declare class Component--><!--Device-unnamed-declare class Component-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -29,7 +31,9 @@ Clears the text information of a component. This API takes effect only for edita
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-clearText(): Promise<void>--><!--Device-Component-clearText(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -71,7 +75,9 @@ Clicks this component. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-click(): Promise<void>--><!--Device-Component-click(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -116,7 +122,9 @@ Double-clicks this component. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-doubleClick(): Promise<void>--><!--Device-Component-doubleClick(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -158,7 +166,9 @@ Drags a component to the target component. This method is valid only for compone
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-dragTo(target: Component): Promise<void>--><!--Device-Component-dragTo(target: Component): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -212,7 +222,9 @@ Obtains the bounds information of this component. This API uses a promise to ret
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-getBounds(): Promise<Rect>--><!--Device-Component-getBounds(): Promise<Rect>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -254,7 +266,9 @@ Obtains the center point of the area occupied by this component. This API uses a
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-getBoundsCenter(): Promise<Point>--><!--Device-Component-getBoundsCenter(): Promise<Point>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -296,7 +310,9 @@ Obtains the description of this component. This API uses a promise to return the
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-getDescription(): Promise<string>--><!--Device-Component-getDescription(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -338,7 +354,9 @@ Obtains the ID of the display to which the component belongs. This API uses a pr
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-Component-getDisplayId(): Promise<int>--><!--Device-Component-getDisplayId(): Promise<int>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -380,7 +398,9 @@ Obtains the hint text of a component. This API uses a promise to return the resu
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-Component-getHint(): Promise<string>--><!--Device-Component-getHint(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -422,7 +442,9 @@ Obtains the ID of this component. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-getId(): Promise<string>--><!--Device-Component-getId(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -464,7 +486,9 @@ Obtains the text information of this component. This API uses a promise to retur
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-Component-getOriginalText(): Promise<string>--><!--Device-Component-getOriginalText(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -513,7 +537,9 @@ Obtains the text information of this component. This API uses a promise to retur
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-getText(): Promise<string>--><!--Device-Component-getText(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -555,7 +581,9 @@ Obtains the type of this component. This API uses a promise to return the result
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-getType(): Promise<string>--><!--Device-Component-getType(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -597,7 +625,9 @@ Clears the original text in a component and inputs the specified text. This API 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-inputText(text: string): Promise<void>--><!--Device-Component-inputText(text: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -651,7 +681,9 @@ Inputs text to a component in a specified text input mode. This API takes effect
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-Component-inputText(text: string, mode: InputTextMode): Promise<void>--><!--Device-Component-inputText(text: string, mode: InputTextMode): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -702,7 +734,9 @@ Obtains the checkable status of this component. This API uses a promise to retur
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-isCheckable(): Promise<boolean>--><!--Device-Component-isCheckable(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -748,7 +782,9 @@ Obtains the checked status of this component. This API uses a promise to return 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-isChecked(): Promise<boolean>--><!--Device-Component-isChecked(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -794,7 +830,9 @@ Obtains the clickable status of this component. This API uses a promise to retur
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-isClickable(): Promise<boolean>--><!--Device-Component-isClickable(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -840,7 +878,9 @@ Obtains the enabled status of this component. This API uses a promise to return 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-isEnabled(): Promise<boolean>--><!--Device-Component-isEnabled(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -886,7 +926,9 @@ Checks whether a component is focused. This API uses a promise to return the res
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-isFocused(): Promise<boolean>--><!--Device-Component-isFocused(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -932,7 +974,9 @@ Obtains the long-clickable status of this component. This API uses a promise to 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-isLongClickable(): Promise<boolean>--><!--Device-Component-isLongClickable(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -978,7 +1022,9 @@ Obtains the scrollable status of this component. This API uses a promise to retu
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-isScrollable(): Promise<boolean>--><!--Device-Component-isScrollable(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -1024,7 +1070,9 @@ Obtains the selected status of this component. This API uses a promise to return
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-isSelected(): Promise<boolean>--><!--Device-Component-isSelected(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -1070,7 +1118,9 @@ Long-clicks this component. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-longClick(): Promise<void>--><!--Device-Component-longClick(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -1112,7 +1162,9 @@ Pinches in a component at the specified scale. This method is valid only for com
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-pinchIn(scale: double): Promise<void>--><!--Device-Component-pinchIn(scale: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -1161,7 +1213,9 @@ Pinches out a component at the specified scale. This method is valid only for co
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-pinchOut(scale: double): Promise<void>--><!--Device-Component-pinchOut(scale: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -1211,6 +1265,8 @@ Scrolls on this component to search for the target component. This API is applic
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Component-scrollSearch(on: On): Promise<Component>--><!--Device-Component-scrollSearch(on: On): Promise<Component>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -1266,6 +1322,8 @@ Scrolls on this component to search for the target component. This API is applic
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Component-scrollSearch(on: On, vertical?: boolean, offset?: number): Promise<Component>--><!--Device-Component-scrollSearch(on: On, vertical?: boolean, offset?: number): Promise<Component>-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -1315,7 +1373,9 @@ Scrolls to the bottom of this component. This API is applicable to components th
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-scrollToBottom(speed?: int): Promise<void>--><!--Device-Component-scrollToBottom(speed?: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -1364,7 +1424,9 @@ Scrolls to the top of this component. This API is applicable to components that 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Component-scrollToTop(speed?: int): Promise<void>--><!--Device-Component-scrollToTop(speed?: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

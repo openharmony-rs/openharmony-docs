@@ -8,6 +8,8 @@ Enumerates modal modes of the sub-window menu.
 
 **Since:** 20
 
+<!--Device-unnamed-declare enum ModalMode--><!--Device-unnamed-declare enum ModalMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## AUTO
@@ -23,6 +25,8 @@ Automatic mode, which is the default behavior of the menu component on the curre
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ModalMode-AUTO = 0--><!--Device-ModalMode-AUTO = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Events can be passed through areas other than the menu itself, allowing underlyi
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ModalMode-NONE = 1--><!--Device-ModalMode-NONE = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TARGET_WINDOW
@@ -55,5 +61,7 @@ Events cannot be passed through the application window where the menu is located
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ModalMode-TARGET_WINDOW = 2--><!--Device-ModalMode-TARGET_WINDOW = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

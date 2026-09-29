@@ -10,9 +10,11 @@ interface LongPressGestureInterface extends GestureInterface<LongPressGestureInt
 > 
 > 从API version 18开始，部分设备会优先响应系统的双指长按手势，导致应用的双指长按手势不生效。
 
-**继承/实现关系：** LongPressGestureInterface extends GestureInterface&lt;LongPressGestureInterface&gt;
+**继承/实现关系：** LongPressGestureInterface extends GestureInterface<LongPressGestureInterface>
 
 **起始版本：** 7
+
+<!--Device-unnamed-interface LongPressGestureInterface extends GestureInterface<LongPressGestureInterface>--><!--Device-unnamed-interface LongPressGestureInterface extends GestureInterface<LongPressGestureInterface>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +35,8 @@ interface LongPressGestureInterface extends GestureInterface<LongPressGestureInt
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LongPressGestureInterface-(value?: { fingers?: number; repeat?: boolean; duration?: number }): LongPressGestureInterface--><!--Device-LongPressGestureInterface-(value?: { fingers?: number; repeat?: boolean; duration?: number }): LongPressGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +74,8 @@ interface LongPressGestureInterface extends GestureInterface<LongPressGestureInt
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-LongPressGestureInterface-(options?: LongPressGestureHandlerOptions): LongPressGestureInterface--><!--Device-LongPressGestureInterface-(options?: LongPressGestureHandlerOptions): LongPressGestureInterface-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -96,6 +102,8 @@ onAction(event: (event: GestureEvent) => void): LongPressGestureInterface
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-LongPressGestureInterface-onAction(event: (event: GestureEvent) => void): LongPressGestureInterface--><!--Device-LongPressGestureInterface-onAction(event: (event: GestureEvent) => void): LongPressGestureInterface-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -121,6 +129,8 @@ onActionCancel(event: () => void): LongPressGestureInterface
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LongPressGestureInterface-onActionCancel(event: () => void): LongPressGestureInterface--><!--Device-LongPressGestureInterface-onActionCancel(event: () => void): LongPressGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,6 +162,8 @@ onActionCancel(event: Callback<GestureEvent>): LongPressGestureInterface
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-LongPressGestureInterface-onActionCancel(event: Callback<GestureEvent>): LongPressGestureInterface--><!--Device-LongPressGestureInterface-onActionCancel(event: Callback<GestureEvent>): LongPressGestureInterface-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -177,6 +189,8 @@ onActionEnd(event: (event: GestureEvent) => void): LongPressGestureInterface
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LongPressGestureInterface-onActionEnd(event: (event: GestureEvent) => void): LongPressGestureInterface--><!--Device-LongPressGestureInterface-onActionEnd(event: (event: GestureEvent) => void): LongPressGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

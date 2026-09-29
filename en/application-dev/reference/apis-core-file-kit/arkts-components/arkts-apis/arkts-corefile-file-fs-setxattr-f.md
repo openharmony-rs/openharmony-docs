@@ -16,6 +16,8 @@ Sets an extended attribute of a file or directory. This API uses a promise to re
 
 **Since:** 12
 
+<!--Device-unnamed-declare function setxattr(path: string, key: string, value: string): Promise<void>--><!--Device-unnamed-declare function setxattr(path: string, key: string, value: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

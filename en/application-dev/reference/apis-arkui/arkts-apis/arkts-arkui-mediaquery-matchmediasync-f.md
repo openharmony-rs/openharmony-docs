@@ -28,6 +28,8 @@ Sets the media query criteria and returns the corresponding listening handle.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-mediaquery-function matchMediaSync(condition: string): MediaQueryListener--><!--Device-mediaquery-function matchMediaSync(condition: string): MediaQueryListener-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

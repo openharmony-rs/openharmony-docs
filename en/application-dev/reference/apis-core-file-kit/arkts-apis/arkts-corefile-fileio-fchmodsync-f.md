@@ -17,6 +17,8 @@ Changes the file permissions based on the file descriptor. This API returns the 
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare function fchmodSync(fd: number, mode: number): void--><!--Device-unnamed-declare function fchmodSync(fd: number, mode: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

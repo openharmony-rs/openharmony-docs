@@ -16,6 +16,8 @@ Obtains the preset vibration effect based on the device ID and vibrator ID to de
 
 **Since:** 19
 
+<!--Device-vibrator-function getEffectInfoSync(effectId: string, param?: VibratorInfoParam): EffectInfo--><!--Device-vibrator-function getEffectInfoSync(effectId: string, param?: VibratorInfoParam): EffectInfo-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 **Parameters:**

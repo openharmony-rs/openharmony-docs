@@ -14,6 +14,8 @@ The FormExtensionContext module, inherited from [ExtensionContext](../../apis-ab
 
 **Since:** 9
 
+<!--Device-unnamed-declare class FormExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class FormExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## connectServiceExtensionAbility
@@ -27,6 +29,8 @@ Connects this ability to a ServiceExtensionAbility.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormExtensionContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long--><!--Device-FormExtensionContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -120,6 +124,8 @@ Disconnects this ability from a **ServiceExtensionAbility** and after the succes
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormExtensionContext-disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback<void>): void--><!--Device-FormExtensionContext-disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -187,6 +193,8 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormExtensionContext-disconnectServiceExtensionAbility(connection: long): Promise<void>--><!--Device-FormExtensionContext-disconnectServiceExtensionAbility(connection: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -260,6 +268,8 @@ Starts an ability. This API uses an asynchronous callback to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormExtensionContext-startAbility(want: Want, callback: AsyncCallback<void>): void--><!--Device-FormExtensionContext-startAbility(want: Want, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -325,6 +335,8 @@ Starts an ability. This API uses a promise to return the result.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormExtensionContext-startAbility(want: Want): Promise<void>--><!--Device-FormExtensionContext-startAbility(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

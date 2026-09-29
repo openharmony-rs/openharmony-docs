@@ -8,6 +8,8 @@ Defines the type of multi-form data.
 
 **Since:** 11
 
+<!--Device-http-export interface MultiFormData--><!--Device-http-export interface MultiFormData-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Data type, for example, **text/plain**, **image/png**, **image/jpeg**, **audio/m
 
 **Since:** 11
 
+<!--Device-MultiFormData-contentType: string--><!--Device-MultiFormData-contentType: string-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## data
@@ -41,6 +45,8 @@ Form data content.
 **Type:** string &#124; Object &#124; ArrayBuffer
 
 **Since:** 11
+
+<!--Device-MultiFormData-data?: string | Object | ArrayBuffer--><!--Device-MultiFormData-data?: string | Object | ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -58,6 +64,8 @@ File path of the form data. If **data** is not specified, **filePath** must be s
 
 **Since:** 11
 
+<!--Device-MultiFormData-filePath?: string--><!--Device-MultiFormData-filePath?: string-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## name
@@ -71,6 +79,8 @@ Data name.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-MultiFormData-name: string--><!--Device-MultiFormData-name: string-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -91,5 +101,7 @@ Name of the file uploaded to the server.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-MultiFormData-remoteFileName?: string--><!--Device-MultiFormData-remoteFileName?: string-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

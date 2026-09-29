@@ -8,6 +8,8 @@ Describes the configuration of scan enhance mode.
 
 **Since:** 26.0.0
 
+<!--Device-ble-interface ScanEnhanceMode--><!--Device-ble-interface ScanEnhanceMode-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The mode of scan enhance.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ScanEnhanceMode-enhanceMode: EnhanceMode--><!--Device-ScanEnhanceMode-enhanceMode: EnhanceMode-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ The duration of scan enhance. The value range is all integers.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ScanEnhanceMode-timeout: int--><!--Device-ScanEnhanceMode-timeout: int-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

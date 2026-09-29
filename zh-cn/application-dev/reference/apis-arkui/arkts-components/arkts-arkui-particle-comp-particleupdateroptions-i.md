@@ -12,6 +12,8 @@ interface ParticleUpdaterOptions<TYPE, UPDATER extends ParticleUpdater>
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface ParticleUpdaterOptions<TYPE, UPDATER extends ParticleUpdater>--><!--Device-unnamed-interface ParticleUpdaterOptions<TYPE, UPDATER extends ParticleUpdater>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## config
@@ -36,6 +38,8 @@ config: ParticlePropertyUpdaterConfigs<TYPE>[UPDATER]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ParticleUpdaterOptions-config: ParticlePropertyUpdaterConfigs<TYPE>[UPDATER]--><!--Device-ParticleUpdaterOptions-config: ParticlePropertyUpdaterConfigs<TYPE>[UPDATER]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -55,5 +59,7 @@ type: UPDATER
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleUpdaterOptions-type: UPDATER--><!--Device-ParticleUpdaterOptions-type: UPDATER-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

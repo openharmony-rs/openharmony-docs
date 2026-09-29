@@ -8,6 +8,8 @@ interface EditableTextChangeValue
 
 **起始版本：** 15
 
+<!--Device-unnamed-interface EditableTextChangeValue--><!--Device-unnamed-interface EditableTextChangeValue-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
@@ -25,6 +27,8 @@ content: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableTextChangeValue-content: string--><!--Device-EditableTextChangeValue-content: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ options?: TextChangeOptions
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTextChangeValue-options?: TextChangeOptions--><!--Device-EditableTextChangeValue-options?: TextChangeOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## previewText
@@ -65,5 +71,7 @@ previewText?: PreviewText
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableTextChangeValue-previewText?: PreviewText--><!--Device-EditableTextChangeValue-previewText?: PreviewText-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

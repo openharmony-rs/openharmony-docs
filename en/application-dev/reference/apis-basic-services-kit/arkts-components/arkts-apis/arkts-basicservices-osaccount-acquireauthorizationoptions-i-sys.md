@@ -8,6 +8,8 @@ Defines the options for acquiring the authorization.
 
 **Since:** 24
 
+<!--Device-osAccount-interface AcquireAuthorizationOptions--><!--Device-osAccount-interface AcquireAuthorizationOptions-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -33,6 +35,8 @@ Random challenge value, which prevents replay attacks. The value contains a maxi
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AcquireAuthorizationOptions-challenge?: Uint8Array--><!--Device-AcquireAuthorizationOptions-challenge?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -60,6 +64,8 @@ Note: This parameter is valid only when **isInteractionAllowed** is set to **tru
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AcquireAuthorizationOptions-interactionContext?: Context--><!--Device-AcquireAuthorizationOptions-interactionContext?: Context-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -84,6 +90,8 @@ Note: This option is valid only when the caller is in the foreground. If the cal
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AcquireAuthorizationOptions-isInteractionAllowed?: boolean--><!--Device-AcquireAuthorizationOptions-isInteractionAllowed?: boolean-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -105,6 +113,8 @@ If the value is **true** and the authorization result is valid, the result will 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AcquireAuthorizationOptions-isReuseNeeded?: boolean--><!--Device-AcquireAuthorizationOptions-isReuseNeeded?: boolean-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

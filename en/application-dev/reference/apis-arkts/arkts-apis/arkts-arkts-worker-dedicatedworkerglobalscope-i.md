@@ -14,6 +14,8 @@ Specifies the worker thread running environment, which is isolated from the host
 
 **Substitutes:** [ThreadWorkerGlobalScope](arkts-arkts-worker-threadworkerglobalscope-i.md)
 
+<!--Device-unnamed-export interface DedicatedWorkerGlobalScope extends WorkerGlobalScope--><!--Device-unnamed-export interface DedicatedWorkerGlobalScope extends WorkerGlobalScope-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Close the worker thread to stop the worker from receiving messages
 **Deprecated since:** 9
 
 **Substitutes:** close
+
+<!--Device-DedicatedWorkerGlobalScope-close(): void--><!--Device-DedicatedWorkerGlobalScope-close(): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -72,6 +76,8 @@ The onmessage attribute of parentPort specifies the event handler to be called t
 
 **Substitutes:** onmessage
 
+<!--Device-DedicatedWorkerGlobalScope-onmessage?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void--><!--Device-DedicatedWorkerGlobalScope-onmessage?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -95,6 +101,8 @@ The onmessage attribute of parentPort specifies the event handler to be called t
 
 **Substitutes:** onmessageerror
 
+<!--Device-DedicatedWorkerGlobalScope-onmessageerror?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void--><!--Device-DedicatedWorkerGlobalScope-onmessageerror?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -117,6 +125,8 @@ Send a message to be host thread from the worker
 **Deprecated since:** 9
 
 **Substitutes:** postMessage
+
+<!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, transfer: Transferable[]): void--><!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, transfer: Transferable[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -191,6 +201,8 @@ Send a message to be host thread from the worker
 
 **Substitutes:** postMessage
 
+<!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void--><!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -238,6 +250,8 @@ Send a message to host thread from the worker
 **Deprecated since:** 9
 
 **Substitutes:** postMessage
+
+<!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void--><!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

@@ -8,6 +8,8 @@ Provides the result of whether the object can be observed.
 
 **Since:** 23
 
+<!--Device-unnamed-export interface ObservedResult--><!--Device-unnamed-export interface ObservedResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Decorator and component information associated with the observable object. If th
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-ObservedResult-decoratorInfo: Array<DecoratorInfo>--><!--Device-ObservedResult-decoratorInfo: Array<DecoratorInfo>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isObserved
@@ -53,6 +57,8 @@ Whether an object can be observed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-ObservedResult-isObserved: boolean--><!--Device-ObservedResult-isObserved: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,5 +99,7 @@ used by the UI component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-ObservedResult-reason: string--><!--Device-ObservedResult-reason: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -20,6 +20,8 @@ Enable location switch.
 - API version 20 and later: ohos.permission.MANAGE_SECURE_SETTINGS and ohos.permission.CONTROL_LOCATION_SWITCH
 - API versions 9 to 19: ohos.permission.MANAGE_SECURE_SETTINGS
 
+<!--Device-geoLocationManager-function enableLocation(callback: AsyncCallback<void>): void--><!--Device-geoLocationManager-function enableLocation(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Enable location switch.
 **Required permissions:** 
 - API version 20 and later: ohos.permission.MANAGE_SECURE_SETTINGS and ohos.permission.CONTROL_LOCATION_SWITCH
 - API versions 9 to 19: ohos.permission.MANAGE_SECURE_SETTINGS
+
+<!--Device-geoLocationManager-function enableLocation(): Promise<void>--><!--Device-geoLocationManager-function enableLocation(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

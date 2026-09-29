@@ -24,6 +24,8 @@ This API is used by the enterprise administrator to configure DLP security polic
 
 **Required permissions:** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
+<!--Device-dlpPermission-function setEnterprisePolicy(policy: EnterprisePolicy): void--><!--Device-dlpPermission-function setEnterprisePolicy(policy: EnterprisePolicy): void-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**

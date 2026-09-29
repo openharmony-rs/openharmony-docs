@@ -24,6 +24,8 @@ Uploads a file. This API uses an asynchronous callback to return the result.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-request-function upload(config: UploadConfig, callback: AsyncCallback<UploadTask>): void--><!--Device-request-function upload(config: UploadConfig, callback: AsyncCallback<UploadTask>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 **Parameters:**
@@ -79,6 +81,8 @@ Uploads a file. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.INTERNET
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-request-function upload(config: UploadConfig): Promise<UploadTask>--><!--Device-request-function upload(config: UploadConfig): Promise<UploadTask>-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 

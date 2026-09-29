@@ -20,6 +20,8 @@ Starts NearLink advertising. This API uses a promise to return the result. This 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-advertising-function startAdvertising(advertisingParams: AdvertisingParams): Promise<int>--><!--Device-advertising-function startAdvertising(advertisingParams: AdvertisingParams): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

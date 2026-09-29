@@ -20,6 +20,8 @@ Configures Wi-Fi for the current device to connect to a specified network.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function setWifiProfileSync(admin: Want, profile: WifiProfile): void--><!--Device-wifiManager-function setWifiProfileSync(admin: Want, profile: WifiProfile): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

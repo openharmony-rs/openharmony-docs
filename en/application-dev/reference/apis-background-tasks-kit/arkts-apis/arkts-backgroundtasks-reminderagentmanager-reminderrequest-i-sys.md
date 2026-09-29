@@ -8,6 +8,8 @@ Defines the request for publishing a reminder.
 
 **Since:** 9
 
+<!--Device-reminderAgentManager-interface ReminderRequest--><!--Device-reminderAgentManager-interface ReminderRequest-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Whether notifications are forcibly displayed in all scenarios across devices. Th
 
 **Since:** 23
 
+<!--Device-ReminderRequest-forceDistributed?: boolean--><!--Device-ReminderRequest-forceDistributed?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Whether notifications are not displayed in all scenarios across devices. The def
 **Default:** false
 
 **Since:** 23
+
+<!--Device-ReminderRequest-notDistributed?: boolean--><!--Device-ReminderRequest-notDistributed?: boolean-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 

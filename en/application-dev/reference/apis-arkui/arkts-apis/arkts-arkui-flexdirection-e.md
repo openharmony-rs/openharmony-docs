@@ -4,9 +4,11 @@
 declare enum FlexDirection
 ```
 
-FlexDirection enumeration description
+Sets the direction in which child components are arranged in the **Flex** component, that is, the direction of the main axis.
 
 **Since:** 7
+
+<!--Device-unnamed-declare enum FlexDirection--><!--Device-unnamed-declare enum FlexDirection-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ FlexDirection enumeration description
 Row
 ```
 
-The main axis is consistent with the row direction as the layout mode.
+The child components are arranged in the same direction as the main axis runs along the rows.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-FlexDirection-Row--><!--Device-FlexDirection-Row-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,13 +36,15 @@ The main axis is consistent with the row direction as the layout mode.
 Column
 ```
 
-The main axis is consistent with the column direction as the layout mode.
+The child components are arranged in the same direction as the main axis runs down the columns.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-FlexDirection-Column--><!--Device-FlexDirection-Column-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +54,15 @@ The main axis is consistent with the column direction as the layout mode.
 RowReverse
 ```
 
-The layout is in the opposite direction to the Row direction.
+The child components are arranged opposite to the **Row** direction.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-FlexDirection-RowReverse--><!--Device-FlexDirection-RowReverse-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,12 +72,14 @@ The layout is in the opposite direction to the Row direction.
 ColumnReverse
 ```
 
-Layout in the opposite direction to the column.
+The child components are arranged opposite to the **Column** direction.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-FlexDirection-ColumnReverse--><!--Device-FlexDirection-ColumnReverse-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

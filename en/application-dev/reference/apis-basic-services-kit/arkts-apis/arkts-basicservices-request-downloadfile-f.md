@@ -24,6 +24,8 @@ Downloads a file. This API uses an asynchronous callback to return the result. H
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-request-function downloadFile(context: BaseContext, config: DownloadConfig, callback: AsyncCallback<DownloadTask>): void--><!--Device-request-function downloadFile(context: BaseContext, config: DownloadConfig, callback: AsyncCallback<DownloadTask>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 **Parameters:**
@@ -88,6 +90,8 @@ Downloads a file. This API uses a promise to return the result. HTTP is supporte
 **Since:** 9
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-request-function downloadFile(context: BaseContext, config: DownloadConfig): Promise<DownloadTask>--><!--Device-request-function downloadFile(context: BaseContext, config: DownloadConfig): Promise<DownloadTask>-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 

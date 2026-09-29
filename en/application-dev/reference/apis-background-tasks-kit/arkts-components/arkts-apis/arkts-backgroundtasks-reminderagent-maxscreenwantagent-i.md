@@ -12,6 +12,8 @@ Provides the information about the target package and ability to start automatic
 
 **Substitutes:** [MaxScreenWantAgent](arkts-backgroundtasks-reminderagentmanager-maxscreenwantagent-i.md)
 
+<!--Device-reminderAgent-interface MaxScreenWantAgent--><!--Device-reminderAgent-interface MaxScreenWantAgent-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Name of the ability that is automatically started when the reminder arrives and 
 
 **Substitutes:** [abilityName](arkts-backgroundtasks-reminderagentmanager-maxscreenwantagent-i.md#abilityname)
 
+<!--Device-MaxScreenWantAgent-abilityName: string--><!--Device-MaxScreenWantAgent-abilityName: string-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## pkgName
@@ -53,5 +57,7 @@ Name of the HAP that is automatically started when the reminder arrives and the 
 **Deprecated since:** 9
 
 **Substitutes:** [pkgName](arkts-backgroundtasks-reminderagentmanager-maxscreenwantagent-i.md#pkgname)
+
+<!--Device-MaxScreenWantAgent-pkgName: string--><!--Device-MaxScreenWantAgent-pkgName: string-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent

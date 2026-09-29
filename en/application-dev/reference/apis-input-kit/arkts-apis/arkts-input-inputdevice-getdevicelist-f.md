@@ -16,6 +16,8 @@ Obtains the IDs of all input devices. This API uses an asynchronous callback to 
 
 **Since:** 9
 
+<!--Device-inputDevice-function getDeviceList(callback: AsyncCallback<Array<int>>): void--><!--Device-inputDevice-function getDeviceList(callback: AsyncCallback<Array<int>>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 **Parameters:**
@@ -73,6 +75,8 @@ function getDeviceList(): Promise<Array<number>>
 Obtains the IDs of all input devices. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-inputDevice-function getDeviceList(): Promise<Array<int>>--><!--Device-inputDevice-function getDeviceList(): Promise<Array<int>>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 

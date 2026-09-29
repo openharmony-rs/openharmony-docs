@@ -19,6 +19,8 @@ Opens a file. This API returns the result synchronously.
 
 **Substitutes:** [openSync](arkts-corefile-file-fs-opensync-f.md)
 
+<!--Device-unnamed-declare function openSync(path: string, flags?: number, mode?: number): number--><!--Device-unnamed-declare function openSync(path: string, flags?: number, mode?: number): number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

@@ -18,6 +18,8 @@ Checks whether the specified WantAgent is local.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wantAgent-function isLocalWantAgent(agent: WantAgent): boolean--><!--Device-wantAgent-function isLocalWantAgent(agent: WantAgent): boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

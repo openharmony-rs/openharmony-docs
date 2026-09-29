@@ -10,6 +10,8 @@ Context is the context base class of the stage model. It is used to access appli
 
 **Since:** 9
 
+<!--Device-unnamed-declare class Context extends BaseContext--><!--Device-unnamed-declare class Context extends BaseContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## createAreaModeContext
@@ -24,7 +26,9 @@ Creates an application context with a specific data encryption level. You can ca
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-Context-createAreaModeContext(areaMode: contextConstant.AreaMode): Context--><!--Device-Context-createAreaModeContext(areaMode: contextConstant.AreaMode): Context-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -75,7 +79,9 @@ Creates an application context based on the specified display ID with screen inf
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-Context-createDisplayContext(displayId: long): Context--><!--Device-Context-createDisplayContext(displayId: long): Context-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -119,73 +125,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## createModuleContext
-
-```TypeScript
-createModuleContext(moduleName: string): Context
-```
-
-Creates the context based on the module name.
-
-> **NOTE:** 
-> 
-> - Only the context of other modules in the current application and the context of the intra-application HSP can be obtained. The context of other applications cannot be obtained.
-> 
-> - This API has been supported since API version 9 and deprecated since API version 12. You are advised to use [application.createModuleContext](arkts-ability-application-createmodulecontext-f.md)instead. Otherwise, resource acquisition may fail.
-> 
-> - Creating a module context involves resource querying and initialization, which can be time-consuming. In scenarios where application fluidity is critical, avoid frequently or repeatedly calling the
-> **createModuleContext** API to create multiple context instances, as this may negatively impact user experience.
-
-**Since:** 9
-
-**Deprecated since:** 12
-
-**Substitutes:** [createModuleContext](arkts-ability-application-createmodulecontext-f.md)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| moduleName | string | Yes | Module name. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [Context](arkts-ability-context-c.md) | Context created. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-
-**Examples**
-
-```TypeScript
-import { common, UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate() {
-    console.info('MyAbility onCreate');
-    let moduleContext: common.Context;
-    try {
-      // Create a context based on the module name.
-      moduleContext = this.context.createModuleContext('entry');
-    } catch (error) {
-      console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
-    }
-  }
-}
-```
-
 ## getApplicationContext
 
 ```TypeScript
@@ -198,7 +137,9 @@ Obtains the application context.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-getApplicationContext(): ApplicationContext--><!--Device-Context-getApplicationContext(): ApplicationContext-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -246,7 +187,9 @@ Obtains the shared directory based on a group ID. This API uses an asynchronous 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-getGroupDir(dataGroupID: string, callback: AsyncCallback<string>): void--><!--Device-Context-getGroupDir(dataGroupID: string, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -301,7 +244,9 @@ Obtains the shared directory based on a group ID. This API uses a promise to ret
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-getGroupDir(dataGroupID: string): Promise<string>--><!--Device-Context-getGroupDir(dataGroupID: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -359,7 +304,9 @@ Checks if the current instance is associated with the specified context type.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Context-isContextOf(contextType: contextConstant.ContextType): boolean--><!--Device-Context-isContextOf(contextType: contextConstant.ContextType): boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -391,6 +338,75 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## createModuleContext
+
+```TypeScript
+createModuleContext(moduleName: string): Context
+```
+
+Creates the context based on the module name.
+
+> **NOTE:** 
+> 
+> - Only the context of other modules in the current application and the context of the intra-application HSP can be obtained. The context of other applications cannot be obtained.
+> 
+> - This API has been supported since API version 9 and deprecated since API version 12. You are advised to use [application.createModuleContext](arkts-ability-application-createmodulecontext-f.md)instead. Otherwise, resource acquisition may fail.
+> 
+> - Creating a module context involves resource querying and initialization, which can be time-consuming. In scenarios where application fluidity is critical, avoid frequently or repeatedly calling the
+> **createModuleContext** API to create multiple context instances, as this may negatively impact user experience.
+
+**Since:** 9
+
+**Deprecated since:** 12
+
+**Substitutes:** [createModuleContext](arkts-ability-application-createmodulecontext-f.md)
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Context-createModuleContext(moduleName: string): Context--><!--Device-Context-createModuleContext(moduleName: string): Context-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| moduleName | string | Yes | Module name. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [Context](arkts-ability-context-c.md) | Context created. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { common, UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    let moduleContext: common.Context;
+    try {
+      // Create a context based on the module name.
+      moduleContext = this.context.createModuleContext('entry');
+    } catch (error) {
+      console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+    }
+  }
+}
+```
+
 ## applicationInfo
 
 ```TypeScript
@@ -405,7 +421,9 @@ Application information.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-applicationInfo: ApplicationInfo--><!--Device-Context-applicationInfo: ApplicationInfo-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -425,6 +443,8 @@ Information about file partitions, which are divided according to the encryption
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Context-area: contextConstant.AreaMode--><!--Device-Context-area: contextConstant.AreaMode-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## bundleCodeDir
@@ -441,7 +461,9 @@ Bundle code directory. Do not access resource files using concatenated paths. Us
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-bundleCodeDir: string--><!--Device-Context-bundleCodeDir: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -459,7 +481,9 @@ Cache directory. For details, see [Application Sandbox](../../../file-management
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-cacheDir: string--><!--Device-Context-cacheDir: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -477,7 +501,9 @@ Cloud file directory.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Context-cloudFileDir: string--><!--Device-Context-cloudFileDir: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -495,7 +521,9 @@ Database directory. For details, see [Application Sandbox](../../../file-managem
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-databaseDir: string--><!--Device-Context-databaseDir: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -513,7 +541,9 @@ Distributed file directory. For details, see [Application Sandbox](../../../file
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-distributedFilesDir: string--><!--Device-Context-distributedFilesDir: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -531,7 +561,9 @@ Event hub that implements event subscription, unsubscription, and triggering.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-eventHub: EventHub--><!--Device-Context-eventHub: EventHub-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -549,7 +581,9 @@ File directory. For details, see [Application Sandbox](../../../file-management/
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-filesDir: string--><!--Device-Context-filesDir: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -567,7 +601,9 @@ Directory for storing log files.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Context-get logFileDir(): string--><!--Device-Context-get logFileDir(): string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -585,7 +621,9 @@ Preferences directory. For details, see [Application Sandbox](../../../file-mana
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-preferencesDir: string--><!--Device-Context-preferencesDir: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -603,7 +641,9 @@ Process name of the current application.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-Context-processName: string--><!--Device-Context-processName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -626,7 +666,9 @@ Resource directory.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-resourceDir: string--><!--Device-Context-resourceDir: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -644,7 +686,9 @@ Object for resource management.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-resourceManager: resmgr.ResourceManager--><!--Device-Context-resourceManager: resmgr.ResourceManager-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -662,6 +706,8 @@ Temporary directory. For details, see [Application Sandbox](../../../file-manage
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Context-tempDir: string--><!--Device-Context-tempDir: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

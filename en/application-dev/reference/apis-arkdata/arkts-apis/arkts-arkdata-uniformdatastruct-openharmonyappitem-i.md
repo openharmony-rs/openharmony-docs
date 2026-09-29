@@ -8,6 +8,8 @@ Represents data of the home screen icon type defined by the system.
 
 **Since:** 12
 
+<!--Device-uniformDataStruct-interface OpenHarmonyAppItem--><!--Device-uniformDataStruct-interface OpenHarmonyAppItem-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Application ability name corresponding to the icon.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OpenHarmonyAppItem-abilityName: string--><!--Device-OpenHarmonyAppItem-abilityName: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## appIconId
@@ -45,6 +49,8 @@ Image ID of the icon.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OpenHarmonyAppItem-appIconId: string--><!--Device-OpenHarmonyAppItem-appIconId: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -62,6 +68,8 @@ ID of the application, for which the icon is used.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OpenHarmonyAppItem-appId: string--><!--Device-OpenHarmonyAppItem-appId: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## appLabelId
@@ -77,6 +85,8 @@ Label ID corresponding to the icon name.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OpenHarmonyAppItem-appLabelId: string--><!--Device-OpenHarmonyAppItem-appLabelId: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -94,6 +104,8 @@ Name of the application, for which the icon is used.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OpenHarmonyAppItem-appName: string--><!--Device-OpenHarmonyAppItem-appName: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## bundleName
@@ -109,6 +121,8 @@ Bundle name corresponding to the icon.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OpenHarmonyAppItem-bundleName: string--><!--Device-OpenHarmonyAppItem-bundleName: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -126,6 +140,8 @@ Object of the dictionary type used to describe the icon. The key is of the strin
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OpenHarmonyAppItem-details?: Record<string, int | long | double | string | Uint8Array>--><!--Device-OpenHarmonyAppItem-details?: Record<string, int | long | double | string | Uint8Array>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## uniformDataType
@@ -141,5 +157,7 @@ Uniform data type, which has a fixed value of **openharmony.app-item**. For deta
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OpenHarmonyAppItem-readonly uniformDataType: 'openharmony.app-item'--><!--Device-OpenHarmonyAppItem-readonly uniformDataType: 'openharmony.app-item'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

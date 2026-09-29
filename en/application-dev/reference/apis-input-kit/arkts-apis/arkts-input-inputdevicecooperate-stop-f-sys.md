@@ -20,6 +20,8 @@ Stops screen hopping. This API uses an asynchronous callback to return the resul
 
 **Substitutes:** [deactivateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md)
 
+<!--Device-inputDeviceCooperate-function stop(callback: AsyncCallback<void>): void--><!--Device-inputDeviceCooperate-function stop(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Cooperator
 
 **System API:** This is a system API.
@@ -83,6 +85,8 @@ Stops screen hopping. This API uses a promise to return the result.
 **Deprecated since:** 23
 
 **Substitutes:** [deactivateCooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md)
+
+<!--Device-inputDeviceCooperate-function stop(): Promise<void>--><!--Device-inputDeviceCooperate-function stop(): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Cooperator
 

@@ -8,6 +8,8 @@ Describes the window information.
 
 **Since:** 18
 
+<!--Device-window-interface WindowInfo--><!--Device-window-interface WindowInfo-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ abilityName of window
 
 **Since:** 18
 
+<!--Device-WindowInfo-abilityName: string--><!--Device-WindowInfo-abilityName: string-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## bundleName
@@ -41,6 +45,8 @@ Bundle name of the application.
 **Type:** string
 
 **Since:** 18
+
+<!--Device-WindowInfo-bundleName: string--><!--Device-WindowInfo-bundleName: string-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -58,6 +64,8 @@ Indicates the ID of the display where the window is located.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowInfo-displayId?: int--><!--Device-WindowInfo-displayId?: int-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## globalDisplayRect
@@ -71,6 +79,8 @@ Window size in the global coordinate system. In extended screen scenarios, the t
 **Type:** [Rect](arkts-arkui-window-rect-i.md)
 
 **Since:** 20
+
+<!--Device-WindowInfo-globalDisplayRect?: Rect--><!--Device-WindowInfo-globalDisplayRect?: Rect-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -88,6 +98,8 @@ Indicates the actual display size and position of the window.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowInfo-globalRect?: Rect--><!--Device-WindowInfo-globalRect?: Rect-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## isFocused
@@ -101,6 +113,8 @@ Whether the window gains focus. **true** if the window gains focus, **false** ot
 **Type:** boolean
 
 **Since:** 18
+
+<!--Device-WindowInfo-isFocused?: boolean--><!--Device-WindowInfo-isFocused?: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -116,6 +130,8 @@ Window size.
 
 **Since:** 18
 
+<!--Device-WindowInfo-rect: Rect--><!--Device-WindowInfo-rect: Rect-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## windowId
@@ -130,6 +146,8 @@ Window ID.
 
 **Since:** 18
 
+<!--Device-WindowInfo-windowId: int--><!--Device-WindowInfo-windowId: int-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## windowStatusType
@@ -143,5 +161,7 @@ Window mode.
 **Type:** [WindowStatusType](arkts-arkui-window-windowstatustype-e.md)
 
 **Since:** 18
+
+<!--Device-WindowInfo-windowStatusType: WindowStatusType--><!--Device-WindowInfo-windowStatusType: WindowStatusType-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

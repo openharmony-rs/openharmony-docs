@@ -20,6 +20,8 @@ Sets the preferred APN.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function setPreferredApn(admin: Want, apnId: string): void--><!--Device-networkManager-function setPreferredApn(admin: Want, apnId: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -10,6 +10,8 @@ interface of app lifecycle.
 
 **Since:** 7
 
+<!--Device-unnamed-export declare interface LifecycleApp--><!--Device-unnamed-export declare interface LifecycleApp-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Called back when an ability enters the &lt;b&gt;ACTIVE&lt;/b&gt; state.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleApp-onActive?(): void--><!--Device-LifecycleApp-onActive?(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## onCompleteContinuation
@@ -42,6 +46,8 @@ Called back when a local ability migration is complete. <p>You can define the pr
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleApp-onCompleteContinuation?(result: number): void--><!--Device-LifecycleApp-onCompleteContinuation?(result: number): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -63,6 +69,8 @@ Called back when an ability is started for initialization.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleApp-onCreate?(): void--><!--Device-LifecycleApp-onCreate?(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## onDestroy
@@ -76,6 +84,8 @@ Called back before an ability is destroyed.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleApp-onDestroy?(): void--><!--Device-LifecycleApp-onDestroy?(): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -91,6 +101,8 @@ Called back when an ability enters the &lt;b&gt;BACKGROUND&lt;/b&gt; state.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleApp-onHide?(): void--><!--Device-LifecycleApp-onHide?(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## onInactive
@@ -105,6 +117,8 @@ Called back when an ability enters the &lt;b&gt;INACTIVE&lt;/b&gt; state (an abi
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleApp-onInactive?(): void--><!--Device-LifecycleApp-onInactive?(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## onMemoryLevel
@@ -118,6 +132,8 @@ Called when the system has determined to trim the memory, for example, when the 
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleApp-onMemoryLevel?(level: number): void--><!--Device-LifecycleApp-onMemoryLevel?(level: number): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -139,6 +155,8 @@ Called when the launch mode of an ability is set to singleton.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleApp-onNewWant?(want: Want): void--><!--Device-LifecycleApp-onNewWant?(want: Want): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -159,6 +177,8 @@ Called to notify the local device when a running ability on the remote device is
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleApp-onRemoteTerminated?(): void--><!--Device-LifecycleApp-onRemoteTerminated?(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## onRestoreAbilityState
@@ -172,6 +192,8 @@ This method is called if an ability was destroyed at a certain time due to resou
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleApp-onRestoreAbilityState?(inState: PacMap): void--><!--Device-LifecycleApp-onRestoreAbilityState?(inState: PacMap): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -193,6 +215,8 @@ Restores the user data saved during the migration for an ability on the remote d
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleApp-onRestoreData?(data: Object): void--><!--Device-LifecycleApp-onRestoreData?(data: Object): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -213,6 +237,8 @@ This method is called when the system determines that the ability may be destroy
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleApp-onSaveAbilityState?(outState: PacMap): void--><!--Device-LifecycleApp-onSaveAbilityState?(outState: PacMap): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -232,6 +258,8 @@ Saves the user data of a local ability generated during runtime. After the migra
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleApp-onSaveData?(data: Object): boolean--><!--Device-LifecycleApp-onSaveData?(data: Object): boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -259,6 +287,8 @@ Called back when the state of an ability changes from &lt;b&gt;BACKGROUND&lt;/b&
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleApp-onShow?(): void--><!--Device-LifecycleApp-onShow?(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## onStartContinuation
@@ -272,6 +302,8 @@ Asks a user whether to start the migration.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleApp-onStartContinuation?(): boolean--><!--Device-LifecycleApp-onStartContinuation?(): boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 

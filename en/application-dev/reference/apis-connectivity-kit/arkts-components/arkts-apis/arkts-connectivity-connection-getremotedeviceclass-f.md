@@ -22,6 +22,8 @@ Obtains the class of a peer Bluetooth device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getRemoteDeviceClass(deviceId: string): DeviceClass--><!--Device-connection-function getRemoteDeviceClass(deviceId: string): DeviceClass-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

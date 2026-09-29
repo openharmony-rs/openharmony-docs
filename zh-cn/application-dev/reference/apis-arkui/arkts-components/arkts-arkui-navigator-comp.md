@@ -24,6 +24,8 @@ Navigator(value?: { target: string; type?: NavigationType })
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigatorInterface-(value?: { target: string; type?: NavigationType }): NavigatorAttribute--><!--Device-NavigatorInterface-(value?: { target: string; type?: NavigationType }): NavigatorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
@@ -49,6 +51,8 @@ NavigationAttribute为Navigation组件的属性。
 **替代接口：** [NavigationAttribute](arkts-arkui-navigation-comp-attribute.md)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigatorInterface-(): NavigatorAttribute--><!--Device-NavigatorInterface-(): NavigatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

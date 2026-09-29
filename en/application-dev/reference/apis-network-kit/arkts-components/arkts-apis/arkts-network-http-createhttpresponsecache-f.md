@@ -16,7 +16,9 @@ Creates an **HttpResponseCache** object that stores the response data of HTTP re
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-http-function createHttpResponseCache(cacheSize?: int): HttpResponseCache--><!--Device-http-function createHttpResponseCache(cacheSize?: int): HttpResponseCache-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 

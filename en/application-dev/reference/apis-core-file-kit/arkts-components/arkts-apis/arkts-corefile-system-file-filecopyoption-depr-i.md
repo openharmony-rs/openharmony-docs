@@ -10,6 +10,8 @@ Defines the options used in copy().
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export interface FileCopyOption--><!--Device-unnamed-export interface FileCopyOption-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Callback invoked when the API call is complete.
 
 **Deprecated since:** 10
 
+<!--Device-FileCopyOption-complete?: () => void--><!--Device-FileCopyOption-complete?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## fail
@@ -42,6 +46,8 @@ Callback invoked when the API call fails. **data** indicates the error informati
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileCopyOption-fail?: (data: string, code: number) => void--><!--Device-FileCopyOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -63,6 +69,8 @@ Callback invoked when the API call is successful. This API returns the URI of th
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileCopyOption-success?: (uri: string) => void--><!--Device-FileCopyOption-success?: (uri: string) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -88,6 +96,8 @@ URI of the location to which the copy is to be saved. The directory of applicati
 
 **Deprecated since:** 10
 
+<!--Device-FileCopyOption-dstUri: string--><!--Device-FileCopyOption-dstUri: string-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## srcUri
@@ -105,5 +115,7 @@ URI of the file to copy. Restricted by the underlying file system of lite wearab
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileCopyOption-srcUri: string--><!--Device-FileCopyOption-srcUri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite

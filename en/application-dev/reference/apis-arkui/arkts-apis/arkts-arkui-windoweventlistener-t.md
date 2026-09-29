@@ -10,6 +10,8 @@ Callback function for window event
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare type WindowEventListener = (windowId: int, event: window.WindowEventType) => void--><!--Device-unnamed-declare type WindowEventListener = (windowId: int, event: window.WindowEventType) => void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**

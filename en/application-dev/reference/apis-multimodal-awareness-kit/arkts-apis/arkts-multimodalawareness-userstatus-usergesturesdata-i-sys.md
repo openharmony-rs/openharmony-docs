@@ -10,6 +10,8 @@ Defines user gesture data.
 
 **Since:** 26.0.0
 
+<!--Device-userStatus-export interface UserGesturesData extends UserFacesData--><!--Device-userStatus-export interface UserGesturesData extends UserFacesData-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Angle between user gesture and screen directions. The value ranges from 0 to 90,
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserGesturesData-directionAngle?: double[]--><!--Device-UserGesturesData-directionAngle?: double[]-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Gesture speed, in frames per second (fps).
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserGesturesData-gestureSpeed?: double[]--><!--Device-UserGesturesData-gestureSpeed?: double[]-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -70,6 +76,8 @@ Hand position relative to screen. The normalized coordinate system ranges from 0
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserGesturesData-handPosition?: double[]--><!--Device-UserGesturesData-handPosition?: double[]-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -87,6 +95,8 @@ User static gesture type. The value ranges from 0 to 3. 0: Palm, 1: Fist, 2: Sci
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserGesturesData-handType?: int--><!--Device-UserGesturesData-handType?: int-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -106,6 +116,8 @@ Whether user hand exists.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserGesturesData-isHandExist?: boolean--><!--Device-UserGesturesData-isHandExist?: boolean-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -123,6 +135,8 @@ User dynamic gesture type. The value ranges from 0 to 3. 0: Up, 1: Down, 2: Scre
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserGesturesData-motionGesture?: int--><!--Device-UserGesturesData-motionGesture?: int-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 

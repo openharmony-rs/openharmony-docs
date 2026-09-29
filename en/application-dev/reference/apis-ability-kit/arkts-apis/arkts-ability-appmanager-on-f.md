@@ -18,6 +18,8 @@ Registers an observer to listen for lifecycle changes of all applications.
 
 **Required permissions:** ohos.permission.RUNNING_STATE_OBSERVER
 
+<!--Device-appManager-function on(type: 'applicationState', observer: ApplicationStateObserver): int--><!--Device-appManager-function on(type: 'applicationState', observer: ApplicationStateObserver): int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -93,6 +95,8 @@ Registers an observer to listen for lifecycle changes of the specified applicati
 **Since:** 14
 
 **Required permissions:** ohos.permission.RUNNING_STATE_OBSERVER
+
+<!--Device-appManager-function on(type: 'applicationState', observer: ApplicationStateObserver, bundleNameList: Array<string>): int--><!--Device-appManager-function on(type: 'applicationState', observer: ApplicationStateObserver, bundleNameList: Array<string>): int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

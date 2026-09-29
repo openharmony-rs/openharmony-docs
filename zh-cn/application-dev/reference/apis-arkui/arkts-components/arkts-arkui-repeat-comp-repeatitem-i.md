@@ -8,6 +8,8 @@ interface RepeatItem<T>
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface RepeatItem<T>--><!--Device-unnamed-interface RepeatItem<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
@@ -28,6 +30,8 @@ index: number
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RepeatItem-index: number--><!--Device-RepeatItem-index: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## item
@@ -47,5 +51,7 @@ arr中每一个数据项。T为开发者传入的数据类型。
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RepeatItem-item: T--><!--Device-RepeatItem-item: T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -21,6 +21,8 @@ declare interface SweepGradientOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface SweepGradientOptions--><!--Device-unnamed-declare interface SweepGradientOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## center
@@ -38,6 +40,8 @@ center: [Length, Length]
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SweepGradientOptions-center: [Length, Length]--><!--Device-SweepGradientOptions-center: [Length, Length]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ colors: Array<[ResourceColor, number]>
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SweepGradientOptions-colors: Array<[ResourceColor, number]>--><!--Device-SweepGradientOptions-colors: Array<[ResourceColor, number]>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ end?: number | string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SweepGradientOptions-end?: number | string--><!--Device-SweepGradientOptions-end?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## metricsColors
@@ -99,6 +107,8 @@ metricsColors?: Array<[ColorMetrics, number]>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SweepGradientOptions-metricsColors?: Array<[ColorMetrics, number]>--><!--Device-SweepGradientOptions-metricsColors?: Array<[ColorMetrics, number]>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,6 +137,8 @@ false：渐变效果仅在指定范围内显示一次。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SweepGradientOptions-repeating?: boolean--><!--Device-SweepGradientOptions-repeating?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## rotation
@@ -150,6 +162,8 @@ rotation?: number | string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SweepGradientOptions-rotation?: number | string--><!--Device-SweepGradientOptions-rotation?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -172,5 +186,7 @@ start?: number | string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SweepGradientOptions-start?: number | string--><!--Device-SweepGradientOptions-start?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

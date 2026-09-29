@@ -8,6 +8,8 @@ Provides APIs for interacting with the cloud sync service. You need to inherit t
 
 **Since:** 11
 
+<!--Device-cloudExtension-export interface CloudService--><!--Device-cloudExtension-export interface CloudService-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ connectAssetLoader(bundleName: string, database: Database): Promise<rpc.RemoteOb
 Connects to an asset loader by obtaining a RemoteObject instance of AssetLoader, which is created by using createAssetLoaderStub. This API uses a promise to return the result. You can use this API to connect to the asset loader.
 
 **Since:** 11
+
+<!--Device-CloudService-connectAssetLoader(bundleName: string, database: Database): Promise<rpc.RemoteObject>--><!--Device-CloudService-connectAssetLoader(bundleName: string, database: Database): Promise<rpc.RemoteObject>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -74,6 +78,8 @@ Connects to a cloud database by obtaining a RemoteObject instance of CloudDB, wh
 
 **Since:** 11
 
+<!--Device-CloudService-connectDB(bundleName: string, database: Database): Promise<rpc.RemoteObject>--><!--Device-CloudService-connectDB(bundleName: string, database: Database): Promise<rpc.RemoteObject>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -119,6 +125,8 @@ connectShareCenter(userId: number, bundleName: string): Promise<rpc.RemoteObject
 Connects to ShareCenter by obtaining a RemoteObject instance of ShareCenter, which is created by using createShareServiceStub. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-CloudService-connectShareCenter(userId: int, bundleName: string): Promise<rpc.RemoteObject>--><!--Device-CloudService-connectShareCenter(userId: int, bundleName: string): Promise<rpc.RemoteObject>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -166,6 +174,8 @@ Obtains brief application information. This API uses a promise to return the res
 
 **Since:** 11
 
+<!--Device-CloudService-getAppBriefInfo(): Promise<Record<string, AppBriefInfo>>--><!--Device-CloudService-getAppBriefInfo(): Promise<Record<string, AppBriefInfo>>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -207,6 +217,8 @@ getAppSchema(bundleName: string): Promise<Result<AppSchema>>
 Obtains the application database schema information. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-CloudService-getAppSchema(bundleName: string): Promise<Result<AppSchema>>--><!--Device-CloudService-getAppSchema(bundleName: string): Promise<Result<AppSchema>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -257,6 +269,8 @@ Obtains the server information. This API uses a promise to return the result.
 
 **Since:** 11
 
+<!--Device-CloudService-getServiceInfo(): Promise<ServiceInfo>--><!--Device-CloudService-getServiceInfo(): Promise<ServiceInfo>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -304,6 +318,8 @@ subscribe(
 Subscribes to data. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-CloudService-subscribe(      subInfo: Record<string, Array<Database>>,      expirationTime: long    ): Promise<Result<SubscribeInfo>>--><!--Device-CloudService-subscribe(      subInfo: Record<string, Array<Database>>,      expirationTime: long    ): Promise<Result<SubscribeInfo>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -354,6 +370,8 @@ unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<number>
 Unsubscribes from data changes in the cloud. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-CloudService-unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<int>--><!--Device-CloudService-unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<int>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 

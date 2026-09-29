@@ -10,6 +10,8 @@ Describes the humidity sensor data. It extends from [Response](arkts-sensorservi
 
 **Since:** 8
 
+<!--Device-sensor-interface HumidityResponse extends Response--><!--Device-sensor-interface HumidityResponse extends Response-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 ## Modules to Import
@@ -24,10 +26,12 @@ import { sensor } from '@kit.SensorServiceKit';
 humidity: number
 ```
 
-Ambient relative humidity, in a percentage (%).
+Relative humidity of the environment, in percentage, indicating the relative humidity percentage of the environment.
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-HumidityResponse-humidity: double--><!--Device-HumidityResponse-humidity: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

@@ -16,6 +16,8 @@ function hasPrivateWindow(displayId: number): boolean
 
 **起始版本：** 9
 
+<!--Device-display-function hasPrivateWindow(displayId: long): boolean--><!--Device-display-function hasPrivateWindow(displayId: long): boolean-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。

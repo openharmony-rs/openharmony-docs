@@ -8,6 +8,8 @@ Represents the credential used for server identity verification in a session, in
 
 **Since:** 18
 
+<!--Device-http-export interface Credential--><!--Device-http-export interface Credential-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Password of credential. Default is ''.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-Credential-password: string--><!--Device-Credential-password: string-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -44,6 +48,8 @@ Username of credential. Default is ''.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-Credential-username: string--><!--Device-Credential-username: string-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

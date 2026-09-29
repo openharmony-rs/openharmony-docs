@@ -8,6 +8,8 @@ Defines a TCP socket server connection. Before calling TCPSocketServer APIs, you
 
 **Since:** 10
 
+<!--Device-socket-export interface TCPSocketServer--><!--Device-socket-export interface TCPSocketServer-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Stops listening for events of the **TCPSocketServer** object and releases the po
 **Since:** 20
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-TCPSocketServer-close(): Promise<void>--><!--Device-TCPSocketServer-close(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -87,6 +91,8 @@ Obtains the local socket address of a **TCPSocketServer** connection. This API u
 > This API can be called only after **listen** is successfully called.
 
 **Since:** 12
+
+<!--Device-TCPSocketServer-getLocalAddress(): Promise<NetAddress>--><!--Device-TCPSocketServer-getLocalAddress(): Promise<NetAddress>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -147,6 +153,8 @@ Obtains the file descriptor bound to the TCPSocketServer listening port. This AP
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-TCPSocketServer-getSocketFd(): Promise<int>--><!--Device-TCPSocketServer-getSocketFd(): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -200,6 +208,8 @@ Obtains the status of a TCP socket server connection. This API uses an asynchron
 **Since:** 10
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-TCPSocketServer-getState(callback: AsyncCallback<SocketStateBase>): void--><!--Device-TCPSocketServer-getState(callback: AsyncCallback<SocketStateBase>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -264,6 +274,8 @@ Obtains the status of a TCP socket server connection. This API uses a promise to
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-TCPSocketServer-getState(): Promise<SocketStateBase>--><!--Device-TCPSocketServer-getState(): Promise<SocketStateBase>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -322,6 +334,8 @@ Binds the IP address and port number. The port number can be specified or random
 **Since:** 10
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-TCPSocketServer-listen(address: NetAddress, callback: AsyncCallback<void>): void--><!--Device-TCPSocketServer-listen(address: NetAddress, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -384,6 +398,8 @@ Binds the IP address and port number. The port number can be specified or random
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-TCPSocketServer-listen(address: NetAddress): Promise<void>--><!--Device-TCPSocketServer-listen(address: NetAddress): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -439,6 +455,8 @@ Unsubscribes from **connect** events of the **TCPSocketServer** object. This API
 
 **Since:** 10
 
+<!--Device-TCPSocketServer-off(type: 'connect', callback?: Callback<TCPSocketConnection>): void--><!--Device-TCPSocketServer-off(type: 'connect', callback?: Callback<TCPSocketConnection>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -492,6 +510,8 @@ off(type: 'error', callback?: ErrorCallback): void
 Unsubscribes from **error** events of the **TCPSocketServer** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-TCPSocketServer-off(type: 'error', callback?: ErrorCallback): void--><!--Device-TCPSocketServer-off(type: 'error', callback?: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -551,6 +571,8 @@ Subscribes to **connect** events of the **TCPSocketServer** object. This API use
 
 **Since:** 10
 
+<!--Device-TCPSocketServer-on(type: 'connect', callback: Callback<TCPSocketConnection>): void--><!--Device-TCPSocketServer-on(type: 'connect', callback: Callback<TCPSocketConnection>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -604,6 +626,8 @@ Subscribes to **error** events of the **TCPSocketServer** object. This API uses 
 > This API can be called only after **listen** is successfully called.
 
 **Since:** 10
+
+<!--Device-TCPSocketServer-on(type: 'error', callback: ErrorCallback): void--><!--Device-TCPSocketServer-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -660,6 +684,8 @@ Sets other properties of the **TCPSocketServer** object. This API uses an asynch
 **Since:** 10
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-TCPSocketServer-setExtraOptions(options: TCPExtraOptions, callback: AsyncCallback<void>): void--><!--Device-TCPSocketServer-setExtraOptions(options: TCPExtraOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -740,6 +766,8 @@ Sets other properties of the **TCPSocketServer** object. This API uses a promise
 **Since:** 10
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-TCPSocketServer-setExtraOptions(options: TCPExtraOptions): Promise<void>--><!--Device-TCPSocketServer-setExtraOptions(options: TCPExtraOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 

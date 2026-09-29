@@ -8,6 +8,8 @@ Represents the file system encryption status.
 
 **Since:** 11
 
+<!--Device-securityManager-export interface DeviceEncryptionStatus--><!--Device-securityManager-export interface DeviceEncryptionStatus-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -33,6 +35,8 @@ The value **true** means the file system of the device is encrypted; the value *
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceEncryptionStatus-isEncrypted: boolean--><!--Device-DeviceEncryptionStatus-isEncrypted: boolean-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

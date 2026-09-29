@@ -20,6 +20,8 @@ Creates an ImageReceiver instance by specifying the image width, height, format,
 
 **Substitutes:** [createImageReceiver](arkts-image-image-createimagereceiver-f.md)(size: Size, format: ImageFormat, capacity: number)
 
+<!--Device-image-function createImageReceiver(width: number, height: number, format: number, capacity: number): ImageReceiver--><!--Device-image-function createImageReceiver(width: number, height: number, format: number, capacity: number): ImageReceiver-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 **Parameters:**
@@ -55,6 +57,8 @@ function createImageReceiver(size: Size, format: ImageFormat, capacity: number):
 Creates an ImageReceiver instance by specifying the image size, format, and capacity. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createpreviewoutput). Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](arkts-image-image-imagereceiver-i.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 11
+
+<!--Device-image-function createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver--><!--Device-image-function createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -102,6 +106,8 @@ Creates an ImageReceiver instance.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-image-function createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined--><!--Device-image-function createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 

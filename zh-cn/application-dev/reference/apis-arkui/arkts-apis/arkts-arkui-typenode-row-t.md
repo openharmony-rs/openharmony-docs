@@ -12,6 +12,8 @@ Row类型的FrameNode节点类型。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-typeNode-type Row = TypedFrameNode<RowInterface, RowAttribute>--><!--Device-typeNode-type Row = TypedFrameNode<RowInterface, RowAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;RowInterface, [RowAttribute](../arkts-components/arkts-arkui-row-comp-attribute.md)&gt;

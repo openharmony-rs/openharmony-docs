@@ -16,6 +16,8 @@ The following describes the unique APIs of **NfcATag**.
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NfcATag extends TagSession--><!--Device-unnamed-export interface NfcATag extends TagSession-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## getAtqa
@@ -28,7 +30,9 @@ Obtains the ATQA value of this NFC-A tag.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NfcATag-getAtqa(): int[]--><!--Device-NfcATag-getAtqa(): int[]-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 
@@ -58,7 +62,9 @@ Obtains the SAK value of this NFC-A tag.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NfcATag-getSak(): int--><!--Device-NfcATag-getSak(): int-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

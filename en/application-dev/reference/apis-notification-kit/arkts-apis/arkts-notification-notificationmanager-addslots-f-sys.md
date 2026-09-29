@@ -18,6 +18,8 @@ Adds an array of notification slots. This API uses an asynchronous callback to r
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function addSlots(slots: Array<NotificationSlot>, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function addSlots(slots: Array<NotificationSlot>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -79,6 +81,8 @@ Adds an array of notification slots. This API uses a promise to return the resul
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function addSlots(slots: Array<NotificationSlot>): Promise<void>--><!--Device-notificationManager-function addSlots(slots: Array<NotificationSlot>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

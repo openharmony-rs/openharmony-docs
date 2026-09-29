@@ -20,6 +20,8 @@ Query all detailed information of tools
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-cliManager-function queryTools(): Promise<Array<ToolInfo>>--><!--Device-cliManager-function queryTools(): Promise<Array<ToolInfo>>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

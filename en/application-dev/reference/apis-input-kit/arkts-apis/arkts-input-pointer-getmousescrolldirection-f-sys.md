@@ -18,6 +18,8 @@ Obtains the scroll direction of the mouse wheel. This API uses a promise to retu
 
 **Required permissions:** ohos.permission.INPUT_DEVICE_CONTROLLER
 
+<!--Device-pointer-function getMouseScrollDirection(): Promise<boolean>--><!--Device-pointer-function getMouseScrollDirection(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.

@@ -4,6 +4,8 @@ Provides methods to accessing bluetooth call-related capabilities.
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace hfp--><!--Device-unnamed-declare namespace hfp-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import

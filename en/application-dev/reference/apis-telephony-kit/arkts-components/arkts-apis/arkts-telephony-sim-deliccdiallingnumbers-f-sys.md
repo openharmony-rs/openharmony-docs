@@ -18,6 +18,8 @@ Delete dialing number information on SIM card.
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 
+<!--Device-sim-function delIccDiallingNumbers(slotId: int, type: ContactType, diallingNumbers: DiallingNumbersInfo, callback: AsyncCallback<void>): void--><!--Device-sim-function delIccDiallingNumbers(slotId: int, type: ContactType, diallingNumbers: DiallingNumbersInfo, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ Delete dialing number information on SIM card.
 **Since:** 8
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
+
+<!--Device-sim-function delIccDiallingNumbers(slotId: int, type: ContactType, diallingNumbers: DiallingNumbersInfo): Promise<void>--><!--Device-sim-function delIccDiallingNumbers(slotId: int, type: ContactType, diallingNumbers: DiallingNumbersInfo): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

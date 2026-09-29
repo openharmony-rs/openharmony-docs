@@ -8,6 +8,8 @@ Base interface of profile.
 
 **Since:** 10
 
+<!--Device-hfp-type BaseProfile = baseProfile.BaseProfile--><!--Device-hfp-type BaseProfile = baseProfile.BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Type:** [baseProfile.BaseProfile](arkts-connectivity-baseprofile-baseprofile-i.md)

@@ -11,6 +11,8 @@ Describes the assertion function of the ArkTS typed array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-collections-type TypedArrayPredicateFn<ElementType, ArrayType> =    (value: ElementType, index: number, array: ArrayType) => boolean--><!--Device-collections-type TypedArrayPredicateFn<ElementType, ArrayType> =    (value: ElementType, index: number, array: ArrayType) => boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

@@ -8,6 +8,8 @@ interface StyledStringChangeValue
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface StyledStringChangeValue--><!--Device-unnamed-interface StyledStringChangeValue-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## previewText
@@ -28,6 +30,8 @@ previewText?: StyledString
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-StyledStringChangeValue-previewText?: StyledString--><!--Device-StyledStringChangeValue-previewText?: StyledString-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## range
@@ -46,6 +50,8 @@ range: TextRange
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-StyledStringChangeValue-range: TextRange--><!--Device-StyledStringChangeValue-range: TextRange-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## replacementString
@@ -63,5 +69,7 @@ replacementString: StyledString
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-StyledStringChangeValue-replacementString: StyledString--><!--Device-StyledStringChangeValue-replacementString: StyledString-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

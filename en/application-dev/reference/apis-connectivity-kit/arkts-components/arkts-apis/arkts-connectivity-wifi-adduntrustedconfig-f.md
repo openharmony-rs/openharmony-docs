@@ -24,6 +24,8 @@ Adds a specified untrusted hotspot configuration.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 
+<!--Device-wifi-function addUntrustedConfig(config: WifiDeviceConfig): Promise<boolean>--><!--Device-wifi-function addUntrustedConfig(config: WifiDeviceConfig): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Parameters:**
@@ -91,6 +93,8 @@ Adds a specified untrusted hotspot configuration.
 **Substitutes:** [addCandidateConfig](arkts-connectivity-wifimanager-addcandidateconfig-f.md)
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
+
+<!--Device-wifi-function addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback<boolean>): void--><!--Device-wifi-function addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

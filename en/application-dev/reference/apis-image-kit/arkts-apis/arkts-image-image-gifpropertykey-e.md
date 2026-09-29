@@ -8,6 +8,8 @@ Enumerates the GIF image information.
 
 **Since:** 20
 
+<!--Device-image-enum GifPropertyKey--><!--Device-image-enum GifPropertyKey-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GIF_DELAY_TIME
@@ -20,6 +22,8 @@ Duration for playing each frame of a GIF image, in milliseconds.
 
 **Since:** 20
 
+<!--Device-GifPropertyKey-GIF_DELAY_TIME = 'GifDelayTime'--><!--Device-GifPropertyKey-GIF_DELAY_TIME = 'GifDelayTime'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GIF_DISPOSAL_TYPE
@@ -31,6 +35,8 @@ GIF_DISPOSAL_TYPE = 'GifDisposalType'
 Disposal type of each frame in a GIF image.
 
 **Since:** 20
+
+<!--Device-GifPropertyKey-GIF_DISPOSAL_TYPE = 'GifDisposalType'--><!--Device-GifPropertyKey-GIF_DISPOSAL_TYPE = 'GifDisposalType'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -46,6 +52,8 @@ Whether the GIF image has a global color map.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GifPropertyKey-GIF_HAS_GLOBAL_COLOR_MAP = 'GifHasGlobalColorMap'--><!--Device-GifPropertyKey-GIF_HAS_GLOBAL_COLOR_MAP = 'GifHasGlobalColorMap'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GIF_CANVAS_WIDTH
@@ -59,6 +67,8 @@ Canvas width.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GifPropertyKey-GIF_CANVAS_WIDTH = 'GifCanvasWidth'--><!--Device-GifPropertyKey-GIF_CANVAS_WIDTH = 'GifCanvasWidth'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -74,6 +84,8 @@ Canvas height.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GifPropertyKey-GIF_CANVAS_HEIGHT = 'GifCanvasHeight'--><!--Device-GifPropertyKey-GIF_CANVAS_HEIGHT = 'GifCanvasHeight'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GIF_LOOP_COUNT
@@ -88,6 +100,8 @@ Loop count.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GifPropertyKey-GIF_LOOP_COUNT = 'GifLoopCount'--><!--Device-GifPropertyKey-GIF_LOOP_COUNT = 'GifLoopCount'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GIF_UNCLAMPED_DELAY_TIME
@@ -101,5 +115,7 @@ Unclamped delay of each frame in milliseconds.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GifPropertyKey-GIF_UNCLAMPED_DELAY_TIME = 'GifUnclampedDelayTime'--><!--Device-GifPropertyKey-GIF_UNCLAMPED_DELAY_TIME = 'GifUnclampedDelayTime'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

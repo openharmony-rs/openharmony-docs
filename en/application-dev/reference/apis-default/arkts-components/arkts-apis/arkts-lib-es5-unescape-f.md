@@ -15,6 +15,8 @@ Computes a new string in which hexadecimal escape sequences are replaced with th
 
 **Deprecated since:** legacy feature for browser compatibility
 
+<!--Device-unnamed-declare function unescape(string: string): string--><!--Device-unnamed-declare function unescape(string: string): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

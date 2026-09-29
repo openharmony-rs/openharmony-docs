@@ -16,6 +16,8 @@ Specifies which audio streams are affected by changes on the ringing mode and Do
 
 **Deprecated since:** 21
 
+<!--Device-sound-const AFFECTED_MODE_RINGER_STREAMS: string--><!--Device-sound-const AFFECTED_MODE_RINGER_STREAMS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## AFFECTED_MUTE_STREAMS
@@ -33,6 +35,8 @@ Specifies which audio streams are affected by the mute mode.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-sound-const AFFECTED_MUTE_STREAMS: string--><!--Device-sound-const AFFECTED_MUTE_STREAMS: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -52,6 +56,8 @@ Indicates the storage area of the system default alarm.
 
 **Deprecated since:** 21
 
+<!--Device-sound-const DEFAULT_ALARM_ALERT: string--><!--Device-sound-const DEFAULT_ALARM_ALERT: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## DEFAULT_NOTIFICATION_SOUND
@@ -69,6 +75,8 @@ Indicates the storage area of the system default notification tone.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-sound-const DEFAULT_NOTIFICATION_SOUND: string--><!--Device-sound-const DEFAULT_NOTIFICATION_SOUND: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -88,6 +96,8 @@ Indicates the storage area of the system default ringtone.
 
 **Deprecated since:** 21
 
+<!--Device-sound-const DEFAULT_RINGTONE: string--><!--Device-sound-const DEFAULT_RINGTONE: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## DTMF_TONE_TYPE_WHILE_DIALING
@@ -105,6 +115,8 @@ Indicates the type of the dual-tone multifrequency (DTMF) tone played when diali
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-sound-const DTMF_TONE_TYPE_WHILE_DIALING: string--><!--Device-sound-const DTMF_TONE_TYPE_WHILE_DIALING: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -124,6 +136,8 @@ Specifies whether the DTMF tone is played when dialing.
 
 **Deprecated since:** 21
 
+<!--Device-sound-const DTMF_TONE_WHILE_DIALING: string--><!--Device-sound-const DTMF_TONE_WHILE_DIALING: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## HAPTIC_FEEDBACK_STATUS
@@ -141,6 +155,8 @@ Indicates whether the device enables haptic feedback.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-sound-const HAPTIC_FEEDBACK_STATUS: string--><!--Device-sound-const HAPTIC_FEEDBACK_STATUS: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -160,6 +176,8 @@ Specifies whether the sound effects are enabled.
 
 **Deprecated since:** 21
 
+<!--Device-sound-const SOUND_EFFECTS_STATUS: string--><!--Device-sound-const SOUND_EFFECTS_STATUS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## VIBRATE_STATUS
@@ -178,6 +196,8 @@ Specifies whether the device vibrates for an event. This parameter is used insid
 
 **Deprecated since:** 21
 
+<!--Device-sound-const VIBRATE_STATUS: string--><!--Device-sound-const VIBRATE_STATUS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## VIBRATE_WHILE_RINGING
@@ -195,5 +215,7 @@ Indicates whether the device vibrates when it is ringing for an incoming call.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-sound-const VIBRATE_WHILE_RINGING: string--><!--Device-sound-const VIBRATE_WHILE_RINGING: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core

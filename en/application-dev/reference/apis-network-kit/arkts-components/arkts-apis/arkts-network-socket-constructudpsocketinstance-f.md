@@ -16,6 +16,8 @@ Creates a **UDPSocket** object.
 
 **Since:** 7
 
+<!--Device-socket-function constructUDPSocketInstance(): UDPSocket--><!--Device-socket-function constructUDPSocketInstance(): UDPSocket-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**

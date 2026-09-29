@@ -16,6 +16,8 @@ Obtains the type of the SIM card in the specified slot.
 
 **Since:** 10
 
+<!--Device-sim-function getCardTypeSync(slotId: int): CardType--><!--Device-sim-function getCardTypeSync(slotId: int): CardType-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**

@@ -12,6 +12,8 @@ ISO-DEP (ISO 14443-4).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-tag-const ISO_DEP = 3--><!--Device-tag-const ISO_DEP = 3-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## MIFARE_CLASSIC
@@ -25,6 +27,8 @@ MIFARE Classic.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-tag-const MIFARE_CLASSIC = 8--><!--Device-tag-const MIFARE_CLASSIC = 8-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 
@@ -40,6 +44,8 @@ MIFARE Ultralight.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-tag-const MIFARE_ULTRALIGHT = 9--><!--Device-tag-const MIFARE_ULTRALIGHT = 9-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## NDEF
@@ -53,6 +59,8 @@ NDEF.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-tag-const NDEF = 6--><!--Device-tag-const NDEF = 6-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 
@@ -68,6 +76,8 @@ NDEF formattable.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-tag-const NDEF_FORMATABLE = 7--><!--Device-tag-const NDEF_FORMATABLE = 7-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## NFC_A
@@ -81,6 +91,8 @@ NFC-A (ISO 14443-3A).
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-tag-const NFC_A = 1--><!--Device-tag-const NFC_A = 1-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 
@@ -96,6 +108,8 @@ NFC-B (ISO 14443-3B).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-tag-const NFC_B = 2--><!--Device-tag-const NFC_B = 2-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## NFC_BARCODE
@@ -109,6 +123,8 @@ BARCODE technology.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-tag-const NFC_BARCODE = 10--><!--Device-tag-const NFC_BARCODE = 10-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 
@@ -124,6 +140,8 @@ NFC-F (JIS 6319-4).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-tag-const NFC_F = 4--><!--Device-tag-const NFC_F = 4-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## NFC_V
@@ -137,6 +155,8 @@ NFC-V (ISO 15693).
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-tag-const NFC_V = 5--><!--Device-tag-const NFC_V = 5-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 
@@ -152,7 +172,9 @@ NDEF record of the text type. For details, see **NFCForum-TS-NDEF_1.0**.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-tag-const RTD_TEXT: int[]--><!--Device-tag-const RTD_TEXT: int[]-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 
@@ -168,7 +190,9 @@ NDEF record of the URI type. For details, see **NFCForum-TS-NDEF_1.0**.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-tag-const RTD_URI: int[]--><!--Device-tag-const RTD_URI: int[]-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 
@@ -185,5 +209,7 @@ Method used to skip the NDEF check.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-tag-const SKIP_NDEF = 11--><!--Device-tag-const SKIP_NDEF = 11-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag

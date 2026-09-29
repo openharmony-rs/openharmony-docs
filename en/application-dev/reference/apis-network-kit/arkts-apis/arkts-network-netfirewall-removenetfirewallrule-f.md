@@ -20,6 +20,8 @@ Deletes a specified firewall rule of a system user ID. This API uses a promise t
 
 **Required permissions:** ohos.permission.MANAGE_NET_FIREWALL
 
+<!--Device-netFirewall-function removeNetFirewallRule(userId: int, ruleId: int): Promise<void>--><!--Device-netFirewall-function removeNetFirewallRule(userId: int, ruleId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 **Parameters:**

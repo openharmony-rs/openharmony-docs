@@ -8,6 +8,8 @@ Describes the POI information struct.
 
 **Since:** 19
 
+<!--Device-geoLocationManager-export interface PoiInfo--><!--Device-geoLocationManager-export interface PoiInfo-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Indicates POI information list.
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-PoiInfo-poiArray: Array<Poi>--><!--Device-PoiInfo-poiArray: Array<Poi>-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -44,6 +48,8 @@ Indicates the timestamp when the POI information is obtained.
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-PoiInfo-timestamp: long--><!--Device-PoiInfo-timestamp: long-End-->
 
 **System capability:** SystemCapability.Location.Location.Core

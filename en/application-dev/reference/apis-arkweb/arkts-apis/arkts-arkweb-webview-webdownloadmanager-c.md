@@ -10,6 +10,8 @@ WebDownloadManager works together with [WebDownloadDelegate](arkts-arkweb-webvie
 
 **Since:** 11
 
+<!--Device-webview-class WebDownloadManager--><!--Device-webview-class WebDownloadManager-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Resumes a failed download task. You need to obtain the deserialized object throu
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadManager-static resumeDownload(webDownloadItem: WebDownloadItem): void--><!--Device-WebDownloadManager-static resumeDownload(webDownloadItem: WebDownloadItem): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -154,6 +158,8 @@ Sets the delegate used to receive download progress triggered by WebDownloadMana
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadManager-static setDownloadDelegate(delegate: WebDownloadDelegate): void--><!--Device-WebDownloadManager-static setDownloadDelegate(delegate: WebDownloadDelegate): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

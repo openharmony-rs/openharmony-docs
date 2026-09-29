@@ -10,6 +10,8 @@ Color in RGBA format. It consists of four components: red, green, blue, and alph
 
 **Since:** 12
 
+<!--Device-unnamed-export interface Color--><!--Device-unnamed-export interface Color-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## a
@@ -23,6 +25,8 @@ Alpha component. The value range is [0, 1].
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Color-a: double--><!--Device-Color-a: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -38,6 +42,8 @@ Blue component. The value range is [0, 1].
 
 **Since:** 12
 
+<!--Device-Color-b: double--><!--Device-Color-b: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## g
@@ -52,6 +58,8 @@ Green component. The value range is [0, 1].
 
 **Since:** 12
 
+<!--Device-Color-g: double--><!--Device-Color-g: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## r
@@ -65,5 +73,7 @@ Red component. The value range is [0, 1].
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Color-r: double--><!--Device-Color-r: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

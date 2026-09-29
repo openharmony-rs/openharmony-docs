@@ -12,6 +12,8 @@ Input parameter of the [createPdf](arkts-arkweb-webview-webviewcontroller-c.md#c
 
 **Since:** 14
 
+<!--Device-webview-interface PdfConfiguration--><!--Device-webview-interface PdfConfiguration-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -40,6 +42,8 @@ Recommended value: A4 paper page height 11.69 inches.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-PdfConfiguration-height: number--><!--Device-PdfConfiguration-height: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## marginBottom
@@ -59,6 +63,8 @@ Unit: inch.
 **Since:** 14
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-PdfConfiguration-marginBottom: number--><!--Device-PdfConfiguration-marginBottom: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -80,6 +86,8 @@ Unit: inch.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-PdfConfiguration-marginLeft: number--><!--Device-PdfConfiguration-marginLeft: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## marginRight
@@ -99,6 +107,8 @@ Unit: inch.
 **Since:** 14
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-PdfConfiguration-marginRight: number--><!--Device-PdfConfiguration-marginRight: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -120,6 +130,8 @@ Unit: inch.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-PdfConfiguration-marginTop: number--><!--Device-PdfConfiguration-marginTop: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## scale
@@ -140,6 +152,8 @@ Default value: **1.0**
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-PdfConfiguration-scale?: number--><!--Device-PdfConfiguration-scale?: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## shouldPrintBackground
@@ -157,6 +171,8 @@ Default value: **false**.
 **Since:** 14
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-PdfConfiguration-shouldPrintBackground?: boolean--><!--Device-PdfConfiguration-shouldPrintBackground?: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -179,5 +195,7 @@ Recommended value: A4 paper page width 8.27 inches.
 **Since:** 14
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-PdfConfiguration-width: number--><!--Device-PdfConfiguration-width: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

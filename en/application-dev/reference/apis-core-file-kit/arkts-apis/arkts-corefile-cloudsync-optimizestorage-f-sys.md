@@ -18,6 +18,8 @@ Optimizes the resources that have been synced to the cloud from the local Galler
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
+<!--Device-cloudSync-function optimizeStorage():Promise<void>--><!--Device-cloudSync-function optimizeStorage():Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.

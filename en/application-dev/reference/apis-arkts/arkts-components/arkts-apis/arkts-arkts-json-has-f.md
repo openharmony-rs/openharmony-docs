@@ -18,6 +18,8 @@ Checks whether an ArkTS object contains a key. This API can be used for related 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-json-function has(obj: object, property: string): boolean--><!--Device-json-function has(obj: object, property: string): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

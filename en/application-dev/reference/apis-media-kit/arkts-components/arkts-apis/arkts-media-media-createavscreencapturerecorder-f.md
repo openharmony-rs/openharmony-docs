@@ -16,6 +16,8 @@ Creates an AVScreenCaptureRecorder instance. This API uses a promise to return t
 
 **Since:** 12
 
+<!--Device-media-function createAVScreenCaptureRecorder(): Promise<AVScreenCaptureRecorder>--><!--Device-media-function createAVScreenCaptureRecorder(): Promise<AVScreenCaptureRecorder>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Return value:**

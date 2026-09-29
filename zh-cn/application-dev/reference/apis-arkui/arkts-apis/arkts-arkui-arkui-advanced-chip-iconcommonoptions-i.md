@@ -12,6 +12,8 @@ IconCommonOptions定义图标的共通属性。
 
 **起始版本：** 11
 
+<!--Device-unnamed-export interface IconCommonOptions--><!--Device-unnamed-export interface IconCommonOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -40,6 +42,8 @@ Chip激活时的图标填充颜色。仅在图片格式为SVG时生效。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-IconCommonOptions-activatedFillColor?: ResourceColor--><!--Device-IconCommonOptions-activatedFillColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fillColor
@@ -61,6 +65,8 @@ fillColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-IconCommonOptions-fillColor?: ResourceColor--><!--Device-IconCommonOptions-fillColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,6 +97,8 @@ sys.float.chip_normal_icon_size')}
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-IconCommonOptions-size?: SizeOptions--><!--Device-IconCommonOptions-size?: SizeOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## src
@@ -108,5 +116,7 @@ src: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-IconCommonOptions-src: ResourceStr--><!--Device-IconCommonOptions-src: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

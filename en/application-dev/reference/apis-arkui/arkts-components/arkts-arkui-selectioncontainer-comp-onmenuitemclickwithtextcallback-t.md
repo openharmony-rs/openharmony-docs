@@ -4,7 +4,7 @@
 export type OnMenuItemClickWithTextCallback = (menuItem: TextMenuItem, value: string) => boolean
 ```
 
-Invoke upon clicking an item, capable of intercepting the default system menu execution behavior.
+Called when a menu item is tapped. It can intercept the execution of system default menu items (such as copy and paste menu items).
 
 **Since:** 26.0.0
 
@@ -12,17 +12,19 @@ Invoke upon clicking an item, capable of intercepting the default system menu ex
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-unnamed-export type OnMenuItemClickWithTextCallback = (menuItem: TextMenuItem, value: string) => boolean--><!--Device-unnamed-export type OnMenuItemClickWithTextCallback = (menuItem: TextMenuItem, value: string) => boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| menuItem | [TextMenuItem](../arkts-apis/arkts-arkui-textmenuitem-i.md) | Yes | current clicked menu item. |
-| value | string | Yes | selected text content. |
+| menuItem | [TextMenuItem](../arkts-apis/arkts-arkui-textmenuitem-i.md) | Yes | Menu item that is currently clicked. |
+| value | string | Yes | Selected text content. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Return true if the event is consumed; false otherwise. |
+| boolean | Processing result of the menu item click event. The value true indicates that the event has been processed, and false indicates the opposite. |

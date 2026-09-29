@@ -8,6 +8,8 @@ Describes the pre-downloaded resource information.
 
 **Since:** 20
 
+<!--Device-cacheDownload-interface ResourceInfo--><!--Device-cacheDownload-interface ResourceInfo-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## Modules to Import
@@ -27,5 +29,7 @@ Size of a pre-downloaded resource after decompression, in bytes. If the value is
 **Type:** number
 
 **Since:** 20
+
+<!--Device-ResourceInfo-readonly size: long--><!--Device-ResourceInfo-readonly size: long-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

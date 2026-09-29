@@ -16,6 +16,8 @@ Obtains the state of the SIM card in the specified slot. This API uses an asynch
 
 **Since:** 6
 
+<!--Device-sim-function getSimState(slotId: int, callback: AsyncCallback<SimState>): void--><!--Device-sim-function getSimState(slotId: int, callback: AsyncCallback<SimState>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -58,6 +60,8 @@ function getSimState(slotId: number): Promise<SimState>
 Obtains the state of the SIM card in the specified slot. This API uses a promise to return the result.
 
 **Since:** 6
+
+<!--Device-sim-function getSimState(slotId: int): Promise<SimState>--><!--Device-sim-function getSimState(slotId: int): Promise<SimState>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

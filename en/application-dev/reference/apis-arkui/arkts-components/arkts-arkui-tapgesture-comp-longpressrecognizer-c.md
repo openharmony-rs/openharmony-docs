@@ -10,6 +10,8 @@ Implements a long press gesture recognizer. Inherits from [GestureRecognizer](ar
 
 **Since:** 18
 
+<!--Device-unnamed-declare class LongPressRecognizer extends GestureRecognizer--><!--Device-unnamed-declare class LongPressRecognizer extends GestureRecognizer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getAllowableMovement
@@ -25,6 +27,8 @@ Obtains the maximum movement distance allowed for gesture recognition by the lon
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-LongPressRecognizer-getAllowableMovement(): number--><!--Device-LongPressRecognizer-getAllowableMovement(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ Obtains the minimum duration required for the long press gesture to be recognize
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-LongPressRecognizer-getDuration(): number--><!--Device-LongPressRecognizer-getDuration(): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -69,6 +75,8 @@ Checks whether the long press gesture recognizer is set to trigger repeated call
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-LongPressRecognizer-isRepeat(): boolean--><!--Device-LongPressRecognizer-isRepeat(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

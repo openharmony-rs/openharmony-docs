@@ -8,6 +8,8 @@ Defines the connection result.
 
 **Since:** 18
 
+<!--Device-abilityConnectionManager-interface ConnectResult--><!--Device-abilityConnectionManager-interface ConnectResult-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Connection error code.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectResult-errorCode?: ConnectErrorCode--><!--Device-ConnectResult-errorCode?: ConnectErrorCode-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## isConnected
@@ -46,6 +50,8 @@ Whether the connection is successful. The value **true** indicates that the conn
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectResult-isConnected: boolean--><!--Device-ConnectResult-isConnected: boolean-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## reason
@@ -61,5 +67,7 @@ Connection rejection reason.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectResult-reason?: string--><!--Device-ConnectResult-reason?: string-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration

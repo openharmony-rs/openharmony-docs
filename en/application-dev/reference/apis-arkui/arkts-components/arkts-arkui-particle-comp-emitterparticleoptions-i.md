@@ -4,7 +4,7 @@
 interface EmitterParticleOptions<PARTICLE extends ParticleType>
 ```
 
-Defines parameters of particles used by emitters.
+Particle configuration.
 
 > **NOTE:** 
 > 
@@ -14,6 +14,8 @@ Defines parameters of particles used by emitters.
 
 **Since:** 18
 
+<!--Device-unnamed-interface EmitterParticleOptions<PARTICLE extends ParticleType>--><!--Device-unnamed-interface EmitterParticleOptions<PARTICLE extends ParticleType>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## config
@@ -22,12 +24,14 @@ Defines parameters of particles used by emitters.
 config: ParticleConfigs[PARTICLE]
 ```
 
-Configuration of the particle type.
+Configuration of the corresponding type.
 
-The value type of **config** is subject to the value of **type**.
+The **config** type is related to the **type** value:
 
-1. If the type is ParticleType.POINT, the config type is [PointParticleParameters](arkts-arkui-particle-comp-pointparticleparameters-i.md).
-2. If the type is ParticleType.IMAGE, the config type is [ImageParticleParameters](arkts-arkui-particle-comp-imageparticleparameters-i.md).
+1. If **type** is **ParticleType.POINT**, the **config** type is [PointParticleParameters](arkts-arkui-particle-comp-pointparticleparameters-i.md).
+2. If **type** is **ParticleType.IMAGE**, the **config** type is [ImageParticleParameters](arkts-arkui-particle-comp-imageparticleparameters-i.md).
+
+**Atomic service API:** Since API version 11, this API is supported in atomic services.
 
 **Type:** ParticleConfigs[PARTICLE]
 
@@ -37,6 +41,8 @@ The value type of **config** is subject to the value of **type**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EmitterParticleOptions-config: ParticleConfigs[PARTICLE]--><!--Device-EmitterParticleOptions-config: ParticleConfigs[PARTICLE]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## count
@@ -45,7 +51,13 @@ The value type of **config** is subject to the value of **type**.
 count: number
 ```
 
-Number of particles. The value is greater than or equal to -1. The value **-1** indicates that the number of particles is infinite.
+Total number of emitted particles. The value of **count** must be greater than or equal to -1. When **count** is - 1, the total number of particles is infinite.
+
+**Note:** 
+
+When **count** is -1, the emitter continuously emits particles. If you do not need to continuously generate a large number of particles, it is recommended not to set **count** to -1, as this may cause significant performance impact. It is recommended to set reasonable **emitRate** and **lifetime** values to avoid performance issues.
+
+**Atomic service API:** Since API version 11, this API is supported in atomic services.
 
 **Type:** number
 
@@ -55,6 +67,8 @@ Number of particles. The value is greater than or equal to -1. The value **-1** 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EmitterParticleOptions-count: number--><!--Device-EmitterParticleOptions-count: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## lifetime
@@ -63,9 +77,11 @@ Number of particles. The value is greater than or equal to -1. The value **-1** 
 lifetime?: number
 ```
 
-Lifetime of a single particle. The default value is **1000** (that is, 1000 ms, 1s). The value is greater than or equal to -1. The value **-1** indicates that the lifetime of the particle is infinite. If the value specified is less than **-1**, the default value is used.
+Lifecycle of a single particle. The default value is **1000** (that is, 1000 ms, or 1 s), and **lifetime** must be greater than or equal to -1. When **lifetime** is -1, the particle lifecycle is infinite. When **lifetime** is less than -1, the default value is used.
 
-Note: If you do not want the animation to keep playing, you are advised not to set the lifetime to –1, which may greatly affect the performance.
+**Note:** If you do not need the animation to play continuously, it is recommended not to set the **lifecycle** to -1, as this may cause significant performance impact.
+
+**Atomic service API:** Since API version 11, this API is supported in atomic services.
 
 **Type:** number
 
@@ -77,6 +93,8 @@ Note: If you do not want the animation to keep playing, you are advised not to s
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EmitterParticleOptions-lifetime?: number--><!--Device-EmitterParticleOptions-lifetime?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## lifetimeRange
@@ -85,7 +103,9 @@ Note: If you do not want the animation to keep playing, you are advised not to s
 lifetimeRange?: number
 ```
 
-Random integer within the range of [lifetime – lifetimeRange, lifetime + lifetimeRange]. After lifetimeRange is set, the particle lifecycle is a random integer within the range. The default value is 0. The value range is from 0 to positive infinity. If it is set to a negative value, the default value is used.
+Value range of the particle lifecycle, in milliseconds (ms). After **lifetimeRange** is set, the particle lifecycle is a random integer between [lifetime - lifetimeRange, lifetime + lifetimeRange]. The default value of **lifetimeRange** is **0**, and the value range is from 0 to positive infinity. When it is set to a negative value, the default value is used.
+
+**Atomic service API:** Since API version 12, this API is supported in atomic services.
 
 **Type:** number
 
@@ -97,6 +117,8 @@ Random integer within the range of [lifetime – lifetimeRange, lifetime + lifet
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EmitterParticleOptions-lifetimeRange?: number--><!--Device-EmitterParticleOptions-lifetimeRange?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -105,7 +127,9 @@ Random integer within the range of [lifetime – lifetimeRange, lifetime + lifet
 type: PARTICLE
 ```
 
-Particle type, which can be **IMAGE** or **POINT**.
+Particle type, which can be an image or a point.
+
+**Atomic service API:** Since API version 11, this API is supported in atomic services.
 
 **Type:** PARTICLE
 
@@ -114,5 +138,7 @@ Particle type, which can be **IMAGE** or **POINT**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-EmitterParticleOptions-type: PARTICLE--><!--Device-EmitterParticleOptions-type: PARTICLE-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

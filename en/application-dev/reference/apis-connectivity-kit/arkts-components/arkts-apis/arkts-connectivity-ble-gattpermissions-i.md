@@ -8,6 +8,8 @@ Describes the permission of a att attribute item.
 
 **Since:** 20
 
+<!--Device-ble-interface GattPermissions--><!--Device-ble-interface GattPermissions-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ The attribute field has the read permission.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-GattPermissions-read?: boolean--><!--Device-GattPermissions-read?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -48,7 +52,9 @@ The attribute field has the encrypted read permission.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-GattPermissions-readEncrypted?: boolean--><!--Device-GattPermissions-readEncrypted?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -66,7 +72,9 @@ The attribute field has the read permission for encryption authentication.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-GattPermissions-readEncryptedMitm?: boolean--><!--Device-GattPermissions-readEncryptedMitm?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -84,7 +92,9 @@ The attribute field has the write permission.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-GattPermissions-write?: boolean--><!--Device-GattPermissions-write?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -102,7 +112,9 @@ The attribute field has the encrypted write permission.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-GattPermissions-writeEncrypted?: boolean--><!--Device-GattPermissions-writeEncrypted?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -120,7 +132,9 @@ The attribute field has the write permission for encryption authentication.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-GattPermissions-writeEncryptedMitm?: boolean--><!--Device-GattPermissions-writeEncryptedMitm?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -138,7 +152,9 @@ The attribute field has the signed write permission.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-GattPermissions-writeSigned?: boolean--><!--Device-GattPermissions-writeSigned?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -156,6 +172,8 @@ The attribute field has the write permission for signature authentication.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-GattPermissions-writeSignedMitm?: boolean--><!--Device-GattPermissions-writeSignedMitm?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

@@ -28,6 +28,8 @@ Obtains the status information about a page by its URL.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-router-function getStateByUrl(url: string): Array<RouterState>--><!--Device-router-function getStateByUrl(url: string): Array<RouterState>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

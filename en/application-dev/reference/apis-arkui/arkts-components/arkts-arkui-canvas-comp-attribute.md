@@ -12,6 +12,8 @@ The universal events are supported.
 
 **Since:** 8
 
+<!--Device-unnamed-declare class CanvasAttribute extends CommonMethod<CanvasAttribute>--><!--Device-unnamed-declare class CanvasAttribute extends CommonMethod<CanvasAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableAnalyzer
@@ -38,6 +40,8 @@ This attribute cannot be used together with the [overlay](arkts-arkui-common-com
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CanvasAttribute-enableAnalyzer(enable: boolean): CanvasAttribute--><!--Device-CanvasAttribute-enableAnalyzer(enable: boolean): CanvasAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -63,6 +67,8 @@ When this event is triggered, the canvas is cleared. The width and height of the
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasAttribute-onReady(event: VoidCallback): CanvasAttribute--><!--Device-CanvasAttribute-onReady(event: VoidCallback): CanvasAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,6 +97,8 @@ When this event is triggered, the canvas is cleared. The width and height of the
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-CanvasAttribute-onReady(event: Callback<DrawingRenderingContext | undefined> | undefined): CanvasAttribute--><!--Device-CanvasAttribute-onReady(event: Callback<DrawingRenderingContext | undefined> | undefined): CanvasAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

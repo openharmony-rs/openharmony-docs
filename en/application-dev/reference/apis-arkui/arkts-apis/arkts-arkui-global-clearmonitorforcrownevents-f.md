@@ -12,4 +12,6 @@ Removes the digital crown events monitor function.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-export declare function clearMonitorForCrownEvents(): void--><!--Device-unnamed-export declare function clearMonitorForCrownEvents(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite

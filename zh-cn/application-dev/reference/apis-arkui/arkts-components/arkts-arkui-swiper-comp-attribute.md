@@ -12,9 +12,11 @@ declare class SwiperAttribute extends CommonMethod<SwiperAttribute>
 
 > Swiper组件通用属性[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)的默认值为true。
 
-**继承/实现关系：** SwiperAttribute extends CommonMethod&lt;SwiperAttribute&gt;
+**继承/实现关系：** SwiperAttribute extends CommonMethod<SwiperAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class SwiperAttribute extends CommonMethod<SwiperAttribute>--><!--Device-unnamed-declare class SwiperAttribute extends CommonMethod<SwiperAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +35,8 @@ autoPlay(value: boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-autoPlay(value: boolean): SwiperAttribute--><!--Device-SwiperAttribute-autoPlay(value: boolean): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,6 +65,8 @@ autoPlay(autoPlay: boolean, options: AutoPlayOptions)
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-autoPlay(autoPlay: boolean, options: AutoPlayOptions): SwiperAttribute--><!--Device-SwiperAttribute-autoPlay(autoPlay: boolean, options: AutoPlayOptions): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +98,8 @@ cachedCount(value: number)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-cachedCount(value: number): SwiperAttribute--><!--Device-SwiperAttribute-cachedCount(value: number): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -121,6 +129,8 @@ cachedCount(count: number, isShown: boolean)
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-cachedCount(count: number, isShown: boolean): SwiperAttribute--><!--Device-SwiperAttribute-cachedCount(count: number, isShown: boolean): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -157,6 +167,8 @@ cachedCount(count: number, options: CachedCountOptions)
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-cachedCount(count: number, options: CachedCountOptions): SwiperAttribute--><!--Device-SwiperAttribute-cachedCount(count: number, options: CachedCountOptions): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -179,6 +191,8 @@ curve(value: Curve | string | ICurve)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-curve(value: Curve | string | ICurve): SwiperAttribute--><!--Device-SwiperAttribute-curve(value: Curve | string | ICurve): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -215,6 +229,8 @@ customContentTransition(transition: SwiperContentAnimatedTransition)
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-customContentTransition(transition: SwiperContentAnimatedTransition): SwiperAttribute--><!--Device-SwiperAttribute-customContentTransition(transition: SwiperContentAnimatedTransition): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -236,6 +252,8 @@ disableSwipe(value: boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-disableSwipe(value: boolean): SwiperAttribute--><!--Device-SwiperAttribute-disableSwipe(value: boolean): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -262,6 +280,8 @@ displayArrow(value: ArrowStyle | boolean, isHoverShow?: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwiperAttribute-displayArrow(value: ArrowStyle | boolean, isHoverShow?: boolean): SwiperAttribute--><!--Device-SwiperAttribute-displayArrow(value: ArrowStyle | boolean, isHoverShow?: boolean): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -315,6 +335,8 @@ displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean): SwiperAttribute--><!--Device-SwiperAttribute-displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -352,6 +374,8 @@ displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGr
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGroup?: boolean): SwiperAttribute--><!--Device-SwiperAttribute-displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGroup?: boolean): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -374,6 +398,8 @@ displayMode(value: SwiperDisplayMode)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-displayMode(value: SwiperDisplayMode): SwiperAttribute--><!--Device-SwiperAttribute-displayMode(value: SwiperDisplayMode): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -399,6 +425,8 @@ curve默认曲线为[interpolatingSpring](../arkts-apis/arkts-arkui-curves-inter
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwiperAttribute-duration(value: number): SwiperAttribute--><!--Device-SwiperAttribute-duration(value: number): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -420,6 +448,8 @@ effectMode(value: EdgeEffect)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-effectMode(value: EdgeEffect): SwiperAttribute--><!--Device-SwiperAttribute-effectMode(value: EdgeEffect): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -445,6 +475,8 @@ index(value: number)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-index(value: number): SwiperAttribute--><!--Device-SwiperAttribute-index(value: number): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -466,6 +498,8 @@ indicator(value: DotIndicator | DigitIndicator | boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-indicator(value: DotIndicator | DigitIndicator | boolean): SwiperAttribute--><!--Device-SwiperAttribute-indicator(value: DotIndicator | DigitIndicator | boolean): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -497,6 +531,8 @@ indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicato
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicator | boolean): SwiperAttribute--><!--Device-SwiperAttribute-indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicator | boolean): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -519,6 +555,8 @@ indicatorInteractive(value: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwiperAttribute-indicatorInteractive(value: boolean): SwiperAttribute--><!--Device-SwiperAttribute-indicatorInteractive(value: boolean): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -540,6 +578,8 @@ interval(value: number)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-interval(value: number): SwiperAttribute--><!--Device-SwiperAttribute-interval(value: number): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -565,6 +605,8 @@ itemSpace(value: number | string)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-itemSpace(value: number | string): SwiperAttribute--><!--Device-SwiperAttribute-itemSpace(value: number | string): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -586,6 +628,8 @@ loop(value: boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-loop(value: boolean): SwiperAttribute--><!--Device-SwiperAttribute-loop(value: boolean): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -612,6 +656,8 @@ maintainVisibleContentPosition(enabled: boolean)
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-maintainVisibleContentPosition(enabled: boolean): SwiperAttribute--><!--Device-SwiperAttribute-maintainVisibleContentPosition(enabled: boolean): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -640,6 +686,8 @@ nestedScroll(value: SwiperNestedScrollMode)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwiperAttribute-nestedScroll(value: SwiperNestedScrollMode): SwiperAttribute--><!--Device-SwiperAttribute-nestedScroll(value: SwiperNestedScrollMode): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -654,7 +702,7 @@ nestedScroll(value: SwiperNestedScrollMode)
 nextMargin(value: Length, ignoreBlank?: boolean)
 ```
 
-设置后边距，用于露出后一项的一小部分，使用效果可以参考示例1设置导航点交互及翻页动效。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
+设置后边距，用于露出后一项的一小部分，使用效果可以参考[示例1设置导航点交互及翻页动效](../../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#示例1设置导航点交互及翻页动效)。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
 
 当主轴方向为横向布局时，nextMargin或prevMargin中任意一个大于子组件测算的宽度，nextMargin和prevMargin均不显示。
 
@@ -671,6 +719,8 @@ nextMargin(value: Length, ignoreBlank?: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwiperAttribute-nextMargin(value: Length, ignoreBlank?: boolean): SwiperAttribute--><!--Device-SwiperAttribute-nextMargin(value: Length, ignoreBlank?: boolean): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -696,6 +746,8 @@ onAnimationEnd(event: OnSwiperAnimationEndCallback)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-onAnimationEnd(event: OnSwiperAnimationEndCallback): SwiperAttribute--><!--Device-SwiperAttribute-onAnimationEnd(event: OnSwiperAnimationEndCallback): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -726,6 +778,8 @@ onAnimationStart(event: OnSwiperAnimationStartCallback)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-onAnimationStart(event: OnSwiperAnimationStartCallback): SwiperAttribute--><!--Device-SwiperAttribute-onAnimationStart(event: OnSwiperAnimationStartCallback): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -754,6 +808,8 @@ Swiper组件结合LazyForEach使用时，不能在onChange事件里触发子页�
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-onChange(event: Callback<number>): SwiperAttribute--><!--Device-SwiperAttribute-onChange(event: Callback<number>): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -785,6 +841,8 @@ onContentDidScroll(handler: ContentDidScrollCallback)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwiperAttribute-onContentDidScroll(handler: ContentDidScrollCallback): SwiperAttribute--><!--Device-SwiperAttribute-onContentDidScroll(handler: ContentDidScrollCallback): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -815,6 +873,8 @@ Swiper滑动行为拦截事件，在滑动前触发。Swiper会依据该事件�
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-onContentWillScroll(handler: ContentWillScrollCallback): SwiperAttribute--><!--Device-SwiperAttribute-onContentWillScroll(handler: ContentWillScrollCallback): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -836,6 +896,8 @@ onGestureSwipe(event: OnSwiperGestureSwipeCallback)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwiperAttribute-onGestureSwipe(event: OnSwiperGestureSwipeCallback): SwiperAttribute--><!--Device-SwiperAttribute-onGestureSwipe(event: OnSwiperGestureSwipeCallback): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -861,6 +923,8 @@ Swiper滑动状态变化事件回调，在跟手滑动、离手动画、停止�
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-onScrollStateChanged(event: Callback<ScrollState>): SwiperAttribute--><!--Device-SwiperAttribute-onScrollStateChanged(event: Callback<ScrollState>): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -884,6 +948,8 @@ onSelected(event: Callback<number>)
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-onSelected(event: Callback<number>): SwiperAttribute--><!--Device-SwiperAttribute-onSelected(event: Callback<number>): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -909,6 +975,8 @@ onUnselected(event: Callback<number>)
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-onUnselected(event: Callback<number>): SwiperAttribute--><!--Device-SwiperAttribute-onUnselected(event: Callback<number>): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -933,6 +1001,8 @@ pageFlipMode(mode: Optional<PageFlipMode>)
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-SwiperAttribute-pageFlipMode(mode: Optional<PageFlipMode>): SwiperAttribute--><!--Device-SwiperAttribute-pageFlipMode(mode: Optional<PageFlipMode>): SwiperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -947,7 +1017,7 @@ pageFlipMode(mode: Optional<PageFlipMode>)
 prevMargin(value: Length, ignoreBlank?: boolean)
 ```
 
-设置前边距，用于露出前一项的一小部分，使用效果可以参考示例1设置导航点交互及翻页动效。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
+设置前边距，用于露出前一项的一小部分，使用效果可以参考[示例1设置导航点交互及翻页动效](../../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#示例1设置导航点交互及翻页动效)。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
 
 当主轴方向为横向布局时，nextMargin/prevMargin中任意一个大于子组件测算的宽度，nextMargin和prevMargin均不显示。
 
@@ -964,6 +1034,8 @@ prevMargin(value: Length, ignoreBlank?: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwiperAttribute-prevMargin(value: Length, ignoreBlank?: boolean): SwiperAttribute--><!--Device-SwiperAttribute-prevMargin(value: Length, ignoreBlank?: boolean): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -987,6 +1059,8 @@ vertical(value: boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SwiperAttribute-vertical(value: boolean): SwiperAttribute--><!--Device-SwiperAttribute-vertical(value: boolean): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1014,6 +1088,8 @@ indicatorStyle(value?: IndicatorStyle)
 **废弃版本：** 10
 
 **替代接口：** [indicator](#indicator)(value: DotIndicator | DigitIndicator | boolean)
+
+<!--Device-SwiperAttribute-indicatorStyle(value?: IndicatorStyle): SwiperAttribute--><!--Device-SwiperAttribute-indicatorStyle(value?: IndicatorStyle): SwiperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

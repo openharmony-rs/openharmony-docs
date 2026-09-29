@@ -15,6 +15,8 @@ export class LazyCustomLayoutAlgorithm implements LazyLayoutAlgorithm
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export class LazyCustomLayoutAlgorithm implements LazyLayoutAlgorithm--><!--Device-unnamed-export class LazyCustomLayoutAlgorithm implements LazyLayoutAlgorithm-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -30,6 +32,8 @@ constructor(option?: LazyCustomLayoutAlgorithmOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-LazyCustomLayoutAlgorithm-constructor(option?: LazyCustomLayoutAlgorithmOptions)--><!--Device-LazyCustomLayoutAlgorithm-constructor(option?: LazyCustomLayoutAlgorithmOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ onLayout(self: FrameNode, position: Position): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-LazyCustomLayoutAlgorithm-onLayout(self: FrameNode, position: Position): void--><!--Device-LazyCustomLayoutAlgorithm-onLayout(self: FrameNode, position: Position): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +94,8 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-LazyCustomLayoutAlgorithm-onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelper): void--><!--Device-LazyCustomLayoutAlgorithm-onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelper): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -96,4 +104,4 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 | --- | --- | --- | --- |
 | self | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 懒加载动态布局组件在组件树上的实体节点。 |
 | constraint | [LayoutConstraint](arkts-arkui-framenode-layoutconstraint-i.md) | 是 | 懒加载动态布局组件进行测量时使用的布局约束。 |
-| helper | [LazyLayoutHelper](arkts-arkui-lazylayoutalgorithm-lazylayouthelper-c.md) | 否 | 懒加载布局辅助对象，提供布局方向和可视区域位置信息。为undefined时表示不支持懒加载。helper为undefined的场景如下：<br>1. 在WaterFlow组件多列模式或分段模式的多列分段下使用时不支持懒加载。<br>2. 在List组件下使用，当List设置了[lanes](../arkts-components/arkts-arkui-list-comp-attribute.md#lanes)、[chainAnimation](../arkts-components/arkts-arkui-list-comp-attribute.md#chainanimation)、[scrollSnapAlign](../arkts-components/arkts-arkui-list-comp-attribute.md#scrollsnapalign)属性中的任意一个时不支持懒加载。 |
+| helper | [LazyLayoutHelper](arkts-arkui-lazylayoutalgorithm-lazylayouthelper-c.md) | 否 | 懒加载布局辅助对象，提供布局方向和可视区域位置信息。为undefined时表示不支持懒加载。helper为undefined的场景如下：<br>1. 在[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md)组件多列模式或分段模式的多列分段下使用时不支持懒加载。<br>2. 在[List](../arkts-components/arkts-arkui-list-comp.md)组件下使用，当List设置了[lanes](../arkts-components/arkts-arkui-list-comp-attribute.md#lanes)、[chainAnimation](../arkts-components/arkts-arkui-list-comp-attribute.md#chainanimation)、[scrollSnapAlign](../arkts-components/arkts-arkui-list-comp-attribute.md#scrollsnapalign)属性中的任意一个时不支持懒加载。 |

@@ -10,6 +10,8 @@ Enumerates the device discovery modes.
 
 **Deprecated since:** 11
 
+<!--Device-deviceManager-enum DiscoverMode--><!--Device-deviceManager-enum DiscoverMode-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -26,6 +28,8 @@ Passive discovery.
 
 **Deprecated since:** 11
 
+<!--Device-DiscoverMode-DISCOVER_MODE_PASSIVE = 0x55--><!--Device-DiscoverMode-DISCOVER_MODE_PASSIVE = 0x55-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -41,6 +45,8 @@ Active discovery.
 **Since:** 7
 
 **Deprecated since:** 11
+
+<!--Device-DiscoverMode-DISCOVER_MODE_ACTIVE = 0xAA--><!--Device-DiscoverMode-DISCOVER_MODE_ACTIVE = 0xAA-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

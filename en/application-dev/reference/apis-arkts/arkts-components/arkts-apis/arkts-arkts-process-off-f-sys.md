@@ -16,6 +16,8 @@ Remove registered event
 
 **Since:** 7
 
+<!--Device-process-function off(type: string): boolean--><!--Device-process-function off(type: string): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **System API:** This is a system API.

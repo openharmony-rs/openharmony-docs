@@ -12,6 +12,8 @@ export type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options--><!--Device-unnamed-export type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** [EditableTitleBarMenuItemV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarmenuitemv2options-i.md)

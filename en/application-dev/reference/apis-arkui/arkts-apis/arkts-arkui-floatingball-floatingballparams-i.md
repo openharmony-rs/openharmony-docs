@@ -8,6 +8,8 @@ Describes the parameters for starting and updating the floating ball.
 
 **Since:** 20
 
+<!--Device-floatingBall-interface FloatingBallParams--><!--Device-floatingBall-interface FloatingBallParams-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Background color of the floating ball, in hexadecimal format without opacity (fo
 
 **Since:** 20
 
+<!--Device-FloatingBallParams-backgroundColor?: string--><!--Device-FloatingBallParams-backgroundColor?: string-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## content
@@ -41,6 +45,8 @@ Content of the floating ball. It cannot exceed 64 bytes. The default value is an
 **Type:** string
 
 **Since:** 20
+
+<!--Device-FloatingBallParams-content?: string--><!--Device-FloatingBallParams-content?: string-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -63,6 +69,8 @@ otherwise is '#99000000'
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatingBallParams-contentColor?: string--><!--Device-FloatingBallParams-contentColor?: string-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## icon
@@ -77,6 +85,8 @@ Icon of the floating ball. The total number of bytes of the icon pixels cannot e
 
 **Since:** 20
 
+<!--Device-FloatingBallParams-icon?: image.PixelMap--><!--Device-FloatingBallParams-icon?: image.PixelMap-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## template
@@ -90,6 +100,8 @@ Floating ball template.
 **Type:** [FloatingBallTemplate](arkts-arkui-floatingball-floatingballtemplate-e.md)
 
 **Since:** 20
+
+<!--Device-FloatingBallParams-template: FloatingBallTemplate--><!--Device-FloatingBallParams-template: FloatingBallTemplate-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -109,6 +121,8 @@ Animation type used when the floating ball text is updated. The default value is
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatingBallParams-textUpdateAnimationType?: FloatingBallTextUpdateAnimationType--><!--Device-FloatingBallParams-textUpdateAnimationType?: FloatingBallTextUpdateAnimationType-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## title
@@ -122,6 +136,8 @@ Title of the floating ball. It cannot be an empty string and cannot exceed 64 by
 **Type:** string
 
 **Since:** 20
+
+<!--Device-FloatingBallParams-title: string--><!--Device-FloatingBallParams-title: string-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -143,5 +159,7 @@ otherwise is '#E5000000'.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatingBallParams-titleColor?: string--><!--Device-FloatingBallParams-titleColor?: string-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

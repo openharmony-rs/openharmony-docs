@@ -14,6 +14,8 @@ This API inherits from [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export abstract class ChipV2ImageIcon extends ChipV2Icon--><!--Device-unnamed-export abstract class ChipV2ImageIcon extends ChipV2Icon-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ A constructor used to create a **ChipV2ImageIcon** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2ImageIcon-constructor(config: ChipV2ImageIconConfig)--><!--Device-ChipV2ImageIcon-constructor(config: ChipV2ImageIconConfig)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +74,8 @@ This attribute takes effect only when the image format is SVG.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2ImageIcon-public activatedFillColor?: ColorMetrics--><!--Device-ChipV2ImageIcon-public activatedFillColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fillColor
@@ -98,6 +104,8 @@ This attribute takes effect only when the image format is SVG.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2ImageIcon-public fillColor?: ColorMetrics--><!--Device-ChipV2ImageIcon-public fillColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## modifier
@@ -121,6 +129,8 @@ Default value: **undefined**, meaning the modifier is not applied.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2ImageIcon-public modifier?: ImageModifier--><!--Device-ChipV2ImageIcon-public modifier?: ImageModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -155,6 +165,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2ImageIcon-public size?: SizeT<LengthMetrics>--><!--Device-ChipV2ImageIcon-public size?: SizeT<LengthMetrics>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## src
@@ -176,5 +188,7 @@ Icon image or image address reference.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2ImageIcon-public src: ResourceStr--><!--Device-ChipV2ImageIcon-public src: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

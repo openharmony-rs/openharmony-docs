@@ -12,6 +12,8 @@ Inherits from [AccessibilityOptions](arkts-arkui-arkui-advanced-chip-accessibili
 
 **Since:** 14
 
+<!--Device-unnamed-export interface CloseOptions extends AccessibilityOptions--><!--Device-unnamed-export interface CloseOptions extends AccessibilityOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -45,5 +47,7 @@ If a negative number is passed, the default value is used. If the value is **und
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-CloseOptions-fontSize?: Dimension--><!--Device-CloseOptions-fontSize?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

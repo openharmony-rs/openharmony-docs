@@ -8,6 +8,8 @@ View model @interface ViewModel
 
 **Since:** 4
 
+<!--Device-unnamed-export interface ViewModel--><!--Device-unnamed-export interface ViewModel-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## $t
@@ -21,6 +23,8 @@ Displays content based on the current system language and a path of the language
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ViewModel-$t(path: string, param?: object | Array<any>): string--><!--Device-ViewModel-$t(path: string, param?: object | Array<any>): string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -50,5 +54,7 @@ An object that holds all DOM elements and component instances that have been reg
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ViewModel-$refs: ElementReferences--><!--Device-ViewModel-$refs: ElementReferences-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite

@@ -8,6 +8,8 @@ Describes the control object.
 
 **Since:** 15
 
+<!--Device-connection-enum ControlObject--><!--Device-connection-enum ControlObject-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Control object of left ear.
 **Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ControlObject-LEFT_EAR = 0--><!--Device-ControlObject-LEFT_EAR = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -40,6 +44,8 @@ Control object of right ear.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ControlObject-RIGHT_EAR = 1--><!--Device-ControlObject-RIGHT_EAR = 1-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Control object of left and right ear.
 **Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ControlObject-LEFT_RIGHT_EAR = 2--><!--Device-ControlObject-LEFT_RIGHT_EAR = 2-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

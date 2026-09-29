@@ -6,6 +6,8 @@ Defines the lite settings capability for wearables.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-declare namespace settingsLite--><!--Device-unnamed-declare namespace settingsLite-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core.Lite
 
 ## Modules to Import

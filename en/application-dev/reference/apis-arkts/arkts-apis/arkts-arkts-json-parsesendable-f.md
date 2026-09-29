@@ -22,6 +22,8 @@ Usage notes: &lt;ul&gt; &lt;li&gt;Numeric string keys in the range "0" to "42949
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-json-function parseSendable(text: string, reviver?: SendableTransformer, options?: ParseOptions): ISendable | null--><!--Device-json-function parseSendable(text: string, reviver?: SendableTransformer, options?: ParseOptions): ISendable | null-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

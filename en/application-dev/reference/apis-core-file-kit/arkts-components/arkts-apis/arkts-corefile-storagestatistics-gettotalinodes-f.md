@@ -18,6 +18,8 @@ Get the total inodes.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-storageStatistics-function getTotalInodes(): Promise<long>--><!--Device-storageStatistics-function getTotalInodes(): Promise<long>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **Return value:**

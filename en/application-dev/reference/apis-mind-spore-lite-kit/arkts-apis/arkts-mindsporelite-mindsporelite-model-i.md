@@ -8,6 +8,8 @@ Provides manages model function. Including get inputs, predict ,resize.
 
 **Since:** 10
 
+<!--Device-mindSporeLite-interface Model--><!--Device-mindSporeLite-interface Model-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Export train model to file
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Model-exportModel(      modelFile: string,      quantizationType?: QuantizationType,      exportInferenceOnly?: boolean,      outputTensorName?: string[]): boolean--><!--Device-Model-exportModel(      modelFile: string,      quantizationType?: QuantizationType,      exportInferenceOnly?: boolean,      outputTensorName?: string[]): boolean-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -86,6 +90,8 @@ Export model's weights, which can be used in micro only. Only valid for Lite Tra
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Model-exportWeightsCollaborateWithMicro(      weightFile: string,      isInference?: boolean,      enableFp16?: boolean,      changeableWeightsName?: string[]): boolean--><!--Device-Model-exportWeightsCollaborateWithMicro(      weightFile: string,      isInference?: boolean,      enableFp16?: boolean,      changeableWeightsName?: string[]): boolean-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters:**
@@ -132,6 +138,8 @@ Get model input tensors.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Model-getInputs(): MSTensor[]--><!--Device-Model-getInputs(): MSTensor[]-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 **Return value:**
@@ -169,6 +177,8 @@ Obtain all weights of the model
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Model-getWeights(): MSTensor[]--><!--Device-Model-getWeights(): MSTensor[]-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -226,6 +236,8 @@ Infer model
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Model-predict(inputs: MSTensor[], callback: Callback<MSTensor[]>): void--><!--Device-Model-predict(inputs: MSTensor[], callback: Callback<MSTensor[]>): void-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -296,6 +308,8 @@ Infer model
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Model-predict(inputs: MSTensor[]): Promise<MSTensor[]>--><!--Device-Model-predict(inputs: MSTensor[]): Promise<MSTensor[]>-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -372,6 +386,8 @@ resize model input
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Model-resize(inputs: MSTensor[], dims: Array<Array<int>>): boolean--><!--Device-Model-resize(inputs: MSTensor[], dims: Array<Array<int>>): boolean-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters:**
@@ -420,6 +436,8 @@ Train model by step
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Model-runStep(inputs: MSTensor[]): boolean--><!--Device-Model-runStep(inputs: MSTensor[]): boolean-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -471,6 +489,8 @@ Setup training with virtual batches
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Model-setupVirtualBatch(virtualBatchMultiplier: int, lr: double, momentum: double): boolean--><!--Device-Model-setupVirtualBatch(virtualBatchMultiplier: int, lr: double, momentum: double): boolean-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -537,6 +557,8 @@ Update weights of the model
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Model-updateWeights(weights: MSTensor[]): boolean--><!--Device-Model-updateWeights(weights: MSTensor[]): boolean-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -606,6 +628,8 @@ The learning rate of the training model
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Model-learningRate?: double--><!--Device-Model-learningRate?: double-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## trainMode
@@ -621,5 +645,7 @@ The running mode of the model
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Model-trainMode?: boolean--><!--Device-Model-trainMode?: boolean-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite

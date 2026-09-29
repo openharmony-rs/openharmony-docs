@@ -26,6 +26,8 @@ Reads the text content of a file. This API returns the result synchronously.
 
 **Substitutes:** [readTextSync](arkts-corefile-file-fs-readtextsync-f.md)
 
+<!--Device-unnamed-declare function readTextSync(  filePath: string,  options?: {    position?: number;    length?: number;    encoding?: string;  }): string--><!--Device-unnamed-declare function readTextSync(  filePath: string,  options?: {    position?: number;    length?: number;    encoding?: string;  }): string-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

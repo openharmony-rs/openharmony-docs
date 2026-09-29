@@ -8,6 +8,8 @@ Enumerates the types of rotation information.
 
 **Since:** 23
 
+<!--Device-window-enum RotationInfoType--><!--Device-window-enum RotationInfoType-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## WINDOW_ORIENTATION
@@ -21,6 +23,8 @@ Window's screen orientation, based on how the Window module defines landscape/po
 Note that it maps to the **orientation** parameter in [RotationChangeInfo](arkts-arkui-window-rotationchangeinfo-i.md).
 
 **Since:** 23
+
+<!--Device-RotationInfoType-WINDOW_ORIENTATION = 0--><!--Device-RotationInfoType-WINDOW_ORIENTATION = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -36,6 +40,8 @@ It maps to the **orientation** property of the [display](arkts-arkui-display-dis
 
 **Since:** 23
 
+<!--Device-RotationInfoType-DISPLAY_ORIENTATION = 1--><!--Device-RotationInfoType-DISPLAY_ORIENTATION = 1-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## DISPLAY_ROTATION
@@ -49,5 +55,7 @@ Physical rotation angle of the device's screen (in degrees, clockwise).
 It maps to the **rotation** property of the [display](arkts-arkui-display-displaystate-e.md) object.
 
 **Since:** 23
+
+<!--Device-RotationInfoType-DISPLAY_ROTATION = 2--><!--Device-RotationInfoType-DISPLAY_ROTATION = 2-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

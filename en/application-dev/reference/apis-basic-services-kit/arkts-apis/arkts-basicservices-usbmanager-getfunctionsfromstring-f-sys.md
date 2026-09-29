@@ -18,6 +18,8 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 **Required permissions:** ohos.permission.MANAGE_USB_CONFIG
 
+<!--Device-usbManager-function getFunctionsFromString(funcs: string): int--><!--Device-usbManager-function getFunctionsFromString(funcs: string): int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

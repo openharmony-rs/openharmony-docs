@@ -8,6 +8,8 @@ Defines the address sanitizer event configuration policy.
 
 **Since:** 24
 
+<!--Device-hiAppEvent-interface AddressSanitizerPolicy--><!--Device-hiAppEvent-interface AddressSanitizerPolicy-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import
@@ -38,6 +40,8 @@ Note: The enabling behavior of an application takes effect only in its current l
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-AddressSanitizerPolicy-pageSwitchLogEnable?: boolean--><!--Device-AddressSanitizerPolicy-pageSwitchLogEnable?: boolean-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

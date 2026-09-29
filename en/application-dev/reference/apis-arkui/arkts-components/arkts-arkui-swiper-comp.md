@@ -2,9 +2,11 @@
 
 The **Swiper** component is able to display child components in a carousel-like manner.
 
-> **NOTE**
+> **NOTE:** 
 
-> - The **Swiper** component implements the scrolling carousel effect through the built-in > PanGesture gesture. When the [disableSwipe](arkts-arkui-swiper-comp-attribute.md#disableswipe) attribute is set > to **true**, the gesture listening is disabled, thereby preventing the scrolling operation. > > - When NodeContainer is reused in the **Swiper** component, recursive updates of parent > component state variables by child nodes are prohibited.
+> - The **Swiper** component implements the scrolling carousel effect through the built-in PanGesture gesture. When the [disableSwipe](arkts-arkui-swiper-comp-attribute.md#disableswipe) attribute is set to **true**, the gesture listening is disabled, thereby preventing the scrolling operation.
+> 
+> - When NodeContainer is reused in the **Swiper** component, recursive updates of parent component state variables by child nodes are prohibited.
 
 ## Child Components
 
@@ -35,6 +37,8 @@ Creates a **Swiper** component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperInterface-(controller?: SwiperController): SwiperAttribute--><!--Device-SwiperInterface-(controller?: SwiperController): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

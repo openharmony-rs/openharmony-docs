@@ -8,6 +8,8 @@ declare namespace cursorControl
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace cursorControl--><!--Device-unnamed-declare namespace cursorControl-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Summary

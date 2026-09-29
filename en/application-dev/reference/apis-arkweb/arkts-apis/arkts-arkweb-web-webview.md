@@ -1,10 +1,12 @@
-# @ohos.web.webview
+# @ohos.web.webview(WebView Controller)
 
 This module provides the capability to manage web modules.
 
 @namespace webview
 
 **Since:** 9
+
+<!--Device-unnamed-declare namespace webview--><!--Device-unnamed-declare namespace webview-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -82,6 +84,14 @@ import { webview } from '@kit.ArkWeb';
 | [WebMessagePort](arkts-arkweb-webview-webmessageport-i.md) | WebMessagePort is a message port interface in the Web component used for bidirectional communication between the app side (ArkTS) and the HTML5 side (JavaScript). A pair of associated ports is created through createWebMessagePorts, with one port sent to the HTML5 side and the other retained on the app side, enabling cross- runtime message passing. WebMessagePort supports two message protocols: the basic protocol uses WebMessage as the message carrier (postMessageEvent/onMessageEvent), and the extended protocol uses WebMessageExt to support richer data types (postMessageEventExt/onMessageEventExt). |
 | [WebStorageOrigin](arkts-arkweb-webview-webstorageorigin-i.md) | Provides usage information of the Web SQL Database. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md) | Parameter of the [onCreateNativeMediaPlayer](arkts-arkweb-webview-webviewcontroller-c.md#oncreatenativemediaplayer) method. A callback invoked when the webpage needs to play media, used to create a player to take over media playback in the webpage. Through this takeover mechanism, the app can use a custom player to implement special features or optimize performance. |
+| [OnProxyConfigChangeCallback](arkts-arkweb-webview-onproxyconfigchangecallback-t.md) | Callback invoked when the proxy configuration changes. A successful callback indicates that the proxy settings are applied successfully. |
+| [WebMessage](arkts-arkweb-webview-webmessage-t.md) | Defines the data types supported by [onMessageEventExt](arkts-arkweb-webview-webmessageport-i.md#onmessageeventext). |
+
 ### Enums
 
 | Name | Description |
@@ -118,11 +128,3 @@ import { webview } from '@kit.ArkWeb';
 | [WebMessageType](arkts-arkweb-webview-webmessagetype-e.md) | Enumerates the data types supported by the [WebMessagePort](arkts-arkweb-webview-webmessageport-i.md) API. |
 | [WebResourceType](arkts-arkweb-webview-webresourcetype-e.md) | Enumerates the types of requested resources. |
 | [WebSoftKeyboardBehaviorMode](arkts-arkweb-webview-websoftkeyboardbehaviormode-e.md) | Enumerates the behavior modes of the web soft keyboard. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md) | Parameter of the [onCreateNativeMediaPlayer](arkts-arkweb-webview-webviewcontroller-c.md#oncreatenativemediaplayer) method. A callback invoked when the webpage needs to play media, used to create a player to take over media playback in the webpage. Through this takeover mechanism, the app can use a custom player to implement special features or optimize performance. |
-| [OnProxyConfigChangeCallback](arkts-arkweb-webview-onproxyconfigchangecallback-t.md) | Callback invoked when the proxy configuration changes. A successful callback indicates that the proxy settings are applied successfully. |
-| [WebMessage](arkts-arkweb-webview-webmessage-t.md) | Defines the data types supported by [onMessageEventExt](arkts-arkweb-webview-webmessageport-i.md#onmessageeventext). |

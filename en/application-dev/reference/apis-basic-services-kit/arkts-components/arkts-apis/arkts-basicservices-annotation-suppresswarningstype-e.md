@@ -8,6 +8,8 @@ Defines the warning types that support suppression. Developers can selectively s
 
 **Since:** 23
 
+<!--Device-unnamed-export const enum SuppressWarningsType--><!--Device-unnamed-export const enum SuppressWarningsType-End-->
+
 **System capability:** SystemCapability.Base
 
 ## COMPATIBILITY
@@ -25,6 +27,8 @@ Compatibility warning. This warning is generated when the start version of the A
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-SuppressWarningsType-COMPATIBILITY = 'compatibility'--><!--Device-SuppressWarningsType-COMPATIBILITY = 'compatibility'-End-->
 
 **System capability:** SystemCapability.Base
 
@@ -44,6 +48,8 @@ Multi-device warning. This warning is generated when the system capability obtai
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-SuppressWarningsType-SYSCAP = 'syscap'--><!--Device-SuppressWarningsType-SYSCAP = 'syscap'-End-->
+
 **System capability:** SystemCapability.Base
 
 ## PERMISSION
@@ -61,5 +67,7 @@ Permission warning. This warning is generated when an API that requires permissi
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-SuppressWarningsType-PERMISSION = 'permission'--><!--Device-SuppressWarningsType-PERMISSION = 'permission'-End-->
 
 **System capability:** SystemCapability.Base

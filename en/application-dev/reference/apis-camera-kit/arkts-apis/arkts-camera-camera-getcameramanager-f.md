@@ -16,7 +16,9 @@ Obtains a CameraManager instance. This API returns the result synchronously.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-camera-function getCameraManager(context: Context): CameraManager--><!--Device-camera-function getCameraManager(context: Context): CameraManager-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

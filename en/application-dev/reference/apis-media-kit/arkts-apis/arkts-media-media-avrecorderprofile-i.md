@@ -8,6 +8,8 @@ Describes the audio and video recording profile.
 
 **Since:** 9
 
+<!--Device-media-interface AVRecorderProfile--><!--Device-media-interface AVRecorderProfile-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## Modules to Import
@@ -28,7 +30,9 @@ AAC profile for AAC audio encoder. If not set, use AAC_LC profile as default.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-AVRecorderProfile-aacProfile?: AacProfile--><!--Device-AVRecorderProfile-aacProfile?: AacProfile-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -44,7 +48,9 @@ Audio encoding bit rate, in bit/s. This parameter is mandatory for audio recordi
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVRecorderProfile-audioBitrate?: int--><!--Device-AVRecorderProfile-audioBitrate?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -60,7 +66,9 @@ Number of audio channels. This parameter is mandatory for audio recording.<br>- 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVRecorderProfile-audioChannels?: int--><!--Device-AVRecorderProfile-audioChannels?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -76,7 +84,9 @@ Audio encoding format. This parameter is mandatory for audio recording. Currentl
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVRecorderProfile-audioCodec?: CodecMimeType--><!--Device-AVRecorderProfile-audioCodec?: CodecMimeType-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -92,7 +102,9 @@ Audio sampling rate, in Hz. This parameter is mandatory for audio recording.<br>
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVRecorderProfile-audioSampleRate?: int--><!--Device-AVRecorderProfile-audioSampleRate?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -108,6 +120,8 @@ Indicates whether enable B Frame. Default is disabled.
 
 **Since:** 20
 
+<!--Device-AVRecorderProfile-enableBFrame?: boolean--><!--Device-AVRecorderProfile-enableBFrame?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## enableStableQualityMode
@@ -121,6 +135,8 @@ Whether to enable video encoding policy to quality stable encoding.
 **Type:** boolean
 
 **Since:** 26.2.0
+
+<!--Device-AVRecorderProfile-enableStableQualityMode?: boolean--><!--Device-AVRecorderProfile-enableStableQualityMode?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -136,6 +152,8 @@ Whether temporal layered encoding is supported. This parameter is optional for v
 
 **Since:** 12
 
+<!--Device-AVRecorderProfile-enableTemporalScale?: boolean--><!--Device-AVRecorderProfile-enableTemporalScale?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## fileFormat
@@ -150,7 +168,9 @@ Container format of a file. This parameter is mandatory. Currently, the MP4, M4A
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVRecorderProfile-fileFormat: ContainerFormatType--><!--Device-AVRecorderProfile-fileFormat: ContainerFormatType-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -165,6 +185,8 @@ HDR encoding. This parameter is optional for video recording. The default value 
 **Type:** boolean
 
 **Since:** 11
+
+<!--Device-AVRecorderProfile-isHdr?: boolean--><!--Device-AVRecorderProfile-isHdr?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -182,6 +204,8 @@ Set the quality parameter in StableQualityMode. The value range is [0, 51]. A sm
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVRecorderProfile-sqrFactor?: int--><!--Device-AVRecorderProfile-sqrFactor?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## videoBitrate
@@ -195,6 +219,8 @@ Video encoding bit rate, in bit/s. This parameter is mandatory for video recordi
 **Type:** number
 
 **Since:** 9
+
+<!--Device-AVRecorderProfile-videoBitrate?: int--><!--Device-AVRecorderProfile-videoBitrate?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -210,6 +236,8 @@ Video encoding format. This parameter is mandatory for video recording. Currentl
 
 **Since:** 9
 
+<!--Device-AVRecorderProfile-videoCodec?: CodecMimeType--><!--Device-AVRecorderProfile-videoCodec?: CodecMimeType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## videoFrameHeight
@@ -223,6 +251,8 @@ Height of a video frame, in px. This parameter is mandatory for video recording.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-AVRecorderProfile-videoFrameHeight?: int--><!--Device-AVRecorderProfile-videoFrameHeight?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -238,6 +268,8 @@ Video frame rate, in fps. This parameter is mandatory for video recording. The v
 
 **Since:** 9
 
+<!--Device-AVRecorderProfile-videoFrameRate?: int--><!--Device-AVRecorderProfile-videoFrameRate?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## videoFrameWidth
@@ -251,5 +283,7 @@ Width of a video frame, in px. This parameter is mandatory for video recording. 
 **Type:** number
 
 **Since:** 9
+
+<!--Device-AVRecorderProfile-videoFrameWidth?: int--><!--Device-AVRecorderProfile-videoFrameWidth?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder

@@ -1,10 +1,12 @@
-# @ohos.multimodalAwareness.spatialAwareness
+# @ohos.multimodalAwareness.spatialAwareness(Spatial awareness)
 
 This module provides the capability to subscribe to report the distance measurement result. @namespace spatialAwareness
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-unnamed-declare namespace spatialAwareness--><!--Device-unnamed-declare namespace spatialAwareness-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 

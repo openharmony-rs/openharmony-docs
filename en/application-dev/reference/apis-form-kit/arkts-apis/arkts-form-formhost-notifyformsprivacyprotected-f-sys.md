@@ -22,6 +22,8 @@ Notifies that the privacy protection status of the specified widgets changes. Th
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function notifyFormsPrivacyProtected(    formIds: Array<string>,    isProtected: boolean,    callback: AsyncCallback<void>  ): void--><!--Device-formHost-function notifyFormsPrivacyProtected(    formIds: Array<string>,    isProtected: boolean,    callback: AsyncCallback<void>  ): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -59,6 +61,8 @@ Notifies that the privacy protection status of the specified widgets changes. Th
 **Since:** 9
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
+
+<!--Device-formHost-function notifyFormsPrivacyProtected(formIds: Array<string>, isProtected: boolean): Promise<void>--><!--Device-formHost-function notifyFormsPrivacyProtected(formIds: Array<string>, isProtected: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

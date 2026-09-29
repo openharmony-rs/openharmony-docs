@@ -10,6 +10,8 @@ declare class ArcSliderLayoutOptions
 
 **装饰器类型：** @ObservedV2
 
+<!--Device-unnamed-declare class ArcSliderLayoutOptions--><!--Device-unnamed-declare class ArcSliderLayoutOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -29,6 +31,8 @@ ArcSliderLayoutOptions的构造函数。
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcSliderLayoutOptions-constructor(options?: ArcSliderLayoutOptionsConstructorOptions)--><!--Device-ArcSliderLayoutOptions-constructor(options?: ArcSliderLayoutOptionsConstructorOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -60,6 +64,8 @@ position?: ArcSliderPosition
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcSliderLayoutOptions-position?: ArcSliderPosition--><!--Device-ArcSliderLayoutOptions-position?: ArcSliderPosition-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## reverse
@@ -83,5 +89,7 @@ reverse?: boolean
 **装饰器类型：** @Trace
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcSliderLayoutOptions-reverse?: boolean--><!--Device-ArcSliderLayoutOptions-reverse?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

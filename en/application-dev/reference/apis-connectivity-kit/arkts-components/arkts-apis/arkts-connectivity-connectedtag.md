@@ -4,6 +4,8 @@ The **connectedTag** module provides APIs for using active tags. You can use the
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace connectedTag--><!--Device-unnamed-declare namespace connectedTag-End-->
+
 **System capability:** SystemCapability.Communication.ConnectedTag
 
 ## Modules to Import

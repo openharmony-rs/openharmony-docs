@@ -28,6 +28,8 @@ Creates a normal system account. A maximum of two normal system accounts ([osAcc
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accountManager-function createNormalOsAccount(admin: Want, name: string): Promise<osAccount.OsAccountInfo>--><!--Device-accountManager-function createNormalOsAccount(admin: Want, name: string): Promise<osAccount.OsAccountInfo>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

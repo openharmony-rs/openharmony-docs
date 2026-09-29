@@ -15,6 +15,8 @@ Before using the APIs of **UserAuthInstance**, you must obtain a **UserAuthInsta
 
 **Since:** 10
 
+<!--Device-userAuth-interface UserAuthInstance--><!--Device-userAuth-interface UserAuthInstance-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -39,7 +41,9 @@ Cancels this authentication. This API is commonly used in the following scenario
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthInstance-cancel(): void--><!--Device-UserAuthInstance-cancel(): void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -110,6 +114,8 @@ Unsubscribes from the user authentication result. This API is commonly used in t
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UserAuthInstance-off(type: 'result', callback?: IAuthCallback): void--><!--Device-UserAuthInstance-off(type: 'result', callback?: IAuthCallback): void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -187,6 +193,8 @@ Unsubscribes from the authentication tip information. This API is commonly used 
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-UserAuthInstance-off(type: 'authTip', callback?: AuthTipCallback): void--><!--Device-UserAuthInstance-off(type: 'authTip', callback?: AuthTipCallback): void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -266,6 +274,8 @@ Subscribes to the user authentication result. This API is used to obtain the fin
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UserAuthInstance-on(type: 'result', callback: IAuthCallback): void--><!--Device-UserAuthInstance-on(type: 'result', callback: IAuthCallback): void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **Parameters:**
@@ -302,6 +312,8 @@ Subscribes to authentication tip information. This API is used to obtain the wid
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-UserAuthInstance-on(type: 'authTip', callback: AuthTipCallback): void--><!--Device-UserAuthInstance-on(type: 'authTip', callback: AuthTipCallback): void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -382,7 +394,9 @@ Starts authentication. This API is commonly used in the following service scenar
 - API version 20 and later: ohos.permission.ACCESS_BIOMETRIC or ohos.permission.USER_AUTH_FROM_BACKGROUND
 - API versions 10 to 19: ohos.permission.ACCESS_BIOMETRIC
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthInstance-start(): void--><!--Device-UserAuthInstance-start(): void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

@@ -12,6 +12,8 @@ Manages GATT client. Before calling an Gatt client method, you must use [createG
 
 **Substitutes:** [GattClientDevice](arkts-connectivity-bluetoothmanager-gattclientdevice-i.md)
 
+<!--Device-bluetooth-interface GattClientDevice--><!--Device-bluetooth-interface GattClientDevice-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -37,6 +39,8 @@ This method unregisters the device and clears the registered callbacks and handl
 **Substitutes:** [close](arkts-connectivity-bluetoothmanager-gattclientdevice-i.md#close)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattClientDevice-close(): boolean--><!--Device-GattClientDevice-close(): boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -71,6 +75,8 @@ The 'BLEConnectionStateChange' event is subscribed to return the connection stat
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattClientDevice-connect(): boolean--><!--Device-GattClientDevice-connect(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**
@@ -102,6 +108,8 @@ Disconnects from or stops an ongoing connection to a BLE peripheral device.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattClientDevice-disconnect(): boolean--><!--Device-GattClientDevice-disconnect(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**
@@ -132,6 +140,8 @@ Obtains the name of BLE peripheral device.
 **Substitutes:** [getDeviceName](arkts-connectivity-bluetoothmanager-gattclientdevice-i.md#getdevicename)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattClientDevice-getDeviceName(callback: AsyncCallback<string>): void--><!--Device-GattClientDevice-getDeviceName(callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -171,6 +181,8 @@ Obtains the name of BLE peripheral device.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattClientDevice-getDeviceName(): Promise<string>--><!--Device-GattClientDevice-getDeviceName(): Promise<string>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**
@@ -204,6 +216,8 @@ Get the RSSI value of this BLE peripheral device.
 **Substitutes:** [getRssiValue](arkts-connectivity-bluetoothmanager-gattclientdevice-i.md#getrssivalue)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattClientDevice-getRssiValue(callback: AsyncCallback<number>): void--><!--Device-GattClientDevice-getRssiValue(callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -244,6 +258,8 @@ Get the RSSI value of this BLE peripheral device.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattClientDevice-getRssiValue(): Promise<number>--><!--Device-GattClientDevice-getRssiValue(): Promise<number>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**
@@ -277,6 +293,8 @@ Starts discovering services.
 **Substitutes:** [getServices](arkts-connectivity-bluetoothmanager-gattclientdevice-i.md#getservices)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattClientDevice-getServices(callback: AsyncCallback<Array<GattService>>): void--><!--Device-GattClientDevice-getServices(callback: AsyncCallback<Array<GattService>>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -325,6 +343,8 @@ Starts discovering services.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattClientDevice-getServices(): Promise<Array<GattService>>--><!--Device-GattClientDevice-getServices(): Promise<Array<GattService>>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**
@@ -360,6 +380,8 @@ Unsubscribe characteristic value changed event.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattClientDevice-off(type: 'BLECharacteristicChange', callback?: Callback<BLECharacteristic>): void--><!--Device-GattClientDevice-off(type: 'BLECharacteristicChange', callback?: Callback<BLECharacteristic>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -392,6 +414,8 @@ Unsubscribe client connection state changed event.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattClientDevice-off(type: 'BLEConnectionStateChange', callback?: Callback<BLEConnectChangedState>): void--><!--Device-GattClientDevice-off(type: 'BLEConnectionStateChange', callback?: Callback<BLEConnectChangedState>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -423,6 +447,8 @@ Subscribe characteristic value changed event.
 **Substitutes:** BLECharacteristicChange
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattClientDevice-on(type: 'BLECharacteristicChange', callback: Callback<BLECharacteristic>): void--><!--Device-GattClientDevice-on(type: 'BLECharacteristicChange', callback: Callback<BLECharacteristic>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -461,6 +487,8 @@ Subscribe client connection state changed event.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattClientDevice-on(type: 'BLEConnectionStateChange', callback: Callback<BLEConnectChangedState>): void--><!--Device-GattClientDevice-on(type: 'BLEConnectionStateChange', callback: Callback<BLEConnectChangedState>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -496,6 +524,8 @@ Reads the characteristic of a BLE peripheral device.
 **Substitutes:** [readCharacteristicValue](arkts-connectivity-bluetoothmanager-gattclientdevice-i.md#readcharacteristicvalue)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattClientDevice-readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallback<BLECharacteristic>): void--><!--Device-GattClientDevice-readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallback<BLECharacteristic>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -556,6 +586,8 @@ Reads the characteristic of a BLE peripheral device.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattClientDevice-readCharacteristicValue(characteristic: BLECharacteristic): Promise<BLECharacteristic>--><!--Device-GattClientDevice-readCharacteristicValue(characteristic: BLECharacteristic): Promise<BLECharacteristic>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -609,6 +641,8 @@ Reads the descriptor of a BLE peripheral device.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattClientDevice-readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback<BLEDescriptor>): void--><!--Device-GattClientDevice-readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback<BLEDescriptor>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -658,6 +692,8 @@ Reads the descriptor of a BLE peripheral device.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattClientDevice-readDescriptorValue(descriptor: BLEDescriptor): Promise<BLEDescriptor>--><!--Device-GattClientDevice-readDescriptorValue(descriptor: BLEDescriptor): Promise<BLEDescriptor>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -701,6 +737,8 @@ Set the mtu size of a BLE peripheral device.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattClientDevice-setBLEMtuSize(mtu: number): boolean--><!--Device-GattClientDevice-setBLEMtuSize(mtu: number): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -737,6 +775,8 @@ Enables or disables notification of a characteristic when value changed.
 **Substitutes:** [setNotifyCharacteristicChanged](arkts-connectivity-bluetoothmanager-gattclientdevice-i.md#setnotifycharacteristicchanged)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattClientDevice-setNotifyCharacteristicChanged(characteristic: BLECharacteristic, enable: boolean): boolean--><!--Device-GattClientDevice-setNotifyCharacteristicChanged(characteristic: BLECharacteristic, enable: boolean): boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -787,6 +827,8 @@ Writes the characteristic of a BLE peripheral device.
 **Substitutes:** [writeCharacteristicValue](arkts-connectivity-bluetoothmanager-gattclientdevice-i.md#writecharacteristicvalue)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattClientDevice-writeCharacteristicValue(characteristic: BLECharacteristic): boolean--><!--Device-GattClientDevice-writeCharacteristicValue(characteristic: BLECharacteristic): boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -844,6 +886,8 @@ Writes the descriptor of a BLE peripheral device.
 **Substitutes:** [writeDescriptorValue](arkts-connectivity-bluetoothmanager-gattclientdevice-i.md#writedescriptorvalue)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattClientDevice-writeDescriptorValue(descriptor: BLEDescriptor): boolean--><!--Device-GattClientDevice-writeDescriptorValue(descriptor: BLEDescriptor): boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

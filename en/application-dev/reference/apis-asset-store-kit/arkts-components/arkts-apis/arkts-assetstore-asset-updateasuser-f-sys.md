@@ -18,6 +18,8 @@ Updates an asset in the specified user space. This API uses a promise to return 
 
 **Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
+<!--Device-asset-function updateAsUser(userId: number, query: AssetMap, attributesToUpdate: AssetMap): Promise<void>--><!--Device-asset-function updateAsUser(userId: number, query: AssetMap, attributesToUpdate: AssetMap): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.

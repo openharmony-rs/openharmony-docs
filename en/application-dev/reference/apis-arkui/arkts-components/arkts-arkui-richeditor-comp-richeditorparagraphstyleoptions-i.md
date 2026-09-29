@@ -17,6 +17,8 @@ Inherits [RichEditorRange](arkts-arkui-richeditor-comp-richeditorrange-i.md).
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface RichEditorParagraphStyleOptions extends RichEditorRange--><!--Device-unnamed-declare interface RichEditorParagraphStyleOptions extends RichEditorRange-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -34,5 +36,7 @@ Paragraph style.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorParagraphStyleOptions-style: RichEditorParagraphStyle--><!--Device-RichEditorParagraphStyleOptions-style: RichEditorParagraphStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

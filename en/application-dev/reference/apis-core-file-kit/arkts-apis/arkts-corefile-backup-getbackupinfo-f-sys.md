@@ -18,6 +18,8 @@ Get Backup information from bundle.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-backup-function getBackupInfo(bundleToBackup: string): string--><!--Device-backup-function getBackupInfo(bundleToBackup: string): string-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.

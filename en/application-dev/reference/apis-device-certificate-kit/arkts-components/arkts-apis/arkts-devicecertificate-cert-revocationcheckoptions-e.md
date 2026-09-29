@@ -8,6 +8,8 @@ Enumerates the options for checking the certificate revocation status.
 
 **Since:** 12
 
+<!--Device-cert-enum RevocationCheckOptions--><!--Device-cert-enum RevocationCheckOptions-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## REVOCATION_CHECK_OPTION_PREFER_OCSP
@@ -20,7 +22,9 @@ Use OCSP over CRL (default).
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_PREFER_OCSP = 0--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_PREFER_OCSP = 0-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -34,7 +38,9 @@ Obtain the CRL/OCSP response over the network. By default, it is disabled. Only 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_ACCESS_NETWORK = 1--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_ACCESS_NETWORK = 1-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -48,7 +54,9 @@ This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER = 2--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER = 2-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -62,7 +70,9 @@ This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_LOCAL = 3--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_FALLBACK_LOCAL = 3-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -81,7 +91,9 @@ This parameter is valid when the **ACCESS_NETWORK** option is enabled. If this c
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE = 4--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE = 4-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -100,7 +112,9 @@ If this capability is enabled, the system checks the revocation status of the le
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT = 5--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT = 5-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -114,6 +128,8 @@ If this capability is enabled, the system ignores the network unreachable error 
 
 **Since:** 23
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR = 6--><!--Device-RevocationCheckOptions-REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR = 6-End-->
 
 **System capability:** SystemCapability.Security.Cert

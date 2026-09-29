@@ -10,6 +10,8 @@ Describes the notification classification information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationSubscribe-export type NotificationClassification = _NotificationClassification--><!--Device-notificationSubscribe-export type NotificationClassification = _NotificationClassification-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

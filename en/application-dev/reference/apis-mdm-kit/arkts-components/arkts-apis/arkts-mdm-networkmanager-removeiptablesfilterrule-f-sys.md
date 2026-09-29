@@ -20,6 +20,8 @@ Removes the network packet filtering rule. Only IPv4 is supported. This API uses
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule, callback: AsyncCallback<void>): void--><!--Device-networkManager-function removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -90,6 +92,8 @@ Removes the network packet filtering rule. Only IPv4 is supported. This API uses
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-networkManager-function removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule): Promise<void>--><!--Device-networkManager-function removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

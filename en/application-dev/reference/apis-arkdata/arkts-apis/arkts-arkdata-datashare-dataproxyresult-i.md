@@ -8,6 +8,8 @@ Defines a struct for the batch operation result of shared configuration.
 
 **Since:** 20
 
+<!--Device-dataShare-interface DataProxyResult--><!--Device-dataShare-interface DataProxyResult-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Operation result code.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataProxyResult-result: DataProxyErrorCode--><!--Device-DataProxyResult-result: DataProxyErrorCode-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## uri
@@ -45,5 +49,7 @@ URI to be operated, with a maximum of 256 bytes. The value is fixed at the forma
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyResult-uri: string--><!--Device-DataProxyResult-uri: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer

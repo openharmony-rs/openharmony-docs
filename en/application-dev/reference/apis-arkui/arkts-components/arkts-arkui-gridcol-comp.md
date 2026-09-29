@@ -1,6 +1,6 @@
 # GridCol
 
-A column component in the grid layout system. It must be used as a child component of the grid container component ([GridRow](arkts-arkui-gridrow-comp.md#grid_row)). It is suitable for responsive layout, multi-device adaptation, and other scenarios that require dynamic column width adjustment. It supports responsive breakpoint configuration, cross-column layout, offset, and sorting. Using the **GridCol** component enables quick implementation of responsive layouts, simplifying multi-device adaptation development.
+A column component in the grid layout system. It must be used as a child component of the grid container component ([GridRow](arkts-arkui-gridrow-comp.md)). It is suitable for responsive layout, multi-device adaptation, and other scenarios that require dynamic column width adjustment. It supports responsive breakpoint configuration, cross-column layout, offset, and sorting. Using the **GridCol** component enables quick implementation of responsive layouts, simplifying multi-device adaptation development.
 
 ## Child Components
 
@@ -19,6 +19,8 @@ Defines a grid column layout component. After creation, it participates in the l
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridColInterface-(option?: GridColOptions): GridColAttribute--><!--Device-GridColInterface-(option?: GridColOptions): GridColAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

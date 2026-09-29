@@ -12,6 +12,8 @@ A plane geometry type that inherits from GeometryDefinition.
 
 **Since:** 18
 
+<!--Device-unnamed-export declare class PlaneGeometry extends GeometryDefinition--><!--Device-unnamed-export declare class PlaneGeometry extends GeometryDefinition-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## size
@@ -26,6 +28,8 @@ Width and height of the plane, indicating the size of the plane. The unit is the
 
 **Since:** 18
 
+<!--Device-PlaneGeometry-get size(): Vec2--><!--Device-PlaneGeometry-get size(): Vec2-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ```TypeScript
@@ -37,5 +41,7 @@ Width and height of the plane, indicating the size of the plane. The unit is the
 **Type:** [Vec2](arkts-arkgraphics3d-scenetypes-vec2-i.md)
 
 **Since:** 18
+
+<!--Device-PlaneGeometry-set size(value: Vec2)--><!--Device-PlaneGeometry-set size(value: Vec2)-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

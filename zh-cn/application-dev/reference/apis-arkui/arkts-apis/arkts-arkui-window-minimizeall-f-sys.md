@@ -16,6 +16,8 @@ function minimizeAll(id: number, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
+<!--Device-window-function minimizeAll(id: long, callback: AsyncCallback<void>): void--><!--Device-window-function minimizeAll(id: long, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -74,6 +76,8 @@ function minimizeAll(id: number): Promise<void>
 最小化指定ID的屏幕中的所有主窗口，使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-window-function minimizeAll(id: long): Promise<void>--><!--Device-window-function minimizeAll(id: long): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

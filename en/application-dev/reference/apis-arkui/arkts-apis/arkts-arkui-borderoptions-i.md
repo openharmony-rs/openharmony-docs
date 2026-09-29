@@ -8,6 +8,8 @@ Defines border information.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface BorderOptions--><!--Device-unnamed-declare interface BorderOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -25,6 +27,8 @@ Border color.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-BorderOptions-color?: EdgeColors | ResourceColor | LocalizedEdgeColors--><!--Device-BorderOptions-color?: EdgeColors | ResourceColor | LocalizedEdgeColors-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ Percentage values are not supported.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BorderOptions-dashGap?: EdgeWidths | LengthMetrics | LocalizedEdgeWidths--><!--Device-BorderOptions-dashGap?: EdgeWidths | LengthMetrics | LocalizedEdgeWidths-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## dashWidth
@@ -70,6 +76,8 @@ Percentage values are not supported.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BorderOptions-dashWidth?: EdgeWidths | LengthMetrics | LocalizedEdgeWidths--><!--Device-BorderOptions-dashWidth?: EdgeWidths | LengthMetrics | LocalizedEdgeWidths-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## radius
@@ -87,6 +95,8 @@ Border corner radius.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-BorderOptions-radius?: BorderRadiuses | Length | LocalizedBorderRadiuses--><!--Device-BorderOptions-radius?: BorderRadiuses | Length | LocalizedBorderRadiuses-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +116,8 @@ Border style.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-BorderOptions-style?: EdgeStyles | BorderStyle--><!--Device-BorderOptions-style?: EdgeStyles | BorderStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -123,5 +135,7 @@ Border width.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-BorderOptions-width?: EdgeWidths | Length | LocalizedEdgeWidths--><!--Device-BorderOptions-width?: EdgeWidths | Length | LocalizedEdgeWidths-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

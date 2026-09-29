@@ -8,6 +8,8 @@ Manages GATT client. Before calling an Gatt client method, you must use [createG
 
 **Since:** 10
 
+<!--Device-ble-interface GattClientDevice--><!--Device-ble-interface GattClientDevice-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Writes the characteristic of a BLE peripheral device with context.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GattClientDevice-writeCharacteristicValueWithContext(      characteristic: BLECharacteristic, writeType: GattWriteType): Promise<GattRspContext>--><!--Device-GattClientDevice-writeCharacteristicValueWithContext(      characteristic: BLECharacteristic, writeType: GattWriteType): Promise<GattRspContext>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

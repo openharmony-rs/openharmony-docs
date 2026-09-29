@@ -18,6 +18,8 @@ function setVirtualScreenSurface(screenId:number, surfaceId: string, callback: A
 
 **需要权限：** ohos.permission.CAPTURE_SCREEN
 
+<!--Device-screen-function setVirtualScreenSurface(screenId:long, surfaceId: string, callback: AsyncCallback<void>): void--><!--Device-screen-function setVirtualScreenSurface(screenId:long, surfaceId: string, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -95,6 +97,8 @@ function setVirtualScreenSurface(screenId:number, surfaceId: string): Promise<vo
 **起始版本：** 9
 
 **需要权限：** ohos.permission.CAPTURE_SCREEN
+
+<!--Device-screen-function setVirtualScreenSurface(screenId:long, surfaceId: string): Promise<void>--><!--Device-screen-function setVirtualScreenSurface(screenId:long, surfaceId: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

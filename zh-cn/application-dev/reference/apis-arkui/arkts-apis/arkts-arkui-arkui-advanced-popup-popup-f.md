@@ -20,6 +20,8 @@ export declare function Popup(options: PopupOptions): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export declare function Popup(options: PopupOptions): void--><!--Device-unnamed-export declare function Popup(options: PopupOptions): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

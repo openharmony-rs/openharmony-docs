@@ -19,6 +19,8 @@ Removes a file. This API uses a promise to return the result.
 
 **Substitutes:** [unlink](arkts-corefile-file-fs-unlink-f.md)
 
+<!--Device-unnamed-declare function unlink(path: string): Promise<void>--><!--Device-unnamed-declare function unlink(path: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -49,6 +51,8 @@ Removes a file. This API uses an asynchronous callback to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [unlink](arkts-corefile-file-fs-unlink-f.md)
+
+<!--Device-unnamed-declare function unlink(path: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function unlink(path: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

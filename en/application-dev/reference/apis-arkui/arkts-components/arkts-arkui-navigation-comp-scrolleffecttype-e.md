@@ -8,6 +8,8 @@ Enumerates the scroll effect types.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare enum ScrollEffectType--><!--Device-unnamed-declare enum ScrollEffectType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## COMMON_BLUR
@@ -24,6 +26,8 @@ Common blur style. It applies uniform blur to the background. The blurred backgr
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ScrollEffectType-COMMON_BLUR = 0--><!--Device-ScrollEffectType-COMMON_BLUR = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## GRADUAL_BLUR
@@ -39,5 +43,7 @@ Gradual blur style. It applies uniform blur to the title background with clear b
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ScrollEffectType-GRADUAL_BLUR = 1--><!--Device-ScrollEffectType-GRADUAL_BLUR = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

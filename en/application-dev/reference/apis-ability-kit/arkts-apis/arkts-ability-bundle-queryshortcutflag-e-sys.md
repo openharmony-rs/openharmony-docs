@@ -10,6 +10,8 @@ Flag used to specify the query scope for shortcuts.
 
 **Deprecated since:** 10
 
+<!--Device-bundle-export enum QueryShortCutFlag--><!--Device-bundle-export enum QueryShortCutFlag-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Query home screen shortcuts.
 **Since:** 9
 
 **Deprecated since:** 10
+
+<!--Device-QueryShortCutFlag-QUERY_SHORTCUT_HOME = 0--><!--Device-QueryShortCutFlag-QUERY_SHORTCUT_HOME = 0-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

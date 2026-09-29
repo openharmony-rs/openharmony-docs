@@ -8,6 +8,8 @@ Navigation组件页面切换的信息。
 
 **起始版本：** 12
 
+<!--Device-uiObserver-export interface NavDestinationSwitchInfo--><!--Device-uiObserver-export interface NavDestinationSwitchInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ context: UIAbilityContext | UIContext
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationSwitchInfo-context: UIAbilityContext | UIContext--><!--Device-NavDestinationSwitchInfo-context: UIAbilityContext | UIContext-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## from
@@ -49,6 +53,8 @@ from: NavDestinationInfo | NavBar
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationSwitchInfo-from: NavDestinationInfo | NavBar--><!--Device-NavDestinationSwitchInfo-from: NavDestinationInfo | NavBar-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +74,8 @@ operation: NavigationOperation
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationSwitchInfo-operation: NavigationOperation--><!--Device-NavDestinationSwitchInfo-operation: NavigationOperation-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## to
@@ -85,5 +93,7 @@ to: NavDestinationInfo | NavBar
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationSwitchInfo-to: NavDestinationInfo | NavBar--><!--Device-NavDestinationSwitchInfo-to: NavDestinationInfo | NavBar-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

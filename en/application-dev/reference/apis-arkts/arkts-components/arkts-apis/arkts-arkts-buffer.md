@@ -4,6 +4,8 @@ A **Buffer** object represents a byte sequence of a fixed length. It is used to 
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace buffer--><!--Device-unnamed-declare namespace buffer-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import

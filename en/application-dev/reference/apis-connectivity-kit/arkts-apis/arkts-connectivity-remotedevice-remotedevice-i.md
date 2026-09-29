@@ -8,6 +8,8 @@ Provides the method for operating on a remote device. Before using this method, 
 
 **Since:** 26.0.0
 
+<!--Device-remoteDevice-interface RemoteDevice--><!--Device-remoteDevice-interface RemoteDevice-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Obtains the logical link connection status with a remote device. This method is 
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RemoteDevice-getAcbState(): AcbState--><!--Device-RemoteDevice-getAcbState(): AcbState-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -60,6 +64,8 @@ Obtains the connection status between the local and remote devices. Unlike [getA
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RemoteDevice-getConnectionState(): ConnectionState--><!--Device-RemoteDevice-getConnectionState(): ConnectionState-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Return value:**
@@ -89,6 +95,8 @@ Obtains the type of a remote device.
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RemoteDevice-getDeviceClass(): DeviceClass--><!--Device-RemoteDevice-getDeviceClass(): DeviceClass-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -120,6 +128,8 @@ Obtains the information of a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RemoteDevice-getDeviceInformation(): DeviceInformation--><!--Device-RemoteDevice-getDeviceInformation(): DeviceInformation-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Return value:**
@@ -149,6 +159,8 @@ Obtains the name of a remote device.
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RemoteDevice-getDeviceName(): string--><!--Device-RemoteDevice-getDeviceName(): string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -180,6 +192,8 @@ Obtains the pairing status with a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RemoteDevice-getPairingState(): PairingState--><!--Device-RemoteDevice-getPairingState(): PairingState-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Return value:**
@@ -209,6 +223,8 @@ Initiates pairing with a remote device. This API uses a promise to return the re
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RemoteDevice-startPairing(): Promise<void>--><!--Device-RemoteDevice-startPairing(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 

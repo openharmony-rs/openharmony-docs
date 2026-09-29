@@ -12,6 +12,8 @@ Represents a FrameNode of the **GridRow** type. This type of node only allows ch
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-type GridRow = TypedFrameNode<GridRowInterface, GridRowAttribute>--><!--Device-typeNode-type GridRow = TypedFrameNode<GridRowInterface, GridRowAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;GridRowInterface, [GridRowAttribute](../arkts-components/arkts-arkui-gridrow-comp-attribute.md)&gt;

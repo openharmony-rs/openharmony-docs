@@ -16,6 +16,8 @@ declare type LocalizedMargin = LocalizedPadding
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare type LocalizedMargin = LocalizedPadding--><!--Device-unnamed-declare type LocalizedMargin = LocalizedPadding-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)

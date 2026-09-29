@@ -12,6 +12,8 @@ Defines a type that can be used for component attributes and method parameters t
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare type CustomBuilderWithId = (id: number) => void--><!--Device-unnamed-declare type CustomBuilderWithId = (id: number) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -16,7 +16,9 @@ Creates this **GZip** object. This API uses a promise to return the result.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-zlib-function createGZip(): Promise<GZip>--><!--Device-zlib-function createGZip(): Promise<GZip>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 

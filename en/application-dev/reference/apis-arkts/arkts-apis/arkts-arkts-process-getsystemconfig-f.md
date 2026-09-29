@@ -20,6 +20,8 @@ Obtains the system configuration.
 
 **Substitutes:** [getSystemConfig](arkts-arkts-process-processmanager-c.md#getsystemconfig)
 
+<!--Device-process-function getSystemConfig(name: number): number--><!--Device-process-function getSystemConfig(name: number): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

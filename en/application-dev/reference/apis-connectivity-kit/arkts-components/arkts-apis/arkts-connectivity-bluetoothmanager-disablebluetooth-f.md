@@ -24,6 +24,8 @@ Disables Bluetooth on a device. On API 10 and above, the permission required by 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.DISCOVER_BLUETOOTH
 
+<!--Device-bluetoothManager-function disableBluetooth(): void--><!--Device-bluetoothManager-function disableBluetooth(): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Error codes:**

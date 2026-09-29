@@ -20,6 +20,8 @@ One-tap background app cleanup
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-backgroundProcessManager-function clearBackgroundApps(clearType: ClearType): Promise<void>--><!--Device-backgroundProcessManager-function clearBackgroundApps(clearType: ClearType): Promise<void>-End-->
+
 **System capability:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **System API:** This is a system API.

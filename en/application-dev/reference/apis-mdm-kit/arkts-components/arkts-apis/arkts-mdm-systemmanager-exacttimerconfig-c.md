@@ -8,6 +8,8 @@ Defines the initialization configuration for an exact timer.
 
 **Since:** 26.0.1
 
+<!--Device-systemManager-class ExactTimerConfig--><!--Device-systemManager-class ExactTimerConfig-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Callback to be executed when the timer expires.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExactTimerConfig-callback(): void--><!--Device-ExactTimerConfig-callback(): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## interval
@@ -43,6 +47,8 @@ Interval between two consecutive timer triggers. For a repeating timer, the mini
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExactTimerConfig-interval: number--><!--Device-ExactTimerConfig-interval: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -60,6 +66,8 @@ Timer name. The maximum length is 64 and cannot be empty.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExactTimerConfig-name: string--><!--Device-ExactTimerConfig-name: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## repeat
@@ -75,5 +83,7 @@ Whether the timer is a repeating timer. The value **true** means that the timer 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExactTimerConfig-repeat: boolean--><!--Device-ExactTimerConfig-repeat: boolean-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

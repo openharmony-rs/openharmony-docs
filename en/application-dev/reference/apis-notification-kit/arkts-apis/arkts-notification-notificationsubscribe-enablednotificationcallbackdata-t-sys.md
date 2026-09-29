@@ -8,6 +8,8 @@ Describes the properties of the application that the permission to send notifica
 
 **Since:** 9
 
+<!--Device-notificationSubscribe-export type EnabledNotificationCallbackData = _EnabledNotificationCallbackData--><!--Device-notificationSubscribe-export type EnabledNotificationCallbackData = _EnabledNotificationCallbackData-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Defines the struct of Colors.
 
 **Since:** 12
 
+<!--Device-unnamed-export declare interface Colors--><!--Device-unnamed-export declare interface Colors-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ System alert Color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-alert: ResourceColor--><!--Device-Colors-alert: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundEmphasize
@@ -49,6 +53,8 @@ System emphasize level background color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-backgroundEmphasize: ResourceColor--><!--Device-Colors-backgroundEmphasize: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +74,8 @@ System fourth level background color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-backgroundFourth: ResourceColor--><!--Device-Colors-backgroundFourth: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundPrimary
@@ -85,6 +93,8 @@ System Primary level background color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-backgroundPrimary: ResourceColor--><!--Device-Colors-backgroundPrimary: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +114,8 @@ System Secondary level background color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-backgroundSecondary: ResourceColor--><!--Device-Colors-backgroundSecondary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundTertiary
@@ -121,6 +133,8 @@ System tertiary level background color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-backgroundTertiary: ResourceColor--><!--Device-Colors-backgroundTertiary: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,6 +154,8 @@ System brand Color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-brand: ResourceColor--><!--Device-Colors-brand: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## compBackgroundEmphasize
@@ -157,6 +173,8 @@ compBackgroundEmphasize: ResourceColor
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-compBackgroundEmphasize: ResourceColor--><!--Device-Colors-compBackgroundEmphasize: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,6 +194,8 @@ CompBackgroundFocus Color
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-compBackgroundFocus: ResourceColor--><!--Device-Colors-compBackgroundFocus: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## compBackgroundGray
@@ -193,6 +213,8 @@ CompBackgroundGray color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-compBackgroundGray: ResourceColor--><!--Device-Colors-compBackgroundGray: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,6 +234,8 @@ Black neutral high gloss color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-compBackgroundNeutral: ResourceColor--><!--Device-Colors-compBackgroundNeutral: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## compBackgroundPrimary
@@ -229,6 +253,8 @@ CompBackgroundPrimary color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-compBackgroundPrimary: ResourceColor--><!--Device-Colors-compBackgroundPrimary: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -248,6 +274,8 @@ CompBackgroundPrimaryContrary color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-compBackgroundPrimaryContrary: ResourceColor--><!--Device-Colors-compBackgroundPrimaryContrary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## compBackgroundPrimaryTran
@@ -265,6 +293,8 @@ CompBackgroundPrimaryTran color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-compBackgroundPrimaryTran: ResourceColor--><!--Device-Colors-compBackgroundPrimaryTran: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -284,6 +314,8 @@ compBackgroundSecondary: ResourceColor
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-compBackgroundSecondary: ResourceColor--><!--Device-Colors-compBackgroundSecondary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## compBackgroundTertiary
@@ -301,6 +333,8 @@ compBackgroundTertiary: ResourceColor
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-compBackgroundTertiary: ResourceColor--><!--Device-Colors-compBackgroundTertiary: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -320,6 +354,8 @@ CompCommonContrary Color
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-compCommonContrary: ResourceColor--><!--Device-Colors-compCommonContrary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## compDivider
@@ -337,6 +373,8 @@ Universal Division Line Color
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-compDivider: ResourceColor--><!--Device-Colors-compDivider: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -356,6 +394,8 @@ compEmphasizeSecondary: ResourceColor
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-compEmphasizeSecondary: ResourceColor--><!--Device-Colors-compEmphasizeSecondary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## compEmphasizeTertiary
@@ -373,6 +413,8 @@ compEmphasizeTertiary: ResourceColor
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-compEmphasizeTertiary: ResourceColor--><!--Device-Colors-compEmphasizeTertiary: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,6 +434,8 @@ CompFocusedPrimary Color
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-compFocusedPrimary: ResourceColor--><!--Device-Colors-compFocusedPrimary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## compFocusedSecondary
@@ -409,6 +453,8 @@ CompFocusedSecondary Color
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-compFocusedSecondary: ResourceColor--><!--Device-Colors-compFocusedSecondary: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -428,6 +474,8 @@ CompFocusedTertiary Color
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-compFocusedTertiary: ResourceColor--><!--Device-Colors-compFocusedTertiary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## compForegroundPrimary
@@ -445,6 +493,8 @@ CompForegroundPrimary color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-compForegroundPrimary: ResourceColor--><!--Device-Colors-compForegroundPrimary: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -464,6 +514,8 @@ System confirm Color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-confirm: ResourceColor--><!--Device-Colors-confirm: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## container
@@ -481,6 +533,8 @@ System container Color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-Colors-container?: ResourceColor--><!--Device-Colors-container?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -500,6 +554,8 @@ Emphasize text color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-fontEmphasize: ResourceColor--><!--Device-Colors-fontEmphasize: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontFourth
@@ -517,6 +573,8 @@ Fourth text color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-fontFourth: ResourceColor--><!--Device-Colors-fontFourth: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -536,6 +594,8 @@ Fourth level text inversion, used on colored backgrounds.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-fontOnFourth: ResourceColor--><!--Device-Colors-fontOnFourth: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontOnPrimary
@@ -553,6 +613,8 @@ First level text inversion, used on colored backgrounds.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-fontOnPrimary: ResourceColor--><!--Device-Colors-fontOnPrimary: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -572,6 +634,8 @@ Secondary level text inversion, used on colored backgrounds.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-fontOnSecondary: ResourceColor--><!--Device-Colors-fontOnSecondary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontOnTertiary
@@ -589,6 +653,8 @@ Tertiary level text inversion, used on colored backgrounds.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-fontOnTertiary: ResourceColor--><!--Device-Colors-fontOnTertiary: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -608,6 +674,8 @@ First level text color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-fontPrimary: ResourceColor--><!--Device-Colors-fontPrimary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontSecondary
@@ -625,6 +693,8 @@ Secondary text color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-fontSecondary: ResourceColor--><!--Device-Colors-fontSecondary: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -644,6 +714,8 @@ Tertiary text color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-fontTertiary: ResourceColor--><!--Device-Colors-fontTertiary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconEmphasize
@@ -661,6 +733,8 @@ Emphasize level icon color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-iconEmphasize: ResourceColor--><!--Device-Colors-iconEmphasize: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -680,6 +754,8 @@ Fourth level icon color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-iconFourth: ResourceColor--><!--Device-Colors-iconFourth: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconOnFourth
@@ -697,6 +773,8 @@ Fourth level icon reversed, used on a colored background.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-iconOnFourth: ResourceColor--><!--Device-Colors-iconOnFourth: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -716,6 +794,8 @@ First level icon reversed, used on a colored background.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-iconOnPrimary: ResourceColor--><!--Device-Colors-iconOnPrimary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconOnSecondary
@@ -733,6 +813,8 @@ Secondary level icon reversed, used on a colored background.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-iconOnSecondary: ResourceColor--><!--Device-Colors-iconOnSecondary: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -752,6 +834,8 @@ Tertiary level icon reversed, used on a colored background.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-iconOnTertiary: ResourceColor--><!--Device-Colors-iconOnTertiary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconPrimary
@@ -769,6 +853,8 @@ First level icon color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-iconPrimary: ResourceColor--><!--Device-Colors-iconPrimary: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -788,6 +874,8 @@ Secondary level icon color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-iconSecondary: ResourceColor--><!--Device-Colors-iconSecondary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconSubEmphasize
@@ -805,6 +893,8 @@ Secondary emphasize level icon color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-iconSubEmphasize: ResourceColor--><!--Device-Colors-iconSubEmphasize: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -824,6 +914,8 @@ Tertiary level icon color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-iconTertiary: ResourceColor--><!--Device-Colors-iconTertiary: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## interactiveActive
@@ -841,6 +933,8 @@ Active interactive color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-interactiveActive: ResourceColor--><!--Device-Colors-interactiveActive: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -860,6 +954,8 @@ Click interactive color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-interactiveClick: ResourceColor--><!--Device-Colors-interactiveClick: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## interactiveFocus
@@ -877,6 +973,8 @@ Focus interactive color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-interactiveFocus: ResourceColor--><!--Device-Colors-interactiveFocus: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -896,6 +994,8 @@ Hover interactive color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-interactiveHover: ResourceColor--><!--Device-Colors-interactiveHover: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## interactivePressed
@@ -913,6 +1013,8 @@ Pressed interactive color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-interactivePressed: ResourceColor--><!--Device-Colors-interactivePressed: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -932,6 +1034,8 @@ Select interactive color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Colors-interactiveSelect: ResourceColor--><!--Device-Colors-interactiveSelect: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onPrimary
@@ -949,6 +1053,8 @@ System onPrimary Color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-Colors-onPrimary?: ResourceColor--><!--Device-Colors-onPrimary?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -968,6 +1074,8 @@ System primary Color.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-Colors-primary?: ResourceColor--><!--Device-Colors-primary?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## warning
@@ -985,5 +1093,7 @@ System warning Color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Colors-warning: ResourceColor--><!--Device-Colors-warning: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

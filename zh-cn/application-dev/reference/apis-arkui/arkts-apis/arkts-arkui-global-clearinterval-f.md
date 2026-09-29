@@ -17,6 +17,8 @@ export declare function clearInterval(intervalID?: number): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export declare function clearInterval(intervalID?: number): void--><!--Device-unnamed-export declare function clearInterval(intervalID?: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

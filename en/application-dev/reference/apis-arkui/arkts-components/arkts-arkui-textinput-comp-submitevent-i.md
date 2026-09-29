@@ -4,9 +4,11 @@
 declare interface SubmitEvent
 ```
 
-Defines the user submission event.
+Defines the user submit event.
 
 **Since:** 11
+
+<!--Device-unnamed-declare interface SubmitEvent--><!--Device-unnamed-declare interface SubmitEvent-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ Defines the user submission event.
 keepEditableState(): void
 ```
 
-Maintains the editable state of the text box when called.
+Customizes the editing state of the input box and keeps it in the editing state when called.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SubmitEvent-keepEditableState(): void--><!--Device-SubmitEvent-keepEditableState(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,7 +36,7 @@ Maintains the editable state of the text box when called.
 text: string
 ```
 
-Text in the text box.
+Text content of the input box.
 
 **Type:** string
 
@@ -41,5 +45,7 @@ Text in the text box.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SubmitEvent-text: string--><!--Device-SubmitEvent-text: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

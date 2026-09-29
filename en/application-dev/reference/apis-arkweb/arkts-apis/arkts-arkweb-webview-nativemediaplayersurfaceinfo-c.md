@@ -8,6 +8,8 @@ NativeMediaPlayerSurfaceInfo uses [enableNativeMediaPlayer](../arkts-components/
 
 **Since:** 12
 
+<!--Device-webview-class NativeMediaPlayerSurfaceInfo--><!--Device-webview-class NativeMediaPlayerSurfaceInfo-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ For details, see [NativeEmbedDataInfo](../arkts-components/arkts-arkweb-web-comp
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerSurfaceInfo-id: string--><!--Device-NativeMediaPlayerSurfaceInfo-id: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## rect
@@ -45,5 +49,7 @@ Position information of the surface, used to specify the display position and si
 **Type:** [RectEvent](arkts-arkweb-webview-rectevent-i.md)
 
 **Since:** 12
+
+<!--Device-NativeMediaPlayerSurfaceInfo-rect: RectEvent--><!--Device-NativeMediaPlayerSurfaceInfo-rect: RectEvent-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

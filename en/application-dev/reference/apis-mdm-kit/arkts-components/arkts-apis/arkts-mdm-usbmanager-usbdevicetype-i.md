@@ -10,6 +10,8 @@ You can obtain the list of USB devices connected to the host device through the 
 
 **Since:** 14
 
+<!--Device-usbManager-export interface UsbDeviceType--><!--Device-usbManager-export interface UsbDeviceType-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -36,6 +38,8 @@ If the field value is 255 (indicating the device's type code is a vendor-defined
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UsbDeviceType-baseClass: number--><!--Device-UsbDeviceType-baseClass: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## descriptor
@@ -55,6 +59,8 @@ If the value of **USBDevice.clazz** is **255** (indicating the device's type cod
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UsbDeviceType-descriptor: Descriptor--><!--Device-UsbDeviceType-descriptor: Descriptor-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -76,6 +82,8 @@ If the field value is 255 (indicating the device's protocol code is a vendor-def
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UsbDeviceType-protocol: number--><!--Device-UsbDeviceType-protocol: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## subClass
@@ -95,5 +103,7 @@ If the field value is 255 (indicating that the subtype code of the device is a v
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UsbDeviceType-subClass: number--><!--Device-UsbDeviceType-subClass: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

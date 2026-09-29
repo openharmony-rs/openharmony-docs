@@ -2,11 +2,14 @@
 
 The **Grid** component consists of cells formed by rows and columns. You can specify the cells where items are located to form various layouts.
 
-> **NOTE** > > The component has been bound with gestures to implement functions such as follow-up scrolling. If you need to add > custom gestures, refer to Gesture Blocking Enhancement.
+> **NOTE:** 
+> 
+> The component has been bound with gestures to implement functions such as follow-up scrolling. If you need to add
+> custom gestures, refer to [Gesture Blocking Enhancement](arkts-arkui-common-comp.md).
 
 ## Child Components
 
-Child components are limited to GridItem and custom components. When using custom components inside **Grid**, it is recommended to wrap the custom component with a **GridItem** as the top-level container. Setting attributes or event methods directly on custom components is not recommended.
+Child components are limited to [GridItem](arkts-arkui-griditem-comp.md) and custom components. When using custom components inside **Grid**, it is recommended to wrap the custom component with a **GridItem** as the top-level container. Setting attributes or event methods directly on custom components is not recommended.
 
 Child components can be dynamically generated using rendering control types [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md). **LazyForEach** or **Repeat** is recommended to optimize performance.
 
@@ -59,14 +62,16 @@ Creates a **Grid** component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-GridInterface-(scroller?: Scroller, layoutOptions?: GridLayoutOptions): GridAttribute--><!--Device-GridInterface-(scroller?: Scroller, layoutOptions?: GridLayoutOptions): GridAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scroller | [Scroller](arkts-arkui-scroll-comp-scroller-c.md) | No | Controller, which can be bound to scrollable components.<br>**NOTE:** <br>It cannot be bound to the same scrolling control object as other scrollable components, such as [ArcList](arkts-arkui-arclist-comp.md#ohosarkuiarclist), List, Grid, Scroll, and WaterFlow. |
-| layoutOptions | [GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md) | No | Grid layout options. |
+| scroller | [Scroller](arkts-arkui-scroll-comp-scroller-c.md) | No | Controller of the scrollable component. It is used to bind to the scrollable component. If it is not set, no external controller is bound, and the component manages the scrolling behavior by itself.<br>**NOTE:** <br>It is not allowed to bind the same scroll control object to other scrollable components, such as [ArcList](arkts-arkui-arclist-comp.md), [List](arkts-arkui-list-comp.md), [Grid](arkts-arkui-grid-comp.md), [Scroll](arkts-arkui-scroll-comp.md), and [WaterFlow](arkts-arkui-waterflow-comp.md). |
+| layoutOptions | [GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md) | No | Grid layout options, used to configure layout information such as **GridItem** spanning rows and columns. If it is not passed in, the **Grid** performs layout based on regular attributes such as **rowsTemplate** and **columnsTemplate** and the attributes of **GridItem** itself, without enabling the layout options provided by **GridLayoutOptions**.<br> |
 
 ## Summary
 
@@ -76,15 +81,15 @@ Creates a **Grid** component.
 | --- | --- |
 | [ComputedBarAttribute](arkts-arkui-grid-comp-computedbarattribute-i.md) | Provides information about the position and length of the scrollbar. |
 | [GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md) | Defines the grid layout options. In this API, **irregularIndexes** and **onGetIrregularSizeByIndex** can be used for grids where either **rowsTemplate** or **columnsTemplate** is set. These properties allow you to specify an index array and set the number of rows and columns to be occupied by a grid item at the specified index. For details about the usage, see [Example 3](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns). On the other hand, **onGetRectByIndex** can be used for grids where both **rowsTemplate** and **columnsTemplate** are set. It allows you to specify the position and size for the grid item at the specified index. For details about the usage, see [Example 1](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout). |
-| [StartLineInfo](arkts-arkui-grid-comp-startlineinfo-i-sys.md) | Define start line info used in GridLayoutOptions. |
+| [StartLineInfo](arkts-arkui-grid-comp-startlineinfo-i-sys.md) | Records the position of the start line in the grid. |
 | [UIGridEvent](arkts-arkui-grid-comp-uigridevent-i.md) | Represents the return value of the [getEvent('Grid')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-3) method in **frameNode**, which can be used to set scroll events for a **Grid** node. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [OnGetStartIndexByIndexCallback](arkts-arkui-grid-comp-ongetstartindexbyindexcallback-t-sys.md) | Defines the callback type used in onGetStartIndexByIndex of GridLayoutOptions. |
-| [OnGetStartIndexByOffsetCallback](arkts-arkui-grid-comp-ongetstartindexbyoffsetcallback-t-sys.md) | Defines the callback type used in onGetStartIndexByOffset of GridLayoutOptions. |
+| [OnGetStartIndexByIndexCallback](arkts-arkui-grid-comp-ongetstartindexbyindexcallback-t-sys.md) | Calculates the start line on the page when the grid is scrolled to the specified target index. This API is used to support operations such as [scrollToIndex](Scroller#scrollToIndex). This callback must be set simultaneously with **onGetStartIndexByOffset** to take effect. |
+| [OnGetStartIndexByOffsetCallback](arkts-arkui-grid-comp-ongetstartindexbyoffsetcallback-t-sys.md) | Calculates the start line position of the current page based on the total offset of the **Grid** component, which is used for fast scrolling or reverse scrolling. This callback must be set simultaneously with **onGetStartIndexByIndex** to take effect. |
 | [OnGridScrollIndexCallback](arkts-arkui-grid-comp-ongridscrollindexcallback-t.md) | Represents a callback for item changes in the visible area of the **Grid** component. |
 
 ### Enums

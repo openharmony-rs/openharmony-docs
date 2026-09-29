@@ -8,6 +8,8 @@ Navigation自定义标题。
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare interface NavigationCustomTitle--><!--Device-unnamed-declare interface NavigationCustomTitle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## builder
@@ -24,6 +26,8 @@ builder: CustomBuilder
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationCustomTitle-builder: CustomBuilder--><!--Device-NavigationCustomTitle-builder: CustomBuilder-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -39,5 +43,7 @@ height: TitleHeight | Length
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationCustomTitle-height: TitleHeight | Length--><!--Device-NavigationCustomTitle-height: TitleHeight | Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

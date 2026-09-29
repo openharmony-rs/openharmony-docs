@@ -19,6 +19,8 @@ Cancels all notifications. This API uses an asynchronous callback to return the 
 
 **Substitutes:** [cancelAll](arkts-notification-notificationmanager-cancelall-f.md)
 
+<!--Device-notification-function cancelAll(callback: AsyncCallback<void>): void--><!--Device-notification-function cancelAll(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -43,6 +45,8 @@ Cancels all notifications. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [cancelAll](arkts-notification-notificationmanager-cancelall-f.md)
+
+<!--Device-notification-function cancelAll(): Promise<void>--><!--Device-notification-function cancelAll(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

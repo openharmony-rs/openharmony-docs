@@ -13,6 +13,8 @@ Defines a callback used to return the cause of the persistence failure.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export declare type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' | 'unknown',     message: string, oldValue?: string) => void--><!--Device-unnamed-export declare type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' | 'unknown',     message: string, oldValue?: string) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -20,9 +22,9 @@ Defines a callback used to return the cause of the persistence failure.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | key | string | Yes | Key of the error. |
-| reason | 'quota' &#124; 'serialization' &#124; 'unknown' | Yes | Reason of the error. |
+| reason | 'quota' &#124; 'serialization' &#124; 'unknown' | Yes | Reason of the error. The value can be **'quota'** (indicating that the storage quota exceeds the limit), **'serialization'** (indicating that serialization or deserialization fails), or **'unknown'** (indicating an unknown error). |
 | message | string | Yes | Extra information about the error. |
-| oldValue | string | No | Old serialized data stored on the disk when deserialization fails. |
+| oldValue | string | No | Old serialized data stored on the disk when deserialization fails. In non-deserialization failure scenarios, the default value of this parameter is **undefined**. |
 
 **Examples**
 

@@ -1,10 +1,10 @@
-# Web
+# Web(Web Controller)
 
 Defines Web Component.
 
-<p><strong>API Note</strong>:
+<p>&lt;strong&gt;API Note&lt;/strong&gt;:
 
-<strong>Performance Note</strong>: <p>For details about how to optimize the compilation, resource loading, and JSBridge performance, see Optimizing Web Page Loading <p>When the white screen duration is long due to complex web page parsing, you can enable [optimizeParserBudget](arkts-arkweb-web-comp-attribute.md#optimizeparserbudget) to reduce the first frame rendering content.</p> </p>
+&lt;strong&gt;Performance Note&lt;/strong&gt;: <p>For details about how to optimize the compilation, resource loading, and JSBridge performance, see Optimizing Web Page Loading <p>When the white screen duration is long due to complex web page parsing, you can enable [optimizeParserBudget](arkts-arkweb-web-comp-attribute.md#optimizeparserbudget) to reduce the first frame rendering content.</p> </p>
 
 ## Web
 
@@ -17,6 +17,8 @@ Sets Value.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebInterface-(value: WebOptions): WebAttribute--><!--Device-WebInterface-(value: WebOptions): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -100,6 +102,7 @@ Sets Value.
 | [OnTouchIconUrlReceivedEvent](arkts-arkweb-web-comp-ontouchiconurlreceivedevent-i.md) | Defines the callback information triggered when an apple-touch-icon URL is received, including the URL and precomposed status. It is suitable for scenarios where obtaining web page icons is required, improving icon management flexibility and user experience. |
 | [OnWindowNewEvent](arkts-arkweb-web-comp-onwindownewevent-i.md) | Defines the callback triggered when the web page requests the user to create a window. Starting from API version 23, you can use [OnWindowNewExtEvent](arkts-arkweb-web-comp-onwindownewextevent-i.md) to obtain more window information. |
 | [OnWindowNewExtEvent](arkts-arkweb-web-comp-onwindownewextevent-i.md) | Defines the callback information triggered when the web page requests to create a window, including the window feature information and window opening method. It is suitable for scenarios where fine-grained control of new window behavior is required, improving window management customization and user experience. |
+| [OnZoomChangeEvent](arkts-arkweb-web-comp-onzoomchangeevent-i.md) | Describes the browser zoom factor change information of the web page. |
 | [PreviewMenuOptions](arkts-arkweb-web-comp-previewmenuoptions-i.md) | Configures preview menu options, supporting the vibration effect when the menu pops up. It is suitable for scenarios where enhanced menu interaction feedback is required, improving user experience. |
 | [RenderProcessNotRespondingData](arkts-arkweb-web-comp-renderprocessnotrespondingdata-i.md) | Provides detailed information about the unresponsive rendering process. It is suitable for scenarios where diagnosing rendering process exceptions is required, improving troubleshooting accuracy and efficiency. |
 | [ScreenCaptureConfig](arkts-arkweb-web-comp-screencaptureconfig-i.md) | Provides the web screen capture configuration options, including the capture mode. It is suitable for scenarios where custom web page screen recording behavior is required, improving screen recording flexibility and user experience. |
@@ -108,7 +111,7 @@ Sets Value.
 | [SslErrorEvent](arkts-arkweb-web-comp-sslerrorevent-i.md) | Callback details triggered when an SSL error occurs during resource loading by the user, including the URL, error type, and certificate chain. It is suitable for scenarios where detailed analysis of SSL errors is required, improving security issue diagnosis and troubleshooting efficiency. |
 | [UrlRegexRule](arkts-arkweb-web-comp-urlregexrule-i.md) | Defines the URL regular expression rule. |
 | [VerifyPinEvent](arkts-arkweb-web-comp-verifypinevent-i.md) | Defines the callback triggered to notify the user of PIN verification. |
-| [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | Input parameters of the callback used to intercept the soft keyboard started from editable elements on a web page, including [WebKeyboardController](#web) and the attributes of the editable element. It is suitable for scenarios where custom keyboard interaction is required, improving input experience customization and flexibility. |
+| [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | Input parameters of the callback used to intercept the soft keyboard started from editable elements on a web page, including [WebKeyboardController](arkts-arkweb-web-comp.md) and the attributes of the editable element. It is suitable for scenarios where custom keyboard interaction is required, improving input experience customization and flexibility. |
 | [WebKeyboardOptions](arkts-arkweb-web-comp-webkeyboardoptions-i.md) | Return value of the callback that intercepts the soft keyboard started from editable elements on the web page, including the keyboard type and custom keyboard. It is suitable for scenarios where controlling soft keyboard behavior is required. |
 | [WebMediaOptions](arkts-arkweb-web-comp-webmediaoptions-i.md) | Configures the media policy of the **Web** component, including the audio playback continuation validity period, audio exclusive mode, and more. It is suitable for scenarios where audio playback experience optimization and multi- instance audio management are required, improving media playback stability and user experience. |
 | [WebOptions](arkts-arkweb-web-comp-weboptions-i.md) | Defines Web options through the [API](../../../reference/apis-arkweb/arkts-basic-components-web.md#api), including the web page resource URL, controller, rendering mode, and more. |
@@ -145,6 +148,7 @@ Sets Value.
 | [OnSslErrorEventCallback](arkts-arkweb-web-comp-onsslerroreventcallback-t.md) | Callback invoked when an SSL error occurs during resource loading. Returns detailed information about the SSL error. |
 | [OnVerifyPinCallback](arkts-arkweb-web-comp-onverifypincallback-t.md) | Callback triggered to notify the user of PIN authentication. |
 | [OnViewportFitChangedCallback](arkts-arkweb-web-comp-onviewportfitchangedcallback-t.md) | Defines a callback invoked when the **viewport-fit** configuration in the web page's **\&lt;meta&gt;** tag changes. |
+| [OnZoomChangeCallback](arkts-arkweb-web-comp-onzoomchangecallback-t.md) | Called when the browser zoom factor of the page changes. |
 | [TextSelectionChangeCallback](arkts-arkweb-web-comp-textselectionchangecallback-t.md) | Callback for onTextSelectionChange. Triggered when the text selection content changes. |
 | [WebKeyboardCallback](arkts-arkweb-web-comp-webkeyboardcallback-t.md) | Defines a callback to intercept the soft keyboard initiated from editable elements on a web page. This event is typically called when the **\&lt;input&gt;** tag on the web page is clicked. |
 | [WebviewController](arkts-arkweb-web-comp-webviewcontroller-t.md) | Defines methods for the web controller. |

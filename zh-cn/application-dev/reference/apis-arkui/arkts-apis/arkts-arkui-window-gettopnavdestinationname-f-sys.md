@@ -12,9 +12,11 @@ import { window } from '@kit.ArkUI';
 function getTopNavDestinationName(windowId: number): Promise<string>
 ```
 
-获取指定的前台窗口当前栈顶[Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation)中的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)名称，使用Promise异步回调。
+获取指定的前台窗口当前栈顶[Navigation](../arkts-components/arkts-arkui-navigation-comp.md)中的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md)名称，使用Promise异步回调。
 
 **起始版本：** 20
+
+<!--Device-window-function getTopNavDestinationName(windowId: int): Promise<string>--><!--Device-window-function getTopNavDestinationName(windowId: int): Promise<string>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -30,7 +32,7 @@ function getTopNavDestinationName(windowId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | Promise对象。返回获取到的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)名称。<br>对于[Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation)嵌套以及当前页面存在多个[Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation)的场景，查询的是后创建的[Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation)的信息。<br>如果页面没有[Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation)或者[Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation)中没有[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)，返回空字符串。 |
+| Promise&lt;string&gt; | Promise对象。返回获取到的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md)名称。<br>对于[Navigation](../arkts-components/arkts-arkui-navigation-comp.md)嵌套以及当前页面存在多个[Navigation](../arkts-components/arkts-arkui-navigation-comp.md)的场景，查询的是后创建的[Navigation](../arkts-components/arkts-arkui-navigation-comp.md)的信息。<br>如果页面没有[Navigation](../arkts-components/arkts-arkui-navigation-comp.md)或者[Navigation](../arkts-components/arkts-arkui-navigation-comp.md)中没有[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md)，返回空字符串。 |
 
 **错误码：**
 

@@ -18,6 +18,8 @@ Obtain the IPv6 information of the Wi-Fi connection. The IPv6 information includ
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function getIpv6Info(): Ipv6Info--><!--Device-wifiManager-function getIpv6Info(): Ipv6Info-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**

@@ -16,6 +16,8 @@ Queries the mouse pointer style type of a specified window, such as east arrow, 
 
 **Since:** 10
 
+<!--Device-pointer-function getPointerStyleSync(windowId: int): PointerStyle--><!--Device-pointer-function getPointerStyleSync(windowId: int): PointerStyle-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **Parameters:**

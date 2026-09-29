@@ -28,6 +28,8 @@ Writes data into a file. This API uses a promise to return the result.
 
 **Substitutes:** [write](arkts-corefile-file-fs-write-f.md)
 
+<!--Device-unnamed-declare function write(  fd: number,  buffer: ArrayBuffer | string,  options?: {    offset?: number;    length?: number;    position?: number;    encoding?: string;  }): Promise<number>--><!--Device-unnamed-declare function write(  fd: number,  buffer: ArrayBuffer | string,  options?: {    offset?: number;    length?: number;    position?: number;    encoding?: string;  }): Promise<number>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -60,6 +62,8 @@ Writes data to a file. This API uses an asynchronous callback to return the resu
 **Deprecated since:** 9
 
 **Substitutes:** [write](arkts-corefile-file-fs-write-f.md)
+
+<!--Device-unnamed-declare function write(fd: number, buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void--><!--Device-unnamed-declare function write(fd: number, buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -97,6 +101,8 @@ Writes data to a file. This API uses an asynchronous callback to return the resu
 **Deprecated since:** 9
 
 **Substitutes:** [write](arkts-corefile-file-fs-write-f.md)
+
+<!--Device-unnamed-declare function write(  fd: number,  buffer: ArrayBuffer | string,  options: {    offset?: number;    length?: number;    position?: number;    encoding?: string;  },  callback: AsyncCallback<number>): void--><!--Device-unnamed-declare function write(  fd: number,  buffer: ArrayBuffer | string,  options: {    offset?: number;    length?: number;    position?: number;    encoding?: string;  },  callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

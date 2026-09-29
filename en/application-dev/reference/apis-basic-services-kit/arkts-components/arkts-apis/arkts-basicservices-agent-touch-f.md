@@ -16,6 +16,8 @@ Queries the task details based on the task ID and token. This API uses an asynch
 
 **Since:** 10
 
+<!--Device-agent-function touch(id: string, token: string, callback: AsyncCallback<TaskInfo>): void--><!--Device-agent-function touch(id: string, token: string, callback: AsyncCallback<TaskInfo>): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -46,6 +48,8 @@ function touch(id: string, token: string): Promise<TaskInfo>
 Queries the task details based on the task ID and token. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-agent-function touch(id: string, token: string): Promise<TaskInfo>--><!--Device-agent-function touch(id: string, token: string): Promise<TaskInfo>-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 

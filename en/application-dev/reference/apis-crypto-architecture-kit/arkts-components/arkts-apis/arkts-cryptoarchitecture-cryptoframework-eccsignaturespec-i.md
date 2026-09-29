@@ -12,6 +12,8 @@ Represents the ECC/SM2 signature data that contains (r, s).
 
 **Since:** 20
 
+<!--Device-cryptoFramework-interface EccSignatureSpec--><!--Device-cryptoFramework-interface EccSignatureSpec-End-->
+
 **System capability:** SystemCapability.Security.CryptoFramework.Signature
 
 ## Modules to Import
@@ -32,7 +34,9 @@ Randomized value derived from the elliptic curve calculation using the ephemeral
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-EccSignatureSpec-r: bigint--><!--Device-EccSignatureSpec-r: bigint-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Signature
 
@@ -48,6 +52,8 @@ Signature component, computed using the signer's private key, r, and the hashed 
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-EccSignatureSpec-s: bigint--><!--Device-EccSignatureSpec-s: bigint-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Signature

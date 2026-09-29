@@ -20,6 +20,8 @@ Turns on mobile data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function turnOnMobileData(admin: Want, isForce: boolean): void--><!--Device-networkManager-function turnOnMobileData(admin: Want, isForce: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

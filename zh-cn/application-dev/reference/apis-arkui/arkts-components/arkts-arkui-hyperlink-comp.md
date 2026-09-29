@@ -14,7 +14,7 @@
 
 ## 子组件
 
-可以包含Image子组件。
+可以包含[Image](arkts-arkui-image-comp.md)子组件。
 
 ## Hyperlink
 
@@ -25,6 +25,8 @@ Hyperlink(address: string | Resource, content?: string | Resource)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-HyperlinkInterface-(address: string | Resource, content?: string | Resource): HyperlinkAttribute--><!--Device-HyperlinkInterface-(address: string | Resource, content?: string | Resource): HyperlinkAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -8,9 +8,11 @@ declare class RadioAttribute extends CommonMethod<RadioAttribute>
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** RadioAttribute extends CommonMethod&lt;RadioAttribute&gt;
+**继承/实现关系：** RadioAttribute extends CommonMethod<RadioAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class RadioAttribute extends CommonMethod<RadioAttribute>--><!--Device-unnamed-declare class RadioAttribute extends CommonMethod<RadioAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +35,8 @@ checked(value: boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RadioAttribute-checked(value: boolean): RadioAttribute--><!--Device-RadioAttribute-checked(value: boolean): RadioAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +66,8 @@ checked(isChecked: Optional<boolean>)
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RadioAttribute-checked(isChecked: Optional<boolean>): RadioAttribute--><!--Device-RadioAttribute-checked(isChecked: Optional<boolean>): RadioAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -83,6 +89,8 @@ contentModifier(modifier: ContentModifier<RadioConfiguration>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RadioAttribute-contentModifier(modifier: ContentModifier<RadioConfiguration>): RadioAttribute--><!--Device-RadioAttribute-contentModifier(modifier: ContentModifier<RadioConfiguration>): RadioAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +116,8 @@ contentModifier(modifier: Optional<ContentModifier<RadioConfiguration>>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-RadioAttribute-contentModifier(modifier: Optional<ContentModifier<RadioConfiguration>>): RadioAttribute--><!--Device-RadioAttribute-contentModifier(modifier: Optional<ContentModifier<RadioConfiguration>>): RadioAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -131,6 +141,8 @@ onChange(callback: (isChecked: boolean) => void)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RadioAttribute-onChange(callback: (isChecked: boolean) => void): RadioAttribute--><!--Device-RadioAttribute-onChange(callback: (isChecked: boolean) => void): RadioAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,6 +170,8 @@ onChange(callback: Optional<OnRadioChangeCallback>)
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RadioAttribute-onChange(callback: Optional<OnRadioChangeCallback>): RadioAttribute--><!--Device-RadioAttribute-onChange(callback: Optional<OnRadioChangeCallback>): RadioAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -181,6 +195,8 @@ radioStyle(value?: RadioStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RadioAttribute-radioStyle(value?: RadioStyle): RadioAttribute--><!--Device-RadioAttribute-radioStyle(value?: RadioStyle): RadioAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

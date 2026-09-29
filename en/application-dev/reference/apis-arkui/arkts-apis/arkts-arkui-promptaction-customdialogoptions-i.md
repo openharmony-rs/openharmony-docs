@@ -10,6 +10,8 @@ Extends [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md) to 
 
 **Since:** 11
 
+<!--Device-promptAction-interface CustomDialogOptions extends BaseDialogOptions--><!--Device-promptAction-interface CustomDialogOptions extends BaseDialogOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Background blur style of the dialog box. <br>Default value: **BlurStyle.COMPONEN
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomDialogOptions-backgroundBlurStyle?: BlurStyle--><!--Device-CustomDialogOptions-backgroundBlurStyle?: BlurStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundColor
@@ -53,6 +57,8 @@ Background color of the dialog box.<br>Default value: **Color.Transparent**. <br
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomDialogOptions-backgroundColor?: ResourceColor--><!--Device-CustomDialogOptions-backgroundColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ Border color of the dialog box. <br>Default value: **Color.Black**. <br> **borde
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomDialogOptions-borderColor?: ResourceColor | EdgeColors--><!--Device-CustomDialogOptions-borderColor?: ResourceColor | EdgeColors-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderStyle
@@ -89,6 +97,8 @@ Border style of the dialog box. <br>Default value: **BorderStyle.Solid**. <br> *
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomDialogOptions-borderStyle?: BorderStyle | EdgeStyles--><!--Device-CustomDialogOptions-borderStyle?: BorderStyle | EdgeStyles-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +118,8 @@ Border width of the dialog box. <br>You can set the width for all four sides or 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomDialogOptions-borderWidth?: Dimension | EdgeWidths--><!--Device-CustomDialogOptions-borderWidth?: Dimension | EdgeWidths-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## builder
@@ -125,6 +137,8 @@ Custom content of the dialog box. <br>**NOTE:** <br>The builder needs to be assi
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomDialogOptions-builder: CustomBuilder--><!--Device-CustomDialogOptions-builder: CustomBuilder-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,6 +158,8 @@ Corner radius of the background. <br>You can set separate radii for the four cor
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomDialogOptions-cornerRadius?: Dimension | BorderRadiuses--><!--Device-CustomDialogOptions-cornerRadius?: Dimension | BorderRadiuses-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -161,6 +177,8 @@ Height of the dialog box. <br>**NOTE:** <br>- Default maximum height of the dial
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomDialogOptions-height?: Dimension--><!--Device-CustomDialogOptions-height?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,6 +198,8 @@ Shadow of the dialog box. <br>Default value on 2-in-1 devices: **ShadowStyle.OUT
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomDialogOptions-shadow?: ShadowOptions | ShadowStyle--><!--Device-CustomDialogOptions-shadow?: ShadowOptions | ShadowStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -197,5 +217,7 @@ Width of the dialog box. <br>**NOTE:** <br>- Default maximum width of the dialog
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomDialogOptions-width?: Dimension--><!--Device-CustomDialogOptions-width?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

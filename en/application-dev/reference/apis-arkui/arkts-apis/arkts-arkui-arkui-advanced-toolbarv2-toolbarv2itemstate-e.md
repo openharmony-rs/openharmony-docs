@@ -8,6 +8,8 @@ Declare enum ToolBarV2ItemState
 
 **Since:** 18
 
+<!--Device-unnamed-export declare enum ToolBarV2ItemState--><!--Device-unnamed-export declare enum ToolBarV2ItemState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ENABLE
@@ -23,6 +25,8 @@ Enable type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ToolBarV2ItemState-ENABLE = 1--><!--Device-ToolBarV2ItemState-ENABLE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Disable type.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ToolBarV2ItemState-DISABLE = 2--><!--Device-ToolBarV2ItemState-DISABLE = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ACTIVATE
@@ -55,5 +61,7 @@ Activate type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ToolBarV2ItemState-ACTIVATE = 3--><!--Device-ToolBarV2ItemState-ACTIVATE = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

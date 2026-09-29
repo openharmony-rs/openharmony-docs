@@ -10,6 +10,8 @@ A mathematical notation for representing spatial rotations of elements in 3D spa
 
 **Since:** 12
 
+<!--Device-unnamed-export interface Quaternion--><!--Device-unnamed-export interface Quaternion-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## w
@@ -23,6 +25,8 @@ Component on the W axis. The value is a real number.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Quaternion-w: double--><!--Device-Quaternion-w: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -38,6 +42,8 @@ Component on the X axis. The value is a real number.
 
 **Since:** 12
 
+<!--Device-Quaternion-x: double--><!--Device-Quaternion-x: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## y
@@ -52,6 +58,8 @@ Component on the Y axis. The value is a real number.
 
 **Since:** 12
 
+<!--Device-Quaternion-y: double--><!--Device-Quaternion-y: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## z
@@ -65,5 +73,7 @@ Component on the Z axis. The value is a real number.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Quaternion-z: double--><!--Device-Quaternion-z: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

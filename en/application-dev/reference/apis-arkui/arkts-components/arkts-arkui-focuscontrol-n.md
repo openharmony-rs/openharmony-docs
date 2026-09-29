@@ -8,6 +8,8 @@ Implements focus control.
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace focusControl--><!--Device-unnamed-declare namespace focusControl-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Summary

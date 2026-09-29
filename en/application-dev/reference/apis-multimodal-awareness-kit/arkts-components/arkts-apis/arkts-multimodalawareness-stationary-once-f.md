@@ -16,6 +16,8 @@ Obtains the device status.
 
 **Since:** 9
 
+<!--Device-stationary-function once(activity: ActivityType, callback: Callback<ActivityResponse>): void--><!--Device-stationary-function once(activity: ActivityType, callback: Callback<ActivityResponse>): void-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Stationary
 
 **Parameters:**

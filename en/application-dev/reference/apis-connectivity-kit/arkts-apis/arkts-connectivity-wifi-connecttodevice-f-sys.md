@@ -22,6 +22,8 @@ Connects to Wi-Fi network.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifi-function connectToDevice(config: WifiDeviceConfig): boolean--><!--Device-wifi-function connectToDevice(config: WifiDeviceConfig): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

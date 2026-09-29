@@ -18,6 +18,8 @@ Mutes the ringtone while it is playing. It does not work if the ringtone has bee
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function muteRinger(callback: AsyncCallback<void>): void--><!--Device-call-function muteRinger(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -68,6 +70,8 @@ Mutes the ringtone while it is playing. It does not work if the ringtone has bee
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function muteRinger(): Promise<void>--><!--Device-call-function muteRinger(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

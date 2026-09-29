@@ -14,6 +14,8 @@ Provides button style configuration for the dialog box.
 
 **Since:** 18
 
+<!--Device-unnamed-interface ActionSheetButtonOptions--><!--Device-unnamed-interface ActionSheetButtonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -30,6 +32,8 @@ Callback invoked when the button is selected.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ActionSheetButtonOptions-action: VoidCallback--><!--Device-ActionSheetButtonOptions-action: VoidCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## defaultFocus
@@ -38,9 +42,9 @@ Callback invoked when the button is selected.
 defaultFocus?: boolean
 ```
 
-Whether the button is the default focus. The value **true** means that the button is the default focus, and **false** means the opposite.
+Whether the button is the default focus. The value **true** indicates that the button is the default focus, and **false** indicates the opposite. When the dialog box gains focus and no focus traversal is performed using the Tab key, this button responds to the Enter key by default. In the case of multiple dialog boxes, the button can automatically gain focus and respond continuously. The default Enter key response capability does not take effect when defaultFocus is true.
 
-Default value: **false**
+Default value: false
 
 **Type:** boolean
 
@@ -51,6 +55,8 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ActionSheetButtonOptions-defaultFocus?: boolean--><!--Device-ActionSheetButtonOptions-defaultFocus?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +80,8 @@ Default value: **true**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ActionSheetButtonOptions-enabled?: boolean--><!--Device-ActionSheetButtonOptions-enabled?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -96,6 +104,8 @@ Default value: **DialogButtonStyle.DEFAULT**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ActionSheetButtonOptions-style?: DialogButtonStyle--><!--Device-ActionSheetButtonOptions-style?: DialogButtonStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -115,5 +125,7 @@ If the text is too long to display, it is truncated with an ellipsis (...).
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ActionSheetButtonOptions-value: string | Resource--><!--Device-ActionSheetButtonOptions-value: string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

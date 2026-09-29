@@ -20,6 +20,8 @@ Defines the specific attributes of individual chips.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface ChipGroupItemOptions--><!--Device-unnamed-export interface ChipGroupItemOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -47,6 +49,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ChipGroupItemOptions-accessibilityDescription?: ResourceStr--><!--Device-ChipGroupItemOptions-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +86,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-ChipGroupItemOptions-accessibilityLevel?: string--><!--Device-ChipGroupItemOptions-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## allowClose
@@ -110,6 +116,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ChipGroupItemOptions-allowClose?: boolean--><!--Device-ChipGroupItemOptions-allowClose?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## closeOptions
@@ -132,6 +140,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-ChipGroupItemOptions-closeOptions?: CloseOptions--><!--Device-ChipGroupItemOptions-closeOptions?: CloseOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## label
@@ -149,6 +159,8 @@ Text content and style displayed on the chip.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChipGroupItemOptions-label: LabelOptions--><!--Device-ChipGroupItemOptions-label: LabelOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,6 +184,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ChipGroupItemOptions-prefixIcon?: IconOptions--><!--Device-ChipGroupItemOptions-prefixIcon?: IconOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## prefixSymbol
@@ -193,6 +207,85 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChipGroupItemOptions-prefixSymbol?: ChipSymbolGlyphOptions--><!--Device-ChipGroupItemOptions-prefixSymbol?: ChipSymbolGlyphOptions-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## suffixImageIcon
+
+```TypeScript
+suffixImageIcon?: SuffixImageIconOptions
+```
+
+Suffix image icon property. Set this parameter when an icon needs to be displayed after the chip to provide an additional action or status hint.
+
+**Note:** When a value is passed to **suffixImageIcon**, **allowClose** does not take effect. When both **suffixSymbol** and **suffixImageIcon** are configured, only **suffixSymbol** takes effect and **suffixImageIcon** does not.
+
+Default value: no suffix image icon displayed.
+
+If the value is **undefined**, the default value is used.
+
+**Type:** [SuffixImageIconOptions](arkts-arkui-arkui-advanced-chipgroup-suffiximageiconoptions-i.md)
+
+**Since:** 14
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ChipGroupItemOptions-suffixImageIcon?: SuffixImageIconOptions--><!--Device-ChipGroupItemOptions-suffixImageIcon?: SuffixImageIconOptions-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## suffixSymbol
+
+```TypeScript
+suffixSymbol?: ChipSymbolGlyphOptions
+```
+
+Suffix SymbolGlyph icon property. Set this parameter when a SymbolGlyph icon needs to be displayed after the chip to provide an additional action or status hint.
+
+**Note:** When a value is passed to **suffixSymbol**, **allowClose** does not take effect. **suffixSymbol** and **suffixImageIcon** are mutually exclusive. Only one of them can be configured for the same chip. If both are configured, only the one with the higher priority takes effect (priority: **suffixSymbol**
+> **suffixImageIcon**).
+
+Default value: no suffix SymbolGlyph icon displayed.
+
+If the value is **undefined**, the default value is used.
+
+**Type:** [ChipSymbolGlyphOptions](arkts-arkui-arkui-advanced-chip-chipsymbolglyphoptions-i.md)
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChipGroupItemOptions-suffixSymbol?: ChipSymbolGlyphOptions--><!--Device-ChipGroupItemOptions-suffixSymbol?: ChipSymbolGlyphOptions-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## suffixSymbolOptions
+
+```TypeScript
+suffixSymbolOptions?: ChipSuffixSymbolGlyphOptions
+```
+
+Suffix symbol icon property, which configures the interaction function and accessibility attributes of the suffix symbol icon. Set this parameter when a click event or accessibility support needs to be added to the suffix symbol icon.
+
+Default value: the default value of [ChipSuffixSymbolGlyphOptions](arkts-arkui-arkui-advanced-chip-chipsuffixsymbolglyphoptions-i.md) is used.
+
+If the value is **undefined**, the default value is used.
+
+**Type:** [ChipSuffixSymbolGlyphOptions](arkts-arkui-arkui-advanced-chip-chipsuffixsymbolglyphoptions-i.md)
+
+**Since:** 14
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ChipGroupItemOptions-suffixSymbolOptions?: ChipSuffixSymbolGlyphOptions--><!--Device-ChipGroupItemOptions-suffixSymbolOptions?: ChipSuffixSymbolGlyphOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,75 +315,6 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## suffixImageIcon
-
-```TypeScript
-suffixImageIcon?: SuffixImageIconOptions
-```
-
-Suffix image icon property. Set this parameter when an icon needs to be displayed after the chip to provide an additional action or status hint.
-
-**Note:** When a value is passed to **suffixImageIcon**, **allowClose** does not take effect. When both **suffixSymbol** and **suffixImageIcon** are configured, only **suffixSymbol** takes effect and **suffixImageIcon** does not.
-
-Default value: no suffix image icon displayed.
-
-If the value is **undefined**, the default value is used.
-
-**Type:** [SuffixImageIconOptions](arkts-arkui-arkui-advanced-chipgroup-suffiximageiconoptions-i.md)
-
-**Since:** 14
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## suffixSymbol
-
-```TypeScript
-suffixSymbol?: ChipSymbolGlyphOptions
-```
-
-Suffix SymbolGlyph icon property. Set this parameter when a SymbolGlyph icon needs to be displayed after the chip to provide an additional action or status hint.
-
-**Note:** When a value is passed to **suffixSymbol**, **allowClose** does not take effect. **suffixSymbol** and **suffixImageIcon** are mutually exclusive. Only one of them can be configured for the same chip. If both are configured, only the one with the higher priority takes effect (priority: **suffixSymbol**
-> **suffixImageIcon**).
-
-Default value: no suffix SymbolGlyph icon displayed.
-
-If the value is **undefined**, the default value is used.
-
-**Type:** [ChipSymbolGlyphOptions](arkts-arkui-arkui-advanced-chip-chipsymbolglyphoptions-i.md)
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## suffixSymbolOptions
-
-```TypeScript
-suffixSymbolOptions?: ChipSuffixSymbolGlyphOptions
-```
-
-Suffix symbol icon property, which configures the interaction function and accessibility attributes of the suffix symbol icon. Set this parameter when a click event or accessibility support needs to be added to the suffix symbol icon.
-
-Default value: the default value of [ChipSuffixSymbolGlyphOptions](arkts-arkui-arkui-advanced-chip-chipsuffixsymbolglyphoptions-i.md) is used.
-
-If the value is **undefined**, the default value is used.
-
-**Type:** [ChipSuffixSymbolGlyphOptions](arkts-arkui-arkui-advanced-chip-chipsuffixsymbolglyphoptions-i.md)
-
-**Since:** 14
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
+<!--Device-ChipGroupItemOptions-suffixIcon?: IconOptions--><!--Device-ChipGroupItemOptions-suffixIcon?: IconOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

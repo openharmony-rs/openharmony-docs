@@ -8,6 +8,8 @@ Enumerates the corner positions of a rounded rectangle.
 
 **Since:** 12
 
+<!--Device-drawing-enum CornerPos--><!--Device-drawing-enum CornerPos-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## TOP_LEFT_POS
@@ -19,6 +21,8 @@ TOP_LEFT_POS = 0
 Top left corner of the rounded rectangle.
 
 **Since:** 12
+
+<!--Device-CornerPos-TOP_LEFT_POS = 0--><!--Device-CornerPos-TOP_LEFT_POS = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -32,6 +36,8 @@ Top right corner of the rounded rectangle.
 
 **Since:** 12
 
+<!--Device-CornerPos-TOP_RIGHT_POS = 1--><!--Device-CornerPos-TOP_RIGHT_POS = 1-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## BOTTOM_RIGHT_POS
@@ -44,6 +50,8 @@ Bottom right corner of the rounded rectangle.
 
 **Since:** 12
 
+<!--Device-CornerPos-BOTTOM_RIGHT_POS = 2--><!--Device-CornerPos-BOTTOM_RIGHT_POS = 2-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## BOTTOM_LEFT_POS
@@ -55,5 +63,7 @@ BOTTOM_LEFT_POS = 3
 Bottom left corner of the rounded rectangle.
 
 **Since:** 12
+
+<!--Device-CornerPos-BOTTOM_LEFT_POS = 3--><!--Device-CornerPos-BOTTOM_LEFT_POS = 3-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

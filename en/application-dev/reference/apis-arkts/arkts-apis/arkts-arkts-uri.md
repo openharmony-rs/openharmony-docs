@@ -4,6 +4,8 @@ The uri module provides APIs for parsing URI strings that comply with the RFC398
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace uri--><!--Device-unnamed-declare namespace uri-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import

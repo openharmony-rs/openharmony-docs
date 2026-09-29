@@ -8,6 +8,8 @@ The AbilityManager module provides APIs for obtaining, adding, and modifying abi
 
 **Substitutes:** [abilityManager/abilityManager](arkts-ability-app-ability-abilitymanager.md)
 
+<!--Device-unnamed-declare namespace abilityManager--><!--Device-unnamed-declare namespace abilityManager-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

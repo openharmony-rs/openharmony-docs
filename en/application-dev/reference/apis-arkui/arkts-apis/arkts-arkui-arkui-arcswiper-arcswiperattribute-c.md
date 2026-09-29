@@ -12,6 +12,8 @@ In addition to the universal events, the following events are supported.
 
 **Since:** 18
 
+<!--Device-unnamed-declare class ArcSwiperAttribute extends CommonMethod<ArcSwiperAttribute>--><!--Device-unnamed-declare class ArcSwiperAttribute extends CommonMethod<ArcSwiperAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## Modules to Import
@@ -33,6 +35,8 @@ During finger-following swipes and post-release transition animations, the [Swip
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSwiperAttribute-customContentTransition(transition: Optional<SwiperContentAnimatedTransition>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-customContentTransition(transition: Optional<SwiperContentAnimatedTransition>): ArcSwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -60,6 +64,8 @@ Sets the sensitivity to the digital crown rotation.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcSwiperAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): ArcSwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
@@ -85,6 +91,8 @@ Sets whether to disable the swipe feature.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSwiperAttribute-disableSwipe(disabled: Optional<boolean>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-disableSwipe(disabled: Optional<boolean>): ArcSwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -112,6 +120,8 @@ Sets whether to disable the transition animation.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcSwiperAttribute-disableTransitionAnimation(disabled: Optional<boolean>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-disableTransitionAnimation(disabled: Optional<boolean>): ArcSwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
@@ -137,6 +147,8 @@ Sets the duration of the animation for child component switching.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSwiperAttribute-duration(duration: Optional<number>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-duration(duration: Optional<number>): ArcSwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -164,6 +176,8 @@ Sets the effect used when the scroll boundary is reached. For details about the 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcSwiperAttribute-effectMode(edgeEffect: Optional<EdgeEffect>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-effectMode(edgeEffect: Optional<EdgeEffect>): ArcSwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
@@ -190,6 +204,8 @@ Sets the index of the child component currently displayed in the container. If t
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcSwiperAttribute-index(index: Optional<number>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-index(index: Optional<number>): ArcSwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
@@ -215,6 +231,8 @@ Sets the style of the arc dot navigation indicator.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSwiperAttribute-indicator(style: Optional<ArcDotIndicator | boolean>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-indicator(style: Optional<ArcDotIndicator | boolean>): ArcSwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -244,6 +262,8 @@ This event is triggered when the page transition animation of the **ArcSwiper** 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcSwiperAttribute-onAnimationEnd(handler: Optional<AnimationEndHandler>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-onAnimationEnd(handler: Optional<AnimationEndHandler>): ArcSwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
@@ -269,6 +289,8 @@ Triggered when the page transition animation starts.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSwiperAttribute-onAnimationStart(handler: Optional<AnimationStartHandler>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-onAnimationStart(handler: Optional<AnimationStartHandler>): ArcSwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -298,6 +320,8 @@ When the **ArcSwiper** component is used together with [LazyForEach](../../../ui
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcSwiperAttribute-onChange(handler: Optional<IndexChangedHandler>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-onChange(handler: Optional<IndexChangedHandler>): ArcSwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
@@ -324,6 +348,8 @@ Triggered on a frame-by-frame basis when the page is turned by a swipe.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcSwiperAttribute-onGestureSwipe(handler: Optional<GestureSwipeHandler>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-onGestureSwipe(handler: Optional<GestureSwipeHandler>): ArcSwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
@@ -349,6 +375,8 @@ Sets whether vertical swiping is used.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSwiperAttribute-vertical(isVertical: Optional<boolean>): ArcSwiperAttribute--><!--Device-ArcSwiperAttribute-vertical(isVertical: Optional<boolean>): ArcSwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 

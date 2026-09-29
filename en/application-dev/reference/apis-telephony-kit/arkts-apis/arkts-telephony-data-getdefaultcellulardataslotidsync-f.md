@@ -16,6 +16,8 @@ Obtains the default SIM card used for mobile data synchronously.
 
 **Since:** 9
 
+<!--Device-data-function getDefaultCellularDataSlotIdSync(): int--><!--Device-data-function getDefaultCellularDataSlotIdSync(): int-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **Return value:**

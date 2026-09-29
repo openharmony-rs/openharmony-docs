@@ -8,6 +8,8 @@ Describes the setting status of the notification mode switch.
 
 **Since:** 20
 
+<!--Device-notificationManager-export interface NotificationSetting--><!--Device-notificationManager-export interface NotificationSetting-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Whether to enable the display of notification badges.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotificationSetting-badgeNumberEnabled?: boolean--><!--Device-NotificationSetting-badgeNumberEnabled?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## bannerEnabled
@@ -51,6 +55,8 @@ Whether to enable banner notification.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotificationSetting-bannerEnabled?: boolean--><!--Device-NotificationSetting-bannerEnabled?: boolean-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -71,6 +77,8 @@ Whether to enable lock screen notification.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotificationSetting-lockScreenEnabled?: boolean--><!--Device-NotificationSetting-lockScreenEnabled?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## notificationEnabled
@@ -90,6 +98,8 @@ Whether to enable the application notification.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotificationSetting-notificationEnabled?: boolean--><!--Device-NotificationSetting-notificationEnabled?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## soundEnabled
@@ -107,6 +117,8 @@ Whether to enable ringtone.
 
 **Since:** 20
 
+<!--Device-NotificationSetting-soundEnabled: boolean--><!--Device-NotificationSetting-soundEnabled: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## vibrationEnabled
@@ -123,5 +135,7 @@ Whether to enable vibration.
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-NotificationSetting-vibrationEnabled: boolean--><!--Device-NotificationSetting-vibrationEnabled: boolean-End-->
 
 **System capability:** SystemCapability.Notification.Notification

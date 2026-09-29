@@ -16,6 +16,8 @@ Obtains an extended attribute of a file or directory. This API uses a promise to
 
 **Since:** 12
 
+<!--Device-unnamed-declare function getxattr(path: string, key: string): Promise<string>--><!--Device-unnamed-declare function getxattr(path: string, key: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

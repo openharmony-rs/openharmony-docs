@@ -18,6 +18,8 @@ Creates a PixelMap object based on the ID of a Surface with transformation.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-function createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean): Promise<PixelMap>--><!--Device-image-function createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean): Promise<PixelMap>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**

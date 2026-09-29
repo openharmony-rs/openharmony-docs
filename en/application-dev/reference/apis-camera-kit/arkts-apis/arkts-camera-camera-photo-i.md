@@ -8,6 +8,8 @@ Photo defines a full-quality image object.
 
 **Since:** 11
 
+<!--Device-camera-interface Photo--><!--Device-camera-interface Photo-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Releases output resources. This API uses a promise to return the result.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Photo-release(): Promise<void>--><!--Device-Photo-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -56,6 +60,8 @@ Full-quality image.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Photo-main: image.Image--><!--Device-Photo-main: image.Image-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

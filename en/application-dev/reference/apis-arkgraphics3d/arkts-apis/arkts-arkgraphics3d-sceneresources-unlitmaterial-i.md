@@ -12,6 +12,8 @@ Material that is not affected by lighting. The shading value of the material is 
 
 **Since:** 23
 
+<!--Device-unnamed-export interface UnlitMaterial extends Material--><!--Device-unnamed-export interface UnlitMaterial extends Material-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## baseColor
@@ -25,5 +27,7 @@ Base color property, which defines the base color information of the material.
 **Type:** [MaterialProperty](arkts-arkgraphics3d-sceneresources-materialproperty-i.md)
 
 **Since:** 23
+
+<!--Device-UnlitMaterial-baseColor: MaterialProperty--><!--Device-UnlitMaterial-baseColor: MaterialProperty-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

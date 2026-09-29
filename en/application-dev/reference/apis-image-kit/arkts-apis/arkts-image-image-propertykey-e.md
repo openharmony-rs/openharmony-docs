@@ -13,6 +13,8 @@ see [modifyImageProperty](arkts-image-image-imagesource-i.md#modifyimageproperty
 
 **Since:** 7
 
+<!--Device-image-enum PropertyKey--><!--Device-image-enum PropertyKey-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## BITS_PER_SAMPLE
@@ -26,6 +28,8 @@ Number of bits per sample. For example, for RGB, which has three components, the
 **Read/Write capability**: readable and writable.
 
 **Since:** 7
+
+<!--Device-PropertyKey-BITS_PER_SAMPLE = 'BitsPerSample'--><!--Device-PropertyKey-BITS_PER_SAMPLE = 'BitsPerSample'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -61,6 +65,8 @@ For details about the image rotation angle, see [Obtaining the Rotation Angle of
 
 **Since:** 7
 
+<!--Device-PropertyKey-ORIENTATION = 'Orientation'--><!--Device-PropertyKey-ORIENTATION = 'Orientation'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## IMAGE_LENGTH
@@ -74,6 +80,8 @@ Image length.
 **Read/Write capability**: readable and writable.
 
 **Since:** 7
+
+<!--Device-PropertyKey-IMAGE_LENGTH = 'ImageLength'--><!--Device-PropertyKey-IMAGE_LENGTH = 'ImageLength'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -89,6 +97,8 @@ Image width.
 
 **Since:** 7
 
+<!--Device-PropertyKey-IMAGE_WIDTH = 'ImageWidth'--><!--Device-PropertyKey-IMAGE_WIDTH = 'ImageWidth'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_LATITUDE
@@ -103,6 +113,8 @@ Image latitude. The value must be in the format of degree,minute,second, for exa
 
 **Since:** 7
 
+<!--Device-PropertyKey-GPS_LATITUDE = 'GPSLatitude'--><!--Device-PropertyKey-GPS_LATITUDE = 'GPSLatitude'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_LONGITUDE
@@ -116,6 +128,8 @@ Image longitude. The value must be in the format of degree,minute,second, for ex
 **Read/Write capability**: readable and writable.
 
 **Since:** 7
+
+<!--Device-PropertyKey-GPS_LONGITUDE = 'GPSLongitude'--><!--Device-PropertyKey-GPS_LONGITUDE = 'GPSLongitude'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -135,6 +149,8 @@ Latitude reference (Northern or Southern Hemisphere) of the image capture locati
 
 **Since:** 7
 
+<!--Device-PropertyKey-GPS_LATITUDE_REF = 'GPSLatitudeRef'--><!--Device-PropertyKey-GPS_LATITUDE_REF = 'GPSLatitudeRef'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_LONGITUDE_REF
@@ -153,6 +169,8 @@ Longitude reference (Eastern or Western Hemisphere) of the image capture locatio
 
 **Since:** 7
 
+<!--Device-PropertyKey-GPS_LONGITUDE_REF = 'GPSLongitudeRef'--><!--Device-PropertyKey-GPS_LONGITUDE_REF = 'GPSLongitudeRef'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## DATE_TIME_ORIGINAL
@@ -167,6 +185,8 @@ Time when the original image data was generated, for example, 2022:09:06 15:48:0
 
 **Since:** 9
 
+<!--Device-PropertyKey-DATE_TIME_ORIGINAL = 'DateTimeOriginal'--><!--Device-PropertyKey-DATE_TIME_ORIGINAL = 'DateTimeOriginal'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## EXPOSURE_TIME
@@ -180,6 +200,8 @@ Exposure time, for example, 1/33 seconds.
 **Read/Write capability**: readable and writable.
 
 **Since:** 9
+
+<!--Device-PropertyKey-EXPOSURE_TIME = 'ExposureTime'--><!--Device-PropertyKey-EXPOSURE_TIME = 'ExposureTime'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -197,6 +219,8 @@ Type of the scene, for example, portrait, scenery, motion, and night.
 
 **Since:** 9
 
+<!--Device-PropertyKey-SCENE_TYPE = 'SceneType'--><!--Device-PropertyKey-SCENE_TYPE = 'SceneType'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## ISO_SPEED_RATINGS
@@ -210,6 +234,8 @@ ISO sensitivity or ISO speed, for example, 400.
 **Read/Write capability**: readable and writable.
 
 **Since:** 9
+
+<!--Device-PropertyKey-ISO_SPEED_RATINGS = 'ISOSpeedRatings'--><!--Device-PropertyKey-ISO_SPEED_RATINGS = 'ISOSpeedRatings'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -225,6 +251,8 @@ F number, for example, f/1.8.
 
 **Since:** 9
 
+<!--Device-PropertyKey-F_NUMBER = 'FNumber'--><!--Device-PropertyKey-F_NUMBER = 'FNumber'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## DATE_TIME
@@ -238,6 +266,8 @@ Date and time of image creation.
 **Read/Write capability**: readable and writable.
 
 **Since:** 10
+
+<!--Device-PropertyKey-DATE_TIME = 'DateTime'--><!--Device-PropertyKey-DATE_TIME = 'DateTime'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -253,6 +283,8 @@ GPS timestamp.
 
 **Since:** 10
 
+<!--Device-PropertyKey-GPS_TIME_STAMP = 'GPSTimeStamp'--><!--Device-PropertyKey-GPS_TIME_STAMP = 'GPSTimeStamp'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_DATE_STAMP
@@ -266,6 +298,8 @@ GPS date stamp.
 **Read/Write capability**: readable and writable.
 
 **Since:** 10
+
+<!--Device-PropertyKey-GPS_DATE_STAMP = 'GPSDateStamp'--><!--Device-PropertyKey-GPS_DATE_STAMP = 'GPSDateStamp'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -281,6 +315,8 @@ Image description.
 
 **Since:** 10
 
+<!--Device-PropertyKey-IMAGE_DESCRIPTION = 'ImageDescription'--><!--Device-PropertyKey-IMAGE_DESCRIPTION = 'ImageDescription'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## MAKE
@@ -294,6 +330,8 @@ Manufacturer.
 **Read/Write capability**: readable and writable.
 
 **Since:** 10
+
+<!--Device-PropertyKey-MAKE = 'Make'--><!--Device-PropertyKey-MAKE = 'Make'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -309,6 +347,8 @@ Device model.
 
 **Since:** 10
 
+<!--Device-PropertyKey-MODEL = 'Model'--><!--Device-PropertyKey-MODEL = 'Model'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## PHOTO_MODE
@@ -322,6 +362,8 @@ Photographing mode.
 **Read/Write capability**: readable and writable.
 
 **Since:** 10
+
+<!--Device-PropertyKey-PHOTO_MODE = 'PhotoMode'--><!--Device-PropertyKey-PHOTO_MODE = 'PhotoMode'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -337,6 +379,8 @@ Sensitivity type.
 
 **Since:** 10
 
+<!--Device-PropertyKey-SENSITIVITY_TYPE = 'SensitivityType'--><!--Device-PropertyKey-SENSITIVITY_TYPE = 'SensitivityType'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## STANDARD_OUTPUT_SENSITIVITY
@@ -350,6 +394,8 @@ Standard output sensitivity.
 **Read/Write capability**: readable and writable.
 
 **Since:** 10
+
+<!--Device-PropertyKey-STANDARD_OUTPUT_SENSITIVITY = 'StandardOutputSensitivity'--><!--Device-PropertyKey-STANDARD_OUTPUT_SENSITIVITY = 'StandardOutputSensitivity'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -365,6 +411,8 @@ Recommended exposure index.
 
 **Since:** 10
 
+<!--Device-PropertyKey-RECOMMENDED_EXPOSURE_INDEX = 'RecommendedExposureIndex'--><!--Device-PropertyKey-RECOMMENDED_EXPOSURE_INDEX = 'RecommendedExposureIndex'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## ISO_SPEED
@@ -378,6 +426,8 @@ ISO speed.
 **Read/Write capability**: readable and writable.
 
 **Since:** 10
+
+<!--Device-PropertyKey-ISO_SPEED = 'ISOSpeedRatings'--><!--Device-PropertyKey-ISO_SPEED = 'ISOSpeedRatings'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -393,6 +443,8 @@ Lens aperture. An example in the correct format is 4/1.
 
 **Since:** 10
 
+<!--Device-PropertyKey-APERTURE_VALUE = 'ApertureValue'--><!--Device-PropertyKey-APERTURE_VALUE = 'ApertureValue'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## EXPOSURE_BIAS_VALUE
@@ -406,6 +458,8 @@ Exposure bias.
 **Read/Write capability**: readable and writable.
 
 **Since:** 10
+
+<!--Device-PropertyKey-EXPOSURE_BIAS_VALUE = 'ExposureBiasValue'--><!--Device-PropertyKey-EXPOSURE_BIAS_VALUE = 'ExposureBiasValue'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -421,6 +475,8 @@ Metering mode.
 
 **Since:** 10
 
+<!--Device-PropertyKey-METERING_MODE = 'MeteringMode'--><!--Device-PropertyKey-METERING_MODE = 'MeteringMode'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## LIGHT_SOURCE
@@ -434,6 +490,8 @@ Light source. An example value is **Fluorescent**.
 **Read/Write capability**: readable and writable.
 
 **Since:** 10
+
+<!--Device-PropertyKey-LIGHT_SOURCE = 'LightSource'--><!--Device-PropertyKey-LIGHT_SOURCE = 'LightSource'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -449,6 +507,8 @@ Flash status.
 
 **Since:** 10
 
+<!--Device-PropertyKey-FLASH = 'Flash'--><!--Device-PropertyKey-FLASH = 'Flash'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## FOCAL_LENGTH
@@ -462,6 +522,8 @@ Focal length of the lens.
 **Read/Write capability**: readable and writable.
 
 **Since:** 10
+
+<!--Device-PropertyKey-FOCAL_LENGTH = 'FocalLength'--><!--Device-PropertyKey-FOCAL_LENGTH = 'FocalLength'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -477,6 +539,8 @@ User comments.
 
 **Since:** 10
 
+<!--Device-PropertyKey-USER_COMMENT = 'UserComment'--><!--Device-PropertyKey-USER_COMMENT = 'UserComment'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## PIXEL_X_DIMENSION
@@ -491,6 +555,8 @@ Pixel X dimension.
 
 **Since:** 10
 
+<!--Device-PropertyKey-PIXEL_X_DIMENSION = 'PixelXDimension'--><!--Device-PropertyKey-PIXEL_X_DIMENSION = 'PixelXDimension'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## PIXEL_Y_DIMENSION
@@ -504,6 +570,8 @@ Pixel Y dimension.
 **Read/Write capability**: readable and writable.
 
 **Since:** 10
+
+<!--Device-PropertyKey-PIXEL_Y_DIMENSION = 'PixelYDimension'--><!--Device-PropertyKey-PIXEL_Y_DIMENSION = 'PixelYDimension'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -523,6 +591,8 @@ White balance.
 
 **Since:** 10
 
+<!--Device-PropertyKey-WHITE_BALANCE = 'WhiteBalance'--><!--Device-PropertyKey-WHITE_BALANCE = 'WhiteBalance'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## FOCAL_LENGTH_IN_35_MM_FILM
@@ -536,6 +606,8 @@ Focal length in 35mm film.
 **Read/Write capability**: readable and writable.
 
 **Since:** 10
+
+<!--Device-PropertyKey-FOCAL_LENGTH_IN_35_MM_FILM = 'FocalLengthIn35mmFilm'--><!--Device-PropertyKey-FOCAL_LENGTH_IN_35_MM_FILM = 'FocalLengthIn35mmFilm'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -551,6 +623,8 @@ Capture mode.
 
 **Since:** 10
 
+<!--Device-PropertyKey-CAPTURE_MODE = 'HwMnoteCaptureMode'--><!--Device-PropertyKey-CAPTURE_MODE = 'HwMnoteCaptureMode'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## PHYSICAL_APERTURE
@@ -564,6 +638,8 @@ Physical aperture.
 **Read/Write capability**: read-only
 
 **Since:** 10
+
+<!--Device-PropertyKey-PHYSICAL_APERTURE = 'HwMnotePhysicalAperture'--><!--Device-PropertyKey-PHYSICAL_APERTURE = 'HwMnotePhysicalAperture'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -579,6 +655,8 @@ Roll angle.
 
 **Since:** 11
 
+<!--Device-PropertyKey-ROLL_ANGLE = 'HwMnoteRollAngle'--><!--Device-PropertyKey-ROLL_ANGLE = 'HwMnoteRollAngle'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## PITCH_ANGLE
@@ -592,6 +670,8 @@ Pitch angle.
 **Read/Write capability**: read-only
 
 **Since:** 11
+
+<!--Device-PropertyKey-PITCH_ANGLE = 'HwMnotePitchAngle'--><!--Device-PropertyKey-PITCH_ANGLE = 'HwMnotePitchAngle'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -607,6 +687,8 @@ Photographing scene: food.
 
 **Since:** 11
 
+<!--Device-PropertyKey-SCENE_FOOD_CONF = 'HwMnoteSceneFoodConf'--><!--Device-PropertyKey-SCENE_FOOD_CONF = 'HwMnoteSceneFoodConf'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SCENE_STAGE_CONF
@@ -620,6 +702,8 @@ Photographing scene: stage.
 **Read/Write capability**: read-only
 
 **Since:** 11
+
+<!--Device-PropertyKey-SCENE_STAGE_CONF = 'HwMnoteSceneStageConf'--><!--Device-PropertyKey-SCENE_STAGE_CONF = 'HwMnoteSceneStageConf'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -635,6 +719,8 @@ Photographing scene: blue sky.
 
 **Since:** 11
 
+<!--Device-PropertyKey-SCENE_BLUE_SKY_CONF = 'HwMnoteSceneBlueSkyConf'--><!--Device-PropertyKey-SCENE_BLUE_SKY_CONF = 'HwMnoteSceneBlueSkyConf'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SCENE_GREEN_PLANT_CONF
@@ -648,6 +734,8 @@ Photographing scene: green plant.
 **Read/Write capability**: read-only
 
 **Since:** 11
+
+<!--Device-PropertyKey-SCENE_GREEN_PLANT_CONF = 'HwMnoteSceneGreenPlantConf'--><!--Device-PropertyKey-SCENE_GREEN_PLANT_CONF = 'HwMnoteSceneGreenPlantConf'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -663,6 +751,8 @@ Photographing scene: beach.
 
 **Since:** 11
 
+<!--Device-PropertyKey-SCENE_BEACH_CONF = 'HwMnoteSceneBeachConf'--><!--Device-PropertyKey-SCENE_BEACH_CONF = 'HwMnoteSceneBeachConf'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SCENE_SNOW_CONF
@@ -676,6 +766,8 @@ Photographing scene: snow.
 **Read/Write capability**: read-only
 
 **Since:** 11
+
+<!--Device-PropertyKey-SCENE_SNOW_CONF = 'HwMnoteSceneSnowConf'--><!--Device-PropertyKey-SCENE_SNOW_CONF = 'HwMnoteSceneSnowConf'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -691,6 +783,8 @@ Photographing scene: sunset.
 
 **Since:** 11
 
+<!--Device-PropertyKey-SCENE_SUNSET_CONF = 'HwMnoteSceneSunsetConf'--><!--Device-PropertyKey-SCENE_SUNSET_CONF = 'HwMnoteSceneSunsetConf'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SCENE_FLOWERS_CONF
@@ -704,6 +798,8 @@ Photographing scene: flowers.
 **Read/Write capability**: read-only
 
 **Since:** 11
+
+<!--Device-PropertyKey-SCENE_FLOWERS_CONF = 'HwMnoteSceneFlowersConf'--><!--Device-PropertyKey-SCENE_FLOWERS_CONF = 'HwMnoteSceneFlowersConf'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -719,6 +815,8 @@ Photographing scene: night.
 
 **Since:** 11
 
+<!--Device-PropertyKey-SCENE_NIGHT_CONF = 'HwMnoteSceneNightConf'--><!--Device-PropertyKey-SCENE_NIGHT_CONF = 'HwMnoteSceneNightConf'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SCENE_TEXT_CONF
@@ -732,6 +830,8 @@ Photographing scene: text.
 **Read/Write capability**: read-only
 
 **Since:** 11
+
+<!--Device-PropertyKey-SCENE_TEXT_CONF = 'HwMnoteSceneTextConf'--><!--Device-PropertyKey-SCENE_TEXT_CONF = 'HwMnoteSceneTextConf'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -747,6 +847,8 @@ Number of faces.
 
 **Since:** 11
 
+<!--Device-PropertyKey-FACE_COUNT = 'HwMnoteFaceCount'--><!--Device-PropertyKey-FACE_COUNT = 'HwMnoteFaceCount'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## FOCUS_MODE
@@ -760,6 +862,8 @@ Focus mode.
 **Read/Write capability**: read-only
 
 **Since:** 11
+
+<!--Device-PropertyKey-FOCUS_MODE = 'HwMnoteFocusMode'--><!--Device-PropertyKey-FOCUS_MODE = 'HwMnoteFocusMode'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -780,6 +884,8 @@ Compression scheme used on the image data.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-COMPRESSION = 'Compression'--><!--Device-PropertyKey-COMPRESSION = 'Compression'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -809,6 +915,8 @@ Color space of the image data, for example, RGB or YCbCr.
 
 **Since:** 12
 
+<!--Device-PropertyKey-PHOTOMETRIC_INTERPRETATION = 'PhotometricInterpretation'--><!--Device-PropertyKey-PHOTOMETRIC_INTERPRETATION = 'PhotometricInterpretation'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## STRIP_OFFSETS
@@ -822,6 +930,8 @@ Byte offset of each strip.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-STRIP_OFFSETS = 'StripOffsets'--><!--Device-PropertyKey-STRIP_OFFSETS = 'StripOffsets'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -837,6 +947,8 @@ Number of components per pixel. The value is **3** for RGB and YCbCr images. The
 
 **Since:** 12
 
+<!--Device-PropertyKey-SAMPLES_PER_PIXEL = 'SamplesPerPixel'--><!--Device-PropertyKey-SAMPLES_PER_PIXEL = 'SamplesPerPixel'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## ROWS_PER_STRIP
@@ -850,6 +962,8 @@ Number of rows per strip.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-ROWS_PER_STRIP = 'RowsPerStrip'--><!--Device-PropertyKey-ROWS_PER_STRIP = 'RowsPerStrip'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -865,6 +979,8 @@ Number of bytes in each strip after compression.
 
 **Since:** 12
 
+<!--Device-PropertyKey-STRIP_BYTE_COUNTS = 'StripByteCounts'--><!--Device-PropertyKey-STRIP_BYTE_COUNTS = 'StripByteCounts'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## X_RESOLUTION
@@ -879,6 +995,8 @@ Number of pixels per ResolutionUnit in the image width (X) direction.
 
 **Since:** 12
 
+<!--Device-PropertyKey-X_RESOLUTION = 'XResolution'--><!--Device-PropertyKey-X_RESOLUTION = 'XResolution'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Y_RESOLUTION
@@ -892,6 +1010,8 @@ Number of pixels per ResolutionUnit in the image height (Y) direction.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-Y_RESOLUTION = 'YResolution'--><!--Device-PropertyKey-Y_RESOLUTION = 'YResolution'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -911,6 +1031,8 @@ Storage format of components of each pixel, which can be chunky or planar.
 
 **Since:** 12
 
+<!--Device-PropertyKey-PLANAR_CONFIGURATION = 'PlanarConfiguration'--><!--Device-PropertyKey-PLANAR_CONFIGURATION = 'PlanarConfiguration'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## RESOLUTION_UNIT
@@ -929,6 +1051,8 @@ Unit of measurement for XResolution and YResolution, in inches or centimeters.
 
 **Since:** 12
 
+<!--Device-PropertyKey-RESOLUTION_UNIT = 'ResolutionUnit'--><!--Device-PropertyKey-RESOLUTION_UNIT = 'ResolutionUnit'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## TRANSFER_FUNCTION
@@ -942,6 +1066,8 @@ Transfer function for the image, which is usually used for color correction.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-TRANSFER_FUNCTION = 'TransferFunction'--><!--Device-PropertyKey-TRANSFER_FUNCTION = 'TransferFunction'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -957,6 +1083,8 @@ Name and version number of the software used to create the image.
 
 **Since:** 12
 
+<!--Device-PropertyKey-SOFTWARE = 'Software'--><!--Device-PropertyKey-SOFTWARE = 'Software'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## ARTIST
@@ -970,6 +1098,8 @@ Person who created the image.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-ARTIST = 'Artist'--><!--Device-PropertyKey-ARTIST = 'Artist'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -985,6 +1115,8 @@ Chromaticity coordinates of the white point, the reference for "white", in the c
 
 **Since:** 12
 
+<!--Device-PropertyKey-WHITE_POINT = 'WhitePoint'--><!--Device-PropertyKey-WHITE_POINT = 'WhitePoint'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## PRIMARY_CHROMATICITIES
@@ -998,6 +1130,8 @@ Chromaticities of the primaries of the image.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-PRIMARY_CHROMATICITIES = 'PrimaryChromaticities'--><!--Device-PropertyKey-PRIMARY_CHROMATICITIES = 'PrimaryChromaticities'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1013,6 +1147,8 @@ Coefficients for the conversion matrix that transforms image data from RGB to YC
 
 **Since:** 12
 
+<!--Device-PropertyKey-YCBCR_COEFFICIENTS = 'YCbCrCoefficients'--><!--Device-PropertyKey-YCBCR_COEFFICIENTS = 'YCbCrCoefficients'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## YCBCR_SUB_SAMPLING
@@ -1026,6 +1162,8 @@ Subsampling factors used for the chrominance components of a YCbCr image.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-YCBCR_SUB_SAMPLING = 'YCbCrSubSampling'--><!--Device-PropertyKey-YCBCR_SUB_SAMPLING = 'YCbCrSubSampling'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1045,6 +1183,8 @@ Positioning of subsampled chrominance components relative to luminance samples.
 
 **Since:** 12
 
+<!--Device-PropertyKey-YCBCR_POSITIONING = 'YCbCrPositioning'--><!--Device-PropertyKey-YCBCR_POSITIONING = 'YCbCrPositioning'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## REFERENCE_BLACK_WHITE
@@ -1058,6 +1198,8 @@ Reference values for black and white points.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-REFERENCE_BLACK_WHITE = 'ReferenceBlackWhite'--><!--Device-PropertyKey-REFERENCE_BLACK_WHITE = 'ReferenceBlackWhite'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1073,6 +1215,8 @@ Copyright notice of the image.
 
 **Since:** 12
 
+<!--Device-PropertyKey-COPYRIGHT = 'Copyright'--><!--Device-PropertyKey-COPYRIGHT = 'Copyright'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## JPEG_INTERCHANGE_FORMAT
@@ -1087,6 +1231,8 @@ Offset of the SOI marker of a JPEG interchange format bitstream.
 
 **Since:** 12
 
+<!--Device-PropertyKey-JPEG_INTERCHANGE_FORMAT = 'JPEGInterchangeFormat'--><!--Device-PropertyKey-JPEG_INTERCHANGE_FORMAT = 'JPEGInterchangeFormat'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## JPEG_INTERCHANGE_FORMAT_LENGTH
@@ -1100,6 +1246,8 @@ Number of bytes of the JPEG stream.
 **Read/Write capability**: read-only
 
 **Since:** 12
+
+<!--Device-PropertyKey-JPEG_INTERCHANGE_FORMAT_LENGTH = 'JPEGInterchangeFormatLength'--><!--Device-PropertyKey-JPEG_INTERCHANGE_FORMAT_LENGTH = 'JPEGInterchangeFormatLength'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1133,6 +1281,8 @@ Class of the program used by the camera to set exposure when the image was captu
 
 **Since:** 12
 
+<!--Device-PropertyKey-EXPOSURE_PROGRAM = 'ExposureProgram'--><!--Device-PropertyKey-EXPOSURE_PROGRAM = 'ExposureProgram'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SPECTRAL_SENSITIVITY
@@ -1146,6 +1296,8 @@ Spectral sensitivity of each channel of the camera.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-SPECTRAL_SENSITIVITY = 'SpectralSensitivity'--><!--Device-PropertyKey-SPECTRAL_SENSITIVITY = 'SpectralSensitivity'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1161,6 +1313,8 @@ Opto-Electric Conversion Function (OECF) specified in ISO 14524.
 
 **Since:** 12
 
+<!--Device-PropertyKey-OECF = 'OECF'--><!--Device-PropertyKey-OECF = 'OECF'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## EXIF_VERSION
@@ -1174,6 +1328,8 @@ Version of the supported Exif standard.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-EXIF_VERSION = 'ExifVersion'--><!--Device-PropertyKey-EXIF_VERSION = 'ExifVersion'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1189,6 +1345,8 @@ Date and time when the image was stored as digital data, in the format of YYYY:M
 
 **Since:** 12
 
+<!--Device-PropertyKey-DATE_TIME_DIGITIZED = 'DateTimeDigitized'--><!--Device-PropertyKey-DATE_TIME_DIGITIZED = 'DateTimeDigitized'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## COMPONENTS_CONFIGURATION
@@ -1202,6 +1360,8 @@ Specific information about compressed data.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-COMPONENTS_CONFIGURATION = 'ComponentsConfiguration'--><!--Device-PropertyKey-COMPONENTS_CONFIGURATION = 'ComponentsConfiguration'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1217,6 +1377,8 @@ Shutter speed, expressed in Additive System of Photographic Exposure (APEX) valu
 
 **Since:** 12
 
+<!--Device-PropertyKey-SHUTTER_SPEED = 'ShutterSpeedValue'--><!--Device-PropertyKey-SHUTTER_SPEED = 'ShutterSpeedValue'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## BRIGHTNESS_VALUE
@@ -1230,6 +1392,8 @@ Value of brightness, expressed in APEX values.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-BRIGHTNESS_VALUE = 'BrightnessValue'--><!--Device-PropertyKey-BRIGHTNESS_VALUE = 'BrightnessValue'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1245,6 +1409,8 @@ Smallest F number of the lens.
 
 **Since:** 12
 
+<!--Device-PropertyKey-MAX_APERTURE_VALUE = 'MaxApertureValue'--><!--Device-PropertyKey-MAX_APERTURE_VALUE = 'MaxApertureValue'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SUBJECT_DISTANCE
@@ -1259,6 +1425,8 @@ Distance to the subject, in meters.
 
 **Since:** 12
 
+<!--Device-PropertyKey-SUBJECT_DISTANCE = 'SubjectDistance'--><!--Device-PropertyKey-SUBJECT_DISTANCE = 'SubjectDistance'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SUBJECT_AREA
@@ -1272,6 +1440,8 @@ Location and area of the main subject in the entire scene.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-SUBJECT_AREA = 'SubjectArea'--><!--Device-PropertyKey-SUBJECT_AREA = 'SubjectArea'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1289,6 +1459,8 @@ This field is read-only in API versions 12 to 19 and is readable and writable in
 
 **Since:** 12
 
+<!--Device-PropertyKey-MAKER_NOTE = 'MakerNote'--><!--Device-PropertyKey-MAKER_NOTE = 'MakerNote'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SUBSEC_TIME
@@ -1302,6 +1474,8 @@ Tag used to record fractions of seconds for the **DateTime** tag.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-SUBSEC_TIME = 'SubsecTime'--><!--Device-PropertyKey-SUBSEC_TIME = 'SubsecTime'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1317,6 +1491,8 @@ Tag used to record fractions of seconds for the **DateTimeOriginal** tag.
 
 **Since:** 12
 
+<!--Device-PropertyKey-SUBSEC_TIME_ORIGINAL = 'SubsecTimeOriginal'--><!--Device-PropertyKey-SUBSEC_TIME_ORIGINAL = 'SubsecTimeOriginal'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SUBSEC_TIME_DIGITIZED
@@ -1331,6 +1507,8 @@ Tag used to record fractions of seconds for the **DateTimeDigitized** tag.
 
 **Since:** 12
 
+<!--Device-PropertyKey-SUBSEC_TIME_DIGITIZED = 'SubsecTimeDigitized'--><!--Device-PropertyKey-SUBSEC_TIME_DIGITIZED = 'SubsecTimeDigitized'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## FLASHPIX_VERSION
@@ -1344,6 +1522,8 @@ FlashPix format version supported by an FPXR file. It is used to enhance device 
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-FLASHPIX_VERSION = 'FlashpixVersion'--><!--Device-PropertyKey-FLASHPIX_VERSION = 'FlashpixVersion'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1365,6 +1545,8 @@ Color space information, which is usually recorded as a color space specifier.
 
 **Since:** 12
 
+<!--Device-PropertyKey-COLOR_SPACE = 'ColorSpace'--><!--Device-PropertyKey-COLOR_SPACE = 'ColorSpace'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## RELATED_SOUND_FILE
@@ -1378,6 +1560,8 @@ Name of an audio file related to the image data.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-RELATED_SOUND_FILE = 'RelatedSoundFile'--><!--Device-PropertyKey-RELATED_SOUND_FILE = 'RelatedSoundFile'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1393,6 +1577,8 @@ Strobe energy at the time the image was captured, in Beam Candle Power Seconds (
 
 **Since:** 12
 
+<!--Device-PropertyKey-FLASH_ENERGY = 'FlashEnergy'--><!--Device-PropertyKey-FLASH_ENERGY = 'FlashEnergy'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SPATIAL_FREQUENCY_RESPONSE
@@ -1406,6 +1592,8 @@ Spatial frequency table of the camera or input device.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-SPATIAL_FREQUENCY_RESPONSE = 'SpatialFrequencyResponse'--><!--Device-PropertyKey-SPATIAL_FREQUENCY_RESPONSE = 'SpatialFrequencyResponse'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1421,6 +1609,8 @@ Number of pixels in the image width (X) direction per FocalPlaneResolutionUnit.
 
 **Since:** 12
 
+<!--Device-PropertyKey-FOCAL_PLANE_X_RESOLUTION = 'FocalPlaneXResolution'--><!--Device-PropertyKey-FOCAL_PLANE_X_RESOLUTION = 'FocalPlaneXResolution'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## FOCAL_PLANE_Y_RESOLUTION
@@ -1434,6 +1624,8 @@ Number of pixels in the image height (Y) direction per FocalPlaneResolutionUnit.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-FOCAL_PLANE_Y_RESOLUTION = 'FocalPlaneYResolution'--><!--Device-PropertyKey-FOCAL_PLANE_Y_RESOLUTION = 'FocalPlaneYResolution'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1453,6 +1645,8 @@ Unit for measuring FocalPlaneXResolution and FocalPlaneYResolution.
 
 **Since:** 12
 
+<!--Device-PropertyKey-FOCAL_PLANE_RESOLUTION_UNIT = 'FocalPlaneResolutionUnit'--><!--Device-PropertyKey-FOCAL_PLANE_RESOLUTION_UNIT = 'FocalPlaneResolutionUnit'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SUBJECT_LOCATION
@@ -1466,6 +1660,8 @@ Location of the main subject relative to the left edge.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-SUBJECT_LOCATION = 'SubjectLocation'--><!--Device-PropertyKey-SUBJECT_LOCATION = 'SubjectLocation'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1481,6 +1677,8 @@ Exposure index selected at the time the image is captured.
 
 **Since:** 12
 
+<!--Device-PropertyKey-EXPOSURE_INDEX = 'ExposureIndex'--><!--Device-PropertyKey-EXPOSURE_INDEX = 'ExposureIndex'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SENSING_METHOD
@@ -1494,6 +1692,8 @@ Type of the image sensor on the camera.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-SENSING_METHOD = 'SensingMethod'--><!--Device-PropertyKey-SENSING_METHOD = 'SensingMethod'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1509,6 +1709,8 @@ Image source.
 
 **Since:** 12
 
+<!--Device-PropertyKey-FILE_SOURCE = 'FileSource'--><!--Device-PropertyKey-FILE_SOURCE = 'FileSource'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## CFA_PATTERN
@@ -1522,6 +1724,8 @@ Color Filter Array (CFA) geometric pattern of the image sensor.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-CFA_PATTERN = 'CFAPattern'--><!--Device-PropertyKey-CFA_PATTERN = 'CFAPattern'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1540,6 +1744,8 @@ Special processing on image data.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-CUSTOM_RENDERED = 'CustomRendered'--><!--Device-PropertyKey-CUSTOM_RENDERED = 'CustomRendered'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1561,6 +1767,8 @@ Exposure mode set when the image was captured.
 
 **Since:** 12
 
+<!--Device-PropertyKey-EXPOSURE_MODE = 'ExposureMode'--><!--Device-PropertyKey-EXPOSURE_MODE = 'ExposureMode'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## DIGITAL_ZOOM_RATIO
@@ -1574,6 +1782,8 @@ Digital zoom ratio when the image was captured.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-DIGITAL_ZOOM_RATIO = 'DigitalZoomRatio'--><!--Device-PropertyKey-DIGITAL_ZOOM_RATIO = 'DigitalZoomRatio'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1596,6 +1806,8 @@ Type of the scene that was captured.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-SCENE_CAPTURE_TYPE = 'SceneCaptureType'--><!--Device-PropertyKey-SCENE_CAPTURE_TYPE = 'SceneCaptureType'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1621,6 +1833,8 @@ Degree of overall image gain adjustment.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GAIN_CONTROL = 'GainControl'--><!--Device-PropertyKey-GAIN_CONTROL = 'GainControl'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## CONTRAST
@@ -1640,6 +1854,8 @@ Direction of contrast processing used by the camera.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-CONTRAST = 'Contrast'--><!--Device-PropertyKey-CONTRAST = 'Contrast'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1661,6 +1877,8 @@ Direction of saturation processing used by the camera.
 
 **Since:** 12
 
+<!--Device-PropertyKey-SATURATION = 'Saturation'--><!--Device-PropertyKey-SATURATION = 'Saturation'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SHARPNESS
@@ -1681,6 +1899,8 @@ Direction of sharpness processing used by the camera.
 
 **Since:** 12
 
+<!--Device-PropertyKey-SHARPNESS = 'Sharpness'--><!--Device-PropertyKey-SHARPNESS = 'Sharpness'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## DEVICE_SETTING_DESCRIPTION
@@ -1694,6 +1914,8 @@ Information about the photographing conditions of a specific camera model.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-DEVICE_SETTING_DESCRIPTION = 'DeviceSettingDescription'--><!--Device-PropertyKey-DEVICE_SETTING_DESCRIPTION = 'DeviceSettingDescription'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1717,6 +1939,8 @@ Distance to the subject.
 
 **Since:** 12
 
+<!--Device-PropertyKey-SUBJECT_DISTANCE_RANGE = 'SubjectDistanceRange'--><!--Device-PropertyKey-SUBJECT_DISTANCE_RANGE = 'SubjectDistanceRange'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## IMAGE_UNIQUE_ID
@@ -1731,6 +1955,8 @@ Unique identifier assigned to each image.
 
 **Since:** 12
 
+<!--Device-PropertyKey-IMAGE_UNIQUE_ID = 'ImageUniqueID'--><!--Device-PropertyKey-IMAGE_UNIQUE_ID = 'ImageUniqueID'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_VERSION_ID
@@ -1744,6 +1970,8 @@ GPS information version.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GPS_VERSION_ID = 'GPSVersionID'--><!--Device-PropertyKey-GPS_VERSION_ID = 'GPSVersionID'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1763,6 +1991,8 @@ Whether the latitude is north or south latitude.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_ALTITUDE_REF = 'GPSAltitudeRef'--><!--Device-PropertyKey-GPS_ALTITUDE_REF = 'GPSAltitudeRef'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_ALTITUDE
@@ -1777,6 +2007,8 @@ Altitude based on the reference in GPSAltitudeRef.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_ALTITUDE = 'GPSAltitude'--><!--Device-PropertyKey-GPS_ALTITUDE = 'GPSAltitude'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_SATELLITES
@@ -1790,6 +2022,8 @@ GPS satellites used for measurement.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GPS_SATELLITES = 'GPSSatellites'--><!--Device-PropertyKey-GPS_SATELLITES = 'GPSSatellites'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1809,6 +2043,8 @@ Status of the GPS receiver when the image was recorded.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_STATUS = 'GPSStatus'--><!--Device-PropertyKey-GPS_STATUS = 'GPSStatus'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_MEASURE_MODE
@@ -1827,6 +2063,8 @@ GPS measurement pmode. Whether the 2D (planar) or 3D (with height) measurement m
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_MEASURE_MODE = 'GPSMeasureMode'--><!--Device-PropertyKey-GPS_MEASURE_MODE = 'GPSMeasureMode'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_DOP
@@ -1840,6 +2078,8 @@ GPS Dilution of Precision (DOP), which reflects the precision of GPS measurement
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GPS_DOP = 'GPSDOP'--><!--Device-PropertyKey-GPS_DOP = 'GPSDOP'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1861,6 +2101,8 @@ Unit used to express the movement speed of the GPS receiver.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_SPEED_REF = 'GPSSpeedRef'--><!--Device-PropertyKey-GPS_SPEED_REF = 'GPSSpeedRef'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_SPEED
@@ -1874,6 +2116,8 @@ Movement speed of the GPS receiver.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GPS_SPEED = 'GPSSpeed'--><!--Device-PropertyKey-GPS_SPEED = 'GPSSpeed'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1893,6 +2137,8 @@ Which type of "North" is used as the reference for the direction angle.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_TRACK_REF = 'GPSTrackRef'--><!--Device-PropertyKey-GPS_TRACK_REF = 'GPSTrackRef'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_TRACK
@@ -1906,6 +2152,8 @@ Movement direction of the GPS receiver. Direction of movement (heading) of the c
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GPS_TRACK = 'GPSTrack'--><!--Device-PropertyKey-GPS_TRACK = 'GPSTrack'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1925,6 +2173,8 @@ Reference of the direction of the image when it was captured.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_IMG_DIRECTION_REF = 'GPSImgDirectionRef'--><!--Device-PropertyKey-GPS_IMG_DIRECTION_REF = 'GPSImgDirectionRef'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_IMG_DIRECTION
@@ -1939,6 +2189,8 @@ Direction of the image when it was captured.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_IMG_DIRECTION = 'GPSImgDirection'--><!--Device-PropertyKey-GPS_IMG_DIRECTION = 'GPSImgDirection'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_MAP_DATUM
@@ -1952,6 +2204,8 @@ Geodetic survey data used by the GPS receiver.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GPS_MAP_DATUM = 'GPSMapDatum'--><!--Device-PropertyKey-GPS_MAP_DATUM = 'GPSMapDatum'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1971,6 +2225,8 @@ Whether the latitude of the destination point is north or south latitude.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_DEST_LATITUDE_REF = 'GPSDestLatitudeRef'--><!--Device-PropertyKey-GPS_DEST_LATITUDE_REF = 'GPSDestLatitudeRef'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_DEST_LATITUDE
@@ -1984,6 +2240,8 @@ Latitude of the destination point.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GPS_DEST_LATITUDE = 'GPSDestLatitude'--><!--Device-PropertyKey-GPS_DEST_LATITUDE = 'GPSDestLatitude'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2003,6 +2261,8 @@ Whether the longitude of the destination point is east or west longitude.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_DEST_LONGITUDE_REF = 'GPSDestLongitudeRef'--><!--Device-PropertyKey-GPS_DEST_LONGITUDE_REF = 'GPSDestLongitudeRef'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_DEST_LONGITUDE
@@ -2016,6 +2276,8 @@ Longitude of the destination point.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GPS_DEST_LONGITUDE = 'GPSDestLongitude'--><!--Device-PropertyKey-GPS_DEST_LONGITUDE = 'GPSDestLongitude'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2035,6 +2297,8 @@ Reference of the bearing to the destination point.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_DEST_BEARING_REF = 'GPSDestBearingRef'--><!--Device-PropertyKey-GPS_DEST_BEARING_REF = 'GPSDestBearingRef'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_DEST_BEARING
@@ -2048,6 +2312,8 @@ Bearing to the destination point.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GPS_DEST_BEARING = 'GPSDestBearing'--><!--Device-PropertyKey-GPS_DEST_BEARING = 'GPSDestBearing'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2069,6 +2335,8 @@ Unit used to express the distance to the destination point.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_DEST_DISTANCE_REF = 'GPSDestDistanceRef'--><!--Device-PropertyKey-GPS_DEST_DISTANCE_REF = 'GPSDestDistanceRef'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_DEST_DISTANCE
@@ -2082,6 +2350,8 @@ Distance to the destination point.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GPS_DEST_DISTANCE = 'GPSDestDistance'--><!--Device-PropertyKey-GPS_DEST_DISTANCE = 'GPSDestDistance'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2097,6 +2367,8 @@ String that records the name of the method used for positioning.
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_PROCESSING_METHOD = 'GPSProcessingMethod'--><!--Device-PropertyKey-GPS_PROCESSING_METHOD = 'GPSProcessingMethod'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_AREA_INFORMATION
@@ -2110,6 +2382,8 @@ String that records the name of the GPS area.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GPS_AREA_INFORMATION = 'GPSAreaInformation'--><!--Device-PropertyKey-GPS_AREA_INFORMATION = 'GPSAreaInformation'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2129,6 +2403,8 @@ Whether differential correction is applied to the GPS receiver. It is critical t
 
 **Since:** 12
 
+<!--Device-PropertyKey-GPS_DIFFERENTIAL = 'GPSDifferential'--><!--Device-PropertyKey-GPS_DIFFERENTIAL = 'GPSDifferential'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## BODY_SERIAL_NUMBER
@@ -2142,6 +2418,8 @@ Serial number of the camera body.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-BODY_SERIAL_NUMBER = 'BodySerialNumber'--><!--Device-PropertyKey-BODY_SERIAL_NUMBER = 'BodySerialNumber'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2157,6 +2435,8 @@ Name of the camera owner.
 
 **Since:** 12
 
+<!--Device-PropertyKey-CAMERA_OWNER_NAME = 'CameraOwnerName'--><!--Device-PropertyKey-CAMERA_OWNER_NAME = 'CameraOwnerName'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## COMPOSITE_IMAGE
@@ -2170,6 +2450,8 @@ Whether the image is a composite image.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-COMPOSITE_IMAGE = 'CompositeImage'--><!--Device-PropertyKey-COMPOSITE_IMAGE = 'CompositeImage'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2185,6 +2467,8 @@ Number of bits per pixel. It is specific to compressed data.
 
 **Since:** 12
 
+<!--Device-PropertyKey-COMPRESSED_BITS_PER_PIXEL = 'CompressedBitsPerPixel'--><!--Device-PropertyKey-COMPRESSED_BITS_PER_PIXEL = 'CompressedBitsPerPixel'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## DNG_VERSION
@@ -2198,6 +2482,8 @@ DNG version. It encodes the DNG 4-tier version number.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-DNG_VERSION = 'DNGVersion'--><!--Device-PropertyKey-DNG_VERSION = 'DNGVersion'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2213,6 +2499,8 @@ Size of the final image area, in raw image coordinates, taking into account extr
 
 **Since:** 12
 
+<!--Device-PropertyKey-DEFAULT_CROP_SIZE = 'DefaultCropSize'--><!--Device-PropertyKey-DEFAULT_CROP_SIZE = 'DefaultCropSize'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GAMMA
@@ -2226,6 +2514,8 @@ Gamma value.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GAMMA = 'Gamma'--><!--Device-PropertyKey-GAMMA = 'Gamma'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2241,6 +2531,8 @@ ISO speed latitude yyy value of the camera or input device, which is defined in 
 
 **Since:** 12
 
+<!--Device-PropertyKey-ISO_SPEED_LATITUDE_YYY = 'ISOSpeedLatitudeyyy'--><!--Device-PropertyKey-ISO_SPEED_LATITUDE_YYY = 'ISOSpeedLatitudeyyy'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## ISO_SPEED_LATITUDE_ZZZ
@@ -2254,6 +2546,8 @@ ISO speed latitude zzz value of the camera or input device, which is defined in 
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-ISO_SPEED_LATITUDE_ZZZ = 'ISOSpeedLatitudezzz'--><!--Device-PropertyKey-ISO_SPEED_LATITUDE_ZZZ = 'ISOSpeedLatitudezzz'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2269,6 +2563,8 @@ Manufacturer of the lens.
 
 **Since:** 12
 
+<!--Device-PropertyKey-LENS_MAKE = 'LensMake'--><!--Device-PropertyKey-LENS_MAKE = 'LensMake'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## LENS_MODEL
@@ -2282,6 +2578,8 @@ Model of the lens.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-LENS_MODEL = 'LensModel'--><!--Device-PropertyKey-LENS_MODEL = 'LensModel'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2297,6 +2595,8 @@ Serial number of the lens.
 
 **Since:** 12
 
+<!--Device-PropertyKey-LENS_SERIAL_NUMBER = 'LensSerialNumber'--><!--Device-PropertyKey-LENS_SERIAL_NUMBER = 'LensSerialNumber'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## LENS_SPECIFICATION
@@ -2310,6 +2610,8 @@ Specifications of the lens.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-LENS_SPECIFICATION = 'LensSpecification'--><!--Device-PropertyKey-LENS_SPECIFICATION = 'LensSpecification'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2325,6 +2627,8 @@ Data type of a subfile, such as a full-resolution image, a thumbnail, or a part 
 
 **Since:** 12
 
+<!--Device-PropertyKey-NEW_SUBFILE_TYPE = 'NewSubfileType'--><!--Device-PropertyKey-NEW_SUBFILE_TYPE = 'NewSubfileType'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## OFFSET_TIME
@@ -2338,6 +2642,8 @@ Time with an offset from UTC when the image was captured.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-OFFSET_TIME = 'OffsetTime'--><!--Device-PropertyKey-OFFSET_TIME = 'OffsetTime'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2353,6 +2659,8 @@ Time with an offset from UTC when the image was digitized. It helps to accuratel
 
 **Since:** 12
 
+<!--Device-PropertyKey-OFFSET_TIME_DIGITIZED = 'OffsetTimeDigitized'--><!--Device-PropertyKey-OFFSET_TIME_DIGITIZED = 'OffsetTimeDigitized'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## OFFSET_TIME_ORIGINAL
@@ -2366,6 +2674,8 @@ Time with an offset from UTC when the original image was created. It is critical
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-OFFSET_TIME_ORIGINAL = 'OffsetTimeOriginal'--><!--Device-PropertyKey-OFFSET_TIME_ORIGINAL = 'OffsetTimeOriginal'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2381,6 +2691,8 @@ Exposure time of source images of the composite image.
 
 **Since:** 12
 
+<!--Device-PropertyKey-SOURCE_EXPOSURE_TIMES_OF_COMPOSITE_IMAGE = 'SourceExposureTimesOfCompositeImage'--><!--Device-PropertyKey-SOURCE_EXPOSURE_TIMES_OF_COMPOSITE_IMAGE = 'SourceExposureTimesOfCompositeImage'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SOURCE_IMAGE_NUMBER_OF_COMPOSITE_IMAGE
@@ -2394,6 +2706,8 @@ Number of source images of the composite image.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-SOURCE_IMAGE_NUMBER_OF_COMPOSITE_IMAGE = 'SourceImageNumberOfCompositeImage'--><!--Device-PropertyKey-SOURCE_IMAGE_NUMBER_OF_COMPOSITE_IMAGE = 'SourceImageNumberOfCompositeImage'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2409,6 +2723,8 @@ Type of data contained in this subfile. This tag has been deprecated. Use **NewS
 
 **Since:** 12
 
+<!--Device-PropertyKey-SUBFILE_TYPE = 'SubfileType'--><!--Device-PropertyKey-SUBFILE_TYPE = 'SubfileType'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GPS_H_POSITIONING_ERROR
@@ -2422,6 +2738,8 @@ Horizontal positioning error, in meters.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-GPS_H_POSITIONING_ERROR = 'GPSHPositioningError'--><!--Device-PropertyKey-GPS_H_POSITIONING_ERROR = 'GPSHPositioningError'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2437,6 +2755,8 @@ ISO sensitivity (ISO speed) used when the image was captured. It is the recommen
 
 **Since:** 12
 
+<!--Device-PropertyKey-PHOTOGRAPHIC_SENSITIVITY = 'PhotographicSensitivity'--><!--Device-PropertyKey-PHOTOGRAPHIC_SENSITIVITY = 'PhotographicSensitivity'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## BURST_NUMBER
@@ -2450,6 +2770,8 @@ Number of burst shooting times.
 **Read/Write capability**: read-only
 
 **Since:** 12
+
+<!--Device-PropertyKey-BURST_NUMBER = 'HwMnoteBurstNumber'--><!--Device-PropertyKey-BURST_NUMBER = 'HwMnoteBurstNumber'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2465,6 +2787,8 @@ Face confidence.
 
 **Since:** 12
 
+<!--Device-PropertyKey-FACE_CONF = 'HwMnoteFaceConf'--><!--Device-PropertyKey-FACE_CONF = 'HwMnoteFaceConf'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## FACE_LEYE_CENTER
@@ -2478,6 +2802,8 @@ Left eye centered.
 **Read/Write capability**: read-only
 
 **Since:** 12
+
+<!--Device-PropertyKey-FACE_LEYE_CENTER = 'HwMnoteFaceLeyeCenter'--><!--Device-PropertyKey-FACE_LEYE_CENTER = 'HwMnoteFaceLeyeCenter'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2493,6 +2819,8 @@ Mouth centered.
 
 **Since:** 12
 
+<!--Device-PropertyKey-FACE_MOUTH_CENTER = 'HwMnoteFaceMouthCenter'--><!--Device-PropertyKey-FACE_MOUTH_CENTER = 'HwMnoteFaceMouthCenter'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## FACE_POINTER
@@ -2506,6 +2834,8 @@ Face pointer.
 **Read/Write capability**: read-only
 
 **Since:** 12
+
+<!--Device-PropertyKey-FACE_POINTER = 'HwMnoteFacePointer'--><!--Device-PropertyKey-FACE_POINTER = 'HwMnoteFacePointer'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2521,6 +2851,8 @@ Face rectangle.
 
 **Since:** 12
 
+<!--Device-PropertyKey-FACE_RECT = 'HwMnoteFaceRect'--><!--Device-PropertyKey-FACE_RECT = 'HwMnoteFaceRect'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## FACE_REYE_CENTER
@@ -2534,6 +2866,8 @@ Right eye centered.
 **Read/Write capability**: read-only
 
 **Since:** 12
+
+<!--Device-PropertyKey-FACE_REYE_CENTER = 'HwMnoteFaceReyeCenter'--><!--Device-PropertyKey-FACE_REYE_CENTER = 'HwMnoteFaceReyeCenter'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2549,6 +2883,8 @@ Smile score of for faces.
 
 **Since:** 12
 
+<!--Device-PropertyKey-FACE_SMILE_SCORE = 'HwMnoteFaceSmileScore'--><!--Device-PropertyKey-FACE_SMILE_SCORE = 'HwMnoteFaceSmileScore'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## FACE_VERSION
@@ -2562,6 +2898,8 @@ Facial recognition algorithm version.
 **Read/Write capability**: read-only
 
 **Since:** 12
+
+<!--Device-PropertyKey-FACE_VERSION = 'HwMnoteFaceVersion'--><!--Device-PropertyKey-FACE_VERSION = 'HwMnoteFaceVersion'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2577,6 +2915,8 @@ Whether the front camera is used to take a selfie.
 
 **Since:** 12
 
+<!--Device-PropertyKey-FRONT_CAMERA = 'HwMnoteFrontCamera'--><!--Device-PropertyKey-FRONT_CAMERA = 'HwMnoteFrontCamera'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SCENE_POINTER
@@ -2590,6 +2930,8 @@ Pointer to the scene.
 **Read/Write capability**: read-only
 
 **Since:** 12
+
+<!--Device-PropertyKey-SCENE_POINTER = 'HwMnoteScenePointer'--><!--Device-PropertyKey-SCENE_POINTER = 'HwMnoteScenePointer'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2605,6 +2947,8 @@ Scene algorithm version.
 
 **Since:** 12
 
+<!--Device-PropertyKey-SCENE_VERSION = 'HwMnoteSceneVersion'--><!--Device-PropertyKey-SCENE_VERSION = 'HwMnoteSceneVersion'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## IS_XMAGE_SUPPORTED
@@ -2618,6 +2962,8 @@ Whether XMAGE is supported.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-IS_XMAGE_SUPPORTED = 'HwMnoteIsXmageSupported'--><!--Device-PropertyKey-IS_XMAGE_SUPPORTED = 'HwMnoteIsXmageSupported'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2633,6 +2979,8 @@ XMAGE watermark mode.
 
 **Since:** 12
 
+<!--Device-PropertyKey-XMAGE_MODE = 'HwMnoteXmageMode'--><!--Device-PropertyKey-XMAGE_MODE = 'HwMnoteXmageMode'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## XMAGE_LEFT
@@ -2646,6 +2994,8 @@ X1 coordinate of the watermark region.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-XMAGE_LEFT = 'HwMnoteXmageLeft'--><!--Device-PropertyKey-XMAGE_LEFT = 'HwMnoteXmageLeft'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2661,6 +3011,8 @@ Y1 coordinate of the watermark region.
 
 **Since:** 12
 
+<!--Device-PropertyKey-XMAGE_TOP = 'HwMnoteXmageTop'--><!--Device-PropertyKey-XMAGE_TOP = 'HwMnoteXmageTop'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## XMAGE_RIGHT
@@ -2674,6 +3026,8 @@ X2 coordinate of the watermark region.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-XMAGE_RIGHT = 'HwMnoteXmageRight'--><!--Device-PropertyKey-XMAGE_RIGHT = 'HwMnoteXmageRight'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2689,6 +3043,8 @@ Y2 coordinate of the watermark region.
 
 **Since:** 12
 
+<!--Device-PropertyKey-XMAGE_BOTTOM = 'HwMnoteXmageBottom'--><!--Device-PropertyKey-XMAGE_BOTTOM = 'HwMnoteXmageBottom'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## CLOUD_ENHANCEMENT_MODE
@@ -2702,6 +3058,8 @@ Cloud enhancement mode.
 **Read/Write capability**: readable and writable.
 
 **Since:** 12
+
+<!--Device-PropertyKey-CLOUD_ENHANCEMENT_MODE = 'HwMnoteCloudEnhancementMode'--><!--Device-PropertyKey-CLOUD_ENHANCEMENT_MODE = 'HwMnoteCloudEnhancementMode'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2717,6 +3075,8 @@ Motion snapshot mode.
 
 **Since:** 12
 
+<!--Device-PropertyKey-WIND_SNAPSHOT_MODE = 'HwMnoteWindSnapshotMode'--><!--Device-PropertyKey-WIND_SNAPSHOT_MODE = 'HwMnoteWindSnapshotMode'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## GIF_LOOP_COUNT
@@ -2730,5 +3090,7 @@ Number of GIF loops. The value **0** means an infinite loop, and other values me
 **Read/Write capability**: read-only
 
 **Since:** 12
+
+<!--Device-PropertyKey-GIF_LOOP_COUNT = 'GIFLoopCount'--><!--Device-PropertyKey-GIF_LOOP_COUNT = 'GIFLoopCount'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

@@ -25,6 +25,8 @@ Subscribes to the state changes of the senior mode. This API uses an asynchronou
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accessibility-function onSeniorModeStateChange(callback: Callback<boolean>): void--><!--Device-accessibility-function onSeniorModeStateChange(callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**

@@ -20,6 +20,8 @@ Attests a key for the specified user. This API uses a promise to return the resu
 - API version 26 and later: (ohos.permission.ATTEST_KEY and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS) or (ohos.permission.ENTERPRISE_ATTEST_KEY and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 - API version 11 and later: ohos.permission.ATTEST_KEY and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
+<!--Device-huks-function attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions): Promise<HuksReturnResult>--><!--Device-huks-function attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions): Promise<HuksReturnResult>-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 **System API:** This is a system API.

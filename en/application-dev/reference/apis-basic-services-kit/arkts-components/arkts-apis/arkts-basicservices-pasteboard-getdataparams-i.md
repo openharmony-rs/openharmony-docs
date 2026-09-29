@@ -8,6 +8,8 @@ Defines parameters when an application obtains the Data from the pasteboard, inc
 
 **Since:** 15
 
+<!--Device-pasteboard-interface GetDataParams--><!--Device-pasteboard-interface GetDataParams-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Defines a listener for progress data changes. If the default progress indicator 
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-GetDataParams-progressListener?: ProgressListener--><!--Device-GetDataParams-progressListener?: ProgressListener-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -44,7 +48,9 @@ Destination path for copying files. If file processing is not supported, this pa
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-GetDataParams-destUri?: string--><!--Device-GetDataParams-destUri?: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -62,7 +68,9 @@ File conflict options for a paste task. The default value is **OVERWRITE**.
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-GetDataParams-fileConflictOptions?: FileConflictOptions--><!--Device-GetDataParams-fileConflictOptions?: FileConflictOptions-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -78,7 +86,9 @@ Progress indicator options. You can choose whether to use the default progress i
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-GetDataParams-progressIndicator: ProgressIndicator--><!--Device-GetDataParams-progressIndicator: ProgressIndicator-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -96,6 +106,8 @@ Function for canceling the paste task. This parameter is valid only when [Progre
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-GetDataParams-progressSignal?: ProgressSignal--><!--Device-GetDataParams-progressSignal?: ProgressSignal-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard

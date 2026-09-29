@@ -18,6 +18,8 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-sendablePreferences-function getPreferences(context: Context, options: Options): Promise<Preferences>--><!--Device-sendablePreferences-function getPreferences(context: Context, options: Options): Promise<Preferences>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 **Parameters:**

@@ -10,6 +10,8 @@ Describes the scene node parameters, which are used to provide the name and path
 
 **Since:** 12
 
+<!--Device-unnamed-export interface SceneNodeParameters--><!--Device-unnamed-export interface SceneNodeParameters-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## name
@@ -24,6 +26,8 @@ Name of the scene node. It is customizable.
 
 **Since:** 12
 
+<!--Device-SceneNodeParameters-name: string--><!--Device-SceneNodeParameters-name: string-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## path
@@ -37,6 +41,8 @@ Path in the scene node tree. It specifies the position of the created camera, li
 **Type:** string
 
 **Since:** 12
+
+<!--Device-SceneNodeParameters-path?: string--><!--Device-SceneNodeParameters-path?: string-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 

@@ -8,6 +8,8 @@ Sets whether text can be selected and focused on.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum TextSelectableMode--><!--Device-unnamed-declare enum TextSelectableMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SELECTABLE_UNFOCUSABLE
@@ -23,6 +25,8 @@ The text is selectable, but not focusable. Setting the **selection**, **bindSele
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextSelectableMode-SELECTABLE_UNFOCUSABLE = 0--><!--Device-TextSelectableMode-SELECTABLE_UNFOCUSABLE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ The text is selectable and focusable. It obtains focus when touched.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextSelectableMode-SELECTABLE_FOCUSABLE = 1--><!--Device-TextSelectableMode-SELECTABLE_FOCUSABLE = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## UNSELECTABLE
@@ -55,5 +61,7 @@ The text is not selectable nor focusable. The **selection**, **bindSelectionMenu
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextSelectableMode-UNSELECTABLE = 2--><!--Device-TextSelectableMode-UNSELECTABLE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

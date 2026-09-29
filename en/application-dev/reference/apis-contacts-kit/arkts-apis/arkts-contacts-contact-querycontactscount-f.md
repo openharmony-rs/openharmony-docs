@@ -20,6 +20,8 @@ Queries the number of all contacts. This API uses a promise to return the result
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-contact-function queryContactsCount(context: Context): Promise<int>--><!--Device-contact-function queryContactsCount(context: Context): Promise<int>-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 **Parameters:**
@@ -38,7 +40,7 @@ Queries the number of all contacts. This API uses a promise to return the result
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [16700001](../errorcode-contacts.md#16700001-system-internal-error) | General error. |
 
 **Examples**

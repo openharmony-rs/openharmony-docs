@@ -8,6 +8,8 @@ declare enum ContextMenuEditStateFlags
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare enum ContextMenuEditStateFlags--><!--Device-unnamed-declare enum ContextMenuEditStateFlags-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NONE
@@ -21,6 +23,8 @@ NONE = 0
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuEditStateFlags-NONE = 0--><!--Device-ContextMenuEditStateFlags-NONE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ CAN_CUT = 1 << 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuEditStateFlags-CAN_CUT = 1 << 0--><!--Device-ContextMenuEditStateFlags-CAN_CUT = 1 << 0-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## CAN_COPY
@@ -49,6 +55,8 @@ CAN_COPY = 1 << 1
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuEditStateFlags-CAN_COPY = 1 << 1--><!--Device-ContextMenuEditStateFlags-CAN_COPY = 1 << 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,6 +72,8 @@ CAN_PASTE = 1 << 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuEditStateFlags-CAN_PASTE = 1 << 2--><!--Device-ContextMenuEditStateFlags-CAN_PASTE = 1 << 2-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## CAN_SELECT_ALL
@@ -77,5 +87,7 @@ CAN_SELECT_ALL = 1 << 3
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuEditStateFlags-CAN_SELECT_ALL = 1 << 3--><!--Device-ContextMenuEditStateFlags-CAN_SELECT_ALL = 1 << 3-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

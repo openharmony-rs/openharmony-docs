@@ -8,6 +8,8 @@ The appManager module provides APIs for application management. For example, you
 
 **Substitutes:** [appManager/appManager](arkts-ability-app-ability-appmanager.md)
 
+<!--Device-unnamed-declare namespace appManager--><!--Device-unnamed-declare namespace appManager-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Test API:** This API is used only in automated test scripts.
@@ -47,7 +49,7 @@ The appManager module provides APIs for application management. For example, you
 | [killProcessesByBundleName](arkts-ability-appmanager-killprocessesbybundlename-depr-f-sys.md#killprocessesbybundlename-1) | Kill processes by bundle name |
 | [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-depr-f-sys.md#killprocesswithaccount) | Kill process with account. |
 | [killProcessWithAccount](arkts-ability-appmanager-killprocesswithaccount-depr-f-sys.md#killprocesswithaccount-1) | Kill process with account. |
-| [registerApplicationStateObserver](arkts-ability-appmanager-registerapplicationstateobserver-depr-f-sys.md#registerapplicationstateobserver) | Register application state observer. |
+| [registerApplicationStateObserver](arkts-ability-appmanager-registerapplicationstateobserver-depr-f-sys.md) | Register application state observer. |
 | [unregisterApplicationStateObserver](arkts-ability-appmanager-unregisterapplicationstateobserver-depr-f-sys.md#unregisterapplicationstateobserver) | Unregister application state observer. |
 | [unregisterApplicationStateObserver](arkts-ability-appmanager-unregisterapplicationstateobserver-depr-f-sys.md#unregisterapplicationstateobserver-1) | Unregister application state observer. |
 <!--DelEnd-->

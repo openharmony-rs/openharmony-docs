@@ -8,6 +8,8 @@ Enumerates the error codes that may be returned when an ability is started.
 
 **Since:** 7
 
+<!--Device-featureAbility-export enum ErrorCode--><!--Device-featureAbility-export enum ErrorCode-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## NO_ERROR
@@ -21,6 +23,8 @@ No error.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ErrorCode-NO_ERROR = 0--><!--Device-ErrorCode-NO_ERROR = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -36,6 +40,8 @@ Invalid parameter.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-ErrorCode-INVALID_PARAMETER = -1--><!--Device-ErrorCode-INVALID_PARAMETER = -1-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## ABILITY_NOT_FOUND
@@ -50,6 +56,8 @@ The ability is not found.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-ErrorCode-ABILITY_NOT_FOUND = -2--><!--Device-ErrorCode-ABILITY_NOT_FOUND = -2-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## PERMISSION_DENY
@@ -63,5 +71,7 @@ Permission denied.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ErrorCode-PERMISSION_DENY = -3--><!--Device-ErrorCode-PERMISSION_DENY = -3-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel

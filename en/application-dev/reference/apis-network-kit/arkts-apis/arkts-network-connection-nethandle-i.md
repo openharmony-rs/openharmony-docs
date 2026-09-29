@@ -10,6 +10,8 @@ Before invoking **NetHandle** APIs, call **getNetHandle** to obtain a **NetHandl
 
 **Since:** 8
 
+<!--Device-connection-export interface NetHandle--><!--Device-connection-export interface NetHandle-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ bindSocket(socketParam: TCPSocket | UDPSocket, callback: AsyncCallback<void>): v
 Binds the TCPSocket or UDPSocket to the network specified by **NetHandle**. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-NetHandle-bindSocket(socketParam: TCPSocket | UDPSocket, callback: AsyncCallback<void>): void--><!--Device-NetHandle-bindSocket(socketParam: TCPSocket | UDPSocket, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -120,6 +124,8 @@ Binds the TCPSocket or UDPSocket to the network specified by **NetHandle**. This
 
 **Since:** 9
 
+<!--Device-NetHandle-bindSocket(socketParam: TCPSocket | UDPSocket): Promise<void>--><!--Device-NetHandle-bindSocket(socketParam: TCPSocket | UDPSocket): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -212,6 +218,8 @@ Obtains the first IP address by using the network specified by **NetHandle** to 
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-NetHandle-getAddressByName(host: string, callback: AsyncCallback<NetAddress>): void--><!--Device-NetHandle-getAddressByName(host: string, callback: AsyncCallback<NetAddress>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -267,6 +275,8 @@ Obtains the first IP address by using the network specified by **NetHandle** to 
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-NetHandle-getAddressByName(host: string): Promise<NetAddress>--><!--Device-NetHandle-getAddressByName(host: string): Promise<NetAddress>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -321,6 +331,8 @@ Obtains all IP addresses by using the network specified by **NetHandle** to reso
 **Required permissions:** ohos.permission.INTERNET
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-NetHandle-getAddressesByName(host: string, callback: AsyncCallback<Array<NetAddress>>): void--><!--Device-NetHandle-getAddressesByName(host: string, callback: AsyncCallback<Array<NetAddress>>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -379,6 +391,8 @@ Obtains all IP addresses by using the network specified by **NetHandle** to reso
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-NetHandle-getAddressesByName(host: string): Promise<Array<NetAddress>>--><!--Device-NetHandle-getAddressesByName(host: string): Promise<Array<NetAddress>>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -433,6 +447,8 @@ Performs DNS resolution using the network specified by **NetHandle** based on th
 **Required permissions:** ohos.permission.INTERNET
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NetHandle-getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise<Array<NetAddress>>--><!--Device-NetHandle-getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise<Array<NetAddress>>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -493,6 +509,8 @@ Network ID. The value **0** indicates that there is no default network. The othe
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetHandle-netId: int--><!--Device-NetHandle-netId: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

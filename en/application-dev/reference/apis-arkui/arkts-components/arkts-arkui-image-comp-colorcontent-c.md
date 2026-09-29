@@ -8,6 +8,8 @@ Defines the content for color filling.
 
 **Since:** 15
 
+<!--Device-unnamed-declare class ColorContent--><!--Device-unnamed-declare class ColorContent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ORIGIN
@@ -25,5 +27,7 @@ Resets the [fillColor](arkts-arkui-image-comp-attribute.md#fillcolor) API, effec
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-ColorContent-static readonly ORIGIN: ColorContent--><!--Device-ColorContent-static readonly ORIGIN: ColorContent-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

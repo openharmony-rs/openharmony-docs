@@ -18,6 +18,8 @@ Obtains the enabling state of the **Allow access to notifications on this device
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationExtensionSubscription-function getUserGrantedState(targetBundle: BundleOption): Promise<boolean>--><!--Device-notificationExtensionSubscription-function getUserGrantedState(targetBundle: BundleOption): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

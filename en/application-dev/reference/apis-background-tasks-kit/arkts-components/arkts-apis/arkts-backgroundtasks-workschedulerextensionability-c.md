@@ -8,6 +8,8 @@ Provides callbacks to be invoked when the scheduling conditions are met or the s
 
 **Since:** 9
 
+<!--Device-unnamed-declare class WorkSchedulerExtensionAbility--><!--Device-unnamed-declare class WorkSchedulerExtensionAbility-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Called when the system starts scheduling the deferred task.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WorkSchedulerExtensionAbility-onWorkStart(work: workScheduler.WorkInfo): void--><!--Device-WorkSchedulerExtensionAbility-onWorkStart(work: workScheduler.WorkInfo): void-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -61,6 +65,8 @@ Called when the system stops scheduling the deferred task. This callback is trig
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WorkSchedulerExtensionAbility-onWorkStop(work: workScheduler.WorkInfo): void--><!--Device-WorkSchedulerExtensionAbility-onWorkStop(work: workScheduler.WorkInfo): void-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -97,5 +103,7 @@ Context of the WorkSchedulerExtensionAbility. This context inherits from Extensi
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WorkSchedulerExtensionAbility-context: WorkSchedulerExtensionContext--><!--Device-WorkSchedulerExtensionAbility-context: WorkSchedulerExtensionContext-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler

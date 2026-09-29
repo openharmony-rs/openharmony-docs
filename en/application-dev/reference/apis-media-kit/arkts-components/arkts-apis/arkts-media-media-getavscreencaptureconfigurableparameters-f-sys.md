@@ -16,6 +16,8 @@ get Configurations which user can changes from AVScreenCapture server
 
 **Since:** 20
 
+<!--Device-media-function getAVScreenCaptureConfigurableParameters(sessionId: int): Promise<string>--><!--Device-media-function getAVScreenCaptureConfigurableParameters(sessionId: int): Promise<string>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **System API:** This is a system API.

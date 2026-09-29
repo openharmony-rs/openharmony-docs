@@ -8,6 +8,8 @@ Provides callbacks to obtain credential inputer data.
 
 **Since:** 8
 
+<!--Device-osAccount-interface IInputer--><!--Device-osAccount-interface IInputer-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDat
 Called to notify the caller that data is obtained.
 
 **Since:** 8
+
+<!--Device-IInputer-onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDataOptions) => void--><!--Device-IInputer-onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDataOptions) => void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

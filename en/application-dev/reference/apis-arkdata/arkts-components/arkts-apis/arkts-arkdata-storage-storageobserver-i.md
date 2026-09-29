@@ -10,6 +10,8 @@ Define the change data information object.
 
 **Deprecated since:** 9
 
+<!--Device-storage-interface StorageObserver--><!--Device-storage-interface StorageObserver-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 ## Modules to Import
@@ -30,3 +32,5 @@ Data changed.
 **Since:** 6
 
 **Deprecated since:** 9
+
+<!--Device-StorageObserver-key: string--><!--Device-StorageObserver-key: string-End-->

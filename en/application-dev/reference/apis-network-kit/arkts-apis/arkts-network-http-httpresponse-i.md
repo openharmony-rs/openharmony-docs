@@ -8,6 +8,8 @@ Defines the response to an HTTP request.
 
 **Since:** 6
 
+<!--Device-http-export interface HttpResponse--><!--Device-http-export interface HttpResponse-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Detailed information about the HTTP request interaction.
 
 **Since:** 24
 
+<!--Device-HttpResponse-connectionExtraInfo?: ConnectionExtraInfo--><!--Device-HttpResponse-connectionExtraInfo?: ConnectionExtraInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## cookies
@@ -42,7 +46,9 @@ Original cookies returned by the server. How to process the cookies is up to you
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HttpResponse-cookies: string--><!--Device-HttpResponse-cookies: string-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -63,7 +69,9 @@ Response header. The return value is a string in JSON format. If you want to use
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HttpResponse-header: Object--><!--Device-HttpResponse-header: Object-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -79,6 +87,8 @@ Time consumed in each phase of an HTTP request.
 
 **Since:** 11
 
+<!--Device-HttpResponse-performanceTiming: PerformanceTiming--><!--Device-HttpResponse-performanceTiming: PerformanceTiming-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## responseCode
@@ -93,7 +103,9 @@ Result code for an HTTP request. If the callback function is successfully execut
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HttpResponse-responseCode: ResponseCode | int--><!--Device-HttpResponse-responseCode: ResponseCode | int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -116,7 +128,9 @@ If **HttpRequestOptions** contains the **expectDataType** field, the response co
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HttpResponse-result: string | Object | ArrayBuffer--><!--Device-HttpResponse-result: string | Object | ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -132,6 +146,8 @@ Type of the return value.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HttpResponse-resultType: HttpDataType--><!--Device-HttpResponse-resultType: HttpDataType-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

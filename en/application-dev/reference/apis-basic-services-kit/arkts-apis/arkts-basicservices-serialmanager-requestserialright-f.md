@@ -19,6 +19,8 @@ Requests the permission for the app to access the serial port device. After the 
 
 **Since:** 19
 
+<!--Device-serialManager-function requestSerialRight(portId: int): Promise<boolean>--><!--Device-serialManager-function requestSerialRight(portId: int): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 **Parameters:**

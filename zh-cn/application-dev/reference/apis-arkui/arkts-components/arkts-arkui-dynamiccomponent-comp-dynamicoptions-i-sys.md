@@ -8,6 +8,8 @@ declare interface DynamicOptions
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare interface DynamicOptions--><!--Device-unnamed-declare interface DynamicOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -18,13 +20,15 @@ declare interface DynamicOptions
 allowCrossProcessNesting?: boolean
 ```
 
-是否允许跨进程[UIExtensionComponent](arkts-arkui-uiextensioncomponent-comp-sys.md#ui_extension_componentsystem-api)嵌套。<br>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br>默认值：false
+是否允许跨进程[UIExtensionComponent](arkts-arkui-uiextensioncomponent-comp-sys.md)嵌套。<br>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br>默认值：false
 
 **类型：** boolean
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DynamicOptions-allowCrossProcessNesting?: boolean--><!--Device-DynamicOptions-allowCrossProcessNesting?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ allowOccupied?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-DynamicOptions-allowOccupied?: boolean--><!--Device-DynamicOptions-allowOccupied?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -61,6 +67,8 @@ backgroundTransparent?: boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DynamicOptions-backgroundTransparent?: boolean--><!--Device-DynamicOptions-backgroundTransparent?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +88,8 @@ entryPoint: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-DynamicOptions-entryPoint: string--><!--Device-DynamicOptions-entryPoint: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -97,6 +107,8 @@ worker: Worker
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DynamicOptions-worker: Worker--><!--Device-DynamicOptions-worker: Worker-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

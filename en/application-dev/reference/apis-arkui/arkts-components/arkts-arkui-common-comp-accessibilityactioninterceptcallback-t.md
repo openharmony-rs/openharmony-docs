@@ -14,6 +14,8 @@ Defines the callback type used in accessibility action intercept. The value of a
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-unnamed-declare type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => AccessibilityActionInterceptResult--><!--Device-unnamed-declare type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => AccessibilityActionInterceptResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

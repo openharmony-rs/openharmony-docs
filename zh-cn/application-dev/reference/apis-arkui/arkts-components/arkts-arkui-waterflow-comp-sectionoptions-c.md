@@ -8,6 +8,8 @@ FlowItem分组配置信息。
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare class SectionOptions--><!--Device-unnamed-declare class SectionOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onGetItemMainSizeByIndex
@@ -31,6 +33,8 @@ onGetItemMainSizeByIndex?: GetItemMainSizeByIndex
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SectionOptions-onGetItemMainSizeByIndex?: GetItemMainSizeByIndex--><!--Device-SectionOptions-onGetItemMainSizeByIndex?: GetItemMainSizeByIndex-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## columnsGap
@@ -48,6 +52,8 @@ columnsGap?: Dimension
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SectionOptions-columnsGap?: Dimension--><!--Device-SectionOptions-columnsGap?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,6 +75,8 @@ crossCount?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SectionOptions-crossCount?: number--><!--Device-SectionOptions-crossCount?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemsCount
@@ -86,6 +94,8 @@ itemsCount: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SectionOptions-itemsCount: number--><!--Device-SectionOptions-itemsCount: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,6 +123,8 @@ margin设置百分比时，上下左右外边距均以瀑布流的width作为基
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SectionOptions-margin?: Margin | Dimension--><!--Device-SectionOptions-margin?: Margin | Dimension-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## rowsGap
@@ -130,5 +142,7 @@ rowsGap?: Dimension
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SectionOptions-rowsGap?: Dimension--><!--Device-SectionOptions-rowsGap?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

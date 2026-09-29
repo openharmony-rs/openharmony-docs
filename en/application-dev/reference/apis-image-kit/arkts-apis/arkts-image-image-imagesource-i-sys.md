@@ -14,6 +14,8 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 **Since:** 6
 
+<!--Device-image-interface ImageSource--><!--Device-image-interface ImageSource-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 ## Modules to Import
@@ -31,6 +33,8 @@ createWideGamutSdrPixelMap(): Promise<PixelMap>
 Decodes to a SDR PixelMap, using a as wide gamut as possible. For a SDR ImageSource, decodes to a SDR PixelMap using its native color space. For a HDR ImageSource with a single-channel gainmap, decodes its base(SDR) image and ingores its gainmap. For a HDR ImageSource with a three-channel gainmap, decodes to a SDR PixelMap using CM_DISPLAY_BT2020_SRGB color space.
 
 **Since:** 20
+
+<!--Device-ImageSource-createWideGamutSdrPixelMap(): Promise<PixelMap>--><!--Device-ImageSource-createWideGamutSdrPixelMap(): Promise<PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -98,6 +102,8 @@ Checks whether a JPEG image is progressive. This API uses a promise to return th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ImageSource-isJpegProgressive(): Promise<boolean>--><!--Device-ImageSource-isJpegProgressive(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **System API:** This is a system API.
@@ -141,6 +147,8 @@ Modify the value of properties in an image with the specified keys.The HwMnote r
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ImageSource-modifyImageAllProperties(records: Record<string, string|null>): Promise<void>--><!--Device-ImageSource-modifyImageAllProperties(records: Record<string, string|null>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 

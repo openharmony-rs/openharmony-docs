@@ -8,6 +8,8 @@ The description of the session
 
 **Since:** 23
 
+<!--Device-avSession-interface AVSessionDescriptor--><!--Device-avSession-interface AVSessionDescriptor-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ The current output device information. It will be undefined if this is a local s
 
 **Since:** 9
 
+<!--Device-AVSessionDescriptor-outputDevice: OutputDeviceInfo--><!--Device-AVSessionDescriptor-outputDevice: OutputDeviceInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ The userId to which this session belongs. The value should be an integer.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVSessionDescriptor-userId?: int--><!--Device-AVSessionDescriptor-userId?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 

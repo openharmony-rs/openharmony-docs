@@ -17,6 +17,8 @@ Defines authorization token information.
 
 **Substitutes:** [AuthTokenInfo](arkts-basicservices-appaccount-authtokeninfo-i.md)
 
+<!--Device-appAccount-interface OAuthTokenInfo--><!--Device-appAccount-interface OAuthTokenInfo-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## Modules to Import
@@ -41,6 +43,8 @@ Authentication type.
 
 **Substitutes:** [authType](arkts-basicservices-appaccount-authtokeninfo-i.md#authtype)
 
+<!--Device-OAuthTokenInfo-authType: string--><!--Device-OAuthTokenInfo-authType: string-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## token
@@ -58,5 +62,7 @@ Value of the authorization token.
 **Deprecated since:** 9
 
 **Substitutes:** [token](arkts-basicservices-appaccount-authtokeninfo-i.md#token)
+
+<!--Device-OAuthTokenInfo-token: string--><!--Device-OAuthTokenInfo-token: string-End-->
 
 **System capability:** SystemCapability.Account.AppAccount

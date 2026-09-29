@@ -8,6 +8,8 @@ Provides an instance that bears data network capabilities.
 
 **Since:** 10
 
+<!--Device-connection-export interface NetCapabilityInfo--><!--Device-connection-export interface NetCapabilityInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Network transmission capabilities and bearer types of the data network.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetCapabilityInfo-netCap: NetCapabilities--><!--Device-NetCapabilityInfo-netCap: NetCapabilities-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -44,6 +48,8 @@ Network handle.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetCapabilityInfo-netHandle: NetHandle--><!--Device-NetCapabilityInfo-netHandle: NetHandle-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

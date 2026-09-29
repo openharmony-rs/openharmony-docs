@@ -12,6 +12,8 @@ Describes the audio playback state. You can obtain the state through the **state
 
 **Substitutes:** [AVPlayerState](arkts-media-media-avplayerstate-t.md)
 
+<!--Device-media-type AudioState = 'idle' | 'playing' | 'paused' | 'stopped' | 'error'--><!--Device-media-type AudioState = 'idle' | 'playing' | 'paused' | 'stopped' | 'error'-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 | Type | Description |

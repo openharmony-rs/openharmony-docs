@@ -19,6 +19,8 @@ Describes parameters in [init()](arkts-cryptoarchitecture-cryptoframework-cipher
 
 **Since:** 26.0.0
 
+<!--Device-cryptoFramework-interface AeadParamsSpec extends ParamsSpec--><!--Device-cryptoFramework-interface AeadParamsSpec extends ParamsSpec-End-->
+
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
 ## Modules to Import
@@ -41,7 +43,9 @@ Optional additional authenticated data.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AeadParamsSpec-authenticatedData?: Uint8Array--><!--Device-AeadParamsSpec-authenticatedData?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -65,7 +69,9 @@ Number used once.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AeadParamsSpec-nonce: Uint8Array--><!--Device-AeadParamsSpec-nonce: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -91,6 +97,8 @@ Authentication tag length, in bytes.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AeadParamsSpec-tagLen?: int--><!--Device-AeadParamsSpec-tagLen?: int-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher

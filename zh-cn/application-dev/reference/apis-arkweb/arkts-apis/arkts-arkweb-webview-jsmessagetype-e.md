@@ -8,6 +8,8 @@ enum JsMessageType
 
 **起始版本：** 10
 
+<!--Device-webview-enum JsMessageType--><!--Device-webview-enum JsMessageType-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NOT_SUPPORT
@@ -21,6 +23,8 @@ NOT_SUPPORT = 0
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-JsMessageType-NOT_SUPPORT = 0--><!--Device-JsMessageType-NOT_SUPPORT = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ STRING = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-JsMessageType-STRING = 1--><!--Device-JsMessageType-STRING = 1-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NUMBER
@@ -49,6 +55,8 @@ NUMBER = 2
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-JsMessageType-NUMBER = 2--><!--Device-JsMessageType-NUMBER = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,6 +72,8 @@ BOOLEAN = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-JsMessageType-BOOLEAN = 3--><!--Device-JsMessageType-BOOLEAN = 3-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ARRAY_BUFFER
@@ -78,6 +88,8 @@ ARRAY_BUFFER = 4
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-JsMessageType-ARRAY_BUFFER = 4--><!--Device-JsMessageType-ARRAY_BUFFER = 4-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## ARRAY
@@ -91,5 +103,7 @@ ARRAY = 5
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-JsMessageType-ARRAY = 5--><!--Device-JsMessageType-ARRAY = 5-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

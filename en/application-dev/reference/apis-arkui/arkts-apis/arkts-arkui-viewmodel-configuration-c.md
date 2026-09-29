@@ -6,6 +6,8 @@ export declare class Configuration
 
 **Since:** 6
 
+<!--Device-unnamed-export declare class Configuration--><!--Device-unnamed-export declare class Configuration-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontScale
@@ -22,6 +24,8 @@ The magnification of the current system font.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Configuration-fontScale: number--><!--Device-Configuration-fontScale: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## locate
@@ -37,5 +41,7 @@ Internationalization related information, such as language, country, text layout
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Configuration-locate: Locate--><!--Device-Configuration-locate: Locate-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -1,5 +1,17 @@
 # @ohos.arkui.Prefetcher(Prefetching)
 
+Used in conjunction with **LazyForEach**, the **Prefetcher** module provides content prefetching capabilities for
+ container components such as **List**, **Grid**, **WaterFlow**, and **Swiper** during scrolling, to enhance the user
+ browsing experience.
+
+> **NOTE**
+ >
+ > - The APIs of this module cannot be used in the Previewer.
+
+## Supplementary Notes
+
+You can also use the OpenHarmony third-party library[@netteam/prefetcher](https://ohpm.openharmony.cn/#/en/detail/@netteam%2Fprefetcher) to implement the prefetching functionality. This library provides additional APIs for more convenient and efficient data prefetching.
+
 ## Modules to Import
 
 ```TypeScript

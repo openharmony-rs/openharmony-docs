@@ -12,7 +12,7 @@ declare interface LayoutManager
 
 ## 导入对象
 
-以Text组件为例，完整示例请参考Text组件的示例10（获取文本信息）。
+以Text组件为例，完整示例请参考Text组件的[示例10（获取文本信息）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例10获取文本信息)。
 
 ```ts
 controller: TextController = new TextController();
@@ -20,6 +20,8 @@ let layoutManager: LayoutManager = this.controller.getLayoutManager();
 ```
 
 **起始版本：** 12
+
+<!--Device-unnamed-declare interface LayoutManager--><!--Device-unnamed-declare interface LayoutManager-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,14 +45,16 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
+<!--Device-LayoutManager-getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | undefined--><!--Device-LayoutManager-getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-像素单元.md#基本像素单元）。<br>单位：[px]（../../../reference/apis-arkui/arkui-ts/ts-像素-单位.md#基本像素-单位）。<br>单位：px |
-| y | number | 是 | 相对于组件的纵坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-像素单元.md#基本像素单元）。<br>单位：px |
+| x | number | 是 | 相对于组件的横坐标。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| y | number | 是 | 相对于组件的纵坐标。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
@@ -81,14 +85,16 @@ getCharacterPositionAtCoordinate(
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-LayoutManager-getCharacterPositionAtCoordinate(    x: number, y: number, encoding?: TextEncoding): PositionWithAffinity | undefined--><!--Device-LayoutManager-getCharacterPositionAtCoordinate(    x: number, y: number, encoding?: TextEncoding): PositionWithAffinity | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：px。 |
-| y | number | 是 | 相对于组件的纵坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：px。 |
+| x | number | 是 | 相对于组件的横坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
+| y | number | 是 | 相对于组件的纵坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
 | encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | 否 | 字符位置使用的编码类型。UTF-8编码时，字符位置以字节为单位；UTF-16编码时，字符位置以UTF-16码元为单位。<br>默认值：TextEncoding.TEXT_ENCODING_UTF8。 |
 
 **返回值：**
@@ -122,6 +128,8 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange): Array<TextRange> | undefi
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
+
+<!--Device-LayoutManager-getCharacterRangeForGlyphRange(glyphRange: TextRange): Array<TextRange> | undefined--><!--Device-LayoutManager-getCharacterRangeForGlyphRange(glyphRange: TextRange): Array<TextRange> | undefined-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -170,6 +178,8 @@ UTF-16编码时，字符索引以UTF-16码元为单位，BMP字符（如“世�
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-LayoutManager-getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): Array<TextRange> | undefined--><!--Device-LayoutManager-getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): Array<TextRange> | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -205,14 +215,16 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LayoutManager-getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity--><!--Device-LayoutManager-getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br>单位：px |
-| y | number | 是 | 相对于组件的纵坐标。<br>单位：px |
+| x | number | 是 | 相对于组件的横坐标。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| y | number | 是 | 相对于组件的纵坐标。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
@@ -245,6 +257,8 @@ getGlyphRangeForCharacterRange(charRange: TextRange): Array<TextRange> | undefin
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
+
+<!--Device-LayoutManager-getGlyphRangeForCharacterRange(charRange: TextRange): Array<TextRange> | undefined--><!--Device-LayoutManager-getGlyphRangeForCharacterRange(charRange: TextRange): Array<TextRange> | undefined-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -293,6 +307,8 @@ UTF-16编码时，字符索引以UTF-16码元为单位，BMP字符（如“世�
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-LayoutManager-getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): Array<TextRange> | undefined--><!--Device-LayoutManager-getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): Array<TextRange> | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -326,6 +342,8 @@ getLineCount(): number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LayoutManager-getLineCount(): number--><!--Device-LayoutManager-getLineCount(): number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -351,6 +369,8 @@ getLineMetrics(lineNumber: number): LineMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LayoutManager-getLineMetrics(lineNumber: number): LineMetrics--><!--Device-LayoutManager-getLineMetrics(lineNumber: number): LineMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -385,6 +405,8 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-LayoutManager-getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: RectHeightStyle): Array<TextBox>--><!--Device-LayoutManager-getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: RectHeightStyle): Array<TextBox>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

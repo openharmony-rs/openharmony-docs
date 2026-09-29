@@ -24,6 +24,8 @@ Obtains the PIDs of processes that support quick startup after caching in a spec
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-appManager-function getSupportedProcessCachePids(bundleName : string): Promise<Array<int>>--><!--Device-appManager-function getSupportedProcessCachePids(bundleName : string): Promise<Array<int>>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

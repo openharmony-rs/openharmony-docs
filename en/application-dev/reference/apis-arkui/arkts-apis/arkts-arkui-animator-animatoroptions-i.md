@@ -8,6 +8,8 @@ Animator options.
 
 **Since:** 6
 
+<!--Device-unnamed-export interface AnimatorOptions--><!--Device-unnamed-export interface AnimatorOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Default value: **0**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AnimatorOptions-begin: number--><!--Device-AnimatorOptions-begin: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## delay
@@ -51,6 +55,8 @@ Default value: **0**
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AnimatorOptions-delay: number--><!--Device-AnimatorOptions-delay: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +84,8 @@ Default value: **'normal'**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AnimatorOptions-direction: "normal" | "reverse" | "alternate" | "alternate-reverse"--><!--Device-AnimatorOptions-direction: "normal" | "reverse" | "alternate" | "alternate-reverse"-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## duration
@@ -98,6 +106,8 @@ Default value: **0**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AnimatorOptions-duration: number--><!--Device-AnimatorOptions-duration: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## easing
@@ -115,6 +125,8 @@ If the provided string is invalid, **"ease"** is used.
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AnimatorOptions-easing: string--><!--Device-AnimatorOptions-easing: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,6 +147,8 @@ Default value: **1**
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AnimatorOptions-end: number--><!--Device-AnimatorOptions-end: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,6 +174,8 @@ State of the animated target after the animation is executed.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AnimatorOptions-fill: "none" | "forwards" | "backwards" | "both"--><!--Device-AnimatorOptions-fill: "none" | "forwards" | "backwards" | "both"-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## iterations
@@ -177,5 +193,7 @@ Note: Any negative value other than **-1** is treated as invalid. For invalid va
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AnimatorOptions-iterations: number--><!--Device-AnimatorOptions-iterations: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

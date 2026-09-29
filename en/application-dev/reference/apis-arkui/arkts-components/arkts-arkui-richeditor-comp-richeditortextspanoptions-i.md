@@ -8,6 +8,8 @@ Defines the options for adding a text span.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface RichEditorTextSpanOptions--><!--Device-unnamed-declare interface RichEditorTextSpanOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## gesture
@@ -25,6 +27,8 @@ Behavior trigger callback. Pass this parameter when the tap or long-press intera
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorTextSpanOptions-gesture?: RichEditorGesture--><!--Device-RichEditorTextSpanOptions-gesture?: RichEditorGesture-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ If the value specified is less than 0, the span is placed at the beginning of al
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorTextSpanOptions-offset?: number--><!--Device-RichEditorTextSpanOptions-offset?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## paragraphStyle
@@ -64,6 +70,8 @@ Paragraph style. Pass this parameter when paragraph-level layout properties such
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorTextSpanOptions-paragraphStyle?: RichEditorParagraphStyle--><!--Device-RichEditorTextSpanOptions-paragraphStyle?: RichEditorParagraphStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -81,6 +89,8 @@ Text style information. Pass this parameter when custom styles such as text colo
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorTextSpanOptions-style?: RichEditorTextStyle--><!--Device-RichEditorTextSpanOptions-style?: RichEditorTextStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,5 +111,7 @@ Default value: **undefined**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-RichEditorTextSpanOptions-urlStyle?: RichEditorUrlStyle--><!--Device-RichEditorTextSpanOptions-urlStyle?: RichEditorUrlStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

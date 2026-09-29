@@ -13,6 +13,8 @@ see [modifyImageProperty](arkts-image-image-imagesource-i.md#modifyimageproperty
 
 **Since:** 7
 
+<!--Device-image-enum PropertyKey--><!--Device-image-enum PropertyKey-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## XTSTYLE_TEMPLATE_NAME
@@ -26,6 +28,8 @@ Describes xtstyle template name.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PropertyKey-XTSTYLE_TEMPLATE_NAME = 'HwMnoteXtStyleTemplateName'--><!--Device-PropertyKey-XTSTYLE_TEMPLATE_NAME = 'HwMnoteXtStyleTemplateName'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -43,6 +47,8 @@ Describes xtstyle custom light and shadow.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PropertyKey-XTSTYLE_CUSTOM_LIGHT_AND_SHADOW = 'HwMnoteXtStyleCustomLightAndShadow'--><!--Device-PropertyKey-XTSTYLE_CUSTOM_LIGHT_AND_SHADOW = 'HwMnoteXtStyleCustomLightAndShadow'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **System API:** This is a system API.
@@ -58,6 +64,8 @@ Describes xtstyle custom saturation.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PropertyKey-XTSTYLE_CUSTOM_SATURATION = 'HwMnoteXtStyleCustomSaturation'--><!--Device-PropertyKey-XTSTYLE_CUSTOM_SATURATION = 'HwMnoteXtStyleCustomSaturation'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -75,6 +83,8 @@ Describes xtstyle custom hue.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PropertyKey-XTSTYLE_CUSTOM_HUE = 'HwMnoteXtStyleCustomHue'--><!--Device-PropertyKey-XTSTYLE_CUSTOM_HUE = 'HwMnoteXtStyleCustomHue'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **System API:** This is a system API.
@@ -90,6 +100,8 @@ Describes xtstyle exposure param.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PropertyKey-XTSTYLE_EXPOSURE_PARAM = 'HwMnoteXtStyleExposureParam'--><!--Device-PropertyKey-XTSTYLE_EXPOSURE_PARAM = 'HwMnoteXtStyleExposureParam'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

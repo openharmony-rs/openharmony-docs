@@ -10,6 +10,8 @@ Describes the callback invoked for the AVDownloader progress change event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-media-type OnAVDownloadProgressChangeHandle = (taskId: string, progress: double) => void--><!--Device-media-type OnAVDownloadProgressChangeHandle = (taskId: string, progress: double) => void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Parameters:**

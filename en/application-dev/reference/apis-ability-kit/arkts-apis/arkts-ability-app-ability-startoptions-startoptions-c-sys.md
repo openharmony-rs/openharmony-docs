@@ -8,6 +8,8 @@ StartOptions can be used as an input parameter for APIs used to launch a UIAbili
 
 **Since:** 9
 
+<!--Device-unnamed-declare class StartOptions--><!--Device-unnamed-declare class StartOptions-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Whether the window has focus. The default value is **true**, indicating that the
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartOptions-windowFocused?: boolean--><!--Device-StartOptions-windowFocused?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

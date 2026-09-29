@@ -18,6 +18,8 @@ This API is used to obtain the list of DLP files that are accessed recently, whi
 
 **Since:** 10
 
+<!--Device-dlpPermission-function getDLPFileAccessRecords(): Promise<Array<AccessedDLPFileInfo>>--><!--Device-dlpPermission-function getDLPFileAccessRecords(): Promise<Array<AccessedDLPFileInfo>>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Return value:**
@@ -61,6 +63,8 @@ Obtains the list of DLP files that are accessed recently. After the API is succe
 This API is used to obtain the list of DLP files that are accessed recently, which can be used to track and manage file usage.
 
 **Since:** 10
+
+<!--Device-dlpPermission-function getDLPFileAccessRecords(callback: AsyncCallback<Array<AccessedDLPFileInfo>>): void--><!--Device-dlpPermission-function getDLPFileAccessRecords(callback: AsyncCallback<Array<AccessedDLPFileInfo>>): void-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

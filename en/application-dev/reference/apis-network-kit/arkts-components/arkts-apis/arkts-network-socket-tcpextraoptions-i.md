@@ -10,6 +10,8 @@ Defines other properties of the **TCPSocket** object. This object is inherited f
 
 **Since:** 7
 
+<!--Device-socket-export interface TCPExtraOptions extends ExtraOptionsBase--><!--Device-socket-export interface TCPExtraOptions extends ExtraOptionsBase-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Whether to keep the connection alive. The default value is **false**. The value 
 
 **Since:** 7
 
+<!--Device-TCPExtraOptions-keepAlive?: boolean--><!--Device-TCPExtraOptions-keepAlive?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## OOBInline
@@ -43,6 +47,8 @@ Whether to enable OOBInline. The default value is **false**. The value **true** 
 **Type:** boolean
 
 **Since:** 7
+
+<!--Device-TCPExtraOptions-OOBInline?: boolean--><!--Device-TCPExtraOptions-OOBInline?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -64,6 +70,8 @@ Specify this parameter only when **on** is set to **true**.
 
 **Since:** 7
 
+<!--Device-TCPExtraOptions-socketLinger?: {on: boolean, linger: int}--><!--Device-TCPExtraOptions-socketLinger?: {on: boolean, linger: int}-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## tcpFastOpen
@@ -82,6 +90,8 @@ Currently, this parameter can be configured only on the client.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TCPExtraOptions-tcpFastOpen?: boolean--><!--Device-TCPExtraOptions-tcpFastOpen?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## TCPNoDelay
@@ -95,5 +105,7 @@ Whether to enable no-delay on the TCP socket connection. The default value is **
 **Type:** boolean
 
 **Since:** 7
+
+<!--Device-TCPExtraOptions-TCPNoDelay?: boolean--><!--Device-TCPExtraOptions-TCPNoDelay?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

@@ -16,4 +16,6 @@ GaugeShadowOptions继承自[MultiShadowOptions](arkts-arkui-common-comp-multisha
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare interface GaugeShadowOptions extends MultiShadowOptions--><!--Device-unnamed-declare interface GaugeShadowOptions extends MultiShadowOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

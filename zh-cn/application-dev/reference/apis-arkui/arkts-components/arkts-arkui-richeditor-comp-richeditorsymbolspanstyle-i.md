@@ -8,6 +8,8 @@ declare interface RichEditorSymbolSpanStyle
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface RichEditorSymbolSpanStyle--><!--Device-unnamed-declare interface RichEditorSymbolSpanStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## effectStrategy
@@ -28,6 +30,8 @@ effectStrategy?: SymbolEffectStrategy
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorSymbolSpanStyle-effectStrategy?: SymbolEffectStrategy--><!--Device-RichEditorSymbolSpanStyle-effectStrategy?: SymbolEffectStrategy-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -47,6 +51,8 @@ fontColor?: Array<ResourceColor>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorSymbolSpanStyle-fontColor?: Array<ResourceColor>--><!--Device-RichEditorSymbolSpanStyle-fontColor?: Array<ResourceColor>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,6 +75,8 @@ number类型取值范围：(0, +∞)，设置为0时显示默认字体大小。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorSymbolSpanStyle-fontSize?: number | string | Resource--><!--Device-RichEditorSymbolSpanStyle-fontSize?: number | string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +102,8 @@ string类型仅支持number类型取值的字符串形式，例如“400”，�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorSymbolSpanStyle-fontWeight?: number | FontWeight | string--><!--Device-RichEditorSymbolSpanStyle-fontWeight?: number | FontWeight | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## renderingStrategy
@@ -113,5 +123,7 @@ renderingStrategy?: SymbolRenderingStrategy
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorSymbolSpanStyle-renderingStrategy?: SymbolRenderingStrategy--><!--Device-RichEditorSymbolSpanStyle-renderingStrategy?: SymbolRenderingStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

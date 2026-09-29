@@ -12,6 +12,8 @@ Defines the content of data change notifications, including inserted data, updat
 
 **Substitutes:** ChangeNotification
 
+<!--Device-distributedData-interface ChangeNotification--><!--Device-distributedData-interface ChangeNotification-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Data deleted.
 
 **Substitutes:** deleteEntries
 
+<!--Device-ChangeNotification-deleteEntries: Entry[]--><!--Device-ChangeNotification-deleteEntries: Entry[]-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## deviceId
@@ -52,6 +56,8 @@ UUID of the device.
 **Deprecated since:** 9
 
 **Substitutes:** deviceId
+
+<!--Device-ChangeNotification-deviceId: string--><!--Device-ChangeNotification-deviceId: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -71,6 +77,8 @@ Data inserted.
 
 **Substitutes:** insertEntries
 
+<!--Device-ChangeNotification-insertEntries: Entry[]--><!--Device-ChangeNotification-insertEntries: Entry[]-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## updateEntries
@@ -88,5 +96,7 @@ Data updated.
 **Deprecated since:** 9
 
 **Substitutes:** updateEntries
+
+<!--Device-ChangeNotification-updateEntries: Entry[]--><!--Device-ChangeNotification-updateEntries: Entry[]-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

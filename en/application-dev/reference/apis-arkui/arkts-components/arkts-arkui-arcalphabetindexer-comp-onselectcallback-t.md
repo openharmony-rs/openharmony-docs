@@ -10,6 +10,8 @@ Defines the callback used in [onSelect](arkts-arkui-arcalphabetindexer-comp-attr
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare type OnSelectCallback =  (index: number) => void--><!--Device-unnamed-declare type OnSelectCallback =  (index: number) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**

@@ -166,7 +166,8 @@
   <!--Del-->
   - [ResourceType(system api)](arkts-backgroundtasks-backgroundtaskmanager-resourcetype-e-sys.md)<!--DelEnd-->
   - [UserAuthResult](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md)
-- [@ohos.resourceschedule.deviceStandby](arkts-backgroundtasks-resourceschedule-devicestandby.md)
+<!--Del-->
+- [@ohos.resourceschedule.deviceStandby(Device Standby)](arkts-backgroundtasks-resourceschedule-devicestandby.md)<!--DelEnd-->
   <!--Del-->
   - [getExemptedApps(system api)](arkts-backgroundtasks-devicestandby-getexemptedapps-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -179,7 +180,8 @@
   - [ResourceRequest(system api)](arkts-backgroundtasks-devicestandby-resourcerequest-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ResourceType(system api)](arkts-backgroundtasks-devicestandby-resourcetype-e-sys.md)<!--DelEnd-->
-- [@ohos.resourceschedule.usageStatistics(Device Usage Statistics)](arkts-backgroundtasks-resourceschedule-usagestatistics.md)
+<!--Del-->
+- [@ohos.resourceschedule.usageStatistics(Device Usage Statistics)](arkts-backgroundtasks-resourceschedule-usagestatistics.md)<!--DelEnd-->
   <!--Del-->
   - [isIdleState(system api)](arkts-backgroundtasks-usagestatistics-isidlestate-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -256,6 +258,7 @@
   - [WorkSchedulerExtensionAbility](arkts-backgroundtasks-workschedulerextensionability-c.md)
   - [WorkSchedulerExtensionContext](arkts-backgroundtasks-workschedulerextensioncontext-t.md)
 - application<!--arkts-backgroundtaskskit-application-->
-  - [WorkSchedulerExtensionContext(ExtensionAbility Context for Deferred Task Scheduling Callbacks)](arkts-backgroundtasks-workschedulerextensioncontext.md)
+  <!--Del-->
+  - [WorkSchedulerExtensionContext(Work Scheduler Callback Context)](arkts-backgroundtasks-workschedulerextensioncontext.md)<!--DelEnd-->
     <!--Del-->
     - [WorkSchedulerExtensionContext(system api)](arkts-backgroundtasks-workschedulerextensioncontext-c-sys.md)<!--DelEnd-->

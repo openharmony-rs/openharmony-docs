@@ -12,6 +12,8 @@ Defines a reminder for a scheduled timer.
 
 **Since:** 9
 
+<!--Device-reminderAgentManager-interface ReminderRequestTimer extends ReminderRequest--><!--Device-reminderAgentManager-interface ReminderRequestTimer extends ReminderRequest-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import
@@ -36,6 +38,8 @@ The value range is [0, +∞). If the value is out of range, error code 401 is re
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ReminderRequestTimer-repeatCount?: int--><!--Device-ReminderRequestTimer-repeatCount?: int-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## repeatInterval
@@ -54,6 +58,8 @@ The value range is [86400, +∞), in seconds. If the value is out of range, erro
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ReminderRequestTimer-repeatInterval?: long--><!--Device-ReminderRequestTimer-repeatInterval?: long-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## triggerTimeInSeconds
@@ -69,5 +75,7 @@ Unit: s
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ReminderRequestTimer-triggerTimeInSeconds: long--><!--Device-ReminderRequestTimer-triggerTimeInSeconds: long-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent

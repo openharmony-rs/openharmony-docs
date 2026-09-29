@@ -8,6 +8,8 @@ BackForwardCacheSupportedFeatures是ArkWeb框架中用于选择性控制允许�
 
 **起始版本：** 12
 
+<!--Device-webview-class BackForwardCacheSupportedFeatures--><!--Device-webview-class BackForwardCacheSupportedFeatures-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -25,6 +27,8 @@ constructor()
 BackForwardCacheSupportedFeatures的构造函数。
 
 **起始版本：** 12
+
+<!--Device-BackForwardCacheSupportedFeatures-constructor()--><!--Device-BackForwardCacheSupportedFeatures-constructor()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -46,6 +50,8 @@ true：允许，false：不允许。
 
 **起始版本：** 12
 
+<!--Device-BackForwardCacheSupportedFeatures-mediaTakeOver: boolean--><!--Device-BackForwardCacheSupportedFeatures-mediaTakeOver: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## nativeEmbed
@@ -65,5 +71,7 @@ true：允许，false：不允许。
 **类型：** boolean
 
 **起始版本：** 12
+
+<!--Device-BackForwardCacheSupportedFeatures-nativeEmbed: boolean--><!--Device-BackForwardCacheSupportedFeatures-nativeEmbed: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

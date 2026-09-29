@@ -17,6 +17,8 @@ Transforms a rotation vector based on the coordinate system. This API uses an as
 
 **Since:** 9
 
+<!--Device-sensor-function transformRotationMatrix(inRotationVector: Array<double>, coordinates: CoordinatesOptions,    callback: AsyncCallback<Array<double>>): void--><!--Device-sensor-function transformRotationMatrix(inRotationVector: Array<double>, coordinates: CoordinatesOptions,    callback: AsyncCallback<Array<double>>): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -74,6 +76,8 @@ function transformRotationMatrix(inRotationVector: Array<number>, coordinates: C
 Transforms a rotation vector based on the coordinate system. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-sensor-function transformRotationMatrix(inRotationVector: Array<double>, coordinates: CoordinatesOptions): Promise<Array<double>>--><!--Device-sensor-function transformRotationMatrix(inRotationVector: Array<double>, coordinates: CoordinatesOptions): Promise<Array<double>>-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 

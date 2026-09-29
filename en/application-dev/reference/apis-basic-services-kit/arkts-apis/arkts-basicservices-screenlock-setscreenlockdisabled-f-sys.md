@@ -18,6 +18,8 @@ Disable screen lock showing for os account local userId. This only becomes effec
 
 **Required permissions:** ohos.permission.ACCESS_SCREEN_LOCK
 
+<!--Device-screenLock-function setScreenLockDisabled(disable: boolean, userId: int): Promise<boolean>--><!--Device-screenLock-function setScreenLockDisabled(disable: boolean, userId: int): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **System API:** This is a system API.

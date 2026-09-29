@@ -19,6 +19,8 @@ Renames a file. This API uses a promise to return the result.
 
 **Substitutes:** [rename](arkts-corefile-file-fs-rename-f.md)
 
+<!--Device-unnamed-declare function rename(oldPath: string, newPath: string): Promise<void>--><!--Device-unnamed-declare function rename(oldPath: string, newPath: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -50,6 +52,8 @@ Renames a file. This API uses an asynchronous callback to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [rename](arkts-corefile-file-fs-rename-f.md)
+
+<!--Device-unnamed-declare function rename(oldPath: string, newPath: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function rename(oldPath: string, newPath: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

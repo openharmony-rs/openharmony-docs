@@ -18,6 +18,8 @@ Registers a listener for printer state change events. This API uses a callback t
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo) => void): void--><!--Device-print-function on(type: 'printerStateChange', callback: (state: PrinterState, info: PrinterInfo) => void): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.
@@ -66,6 +68,8 @@ Registers a listener for print job state change events. This API uses a callback
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => void): void--><!--Device-print-function on(type: 'jobStateChange', callback: (state: PrintJobState, job: PrintJob) => void): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.
@@ -107,6 +111,8 @@ Registers a listener for printer extension information change events. This API u
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function on(type: 'extInfoChange', callback: (extensionId: string, info: string) => void): void--><!--Device-print-function on(type: 'extInfoChange', callback: (extensionId: string, info: string) => void): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

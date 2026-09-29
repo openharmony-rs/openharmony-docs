@@ -8,6 +8,8 @@ Device Information Definition
 
 **Since:** 10
 
+<!--Device-avSession-interface DeviceInfo--><!--Device-avSession-interface DeviceInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Define different authentication status. 0: Device not authenticated. 1: Device a
 
 **Since:** 11
 
+<!--Device-DeviceInfo-authenticationStatus?: int--><!--Device-DeviceInfo-authenticationStatus?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ HiPlayDeviceInfo is used to obtain device-specific information for HiPlay. trans
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceInfo-hiPlayDeviceInfo?: HiPlayDeviceInfo--><!--Device-DeviceInfo-hiPlayDeviceInfo?: HiPlayDeviceInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ device ip address if available.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-DeviceInfo-ipAddress?: string--><!--Device-DeviceInfo-ipAddress?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -78,6 +86,8 @@ Indicates the current device is legacy or not.
 
 **Since:** 13
 
+<!--Device-DeviceInfo-isLegacy?: boolean--><!--Device-DeviceInfo-isLegacy?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ Medium types used to discover devices. 1: BLE 2: COAP
 **Type:** number
 
 **Since:** 13
+
+<!--Device-DeviceInfo-mediumTypes?: int--><!--Device-DeviceInfo-mediumTypes?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -110,6 +122,8 @@ Network id.
 
 **Since:** 13
 
+<!--Device-DeviceInfo-networkId?: string--><!--Device-DeviceInfo-networkId?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.
@@ -125,6 +139,8 @@ device provider which supplies the route capability.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-DeviceInfo-providerId?: int--><!--Device-DeviceInfo-providerId?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 

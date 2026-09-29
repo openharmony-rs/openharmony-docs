@@ -12,6 +12,8 @@ Defines the context base class for the [stage model](../../../application-models
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-common-export type Context = _Context.default--><!--Device-common-export type Context = _Context.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _Context.default

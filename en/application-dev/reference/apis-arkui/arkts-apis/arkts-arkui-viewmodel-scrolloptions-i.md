@@ -10,6 +10,8 @@ ScrollOptions
 
 **Since:** 6
 
+<!--Device-unnamed-export interface ScrollOptions--><!--Device-unnamed-export interface ScrollOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## complete
@@ -23,6 +25,8 @@ Callback function at the end of the interface invoking (executed both successful
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ScrollOptions-complete?: (result: Object) => void--><!--Device-ScrollOptions-complete?: (result: Object) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Callback function for interface invocation failure.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-ScrollOptions-fail?: (result: Object) => void--><!--Device-ScrollOptions-fail?: (result: Object) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -63,6 +69,8 @@ Callback function for successful interface invocation.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ScrollOptions-success?: (result: Object) => void--><!--Device-ScrollOptions-success?: (result: Object) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,6 +94,8 @@ Duration of the scrolling animation, in ms.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-ScrollOptions-duration: number--><!--Device-ScrollOptions-duration: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -101,6 +111,8 @@ The selector for current scroll.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ScrollOptions-id?: string--><!--Device-ScrollOptions-id?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,6 +130,8 @@ Scroll to the target position of the page. Unit: px
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-ScrollOptions-position: number--><!--Device-ScrollOptions-position: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## timingFunction
@@ -133,5 +147,7 @@ The timing function for current scroll animation.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ScrollOptions-timingFunction?: string--><!--Device-ScrollOptions-timingFunction?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -10,6 +10,8 @@ Provides the parameters of the long press gesture handler. Inherits from [BaseHa
 
 **Since:** 12
 
+<!--Device-unnamed-interface LongPressGestureHandlerOptions extends BaseHandlerOptions--><!--Device-unnamed-interface LongPressGestureHandlerOptions extends BaseHandlerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## allowableMovement
@@ -31,6 +33,8 @@ Value range: (0, +∞). If the value is less than or equal to 0, the default val
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-LongPressGestureHandlerOptions-allowableMovement?: number--><!--Device-LongPressGestureHandlerOptions-allowableMovement?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +59,8 @@ Value range: [0, +∞). If the value is less than or equal to 0, the default val
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LongPressGestureHandlerOptions-duration?: number--><!--Device-LongPressGestureHandlerOptions-duration?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ If a finger moves more than 15 px after being pressed, the gesture recognition f
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LongPressGestureHandlerOptions-fingers?: number--><!--Device-LongPressGestureHandlerOptions-fingers?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## repeat
@@ -101,5 +109,7 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LongPressGestureHandlerOptions-repeat?: boolean--><!--Device-LongPressGestureHandlerOptions-repeat?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

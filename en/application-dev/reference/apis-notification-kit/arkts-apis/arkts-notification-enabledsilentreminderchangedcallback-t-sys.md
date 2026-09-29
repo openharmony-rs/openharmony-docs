@@ -10,6 +10,8 @@ Defines a callback function to listen for the enabling state changes of the appl
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) => void--><!--Device-unnamed-export type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) => void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

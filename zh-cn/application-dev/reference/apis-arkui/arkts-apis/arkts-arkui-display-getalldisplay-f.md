@@ -20,6 +20,8 @@ function getAllDisplay(callback: AsyncCallback<Array<Display>>): void
 
 **替代接口：** [getAllDisplays](arkts-arkui-display-getalldisplays-f.md)(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;)
 
+<!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void--><!--Device-display-function getAllDisplay(callback: AsyncCallback<Array<Display>>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
@@ -59,6 +61,8 @@ function getAllDisplay(): Promise<Array<Display>>
 **废弃版本：** 9
 
 **替代接口：** [getAllDisplays](arkts-arkui-display-getalldisplays-f.md)()
+
+<!--Device-display-function getAllDisplay(): Promise<Array<Display>>--><!--Device-display-function getAllDisplay(): Promise<Array<Display>>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

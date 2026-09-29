@@ -8,6 +8,8 @@ declare enum AutoCapitalizationMode
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare enum AutoCapitalizationMode--><!--Device-unnamed-declare enum AutoCapitalizationMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NONE
@@ -23,6 +25,8 @@ NONE = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-AutoCapitalizationMode-NONE = 0--><!--Device-AutoCapitalizationMode-NONE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ WORDS = 1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-AutoCapitalizationMode-WORDS = 1--><!--Device-AutoCapitalizationMode-WORDS = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SENTENCES
@@ -56,6 +62,8 @@ SENTENCES = 2
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-AutoCapitalizationMode-SENTENCES = 2--><!--Device-AutoCapitalizationMode-SENTENCES = 2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALL_CHARACTERS
@@ -71,5 +79,7 @@ ALL_CHARACTERS = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-AutoCapitalizationMode-ALL_CHARACTERS = 3--><!--Device-AutoCapitalizationMode-ALL_CHARACTERS = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

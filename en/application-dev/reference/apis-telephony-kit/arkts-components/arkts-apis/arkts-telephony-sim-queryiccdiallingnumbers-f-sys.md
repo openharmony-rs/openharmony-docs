@@ -18,6 +18,8 @@ Query dialing number information on SIM card.
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
+<!--Device-sim-function queryIccDiallingNumbers(slotId: int, type: ContactType, callback: AsyncCallback<Array<DiallingNumbersInfo>>): void--><!--Device-sim-function queryIccDiallingNumbers(slotId: int, type: ContactType, callback: AsyncCallback<Array<DiallingNumbersInfo>>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Query dialing number information on SIM card.
 **Since:** 8
 
 **Required permissions:** ohos.permission.READ_CONTACTS
+
+<!--Device-sim-function queryIccDiallingNumbers(slotId: int, type: ContactType): Promise<Array<DiallingNumbersInfo>>--><!--Device-sim-function queryIccDiallingNumbers(slotId: int, type: ContactType): Promise<Array<DiallingNumbersInfo>>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

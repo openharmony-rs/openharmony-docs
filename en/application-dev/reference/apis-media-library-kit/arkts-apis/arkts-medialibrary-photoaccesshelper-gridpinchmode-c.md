@@ -8,6 +8,8 @@ Represents the pinch mode of the grid in the picker.
 
 **Since:** 23
 
+<!--Device-photoAccessHelper-export class GridPinchMode--><!--Device-photoAccessHelper-export class GridPinchMode-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Grid level after the picker is started. The default value is **STANDARD**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-GridPinchMode-defaultGridLevel?: GridLevel--><!--Device-GridPinchMode-defaultGridLevel?: GridLevel-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -48,6 +52,8 @@ Grid pinch mode. If this parameter is set, the pinch function is supported. Othe
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-GridPinchMode-gridPinchModeType?: GridPinchModeType--><!--Device-GridPinchMode-gridPinchModeType?: GridPinchModeType-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

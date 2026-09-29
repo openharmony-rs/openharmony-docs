@@ -14,6 +14,8 @@ Generates a border style object with the specified border style color for all bo
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export function borderStyles(all: BorderStyle): Edges<BorderStyle>--><!--Device-unnamed-export function borderStyles(all: BorderStyle): Edges<BorderStyle>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

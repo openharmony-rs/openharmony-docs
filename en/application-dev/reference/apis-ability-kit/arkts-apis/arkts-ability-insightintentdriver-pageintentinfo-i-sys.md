@@ -8,6 +8,8 @@ Describes the parameters supported by the [@InsightIntentPage](../../../referenc
 
 **Since:** 20
 
+<!--Device-insightIntentDriver-interface PageIntentInfo--><!--Device-insightIntentDriver-interface PageIntentInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Name of the [NavDestination](../../../reference/apis-arkui/arkui-ts/ts-basic-com
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PageIntentInfo-readonly navDestinationName: string--><!--Device-PageIntentInfo-readonly navDestinationName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ ID of the Navigation component bound to the intent.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PageIntentInfo-readonly navigationId: string--><!--Device-PageIntentInfo-readonly navigationId: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -68,6 +74,8 @@ Page name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PageIntentInfo-readonly pagePath: string--><!--Device-PageIntentInfo-readonly pagePath: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Ability name.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PageIntentInfo-readonly uiAbility: string--><!--Device-PageIntentInfo-readonly uiAbility: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

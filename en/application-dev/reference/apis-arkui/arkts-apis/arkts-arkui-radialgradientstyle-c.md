@@ -10,6 +10,8 @@ Displays a radial gradient. **RadialGradientStyle** inherits from [ShaderStyle](
 
 **Since:** 20
 
+<!--Device-unnamed-declare class RadialGradientStyle extends ShaderStyle--><!--Device-unnamed-declare class RadialGradientStyle extends ShaderStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -18,13 +20,15 @@ Displays a radial gradient. **RadialGradientStyle** inherits from [ShaderStyle](
 constructor(options: RadialGradientOptions)
 ```
 
-A constructor used to create a **RadialGradientOptions** object.
+A constructor used to create a **RadialGradientStyle** object.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-RadialGradientStyle-constructor(options: RadialGradientOptions)--><!--Device-RadialGradientStyle-constructor(options: RadialGradientOptions)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,5 +53,7 @@ Options for displaying a radial gradient.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-RadialGradientStyle-options: RadialGradientOptions--><!--Device-RadialGradientStyle-options: RadialGradientOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -12,6 +12,8 @@ For details about how to obtain the preview stream data, see [Dual-Channel Previ
 
 **Since:** 10
 
+<!--Device-camera-interface Rect--><!--Device-camera-interface Rect-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -32,7 +34,9 @@ Height of the rectangle, in the range of [0, 1].
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Rect-height: double--><!--Device-Rect-height: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -48,7 +52,9 @@ X coordinate of the top-left corner of the rectangle, in the range of [0, 1].
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Rect-topLeftX: double--><!--Device-Rect-topLeftX: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -64,7 +70,9 @@ Y coordinate of the top-left corner of the rectangle, in the range of [0, 1].
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Rect-topLeftY: double--><!--Device-Rect-topLeftY: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -80,6 +88,8 @@ Width of the rectangle, in the range of [0, 1].
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Rect-width: double--><!--Device-Rect-width: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

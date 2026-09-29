@@ -18,6 +18,8 @@ Unregisters the callback used to listen for the scanner addition event. This API
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-scan-function off(type: 'scanDeviceAdd', callback?: Callback<ScannerDevice>): void--><!--Device-scan-function off(type: 'scanDeviceAdd', callback?: Callback<ScannerDevice>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.
@@ -61,6 +63,8 @@ Unregisters the callback used to listen for the scanner deletion event. This API
 **Since:** 20
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-scan-function off(type: 'scanDeviceDel', callback?: Callback<ScannerDevice>): void--><!--Device-scan-function off(type: 'scanDeviceDel', callback?: Callback<ScannerDevice>): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

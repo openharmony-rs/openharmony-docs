@@ -35,16 +35,16 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 | [WorkerGlobalScope](arkts-arkts-worker-workerglobalscope-i.md) | Specifies the worker thread running environment, which is isolated from the host thread environment. |
 | [WorkerOptions](arkts-arkts-worker-workeroptions-i.md) | Provides options that can be set for the Worker instance to create. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [Priority](arkts-arkts-worker-priority-e.md) | Enumerates the priorities available for EventHandler. For details about the mappings between priorities and EventHandler levels, see EventHandler Level. |
-| [ThreadWorkerPriority](arkts-arkts-worker-threadworkerpriority-e.md) | Enumerates the priorities available for Worker threads. For details about the mappings between priorities and QoS levels, see QoS Level. |
-
 ### Types
 
 | Name | Description |
 | --- | --- |
 | [ErrorCallback](arkts-arkts-errorcallback-t.md) | The event handler to be called when an exception occurs during worker execution. |
 | [MessageType](arkts-arkts-messagetype-t.md) | Type of message, only "message" and "messageerror". |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [Priority](arkts-arkts-worker-priority-e.md) | Enumerates the priorities available for EventHandler. For details about the mappings between priorities and EventHandler levels, see EventHandler Level. |
+| [ThreadWorkerPriority](arkts-arkts-worker-threadworkerpriority-e.md) | Enumerates the priorities available for Worker threads. For details about the mappings between priorities and QoS levels, see QoS Level. |

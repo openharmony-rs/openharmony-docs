@@ -14,6 +14,8 @@ Enumerates the types of networks specified in an HTTP request.
 
 **Since:** 23
 
+<!--Device-http-export type PathPreference = 'auto' | 'primaryCellular' | 'secondaryCellular'--><!--Device-http-export type PathPreference = 'auto' | 'primaryCellular' | 'secondaryCellular'-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 | Type | Description |

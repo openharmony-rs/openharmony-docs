@@ -16,6 +16,8 @@ Sets the screen brightness.
 
 **Since:** 7
 
+<!--Device-brightness-function setValue(value: int): void--><!--Device-brightness-function setValue(value: int): void-End-->
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager
 
 **System API:** This is a system API.
@@ -56,6 +58,8 @@ function setValue(value: number, continuous: boolean): void
 Sets the screen brightness. This API is used for continuous brightness adjustment. To achieve a better performance, set **continuous** to **true** when you start, and set it to **false** after you finish.
 
 **Since:** 11
+
+<!--Device-brightness-function setValue(value: int, continuous: boolean): void--><!--Device-brightness-function setValue(value: int, continuous: boolean): void-End-->
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager
 

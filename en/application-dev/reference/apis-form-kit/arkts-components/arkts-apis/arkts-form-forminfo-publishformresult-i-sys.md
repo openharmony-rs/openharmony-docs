@@ -10,6 +10,8 @@ The result of publish form.
 
 **Since:** 12
 
+<!--Device-formInfo-interface PublishFormResult--><!--Device-formInfo-interface PublishFormResult-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ The error code.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PublishFormResult-code: PublishFormErrorCode--><!--Device-PublishFormResult-code: PublishFormErrorCode-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ The message.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PublishFormResult-message: string--><!--Device-PublishFormResult-message: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

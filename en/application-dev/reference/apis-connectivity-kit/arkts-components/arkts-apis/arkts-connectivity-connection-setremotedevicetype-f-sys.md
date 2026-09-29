@@ -20,6 +20,8 @@ Set remote device custom type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function setRemoteDeviceType(deviceId: string, type: DeviceType): Promise<void>--><!--Device-connection-function setRemoteDeviceType(deviceId: string, type: DeviceType): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

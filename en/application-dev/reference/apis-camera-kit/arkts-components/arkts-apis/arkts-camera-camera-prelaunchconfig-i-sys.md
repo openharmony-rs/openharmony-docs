@@ -8,6 +8,8 @@ Defines the camera prelaunch configuration. Currently, the configuration is used
 
 **Since:** 10
 
+<!--Device-camera-interface PrelaunchConfig--><!--Device-camera-interface PrelaunchConfig-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Activation time, in minutes.
 
 **Since:** 11
 
+<!--Device-PrelaunchConfig-activeTime?: int--><!--Device-PrelaunchConfig-activeTime?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Camera device.
 **Type:** [CameraDevice](arkts-camera-camera-cameradevice-i.md)
 
 **Since:** 10
+
+<!--Device-PrelaunchConfig-cameraDevice: CameraDevice--><!--Device-PrelaunchConfig-cameraDevice: CameraDevice-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -62,6 +68,8 @@ Type of the parameter used for prelaunch.
 
 **Since:** 11
 
+<!--Device-PrelaunchConfig-restoreParamType?: RestoreParamType--><!--Device-PrelaunchConfig-restoreParamType?: RestoreParamType-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Setting parameter.
 **Type:** [SettingParam](arkts-camera-camera-settingparam-i-sys.md)
 
 **Since:** 11
+
+<!--Device-PrelaunchConfig-settingParam?: SettingParam--><!--Device-PrelaunchConfig-settingParam?: SettingParam-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

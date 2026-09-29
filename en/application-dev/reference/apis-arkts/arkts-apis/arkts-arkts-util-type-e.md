@@ -8,6 +8,8 @@ Enumerates the Base64 encoding formats.
 
 **Since:** 10
 
+<!--Device-util-enum Type--><!--Device-util-enum Type-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## BASIC
@@ -22,6 +24,8 @@ Basic format. This API can be used in atomic services since API version 11.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Type-BASIC = 0--><!--Device-Type-BASIC = 0-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## MIME
@@ -35,6 +39,8 @@ MIME format. This API can be used in atomic services since API version 11.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Type-MIME = 1--><!--Device-Type-MIME = 1-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -52,6 +58,8 @@ This value is supported since API version 12. This API can be used in atomic ser
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Type-BASIC_URL_SAFE = 2--><!--Device-Type-BASIC_URL_SAFE = 2-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## MIME_URL_SAFE
@@ -67,5 +75,7 @@ This value is supported since API version 12. This API can be used in atomic ser
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Type-MIME_URL_SAFE = 3--><!--Device-Type-MIME_URL_SAFE = 3-End-->
 
 **System capability:** SystemCapability.Utils.Lang

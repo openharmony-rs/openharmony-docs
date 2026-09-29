@@ -14,6 +14,8 @@ Define Styles Decorator type with version control.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
 
+<!--Device-unnamed-declare type StylesVersionDecorator = (versionCondition: VersionCondition) => MethodDecorator--><!--Device-unnamed-declare type StylesVersionDecorator = (versionCondition: VersionCondition) => MethodDecorator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

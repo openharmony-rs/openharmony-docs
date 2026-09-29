@@ -8,6 +8,8 @@ Describes the information about a media asset.
 
 **Since:** 20
 
+<!--Device-photoAccessHelper-interface PhotoAssetChangeInfo--><!--Device-photoAccessHelper-interface PhotoAssetChangeInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Smart album change information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PhotoAssetChangeInfo-albumChangeInfos?: AlbumChangeInfo[] | null--><!--Device-PhotoAssetChangeInfo-albumChangeInfos?: AlbumChangeInfo[] | null-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ The asset source type. Default value: 0.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PhotoAssetChangeInfo-assetSourceType?: AssetSourceType--><!--Device-PhotoAssetChangeInfo-assetSourceType?: AssetSourceType-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -64,6 +70,8 @@ Unix timestamp when the media asset was created, in milliseconds.
 
 **Since:** 20
 
+<!--Device-PhotoAssetChangeInfo-dateAddedMs: long--><!--Device-PhotoAssetChangeInfo-dateAddedMs: long-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -79,6 +87,8 @@ Date when the media asset was created.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-PhotoAssetChangeInfo-dateDay: string--><!--Device-PhotoAssetChangeInfo-dateDay: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -98,6 +108,8 @@ The modified time of asset. <br>Unit:milliseconds.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PhotoAssetChangeInfo-dateModifiedMs?: long--><!--Device-PhotoAssetChangeInfo-dateModifiedMs?: long-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -113,6 +125,8 @@ Unix timestamp when the media asset was captured, in milliseconds.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-PhotoAssetChangeInfo-dateTakenMs: long--><!--Device-PhotoAssetChangeInfo-dateTakenMs: long-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -130,6 +144,8 @@ Unix timestamp when the media asset was deleted, in milliseconds.
 
 **Since:** 20
 
+<!--Device-PhotoAssetChangeInfo-dateTrashedMs: long--><!--Device-PhotoAssetChangeInfo-dateTrashedMs: long-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -146,6 +162,8 @@ Display name of the media asset.
 
 **Since:** 23
 
+<!--Device-PhotoAssetChangeInfo-displayName?: string--><!--Device-PhotoAssetChangeInfo-displayName?: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -161,6 +179,8 @@ ID of the media asset.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-PhotoAssetChangeInfo-fileId: int--><!--Device-PhotoAssetChangeInfo-fileId: int-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -180,6 +200,8 @@ The hidden time of asset. <br>Unit:milliseconds.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PhotoAssetChangeInfo-hiddenTime?: long--><!--Device-PhotoAssetChangeInfo-hiddenTime?: long-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -195,6 +217,8 @@ Whether the media asset is hidden. **true** if hidden, **false** otherwise.
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-PhotoAssetChangeInfo-isHidden: boolean--><!--Device-PhotoAssetChangeInfo-isHidden: boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -214,6 +238,8 @@ The visibility of photo. The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PhotoAssetChangeInfo-photoVisibility?: int--><!--Device-PhotoAssetChangeInfo-photoVisibility?: int-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -229,6 +255,8 @@ Position of the media asset.
 **Type:** [PositionType](arkts-medialibrary-photoaccesshelper-positiontype-e.md)
 
 **Since:** 23
+
+<!--Device-PhotoAssetChangeInfo-position?: PositionType--><!--Device-PhotoAssetChangeInfo-position?: PositionType-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -248,6 +276,8 @@ The date day of the share album asset to be shared. The value should be an integ
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PhotoAssetChangeInfo-shareDateDay?: int--><!--Device-PhotoAssetChangeInfo-shareDateDay?: int-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -265,6 +295,8 @@ The group of the share album assets to be shared. The value should be an integer
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PhotoAssetChangeInfo-shareGroup?: long--><!--Device-PhotoAssetChangeInfo-shareGroup?: long-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -284,6 +316,8 @@ The risk status of share album asset. The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PhotoAssetChangeInfo-shareRiskStatus?: ShareAlbumRiskStatus--><!--Device-PhotoAssetChangeInfo-shareRiskStatus?: ShareAlbumRiskStatus-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -299,6 +333,8 @@ File size of the media asset, in bytes. The size of a moving photo includes the 
 **Type:** number
 
 **Since:** 23
+
+<!--Device-PhotoAssetChangeInfo-size?: long--><!--Device-PhotoAssetChangeInfo-size?: long-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -316,6 +352,8 @@ Strong association type of the media asset.
 
 **Since:** 20
 
+<!--Device-PhotoAssetChangeInfo-strongAssociation: StrongAssociationType--><!--Device-PhotoAssetChangeInfo-strongAssociation: StrongAssociationType-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -331,6 +369,8 @@ Accessibility status of the thumbnail.
 **Type:** [ThumbnailVisibility](arkts-medialibrary-photoaccesshelper-thumbnailvisibility-e-sys.md)
 
 **Since:** 20
+
+<!--Device-PhotoAssetChangeInfo-thumbnailVisible: ThumbnailVisibility--><!--Device-PhotoAssetChangeInfo-thumbnailVisible: ThumbnailVisibility-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

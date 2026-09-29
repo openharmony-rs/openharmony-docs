@@ -4,11 +4,13 @@ The module provides basic APIs for manipulating Picture in Picture (PiP). For ex
 
 > **NOTE:** 
 > 
-> - Before &lt;!--RP2--&gt;OpenHarmony 6.0&lt;!--RP2End--&gt;, the PiP feature was supported only on phones and tablets. Starting from &lt;!--RP2--&gt;OpenHarmony 6.0&lt;!--RP2End--&gt;, the PiP feature is supported on phones, PCs/2-in-1 devices, tablets,but is unavailable on all other devices.
+> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature was supported only on phones and tablets. Starting from <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported on phones, PCs/2-in-1 devices, tablets,but is unavailable on all other devices.
 > 
 > - For the system capability SystemCapability.Window.SessionManager, use canIUse() to check whether the device supports this system capability and the corresponding APIs.
 
 **Since:** 11
+
+<!--Device-unnamed-declare namespace PiPWindow--><!--Device-unnamed-declare namespace PiPWindow-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -46,6 +48,18 @@ import { PiPWindow } from '@kit.ArkUI';
 | [PiPController](arkts-arkui-pipwindow-pipcontroller-i-sys.md) | Implements a PiP controller that starts, stops, or updates a PiP window and registers callbacks. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [ControlPanelActionEventCallback](arkts-arkui-pipwindow-controlpanelactioneventcallback-t.md) | Describes the action event callback of the PiP controller. |
+| [PiPActionEventType](arkts-arkui-pipwindow-pipactioneventtype-t.md) | Enumerates the types of action events of the PiP controller. |
+| [PiPCallActionEvent](arkts-arkui-pipwindow-pipcallactionevent-t.md) | Defines the PiP action event in a video call. |
+| [PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md) | Describes the optional component groups of the PiP controller. An application can configure whether to display these optional components. This API must match [PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md) when being used. Otherwise, the [create](arkts-arkui-pipwindow-create-f.md) API returns error code 401. |
+| [PiPLiveActionEvent](arkts-arkui-pipwindow-pipliveactionevent-t.md) | Defines the PiP action event in a live. |
+| [PiPMeetingActionEvent](arkts-arkui-pipwindow-pipmeetingactionevent-t.md) | Defines the PiP action event in a video meeting. |
+| [PiPVideoActionEvent](arkts-arkui-pipwindow-pipvideoactionevent-t.md) | Defines the PiP action event during video playback. |
+
 ### Enums
 
 | Name | Description |
@@ -66,15 +80,3 @@ import { PiPWindow } from '@kit.ArkUI';
 | --- | --- |
 | [PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e-sys.md) | Enumerates the PiP template types. |
 <!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [ControlPanelActionEventCallback](arkts-arkui-pipwindow-controlpanelactioneventcallback-t.md) | Describes the action event callback of the PiP controller. |
-| [PiPActionEventType](arkts-arkui-pipwindow-pipactioneventtype-t.md) | Enumerates the types of action events of the PiP controller. |
-| [PiPCallActionEvent](arkts-arkui-pipwindow-pipcallactionevent-t.md) | Defines the PiP action event in a video call. |
-| [PiPControlGroup](arkts-arkui-pipwindow-pipcontrolgroup-t.md) | Describes the optional component groups of the PiP controller. An application can configure whether to display these optional components. This API must match [PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md) when being used. Otherwise, the [create](arkts-arkui-pipwindow-create-f.md) API returns error code 401. |
-| [PiPLiveActionEvent](arkts-arkui-pipwindow-pipliveactionevent-t.md) | Defines the PiP action event in a live. |
-| [PiPMeetingActionEvent](arkts-arkui-pipwindow-pipmeetingactionevent-t.md) | Defines the PiP action event in a video meeting. |
-| [PiPVideoActionEvent](arkts-arkui-pipwindow-pipvideoactionevent-t.md) | Defines the PiP action event during video playback. |

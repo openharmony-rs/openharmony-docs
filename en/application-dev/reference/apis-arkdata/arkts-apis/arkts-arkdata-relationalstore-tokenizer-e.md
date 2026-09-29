@@ -18,6 +18,8 @@ The following is an example of the table creation statement when **CUSTOM_TOKENI
 
 **Since:** 17
 
+<!--Device-relationalStore-enum Tokenizer--><!--Device-relationalStore-enum Tokenizer-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## NONE_TOKENIZER
@@ -29,6 +31,8 @@ NONE_TOKENIZER = 0
 NONE_TOKENIZER: not use tokenizer
 
 **Since:** 17
+
+<!--Device-Tokenizer-NONE_TOKENIZER = 0--><!--Device-Tokenizer-NONE_TOKENIZER = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -42,6 +46,8 @@ The ICU tokenizer is used, which supports Chinese and multiple languages. If the
 
 **Since:** 17
 
+<!--Device-Tokenizer-ICU_TOKENIZER = 1--><!--Device-Tokenizer-ICU_TOKENIZER = 1-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## CUSTOM_TOKENIZER
@@ -53,5 +59,7 @@ CUSTOM_TOKENIZER = 2
 A custom tokenizer is used. Chinese (simplified and traditional), English, and Arabic numerals are supported. Compared with **ICU_TOKENIZER**, **CUSTOM_TOKENIZER** has advantages in tokenization accuracy and resident memory usage. The self-developed tokenizer supports two modes: default tokenization mode and short word tokenization mode (short_words). You can use the cut_mode parameter to specify the mode. If no mode is specified, the default mode is used.
 
 **Since:** 18
+
+<!--Device-Tokenizer-CUSTOM_TOKENIZER = 2--><!--Device-Tokenizer-CUSTOM_TOKENIZER = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

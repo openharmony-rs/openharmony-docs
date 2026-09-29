@@ -14,6 +14,8 @@ For details about the audio and video playback demo, see [Audio Playback](../../
 
 **Since:** 9
 
+<!--Device-media-interface AVPlayer--><!--Device-media-interface AVPlayer-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 ## Modules to Import
@@ -34,7 +36,9 @@ Enable the post-processing function of Camera for video playback.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AVPlayer-enableCameraPostprocessing(): Promise<void>--><!--Device-AVPlayer-enableCameraPostprocessing(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -65,6 +69,8 @@ Specifies whether to forcibly load the video. This API can be called only when t
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVPlayer-forceLoadVideo(force: boolean): Promise<void>--><!--Device-AVPlayer-forceLoadVideo(force: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -101,6 +107,8 @@ Whether a slower synchronization policy is used at the start of playback to redu
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVPlayer-enableStartFrameRateOpt?: boolean--><!--Device-AVPlayer-enableStartFrameRateOpt?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 

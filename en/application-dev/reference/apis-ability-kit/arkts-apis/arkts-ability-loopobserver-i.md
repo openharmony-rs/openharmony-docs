@@ -8,6 +8,8 @@ The module defines an observer to listen for event processing timeout. It can be
 
 **Since:** 12
 
+<!--Device-unnamed-export interface LoopObserver--><!--Device-unnamed-export interface LoopObserver-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## onLoopTimeOut
@@ -21,6 +23,8 @@ Called when a timeout occurs for the main thread to process an event in the JS r
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LoopObserver-onLoopTimeOut?(timeout: int): void--><!--Device-LoopObserver-onLoopTimeOut?(timeout: int): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

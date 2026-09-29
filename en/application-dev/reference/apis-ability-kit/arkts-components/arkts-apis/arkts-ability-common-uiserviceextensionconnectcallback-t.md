@@ -12,6 +12,8 @@ Defines the connection callback. It is used as an input parameter for connection
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-common-export type UIServiceExtensionConnectCallback = _UIServiceExtensionConnectCallback.default--><!--Device-common-export type UIServiceExtensionConnectCallback = _UIServiceExtensionConnectCallback.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _UIServiceExtensionConnectCallback.default

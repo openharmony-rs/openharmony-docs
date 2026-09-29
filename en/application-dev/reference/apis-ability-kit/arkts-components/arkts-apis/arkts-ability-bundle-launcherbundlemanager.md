@@ -4,6 +4,8 @@ The module providers APIs for launcher applications (applications with icons on 
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace launcherBundleManager--><!--Device-unnamed-declare namespace launcherBundleManager-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
 ## Modules to Import

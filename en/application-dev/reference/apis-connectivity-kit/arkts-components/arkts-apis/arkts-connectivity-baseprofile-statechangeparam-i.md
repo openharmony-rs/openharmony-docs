@@ -8,6 +8,8 @@ Profile state change parameters.
 
 **Since:** 10
 
+<!--Device-baseProfile-export interface StateChangeParam--><!--Device-baseProfile-export interface StateChangeParam-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Cause of disconnect
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StateChangeParam-cause: DisconnectCause--><!--Device-StateChangeParam-cause: DisconnectCause-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## deviceId
@@ -45,6 +49,8 @@ The address of device
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StateChangeParam-deviceId: string--><!--Device-StateChangeParam-deviceId: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -62,6 +68,8 @@ PAN role of the device
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StateChangeParam-role?: PanRole--><!--Device-StateChangeParam-role?: PanRole-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## state
@@ -77,5 +85,7 @@ Profile state value
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StateChangeParam-state: ProfileConnectionState--><!--Device-StateChangeParam-state: ProfileConnectionState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

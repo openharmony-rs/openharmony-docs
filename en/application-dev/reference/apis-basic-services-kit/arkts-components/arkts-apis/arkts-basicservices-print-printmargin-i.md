@@ -8,6 +8,8 @@ Defines the page margins for printing.
 
 **Since:** 24
 
+<!--Device-print-interface PrintMargin--><!--Device-print-interface PrintMargin-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Bottom margin of the page, in millimeters. The default value is **0**.
 
 **Since:** 24
 
+<!--Device-PrintMargin-bottom?: int--><!--Device-PrintMargin-bottom?: int-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## left
@@ -41,6 +45,8 @@ Left margin of the page, in millimeters. The default value is **0**.
 **Type:** number
 
 **Since:** 24
+
+<!--Device-PrintMargin-left?: int--><!--Device-PrintMargin-left?: int-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -56,6 +62,8 @@ Right margin of the page, in millimeters. The default value is **0**.
 
 **Since:** 24
 
+<!--Device-PrintMargin-right?: int--><!--Device-PrintMargin-right?: int-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## top
@@ -69,5 +77,7 @@ Top margin of the page, in millimeters. The default value is **0**.
 **Type:** number
 
 **Since:** 24
+
+<!--Device-PrintMargin-top?: int--><!--Device-PrintMargin-top?: int-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

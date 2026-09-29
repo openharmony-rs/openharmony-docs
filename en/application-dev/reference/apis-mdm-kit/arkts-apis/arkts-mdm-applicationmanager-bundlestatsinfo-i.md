@@ -8,6 +8,8 @@ Application bundle statistics.
 
 **Since:** 26.0.0
 
+<!--Device-applicationManager-interface BundleStatsInfo--><!--Device-applicationManager-interface BundleStatsInfo-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Total duration that the ability runs in the foreground, in milliseconds.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BundleStatsInfo-abilityInFgTotalTime: number--><!--Device-BundleStatsInfo-abilityInFgTotalTime: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## appIndex
@@ -46,6 +50,8 @@ Index of the application clone. The value is an integer greater than or equal to
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BundleStatsInfo-appIndex: number--><!--Device-BundleStatsInfo-appIndex: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## bundleName
@@ -61,5 +67,7 @@ Bundle name of the application.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleStatsInfo-bundleName: string--><!--Device-BundleStatsInfo-bundleName: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

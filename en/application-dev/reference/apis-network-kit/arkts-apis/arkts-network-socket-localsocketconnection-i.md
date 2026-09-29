@@ -13,6 +13,8 @@ Defines a local socket connection, that is, the session between the local socket
 
 **Since:** 11
 
+<!--Device-socket-export interface LocalSocketConnection--><!--Device-socket-export interface LocalSocketConnection-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -30,6 +32,8 @@ close(): Promise<void>
 Closes a local socket connection. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-LocalSocketConnection-close(): Promise<void>--><!--Device-LocalSocketConnection-close(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -69,6 +73,8 @@ getLocalAddress(): Promise<string>
 Obtains the local socket address of a **LocalSocketConnection** connection. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-LocalSocketConnection-getLocalAddress(): Promise<string>--><!--Device-LocalSocketConnection-getLocalAddress(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -140,6 +146,8 @@ Obtains the file descriptor of a LocalSocketConnection connection. This API uses
 
 **Since:** 23
 
+<!--Device-LocalSocketConnection-getSocketFd(): Promise<int>--><!--Device-LocalSocketConnection-getSocketFd(): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -187,6 +195,8 @@ off(type: 'message', callback?: Callback<LocalSocketMessageInfo>): void
 Unsubscribes from **message** events of the **LocalSocketConnection** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-LocalSocketConnection-off(type: 'message', callback?: Callback<LocalSocketMessageInfo>): void--><!--Device-LocalSocketConnection-off(type: 'message', callback?: Callback<LocalSocketMessageInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -236,6 +246,8 @@ Unsubscribes from **close** events of the **LocalSocketConnection** object. This
 
 **Since:** 11
 
+<!--Device-LocalSocketConnection-off(type: 'close', callback?: Callback<void>): void--><!--Device-LocalSocketConnection-off(type: 'close', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -278,6 +290,8 @@ Unsubscribes from **error** events of the **LocalSocketConnection** object. This
 
 **Since:** 11
 
+<!--Device-LocalSocketConnection-off(type: 'error', callback?: ErrorCallback): void--><!--Device-LocalSocketConnection-off(type: 'error', callback?: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -319,6 +333,8 @@ on(type: 'message', callback: Callback<LocalSocketMessageInfo>): void
 Subscribes to **message** events of the **LocalSocketConnection** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-LocalSocketConnection-on(type: 'message', callback: Callback<LocalSocketMessageInfo>): void--><!--Device-LocalSocketConnection-on(type: 'message', callback: Callback<LocalSocketMessageInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -379,6 +395,8 @@ Unsubscribes from **close** events of the **LocalSocketConnection** object. This
 
 **Since:** 11
 
+<!--Device-LocalSocketConnection-on(type: 'close', callback: Callback<void>): void--><!--Device-LocalSocketConnection-on(type: 'close', callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -416,6 +434,8 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to **error** events of the **LocalSocketConnection** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-LocalSocketConnection-on(type: 'error', callback: ErrorCallback): void--><!--Device-LocalSocketConnection-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -460,6 +480,8 @@ Sends data through a local socket connection. This API uses a promise to return 
 
 **Since:** 11
 
+<!--Device-LocalSocketConnection-send(options: LocalSendOptions): Promise<void>--><!--Device-LocalSocketConnection-send(options: LocalSendOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -479,7 +501,7 @@ Sends data through a local socket connection. This API uses a promise to return 
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301011 | Operation would block. |
+| [2301011](../errorcode-net-socket.md#2301011-operation-would-block) | Operation would block. |
 
 **Examples**
 
@@ -511,5 +533,7 @@ ID of the session between the client and the server.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-LocalSocketConnection-clientId: int--><!--Device-LocalSocketConnection-clientId: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

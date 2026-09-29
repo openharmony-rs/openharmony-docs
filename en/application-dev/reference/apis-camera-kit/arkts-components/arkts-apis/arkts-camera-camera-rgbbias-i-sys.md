@@ -8,6 +8,8 @@ RGB bias values.
 
 **Since:** 26.0.1
 
+<!--Device-camera-interface RGBBias--><!--Device-camera-interface RGBBias-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The blue bias.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RGBBias-blueBias: double--><!--Device-RGBBias-blueBias: double-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ The green bias.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RGBBias-greenBias: double--><!--Device-RGBBias-greenBias: double-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ The red bias.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RGBBias-redBias: double--><!--Device-RGBBias-redBias: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -8,6 +8,8 @@ Describes the signature information of the app package,which can identifythe app
 
 **Since:** 9
 
+<!--Device-unnamed-export interface SignatureInfo--><!--Device-unnamed-export interface SignatureInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## validity
@@ -23,6 +25,8 @@ Validity period in the signing certificate file.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SignatureInfo-readonly validity?: Validity--><!--Device-SignatureInfo-readonly validity?: Validity-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

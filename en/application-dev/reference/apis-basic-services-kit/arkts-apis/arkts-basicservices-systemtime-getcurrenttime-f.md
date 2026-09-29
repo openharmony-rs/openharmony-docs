@@ -20,6 +20,8 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 **Substitutes:** [getTime](arkts-basicservices-systemdatetime-gettime-f.md)
 
+<!--Device-systemTime-function getCurrentTime(isNano: boolean, callback: AsyncCallback<number>): void--><!--Device-systemTime-function getCurrentTime(isNano: boolean, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **Parameters:**
@@ -71,6 +73,8 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 **Substitutes:** [getTime](arkts-basicservices-systemdatetime-gettime-f.md)
 
+<!--Device-systemTime-function getCurrentTime(callback: AsyncCallback<number>): void--><!--Device-systemTime-function getCurrentTime(callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **Parameters:**
@@ -120,6 +124,8 @@ Obtains the time elapsed since the Unix epoch. This API uses a promise to return
 **Deprecated since:** 9
 
 **Substitutes:** [getTime](arkts-basicservices-systemdatetime-gettime-f.md)
+
+<!--Device-systemTime-function getCurrentTime(isNano?: boolean): Promise<number>--><!--Device-systemTime-function getCurrentTime(isNano?: boolean): Promise<number>-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 

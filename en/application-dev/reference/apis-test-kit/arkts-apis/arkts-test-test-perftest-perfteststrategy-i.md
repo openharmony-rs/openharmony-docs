@@ -15,6 +15,8 @@ Represents the performance test strategy.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface PerfTestStrategy--><!--Device-unnamed-declare interface PerfTestStrategy-End-->
+
 **System capability:** SystemCapability.Test.PerfTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -37,7 +39,9 @@ Code segment to test. The input parameter is a callback function, which needs to
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfTestStrategy-actionCode: Callback<Callback<boolean>>--><!--Device-PerfTestStrategy-actionCode: Callback<Callback<boolean>>-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 
@@ -55,7 +59,9 @@ Bundle name of the application to test. The format must be the same as that of *
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfTestStrategy-bundleName?: string--><!--Device-PerfTestStrategy-bundleName?: string-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 
@@ -73,7 +79,9 @@ Number of test iterations. The value must be an integer greater than 0. The defa
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfTestStrategy-iterations?: int--><!--Device-PerfTestStrategy-iterations?: int-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 
@@ -91,7 +99,9 @@ Array of performance metrics to test. If the array is empty, no performance metr
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfTestStrategy-metrics: Array<PerfMetric>--><!--Device-PerfTestStrategy-metrics: Array<PerfMetric>-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 
@@ -109,7 +119,9 @@ Code segment for resetting the environment after the test is complete. This para
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfTestStrategy-resetCode?: Callback<Callback<boolean>>--><!--Device-PerfTestStrategy-resetCode?: Callback<Callback<boolean>>-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 
@@ -127,7 +139,9 @@ resetCode**) at a time. The value is an integer greater than 0, in milliseconds.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfTestStrategy-timeout?: int--><!--Device-PerfTestStrategy-timeout?: int-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 

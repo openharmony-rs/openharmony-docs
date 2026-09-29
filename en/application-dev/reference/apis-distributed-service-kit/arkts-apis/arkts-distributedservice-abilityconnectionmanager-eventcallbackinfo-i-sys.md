@@ -8,6 +8,8 @@ Defines the event callback information.
 
 **Since:** 18
 
+<!--Device-abilityConnectionManager-interface EventCallbackInfo--><!--Device-abilityConnectionManager-interface EventCallbackInfo-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Received image.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EventCallbackInfo-image?: image.PixelMap--><!--Device-EventCallbackInfo-image?: image.PixelMap-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 

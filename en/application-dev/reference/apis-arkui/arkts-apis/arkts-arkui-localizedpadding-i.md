@@ -8,6 +8,8 @@ Defines the paddings in different directions of a component.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface LocalizedPadding--><!--Device-unnamed-declare interface LocalizedPadding-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -27,6 +29,8 @@ Height of the padding at the bottom of the component.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-LocalizedPadding-bottom?: LengthMetrics--><!--Device-LocalizedPadding-bottom?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ Width of the padding on the left of the component in RTL mode.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-LocalizedPadding-end?: LengthMetrics--><!--Device-LocalizedPadding-end?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -72,6 +78,8 @@ Width of the padding on the right of the component in RTL mode.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-LocalizedPadding-start?: LengthMetrics--><!--Device-LocalizedPadding-start?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -91,5 +99,7 @@ Height of the padding on the top of the component.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-LocalizedPadding-top?: LengthMetrics--><!--Device-LocalizedPadding-top?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

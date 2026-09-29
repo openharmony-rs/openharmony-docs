@@ -8,6 +8,8 @@ interface RectInVP
 
 **起始版本：** 23
 
+<!--Device-window-interface RectInVP--><!--Device-window-interface RectInVP-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -30,6 +32,8 @@ height: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-RectInVP-height: double--><!--Device-RectInVP-height: double-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## left
@@ -45,6 +49,8 @@ left: number
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-RectInVP-left: double--><!--Device-RectInVP-left: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -62,6 +68,8 @@ top: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-RectInVP-top: double--><!--Device-RectInVP-top: double-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## width
@@ -77,5 +85,7 @@ width: number
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-RectInVP-width: double--><!--Device-RectInVP-width: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

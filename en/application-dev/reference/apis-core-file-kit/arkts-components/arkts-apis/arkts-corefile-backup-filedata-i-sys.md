@@ -10,6 +10,8 @@ Corresponding to a file's data. Filedata is useful when doing IPC with the backu
 
 **Since:** 10
 
+<!--Device-backup-interface FileData--><!--Device-backup-interface FileData-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Indicates a native file descriptor typically retrieved from the backup service t
 **Type:** number
 
 **Since:** 10
+
+<!--Device-FileData-fd: int--><!--Device-FileData-fd: int-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 

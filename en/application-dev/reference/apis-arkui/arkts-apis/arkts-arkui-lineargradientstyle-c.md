@@ -10,6 +10,8 @@ Displays a linear gradient. **LinearGradientStyle** inherits from [ShaderStyle](
 
 **Since:** 20
 
+<!--Device-unnamed-declare class LinearGradientStyle extends ShaderStyle--><!--Device-unnamed-declare class LinearGradientStyle extends ShaderStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -26,13 +28,15 @@ A constructor used to create a **LinearGradientStyle** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-LinearGradientStyle-constructor(options: LinearGradientOptions)--><!--Device-LinearGradientStyle-constructor(options: LinearGradientOptions)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [LinearGradientOptions](../arkts-components/arkts-arkui-common-comp-lineargradientoptions-i.md) | Yes | Options for displaying a linear gradient. |
+| options | [LinearGradientOptions](../arkts-components/arkts-arkui-common-comp-lineargradientoptions-i.md) | Yes | Options for displaying a linear gradient. <br>The default value of direction in [LinearGradientOptions](../arkts-components/arkts-arkui-common-comp-lineargradientoptions-i.md) is processed as NONE in [GradientDirection](arkts-arkui-gradientdirection-e.md). |
 
 ## options
 
@@ -49,5 +53,7 @@ Options for displaying a linear gradient.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-LinearGradientStyle-options: LinearGradientOptions--><!--Device-LinearGradientStyle-options: LinearGradientOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

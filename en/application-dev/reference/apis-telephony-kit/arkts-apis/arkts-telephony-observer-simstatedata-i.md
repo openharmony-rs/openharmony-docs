@@ -8,6 +8,8 @@ Enumerates SIM card types and states.
 
 **Since:** 7
 
+<!--Device-observer-export interface SimStateData--><!--Device-observer-export interface SimStateData-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 ## Modules to Import
@@ -28,6 +30,8 @@ SIM card lock type.
 
 **Since:** 8
 
+<!--Device-SimStateData-reason: LockReason--><!--Device-SimStateData-reason: LockReason-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 ## state
@@ -42,6 +46,8 @@ SIM card state.
 
 **Since:** 7
 
+<!--Device-SimStateData-state: SimState--><!--Device-SimStateData-state: SimState-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 ## type
@@ -55,5 +61,7 @@ SIM card type.
 **Type:** [CardType](arkts-telephony-observer-cardtype-t.md)
 
 **Since:** 7
+
+<!--Device-SimStateData-type: CardType--><!--Device-SimStateData-type: CardType-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry

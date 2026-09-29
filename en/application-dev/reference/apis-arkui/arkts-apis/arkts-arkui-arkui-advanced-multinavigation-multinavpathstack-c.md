@@ -10,6 +10,8 @@ Implements a navigation stack of the **MultiNavigation** component. Currently, t
 
 **Since:** 14
 
+<!--Device-unnamed-export declare class MultiNavPathStack extends NavPathStack--><!--Device-unnamed-export declare class MultiNavPathStack extends NavPathStack-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Clears the navigation stack.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-clear(animated?: boolean): void--><!--Device-MultiNavPathStack-clear(animated?: boolean): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -59,6 +63,8 @@ Creates an instance of MultiNavPathStack.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-constructor()--><!--Device-MultiNavPathStack-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## disableAnimation
@@ -74,6 +80,8 @@ Disables or enables the transition animation in the **MultiNavigation** componen
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavPathStack-disableAnimation(disable: boolean): void--><!--Device-MultiNavPathStack-disableAnimation(disable: boolean): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,6 +105,8 @@ Obtains the names of all navigation destination pages in the navigation stack.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-getAllPathName(): Array<string>--><!--Device-MultiNavPathStack-getAllPathName(): Array<string>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -118,6 +128,8 @@ Obtains the indexes of all the navigation destination pages that match **name**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavPathStack-getIndexByName(name: string): Array<number>--><!--Device-MultiNavPathStack-getIndexByName(name: string): Array<number>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,6 +159,8 @@ Obtains the parameter information of the navigation destination page specified b
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-getParamByIndex(index: number): Object | undefined--><!--Device-MultiNavPathStack-getParamByIndex(index: number): Object | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -174,6 +188,8 @@ Obtains the parameter information of all the navigation destination pages that m
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavPathStack-getParamByName(name: string): Array<Object>--><!--Device-MultiNavPathStack-getParamByName(name: string): Array<Object>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -211,6 +227,8 @@ Sets whether to retain the bottom page when the **pop** or **clear** APIs is cal
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-keepBottomPage(keepBottom: boolean): void--><!--Device-MultiNavPathStack-keepBottomPage(keepBottom: boolean): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -236,6 +254,8 @@ Moves the navigation destination page specified by **index** to the top of the n
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavPathStack-moveIndexToTop(index: number, animated?: boolean): void--><!--Device-MultiNavPathStack-moveIndexToTop(index: number, animated?: boolean): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -263,6 +283,8 @@ Moves the first navigation destination page that matches **name** from the botto
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavPathStack-moveToTop(name: string, animated?: boolean): number--><!--Device-MultiNavPathStack-moveToTop(name: string, animated?: boolean): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -297,6 +319,8 @@ Pops the top element out of the navigation stack.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavPathStack-pop(animated?: boolean): NavPathInfo | undefined--><!--Device-MultiNavPathStack-pop(animated?: boolean): NavPathInfo | undefined-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -333,6 +357,8 @@ Pops the top element out of the navigation stack and invokes the **onPop** callb
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-pop(result?: Object, animated?: boolean): NavPathInfo | undefined--><!--Device-MultiNavPathStack-pop(result?: Object, animated?: boolean): NavPathInfo | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -362,6 +388,8 @@ Returns the navigation stack to the page specified by **index**.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-popToIndex(index: number, animated?: boolean): void--><!--Device-MultiNavPathStack-popToIndex(index: number, animated?: boolean): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -387,6 +415,8 @@ Returns the navigation stack to the page specified by **index** and invokes the 
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-popToIndex(index: number, result: Object, animated?: boolean): void--><!--Device-MultiNavPathStack-popToIndex(index: number, result: Object, animated?: boolean): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -410,6 +440,8 @@ Pops pages until the first navigation destination page that matches **name** fro
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavPathStack-popToName(name: string, animated?: boolean): number--><!--Device-MultiNavPathStack-popToName(name: string, animated?: boolean): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -442,6 +474,8 @@ Pops pages until the first navigation destination page that matches **name** fro
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-popToName(name: string, result: Object, animated?: boolean): number--><!--Device-MultiNavPathStack-popToName(name: string, result: Object, animated?: boolean): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -472,6 +506,8 @@ Pushes the specified navigation destination page to the navigation stack.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-pushPath(info: NavPathInfo, animated?: boolean, policy?: SplitPolicy): void--><!--Device-MultiNavPathStack-pushPath(info: NavPathInfo, animated?: boolean, policy?: SplitPolicy): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -498,6 +534,8 @@ Pushes the specified navigation destination page to the navigation stack, with s
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-pushPath(info: NavPathInfo, options?: NavigationOptions, policy?: SplitPolicy): void--><!--Device-MultiNavPathStack-pushPath(info: NavPathInfo, options?: NavigationOptions, policy?: SplitPolicy): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -521,6 +559,8 @@ Pushes the navigation destination page specified by **name** to the navigation s
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavPathStack-pushPathByName(name: string, param: Object, animated?: boolean, policy?: SplitPolicy): void--><!--Device-MultiNavPathStack-pushPathByName(name: string, param: Object, animated?: boolean, policy?: SplitPolicy): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -550,6 +590,8 @@ Pushes the navigation destination page specified by **name** to the navigation s
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-pushPathByName(    name: string, param: Object, onPop?: base.Callback<PopInfo>, animated?: boolean, policy?: SplitPolicy): void--><!--Device-MultiNavPathStack-pushPathByName(    name: string, param: Object, onPop?: base.Callback<PopInfo>, animated?: boolean, policy?: SplitPolicy): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -575,6 +617,8 @@ Removes the navigation destination pages specified by **indexes** from the navig
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavPathStack-removeByIndexes(indexes: Array<number>): number--><!--Device-MultiNavPathStack-removeByIndexes(indexes: Array<number>): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -604,6 +648,8 @@ Removes the navigation destination page specified by **name** from the navigatio
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-removeByName(name: string): number--><!--Device-MultiNavPathStack-removeByName(name: string): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -632,6 +678,8 @@ Replaces the current top page on the stack with the specified navigation destina
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-replacePath(info: NavPathInfo, animated?: boolean): void--><!--Device-MultiNavPathStack-replacePath(info: NavPathInfo, animated?: boolean): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -657,6 +705,8 @@ Replaces the current top page on the stack with the specified navigation destina
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-replacePath(info: NavPathInfo, options?: NavigationOptions): void--><!--Device-MultiNavPathStack-replacePath(info: NavPathInfo, options?: NavigationOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -679,6 +729,8 @@ Replaces the current top page on the stack with the navigation destination page 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavPathStack-replacePathByName(name: string, param: Object, animated?: boolean): void--><!--Device-MultiNavPathStack-replacePathByName(name: string, param: Object, animated?: boolean): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -703,6 +755,8 @@ Sets the draggable range for the home page width. If not set, the width defaults
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavPathStack-setHomeWidthRange(minPercent: number, maxPercent: number): void--><!--Device-MultiNavPathStack-setHomeWidthRange(minPercent: number, maxPercent: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -741,6 +795,8 @@ Sets a placeholder page.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-setPlaceholderPage(info: NavPathInfo): void--><!--Device-MultiNavPathStack-setPlaceholderPage(info: NavPathInfo): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -763,6 +819,8 @@ Obtains the stack size.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavPathStack-size(): number--><!--Device-MultiNavPathStack-size(): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -784,6 +842,8 @@ Switches the display mode of the current top detail page in the stack.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavPathStack-switchFullScreenState(isFullScreen?: boolean): boolean--><!--Device-MultiNavPathStack-switchFullScreenState(isFullScreen?: boolean): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

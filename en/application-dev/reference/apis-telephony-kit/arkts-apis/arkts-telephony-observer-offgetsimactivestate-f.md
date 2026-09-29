@@ -22,6 +22,8 @@ Unregisters an observer for SIM card activation state changes. This API uses an 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-observer-function offGetSimActiveState(callback?: Callback<boolean>): void--><!--Device-observer-function offGetSimActiveState(callback?: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**

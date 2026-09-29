@@ -15,6 +15,8 @@ Represents a custom communication object. <br> <br>
 
 **Since:** 15
 
+<!--Device-inputMethodEngine-interface MessageHandler--><!--Device-inputMethodEngine-interface MessageHandler-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -39,6 +41,8 @@ Receives the custom data callback sent by the edit box application attached to t
 > The **msgId** parameter is mandatory, and the **msgParam** parameter is optional. If only the custom **msgId** data is received, confirm it with the data sender.
 
 **Since:** 15
+
+<!--Device-MessageHandler-onMessage(msgId: string, msgParam?: ArrayBuffer): void--><!--Device-MessageHandler-onMessage(msgId: string, msgParam?: ArrayBuffer): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -83,6 +87,8 @@ Listens for MessageHandler termination. <br> <br>
 > When an application unregisters a new [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) object, the [onTerminated](#onterminated) callback of the registered [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) object is triggered.
 
 **Since:** 15
+
+<!--Device-MessageHandler-onTerminated(): void--><!--Device-MessageHandler-onTerminated(): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

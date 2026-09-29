@@ -8,6 +8,8 @@ enum WindowEventType
 
 **起始版本：** 10
 
+<!--Device-window-enum WindowEventType--><!--Device-window-enum WindowEventType-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## WINDOW_SHOWN
@@ -20,7 +22,9 @@ WINDOW_SHOWN = 1
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowEventType-WINDOW_SHOWN = 1--><!--Device-WindowEventType-WINDOW_SHOWN = 1-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -34,7 +38,9 @@ WINDOW_ACTIVE = 2
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowEventType-WINDOW_ACTIVE = 2--><!--Device-WindowEventType-WINDOW_ACTIVE = 2-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -48,7 +54,9 @@ WINDOW_INACTIVE = 3
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowEventType-WINDOW_INACTIVE = 3--><!--Device-WindowEventType-WINDOW_INACTIVE = 3-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,7 +70,9 @@ WINDOW_HIDDEN = 4
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowEventType-WINDOW_HIDDEN = 4--><!--Device-WindowEventType-WINDOW_HIDDEN = 4-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -76,6 +86,8 @@ WINDOW_DESTROYED = 7
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowEventType-WINDOW_DESTROYED = 7--><!--Device-WindowEventType-WINDOW_DESTROYED = 7-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

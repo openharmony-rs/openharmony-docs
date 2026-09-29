@@ -23,6 +23,8 @@ function createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseC
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-window-function createSubWindowAndBindParent(name: string, parentId: int, ctx: BaseContext,    parentWindowEventListener: WindowEventListener): Promise<Window>--><!--Device-window-function createSubWindowAndBindParent(name: string, parentId: int, ctx: BaseContext,    parentWindowEventListener: WindowEventListener): Promise<Window>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。

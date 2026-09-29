@@ -28,6 +28,8 @@ Obtains a system resource management object for accessing preset system resource
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-resourceManager-export function getSystemResourceManager(): ResourceManager--><!--Device-resourceManager-export function getSystemResourceManager(): ResourceManager-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Return value:**

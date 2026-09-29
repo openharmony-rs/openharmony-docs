@@ -10,6 +10,8 @@ Describes the scene resource parameters (name and uri), which are used to provid
 
 **Since:** 12
 
+<!--Device-unnamed-export interface SceneResourceParameters--><!--Device-unnamed-export interface SceneResourceParameters-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## name
@@ -24,6 +26,8 @@ Name of the scene resource. It is customizable.
 
 **Since:** 12
 
+<!--Device-SceneResourceParameters-name: string--><!--Device-SceneResourceParameters-name: string-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## uri
@@ -37,6 +41,8 @@ Path of the resource file required in the 3D scene. The default value is undefin
 **Type:** ResourceStr
 
 **Since:** 12
+
+<!--Device-SceneResourceParameters-uri?: ResourceStr--><!--Device-SceneResourceParameters-uri?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 

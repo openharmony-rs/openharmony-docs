@@ -12,6 +12,8 @@ The &lt;input&gt; component provides an interactive interface to receive user in
 
 **Since:** 4
 
+<!--Device-unnamed-export interface InputElement extends Element--><!--Device-unnamed-export interface InputElement extends Element-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## delete
@@ -26,6 +28,8 @@ Deletes the previous character at the cursor position.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-InputElement-delete(): void--><!--Device-InputElement-delete(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## focus
@@ -39,6 +43,8 @@ Obtains or loses the focus of a component. When the component type is set to tex
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-InputElement-focus(param: { focus: boolean }): void--><!--Device-InputElement-focus(param: { focus: boolean }): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,6 +65,8 @@ Displays the error message. This attribute is available when the component type 
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-InputElement-showError(param: { error: string }): void--><!--Device-InputElement-showError(param: { error: string }): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -10,6 +10,8 @@ Enum for DownloadIconStyle
 
 **Since:** 12
 
+<!--Device-unnamed-export declare enum DownloadIconStyle--><!--Device-unnamed-export declare enum DownloadIconStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## FULL_FILLED
@@ -24,6 +26,8 @@ FULL_FILLED type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DownloadIconStyle-FULL_FILLED = 1--><!--Device-DownloadIconStyle-FULL_FILLED = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## LINES
@@ -37,5 +41,7 @@ LINES type.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DownloadIconStyle-LINES = 2--><!--Device-DownloadIconStyle-LINES = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

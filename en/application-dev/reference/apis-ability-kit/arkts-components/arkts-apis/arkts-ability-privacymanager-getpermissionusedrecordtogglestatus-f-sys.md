@@ -20,6 +20,8 @@ A system application can call this API to obtain the current user's permission u
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-privacyManager-function getPermissionUsedRecordToggleStatus(): Promise<boolean>--><!--Device-privacyManager-function getPermissionUsedRecordToggleStatus(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -74,6 +76,8 @@ A system application can call this API to obtain the permission usage record tog
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-privacyManager-function getPermissionUsedRecordToggleStatus(subProfileId: int): Promise<boolean>--><!--Device-privacyManager-function getPermissionUsedRecordToggleStatus(subProfileId: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

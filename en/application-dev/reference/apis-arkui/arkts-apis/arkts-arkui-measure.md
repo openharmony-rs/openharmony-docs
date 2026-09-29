@@ -1,6 +1,9 @@
 # @ohos.measure(Text Measurement)
 
-The **measure** module provides APIs for measuring text metrics, such as text height and width.
+This module provides APIs for calculating text width and height, and supports configuring various text attributes (
+ such as the font size, style, weight, and line height). It is applicable to scenarios where the text size needs to be
+ obtained before component construction, such as adaptive layout, text clipping, and dynamic UI size adjustment,
+ helping you achieve more precise layout calculation and performance optimization.
 
 > **NOTE**
  >
@@ -8,18 +11,17 @@ The **measure** module provides APIs for measuring text metrics, such as text he
  > other words, the APIs of this module can be used only after a component instance is created; they cannot be called
  > in the lifecycle of the UIAbility.
  >
- > - To perform more complex text measurements, you are advised to call the corresponding graphics measurement API,
- > specifically [Paragraph](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-paragraphstyle-i.md).
+ > - To perform more complex text measurements, you are advised to use the measurement APIs under
+ > [Paragraph](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-paragraph-c.md).
  >
- > - Avoid using [ApplicationContext.setFontSizeScale](../../apis-ability-kit/arkts-apis/arkts-ability-applicationcontext-c.md#setfontsizescale)
- > during text measurement API calls. To ensure timing consistency and the accuracy of measurement results, manually
- > listen for font scale changes.
+ > - When calling the text measurement APIs, you are advised not to use
+ > [ApplicationContext.setFontSizeScale](../../apis-ability-kit/arkts-apis/arkts-ability-applicationcontext-c.md#setfontsizescale)
+ > to set the application font size scale at the same time. To ensure timing consistency, you are advised to listen
+ > for font size scale changes on your own to guarantee the accuracy of measurement results.
  >
- > - For measuring text after truncation, direct use of the string length for truncation may lead to inaccuracies.
- > This is because certain Unicode characters (for example, emojis) have code points with a length greater than 1, and
- > truncating by string length can split these multi-code-point characters, resulting in incorrect text display or
- > measurement errors. As such, you are advised to perform iterative processing based on Unicode code points during
- > truncation.
+ > - For measuring text after truncation, direct use of the string length for truncation may lead to inaccuracies,
+ > because certain Unicode characters (for example, emojis) have code points with a length greater than 1. As such,
+ > you are advised to perform iterative processing based on Unicode code points during truncation.
 
 
 

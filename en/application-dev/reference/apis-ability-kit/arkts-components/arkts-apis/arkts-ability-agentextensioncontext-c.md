@@ -18,6 +18,8 @@ AgentExtensionContext provides developers with the capability to access the [Age
 
 **Since:** 24
 
+<!--Device-unnamed-declare class AgentExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AgentExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 ## agentCard
@@ -34,6 +36,8 @@ The [AgentCard](arkts-ability-agentcard-i.md) information configured by the curr
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-AgentExtensionContext-agentCard: AgentCard--><!--Device-AgentExtensionContext-agentCard: AgentCard-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core

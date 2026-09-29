@@ -12,6 +12,8 @@ Represents the notification message.
 
 **Substitutes:** WatchEvent
 
+<!--Device-fileAccess-interface NotifyMessage--><!--Device-fileAccess-interface NotifyMessage-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -40,6 +42,8 @@ Notification type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotifyMessage-type: NotifyType--><!--Device-NotifyMessage-type: NotifyType-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -61,6 +65,8 @@ URIs of the changed files. Currently, only one notification is supported. A coll
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotifyMessage-uris: Array<string>--><!--Device-NotifyMessage-uris: Array<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

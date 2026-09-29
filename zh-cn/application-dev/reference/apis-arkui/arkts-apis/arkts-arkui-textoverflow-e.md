@@ -8,6 +8,8 @@ declare enum TextOverflow
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum TextOverflow--><!--Device-unnamed-declare enum TextOverflow-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -23,6 +25,8 @@ None = 0
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextOverflow-None = 0--><!--Device-TextOverflow-None = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Clip = 1
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-TextOverflow-Clip = 1--><!--Device-TextOverflow-Clip = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Ellipsis
@@ -56,6 +62,8 @@ Ellipsis = 2
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-TextOverflow-Ellipsis = 2--><!--Device-TextOverflow-Ellipsis = 2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MARQUEE
@@ -71,5 +79,7 @@ MARQUEE = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextOverflow-MARQUEE = 3--><!--Device-TextOverflow-MARQUEE = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

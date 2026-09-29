@@ -4,6 +4,8 @@ Provides methods for enabling/disabling bluetooth or monitoring bluetooth state.
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace access--><!--Device-unnamed-declare namespace access-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import

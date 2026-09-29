@@ -8,6 +8,8 @@ Provides APIs to discard the least recently used data to make rooms for new elem
 
 **Since:** 9
 
+<!--Device-util-class LRUCache<K, V>--><!--Device-util-class LRUCache<K, V>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Specifies the default iterator for an object.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LRUCache-[Symbol.iterator](): IterableIterator<[K, V]>--><!--Device-LRUCache-[Symbol.iterator](): IterableIterator<[K, V]>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -69,6 +73,8 @@ Performs subsequent operations after a value is removed. The subsequent operatio
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LRUCache-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void--><!--Device-LRUCache-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -91,6 +97,8 @@ Clears key-value pairs from this cache.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LRUCache-clear(): void--><!--Device-LRUCache-clear(): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -120,6 +128,8 @@ A constructor used to create a **LRUCache** instance. The default capacity of th
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LRUCache-constructor(capacity?: number)--><!--Device-LRUCache-constructor(capacity?: number)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -145,6 +155,8 @@ Checks whether this cache contains the specified key.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LRUCache-contains(key: K): boolean--><!--Device-LRUCache-contains(key: K): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -182,6 +194,8 @@ Performs subsequent operations if no key is matched in the cache and returns the
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LRUCache-createDefault(key: K): V--><!--Device-LRUCache-createDefault(key: K): V-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -217,6 +231,8 @@ Returns an iterator object that traverses all key-value pairs ([key, value]) in 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LRUCache-entries(): IterableIterator<[K, V]>--><!--Device-LRUCache-entries(): IterableIterator<[K, V]>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -251,6 +267,8 @@ Obtains the value of a key. If the key is not in the cache, [createDefault&lt;su
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LRUCache-get(key: K): V | undefined--><!--Device-LRUCache-get(key: K): V | undefined-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -288,6 +306,8 @@ Obtains the capacity of this cache.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LRUCache-getCapacity(): number--><!--Device-LRUCache-getCapacity(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -316,6 +336,8 @@ Obtains the number of times that an object is created.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LRUCache-getCreateCount(): number--><!--Device-LRUCache-getCreateCount(): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -359,6 +381,8 @@ Obtains the number of times that the queried values are matched.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LRUCache-getMatchCount(): number--><!--Device-LRUCache-getMatchCount(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -389,6 +413,8 @@ Obtains the number of times that the queried values are mismatched.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LRUCache-getMissCount(): number--><!--Device-LRUCache-getMissCount(): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -421,6 +447,8 @@ Obtains the number of additions to this cache.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LRUCache-getPutCount(): number--><!--Device-LRUCache-getPutCount(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -450,6 +478,8 @@ Obtains the number of times that key-value pairs in the cache are recycled.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LRUCache-getRemovalCount(): number--><!--Device-LRUCache-getRemovalCount(): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -483,6 +513,8 @@ Checks whether this cache is empty.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LRUCache-isEmpty(): boolean--><!--Device-LRUCache-isEmpty(): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -512,6 +544,8 @@ Obtains all keys in this cache, listed from the least to the most recently acces
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LRUCache-keys(): K[]--><!--Device-LRUCache-keys(): K[]-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -553,6 +587,8 @@ Adds a key-value pair to this cache and returns the value associated with the ke
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LRUCache-put(key: K, value: V): V--><!--Device-LRUCache-put(key: K, value: V): V-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -588,6 +624,8 @@ Removes a key and its associated value from this cache and returns the value ass
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LRUCache-remove(key: K): V | undefined--><!--Device-LRUCache-remove(key: K): V | undefined-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -625,6 +663,8 @@ Obtains the string representation of this cache.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LRUCache-toString(): string--><!--Device-LRUCache-toString(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -657,6 +697,8 @@ Changes the cache capacity. If the new capacity is less than or equal to **0**, 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LRUCache-updateCapacity(newCapacity: number): void--><!--Device-LRUCache-updateCapacity(newCapacity: number): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -683,6 +725,8 @@ Obtains all values in this cache, listed from the least to the most recently acc
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LRUCache-values(): V[]--><!--Device-LRUCache-values(): V[]-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -725,5 +769,7 @@ Total number of values in this cache.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LRUCache-length: number--><!--Device-LRUCache-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

@@ -16,6 +16,8 @@ enum FoldStatus
 
 **起始版本：** 10
 
+<!--Device-display-enum FoldStatus--><!--Device-display-enum FoldStatus-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## FOLD_STATUS_UNKNOWN
@@ -28,7 +30,9 @@ FOLD_STATUS_UNKNOWN = 0
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FoldStatus-FOLD_STATUS_UNKNOWN = 0--><!--Device-FoldStatus-FOLD_STATUS_UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -42,7 +46,9 @@ FOLD_STATUS_EXPANDED = 1
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FoldStatus-FOLD_STATUS_EXPANDED = 1--><!--Device-FoldStatus-FOLD_STATUS_EXPANDED = 1-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -56,7 +62,9 @@ FOLD_STATUS_FOLDED = 2
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FoldStatus-FOLD_STATUS_FOLDED = 2--><!--Device-FoldStatus-FOLD_STATUS_FOLDED = 2-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -70,7 +78,9 @@ FOLD_STATUS_HALF_FOLDED = 3
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED = 3--><!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED = 3-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -84,7 +94,9 @@ FOLD_STATUS_EXPANDED_WITH_SECOND_EXPANDED = 11
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-FoldStatus-FOLD_STATUS_EXPANDED_WITH_SECOND_EXPANDED = 11--><!--Device-FoldStatus-FOLD_STATUS_EXPANDED_WITH_SECOND_EXPANDED = 11-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -98,7 +110,9 @@ FOLD_STATUS_EXPANDED_WITH_SECOND_HALF_FOLDED = 21
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-FoldStatus-FOLD_STATUS_EXPANDED_WITH_SECOND_HALF_FOLDED = 21--><!--Device-FoldStatus-FOLD_STATUS_EXPANDED_WITH_SECOND_HALF_FOLDED = 21-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -112,7 +126,9 @@ FOLD_STATUS_FOLDED_WITH_SECOND_HALF_FOLDED = 22
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-FoldStatus-FOLD_STATUS_FOLDED_WITH_SECOND_HALF_FOLDED = 22--><!--Device-FoldStatus-FOLD_STATUS_FOLDED_WITH_SECOND_HALF_FOLDED = 22-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -126,7 +142,9 @@ FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED = 23
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED = 23--><!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED_WITH_SECOND_HALF_FOLDED = 23-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -140,7 +158,9 @@ FOLD_STATUS_FOLDED_WITH_SECOND_EXPANDED = 12
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-FoldStatus-FOLD_STATUS_FOLDED_WITH_SECOND_EXPANDED = 12--><!--Device-FoldStatus-FOLD_STATUS_FOLDED_WITH_SECOND_EXPANDED = 12-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -154,6 +174,8 @@ FOLD_STATUS_HALF_FOLDED_WITH_SECOND_EXPANDED = 13
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED_WITH_SECOND_EXPANDED = 13--><!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED_WITH_SECOND_EXPANDED = 13-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

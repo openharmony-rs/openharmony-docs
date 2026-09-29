@@ -12,6 +12,8 @@ The router page information.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type RouterPageInfo = import('../api/@ohos.arkui.observer').default.RouterPageInfo--><!--Device-unnamed-declare type RouterPageInfo = import('../api/@ohos.arkui.observer').default.RouterPageInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.arkui.observer').default.RouterPageInfo

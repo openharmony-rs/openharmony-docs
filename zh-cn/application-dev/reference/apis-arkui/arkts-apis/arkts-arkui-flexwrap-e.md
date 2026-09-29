@@ -8,6 +8,8 @@ declare enum FlexWrap
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum FlexWrap--><!--Device-unnamed-declare enum FlexWrap-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NoWrap
@@ -23,6 +25,8 @@ Flex容器的元素以单行/列布局，子元素尽可能约束在容器内。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FlexWrap-NoWrap--><!--Device-FlexWrap-NoWrap-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Flex容器的元素以多行/列排布，子项允许超出容器。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-FlexWrap-Wrap--><!--Device-FlexWrap-Wrap-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WrapReverse
@@ -55,5 +61,7 @@ Flex容器的元素以反向多行/列排布，子项允许超出容器。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FlexWrap-WrapReverse--><!--Device-FlexWrap-WrapReverse-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

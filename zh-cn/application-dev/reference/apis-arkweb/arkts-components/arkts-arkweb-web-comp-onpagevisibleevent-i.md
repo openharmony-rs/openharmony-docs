@@ -8,6 +8,8 @@ declare interface OnPageVisibleEvent
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface OnPageVisibleEvent--><!--Device-unnamed-declare interface OnPageVisibleEvent-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## url
@@ -23,5 +25,7 @@ url: string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnPageVisibleEvent-url: string--><!--Device-OnPageVisibleEvent-url: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

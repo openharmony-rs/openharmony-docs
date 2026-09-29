@@ -22,6 +22,8 @@ Obtains the name of a peer Bluetooth device.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetooth-function getRemoteDeviceName(deviceId: string): string--><!--Device-bluetooth-function getRemoteDeviceName(deviceId: string): string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

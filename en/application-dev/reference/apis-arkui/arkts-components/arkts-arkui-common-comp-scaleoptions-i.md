@@ -8,6 +8,8 @@ Defines the options of scale.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface ScaleOptions--><!--Device-unnamed-declare interface ScaleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerX
@@ -27,6 +29,8 @@ Unit: vp
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ScaleOptions-centerX?: number | string--><!--Device-ScaleOptions-centerX?: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ Unit: vp
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ScaleOptions-centerY?: number | string--><!--Device-ScaleOptions-centerY?: number | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -65,6 +71,8 @@ Scale ratio along the x-axis. x &gt; 1: The component is scaled up along the x-a
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ScaleOptions-x?: number--><!--Device-ScaleOptions-x?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,6 +92,8 @@ Scale ratio along the y-axis. y &gt; 1: The component is scaled up along the y-a
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ScaleOptions-y?: number--><!--Device-ScaleOptions-y?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## z
@@ -101,5 +111,7 @@ Scale ratio along the z-axis. z &gt; 1: The component is scaled up along the z-a
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ScaleOptions-z?: number--><!--Device-ScaleOptions-z?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

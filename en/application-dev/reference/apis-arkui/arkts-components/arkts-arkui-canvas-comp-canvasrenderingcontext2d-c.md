@@ -27,6 +27,8 @@ declare class CanvasRenderingContext2D extends CanvasRenderer
 
 **Since:** 8
 
+<!--Device-unnamed-declare class CanvasRenderingContext2D extends CanvasRenderer--><!--Device-unnamed-declare class CanvasRenderingContext2D extends CanvasRenderer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -44,6 +46,8 @@ Constructs a canvas object, which supports configuration of parameters for the *
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderingContext2D-constructor(settings?: RenderingContextSettings)--><!--Device-CanvasRenderingContext2D-constructor(settings?: RenderingContextSettings)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,6 +117,8 @@ Creates a **CanvasRenderingContext2D** object, allowing for initial configuratio
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-CanvasRenderingContext2D-constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)--><!--Device-CanvasRenderingContext2D-constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -136,7 +142,7 @@ Obtains a **CanvasRenderingContext2D** object from a **DrawingRenderingContext**
 
 > **NOTE:** 
 > 
-> - The **CanvasRenderingContext2D** object obtained via this API cannot be used as a parameter to create a [Canvas](arkts-arkui-canvas-comp.md#canvas)component. Otherwise, the application crashes.
+> - The **CanvasRenderingContext2D** object obtained via this API cannot be used as a parameter to create a [Canvas](arkts-arkui-canvas-comp.md)component. Otherwise, the application crashes.
 > 
 > - If the input **DrawingRenderingContext** object is not bound to a **Canvas** component,an error code is returned.
 
@@ -145,6 +151,8 @@ Obtains a **CanvasRenderingContext2D** object from a **DrawingRenderingContext**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-CanvasRenderingContext2D-static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, options?: RenderingContextOptions): CanvasRenderingContext2D--><!--Device-CanvasRenderingContext2D-static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, options?: RenderingContextOptions): CanvasRenderingContext2D-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,6 +217,8 @@ Unsubscribes from the event when a **CanvasRenderingContext2D** object is bound 
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-CanvasRenderingContext2D-off(type: 'onAttach', callback?: Callback<void>): void--><!--Device-CanvasRenderingContext2D-off(type: 'onAttach', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -237,6 +247,8 @@ Unsubscribes from the event when a **CanvasRenderingContext2D** object is unboun
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-CanvasRenderingContext2D-off(type: 'onDetach', callback?: Callback<void>): void--><!--Device-CanvasRenderingContext2D-off(type: 'onDetach', callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -376,6 +388,8 @@ Subscribes to the event when a **CanvasRenderingContext2D** object is bound to a
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-CanvasRenderingContext2D-on(type: 'onAttach', callback: Callback<void>): void--><!--Device-CanvasRenderingContext2D-on(type: 'onAttach', callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -413,6 +427,8 @@ Subscribes to the event when a **CanvasRenderingContext2D** object is unbound fr
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-CanvasRenderingContext2D-on(type: 'onDetach', callback: Callback<void>): void--><!--Device-CanvasRenderingContext2D-on(type: 'onDetach', callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -449,6 +465,8 @@ Configures and starts the AI analyzer. This API uses a promise to return the res
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CanvasRenderingContext2D-startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>--><!--Device-CanvasRenderingContext2D-startImageAnalyzer(config: ImageAnalyzerConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -491,6 +509,8 @@ Stops AI image analysis. The content displayed by the AI image analyzer will be 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CanvasRenderingContext2D-stopImageAnalyzer(): void--><!--Device-CanvasRenderingContext2D-stopImageAnalyzer(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -576,6 +596,8 @@ Creates a data URL that contains a representation of an image. This API involves
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderingContext2D-toDataURL(type?: string, quality?: any): string--><!--Device-CanvasRenderingContext2D-toDataURL(type?: string, quality?: any): string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -640,6 +662,8 @@ Default value: **null**
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-CanvasRenderingContext2D-readonly canvas: FrameNode--><!--Device-CanvasRenderingContext2D-readonly canvas: FrameNode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -662,6 +686,8 @@ Default unit: vp
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderingContext2D-readonly height: number--><!--Device-CanvasRenderingContext2D-readonly height: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -683,5 +709,7 @@ Default unit: vp
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderingContext2D-readonly width: number--><!--Device-CanvasRenderingContext2D-readonly width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

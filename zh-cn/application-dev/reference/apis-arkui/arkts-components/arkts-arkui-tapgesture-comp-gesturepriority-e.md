@@ -8,6 +8,8 @@ declare enum GesturePriority
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare enum GesturePriority--><!--Device-unnamed-declare enum GesturePriority-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NORMAL
@@ -24,6 +26,8 @@ NORMAL = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-GesturePriority-NORMAL = 0--><!--Device-GesturePriority-NORMAL = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PRIORITY
@@ -39,5 +43,7 @@ PRIORITY = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GesturePriority-PRIORITY = 1--><!--Device-GesturePriority-PRIORITY = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

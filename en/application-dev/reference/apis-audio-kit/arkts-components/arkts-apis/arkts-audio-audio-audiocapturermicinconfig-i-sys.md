@@ -8,6 +8,8 @@ Describes audio capturer configuration that can capture microphone input (mic-in
 
 **Since:** 23
 
+<!--Device-audio-interface AudioCapturerMicInConfig--><!--Device-audio-interface AudioCapturerMicInConfig-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Capturer attribute information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioCapturerMicInConfig-capturerInfo: AudioCapturerInfo--><!--Device-AudioCapturerMicInConfig-capturerInfo: AudioCapturerInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Stream information that describes echo reference signal. If not set this attribu
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioCapturerMicInConfig-ecStreamInfo?: AudioStreamInfo--><!--Device-AudioCapturerMicInConfig-ecStreamInfo?: AudioStreamInfo-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -68,6 +74,8 @@ Stream information that describes Mic-In audio stream.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioCapturerMicInConfig-micInStreamInfo: AudioStreamInfo--><!--Device-AudioCapturerMicInConfig-micInStreamInfo: AudioStreamInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -86,6 +94,8 @@ Prefered input device for this audio capturer. The preferred device must be an i
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioCapturerMicInConfig-preferredInputDevice?: AudioDeviceDescriptor--><!--Device-AudioCapturerMicInConfig-preferredInputDevice?: AudioDeviceDescriptor-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -103,6 +113,8 @@ Stream information that describes the processed audio stream.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioCapturerMicInConfig-processedStreamInfo?: AudioStreamInfo--><!--Device-AudioCapturerMicInConfig-processedStreamInfo?: AudioStreamInfo-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 

@@ -14,6 +14,8 @@ export declare class SegmentButtonV2Items extends Array<SegmentButtonV2Item>
 
 **装饰器类型：** @ObservedV2
 
+<!--Device-unnamed-export declare class SegmentButtonV2Items extends Array<SegmentButtonV2Item>--><!--Device-unnamed-export declare class SegmentButtonV2Items extends Array<SegmentButtonV2Item>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ constructor(items: SegmentButtonV2ItemOptions[])
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SegmentButtonV2Items-constructor(items: SegmentButtonV2ItemOptions[])--><!--Device-SegmentButtonV2Items-constructor(items: SegmentButtonV2ItemOptions[])-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,5 +63,7 @@ get hasHybrid(): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SegmentButtonV2Items-get hasHybrid(): boolean--><!--Device-SegmentButtonV2Items-get hasHybrid(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

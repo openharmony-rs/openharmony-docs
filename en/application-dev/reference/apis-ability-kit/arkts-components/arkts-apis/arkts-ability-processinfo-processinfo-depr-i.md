@@ -8,6 +8,8 @@ The module defines process information. You can use [getProcessInfo](../../../re
 
 **Since:** 7
 
+<!--Device-unnamed-export interface ProcessInfo--><!--Device-unnamed-export interface ProcessInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## pid
@@ -22,6 +24,8 @@ The id of the current process
 
 **Since:** 7
 
+<!--Device-ProcessInfo-pid: int--><!--Device-ProcessInfo-pid: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## processName
@@ -35,5 +39,7 @@ The name of the current process
 **Type:** string
 
 **Since:** 7
+
+<!--Device-ProcessInfo-processName: string--><!--Device-ProcessInfo-processName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

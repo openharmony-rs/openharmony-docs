@@ -8,6 +8,8 @@ declare interface ScrollBarMargin
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare interface ScrollBarMargin--><!--Device-unnamed-declare interface ScrollBarMargin-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## end
@@ -26,6 +28,8 @@ end?: LengthMetrics
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-ScrollBarMargin-end?: LengthMetrics--><!--Device-ScrollBarMargin-end?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -43,5 +47,7 @@ start?: LengthMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScrollBarMargin-start?: LengthMetrics--><!--Device-ScrollBarMargin-start?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

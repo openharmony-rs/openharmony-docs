@@ -10,6 +10,8 @@ Triggered to return the remote authentication result. This callback type is used
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-userAuth-type ResultCallback = (challenge: Uint8Array, result: UserAuthResult) => void--><!--Device-userAuth-type ResultCallback = (challenge: Uint8Array, result: UserAuthResult) => void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.

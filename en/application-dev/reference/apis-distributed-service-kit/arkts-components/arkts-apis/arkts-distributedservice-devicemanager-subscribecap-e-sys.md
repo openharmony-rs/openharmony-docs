@@ -10,6 +10,8 @@ Enumerates the discovery capabilities.
 
 **Deprecated since:** 11
 
+<!--Device-deviceManager-enum SubscribeCap--><!--Device-deviceManager-enum SubscribeCap-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -26,6 +28,8 @@ DDMP capability. This will be deprecated later.
 
 **Deprecated since:** 11
 
+<!--Device-SubscribeCap-SUBSCRIBE_CAPABILITY_DDMP = 0--><!--Device-SubscribeCap-SUBSCRIBE_CAPABILITY_DDMP = 0-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -41,6 +45,8 @@ OSD capability.
 **Since:** 7
 
 **Deprecated since:** 11
+
+<!--Device-SubscribeCap-SUBSCRIBE_CAPABILITY_OSD = 1--><!--Device-SubscribeCap-SUBSCRIBE_CAPABILITY_OSD = 1-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

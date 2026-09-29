@@ -17,6 +17,8 @@ Boids simulation parameters used to configure the behavioral attributes of each 
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface BoidsSimParameters--><!--Device-unnamed-export interface BoidsSimParameters-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Perception radius of the alignment rule. Unit is m. Neighboring individuals with
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimParameters-alignmentDistance?: double--><!--Device-BoidsSimParameters-alignmentDistance?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -53,6 +57,8 @@ Weight of the alignment rule. The intensity with which the individual steers tow
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimParameters-alignmentWeight?: double--><!--Device-BoidsSimParameters-alignmentWeight?: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -70,6 +76,8 @@ Effective distance of the boundary constraint force. Unit is m. The individual i
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimParameters-boundaryDistance?: double--><!--Device-BoidsSimParameters-boundaryDistance?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -89,6 +97,8 @@ Maximum corner of the axis-aligned bounding box that constrains the individual's
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimParameters-boundaryMaxPos?: Vec3--><!--Device-BoidsSimParameters-boundaryMaxPos?: Vec3-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -106,6 +116,8 @@ Minimum corner of the axis-aligned bounding box that constrains the individual's
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimParameters-boundaryMinPos?: Vec3--><!--Device-BoidsSimParameters-boundaryMinPos?: Vec3-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -125,6 +137,8 @@ Weight of the boundary constraint force. The intensity with which the individual
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimParameters-boundaryWeight?: double--><!--Device-BoidsSimParameters-boundaryWeight?: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -142,6 +156,8 @@ Perception radius of the cohesion rule. Unit is m. Neighboring individuals withi
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimParameters-cohesionDistance?: double--><!--Device-BoidsSimParameters-cohesionDistance?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -161,6 +177,8 @@ Weight of the cohesion rule. The intensity with which the individual is attracte
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimParameters-cohesionWeight?: double--><!--Device-BoidsSimParameters-cohesionWeight?: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -178,6 +196,8 @@ Attraction intensity of the attraction field on this individual. Value &gt;= 0. 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimParameters-gravityWeight?: double--><!--Device-BoidsSimParameters-gravityWeight?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -197,6 +217,8 @@ Initial position of each individual. Each component unit is m. If not set, the c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimParameters-initialPosition?: Vec3--><!--Device-BoidsSimParameters-initialPosition?: Vec3-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -214,6 +236,8 @@ Quaternion of the initial rotation direction of each individual. If not set, the
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimParameters-initialRotation?: Quaternion--><!--Device-BoidsSimParameters-initialRotation?: Quaternion-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -233,6 +257,8 @@ Initial velocity vector of each individual. Each component unit is m/s. Default 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimParameters-initialVelocity?: Vec3--><!--Device-BoidsSimParameters-initialVelocity?: Vec3-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -250,6 +276,8 @@ Maximum acceleration that the individual can reach per simulation frame. Unit is
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimParameters-maxAccelerationMag?: double--><!--Device-BoidsSimParameters-maxAccelerationMag?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -269,6 +297,8 @@ Maximum turn rate per axis per simulation frame. Each component unit is rad/simu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimParameters-maxTurnRate?: Vec3--><!--Device-BoidsSimParameters-maxTurnRate?: Vec3-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -286,6 +316,8 @@ Maximum velocity that the individual can reach per simulation frame. Unit is m/s
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimParameters-maxVelocityMag?: double--><!--Device-BoidsSimParameters-maxVelocityMag?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -305,6 +337,8 @@ Repulsion intensity of the repulsion field on this individual. Value &gt;= 0. De
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimParameters-repulsionWeight?: double--><!--Device-BoidsSimParameters-repulsionWeight?: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -323,6 +357,8 @@ Perception radius of the separation rule. Unit is m. Only neighboring individual
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimParameters-separationDistance?: double--><!--Device-BoidsSimParameters-separationDistance?: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -340,6 +376,8 @@ Weight of the separation rule. The intensity with which the individual is repell
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimParameters-separationWeight?: double--><!--Device-BoidsSimParameters-separationWeight?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 

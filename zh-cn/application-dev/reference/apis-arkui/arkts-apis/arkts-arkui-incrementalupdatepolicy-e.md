@@ -8,6 +8,8 @@ declare enum IncrementalUpdatePolicy
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare enum IncrementalUpdatePolicy--><!--Device-unnamed-declare enum IncrementalUpdatePolicy-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NONE
@@ -24,6 +26,8 @@ NONE = 0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-IncrementalUpdatePolicy-NONE = 0--><!--Device-IncrementalUpdatePolicy-NONE = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PARAGRAPH_CACHE
@@ -39,5 +43,7 @@ PARAGRAPH_CACHE = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-IncrementalUpdatePolicy-PARAGRAPH_CACHE = 1--><!--Device-IncrementalUpdatePolicy-PARAGRAPH_CACHE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

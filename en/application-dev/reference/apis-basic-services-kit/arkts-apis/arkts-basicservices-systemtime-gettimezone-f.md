@@ -20,6 +20,8 @@ Obtains the system time zone. This API uses an asynchronous callback to return t
 
 **Substitutes:** [getTimezone](arkts-basicservices-systemdatetime-gettimezone-f.md)(callback: AsyncCallback&lt;string&gt;)
 
+<!--Device-systemTime-function getTimezone(callback: AsyncCallback<string>): void--><!--Device-systemTime-function getTimezone(callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **Parameters:**
@@ -69,6 +71,8 @@ Obtains the system time zone. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [getTimezone](arkts-basicservices-systemdatetime-gettimezone-f.md)()
+
+<!--Device-systemTime-function getTimezone(): Promise<string>--><!--Device-systemTime-function getTimezone(): Promise<string>-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 

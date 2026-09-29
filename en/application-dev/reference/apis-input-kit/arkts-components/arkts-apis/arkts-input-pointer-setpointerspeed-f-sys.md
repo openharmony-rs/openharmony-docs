@@ -16,6 +16,8 @@ Sets the mouse pointer speed. This API uses an asynchronous callback to return t
 
 **Since:** 9
 
+<!--Device-pointer-function setPointerSpeed(speed: int, callback: AsyncCallback<void>): void--><!--Device-pointer-function setPointerSpeed(speed: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -77,6 +79,8 @@ function setPointerSpeed(speed: number): Promise<void>
 Sets the mouse pointer speed. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-pointer-function setPointerSpeed(speed: int): Promise<void>--><!--Device-pointer-function setPointerSpeed(speed: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

@@ -8,6 +8,8 @@ The **DistributedExtensionAbility** module provides distributed extension capabi
 
 **Since:** 20
 
+<!--Device-unnamed-declare class DistributedExtensionAbility--><!--Device-unnamed-declare class DistributedExtensionAbility-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Callback invoked to return the collaboration result in multi-device collaboratio
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DistributedExtensionAbility-onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult--><!--Device-DistributedExtensionAbility-onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -74,6 +78,8 @@ Callback invoked to initialize the service logic when a **DistributedExtensionAb
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DistributedExtensionAbility-onCreate(want: Want): void--><!--Device-DistributedExtensionAbility-onCreate(want: Want): void-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**
@@ -109,6 +115,8 @@ Callback invoked to clear resources when a **ServiceExtensionAbility** instance 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DistributedExtensionAbility-onDestroy(): void--><!--Device-DistributedExtensionAbility-onDestroy(): void-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Examples**
@@ -136,5 +144,7 @@ Context of the **DistributedExtension**. This context inherits from **ExtensionC
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DistributedExtensionAbility-context: DistributedExtensionContext--><!--Device-DistributedExtensionAbility-context: DistributedExtensionContext-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration

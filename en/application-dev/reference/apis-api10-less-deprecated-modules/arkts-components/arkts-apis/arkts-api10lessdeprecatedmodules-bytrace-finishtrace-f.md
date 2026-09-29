@@ -24,6 +24,8 @@ Marks the end of a timeslice trace task.
 
 **Substitutes:** finishTrace
 
+<!--Device-bytrace-function finishTrace(name: string, taskId: number): void--><!--Device-bytrace-function finishTrace(name: string, taskId: number): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 **Parameters:**

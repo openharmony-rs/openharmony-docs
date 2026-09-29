@@ -8,6 +8,8 @@ interface CameraManager
 
 **Since:** 10
 
+<!--Device-camera-interface CameraManager--><!--Device-camera-interface CameraManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Before using this interface, first through the getSupportedCameras interface to 
 **Required permissions:** ohos.permission.CAMERA
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CameraManager-createCameraInputWithTokenId(camera: CameraDevice, tokenId: int): CameraInput--><!--Device-CameraManager-createCameraInputWithTokenId(camera: CameraDevice, tokenId: int): CameraInput-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -70,6 +74,8 @@ Create a ControlCenterSession instance.
 
 **Required permissions:** ohos.permission.CAMERA_CONTROL
 
+<!--Device-CameraManager-createControlCenterSession(): ControlCenterSession--><!--Device-CameraManager-createControlCenterSession(): ControlCenterSession-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -96,6 +102,8 @@ createDepthDataOutput(profile: DepthProfile): DepthDataOutput
 Creates a DepthDataOutput instance. This API returns the result synchronously.
 
 **Since:** 13
+
+<!--Device-CameraManager-createDepthDataOutput(profile: DepthProfile): DepthDataOutput--><!--Device-CameraManager-createDepthDataOutput(profile: DepthProfile): DepthDataOutput-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -149,6 +157,8 @@ Checks whether the camera device can be muted.
 
 **Since:** 10
 
+<!--Device-CameraManager-isCameraMuteSupported(): boolean--><!--Device-CameraManager-isCameraMuteSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -184,6 +194,8 @@ Check if the control center active.
 
 **Since:** 20
 
+<!--Device-CameraManager-isControlCenterActive(): boolean--><!--Device-CameraManager-isControlCenterActive(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -209,6 +221,8 @@ isPrelaunchSupported(camera: CameraDevice): boolean
 Checks whether a camera device supports prelaunch.
 
 **Since:** 10
+
+<!--Device-CameraManager-isPrelaunchSupported(camera: CameraDevice): boolean--><!--Device-CameraManager-isPrelaunchSupported(camera: CameraDevice): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -251,39 +265,6 @@ function isPreLaunchSupported(context: common.BaseContext): boolean {
 }
 ```
 
-## muteCamera
-
-```TypeScript
-muteCamera(mute: boolean): void
-```
-
-Mutes or unmutes the camera device.
-
-**Since:** 10
-
-**Deprecated since:** 12
-
-**Substitutes:** [muteCameraPersistent](#mutecamerapersistent)
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| mute | boolean | Yes | Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
-
-**Examples**
-
-```TypeScript
-function muteCamera(cameraManager: camera.CameraManager): void {
-  let mute: boolean = true;
-  cameraManager.muteCamera(mute);
-}
-```
-
 ## muteCameraPersistent
 
 ```TypeScript
@@ -295,6 +276,8 @@ Mutes the camera device permanently.
 **Since:** 12
 
 **Required permissions:** ohos.permission.CAMERA_CONTROL
+
+<!--Device-CameraManager-muteCameraPersistent(mute: boolean, type: PolicyType): void--><!--Device-CameraManager-muteCameraPersistent(mute: boolean, type: PolicyType): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -333,6 +316,8 @@ off(type: 'cameraMute', callback?: AsyncCallback<boolean>): void
 Unsubscribes from camera mute status events.
 
 **Since:** 10
+
+<!--Device-CameraManager-off(type: 'cameraMute', callback?: AsyncCallback<boolean>): void--><!--Device-CameraManager-off(type: 'cameraMute', callback?: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -375,6 +360,8 @@ Unsubscribes control center status change event callback.
 
 **Since:** 20
 
+<!--Device-CameraManager-off(type: 'controlCenterStatusChange', callback?: AsyncCallback<boolean>): void--><!--Device-CameraManager-off(type: 'controlCenterStatusChange', callback?: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -404,6 +391,8 @@ Unsubscribes from camera shared status change event callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CameraManager-offCameraSharedStatus(callback?: Callback<CameraSharedStatusInfo>): void--><!--Device-CameraManager-offCameraSharedStatus(callback?: Callback<CameraSharedStatusInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -429,6 +418,8 @@ on(type: 'cameraMute', callback: AsyncCallback<boolean>): void
 Subscribes to camera mute status events. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-CameraManager-on(type: 'cameraMute', callback: AsyncCallback<boolean>): void--><!--Device-CameraManager-on(type: 'cameraMute', callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -476,6 +467,8 @@ Subscribes control center status change event callback.
 
 **Since:** 20
 
+<!--Device-CameraManager-on(type: 'controlCenterStatusChange', callback: AsyncCallback<boolean>): void--><!--Device-CameraManager-on(type: 'controlCenterStatusChange', callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -505,6 +498,8 @@ Subscribes camera shared status change event callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CameraManager-onCameraSharedStatus(callback: Callback<CameraSharedStatusInfo>): void--><!--Device-CameraManager-onCameraSharedStatus(callback: Callback<CameraSharedStatusInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -530,6 +525,8 @@ prelaunch(): void
 Prelaunches the camera device. This API is called when a user clicks the system camera icon to start the camera application.
 
 **Since:** 10
+
+<!--Device-CameraManager-prelaunch(): void--><!--Device-CameraManager-prelaunch(): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -568,6 +565,8 @@ preSwitchCamera(cameraId: string): void
 Pre-switches a camera device to speed up its startup.
 
 **Since:** 11
+
+<!--Device-CameraManager-preSwitchCamera(cameraId: string): void--><!--Device-CameraManager-preSwitchCamera(cameraId: string): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -616,6 +615,8 @@ Sets prelaunch configuration. Before the setting, call [isPrelaunchSupported](#i
 
 **Required permissions:** ohos.permission.CAMERA
 
+<!--Device-CameraManager-setPrelaunchConfig(prelaunchConfig: PrelaunchConfig): void--><!--Device-CameraManager-setPrelaunchConfig(prelaunchConfig: PrelaunchConfig): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -655,5 +656,40 @@ function setPrelaunchConfig(context: common.BaseContext): void {
       }
     }
   }
+}
+```
+
+## muteCamera
+
+```TypeScript
+muteCamera(mute: boolean): void
+```
+
+Mutes or unmutes the camera device.
+
+**Since:** 10
+
+**Deprecated since:** 12
+
+**Substitutes:** [muteCameraPersistent](#mutecamerapersistent)
+
+<!--Device-CameraManager-muteCamera(mute: boolean): void--><!--Device-CameraManager-muteCamera(mute: boolean): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| mute | boolean | Yes | Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+function muteCamera(cameraManager: camera.CameraManager): void {
+  let mute: boolean = true;
+  cameraManager.muteCamera(mute);
 }
 ```

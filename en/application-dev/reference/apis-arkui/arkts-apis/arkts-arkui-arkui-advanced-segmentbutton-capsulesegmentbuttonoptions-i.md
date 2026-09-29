@@ -10,6 +10,8 @@ Provides configuration options for capsule-style segment buttons. Inherits from 
 
 **Since:** 11
 
+<!--Device-unnamed-interface CapsuleSegmentButtonOptions extends CapsuleSegmentButtonConstructionOptions--><!--Device-unnamed-interface CapsuleSegmentButtonOptions extends CapsuleSegmentButtonConstructionOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -33,5 +35,7 @@ Type of the segment buttons, which is **"capsule"** in this case.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CapsuleSegmentButtonOptions-type: "capsule"--><!--Device-CapsuleSegmentButtonOptions-type: "capsule"-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

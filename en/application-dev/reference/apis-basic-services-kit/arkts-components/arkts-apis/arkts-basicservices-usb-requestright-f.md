@@ -20,6 +20,8 @@ Requests the temporary permission for the application to access a USB device. Th
 
 **Substitutes:** [requestRight](arkts-basicservices-usbmanager-requestright-f.md)
 
+<!--Device-usb-function requestRight(deviceName: string): Promise<boolean>--><!--Device-usb-function requestRight(deviceName: string): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

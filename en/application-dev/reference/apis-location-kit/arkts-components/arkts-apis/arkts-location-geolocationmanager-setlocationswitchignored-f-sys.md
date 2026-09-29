@@ -18,6 +18,8 @@ Set the app locating behavior not controlled by the location switch.
 
 **Required permissions:** ohos.permission.LOCATION_SWITCH_IGNORED
 
+<!--Device-geoLocationManager-function setLocationSwitchIgnored(isIgnored: boolean): void--><!--Device-geoLocationManager-function setLocationSwitchIgnored(isIgnored: boolean): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.

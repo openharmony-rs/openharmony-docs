@@ -18,4 +18,6 @@ The @Styles decorator is used to extract multiple style settings into a method, 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare const Styles: MethodDecorator & StylesVersionDecorator--><!--Device-unnamed-declare const Styles: MethodDecorator & StylesVersionDecorator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

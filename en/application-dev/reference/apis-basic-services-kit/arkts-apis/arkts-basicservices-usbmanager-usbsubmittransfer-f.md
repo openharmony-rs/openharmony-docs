@@ -23,6 +23,8 @@ Submits an asynchronous transfer request. The result is returned immediately aft
 
 **Since:** 18
 
+<!--Device-usbManager-function usbSubmitTransfer(transfer: UsbDataTransferParams): void--><!--Device-usbManager-function usbSubmitTransfer(transfer: UsbDataTransferParams): void-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

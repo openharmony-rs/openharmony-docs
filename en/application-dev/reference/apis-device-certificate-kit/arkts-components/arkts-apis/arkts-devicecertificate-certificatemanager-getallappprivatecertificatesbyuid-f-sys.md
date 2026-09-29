@@ -20,6 +20,8 @@ Obtains all private credentials of a specified application. This API is called o
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function getAllAppPrivateCertificatesByUid(appUid: int) : Promise<CMResult>--><!--Device-certificateManager-function getAllAppPrivateCertificatesByUid(appUid: int) : Promise<CMResult>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

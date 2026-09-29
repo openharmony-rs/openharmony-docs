@@ -16,6 +16,8 @@ Stop the current device written even the discovery is ongoing.
 
 **Since:** 13
 
+<!--Device-avSession-function stopDeviceLogging(): Promise<void>--><!--Device-avSession-function stopDeviceLogging(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.

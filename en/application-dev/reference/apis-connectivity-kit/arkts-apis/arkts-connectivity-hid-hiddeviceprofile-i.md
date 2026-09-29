@@ -10,6 +10,8 @@ Manager HID device profile.
 
 **Since:** 23
 
+<!--Device-hid-interface HidDeviceProfile extends BaseProfile--><!--Device-hid-interface HidDeviceProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Initiate an HID connection to a remote HID host device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HidDeviceProfile-connect(deviceId: BluetoothAddress): void--><!--Device-HidDeviceProfile-connect(deviceId: BluetoothAddress): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -82,6 +86,8 @@ Disconnect the HID connection with the remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HidDeviceProfile-disconnect(): void--><!--Device-HidDeviceProfile-disconnect(): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Error codes:**
@@ -118,6 +124,8 @@ Unsubscribe from the event that a GET_REPORT message is received from the peer d
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HidDeviceProfile-offGetReport(callback?: Callback<GetReportData>): void--><!--Device-HidDeviceProfile-offGetReport(callback?: Callback<GetReportData>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -163,6 +171,8 @@ Unsubscribe from the event reported when InterruptData is received from the remo
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HidDeviceProfile-offInterruptDataReceived(callback?: Callback<InterruptData>): void--><!--Device-HidDeviceProfile-offInterruptDataReceived(callback?: Callback<InterruptData>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -206,6 +216,8 @@ Unsubscribe from the event that a SET_PROTOCOL message is received from the peer
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HidDeviceProfile-offSetProtocol(callback?: Callback<ProtocolData>): void--><!--Device-HidDeviceProfile-offSetProtocol(callback?: Callback<ProtocolData>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -251,6 +263,8 @@ Unsubscribe from the event that a SET_REPORT message is received from the peer d
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HidDeviceProfile-offSetReport(callback?: Callback<SetReportData>): void--><!--Device-HidDeviceProfile-offSetReport(callback?: Callback<SetReportData>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -294,6 +308,8 @@ Unsubscribe from the event reported when virtual Cable is removed.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HidDeviceProfile-offVirtualCableUnplug(callback?: Callback<void>): void--><!--Device-HidDeviceProfile-offVirtualCableUnplug(callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -339,6 +355,8 @@ Subscribe to the event reported when GET_REPORT message is received from the rem
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HidDeviceProfile-onGetReport(callback: Callback<GetReportData>): void--><!--Device-HidDeviceProfile-onGetReport(callback: Callback<GetReportData>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -381,6 +399,8 @@ Subscribe to the event reported when InterruptData is received from the remote.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HidDeviceProfile-onInterruptDataReceived(callback: Callback<InterruptData>): void--><!--Device-HidDeviceProfile-onInterruptDataReceived(callback: Callback<InterruptData>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -425,6 +445,8 @@ Subscribe to the event reported when SET_PROTOCOL message is received from the r
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HidDeviceProfile-onSetProtocol(callback: Callback<ProtocolData>): void--><!--Device-HidDeviceProfile-onSetProtocol(callback: Callback<ProtocolData>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -467,6 +489,8 @@ Subscribe to the event reported when SET_REPORT message is received from the rem
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HidDeviceProfile-onSetReport(callback: Callback<SetReportData>): void--><!--Device-HidDeviceProfile-onSetReport(callback: Callback<SetReportData>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -511,6 +535,8 @@ Subscribe to the event reported when virtual Cable is removed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HidDeviceProfile-onVirtualCableUnplug(callback: Callback<void>): void--><!--Device-HidDeviceProfile-onVirtualCableUnplug(callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -553,6 +579,8 @@ Application registers the HID Device capability. The application will only succe
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HidDeviceProfile-registerHidDevice(sdp: HidDeviceSdp, inQos: HidDeviceQos, outQos: HidDeviceQos, callback: Callback<boolean>): void--><!--Device-HidDeviceProfile-registerHidDevice(sdp: HidDeviceSdp, inQos: HidDeviceQos, outQos: HidDeviceQos, callback: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -641,6 +669,8 @@ Reply report to a remote HID host device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HidDeviceProfile-replyReport(type: ReportType, id: int, reportData: Uint8Array): void--><!--Device-HidDeviceProfile-replyReport(type: ReportType, id: int, reportData: Uint8Array): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -690,6 +720,8 @@ Report error to a remote HID host device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HidDeviceProfile-reportError(error: ErrorReason): void--><!--Device-HidDeviceProfile-reportError(error: ErrorReason): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -734,6 +766,8 @@ Send report to a remote HID host device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HidDeviceProfile-sendReport(id: int, reportData: Uint8Array): void--><!--Device-HidDeviceProfile-sendReport(id: int, reportData: Uint8Array): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -781,6 +815,8 @@ Application unregisters the HID Device capability.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HidDeviceProfile-unregisterHidDevice(): void--><!--Device-HidDeviceProfile-unregisterHidDevice(): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

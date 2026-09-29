@@ -20,6 +20,8 @@ Updates the APN. This API is suitable for enterprise mobile network configuratio
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function updateApn(admin: Want, apnInfo: Record<string, string>, apnId: string): void--><!--Device-networkManager-function updateApn(admin: Want, apnInfo: Record<string, string>, apnId: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

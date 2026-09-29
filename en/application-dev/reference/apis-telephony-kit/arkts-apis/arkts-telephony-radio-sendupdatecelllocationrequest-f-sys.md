@@ -18,6 +18,8 @@ Actively requests to update location information.
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-radio-function sendUpdateCellLocationRequest(slotId: int, callback: AsyncCallback<void>): void--><!--Device-radio-function sendUpdateCellLocationRequest(slotId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Actively requests to update location information.
 **Since:** 8
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
+
+<!--Device-radio-function sendUpdateCellLocationRequest(slotId?: int): Promise<void>--><!--Device-radio-function sendUpdateCellLocationRequest(slotId?: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -126,6 +130,8 @@ Actively requests to update location information.
 **Since:** 8
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
+
+<!--Device-radio-function sendUpdateCellLocationRequest(callback: AsyncCallback<void>): void--><!--Device-radio-function sendUpdateCellLocationRequest(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

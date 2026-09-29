@@ -12,6 +12,8 @@ Defines the options for a **DateTimeOptions** object. Since API version 9, the *
 
 **Substitutes:** [Intl.DateTimeFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options)
 
+<!--Device-intl-export interface DateTimeOptions--><!--Device-intl-export interface DateTimeOptions-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -44,6 +46,8 @@ For details about their display effects, see [Table 1](../../../reference/apis-l
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-DateTimeOptions-dateStyle?: string--><!--Device-DateTimeOptions-dateStyle?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## day
@@ -67,6 +71,8 @@ Day display format. The value can be:
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-DateTimeOptions-day?: string--><!--Device-DateTimeOptions-day?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -94,6 +100,8 @@ For details about their display effects, see [Table 10](../../../reference/apis-
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-DateTimeOptions-dayPeriod?: string--><!--Device-DateTimeOptions-dayPeriod?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## era
@@ -120,6 +128,8 @@ For details about their display effects, see [Table 9](../../../reference/apis-l
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-DateTimeOptions-era?: string--><!--Device-DateTimeOptions-era?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## formatMatcher
@@ -145,6 +155,8 @@ Format matching algorithm. The value can be:
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-DateTimeOptions-formatMatcher?: string--><!--Device-DateTimeOptions-formatMatcher?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## hour
@@ -168,6 +180,8 @@ Hour display format. The value can be:
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-DateTimeOptions-hour?: string--><!--Device-DateTimeOptions-hour?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -194,6 +208,8 @@ If **hour12** and **hourCycle** are not set and the 24-hour clock is turned on, 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-DateTimeOptions-hour12?: boolean--><!--Device-DateTimeOptions-hour12?: boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -223,6 +239,8 @@ For the display effects when **dateStyle** or **timeStyle** is not set, see [Tab
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-DateTimeOptions-hourCycle?: string--><!--Device-DateTimeOptions-hourCycle?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## locale
@@ -244,6 +262,8 @@ The default value is the current system locale.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-DateTimeOptions-locale?: string--><!--Device-DateTimeOptions-locale?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -270,6 +290,8 @@ Locale matching algorithm. The value can be:
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-DateTimeOptions-localeMatcher?: string--><!--Device-DateTimeOptions-localeMatcher?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## minute
@@ -293,6 +315,8 @@ Minute display format. The value can be:
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-DateTimeOptions-minute?: string--><!--Device-DateTimeOptions-minute?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -320,6 +344,8 @@ For details about their display effects, see [Table 7](../../../reference/apis-l
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-DateTimeOptions-month?: string--><!--Device-DateTimeOptions-month?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## numberingSystem
@@ -344,6 +370,8 @@ Numbering system. The value can be:
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-DateTimeOptions-numberingSystem?: string--><!--Device-DateTimeOptions-numberingSystem?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## second
@@ -367,6 +395,8 @@ Second display format. The value can be:
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-DateTimeOptions-second?: string--><!--Device-DateTimeOptions-second?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -394,6 +424,8 @@ For details about their display effects, see [Table 2](../../../reference/apis-l
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-DateTimeOptions-timeStyle?: string--><!--Device-DateTimeOptions-timeStyle?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## timeZone
@@ -415,6 +447,8 @@ Time zone in use. The value is a valid IANA time zone ID.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-DateTimeOptions-timeZone?: string--><!--Device-DateTimeOptions-timeZone?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -442,6 +476,8 @@ For details about their display effects, see [Table 8](../../../reference/apis-l
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-DateTimeOptions-timeZoneName?: string--><!--Device-DateTimeOptions-timeZoneName?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## weekday
@@ -468,6 +504,8 @@ For details about their display effects, see [Table 4](../../../reference/apis-l
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-DateTimeOptions-weekday?: string--><!--Device-DateTimeOptions-weekday?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## year
@@ -493,5 +531,7 @@ For details about their display effects, see [Table 3](../../../reference/apis-l
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-DateTimeOptions-year?: string--><!--Device-DateTimeOptions-year?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n

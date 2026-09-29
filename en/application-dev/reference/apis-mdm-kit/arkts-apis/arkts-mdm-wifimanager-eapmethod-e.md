@@ -12,6 +12,8 @@ Enumerates the EAP authentication methods.
 
 **Since:** 12
 
+<!--Device-wifiManager-enum EapMethod--><!--Device-wifiManager-enum EapMethod-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## EAP_NONE
@@ -25,6 +27,8 @@ Not specified.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EapMethod-EAP_NONE = 0--><!--Device-EapMethod-EAP_NONE = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -40,6 +44,8 @@ Protected Extensible Authentication Protocol (PEAP). It first establishes a secu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EapMethod-EAP_PEAP = 1--><!--Device-EapMethod-EAP_PEAP = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## EAP_TLS
@@ -53,6 +59,8 @@ Transport Layer Security (TLS). It implements mutual certificate authentication.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EapMethod-EAP_TLS = 2--><!--Device-EapMethod-EAP_TLS = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -68,6 +76,8 @@ Tunnel Transport Layer Security (TTLS). It is similar to PEAP, but supports a mo
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EapMethod-EAP_TTLS = 3--><!--Device-EapMethod-EAP_TTLS = 3-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## EAP_PWD
@@ -81,6 +91,8 @@ Password Authentication (PWD). It enables password-based authentication and does
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EapMethod-EAP_PWD = 4--><!--Device-EapMethod-EAP_PWD = 4-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -96,6 +108,8 @@ Subscriber Identity Module (SIM). It performs authentication using the keys and 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EapMethod-EAP_SIM = 5--><!--Device-EapMethod-EAP_SIM = 5-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## EAP_AKA
@@ -109,6 +123,8 @@ Authentication and Key Agreement (AKA). It performs authentication using enhance
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EapMethod-EAP_AKA = 6--><!--Device-EapMethod-EAP_AKA = 6-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -124,6 +140,8 @@ AKA Prime. It is an enhanced version of EAP-AKA and binds the network name durin
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EapMethod-EAP_AKA_PRIME = 7--><!--Device-EapMethod-EAP_AKA_PRIME = 7-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## EAP_UNAUTH_TLS
@@ -137,5 +155,7 @@ Unauthenticated TLS (UNAUTH TLS). It implements one-way authentication (client a
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EapMethod-EAP_UNAUTH_TLS = 8--><!--Device-EapMethod-EAP_UNAUTH_TLS = 8-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

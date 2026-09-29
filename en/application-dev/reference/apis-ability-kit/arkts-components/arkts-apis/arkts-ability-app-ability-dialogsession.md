@@ -1,10 +1,12 @@
-# @ohos.app.ability.dialogSession
+# @ohos.app.ability.dialogSession(dialogSession)
 
 The dialogSession module provides APIs related to the dialog box.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-unnamed-declare namespace dialogSession--><!--Device-unnamed-declare namespace dialogSession-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

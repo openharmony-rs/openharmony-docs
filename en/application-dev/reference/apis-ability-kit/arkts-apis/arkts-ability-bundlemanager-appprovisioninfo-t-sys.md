@@ -8,6 +8,8 @@ Defines the information in the [HarmonyAppProvision configuration file](../../..
 
 **Since:** 10
 
+<!--Device-bundleManager-export type AppProvisionInfo = _AppProvisionInfo.AppProvisionInfo--><!--Device-bundleManager-export type AppProvisionInfo = _AppProvisionInfo.AppProvisionInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

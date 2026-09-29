@@ -8,6 +8,8 @@ This class offers a comprehensive set of operations for handling common2D Point 
 
 **Since:** 26.0.0
 
+<!--Device-drawing-class PointUtils--><!--Device-drawing-class PointUtils-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Negates the point's coordinates.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PointUtils-static negate(point: common2D.Point): void--><!--Device-PointUtils-static negate(point: common2D.Point): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -47,6 +51,8 @@ Offsets the point's coordinates by dx, dy.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PointUtils-static offset(point: common2D.Point, dx: double, dy: double): void--><!--Device-PointUtils-static offset(point: common2D.Point, dx: double, dy: double): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

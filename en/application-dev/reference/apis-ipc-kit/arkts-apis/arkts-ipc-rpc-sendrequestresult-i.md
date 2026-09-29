@@ -12,6 +12,8 @@ Defines the response to the request.
 
 **Substitutes:** [RequestResult](arkts-ipc-rpc-requestresult-i.md)
 
+<!--Device-rpc-interface SendRequestResult--><!--Device-rpc-interface SendRequestResult-End-->
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Message code.
 
 **Substitutes:** [code](arkts-ipc-rpc-requestresult-i.md#code)
 
+<!--Device-SendRequestResult-code: number--><!--Device-SendRequestResult-code: number-End-->
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## data
@@ -53,6 +57,8 @@ data: MessageParcel
 **Deprecated since:** 9
 
 **Substitutes:** [data](arkts-ipc-rpc-requestresult-i.md#data)
+
+<!--Device-SendRequestResult-data: MessageParcel--><!--Device-SendRequestResult-data: MessageParcel-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -72,6 +78,8 @@ Error code.
 
 **Substitutes:** [errCode](arkts-ipc-rpc-requestresult-i.md#errcode)
 
+<!--Device-SendRequestResult-errCode: number--><!--Device-SendRequestResult-errCode: number-End-->
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## reply
@@ -89,5 +97,7 @@ reply: MessageParcel
 **Deprecated since:** 9
 
 **Substitutes:** [reply](arkts-ipc-rpc-requestresult-i.md#reply)
+
+<!--Device-SendRequestResult-reply: MessageParcel--><!--Device-SendRequestResult-reply: MessageParcel-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core

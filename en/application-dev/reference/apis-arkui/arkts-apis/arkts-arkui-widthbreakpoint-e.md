@@ -10,6 +10,8 @@ The following table lists default width breakpoint thresholds for typical device
 
 **Since:** 13
 
+<!--Device-unnamed-declare enum WidthBreakpoint--><!--Device-unnamed-declare enum WidthBreakpoint-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WIDTH_XS
@@ -25,6 +27,8 @@ The window width is less than 320 vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-WidthBreakpoint-WIDTH_XS = 0--><!--Device-WidthBreakpoint-WIDTH_XS = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ The window width is greater than or equal to 320 vp and less than 600 vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-WidthBreakpoint-WIDTH_SM = 1--><!--Device-WidthBreakpoint-WIDTH_SM = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WIDTH_MD
@@ -57,6 +63,8 @@ The window width is greater than or equal to 600 vp and less than 840 vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-WidthBreakpoint-WIDTH_MD = 2--><!--Device-WidthBreakpoint-WIDTH_MD = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +82,8 @@ The window width is greater than or equal to 840 vp and less than 1440 vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-WidthBreakpoint-WIDTH_LG = 3--><!--Device-WidthBreakpoint-WIDTH_LG = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WIDTH_XL
@@ -89,5 +99,7 @@ The window width is greater than or equal to 1440 vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-WidthBreakpoint-WIDTH_XL = 4--><!--Device-WidthBreakpoint-WIDTH_XL = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

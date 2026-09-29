@@ -8,6 +8,8 @@ The module defines the information required for triggering the WantAgent. The in
 
 **Since:** 7
 
+<!--Device-unnamed-export interface TriggerInfo--><!--Device-unnamed-export interface TriggerInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## startOptions
@@ -23,6 +25,8 @@ Start options in wantAgent used to start an ability.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TriggerInfo-startOptions?: StartOptions--><!--Device-TriggerInfo-startOptions?: StartOptions-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

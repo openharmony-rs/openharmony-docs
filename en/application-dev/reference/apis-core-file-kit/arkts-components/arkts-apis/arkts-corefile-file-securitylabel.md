@@ -4,6 +4,8 @@ The **securityLabel** module provides APIs for managing data security levels of 
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace securityLabel--><!--Device-unnamed-declare namespace securityLabel-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import

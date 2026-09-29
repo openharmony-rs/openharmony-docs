@@ -14,6 +14,8 @@ ChipV2ImageIcon定义图标图片的基类。
 
 **装饰器类型：** @ObservedV2
 
+<!--Device-unnamed-export abstract class ChipV2ImageIcon extends ChipV2Icon--><!--Device-unnamed-export abstract class ChipV2ImageIcon extends ChipV2Icon-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ ChipV2ImageIcon的构造函数。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2ImageIcon-constructor(config: ChipV2ImageIconConfig)--><!--Device-ChipV2ImageIcon-constructor(config: ChipV2ImageIconConfig)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +72,8 @@ ChipV2激活时图标填充颜色。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipV2ImageIcon-public activatedFillColor?: ColorMetrics--><!--Device-ChipV2ImageIcon-public activatedFillColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fillColor
@@ -94,6 +100,8 @@ public fillColor?: ColorMetrics
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipV2ImageIcon-public fillColor?: ColorMetrics--><!--Device-ChipV2ImageIcon-public fillColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## modifier
@@ -106,7 +114,7 @@ public modifier?: ImageModifier
 
 默认值：undefined，不应用修饰器。
 
-**类型：** ImageModifier
+**类型：** [ImageModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 
@@ -115,6 +123,8 @@ public modifier?: ImageModifier
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2ImageIcon-public modifier?: ImageModifier--><!--Device-ChipV2ImageIcon-public modifier?: ImageModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,6 +157,8 @@ sys.float.chip_normal_icon_size')}。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipV2ImageIcon-public size?: SizeT<LengthMetrics>--><!--Device-ChipV2ImageIcon-public size?: SizeT<LengthMetrics>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## src
@@ -166,5 +178,7 @@ public src: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2ImageIcon-public src: ResourceStr--><!--Device-ChipV2ImageIcon-public src: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

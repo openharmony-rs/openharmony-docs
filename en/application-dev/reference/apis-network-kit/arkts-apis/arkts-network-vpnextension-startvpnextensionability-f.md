@@ -18,6 +18,8 @@ Enables the VPN extension ability. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-vpnExtension-function startVpnExtensionAbility(want: Want): Promise<void>--><!--Device-vpnExtension-function startVpnExtensionAbility(want: Want): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

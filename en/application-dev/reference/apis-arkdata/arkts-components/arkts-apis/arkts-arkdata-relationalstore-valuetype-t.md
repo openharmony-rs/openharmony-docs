@@ -8,6 +8,8 @@ Indicates possible value types
 
 **Since:** 9
 
+<!--Device-relationalStore-type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint--><!--Device-relationalStore-type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | Type | Description |

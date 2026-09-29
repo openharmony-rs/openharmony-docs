@@ -12,6 +12,8 @@ Provides the audio recorder configuration definitions.
 
 **Substitutes:** [AVRecorderConfig](arkts-media-media-avrecorderconfig-i.md)
 
+<!--Device-media-interface AudioRecorderConfig--><!--Device-media-interface AudioRecorderConfig-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Audio encoding bit rate, in bit/s.
 
 **Substitutes:** [audioBitrate](arkts-media-media-avrecorderprofile-i.md#audiobitrate)
 
+<!--Device-AudioRecorderConfig-audioEncodeBitRate?: number--><!--Device-AudioRecorderConfig-audioEncodeBitRate?: number-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## audioEncoder
@@ -53,6 +57,8 @@ Audio encoding format. The default value is DEFAULT, it will be deprecated after
 **Deprecated since:** 8
 
 **Substitutes:** [audioEncoderMime](#audioencodermime)
+
+<!--Device-AudioRecorderConfig-audioEncoder?: AudioEncoder--><!--Device-AudioRecorderConfig-audioEncoder?: AudioEncoder-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -72,6 +78,8 @@ audio encoding format MIME. it used to replace audioEncoder.
 
 **Substitutes:** [audioCodec](arkts-media-media-avrecorderprofile-i.md#audiocodec)
 
+<!--Device-AudioRecorderConfig-audioEncoderMime?: CodecMimeType--><!--Device-AudioRecorderConfig-audioEncoderMime?: CodecMimeType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## audioSampleRate
@@ -89,6 +97,8 @@ Audio sampling rate, in Hz.
 **Deprecated since:** 9
 
 **Substitutes:** [audioSampleRate](arkts-media-media-avrecorderprofile-i.md#audiosamplerate)
+
+<!--Device-AudioRecorderConfig-audioSampleRate?: number--><!--Device-AudioRecorderConfig-audioSampleRate?: number-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -108,6 +118,8 @@ output file format. see @ContainerFormatType , it used to replace "format".
 
 **Substitutes:** [fileFormat](arkts-media-media-avrecorderprofile-i.md#fileformat)
 
+<!--Device-AudioRecorderConfig-fileFormat?: ContainerFormatType--><!--Device-AudioRecorderConfig-fileFormat?: ContainerFormatType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## format
@@ -125,6 +137,8 @@ Audio output format. The default value is DEFAULT, it will be deprecated after A
 **Deprecated since:** 8
 
 **Substitutes:** [fileFormat](#fileformat)
+
+<!--Device-AudioRecorderConfig-format?: AudioOutputFormat--><!--Device-AudioRecorderConfig-format?: AudioOutputFormat-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -144,6 +158,8 @@ Geographical location information.
 
 **Substitutes:** [location](arkts-media-media-avmetadata-i.md#location)
 
+<!--Device-AudioRecorderConfig-location?: Location--><!--Device-AudioRecorderConfig-location?: Location-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## numberOfChannels
@@ -162,6 +178,8 @@ Number of audio channels.
 
 **Substitutes:** [audioChannels](arkts-media-media-avrecorderprofile-i.md#audiochannels)
 
+<!--Device-AudioRecorderConfig-numberOfChannels?: number--><!--Device-AudioRecorderConfig-numberOfChannels?: number-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## uri
@@ -179,5 +197,7 @@ Audio output uri.support two kind of uri now. format like: scheme + "://" + "con
 **Deprecated since:** 9
 
 **Substitutes:** [url](arkts-media-media-avrecorderconfig-i.md#url)
+
+<!--Device-AudioRecorderConfig-uri: string--><!--Device-AudioRecorderConfig-uri: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder

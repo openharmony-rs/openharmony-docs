@@ -10,6 +10,8 @@ Implements imaging mode.
 
 **Since:** 26.0.1
 
+<!--Device-camera-interface ImagingMode extends ImagingModeQuery--><!--Device-camera-interface ImagingMode extends ImagingModeQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Gets current imaging mode.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ImagingMode-getImagingMode(): CameraImagingMode--><!--Device-ImagingMode-getImagingMode(): CameraImagingMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -60,6 +64,8 @@ Sets imaging mode.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ImagingMode-setImagingMode(mode: CameraImagingMode): void--><!--Device-ImagingMode-setImagingMode(mode: CameraImagingMode): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

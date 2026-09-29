@@ -8,6 +8,8 @@ declare interface DialogTextStyleOptions
 
 **起始版本：** 26.0.1
 
+<!--Device-dialog-declare interface DialogTextStyleOptions--><!--Device-dialog-declare interface DialogTextStyleOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,5 +33,7 @@ wordBreak?: WordBreak
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogTextStyleOptions-wordBreak?: WordBreak--><!--Device-DialogTextStyleOptions-wordBreak?: WordBreak-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

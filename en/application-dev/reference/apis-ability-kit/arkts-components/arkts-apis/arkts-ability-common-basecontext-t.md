@@ -12,6 +12,8 @@ Defines the parent class of all context types.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-common-export type BaseContext = _BaseContext.default--><!--Device-common-export type BaseContext = _BaseContext.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _BaseContext.default

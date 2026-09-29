@@ -16,6 +16,8 @@ declare interface Bias
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface Bias--><!--Device-unnamed-declare interface Bias-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## horizontal
@@ -42,6 +44,8 @@ horizontal?: number
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-Bias-horizontal?: number--><!--Device-Bias-horizontal?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## vertical
@@ -67,5 +71,7 @@ vertical?: number
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Bias-vertical?: number--><!--Device-Bias-vertical?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

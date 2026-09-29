@@ -10,6 +10,8 @@ Provides methods for setting the display effect, including the font size, screen
 
 **Since:** 7
 
+<!--Device-settings-namespace display--><!--Device-settings-namespace display-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## Modules to Import

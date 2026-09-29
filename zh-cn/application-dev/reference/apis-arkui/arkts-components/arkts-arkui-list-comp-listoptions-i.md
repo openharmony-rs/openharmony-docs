@@ -12,6 +12,8 @@ interface ListOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface ListOptions--><!--Device-unnamed-interface ListOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## initialIndex
@@ -45,6 +47,8 @@ initialIndex?: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListOptions-initialIndex?: number--><!--Device-ListOptions-initialIndex?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## scroller
@@ -57,7 +61,7 @@ scroller?: Scroller
 
 **说明：** 
 
-不允许和其他滚动类组件，如：ArcList、List、Grid、Scroll和WaterFlow绑定同一个滚动控制对象。
+不允许和其他滚动类组件，如：[ArcList](arkts-arkui-arclist-comp.md)、[List](arkts-arkui-list-comp.md)、[Grid](arkts-arkui-grid-comp.md)、[Scroll](arkts-arkui-scroll-comp.md)和[WaterFlow](arkts-arkui-waterflow-comp.md)绑定同一个滚动控制对象。
 
 **类型：** [Scroller](arkts-arkui-scroll-comp-scroller-c.md)
 
@@ -68,6 +72,8 @@ scroller?: Scroller
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListOptions-scroller?: Scroller--><!--Device-ListOptions-scroller?: Scroller-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +112,8 @@ List子组件的visibility属性设置为None时不显示，但该子组件上�
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListOptions-space?: number | string--><!--Device-ListOptions-space?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## spaceWidth
@@ -141,5 +149,7 @@ List子组件的visibility属性设置为None时不显示，但该子组件上�
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListOptions-spaceWidth?: Dimension--><!--Device-ListOptions-spaceWidth?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

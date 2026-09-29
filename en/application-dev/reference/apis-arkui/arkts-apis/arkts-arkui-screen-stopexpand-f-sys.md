@@ -18,6 +18,8 @@ Stops extended mode. This API uses an asynchronous callback to return the result
 
 **Deprecated since:** 20
 
+<!--Device-screen-function stopExpand(expandScreen:Array<long>, callback: AsyncCallback<void>): void--><!--Device-screen-function stopExpand(expandScreen:Array<long>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Stops extended mode. This API uses a promise to return the result.
 **Since:** 10
 
 **Deprecated since:** 20
+
+<!--Device-screen-function stopExpand(expandScreen:Array<long>): Promise<void>--><!--Device-screen-function stopExpand(expandScreen:Array<long>): Promise<void>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

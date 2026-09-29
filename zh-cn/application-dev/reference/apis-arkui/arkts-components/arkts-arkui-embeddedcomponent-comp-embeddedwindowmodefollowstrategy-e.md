@@ -8,6 +8,8 @@ declare enum EmbeddedWindowModeFollowStrategy
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare enum EmbeddedWindowModeFollowStrategy--><!--Device-unnamed-declare enum EmbeddedWindowModeFollowStrategy-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FOLLOW_HOST_WINDOW_MODE
@@ -24,6 +26,8 @@ FOLLOW_HOST_WINDOW_MODE = 0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-EmbeddedWindowModeFollowStrategy-FOLLOW_HOST_WINDOW_MODE = 0--><!--Device-EmbeddedWindowModeFollowStrategy-FOLLOW_HOST_WINDOW_MODE = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE
@@ -39,5 +43,7 @@ FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-EmbeddedWindowModeFollowStrategy-FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE = 1--><!--Device-EmbeddedWindowModeFollowStrategy-FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

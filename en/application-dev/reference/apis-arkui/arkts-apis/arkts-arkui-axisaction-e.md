@@ -8,6 +8,8 @@ Enumerates the types of axis actions for axis events.
 
 **Since:** 17
 
+<!--Device-unnamed-declare enum AxisAction--><!--Device-unnamed-declare enum AxisAction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## NONE
@@ -23,6 +25,8 @@ No axis event.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
+
+<!--Device-AxisAction-NONE = 0--><!--Device-AxisAction-NONE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ The axis event begins.
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
 
+<!--Device-AxisAction-BEGIN = 1--><!--Device-AxisAction-BEGIN = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## UPDATE
@@ -55,6 +61,8 @@ The axis event is in progress.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
+
+<!--Device-AxisAction-UPDATE = 2--><!--Device-AxisAction-UPDATE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ The axis event ends.
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
 
+<!--Device-AxisAction-END = 3--><!--Device-AxisAction-END = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CANCEL
@@ -87,5 +97,7 @@ The axis event is canceled.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
+
+<!--Device-AxisAction-CANCEL = 4--><!--Device-AxisAction-CANCEL = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

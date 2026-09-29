@@ -8,6 +8,8 @@ Enumerates the types of sidebar containers.
 
 **Since:** 8
 
+<!--Device-unnamed-declare enum SideBarContainerType--><!--Device-unnamed-declare enum SideBarContainerType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Embed
@@ -30,6 +32,8 @@ The user can bring out the sidebar in Overlay mode by clicking the control butto
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SideBarContainerType-Embed = 0--><!--Device-SideBarContainerType-Embed = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Overlay
@@ -43,6 +47,8 @@ The sidebar is overlaid on top of the content area, without affecting the size o
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SideBarContainerType-Overlay = 1--><!--Device-SideBarContainerType-Overlay = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +70,8 @@ If **minSideBarWidth** or **minContentWidth** is not set, the default value will
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SideBarContainerType-AUTO = 2--><!--Device-SideBarContainerType-AUTO = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DISPLACE
@@ -79,5 +87,7 @@ The sideBar Displace. Sidebar is visible, content will offscreen to make space f
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SideBarContainerType-DISPLACE = 3--><!--Device-SideBarContainerType-DISPLACE = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

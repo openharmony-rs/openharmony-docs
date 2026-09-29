@@ -4,13 +4,16 @@
 declare class NodeAdapter
 ```
 
-Provides lazy loading capabilities for FrameNode data, implementing [LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md#lazy_for_each) API functionality.
+Provides lazy loading capabilities for FrameNode data, implementing API functionality through [LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md). It is suitable for scenarios such as long lists where node data needs to be loaded on demand, improving rendering performance and reducing memory usage.
 
 > **NOTE:** 
 > 
-> Negative input parameters are ignored and trigger no processing.
+> Numeric input parameters (such as **start**, **count**, **from**, and **to**) in **NodeAdapter** APIs must not be
+> negative. Negative input parameters are ignored and trigger no processing.
 
 **Since:** 12
+
+<!--Device-unnamed-declare class NodeAdapter--><!--Device-unnamed-declare class NodeAdapter-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +36,8 @@ Attaches a FrameNode to a NodeAdapter. Each node can be bound to only one NodeAd
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NodeAdapter-static attachNodeAdapter(adapter: NodeAdapter, node: FrameNode): boolean--><!--Device-NodeAdapter-static attachNodeAdapter(adapter: NodeAdapter, node: FrameNode): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -40,7 +45,7 @@ Attaches a FrameNode to a NodeAdapter. Each node can be bound to only one NodeAd
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | adapter | [NodeAdapter](arkts-arkui-framenode-nodeadapter-c.md) | Yes | NodeAdapter class for lazy loading. |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode to be attached. |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | Attached FrameNode node. |
 
 **Return value:**
 
@@ -62,6 +67,8 @@ A constructor used to create a **NodeAdapter** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NodeAdapter-constructor()--><!--Device-NodeAdapter-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## detachNodeAdapter
@@ -78,13 +85,15 @@ Detaches a FrameNode from its NodeAdapter.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NodeAdapter-static detachNodeAdapter(node: FrameNode): void--><!--Device-NodeAdapter-static detachNodeAdapter(node: FrameNode): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode to detach. |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode node to be detached. |
 
 ## dispose
 
@@ -99,6 +108,8 @@ Disposes of this **NodeAdapter** object. Bindings, if any, of the object will be
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NodeAdapter-dispose(): void--><!--Device-NodeAdapter-dispose(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,13 +127,15 @@ Obtains all available items. Available nodes include both currently displayed an
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NodeAdapter-getAllAvailableItems(): Array<FrameNode>--><!--Device-NodeAdapter-getAllAvailableItems(): Array<FrameNode>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[FrameNode](arkts-arkui-framenode-c.md)&gt; | Array of items in the FrameNode. |
+| Array&lt;[FrameNode](arkts-arkui-framenode-c.md)&gt; | Set of FrameNode data nodes. |
 
 ## insertItem
 
@@ -137,6 +150,8 @@ Inserts a specified number of items starting from a specific index.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NodeAdapter-insertItem(start: number, count: number): void--><!--Device-NodeAdapter-insertItem(start: number, count: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,13 +168,15 @@ Inserts a specified number of items starting from a specific index.
 isDisposed(): boolean
 ```
 
-Checks whether the NodeAdapter's backend reference has been released. Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
+Queries whether the current **NodeAdapter** object has been released from the reference to the backend entity node. Each frontend node is bound to a corresponding backend entity node. After a node calls the **dispose** API to release the binding, calling other APIs of this node may result in crashes or return default values. Due to service requirements, there may be cases where a node's APIs are still called after the call to **dispose**. To address this, this API is provided for you to check the validity of a node before operating on it, thereby avoiding potential risks.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-NodeAdapter-isDisposed(): boolean--><!--Device-NodeAdapter-isDisposed(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -187,6 +204,8 @@ Moves items from the starting index to the ending index.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NodeAdapter-moveItem(from: number, to: number): void--><!--Device-NodeAdapter-moveItem(from: number, to: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -206,18 +225,18 @@ Called when a FrameNode is attached to the NodeAdapter.
 
 > **NOTE:** 
 > 
-> In versions earlier than API version 26.0.0, this callback is triggered when the host node is attached to the
-> main tree. If you set this callback by dynamically assigning a value, you can complete the setting after calling
-> [attachNodeAdapter](#attachnodeadapter) and before the host node is attached to the main tree.
-> In this case, you will receive this callback when the host node is attached to the main tree.
+> In versions earlier than API version 26.0.0, this callback is triggered when the host node is mounted to the main
+> tree. If you set this callback by dynamically assigning a value, you can complete the setting after calling
+> [attachNodeAdapter](#attachnodeadapter) and before the host node is mounted to the main tree,
+> and receive this callback when the host node is mounted to the main tree.
 > 
-> In API version 26.0.0 and later, this callback is triggered immediately when the NodeAdapter is bound to the host
-> node, instead of when the host node is attached to the main tree. In this case, the host node may not have been
-> attached to the main tree. If the node on which the callback logic depends has been mounted (for example,
-> accessing layout information or executing animation), you are advised to register
-> [onAppear](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onappear) in the callback and place the related logic in **onAppear** for
+> Since API version 26.0.0, this callback is triggered immediately when the NodeAdapter is bound to the host node,
+> rather than when the host node is mounted to the main node tree. At this point, the host node may not yet be
+> mounted to the main node tree. If the callback logic depends on the node being mounted (for example, accessing
+> layout information or executing animations), it is recommended to register
+> [onAppear](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onappear) in this callback and place the relevant logic in **onAppear** for
 > execution. If you set this callback by dynamically assigning a value, complete the setting before calling
-> [attachNodeAdapter](#attachnodeadapter). Otherwise, the callback may fail to be triggered.
+> [attachNodeAdapter](#attachnodeadapter); otherwise, the callback may not be triggered.
 
 **Since:** 12
 
@@ -225,13 +244,15 @@ Called when a FrameNode is attached to the NodeAdapter.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NodeAdapter-onAttachToNode?(target: FrameNode): void--><!--Device-NodeAdapter-onAttachToNode?(target: FrameNode): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| target | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode attached to the NodeAdapter. |
+| target | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode node bound to the NodeAdapter. |
 
 ## onCreateChild
 
@@ -247,6 +268,8 @@ Called during node initialization or when new child nodes are detected. When add
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NodeAdapter-onCreateChild?(index: number): FrameNode--><!--Device-NodeAdapter-onCreateChild?(index: number): FrameNode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -259,7 +282,7 @@ Called during node initialization or when new child nodes are detected. When add
 
 | Type | Description |
 | --- | --- |
-| [FrameNode](arkts-arkui-framenode-c.md) | FrameNode created by you. |
+| [FrameNode](arkts-arkui-framenode-c.md) | FrameNode node you created. |
 
 ## onDetachFromNode
 
@@ -274,6 +297,8 @@ Called when detachment occurs.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NodeAdapter-onDetachFromNode?(): void--><!--Device-NodeAdapter-onDetachFromNode?(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -291,6 +316,8 @@ Called when a child node is about to be disposed. Nodes that are neither display
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NodeAdapter-onDisposeChild?(id: number, node: FrameNode): void--><!--Device-NodeAdapter-onDisposeChild?(id: number, node: FrameNode): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -298,7 +325,7 @@ Called when a child node is about to be disposed. Nodes that are neither display
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | id | number | Yes | ID of the child node to be disposed of. |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode to be disposed of. |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode node to be disposed of. |
 
 ## onGetChildId
 
@@ -313,6 +340,8 @@ Called during node initialization or when new child nodes are detected. The **in
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NodeAdapter-onGetChildId?(index: number): number--><!--Device-NodeAdapter-onGetChildId?(index: number): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -342,6 +371,8 @@ Called when a loaded node is reused. Node reuse occurs when the key value of a c
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NodeAdapter-onUpdateChild?(id: number, node: FrameNode): void--><!--Device-NodeAdapter-onUpdateChild?(id: number, node: FrameNode): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -349,7 +380,7 @@ Called when a loaded node is reused. Node reuse occurs when the key value of a c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | id | number | Yes | ID of the node to be reused. |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode that is reused. |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode node to be reused. |
 
 ## reloadAllItems
 
@@ -357,13 +388,15 @@ Called when a loaded node is reused. Node reuse occurs when the key value of a c
 reloadAllItems(): void
 ```
 
-Reloads all items in this node. This API calls the [OnDataReloaded](../arkts-components/arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatareloaded) API in **LazyForEach** to trigger component data refresh.
+Reloads all items in this node. This API actually calls the [onDataReloaded](../arkts-components/arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatareloaded) API in **LazyForEach** to instruct the component to reload all data.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NodeAdapter-reloadAllItems(): void--><!--Device-NodeAdapter-reloadAllItems(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -380,6 +413,8 @@ Reloads a specified number of items starting from a specific index.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NodeAdapter-reloadItem(start: number, count: number): void--><!--Device-NodeAdapter-reloadItem(start: number, count: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -403,6 +438,8 @@ Removes a specified number of items starting from a specific index.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NodeAdapter-removeItem(start: number, count: number): void--><!--Device-NodeAdapter-removeItem(start: number, count: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -429,6 +466,8 @@ Sets the total number of items in this node.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NodeAdapter-set totalNodeCount(count: number)--><!--Device-NodeAdapter-set totalNodeCount(count: number)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -444,6 +483,8 @@ Get the total number of node count.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NodeAdapter-get totalNodeCount(): number--><!--Device-NodeAdapter-get totalNodeCount(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

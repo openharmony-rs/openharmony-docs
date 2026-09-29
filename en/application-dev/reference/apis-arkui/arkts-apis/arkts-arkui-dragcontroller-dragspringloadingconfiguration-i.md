@@ -8,6 +8,8 @@ Defines the configuration parameters for drag hover detection. The default setti
 
 **Since:** 20
 
+<!--Device-dragController-interface DragSpringLoadingConfiguration--><!--Device-dragController-interface DragSpringLoadingConfiguration-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Time (in ms) required to remain stationary to enter the BEGIN state of hover det
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-DragSpringLoadingConfiguration-stillTimeLimit?: number--><!--Device-DragSpringLoadingConfiguration-stillTimeLimit?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## updateInterval
@@ -49,6 +53,8 @@ Time interval (in ms) at which update notifications are sent after hover detecti
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-DragSpringLoadingConfiguration-updateInterval?: number--><!--Device-DragSpringLoadingConfiguration-updateInterval?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +74,8 @@ Maximum number of update notifications after hover detection enters the UPDATE s
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-DragSpringLoadingConfiguration-updateNotifyCount?: number--><!--Device-DragSpringLoadingConfiguration-updateNotifyCount?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## updateToFinishInterval
@@ -85,5 +93,7 @@ Maximum waiting time (in ms) from the UPDATE state to the END state. Value range
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-DragSpringLoadingConfiguration-updateToFinishInterval?: number--><!--Device-DragSpringLoadingConfiguration-updateToFinishInterval?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -24,6 +24,8 @@ Removes an application from the applications that are not allowed to run under t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, callback: AsyncCallback<void>): void--><!--Device-applicationManager-function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -89,6 +91,8 @@ Removes an application from the applications that are not allowed to run under t
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId: number, callback: AsyncCallback<void>): void--><!--Device-applicationManager-function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -156,6 +160,8 @@ Removes applications from the applications that are not allowed to run under the
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId?: number): Promise<void>--><!--Device-applicationManager-function removeDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId?: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

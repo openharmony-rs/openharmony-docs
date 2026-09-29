@@ -8,6 +8,8 @@ Defines a struct for the details about the device-cloud sync process.
 
 **Since:** 10
 
+<!--Device-relationalStore-interface ChangeInfo--><!--Device-relationalStore-interface ChangeInfo-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Location where data is deleted. If the primary key of the table is of the string
 
 **Since:** 10
 
+<!--Device-ChangeInfo-deleted: Array<string> | Array<long>--><!--Device-ChangeInfo-deleted: Array<string> | Array<long>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## inserted
@@ -41,6 +45,8 @@ Location where data is inserted. If the primary key of the table is of the strin
 **Type:** Array&lt;string&gt; &#124; Array&lt;number&gt;
 
 **Since:** 10
+
+<!--Device-ChangeInfo-inserted: Array<string> | Array<long>--><!--Device-ChangeInfo-inserted: Array<string> | Array<long>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -56,6 +62,8 @@ Name of the table with data changes.
 
 **Since:** 10
 
+<!--Device-ChangeInfo-table: string--><!--Device-ChangeInfo-table: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## type
@@ -70,6 +78,8 @@ Type of the data changed, which can be data or asset.
 
 **Since:** 10
 
+<!--Device-ChangeInfo-type: ChangeType--><!--Device-ChangeInfo-type: ChangeType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## updated
@@ -83,5 +93,7 @@ Location where data is updated. If the primary key of the table is of the string
 **Type:** Array&lt;string&gt; &#124; Array&lt;number&gt;
 
 **Since:** 10
+
+<!--Device-ChangeInfo-updated: Array<string> | Array<long>--><!--Device-ChangeInfo-updated: Array<string> | Array<long>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

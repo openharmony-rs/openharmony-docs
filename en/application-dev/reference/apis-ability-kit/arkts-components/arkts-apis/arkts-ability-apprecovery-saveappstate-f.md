@@ -20,6 +20,8 @@ Saves the application state. This API can be used together with the APIs of [err
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-appRecovery-function saveAppState(): boolean--><!--Device-appRecovery-function saveAppState(): boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**
@@ -63,7 +65,9 @@ Saves the ability state, which will be used for recovery. This API can be used t
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-appRecovery-function saveAppState(context?: UIAbilityContext): boolean--><!--Device-appRecovery-function saveAppState(context?: UIAbilityContext): boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

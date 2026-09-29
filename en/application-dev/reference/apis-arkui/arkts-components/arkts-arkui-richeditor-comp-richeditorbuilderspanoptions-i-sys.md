@@ -8,6 +8,8 @@ Sets the offset position and style of the inserted builder.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface RichEditorBuilderSpanOptions--><!--Device-unnamed-declare interface RichEditorBuilderSpanOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## dragBackgroundColor
@@ -25,6 +27,8 @@ Default value: the drag backboard color that follows the system theme.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RichEditorBuilderSpanOptions-dragBackgroundColor? : ColorMetrics--><!--Device-RichEditorBuilderSpanOptions-dragBackgroundColor? : ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,6 +49,8 @@ Default value: **true**.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RichEditorBuilderSpanOptions-isDragShadowNeeded?: boolean--><!--Device-RichEditorBuilderSpanOptions-isDragShadowNeeded?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

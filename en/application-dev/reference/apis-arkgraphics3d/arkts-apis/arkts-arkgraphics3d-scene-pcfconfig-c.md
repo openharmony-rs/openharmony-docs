@@ -10,6 +10,8 @@ Configuration class for soft shadows using the Percentage-Closer Filtering (PCF)
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export declare class PCFConfig extends SoftShadowConfig--><!--Device-unnamed-export declare class PCFConfig extends SoftShadowConfig-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## shadowSampleCount
@@ -25,6 +27,8 @@ Get the sample count number from shadow map used to render a shadow pixel. The v
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PCFConfig-get shadowSampleCount(): int | undefined--><!--Device-PCFConfig-get shadowSampleCount(): int | undefined-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -42,6 +46,8 @@ Set the sample count number from shadow map used to render a shadow pixel. Value
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PCFConfig-set shadowSampleCount(value: int | undefined)--><!--Device-PCFConfig-set shadowSampleCount(value: int | undefined)-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## shadowSampleRadius
@@ -58,6 +64,8 @@ Get sample radius around the shadow edge, the unit is pixel.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PCFConfig-get shadowSampleRadius(): double | undefined--><!--Device-PCFConfig-get shadowSampleRadius(): double | undefined-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ```TypeScript
@@ -73,5 +81,7 @@ Set sample radius around the shadow edge at pixel-level.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PCFConfig-set shadowSampleRadius(value: double | undefined)--><!--Device-PCFConfig-set shadowSampleRadius(value: double | undefined)-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

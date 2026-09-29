@@ -8,6 +8,8 @@ Provides APIs for the file manager application to perform device-cloud sync of t
 
 **Since:** 12
 
+<!--Device-cloudSync-class FileSync--><!--Device-cloudSync-class FileSync-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ constructor()
 A constructor used to create a **FileSync** instance.
 
 **Since:** 12
+
+<!--Device-FileSync-constructor()--><!--Device-FileSync-constructor()-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -49,6 +53,8 @@ getLastSyncTime(): Promise<number>
 Obtains the last sync time. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-FileSync-getLastSyncTime(): Promise<long>--><!--Device-FileSync-getLastSyncTime(): Promise<long>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -92,6 +98,8 @@ Obtains the last sync time. This API uses an asynchronous callback to return the
 
 **Since:** 12
 
+<!--Device-FileSync-getLastSyncTime(callback: AsyncCallback<long>): void--><!--Device-FileSync-getLastSyncTime(callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Parameters:**
@@ -134,6 +142,8 @@ Removes the specified callback from the device-cloud sync progress.
 
 **Since:** 12
 
+<!--Device-FileSync-off(event: 'progress', callback?: Callback<SyncProgress>): void--><!--Device-FileSync-off(event: 'progress', callback?: Callback<SyncProgress>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Parameters:**
@@ -174,6 +184,8 @@ Registers a listener for the device-cloud sync progress.
 
 **Since:** 12
 
+<!--Device-FileSync-on(event: 'progress', callback: Callback<SyncProgress>): void--><!--Device-FileSync-on(event: 'progress', callback: Callback<SyncProgress>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Parameters:**
@@ -210,6 +222,8 @@ start(): Promise<void>
 Starts device-cloud sync of a file. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-FileSync-start(): Promise<void>--><!--Device-FileSync-start(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -261,6 +275,8 @@ Starts device-cloud sync of a file. This API uses an asynchronous callback to re
 
 **Since:** 12
 
+<!--Device-FileSync-start(callback: AsyncCallback<void>): void--><!--Device-FileSync-start(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Parameters:**
@@ -307,6 +323,8 @@ Calling **stop** will stop the sync process. To resume the sync, call [start](#s
 
 **Since:** 12
 
+<!--Device-FileSync-stop(): Promise<void>--><!--Device-FileSync-stop(): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Return value:**
@@ -349,6 +367,8 @@ Stops device-cloud sync of a file. This API uses an asynchronous callback to ret
 Calling **stop** will stop the sync process. To resume the sync, call [start](#start).
 
 **Since:** 12
+
+<!--Device-FileSync-stop(callback: AsyncCallback<void>): void--><!--Device-FileSync-stop(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

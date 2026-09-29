@@ -8,6 +8,8 @@ Enumerates the vertical alignment directions of the text content area.
 
 **Since:** 21
 
+<!--Device-unnamed-declare enum TextContentAlign--><!--Device-unnamed-declare enum TextContentAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOP
@@ -23,6 +25,8 @@ Aligns the content area to the top.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-TextContentAlign-TOP = 0--><!--Device-TextContentAlign-TOP = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Aligns the content area to the center.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-TextContentAlign-CENTER = 1--><!--Device-TextContentAlign-CENTER = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM
@@ -55,5 +61,7 @@ Aligns the content area to the bottom.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-TextContentAlign-BOTTOM = 2--><!--Device-TextContentAlign-BOTTOM = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

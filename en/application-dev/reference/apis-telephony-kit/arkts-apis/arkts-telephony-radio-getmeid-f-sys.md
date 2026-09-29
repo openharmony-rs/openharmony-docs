@@ -18,6 +18,8 @@ Obtains the MEID of a specified card slot of the device.
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+<!--Device-radio-function getMEID(slotId: int, callback: AsyncCallback<string>): void--><!--Device-radio-function getMEID(slotId: int, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Obtains the MEID of a specified card slot of the device.
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
+
+<!--Device-radio-function getMEID(slotId?: int): Promise<string>--><!--Device-radio-function getMEID(slotId?: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -126,6 +130,8 @@ Obtains the MEID of a specified card slot of the device.
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
+
+<!--Device-radio-function getMEID(callback: AsyncCallback<string>): void--><!--Device-radio-function getMEID(callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

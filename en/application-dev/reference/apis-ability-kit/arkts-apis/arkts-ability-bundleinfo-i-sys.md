@@ -8,6 +8,8 @@ The module defines the bundle information.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface BundleInfo--><!--Device-unnamed-export interface BundleInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## appSandboxPolicy
@@ -23,6 +25,8 @@ App sandbox policy for dual-mode (2in1/tablet) scenarios.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleInfo-readonly appSandboxPolicy?: bundleManager.AppSandboxPolicy--><!--Device-BundleInfo-readonly appSandboxPolicy?: bundleManager.AppSandboxPolicy-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -42,6 +46,8 @@ Define the enumeration of device mode distribution policies, which is used to sp
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BundleInfo-readonly deviceModeDistributionPolicy?: bundleManager.DeviceModeDistributionPolicy--><!--Device-BundleInfo-readonly deviceModeDistributionPolicy?: bundleManager.DeviceModeDistributionPolicy-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -59,6 +65,8 @@ Bundle name of the sandbox application creator.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleInfo-readonly sandboxCreatorBundleName?: string--><!--Device-BundleInfo-readonly sandboxCreatorBundleName?: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

@@ -14,6 +14,8 @@ declare interface RotateAngleOptions
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare interface RotateAngleOptions--><!--Device-unnamed-declare interface RotateAngleOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## angleX
@@ -39,6 +41,8 @@ X轴方向上的旋转角。单位为度（°）。取值为正时相对于旋�
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RotateAngleOptions-angleX?: number | string--><!--Device-RotateAngleOptions-angleX?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ Y轴方向上的旋转角。单位为度（°）。取值为正时相对于旋�
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RotateAngleOptions-angleY?: number | string--><!--Device-RotateAngleOptions-angleY?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## angleZ
@@ -91,6 +97,8 @@ Z轴方向上的旋转角。单位为度（°）。取值为正时相对于旋�
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RotateAngleOptions-angleZ?: number | string--><!--Device-RotateAngleOptions-angleZ?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,6 +128,8 @@ centerX?: number | string
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RotateAngleOptions-centerX?: number | string--><!--Device-RotateAngleOptions-centerX?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerY
@@ -148,6 +158,8 @@ centerY?: number | string
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RotateAngleOptions-centerY?: number | string--><!--Device-RotateAngleOptions-centerY?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerZ
@@ -175,6 +187,8 @@ z轴锚点，即3D旋转中心点的z轴分量。
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RotateAngleOptions-centerZ?: number--><!--Device-RotateAngleOptions-centerZ?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -205,5 +219,7 @@ perspective?: number
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RotateAngleOptions-perspective?: number--><!--Device-RotateAngleOptions-perspective?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -10,6 +10,8 @@ Defines the resizable image options.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface ResizableOptions--><!--Device-unnamed-declare interface ResizableOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## lattice
@@ -35,6 +37,8 @@ When a number is passed, the default unit is px.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ResizableOptions-lattice?: DrawingLattice--><!--Device-ResizableOptions-lattice?: DrawingLattice-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,5 +73,7 @@ The effect of setting **EdgeWidths** is shown in Figure 1 (Effect of Setting Edg
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ResizableOptions-slice?: EdgeWidths--><!--Device-ResizableOptions-slice?: EdgeWidths-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

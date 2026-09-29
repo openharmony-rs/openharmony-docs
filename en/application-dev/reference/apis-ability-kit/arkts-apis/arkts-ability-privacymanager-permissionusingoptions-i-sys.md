@@ -8,6 +8,8 @@ Represents the optional parameter set for using a permission.
 
 **Since:** 26.0.0
 
+<!--Device-privacyManager-interface PermissionUsingOptions--><!--Device-privacyManager-interface PermissionUsingOptions-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -33,6 +35,8 @@ Default value: empty string.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PermissionUsingOptions-enhancedIdentity?: string--><!--Device-PermissionUsingOptions-enhancedIdentity?: string-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

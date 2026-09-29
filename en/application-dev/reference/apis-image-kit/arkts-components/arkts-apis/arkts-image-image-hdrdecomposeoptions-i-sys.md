@@ -8,6 +8,8 @@ Describes the options for decomposing an HDR Pixelmap to a Picture containing an
 
 **Since:** 26.0.0
 
+<!--Device-image-interface HdrDecomposeOptions--><!--Device-image-interface HdrDecomposeOptions-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Indicates the pixel format of the decomposed SDR Pixelmap and the gainmap. The f
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HdrDecomposeOptions-desiredPixelFormat?: PixelMapFormat--><!--Device-HdrDecomposeOptions-desiredPixelFormat?: PixelMapFormat-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Indicates generating a full-size gainmap or a 1/2 downscaled gainmap. Default va
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HdrDecomposeOptions-isFullSizeGainmap?: boolean--><!--Device-HdrDecomposeOptions-isFullSizeGainmap?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

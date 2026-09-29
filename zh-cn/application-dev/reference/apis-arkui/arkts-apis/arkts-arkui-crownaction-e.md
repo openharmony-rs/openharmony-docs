@@ -8,6 +8,8 @@ declare enum CrownAction
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare enum CrownAction--><!--Device-unnamed-declare enum CrownAction-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BEGIN
@@ -26,6 +28,8 @@ BEGIN = 0
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CrownAction-BEGIN = 0--><!--Device-CrownAction-BEGIN = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## UPDATE
@@ -42,6 +46,8 @@ UPDATE = 1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CrownAction-UPDATE = 1--><!--Device-CrownAction-UPDATE = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## END
@@ -57,5 +63,7 @@ END = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CrownAction-END = 2--><!--Device-CrownAction-END = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

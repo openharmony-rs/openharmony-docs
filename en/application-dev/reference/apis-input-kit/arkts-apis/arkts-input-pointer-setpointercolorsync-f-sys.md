@@ -20,6 +20,8 @@ Sets the pointer color. This API returns the result synchronously.
 
 **Since:** 10
 
+<!--Device-pointer-function setPointerColorSync(color: int): void--><!--Device-pointer-function setPointerColorSync(color: int): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.

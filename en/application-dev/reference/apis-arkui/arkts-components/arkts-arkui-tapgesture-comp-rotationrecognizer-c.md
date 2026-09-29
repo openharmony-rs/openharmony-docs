@@ -10,6 +10,8 @@ Implements a rotation gesture recognizer. Inherits from [GestureRecognizer](arkt
 
 **Since:** 18
 
+<!--Device-unnamed-declare class RotationRecognizer extends GestureRecognizer--><!--Device-unnamed-declare class RotationRecognizer extends GestureRecognizer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getAngle
@@ -25,6 +27,8 @@ Obtains the minimum angle change required for the rotation gesture to be recogni
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-RotationRecognizer-getAngle(): number--><!--Device-RotationRecognizer-getAngle(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

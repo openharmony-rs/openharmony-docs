@@ -10,6 +10,8 @@ TypedFrameNode继承自[FrameNode](arkts-arkui-framenode-c.md)，用于声明具
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface TypedFrameNode<C, T> extends FrameNode--><!--Device-unnamed-export interface TypedFrameNode<C, T> extends FrameNode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## attribute
@@ -28,6 +30,8 @@ readonly attribute: T
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TypedFrameNode-readonly attribute: T--><!--Device-TypedFrameNode-readonly attribute: T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## initialize
@@ -45,5 +49,7 @@ initialize: C
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TypedFrameNode-initialize: C--><!--Device-TypedFrameNode-initialize: C-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

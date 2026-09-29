@@ -20,6 +20,8 @@ Allows an MDM application to enable itself in scenarios where it is not pre-enab
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function enableSelfDeviceAdmin(admin: Want, credential: string): void--><!--Device-adminManager-function enableSelfDeviceAdmin(admin: Want, credential: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

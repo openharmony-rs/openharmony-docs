@@ -12,6 +12,8 @@ The Boids simulation world object, used to manage the lifecycle and components o
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export declare class BoidsSimWorld--><!--Device-unnamed-export declare class BoidsSimWorld-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ Adds a flock behavior component at the specified node.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimWorld-addBoidsSimComponent(node: Node, param: BoidsSimParameters): void--><!--Device-BoidsSimWorld-addBoidsSimComponent(node: Node, param: BoidsSimParameters): void-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -77,6 +81,8 @@ Adds an attraction field component at the specified node.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimWorld-addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void--><!--Device-BoidsSimWorld-addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -120,6 +126,8 @@ Adds a repulsion field component at the specified node.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimWorld-addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void--><!--Device-BoidsSimWorld-addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -165,6 +173,8 @@ Gets the flock behavior parameters on the specified node.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimWorld-getBoidsSimComponent(node: Node): BoidsSimParameters | null--><!--Device-BoidsSimWorld-getBoidsSimComponent(node: Node): BoidsSimParameters | null-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -205,6 +215,8 @@ Gets the attraction field parameters on the specified node.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimWorld-getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters | null--><!--Device-BoidsSimWorld-getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters | null-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -247,6 +259,8 @@ Gets the repulsion field parameters on the specified node.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimWorld-getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters | null--><!--Device-BoidsSimWorld-getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters | null-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -288,6 +302,8 @@ Pauses the Boids simulation.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimWorld-pause(): void--><!--Device-BoidsSimWorld-pause(): void-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -314,6 +330,8 @@ Starts or resumes the Boids simulation.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimWorld-play(): void--><!--Device-BoidsSimWorld-play(): void-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -339,6 +357,8 @@ Removes the flock behavior component from the specified node.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimWorld-removeBoidsSimComponent(node: Node): void--><!--Device-BoidsSimWorld-removeBoidsSimComponent(node: Node): void-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -372,6 +392,8 @@ Removes the attraction field component on the specified node.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimWorld-removeBoidsSimGravityComponent(node: Node): void--><!--Device-BoidsSimWorld-removeBoidsSimGravityComponent(node: Node): void-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -404,6 +426,8 @@ Removes the repulsion field component from the specified node.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimWorld-removeBoidsSimRepulsionComponent(node: Node): void--><!--Device-BoidsSimWorld-removeBoidsSimRepulsionComponent(node: Node): void-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -435,6 +459,8 @@ Updates the flock behavior component on the specified node.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimWorld-setBoidsSimComponent(node: Node, param: BoidsSimParameters): void--><!--Device-BoidsSimWorld-setBoidsSimComponent(node: Node, param: BoidsSimParameters): void-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -475,6 +501,8 @@ Updates the attraction field component on the specified node.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimWorld-setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void--><!--Device-BoidsSimWorld-setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -508,6 +536,8 @@ Updates the repulsion field component on the specified node.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimWorld-setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void--><!--Device-BoidsSimWorld-setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -543,6 +573,8 @@ Stops the Boids simulation and resets the state.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimWorld-stop(): void--><!--Device-BoidsSimWorld-stop(): void-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -570,6 +602,8 @@ Whether the current simulation is playing. true indicates it is playing, false i
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimWorld-get isPlaying(): boolean--><!--Device-BoidsSimWorld-get isPlaying(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 

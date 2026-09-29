@@ -8,6 +8,8 @@ The policy of query enterprise device management policy.
 
 **Since:** 26.0.1
 
+<!--Device-common-export enum QueryPolicy--><!--Device-common-export enum QueryPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SELF
@@ -22,6 +24,8 @@ Query the policy set by self.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-QueryPolicy-SELF = 0--><!--Device-QueryPolicy-SELF = 0-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## ALL
@@ -35,5 +39,7 @@ Query the policy set by all administrators.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-QueryPolicy-ALL = 1--><!--Device-QueryPolicy-ALL = 1-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

@@ -8,6 +8,8 @@ Describes the color components of an image.
 
 **Since:** 9
 
+<!--Device-image-interface Component--><!--Device-image-interface Component-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Component buffer.
 
 **Since:** 9
 
+<!--Device-Component-readonly byteBuffer: ArrayBuffer--><!--Device-Component-readonly byteBuffer: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## componentType
@@ -41,6 +45,8 @@ Color component type.
 **Type:** [ComponentType](arkts-image-image-componenttype-e.md)
 
 **Since:** 9
+
+<!--Device-Component-readonly componentType: ComponentType--><!--Device-Component-readonly componentType: ComponentType-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -56,6 +62,8 @@ Pixel stride.
 
 **Since:** 9
 
+<!--Device-Component-readonly pixelStride: int--><!--Device-Component-readonly pixelStride: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## rowStride
@@ -69,5 +77,7 @@ Row stride. The camera preview stream data needs to be read by stride. For detai
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Component-readonly rowStride: int--><!--Device-Component-readonly rowStride: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

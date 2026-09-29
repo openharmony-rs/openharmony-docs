@@ -8,6 +8,8 @@ A sync root management class that enables the File Manager to access the sync ro
 
 **Since:** 21
 
+<!--Device-cloudDiskManager-class SyncFolderAccessor--><!--Device-cloudDiskManager-class SyncFolderAccessor-End-->
+
 **System capability:** SystemCapability.FileManagement.CloudDiskManager
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ A constructor used to create a **SyncFolderAccessor** instance.
 **Since:** 21
 
 **Required permissions:** ohos.permission.ACCESS_CLOUD_DISK_INFO
+
+<!--Device-SyncFolderAccessor-constructor()--><!--Device-SyncFolderAccessor-constructor()-End-->
 
 **System capability:** SystemCapability.FileManagement.CloudDiskManager
 
@@ -76,6 +80,8 @@ Obtains information about all registered sync roots. This API uses a promise to 
 **Since:** 21
 
 **Required permissions:** ohos.permission.ACCESS_CLOUD_DISK_INFO
+
+<!--Device-SyncFolderAccessor-getAllSyncFolders(): Promise<Array<SyncFolder>>--><!--Device-SyncFolderAccessor-getAllSyncFolders(): Promise<Array<SyncFolder>>-End-->
 
 **System capability:** SystemCapability.FileManagement.CloudDiskManager
 

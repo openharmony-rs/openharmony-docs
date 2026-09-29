@@ -8,6 +8,8 @@ Describes the sensor information.
 
 **Since:** 9
 
+<!--Device-sensor-interface Sensor--><!--Device-sensor-interface Sensor-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 ## Modules to Import
@@ -22,11 +24,13 @@ import { sensor } from '@kit.SensorServiceKit';
 deviceId?: number
 ```
 
-Device ID.
+Device ID. The value is **-1** indicates the local device. Default value: **-1**.
 
 **Type:** number
 
 **Since:** 19
+
+<!--Device-Sensor-deviceId?: int--><!--Device-Sensor-deviceId?: int-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -36,11 +40,13 @@ Device ID.
 deviceName?: string
 ```
 
-Device name.
+Device name, which identifies the source device of the sensor.
 
 **Type:** string
 
 **Since:** 19
+
+<!--Device-Sensor-deviceName?: string--><!--Device-Sensor-deviceName?: string-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -50,11 +56,13 @@ Device name.
 firmwareVersion:string
 ```
 
-Firmware version of the sensor.
+Sensor firmware version, which identifies the current version of the sensor firmware.
 
 **Type:** string
 
 **Since:** 9
+
+<!--Device-Sensor-firmwareVersion:string--><!--Device-Sensor-firmwareVersion:string-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -64,11 +72,13 @@ Firmware version of the sensor.
 hardwareVersion:string
 ```
 
-Hardware version of the sensor.
+Sensor hardware version.
 
 **Type:** string
 
 **Since:** 9
+
+<!--Device-Sensor-hardwareVersion:string--><!--Device-Sensor-hardwareVersion:string-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -78,11 +88,13 @@ Hardware version of the sensor.
 isLocalSensor?: boolean
 ```
 
-Whether the sensor is a local sensor. The value **true** indicates a local sensor, and the value **false** indicates the opposite.
+Whether the sensor is a local sensor. The **true** indicates a local sensor, and **false** indicates a non-local sensor (that is, a sensor on a remote device). The default value is **true**.
 
 **Type:** boolean
 
 **Since:** 19
+
+<!--Device-Sensor-isLocalSensor?: boolean--><!--Device-Sensor-isLocalSensor?: boolean-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -92,11 +104,13 @@ Whether the sensor is a local sensor. The value **true** indicates a local senso
 isMockSensor?: boolean
 ```
 
-Whether the sensor is a mock sensor. The value **true** indicates a mock sensor, and the value **false** indicates the opposite.
+Indicates whether the sensor is a mock sensor. The value **true** indicates a mock sensor, and **false** indicates a real sensor. The default value is **false**.
 
 **Type:** boolean
 
 **Since:** 23
+
+<!--Device-Sensor-isMockSensor?: boolean--><!--Device-Sensor-isMockSensor?: boolean-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -106,11 +120,13 @@ Whether the sensor is a mock sensor. The value **true** indicates a mock sensor,
 maxRange:number
 ```
 
-Maximum measurement range of the sensor.
+Maximum measurement range of the sensor. The unit depends on the sensor type (for example, m/s² for an acceleration sensor).
 
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Sensor-maxRange:double--><!--Device-Sensor-maxRange:double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -120,11 +136,13 @@ Maximum measurement range of the sensor.
 maxSamplePeriod:number
 ```
 
-Maximum sampling period.
+Maximum sampling period of the sensor, in ns
 
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Sensor-maxSamplePeriod:long--><!--Device-Sensor-maxSamplePeriod:long-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -134,11 +152,13 @@ Maximum sampling period.
 minSamplePeriod:number
 ```
 
-Minimum sampling period.
+Minimum sampling period of the sensor, in ns
 
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Sensor-minSamplePeriod:long--><!--Device-Sensor-minSamplePeriod:long-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -148,11 +168,13 @@ Minimum sampling period.
 power:number
 ```
 
-Estimated sensor power, in mA.
+Estimated power consumption of the sensor, in mA.
 
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Sensor-power:double--><!--Device-Sensor-power:double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -162,11 +184,13 @@ Estimated sensor power, in mA.
 precision:number
 ```
 
-Precision of the sensor.
+Precision of the sensor. The unit depends on the sensor type.
 
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Sensor-precision:double--><!--Device-Sensor-precision:double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -176,11 +200,13 @@ Precision of the sensor.
 sensorId:number
 ```
 
-Sensor type ID.
+Sensor type ID, corresponding to the enumerated values of [SensorId](arkts-sensorservice-sensor-sensorid-e.md).
 
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Sensor-sensorId:int--><!--Device-Sensor-sensorId:int-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -190,11 +216,13 @@ Sensor type ID.
 sensorIndex?: number
 ```
 
-Sensor index.
+Sensor index. Multiple instances of sensors of the same type may exist, which are distinguished by **sensorIndex**. The default value is **0**.
 
 **Type:** number
 
 **Since:** 19
+
+<!--Device-Sensor-sensorIndex?: int--><!--Device-Sensor-sensorIndex?: int-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -204,11 +232,13 @@ Sensor index.
 sensorName:string
 ```
 
-Sensor name.
+Sensor name, which identifies the type and model of the sensor.
 
 **Type:** string
 
 **Since:** 9
+
+<!--Device-Sensor-sensorName:string--><!--Device-Sensor-sensorName:string-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -218,10 +248,12 @@ Sensor name.
 vendorName:string
 ```
 
-Vendor of the sensor.
+Sensor vendor name, which identifies the sensor manufacturer.
 
 **Type:** string
 
 **Since:** 9
+
+<!--Device-Sensor-vendorName:string--><!--Device-Sensor-vendorName:string-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

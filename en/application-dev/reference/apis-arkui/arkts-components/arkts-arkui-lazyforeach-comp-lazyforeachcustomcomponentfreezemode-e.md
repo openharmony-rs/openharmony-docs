@@ -4,9 +4,16 @@
 declare enum LazyForEachCustomComponentFreezeMode
 ```
 
-Enumerates the freeze modes for cached custom nodes that have been removed from the component tree in LazyForEach.
+Selects whether to enable custom component freezing.
+
+> **NOTE:** 
+> 
+> This configuration is added only when a custom component is directly used under **LazyForEach**. It is not
+> applicable in other cases.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-declare enum LazyForEachCustomComponentFreezeMode--><!--Device-unnamed-declare enum LazyForEachCustomComponentFreezeMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +23,15 @@ Enumerates the freeze modes for cached custom nodes that have been removed from 
 AUTO = 0
 ```
 
-Follow the enableCustomComponentFreeze field in Metadata to determine whether freezing takes effect.
+Follows the **metadata** settings in the **module.json5** configuration file.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-LazyForEachCustomComponentFreezeMode-AUTO = 0--><!--Device-LazyForEachCustomComponentFreezeMode-AUTO = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,13 +41,15 @@ Follow the enableCustomComponentFreeze field in Metadata to determine whether fr
 DISABLED = 1
 ```
 
-Freezing is disabled for cached custom nodes removed from the component tree.
+Does not enable custom component freezing.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-LazyForEachCustomComponentFreezeMode-DISABLED = 1--><!--Device-LazyForEachCustomComponentFreezeMode-DISABLED = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,12 +59,14 @@ Freezing is disabled for cached custom nodes removed from the component tree.
 ENABLED = 2
 ```
 
-Freezing is enabled for cached custom nodes removed from the component tree. State updates of cached custom components will be frozen.
+Enables custom component freezing.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-LazyForEachCustomComponentFreezeMode-ENABLED = 2--><!--Device-LazyForEachCustomComponentFreezeMode-ENABLED = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

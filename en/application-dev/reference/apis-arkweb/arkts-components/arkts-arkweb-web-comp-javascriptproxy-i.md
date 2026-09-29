@@ -8,6 +8,8 @@ Defines the JavaScript object to be injected, including the object name, method 
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface JavaScriptProxy--><!--Device-unnamed-declare interface JavaScriptProxy-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## asyncMethodList
@@ -23,6 +25,8 @@ Asynchronous methods of the JavaScript object to be registered at the applicatio
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-JavaScriptProxy-asyncMethodList?: Array<string>--><!--Device-JavaScriptProxy-asyncMethodList?: Array<string>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -40,6 +44,8 @@ Controller. Since API version 9, WebController is no longer maintained. You are 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-JavaScriptProxy-controller: WebController | WebviewController--><!--Device-JavaScriptProxy-controller: WebController | WebviewController-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## methodList
@@ -55,6 +61,8 @@ Synchronous methods of the JavaScript object to be registered at the application
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-JavaScriptProxy-methodList: Array<string>--><!--Device-JavaScriptProxy-methodList: Array<string>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -72,6 +80,8 @@ Name of the object to be registered, which is the same as that invoked in the wi
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-JavaScriptProxy-name: string--><!--Device-JavaScriptProxy-name: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## object
@@ -87,6 +97,8 @@ Object participating in the registration. Only methods can be declared, not attr
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-JavaScriptProxy-object: object--><!--Device-JavaScriptProxy-object: object-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -107,5 +119,7 @@ For the example, see [Invoking Application Functions on the Frontend Page](../..
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-JavaScriptProxy-permission?: string--><!--Device-JavaScriptProxy-permission?: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

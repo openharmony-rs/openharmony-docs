@@ -8,6 +8,8 @@ Enumerates the Phase 2 authentication methods.
 
 **Since:** 12
 
+<!--Device-wifiManager-enum Phase2Method--><!--Device-wifiManager-enum Phase2Method-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## PHASE2_NONE
@@ -21,6 +23,8 @@ Not specified.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Phase2Method-PHASE2_NONE = 0--><!--Device-Phase2Method-PHASE2_NONE = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,6 +40,8 @@ PAP.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Phase2Method-PHASE2_PAP = 1--><!--Device-Phase2Method-PHASE2_PAP = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## PHASE2_MSCHAP
@@ -49,6 +55,8 @@ MS-CHAP.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Phase2Method-PHASE2_MSCHAP = 2--><!--Device-Phase2Method-PHASE2_MSCHAP = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,6 +72,8 @@ MS-CHAPv2.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Phase2Method-PHASE2_MSCHAPV2 = 3--><!--Device-Phase2Method-PHASE2_MSCHAPV2 = 3-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## PHASE2_GTC
@@ -77,6 +87,8 @@ GTC.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Phase2Method-PHASE2_GTC = 4--><!--Device-Phase2Method-PHASE2_GTC = 4-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -92,6 +104,8 @@ SIM.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Phase2Method-PHASE2_SIM = 5--><!--Device-Phase2Method-PHASE2_SIM = 5-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## PHASE2_AKA
@@ -106,6 +120,8 @@ AKA.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Phase2Method-PHASE2_AKA = 6--><!--Device-Phase2Method-PHASE2_AKA = 6-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## PHASE2_AKA_PRIME
@@ -119,5 +135,7 @@ AKA Prime.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Phase2Method-PHASE2_AKA_PRIME = 7--><!--Device-Phase2Method-PHASE2_AKA_PRIME = 7-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

@@ -8,6 +8,8 @@ Enumerates the lockout status of an identity authentication type. This API is us
 
 **Since:** 22
 
+<!--Device-userAuth-interface AuthLockState--><!--Device-userAuth-interface AuthLockState-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Whether the authentication is locked. The value **true** indicates that the auth
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-AuthLockState-isLocked: boolean--><!--Device-AuthLockState-isLocked: boolean-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -46,7 +50,9 @@ If the authenticator is permanently locked, the value is [PERMANENT_LOCKOUT_DURA
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-AuthLockState-lockoutDuration: int--><!--Device-AuthLockState-lockoutDuration: int-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -62,6 +68,8 @@ Number of remaining attempts before the authentication is locked. The maximum va
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-AuthLockState-remainingAuthAttempts: int--><!--Device-AuthLockState-remainingAuthAttempts: int-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

@@ -18,6 +18,8 @@ Obtain the MAC address of a Wi-Fi device. Wi-Fi must be enabled. The MAC address
 
 **Required permissions:** ohos.permission.GET_WIFI_LOCAL_MAC and ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function getDeviceMacAddress(): string[]--><!--Device-wifiManager-function getDeviceMacAddress(): string[]-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**

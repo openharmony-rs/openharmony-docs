@@ -8,6 +8,8 @@ declare interface OnPdfLoadEvent
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare interface OnPdfLoadEvent--><!--Device-unnamed-declare interface OnPdfLoadEvent-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## result
@@ -22,6 +24,8 @@ PDF页面加载结果。
 
 **起始版本：** 20
 
+<!--Device-OnPdfLoadEvent-result: PdfLoadResult--><!--Device-OnPdfLoadEvent-result: PdfLoadResult-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## url
@@ -35,5 +39,7 @@ url: string
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-OnPdfLoadEvent-url: string--><!--Device-OnPdfLoadEvent-url: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

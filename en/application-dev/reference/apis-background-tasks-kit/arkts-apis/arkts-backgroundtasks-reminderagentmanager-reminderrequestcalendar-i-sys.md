@@ -12,6 +12,8 @@ Defines a reminder for a calendar event.
 
 **Since:** 9
 
+<!--Device-reminderAgentManager-interface ReminderRequestCalendar extends ReminderRequest--><!--Device-reminderAgentManager-interface ReminderRequestCalendar extends ReminderRequest-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Custom reminder, which specifies the ServiceExtensionAbility to start.
 **Type:** [WantAgent](arkts-backgroundtasks-reminderagentmanager-wantagent-i.md)
 
 **Since:** 12
+
+<!--Device-ReminderRequestCalendar-rruleWantAgent?: WantAgent--><!--Device-ReminderRequestCalendar-rruleWantAgent?: WantAgent-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 

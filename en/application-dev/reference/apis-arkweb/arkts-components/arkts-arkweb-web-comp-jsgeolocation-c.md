@@ -10,6 +10,8 @@ JsGeolocation is applicable to scenarios where web pages in the Web component ac
 
 **Since:** 8
 
+<!--Device-unnamed-declare class JsGeolocation--><!--Device-unnamed-declare class JsGeolocation-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -24,6 +26,8 @@ Constructor of JsGeolocation. The constructor itself is not directly called by t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-JsGeolocation-constructor()--><!--Device-JsGeolocation-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## invoke
@@ -37,6 +41,8 @@ Sets the geolocation permission status of a web page. This method must be called
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-JsGeolocation-invoke(origin: string, allow: boolean, retain: boolean): void--><!--Device-JsGeolocation-invoke(origin: string, allow: boolean, retain: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

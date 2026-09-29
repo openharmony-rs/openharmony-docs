@@ -21,6 +21,8 @@ While this method automatically provides the correct plural forms, the grammatic
 
 It is the caller's responsibility to handle cut-off logic such as deciding between displaying "in 7 days" or "in 1 week". This API does not support relative dates involving compound units. e.g "in 5 days and 4 hours".
 
+<!--Device-RelativeTimeFormat-format(value: number, unit: RelativeTimeFormatUnit): string--><!--Device-RelativeTimeFormat-format(value: number, unit: RelativeTimeFormatUnit): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -42,6 +44,8 @@ formatToParts(value: number, unit: RelativeTimeFormatUnit): RelativeTimeFormatPa
 
 Returns an array of objects representing the relative time format in parts that can be used for custom locale-aware formatting.
 
+<!--Device-RelativeTimeFormat-formatToParts(value: number, unit: RelativeTimeFormatUnit): RelativeTimeFormatPart[]--><!--Device-RelativeTimeFormat-formatToParts(value: number, unit: RelativeTimeFormatUnit): RelativeTimeFormatPart[]-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -58,3 +62,5 @@ resolvedOptions(): ResolvedRelativeTimeFormatOptions
 Provides access to the locale and options computed during initialization of this `Intl.RelativeTimeFormat` object.
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions).
+
+<!--Device-RelativeTimeFormat-resolvedOptions(): ResolvedRelativeTimeFormatOptions--><!--Device-RelativeTimeFormat-resolvedOptions(): ResolvedRelativeTimeFormatOptions-End-->

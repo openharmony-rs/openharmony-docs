@@ -16,6 +16,8 @@ Creates a standard color space object.
 
 **Since:** 9
 
+<!--Device-colorSpaceManager-function create(colorSpaceName: ColorSpace): ColorSpaceManager--><!--Device-colorSpaceManager-function create(colorSpaceName: ColorSpace): ColorSpaceManager-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Parameters:**
@@ -60,6 +62,8 @@ function create(primaries: ColorSpacePrimaries, gamma: number): ColorSpaceManage
 Creates a custom color space object.
 
 **Since:** 9
+
+<!--Device-colorSpaceManager-function create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceManager--><!--Device-colorSpaceManager-function create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceManager-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 

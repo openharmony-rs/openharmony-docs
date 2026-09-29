@@ -8,6 +8,8 @@ Describes the new area where the window cannot be displayed. The new area is ret
 
 **Since:** 12
 
+<!--Device-window-interface AvoidAreaOptions--><!--Device-window-interface AvoidAreaOptions-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ New area returned.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AvoidAreaOptions-area: AvoidArea--><!--Device-AvoidAreaOptions-area: AvoidArea-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -44,6 +48,8 @@ Type of the new area returned.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AvoidAreaOptions-type: AvoidAreaType--><!--Device-AvoidAreaOptions-type: AvoidAreaType-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core

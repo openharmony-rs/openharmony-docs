@@ -24,6 +24,8 @@ Enables or disables USB.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-usbManager-function disableUsb(admin: Want, disable: boolean): void--><!--Device-usbManager-function disableUsb(admin: Want, disable: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

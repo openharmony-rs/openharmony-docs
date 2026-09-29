@@ -8,6 +8,8 @@ Radio button color.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface RadioStyle--><!--Device-unnamed-declare interface RadioStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## checkedBackgroundColor
@@ -29,6 +31,8 @@ Default value: **$r('sys.color.ohos_id_color_text_primary_activated')**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RadioStyle-checkedBackgroundColor?: ResourceColor--><!--Device-RadioStyle-checkedBackgroundColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ Default value: **$r('sys.color.ohos_id_color_foreground_contrary')**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RadioStyle-indicatorColor?: ResourceColor--><!--Device-RadioStyle-indicatorColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## uncheckedBorderColor
@@ -73,5 +79,7 @@ Default value: **$r('sys.color.ohos_id_color_switch_outline_off')**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RadioStyle-uncheckedBorderColor?: ResourceColor--><!--Device-RadioStyle-uncheckedBorderColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

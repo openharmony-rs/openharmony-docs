@@ -8,6 +8,8 @@ OperateCheckV2构造函数的参数选项。
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface OperateCheckV2Options--><!--Device-unnamed-export interface OperateCheckV2Options-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ onChange?: OnChangeCallback
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateCheckV2Options-onChange?: OnChangeCallback--><!--Device-OperateCheckV2Options-onChange?: OnChangeCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -51,6 +55,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateCheckV2Options-accessibilityDescription?: ResourceStr--><!--Device-OperateCheckV2Options-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,6 +90,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateCheckV2Options-accessibilityLevel?: string--><!--Device-OperateCheckV2Options-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -104,6 +112,8 @@ accessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateCheckV2Options-accessibilityText?: ResourceStr--><!--Device-OperateCheckV2Options-accessibilityText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isCheck
@@ -123,5 +133,7 @@ isCheck?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateCheckV2Options-isCheck?: boolean--><!--Device-OperateCheckV2Options-isCheck?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

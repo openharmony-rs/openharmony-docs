@@ -6,6 +6,8 @@ The **inputMethodEngine** module is oriented to input method applications (inclu
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace inputMethodEngine--><!--Device-unnamed-declare namespace inputMethodEngine-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -60,6 +62,21 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | [Panel](arkts-ime-inputmethodengine-panel-i-sys.md) | You need to use [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel) to obtain the panel instance and then call the following APIs through the instance. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [CommandDataType](arkts-ime-inputmethodengine-commanddatatype-t.md) | Defines the private data type, which varies depending on its function. |
+| [SizeChangeCallback](arkts-ime-inputmethodengine-sizechangecallback-t.md) | Callback triggered when the size of the input method panel changes. |
+
+<!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [SizeUpdateCallback](arkts-ime-inputmethodengine-sizeupdatecallback-t-sys.md) | Callback triggered when the size of the input method panel changes. |
+<!--DelEnd-->
+
 ### Enums
 
 | Name | Description |
@@ -80,21 +97,6 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | Name | Description |
 | --- | --- |
 | [FluidLightMode](arkts-ime-inputmethodengine-fluidlightmode-e-sys.md) | Enumerates the fluid light modes of the input method.<br> <br> |
-<!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [CommandDataType](arkts-ime-inputmethodengine-commanddatatype-t.md) | Defines the private data type, which varies depending on its function. |
-| [SizeChangeCallback](arkts-ime-inputmethodengine-sizechangecallback-t.md) | Callback triggered when the size of the input method panel changes. |
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [SizeUpdateCallback](arkts-ime-inputmethodengine-sizeupdatecallback-t-sys.md) | Callback triggered when the size of the input method panel changes. |
 <!--DelEnd-->
 
 ### Constants
@@ -118,8 +120,8 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | [FLAG_SELECTING](arkts-ime-inputmethodengine-con.md#flag_selecting) | The edit box is being selected. |
 | [FLAG_SINGLE_LINE](arkts-ime-inputmethodengine-con.md#flag_single_line) | The edit box allows only single-line input. |
 | [OPTION_ASCII](arkts-ime-inputmethodengine-con.md#option_ascii) | ASCII values are allowed. |
-| [OPTION_AUTO_CAP_CHARACTERS](arkts-ime-inputmethodengine-con.md#option_auto_cap_characters) | Characters are allowed. |
-| [OPTION_AUTO_CAP_SENTENCES](arkts-ime-inputmethodengine-con.md#option_auto_cap_sentences) | Sentences are allowed. |
+| [OPTION_AUTO_CAP_CHARACTERS](arkts-ime-inputmethodengine-con.md#option_auto_cap_characters) | Characters are auto-capitalized. |
+| [OPTION_AUTO_CAP_SENTENCES](arkts-ime-inputmethodengine-con.md#option_auto_cap_sentences) | Sentences are auto-capitalized. |
 | [OPTION_AUTO_WORDS](arkts-ime-inputmethodengine-con.md#option_auto_words) | Words are allowed. |
 | [OPTION_MULTI_LINE](arkts-ime-inputmethodengine-con.md#option_multi_line) | Multiple lines are allowed. |
 | [OPTION_NO_FULLSCREEN](arkts-ime-inputmethodengine-con.md#option_no_fullscreen) | Half-screen style. |

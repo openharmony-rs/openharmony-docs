@@ -8,6 +8,8 @@ Loop Play Mode Definition
 
 **Since:** 10
 
+<!--Device-avSession-enum LoopMode--><!--Device-avSession-enum LoopMode-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## LOOP_MODE_SEQUENCE
@@ -20,7 +22,9 @@ The default mode is sequential playback
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-LoopMode-LOOP_MODE_SEQUENCE = 0--><!--Device-LoopMode-LOOP_MODE_SEQUENCE = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -34,7 +38,9 @@ Single loop mode
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-LoopMode-LOOP_MODE_SINGLE = 1--><!--Device-LoopMode-LOOP_MODE_SINGLE = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -48,7 +54,9 @@ List loop mode
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-LoopMode-LOOP_MODE_LIST = 2--><!--Device-LoopMode-LOOP_MODE_LIST = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -62,7 +70,9 @@ Shuffle playback mode
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-LoopMode-LOOP_MODE_SHUFFLE = 3--><!--Device-LoopMode-LOOP_MODE_SHUFFLE = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -76,6 +86,8 @@ Custom playback mode supported by application
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-LoopMode-LOOP_MODE_CUSTOM = 4--><!--Device-LoopMode-LOOP_MODE_CUSTOM = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core

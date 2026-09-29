@@ -4,13 +4,18 @@
 declare class LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>
 ```
 
-In addition to the [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-The [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md) are supported.
+> **NOTE:** 
+> 
+> The component should be set to a reasonable width and height. When the width and height of the component are set
+> too large, the loading progress animation may not meet the expected effect.
 
 **Inheritance/Implementation:** LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>
 
 **Since:** 8
+
+<!--Device-unnamed-declare class LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>--><!--Device-unnamed-declare class LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,13 +33,15 @@ Sets the foreground color for the **LoadingProgress** component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-LoadingProgressAttribute-color(value: ResourceColor): LoadingProgressAttribute--><!--Device-LoadingProgressAttribute-color(value: ResourceColor): LoadingProgressAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Foreground color of the **LoadingProgress** component.<br>Default value:<br>API version 10 or earlier: **'#99666666'**<br>API version 11 or later: **'#ff666666'** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Foreground color of the loading progress bar.<br>Default value: <br>API version 10 and earlier: '#99666666'<br>API version 11 and later: '#ff666666' |
 
 ## contentModifier
 
@@ -50,13 +57,15 @@ Creates a content modifier.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LoadingProgressAttribute-contentModifier(modifier: ContentModifier<LoadingProgressConfiguration>): LoadingProgressAttribute--><!--Device-LoadingProgressAttribute-contentModifier(modifier: ContentModifier<LoadingProgressConfiguration>): LoadingProgressAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[LoadingProgressConfiguration](arkts-arkui-loadingprogress-comp-loadingprogressconfiguration-i.md)&gt; | Yes | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[LoadingProgressConfiguration](arkts-arkui-loadingprogress-comp-loadingprogressconfiguration-i.md)&gt; | Yes | Method for customizing the content area on the LoadingProgress component.<br>modifier: content modifier. Developers need to customize a class to implement the ContentModifier interface. |
 
 ## enableLoading
 
@@ -72,10 +81,12 @@ Sets whether to display the LoadingProgress animation. The component still takes
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LoadingProgressAttribute-enableLoading(value: boolean): LoadingProgressAttribute--><!--Device-LoadingProgressAttribute-enableLoading(value: boolean): LoadingProgressAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to show the loading animation.<br>Default value: **true**. **true**: Show the loading animation. **false**: Do not show the loading animation. |
+| value | boolean | Yes | Whether to display the LoadingProgress animation.<br>Default value: true, where true means to display the LoadingProgress animation and false means not to display it. |

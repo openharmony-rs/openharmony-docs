@@ -8,6 +8,8 @@ Describes the information about the display density of the screen where the wind
 
 **Since:** 15
 
+<!--Device-window-interface WindowDensityInfo--><!--Device-window-interface WindowDensityInfo-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Custom display size scale factor of the window. The value ranges from 0.5 to 4.0
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-WindowDensityInfo-customDensity: double--><!--Device-WindowDensityInfo-customDensity: double-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -44,7 +48,9 @@ Default display size scale factor for the screen where the window is located. Th
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-WindowDensityInfo-defaultDensity: double--><!--Device-WindowDensityInfo-defaultDensity: double-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -60,6 +66,8 @@ System's display size scale factor for the screen where the window is located. T
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-WindowDensityInfo-systemDensity: double--><!--Device-WindowDensityInfo-systemDensity: double-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

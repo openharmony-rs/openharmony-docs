@@ -18,6 +18,8 @@ Obtains the default application based on a system-defined application type, a fi
 
 **Required permissions:** ohos.permission.GET_DEFAULT_APPLICATION
 
+<!--Device-defaultAppManager-function getDefaultApplication(type: string, userId: int, callback: AsyncCallback<BundleInfo>) : void--><!--Device-defaultAppManager-function getDefaultApplication(type: string, userId: int, callback: AsyncCallback<BundleInfo>) : void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
 **System API:** This is a system API.
@@ -90,6 +92,8 @@ Obtains the default application based on a system-defined application type, a fi
 
 **Required permissions:** ohos.permission.GET_DEFAULT_APPLICATION
 
+<!--Device-defaultAppManager-function getDefaultApplication(type: string, callback: AsyncCallback<BundleInfo>) : void--><!--Device-defaultAppManager-function getDefaultApplication(type: string, callback: AsyncCallback<BundleInfo>) : void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
 **System API:** This is a system API.
@@ -158,6 +162,8 @@ Obtains the default application based on a system-defined application type, a fi
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_DEFAULT_APPLICATION
+
+<!--Device-defaultAppManager-function getDefaultApplication(type: string, userId?: int) : Promise<BundleInfo>--><!--Device-defaultAppManager-function getDefaultApplication(type: string, userId?: int) : Promise<BundleInfo>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 

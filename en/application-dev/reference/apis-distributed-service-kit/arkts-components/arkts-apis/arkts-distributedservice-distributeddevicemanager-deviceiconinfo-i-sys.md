@@ -8,6 +8,8 @@ Defines the device icon information.
 
 **Since:** 18
 
+<!--Device-distributedDeviceManager-interface DeviceIconInfo--><!--Device-distributedDeviceManager-interface DeviceIconInfo-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Icon.
 
 **Since:** 18
 
+<!--Device-DeviceIconInfo-icon: ArrayBuffer--><!--Device-DeviceIconInfo-icon: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Image type. This parameter has a fixed value of **ID**, indicating the product's
 **Type:** string
 
 **Since:** 18
+
+<!--Device-DeviceIconInfo-imageType: string--><!--Device-DeviceIconInfo-imageType: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -62,6 +68,8 @@ Internal product model. This parameter is left unspecified by default.
 
 **Since:** 18
 
+<!--Device-DeviceIconInfo-internalModel?: string--><!--Device-DeviceIconInfo-internalModel?: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Product ID.
 **Type:** string
 
 **Since:** 18
+
+<!--Device-DeviceIconInfo-productId: string--><!--Device-DeviceIconInfo-productId: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -97,6 +107,8 @@ Image specification name. Value:
 
 **Since:** 18
 
+<!--Device-DeviceIconInfo-specName: string--><!--Device-DeviceIconInfo-specName: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -113,6 +125,8 @@ Sub-product ID. This parameter is left unspecified by default.
 
 **Since:** 18
 
+<!--Device-DeviceIconInfo-subProductId?: string--><!--Device-DeviceIconInfo-subProductId?: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -128,6 +142,8 @@ URL.
 **Type:** string
 
 **Since:** 18
+
+<!--Device-DeviceIconInfo-url: string--><!--Device-DeviceIconInfo-url: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

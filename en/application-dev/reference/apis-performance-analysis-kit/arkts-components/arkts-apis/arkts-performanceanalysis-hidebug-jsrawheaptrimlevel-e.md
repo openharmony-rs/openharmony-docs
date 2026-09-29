@@ -12,6 +12,8 @@ You are advised to use **TRIM_LEVEL_1** to ensure application stability and use 
 
 **Since:** 20
 
+<!--Device-hidebug-enum JsRawHeapTrimLevel--><!--Device-hidebug-enum JsRawHeapTrimLevel-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## TRIM_LEVEL_1
@@ -24,6 +26,8 @@ Level 1 trimming, mainly used for strings.
 
 **Since:** 20
 
+<!--Device-JsRawHeapTrimLevel-TRIM_LEVEL_1 = 0--><!--Device-JsRawHeapTrimLevel-TRIM_LEVEL_1 = 0-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## TRIM_LEVEL_2
@@ -35,5 +39,7 @@ TRIM_LEVEL_2 = 1
 Level 2 trimming, which reduces the size of the object address identifier from 8 bytes to 4 bytes based on **TRIM_LEVEL_1**.
 
 **Since:** 20
+
+<!--Device-JsRawHeapTrimLevel-TRIM_LEVEL_2 = 1--><!--Device-JsRawHeapTrimLevel-TRIM_LEVEL_2 = 1-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug

@@ -10,6 +10,8 @@ Defines the information about the dynamic shared libraries on which the module d
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-bundleManager-export type Dependency = _HapModuleInfo.Dependency--><!--Device-bundleManager-export type Dependency = _HapModuleInfo.Dependency-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Type:** [_HapModuleInfo.Dependency](arkts-ability-hapmoduleinfo-dependency-i.md)

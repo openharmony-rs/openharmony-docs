@@ -18,6 +18,8 @@ Answers a call. This API uses an asynchronous callback to return the result.
 
 **Required permissions:** ohos.permission.ANSWER_CALL
 
+<!--Device-call-function answerCall(callId: int, callback: AsyncCallback<void>): void--><!--Device-call-function answerCall(callId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Answers a call. This API uses a promise to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.ANSWER_CALL
+
+<!--Device-call-function answerCall(callId?: int): Promise<void>--><!--Device-call-function answerCall(callId?: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -124,6 +128,8 @@ Answers a call. This API uses a promise to return the result.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ANSWER_CALL
+
+<!--Device-call-function answerCall(videoState: VideoStateType, callId: int): Promise<void>--><!--Device-call-function answerCall(videoState: VideoStateType, callId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -182,6 +188,8 @@ Answers the incoming rtt
 **Required permissions:** ohos.permission.ANSWER_CALL
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-call-function answerCall(videoState: VideoStateType, callId: int, isRtt: boolean): Promise<void>--><!--Device-call-function answerCall(videoState: VideoStateType, callId: int, isRtt: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

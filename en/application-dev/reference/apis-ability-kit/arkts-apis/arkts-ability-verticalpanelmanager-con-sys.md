@@ -12,6 +12,8 @@ export the const string of abilityName and provide it for sourceAppInfo.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-verticalPanelManager-export const SOURCE_APP_ABILITY_NAME: string = 'abilityName'--><!--Device-verticalPanelManager-export const SOURCE_APP_ABILITY_NAME: string = 'abilityName'-End-->
+
 **System capability:** SystemCapability.Ability.AppExtension.VerticalPanel
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ export the const string of bundleName and provide it for sourceAppInfo.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-verticalPanelManager-export const SOURCE_APP_BUNDLE_NAME: string = 'bundleName'--><!--Device-verticalPanelManager-export const SOURCE_APP_BUNDLE_NAME: string = 'bundleName'-End-->
 
 **System capability:** SystemCapability.Ability.AppExtension.VerticalPanel
 
@@ -44,6 +48,8 @@ export the const string of moduleName and provide it for sourceAppInfo.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-verticalPanelManager-export const SOURCE_APP_MODULE_NAME: string = 'moduleName'--><!--Device-verticalPanelManager-export const SOURCE_APP_MODULE_NAME: string = 'moduleName'-End-->
+
 **System capability:** SystemCapability.Ability.AppExtension.VerticalPanel
 
 **System API:** This is a system API.
@@ -60,6 +66,8 @@ export the const string of screenMode and provide it for sourceAppInfo.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-verticalPanelManager-export const SOURCE_APP_SCREEN_MODE: string = 'screenMode'--><!--Device-verticalPanelManager-export const SOURCE_APP_SCREEN_MODE: string = 'screenMode'-End-->
+
 **System capability:** SystemCapability.Ability.AppExtension.VerticalPanel
 
 **System API:** This is a system API.
@@ -75,6 +83,8 @@ export the const string of windowId and provide it for sourceAppInfo.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-verticalPanelManager-export const SOURCE_APP_WINDOW_ID: string = 'windowId'--><!--Device-verticalPanelManager-export const SOURCE_APP_WINDOW_ID: string = 'windowId'-End-->
 
 **System capability:** SystemCapability.Ability.AppExtension.VerticalPanel
 

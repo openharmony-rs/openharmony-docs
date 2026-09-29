@@ -26,6 +26,8 @@ Listens for senior mode state change events of all apps. This API uses an asynch
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-config-function onSeniorModeStateChangeForApp(callback: Callback<AppSeniorModeInfo>): void--><!--Device-config-function onSeniorModeStateChangeForApp(callback: Callback<AppSeniorModeInfo>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.

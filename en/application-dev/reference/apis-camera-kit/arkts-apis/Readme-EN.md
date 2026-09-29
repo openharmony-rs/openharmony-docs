@@ -257,6 +257,7 @@
   - [AuxiliaryType(system api)](arkts-camera-camera-auxiliarytype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [BeautyType(system api)](arkts-camera-camera-beautytype-e-sys.md)<!--DelEnd-->
+  - [CameraAuxiliaryPhotoType](arkts-camera-camera-cameraauxiliaryphototype-e.md)
   - [CameraConcurrentType](arkts-camera-camera-cameraconcurrenttype-e.md)
   - [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)
   <!--Del-->

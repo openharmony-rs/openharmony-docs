@@ -6,6 +6,8 @@ Provides fileshare APIS
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace fileShare--><!--Device-unnamed-declare namespace fileShare-End-->
+
 **System capability:** SystemCapability.FileManagement.AppFileService
 
 ## Modules to Import

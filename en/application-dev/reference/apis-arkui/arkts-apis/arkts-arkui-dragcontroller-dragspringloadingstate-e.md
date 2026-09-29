@@ -8,6 +8,8 @@ Enumerates hover detection states during drag operations. Under default system c
 
 **Since:** 20
 
+<!--Device-dragController-const enum DragSpringLoadingState--><!--Device-dragController-const enum DragSpringLoadingState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## BEGIN
@@ -23,6 +25,8 @@ Initial state when a dragged item enters the component boundary and remains stat
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-DragSpringLoadingState-BEGIN--><!--Device-DragSpringLoadingState-BEGIN-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Periodic notification state during sustained hover detection. In this state, per
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-DragSpringLoadingState-UPDATE--><!--Device-DragSpringLoadingState-UPDATE-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## END
@@ -56,6 +62,8 @@ Final state indicating completion of the hover detection cycle, which is trigger
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-DragSpringLoadingState-END--><!--Device-DragSpringLoadingState-END-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CANCEL
@@ -71,5 +79,7 @@ Interruption state of hover detection triggered by termination events, which inc
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-DragSpringLoadingState-CANCEL--><!--Device-DragSpringLoadingState-CANCEL-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

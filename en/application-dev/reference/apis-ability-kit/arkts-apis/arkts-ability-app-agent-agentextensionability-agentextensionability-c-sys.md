@@ -12,6 +12,8 @@ The class of agent extension ability. This class cannot be used in Harmony Archi
 
 **Since:** 24
 
+<!--Device-unnamed-declare class AgentExtensionAbility extends ExtensionAbility--><!--Device-unnamed-declare class AgentExtensionAbility extends ExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Triggered when a [LOW_CODE](../../../reference/apis-ability-kit/js-apis-app-agen
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AgentExtensionAbility-onAgentInvoked(agentId: string): void--><!--Device-AgentExtensionAbility-onAgentInvoked(agentId: string): void-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 

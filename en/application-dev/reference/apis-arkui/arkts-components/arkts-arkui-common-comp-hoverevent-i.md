@@ -10,6 +10,8 @@ Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md).
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface HoverEvent extends BaseEvent--><!--Device-unnamed-declare interface HoverEvent extends BaseEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## stopPropagation
@@ -25,6 +27,8 @@ Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#even
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HoverEvent-stopPropagation: () => void--><!--Device-HoverEvent-stopPropagation: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Unit: vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-HoverEvent-displayX?: number--><!--Device-HoverEvent-displayX?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## displayY
@@ -65,6 +71,8 @@ Unit: vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-HoverEvent-displayY?: number--><!--Device-HoverEvent-displayY?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +96,8 @@ Value range: (-∞, +∞).
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-HoverEvent-globalDisplayX?: number--><!--Device-HoverEvent-globalDisplayX?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalDisplayY
@@ -110,6 +120,8 @@ Value range: (-∞, +∞).
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-HoverEvent-globalDisplayY?: number--><!--Device-HoverEvent-globalDisplayY?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowX
@@ -129,6 +141,8 @@ Unit: vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-HoverEvent-windowX?: number--><!--Device-HoverEvent-windowX?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,6 +164,8 @@ Unit: vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-HoverEvent-windowY?: number--><!--Device-HoverEvent-windowY?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -170,6 +186,8 @@ Unit: vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-HoverEvent-x?: number--><!--Device-HoverEvent-x?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -189,5 +207,7 @@ Unit: vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-HoverEvent-y?: number--><!--Device-HoverEvent-y?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

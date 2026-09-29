@@ -12,6 +12,8 @@ interface Button
 
 **替代接口：** [Button](arkts-arkui-promptaction-button-i.md)
 
+<!--Device-prompt-interface Button--><!--Device-prompt-interface Button-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -38,6 +40,8 @@ color: string
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-Button-color: string--><!--Device-Button-color: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -57,5 +61,7 @@ text: string
 **替代接口：** [text](arkts-arkui-promptaction-button-i.md#text)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-Button-text: string--><!--Device-Button-text: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

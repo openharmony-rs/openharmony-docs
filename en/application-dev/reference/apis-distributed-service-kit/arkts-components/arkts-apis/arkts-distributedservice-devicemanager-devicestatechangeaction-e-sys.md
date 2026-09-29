@@ -12,6 +12,8 @@ Enumerates the device states.
 
 **Substitutes:** [DeviceStateChange](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md)
 
+<!--Device-deviceManager-enum DeviceStateChangeAction--><!--Device-deviceManager-enum DeviceStateChangeAction-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ The device is physically online.
 **Deprecated since:** 11
 
 **Substitutes:** [UNKNOWN](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#unknown)
+
+<!--Device-DeviceStateChangeAction-ONLINE = 0--><!--Device-DeviceStateChangeAction-ONLINE = 0-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -48,6 +52,8 @@ The information between devices has been synchronized in the Distributed Data Se
 
 **Substitutes:** [AVAILABLE](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#available)
 
+<!--Device-DeviceStateChangeAction-READY = 1--><!--Device-DeviceStateChangeAction-READY = 1-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -66,6 +72,8 @@ The device is physically offline.
 
 **Substitutes:** [UNAVAILABLE](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#unavailable)
 
+<!--Device-DeviceStateChangeAction-OFFLINE = 2--><!--Device-DeviceStateChangeAction-OFFLINE = 2-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -81,6 +89,8 @@ The device information is changed.
 **Since:** 7
 
 **Deprecated since:** 11
+
+<!--Device-DeviceStateChangeAction-CHANGE = 3--><!--Device-DeviceStateChangeAction-CHANGE = 3-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

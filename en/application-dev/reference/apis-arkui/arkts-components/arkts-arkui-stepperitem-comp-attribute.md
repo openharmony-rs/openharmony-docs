@@ -14,6 +14,8 @@ Defines StepperItem Component instance.
 
 **Substitutes:** [SwiperAttribute](arkts-arkui-swiper-comp-attribute.md#swiperattribute)
 
+<!--Device-unnamed-declare class StepperItemAttribute extends CommonMethod<StepperItemAttribute>--><!--Device-unnamed-declare class StepperItemAttribute extends CommonMethod<StepperItemAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## nextLabel
@@ -33,6 +35,8 @@ Sets the text label of the button on the right. The default value is **Start** f
 **Substitutes:** showNext
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-StepperItemAttribute-nextLabel(value: string): StepperItemAttribute--><!--Device-StepperItemAttribute-nextLabel(value: string): StepperItemAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +64,8 @@ Sets the text label of the button on the left, which is not displayed on the fir
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-StepperItemAttribute-prevLabel(value: string): StepperItemAttribute--><!--Device-StepperItemAttribute-prevLabel(value: string): StepperItemAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -85,6 +91,8 @@ Sets the display status of **nextLabel** in the stepper.
 **Substitutes:** [indicatorInteractive](arkts-arkui-swiper-comp-attribute.md#indicatorinteractive)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-StepperItemAttribute-status(value?: ItemState): StepperItemAttribute--><!--Device-StepperItemAttribute-status(value?: ItemState): StepperItemAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -6,7 +6,7 @@
 > 
 > - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> - 该组件从API版本26.0.0开始支持WithTheme。
+> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md)。
 
 ## 子组件
 
@@ -25,6 +25,8 @@ DataPanel(options: DataPanelOptions)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-DataPanelInterface-(options: DataPanelOptions): DataPanelAttribute--><!--Device-DataPanelInterface-(options: DataPanelOptions): DataPanelAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,7 +57,7 @@ DataPanel(options: DataPanelOptions)
 
 ### 示例1（设置数据面板类型）
 
-该示例通过DataPanelOptions的type属性，实现了设置数据面板的类型的功能。
+该示例通过[DataPanelOptions](#datapaneloptions对象说明)的type属性，实现了设置数据面板的类型的功能。
 
 
 
@@ -111,7 +113,7 @@ struct DataPanelExample {
 
 ### 示例2（设置渐变色和阴影）
 
-该示例通过[valueColors](arkts-arkui-datapanel-comp-attribute.md#valuecolors)和trackShadow接口设置LinearGradient颜色，实现了设置渐变色效果和阴影效果。
+该示例通过[valueColors](arkts-arkui-datapanel-comp-attribute.md#valuecolors)和[trackShadow](#trackshadow10)接口设置[LinearGradient](#lineargradient10)颜色，实现了设置渐变色效果和阴影效果。
 
 
 
@@ -211,7 +213,7 @@ struct LinearGradientDataPanelExample {
 
 ### 示例4（设置定制内容区）
 
-该示例通过contentModifier接口，实现了定制数据面板内容区的功能。
+该示例通过[contentModifier](#contentmodifier12)接口，实现了定制数据面板内容区的功能。
 
 ```TypeScript
 // xxx.ets

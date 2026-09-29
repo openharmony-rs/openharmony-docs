@@ -12,6 +12,8 @@ declare interface OverlayOffset
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface OverlayOffset--><!--Device-unnamed-declare interface OverlayOffset-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -34,6 +36,8 @@ x?: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-OverlayOffset-x?: number--><!--Device-OverlayOffset-x?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -55,5 +59,7 @@ y?: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-OverlayOffset-y?: number--><!--Device-OverlayOffset-y?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

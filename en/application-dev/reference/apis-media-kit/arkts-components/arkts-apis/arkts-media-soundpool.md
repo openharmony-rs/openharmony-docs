@@ -1,7 +1,8 @@
 # soundPool
 
-The module provides APIs for loading, unloading, playing, and stopping playing sounds, setting the volume, and
- setting the number of loops.
+The module provides APIs for loading, unloading, playing, and stopping playing sounds, setting the volume,
+ and setting the number of loops. The module is applicable to scenarios that require quick response and
+ low-latency playback, such as game sound effects, UI interaction sound effects, and notification sounds.
 
 Before using these APIs, you must call
  [media.createSoundPool](arkts-media-media-createsoundpool-f.md)

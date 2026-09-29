@@ -20,6 +20,8 @@ Obtains information about visible main windows on the current screen. Visible ma
 - API version 18 and later: ohos.permission.VISIBLE_WINDOW_INFO
 - API versions 12 to 17: N/A
 
+<!--Device-window-function getVisibleWindowInfo(): Promise<Array<WindowInfo>>--><!--Device-window-function getVisibleWindowInfo(): Promise<Array<WindowInfo>>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Return value:**

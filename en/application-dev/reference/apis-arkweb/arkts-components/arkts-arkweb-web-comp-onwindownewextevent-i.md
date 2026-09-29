@@ -8,6 +8,8 @@ Defines the callback information triggered when the web page requests to create 
 
 **Since:** 23
 
+<!--Device-unnamed-declare interface OnWindowNewExtEvent--><!--Device-unnamed-declare interface OnWindowNewExtEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## handler
@@ -23,6 +25,8 @@ handler: ControllerHandler
 **Since:** 23
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-OnWindowNewExtEvent-handler: ControllerHandler--><!--Device-OnWindowNewExtEvent-handler: ControllerHandler-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -40,6 +44,8 @@ The value **true** indicates that a dialog box is requested to be created, and t
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-OnWindowNewExtEvent-isAlert: boolean--><!--Device-OnWindowNewExtEvent-isAlert: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## isUserTrigger
@@ -55,6 +61,8 @@ Whether the creation is triggered by the user. The value **true** means that the
 **Since:** 23
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-OnWindowNewExtEvent-isUserTrigger: boolean--><!--Device-OnWindowNewExtEvent-isUserTrigger: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -72,6 +80,8 @@ Window opening mode when the web page requests a user to create a new window.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-OnWindowNewExtEvent-navigationPolicy: NavigationPolicy--><!--Device-OnWindowNewExtEvent-navigationPolicy: NavigationPolicy-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## targetUrl
@@ -88,6 +98,8 @@ URL to be opened in the new window.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-OnWindowNewExtEvent-targetUrl: string--><!--Device-OnWindowNewExtEvent-targetUrl: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## windowFeatures
@@ -103,5 +115,7 @@ Feature information of the new window requested to be created by the web page.
 **Since:** 23
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-OnWindowNewExtEvent-windowFeatures: WindowFeatures--><!--Device-OnWindowNewExtEvent-windowFeatures: WindowFeatures-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

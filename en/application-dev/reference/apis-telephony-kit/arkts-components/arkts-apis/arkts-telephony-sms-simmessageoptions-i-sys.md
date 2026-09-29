@@ -8,6 +8,8 @@ Defines the SIM message options.
 
 **Since:** 7
 
+<!--Device-sms-export interface SimMessageOptions--><!--Device-sms-export interface SimMessageOptions-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Protocol data unit.
 
 **Since:** 7
 
+<!--Device-SimMessageOptions-pdu: string--><!--Device-SimMessageOptions-pdu: string-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Card slot ID.
 **Type:** number
 
 **Since:** 7
+
+<!--Device-SimMessageOptions-slotId: int--><!--Device-SimMessageOptions-slotId: int-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -62,6 +68,8 @@ Short message service center.
 
 **Since:** 7
 
+<!--Device-SimMessageOptions-smsc: string--><!--Device-SimMessageOptions-smsc: string-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Status.
 **Type:** [SimMessageStatus](arkts-telephony-sms-simmessagestatus-e-sys.md)
 
 **Since:** 7
+
+<!--Device-SimMessageOptions-status: SimMessageStatus--><!--Device-SimMessageOptions-status: SimMessageStatus-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

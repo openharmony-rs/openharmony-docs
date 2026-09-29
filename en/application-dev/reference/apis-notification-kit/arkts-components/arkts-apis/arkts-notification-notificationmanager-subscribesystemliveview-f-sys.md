@@ -16,6 +16,8 @@ Subscribes to the system live view notification. This API uses a promise to retu
 
 **Since:** 11
 
+<!--Device-notificationManager-function subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise<void>--><!--Device-notificationManager-function subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

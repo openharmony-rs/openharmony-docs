@@ -29,6 +29,8 @@ interface WindowLimits
 
 **起始版本：** 11
 
+<!--Device-window-interface WindowLimits--><!--Device-window-interface WindowLimits-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -49,7 +51,9 @@ maxHeight?: number
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowLimits-maxHeight?: int--><!--Device-WindowLimits-maxHeight?: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -65,7 +69,9 @@ maxWidth?: number
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowLimits-maxWidth?: int--><!--Device-WindowLimits-maxWidth?: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -81,7 +87,9 @@ minHeight?: number
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowLimits-minHeight?: int--><!--Device-WindowLimits-minHeight?: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -97,7 +105,9 @@ minWidth?: number
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowLimits-minWidth?: int--><!--Device-WindowLimits-minWidth?: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -112,5 +122,7 @@ pixelUnit?: PixelUnit
 **类型：** [PixelUnit](arkts-arkui-window-pixelunit-e.md)
 
 **起始版本：** 22
+
+<!--Device-WindowLimits-pixelUnit?: PixelUnit--><!--Device-WindowLimits-pixelUnit?: PixelUnit-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

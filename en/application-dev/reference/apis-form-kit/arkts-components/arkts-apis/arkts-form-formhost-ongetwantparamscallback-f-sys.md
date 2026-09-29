@@ -20,6 +20,8 @@ Register callback of getting the want parameters of the form.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function onGetWantParamsCallback(callback: formInfo.GetWantParamsCallback): void--><!--Device-formHost-function onGetWantParamsCallback(callback: formInfo.GetWantParamsCallback): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

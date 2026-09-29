@@ -20,6 +20,8 @@ Defines the pointer style.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.PointerStyle--><!--Device-unnamed-declare type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.PointerStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.multimodalInput.pointer').default.PointerStyle

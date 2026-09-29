@@ -22,6 +22,8 @@ Obtains the data flow type of the cellular network (corresponding to the uplink 
 - API version 22 and later: ohos.permission.GET_NETWORK_INFO
 - API versions 7 to 21: N/A
 
+<!--Device-data-function getCellularDataFlowType(callback: AsyncCallback<DataFlowType>): void--><!--Device-data-function getCellularDataFlowType(callback: AsyncCallback<DataFlowType>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **Parameters:**
@@ -69,6 +71,8 @@ Obtains the data flow type of the cellular network (corresponding to the uplink 
 **Required permissions:** 
 - API version 22 and later: ohos.permission.GET_NETWORK_INFO
 - API versions 7 to 21: N/A
+
+<!--Device-data-function getCellularDataFlowType(): Promise<DataFlowType>--><!--Device-data-function getCellularDataFlowType(): Promise<DataFlowType>-End-->
 
 **System capability:** SystemCapability.Telephony.CellularData
 

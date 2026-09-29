@@ -20,6 +20,8 @@ Removes applications from the notification trustlist.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function removeAllowedNotificationBundles(admin: Want, bundleNames: Array<string>, accountId: number): void--><!--Device-applicationManager-function removeAllowedNotificationBundles(admin: Want, bundleNames: Array<string>, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

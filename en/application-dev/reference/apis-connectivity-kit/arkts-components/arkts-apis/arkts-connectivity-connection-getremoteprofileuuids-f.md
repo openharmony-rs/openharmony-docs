@@ -20,6 +20,8 @@ Obtains the profile UUIDs supported by the remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getRemoteProfileUuids(deviceId: string, callback: AsyncCallback<Array<ProfileUuids>>): void--><!--Device-connection-function getRemoteProfileUuids(deviceId: string, callback: AsyncCallback<Array<ProfileUuids>>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -70,6 +72,8 @@ Obtains the profile UUIDs supported by the remote device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-connection-function getRemoteProfileUuids(deviceId: string): Promise<Array<ProfileUuids>>--><!--Device-connection-function getRemoteProfileUuids(deviceId: string): Promise<Array<ProfileUuids>>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

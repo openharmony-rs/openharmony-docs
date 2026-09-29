@@ -20,6 +20,8 @@ Obtains the version information of an app with a specified bundle name on a spec
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-distributedBundleManager-function getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise<long>--><!--Device-distributedBundleManager-function getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise<long>-End-->
+
 **System capability:** SystemCapability.BundleManager.DistributedBundleFramework
 
 **System API:** This is a system API.

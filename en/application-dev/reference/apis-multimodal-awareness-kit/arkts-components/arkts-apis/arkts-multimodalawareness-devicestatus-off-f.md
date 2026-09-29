@@ -16,6 +16,8 @@ Unsubscribes from steady standing state events.
 
 **Since:** 18
 
+<!--Device-deviceStatus-function off(type: 'steadyStandingDetect', callback?: Callback<SteadyStandingStatus>): void--><!--Device-deviceStatus-function off(type: 'steadyStandingDetect', callback?: Callback<SteadyStandingStatus>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.DeviceStatus
 
 **Parameters:**

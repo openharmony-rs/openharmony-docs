@@ -20,6 +20,8 @@ Sets the role types supported by a specified port, which can be **powerRole** (f
 
 **Substitutes:** [setPortRoles](arkts-basicservices-usbmanager-setportroles-f-sys.md)
 
+<!--Device-usb-function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<boolean>--><!--Device-usb-function setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

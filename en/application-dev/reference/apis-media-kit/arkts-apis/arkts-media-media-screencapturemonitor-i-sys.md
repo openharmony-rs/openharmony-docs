@@ -8,6 +8,8 @@ A class that provides APIs to query and monitor the system screen recorder statu
 
 **Since:** 18
 
+<!--Device-media-interface ScreenCaptureMonitor--><!--Device-media-interface ScreenCaptureMonitor-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ off(type: 'systemScreenRecorder', callback?: Callback<ScreenCaptureEvent>): void
 Unsubscribes from state change events of the system screen recorder.
 
 **Since:** 18
+
+<!--Device-ScreenCaptureMonitor-off(type: 'systemScreenRecorder', callback?: Callback<ScreenCaptureEvent>): void--><!--Device-ScreenCaptureMonitor-off(type: 'systemScreenRecorder', callback?: Callback<ScreenCaptureEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -54,6 +58,8 @@ on(type: 'systemScreenRecorder', callback: Callback<ScreenCaptureEvent>): void
 Subscribes to state change events of the system screen recorder. From the ScreenCaptureEvent event reported, you can determine whether the system screen recorder is working.
 
 **Since:** 18
+
+<!--Device-ScreenCaptureMonitor-on(type: 'systemScreenRecorder', callback: Callback<ScreenCaptureEvent>): void--><!--Device-ScreenCaptureMonitor-on(type: 'systemScreenRecorder', callback: Callback<ScreenCaptureEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -93,6 +99,8 @@ Whether the system screen recorder is working.
 **Type:** boolean
 
 **Since:** 18
+
+<!--Device-ScreenCaptureMonitor-readonly isSystemScreenRecorderWorking: boolean--><!--Device-ScreenCaptureMonitor-readonly isSystemScreenRecorderWorking: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 

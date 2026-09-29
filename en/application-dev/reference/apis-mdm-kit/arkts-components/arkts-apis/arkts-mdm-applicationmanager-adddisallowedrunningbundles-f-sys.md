@@ -24,6 +24,8 @@ Adds the applications that are not allowed to run under the current user. This A
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function addDisallowedRunningBundles(admin: Want, appIds: Array<string>, callback: AsyncCallback<void>): void--><!--Device-applicationManager-function addDisallowedRunningBundles(admin: Want, appIds: Array<string>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -90,6 +92,8 @@ Adds the applications that are not allowed to run under a specified user (specif
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function addDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId: number, callback: AsyncCallback<void>): void--><!--Device-applicationManager-function addDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -158,6 +162,8 @@ Adds the applications that are not allowed to run by the current or specified us
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function addDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId?: number): Promise<void>--><!--Device-applicationManager-function addDisallowedRunningBundles(admin: Want, appIds: Array<string>, userId?: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

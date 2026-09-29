@@ -25,6 +25,8 @@ Queries usage information about each bundle within a specified period at a speci
 
 **Required permissions:** ohos.permission.BUNDLE_ACTIVE_INFO
 
+<!--Device-bundleState-function queryBundleStateInfoByInterval(    byInterval: IntervalType,    begin: number,    end: number,    callback: AsyncCallback<Array<BundleStateInfo>>  ): void--><!--Device-bundleState-function queryBundleStateInfoByInterval(    byInterval: IntervalType,    begin: number,    end: number,    callback: AsyncCallback<Array<BundleStateInfo>>  ): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **System API:** This is a system API.
@@ -77,6 +79,8 @@ Queries usage information about each bundle within a specified period at a speci
 **Deprecated since:** 9
 
 **Required permissions:** ohos.permission.BUNDLE_ACTIVE_INFO
+
+<!--Device-bundleState-function queryBundleStateInfoByInterval(    byInterval: IntervalType,    begin: number,    end: number  ): Promise<Array<BundleStateInfo>>--><!--Device-bundleState-function queryBundleStateInfoByInterval(    byInterval: IntervalType,    begin: number,    end: number  ): Promise<Array<BundleStateInfo>>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 

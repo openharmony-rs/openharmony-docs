@@ -10,6 +10,8 @@ ManualExposure extends [ManualExposureQuery](arkts-camera-camera-manualexposureq
 
 **Since:** 24
 
+<!--Device-camera-interface ManualExposure extends ManualExposureQuery--><!--Device-camera-interface ManualExposure extends ManualExposureQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ getExposure(): number
 Obtains the manual exposure duration in use.
 
 **Since:** 11
+
+<!--Device-ManualExposure-getExposure(): int--><!--Device-ManualExposure-getExposure(): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -68,6 +72,8 @@ setExposure(exposure: number): void
 Sets the manual exposure duration. Before using this API, call [getSupportedExposureRange](arkts-camera-camera-manualexposurequery-i-sys.md#getsupportedexposurerange) to obtain the supported manual exposure durations, in ms.
 
 **Since:** 11
+
+<!--Device-ManualExposure-setExposure(exposure: int): void--><!--Device-ManualExposure-setExposure(exposure: int): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

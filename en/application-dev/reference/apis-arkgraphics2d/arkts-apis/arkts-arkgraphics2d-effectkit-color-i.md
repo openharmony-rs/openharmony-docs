@@ -8,6 +8,8 @@ A color class used to store the color picking result. It is suitable for scenari
 
 **Since:** 9
 
+<!--Device-effectKit-interface Color--><!--Device-effectKit-interface Color-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -28,9 +30,11 @@ Alpha component value. Value range: [0x0, 0xFF].
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-Color-alpha: int--><!--Device-Color-alpha: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -46,9 +50,11 @@ Blue component value. Value range: [0x0, 0xFF].
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-Color-blue: int--><!--Device-Color-blue: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -64,9 +70,11 @@ Green component value. Value range: [0x0, 0xFF].
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-Color-green: int--><!--Device-Color-green: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -82,8 +90,10 @@ Red component value. Value range: [0x0, 0xFF].
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-Color-red: int--><!--Device-Color-red: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

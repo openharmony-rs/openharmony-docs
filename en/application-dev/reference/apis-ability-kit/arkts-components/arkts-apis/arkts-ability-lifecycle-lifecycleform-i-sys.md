@@ -10,6 +10,8 @@ interface of form lifecycle.
 
 **Since:** 7
 
+<!--Device-unnamed-export declare interface LifecycleForm--><!--Device-unnamed-export declare interface LifecycleForm-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Called when the system shares the form.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleForm-onShare?(formId: string): { [key: string]: any }--><!--Device-LifecycleForm-onShare?(formId: string): { [key: string]: any }-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -56,6 +60,8 @@ Called when the system shares the form. The ability of this function is same as 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleForm-onShareForm?(formId: string): Record<string, Object>--><!--Device-LifecycleForm-onShareForm?(formId: string): Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 

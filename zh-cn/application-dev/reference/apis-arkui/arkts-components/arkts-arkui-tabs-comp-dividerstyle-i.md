@@ -8,6 +8,8 @@ interface DividerStyle
 
 **起始版本：** 10
 
+<!--Device-unnamed-interface DividerStyle--><!--Device-unnamed-interface DividerStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -27,6 +29,8 @@ color?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DividerStyle-color?: ResourceColor--><!--Device-DividerStyle-color?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ endMargin?: Length
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DividerStyle-endMargin?: Length--><!--Device-DividerStyle-endMargin?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## startMargin
@@ -80,6 +86,8 @@ startMargin?: Length
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DividerStyle-startMargin?: Length--><!--Device-DividerStyle-startMargin?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeWidth
@@ -105,5 +113,7 @@ strokeWidth: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DividerStyle-strokeWidth: Length--><!--Device-DividerStyle-strokeWidth: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

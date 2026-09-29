@@ -8,6 +8,8 @@ export declare class LaunchController
 
 **起始版本：** 12
 
+<!--Device-unnamed-export declare class LaunchController--><!--Device-unnamed-export declare class LaunchController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -27,6 +29,8 @@ public launchAtomicService: LaunchAtomicServiceCallback
 拉起原子化服务。
 
 **起始版本：** 12
+
+<!--Device-LaunchController-public launchAtomicService: LaunchAtomicServiceCallback--><!--Device-LaunchController-public launchAtomicService: LaunchAtomicServiceCallback-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

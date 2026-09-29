@@ -22,6 +22,8 @@ Checks whether a Wi-Fi connection has been set up.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifi-function isConnected(): boolean--><!--Device-wifi-function isConnected(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**

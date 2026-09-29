@@ -8,6 +8,8 @@ Assessment interrupt information.
 
 **Since:** 26.0.1
 
+<!--Device-assessment-interface AssessmentInterruptInfo--><!--Device-assessment-interface AssessmentInterruptInfo-End-->
+
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Interrupt reason code.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AssessmentInterruptInfo-code: AssessmentErrorCode--><!--Device-AssessmentInterruptInfo-code: AssessmentErrorCode-End-->
+
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 
 ## message
@@ -44,5 +48,7 @@ Detailed description of the interrupt reason.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AssessmentInterruptInfo-message: string--><!--Device-AssessmentInterruptInfo-message: string-End-->
 
 **System capability:** SystemCapability.Customization.AssessmentConfiguration

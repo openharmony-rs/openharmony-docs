@@ -22,6 +22,8 @@ Sets whether to enable an application. This API uses an asynchronous callback to
 
 **Required permissions:** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
+<!--Device-bundle-function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: AsyncCallback<void>): void--><!--Device-bundle-function setApplicationEnabled(bundleName: string, isEnable: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -81,6 +83,8 @@ Sets whether to enable an application. This API uses a promise to return the res
 **Substitutes:** null
 
 **Required permissions:** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
+
+<!--Device-bundle-function setApplicationEnabled(bundleName: string, isEnable: boolean): Promise<void>--><!--Device-bundle-function setApplicationEnabled(bundleName: string, isEnable: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

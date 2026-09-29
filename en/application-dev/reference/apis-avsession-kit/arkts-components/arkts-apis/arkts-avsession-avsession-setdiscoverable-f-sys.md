@@ -16,6 +16,8 @@ Enable or disable device to be discoverable, used at sink side.
 
 **Since:** 10
 
+<!--Device-avSession-function setDiscoverable(enable: boolean, callback: AsyncCallback<void>): void--><!--Device-avSession-function setDiscoverable(enable: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.
@@ -54,6 +56,8 @@ function setDiscoverable(enable: boolean): Promise<void>
 Enable or disable device to be discoverable, used at sink side.
 
 **Since:** 10
+
+<!--Device-avSession-function setDiscoverable(enable: boolean): Promise<void>--><!--Device-avSession-function setDiscoverable(enable: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 

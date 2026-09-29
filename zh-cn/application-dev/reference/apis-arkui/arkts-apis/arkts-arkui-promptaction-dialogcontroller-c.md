@@ -16,6 +16,8 @@ DialogController可作为UIContext弹出自定义弹窗的成员变量，具体�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-promptAction-class DialogController extends CommonController--><!--Device-promptAction-class DialogController extends CommonController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块

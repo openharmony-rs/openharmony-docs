@@ -18,6 +18,8 @@ Connects an AgentExtensionAbility to a ServiceExtensionAbility. If the target se
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-agentManager-function connectServiceExtensionAbility(context: AgentExtensionContext, want: Want, callback: ConnectOptions): long--><!--Device-agentManager-function connectServiceExtensionAbility(context: AgentExtensionContext, want: Want, callback: ConnectOptions): long-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

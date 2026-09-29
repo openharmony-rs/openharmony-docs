@@ -20,6 +20,8 @@ Set the pin during pairing when the pin type is PIN_TYPE_ENTER_PIN_CODE.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function setDevicePinCode(deviceId: string, code: string, callback: AsyncCallback<void>): void--><!--Device-connection-function setDevicePinCode(deviceId: string, code: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -71,6 +73,8 @@ Set the pin during pairing when the pin type is PIN_TYPE_ENTER_PIN_CODE.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-connection-function setDevicePinCode(deviceId: string, code: string): Promise<void>--><!--Device-connection-function setDevicePinCode(deviceId: string, code: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

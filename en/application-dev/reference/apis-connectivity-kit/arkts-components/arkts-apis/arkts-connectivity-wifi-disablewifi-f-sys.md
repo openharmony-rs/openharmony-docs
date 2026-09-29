@@ -22,6 +22,8 @@ Disables Wi-Fi.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifi-function disableWifi(): boolean--><!--Device-wifi-function disableWifi(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

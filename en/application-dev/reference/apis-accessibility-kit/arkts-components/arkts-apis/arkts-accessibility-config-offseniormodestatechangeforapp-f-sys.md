@@ -20,6 +20,8 @@ Cancels the listener for senior mode state change events of all apps. This API u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-config-function offSeniorModeStateChangeForApp(callback?: Callback<AppSeniorModeInfo>): void--><!--Device-config-function offSeniorModeStateChangeForApp(callback?: Callback<AppSeniorModeInfo>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.

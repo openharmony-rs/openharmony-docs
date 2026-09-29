@@ -6,7 +6,7 @@
 
 | Name | Description |
 | --- | --- |
-| [NodeController](arkts-arkui-nodecontroller-c.md) | The **NodeController** module provides APIs for managing custom nodes, such as creating, showing, and updating custom nodes, and APIs for mounting custom nodes to a [NodeContainer](../arkts-components/arkts-arkui-nodecontainer-comp-attribute.md#nodecontainerattribute) component. |
+| [NodeController](arkts-arkui-nodecontroller-c.md) | The **NodeController** module provides APIs for managing custom nodes, such as creating, showing, and updating custom nodes, and APIs for mounting custom nodes to a [NodeContainer](../arkts-components/arkts-arkui-nodecontainer-comp-attribute.md#nodecontainerattribute). It is suitable for scenarios where custom nodes need to be dynamically created, updated, and reused on a page. |
 
 ## Examples
 

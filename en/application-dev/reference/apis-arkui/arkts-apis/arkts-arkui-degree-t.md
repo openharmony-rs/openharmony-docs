@@ -12,6 +12,8 @@ Angle type, used to describe an angle in deg.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare type Degree = `${number}deg`--><!--Device-unnamed-declare type Degree = `${number}deg`-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** `${number}deg`

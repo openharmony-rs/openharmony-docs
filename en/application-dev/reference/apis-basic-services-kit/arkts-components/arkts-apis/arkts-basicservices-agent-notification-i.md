@@ -8,6 +8,8 @@ Describes the custom information of the notification bar.
 
 **Since:** 15
 
+<!--Device-agent-interface Notification--><!--Device-agent-interface Notification-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Custom body text, with a maximum of 3072 bytes. The default text is used if this
 
 **Since:** 15
 
+<!--Device-Notification-text?: string--><!--Device-Notification-text?: string-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## title
@@ -41,6 +45,8 @@ Custom title, with a maximum of 1024 bytes. The default title is used if this pa
 **Type:** string
 
 **Since:** 15
+
+<!--Device-Notification-title?: string--><!--Device-Notification-title?: string-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -62,6 +68,8 @@ VISIBILITY_PROGRESS or **3**. The progress notification is displayed when the ta
 
 **Since:** 21
 
+<!--Device-Notification-visibility?: int--><!--Device-Notification-visibility?: int-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## wantAgent
@@ -75,5 +83,7 @@ Notification parameter, which is used to implement redirection after a task noti
 **Type:** [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md)
 
 **Since:** 22
+
+<!--Device-Notification-wantAgent?: WantAgent--><!--Device-Notification-wantAgent?: WantAgent-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

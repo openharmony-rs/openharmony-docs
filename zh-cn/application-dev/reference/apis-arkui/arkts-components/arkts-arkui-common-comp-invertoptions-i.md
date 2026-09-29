@@ -8,6 +8,8 @@ declare interface InvertOptions
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface InvertOptions--><!--Device-unnamed-declare interface InvertOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## high
@@ -27,6 +29,8 @@ high: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-InvertOptions-high: number--><!--Device-InvertOptions-high: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ low: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-InvertOptions-low: number--><!--Device-InvertOptions-low: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## threshold
@@ -67,6 +73,8 @@ threshold: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-InvertOptions-threshold: number--><!--Device-InvertOptions-threshold: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,5 +99,7 @@ thresholdRange: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-InvertOptions-thresholdRange: number--><!--Device-InvertOptions-thresholdRange: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

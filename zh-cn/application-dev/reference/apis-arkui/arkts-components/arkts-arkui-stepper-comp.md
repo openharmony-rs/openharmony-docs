@@ -26,6 +26,8 @@ Called when the stepper component is used.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-StepperInterface-(value?: { index?: number }): StepperAttribute--><!--Device-StepperInterface-(value?: { index?: number }): StepperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
@@ -144,7 +146,7 @@ struct StepperExample {
 
 ### 示例2（使用Swiper替代Stepper）
 
-该示例主要演示如何使用Swiper组件实现Stepper组件的功能，示例效果图同示例1。
+该示例主要演示如何使用[Swiper](ts-container-swiper.md)组件实现Stepper组件的功能，示例效果图同示例1。
 
 ```TypeScript
 @Styles

@@ -24,6 +24,8 @@ function init(curve?: Curve): string
 
 **替代接口：** [initCurve](arkts-arkui-curves-initcurve-f.md)
 
+<!--Device-curves-function init(curve?: Curve): string--><!--Device-curves-function init(curve?: Curve): string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

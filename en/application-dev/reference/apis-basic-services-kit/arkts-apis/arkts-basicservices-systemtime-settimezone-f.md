@@ -22,6 +22,8 @@ Sets the system time zone. This API uses an asynchronous callback to return the 
 
 **Required permissions:** ohos.permission.SET_TIME_ZONE
 
+<!--Device-systemTime-function setTimezone(timezone: string, callback: AsyncCallback<void>): void--><!--Device-systemTime-function setTimezone(timezone: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **Parameters:**
@@ -74,6 +76,8 @@ Sets the system time zone. This API uses a promise to return the result.
 **Substitutes:** [setTimezone](arkts-basicservices-systemdatetime-settimezone-f-sys.md)
 
 **Required permissions:** ohos.permission.SET_TIME_ZONE
+
+<!--Device-systemTime-function setTimezone(timezone: string): Promise<void>--><!--Device-systemTime-function setTimezone(timezone: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 

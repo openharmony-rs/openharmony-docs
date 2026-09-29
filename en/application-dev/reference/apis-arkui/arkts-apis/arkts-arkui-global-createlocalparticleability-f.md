@@ -14,6 +14,8 @@ Get the java interface instance. The java instance needs to register, otherwise 
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-export declare function createLocalParticleAbility(name?: string): any--><!--Device-unnamed-export declare function createLocalParticleAbility(name?: string): any-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **Test API:** This API is used only in automated test scripts.

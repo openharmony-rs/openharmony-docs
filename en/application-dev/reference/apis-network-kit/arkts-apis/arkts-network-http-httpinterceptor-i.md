@@ -8,6 +8,8 @@ Defines the HTTP interceptor API, which is used to define the interception proce
 
 **Since:** 22
 
+<!--Device-http-export interface HttpInterceptor--><!--Device-http-export interface HttpInterceptor-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Intercepts the HTTP processing and modifies it as required.
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-HttpInterceptor-interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Promise<ChainContinue>--><!--Device-HttpInterceptor-interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Promise<ChainContinue>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -90,5 +94,7 @@ The type of this interceptor. It defines when this intercptor would be called.
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-HttpInterceptor-interceptorType: InterceptorType--><!--Device-HttpInterceptor-interceptorType: InterceptorType-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

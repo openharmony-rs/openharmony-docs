@@ -8,6 +8,8 @@ Wi-Fi device configuration information. @typedef WifiDeviceConfig
 
 **Since:** 12
 
+<!--Device-wifiManager-interface WifiDeviceConfig--><!--Device-wifiManager-interface WifiDeviceConfig-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Wi-Fi bssid(MAC): the length is 6.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WifiDeviceConfig-bssid?: string--><!--Device-WifiDeviceConfig-bssid?: string-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -44,7 +48,9 @@ Wi-Fi bssid type.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WifiDeviceConfig-bssidType?: DeviceAddressType--><!--Device-WifiDeviceConfig-bssidType?: DeviceAddressType-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -60,6 +66,8 @@ EAP config info.
 
 **Since:** 10
 
+<!--Device-WifiDeviceConfig-eapConfig?: WifiEapConfig--><!--Device-WifiDeviceConfig-eapConfig?: WifiEapConfig-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## isHiddenSsid
@@ -73,6 +81,8 @@ Hide SSID or not, false(default): not hide
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-WifiDeviceConfig-isHiddenSsid?: boolean--><!--Device-WifiDeviceConfig-isHiddenSsid?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -88,7 +98,9 @@ Wi-Fi key: maximum length is 64.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WifiDeviceConfig-preSharedKey: string--><!--Device-WifiDeviceConfig-preSharedKey: string-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -104,7 +116,9 @@ Security type: reference definition of WifiSecurityType
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WifiDeviceConfig-securityType: WifiSecurityType--><!--Device-WifiDeviceConfig-securityType: WifiSecurityType-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -122,6 +136,8 @@ Whether to show a dialog when the first network probe detects no internet. If fa
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiDeviceConfig-showNoInternetDialog?: boolean--><!--Device-WifiDeviceConfig-showNoInternetDialog?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## ssid
@@ -136,7 +152,9 @@ Wi-Fi SSID: the maximum length is 32.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WifiDeviceConfig-ssid: string--><!--Device-WifiDeviceConfig-ssid: string-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -151,5 +169,7 @@ WAPI config info.
 **Type:** [WifiWapiConfig](arkts-connectivity-wifimanager-wifiwapiconfig-i.md)
 
 **Since:** 12
+
+<!--Device-WifiDeviceConfig-wapiConfig?: WifiWapiConfig--><!--Device-WifiDeviceConfig-wapiConfig?: WifiWapiConfig-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA

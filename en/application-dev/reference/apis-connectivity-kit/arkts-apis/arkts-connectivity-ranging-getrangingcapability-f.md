@@ -20,6 +20,8 @@ Queries whether the current device supports ranging capability.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ranging-function getRangingCapability(): Promise<RangingCapabilitySupported>--><!--Device-ranging-function getRangingCapability(): Promise<RangingCapabilitySupported>-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 **Return value:**

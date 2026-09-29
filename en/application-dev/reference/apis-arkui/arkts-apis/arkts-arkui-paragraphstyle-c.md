@@ -10,9 +10,11 @@ Except the first paragraph, all paragraphs are formed using the escape character
 
 The style of a paragraph is the one (if any) set for the first element or the paragraph style of the bound component.
 
-Before API version 26.0.0, if the first placeholder in a paragraph of the styled string is a [CustomSpan](arkts-arkui-customspan-c.md) or [ImageAttachment](arkts-arkui-imageattachment-c.md), the paragraph style set for that paragraph does not take effect. From API version 26.0.0, the paragraph style takes effect.
+Before API version 26.0.0, if the first placeholder in a styled string paragraph is [CustomSpan](arkts-arkui-customspan-c.md) or [ImageAttachment](arkts-arkui-imageattachment-c.md), the paragraph style set on that paragraph does not take effect. Since API version 26.0.0, the paragraph style takes effect.
 
 **Since:** 12
+
+<!--Device-unnamed-declare class ParagraphStyle--><!--Device-unnamed-declare class ParagraphStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,13 +32,15 @@ A constructor used to create a text paragraph style.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ParagraphStyle-constructor(value?: ParagraphStyleInterface)--><!--Device-ParagraphStyle-constructor(value?: ParagraphStyleInterface)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ParagraphStyleInterface](arkts-arkui-paragraphstyleinterface-i.md) | No | Paragraph style options. |
+| value | [ParagraphStyleInterface](arkts-arkui-paragraphstyleinterface-i.md) | No | Paragraph style setting item.<br>Default value: If not passed, the default values of the properties of **ParagraphStyleInterface** are inherited. |
 
 ## leadingMargin
 
@@ -44,9 +48,9 @@ A constructor used to create a text paragraph style.
 readonly leadingMargin?: number | LeadingMarginPlaceholder
 ```
 
-Indent of the text paragraph.
+Indent of the styled string text paragraph.
 
-If the return value is of the number type, the unit is vp.
+When the return value is of the number type, the unit is vp.
 
 **Type:** number &#124; [LeadingMarginPlaceholder](../arkts-components/arkts-arkui-richeditor-comp-leadingmarginplaceholder-i.md)
 
@@ -56,6 +60,8 @@ If the return value is of the number type, the unit is vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ParagraphStyle-readonly leadingMargin?: number | LeadingMarginPlaceholder--><!--Device-ParagraphStyle-readonly leadingMargin?: number | LeadingMarginPlaceholder-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## leadingMarginSpan
@@ -64,7 +70,7 @@ If the return value is of the number type, the unit is vp.
 readonly leadingMarginSpan?: LeadingMarginSpan
 ```
 
-Custom indentation information for text paragraphs in the styled string.
+Custom indent information of the styled string text paragraph.
 
 **Type:** [LeadingMarginSpan](arkts-arkui-leadingmarginspan-c.md)
 
@@ -74,6 +80,8 @@ Custom indentation information for text paragraphs in the styled string.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-ParagraphStyle-readonly leadingMarginSpan?: LeadingMarginSpan--><!--Device-ParagraphStyle-readonly leadingMarginSpan?: LeadingMarginSpan-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxLines
@@ -82,7 +90,9 @@ Custom indentation information for text paragraphs in the styled string.
 readonly maxLines?: number
 ```
 
-Maximum number of lines in the text paragraph.
+Maximum number of lines of the styled string text paragraph.
+
+Value range: [0, INT32_MAX]. A negative value means no limit.
 
 **Type:** number
 
@@ -91,6 +101,8 @@ Maximum number of lines in the text paragraph.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ParagraphStyle-readonly maxLines?: number--><!--Device-ParagraphStyle-readonly maxLines?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,7 +112,11 @@ Maximum number of lines in the text paragraph.
 readonly overflow?: TextOverflow
 ```
 
-Display mode when the text is too long in the text paragraph.
+Display mode of the styled string text paragraph when it is too long.
+
+Default value: **TextOverflow.None**.
+
+It must be used together with **maxLines**; setting it alone does not take effect. **TextOverflow.MARQUEE** is not supported.
 
 **Type:** [TextOverflow](arkts-arkui-textoverflow-e.md)
 
@@ -110,6 +126,8 @@ Display mode when the text is too long in the text paragraph.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ParagraphStyle-readonly overflow?: TextOverflow--><!--Device-ParagraphStyle-readonly overflow?: TextOverflow-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## paragraphSpacing
@@ -118,9 +136,9 @@ Display mode when the text is too long in the text paragraph.
 readonly paragraphSpacing?: number
 ```
 
-Paragraph spacing of the styled string text.
+Paragraph spacing of the styled string text paragraph.
 
-Unit: vp
+Unit: [vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** number
 
@@ -129,6 +147,8 @@ Unit: vp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-ParagraphStyle-readonly paragraphSpacing?: number--><!--Device-ParagraphStyle-readonly paragraphSpacing?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,7 +160,7 @@ readonly shaderStyle?: ShaderStyle
 
 Text shader effect.
 
-**Since**: 26.0.0.
+**Note:** When this API is set together with **strokeWidth** of [TextStyleInterface](arkts-arkui-textstyleinterface-i.md), this API does not take effect. **shaderStyle** has a higher priority than **fontColor** in [TextStyleInterface](arkts-arkui-textstyleinterface-i.md).
 
 **Type:** [ShaderStyle](arkts-arkui-shaderstyle-c.md)
 
@@ -150,6 +170,8 @@ Text shader effect.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ParagraphStyle-readonly shaderStyle?: ShaderStyle--><!--Device-ParagraphStyle-readonly shaderStyle?: ShaderStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## tailIndents
@@ -158,7 +180,7 @@ Text shader effect.
 readonly tailIndents?: Array<number>
 ```
 
-Get the tail indentation of the StyledString. The unit is vp.
+Tail indent distance of the styled string text paragraph. INT32_MAX] The value **0** means no tail indent. **Note:** In the same paragraph, the **tailIndents** array takes values by array index in sequence for each line to perform indentation. For the first line of a new paragraph, the value is taken again from index 0 of the **tailIndents** array. Unit: [vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units).
 
 **Type:** Array&lt;number&gt;
 
@@ -168,6 +190,8 @@ Get the tail indentation of the StyledString. The unit is vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ParagraphStyle-readonly tailIndents?: Array<number>--><!--Device-ParagraphStyle-readonly tailIndents?: Array<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textAlign
@@ -176,7 +200,9 @@ Get the tail indentation of the StyledString. The unit is vp.
 readonly textAlign?: TextAlign
 ```
 
-Horizontal alignment mode of the text paragraph.
+Horizontal alignment of the styled string text paragraph.
+
+**Note:** **textAlign** can only adjust the overall layout of the text and does not affect the display order of characters.
 
 **Type:** [TextAlign](arkts-arkui-textalign-e.md)
 
@@ -185,6 +211,8 @@ Horizontal alignment mode of the text paragraph.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ParagraphStyle-readonly textAlign?: TextAlign--><!--Device-ParagraphStyle-readonly textAlign?: TextAlign-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -204,6 +232,8 @@ Text direction.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-ParagraphStyle-readonly textDirection?: TextDirection--><!--Device-ParagraphStyle-readonly textDirection?: TextDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textIndent
@@ -212,9 +242,7 @@ Text direction.
 readonly textIndent?: number
 ```
 
-First line indent of the text paragraph.
-
-Unit: VP.
+First-line text indent of the styled string text paragraph. Unit: [vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** number
 
@@ -224,6 +252,8 @@ Unit: VP.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ParagraphStyle-readonly textIndent?: number--><!--Device-ParagraphStyle-readonly textIndent?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textVerticalAlign
@@ -232,9 +262,9 @@ Unit: VP.
 readonly textVerticalAlign?: TextVerticalAlign
 ```
 
-Vertical alignment mode of the text paragraph.
+Vertical alignment of the styled string text paragraph.
 
-The effect of this attribute is noticeable only when the same font size is used in a paragraph and [lineHeight](../arkts-components/arkts-arkui-text-comp-attribute.md#lineheight) is set, or when different font sizes are used in a paragraph and the font sizes are mixed. The **SuperscriptStyle** in [TextStyle](arkts-arkui-textstyle-c.md) takes effect only when the value of TextVerticalAlign is set to **TextVerticalAlign.BASELINE**. In other vertical alignment modes, the superscript and subscript texts are displayed in the same way as the normal text.
+The effect differs only when the same font size is used in a paragraph and the line height [lineHeight](../arkts-components/arkts-arkui-text-comp-attribute.md#lineheight) is set at the same time, or when text of different font sizes is mixed in the same paragraph. Otherwise, setting any enum value of this attribute produces the same layout effect as not setting it. The **SuperscriptStyle** superscript and subscript style in [TextStyle](arkts-arkui-textstyle-c.md) of the styled string takes effect only when the value of TextVerticalAlign is **TextVerticalAlign.BASELINE**. With other vertical alignment modes, superscript and subscript text behaves the same as normal text, with no superscript or subscript effect.
 
 **Type:** [TextVerticalAlign](arkts-arkui-textverticalalign-e.md)
 
@@ -244,6 +274,8 @@ The effect of this attribute is noticeable only when the same font size is used 
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ParagraphStyle-readonly textVerticalAlign?: TextVerticalAlign--><!--Device-ParagraphStyle-readonly textVerticalAlign?: TextVerticalAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## wordBreak
@@ -252,7 +284,7 @@ The effect of this attribute is noticeable only when the same font size is used 
 readonly wordBreak?: WordBreak
 ```
 
-Word break rule of the text paragraph.
+Line break rule of the styled string text paragraph.
 
 **Type:** [WordBreak](arkts-arkui-wordbreak-e.md)
 
@@ -261,5 +293,7 @@ Word break rule of the text paragraph.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ParagraphStyle-readonly wordBreak?: WordBreak--><!--Device-ParagraphStyle-readonly wordBreak?: WordBreak-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

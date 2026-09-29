@@ -8,6 +8,8 @@ Enumerates control request types. Each type indicates a specific USB control req
 
 **Since:** 9
 
+<!--Device-usbManager-export enum USBControlRequestType--><!--Device-usbManager-export enum USBControlRequestType-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## USB_REQUEST_TYPE_STANDARD
@@ -19,6 +21,8 @@ USB_REQUEST_TYPE_STANDARD = 0
 Standard request type, which is used to send standard control requests (such as the device descriptor, setting address, and setting configuration) defined by the USB protocol.
 
 **Since:** 9
+
+<!--Device-USBControlRequestType-USB_REQUEST_TYPE_STANDARD = 0--><!--Device-USBControlRequestType-USB_REQUEST_TYPE_STANDARD = 0-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -32,6 +36,8 @@ Class request type, which is used to send class-specific control requests (such 
 
 **Since:** 9
 
+<!--Device-USBControlRequestType-USB_REQUEST_TYPE_CLASS = 1--><!--Device-USBControlRequestType-USB_REQUEST_TYPE_CLASS = 1-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## USB_REQUEST_TYPE_VENDOR
@@ -43,5 +49,7 @@ USB_REQUEST_TYPE_VENDOR = 2
 Vendor request type, which is used to send vendor-defined control requests. The request content is defined by the vendor.
 
 **Since:** 9
+
+<!--Device-USBControlRequestType-USB_REQUEST_TYPE_VENDOR = 2--><!--Device-USBControlRequestType-USB_REQUEST_TYPE_VENDOR = 2-End-->
 
 **System capability:** SystemCapability.USB.USBManager

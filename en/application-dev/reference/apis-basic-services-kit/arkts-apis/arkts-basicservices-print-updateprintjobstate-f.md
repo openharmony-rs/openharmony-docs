@@ -21,6 +21,8 @@ Updates the print job state. This API uses an asynchronous callback to return th
 - API version 24 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
 - API versions 10 to 23: ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState,    callback: AsyncCallback<void>): void--><!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState,    callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**
@@ -75,6 +77,8 @@ Updates the print job state. This API uses a promise to return the result.
 **Required permissions:** 
 - API version 24 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
 - API versions 10 to 23: ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState): Promise<void>--><!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState): Promise<void>-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

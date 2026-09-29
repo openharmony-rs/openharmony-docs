@@ -8,6 +8,8 @@ Enumerates the window visibility states.
 
 **Since:** 22
 
+<!--Device-window-enum OcclusionState--><!--Device-window-enum OcclusionState-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## NO_OCCLUSION
@@ -19,6 +21,8 @@ NO_OCCLUSION = 0
 The window is entirely visible, with no parts obscured by other non-transparent windows.
 
 **Since:** 22
+
+<!--Device-OcclusionState-NO_OCCLUSION = 0--><!--Device-OcclusionState-NO_OCCLUSION = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -32,6 +36,8 @@ The window is partially visible, with some parts obscured by other non-transpare
 
 **Since:** 22
 
+<!--Device-OcclusionState-PARTIAL_OCCLUSION = 1--><!--Device-OcclusionState-PARTIAL_OCCLUSION = 1-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## FULL_OCCLUSION
@@ -43,5 +49,7 @@ FULL_OCCLUSION = 2
 The window is completely invisible, either fully obscured by other non-transparent windows, minimized, or hidden.
 
 **Since:** 22
+
+<!--Device-OcclusionState-FULL_OCCLUSION = 2--><!--Device-OcclusionState-FULL_OCCLUSION = 2-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

@@ -12,6 +12,8 @@ Camera node, which inherits from Node.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface Camera extends Node--><!--Device-unnamed-export interface Camera extends Node-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## getProjectionMatrix
@@ -23,6 +25,8 @@ getProjectionMatrix(): Mat4x4
 Obtains the projection matrix of the camera.
 
 **Since:** 23
+
+<!--Device-Camera-getProjectionMatrix(): Mat4x4--><!--Device-Camera-getProjectionMatrix(): Mat4x4-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -65,6 +69,8 @@ Obtains the view matrix of the camera.
 
 **Since:** 23
 
+<!--Device-Camera-getViewMatrix(): Mat4x4--><!--Device-Camera-getViewMatrix(): Mat4x4-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Return value:**
@@ -105,6 +111,8 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 Casts a ray from a specific position on the screen to detect and retrieve information about all hit 3D objects. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-Camera-raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>--><!--Device-Camera-raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -247,6 +255,8 @@ Color after the render target is cleared.
 
 **Since:** 12
 
+<!--Device-Camera-clearColor: Color | null--><!--Device-Camera-clearColor: Color | null-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## effects
@@ -260,6 +270,8 @@ Post-processing effects applied to the camera output.
 **Type:** [Container](arkts-arkgraphics3d-scenenodes-container-i.md)&lt;[Effect](arkts-arkgraphics3d-sceneresources-effect-i.md)&gt;
 
 **Since:** 21
+
+<!--Device-Camera-readonly effects: Container<Effect>--><!--Device-Camera-readonly effects: Container<Effect>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -275,6 +287,8 @@ Whether the camera is enabled. true if enabled, false otherwise.
 
 **Since:** 12
 
+<!--Device-Camera-enabled: boolean--><!--Device-Camera-enabled: boolean-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## farPlane
@@ -289,6 +303,8 @@ Far plane. The unit is the scene unit (such as cm, m, and km) in the world coord
 
 **Since:** 12
 
+<!--Device-Camera-farPlane: double--><!--Device-Camera-farPlane: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## fov
@@ -302,6 +318,8 @@ Field of view. The unit is radian (rad). The value ranges from 0 to π radians.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Camera-fov: double--><!--Device-Camera-fov: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -319,6 +337,8 @@ Whether Multisample Anti-Aliasing (MSAA) is enabled. true if enabled, false othe
 
 **Since:** 22
 
+<!--Device-Camera-msaa?: boolean--><!--Device-Camera-msaa?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## nearPlane
@@ -333,6 +353,8 @@ Near plane. The unit is the scene unit (such as cm, m, and km) in the world coor
 
 **Since:** 12
 
+<!--Device-Camera-nearPlane: double--><!--Device-Camera-nearPlane: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## postProcess
@@ -346,6 +368,8 @@ Post-processing settings.
 **Type:** [PostProcessSettings](arkts-arkgraphics3d-scenepostprocesssettings-postprocesssettings-i.md) &#124; null
 
 **Since:** 12
+
+<!--Device-Camera-postProcess: PostProcessSettings | null--><!--Device-Camera-postProcess: PostProcessSettings | null-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -362,5 +386,7 @@ Rendering pipeline type. If this parameter is not set, the lightweight forward r
 **Default:** RenderingPipelineType.FORWARD_LIGHTWEIGHT
 
 **Since:** 21
+
+<!--Device-Camera-renderingPipeline?: RenderingPipelineType--><!--Device-Camera-renderingPipeline?: RenderingPipelineType-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

@@ -18,6 +18,8 @@ Updates an asset. This API uses a promise to return the result.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-asset-function update(query: AssetMap, attributesToUpdate: AssetMap): Promise<void>--><!--Device-asset-function update(query: AssetMap, attributesToUpdate: AssetMap): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**

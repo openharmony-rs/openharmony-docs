@@ -8,6 +8,8 @@ Defines the accessibility attribute configuration.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface ChipV2AccessibilityConfig--><!--Device-unnamed-export interface ChipV2AccessibilityConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2AccessibilityConfig-accessibilityDescription?: ResourceStr--><!--Device-ChipV2AccessibilityConfig-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +74,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2AccessibilityConfig-accessibilityLevel?: string--><!--Device-ChipV2AccessibilityConfig-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -91,5 +97,7 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2AccessibilityConfig-accessibilityText?: ResourceStr--><!--Device-ChipV2AccessibilityConfig-accessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

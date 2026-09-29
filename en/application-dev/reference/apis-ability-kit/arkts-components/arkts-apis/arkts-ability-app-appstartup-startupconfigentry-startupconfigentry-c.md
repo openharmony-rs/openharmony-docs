@@ -8,6 +8,8 @@ The module provides the capability to configure [AppStartup](../../../applicatio
 
 **Since:** 12
 
+<!--Device-unnamed-declare class StartupConfigEntry--><!--Device-unnamed-declare class StartupConfigEntry-End-->
+
 **System capability:** SystemCapability.Ability.AppStartup
 
 ## Modules to Import
@@ -29,6 +31,8 @@ You can set the AppStartup configuration within this callback. For details, see 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartupConfigEntry-onConfig?(): StartupConfig--><!--Device-StartupConfigEntry-onConfig?(): StartupConfig-End-->
 
 **System capability:** SystemCapability.Ability.AppStartup
 
@@ -84,6 +88,8 @@ This API is typically used in scenarios where tasks cannot be matched directly u
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartupConfigEntry-onRequestCustomMatchRule(want: Want): string--><!--Device-StartupConfigEntry-onRequestCustomMatchRule(want: Want): string-End-->
 
 **System capability:** SystemCapability.Ability.AppStartup
 

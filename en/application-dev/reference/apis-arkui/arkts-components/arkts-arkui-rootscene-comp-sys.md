@@ -14,6 +14,8 @@ Called when the RootScene is used.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RootSceneInterface-(session: RootSceneSession): RootSceneAttribute--><!--Device-RootSceneInterface-(session: RootSceneSession): RootSceneAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

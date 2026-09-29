@@ -19,6 +19,8 @@ Publishes a notification. This API uses an asynchronous callback to return the r
 
 **Substitutes:** [publish](arkts-notification-notificationmanager-publish-f.md)
 
+<!--Device-notification-function publish(request: NotificationRequest, callback: AsyncCallback<void>): void--><!--Device-notification-function publish(request: NotificationRequest, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -44,6 +46,8 @@ Publishes a notification. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [publish](arkts-notification-notificationmanager-publish-f.md)
+
+<!--Device-notification-function publish(request: NotificationRequest): Promise<void>--><!--Device-notification-function publish(request: NotificationRequest): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

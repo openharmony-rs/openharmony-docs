@@ -20,6 +20,8 @@ Switches to another input method. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.CONNECT_IME_ABILITY
 
+<!--Device-inputMethod-function switchInputMethod(bundleName: string, subtypeId?: string): Promise<void>--><!--Device-inputMethod-function switchInputMethod(bundleName: string, subtypeId?: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API:** This is a system API.

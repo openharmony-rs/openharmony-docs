@@ -8,6 +8,8 @@ CounterV2DateData定义了日期通用属性和方法，包括年、月、日。
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare class CounterV2DateData--><!--Device-unnamed-declare class CounterV2DateData-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,6 +31,8 @@ CounterV2DateData的构造函数用于初始化日期对象。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CounterV2DateData-constructor(year: int, month: int, day: int)--><!--Device-CounterV2DateData-constructor(year: int, month: int, day: int)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ toString(): string
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-CounterV2DateData-toString(): string--><!--Device-CounterV2DateData-toString(): string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -78,6 +84,8 @@ day: number
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-CounterV2DateData-day: int--><!--Device-CounterV2DateData-day: int-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## month
@@ -96,6 +104,8 @@ month: number
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-CounterV2DateData-month: int--><!--Device-CounterV2DateData-month: int-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## year
@@ -113,5 +123,7 @@ year: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CounterV2DateData-year: int--><!--Device-CounterV2DateData-year: int-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

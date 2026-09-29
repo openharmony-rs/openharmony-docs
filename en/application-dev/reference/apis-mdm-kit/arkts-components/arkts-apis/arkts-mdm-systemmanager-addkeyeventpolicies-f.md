@@ -20,6 +20,8 @@ Adds a key event handling policy. When the system triggers a key event, if the e
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function addKeyEventPolicies(admin: Want, keyPolicies: Array<KeyEventPolicy>): void--><!--Device-systemManager-function addKeyEventPolicies(admin: Want, keyPolicies: Array<KeyEventPolicy>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

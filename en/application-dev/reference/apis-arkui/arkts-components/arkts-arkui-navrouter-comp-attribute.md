@@ -14,6 +14,8 @@ In addition to the universal attributes, the following attributes are supported.
 
 **Substitutes:** NavPathStack and navDestination
 
+<!--Device-unnamed-declare class NavRouterAttribute extends CommonMethod<NavRouterAttribute>--><!--Device-unnamed-declare class NavRouterAttribute extends CommonMethod<NavRouterAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## mode
@@ -35,6 +37,8 @@ Sets the route mode used for redirecting the user from the **NavRouter** compone
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavRouterAttribute-mode(mode: NavRouteMode): NavRouterAttribute--><!--Device-NavRouterAttribute-mode(mode: NavRouteMode): NavRouterAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,6 +65,8 @@ Called when the component activation status changes. **onStateChange(true)** is 
 **Substitutes:** [onShown](arkts-arkui-navdestination-comp-attribute.md#onshown)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavRouterAttribute-onStateChange(callback: (isActivated: boolean) => void): NavRouterAttribute--><!--Device-NavRouterAttribute-onStateChange(callback: (isActivated: boolean) => void): NavRouterAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

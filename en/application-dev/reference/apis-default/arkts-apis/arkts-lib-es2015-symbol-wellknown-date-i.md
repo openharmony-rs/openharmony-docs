@@ -17,6 +17,8 @@ interface Date
 
 Converts a Date object to a string.
 
+<!--Device-Date-[Symbol.toPrimitive](hint: "default"): string--><!--Device-Date-[Symbol.toPrimitive](hint: "default"): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -32,6 +34,8 @@ Converts a Date object to a string.
 ```
 
 Converts a Date object to a string.
+
+<!--Device-Date-[Symbol.toPrimitive](hint: "string"): string--><!--Device-Date-[Symbol.toPrimitive](hint: "string"): string-End-->
 
 **Parameters:**
 
@@ -49,6 +53,8 @@ Converts a Date object to a string.
 
 Converts a Date object to a number.
 
+<!--Device-Date-[Symbol.toPrimitive](hint: "number"): number--><!--Device-Date-[Symbol.toPrimitive](hint: "number"): number-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -64,6 +70,8 @@ Converts a Date object to a number.
 ```
 
 Converts a Date object to a string or number.
+
+<!--Device-Date-[Symbol.toPrimitive](hint: string): string | number--><!--Device-Date-[Symbol.toPrimitive](hint: string): string | number-End-->
 
 **Parameters:**
 

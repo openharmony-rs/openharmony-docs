@@ -8,6 +8,8 @@ export default class MediaQuery
 
 **起始版本：** 3
 
+<!--Device-unnamed-export default class MediaQuery--><!--Device-unnamed-export default class MediaQuery-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -27,6 +29,8 @@ static matchMedia(condition: string): MediaQueryList
 **起始版本：** 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MediaQuery-static matchMedia(condition: string): MediaQueryList--><!--Device-MediaQuery-static matchMedia(condition: string): MediaQueryList-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

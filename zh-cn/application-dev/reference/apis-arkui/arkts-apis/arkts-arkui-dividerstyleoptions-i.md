@@ -8,6 +8,8 @@ declare interface DividerStyleOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface DividerStyleOptions--><!--Device-unnamed-declare interface DividerStyleOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -25,6 +27,8 @@ color?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DividerStyleOptions-color?: ResourceColor--><!--Device-DividerStyleOptions-color?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ endMargin?: LengthMetrics
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DividerStyleOptions-endMargin?: LengthMetrics--><!--Device-DividerStyleOptions-endMargin?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## mode
@@ -61,6 +67,8 @@ mode?: DividerMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-DividerStyleOptions-mode?: DividerMode--><!--Device-DividerStyleOptions-mode?: DividerMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +88,8 @@ startMargin?: LengthMetrics
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DividerStyleOptions-startMargin?: LengthMetrics--><!--Device-DividerStyleOptions-startMargin?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeWidth
@@ -97,5 +107,7 @@ strokeWidth?: LengthMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DividerStyleOptions-strokeWidth?: LengthMetrics--><!--Device-DividerStyleOptions-strokeWidth?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

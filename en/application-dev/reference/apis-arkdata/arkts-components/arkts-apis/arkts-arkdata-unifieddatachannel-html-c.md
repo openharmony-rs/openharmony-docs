@@ -10,6 +10,8 @@ Represents the HTML data. It is a child class of [Text](arkts-arkdata-unifieddat
 
 **Since:** 10
 
+<!--Device-unifiedDataChannel-class HTML extends Text--><!--Device-unifiedDataChannel-class HTML extends Text-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -32,7 +34,9 @@ Indicates the content of html, with html tags
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HTML-get htmlContent(): string--><!--Device-HTML-get htmlContent(): string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -48,7 +52,9 @@ Indicates the content of html, with html tags
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HTML-set htmlContent(value: string)--><!--Device-HTML-set htmlContent(value: string)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -68,6 +74,8 @@ Plaintext without HTML tags. This parameter is optional. The default value is an
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HTML-plainContent?: string--><!--Device-HTML-plainContent?: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## uriAuthorizationPolicies
@@ -84,6 +92,8 @@ Defines URI authorization policies for drag intention.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-HTML-set uriAuthorizationPolicies(value: Array<UriPermission> | undefined)--><!--Device-HTML-set uriAuthorizationPolicies(value: Array<UriPermission> | undefined)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

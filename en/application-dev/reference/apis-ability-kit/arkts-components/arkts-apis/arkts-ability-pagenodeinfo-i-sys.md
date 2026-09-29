@@ -8,6 +8,8 @@ PageNodeInfo defines the page node information used for auto-fill.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export default interface PageNodeInfo--><!--Device-unnamed-export default interface PageNodeInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## depth
@@ -23,6 +25,8 @@ The depth of page node.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PageNodeInfo-depth: int--><!--Device-PageNodeInfo-depth: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -42,6 +46,8 @@ The auto fill flag of page node.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PageNodeInfo-enableAutoFill: boolean--><!--Device-PageNodeInfo-enableAutoFill: boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -59,6 +65,8 @@ The metadata of a node.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PageNodeInfo-metadata?: string--><!--Device-PageNodeInfo-metadata?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -78,6 +86,8 @@ The password rules of page node.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PageNodeInfo-passwordRules?: string--><!--Device-PageNodeInfo-passwordRules?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -95,6 +105,8 @@ The tag of page node.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PageNodeInfo-tag: string--><!--Device-PageNodeInfo-tag: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

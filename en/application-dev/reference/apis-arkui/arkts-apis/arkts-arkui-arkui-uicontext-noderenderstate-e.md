@@ -8,6 +8,8 @@ An enumeration type that identifies the current node's rendering state. The UI c
 
 **Since:** 20
 
+<!--Device-unnamed-export const enum NodeRenderState--><!--Device-unnamed-export const enum NodeRenderState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ABOUT_TO_RENDER_IN
@@ -24,6 +26,8 @@ The node has been mount on to the render tree and will soon be rendered. General
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-NodeRenderState-ABOUT_TO_RENDER_IN = 0--><!--Device-NodeRenderState-ABOUT_TO_RENDER_IN = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ABOUT_TO_RENDER_OUT
@@ -39,5 +43,7 @@ The node has been removed from the render tree and will no longer be rendered sh
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-NodeRenderState-ABOUT_TO_RENDER_OUT = 1--><!--Device-NodeRenderState-ABOUT_TO_RENDER_OUT = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

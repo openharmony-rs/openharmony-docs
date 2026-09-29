@@ -12,6 +12,8 @@ Callback type for the component area change event.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-unnamed-declare type AreaChangeCallback = (oldValue: Area, newValue: Area) => void--><!--Device-unnamed-declare type AreaChangeCallback = (oldValue: Area, newValue: Area) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

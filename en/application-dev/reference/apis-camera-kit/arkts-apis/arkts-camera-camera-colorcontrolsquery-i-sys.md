@@ -8,6 +8,8 @@ Color controls query object.
 
 **Since:** 26.0.1
 
+<!--Device-camera-interface ColorControlsQuery--><!--Device-camera-interface ColorControlsQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Checks whether the RGB bias is supported.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ColorControlsQuery-isRGBBiasSupported(): boolean--><!--Device-ColorControlsQuery-isRGBBiasSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -58,6 +62,8 @@ Checks whether the saturation is supported.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ColorControlsQuery-isSaturationSupported(): boolean--><!--Device-ColorControlsQuery-isSaturationSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

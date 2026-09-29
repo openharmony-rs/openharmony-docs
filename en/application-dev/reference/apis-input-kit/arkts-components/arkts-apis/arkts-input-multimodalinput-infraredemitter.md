@@ -4,6 +4,8 @@ The **infraredEmitter** module generates IR signals of the specified frequency a
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace infraredEmitter--><!--Device-unnamed-declare namespace infraredEmitter-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InfraredEmitter
 
 ## Modules to Import

@@ -18,6 +18,8 @@ Unregisters the observer used to listen for ability start or exit events.
 
 **Required permissions:** ohos.permission.RUNNING_STATE_OBSERVER
 
+<!--Device-abilityManager-function off(type: 'abilityForegroundState', observer?: AbilityForegroundStateObserver): void--><!--Device-abilityManager-function off(type: 'abilityForegroundState', observer?: AbilityForegroundStateObserver): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

@@ -4,13 +4,17 @@
 export interface SubscribeProximityOptions
 ```
 
-Defines the type of data to return for a subscription to data changes of the proximity sensor.
+Sets the parameters for subscribing to the distance sensor, including the callback function.
+
+**Device behavior differences**: This API can be called on wearables and lite wearables, but has no effect on other device types.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
 **Substitutes:** [PROXIMITY](arkts-sensorservice-sensor-sensorid-e.md#proximity)
+
+<!--Device-unnamed-export interface SubscribeProximityOptions--><!--Device-unnamed-export interface SubscribeProximityOptions-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -26,7 +30,7 @@ import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, Devi
 fail?: (data: string, code: number) => void
 ```
 
-Callback invoked when an API call fails.
+Callback invoked when an API call fails. The callback parameters are **data** of the string type and **code** of the number type, where **data** indicates the error information and **code** indicates the error code. If this parameter is not specified, no callback notification is sent when the API call fails.
 
 **Since:** 3
 
@@ -35,6 +39,8 @@ Callback invoked when an API call fails.
 **Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeProximityOptions-fail?: (data: string, code: number) => void--><!--Device-SubscribeProximityOptions-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -51,7 +57,7 @@ Callback invoked when an API call fails.
 success: (data: ProximityResponse) => void
 ```
 
-Defines a **ProximityResponse** object.
+Callback function invoked when the proximity sensor data changes. The callback parameter is a **ProximityResponse** object.
 
 **Since:** 3
 
@@ -60,6 +66,8 @@ Defines a **ProximityResponse** object.
 **Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeProximityOptions-success: (data: ProximityResponse) => void--><!--Device-SubscribeProximityOptions-success: (data: ProximityResponse) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 

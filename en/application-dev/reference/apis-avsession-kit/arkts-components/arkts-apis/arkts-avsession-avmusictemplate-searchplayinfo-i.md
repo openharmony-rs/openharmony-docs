@@ -10,6 +10,8 @@ The definition of SearchPlayInfo.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-interface SearchPlayInfo--><!--Device-avMusicTemplate-interface SearchPlayInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Search for information about karaoke songs. If this parameter is left blank, onl
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayInfo-karaokeInfo?: SearchPlayKaraokeInfo--><!--Device-SearchPlayInfo-karaokeInfo?: SearchPlayKaraokeInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## musicInfo
@@ -48,6 +52,8 @@ The musicInfo of SearchPlayInfo.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayInfo-musicInfo?: SearchPlayMusicInfo--><!--Device-SearchPlayInfo-musicInfo?: SearchPlayMusicInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## videoInfo
@@ -63,5 +69,7 @@ The videoInfo of SearchPlayInfo.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SearchPlayInfo-videoInfo?: SearchPlayVideoInfo--><!--Device-SearchPlayInfo-videoInfo?: SearchPlayVideoInfo-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

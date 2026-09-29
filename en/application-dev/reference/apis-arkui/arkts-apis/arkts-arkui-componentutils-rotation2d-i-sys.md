@@ -10,6 +10,8 @@ Describes a rotation in 2D, which can be defined by rotation angle and rotation 
 
 **Since:** 23
 
+<!--Device-componentUtils-interface Rotation2D--><!--Device-componentUtils-interface Rotation2D-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Rotation angle Information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Rotation2D-angle: double--><!--Device-Rotation2D-angle: double-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -52,6 +56,8 @@ Rotation centerX Information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Rotation2D-centerX: double--><!--Device-Rotation2D-centerX: double-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -69,6 +75,8 @@ Rotation centerY Information.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Rotation2D-centerY: double--><!--Device-Rotation2D-centerY: double-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

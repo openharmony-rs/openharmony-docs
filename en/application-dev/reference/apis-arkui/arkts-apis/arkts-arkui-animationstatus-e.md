@@ -4,9 +4,11 @@
 declare enum AnimationStatus
 ```
 
-Animation status.
+Sets the animation playback status.
 
 **Since:** 7
+
+<!--Device-unnamed-declare enum AnimationStatus--><!--Device-unnamed-declare enum AnimationStatus-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ Animation status.
 Initial = 0
 ```
 
-Initial state of the animation.
+The animation is in the initial state.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-AnimationStatus-Initial = 0--><!--Device-AnimationStatus-Initial = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,13 +36,15 @@ Initial state of the animation.
 Running = 1
 ```
 
-The animation is playing.
+The animation is being played.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-AnimationStatus-Running = 1--><!--Device-AnimationStatus-Running = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +62,8 @@ The animation is paused.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-AnimationStatus-Paused = 2--><!--Device-AnimationStatus-Paused = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Stopped
@@ -71,5 +79,7 @@ The animation is stopped.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-AnimationStatus-Stopped = 3--><!--Device-AnimationStatus-Stopped = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

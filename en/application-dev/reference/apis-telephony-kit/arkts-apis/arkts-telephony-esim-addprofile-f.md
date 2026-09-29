@@ -18,6 +18,8 @@ Launches the download page for the user to add a single profile. This API uses a
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
 
+<!--Device-eSIM-function addProfile(profile: DownloadableProfile): Promise<boolean>--><!--Device-eSIM-function addProfile(profile: DownloadableProfile): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **Parameters:**

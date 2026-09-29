@@ -12,6 +12,8 @@ export interface EnableAlertBeforeBackPageOptions
 
 **替代接口：** [EnableAlertOptions](arkts-arkui-router-enablealertoptions-i.md)
 
+<!--Device-unnamed-export interface EnableAlertBeforeBackPageOptions--><!--Device-unnamed-export interface EnableAlertBeforeBackPageOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -33,6 +35,8 @@ cancel?: (errMsg: string) => void
 **废弃版本：** 8
 
 **替代接口：** [EnableAlertOptions](arkts-arkui-router-enablealertoptions-i.md)
+
+<!--Device-EnableAlertBeforeBackPageOptions-cancel?: (errMsg: string) => void--><!--Device-EnableAlertBeforeBackPageOptions-cancel?: (errMsg: string) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ complete?: () => void
 
 **替代接口：** [EnableAlertOptions](arkts-arkui-router-enablealertoptions-i.md)
 
+<!--Device-EnableAlertBeforeBackPageOptions-complete?: () => void--><!--Device-EnableAlertBeforeBackPageOptions-complete?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## success
@@ -71,6 +77,8 @@ success?: (errMsg: string) => void
 **废弃版本：** 8
 
 **替代接口：** [EnableAlertOptions](arkts-arkui-router-enablealertoptions-i.md)
+
+<!--Device-EnableAlertBeforeBackPageOptions-success?: (errMsg: string) => void--><!--Device-EnableAlertBeforeBackPageOptions-success?: (errMsg: string) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,5 +103,7 @@ message: string
 **废弃版本：** 8
 
 **替代接口：** message
+
+<!--Device-EnableAlertBeforeBackPageOptions-message: string--><!--Device-EnableAlertBeforeBackPageOptions-message: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Edge of the safe area for expanding the layout.
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum SafeAreaEdge--><!--Device-unnamed-declare enum SafeAreaEdge-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOP
@@ -23,6 +25,8 @@ Top edge.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SafeAreaEdge-TOP = 0--><!--Device-SafeAreaEdge-TOP = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Bottom edge.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SafeAreaEdge-BOTTOM = 1--><!--Device-SafeAreaEdge-BOTTOM = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## START
@@ -56,6 +62,8 @@ Start edge.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SafeAreaEdge-START = 2--><!--Device-SafeAreaEdge-START = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## END
@@ -71,5 +79,7 @@ End edge.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SafeAreaEdge-END = 3--><!--Device-SafeAreaEdge-END = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

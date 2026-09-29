@@ -8,6 +8,8 @@ Result of an analysis tool execution.
 
 **Since:** 26.0.1
 
+<!--Device-photoAccessHelper-interface AnalysisToolResult--><!--Device-photoAccessHelper-interface AnalysisToolResult-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Error code of the tool execution. The value 0 indicates success. Possible error 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AnalysisToolResult-errCode: int--><!--Device-AnalysisToolResult-errCode: int-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Result of the tool execution, in JSON string format.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AnalysisToolResult-result?: string--><!--Device-AnalysisToolResult-result?: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -8,6 +8,8 @@ Describes the parameters supported by the [@InsightIntentLink](../../../referenc
 
 **Since:** 20
 
+<!--Device-insightIntentDriver-interface LinkIntentInfo--><!--Device-insightIntentDriver-interface LinkIntentInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ URI of an intent.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LinkIntentInfo-readonly uri: string--><!--Device-LinkIntentInfo-readonly uri: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

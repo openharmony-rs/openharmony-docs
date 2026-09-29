@@ -4,11 +4,13 @@
 declare class QRCodeAttribute extends CommonMethod<QRCodeAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-**继承/实现关系：** QRCodeAttribute extends CommonMethod&lt;QRCodeAttribute&gt;
+**继承/实现关系：** QRCodeAttribute extends CommonMethod<QRCodeAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class QRCodeAttribute extends CommonMethod<QRCodeAttribute>--><!--Device-unnamed-declare class QRCodeAttribute extends CommonMethod<QRCodeAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ backgroundColor(value: ResourceColor)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-QRCodeAttribute-backgroundColor(value: ResourceColor): QRCodeAttribute--><!--Device-QRCodeAttribute-backgroundColor(value: ResourceColor): QRCodeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ color(value: ResourceColor)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-QRCodeAttribute-color(value: ResourceColor): QRCodeAttribute--><!--Device-QRCodeAttribute-color(value: ResourceColor): QRCodeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -69,6 +75,8 @@ contentOpacity(value: number | Resource)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-QRCodeAttribute-contentOpacity(value: number | Resource): QRCodeAttribute--><!--Device-QRCodeAttribute-contentOpacity(value: number | Resource): QRCodeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

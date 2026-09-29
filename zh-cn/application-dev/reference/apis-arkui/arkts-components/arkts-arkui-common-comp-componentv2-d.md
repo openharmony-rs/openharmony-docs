@@ -20,4 +20,6 @@ declare const ComponentV2: ClassDecorator & ((options: ComponentOptions) => Clas
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare const ComponentV2: ClassDecorator & ((options: ComponentOptions) => ClassDecorator)--><!--Device-unnamed-declare const ComponentV2: ClassDecorator & ((options: ComponentOptions) => ClassDecorator)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

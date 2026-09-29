@@ -16,6 +16,8 @@ MMS message code. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
+<!--Device-sms-function encodeMms(mms: MmsInformation, callback: AsyncCallback<Array<int>>): void--><!--Device-sms-function encodeMms(mms: MmsInformation, callback: AsyncCallback<Array<int>>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ function encodeMms(mms: MmsInformation): Promise<Array<number>>
 MMS message code. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-sms-function encodeMms(mms: MmsInformation): Promise<Array<int>>--><!--Device-sms-function encodeMms(mms: MmsInformation): Promise<Array<int>>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

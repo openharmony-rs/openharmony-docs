@@ -18,6 +18,8 @@ Registers a listener to observe the mission status.
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function on(type: 'mission', listener: MissionListener): long--><!--Device-missionManager-function on(type: 'mission', listener: MissionListener): long-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -126,6 +128,8 @@ Registers a listener to observe the mission status.
 **Substitutes:** [on](#onmission)(type: 'mission', listener: MissionListener)
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function on(type: 'missionEvent', listener: MissionListener): long--><!--Device-missionManager-function on(type: 'missionEvent', listener: MissionListener): long-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

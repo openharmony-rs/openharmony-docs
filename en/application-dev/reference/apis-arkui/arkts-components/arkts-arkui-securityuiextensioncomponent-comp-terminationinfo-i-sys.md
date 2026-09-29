@@ -8,6 +8,8 @@ Defines the result returned when the started **UIExtensionAbility** exits normal
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface TerminationInfo--><!--Device-unnamed-declare interface TerminationInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -26,6 +28,8 @@ Result code returned when the **UIExtensionAbility** exits. The value **0** indi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TerminationInfo-code: int--><!--Device-TerminationInfo-code: int-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -43,6 +47,8 @@ Data returned when the **UIExtensionAbility** exits.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TerminationInfo-want?: import('../api/@ohos.app.ability.Want').default--><!--Device-TerminationInfo-want?: import('../api/@ohos.app.ability.Want').default-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

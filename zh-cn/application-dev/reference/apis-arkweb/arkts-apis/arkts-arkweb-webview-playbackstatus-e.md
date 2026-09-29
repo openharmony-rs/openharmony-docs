@@ -8,6 +8,8 @@ enum PlaybackStatus
 
 **起始版本：** 12
 
+<!--Device-webview-enum PlaybackStatus--><!--Device-webview-enum PlaybackStatus-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## PAUSED
@@ -22,6 +24,8 @@ PAUSED = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PlaybackStatus-PAUSED = 0--><!--Device-PlaybackStatus-PAUSED = 0-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## PLAYING
@@ -35,5 +39,7 @@ PLAYING = 1
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PlaybackStatus-PLAYING = 1--><!--Device-PlaybackStatus-PLAYING = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

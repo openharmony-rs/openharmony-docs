@@ -8,6 +8,8 @@ Defines the style of a guideline, which used to define the ID, direction, and po
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface GuideLineStyle--><!--Device-unnamed-declare interface GuideLineStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -30,6 +32,8 @@ Invalid value: The default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GuideLineStyle-direction : Axis--><!--Device-GuideLineStyle-direction : Axis-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -47,6 +51,8 @@ ID of the guideline, used to identify the guideline. A child component can refer
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GuideLineStyle-id : string--><!--Device-GuideLineStyle-id : string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,5 +77,7 @@ Invalid value: The default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GuideLineStyle-position : GuideLinePosition--><!--Device-GuideLineStyle-position : GuideLinePosition-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

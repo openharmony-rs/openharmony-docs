@@ -8,6 +8,8 @@ Satellite status information.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-export interface SatelliteStatusInfo--><!--Device-geoLocationManager-export interface SatelliteStatusInfo-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Satellite altitude array.
 
 **Since:** 9
 
+<!--Device-SatelliteStatusInfo-altitudes: Array<double>--><!--Device-SatelliteStatusInfo-altitudes: Array<double>-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## azimuths
@@ -41,6 +45,8 @@ Satellite azimuth array.
 **Type:** Array&lt;number&gt;
 
 **Since:** 9
+
+<!--Device-SatelliteStatusInfo-azimuths: Array<double>--><!--Device-SatelliteStatusInfo-azimuths: Array<double>-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -56,6 +62,8 @@ Satellite carrier frequency array.
 
 **Since:** 9
 
+<!--Device-SatelliteStatusInfo-carrierFrequencies: Array<double>--><!--Device-SatelliteStatusInfo-carrierFrequencies: Array<double>-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## carrierToNoiseDensitys
@@ -69,6 +77,8 @@ Carrier to noise density array.
 **Type:** Array&lt;number&gt;
 
 **Since:** 9
+
+<!--Device-SatelliteStatusInfo-carrierToNoiseDensitys: Array<double>--><!--Device-SatelliteStatusInfo-carrierToNoiseDensitys: Array<double>-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -84,6 +94,8 @@ Satellite additional information array.
 
 **Since:** 12
 
+<!--Device-SatelliteStatusInfo-satelliteAdditionalInfo?: Array<int>--><!--Device-SatelliteStatusInfo-satelliteAdditionalInfo?: Array<int>-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## satelliteConstellation
@@ -97,6 +109,8 @@ Satellite constellation type array.
 **Type:** Array&lt;[SatelliteConstellationCategory](arkts-location-geolocationmanager-satelliteconstellationcategory-e.md)&gt;
 
 **Since:** 12
+
+<!--Device-SatelliteStatusInfo-satelliteConstellation?: Array<SatelliteConstellationCategory>--><!--Device-SatelliteStatusInfo-satelliteConstellation?: Array<SatelliteConstellationCategory>-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -112,6 +126,8 @@ Satellite ID array.
 
 **Since:** 9
 
+<!--Device-SatelliteStatusInfo-satelliteIds: Array<int>--><!--Device-SatelliteStatusInfo-satelliteIds: Array<int>-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## satellitesNumber
@@ -125,5 +141,7 @@ Number of satellites.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-SatelliteStatusInfo-satellitesNumber: int--><!--Device-SatelliteStatusInfo-satellitesNumber: int-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss

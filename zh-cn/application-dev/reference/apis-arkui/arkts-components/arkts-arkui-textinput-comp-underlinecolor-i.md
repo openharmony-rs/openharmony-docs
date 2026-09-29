@@ -8,6 +8,8 @@ declare interface UnderlineColor
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface UnderlineColor--><!--Device-unnamed-declare interface UnderlineColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## disable
@@ -25,6 +27,8 @@ disable?: ResourceColor | undefined
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UnderlineColor-disable?: ResourceColor | undefined--><!--Device-UnderlineColor-disable?: ResourceColor | undefined-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ error?: ResourceColor | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-UnderlineColor-error?: ResourceColor | undefined--><!--Device-UnderlineColor-error?: ResourceColor | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## normal
@@ -62,6 +68,8 @@ normal?: ResourceColor | undefined
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-UnderlineColor-normal?: ResourceColor | undefined--><!--Device-UnderlineColor-normal?: ResourceColor | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## typing
@@ -79,5 +87,7 @@ typing?: ResourceColor | undefined
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UnderlineColor-typing?: ResourceColor | undefined--><!--Device-UnderlineColor-typing?: ResourceColor | undefined-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

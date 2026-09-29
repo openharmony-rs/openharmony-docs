@@ -8,6 +8,8 @@ Defines the spacing between the text and the left and right icons.
 
 **Since:** 11
 
+<!--Device-unnamed-export interface LabelMarginOptions--><!--Device-unnamed-export interface LabelMarginOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -44,6 +46,8 @@ Value range: [0, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LabelMarginOptions-left?: Dimension--><!--Device-LabelMarginOptions-left?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## right
@@ -73,5 +77,7 @@ Value range: [0, +∞)
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LabelMarginOptions-right?: Dimension--><!--Device-LabelMarginOptions-right?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

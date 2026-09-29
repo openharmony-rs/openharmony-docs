@@ -8,6 +8,8 @@ Defines the common icon attribute configuration.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface ChipV2ImageIconConfig--><!--Device-unnamed-export interface ChipV2ImageIconConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -40,6 +42,8 @@ This attribute takes effect only when the image format is SVG.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2ImageIconConfig-activatedFillColor?: ColorMetrics--><!--Device-ChipV2ImageIconConfig-activatedFillColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fillColor
@@ -66,6 +70,8 @@ This attribute takes effect only when the image format is SVG.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2ImageIconConfig-fillColor?: ColorMetrics--><!--Device-ChipV2ImageIconConfig-fillColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## modifier
@@ -87,6 +93,8 @@ Default value: **undefined**, meaning the modifier is not applied.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2ImageIconConfig-modifier?: ImageModifier--><!--Device-ChipV2ImageIconConfig-modifier?: ImageModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,6 +127,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2ImageIconConfig-size?: SizeT<LengthMetrics>--><!--Device-ChipV2ImageIconConfig-size?: SizeT<LengthMetrics>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## src
@@ -138,5 +148,7 @@ Icon image or image address reference.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2ImageIconConfig-src: ResourceStr--><!--Device-ChipV2ImageIconConfig-src: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

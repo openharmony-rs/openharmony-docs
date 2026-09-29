@@ -10,6 +10,8 @@ It provides camera device information used in [Session](arkts-camera-camera-sess
 
 **Since:** 10
 
+<!--Device-camera-interface CameraInput--><!--Device-camera-interface CameraInput-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ closeDelayed(time: number): Promise<void>
 Delay close camera.
 
 **Since:** 18
+
+<!--Device-CameraInput-closeDelayed(time: int): Promise<void>--><!--Device-CameraInput-closeDelayed(time: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -62,6 +66,8 @@ Control auxiliary.
 
 **Since:** 18
 
+<!--Device-CameraInput-controlAuxiliary(auxiliaryType: AuxiliaryType, auxiliaryStatus: AuxiliaryStatus): Promise<void>--><!--Device-CameraInput-controlAuxiliary(auxiliaryType: AuxiliaryType, auxiliaryStatus: AuxiliaryStatus): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -96,6 +102,8 @@ usedAsPosition(position: CameraPosition): void
 Sets the camera to be used as a camera at the specified position.
 
 **Since:** 19
+
+<!--Device-CameraInput-usedAsPosition(position: CameraPosition): void--><!--Device-CameraInput-usedAsPosition(position: CameraPosition): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

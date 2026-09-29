@@ -16,6 +16,8 @@ Describes a region, which is used to describe the region where the shape can be 
 
 **Since:** 12
 
+<!--Device-drawing-class Region--><!--Device-drawing-class Region-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -33,6 +35,8 @@ constructor()
 Constructs a **Region** object.
 
 **Since:** 20
+
+<!--Device-Region-constructor()--><!--Device-Region-constructor()-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -98,6 +102,8 @@ Copies a **Region** object.
 
 **Since:** 20
 
+<!--Device-Region-constructor(region: Region)--><!--Device-Region-constructor(region: Region)-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -145,6 +151,8 @@ Constructs a rectangular region.
 
 **Since:** 20
 
+<!--Device-Region-constructor(left: int, top: int, right: int, bottom: int)--><!--Device-Region-constructor(left: int, top: int, right: int, bottom: int)-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -191,6 +199,8 @@ Obtains a new path that is the boundary of the existing region.
 
 **Since:** 20
 
+<!--Device-Region-getBoundaryPath(): Path--><!--Device-Region-getBoundaryPath(): Path-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -218,6 +228,8 @@ Obtains the boundaries of the existing region.
 
 **Since:** 20
 
+<!--Device-Region-getBounds(): common2D.Rect--><!--Device-Region-getBounds(): common2D.Rect-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -244,6 +256,8 @@ isComplex(): boolean
 Checks whether this region contains multiple rectangles.
 
 **Since:** 20
+
+<!--Device-Region-isComplex(): boolean--><!--Device-Region-isComplex(): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -293,6 +307,8 @@ Checks whether the existing region is empty.
 
 **Since:** 20
 
+<!--Device-Region-isEmpty(): boolean--><!--Device-Region-isEmpty(): boolean-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -340,6 +356,8 @@ isEqual(other: Region): boolean
 Checks whether another region is equal to this region.
 
 **Since:** 20
+
+<!--Device-Region-isEqual(other: Region): boolean--><!--Device-Region-isEqual(other: Region): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -396,6 +414,8 @@ isPointContained(x: number, y:number): boolean
 Checks whether a point is contained in this region.
 
 **Since:** 12
+
+<!--Device-Region-isPointContained(x: int, y:int): boolean--><!--Device-Region-isPointContained(x: int, y:int): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -460,6 +480,8 @@ Checks whether this region is the same as a single rectangle.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Region-isRect(): boolean--><!--Device-Region-isRect(): boolean-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -512,6 +534,8 @@ isRegionContained(other: Region): boolean
 Checks whether another region is contained in this region.
 
 **Since:** 12
+
+<!--Device-Region-isRegionContained(other: Region): boolean--><!--Device-Region-isRegionContained(other: Region): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -575,6 +599,8 @@ Translates a region.
 
 **Since:** 20
 
+<!--Device-Region-offset(dx: int, dy: int): void--><!--Device-Region-offset(dx: int, dy: int): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -621,6 +647,8 @@ op(region: Region, regionOp: RegionOp): boolean
 Performs an operation on this region and another region, and stores the resulting region in this **Region** object.
 
 **Since:** 12
+
+<!--Device-Region-op(region: Region, regionOp: RegionOp): boolean--><!--Device-Region-op(region: Region, regionOp: RegionOp): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -686,6 +714,8 @@ Checks whether this region is the same as a single rectangle and contains the sp
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Region-quickContains(left: int, top: int, right: int, bottom: int): boolean--><!--Device-Region-quickContains(left: int, top: int, right: int, bottom: int): boolean-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -745,6 +775,8 @@ quickReject(left: number, top: number, right: number, bottom: number): boolean
 Checks whether a rectangle do not intersect with this region. Actually, this API determines whether the rectangle does not intersect with the bounding rectangle of the region, and therefore the result may not be accurate.
 
 **Since:** 12
+
+<!--Device-Region-quickReject(left: int, top: int, right: int, bottom: int): boolean--><!--Device-Region-quickReject(left: int, top: int, right: int, bottom: int): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -808,6 +840,8 @@ Checks whether the existing region does not intersect with another region. Actua
 
 **Since:** 20
 
+<!--Device-Region-quickRejectRegion(region: Region): boolean--><!--Device-Region-quickRejectRegion(region: Region): boolean-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -862,6 +896,8 @@ Set the existing region to empty.
 
 **Since:** 20
 
+<!--Device-Region-setEmpty(): void--><!--Device-Region-setEmpty(): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Examples**
@@ -892,6 +928,8 @@ setPath(path: Path, clip: Region): boolean
 Sets a region that matches the outline of a path within the cropping area.
 
 **Since:** 12
+
+<!--Device-Region-setPath(path: Path, clip: Region): boolean--><!--Device-Region-setPath(path: Path, clip: Region): boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -955,6 +993,8 @@ Sets a rectangle.
 
 **Since:** 12
 
+<!--Device-Region-setRect(left: int, top: int, right: int, bottom: int): boolean--><!--Device-Region-setRect(left: int, top: int, right: int, bottom: int): boolean-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -1015,6 +1055,8 @@ setRegion(region: Region): void
 Sets the existing region to another region.
 
 **Since:** 20
+
+<!--Device-Region-setRegion(region: Region): void--><!--Device-Region-setRegion(region: Region): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

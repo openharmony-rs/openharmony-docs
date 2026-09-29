@@ -12,6 +12,8 @@ For the following APIs, you should use either [query] [query](arkts-arkdata-rela
 
 **Since:** 9
 
+<!--Device-relationalStore-interface ResultSet--><!--Device-relationalStore-interface ResultSet-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ getFloat32Array(columnIndex: number): Float32Array
 Obtains the value of the specified column in the current row as a float array. The implementation class determines whether to throw an exception if the value of the specified column in the current row is null or the specified column is not of the float array type.
 
 **Since:** 12
+
+<!--Device-ResultSet-getFloat32Array(columnIndex: int): Float32Array--><!--Device-ResultSet-getFloat32Array(columnIndex: int): Float32Array-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

@@ -14,6 +14,8 @@ Used for ide.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-type CombinedOptions<T extends ViewModel, Data> = object &  Options<T, Data> &  ThisType<T & ViewModel & Data>--><!--Device-unnamed-type CombinedOptions<T extends ViewModel, Data> = object &  Options<T, Data> &  ThisType<T & ViewModel & Data>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **System API:** This is a system API.

@@ -16,6 +16,8 @@ Implements the shader effect. After a shader effect is set for a pen or brush, t
 
 **Since:** 12
 
+<!--Device-drawing-class ShaderEffect--><!--Device-drawing-class ShaderEffect-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -33,6 +35,8 @@ static createColorShader(color: number): ShaderEffect
 Creates a **ShaderEffect** object with a single color.
 
 **Since:** 12
+
+<!--Device-ShaderEffect-static createColorShader(color: number): ShaderEffect--><!--Device-ShaderEffect-static createColorShader(color: number): ShaderEffect-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -72,6 +76,8 @@ static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: Shade
 Creates a shader by blending two existing shaders in a certain way.
 
 **Since:** 20
+
+<!--Device-ShaderEffect-static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: ShaderEffect,        blendMode: BlendMode): ShaderEffect--><!--Device-ShaderEffect-static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: ShaderEffect,        blendMode: BlendMode): ShaderEffect-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -116,6 +122,8 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 Creates a **ShaderEffect** object that generates a conical gradient between two given circles.
 
 **Since:** 12
+
+<!--Device-ShaderEffect-static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt: common2D.Point,        endRadius: number, colors: Array<number>, mode: TileMode,        pos?: Array<number> | null, matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt: common2D.Point,        endRadius: number, colors: Array<number>, mode: TileMode,        pos?: Array<number> | null, matrix?: Matrix | null): ShaderEffect-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -164,6 +172,8 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 Creates a shader based on an image. You are advised not to use the function for the canvas of the capture type because it affects the performance.
 
 **Since:** 20
+
+<!--Device-ShaderEffect-static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileMode,        samplingOptions: SamplingOptions, matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileMode,        samplingOptions: SamplingOptions, matrix?: Matrix | null): ShaderEffect-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -241,6 +251,8 @@ Creates a **ShaderEffect** object that generates a linear gradient between two p
 
 **Since:** 12
 
+<!--Device-ShaderEffect-static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colors: Array<int>,        mode: TileMode, pos?: Array<double> | null, matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colors: Array<int>,        mode: TileMode, pos?: Array<double> | null, matrix?: Matrix | null): ShaderEffect-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -287,6 +299,8 @@ Creates a **ShaderEffect** object that generates a radial gradient based on the 
 
 **Since:** 12
 
+<!--Device-ShaderEffect-static createRadialGradient(centerPt: common2D.Point, radius: double, colors: Array<int>,      mode: TileMode, pos?: Array<double> | null, matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createRadialGradient(centerPt: common2D.Point, radius: double, colors: Array<int>,      mode: TileMode, pos?: Array<double> | null, matrix?: Matrix | null): ShaderEffect-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -332,6 +346,8 @@ static createSweepGradient(centerPt: common2D.Point, colors: Array<number>,
 Creates a **ShaderEffect** object that generates a color sweep gradient around a given center point, either in a clockwise or counterclockwise direction.
 
 **Since:** 12
+
+<!--Device-ShaderEffect-static createSweepGradient(centerPt: common2D.Point, colors: Array<number>,        mode: TileMode, startAngle: number, endAngle: number, pos?: Array<number> | null,        matrix?: Matrix | null): ShaderEffect--><!--Device-ShaderEffect-static createSweepGradient(centerPt: common2D.Point, colors: Array<number>,        mode: TileMode, startAngle: number, endAngle: number, pos?: Array<number> | null,        matrix?: Matrix | null): ShaderEffect-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

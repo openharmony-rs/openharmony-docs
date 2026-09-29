@@ -4,9 +4,11 @@
 declare enum BarState
 ```
 
-Used to set the status of the scroll bar.
+Sets the scroll bar status.
 
 **Since:** 7
+
+<!--Device-unnamed-declare enum BarState--><!--Device-unnamed-declare enum BarState-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,6 +28,8 @@ Not displayed.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-BarState-Off--><!--Device-BarState-Off-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Auto
@@ -34,7 +38,7 @@ Not displayed.
 Auto
 ```
 
-On-demand display (displayed when you touch it and disappears after 2 seconds).
+Displayed when the screen is touched and hidden after 2s.
 
 **Since:** 7
 
@@ -43,6 +47,8 @@ On-demand display (displayed when you touch it and disappears after 2 seconds).
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-BarState-Auto--><!--Device-BarState-Auto-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +58,7 @@ On-demand display (displayed when you touch it and disappears after 2 seconds).
 On
 ```
 
-Resident display.
+Always displayed.
 
 **Since:** 7
 
@@ -61,5 +67,7 @@ Resident display.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-BarState-On--><!--Device-BarState-On-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Represents a custom policy.
 
 **Since:** 21
 
+<!--Device-dlpPermission-export interface CustomProperty--><!--Device-dlpPermission-export interface CustomProperty-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## Modules to Import
@@ -28,6 +30,8 @@ JSON string of an enterprise custom policy. The value contains a maximum of 4,19
 
 **Since:** 21
 
+<!--Device-CustomProperty-enterprise: string--><!--Device-CustomProperty-enterprise: string-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## options
@@ -43,5 +47,7 @@ Query options about an enterprise DLP file. This parameter is left blank by defa
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CustomProperty-options?: DlpFileQueryOptions--><!--Device-CustomProperty-options?: DlpFileQueryOptions-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention

@@ -4,15 +4,15 @@
 interface Button
 ```
 
-Defines the prompt info of button.
-
-@interface Button
+Describes the menu item button in the action menu.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [Button](arkts-arkui-promptaction-button-i.md)
+
+<!--Device-prompt-interface Button--><!--Device-prompt-interface Button-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,7 +28,7 @@ import { prompt } from '@kit.ArkUI';
 color: string
 ```
 
-Defines the color of button.
+Text color of the button.
 
 **Type:** string
 
@@ -40,6 +40,8 @@ Defines the color of button.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-Button-color: string--><!--Device-Button-color: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -48,7 +50,7 @@ Defines the color of button.
 text: string
 ```
 
-Defines the button info.
+Button text.
 
 **Type:** string
 
@@ -59,5 +61,7 @@ Defines the button info.
 **Substitutes:** [text](arkts-arkui-promptaction-button-i.md#text)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-Button-text: string--><!--Device-Button-text: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

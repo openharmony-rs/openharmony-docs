@@ -18,6 +18,8 @@ Obtains the uniform data type ID based on the given file name extension and data
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-uniformTypeDescriptor-function getUniformDataTypeByFilenameExtension(filenameExtension: string, belongsTo?: string): string--><!--Device-uniformTypeDescriptor-function getUniformDataTypeByFilenameExtension(filenameExtension: string, belongsTo?: string): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters:**

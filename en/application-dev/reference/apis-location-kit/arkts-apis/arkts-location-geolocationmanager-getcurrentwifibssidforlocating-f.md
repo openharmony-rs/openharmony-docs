@@ -18,6 +18,8 @@ Obtains the BSSID of the connected Wi-Fi hotspot.
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-geoLocationManager-function getCurrentWifiBssidForLocating(): string--><!--Device-geoLocationManager-function getCurrentWifiBssidForLocating(): string-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Return value:**

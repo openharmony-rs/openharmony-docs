@@ -8,6 +8,8 @@ Defines the audio device information.
 
 **Since:** 10
 
+<!--Device-call-export interface AudioDeviceCallbackInfo--><!--Device-call-export interface AudioDeviceCallbackInfo-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Audio device list.
 
 **Since:** 10
 
+<!--Device-AudioDeviceCallbackInfo-audioDeviceList: Array<AudioDevice>--><!--Device-AudioDeviceCallbackInfo-audioDeviceList: Array<AudioDevice>-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Current audio device.
 **Type:** [AudioDevice](arkts-telephony-call-audiodevice-i-sys.md)
 
 **Since:** 10
+
+<!--Device-AudioDeviceCallbackInfo-currentAudioDevice: AudioDevice--><!--Device-AudioDeviceCallbackInfo-currentAudioDevice: AudioDevice-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -67,6 +73,8 @@ Whether to disable the microphone.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-AudioDeviceCallbackInfo-isMicDisabled?: boolean--><!--Device-AudioDeviceCallbackInfo-isMicDisabled?: boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -82,6 +90,8 @@ Whether the audio device is muted.
 **Type:** boolean
 
 **Since:** 10
+
+<!--Device-AudioDeviceCallbackInfo-isMuted: boolean--><!--Device-AudioDeviceCallbackInfo-isMuted: boolean-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

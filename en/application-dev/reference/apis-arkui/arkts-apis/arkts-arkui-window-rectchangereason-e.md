@@ -8,6 +8,8 @@ Enumerates the reasons for window rectangle (position and size) changes.
 
 **Since:** 12
 
+<!--Device-window-enum RectChangeReason--><!--Device-window-enum RectChangeReason-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## UNDEFINED
@@ -20,7 +22,9 @@ Default value.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RectChangeReason-UNDEFINED = 0--><!--Device-RectChangeReason-UNDEFINED = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -34,7 +38,9 @@ The window is maximized.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RectChangeReason-MAXIMIZE = 1--><!--Device-RectChangeReason-MAXIMIZE = 1-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -48,7 +54,9 @@ The window is restored to the previous state.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RectChangeReason-RECOVER = 2--><!--Device-RectChangeReason-RECOVER = 2-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -62,7 +70,9 @@ The window is moved.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RectChangeReason-MOVE = 3--><!--Device-RectChangeReason-MOVE = 3-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -76,7 +86,9 @@ The window is zoomed in or out by dragging.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RectChangeReason-DRAG = 4--><!--Device-RectChangeReason-DRAG = 4-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -90,7 +102,9 @@ The window starts zooming in or out.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RectChangeReason-DRAG_START = 5--><!--Device-RectChangeReason-DRAG_START = 5-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -104,6 +118,8 @@ The window finishes zooming in or out.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RectChangeReason-DRAG_END = 6--><!--Device-RectChangeReason-DRAG_END = 6-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

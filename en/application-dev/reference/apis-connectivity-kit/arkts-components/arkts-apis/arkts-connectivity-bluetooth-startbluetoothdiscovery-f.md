@@ -22,6 +22,8 @@ Starts scanning Bluetooth devices.
 
 **Required permissions:** ohos.permission.DISCOVER_BLUETOOTH and ohos.permission.LOCATION
 
+<!--Device-bluetooth-function startBluetoothDiscovery(): boolean--><!--Device-bluetooth-function startBluetoothDiscovery(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

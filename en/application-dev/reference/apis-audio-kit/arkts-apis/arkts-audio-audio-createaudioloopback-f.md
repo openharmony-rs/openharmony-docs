@@ -16,6 +16,8 @@ Creates an &lt;b&gt;AudioLoopback&lt;/b&gt; instance, which provides low-latency
 
 **Since:** 26.0.0
 
+<!--Device-audio-function createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback>--><!--Device-audio-function createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**

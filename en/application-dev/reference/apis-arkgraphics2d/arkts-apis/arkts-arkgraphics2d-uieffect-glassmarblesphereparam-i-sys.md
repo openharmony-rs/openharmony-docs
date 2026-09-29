@@ -8,6 +8,8 @@ Sphere shape parameters for the glass marble. Defines the geometry of the glass 
 
 **Since:** 26.0.1
 
+<!--Device-uiEffect-interface GlassMarbleSphereParam--><!--Device-uiEffect-interface GlassMarbleSphereParam-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Normalized center position of the sphere shape. [0, 0] represents the top-left c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GlassMarbleSphereParam-center: [double, double]--><!--Device-GlassMarbleSphereParam-center: [double, double]-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Normalized radius of the sphere shape. The value range is [0, 1]; out-of-range v
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GlassMarbleSphereParam-radius: double--><!--Device-GlassMarbleSphereParam-radius: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

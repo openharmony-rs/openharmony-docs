@@ -18,6 +18,8 @@ Checks whether the **Allow access to notifications on this device** switch is to
 
 **Required permissions:** ohos.permission.SUBSCRIBE_NOTIFICATION
 
+<!--Device-notificationExtensionSubscription-function isUserGranted(): Promise<boolean>--><!--Device-notificationExtensionSubscription-function isUserGranted(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Return value:**

@@ -16,6 +16,8 @@ Creates an AVImageGenerator instance. This API uses a promise to return the resu
 
 **Since:** 12
 
+<!--Device-media-function createAVImageGenerator(): Promise<AVImageGenerator>--><!--Device-media-function createAVImageGenerator(): Promise<AVImageGenerator>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **Return value:**
@@ -60,6 +62,8 @@ function createAVImageGenerator(callback: AsyncCallback<AVImageGenerator>): void
 Creates an AVImageGenerator instance. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-media-function createAVImageGenerator(callback: AsyncCallback<AVImageGenerator>): void--><!--Device-media-function createAVImageGenerator(callback: AsyncCallback<AVImageGenerator>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 

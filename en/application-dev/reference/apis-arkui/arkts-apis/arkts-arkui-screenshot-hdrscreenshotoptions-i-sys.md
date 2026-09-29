@@ -8,6 +8,8 @@ Describes the HDR screenshot options.
 
 **Since:** 20
 
+<!--Device-screenshot-interface HdrScreenshotOptions--><!--Device-screenshot-interface HdrScreenshotOptions-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ ID of the [display](arkts-arkui-display-displaystate-e.md) device on which the s
 
 **Since:** 20
 
+<!--Device-HdrScreenshotOptions-displayId?: long--><!--Device-HdrScreenshotOptions-displayId?: long-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -52,6 +56,8 @@ screenshot display intent type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HdrScreenshotOptions-displayIntent?: DisplayIntentType--><!--Device-HdrScreenshotOptions-displayIntent?: DisplayIntentType-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -70,6 +76,8 @@ Whether to capture all displays on the current screen. If the screen contains mu
 
 **Since:** 20
 
+<!--Device-HdrScreenshotOptions-isCaptureFullOfScreen?: boolean--><!--Device-HdrScreenshotOptions-isCaptureFullOfScreen?: boolean-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -87,6 +95,8 @@ Whether to send a notification after a snapshot is captured. **true** to send, *
 **Default:** true
 
 **Since:** 20
+
+<!--Device-HdrScreenshotOptions-isNotificationNeeded?: boolean--><!--Device-HdrScreenshotOptions-isNotificationNeeded?: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

@@ -8,6 +8,8 @@ Describes the form data in [UploadConfig](arkts-basicservices-request-uploadconf
 
 **Since:** 6
 
+<!--Device-request-interface RequestData--><!--Device-request-interface RequestData-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Name of a form element.
 
 **Since:** 6
 
+<!--Device-RequestData-name: string--><!--Device-RequestData-name: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## value
@@ -41,5 +45,7 @@ Value of a form element.
 **Type:** string
 
 **Since:** 6
+
+<!--Device-RequestData-value: string--><!--Device-RequestData-value: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Download

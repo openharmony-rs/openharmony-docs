@@ -16,7 +16,9 @@ Obtains the user ID of a WantAgent object. This API uses an asynchronous callbac
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-wantAgent-function getUid(agent: WantAgent, callback: AsyncCallback<int>): void--><!--Device-wantAgent-function getUid(agent: WantAgent, callback: AsyncCallback<int>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -121,7 +123,9 @@ Obtains the user ID of a WantAgent object. This API uses a promise to return the
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-wantAgent-function getUid(agent: WantAgent): Promise<int>--><!--Device-wantAgent-function getUid(agent: WantAgent): Promise<int>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

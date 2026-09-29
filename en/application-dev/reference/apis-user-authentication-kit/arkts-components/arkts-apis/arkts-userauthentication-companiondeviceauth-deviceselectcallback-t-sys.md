@@ -10,6 +10,8 @@ Defines the callback triggered for the companion device selection. When the syst
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-companionDeviceAuth-type DeviceSelectCallback = (selectPurpose: int) => DeviceSelectResult--><!--Device-companionDeviceAuth-type DeviceSelectCallback = (selectPurpose: int) => DeviceSelectResult-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.

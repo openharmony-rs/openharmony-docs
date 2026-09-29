@@ -14,6 +14,8 @@ ChipV2CloseIcon用于定义ChipV2组件关闭图标的功能属性类，包括�
 
 **装饰器类型：** @ObservedV2
 
+<!--Device-unnamed-export declare class ChipV2CloseIcon extends ChipV2Accessibility--><!--Device-unnamed-export declare class ChipV2CloseIcon extends ChipV2Accessibility-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ ChipV2CloseIcon的构造函数。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2CloseIcon-constructor(config: ChipV2CloseConfig)--><!--Device-ChipV2CloseIcon-constructor(config: ChipV2CloseConfig)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,5 +75,7 @@ size不为ChipV2Size.SMALL时，默认值：`$r('sys.float.chip_normal_font_size
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2CloseIcon-public fontSize?: LengthMetrics--><!--Device-ChipV2CloseIcon-public fontSize?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

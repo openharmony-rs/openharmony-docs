@@ -8,6 +8,8 @@ interface DynamicRangeModeOptions
 
 **起始版本：** 23
 
+<!--Device-componentSnapshot-interface DynamicRangeModeOptions--><!--Device-componentSnapshot-interface DynamicRangeModeOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -50,6 +52,8 @@ dynamicRangeMode?: DynamicRangeMode
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-DynamicRangeModeOptions-dynamicRangeMode?: DynamicRangeMode--><!--Device-DynamicRangeModeOptions-dynamicRangeMode?: DynamicRangeMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isAuto
@@ -79,5 +83,7 @@ isAuto?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-DynamicRangeModeOptions-isAuto?: boolean--><!--Device-DynamicRangeModeOptions-isAuto?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

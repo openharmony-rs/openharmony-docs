@@ -8,6 +8,8 @@ Defines custom cursor configuration.
 
 **Since:** 15
 
+<!--Device-pointer-interface CursorConfig--><!--Device-pointer-interface CursorConfig-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 ## Modules to Import
@@ -27,5 +29,7 @@ Whether to adjust the cursor size based on system settings. The value **true** m
 **Type:** boolean
 
 **Since:** 15
+
+<!--Device-CursorConfig-followSystem : boolean--><!--Device-CursorConfig-followSystem : boolean-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer

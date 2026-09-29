@@ -14,6 +14,8 @@ Before calling any API in AudioStreamManager, you must use [getStreamManager](ar
 
 **Since:** 9
 
+<!--Device-audio-interface AudioStreamManager--><!--Device-audio-interface AudioStreamManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ getAudioEffectInfoArray(usage: StreamUsage, callback: AsyncCallback<AudioEffectI
 Obtains information about the audio effect mode in use. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-AudioStreamManager-getAudioEffectInfoArray(usage: StreamUsage, callback: AsyncCallback<AudioEffectInfoArray>): void--><!--Device-AudioStreamManager-getAudioEffectInfoArray(usage: StreamUsage, callback: AsyncCallback<AudioEffectInfoArray>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -74,6 +78,8 @@ Obtains information about the audio effect mode in use. This API uses a promise 
 
 **Since:** 10
 
+<!--Device-AudioStreamManager-getAudioEffectInfoArray(usage: StreamUsage): Promise<AudioEffectInfoArray>--><!--Device-AudioStreamManager-getAudioEffectInfoArray(usage: StreamUsage): Promise<AudioEffectInfoArray>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **Parameters:**
@@ -116,6 +122,8 @@ getAudioEffectInfoArraySync(usage: StreamUsage): AudioEffectInfoArray
 Obtains information about the audio effect mode in use. This API returns the result synchronously.
 
 **Since:** 10
+
+<!--Device-AudioStreamManager-getAudioEffectInfoArraySync(usage: StreamUsage): AudioEffectInfoArray--><!--Device-AudioStreamManager-getAudioEffectInfoArraySync(usage: StreamUsage): AudioEffectInfoArray-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -167,6 +175,8 @@ Obtains the information about this audio capturer. This API uses an asynchronous
 
 **Since:** 9
 
+<!--Device-AudioStreamManager-getCurrentAudioCapturerInfoArray(callback: AsyncCallback<AudioCapturerChangeInfoArray>): void--><!--Device-AudioStreamManager-getCurrentAudioCapturerInfoArray(callback: AsyncCallback<AudioCapturerChangeInfoArray>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **Parameters:**
@@ -206,6 +216,8 @@ Obtains the information about this audio capturer. This API uses a promise to re
 
 **Since:** 9
 
+<!--Device-AudioStreamManager-getCurrentAudioCapturerInfoArray(): Promise<AudioCapturerChangeInfoArray>--><!--Device-AudioStreamManager-getCurrentAudioCapturerInfoArray(): Promise<AudioCapturerChangeInfoArray>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **Return value:**
@@ -240,6 +252,8 @@ Obtains the information about this audio capturer. This API returns the result s
 > wakeup and cellular calls.
 
 **Since:** 10
+
+<!--Device-AudioStreamManager-getCurrentAudioCapturerInfoArraySync(): AudioCapturerChangeInfoArray--><!--Device-AudioStreamManager-getCurrentAudioCapturerInfoArraySync(): AudioCapturerChangeInfoArray-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -277,6 +291,8 @@ Obtains the information about this audio renderer. This API uses an asynchronous
 > cellular calls and ultrasonic streams.
 
 **Since:** 9
+
+<!--Device-AudioStreamManager-getCurrentAudioRendererInfoArray(callback: AsyncCallback<AudioRendererChangeInfoArray>): void--><!--Device-AudioStreamManager-getCurrentAudioRendererInfoArray(callback: AsyncCallback<AudioRendererChangeInfoArray>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -317,6 +333,8 @@ Obtains the information about this audio renderer. This API uses a promise to re
 
 **Since:** 9
 
+<!--Device-AudioStreamManager-getCurrentAudioRendererInfoArray(): Promise<AudioRendererChangeInfoArray>--><!--Device-AudioStreamManager-getCurrentAudioRendererInfoArray(): Promise<AudioRendererChangeInfoArray>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **Return value:**
@@ -352,6 +370,8 @@ Obtains the information about this audio renderer. This API returns the result s
 
 **Since:** 10
 
+<!--Device-AudioStreamManager-getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray--><!--Device-AudioStreamManager-getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **Return value:**
@@ -383,6 +403,8 @@ isAcousticEchoCancelerSupported(sourceType: SourceType): boolean
 Checks whether the specified audio source type supports echo cancellation.
 
 **Since:** 20
+
+<!--Device-AudioStreamManager-isAcousticEchoCancelerSupported(sourceType: SourceType): boolean--><!--Device-AudioStreamManager-isAcousticEchoCancelerSupported(sourceType: SourceType): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -418,130 +440,6 @@ try {
 }
 ```
 
-## isActive
-
-```TypeScript
-isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
-```
-
-Checks whether a stream is active. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**Deprecated since:** 20
-
-**Substitutes:** [isStreamActive](#isstreamactive)
-
-**System capability:** SystemCapability.Multimedia.Audio.Renderer
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio stream types. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the stream is active or **false** if not active; otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioStreamManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
-if (err) {
-  console.error(`Failed to obtain the active status of the stream. ${err}`);
-  return;
-}
-  console.info(`Callback invoked to indicate that the active status of the stream is obtained ${value}.`);
-});
-```
-
-<a id="isactive-1"></a>
-
-## isActive
-
-```TypeScript
-isActive(volumeType: AudioVolumeType): Promise<boolean>
-```
-
-Checks whether a stream is active. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Deprecated since:** 20
-
-**Substitutes:** [isStreamActive](#isstreamactive)
-
-**System capability:** SystemCapability.Multimedia.Audio.Renderer
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio stream types. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the stream is active. **true** if active, **false** otherwise. |
-
-**Examples**
-
-```TypeScript
-audioStreamManager.isActive(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
-  console.info(`Promise returned to indicate that the active status of the stream is obtained ${value}.`);
-});
-```
-
-## isActiveSync
-
-```TypeScript
-isActiveSync(volumeType: AudioVolumeType): boolean
-```
-
-Checks whether a stream is active. This API returns the result synchronously.
-
-**Since:** 10
-
-**Deprecated since:** 20
-
-**Substitutes:** [isStreamActive](#isstreamactive)
-
-**System capability:** SystemCapability.Multimedia.Audio.Renderer
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio stream types. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| boolean | Check result for whether the stream is active. **true** if active, **false** otherwise. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let value: boolean = audioStreamManager.isActiveSync(audio.AudioVolumeType.MEDIA);
-  console.info(`Indicate that the active status of the stream is obtained ${value}.`);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to obtain the active status of the stream ${error}.`);
-}
-```
-
 ## isAudioLoopbackSupported
 
 ```TypeScript
@@ -551,6 +449,8 @@ isAudioLoopbackSupported(mode: AudioLoopbackMode): boolean
 Checks whether the current system supports the specified audio loopback mode.
 
 **Since:** 20
+
+<!--Device-AudioStreamManager-isAudioLoopbackSupported(mode: AudioLoopbackMode): boolean--><!--Device-AudioStreamManager-isAudioLoopbackSupported(mode: AudioLoopbackMode): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -597,6 +497,8 @@ Return if direct playback is supported for the specific audio stream info and us
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioStreamManager-isDirectPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean--><!--Device-AudioStreamManager-isDirectPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -645,6 +547,8 @@ Return if fast playback is supported for the specific audio stream info and usag
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioStreamManager-isFastPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean--><!--Device-AudioStreamManager-isFastPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Parameters:**
@@ -692,6 +596,8 @@ Return if fast recording is supported for the specific audio stream info and usa
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioStreamManager-isFastRecordingSupported(streamInfo: AudioStreamInfo, source: SourceType): boolean--><!--Device-AudioStreamManager-isFastRecordingSupported(streamInfo: AudioStreamInfo, source: SourceType): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Parameters:**
@@ -736,6 +642,8 @@ isIntelligentNoiseReductionEnabledForCurrentDevice(sourceType: SourceType): bool
 Checks whether the intelligent noise reduction feature is enabled for the audio stream of the specified source type.
 
 **Since:** 21
+
+<!--Device-AudioStreamManager-isIntelligentNoiseReductionEnabledForCurrentDevice(sourceType: SourceType): boolean--><!--Device-AudioStreamManager-isIntelligentNoiseReductionEnabledForCurrentDevice(sourceType: SourceType): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -782,6 +690,8 @@ Return if multichannel playback is supported for the specific audio stream info 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioStreamManager-isMultichannelPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean--><!--Device-AudioStreamManager-isMultichannelPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -830,6 +740,8 @@ Return if offload playback is supported for the specific audio stream info and u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioStreamManager-isOffloadPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean--><!--Device-AudioStreamManager-isOffloadPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Parameters:**
@@ -874,6 +786,8 @@ isRecordingAvailable(capturerInfo: AudioCapturerInfo): boolean
 Checks whether recording can be started based on the audio source type in the audio capturer information.
 
 **Since:** 20
+
+<!--Device-AudioStreamManager-isRecordingAvailable(capturerInfo: AudioCapturerInfo): boolean--><!--Device-AudioStreamManager-isRecordingAvailable(capturerInfo: AudioCapturerInfo): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -943,6 +857,8 @@ Checks whether a stream is active. This API returns the result synchronously.
 
 **Since:** 20
 
+<!--Device-AudioStreamManager-isStreamActive(streamUsage: StreamUsage): boolean--><!--Device-AudioStreamManager-isStreamActive(streamUsage: StreamUsage): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **Parameters:**
@@ -992,6 +908,8 @@ Unsubscribes from the audio renderer change event. This API uses an asynchronous
 
 **Since:** 9
 
+<!--Device-AudioStreamManager-off(type: 'audioRendererChange', callback?: Callback<AudioRendererChangeInfoArray>): void--><!--Device-AudioStreamManager-off(type: 'audioRendererChange', callback?: Callback<AudioRendererChangeInfoArray>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **Parameters:**
@@ -1035,6 +953,8 @@ Unsubscribes from the audio capturer change event. This API uses an asynchronous
 > wakeup and cellular calls.
 
 **Since:** 9
+
+<!--Device-AudioStreamManager-off(type: 'audioCapturerChange', callback?: Callback<AudioCapturerChangeInfoArray>): void--><!--Device-AudioStreamManager-off(type: 'audioCapturerChange', callback?: Callback<AudioCapturerChangeInfoArray>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1080,6 +1000,8 @@ Subscribes to the audio renderer change event, which is triggered when the audio
 
 **Since:** 9
 
+<!--Device-AudioStreamManager-on(type: 'audioRendererChange', callback: Callback<AudioRendererChangeInfoArray>): void--><!--Device-AudioStreamManager-on(type: 'audioRendererChange', callback: Callback<AudioRendererChangeInfoArray>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **Parameters:**
@@ -1119,6 +1041,8 @@ Subscribes to the audio capturer change event, which is triggered when the audio
 
 **Since:** 9
 
+<!--Device-AudioStreamManager-on(type: 'audioCapturerChange', callback: Callback<AudioCapturerChangeInfoArray>): void--><!--Device-AudioStreamManager-on(type: 'audioCapturerChange', callback: Callback<AudioCapturerChangeInfoArray>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**
@@ -1141,4 +1065,134 @@ Subscribes to the audio capturer change event, which is triggered when the audio
 audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
   console.info(`Succeeded in using on function, AudioCapturerChangeInfoArray: ${JSON.stringify(audioCapturerChangeInfoArray)}.`);
 });
+```
+
+## isActive
+
+```TypeScript
+isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
+```
+
+Checks whether a stream is active. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Deprecated since:** 20
+
+**Substitutes:** [isStreamActive](#isstreamactive)
+
+<!--Device-AudioStreamManager-isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void--><!--Device-AudioStreamManager-isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Renderer
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio stream types. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the stream is active or **false** if not active; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioStreamManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
+if (err) {
+  console.error(`Failed to obtain the active status of the stream. ${err}`);
+  return;
+}
+  console.info(`Callback invoked to indicate that the active status of the stream is obtained ${value}.`);
+});
+```
+
+<a id="isactive-1"></a>
+
+## isActive
+
+```TypeScript
+isActive(volumeType: AudioVolumeType): Promise<boolean>
+```
+
+Checks whether a stream is active. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Deprecated since:** 20
+
+**Substitutes:** [isStreamActive](#isstreamactive)
+
+<!--Device-AudioStreamManager-isActive(volumeType: AudioVolumeType): Promise<boolean>--><!--Device-AudioStreamManager-isActive(volumeType: AudioVolumeType): Promise<boolean>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Renderer
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio stream types. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the stream is active. **true** if active, **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+audioStreamManager.isActive(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
+  console.info(`Promise returned to indicate that the active status of the stream is obtained ${value}.`);
+});
+```
+
+## isActiveSync
+
+```TypeScript
+isActiveSync(volumeType: AudioVolumeType): boolean
+```
+
+Checks whether a stream is active. This API returns the result synchronously.
+
+**Since:** 10
+
+**Deprecated since:** 20
+
+**Substitutes:** [isStreamActive](#isstreamactive)
+
+<!--Device-AudioStreamManager-isActiveSync(volumeType: AudioVolumeType): boolean--><!--Device-AudioStreamManager-isActiveSync(volumeType: AudioVolumeType): boolean-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Renderer
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio stream types. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Check result for whether the stream is active. **true** if active, **false** otherwise. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let value: boolean = audioStreamManager.isActiveSync(audio.AudioVolumeType.MEDIA);
+  console.info(`Indicate that the active status of the stream is obtained ${value}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the active status of the stream ${error}.`);
+}
 ```

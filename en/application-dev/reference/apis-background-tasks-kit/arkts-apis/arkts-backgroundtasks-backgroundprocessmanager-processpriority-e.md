@@ -8,6 +8,8 @@ Specifies the child process priority.
 
 **Since:** 17
 
+<!--Device-backgroundProcessManager-export enum ProcessPriority--><!--Device-backgroundProcessManager-export enum ProcessPriority-End-->
+
 **System capability:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 ## PROCESS_BACKGROUND
@@ -20,6 +22,8 @@ Compared with **PROCESS_INACTIVE**, **PROCESS_LOWER** has a more significant sup
 
 **Since:** 17
 
+<!--Device-ProcessPriority-PROCESS_BACKGROUND = 1--><!--Device-ProcessPriority-PROCESS_BACKGROUND = 1-End-->
+
 **System capability:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 ## PROCESS_INACTIVE
@@ -31,5 +35,7 @@ PROCESS_INACTIVE = 2
 You are advised to set this priority when executing background child processes that can be perceived by users, such as audio playback and navigation.
 
 **Since:** 17
+
+<!--Device-ProcessPriority-PROCESS_INACTIVE = 2--><!--Device-ProcessPriority-PROCESS_INACTIVE = 2-End-->
 
 **System capability:** SystemCapability.Resourceschedule.BackgroundProcessManager

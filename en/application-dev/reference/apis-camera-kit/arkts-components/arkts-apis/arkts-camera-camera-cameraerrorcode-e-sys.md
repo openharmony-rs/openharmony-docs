@@ -10,6 +10,8 @@ which are returned when an API call is incorrect or the **on()** API is used to 
 
 **Since:** 10
 
+<!--Device-camera-enum CameraErrorCode--><!--Device-camera-enum CameraErrorCode-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## DEVICE_FREQUENTLY_SWITCHED
@@ -21,6 +23,8 @@ DEVICE_FREQUENTLY_SWITCHED = 7400111
 Camera frequently switched.
 
 **Since:** 18
+
+<!--Device-CameraErrorCode-DEVICE_FREQUENTLY_SWITCHED = 7400111--><!--Device-CameraErrorCode-DEVICE_FREQUENTLY_SWITCHED = 7400111-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -35,6 +39,8 @@ CAMERA_LENS_RETRACTED = 7400112
 Camera lens retracted.
 
 **Since:** 18
+
+<!--Device-CameraErrorCode-CAMERA_LENS_RETRACTED = 7400112--><!--Device-CameraErrorCode-CAMERA_LENS_RETRACTED = 7400112-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

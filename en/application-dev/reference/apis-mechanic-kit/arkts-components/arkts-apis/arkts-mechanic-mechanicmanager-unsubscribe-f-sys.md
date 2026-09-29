@@ -16,6 +16,8 @@ Unsubscribes the specified events.
 
 **Since:** 26.0.0
 
+<!--Device-mechanicManager-function unSubscribe(events: MechEventType[]): void--><!--Device-mechanicManager-function unSubscribe(events: MechEventType[]): void-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.

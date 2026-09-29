@@ -12,6 +12,8 @@ Describes the class of a bluetooth device.
 
 **Substitutes:** [BondStateParam](arkts-connectivity-bluetoothmanager-bondstateparam-i.md)
 
+<!--Device-bluetooth-interface BondStateParam--><!--Device-bluetooth-interface BondStateParam-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Address of a Bluetooth device.
 
 **Substitutes:** [deviceId](arkts-connectivity-bluetoothmanager-bondstateparam-i.md#deviceid)
 
+<!--Device-BondStateParam-deviceId: string--><!--Device-BondStateParam-deviceId: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## state
@@ -53,5 +57,7 @@ Profile connection state of the device.
 **Deprecated since:** 9
 
 **Substitutes:** [state](arkts-connectivity-bluetoothmanager-bondstateparam-i.md#state)
+
+<!--Device-BondStateParam-state: BondState--><!--Device-BondStateParam-state: BondState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

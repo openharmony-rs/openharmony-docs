@@ -8,6 +8,8 @@ interface SystemBarTintState
 
 **起始版本：** 8
 
+<!--Device-window-interface SystemBarTintState--><!--Device-window-interface SystemBarTintState-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,6 +32,8 @@ displayId: number
 
 **起始版本：** 8
 
+<!--Device-SystemBarTintState-displayId: long--><!--Device-SystemBarTintState-displayId: long-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -45,6 +49,8 @@ regionTint: Array<SystemBarRegionTint>
 **类型：** Array&lt;[SystemBarRegionTint](arkts-arkui-window-systembarregiontint-i-sys.md)&gt;
 
 **起始版本：** 8
+
+<!--Device-SystemBarTintState-regionTint: Array<SystemBarRegionTint>--><!--Device-SystemBarTintState-regionTint: Array<SystemBarRegionTint>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

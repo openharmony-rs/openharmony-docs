@@ -10,6 +10,8 @@ Enum for distance rank.
 
 **Since:** 23
 
+<!--Device-spatialAwareness-export enum DistanceRank--><!--Device-spatialAwareness-export enum DistanceRank-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ indicates ultra-short range
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DistanceRank-RANK_ULTRA_SHORT_RANGE = 'rankUltraShort'--><!--Device-DistanceRank-RANK_ULTRA_SHORT_RANGE = 'rankUltraShort'-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -42,6 +46,8 @@ indicates short range
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DistanceRank-RANK_SHORT_RANGE = 'rankShort'--><!--Device-DistanceRank-RANK_SHORT_RANGE = 'rankShort'-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **System API:** This is a system API.
@@ -58,6 +64,8 @@ indicates medium-short range
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DistanceRank-RANK_SHORT_MEDIUM_RANGE = 'rankMediumShort'--><!--Device-DistanceRank-RANK_SHORT_MEDIUM_RANGE = 'rankMediumShort'-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **System API:** This is a system API.
@@ -73,6 +81,8 @@ indicates medium range
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DistanceRank-RANK_MEDIUM_RANGE = 'rankMedium'--><!--Device-DistanceRank-RANK_MEDIUM_RANGE = 'rankMedium'-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 

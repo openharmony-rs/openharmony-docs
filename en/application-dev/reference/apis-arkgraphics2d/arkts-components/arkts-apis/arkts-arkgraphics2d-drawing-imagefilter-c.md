@@ -16,6 +16,8 @@ Implements an image filter.
 
 **Since:** 12
 
+<!--Device-drawing-class ImageFilter--><!--Device-drawing-class ImageFilter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -33,6 +35,8 @@ static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foregrou
 Creates a filter by blending two existing filters in a certain way.
 
 **Since:** 20
+
+<!--Device-ImageFilter-static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter--><!--Device-ImageFilter-static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -81,6 +85,8 @@ Creates an image filter with a given blur effect.
 
 **Since:** 12
 
+<!--Device-ImageFilter-static createBlurImageFilter(sigmaX: number, sigmaY: number,        tileMode: TileMode, imageFilter?: ImageFilter | null): ImageFilter--><!--Device-ImageFilter-static createBlurImageFilter(sigmaX: number, sigmaY: number,        tileMode: TileMode, imageFilter?: ImageFilter | null): ImageFilter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -121,6 +127,8 @@ static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): Image
 Cascades two image filters to create a new image filter. The first filter's output becomes the second filter's input. The second filter then processes this input to produce the final result.
 
 **Since:** 20
+
+<!--Device-ImageFilter-static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter--><!--Device-ImageFilter-static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -166,6 +174,8 @@ Creates an image filter object with a given color filter effect.
 
 **Since:** 12
 
+<!--Device-ImageFilter-static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter--><!--Device-ImageFilter-static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -206,6 +216,8 @@ static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null,
 Creates an image filter from a given image. You are advised not to use the function for the canvas of the capture type because it affects the performance.
 
 **Since:** 20
+
+<!--Device-ImageFilter-static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null, dstRect?: common2D.Rect | null): ImageFilter--><!--Device-ImageFilter-static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null, dstRect?: common2D.Rect | null): ImageFilter-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -281,6 +293,8 @@ Creates an **ImageFilter** object based on a shader.
 
 **Since:** 20
 
+<!--Device-ImageFilter-static createFromShaderEffect(shader: ShaderEffect): ImageFilter--><!--Device-ImageFilter-static createFromShaderEffect(shader: ShaderEffect): ImageFilter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -313,6 +327,8 @@ static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | nul
 Creates an offset filter to translate the input filter based on the specified vector.
 
 **Since:** 20
+
+<!--Device-ImageFilter-static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | null): ImageFilter--><!--Device-ImageFilter-static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | null): ImageFilter-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

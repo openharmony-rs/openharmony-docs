@@ -12,6 +12,8 @@ Sets the text style.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface Font--><!--Device-unnamed-declare interface Font-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## family
@@ -29,6 +31,8 @@ To specify multiple fonts, separate them with commas (,), and fonts are applied 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Font-family?: string | Resource--><!--Device-Font-family?: string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ Default value: **16.0**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Font-size?: Length--><!--Device-Font-size?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -66,6 +72,8 @@ Default value: **FontStyle.Normal**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Font-style?: FontStyle--><!--Device-Font-style?: FontStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## weight
@@ -83,5 +91,7 @@ Default value: **400** | **FontWeight.Normal**
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Font-weight?: FontWeight | number | string--><!--Device-Font-weight?: FontWeight | number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

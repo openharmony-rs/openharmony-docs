@@ -10,6 +10,8 @@ declare interface PopupCommonOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface PopupCommonOptions--><!--Device-unnamed-declare interface PopupCommonOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onStateChange
@@ -30,6 +32,8 @@ onStateChange?: PopupStateChangeCallback
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-onStateChange?: PopupStateChangeCallback--><!--Device-PopupCommonOptions-onStateChange?: PopupStateChangeCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## arrowHeight
@@ -49,6 +53,8 @@ The height of the arrow.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-arrowHeight?: Dimension--><!--Device-PopupCommonOptions-arrowHeight?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ Popup箭头在气泡处的偏移。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-arrowOffset?: Length--><!--Device-PopupCommonOptions-arrowOffset?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## arrowPointPosition
@@ -99,6 +107,8 @@ The position of the sharp corner of popup.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-arrowPointPosition?: ArrowPointPosition--><!--Device-PopupCommonOptions-arrowPointPosition?: ArrowPointPosition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,6 +129,8 @@ The width of the arrow.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-arrowWidth?: Dimension--><!--Device-PopupCommonOptions-arrowWidth?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,6 +156,8 @@ true：自动关闭气泡；false：气泡不会自动关闭。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-autoCancel?: boolean--><!--Device-PopupCommonOptions-autoCancel?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## avoidTarget
@@ -166,6 +180,8 @@ avoidTarget?: AvoidanceMode
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-avoidTarget?: AvoidanceMode--><!--Device-PopupCommonOptions-avoidTarget?: AvoidanceMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundBlurStyle
@@ -186,6 +202,8 @@ Defines popup background blur Style
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-backgroundBlurStyle?: BlurStyle--><!--Device-PopupCommonOptions-backgroundBlurStyle?: BlurStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundBlurStyleOptions
@@ -204,6 +222,8 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions--><!--Device-PopupCommonOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundEffect
@@ -221,6 +241,8 @@ backgroundEffect?: BackgroundEffectOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-backgroundEffect?: BackgroundEffectOptions--><!--Device-PopupCommonOptions-backgroundEffect?: BackgroundEffectOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -244,6 +266,8 @@ borderLinearGradient?: PopupBorderLinearGradient
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-borderLinearGradient?: PopupBorderLinearGradient--><!--Device-PopupCommonOptions-borderLinearGradient?: PopupBorderLinearGradient-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -273,6 +297,8 @@ borderWidth?: Dimension
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-borderWidth?: Dimension--><!--Device-PopupCommonOptions-borderWidth?: Dimension-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorMode
@@ -287,7 +313,7 @@ colorMode?: AnchoredColorMode
 
 **说明：** 
 
-1. 仅当绑定组件使用了WithTheme标签时，该属性才会生效。
+1. 仅当绑定组件使用了[WithTheme](arkts-arkui-withtheme-comp.md)标签时，该属性才会生效。
 2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。
 3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。
 
@@ -300,6 +326,8 @@ colorMode?: AnchoredColorMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-colorMode?: AnchoredColorMode--><!--Device-PopupCommonOptions-colorMode?: AnchoredColorMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -324,6 +352,8 @@ enableArrow?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-enableArrow?: boolean--><!--Device-PopupCommonOptions-enableArrow?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -353,6 +383,8 @@ Popup组件是否响应悬停态（半折叠状态）变化，即在悬停态下
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-enableHoverMode?: boolean--><!--Device-PopupCommonOptions-enableHoverMode?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## focusable
@@ -381,6 +413,8 @@ true：气泡可以获焦；false：气泡不会获焦。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-focusable?: boolean--><!--Device-PopupCommonOptions-focusable?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## followTransformOfTarget
@@ -405,6 +439,8 @@ true：气泡可以拿到变换后宿主的位置，显示到相应位置；fals
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-followTransformOfTarget?: boolean--><!--Device-PopupCommonOptions-followTransformOfTarget?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelMode
@@ -425,6 +461,8 @@ levelMode?: LevelMode
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-levelMode?: LevelMode--><!--Device-PopupCommonOptions-levelMode?: LevelMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## mask
@@ -442,6 +480,8 @@ mask?: boolean | PopupMaskType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-mask?: boolean | PopupMaskType--><!--Device-PopupCommonOptions-mask?: boolean | PopupMaskType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -471,6 +511,8 @@ offset?: Position
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-offset?: Position--><!--Device-PopupCommonOptions-offset?: Position-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillDismiss
@@ -497,6 +539,8 @@ onWillDismiss?: boolean | Callback<DismissPopupAction>
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-onWillDismiss?: boolean | Callback<DismissPopupAction>--><!--Device-PopupCommonOptions-onWillDismiss?: boolean | Callback<DismissPopupAction>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## outlineLinearGradient
@@ -519,6 +563,8 @@ outlineLinearGradient?: PopupBorderLinearGradient
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-outlineLinearGradient?: PopupBorderLinearGradient--><!--Device-PopupCommonOptions-outlineLinearGradient?: PopupBorderLinearGradient-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -548,6 +594,8 @@ outlineWidth?: Dimension
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-outlineWidth?: Dimension--><!--Device-PopupCommonOptions-outlineWidth?: Dimension-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## placement
@@ -570,6 +618,8 @@ placement?: Placement
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-placement?: Placement--><!--Device-PopupCommonOptions-placement?: Placement-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## popupColor
@@ -587,6 +637,8 @@ popupColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-popupColor?: ResourceColor--><!--Device-PopupCommonOptions-popupColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -608,6 +660,8 @@ The round corners of the popup.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-radius?: Dimension--><!--Device-PopupCommonOptions-radius?: Dimension-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadow
@@ -627,6 +681,8 @@ The style of popup Shadow.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-shadow?: ShadowOptions | ShadowStyle--><!--Device-PopupCommonOptions-shadow?: ShadowOptions | ShadowStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -656,6 +712,8 @@ true：气泡会显示在创建的子窗里；false：气泡会显示在对应�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-showInSubWindow?: boolean--><!--Device-PopupCommonOptions-showInSubWindow?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -680,6 +738,8 @@ systemMaterial?: SystemUiMaterial
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-systemMaterial?: SystemUiMaterial--><!--Device-PopupCommonOptions-systemMaterial?: SystemUiMaterial-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## targetSpace
@@ -701,6 +761,8 @@ targetSpace?: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-targetSpace?: Length--><!--Device-PopupCommonOptions-targetSpace?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -728,6 +790,8 @@ transition?: TransitionEffect
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupCommonOptions-transition?: TransitionEffect--><!--Device-PopupCommonOptions-transition?: TransitionEffect-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -745,5 +809,7 @@ Set the width of the popup.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupCommonOptions-width?: Dimension--><!--Device-PopupCommonOptions-width?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

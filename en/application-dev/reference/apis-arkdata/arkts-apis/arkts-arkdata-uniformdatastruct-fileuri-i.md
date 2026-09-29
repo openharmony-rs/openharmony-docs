@@ -8,6 +8,8 @@ Represents data of the file URI type.
 
 **Since:** 15
 
+<!--Device-uniformDataStruct-interface FileUri--><!--Device-uniformDataStruct-interface FileUri-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Object of the dictionary type used to describe the icon. The key is of the strin
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileUri-details?: Record<string, int | long | double | string | Uint8Array>--><!--Device-FileUri-details?: Record<string, int | long | double | string | Uint8Array>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## fileType
@@ -45,6 +49,8 @@ File type, which must be UTD. For details, see [Prebuilt UTDs]. The maximum leng
 **Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileUri-fileType: string--><!--Device-FileUri-fileType: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -62,6 +68,8 @@ File path.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileUri-oriUri: string--><!--Device-FileUri-oriUri: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## uniformDataType
@@ -78,6 +86,8 @@ Uniform data type, which has a fixed value of **general.file-uri**. For details,
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileUri-readonly uniformDataType: 'general.file-uri'--><!--Device-FileUri-readonly uniformDataType: 'general.file-uri'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## uriAuthorizationPolicies
@@ -93,5 +103,7 @@ Defines URI authorization policies for drag intention.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileUri-uriAuthorizationPolicies?: Array<int>--><!--Device-FileUri-uriAuthorizationPolicies?: Array<int>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

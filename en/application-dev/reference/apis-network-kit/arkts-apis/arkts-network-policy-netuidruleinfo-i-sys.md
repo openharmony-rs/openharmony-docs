@@ -8,6 +8,8 @@ Defines a unique network ID.
 
 **Since:** 11
 
+<!--Device-policy-export interface NetUidRuleInfo--><!--Device-policy-export interface NetUidRuleInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Rule that specifies whether the application specified by a given UID is allowed 
 
 **Since:** 11
 
+<!--Device-NetUidRuleInfo-rule: NetUidRule--><!--Device-NetUidRuleInfo-rule: NetUidRule-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Traffic alarm threshold. The default value is **DATA_USAGE_UNKNOWN**.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-NetUidRuleInfo-uid: int--><!--Device-NetUidRuleInfo-uid: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

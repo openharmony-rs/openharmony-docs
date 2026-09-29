@@ -20,6 +20,8 @@ Obtains the value of an environment variable.
 
 **Substitutes:** [getEnvironmentVar](arkts-arkts-process-processmanager-c.md#getenvironmentvar)
 
+<!--Device-process-function getEnvironmentVar(name: string): string--><!--Device-process-function getEnvironmentVar(name: string): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

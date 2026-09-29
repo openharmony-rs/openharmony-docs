@@ -8,6 +8,8 @@ Defines the filter criteria.
 
 **Since:** 10
 
+<!--Device-agent-interface Filter--><!--Device-agent-interface Filter-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Specify the package name of an application. Only for advanced search, common sea
 **Type:** string
 
 **Since:** 10
+
+<!--Device-Filter-bundle?: string--><!--Device-Filter-bundle?: string-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 

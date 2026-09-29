@@ -12,6 +12,8 @@ Enumerates the color modes supported by the widget.
 
 **Substitutes:** [ColorMode](arkts-form-forminfo-colormode-e.md)
 
+<!--Device-formInfo-enum ColorMode--><!--Device-formInfo-enum ColorMode-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## MODE_AUTO
@@ -27,6 +29,8 @@ Auto mode.
 **Deprecated since:** 9
 
 **Substitutes:** [MODE_AUTO](arkts-form-forminfo-colormode-e.md#mode_auto)
+
+<!--Device-ColorMode-MODE_AUTO = -1--><!--Device-ColorMode-MODE_AUTO = -1-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -44,6 +48,8 @@ Dark mode.
 
 **Substitutes:** [MODE_DARK](arkts-form-forminfo-colormode-e.md#mode_dark)
 
+<!--Device-ColorMode-MODE_DARK = 0--><!--Device-ColorMode-MODE_DARK = 0-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## MODE_LIGHT
@@ -59,5 +65,7 @@ Light mode.
 **Deprecated since:** 9
 
 **Substitutes:** [MODE_LIGHT](arkts-form-forminfo-colormode-e.md#mode_light)
+
+<!--Device-ColorMode-MODE_LIGHT = 1--><!--Device-ColorMode-MODE_LIGHT = 1-End-->
 
 **System capability:** SystemCapability.Ability.Form

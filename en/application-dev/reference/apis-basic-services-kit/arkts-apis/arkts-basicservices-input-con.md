@@ -12,6 +12,8 @@ Indicates the default input method keyboard type and its ID.
 
 **Since:** 7
 
+<!--Device-input-const ACTIVATED_INPUT_METHOD_SUB_MODE: string--><!--Device-input-const ACTIVATED_INPUT_METHOD_SUB_MODE: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## ACTIVATED_INPUT_METHODS
@@ -29,6 +31,8 @@ Indicates the list of input methods that have been activated.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-input-const ACTIVATED_INPUT_METHODS: string--><!--Device-input-const ACTIVATED_INPUT_METHODS: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -48,6 +52,8 @@ Specifies whether automatic capitalization is enabled for the text editor.
 
 **Deprecated since:** 21
 
+<!--Device-input-const AUTO_CAPS_TEXT_INPUT: string--><!--Device-input-const AUTO_CAPS_TEXT_INPUT: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## AUTO_PUNCTUATE_TEXT_INPUT
@@ -65,6 +71,8 @@ Specifies whether automatic punctuation is enabled for the text editor. Automati
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-input-const AUTO_PUNCTUATE_TEXT_INPUT: string--><!--Device-input-const AUTO_PUNCTUATE_TEXT_INPUT: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -84,6 +92,8 @@ Specifies whether autocorrect is enabled for the text editor. Autocorrect enable
 
 **Deprecated since:** 21
 
+<!--Device-input-const AUTO_REPLACE_TEXT_INPUT: string--><!--Device-input-const AUTO_REPLACE_TEXT_INPUT: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## DEFAULT_INPUT_METHOD
@@ -99,6 +109,8 @@ Indicates the default input method and its ID.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-input-const DEFAULT_INPUT_METHOD: string--><!--Device-input-const DEFAULT_INPUT_METHOD: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -118,6 +130,8 @@ Specifies whether the input method selector is visible.
 
 **Deprecated since:** 21
 
+<!--Device-input-const SELECTOR_VISIBILITY_FOR_INPUT_METHOD: string--><!--Device-input-const SELECTOR_VISIBILITY_FOR_INPUT_METHOD: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## SHOW_PASSWORD_TEXT_INPUT
@@ -135,5 +149,7 @@ Specifies whether password presentation is enabled in the text editor. Password 
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-input-const SHOW_PASSWORD_TEXT_INPUT: string--><!--Device-input-const SHOW_PASSWORD_TEXT_INPUT: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core

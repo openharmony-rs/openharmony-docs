@@ -8,6 +8,8 @@ Defines the offset relative to the four edges. If both **top** and** bottom **ar
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface LocalizedEdges--><!--Device-unnamed-declare interface LocalizedEdges-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -25,6 +27,8 @@ Offset relative to the bottom edge.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LocalizedEdges-bottom?: LengthMetrics--><!--Device-LocalizedEdges-bottom?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Offset relative to the right in LTR mode; offset relative to the left in RTL mod
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LocalizedEdges-end?: LengthMetrics--><!--Device-LocalizedEdges-end?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -62,6 +68,8 @@ Offset relative to the left in LTR mode; offset relative to the right in RTL mod
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LocalizedEdges-start?: LengthMetrics--><!--Device-LocalizedEdges-start?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -79,5 +87,7 @@ Offset relative to the top edge.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LocalizedEdges-top?: LengthMetrics--><!--Device-LocalizedEdges-top?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

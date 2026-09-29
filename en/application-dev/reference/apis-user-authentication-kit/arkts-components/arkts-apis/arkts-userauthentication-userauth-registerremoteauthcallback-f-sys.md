@@ -20,6 +20,8 @@ Registers a remote authentication callback. This API is used to register a callb
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-userAuth-function registerRemoteAuthCallback(callback: IRemoteAuthCallback): void--><!--Device-userAuth-function registerRemoteAuthCallback(callback: IRemoteAuthCallback): void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.

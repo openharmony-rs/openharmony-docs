@@ -12,6 +12,8 @@ Responsive layout fill mode, used for the WaterFlow, Grid, List, Swiper, and Laz
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-unnamed-declare type ResponsiveFillType = PresetFillType--><!--Device-unnamed-declare type ResponsiveFillType = PresetFillType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [PresetFillType](arkts-arkui-presetfilltype-e.md)

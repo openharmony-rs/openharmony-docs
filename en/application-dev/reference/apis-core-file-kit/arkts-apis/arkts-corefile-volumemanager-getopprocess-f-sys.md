@@ -20,6 +20,8 @@ Gets the operation progress of a volume. This API uses a promise to return the r
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-volumeManager-function getOpProcess(volumeId: string): Promise<int>--><!--Device-volumeManager-function getOpProcess(volumeId: string): Promise<int>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.

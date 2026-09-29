@@ -14,6 +14,8 @@ Defines the subscription type.
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-rdb-enum SubscribeType--><!--Device-rdb-enum SubscribeType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## SUBSCRIBE_TYPE_REMOTE
@@ -31,5 +33,7 @@ Subscribe to remote data changes.
 **Substitutes:** [SUBSCRIBE_TYPE_REMOTE](arkts-arkdata-relationalstore-subscribetype-e.md#subscribe_type_remote)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 0--><!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

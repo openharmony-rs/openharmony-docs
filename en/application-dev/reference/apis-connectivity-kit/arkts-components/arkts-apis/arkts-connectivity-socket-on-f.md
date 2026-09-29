@@ -16,6 +16,8 @@ Subscribe the event reported when data is read from the socket.
 
 **Since:** 10
 
+<!--Device-socket-function on(type: 'sppRead', clientSocket: number, callback: Callback<ArrayBuffer>): void--><!--Device-socket-function on(type: 'sppRead', clientSocket: number, callback: Callback<ArrayBuffer>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

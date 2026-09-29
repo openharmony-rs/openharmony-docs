@@ -12,6 +12,8 @@ Describes the bond key param.
 
 **Substitutes:** [PinRequiredParam](arkts-connectivity-bluetoothmanager-pinrequiredparam-i.md)
 
+<!--Device-bluetooth-interface PinRequiredParam--><!--Device-bluetooth-interface PinRequiredParam-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ ID of the device to pair.
 
 **Substitutes:** [deviceId](arkts-connectivity-bluetoothmanager-pinrequiredparam-i.md#deviceid)
 
+<!--Device-PinRequiredParam-deviceId: string--><!--Device-PinRequiredParam-deviceId: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## pinCode
@@ -53,5 +57,7 @@ Key for the device pairing.
 **Deprecated since:** 9
 
 **Substitutes:** [pinCode](arkts-connectivity-bluetoothmanager-pinrequiredparam-i.md#pincode)
+
+<!--Device-PinRequiredParam-pinCode: string--><!--Device-PinRequiredParam-pinCode: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

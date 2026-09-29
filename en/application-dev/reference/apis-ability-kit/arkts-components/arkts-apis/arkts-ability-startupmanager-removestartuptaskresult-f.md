@@ -22,6 +22,8 @@ removed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-startupManager-function removeStartupTaskResult(startupTask: string): void--><!--Device-startupManager-function removeStartupTaskResult(startupTask: string): void-End-->
+
 **System capability:** SystemCapability.Ability.AppStartup
 
 **Parameters:**

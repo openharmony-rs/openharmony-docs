@@ -18,6 +18,8 @@ Implements initialization for the interpolation curve, which is used to create a
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-curves-function initCurve(curve?: Curve): ICurve--><!--Device-curves-function initCurve(curve?: Curve): ICurve-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -30,4 +32,4 @@ Implements initialization for the interpolation curve, which is used to create a
 
 | Type | Description |
 | --- | --- |
-| [ICurve](arkts-arkui-curves-icurve-i.md) | Interpolation curve. |
+| [ICurve](arkts-arkui-curves-icurve-i.md) | Interpolation object of the curve. You can use the **interpolate** method to obtain the interpolation at a specified normalized time point. |

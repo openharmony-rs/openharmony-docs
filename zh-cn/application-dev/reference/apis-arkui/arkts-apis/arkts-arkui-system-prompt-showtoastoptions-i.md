@@ -12,6 +12,8 @@ export interface ShowToastOptions
 
 **替代接口：** [ShowToastOptions](arkts-arkui-promptaction-showtoastoptions-i.md)
 
+<!--Device-unnamed-export interface ShowToastOptions--><!--Device-unnamed-export interface ShowToastOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -38,6 +40,8 @@ bottom?: string | number
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-ShowToastOptions-bottom?: string | number--><!--Device-ShowToastOptions-bottom?: string | number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## duration
@@ -58,6 +62,8 @@ duration?: number
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-ShowToastOptions-duration?: number--><!--Device-ShowToastOptions-duration?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## message
@@ -77,5 +83,7 @@ message: string
 **替代接口：** [message](arkts-arkui-promptaction-showtoastoptions-i.md#message)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-ShowToastOptions-message: string--><!--Device-ShowToastOptions-message: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

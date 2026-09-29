@@ -10,6 +10,8 @@ Enumerates the value types.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-preferences-type ValueType = number | string | boolean | Array<number> | Array<string> | Array<boolean> | Uint8Array | object | bigint--><!--Device-preferences-type ValueType = number | string | boolean | Array<number> | Array<string> | Array<boolean> | Uint8Array | object | bigint-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 | Type | Description |

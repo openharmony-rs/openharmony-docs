@@ -12,7 +12,7 @@ import { sendableContextManager } from '@kit.AbilityKit';
 function setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): void
 ```
 
-Enables the cross-thread data transfer feature of [EventHub](arkts-ability-eventhub-c.md) in Context.
+Enables the cross-thread data transfer feature of [EventHub](arkts-ability-eventhub-c.md) in [Context](arkts-ability-context.md).
 
 > **NOTE:** 
 > 
@@ -23,6 +23,8 @@ Enables the cross-thread data transfer feature of [EventHub](arkts-ability-event
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-sendableContextManager-function setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): void--><!--Device-sendableContextManager-function setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

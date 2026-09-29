@@ -18,6 +18,8 @@ Enumerates the blur types of a mask filter.
 
 **Since:** 12
 
+<!--Device-drawing-enum BlurType--><!--Device-drawing-enum BlurType-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## NORMAL
@@ -29,6 +31,8 @@ NORMAL = 0
 Both the outer edges and the inner solid parts are blurred.
 
 **Since:** 12
+
+<!--Device-BlurType-NORMAL = 0--><!--Device-BlurType-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -42,6 +46,8 @@ The inner solid part remains unchanged, while only the outer edges are blurred.
 
 **Since:** 12
 
+<!--Device-BlurType-SOLID = 1--><!--Device-BlurType-SOLID = 1-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## OUTER
@@ -54,6 +60,8 @@ Only the outer edges are blurred, with the inner solid part being fully transpar
 
 **Since:** 12
 
+<!--Device-BlurType-OUTER = 2--><!--Device-BlurType-OUTER = 2-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## INNER
@@ -65,5 +73,7 @@ INNER = 3
 Only the inner solid part is blurred, while the outer edges remain sharp.
 
 **Since:** 12
+
+<!--Device-BlurType-INNER = 3--><!--Device-BlurType-INNER = 3-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

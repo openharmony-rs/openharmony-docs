@@ -16,6 +16,8 @@ Queries state data of the current bundle within a specified period.
 
 **Since:** 9
 
+<!--Device-usageStatistics-function queryCurrentBundleEvents(begin: long, end: long, callback: AsyncCallback<Array<BundleEvents>>): void--><!--Device-usageStatistics-function queryCurrentBundleEvents(begin: long, end: long, callback: AsyncCallback<Array<BundleEvents>>): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **System API:** This is a system API.
@@ -73,6 +75,8 @@ function queryCurrentBundleEvents(begin: number, end: number): Promise<Array<Bun
 Queries state data of the current bundle within a specified period.
 
 **Since:** 9
+
+<!--Device-usageStatistics-function queryCurrentBundleEvents(begin: long, end: long): Promise<Array<BundleEvents>>--><!--Device-usageStatistics-function queryCurrentBundleEvents(begin: long, end: long): Promise<Array<BundleEvents>>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -136,6 +140,8 @@ Queries state data of the current bundle within a specified period.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-usageStatistics-function queryCurrentBundleEvents(begin: long, end: long, maxNum: int): Promise<Array<BundleEvents>>--><!--Device-usageStatistics-function queryCurrentBundleEvents(begin: long, end: long, maxNum: int): Promise<Array<BundleEvents>>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 

@@ -27,6 +27,8 @@ Implements a sound pool that provides APIs for loading, unloading, playing, and 
 
 **Since:** 10
 
+<!--Device-unnamed-export declare interface SoundPool--><!--Device-unnamed-export declare interface SoundPool-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 ## load
@@ -48,6 +50,8 @@ This API cannot be used to load resources in the **rawfile** directory. Instead,
 > - Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
 
 **Since:** 10
+
+<!--Device-SoundPool-load(uri: string, callback: AsyncCallback<int>): void--><!--Device-SoundPool-load(uri: string, callback: AsyncCallback<int>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -87,6 +91,8 @@ This API cannot be used to load resources in the **rawfile** directory. Instead,
 > - Competition occurs when multiple players use the same resource handle or path description to read and write files at the same time, resulting in playback errors.
 
 **Since:** 10
+
+<!--Device-SoundPool-load(uri: string): Promise<int>--><!--Device-SoundPool-load(uri: string): Promise<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -130,6 +136,8 @@ This API uses an asynchronous callback to obtain the resource ID. For the input 
 
 **Since:** 10
 
+<!--Device-SoundPool-load(fd: int, offset: long, length: long, callback: AsyncCallback<int>): void--><!--Device-SoundPool-load(fd: int, offset: long, length: long, callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -169,6 +177,8 @@ This API uses a promise to obtain the resource ID. For the input parameter, reso
 
 **Since:** 10
 
+<!--Device-SoundPool-load(fd: int, offset: long, length: long): Promise<int>--><!--Device-SoundPool-load(fd: int, offset: long, length: long): Promise<int>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -203,6 +213,8 @@ Unsubscribes from events indicating that a sound finishes loading.
 
 **Since:** 10
 
+<!--Device-SoundPool-off(type: 'loadComplete'): void--><!--Device-SoundPool-off(type: 'loadComplete'): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -220,6 +232,8 @@ off(type: 'playFinishedWithStreamId'): void
 Unsubscribes from events indicating that a sound finishes playing.
 
 **Since:** 18
+
+<!--Device-SoundPool-off(type: 'playFinishedWithStreamId'): void--><!--Device-SoundPool-off(type: 'playFinishedWithStreamId'): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -239,6 +253,8 @@ Unsubscribes from events indicating that a sound finishes playing.
 
 **Since:** 10
 
+<!--Device-SoundPool-off(type: 'playFinished'): void--><!--Device-SoundPool-off(type: 'playFinished'): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -256,6 +272,8 @@ off(type: 'error'): void
 Unsubscribes from error events of a SoundPool instance.
 
 **Since:** 10
+
+<!--Device-SoundPool-off(type: 'error'): void--><!--Device-SoundPool-off(type: 'error'): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -275,6 +293,8 @@ Unsubscribes from error events of a SoundPool instance.
 
 **Since:** 20
 
+<!--Device-SoundPool-off(type: 'errorOccurred', callback?: Callback<ErrorInfo>): void--><!--Device-SoundPool-off(type: 'errorOccurred', callback?: Callback<ErrorInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -293,6 +313,8 @@ on(type: 'loadComplete', callback: Callback<number>): void
 Subscribes to events indicating that a sound finishes loading. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-SoundPool-on(type: 'loadComplete', callback: Callback<int>): void--><!--Device-SoundPool-on(type: 'loadComplete', callback: Callback<int>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -317,6 +339,8 @@ When both on('playFinished') and on('playFinishedWithStreamId') are subscribed t
 
 **Since:** 18
 
+<!--Device-SoundPool-on(type: 'playFinishedWithStreamId', callback: Callback<int>): void--><!--Device-SoundPool-on(type: 'playFinishedWithStreamId', callback: Callback<int>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -335,6 +359,8 @@ on(type: 'playFinished', callback: Callback<void>): void
 Subscribes to events indicating that a sound finishes playing. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-SoundPool-on(type: 'playFinished', callback: Callback<void>): void--><!--Device-SoundPool-on(type: 'playFinished', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -355,6 +381,8 @@ Subscribes to error events of a [SoundPool](../../../reference/apis-media-kit/js
 
 **Since:** 10
 
+<!--Device-SoundPool-on(type: 'error', callback: ErrorCallback): void--><!--Device-SoundPool-on(type: 'error', callback: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -374,6 +402,8 @@ Subscribes to error events of a [SoundPool](../../../reference/apis-media-kit/js
 
 **Since:** 20
 
+<!--Device-SoundPool-on(type: 'errorOccurred', callback: Callback<ErrorInfo>): void--><!--Device-SoundPool-on(type: 'errorOccurred', callback: Callback<ErrorInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -392,6 +422,8 @@ play(soundID: number, params: PlayParameters, callback: AsyncCallback<number>): 
 Plays a sound and obtains the stream ID. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-SoundPool-play(soundID: int, params: PlayParameters, callback: AsyncCallback<int>): void--><!--Device-SoundPool-play(soundID: int, params: PlayParameters, callback: AsyncCallback<int>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -423,6 +455,8 @@ Plays a sound using default parameters and obtains the stream ID. This API uses 
 
 **Since:** 10
 
+<!--Device-SoundPool-play(soundID: int, callback: AsyncCallback<int>): void--><!--Device-SoundPool-play(soundID: int, callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -451,6 +485,8 @@ play(soundID: number, params?: PlayParameters): Promise<number>
 Plays a sound and obtains the stream ID. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-SoundPool-play(soundID: int, params?: PlayParameters): Promise<int>--><!--Device-SoundPool-play(soundID: int, params?: PlayParameters): Promise<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -485,6 +521,8 @@ Releases a **SoundPool** instance. This API uses an asynchronous callback to ret
 
 **Since:** 10
 
+<!--Device-SoundPool-release(callback: AsyncCallback<void>): void--><!--Device-SoundPool-release(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -511,6 +549,8 @@ Releases a **SoundPool** instance. This API uses a promise to return the result.
 
 **Since:** 10
 
+<!--Device-SoundPool-release(): Promise<void>--><!--Device-SoundPool-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Return value:**
@@ -531,11 +571,13 @@ Releases a **SoundPool** instance. This API uses a promise to return the result.
 setInterruptMode(interruptMode: media.SoundInterruptMode): void
 ```
 
-Sets the interruption mode of the audio files with the same ID during playback. After the **SoundPool** is created, this API is valid only when the **Play** function of the **SoundPool** is called for the first time. You can set the interruption mode for multiple times. If the interruption mode is not set, the [SAME_SOUND_INTERRUPT](../../../reference/apis-media-kit/arkts-media-media-soundinterruptmode-e.md) mode is used by default. That is, if the former audio file is not completely played, the latter audio file with the same ID interrupts the former audio file.
+Sets the interruption mode of the audio resources with the same sound ID during playback. After a **soundPool** instance is created, this API is valid only before the play function of the **soundPool** instance is called for the first time. If this parameter is not set, [SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode) is used by default. That is, for the audio resources with the same sound ID, if the previous playback instance has not finished playing, the next playback instance interrupts the previous one before playing.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SoundPool-setInterruptMode(interruptMode: media.SoundInterruptMode): void--><!--Device-SoundPool-setInterruptMode(interruptMode: media.SoundInterruptMode): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -555,6 +597,8 @@ Sets the loop mode. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
+<!--Device-SoundPool-setLoop(streamID: int, loop: int, callback: AsyncCallback<void>): void--><!--Device-SoundPool-setLoop(streamID: int, loop: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -562,7 +606,7 @@ Sets the loop mode. This API uses an asynchronous callback to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | streamID | number | Yes | Audio stream ID, which is obtained by calling **play()**. |
-| loop | number | Yes | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly. |
+| loop | number | Yes | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br>If this parameter is set to a floating-point number, only the integer part is used. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -585,6 +629,8 @@ Sets the loop mode. This API uses a promise to return the result.
 
 **Since:** 10
 
+<!--Device-SoundPool-setLoop(streamID: int, loop: int): Promise<void>--><!--Device-SoundPool-setLoop(streamID: int, loop: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -592,7 +638,7 @@ Sets the loop mode. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | streamID | number | Yes | Audio stream ID, which is obtained by calling **play()**. |
-| loop | number | Yes | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly. |
+| loop | number | Yes | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br>If this parameter is set to a floating-point number, only the integer part is used. |
 
 **Return value:**
 
@@ -617,6 +663,8 @@ setPriority(streamID: number, priority: number, callback: AsyncCallback<void>): 
 Sets the priority for an audio stream. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-SoundPool-setPriority(streamID: int, priority: int, callback: AsyncCallback<void>): void--><!--Device-SoundPool-setPriority(streamID: int, priority: int, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -647,6 +695,8 @@ setPriority(streamID: number, priority: number): Promise<void>
 Sets the priority for an audio stream. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-SoundPool-setPriority(streamID: int, priority: int): Promise<void>--><!--Device-SoundPool-setPriority(streamID: int, priority: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -681,6 +731,8 @@ Sets the playback rate for an audio stream. This API uses an asynchronous callba
 
 **Since:** 10
 
+<!--Device-SoundPool-setRate(streamID: int, rate: audio.AudioRendererRate, callback: AsyncCallback<void>): void--><!--Device-SoundPool-setRate(streamID: int, rate: audio.AudioRendererRate, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -710,6 +762,8 @@ setRate(streamID: number, rate: audio.AudioRendererRate): Promise<void>
 Sets the playback rate for an audio stream. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-SoundPool-setRate(streamID: int, rate: audio.AudioRendererRate): Promise<void>--><!--Device-SoundPool-setRate(streamID: int, rate: audio.AudioRendererRate): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -744,6 +798,8 @@ Sets the volume for an audio stream. This API uses an asynchronous callback to r
 
 **Since:** 10
 
+<!--Device-SoundPool-setVolume(streamID: int, leftVolume: double, rightVolume: double, callback: AsyncCallback<void>): void--><!--Device-SoundPool-setVolume(streamID: int, leftVolume: double, rightVolume: double, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -774,6 +830,8 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise<vo
 Sets the volume for an audio stream. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-SoundPool-setVolume(streamID: int, leftVolume: double, rightVolume: double): Promise<void>--><!--Device-SoundPool-setVolume(streamID: int, leftVolume: double, rightVolume: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -809,6 +867,8 @@ Stops audio playback. This API uses an asynchronous callback to return the resul
 
 **Since:** 10
 
+<!--Device-SoundPool-stop(streamID: int, callback: AsyncCallback<void>): void--><!--Device-SoundPool-stop(streamID: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -837,6 +897,8 @@ stop(streamID: number): Promise<void>
 Stops audio playback. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-SoundPool-stop(streamID: int): Promise<void>--><!--Device-SoundPool-stop(streamID: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -870,6 +932,8 @@ Unloads a sound. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
+<!--Device-SoundPool-unload(soundID: int, callback: AsyncCallback<void>): void--><!--Device-SoundPool-unload(soundID: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -898,6 +962,8 @@ unload(soundID: number): Promise<void>
 Unloads a sound. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-SoundPool-unload(soundID: int): Promise<void>--><!--Device-SoundPool-unload(soundID: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 

@@ -8,6 +8,8 @@ ChipV2AccessibilitySelectedType是ChipV2可指定的选中态类型，用于控�
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export declare enum ChipV2AccessibilitySelectedType--><!--Device-unnamed-export declare enum ChipV2AccessibilitySelectedType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CLICKED
@@ -23,6 +25,8 @@ CLICKED = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2AccessibilitySelectedType-CLICKED = 0--><!--Device-ChipV2AccessibilitySelectedType-CLICKED = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ CHECKED = 1
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipV2AccessibilitySelectedType-CHECKED = 1--><!--Device-ChipV2AccessibilitySelectedType-CHECKED = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SELECTED
@@ -55,5 +61,7 @@ SELECTED = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2AccessibilitySelectedType-SELECTED = 2--><!--Device-ChipV2AccessibilitySelectedType-SELECTED = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

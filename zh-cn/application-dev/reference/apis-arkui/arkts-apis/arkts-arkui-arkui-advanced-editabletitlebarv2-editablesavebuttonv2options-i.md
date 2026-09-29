@@ -8,6 +8,8 @@ export declare interface EditableSaveButtonV2Options
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export declare interface EditableSaveButtonV2Options--><!--Device-unnamed-export declare interface EditableSaveButtonV2Options-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,6 +31,8 @@ onAction?: OnActionCallback
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableSaveButtonV2Options-onAction?: OnActionCallback--><!--Device-EditableSaveButtonV2Options-onAction?: OnActionCallback-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ false：不获焦。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableSaveButtonV2Options-defaultFocus?: boolean--><!--Device-EditableSaveButtonV2Options-defaultFocus?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isRequired
@@ -81,5 +87,7 @@ false：不显示保存按钮。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableSaveButtonV2Options-isRequired?: boolean--><!--Device-EditableSaveButtonV2Options-isRequired?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

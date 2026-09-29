@@ -20,6 +20,8 @@ Obtains the RunningFormInfo object by formId.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formObserver-function getRunningFormInfoById(formId: string): Promise<formInfo.RunningFormInfo>--><!--Device-formObserver-function getRunningFormInfoById(formId: string): Promise<formInfo.RunningFormInfo>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -63,6 +65,8 @@ Obtains the RunningFormInfo object by formId.
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-formObserver-function getRunningFormInfoById(formId: string, isUnusedIncluded: boolean): Promise<formInfo.RunningFormInfo>--><!--Device-formObserver-function getRunningFormInfoById(formId: string, isUnusedIncluded: boolean): Promise<formInfo.RunningFormInfo>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -109,6 +113,8 @@ Obtains the RunningFormInfo object by formId.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formObserver-function getRunningFormInfoById(formId: string, callback: AsyncCallback<formInfo.RunningFormInfo>): void--><!--Device-formObserver-function getRunningFormInfoById(formId: string, callback: AsyncCallback<formInfo.RunningFormInfo>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -151,6 +157,8 @@ Obtains the RunningFormInfo object by formId.
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-formObserver-function getRunningFormInfoById(    formId: string,    isUnusedIncluded: boolean,    callback: AsyncCallback<formInfo.RunningFormInfo>  ): void--><!--Device-formObserver-function getRunningFormInfoById(    formId: string,    isUnusedIncluded: boolean,    callback: AsyncCallback<formInfo.RunningFormInfo>  ): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

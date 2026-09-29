@@ -16,7 +16,9 @@ Query the Wi-Fi status
 
 **Since:** 13
 
-**Atomic service API:** This API can be used in atomic services since API version 13.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 13.
+
+<!--Device-wifiManager-function isWifiActive(): boolean--><!--Device-wifiManager-function isWifiActive(): boolean-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

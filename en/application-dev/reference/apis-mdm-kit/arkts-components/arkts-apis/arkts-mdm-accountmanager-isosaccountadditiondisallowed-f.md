@@ -20,6 +20,8 @@ Queries whether a user is not allowed to add an account.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accountManager-function isOsAccountAdditionDisallowed(admin: Want, accountId?: number): boolean--><!--Device-accountManager-function isOsAccountAdditionDisallowed(admin: Want, accountId?: number): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -81,6 +83,8 @@ Queries whether a user is not allowed to add an account. This API is applicable 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-accountManager-function isOsAccountAdditionDisallowed(admin: Want | null, accountId?: number): boolean--><!--Device-accountManager-function isOsAccountAdditionDisallowed(admin: Want | null, accountId?: number): boolean-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

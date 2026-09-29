@@ -4,9 +4,11 @@
 export declare interface IReusePool
 ```
 
-The **IReusePool** API provides the features related to the global reuse pool of a custom component.
+Provides the features related to the global reuse pool of a custom component, including querying the current count and upper limit of recycled components and pre-rendering reusable components into the reuse pool. It is suitable for scenarios where you need to manually manage and optimize component reuse efficiency.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-export declare interface IReusePool--><!--Device-unnamed-export declare interface IReusePool-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,20 +33,22 @@ Obtains the information about the recycling instance of a given reusable compone
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-IReusePool-getReusableInfo(constructor: ReusableComponentConstructor,    reuseId?: string): IReusableInfo[] | IReusableInfo | undefined--><!--Device-IReusePool-getReusableInfo(constructor: ReusableComponentConstructor,    reuseId?: string): IReusableInfo[] | IReusableInfo | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| constructor | [ReusableComponentConstructor](arkts-arkui-reusablecomponentconstructor-t.md) | Yes | Name of the reusable custom component to be queried. |
+| constructor | [ReusableComponentConstructor](arkts-arkui-reusablecomponentconstructor-t.md) | Yes | Constructor of the reusable custom component to be queried. |
 | reuseId | string | No | Reuse ID for filtering. If specified, only the information about the reuse pool with the reuse ID is returned. The default value is **undefined**, indicating that information about all reuse pools is returned. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md)[] &#124; [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md) &#124; undefined | If the reuse pool is not configured to accept the given component type, **undefined** is returned.<br>If **reuseId** is specified, a single **IReusableInfo** is returned (even if **count** is set to **0** and **maxCount** is set to the default value). <br>If **reuseId** is not specified and the reusable component does not use **reuseId**, a single **IReusableInfo** is returned. <br>If **reuseId** is not specified but the reusable component uses **reuseId**, an **Array&lt;IReusableInfo&gt;** is returned, providing a separate entry for each **reuseId** that has a positive value of **count** or a non- default value of **maxCount** as well as an entry of **reuseId: undefined**. |
+| [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md)[] &#124; [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md) &#124; undefined | If the reuse pool is not configured to accept the given component type, **undefined** is returned.<br>If **reuseId** is specified, a single **IReusableInfo** is returned (even if **count** is set to **0** and **maxCount** is set to the default value). <br>If the **reuseId** parameter is not specified and the reusable component is created without a reuse ID, a single **IReusableInfo** is returned. <br>If the **reuseId** parameter is not specified but the reusable component is created with a reuse ID, an **Array&lt;IReusableInfo&gt;** is returned, providing a separate entry for each reuse ID with a positive count or a non-default **maxCount**, plus an entry of **reuseId: undefined**. |
 
 **Examples**
 
@@ -119,7 +123,15 @@ struct PoolOwner {
 preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>
 ```
 
-Pre-creates @Reusable/@ReusableV2 decorated components and places them in this reuse pool.
+Invokes an idle task to pre-create a reusable component and put it into the reuse pool before it is used for the first time.
+
+> **NOTE:** 
+> 
+> 1. **preRender** only places components that are configured to be accepted by the pool into the pool. Components that are not accepted by the pre-rendering pool are created and destroyed immediately.
+> 
+> 2. During pre-rendering, components are not reused from the pool. The pool only accepts newly created instances.
+> 
+> 3. The **@Builder** decorated function performs complete deep rendering, including nested child components.
 
 **Since:** 26.0.0
 
@@ -127,20 +139,22 @@ Pre-creates @Reusable/@ReusableV2 decorated components and places them in this r
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-IReusePool-preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>--><!--Device-IReusePool-preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [WrappedBuilder](../arkts-components/arkts-arkui-common-comp-wrappedbuilder-c.md)&lt;[]&gt; | Yes | **WrappedBuilder** that contains the @Builder decorated function to be executed *n* times. Each execution should create one or more @Reusable/@ReusableV2 decorated components. |
-| times | number | Yes | Number of times the @Builder decorated function is executed. |
+| builder | [WrappedBuilder](../arkts-components/arkts-arkui-common-comp-wrappedbuilder-c.md)&lt;[]&gt; | Yes | **WrappedBuilder** that contains the \@Builder decorated function to be executed *times* times. One or more [\@Reusable](../../../ui/state-management/arkts-create-custom-components.md#reusable)/[\@ReusableV2](../../../ui/state-management/arkts-create-custom-components.md#reusablev2) components should be created for each execution. |
+| times | number | Yes | Number of times the \@Builder decorated function is executed. The value is a positive integer. If 0 or a negative number is passed, the value does not take effect. If a decimal is passed, it is rounded up. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise parsed when the idle task is successfully completed. This promise returns no value. |
+| Promise&lt;void&gt; | Promise that is fulfilled when the idle task completes successfully. This promise returns no value. If the pre-rendering task fails to be executed, the promise will be rejected. |
 
 **Examples**
 

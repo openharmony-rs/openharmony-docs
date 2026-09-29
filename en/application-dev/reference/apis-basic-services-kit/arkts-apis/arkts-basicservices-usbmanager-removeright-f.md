@@ -16,6 +16,8 @@ Removes the permission for an app to access the device. System apps are granted 
 
 **Since:** 9
 
+<!--Device-usbManager-function removeRight(deviceName: string): boolean--><!--Device-usbManager-function removeRight(deviceName: string): boolean-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

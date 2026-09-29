@@ -8,6 +8,8 @@ Describes the supplementary information captured in **BusinessError** in the cat
 
 **Since:** 20
 
+<!--Device-taskpool-interface TaskResult--><!--Device-taskpool-interface TaskResult-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Error message. By default, the value is the same as the **message** field of **B
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TaskResult-error?: Error | Object--><!--Device-TaskResult-error?: Error | Object-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## result
@@ -45,5 +49,7 @@ Task execution result. The default value is **undefined**. You are advised not t
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-TaskResult-result?: Object--><!--Device-TaskResult-result?: Object-End-->
 
 **System capability:** SystemCapability.Utils.Lang

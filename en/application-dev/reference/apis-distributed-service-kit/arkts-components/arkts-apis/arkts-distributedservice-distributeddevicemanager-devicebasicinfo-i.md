@@ -8,6 +8,8 @@ Represents the basic information about a distributed device.
 
 **Since:** 10
 
+<!--Device-distributedDeviceManager-interface DeviceBasicInfo--><!--Device-distributedDeviceManager-interface DeviceBasicInfo-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Device ID. The value is the result of obfuscating the udid-hash (hash value of t
 
 **Since:** 10
 
+<!--Device-DeviceBasicInfo-deviceId: string--><!--Device-DeviceBasicInfo-deviceId: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 ## deviceName
@@ -41,6 +45,8 @@ Device name.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-DeviceBasicInfo-deviceName: string--><!--Device-DeviceBasicInfo-deviceName: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -56,6 +62,8 @@ deviceType: string
 
 **Since:** 10
 
+<!--Device-DeviceBasicInfo-deviceType: string--><!--Device-DeviceBasicInfo-deviceType: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 ## networkId
@@ -69,5 +77,7 @@ Network ID of the device.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-DeviceBasicInfo-networkId?: string--><!--Device-DeviceBasicInfo-networkId?: string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager

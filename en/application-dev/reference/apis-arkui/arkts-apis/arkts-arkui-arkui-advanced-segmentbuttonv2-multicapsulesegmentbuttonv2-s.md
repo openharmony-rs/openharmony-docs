@@ -10,6 +10,8 @@ The segmented button component is used to create tab-type, single-selection, or 
 
 **Decorator:** @ComponentV2
 
+<!--Device-unnamed-export declare struct MultiCapsuleSegmentButtonV2--><!--Device-unnamed-export declare struct MultiCapsuleSegmentButtonV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Callback triggered when the selected item of the segmented button changes.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-$selectedIndexes: OnSelectedIndexesChange--><!--Device-MultiCapsuleSegmentButtonV2-$selectedIndexes: OnSelectedIndexesChange-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## build
@@ -49,6 +53,8 @@ Sets the build function of the segmented button.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-build(): void--><!--Device-MultiCapsuleSegmentButtonV2-build(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ This property is read-only.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemBackgroundBlurStyle?: BlurStyle--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemBackgroundBlurStyle?: BlurStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemBackgroundBlurStyleOptions
@@ -93,6 +101,8 @@ This property is read-only.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemBackgroundBlurStyleOptions?: BackgroundBlurStyleOptions--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemBackgroundBlurStyleOptions?: BackgroundBlurStyleOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,6 +128,8 @@ This property is read-only.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemBackgroundColor?: ColorMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemBackgroundColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemBackgroundEffect
@@ -139,6 +151,8 @@ This property is read-only.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemBackgroundEffect?: BackgroundEffectOptions--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemBackgroundEffect?: BackgroundEffectOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -165,6 +179,8 @@ This property is read-only.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemBorderRadius?: LengthMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemBorderRadius?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -193,6 +209,8 @@ This member is read-only and cannot be modified.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemFontColor?: ColorMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemFontColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -224,6 +242,8 @@ This member is read-only and cannot be modified.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemFontSize?: LengthMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemFontSize?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemFontWeight
@@ -252,6 +272,8 @@ This member is read-only and cannot be modified.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemFontWeight?: FontWeight--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemFontWeight?: FontWeight-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemIconFillColor
@@ -279,6 +301,8 @@ This member is read-only and cannot be modified.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemIconFillColor?: ColorMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemIconFillColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -310,6 +334,8 @@ This member is read-only and cannot be modified.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemIconSize?: SizeT<LengthMetrics>--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemIconSize?: SizeT<LengthMetrics>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemMaxFontScale
@@ -337,6 +363,8 @@ This member is read-only and cannot be modified.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemMaxFontScale?: number | Resource--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemMaxFontScale?: number | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -366,6 +394,8 @@ This member is read-only and cannot be modified.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemMinFontScale?: number | Resource--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemMinFontScale?: number | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemMinHeight
@@ -394,6 +424,8 @@ This property is read-only.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemMinHeight?: LengthMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemMinHeight?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemPadding
@@ -417,6 +449,8 @@ This property is read-only.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemPadding?: LocalizedPadding--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemPadding?: LocalizedPadding-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -442,6 +476,8 @@ This member is read-only and cannot be modified.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly items: SegmentButtonV2Items--><!--Device-MultiCapsuleSegmentButtonV2-readonly items: SegmentButtonV2Items-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSelectedBackgroundColor
@@ -465,6 +501,8 @@ This property is read-only.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemSelectedBackgroundColor?: ColorMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemSelectedBackgroundColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -493,6 +531,8 @@ This member is read-only and cannot be modified.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemSelectedFontColor?: ColorMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemSelectedFontColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -524,6 +564,8 @@ This member is read-only and cannot be modified.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemSelectedFontSize?: LengthMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemSelectedFontSize?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSelectedFontWeight
@@ -551,6 +593,8 @@ This member is read-only and cannot be modified.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemSelectedFontWeight?: FontWeight--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemSelectedFontWeight?: FontWeight-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -580,6 +624,8 @@ This member is read-only and cannot be modified.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemSelectedIconFillColor?: ColorMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemSelectedIconFillColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSelectedSymbolFontColor
@@ -607,6 +653,8 @@ This member is read-only and cannot be modified.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemSelectedSymbolFontColor?: ColorMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemSelectedSymbolFontColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -636,6 +684,8 @@ This property is read-only.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemSpace?: LengthMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemSpace?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSymbolFontColor
@@ -663,6 +713,8 @@ This member is read-only and cannot be modified.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemSymbolFontColor?: ColorMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemSymbolFontColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -694,6 +746,8 @@ This member is read-only and cannot be modified.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly itemSymbolFontSize?: LengthMetrics--><!--Device-MultiCapsuleSegmentButtonV2-readonly itemSymbolFontSize?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## languageDirection
@@ -718,6 +772,8 @@ This property is read-only.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-MultiCapsuleSegmentButtonV2-readonly languageDirection?: Direction--><!--Device-MultiCapsuleSegmentButtonV2-readonly languageDirection?: Direction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onItemClicked
@@ -739,6 +795,8 @@ Default value: **undefined**. When not set, the callback is not triggered.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-onItemClicked?: Callback<number>--><!--Device-MultiCapsuleSegmentButtonV2-onItemClicked?: Callback<number>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -767,5 +825,7 @@ This member is read-only and cannot be modified.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MultiCapsuleSegmentButtonV2-readonly selectedIndexes: number[]--><!--Device-MultiCapsuleSegmentButtonV2-readonly selectedIndexes: number[]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -6,7 +6,7 @@ declare class IsolatedComponentAttribute extends CommonMethod<IsolatedComponentA
 
 Only the [width](arkts-arkui-common-comp-commonmethod-c.md#width), [height](arkts-arkui-common-comp-commonmethod-c.md#height), and [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor) universal attributes are supported.
 
-The [universal events](arkts-arkui-common-comp.md#common) are not supported.
+The [universal events](arkts-arkui-common-comp.md) are not supported.
 
 Events are asynchronously passed to the restricted Worker thread after coordinate conversion.
 
@@ -15,6 +15,8 @@ The following events are supported:
 **Inheritance/Implementation:** IsolatedComponentAttribute extends CommonMethod<IsolatedComponentAttribute>
 
 **Since:** 12
+
+<!--Device-unnamed-declare class IsolatedComponentAttribute extends CommonMethod<IsolatedComponentAttribute>--><!--Device-unnamed-declare class IsolatedComponentAttribute extends CommonMethod<IsolatedComponentAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -18,6 +18,8 @@ Prepares for screen hopping. This API uses an asynchronous callback to return th
 
 **Required permissions:** ohos.permission.COOPERATE_MANAGER
 
+<!--Device-cooperate-function prepareCooperate(callback: AsyncCallback<void>): void--><!--Device-cooperate-function prepareCooperate(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Prepares for screen hopping. This API uses a promise to return the result.
 **Since:** 11
 
 **Required permissions:** ohos.permission.COOPERATE_MANAGER
+
+<!--Device-cooperate-function prepareCooperate(): Promise<void>--><!--Device-cooperate-function prepareCooperate(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 

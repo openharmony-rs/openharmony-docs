@@ -22,6 +22,8 @@ Notifies state changes for both active ranging and passive ranging operations.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ranging-function onRangingStateChange(callback: Callback<RangingStateChangeInfo>): void--><!--Device-ranging-function onRangingStateChange(callback: Callback<RangingStateChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 **Parameters:**

@@ -4,6 +4,8 @@ The **contact** module provides contact management functions, such as adding, de
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace contact--><!--Device-unnamed-declare namespace contact-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## Modules to Import

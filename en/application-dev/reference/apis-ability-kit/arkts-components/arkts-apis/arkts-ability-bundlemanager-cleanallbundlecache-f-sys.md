@@ -18,6 +18,8 @@ Clears the global cache. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.REMOVE_CACHE_FILES
 
+<!--Device-bundleManager-function cleanAllBundleCache(): Promise<void>--><!--Device-bundleManager-function cleanAllBundleCache(): Promise<void>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

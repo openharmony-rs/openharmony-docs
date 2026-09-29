@@ -22,6 +22,8 @@ Checks whether distributed notification is enabled for a specified application. 
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback<boolean>): void--><!--Device-notificationManager-function isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -84,6 +86,8 @@ Checks whether distributed notification is enabled for a specified application. 
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>--><!--Device-notificationManager-function isDistributedEnabledByBundle(bundle: BundleOption): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -145,6 +149,8 @@ This API can be properly called on devices other than wearables and TVs. If it i
 **Since:** 12
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<boolean>--><!--Device-notificationManager-function isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

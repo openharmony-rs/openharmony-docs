@@ -24,6 +24,8 @@ Shows a full-screen ad.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-advertising-function showAd(ad: Advertisement, options: AdDisplayOptions, context?: common.UIAbilityContext): void--><!--Device-advertising-function showAd(ad: Advertisement, options: AdDisplayOptions, context?: common.UIAbilityContext): void-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 **Parameters:**

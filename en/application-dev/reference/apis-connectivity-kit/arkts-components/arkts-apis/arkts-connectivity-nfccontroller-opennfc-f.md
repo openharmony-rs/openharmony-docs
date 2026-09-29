@@ -27,6 +27,8 @@ Opens NFC.
 
 **Required permissions:** ohos.permission.MANAGE_SECURE_SETTINGS
 
+<!--Device-nfcController-function openNfc(): boolean--><!--Device-nfcController-function openNfc(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Core
 
 **Return value:**

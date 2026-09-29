@@ -8,6 +8,8 @@ The **NotificationExtensionContent** module describes the notification extension
 
 **Since:** 22
 
+<!--Device-unnamed-export interface NotificationExtensionContent--><!--Device-unnamed-export interface NotificationExtensionContent-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## text
@@ -22,6 +24,8 @@ Notification body content. It cannot be an empty string. The size cannot exceed 
 
 **Since:** 22
 
+<!--Device-NotificationExtensionContent-text: string--><!--Device-NotificationExtensionContent-text: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## title
@@ -35,5 +39,7 @@ Notification title. It cannot be an empty string. The size cannot exceed 1024 by
 **Type:** string
 
 **Since:** 22
+
+<!--Device-NotificationExtensionContent-title: string--><!--Device-NotificationExtensionContent-title: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification

@@ -12,6 +12,8 @@ interface ActionMenuOptions
 
 **替代接口：** [ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i.md)
 
+<!--Device-prompt-interface ActionMenuOptions--><!--Device-prompt-interface ActionMenuOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -38,6 +40,8 @@ buttons: [Button, Button?, Button?, Button?, Button?, Button?]
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-ActionMenuOptions-buttons: [Button, Button?, Button?, Button?, Button?, Button?]--><!--Device-ActionMenuOptions-buttons: [Button, Button?, Button?, Button?, Button?, Button?]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -57,5 +61,7 @@ title?: string
 **替代接口：** [title](arkts-arkui-promptaction-actionmenuoptions-i.md#title)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-ActionMenuOptions-title?: string--><!--Device-ActionMenuOptions-title?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

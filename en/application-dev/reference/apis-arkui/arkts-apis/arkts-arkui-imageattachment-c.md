@@ -8,6 +8,8 @@ Describes the image attachment.
 
 **Since:** 12
 
+<!--Device-unnamed-declare class ImageAttachment--><!--Device-unnamed-declare class ImageAttachment-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -23,6 +25,8 @@ A constructor used to create an image object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ImageAttachment-constructor(value: ImageAttachmentInterface)--><!--Device-ImageAttachment-constructor(value: ImageAttachmentInterface)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ A constructor used to create an image object. Compared to the constructor with a
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-ImageAttachment-constructor(attachment: Optional<AttachmentType>)--><!--Device-ImageAttachment-constructor(attachment: Optional<AttachmentType>)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -72,6 +78,8 @@ Image color filter of the styled string.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-ImageAttachment-readonly colorFilter?: ColorFilterType--><!--Device-ImageAttachment-readonly colorFilter?: ColorFilterType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## layoutStyle
@@ -89,6 +97,8 @@ Image layout of the styled string.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ImageAttachment-readonly layoutStyle?: ImageAttachmentLayoutStyle--><!--Device-ImageAttachment-readonly layoutStyle?: ImageAttachmentLayoutStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +118,8 @@ Image scale type of the styled string.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ImageAttachment-readonly objectFit?: ImageFit--><!--Device-ImageAttachment-readonly objectFit?: ImageFit-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## resizable
@@ -126,6 +138,8 @@ Resizable image options of the styled string.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-ImageAttachment-readonly resizable?: ResizableOptions--><!--Device-ImageAttachment-readonly resizable?: ResizableOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -136,7 +150,7 @@ readonly size?: SizeOptions
 
 Image size of the styled string.
 
-Number-type values use px as the unit.
+The unit of the returned number value is `px`.
 
 **Type:** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
@@ -146,6 +160,8 @@ Number-type values use px as the unit.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ImageAttachment-readonly size?: SizeOptions--><!--Device-ImageAttachment-readonly size?: SizeOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## sizeInVp
@@ -154,11 +170,7 @@ Number-type values use px as the unit.
 readonly sizeInVp?: SizeOptions
 ```
 
-Image size of the styled string.
-
-Number-type values use vp as the unit.
-
-If **ImageAttachment** is set to a negative value or **undefined**, **undefined** is returned.
+Image size of the styled string. The unit of the returned number value is `vp`. If the ImageAttachment size is set to a negative value or undefined, undefined is returned.
 
 **Type:** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
@@ -167,6 +179,8 @@ If **ImageAttachment** is set to a negative value or **undefined**, **undefined*
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-ImageAttachment-readonly sizeInVp?: SizeOptions--><!--Device-ImageAttachment-readonly sizeInVp?: SizeOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,6 +204,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-ImageAttachment-readonly supportSvg2?: boolean--><!--Device-ImageAttachment-readonly supportSvg2?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -208,6 +224,8 @@ Image data source of the styled string.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ImageAttachment-readonly value: PixelMap--><!--Device-ImageAttachment-readonly value: PixelMap-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## verticalAlign
@@ -225,5 +243,7 @@ Image alignment mode of the styled string.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ImageAttachment-readonly verticalAlign?: ImageSpanAlignment--><!--Device-ImageAttachment-readonly verticalAlign?: ImageSpanAlignment-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

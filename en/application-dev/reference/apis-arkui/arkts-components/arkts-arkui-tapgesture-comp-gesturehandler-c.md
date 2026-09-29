@@ -10,6 +10,8 @@ Represents the base type for gesture handlers.
 
 **Since:** 12
 
+<!--Device-unnamed-declare class GestureHandler<T> implements GestureInterface<T>--><!--Device-unnamed-declare class GestureHandler<T> implements GestureInterface<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## allowedTypes
@@ -25,6 +27,8 @@ Sets the event input sources supported by the gesture handler.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-GestureHandler-allowedTypes(types: Array<SourceTool>): T--><!--Device-GestureHandler-allowedTypes(types: Array<SourceTool>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,6 +57,8 @@ Sets the tag for the gesture handler.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureHandler-tag(tag: string): T--><!--Device-GestureHandler-tag(tag: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

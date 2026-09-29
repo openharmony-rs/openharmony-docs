@@ -13,6 +13,8 @@ Defines the configuration policy for the high CPU usage event.
 
 **Since:** 22
 
+<!--Device-hiAppEvent-interface CpuUsageHighPolicy--><!--Device-hiAppEvent-interface CpuUsageHighPolicy-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import
@@ -35,7 +37,9 @@ High CPU usage threshold of the application background, in percentage. The value
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CpuUsageHighPolicy-backgroundLoadThreshold?: int--><!--Device-CpuUsageHighPolicy-backgroundLoadThreshold?: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -53,7 +57,9 @@ High CPU usage threshold of the application foreground, in percentage. The value
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CpuUsageHighPolicy-foregroundLoadThreshold?: int--><!--Device-CpuUsageHighPolicy-foregroundLoadThreshold?: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -83,7 +89,9 @@ If the value is not within the threshold range, the default value **1** is used.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CpuUsageHighPolicy-perfLogCaptureCount?: int--><!--Device-CpuUsageHighPolicy-perfLogCaptureCount?: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -101,7 +109,9 @@ If the value is not within the threshold range, the default value **60** is used
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CpuUsageHighPolicy-threadLoadInterval?: int--><!--Device-CpuUsageHighPolicy-threadLoadInterval?: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -117,6 +127,8 @@ High CPU usage threshold of the application thread, in percentage. The value ran
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CpuUsageHighPolicy-threadLoadThreshold?: int--><!--Device-CpuUsageHighPolicy-threadLoadThreshold?: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

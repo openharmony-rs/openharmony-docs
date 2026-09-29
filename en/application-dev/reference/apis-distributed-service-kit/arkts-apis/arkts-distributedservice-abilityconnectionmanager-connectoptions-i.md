@@ -8,6 +8,8 @@ Connection options for the application.
 
 **Since:** 18
 
+<!--Device-abilityConnectionManager-interface ConnectOptions--><!--Device-abilityConnectionManager-interface ConnectOptions-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Whether to send data. The value **true** indicates that data needs to be sent, a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectOptions-needSendData?: boolean--><!--Device-ConnectOptions-needSendData?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## parameters
@@ -46,6 +50,8 @@ Additional configuration for the connection.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectOptions-parameters?: Record<string, string>--><!--Device-ConnectOptions-parameters?: Record<string, string>-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## startOptions
@@ -61,5 +67,7 @@ Application startup options.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectOptions-startOptions?: StartOptionParams--><!--Device-ConnectOptions-startOptions?: StartOptionParams-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration

@@ -8,6 +8,8 @@ NativeMediaPlayerBridge is the return value type of the [CreateNativeMediaPlayer
 
 **Since:** 12
 
+<!--Device-webview-interface NativeMediaPlayerBridge--><!--Device-webview-interface NativeMediaPlayerBridge-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Enables the player to enter full screen mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerBridge-enterFullscreen(): void--><!--Device-NativeMediaPlayerBridge-enterFullscreen(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -45,6 +49,8 @@ Enables the player to exit full screen mode.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NativeMediaPlayerBridge-exitFullscreen(): void--><!--Device-NativeMediaPlayerBridge-exitFullscreen(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -64,6 +70,8 @@ Pauses playback.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerBridge-pause(): void--><!--Device-NativeMediaPlayerBridge-pause(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -81,6 +89,8 @@ Plays the media.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NativeMediaPlayerBridge-play(): void--><!--Device-NativeMediaPlayerBridge-play(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -100,6 +110,8 @@ Releases this player.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerBridge-release(): void--><!--Device-NativeMediaPlayerBridge-release(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -115,6 +127,8 @@ resumePlayer?(): void
 Notifies the app to rebuild the player and restore its status information. This method is used only in pair with suspendPlayer.
 
 **Since:** 12
+
+<!--Device-NativeMediaPlayerBridge-resumePlayer?(): void--><!--Device-NativeMediaPlayerBridge-resumePlayer?(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -133,6 +147,8 @@ Seeks to a specific time point in the media.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NativeMediaPlayerBridge-seek(targetTime: number): void--><!--Device-NativeMediaPlayerBridge-seek(targetTime: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -158,6 +174,8 @@ Sets the muted status.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerBridge-setMuted(muted: boolean): void--><!--Device-NativeMediaPlayerBridge-setMuted(muted: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -181,6 +199,8 @@ Sets the playback rate.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NativeMediaPlayerBridge-setPlaybackRate(playbackRate: number): void--><!--Device-NativeMediaPlayerBridge-setPlaybackRate(playbackRate: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -206,6 +226,8 @@ Sets the playback volume.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerBridge-setVolume(volume: number): void--><!--Device-NativeMediaPlayerBridge-setVolume(volume: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -227,6 +249,8 @@ suspendPlayer?(type: SuspendType): void
 Notifies the app to destroy the player and save its status information. This method is used only in pair with resumePlayer.
 
 **Since:** 12
+
+<!--Device-NativeMediaPlayerBridge-suspendPlayer?(type: SuspendType): void--><!--Device-NativeMediaPlayerBridge-suspendPlayer?(type: SuspendType): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -251,6 +275,8 @@ Notifies the app of the surface position information. This method is called back
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NativeMediaPlayerBridge-updateRect(x: number, y: number, width: number, height: number): void--><!--Device-NativeMediaPlayerBridge-updateRect(x: number, y: number, width: number, height: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

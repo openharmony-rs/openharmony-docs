@@ -10,6 +10,8 @@ Describes the settings for bloom effects. It is unavailable when RenderingPipeli
 
 **Since:** 18
 
+<!--Device-unnamed-export interface BloomSettings--><!--Device-unnamed-export interface BloomSettings-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## scaleFactor
@@ -23,6 +25,8 @@ Scale factor. The value must be greater than 0. The default value is 1.0.
 **Type:** number
 
 **Since:** 18
+
+<!--Device-BloomSettings-scaleFactor?: double--><!--Device-BloomSettings-scaleFactor?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -38,6 +42,8 @@ Scatter amount. The value must be greater than 0. The default value is 1.0.
 
 **Since:** 18
 
+<!--Device-BloomSettings-scatter?: double--><!--Device-BloomSettings-scatter?: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## thresholdHard
@@ -52,6 +58,8 @@ Hard threshold. The value is a non-negative number. The default value is 1.0.
 
 **Since:** 18
 
+<!--Device-BloomSettings-thresholdHard?: double--><!--Device-BloomSettings-thresholdHard?: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## thresholdSoft
@@ -65,5 +73,7 @@ Soft threshold. The value is a non-negative number. The default value is 2.0.
 **Type:** number
 
 **Since:** 18
+
+<!--Device-BloomSettings-thresholdSoft?: double--><!--Device-BloomSettings-thresholdSoft?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

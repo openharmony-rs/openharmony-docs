@@ -21,6 +21,8 @@ Obtains the downlink traffic (in bytes) of the specified socket. This API uses a
 
 **Since:** 11
 
+<!--Device-statistics-function getSockfdRxBytes(sockfd: int, callback: AsyncCallback<long>): void--><!--Device-statistics-function getSockfdRxBytes(sockfd: int, callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -72,6 +74,8 @@ Obtains the downlink traffic (in bytes) of the specified socket. This API uses a
 > be queried after the socket is closed.
 
 **Since:** 11
+
+<!--Device-statistics-function getSockfdRxBytes(sockfd: int): Promise<long>--><!--Device-statistics-function getSockfdRxBytes(sockfd: int): Promise<long>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

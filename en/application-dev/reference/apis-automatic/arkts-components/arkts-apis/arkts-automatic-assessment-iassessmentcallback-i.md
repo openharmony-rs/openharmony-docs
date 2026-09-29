@@ -8,6 +8,8 @@ Assessment callback interface.
 
 **Since:** 26.0.1
 
+<!--Device-assessment-interface IAssessmentCallback--><!--Device-assessment-interface IAssessmentCallback-End-->
+
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 
 ## Modules to Import
@@ -26,6 +28,8 @@ Assessment start notification.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-IAssessmentCallback-onBegin(error: AssessmentError): void--><!--Device-IAssessmentCallback-onBegin(error: AssessmentError): void-End-->
 
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 
@@ -47,6 +51,8 @@ Assessment end notification.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-IAssessmentCallback-onEnd(): void--><!--Device-IAssessmentCallback-onEnd(): void-End-->
+
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 
 ## onInterrupted
@@ -60,6 +66,8 @@ Assessment interrupt notification.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-IAssessmentCallback-onInterrupted(info: AssessmentInterruptInfo): void--><!--Device-IAssessmentCallback-onInterrupted(info: AssessmentInterruptInfo): void-End-->
 
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 

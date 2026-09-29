@@ -6,7 +6,15 @@ declare interface ScrollOptions
 
 Provides parameters for scrolling to a specific position in a scrollable container.
 
+> **NOTE:** 
+> 
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18.
+> While historical version information is preserved for anonymous objects, there may be cases where the outer element
+> 's
+
 **Since:** 18
+
+<!--Device-unnamed-declare interface ScrollOptions--><!--Device-unnamed-declare interface ScrollOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +41,8 @@ parameters and the boolean type enables default spring animation. [since 10 - 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ScrollOptions-animation?: ScrollAnimationOptions | boolean--><!--Device-ScrollOptions-animation?: ScrollAnimationOptions | boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## canOverScroll
@@ -50,6 +60,8 @@ Set whether the scroll target position can over the boundary.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ScrollOptions-canOverScroll?: boolean--><!--Device-ScrollOptions-canOverScroll?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,6 +83,8 @@ Horizontal scrolling offset. Anonymous Object Rectification.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ScrollOptions-xOffset: number | string--><!--Device-ScrollOptions-xOffset: number | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## yOffset
@@ -90,5 +104,7 @@ Vertical scrolling offset. Anonymous Object Rectification.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScrollOptions-yOffset: number | string--><!--Device-ScrollOptions-yOffset: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

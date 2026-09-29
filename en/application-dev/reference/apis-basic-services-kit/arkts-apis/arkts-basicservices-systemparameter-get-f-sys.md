@@ -20,6 +20,8 @@ Obtains a value of the specified key. This API uses an asynchronous callback to 
 
 **Substitutes:** get
 
+<!--Device-systemParameter-function get(key: string, callback: AsyncCallback<string>): void--><!--Device-systemParameter-function get(key: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ Obtains a value of the specified key. This API uses an asynchronous callback to 
 **Deprecated since:** 9
 
 **Substitutes:** get
+
+<!--Device-systemParameter-function get(key: string, def: string, callback: AsyncCallback<string>): void--><!--Device-systemParameter-function get(key: string, def: string, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo
 
@@ -112,6 +116,8 @@ Obtains a value of the specified key. This API uses a promise to return the resu
 **Deprecated since:** 9
 
 **Substitutes:** get
+
+<!--Device-systemParameter-function get(key: string, def?: string): Promise<string>--><!--Device-systemParameter-function get(key: string, def?: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo
 

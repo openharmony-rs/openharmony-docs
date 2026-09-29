@@ -20,6 +20,8 @@ Checks whether the SIM card in a specified slot is disabled. This API is applica
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-telephonyManager-function isSimDisabled(admin: Want, slotId: number): boolean--><!--Device-telephonyManager-function isSimDisabled(admin: Want, slotId: number): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

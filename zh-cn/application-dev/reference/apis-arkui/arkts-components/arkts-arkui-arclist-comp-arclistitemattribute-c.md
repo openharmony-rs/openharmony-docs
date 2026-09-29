@@ -4,11 +4,13 @@
 export declare class ArcListItemAttribute extends CommonMethod<ArcListItemAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-**继承/实现关系：** ArcListItemAttribute extends CommonMethod&lt;ArcListItemAttribute&gt;
+**继承/实现关系：** ArcListItemAttribute extends CommonMethod<ArcListItemAttribute>
 
 **起始版本：** 18
+
+<!--Device-unnamed-export declare class ArcListItemAttribute extends CommonMethod<ArcListItemAttribute>--><!--Device-unnamed-export declare class ArcListItemAttribute extends CommonMethod<ArcListItemAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -29,6 +31,8 @@ autoScale(enable: Optional<boolean>): ArcListItemAttribute
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcListItemAttribute-autoScale(enable: Optional<boolean>): ArcListItemAttribute--><!--Device-ArcListItemAttribute-autoScale(enable: Optional<boolean>): ArcListItemAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -55,6 +59,8 @@ swipeAction(options: Optional<SwipeActionOptions>): ArcListItemAttribute
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcListItemAttribute-swipeAction(options: Optional<SwipeActionOptions>): ArcListItemAttribute--><!--Device-ArcListItemAttribute-swipeAction(options: Optional<SwipeActionOptions>): ArcListItemAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 

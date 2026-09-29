@@ -12,6 +12,8 @@ Geometric node type that holds renderable mesh data and supports optional deform
 
 **Since:** 12
 
+<!--Device-unnamed-export interface Geometry extends Node--><!--Device-unnamed-export interface Geometry extends Node-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## mesh
@@ -26,6 +28,8 @@ Mesh property.
 
 **Since:** 12
 
+<!--Device-Geometry-readonly mesh: Mesh--><!--Device-Geometry-readonly mesh: Mesh-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## morpher
@@ -39,5 +43,7 @@ Optional morpher that adds vertex-based deformation or animation effects to the 
 **Type:** [Morpher](arkts-arkgraphics3d-sceneresources-morpher-i.md)
 
 **Since:** 20
+
+<!--Device-Geometry-readonly morpher?: Morpher--><!--Device-Geometry-readonly morpher?: Morpher-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

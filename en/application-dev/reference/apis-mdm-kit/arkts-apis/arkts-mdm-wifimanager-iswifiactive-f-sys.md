@@ -24,6 +24,8 @@ Queries the Wi-Fi status of the current device. This API uses an asynchronous ca
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function isWifiActive(admin: Want, callback: AsyncCallback<boolean>): void--><!--Device-wifiManager-function isWifiActive(admin: Want, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -86,6 +88,8 @@ Queries the Wi-Fi status of the current device. This API uses a promise to retur
 **Required permissions:** ohos.permission.ENTERPRISE_SET_WIFI
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-wifiManager-function isWifiActive(admin: Want): Promise<boolean>--><!--Device-wifiManager-function isWifiActive(admin: Want): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

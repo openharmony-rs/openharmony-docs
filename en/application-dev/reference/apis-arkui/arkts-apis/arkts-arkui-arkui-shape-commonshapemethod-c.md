@@ -4,9 +4,11 @@
 declare class CommonShapeMethod<T>
 ```
 
-Implements the common shape methods.
+A base class that provides common methods such as offset, fill, and position settings for shapes.
 
 **Since:** 12
+
+<!--Device-unnamed-declare class CommonShapeMethod<T>--><!--Device-unnamed-declare class CommonShapeMethod<T>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +24,7 @@ import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 fill(color: ResourceColor): T
 ```
 
-Sets the fill color of this shape, which determines its opacity, with black representing full transparency and white representing full opacity.
+Sets the fill color of a shape.
 
 **Since:** 12
 
@@ -32,19 +34,21 @@ Sets the fill color of this shape, which determines its opacity, with black repr
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-CommonShapeMethod-fill(color: ResourceColor): T--><!--Device-CommonShapeMethod-fill(color: ResourceColor): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [ResourceColor](arkts-arkui-resourcecolor-t.md) | Yes | Fill color of the shape, which represents the opacity of the fill area. The black color indicates full transparency, while white indicates full opacity. |
+| color | [ResourceColor](arkts-arkui-resourcecolor-t.md) | Yes | Opacity of the fill area of the shape. Black indicates fully transparent, and white indicates fully opaque. In the maskShape scenario, the fill color determines the opacity effect of the mask. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| T | Current object. |
+| T | The current object, used for chained calls. |
 
 ## offset
 
@@ -54,6 +58,12 @@ offset(offset: Position): T
 
 Sets the coordinate offset relative to the component's layout position.
 
+> **NOTE:** 
+> 
+> - **offset()** sets a relative offset, while **position()** sets an absolute position. The two positioning mechanisms are different.
+> 
+> - You are advised to select one of the two positioning methods based on the scenario, and avoid using both at the same time, which may make the positioning result unpredictable.
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -61,6 +71,8 @@ Sets the coordinate offset relative to the component's layout position.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-CommonShapeMethod-offset(offset: Position): T--><!--Device-CommonShapeMethod-offset(offset: Position): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +86,7 @@ Sets the coordinate offset relative to the component's layout position.
 
 | Type | Description |
 | --- | --- |
-| T | Current object. |
+| T | Current object, used for chained calls. |
 
 ## position
 
@@ -82,7 +94,7 @@ Sets the coordinate offset relative to the component's layout position.
 position(position: Position): T
 ```
 
-Sets the position of the shape.
+Sets the absolute position of a shape. Unlike **offset** (setting the relative offset), **position** sets absolute coordinates. Use **position** when the shape needs to be precisely positioned, and use **offset** when fine-tuning is needed based on the existing layout position.
 
 **Since:** 12
 
@@ -91,6 +103,8 @@ Sets the position of the shape.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-CommonShapeMethod-position(position: Position): T--><!--Device-CommonShapeMethod-position(position: Position): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,4 +118,4 @@ Sets the position of the shape.
 
 | Type | Description |
 | --- | --- |
-| T | Current object. |
+| T | The current object for chained calls. |

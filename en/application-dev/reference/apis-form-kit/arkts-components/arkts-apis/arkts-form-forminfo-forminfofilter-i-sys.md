@@ -10,6 +10,8 @@ The optional options used as filters to ask getFormsInfo to return formInfos fro
 
 **Since:** 9
 
+<!--Device-formInfo-interface FormInfoFilter--><!--Device-formInfo-interface FormInfoFilter-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -30,6 +32,8 @@ optional bundleName that used to ask getFormsInfo to return form infos with the 
 
 **Since:** 12
 
+<!--Device-FormInfoFilter-bundleName?: string--><!--Device-FormInfoFilter-bundleName?: string-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ optional supportedDimensions that used to ask getFormsInfo to return form infos 
 
 **Since:** 12
 
+<!--Device-FormInfoFilter-supportedDimensions?: Array<int>--><!--Device-FormInfoFilter-supportedDimensions?: Array<int>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ optional supportedShapes that used to ask getFormsInfo to return form infos with
 **Type:** Array&lt;number&gt;
 
 **Since:** 12
+
+<!--Device-FormInfoFilter-supportedShapes?: Array<int>--><!--Device-FormInfoFilter-supportedShapes?: Array<int>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

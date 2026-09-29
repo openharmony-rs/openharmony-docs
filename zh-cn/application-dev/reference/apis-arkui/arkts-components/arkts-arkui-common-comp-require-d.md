@@ -14,4 +14,6 @@ declare const Require: PropertyDecorator
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare const Require: PropertyDecorator--><!--Device-unnamed-declare const Require: PropertyDecorator-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

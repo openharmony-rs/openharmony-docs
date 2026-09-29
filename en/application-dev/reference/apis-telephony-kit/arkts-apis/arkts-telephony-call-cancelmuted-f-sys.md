@@ -16,6 +16,8 @@ Cancels call muting. This API uses an asynchronous callback to return the result
 
 **Since:** 8
 
+<!--Device-call-function cancelMuted(callback: AsyncCallback<void>): void--><!--Device-call-function cancelMuted(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -63,6 +65,8 @@ function cancelMuted(): Promise<void>
 Cancels call muting. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-call-function cancelMuted(): Promise<void>--><!--Device-call-function cancelMuted(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

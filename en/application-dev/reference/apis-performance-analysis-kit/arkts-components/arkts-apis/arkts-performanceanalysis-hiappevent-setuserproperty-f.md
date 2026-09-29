@@ -16,7 +16,9 @@ Sets a user property, which is used for association when a [Processor](arkts-per
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-hiAppEvent-function setUserProperty(name: string, value: string): void--><!--Device-hiAppEvent-function setUserProperty(name: string, value: string): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 

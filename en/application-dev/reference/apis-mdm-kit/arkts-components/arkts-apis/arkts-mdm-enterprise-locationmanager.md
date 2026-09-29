@@ -13,6 +13,8 @@ The **locationManager** module provides location service management capabilities
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace locationManager--><!--Device-unnamed-declare namespace locationManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

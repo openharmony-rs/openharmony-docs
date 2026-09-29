@@ -12,6 +12,8 @@ Describes the callback invoked for audio interruption or focus gain events.When 
 
 **Substitutes:** [InterruptEvent](arkts-audio-audio-interruptevent-i.md)
 
+<!--Device-audio-interface InterruptAction--><!--Device-audio-interface InterruptAction-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Event type. The value TYPE_ACTIVATED means the focus gain event, and TYPE_INTERR
 
 **Substitutes:** eventType
 
+<!--Device-InterruptAction-actionType: InterruptActionType--><!--Device-InterruptAction-actionType: InterruptActionType-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## activated
@@ -53,6 +57,8 @@ Whether the focus is gained or released. **true** if the focus is gained or rele
 **Deprecated since:** 9
 
 **Substitutes:** [hintType](arkts-audio-audio-interruptevent-i.md#hinttype)
+
+<!--Device-InterruptAction-activated?: boolean--><!--Device-InterruptAction-activated?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -72,6 +78,8 @@ Hint provided along with the audio interruption event.
 
 **Substitutes:** [hintType](arkts-audio-audio-interruptevent-i.md#hinttype)
 
+<!--Device-InterruptAction-hint?: InterruptHint--><!--Device-InterruptAction-hint?: InterruptHint-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## type
@@ -89,5 +97,7 @@ Type of the audio interruption event.
 **Deprecated since:** 9
 
 **Substitutes:** eventType
+
+<!--Device-InterruptAction-type?: InterruptType--><!--Device-InterruptAction-type?: InterruptType-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer

@@ -24,6 +24,8 @@ Runs startup tasks or loads .so files.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-startupManager-function run(startupTasks: Array<string>, config?: StartupConfig): Promise<void>--><!--Device-startupManager-function run(startupTasks: Array<string>, config?: StartupConfig): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AppStartup
 
 **Parameters:**
@@ -93,6 +95,8 @@ Runs startup tasks or loads .so files. You can specify [AbilityStageContext](ark
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-startupManager-function run(startupTasks: Array<string>, context: common.AbilityStageContext, config: StartupConfig): Promise<void>--><!--Device-startupManager-function run(startupTasks: Array<string>, context: common.AbilityStageContext, config: StartupConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AppStartup
 

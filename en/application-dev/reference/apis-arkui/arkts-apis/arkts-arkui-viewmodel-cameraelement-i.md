@@ -12,6 +12,8 @@ The &lt;camera&gt; component provides preview and photographing functions.
 
 **Since:** 6
 
+<!--Device-unnamed-export interface CameraElement extends Element--><!--Device-unnamed-export interface CameraElement extends Element-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## takePhoto
@@ -25,6 +27,8 @@ Take photos with specified parameters.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CameraElement-takePhoto(options: CameraTakePhotoOptions): void--><!--Device-CameraElement-takePhoto(options: CameraTakePhotoOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

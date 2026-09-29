@@ -16,6 +16,8 @@ Obtains an **AccountManager** instance.
 
 **Since:** 7
 
+<!--Device-osAccount-function getAccountManager(): AccountManager--><!--Device-osAccount-function getAccountManager(): AccountManager-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **Return value:**

@@ -18,6 +18,8 @@ Sets the screen to extended mode. This API uses an asynchronous callback to retu
 
 **Deprecated since:** 20
 
+<!--Device-screen-function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<long>): void--><!--Device-screen-function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -78,6 +80,8 @@ Sets the screen to extended mode. This API uses a promise to return the result.
 **Since:** 9
 
 **Deprecated since:** 20
+
+<!--Device-screen-function makeExpand(options:Array<ExpandOption>): Promise<long>--><!--Device-screen-function makeExpand(options:Array<ExpandOption>): Promise<long>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

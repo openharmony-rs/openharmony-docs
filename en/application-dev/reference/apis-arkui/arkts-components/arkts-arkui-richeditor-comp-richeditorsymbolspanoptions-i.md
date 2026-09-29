@@ -8,6 +8,8 @@ Sets the offset and style of the **SymbolSpan** component.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface RichEditorSymbolSpanOptions--><!--Device-unnamed-declare interface RichEditorSymbolSpanOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -28,6 +30,8 @@ If the value is less than 0, it is added to the beginning of all content; if the
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorSymbolSpanOptions-offset?: number--><!--Device-RichEditorSymbolSpanOptions-offset?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -45,5 +49,7 @@ Style information of the SymbolSpan. Pass this parameter when you need to custom
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorSymbolSpanOptions-style?: RichEditorSymbolSpanStyle--><!--Device-RichEditorSymbolSpanOptions-style?: RichEditorSymbolSpanStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

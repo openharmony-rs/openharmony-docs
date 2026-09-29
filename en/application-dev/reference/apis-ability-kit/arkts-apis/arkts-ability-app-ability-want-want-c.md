@@ -8,6 +8,8 @@ Want is a carrier for information transfer between objects (application componen
 
 **Since:** 9
 
+<!--Device-unnamed-export default class Want--><!--Device-unnamed-export default class Want-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Ability name of the application. It represents the ability name of the target ap
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Want-abilityName?: string--><!--Device-Want-abilityName?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -44,7 +48,9 @@ Action to take, such as viewing and sharing application details. In implicit Wan
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Want-action?: string--><!--Device-Want-action?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -60,7 +66,9 @@ Bundle name of the application. It represents the bundle name of the target appl
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Want-bundleName?: string--><!--Device-Want-bundleName?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -76,7 +84,9 @@ Device ID. It indicates the device ID of the target application in the applicati
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Want-deviceId?: string--><!--Device-Want-deviceId?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -92,7 +102,9 @@ Additional category information (such as browser and video player) of the abilit
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Want-entities?: Array<string>--><!--Device-Want-entities?: Array<string>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -110,7 +122,9 @@ This API can be used in atomic services since API version 15.
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-Want-readonly fds?: Record<string, int>--><!--Device-Want-readonly fds?: Record<string, int>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -128,7 +142,9 @@ For example, if the value is 0x00000001 (**wantConstant.Flags.FLAG_AUTH_READ_URI
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Want-flags?: int--><!--Device-Want-flags?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -148,7 +164,9 @@ If the ability belongs to a [HAR](../../../quick-start/har-package.md) module, *
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Want-moduleName?: string--><!--Device-Want-moduleName?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -202,6 +220,8 @@ The values of **parameters** must be of the following basic data types: String, 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Want-parameters?: Record<string, Object>--><!--Device-Want-parameters?: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## type
@@ -216,7 +236,9 @@ MIME type, that is, the type of the file to open, for example, **'text/xml'** an
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Want-type?: string--><!--Device-Want-type?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -232,7 +254,9 @@ URI, which is used with **type** to specify the data type to be processed in the
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Want-uri?: string--><!--Device-Want-uri?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 

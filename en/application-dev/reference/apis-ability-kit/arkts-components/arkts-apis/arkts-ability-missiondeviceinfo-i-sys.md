@@ -8,6 +8,8 @@ The module defines the parameters required for registering a listener. It can be
 
 **Since:** 9
 
+<!--Device-unnamed-export interface MissionDeviceInfo--><!--Device-unnamed-export interface MissionDeviceInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ Indicates the deviceId to start sync.
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MissionDeviceInfo-deviceId: string--><!--Device-MissionDeviceInfo-deviceId: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

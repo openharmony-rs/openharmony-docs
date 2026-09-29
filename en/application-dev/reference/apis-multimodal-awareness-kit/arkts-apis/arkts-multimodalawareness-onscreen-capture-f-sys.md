@@ -24,6 +24,8 @@ Proactively triggers screen content awareness to obtain page information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-onScreen-function capture(capability: OnscreenAwarenessCap,                    options?: OnscreenAwarenessOptions): Promise<OnscreenAwarenessInfo[]>--><!--Device-onScreen-function capture(capability: OnscreenAwarenessCap,                    options?: OnscreenAwarenessOptions): Promise<OnscreenAwarenessInfo[]>-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API:** This is a system API.

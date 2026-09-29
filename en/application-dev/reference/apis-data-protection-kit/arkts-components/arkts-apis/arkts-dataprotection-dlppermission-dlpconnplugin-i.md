@@ -14,6 +14,8 @@ Registers the callback capability with the system ability (SA). This API is used
 
 **Since:** 21
 
+<!--Device-dlpPermission-export interface DlpConnPlugin--><!--Device-dlpPermission-export interface DlpConnPlugin-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## Modules to Import
@@ -42,6 +44,8 @@ This API can be used in enterprise account authentication and cloud permission v
 - API version 26 and later: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE
 - API version 25: N/A
 - API versions 21 to 24: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+
+<!--Device-DlpConnPlugin-connectServer(requestId: string, requestData: string, callback: Callback<string>): void--><!--Device-DlpConnPlugin-connectServer(requestId: string, requestData: string, callback: Callback<string>): void-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

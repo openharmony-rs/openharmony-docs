@@ -12,13 +12,15 @@ Triggered before the menu is displayed after the text selection area changes. Me
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-unnamed-type OnPrepareMenuCallback = (menuItems: Array<TextMenuItem>) => Array<TextMenuItem>--><!--Device-unnamed-type OnPrepareMenuCallback = (menuItems: Array<TextMenuItem>) => Array<TextMenuItem>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| menuItems | Array&lt;[TextMenuItem](arkts-arkui-textmenuitem-i.md)&gt; | Yes | Menu items to be displayed.<br>**NOTE:** <br>Modifications to the name, icon, or shortcut hint of default menu items do not take effect. |
+| menuItems | Array&lt;[TextMenuItem](arkts-arkui-textmenuitem-i.md)&gt; | Yes | Menu items to be displayed.<br>**NOTE:** <br>Modifications to the name, icon, and shortcut key hint of the default menu items do not take effect. |
 
 **Return value:**
 

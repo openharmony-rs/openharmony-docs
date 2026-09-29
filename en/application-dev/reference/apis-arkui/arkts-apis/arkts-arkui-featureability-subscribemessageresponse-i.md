@@ -10,6 +10,8 @@ export interface SubscribeMessageResponse
 
 **Deprecated since:** 8
 
+<!--Device-unnamed-export interface SubscribeMessageResponse--><!--Device-unnamed-export interface SubscribeMessageResponse-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## abilityName
@@ -25,6 +27,8 @@ Peer ability name, which is case sensitive.
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-SubscribeMessageResponse-abilityName: string--><!--Device-SubscribeMessageResponse-abilityName: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -42,6 +46,8 @@ Name of the bundle where the peer ability has been located. The name is case sen
 
 **Deprecated since:** 8
 
+<!--Device-SubscribeMessageResponse-bundleName: string--><!--Device-SubscribeMessageResponse-bundleName: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## deviceId
@@ -58,6 +64,8 @@ Peer device ID.
 
 **Deprecated since:** 8
 
+<!--Device-SubscribeMessageResponse-deviceId: string--><!--Device-SubscribeMessageResponse-deviceId: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## message
@@ -73,5 +81,7 @@ Messages received from the device.
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-SubscribeMessageResponse-message: string--><!--Device-SubscribeMessageResponse-message: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite

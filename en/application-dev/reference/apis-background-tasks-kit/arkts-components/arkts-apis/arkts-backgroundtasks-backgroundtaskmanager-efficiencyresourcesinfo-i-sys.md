@@ -8,6 +8,8 @@ Defines the efficiency resource information.
 
 **Since:** 20
 
+<!--Device-backgroundTaskManager-interface EfficiencyResourcesInfo--><!--Device-backgroundTaskManager-interface EfficiencyResourcesInfo-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ CPU level. If **resourceTypes** is set to **CPU**, this parameter specifies the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EfficiencyResourcesInfo-cpuLevel?: EfficiencyResourcesCpuLevel--><!--Device-EfficiencyResourcesInfo-cpuLevel?: EfficiencyResourcesCpuLevel-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Whether the resource is requested by a process or an application. The value **tr
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-EfficiencyResourcesInfo-isForProcess: boolean--><!--Device-EfficiencyResourcesInfo-isForProcess: boolean-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -64,6 +70,8 @@ Whether the resource is permanently held. The default value is **false**. The va
 
 **Since:** 20
 
+<!--Device-EfficiencyResourcesInfo-isPersistent: boolean--><!--Device-EfficiencyResourcesInfo-isPersistent: boolean-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **System API:** This is a system API.
@@ -79,6 +87,8 @@ Application PID.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-EfficiencyResourcesInfo-pid: int--><!--Device-EfficiencyResourcesInfo-pid: int-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -96,6 +106,8 @@ Reason for requesting the resource.
 
 **Since:** 20
 
+<!--Device-EfficiencyResourcesInfo-reason: string--><!--Device-EfficiencyResourcesInfo-reason: string-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **System API:** This is a system API.
@@ -111,6 +123,8 @@ Enumerates the efficiency resource types.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-EfficiencyResourcesInfo-resourceTypes: int--><!--Device-EfficiencyResourcesInfo-resourceTypes: int-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -128,6 +142,8 @@ Timeout, in milliseconds.
 
 **Since:** 20
 
+<!--Device-EfficiencyResourcesInfo-timeout: int--><!--Device-EfficiencyResourcesInfo-timeout: int-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **System API:** This is a system API.
@@ -143,6 +159,8 @@ Application UID.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-EfficiencyResourcesInfo-uid: int--><!--Device-EfficiencyResourcesInfo-uid: int-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 

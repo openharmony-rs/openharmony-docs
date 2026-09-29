@@ -20,6 +20,8 @@ Sets the weak PIN enable status.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function setWeakPinEnable(isEnable: boolean, fd?: number): void--><!--Device-securityManager-function setWeakPinEnable(isEnable: boolean, fd?: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

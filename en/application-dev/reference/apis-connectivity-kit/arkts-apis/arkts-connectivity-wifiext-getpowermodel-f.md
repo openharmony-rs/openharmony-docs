@@ -22,6 +22,8 @@ Obtains the current Wi-Fi power mode.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiext-function getPowerModel(): Promise<PowerModel>--><!--Device-wifiext-function getPowerModel(): Promise<PowerModel>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 
 **Return value:**
@@ -48,6 +50,8 @@ Obtains the current Wi-Fi power mode.
 **Substitutes:** [getPowerMode](arkts-connectivity-wifimanagerext-getpowermode-f.md)
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiext-function getPowerModel(callback: AsyncCallback<PowerModel>): void--><!--Device-wifiext-function getPowerModel(callback: AsyncCallback<PowerModel>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 

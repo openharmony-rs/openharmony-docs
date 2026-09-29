@@ -8,6 +8,8 @@ Defines the asymmetric key parameters for creating a key generator. You need to 
 
 **Since:** 10
 
+<!--Device-cryptoFramework-interface AsyKeySpec--><!--Device-cryptoFramework-interface AsyKeySpec-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Key.AsymKey
 - API versions 10 to 11: SystemCapability.Security.CryptoFramework
@@ -30,7 +32,9 @@ Asymmetric key algorithm, for example, **RSA**, **DSA**, **ECC**, **SM2**, **Ed2
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AsyKeySpec-algName: string--><!--Device-AsyKeySpec-algName: string-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -48,7 +52,9 @@ Key parameter type, which is used to distinguish public and private key paramete
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AsyKeySpec-specType: AsyKeySpecType--><!--Device-AsyKeySpec-specType: AsyKeySpecType-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Key.AsymKey

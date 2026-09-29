@@ -8,6 +8,8 @@ declare enum SwipeEdgeEffect
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare enum SwipeEdgeEffect--><!--Device-unnamed-declare enum SwipeEdgeEffect-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Spring
@@ -28,6 +30,8 @@ ListItem划动距离超过划出组件大小后可以继续划动。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwipeEdgeEffect-Spring--><!--Device-SwipeEdgeEffect-Spring-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -47,5 +51,7 @@ ListItem划动距离不能超过划出组件大小。
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwipeEdgeEffect-None--><!--Device-SwipeEdgeEffect-None-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

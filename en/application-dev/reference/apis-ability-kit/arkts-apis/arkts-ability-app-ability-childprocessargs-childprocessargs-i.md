@@ -8,6 +8,8 @@ The module describes the parameters transferred to the child process. When start
 
 **Since:** 12
 
+<!--Device-unnamed-export interface ChildProcessArgs--><!--Device-unnamed-export interface ChildProcessArgs-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Custom parameters to be transparently transmitted to the child process. The para
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ChildProcessArgs-entryParams?: string--><!--Device-ChildProcessArgs-entryParams?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## fds
@@ -50,6 +54,8 @@ File Descriptor (FD) handles, which are used for communication between the main 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ChildProcessArgs-fds?: Record<string, int>--><!--Device-ChildProcessArgs-fds?: Record<string, int>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

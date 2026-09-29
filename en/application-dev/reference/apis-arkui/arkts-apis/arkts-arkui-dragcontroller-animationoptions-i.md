@@ -8,6 +8,8 @@ Defines parameters related to drag-and-drop animation effects.
 
 **Since:** 11
 
+<!--Device-dragController-interface AnimationOptions--><!--Device-dragController-interface AnimationOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Default value: **Curve.EaseInOut**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AnimationOptions-curve?: Curve | ICurve--><!--Device-AnimationOptions-curve?: Curve | ICurve-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## duration
@@ -59,5 +63,7 @@ used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AnimationOptions-duration?: number--><!--Device-AnimationOptions-duration?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -19,6 +19,8 @@ Obtains the **AbilityDelegatorArgs** object of the application.
 
 **Substitutes:** [getArguments](arkts-test-abilitydelegatorregistry-getarguments-f.md)
 
+<!--Device-abilityDelegatorRegistry-function getArguments(): AbilityDelegatorArgs--><!--Device-abilityDelegatorRegistry-function getArguments(): AbilityDelegatorArgs-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Test API:** This API is used only in automated test scripts.

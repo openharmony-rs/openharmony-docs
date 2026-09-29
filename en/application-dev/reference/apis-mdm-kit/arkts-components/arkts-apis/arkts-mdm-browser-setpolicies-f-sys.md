@@ -24,6 +24,8 @@ Sets the browsing policy for a specified browser. This API uses an asynchronous 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-browser-function setPolicies(admin: Want, appId: string, policies: string, callback: AsyncCallback<void>): void--><!--Device-browser-function setPolicies(admin: Want, appId: string, policies: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -90,6 +92,8 @@ Sets the browsing policy for a specified browser. This API uses a promise to ret
 **Required permissions:** ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-browser-function setPolicies(admin: Want, appId: string, policies: string): Promise<void>--><!--Device-browser-function setPolicies(admin: Want, appId: string, policies: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

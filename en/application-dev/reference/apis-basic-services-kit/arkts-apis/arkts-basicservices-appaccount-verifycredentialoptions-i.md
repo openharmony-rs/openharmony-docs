@@ -8,6 +8,8 @@ Represents the options for verifying the user credential.
 
 **Since:** 9
 
+<!--Device-appAccount-interface VerifyCredentialOptions--><!--Device-appAccount-interface VerifyCredentialOptions-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Credential value. By default, no value is passed in.
 
 **Since:** 9
 
+<!--Device-VerifyCredentialOptions-credential?: string--><!--Device-VerifyCredentialOptions-credential?: string-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## credentialType
@@ -42,6 +46,8 @@ Credential type. By default, no value is passed in.
 
 **Since:** 9
 
+<!--Device-VerifyCredentialOptions-credentialType?: string--><!--Device-VerifyCredentialOptions-credentialType?: string-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## parameters
@@ -55,5 +61,7 @@ Custom parameter object. By default, no value is passed in.
 **Type:** Record&lt;string, Object&gt;
 
 **Since:** 9
+
+<!--Device-VerifyCredentialOptions-parameters?: Record<string, Object>--><!--Device-VerifyCredentialOptions-parameters?: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Account.AppAccount

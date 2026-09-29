@@ -6,6 +6,8 @@ declare interface HoverEventParam
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface HoverEventParam--><!--Device-unnamed-declare interface HoverEventParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## appRotation
@@ -23,6 +25,8 @@ appRotation: AppRotation
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-HoverEventParam-appRotation: AppRotation--><!--Device-HoverEventParam-appRotation: AppRotation-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ foldStatus: FoldStatus
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-HoverEventParam-foldStatus: FoldStatus--><!--Device-HoverEventParam-foldStatus: FoldStatus-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isHoverMode
@@ -60,6 +66,8 @@ isHoverMode: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-HoverEventParam-isHoverMode: boolean--><!--Device-HoverEventParam-isHoverMode: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowStatusType
@@ -77,5 +85,7 @@ windowStatusType: WindowStatusType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-HoverEventParam-windowStatusType: WindowStatusType--><!--Device-HoverEventParam-windowStatusType: WindowStatusType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

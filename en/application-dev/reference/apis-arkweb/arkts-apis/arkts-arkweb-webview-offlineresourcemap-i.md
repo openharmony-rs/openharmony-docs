@@ -8,6 +8,8 @@ Implements an **OfflineResourceMap** object, which is used to set information re
 
 **Since:** 12
 
+<!--Device-webview-interface OfflineResourceMap--><!--Device-webview-interface OfflineResourceMap-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Content of a local offline resource.
 
 **Since:** 12
 
+<!--Device-OfflineResourceMap-resource: Uint8Array--><!--Device-OfflineResourceMap-resource: Uint8Array-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## responseHeaders
@@ -41,6 +45,8 @@ HTTP response headers corresponding to the resources. The Cache-Control or Expir
 **Type:** Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt;
 
 **Since:** 12
+
+<!--Device-OfflineResourceMap-responseHeaders: Array<WebHeader>--><!--Device-OfflineResourceMap-responseHeaders: Array<WebHeader>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -56,6 +62,8 @@ Type of the resources. Currently, only JavaScript, image, and CSS resources are 
 
 **Since:** 12
 
+<!--Device-OfflineResourceMap-type: OfflineResourceType--><!--Device-OfflineResourceMap-type: OfflineResourceType-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## urlList
@@ -69,5 +77,7 @@ List of network addresses corresponding to the local offline resources. The firs
 **Type:** Array&lt;string&gt;
 
 **Since:** 12
+
+<!--Device-OfflineResourceMap-urlList: Array<string>--><!--Device-OfflineResourceMap-urlList: Array<string>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

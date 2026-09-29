@@ -10,6 +10,8 @@ Implements communication between the Worker thread and the host thread. The post
 
 **Since:** 9
 
+<!--Device-unnamed-export interface ThreadWorkerGlobalScope extends GlobalScope--><!--Device-unnamed-export interface ThreadWorkerGlobalScope extends GlobalScope-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Calls a method of an object registered with the host thread. This API is called 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ThreadWorkerGlobalScope-callGlobalCallObjectMethod(instanceName: string, methodName: string, timeout: number, ...args: Object[]): Object--><!--Device-ThreadWorkerGlobalScope-callGlobalCallObjectMethod(instanceName: string, methodName: string, timeout: number, ...args: Object[]): Object-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -118,6 +122,8 @@ Terminates the Worker thread to stop it from receiving messages.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ThreadWorkerGlobalScope-close(): void--><!--Device-ThreadWorkerGlobalScope-close(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -158,6 +164,8 @@ Called when the Worker thread receives a message sent by the host thread through
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ThreadWorkerGlobalScope-onmessage?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void--><!--Device-ThreadWorkerGlobalScope-onmessage?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -186,6 +194,8 @@ Called when the Worker thread receives a message that cannot be deserialized. Th
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ThreadWorkerGlobalScope-onmessageerror?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void--><!--Device-ThreadWorkerGlobalScope-onmessageerror?: (this: ThreadWorkerGlobalScope, ev: MessageEvents) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -213,6 +223,8 @@ Sends a message from the Worker thread to the host thread by transferring object
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void--><!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -268,6 +280,8 @@ Sends a message from the Worker thread to the host thread by transferring object
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void--><!--Device-ThreadWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -321,6 +335,8 @@ Sends a message from the Worker thread to the main thread by transferring object
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ThreadWorkerGlobalScope-postMessageAtFront?(message: Object, priority: Priority, transfer?: ArrayBuffer[]): void--><!--Device-ThreadWorkerGlobalScope-postMessageAtFront?(message: Object, priority: Priority, transfer?: ArrayBuffer[]): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -349,6 +365,8 @@ Sends a message from the Worker thread to the host thread. In the message, a sen
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ThreadWorkerGlobalScope-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void--><!--Device-ThreadWorkerGlobalScope-postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

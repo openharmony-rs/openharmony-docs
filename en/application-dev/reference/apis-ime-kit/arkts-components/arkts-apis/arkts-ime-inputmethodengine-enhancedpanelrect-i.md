@@ -8,6 +8,8 @@ Indicates the size of the enhanced input method panel, including the custom avoi
 
 **Since:** 15
 
+<!--Device-inputMethodEngine-export interface EnhancedPanelRect--><!--Device-inputMethodEngine-export interface EnhancedPanelRect-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Indicates whether to enable the full-screen mode. The default value is **false**
 
 **Since:** 15
 
+<!--Device-EnhancedPanelRect-fullScreenMode?: boolean--><!--Device-EnhancedPanelRect-fullScreenMode?: boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## landscapeAvoidY
@@ -46,6 +50,8 @@ Distance between the avoid line and the top of the panel in landscape mode, in p
 
 **Since:** 15
 
+<!--Device-EnhancedPanelRect-landscapeAvoidY?: int--><!--Device-EnhancedPanelRect-landscapeAvoidY?: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## landscapeInputRegion
@@ -60,6 +66,8 @@ Region where the panel receives input events in landscape mode. <br> <br>- The a
 
 **Since:** 15
 
+<!--Device-EnhancedPanelRect-landscapeInputRegion?: Array<window.Rect>--><!--Device-EnhancedPanelRect-landscapeInputRegion?: Array<window.Rect>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## landscapeRect
@@ -73,6 +81,8 @@ Size of the input method panel window in landscape mode. <br> <br>- This attribu
 **Type:** [window.Rect](../../apis-arkui/arkts-apis/arkts-arkui-window-rect-i.md)
 
 **Since:** 15
+
+<!--Device-EnhancedPanelRect-landscapeRect?: window.Rect--><!--Device-EnhancedPanelRect-landscapeRect?: window.Rect-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -90,6 +100,8 @@ Distance between the avoid line and the top of the panel in portrait mode, in px
 
 **Since:** 15
 
+<!--Device-EnhancedPanelRect-portraitAvoidY?: int--><!--Device-EnhancedPanelRect-portraitAvoidY?: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## portraitInputRegion
@@ -104,6 +116,8 @@ Region where the panel receives input events in portrait mode. <br> <br>- The ar
 
 **Since:** 15
 
+<!--Device-EnhancedPanelRect-portraitInputRegion?: Array<window.Rect>--><!--Device-EnhancedPanelRect-portraitInputRegion?: Array<window.Rect>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## portraitRect
@@ -117,5 +131,7 @@ Size of the input method panel window in portrait mode. <br> <br>- This attribut
 **Type:** [window.Rect](../../apis-arkui/arkts-apis/arkts-arkui-window-rect-i.md)
 
 **Since:** 15
+
+<!--Device-EnhancedPanelRect-portraitRect?: window.Rect--><!--Device-EnhancedPanelRect-portraitRect?: window.Rect-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

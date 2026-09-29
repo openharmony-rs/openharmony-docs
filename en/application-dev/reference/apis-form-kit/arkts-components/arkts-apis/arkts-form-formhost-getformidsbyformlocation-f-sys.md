@@ -20,6 +20,8 @@ Obtains the list of widget IDs at a specified location on the device. This API u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function getFormIdsByFormLocation(location: formInfo.FormLocation): Promise<Array<string>>--><!--Device-formHost-function getFormIdsByFormLocation(location: formInfo.FormLocation): Promise<Array<string>>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

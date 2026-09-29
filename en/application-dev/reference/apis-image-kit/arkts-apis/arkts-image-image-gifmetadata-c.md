@@ -8,6 +8,8 @@ Gif metadata.
 
 **Since:** 26.0.0
 
+<!--Device-image-class GifMetadata--><!--Device-image-class GifMetadata-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Canvas height. Unit: px, The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GifMetadata-readonly canvasHeight?: int--><!--Device-GifMetadata-readonly canvasHeight?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## canvasWidth
@@ -45,6 +49,8 @@ Canvas width. Unit: px, The value should be an integer.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GifMetadata-readonly canvasWidth?: int--><!--Device-GifMetadata-readonly canvasWidth?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -62,6 +68,8 @@ Delay of each frame in milliseconds. Unit: ms, The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GifMetadata-readonly delayTime?: int--><!--Device-GifMetadata-readonly delayTime?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## disposalType
@@ -77,6 +85,8 @@ Disposal type of each frame in the image. 0 - No disposal specified. 1 - Do not 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GifMetadata-readonly disposalType?: int--><!--Device-GifMetadata-readonly disposalType?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -94,6 +104,8 @@ whether the GIF image has a global color map.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GifMetadata-readonly hasGlobalColorMap?: boolean--><!--Device-GifMetadata-readonly hasGlobalColorMap?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## loopCount
@@ -110,6 +122,8 @@ Loop count. The value range is all integers.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GifMetadata-readonly loopCount?: int--><!--Device-GifMetadata-readonly loopCount?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## unclampedDelayTime
@@ -125,5 +139,7 @@ Unclamped delay of each frame in milliseconds. Unit: ms, The value should be an 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GifMetadata-readonly unclampedDelayTime?: int--><!--Device-GifMetadata-readonly unclampedDelayTime?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

@@ -24,6 +24,8 @@ Removes the custom DNS rules of the specified host from the current application.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-connection-function removeCustomDnsRule(host: string, callback: AsyncCallback<void>): void--><!--Device-connection-function removeCustomDnsRule(host: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -78,6 +80,8 @@ Removes the custom DNS rules of the specified host from the current application.
 **Required permissions:** ohos.permission.INTERNET
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-connection-function removeCustomDnsRule(host: string): Promise<void>--><!--Device-connection-function removeCustomDnsRule(host: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

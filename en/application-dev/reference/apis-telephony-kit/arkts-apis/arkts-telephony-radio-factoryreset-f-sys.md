@@ -18,6 +18,8 @@ Reset all network settings of telephony.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-radio-function factoryReset(slotId: int): Promise<void>--><!--Device-radio-function factoryReset(slotId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.

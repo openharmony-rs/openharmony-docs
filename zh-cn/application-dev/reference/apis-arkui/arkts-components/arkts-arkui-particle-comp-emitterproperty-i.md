@@ -8,6 +8,8 @@ interface EmitterProperty
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface EmitterProperty--><!--Device-unnamed-interface EmitterProperty-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## annulusRegion
@@ -25,6 +27,8 @@ annulusRegion?: ParticleAnnulusRegion
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-EmitterProperty-annulusRegion?: ParticleAnnulusRegion--><!--Device-EmitterProperty-annulusRegion?: ParticleAnnulusRegion-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ emitRate?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-EmitterProperty-emitRate?: number--><!--Device-EmitterProperty-emitRate?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
@@ -63,6 +69,8 @@ index: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-EmitterProperty-index: number--><!--Device-EmitterProperty-index: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,6 +94,8 @@ x、y的取值范围：(-∞, +∞)。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-EmitterProperty-position?: PositionT<number>--><!--Device-EmitterProperty-position?: PositionT<number>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -105,5 +115,7 @@ size?: SizeT<number>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-EmitterProperty-size?: SizeT<number>--><!--Device-EmitterProperty-size?: SizeT<number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

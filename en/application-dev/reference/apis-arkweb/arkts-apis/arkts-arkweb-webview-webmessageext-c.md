@@ -8,6 +8,8 @@ Implements a **WebMessageExt** object that received and sent by the [WebMessageP
 
 **Since:** 10
 
+<!--Device-webview-class WebMessageExt--><!--Device-webview-class WebMessageExt-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Obtains array-type data of the data object. For details about the sample code, s
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessageExt-getArray(): Array<string | number | boolean>--><!--Device-WebMessageExt-getArray(): Array<string | number | boolean>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -54,6 +58,8 @@ Obtains raw binary data of the data object. For details about the sample code, s
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMessageExt-getArrayBuffer(): ArrayBuffer--><!--Device-WebMessageExt-getArrayBuffer(): ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -79,6 +85,8 @@ Obtains Boolean-type data of the data object. For details about the sample code,
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessageExt-getBoolean(): boolean--><!--Device-WebMessageExt-getBoolean(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -106,6 +114,8 @@ Obtains the error-object-type data of the data object. For details about the sam
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMessageExt-getError(): Error--><!--Device-WebMessageExt-getError(): Error-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -131,6 +141,8 @@ Obtains number-type data of the data object. For details about the sample code, 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessageExt-getNumber(): number--><!--Device-WebMessageExt-getNumber(): number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -158,6 +170,8 @@ Obtains string-type data of the data object. For details about the sample code, 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMessageExt-getString(): string--><!--Device-WebMessageExt-getString(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -184,6 +198,8 @@ Obtains the type of the data object. For details about the sample code, see [onM
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMessageExt-getType(): WebMessageType--><!--Device-WebMessageExt-getType(): WebMessageType-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -203,6 +219,8 @@ Sets the array-type data for the data object. For details about the sample code,
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessageExt-setArray(message: Array<string | number | boolean>): void--><!--Device-WebMessageExt-setArray(message: Array<string | number | boolean>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -231,6 +249,8 @@ Sets the raw binary data for the data object. For details about the sample code,
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMessageExt-setArrayBuffer(message: ArrayBuffer): void--><!--Device-WebMessageExt-setArrayBuffer(message: ArrayBuffer): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -257,6 +277,8 @@ Sets the Boolean-type data for the data object. For details about the sample cod
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessageExt-setBoolean(message: boolean): void--><!--Device-WebMessageExt-setBoolean(message: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -285,6 +307,8 @@ Sets the error-object-type data for the data object. For details about the sampl
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMessageExt-setError(message: Error): void--><!--Device-WebMessageExt-setError(message: Error): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -311,6 +335,8 @@ Sets the number-type data of the data object. For details about the sample code,
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessageExt-setNumber(message: number): void--><!--Device-WebMessageExt-setNumber(message: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -339,6 +365,8 @@ Sets the string-type data of the data object. For details about the sample code,
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMessageExt-setString(message: string): void--><!--Device-WebMessageExt-setString(message: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -365,6 +393,8 @@ Sets the type for the data object. For details about the sample code, see [onMes
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMessageExt-setType(type: WebMessageType): void--><!--Device-WebMessageExt-setType(type: WebMessageType): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

@@ -14,6 +14,8 @@ Defines the divider style of the list or list item group.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface ListDividerOptions--><!--Device-unnamed-declare interface ListDividerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -38,6 +40,8 @@ Color of the divider. Anonymous Object Rectification.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ListDividerOptions-color?: ResourceColor--><!--Device-ListDividerOptions-color?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ Distance between the divider and the end edge of the list. Anonymous Object Rect
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ListDividerOptions-endMargin?: Length--><!--Device-ListDividerOptions-endMargin?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## startMargin
@@ -89,6 +95,8 @@ Distance between the divider and the start edge of the list. Anonymous Object Re
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ListDividerOptions-startMargin?: Length--><!--Device-ListDividerOptions-startMargin?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeWidth
@@ -110,5 +118,7 @@ Width of the divider. <br>Unit: vp Anonymous Object Rectification.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ListDividerOptions-strokeWidth: Length--><!--Device-ListDividerOptions-strokeWidth: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

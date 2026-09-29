@@ -18,6 +18,8 @@ Checks whether notification is enabled for the specified application. This API u
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback<boolean>): void--><!--Device-notificationManager-function isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -75,6 +77,8 @@ Checks whether notification is enabled for the specified application. This API u
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function isNotificationEnabled(bundle: BundleOption): Promise<boolean>--><!--Device-notificationManager-function isNotificationEnabled(bundle: BundleOption): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -134,6 +138,8 @@ Checks whether notification is enabled for a specified user. This API uses an as
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function isNotificationEnabled(userId: int, callback: AsyncCallback<boolean>): void--><!--Device-notificationManager-function isNotificationEnabled(userId: int, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -190,6 +196,8 @@ Checks whether notification is enabled for a specified user. This API uses a pro
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function isNotificationEnabled(userId: int): Promise<boolean>--><!--Device-notificationManager-function isNotificationEnabled(userId: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

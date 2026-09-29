@@ -18,6 +18,8 @@ Adds applications specified by given UIDs to the device idle allowlist. This API
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function setDeviceIdleTrustlist(uids: Array<int>, isAllowed: boolean, callback: AsyncCallback<void>): void--><!--Device-policy-function setDeviceIdleTrustlist(uids: Array<int>, isAllowed: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ Sets whether multiple UIDs are in the whitelist of the sleep firewall. This API 
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function setDeviceIdleTrustlist(uids: Array<int>, isAllowed: boolean): Promise<void>--><!--Device-policy-function setDeviceIdleTrustlist(uids: Array<int>, isAllowed: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

@@ -20,6 +20,8 @@ Obtains the bundles that cannot be uninstalled by the current or specified user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function getDisallowedUninstallBundlesSync(admin: Want, accountId?: number): Array<string>--><!--Device-bundleManager-function getDisallowedUninstallBundlesSync(admin: Want, accountId?: number): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -81,6 +83,8 @@ Obtains the bundles that are not allowed to be uninstalled by the current or spe
 **Required permissions:** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bundleManager-function getDisallowedUninstallBundlesSync(admin: Want | null, accountId?: number): Array<string>--><!--Device-bundleManager-function getDisallowedUninstallBundlesSync(admin: Want | null, accountId?: number): Array<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

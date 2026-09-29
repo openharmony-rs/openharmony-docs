@@ -8,6 +8,8 @@ Defines the device operation.
 
 **Since:** 26.0.0
 
+<!--Device-deviceControl-enum Operation--><!--Device-deviceControl-enum Operation-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DISK_ERASURE
@@ -21,6 +23,8 @@ Disk erasure. After this API is called, the device immediately performs a disk e
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Operation-DISK_ERASURE = 0--><!--Device-Operation-DISK_ERASURE = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,6 +40,8 @@ Restore device factory settings..
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Operation-RESET_FACTORY = 1--><!--Device-Operation-RESET_FACTORY = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## REBOOT
@@ -49,6 +55,8 @@ Restart devices.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Operation-REBOOT = 2--><!--Device-Operation-REBOOT = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,6 +72,8 @@ Shut down devices.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Operation-SHUT_DOWN = 3--><!--Device-Operation-SHUT_DOWN = 3-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## LOCK_SCREEN
@@ -77,6 +87,8 @@ Lock device screens.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Operation-LOCK_SCREEN = 4--><!--Device-Operation-LOCK_SCREEN = 4-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -92,6 +104,8 @@ Lock devices.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Operation-LOCK_DEVICE = 5--><!--Device-Operation-LOCK_DEVICE = 5-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## UNLOCK_DEVICE
@@ -105,5 +119,7 @@ Unlock devices.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Operation-UNLOCK_DEVICE = 6--><!--Device-Operation-UNLOCK_DEVICE = 6-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

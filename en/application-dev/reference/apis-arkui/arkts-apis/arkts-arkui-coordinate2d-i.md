@@ -8,6 +8,8 @@ declare interface Coordinate2D
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface Coordinate2D--><!--Device-unnamed-declare interface Coordinate2D-End-->
+
 **System capability:** 
 - SystemCapability.ArkUI.ArkUI.Full
 - SystemCapability.ArkUI.ArkUI.Full
@@ -28,6 +30,8 @@ Horizontal coordinate.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-Coordinate2D-x: double--><!--Device-Coordinate2D-x: double-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -45,5 +49,7 @@ Vertical coordinate.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-Coordinate2D-y: double--><!--Device-Coordinate2D-y: double-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -10,6 +10,8 @@ Describes the sampling modes used during texture sampling.
 
 **Since:** 20
 
+<!--Device-unnamed-export interface Sampler--><!--Device-unnamed-export interface Sampler-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## addressModeU
@@ -23,6 +25,8 @@ Sampling mode of the texture in the U (horizontal) direction. The default value 
 **Type:** [SamplerAddressMode](arkts-arkgraphics3d-sceneresources-sampleraddressmode-e.md)
 
 **Since:** 20
+
+<!--Device-Sampler-addressModeU?: SamplerAddressMode--><!--Device-Sampler-addressModeU?: SamplerAddressMode-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -38,6 +42,8 @@ Sampling mode of the texture in the V (vertical) direction. The default value is
 
 **Since:** 20
 
+<!--Device-Sampler-addressModeV?: SamplerAddressMode--><!--Device-Sampler-addressModeV?: SamplerAddressMode-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## magFilter
@@ -51,6 +57,8 @@ Sampling mode when the texture is enlarged. The default value is LINEAR.
 **Type:** [SamplerFilter](arkts-arkgraphics3d-sceneresources-samplerfilter-e.md)
 
 **Since:** 20
+
+<!--Device-Sampler-magFilter?: SamplerFilter--><!--Device-Sampler-magFilter?: SamplerFilter-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -66,6 +74,8 @@ Sampling mode when the texture is reduced. The default value is LINEAR.
 
 **Since:** 20
 
+<!--Device-Sampler-minFilter?: SamplerFilter--><!--Device-Sampler-minFilter?: SamplerFilter-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## mipMapMode
@@ -79,5 +89,7 @@ Sampling modes between different texture resolutions. The default value is LINEA
 **Type:** [SamplerFilter](arkts-arkgraphics3d-sceneresources-samplerfilter-e.md)
 
 **Since:** 20
+
+<!--Device-Sampler-mipMapMode?: SamplerFilter--><!--Device-Sampler-mipMapMode?: SamplerFilter-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

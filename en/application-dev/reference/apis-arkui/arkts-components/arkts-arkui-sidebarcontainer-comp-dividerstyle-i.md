@@ -23,6 +23,8 @@ Sets the divider style.
 
 **Since:** 10
 
+<!--Device-unnamed-interface DividerStyle--><!--Device-unnamed-interface DividerStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -42,6 +44,8 @@ Default value: **#000000, 3%**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DividerStyle-color?: ResourceColor--><!--Device-DividerStyle-color?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,6 +71,8 @@ Value range: [0, +∞).
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-DividerStyle-endMargin?: Length--><!--Device-DividerStyle-endMargin?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## startMargin
@@ -90,6 +96,8 @@ Value range: [0, +∞).
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DividerStyle-startMargin?: Length--><!--Device-DividerStyle-startMargin?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,5 +128,7 @@ Percentage values are not supported. The priority of this attribute is lower tha
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DividerStyle-strokeWidth: Length--><!--Device-DividerStyle-strokeWidth: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

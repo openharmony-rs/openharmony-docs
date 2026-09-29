@@ -12,6 +12,8 @@ In addition to the universal events, the following events are supported.
 
 **Since:** 8
 
+<!--Device-unnamed-declare class SideBarContainerAttribute extends CommonMethod<SideBarContainerAttribute>--><!--Device-unnamed-declare class SideBarContainerAttribute extends CommonMethod<SideBarContainerAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## autoHide
@@ -27,6 +29,8 @@ Whether the sidebar should be hidden is determined when it is being dragged. Whe
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SideBarContainerAttribute-autoHide(value: boolean): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-autoHide(value: boolean): SideBarContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +51,8 @@ Sets the attributes of the sidebar control button.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SideBarContainerAttribute-controlButton(value: ButtonStyle): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-controlButton(value: ButtonStyle): SideBarContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ Sets the divider style.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SideBarContainerAttribute-divider(value: DividerStyle | null): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-divider(value: DividerStyle | null): SideBarContainerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -91,6 +99,8 @@ Sets the maximum width of the sidebar. If a value less than 0 is set, the defaul
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SideBarContainerAttribute-maxSideBarWidth(value: number): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-maxSideBarWidth(value: number): SideBarContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -115,6 +125,8 @@ Sets the maximum width of the sidebar. If a value less than 0 is set, the defaul
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SideBarContainerAttribute-maxSideBarWidth(value: Length): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-maxSideBarWidth(value: Length): SideBarContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,6 +164,8 @@ width reaches the value defined by **minContentWidth**, the content area has its
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SideBarContainerAttribute-minContentWidth(value: Dimension): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-minContentWidth(value: Dimension): SideBarContainerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -173,6 +187,8 @@ Sets the minimum width of the sidebar. If a value less than 0 is set, the defaul
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SideBarContainerAttribute-minSideBarWidth(value: number): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-minSideBarWidth(value: number): SideBarContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -197,6 +213,8 @@ Sets the minimum width of the sidebar. If a value less than 0 is set, the defaul
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SideBarContainerAttribute-minSideBarWidth(value: Length): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-minSideBarWidth(value: Length): SideBarContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -224,6 +242,8 @@ This event is triggered when any of the following conditions is met:
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SideBarContainerAttribute-onChange(callback: (value: boolean) => void): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-onChange(callback: (value: boolean) => void): SideBarContainerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -243,6 +263,8 @@ Specifies whether to display the sidebar control button.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SideBarContainerAttribute-showControlButton(value: boolean): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-showControlButton(value: boolean): SideBarContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -266,6 +288,8 @@ Since API version 10, this attribute supports two-way binding through [$$](../..
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SideBarContainerAttribute-showSideBar(value: boolean): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-showSideBar(value: boolean): SideBarContainerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -288,6 +312,8 @@ Specifies whether sideBar can be presented or dismissed by gesture.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SideBarContainerAttribute-showSideBarWithGesture(value: boolean): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-showSideBarWithGesture(value: boolean): SideBarContainerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -307,6 +333,8 @@ Sets the position of the sidebar.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SideBarContainerAttribute-sideBarPosition(value: SideBarPosition): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-sideBarPosition(value: SideBarPosition): SideBarContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -329,6 +357,8 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SideBarContainerAttribute-sideBarWidth(value: number): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-sideBarWidth(value: number): SideBarContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -353,6 +383,8 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SideBarContainerAttribute-sideBarWidth(value: Length): SideBarContainerAttribute--><!--Device-SideBarContainerAttribute-sideBarWidth(value: Length): SideBarContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -16,6 +16,8 @@ Creates a **HashStream** instance, which can be used to generate a message diges
 
 **Since:** 12
 
+<!--Device-hash-function createHash(algorithm: string): HashStream--><!--Device-hash-function createHash(algorithm: string): HashStream-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

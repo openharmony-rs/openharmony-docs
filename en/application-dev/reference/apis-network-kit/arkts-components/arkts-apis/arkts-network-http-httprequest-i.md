@@ -8,6 +8,8 @@ Defines an HTTP request task. Before invoking APIs provided by **HttpRequest**, 
 
 **Since:** 6
 
+<!--Device-http-export interface HttpRequest--><!--Device-http-export interface HttpRequest-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Stops an HTTP request task and releases system resources.
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HttpRequest-destroy(): void--><!--Device-HttpRequest-destroy(): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -70,6 +74,8 @@ Sets whether to automatically carry and share cookies. That is, whether to autom
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HttpRequest-enableAutoCookie(enable: boolean): void--><!--Device-HttpRequest-enableAutoCookie(enable: boolean): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -123,52 +129,6 @@ httpRequest.request(url, {
 });
 ```
 
-## off("headerReceive")
-
-```TypeScript
-off(type: "headerReceive", callback?: AsyncCallback<Object>): void
-```
-
-Unregisters the observer for HTTP Response Header events.
-
-**Since:** 6
-
-**Deprecated since:** 8
-
-**Substitutes:** [off_headersReceive](#offheadersreceive)
-
-**System capability:** SystemCapability.Communication.NetStack
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| type | "headerReceive" | Yes | Event type. The value is **headerReceive**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Object&gt; | No | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events. |
-
-**Examples**
-
-### off("headerReceive")
-
-off(type: "headerReceive", callback?: AsyncCallback<Object>): void
-
-Unregisters the observer for HTTP Response Header events.
-
-> NOTE
-> 
-> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [off("headersReceive")](#offheadersreceive) instead.
-
-System capability: SystemCapability.Communication.NetStack
-
-Parameters
-
-```TypeScript
-import { http } from '@kit.NetworkKit';
-
-let httpRequest = http.createHttp();
-httpRequest.off("headerReceive");
-```
-
 ## off("headersReceive")
 
 ```TypeScript
@@ -180,6 +140,8 @@ Unregisters the observer for HTTP Response Header events.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HttpRequest-off(type: "headersReceive", callback?: Callback<Object>): void--><!--Device-HttpRequest-off(type: "headersReceive", callback?: Callback<Object>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -226,6 +188,8 @@ Unregisters the observer for events indicating receiving of HTTP streaming respo
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-HttpRequest-off(type: "dataReceive", callback?: Callback<ArrayBuffer>): void--><!--Device-HttpRequest-off(type: "dataReceive", callback?: Callback<ArrayBuffer>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -270,6 +234,8 @@ Unregisters the observer for events indicating completion of receiving HTTP stre
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-HttpRequest-off(type: "dataEnd", callback?: Callback<void>): void--><!--Device-HttpRequest-off(type: "dataEnd", callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -316,6 +282,8 @@ Unregisters the observer for events indicating progress of receiving HTTP stream
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-HttpRequest-off(type: 'dataReceiveProgress', callback?: Callback<DataReceiveProgressInfo>): void--><!--Device-HttpRequest-off(type: 'dataReceiveProgress', callback?: Callback<DataReceiveProgressInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -360,6 +328,8 @@ Unregisters the observer for events indicating progress of sending HTTP requests
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-HttpRequest-off(type: 'dataSendProgress', callback?: Callback<DataSendProgressInfo>): void--><!--Device-HttpRequest-off(type: 'dataSendProgress', callback?: Callback<DataSendProgressInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -422,19 +392,21 @@ httpRequest.on("dataSendProgress", (data: http.DataSendProgressInfo) => {
 httpRequest.off("dataSendProgress");
 ```
 
-## on("headerReceive")
+## off("headerReceive")
 
 ```TypeScript
-on(type: "headerReceive", callback: AsyncCallback<Object>): void
+off(type: "headerReceive", callback?: AsyncCallback<Object>): void
 ```
 
-Registers an observer for HTTP Response Header events.
+Unregisters the observer for HTTP Response Header events.
 
 **Since:** 6
 
 **Deprecated since:** 8
 
-**Substitutes:** [on_headersReceive](#onheadersreceive)
+**Substitutes:** [off_headersReceive](#offheadersreceive)
+
+<!--Device-HttpRequest-off(type: "headerReceive", callback?: AsyncCallback<Object>): void--><!--Device-HttpRequest-off(type: "headerReceive", callback?: AsyncCallback<Object>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -443,17 +415,19 @@ Registers an observer for HTTP Response Header events.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | "headerReceive" | Yes | Event type. The value is **headerReceive**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Object&gt; | Yes | Callback used to return the result. If the operation is successful, **error** is **undefined**, and **data** is the received HTTP response header. Otherwise, **error** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Object&gt; | No | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events. |
 
 **Examples**
 
-### on("headerReceive")
+### off("headerReceive")
 
-on(type: "headerReceive", callback: AsyncCallback<Object>): void
+off(type: "headerReceive", callback?: AsyncCallback<Object>): void
 
-Registers an observer for HTTP Response Header events.
+Unregisters the observer for HTTP Response Header events.
 
-> NOTEThis API is supported since API version 6 and deprecated since API version 8. You are advised to use [on("headersReceive")](#onheadersreceive) instead.
+> NOTE
+> 
+> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [off("headersReceive")](#offheadersreceive) instead.
 
 System capability: SystemCapability.Communication.NetStack
 
@@ -461,12 +435,9 @@ Parameters
 
 ```TypeScript
 import { http } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let httpRequest = http.createHttp();
-httpRequest.on("headerReceive", (data: BusinessError) => {
-  console.error("error:" + JSON.stringify(data));
-});
+httpRequest.off("headerReceive");
 ```
 
 ## on("headersReceive")
@@ -480,6 +451,8 @@ Registers an observer for HTTP Response Header events.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HttpRequest-on(type: "headersReceive", callback: Callback<Object>): void--><!--Device-HttpRequest-on(type: "headersReceive", callback: Callback<Object>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -526,6 +499,8 @@ Registers an observer for events indicating receiving of HTTP streaming response
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-HttpRequest-on(type: "dataReceive", callback: Callback<ArrayBuffer>): void--><!--Device-HttpRequest-on(type: "dataReceive", callback: Callback<ArrayBuffer>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -570,6 +545,8 @@ Registers an observer for events indicating completion of receiving HTTP streami
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-HttpRequest-on(type: "dataEnd", callback: Callback<void>): void--><!--Device-HttpRequest-on(type: "dataEnd", callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -616,6 +593,8 @@ Registers an observer for events indicating progress of receiving HTTP streaming
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-HttpRequest-on(type: 'dataReceiveProgress', callback: Callback<DataReceiveProgressInfo>): void--><!--Device-HttpRequest-on(type: 'dataReceiveProgress', callback: Callback<DataReceiveProgressInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -661,6 +640,8 @@ Registers an observer for events indicating progress of sending HTTP requests.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-HttpRequest-on(type: 'dataSendProgress', callback: Callback<DataSendProgressInfo>): void--><!--Device-HttpRequest-on(type: 'dataSendProgress', callback: Callback<DataSendProgressInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -694,6 +675,55 @@ httpRequest.on("dataSendProgress", (data: http.DataSendProgressInfo) => {
 httpRequest.off("dataSendProgress");
 ```
 
+## on("headerReceive")
+
+```TypeScript
+on(type: "headerReceive", callback: AsyncCallback<Object>): void
+```
+
+Registers an observer for HTTP Response Header events.
+
+**Since:** 6
+
+**Deprecated since:** 8
+
+**Substitutes:** [on_headersReceive](#onheadersreceive)
+
+<!--Device-HttpRequest-on(type: "headerReceive", callback: AsyncCallback<Object>): void--><!--Device-HttpRequest-on(type: "headerReceive", callback: AsyncCallback<Object>): void-End-->
+
+**System capability:** SystemCapability.Communication.NetStack
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| type | "headerReceive" | Yes | Event type. The value is **headerReceive**. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Object&gt; | Yes | Callback used to return the result. If the operation is successful, **error** is **undefined**, and **data** is the received HTTP response header. Otherwise, **error** is an error object. |
+
+**Examples**
+
+### on("headerReceive")
+
+on(type: "headerReceive", callback: AsyncCallback<Object>): void
+
+Registers an observer for HTTP Response Header events.
+
+> NOTEThis API is supported since API version 6 and deprecated since API version 8. You are advised to use [on("headersReceive")](#onheadersreceive) instead.
+
+System capability: SystemCapability.Communication.NetStack
+
+Parameters
+
+```TypeScript
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let httpRequest = http.createHttp();
+httpRequest.on("headerReceive", (data: BusinessError) => {
+  console.error("error:" + JSON.stringify(data));
+});
+```
+
 ## once("headersReceive")
 
 ```TypeScript
@@ -705,6 +735,8 @@ Registers a one-time observer for HTTP Response Header events. Once triggered, t
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-HttpRequest-once(type: "headersReceive", callback: Callback<Object>): void--><!--Device-HttpRequest-once(type: "headersReceive", callback: Callback<Object>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -764,7 +796,9 @@ Initiates an HTTP request to a given URL. This API uses an asynchronous callback
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HttpRequest-request(url: string, callback: AsyncCallback<HttpResponse>): void--><!--Device-HttpRequest-request(url: string, callback: AsyncCallback<HttpResponse>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -800,7 +834,7 @@ Initiates an HTTP request to a given URL. This API uses an asynchronous callback
 | [2300055](../errorcode-net-http.md#2300055-failed-to-send-network-data) | Failed to send data to the peer. |
 | [2300056](../errorcode-net-http.md#2300056-failed-to-receive-network-data) | Failed to receive data from the peer. |
 | [2300058](../errorcode-net-http.md#2300058-local-ssl-certificate-error) | Local SSL certificate error. |
-| [2300059](../errorcode-net-http.md#2300059-failed-to-use-the-specified-ssl-cipher-algorithm) | The specified SSL cipher cannot be used. |
+| [2300059](../errorcode-net-http.md#2300059-unable-to-use-the-specified-encryption-algorithm) | The specified SSL cipher cannot be used. |
 | [2300060](../errorcode-net-http.md#2300060-incorrect-ssl-certificate-or-ssh-key-of-the-remote-server) | Invalid SSL peer certificate or SSH remote key. |
 | [2300061](../errorcode-net-http.md#2300061-unrecognized-or-incorrect-http-encoding-format) | Invalid HTTP encoding format. |
 | [2300063](../errorcode-net-http.md#2300063-maximum-file-size-exceeded) | Maximum file size exceeded. |
@@ -883,7 +917,9 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HttpRequest-request(url: string, options: HttpRequestOptions, callback: AsyncCallback<HttpResponse>): void--><!--Device-HttpRequest-request(url: string, options: HttpRequestOptions, callback: AsyncCallback<HttpResponse>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -920,7 +956,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 | [2300055](../errorcode-net-http.md#2300055-failed-to-send-network-data) | Failed to send data to the peer. |
 | [2300056](../errorcode-net-http.md#2300056-failed-to-receive-network-data) | Failed to receive data from the peer. |
 | [2300058](../errorcode-net-http.md#2300058-local-ssl-certificate-error) | Local SSL certificate error. |
-| [2300059](../errorcode-net-http.md#2300059-failed-to-use-the-specified-ssl-cipher-algorithm) | The specified SSL cipher cannot be used. |
+| [2300059](../errorcode-net-http.md#2300059-unable-to-use-the-specified-encryption-algorithm) | The specified SSL cipher cannot be used. |
 | [2300060](../errorcode-net-http.md#2300060-incorrect-ssl-certificate-or-ssh-key-of-the-remote-server) | Invalid SSL peer certificate or SSH remote key. |
 | [2300061](../errorcode-net-http.md#2300061-unrecognized-or-incorrect-http-encoding-format) | Invalid HTTP encoding format. |
 | [2300063](../errorcode-net-http.md#2300063-maximum-file-size-exceeded) | Maximum file size exceeded. |
@@ -1028,7 +1064,9 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HttpRequest-request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>--><!--Device-HttpRequest-request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -1070,7 +1108,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 | [2300055](../errorcode-net-http.md#2300055-failed-to-send-network-data) | Failed to send data to the peer. |
 | [2300056](../errorcode-net-http.md#2300056-failed-to-receive-network-data) | Failed to receive data from the peer. |
 | [2300058](../errorcode-net-http.md#2300058-local-ssl-certificate-error) | Local SSL certificate error. |
-| [2300059](../errorcode-net-http.md#2300059-failed-to-use-the-specified-ssl-cipher-algorithm) | The specified SSL cipher cannot be used. |
+| [2300059](../errorcode-net-http.md#2300059-unable-to-use-the-specified-encryption-algorithm) | The specified SSL cipher cannot be used. |
 | [2300060](../errorcode-net-http.md#2300060-incorrect-ssl-certificate-or-ssh-key-of-the-remote-server) | Invalid SSL peer certificate or SSH remote key. |
 | [2300061](../errorcode-net-http.md#2300061-unrecognized-or-incorrect-http-encoding-format) | Invalid HTTP encoding format. |
 | [2300063](../errorcode-net-http.md#2300063-maximum-file-size-exceeded) | Maximum file size exceeded. |
@@ -1155,6 +1193,8 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-HttpRequest-requestInStream(url: string, callback: AsyncCallback<int>): void--><!--Device-HttpRequest-requestInStream(url: string, callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -1189,7 +1229,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 | [2300055](../errorcode-net-http.md#2300055-failed-to-send-network-data) | Failed to send data to the peer. |
 | [2300056](../errorcode-net-http.md#2300056-failed-to-receive-network-data) | Failed to receive data from the peer. |
 | [2300058](../errorcode-net-http.md#2300058-local-ssl-certificate-error) | Local SSL certificate error. |
-| [2300059](../errorcode-net-http.md#2300059-failed-to-use-the-specified-ssl-cipher-algorithm) | The specified SSL cipher cannot be used. |
+| [2300059](../errorcode-net-http.md#2300059-unable-to-use-the-specified-encryption-algorithm) | The specified SSL cipher cannot be used. |
 | [2300060](../errorcode-net-http.md#2300060-incorrect-ssl-certificate-or-ssh-key-of-the-remote-server) | Invalid SSL peer certificate or SSH remote key. |
 | [2300061](../errorcode-net-http.md#2300061-unrecognized-or-incorrect-http-encoding-format) | Invalid HTTP encoding format. |
 | [2300063](../errorcode-net-http.md#2300063-maximum-file-size-exceeded) | Maximum file size exceeded. |
@@ -1253,6 +1293,8 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-HttpRequest-requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallback<int>): void--><!--Device-HttpRequest-requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -1288,7 +1330,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 | [2300055](../errorcode-net-http.md#2300055-failed-to-send-network-data) | Failed to send data to the peer. |
 | [2300056](../errorcode-net-http.md#2300056-failed-to-receive-network-data) | Failed to receive data from the peer. |
 | [2300058](../errorcode-net-http.md#2300058-local-ssl-certificate-error) | Local SSL certificate error. |
-| [2300059](../errorcode-net-http.md#2300059-failed-to-use-the-specified-ssl-cipher-algorithm) | The specified SSL cipher cannot be used. |
+| [2300059](../errorcode-net-http.md#2300059-unable-to-use-the-specified-encryption-algorithm) | The specified SSL cipher cannot be used. |
 | [2300060](../errorcode-net-http.md#2300060-incorrect-ssl-certificate-or-ssh-key-of-the-remote-server) | Invalid SSL peer certificate or SSH remote key. |
 | [2300061](../errorcode-net-http.md#2300061-unrecognized-or-incorrect-http-encoding-format) | Invalid HTTP encoding format. |
 | [2300063](../errorcode-net-http.md#2300063-maximum-file-size-exceeded) | Maximum file size exceeded. |
@@ -1374,6 +1416,8 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-HttpRequest-requestInStream(url: string, options?: HttpRequestOptions): Promise<int>--><!--Device-HttpRequest-requestInStream(url: string, options?: HttpRequestOptions): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -1414,7 +1458,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 | [2300055](../errorcode-net-http.md#2300055-failed-to-send-network-data) | Failed to send data to the peer. |
 | [2300056](../errorcode-net-http.md#2300056-failed-to-receive-network-data) | Failed to receive data from the peer. |
 | [2300058](../errorcode-net-http.md#2300058-local-ssl-certificate-error) | Local SSL certificate error. |
-| [2300059](../errorcode-net-http.md#2300059-failed-to-use-the-specified-ssl-cipher-algorithm) | The specified SSL cipher cannot be used. |
+| [2300059](../errorcode-net-http.md#2300059-unable-to-use-the-specified-encryption-algorithm) | The specified SSL cipher cannot be used. |
 | [2300060](../errorcode-net-http.md#2300060-incorrect-ssl-certificate-or-ssh-key-of-the-remote-server) | Invalid SSL peer certificate or SSH remote key. |
 | [2300061](../errorcode-net-http.md#2300061-unrecognized-or-incorrect-http-encoding-format) | Invalid HTTP encoding format. |
 | [2300063](../errorcode-net-http.md#2300063-maximum-file-size-exceeded) | Maximum file size exceeded. |
@@ -1503,6 +1547,8 @@ Initiates an HTTP network request based on the URL and related configuration opt
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HttpRequest-requestSync(url: string, options?: HttpRequestOptions): HttpResponse--><!--Device-HttpRequest-requestSync(url: string, options?: HttpRequestOptions): HttpResponse-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -1542,7 +1588,7 @@ Initiates an HTTP network request based on the URL and related configuration opt
 | [2300055](../errorcode-net-http.md#2300055-failed-to-send-network-data) | Failed to send data to the peer. |
 | [2300056](../errorcode-net-http.md#2300056-failed-to-receive-network-data) | Failed to receive data from the peer. |
 | [2300058](../errorcode-net-http.md#2300058-local-ssl-certificate-error) | Local SSL certificate error. |
-| [2300059](../errorcode-net-http.md#2300059-failed-to-use-the-specified-ssl-cipher-algorithm) | The specified SSL cipher cannot be used. |
+| [2300059](../errorcode-net-http.md#2300059-unable-to-use-the-specified-encryption-algorithm) | The specified SSL cipher cannot be used. |
 | [2300060](../errorcode-net-http.md#2300060-incorrect-ssl-certificate-or-ssh-key-of-the-remote-server) | Invalid SSL peer certificate or SSH remote key. |
 | [2300061](../errorcode-net-http.md#2300061-unrecognized-or-incorrect-http-encoding-format) | Invalid HTTP encoding format. |
 | [2300063](../errorcode-net-http.md#2300063-maximum-file-size-exceeded) | Maximum file size exceeded. |

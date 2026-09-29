@@ -16,7 +16,9 @@ Adds an event watcher. You can use the callback of the event watcher to subscrib
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-hiAppEvent-function addWatcher(watcher: Watcher): AppEventPackageHolder--><!--Device-hiAppEvent-function addWatcher(watcher: Watcher): AppEventPackageHolder-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 

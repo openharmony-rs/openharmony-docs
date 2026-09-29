@@ -14,6 +14,8 @@ Defines the sweep gradient parameters.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface SweepGradientOptions--><!--Device-unnamed-declare interface SweepGradientOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## center
@@ -31,6 +33,8 @@ Center of the sweep gradient, that is, the coordinates relative to the upper lef
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-SweepGradientOptions-center: [Length, Length]--><!--Device-SweepGradientOptions-center: [Length, Length]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ Default value: **[]**, meaning no gradient effect.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-SweepGradientOptions-colors: Array<[ResourceColor, number]>--><!--Device-SweepGradientOptions-colors: Array<[ResourceColor, number]>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,6 +83,8 @@ When specified as a string, valid values are pure numbers or numbers followed by
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SweepGradientOptions-end?: number | string--><!--Device-SweepGradientOptions-end?: number | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## metricsColors
@@ -94,6 +102,8 @@ Array of color stops, each of which consists of a color and its stop position. I
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-SweepGradientOptions-metricsColors?: Array<[ColorMetrics, number]>--><!--Device-SweepGradientOptions-metricsColors?: Array<[ColorMetrics, number]>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +132,8 @@ Default value: **false**.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SweepGradientOptions-repeating?: boolean--><!--Device-SweepGradientOptions-repeating?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## rotation
@@ -144,6 +156,8 @@ When specified as a string, valid values are pure numbers or numbers followed by
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-SweepGradientOptions-rotation?: number | string--><!--Device-SweepGradientOptions-rotation?: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,5 +183,7 @@ When specified as a string, valid values are pure numbers or numbers followed by
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-SweepGradientOptions-start?: number | string--><!--Device-SweepGradientOptions-start?: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

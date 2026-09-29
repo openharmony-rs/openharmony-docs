@@ -6,9 +6,9 @@ Flex是以弹性方式布局子组件的容器组件，能够高效地排列、�
 
 > **说明：** 
 > 
-> - Flex组件在渲染时存在二次布局过程，因此在对性能有严格要求的场景下建议使用Column、Row代替。最佳实践请参考布局优化指导-合理使用布局组件。
+> - Flex组件在渲染时存在二次布局过程，因此在对性能有严格要求的场景下建议使用[Column](arkts-arkui-column-comp.md)、[Row](arkts-arkui-row-comp.md)代替。最佳实践请参考布局优化指导-合理使用布局组件。
 > 
-> - Flex组件主轴不设置长度时默认撑满父容器，如果包含设置[position](arkts-arkui-common-comp-commonmethod-c.md#position)的子组件，此时Flex组件不会撑满父容器。Column、Row组件主轴不设置长度时默认跟随子节点大小。
+> - Flex组件主轴不设置长度时默认撑满父容器，如果包含设置[position](arkts-arkui-common-comp-commonmethod-c.md#position)的子组件，此时Flex组件不会撑满父容器。[Column](arkts-arkui-column-comp.md)、[Row](arkts-arkui-row-comp.md)组件主轴不设置长度时默认跟随子节点大小。
 > 
 > - Flex、Column、Row组件在没有子节点且不设置宽高时，默认宽高为-1。
 > 
@@ -31,6 +31,8 @@ Flex(value?: FlexOptions)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FlexInterface-(value?: FlexOptions): FlexAttribute--><!--Device-FlexInterface-(value?: FlexOptions): FlexAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

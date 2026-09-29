@@ -8,6 +8,8 @@ Returns the width and height of the component. The default unit is vp, but APIs 
 
 **Since:** 11
 
+<!--Device-unnamed-export interface Size--><!--Device-unnamed-export interface Size-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -22,6 +24,8 @@ Unit: vp.
 
 Value range: [0, +∞).
 
+A negative value is treated as the default value.
+
 **Type:** number
 
 **Since:** 11
@@ -29,6 +33,8 @@ Value range: [0, +∞).
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Size-height: number--><!--Device-Size-height: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +50,8 @@ Unit: vp.
 
 Value range: [0, +∞).
 
+A negative value is treated as the default value.
+
 **Type:** number
 
 **Since:** 11
@@ -51,5 +59,7 @@ Value range: [0, +∞).
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Size-width: number--><!--Device-Size-width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

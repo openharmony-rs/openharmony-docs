@@ -52,25 +52,6 @@ import { PhotoPickerComponent, PickerController, PickerOptions, DataType, BaseIt
 | --- | --- |
 | [PhotoPickerComponent](arkts-medialibrary-file-photopickercomponent-photopickercomponent-s.md) | PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) =&gt; void, onDeselect?: (uri: string) =&gt; void, onItemClicked?: (itemInfo: ItemInfo, clickType: ClickType) =&gt; boolean, onItemClickedNotify?: ItemClickedNotifyCallback, onEnterPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) =&gt; boolean, onExitPhotoBrowser?: (photoBrowserInfo: PhotoBrowserInfo) =&gt; boolean, onPickerControllerReady?: () =&gt; void, onPhotoBrowserChanged?: (browserItemInfo: BaseItemInfo) =&gt; boolean, onSelectedItemsDeleted?: ItemsDeletedCallback, onExceedMaxSelected?: ExceedMaxSelectedCallback, onCurrentAlbumDeleted?: CurrentAlbumDeletedCallback, onVideoPlayStateChanged?: videoPlayStateChangedCallback, pickerController: PickerController }) |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [BadgeType](arkts-medialibrary-file-photopickercomponent-badgetype-e.md) | Enumerates the badge types. |
-| [ClickType](arkts-medialibrary-file-photopickercomponent-clicktype-e.md) | Enumerates the click operation types. |
-| [DataType](arkts-medialibrary-file-photopickercomponent-datatype-e.md) | Enumerates the types of data sent from **PickerController** to the **PhotoPickerComponent**. |
-| [ItemDisplayRatio](arkts-medialibrary-file-photopickercomponent-itemdisplayratio-e.md) | Enumerates the aspect ratios for grid display in single-line display mode. |
-| [ItemType](arkts-medialibrary-file-photopickercomponent-itemtype-e.md) | Enumerates the types of the item clicked. |
-| [MaxCountType](arkts-medialibrary-file-photopickercomponent-maxcounttype-e.md) | Enumerates the types of the maximum count. |
-| [PhotoBrowserRange](arkts-medialibrary-file-photopickercomponent-photobrowserrange-e.md) | Enumerates the view range on the photo browser page. |
-| [PhotoBrowserUIElement](arkts-medialibrary-file-photopickercomponent-photobrowseruielement-e.md) | Represents other UI elements except the image preview component on the photo browser page. |
-| [PickerColorMode](arkts-medialibrary-file-photopickercomponent-pickercolormode-e.md) | Enumerates the Picker color modes. |
-| [PickerOrientation](arkts-medialibrary-file-photopickercomponent-pickerorientation-e.md) | Enumerates the sliding preview directions of the Picker grid page. |
-| [ReminderMode](arkts-medialibrary-file-photopickercomponent-remindermode-e.md) | Enumerates the types of the reminder when the number of selected items reaches the maximum. |
-| [SaveMode](arkts-medialibrary-file-photopickercomponent-savemode-e.md) | Enumerates the modes for saving images or videos. |
-| [SelectMode](arkts-medialibrary-file-photopickercomponent-selectmode-e.md) | Enumerates the selection modes. |
-| [VideoPlayerState](arkts-medialibrary-file-photopickercomponent-videoplayerstate-e.md) | Enumerates the video playback states. |
-
 ### Types
 
 | Name | Description |
@@ -89,3 +70,22 @@ import { PhotoPickerComponent, PickerController, PickerOptions, DataType, BaseIt
 | [ScrollStopAtStartCallback](arkts-medialibrary-scrollstopatstartcallback-t.md) | Callback to be invoked when the user stops scrolling and is positioned at the beginning of the grid content in the **PhotoPickerComponent**. |
 | [UnselectableItemClickedCallback](arkts-medialibrary-unselectableitemclickedcallback-t.md) | The callback of onUnselectableItemInfo event |
 | [videoPlayStateChangedCallback](arkts-medialibrary-videoplaystatechangedcallback-t.md) | Callback to be invoked when the video playback state on a photo browser page changes. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [BadgeType](arkts-medialibrary-file-photopickercomponent-badgetype-e.md) | Enumerates the badge types. |
+| [ClickType](arkts-medialibrary-file-photopickercomponent-clicktype-e.md) | Enumerates the click operation types. |
+| [DataType](arkts-medialibrary-file-photopickercomponent-datatype-e.md) | Enumerates the types of data sent from **PickerController** to the **PhotoPickerComponent**. |
+| [ItemDisplayRatio](arkts-medialibrary-file-photopickercomponent-itemdisplayratio-e.md) | Enumerates the aspect ratios for grid display in single-line display mode. |
+| [ItemType](arkts-medialibrary-file-photopickercomponent-itemtype-e.md) | Enumerates the types of the item clicked. |
+| [MaxCountType](arkts-medialibrary-file-photopickercomponent-maxcounttype-e.md) | Enumerates the types of the maximum count. |
+| [PhotoBrowserRange](arkts-medialibrary-file-photopickercomponent-photobrowserrange-e.md) | Enumerates the view range on the photo browser page. |
+| [PhotoBrowserUIElement](arkts-medialibrary-file-photopickercomponent-photobrowseruielement-e.md) | Represents other UI elements except the image preview component on the photo browser page. |
+| [PickerColorMode](arkts-medialibrary-file-photopickercomponent-pickercolormode-e.md) | Enumerates the Picker color modes. |
+| [PickerOrientation](arkts-medialibrary-file-photopickercomponent-pickerorientation-e.md) | Enumerates the sliding preview directions of the Picker grid page. |
+| [ReminderMode](arkts-medialibrary-file-photopickercomponent-remindermode-e.md) | Enumerates the types of the reminder when the number of selected items reaches the maximum. |
+| [SaveMode](arkts-medialibrary-file-photopickercomponent-savemode-e.md) | Enumerates the modes for saving images or videos. |
+| [SelectMode](arkts-medialibrary-file-photopickercomponent-selectmode-e.md) | Enumerates the selection modes. |
+| [VideoPlayerState](arkts-medialibrary-file-photopickercomponent-videoplayerstate-e.md) | Enumerates the video playback states. |

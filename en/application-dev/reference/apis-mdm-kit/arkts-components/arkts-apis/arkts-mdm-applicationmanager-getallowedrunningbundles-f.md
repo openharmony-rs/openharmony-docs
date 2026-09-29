@@ -20,6 +20,8 @@ Obtains the list of applications allowed to run by a specified user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function getAllowedRunningBundles(admin: Want, accountId: number): Array<string>--><!--Device-applicationManager-function getAllowedRunningBundles(admin: Want, accountId: number): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -79,6 +81,8 @@ Obtains the application running trustlist of a specified user.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function getAllowedRunningBundles(admin: Want | null, accountId: number): Array<string>--><!--Device-applicationManager-function getAllowedRunningBundles(admin: Want | null, accountId: number): Array<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

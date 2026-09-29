@@ -18,6 +18,8 @@ Provides the detailed information of the permissions to request from the system.
 
 **Substitutes:** bundleInfo
 
+<!--Device-unnamed-export interface ReqPermissionDetail--><!--Device-unnamed-export interface ReqPermissionDetail-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## name
@@ -37,6 +39,8 @@ Name of the permission to request.
 **Deprecated since:** 9
 
 **Substitutes:** name
+
+<!--Device-ReqPermissionDetail-name: string--><!--Device-ReqPermissionDetail-name: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -58,6 +62,8 @@ Reason for requesting the permission.
 
 **Substitutes:** reason
 
+<!--Device-ReqPermissionDetail-reason: string--><!--Device-ReqPermissionDetail-reason: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## usedScene
@@ -77,5 +83,7 @@ Application scenario and timing for using the permission.
 **Deprecated since:** 9
 
 **Substitutes:** usedScene
+
+<!--Device-ReqPermissionDetail-usedScene: UsedScene--><!--Device-ReqPermissionDetail-usedScene: UsedScene-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

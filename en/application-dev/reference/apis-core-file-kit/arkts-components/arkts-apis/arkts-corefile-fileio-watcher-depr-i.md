@@ -12,6 +12,8 @@ Listens for file change. You can call the **Watcher.stop()** method synchronousl
 
 **Substitutes:** [Watcher](arkts-corefile-file-fs-watcher-i.md)
 
+<!--Device-unnamed-declare interface Watcher--><!--Device-unnamed-declare interface Watcher-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Stops the **watcher** instance. This API uses a promise to return the result.
 **Deprecated since:** 10
 
 **Substitutes:** [stop](arkts-corefile-file-fs-watcher-i.md#stop)
+
+<!--Device-Watcher-stop(): Promise<void>--><!--Device-Watcher-stop(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -68,6 +72,8 @@ Stops the **watcher** instance. This API uses an asynchronous callback to return
 **Deprecated since:** 10
 
 **Substitutes:** [stop](arkts-corefile-file-fs-watcher-i.md#stop)
+
+<!--Device-Watcher-stop(callback: AsyncCallback<void>): void--><!--Device-Watcher-stop(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

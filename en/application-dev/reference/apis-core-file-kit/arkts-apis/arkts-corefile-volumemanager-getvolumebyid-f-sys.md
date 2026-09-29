@@ -18,6 +18,8 @@ Obtains information about a volume based on the volume ID. This API uses an asyn
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
 
+<!--Device-volumeManager-function getVolumeById(volumeId: string, callback: AsyncCallback<Volume>): void--><!--Device-volumeManager-function getVolumeById(volumeId: string, callback: AsyncCallback<Volume>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -54,6 +56,8 @@ Obtains information about a volume based on the volume ID. This API uses a promi
 **Since:** 9
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
+
+<!--Device-volumeManager-function getVolumeById(volumeId: string): Promise<Volume>--><!--Device-volumeManager-function getVolumeById(volumeId: string): Promise<Volume>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 

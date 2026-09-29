@@ -17,6 +17,8 @@ Enum of using the effects template mode.
 
 **Since:** 14
 
+<!--Device-unnamed-declare enum EffectType--><!--Device-unnamed-declare enum EffectType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -33,6 +35,8 @@ Define use the effects template defined by the parent effectComponent.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-EffectType-DEFAULT = 0--><!--Device-EffectType-DEFAULT = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_EFFECT
@@ -48,5 +52,7 @@ Define use the effects template defined by the window.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-EffectType-WINDOW_EFFECT = 1--><!--Device-EffectType-WINDOW_EFFECT = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

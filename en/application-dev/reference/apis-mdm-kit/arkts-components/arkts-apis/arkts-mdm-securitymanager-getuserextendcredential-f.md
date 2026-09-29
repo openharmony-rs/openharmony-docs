@@ -20,6 +20,8 @@ Gets the extended user credential information of the specified account.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getUserExtendCredential(accountId: number): Promise<UserExtCredentialInfo[]>--><!--Device-securityManager-function getUserExtendCredential(accountId: number): Promise<UserExtCredentialInfo[]>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

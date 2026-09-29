@@ -10,6 +10,8 @@ Policy information to manager permissions on a URI.
 
 **Since:** 11
 
+<!--Device-fileShare-export interface PolicyInfo--><!--Device-fileShare-export interface PolicyInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Indicates the mode of operation for the URI, example { OperationMode.READ_MODE }
 
 **Since:** 11
 
+<!--Device-PolicyInfo-operationMode: int--><!--Device-PolicyInfo-operationMode: int-End-->
+
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 ## uri
@@ -43,5 +47,7 @@ Indicates the uri of the policy information.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-PolicyInfo-uri: string--><!--Device-PolicyInfo-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization

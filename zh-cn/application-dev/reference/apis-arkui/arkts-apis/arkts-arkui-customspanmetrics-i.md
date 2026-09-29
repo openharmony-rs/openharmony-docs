@@ -8,6 +8,8 @@ declare interface CustomSpanMetrics
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface CustomSpanMetrics--><!--Device-unnamed-declare interface CustomSpanMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -20,7 +22,7 @@ height?: number
 
 默认值：不传入时默认取Text组件的fontSize值作为CustomSpan的高度。
 
-单位：vp
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -29,6 +31,8 @@ height?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomSpanMetrics-height?: number--><!--Device-CustomSpanMetrics-height?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +44,7 @@ width: number
 
 自定义绘制Span的宽。
 
-单位：vp
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -51,5 +55,7 @@ width: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomSpanMetrics-width: number--><!--Device-CustomSpanMetrics-width: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

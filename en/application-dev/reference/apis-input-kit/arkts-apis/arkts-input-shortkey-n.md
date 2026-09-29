@@ -8,6 +8,8 @@ The shortKey module provides APIs to set the delay for starting an ability using
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace shortKey--><!--Device-unnamed-declare namespace shortKey-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.ShortKey
 
 **System API:** This is a system API.

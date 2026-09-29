@@ -4,6 +4,8 @@
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace mindSporeLite--><!--Device-unnamed-declare namespace mindSporeLite-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## Modules to Import

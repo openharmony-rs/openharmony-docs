@@ -8,6 +8,8 @@ Widget extension class. It provides APIs to notify the widget provider that a wi
 
 **Since:** 9
 
+<!--Device-unnamed-declare class FormExtensionAbility--><!--Device-unnamed-declare class FormExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Called to notify the widget provider that the widget host is requesting the widg
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FormExtensionAbility-onAcquireFormState?(want: Want): formInfo.FormState--><!--Device-FormExtensionAbility-onAcquireFormState?(want: Want): formInfo.FormState-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -70,7 +74,9 @@ Called to notify the widget provider that a widget is being created.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormExtensionAbility-onAddForm(want: Want): formBindingData.FormBindingData--><!--Device-FormExtensionAbility-onAddForm(want: Want): formBindingData.FormBindingData-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -118,7 +124,9 @@ Called to notify the widget provider that a temporary widget has been converted 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormExtensionAbility-onCastToNormalForm(formId: string): void--><!--Device-FormExtensionAbility-onCastToNormalForm(formId: string): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -152,6 +160,8 @@ Called to notify the widget provider that the widget visibility status is being 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormExtensionAbility-onChangeFormVisibility(newStatus: Record<string, int>): void--><!--Device-FormExtensionAbility-onChangeFormVisibility(newStatus: Record<string, int>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -209,7 +219,9 @@ Called when system configuration items change. The **onConfigurationUpdate** cal
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormExtensionAbility-onConfigurationUpdate(newConfig: Configuration): void--><!--Device-FormExtensionAbility-onConfigurationUpdate(newConfig: Configuration): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -246,7 +258,9 @@ Called to instruct the widget provider to process the widget event.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormExtensionAbility-onFormEvent(formId: string, message: string): void--><!--Device-FormExtensionAbility-onFormEvent(formId: string, message: string): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -281,7 +295,9 @@ Called when the widget location changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-FormExtensionAbility-onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): void--><!--Device-FormExtensionAbility-onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -323,7 +339,9 @@ Called to notify the widget provider that a widget is being destroyed.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormExtensionAbility-onRemoveForm(formId: string): void--><!--Device-FormExtensionAbility-onRemoveForm(formId: string): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -357,7 +375,9 @@ Called when the widget size changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-FormExtensionAbility-onSizeChanged(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect): void--><!--Device-FormExtensionAbility-onSizeChanged(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -395,6 +415,8 @@ Called when the widget process of the widget provider exits.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FormExtensionAbility-onStop?(): void--><!--Device-FormExtensionAbility-onStop?(): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **Examples**
@@ -421,7 +443,9 @@ Called to notify the widget provider that a widget is being updated, with update
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormExtensionAbility-onUpdateForm(formId: string, wantParams?: Record<string, Object>): void--><!--Device-FormExtensionAbility-onUpdateForm(formId: string, wantParams?: Record<string, Object>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -472,6 +496,8 @@ This API can be used in atomic services since API version 11.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormExtensionAbility-context: FormExtensionContext--><!--Device-FormExtensionAbility-context: FormExtensionContext-End-->
 
 **System capability:** SystemCapability.Ability.Form

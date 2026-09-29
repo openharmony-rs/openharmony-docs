@@ -8,6 +8,8 @@ Defines the options used in **listFile()**.
 
 **Since:** 11
 
+<!--Device-unnamed-export interface ListFileOptions--><!--Device-unnamed-export interface ListFileOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -30,6 +32,8 @@ File filtering configuration. This parameter is optional. It specifies the file 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ListFileOptions-filter?: Filter--><!--Device-ListFileOptions-filter?: Filter-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## listNum
@@ -46,6 +50,8 @@ Number of file names to list. This parameter is optional. The default value is *
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ListFileOptions-listNum?: number--><!--Device-ListFileOptions-listNum?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## recursion
@@ -61,5 +67,7 @@ Whether to list all files in the subdirectories recursively. This parameter is o
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ListFileOptions-recursion?: boolean--><!--Device-ListFileOptions-recursion?: boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

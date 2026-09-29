@@ -8,6 +8,8 @@ Provide an interface for the button style of picker
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface PickerDialogButtonStyle--><!--Device-unnamed-declare interface PickerDialogButtonStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundColor
@@ -25,6 +27,8 @@ Describes the button background color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerDialogButtonStyle-backgroundColor?: ResourceColor--><!--Device-PickerDialogButtonStyle-backgroundColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Describes the button border radius.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PickerDialogButtonStyle-borderRadius?: Length | BorderRadiuses--><!--Device-PickerDialogButtonStyle-borderRadius?: Length | BorderRadiuses-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -61,6 +67,8 @@ Describes the button text color.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerDialogButtonStyle-fontColor?: ResourceColor--><!--Device-PickerDialogButtonStyle-fontColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +88,8 @@ Describes the button font family.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PickerDialogButtonStyle-fontFamily?: Resource | string--><!--Device-PickerDialogButtonStyle-fontFamily?: Resource | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontSize
@@ -97,6 +107,8 @@ Describes the button text size.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerDialogButtonStyle-fontSize?: Length--><!--Device-PickerDialogButtonStyle-fontSize?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,6 +128,8 @@ Describes the button font style.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PickerDialogButtonStyle-fontStyle?: FontStyle--><!--Device-PickerDialogButtonStyle-fontStyle?: FontStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontWeight
@@ -133,6 +147,8 @@ Describes the button font weight.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerDialogButtonStyle-fontWeight?: FontWeight | number | string--><!--Device-PickerDialogButtonStyle-fontWeight?: FontWeight | number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,6 +168,8 @@ Define whether the button default to responding to the Enter key
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PickerDialogButtonStyle-primary?: boolean--><!--Device-PickerDialogButtonStyle-primary?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## role
@@ -169,6 +187,8 @@ Describes the button role.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerDialogButtonStyle-role?: ButtonRole--><!--Device-PickerDialogButtonStyle-role?: ButtonRole-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +208,8 @@ Describes the button style.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PickerDialogButtonStyle-style?: ButtonStyleMode--><!--Device-PickerDialogButtonStyle-style?: ButtonStyleMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -205,5 +227,7 @@ Describes the button type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerDialogButtonStyle-type?: ButtonType--><!--Device-PickerDialogButtonStyle-type?: ButtonType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

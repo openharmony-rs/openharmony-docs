@@ -10,6 +10,8 @@ A special duplex stream that supports data conversion and result output. The **T
 
 **Since:** 12
 
+<!--Device-stream-export class Transform extends Duplex--><!--Device-stream-export class Transform extends Duplex-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -28,7 +30,9 @@ A constructor used to create a **Transform** object.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Transform-constructor()--><!--Device-Transform-constructor()-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -48,7 +52,9 @@ Called at the end of the stream to process the remaining data. This API uses an 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Transform-doFlush(callback: Function): void--><!--Device-Transform-doFlush(callback: Function): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -92,7 +98,9 @@ Converts or processes input data chunks and uses a callback to notify that the p
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Transform-doTransform(chunk: string, encoding: string, callback: Function): void--><!--Device-Transform-doTransform(chunk: string, encoding: string, callback: Function): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

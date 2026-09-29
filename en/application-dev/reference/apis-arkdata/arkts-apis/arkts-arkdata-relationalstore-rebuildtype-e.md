@@ -8,6 +8,8 @@ Enumerates the RDB store rebuild types. Use the enum name rather than the enum v
 
 **Since:** 12
 
+<!--Device-relationalStore-enum RebuildType--><!--Device-relationalStore-enum RebuildType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## NONE
@@ -19,6 +21,8 @@ NONE = 0
 The RDB store is not rebuilt.
 
 **Since:** 12
+
+<!--Device-RebuildType-NONE = 0--><!--Device-RebuildType-NONE = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -32,6 +36,8 @@ The RDB store is rebuilt and creates an empty database. You need to create table
 
 **Since:** 12
 
+<!--Device-RebuildType-REBUILT = 1--><!--Device-RebuildType-REBUILT = 1-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## REPAIRED
@@ -43,5 +49,7 @@ REPAIRED = 2
 The database is repaired and the undamaged data is restored. Currently, only the [vector store](arkts-arkdata-relationalstore-storeconfig-i.md) supports this capability.
 
 **Since:** 12
+
+<!--Device-RebuildType-REPAIRED = 2--><!--Device-RebuildType-REPAIRED = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

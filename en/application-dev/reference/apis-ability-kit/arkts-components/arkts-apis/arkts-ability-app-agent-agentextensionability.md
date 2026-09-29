@@ -1,4 +1,4 @@
-# @ohos.app.agent.AgentExtensionAbility
+# @ohos.app.agent.AgentExtensionAbility(Agent Extension Ability)
 
 ## Modules to Import
 

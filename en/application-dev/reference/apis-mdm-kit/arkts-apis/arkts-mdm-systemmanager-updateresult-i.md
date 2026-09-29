@@ -8,6 +8,8 @@ Represents the update result information.
 
 **Since:** 12
 
+<!--Device-systemManager-interface UpdateResult--><!--Device-systemManager-interface UpdateResult-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Error information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UpdateResult-errorInfo: ErrorInfo--><!--Device-UpdateResult-errorInfo: ErrorInfo-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## status
@@ -46,6 +50,8 @@ System update status.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UpdateResult-status: UpdateStatus--><!--Device-UpdateResult-status: UpdateStatus-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## version
@@ -61,5 +67,7 @@ Current version of the system.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UpdateResult-version: string--><!--Device-UpdateResult-version: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

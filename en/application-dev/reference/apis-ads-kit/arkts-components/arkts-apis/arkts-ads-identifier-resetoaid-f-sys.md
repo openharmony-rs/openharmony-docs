@@ -16,6 +16,8 @@ Resets the OAID.
 
 **Since:** 10
 
+<!--Device-identifier-function resetOAID(): void--><!--Device-identifier-function resetOAID(): void-End-->
+
 **System capability:** SystemCapability.Advertising.OAID
 
 **System API:** This is a system API.

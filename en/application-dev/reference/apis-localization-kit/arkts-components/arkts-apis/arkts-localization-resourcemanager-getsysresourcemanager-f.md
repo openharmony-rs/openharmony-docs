@@ -16,7 +16,9 @@ Obtains a system resource management object for accessing preset system resource
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-resourceManager-export function getSysResourceManager(): ResourceManager--><!--Device-resourceManager-export function getSysResourceManager(): ResourceManager-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 

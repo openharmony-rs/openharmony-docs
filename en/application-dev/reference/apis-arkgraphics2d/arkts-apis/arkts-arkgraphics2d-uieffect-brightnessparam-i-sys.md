@@ -8,6 +8,8 @@ Detailed description of the material brightness parameters.
 
 **Since:** 22
 
+<!--Device-uiEffect-interface BrightnessParam--><!--Device-uiEffect-interface BrightnessParam-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Third-order coefficient for grayscale adjustment. The value range is [-1, 1]. Va
 
 **Since:** 22
 
+<!--Device-BrightnessParam-cubicCoeff : double--><!--Device-BrightnessParam-cubicCoeff : double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Blending ratio for the brightness effect. The value range is [0, 1]. Values less
 **Type:** number
 
 **Since:** 22
+
+<!--Device-BrightnessParam-fraction : double--><!--Device-BrightnessParam-fraction : double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -62,6 +68,8 @@ Grayscale adjustment ratio. The value range is [-1, 1]. Values less than -1 are 
 
 **Since:** 22
 
+<!--Device-BrightnessParam-lightUpDegree : double--><!--Device-BrightnessParam-lightUpDegree : double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Negative adjustment coefficients based on the base saturation. The value range f
 **Type:** [number, number, number]
 
 **Since:** 22
+
+<!--Device-BrightnessParam-negRgb : [double, double, double]--><!--Device-BrightnessParam-negRgb : [double, double, double]-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -94,6 +104,8 @@ Positive adjustment coefficients based on the base saturation. The value range f
 
 **Since:** 22
 
+<!--Device-BrightnessParam-posRgb : [double, double, double]--><!--Device-BrightnessParam-posRgb : [double, double, double]-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Second-order coefficient for grayscale adjustment. The value range is [-1, 1]. V
 **Type:** number
 
 **Since:** 22
+
+<!--Device-BrightnessParam-quadCoeff : double--><!--Device-BrightnessParam-quadCoeff : double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -126,6 +140,8 @@ Linear coefficient for grayscale adjustment. The value range is [-1, 1]. Values 
 
 **Since:** 22
 
+<!--Device-BrightnessParam-rate : double--><!--Device-BrightnessParam-rate : double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -141,6 +157,8 @@ Base saturation for brightness. The value range is [0, 1]. Values less than 0 ar
 **Type:** number
 
 **Since:** 22
+
+<!--Device-BrightnessParam-saturation : double--><!--Device-BrightnessParam-saturation : double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

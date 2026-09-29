@@ -8,6 +8,8 @@ Provides additional configuration options for the text decoration line style.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface DecorationOptions--><!--Device-unnamed-declare interface DecorationOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableMultiType
@@ -18,9 +20,9 @@ enableMultiType?: boolean
 
 Whether to enable the display of multiple decoration lines.
 
-Default value: **undefined**. **true**: Enable the display of multiple decoration lines. **false** or **undefined**: Disable the display of multiple decoration lines.
+Default value: **undefined**. The value **true** enables it, and **false** or **undefined** disables it.
 
-To display all decoration lines, this option must be enabled. The overlapping area of multiple decoration lines will show a combined effect, with the style, color, and thickness consistent with the last decoration line.
+All decoration lines to be displayed must have this option enabled. In the intersection area of these decoration lines, the multi-decoration-line effect is displayed, and the style, color, and thickness of the last set decoration line are used.
 
 **Type:** boolean
 
@@ -29,5 +31,7 @@ To display all decoration lines, this option must be enabled. The overlapping ar
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-DecorationOptions-enableMultiType?: boolean--><!--Device-DecorationOptions-enableMultiType?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

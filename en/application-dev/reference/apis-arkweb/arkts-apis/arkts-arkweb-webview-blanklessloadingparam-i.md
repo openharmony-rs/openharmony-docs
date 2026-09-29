@@ -8,6 +8,8 @@ Loading parameters of the White-Screen-Free Loading frame interpolation scheme.
 
 **Since:** 23
 
+<!--Device-webview-interface BlanklessLoadingParam--><!--Device-webview-interface BlanklessLoadingParam-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ This takes effect only when **enable** is **true**. This parameter is optional. 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BlanklessLoadingParam-callback?: Callback<BlanklessFrameInterpolationInfo>--><!--Device-BlanklessLoadingParam-callback?: Callback<BlanklessFrameInterpolationInfo>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## duration
@@ -52,6 +56,8 @@ Unit: ms.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BlanklessLoadingParam-duration?: number--><!--Device-BlanklessLoadingParam-duration?: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## enable
@@ -69,6 +75,8 @@ The value **true** means enabled, and **false** means disabled.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BlanklessLoadingParam-enable: boolean--><!--Device-BlanklessLoadingParam-enable: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -89,5 +97,7 @@ Unit: ms.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BlanklessLoadingParam-expirationTime?: number--><!--Device-BlanklessLoadingParam-expirationTime?: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

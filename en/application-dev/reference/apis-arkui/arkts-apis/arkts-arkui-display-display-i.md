@@ -10,6 +10,8 @@ Before calling any API in Display, you must use [getAllDisplays()](arkts-arkui-d
 
 **Since:** 7
 
+<!--Device-display-interface Display--><!--Device-display-interface Display-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## Modules to Import
@@ -32,7 +34,9 @@ This API can be properly called on devices running OpenHarmony 7.0.0 or later. F
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-getAvailableArea(): Promise<Rect>--><!--Device-Display-getAvailableArea(): Promise<Rect>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -78,7 +82,9 @@ Obtains the cutout information of the display. This API uses an asynchronous cal
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-getCutoutInfo(callback: AsyncCallback<CutoutInfo>): void--><!--Device-Display-getCutoutInfo(callback: AsyncCallback<CutoutInfo>): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -124,7 +130,9 @@ Obtains the cutout information of the display. This API uses a promise to return
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-getCutoutInfo(): Promise<CutoutInfo>--><!--Device-Display-getCutoutInfo(): Promise<CutoutInfo>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -165,7 +173,9 @@ Get current display capability, including foldstatus, displaymode, rotation, and
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-Display-getDisplayCapability(): string--><!--Device-Display-getDisplayCapability(): string-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -194,6 +204,8 @@ getLiveCreaseRegion(): FoldCreaseRegion
 Obtains the live crease region of the foldable device in the current display mode.
 
 **Since:** 20
+
+<!--Device-Display-getLiveCreaseRegion(): FoldCreaseRegion--><!--Device-Display-getLiveCreaseRegion(): FoldCreaseRegion-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -233,7 +245,9 @@ Obtains the rounded corner information of the display. The rounded corner inform
 
 **Since:** 23
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-Display-getRoundedCorner(): Array<RoundedCorner>--><!--Device-Display-getRoundedCorner(): Array<RoundedCorner>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -279,6 +293,8 @@ This API can be properly called on devices running OpenHarmony 7.0.0 or later. F
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Display-off(type: 'availableAreaChange', callback?: Callback<Rect>): void--><!--Device-Display-off(type: 'availableAreaChange', callback?: Callback<Rect>): void-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -327,6 +343,8 @@ This API can be properly called on devices running OpenHarmony 7.0.0 or later. F
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Display-on(type: 'availableAreaChange', callback: Callback<Rect>): void--><!--Device-Display-on(type: 'availableAreaChange', callback: Callback<Rect>): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -372,7 +390,9 @@ Whether the display is alive. The value **true** indicates that the display is a
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-alive: boolean--><!--Device-Display-alive: boolean-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -390,7 +410,9 @@ This API can be properly called on devices running OpenHarmony 7.0.0 or later. F
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-availableHeight: long--><!--Device-Display-availableHeight: long-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -408,7 +430,9 @@ This API can be properly called on devices running OpenHarmony 7.0.0 or later. F
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-availableWidth: long--><!--Device-Display-availableWidth: long-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -424,7 +448,9 @@ All color spaces supported by the display.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-colorSpaces: Array<colorSpaceManager.ColorSpace>--><!--Device-Display-colorSpaces: Array<colorSpaceManager.ColorSpace>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -440,7 +466,9 @@ Physical pixel density of the display, that is, the number of pixels per inch. T
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-densityDPI: double--><!--Device-Display-densityDPI: double-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -456,7 +484,9 @@ Logical pixel density of the display, which is the scaling coefficient between p
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Display-densityPixels: double--><!--Device-Display-densityPixels: double-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -472,7 +502,9 @@ All HDR formats supported by the display.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-hdrFormats: Array<hdrCapability.HDRFormat>--><!--Device-Display-hdrFormats: Array<hdrCapability.HDRFormat>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -488,7 +520,9 @@ Height of the display, in px. The value is an integer.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Display-height: long--><!--Device-Display-height: long-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -504,7 +538,9 @@ Display ID, which is an integer greater than or equal to 0.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-id: long--><!--Device-Display-id: long-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -520,7 +556,9 @@ Name of the display.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-name: string--><!--Device-Display-name: string-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -536,7 +574,9 @@ Orientation of the display.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-orientation: Orientation--><!--Device-Display-orientation: Orientation-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -552,7 +592,9 @@ Refresh rate of the display, in Hz. The value is an integer.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-refreshRate: int--><!--Device-Display-refreshRate: int-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -568,7 +610,9 @@ Clockwise rotation angle of the display. The value **0** indicates that the disp
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Display-rotation: int--><!--Device-Display-rotation: int-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -584,7 +628,9 @@ Scaling factor for fonts displayed on the display. The value must be a floating 
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-scaledDensity: double--><!--Device-Display-scaledDensity: double-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -600,7 +646,9 @@ Screen shape of the display. The default value is **ScreenShape.RECTANGLE**.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-Display-screenShape?: ScreenShape--><!--Device-Display-screenShape?: ScreenShape-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -616,7 +664,9 @@ Display mode for screen content. The default value is **DisplaySourceMode.NONE**
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Display-sourceMode?: DisplaySourceMode--><!--Device-Display-sourceMode?: DisplaySourceMode-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -632,7 +682,9 @@ State of the display.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-state: DisplayState--><!--Device-Display-state: DisplayState-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -648,7 +700,9 @@ All refresh rates supported by the display, sorted in ascending order. The refre
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-Display-supportedRefreshRates?: Array<int>--><!--Device-Display-supportedRefreshRates?: Array<int>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -664,7 +718,9 @@ Width of the display, in px. The value is an integer.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Display-width: long--><!--Device-Display-width: long-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -680,7 +736,9 @@ X coordinate of the top-left corner of the display relative to the origin, which
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Display-x?: long--><!--Device-Display-x?: long-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -696,7 +754,9 @@ Exact physical pixels per inch of the display in the X axis. The value must be a
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-xDPI: double--><!--Device-Display-xDPI: double-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -712,7 +772,9 @@ Y coordinate of the top-left corner of the display relative to the origin, which
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Display-y?: long--><!--Device-Display-y?: long-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -728,6 +790,8 @@ Exact physical pixels per inch of the display in the Y axis. The value must be a
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Display-yDPI: double--><!--Device-Display-yDPI: double-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core

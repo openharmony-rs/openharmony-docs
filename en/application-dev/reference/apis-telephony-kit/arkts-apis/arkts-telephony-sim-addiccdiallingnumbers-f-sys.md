@@ -18,6 +18,8 @@ Add dialing number information to SIM card.
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 
+<!--Device-sim-function addIccDiallingNumbers(slotId: int, type: ContactType, diallingNumbers: DiallingNumbersInfo, callback: AsyncCallback<void>): void--><!--Device-sim-function addIccDiallingNumbers(slotId: int, type: ContactType, diallingNumbers: DiallingNumbersInfo, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -75,6 +77,8 @@ Add dialing number information to SIM card.
 **Since:** 8
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
+
+<!--Device-sim-function addIccDiallingNumbers(slotId: int, type: ContactType, diallingNumbers: DiallingNumbersInfo): Promise<void>--><!--Device-sim-function addIccDiallingNumbers(slotId: int, type: ContactType, diallingNumbers: DiallingNumbersInfo): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

@@ -1,4 +1,4 @@
-# @ohos.app.ability.AutoFillExtensionAbility
+# @ohos.app.ability.AutoFillExtensionAbility(AutoFillExtensionAbility)
 
 ## Modules to Import
 

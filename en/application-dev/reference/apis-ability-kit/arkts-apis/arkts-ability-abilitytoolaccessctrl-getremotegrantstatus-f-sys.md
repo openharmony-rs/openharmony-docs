@@ -19,6 +19,8 @@ Gets the remote grant status. This function queries whether the remote authoriza
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-abilityToolAccessCtrl-export function getRemoteGrantStatus(): Promise<RemoteGrantStatus>--><!--Device-abilityToolAccessCtrl-export function getRemoteGrantStatus(): Promise<RemoteGrantStatus>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.

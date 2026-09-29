@@ -19,6 +19,8 @@ Copies a file. This API uses a promise to return the result.
 
 **Substitutes:** [copyFile](arkts-corefile-file-fs-copyfile-f.md)
 
+<!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, mode?: number): Promise<void>--><!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, mode?: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -52,6 +54,8 @@ Copies a file. This API uses an asynchronous callback to return the result.
 
 **Substitutes:** [copyFile](arkts-corefile-file-fs-copyfile-f.md)
 
+<!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function copyFile(src: string | number, dest: string | number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -83,6 +87,8 @@ Copies a file. This API uses an asynchronous callback to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [copyFile](arkts-corefile-file-fs-copyfile-f.md)
+
+<!--Device-unnamed-declare function copyFile(  src: string | number,  dest: string | number,  mode: number,  callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function copyFile(  src: string | number,  dest: string | number,  mode: number,  callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

@@ -4,6 +4,8 @@ The **inputEventClient** module provides the capability of injecting key, mouse/
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare namespace inputEventClient--><!--Device-unnamed-declare namespace inputEventClient-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 ## Modules to Import
@@ -27,8 +29,8 @@ import { inputEventClient } from '@kit.InputKit';
 
 | Name | Description |
 | --- | --- |
-| [injectEvent](arkts-input-inputeventclient-injectevent-f-sys.md) | Injects keys (including single keys and combination keys). |
-| [injectKeyEvent](arkts-input-inputeventclient-injectkeyevent-f-sys.md) | Injects key events (for both single keys and combination keys). |
+| [injectEvent](arkts-input-inputeventclient-injectevent-f-sys.md) | Injects keys (including single keys and combination keys). Since API version 26.0.1, the caller can specify the display ID for injecting a key event. If the specified display ID does not exist, the operation will not take effect. |
+| [injectKeyEvent](arkts-input-inputeventclient-injectkeyevent-f-sys.md) | Injects key events (for both single keys and combination keys). Since API version 26.0.1, the caller can specify the display ID for injecting a key event. If the specified display ID does not exist, the operation will not take effect. |
 | [injectMouseEvent](arkts-input-inputeventclient-injectmouseevent-f-sys.md) | Injects a mouse/touchpad event. |
 | [injectTouchEvent](arkts-input-inputeventclient-injecttouchevent-f-sys.md) | Injects a touch event. |
 | [permitInjection](arkts-input-inputeventclient-permitinjection-f-sys.md) | Specifies whether to authorize event injection. |

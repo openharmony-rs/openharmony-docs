@@ -8,6 +8,8 @@ Defines the initialization options for the system timer.
 
 **Since:** 7
 
+<!--Device-systemTimer-interface TimerOptions--><!--Device-systemTimer-interface TimerOptions-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Callback to be executed by the user.
 The default value is empty.
 
 **Since:** 7
+
+<!--Device-TimerOptions-callback?: () => void--><!--Device-TimerOptions-callback?: () => void-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 
@@ -52,6 +56,8 @@ The default value is **false**.
 
 **Since:** 15
 
+<!--Device-TimerOptions-autoRestore?: boolean--><!--Device-TimerOptions-autoRestore?: boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.
@@ -74,6 +80,8 @@ Default value: **0**.
 
 **Since:** 7
 
+<!--Device-TimerOptions-interval?: long--><!--Device-TimerOptions-interval?: long-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.
@@ -94,6 +102,8 @@ The default value is an empty string.
 
 **Since:** 15
 
+<!--Device-TimerOptions-name?: string--><!--Device-TimerOptions-name?: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.
@@ -110,6 +120,8 @@ Whether the timer is a repeating timer. The value **true** means that the timer 
 
 **Since:** 7
 
+<!--Device-TimerOptions-repeat: boolean--><!--Device-TimerOptions-repeat: boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.
@@ -125,6 +137,8 @@ Timer types. Use pipe (|) symbol
 **Type:** number
 
 **Since:** 7
+
+<!--Device-TimerOptions-type: int--><!--Device-TimerOptions-type: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 
@@ -143,6 +157,8 @@ The default value is empty.
 **Type:** [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md)
 
 **Since:** 7
+
+<!--Device-TimerOptions-wantAgent?: WantAgent--><!--Device-TimerOptions-wantAgent?: WantAgent-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 

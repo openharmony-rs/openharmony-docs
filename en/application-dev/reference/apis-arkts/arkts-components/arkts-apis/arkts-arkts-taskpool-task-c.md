@@ -8,6 +8,8 @@ Enumerates tasks, which can be executed for multiple times, placed in a task gro
 
 **Since:** 9
 
+<!--Device-taskpool-class Task--><!--Device-taskpool-class Task-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Adds dependent tasks for this task. Before using this API, you must create a **T
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Task-addDependency(...tasks: Task[]): void--><!--Device-Task-addDependency(...tasks: Task[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -89,6 +93,8 @@ A constructor used to create a **Task** instance.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Task-constructor(func: Function, ...args: Object[])--><!--Device-Task-constructor(func: Function, ...args: Object[])-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -129,6 +135,8 @@ A constructor used to create a **Task** instance, with the task name specified.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Task-constructor(name: string, func: Function, ...args: Object[])--><!--Device-Task-constructor(name: string, func: Function, ...args: Object[])-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -171,6 +179,8 @@ Checks whether the running task is canceled. Before using this method, you need 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Task-static isCanceled(): boolean--><!--Device-Task-static isCanceled(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -242,6 +252,8 @@ Checks whether the task is complete.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Task-isDone(): boolean--><!--Device-Task-isDone(): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -293,6 +305,8 @@ Register a callback function and call it when a task is enqueued. The registrati
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Task-onEnqueued(callback: CallbackFunction): void--><!--Device-Task-onEnqueued(callback: CallbackFunction): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -341,6 +355,8 @@ Register a callback function and call it when a task fails to be executed(Period
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Task-onExecutionFailed(callback: CallbackFunctionWithError): void--><!--Device-Task-onExecutionFailed(callback: CallbackFunctionWithError): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -397,6 +413,8 @@ Register a callback function and call it when a task is executed successfully. T
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Task-onExecutionSucceeded(callback: CallbackFunction): void--><!--Device-Task-onExecutionSucceeded(callback: CallbackFunction): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -446,6 +464,8 @@ Registers a callback for a task to receive and process data from the worker thre
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Task-onReceiveData(callback?: Function): void--><!--Device-Task-onReceiveData(callback?: Function): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -492,6 +512,8 @@ Register a callback function and call it when the execution of a task starts. Th
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Task-onStartExecution(callback: CallbackFunction): void--><!--Device-Task-onStartExecution(callback: CallbackFunction): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -541,6 +563,8 @@ Removes dependent tasks for this task. Before using this method, you need to con
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Task-removeDependency(...tasks: Task[]): void--><!--Device-Task-removeDependency(...tasks: Task[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -616,6 +640,8 @@ Sends data to the host thread and triggers the registered callback. Before calli
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Task-static sendData(...args: Object[]): void--><!--Device-Task-static sendData(...args: Object[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -708,6 +734,8 @@ Sets the task clone list. Before using this method, you need to construct a **Ta
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Task-setCloneList(cloneList: Object[] | ArrayBuffer[]): void--><!--Device-Task-setCloneList(cloneList: Object[] | ArrayBuffer[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -871,6 +899,8 @@ Sets the task transfer list. Before using this API, you must create a **Task** i
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Task-setTransferList(transfer?: ArrayBuffer[]): void--><!--Device-Task-setTransferList(transfer?: ArrayBuffer[]): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -934,6 +964,8 @@ Arguments of the function. For details about the supported parameter types, see 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Task-arguments?: Object[]--><!--Device-Task-arguments?: Object[]-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## cpuDuration
@@ -952,6 +984,8 @@ CPU time of the task. in ms. You are advised not to change the value.<br> This A
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Task-cpuDuration: number--><!--Device-Task-cpuDuration: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## function
@@ -967,6 +1001,8 @@ Function to be passed in during task creation. For details about the supported r
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Task-function: Function--><!--Device-Task-function: Function-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -986,6 +1022,8 @@ Asynchronous I/O time of the task. in ms. You are advised not to change the valu
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Task-ioDuration: number--><!--Device-Task-ioDuration: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## name
@@ -1001,6 +1039,8 @@ Name of the task specified when the task is created. You are advised not to chan
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Task-name: string--><!--Device-Task-name: string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1020,6 +1060,8 @@ Task ID, which is globally unique by default. You are advised not to change the 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Task-taskId: number--><!--Device-Task-taskId: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## totalDuration
@@ -1037,5 +1079,7 @@ Total execution time of the task. in ms. You are advised not to change the value
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Task-totalDuration: number--><!--Device-Task-totalDuration: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

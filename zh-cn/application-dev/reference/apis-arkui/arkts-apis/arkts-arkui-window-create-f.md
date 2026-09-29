@@ -29,6 +29,8 @@ function create(id: string, type: WindowType, callback: AsyncCallback<Window>): 
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
+<!--Device-window-function create(id: string, type: WindowType, callback: AsyncCallback<Window>): void--><!--Device-window-function create(id: string, type: WindowType, callback: AsyncCallback<Window>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
@@ -81,6 +83,8 @@ function create(id: string, type: WindowType): Promise<Window>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
+<!--Device-window-function create(id: string, type: WindowType): Promise<Window>--><!--Device-window-function create(id: string, type: WindowType): Promise<Window>-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
@@ -131,6 +135,8 @@ function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>
 **废弃版本：** 9
 
 **替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-1)(config: Configuration)
+
+<!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>--><!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -184,6 +190,8 @@ function create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncC
 **废弃版本：** 9
 
 **替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md)(config: Configuration, callback: AsyncCallback&lt;Window&gt;)
+
+<!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback<Window>): void--><!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback<Window>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

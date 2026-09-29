@@ -8,6 +8,8 @@ Provides APIs for locating certificates or CRLs in a **CertCRLCollection** objec
 
 **Since:** 11
 
+<!--Device-cert-interface CertCRLCollection--><!--Device-cert-interface CertCRLCollection-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Selects certificates that match the specified parameters. This API uses a promis
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CertCRLCollection-selectCerts(param: X509CertMatchParameters): Promise<Array<X509Cert>>--><!--Device-CertCRLCollection-selectCerts(param: X509CertMatchParameters): Promise<Array<X509Cert>>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -127,7 +131,9 @@ Selects certificates that match the specified parameters. This API uses an async
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CertCRLCollection-selectCerts(param: X509CertMatchParameters, callback: AsyncCallback<Array<X509Cert>>): void--><!--Device-CertCRLCollection-selectCerts(param: X509CertMatchParameters, callback: AsyncCallback<Array<X509Cert>>): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -221,7 +227,9 @@ Selects CRLs that match the specified parameters. This API uses a promise to ret
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CertCRLCollection-selectCRLs(param: X509CRLMatchParameters): Promise<Array<X509CRL>>--><!--Device-CertCRLCollection-selectCRLs(param: X509CRLMatchParameters): Promise<Array<X509CRL>>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -356,7 +364,9 @@ Selects CRLs that match the specified parameters. This API uses an asynchronous 
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CertCRLCollection-selectCRLs(param: X509CRLMatchParameters, callback: AsyncCallback<Array<X509CRL>>): void--><!--Device-CertCRLCollection-selectCRLs(param: X509CRLMatchParameters, callback: AsyncCallback<Array<X509CRL>>): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 

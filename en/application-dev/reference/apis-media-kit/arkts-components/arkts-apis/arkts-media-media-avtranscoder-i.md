@@ -10,6 +10,8 @@ For details about the AVTranscoder demo, see [Using AVTranscoder for Transcoding
 
 **Since:** 12
 
+<!--Device-media-interface AVTranscoder--><!--Device-media-interface AVTranscoder-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
 ## Modules to Import
@@ -29,6 +31,8 @@ add a watermark for the AVTranscoder. This API uses a promise to return the resu
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVTranscoder-addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise<int>--><!--Device-AVTranscoder-addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -94,7 +98,9 @@ This API can be called only after the [prepare()](#prepare), [start()](#start), 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-AVTranscoder-cancel(): Promise<void>--><!--Device-AVTranscoder-cancel(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -141,6 +147,8 @@ Unsubscribes from the event indicating that transcoding is complete.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-AVTranscoder-off(type:'complete', callback?: Callback<void>):void--><!--Device-AVTranscoder-off(type:'complete', callback?: Callback<void>):void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
 **Parameters:**
@@ -161,6 +169,8 @@ Unsubscribes from AVTranscoder errors. After the unsubscription, your applicatio
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-AVTranscoder-off(type:'error', callback?: ErrorCallback):void--><!--Device-AVTranscoder-off(type:'error', callback?: ErrorCallback):void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -194,6 +204,8 @@ Unsubscribes from transcoding progress updates.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-AVTranscoder-off(type:'progressUpdate', callback?: Callback<int>):void--><!--Device-AVTranscoder-off(type:'progressUpdate', callback?: Callback<int>):void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -229,6 +241,8 @@ When this event is reported, the current transcoding operation is complete. You 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-AVTranscoder-on(type:'complete', callback: Callback<void>):void--><!--Device-AVTranscoder-on(type:'complete', callback: Callback<void>):void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -273,6 +287,8 @@ An application can subscribe to only one AVTranscoder error event. When the appl
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-AVTranscoder-on(type:'error', callback: ErrorCallback):void--><!--Device-AVTranscoder-on(type:'error', callback: ErrorCallback):void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -323,6 +339,8 @@ Subscribes to transcoding progress updates. An application can subscribe to only
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-AVTranscoder-on(type:'progressUpdate', callback: Callback<int>):void--><!--Device-AVTranscoder-on(type:'progressUpdate', callback: Callback<int>):void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
 **Parameters:**
@@ -358,7 +376,9 @@ This API can be called only after the [start()](#start) API is called. You can c
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-AVTranscoder-pause(): Promise<void>--><!--Device-AVTranscoder-pause(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -403,7 +423,9 @@ Sets video transcoding parameters. This API uses a promise to return the result.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-AVTranscoder-prepare(config: AVTranscoderConfig): Promise<void>--><!--Device-AVTranscoder-prepare(config: AVTranscoderConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -411,7 +433,7 @@ Sets video transcoding parameters. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [AVTranscoderConfig](arkts-media-media-avtranscoderconfig-i.md) | Yes | Video transcoding parameters to set.&lt;!--RP1--&gt;&lt;!--RP1End--&gt; |
+| config | [AVTranscoderConfig](arkts-media-media-avtranscoderconfig-i.md) | Yes | Video transcoding parameters to set.<!--RP1--><!--RP1End--> |
 
 **Return value:**
 
@@ -467,7 +489,9 @@ After the resources are released, you can no longer perform any operation on the
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-AVTranscoder-release(): Promise<void>--><!--Device-AVTranscoder-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -513,7 +537,9 @@ This API can be called only after the [pause()](#pause) API is called.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-AVTranscoder-resume(): Promise<void>--><!--Device-AVTranscoder-resume(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -560,7 +586,9 @@ This API can be called only after the [prepare()](#prepare) API is called.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-AVTranscoder-start(): Promise<void>--><!--Device-AVTranscoder-start(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -614,7 +642,9 @@ time, resulting in errors in obtaining data.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-AVTranscoder-fdDst: int--><!--Device-AVTranscoder-fdDst: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -639,6 +669,8 @@ time, resulting in errors in obtaining data.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-AVTranscoder-fdSrc: AVFileDescriptor--><!--Device-AVTranscoder-fdSrc: AVFileDescriptor-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder

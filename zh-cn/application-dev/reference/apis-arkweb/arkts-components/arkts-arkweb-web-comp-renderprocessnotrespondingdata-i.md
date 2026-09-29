@@ -8,6 +8,8 @@ declare interface RenderProcessNotRespondingData
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface RenderProcessNotRespondingData--><!--Device-unnamed-declare interface RenderProcessNotRespondingData-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## jsStack
@@ -21,6 +23,8 @@ jsStack: string
 **类型：** string
 
 **起始版本：** 12
+
+<!--Device-RenderProcessNotRespondingData-jsStack: string--><!--Device-RenderProcessNotRespondingData-jsStack: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ pid: number
 
 **起始版本：** 12
 
+<!--Device-RenderProcessNotRespondingData-pid: number--><!--Device-RenderProcessNotRespondingData-pid: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## reason
@@ -49,5 +55,7 @@ reason: RenderProcessNotRespondingReason
 **类型：** [RenderProcessNotRespondingReason](arkts-arkweb-web-comp-renderprocessnotrespondingreason-e.md)
 
 **起始版本：** 12
+
+<!--Device-RenderProcessNotRespondingData-reason: RenderProcessNotRespondingReason--><!--Device-RenderProcessNotRespondingData-reason: RenderProcessNotRespondingReason-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

@@ -14,6 +14,8 @@ Defines the allowed data types for specifying the background border style of a d
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-promptAction-declare type DialogOptionsBorderStyle = BorderStyle | EdgeStyles--><!--Device-promptAction-declare type DialogOptionsBorderStyle = BorderStyle | EdgeStyles-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

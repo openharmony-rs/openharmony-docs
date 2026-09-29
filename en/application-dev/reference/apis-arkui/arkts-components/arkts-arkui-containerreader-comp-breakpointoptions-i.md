@@ -8,6 +8,8 @@ Defines the breakpoint configuration options, which are used to specify threshol
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface BreakpointOptions--><!--Device-unnamed-export interface BreakpointOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -40,6 +42,8 @@ A maximum of 3 breakpoints are supported, meaning the maximum array length is 2.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-BreakpointOptions-height?: Array<double>--><!--Device-BreakpointOptions-height?: Array<double>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -65,5 +69,7 @@ A maximum of 5 breakpoints are supported, meaning the maximum array length is 4.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-BreakpointOptions-width?: Array<double>--><!--Device-BreakpointOptions-width?: Array<double>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Interaction params for remote control
 
 **Since:** 26.0.1
 
+<!--Device-abilityToolAccessCtrl-interface RemoteControlParams--><!--Device-abilityToolAccessCtrl-interface RemoteControlParams-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Anti-replay challenge.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-RemoteControlParams-challenge?: string--><!--Device-RemoteControlParams-challenge?: string-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ Device name of controlled device.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-RemoteControlParams-controlledDeviceName?: string--><!--Device-RemoteControlParams-controlledDeviceName?: string-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -67,6 +73,8 @@ Device name of controller device.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-RemoteControlParams-controllerDeviceName?: string--><!--Device-RemoteControlParams-controllerDeviceName?: string-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Remote control ticket for trusted devices.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-RemoteControlParams-remoteControlTicket?: string--><!--Device-RemoteControlParams-remoteControlTicket?: string-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -102,6 +112,8 @@ Extra message required for signature verification.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-RemoteControlParams-signVerifyMsg?: string--><!--Device-RemoteControlParams-signVerifyMsg?: string-End-->
 
 **System capability:** SystemCapability.Security.Asset
 

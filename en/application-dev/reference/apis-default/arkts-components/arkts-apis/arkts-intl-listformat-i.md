@@ -17,6 +17,8 @@ format(list: Iterable<string>): string
 
 Returns a string with a language-specific representation of the list.
 
+<!--Device-ListFormat-format(list: Iterable<string>): string--><!--Device-ListFormat-format(list: Iterable<string>): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -36,6 +38,8 @@ formatToParts(list: Iterable<string>): { type: "element" | "literal", value: str
 ```
 
 Returns an Array of objects representing the different components that can be used to format a list of values in a locale-aware fashion.
+
+<!--Device-ListFormat-formatToParts(list: Iterable<string>): { type: "element" | "literal", value: string; }[]--><!--Device-ListFormat-formatToParts(list: Iterable<string>): { type: "element" | "literal", value: string; }[]-End-->
 
 **Parameters:**
 

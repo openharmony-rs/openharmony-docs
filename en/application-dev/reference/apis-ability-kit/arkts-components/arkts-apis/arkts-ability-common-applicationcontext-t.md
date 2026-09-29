@@ -12,6 +12,8 @@ Defines the application context. It inherits from Context.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-common-export type ApplicationContext = _ApplicationContext.default--><!--Device-common-export type ApplicationContext = _ApplicationContext.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _ApplicationContext.default

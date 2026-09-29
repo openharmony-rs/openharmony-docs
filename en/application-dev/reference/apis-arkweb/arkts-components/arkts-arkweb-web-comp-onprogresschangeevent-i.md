@@ -8,6 +8,8 @@ Defines the callback information triggered when the web page loading progress ch
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnProgressChangeEvent--><!--Device-unnamed-declare interface OnProgressChangeEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## newProgress
@@ -23,5 +25,7 @@ New loading progress, which is an integer in the range [0, 100].
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnProgressChangeEvent-newProgress: number--><!--Device-OnProgressChangeEvent-newProgress: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

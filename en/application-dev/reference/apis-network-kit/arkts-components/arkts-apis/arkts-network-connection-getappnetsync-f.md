@@ -16,6 +16,8 @@ Obtains the network information bound to an application. This API returns the re
 
 **Since:** 10
 
+<!--Device-connection-function getAppNetSync(): NetHandle--><!--Device-connection-function getAppNetSync(): NetHandle-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Return value:**

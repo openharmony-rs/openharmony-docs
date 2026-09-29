@@ -12,6 +12,8 @@ For details about the sample code of the mouse event, see [onNativeEmbedMouseEve
 
 **Since:** 12
 
+<!--Device-unnamed-declare class EventResult--><!--Device-unnamed-declare class EventResult-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -26,6 +28,8 @@ Constructs a **EventResult** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EventResult-constructor()--><!--Device-EventResult-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## setGestureEventResult
@@ -39,6 +43,8 @@ Sets the gesture event consumption result.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-EventResult-setGestureEventResult(result: boolean): void--><!--Device-EventResult-setGestureEventResult(result: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -64,6 +70,8 @@ Sets the gesture event consumption result and bubbling control.
 
 **Since:** 14
 
+<!--Device-EventResult-setGestureEventResult(result: boolean, stopPropagation: boolean): void--><!--Device-EventResult-setGestureEventResult(result: boolean, stopPropagation: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -86,6 +94,8 @@ setMouseEventResult(result: boolean, stopPropagation?: boolean): void
 Sets the mouse event consumption result and bubbling control.
 
 **Since:** 20
+
+<!--Device-EventResult-setMouseEventResult(result: boolean, stopPropagation?: boolean): void--><!--Device-EventResult-setMouseEventResult(result: boolean, stopPropagation?: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

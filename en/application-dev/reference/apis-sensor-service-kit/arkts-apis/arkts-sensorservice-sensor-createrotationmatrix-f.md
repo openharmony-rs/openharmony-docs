@@ -14,11 +14,19 @@ function createRotationMatrix(rotationVector: Array<number>, callback: AsyncCall
 
 Converts a rotation vector into a rotation matrix. This API uses an asynchronous callback to return the result.
 
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md)
+> instead.
+
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md)(rotationVector: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;)
+
+<!--Device-sensor-function createRotationMatrix(rotationVector: Array<number>, callback: AsyncCallback<Array<number>>): void--><!--Device-sensor-function createRotationMatrix(rotationVector: Array<number>, callback: AsyncCallback<Array<number>>): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -58,11 +66,18 @@ function createRotationMatrix(rotationVector: Array<number>): Promise<Array<numb
 
 Converts a rotation vector into a rotation matrix. This API uses a promise to return the result.
 
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md) instead.
+
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md)(rotationVector: Array&lt;number&gt;)
+
+<!--Device-sensor-function createRotationMatrix(rotationVector: Array<number>): Promise<Array<number>>--><!--Device-sensor-function createRotationMatrix(rotationVector: Array<number>): Promise<Array<number>>-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -106,11 +121,19 @@ function createRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>
 
 Obtains the rotation matrix based on a gravity vector and geomagnetic vector. This API uses an asynchronous callback to return the result.
 
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md)
+> instead.
+
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md)(gravity: Array&lt;number&gt;, geomagnetic: Array&lt;number&gt;, callback: AsyncCallback&lt;RotationMatrixResponse&gt;)
+
+<!--Device-sensor-function createRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>, callback: AsyncCallback<RotationMatrixResponse>): void--><!--Device-sensor-function createRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>, callback: AsyncCallback<RotationMatrixResponse>): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -149,11 +172,19 @@ function createRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>
 
 Obtains the rotation matrix based on a gravity vector and geomagnetic vector. This API uses a promise to return the result.
 
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md)
+> instead.
+
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md)(gravity: Array&lt;number&gt;, geomagnetic: Array&lt;number&gt;)
+
+<!--Device-sensor-function createRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>,): Promise<RotationMatrixResponse>--><!--Device-sensor-function createRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>,): Promise<RotationMatrixResponse>-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 

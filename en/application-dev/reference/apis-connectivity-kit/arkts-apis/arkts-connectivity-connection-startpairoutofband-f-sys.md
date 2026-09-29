@@ -21,6 +21,8 @@ Starts pairing with the specific remote Bluetooth device using the Out Of Band m
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function startPairOutOfBand(deviceId: string, transport: BluetoothTransport, p192Data?: OobData,    p256Data?: OobData): Promise<void>--><!--Device-connection-function startPairOutOfBand(deviceId: string, transport: BluetoothTransport, p192Data?: OobData,    p256Data?: OobData): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

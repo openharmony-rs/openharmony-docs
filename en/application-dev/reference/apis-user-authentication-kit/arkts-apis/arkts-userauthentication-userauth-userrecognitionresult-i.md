@@ -8,6 +8,8 @@ Defines the user recognition result.
 
 **Since:** 26.0.1
 
+<!--Device-userAuth-interface UserRecognitionResult--><!--Device-userAuth-interface UserRecognitionResult-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Authentication trust level. Only returned when the status is [MATCH](arkts-usera
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-UserRecognitionResult-authTrustLevel?: AuthTrustLevel--><!--Device-UserRecognitionResult-authTrustLevel?: AuthTrustLevel-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -48,7 +52,9 @@ Recognition status. For details about the values, see [UserRecognitionStatus](ar
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-UserRecognitionResult-status: UserRecognitionStatus--><!--Device-UserRecognitionResult-status: UserRecognitionStatus-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -66,7 +72,9 @@ ID of the recognized OS user. The value is a non-negative integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-UserRecognitionResult-userId: int--><!--Device-UserRecognitionResult-userId: int-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -84,6 +92,8 @@ Information about the recognized user.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-UserRecognitionResult-userInfo: string--><!--Device-UserRecognitionResult-userInfo: string-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

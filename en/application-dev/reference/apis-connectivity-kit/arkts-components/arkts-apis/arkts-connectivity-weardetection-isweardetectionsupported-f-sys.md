@@ -18,6 +18,8 @@ Checks whether the device supports wear detection.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
+<!--Device-wearDetection-function isWearDetectionSupported(deviceId: string, callback: AsyncCallback<boolean>): void--><!--Device-wearDetection-function isWearDetectionSupported(deviceId: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Checks whether the device supports wear detection.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
+
+<!--Device-wearDetection-function isWearDetectionSupported(deviceId: string): Promise<boolean>--><!--Device-wearDetection-function isWearDetectionSupported(deviceId: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

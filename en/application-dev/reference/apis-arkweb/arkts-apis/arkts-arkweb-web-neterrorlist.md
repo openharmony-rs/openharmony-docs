@@ -1,4 +1,4 @@
-# @ohos.web.netErrorList
+# @ohos.web.netErrorList(Web Net Error List)
 
 ## Modules to Import
 

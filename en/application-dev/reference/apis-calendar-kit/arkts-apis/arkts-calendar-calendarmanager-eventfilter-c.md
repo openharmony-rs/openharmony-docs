@@ -10,6 +10,8 @@ You can use [filterById()](#filterbyid), [filterByTime()](#filterbytime), [filte
 
 **Since:** 10
 
+<!--Device-calendarManager-class EventFilter--><!--Device-calendarManager-class EventFilter-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## Modules to Import
@@ -27,6 +29,8 @@ static filterById(ids: number[]): EventFilter
 Defines a filter based on the event ID.
 
 **Since:** 10
+
+<!--Device-EventFilter-static filterById(ids: number[]): EventFilter--><!--Device-EventFilter-static filterById(ids: number[]): EventFilter-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -106,6 +110,8 @@ Defines a filter based on the event time.
 
 **Since:** 10
 
+<!--Device-EventFilter-static filterByTime(start: number, end: number): EventFilter--><!--Device-EventFilter-static filterByTime(start: number, end: number): EventFilter-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -179,6 +185,8 @@ static filterByTitle(title: string): EventFilter
 Filters events by event title. This API supports fuzzy match.
 
 **Since:** 10
+
+<!--Device-EventFilter-static filterByTitle(title: string): EventFilter--><!--Device-EventFilter-static filterByTitle(title: string): EventFilter-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 

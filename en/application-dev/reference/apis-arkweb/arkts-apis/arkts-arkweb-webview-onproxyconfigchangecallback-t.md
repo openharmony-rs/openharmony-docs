@@ -10,4 +10,6 @@ Callback invoked when the proxy configuration changes. A successful callback ind
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-webview-type OnProxyConfigChangeCallback = () => void--><!--Device-webview-type OnProxyConfigChangeCallback = () => void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core

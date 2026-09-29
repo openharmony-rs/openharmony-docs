@@ -17,6 +17,8 @@ Sets the distance between the child component and the upper and lower dividers.
 
 **Since:** 10
 
+<!--Device-unnamed-interface ColumnSplitDividerStyle--><!--Device-unnamed-interface ColumnSplitDividerStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## endMargin
@@ -43,6 +45,8 @@ Illegal value: treated as the default value, in which case the attribute value o
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ColumnSplitDividerStyle-endMargin?: Dimension--><!--Device-ColumnSplitDividerStyle-endMargin?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## startMargin
@@ -68,5 +72,7 @@ Illegal value: treated as the default value, in which case the attribute value o
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ColumnSplitDividerStyle-startMargin?: Dimension--><!--Device-ColumnSplitDividerStyle-startMargin?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

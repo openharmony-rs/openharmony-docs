@@ -8,6 +8,8 @@ Provides the aperture query capability.
 
 **Since:** 24
 
+<!--Device-camera-interface ApertureQuery--><!--Device-camera-interface ApertureQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ getSupportedVirtualApertures(): Array<number>
 Obtains the supported virtual apertures.
 
 **Since:** 11
+
+<!--Device-ApertureQuery-getSupportedVirtualApertures(): Array<double>--><!--Device-ApertureQuery-getSupportedVirtualApertures(): Array<double>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

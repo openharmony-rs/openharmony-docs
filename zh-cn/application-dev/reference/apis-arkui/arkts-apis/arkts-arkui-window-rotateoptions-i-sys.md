@@ -8,6 +8,8 @@ interface RotateOptions
 
 **起始版本：** 9
 
+<!--Device-window-interface RotateOptions--><!--Device-window-interface RotateOptions-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,6 +32,8 @@ pivotX?: number
 
 **起始版本：** 9
 
+<!--Device-RotateOptions-pivotX?: double--><!--Device-RotateOptions-pivotX?: double-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -45,6 +49,8 @@ pivotY?: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-RotateOptions-pivotY?: double--><!--Device-RotateOptions-pivotY?: double-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,6 +68,8 @@ x?: number
 
 **起始版本：** 9
 
+<!--Device-RotateOptions-x?: double--><!--Device-RotateOptions-x?: double-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -78,6 +86,8 @@ y?: number
 
 **起始版本：** 9
 
+<!--Device-RotateOptions-y?: double--><!--Device-RotateOptions-y?: double-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -93,6 +103,8 @@ z?: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-RotateOptions-z?: double--><!--Device-RotateOptions-z?: double-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

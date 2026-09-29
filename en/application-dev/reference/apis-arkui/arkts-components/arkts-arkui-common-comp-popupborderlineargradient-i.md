@@ -8,6 +8,8 @@ Sets the color and direction of the linear gradient for the outlines.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface PopupBorderLinearGradient--><!--Device-unnamed-declare interface PopupBorderLinearGradient-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## colors
@@ -36,6 +38,8 @@ When using the **colors** parameter, take note of the following:
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-PopupBorderLinearGradient-colors: Array<[ResourceColor, number]>--><!--Device-PopupBorderLinearGradient-colors: Array<[ResourceColor, number]>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -59,5 +63,7 @@ When the direction is set to **GradientDirection.None**, the default value is us
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-PopupBorderLinearGradient-direction?: GradientDirection--><!--Device-PopupBorderLinearGradient-direction?: GradientDirection-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

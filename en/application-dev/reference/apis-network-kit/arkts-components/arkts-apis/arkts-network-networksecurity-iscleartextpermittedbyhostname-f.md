@@ -18,6 +18,8 @@ Checks whether host name–based plaintext HTTP access is allowed from the prese
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-networkSecurity-export function isCleartextPermittedByHostName(hostName: string): boolean--><!--Device-networkSecurity-export function isCleartextPermittedByHostName(hostName: string): boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**

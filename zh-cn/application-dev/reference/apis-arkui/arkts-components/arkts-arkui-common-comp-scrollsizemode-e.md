@@ -8,6 +8,8 @@ declare enum ScrollSizeMode
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare enum ScrollSizeMode--><!--Device-unnamed-declare enum ScrollSizeMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FOLLOW_DETENT
@@ -24,6 +26,8 @@ FOLLOW_DETENT = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ScrollSizeMode-FOLLOW_DETENT = 0--><!--Device-ScrollSizeMode-FOLLOW_DETENT = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CONTINUOUS
@@ -39,5 +43,7 @@ CONTINUOUS = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScrollSizeMode-CONTINUOUS = 1--><!--Device-ScrollSizeMode-CONTINUOUS = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

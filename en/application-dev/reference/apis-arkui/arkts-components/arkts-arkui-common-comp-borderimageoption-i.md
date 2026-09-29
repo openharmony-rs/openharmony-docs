@@ -10,6 +10,8 @@ Border image option
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface BorderImageOption--><!--Device-unnamed-declare interface BorderImageOption-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fill
@@ -31,6 +33,8 @@ Whether to fill the center of the border image. true: Fill the center of the bor
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-BorderImageOption-fill?: boolean--><!--Device-BorderImageOption-fill?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Amount by which the border image is extended beyond the border box.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-BorderImageOption-outset?: Length | EdgeWidths | LocalizedEdgeWidths--><!--Device-BorderImageOption-outset?: Length | EdgeWidths | LocalizedEdgeWidths-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## repeat
@@ -75,6 +81,8 @@ Repeat mode of the source image's slices on the border.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-BorderImageOption-repeat?: RepeatMode--><!--Device-BorderImageOption-repeat?: RepeatMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ Slice width of the upper left corner, upper right corner, lower left corner, and
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-BorderImageOption-slice?: Length | EdgeWidths | LocalizedEdgeWidths--><!--Device-BorderImageOption-slice?: Length | EdgeWidths | LocalizedEdgeWidths-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## source
@@ -120,6 +130,8 @@ Source or gradient color of the border image. When the type is string, this para
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-BorderImageOption-source?: string | Resource | LinearGradient--><!--Device-BorderImageOption-source?: string | Resource | LinearGradient-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -141,5 +153,7 @@ Width of the border image.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-BorderImageOption-width?: Length | EdgeWidths | LocalizedEdgeWidths--><!--Device-BorderImageOption-width?: Length | EdgeWidths | LocalizedEdgeWidths-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

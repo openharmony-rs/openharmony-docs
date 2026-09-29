@@ -8,6 +8,8 @@ Represents update information.
 
 **Since:** 9
 
+<!--Device-update-export interface UpgradeInfo--><!--Device-update-export interface UpgradeInfo-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Upgrade service type.
 
 **Since:** 9
 
+<!--Device-UpgradeInfo-businessType: BusinessType--><!--Device-UpgradeInfo-businessType: BusinessType-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Caller package name, which is used to identify the app that calls the upgrade AP
 **Type:** string
 
 **Since:** 9
+
+<!--Device-UpgradeInfo-upgradeApp: string--><!--Device-UpgradeInfo-upgradeApp: string-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

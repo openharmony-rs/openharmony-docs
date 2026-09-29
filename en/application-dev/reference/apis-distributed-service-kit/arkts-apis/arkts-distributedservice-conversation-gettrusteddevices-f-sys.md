@@ -20,6 +20,8 @@ Obtains the list of historical trusted devices. Typical use scenarios include qu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-conversation-function getTrustedDevices(): DeviceNodeInfo[]--><!--Device-conversation-function getTrustedDevices(): DeviceNodeInfo[]-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.

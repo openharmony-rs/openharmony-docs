@@ -16,6 +16,8 @@ Sets the mouse pointer speed. This API returns the result synchronously.
 
 **Since:** 10
 
+<!--Device-pointer-function setPointerSpeedSync(speed: int): void--><!--Device-pointer-function setPointerSpeedSync(speed: int): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.

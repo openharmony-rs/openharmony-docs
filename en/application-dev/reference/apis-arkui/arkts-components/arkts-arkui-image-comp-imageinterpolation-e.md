@@ -8,6 +8,8 @@ Interpolation effect of the image.
 
 **Since:** 7
 
+<!--Device-unnamed-declare enum ImageInterpolation--><!--Device-unnamed-declare enum ImageInterpolation-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -25,6 +27,8 @@ Nearest neighbor interpolation.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageInterpolation-None--><!--Device-ImageInterpolation-None-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Bilinear interpolation.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ImageInterpolation-Low--><!--Device-ImageInterpolation-Low-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Medium
@@ -62,6 +68,8 @@ MipMap interpolation.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ImageInterpolation-Medium--><!--Device-ImageInterpolation-Medium-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## High
@@ -79,5 +87,7 @@ Cubic interpolation. This mode produces scaled images of the highest possible qu
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageInterpolation-High--><!--Device-ImageInterpolation-High-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

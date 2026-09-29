@@ -17,6 +17,8 @@ The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Since:** 7
 
+<!--Device-unnamed-declare class RowSplitAttribute extends CommonMethod<RowSplitAttribute>--><!--Device-unnamed-declare class RowSplitAttribute extends CommonMethod<RowSplitAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## resizeable
@@ -43,6 +45,8 @@ Sets whether the divider is draggable. When set to **true**, the user can drag t
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RowSplitAttribute-resizeable(value: boolean): RowSplitAttribute--><!--Device-RowSplitAttribute-resizeable(value: boolean): RowSplitAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

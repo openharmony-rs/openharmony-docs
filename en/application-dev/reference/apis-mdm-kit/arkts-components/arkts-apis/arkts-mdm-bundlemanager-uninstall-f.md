@@ -28,6 +28,8 @@ Uninstalls a specified bundle of the current or specified user. The **isKeepData
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function uninstall(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean): Promise<void>--><!--Device-bundleManager-function uninstall(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -20,6 +20,8 @@ Obtains the UIAbility running information. This API uses an asynchronous callbac
 
 **Required permissions:** ohos.permission.GET_RUNNING_INFO
 
+<!--Device-abilityManager-function getAbilityRunningInfos(callback: AsyncCallback<Array<AbilityRunningInfo>>): void--><!--Device-abilityManager-function getAbilityRunningInfos(callback: AsyncCallback<Array<AbilityRunningInfo>>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

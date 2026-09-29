@@ -14,6 +14,8 @@ Describes the system live view notification content, which is used to display re
 
 **Since:** 11
 
+<!--Device-unnamed-export interface NotificationSystemLiveViewContent extends NotificationBasicContent--><!--Device-unnamed-export interface NotificationSystemLiveViewContent extends NotificationBasicContent-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## button
@@ -27,6 +29,8 @@ Button of the notification. This parameter is left empty by default.
 **Type:** [NotificationButton](arkts-notification-notificationcontent-notificationbutton-i.md)
 
 **Since:** 11
+
+<!--Device-NotificationSystemLiveViewContent-button?: NotificationButton--><!--Device-NotificationSystemLiveViewContent-button?: NotificationButton-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -42,6 +46,8 @@ Capsule of the notification. This parameter is left empty by default.
 
 **Since:** 11
 
+<!--Device-NotificationSystemLiveViewContent-capsule?: NotificationCapsule--><!--Device-NotificationSystemLiveViewContent-capsule?: NotificationCapsule-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## progress
@@ -55,6 +61,8 @@ Progress of the notification. This parameter is left empty by default.
 **Type:** [NotificationProgress](arkts-notification-notificationcontent-notificationprogress-i.md)
 
 **Since:** 11
+
+<!--Device-NotificationSystemLiveViewContent-progress?: NotificationProgress--><!--Device-NotificationSystemLiveViewContent-progress?: NotificationProgress-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -70,6 +78,8 @@ Time of the notification. This parameter is left empty by default.
 
 **Since:** 11
 
+<!--Device-NotificationSystemLiveViewContent-time?: NotificationTime--><!--Device-NotificationSystemLiveViewContent-time?: NotificationTime-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## typeCode
@@ -83,5 +93,7 @@ Type identifier for marking the caller's service type, which is used to distingu
 **Type:** number
 
 **Since:** 11
+
+<!--Device-NotificationSystemLiveViewContent-typeCode: int--><!--Device-NotificationSystemLiveViewContent-typeCode: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification

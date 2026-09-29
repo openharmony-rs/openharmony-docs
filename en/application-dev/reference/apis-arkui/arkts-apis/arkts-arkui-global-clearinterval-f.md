@@ -12,6 +12,8 @@ Cancels the interval set by " setInterval()".
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-export declare function clearInterval(intervalID?: number): void--><!--Device-unnamed-export declare function clearInterval(intervalID?: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **Parameters:**

@@ -8,6 +8,8 @@ Describes a scene.
 
 **Since:** 12
 
+<!--Device-unnamed-export declare class Scene--><!--Device-unnamed-export declare class Scene-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 <a id="load-1"></a>
@@ -23,6 +25,8 @@ Create a new scene from a SceneLoadParams.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Scene-static load(uri: ResourceStr, param: SceneLoadParams):Promise<Scene>--><!--Device-Scene-static load(uri: ResourceStr, param: SceneLoadParams):Promise<Scene>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 

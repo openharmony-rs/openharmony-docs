@@ -18,6 +18,8 @@ Terminates a mission. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.KILL_APP_PROCESSES
 
+<!--Device-appManager-function terminateMission(missionId: int): Promise<void>--><!--Device-appManager-function terminateMission(missionId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

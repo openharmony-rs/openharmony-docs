@@ -20,6 +20,8 @@ Sets widgets to be recyclable. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function setFormsRecyclable(formIds: Array<string>): Promise<void>--><!--Device-formHost-function setFormsRecyclable(formIds: Array<string>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -63,6 +65,8 @@ Sets widgets to be recyclable. This API uses an asynchronous callback to return 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-formHost-function setFormsRecyclable(formIds: Array<string>, callback: AsyncCallback<void>): void--><!--Device-formHost-function setFormsRecyclable(formIds: Array<string>, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

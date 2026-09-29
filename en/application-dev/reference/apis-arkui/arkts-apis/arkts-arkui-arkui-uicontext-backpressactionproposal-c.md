@@ -10,6 +10,8 @@ Smart gesture back press action handling. When dynamically customizing smart ges
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export class BackPressActionProposal extends BaseGestureHandlingProposal--><!--Device-unnamed-export class BackPressActionProposal extends BaseGestureHandlingProposal-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Constructor for the smart gesture back press action handling.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-BackPressActionProposal-constructor()--><!--Device-BackPressActionProposal-constructor()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

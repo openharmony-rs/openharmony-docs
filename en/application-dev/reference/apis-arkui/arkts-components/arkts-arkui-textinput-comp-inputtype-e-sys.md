@@ -4,9 +4,11 @@
 declare enum InputType
 ```
 
-Sets the single-line text box type.
+Type of the single-line text input box.
 
 **Since:** 7
+
+<!--Device-unnamed-declare enum InputType--><!--Device-unnamed-declare enum InputType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -21,6 +23,8 @@ ScreenLock Password entry mode.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputType-SCREEN_LOCK_PASSWORD = 9--><!--Device-InputType-SCREEN_LOCK_PASSWORD = 9-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

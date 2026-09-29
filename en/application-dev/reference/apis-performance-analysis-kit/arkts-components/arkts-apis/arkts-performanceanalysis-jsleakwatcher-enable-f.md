@@ -16,6 +16,8 @@ Enables the detection for ArkTS object leaks. This function is disabled by defau
 
 **Since:** 12
 
+<!--Device-jsLeakWatcher-function enable(isEnable: boolean): void--><!--Device-jsLeakWatcher-function enable(isEnable: boolean): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 **Parameters:**

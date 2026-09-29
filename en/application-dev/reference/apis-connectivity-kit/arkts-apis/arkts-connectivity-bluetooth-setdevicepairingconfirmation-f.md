@@ -22,6 +22,8 @@ Sets the confirmation of pairing with a certain device.
 
 **Required permissions:** ohos.permission.MANAGE_BLUETOOTH
 
+<!--Device-bluetooth-function setDevicePairingConfirmation(device: string, accept: boolean): boolean--><!--Device-bluetooth-function setDevicePairingConfirmation(device: string, accept: boolean): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

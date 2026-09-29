@@ -8,6 +8,8 @@ Provides attribute names and value types of a node element.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface ElementAttributeValues--><!--Device-unnamed-export interface ElementAttributeValues-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## accessibilityFocused
@@ -21,6 +23,8 @@ Whether the element is in the accessibility focus state. The value **true** indi
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-accessibilityFocused: boolean--><!--Device-ElementAttributeValues-accessibilityFocused: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -36,6 +40,8 @@ ID of the next component to be focused. This attribute value set by the user on 
 
 **Since:** 18
 
+<!--Device-ElementAttributeValues-accessibilityNextFocusId?: long--><!--Device-ElementAttributeValues-accessibilityNextFocusId?: long-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## accessibilityPreviousFocusId
@@ -49,6 +55,8 @@ ID of the previously focused component. This attribute value set by the user on 
 **Type:** number
 
 **Since:** 18
+
+<!--Device-ElementAttributeValues-accessibilityPreviousFocusId?: long--><!--Device-ElementAttributeValues-accessibilityPreviousFocusId?: long-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -64,6 +72,8 @@ Whether the element is scrollable in accessibility mode. This attribute takes pr
 
 **Since:** 18
 
+<!--Device-ElementAttributeValues-accessibilityScrollable?: boolean--><!--Device-ElementAttributeValues-accessibilityScrollable?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## accessibilityText
@@ -77,6 +87,8 @@ Accessibility text information of an element.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-ElementAttributeValues-accessibilityText: string--><!--Device-ElementAttributeValues-accessibilityText: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -92,6 +104,8 @@ Bundle name.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-bundleName: string--><!--Device-ElementAttributeValues-bundleName: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## checkable
@@ -105,6 +119,8 @@ Whether the element is checkable. The value **true** indicates that the element 
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-checkable: boolean--><!--Device-ElementAttributeValues-checkable: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -120,6 +136,8 @@ Whether the element is checked. The value **true** indicates that the element is
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-checked: boolean--><!--Device-ElementAttributeValues-checked: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## children
@@ -133,6 +151,8 @@ All child elements.
 **Type:** Array&lt;[AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)&gt;
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-children: Array<AccessibilityElement>--><!--Device-ElementAttributeValues-children: Array<AccessibilityElement>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -150,6 +170,8 @@ Default value: **false**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-clickable: boolean--><!--Device-ElementAttributeValues-clickable: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## componentId
@@ -166,6 +188,8 @@ Default value: **-1**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-componentId: long--><!--Device-ElementAttributeValues-componentId: long-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## componentType
@@ -179,6 +203,8 @@ Component type of the element, for example, 'Button' for the Button component an
 **Type:** string
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-componentType: string--><!--Device-ElementAttributeValues-componentType: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -194,6 +220,8 @@ List of contents. Set this parameter based on site requirements. No special rest
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-contents: Array<string>--><!--Device-ElementAttributeValues-contents: Array<string>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## currentIndex
@@ -207,6 +235,8 @@ Index of the current item. The value range is greater than or equal to 0. The de
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-currentIndex: int--><!--Device-ElementAttributeValues-currentIndex: int-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -222,6 +252,8 @@ Custom component type. Corresponds to the [AccessibilityRoleType](../../apis-ark
 
 **Since:** 18
 
+<!--Device-ElementAttributeValues-customComponentType?: string--><!--Device-ElementAttributeValues-customComponentType?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## description
@@ -235,6 +267,8 @@ Description of the element. Set this parameter based on site requirements. No sp
 **Type:** string
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-description: string--><!--Device-ElementAttributeValues-description: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -252,6 +286,8 @@ Default value: **false**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-editable: boolean--><!--Device-ElementAttributeValues-editable: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## endIndex
@@ -266,6 +302,8 @@ List index of the last displayed item on the screen. The value range is greater 
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-endIndex: int--><!--Device-ElementAttributeValues-endIndex: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## error
@@ -279,6 +317,8 @@ Error status.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-error: string--><!--Device-ElementAttributeValues-error: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -315,6 +355,8 @@ for componentType.
 
 **Since:** 18
 
+<!--Device-ElementAttributeValues-extraInfo?: string--><!--Device-ElementAttributeValues-extraInfo?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## focusable
@@ -331,6 +373,8 @@ Default value: **false**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-focusable: boolean--><!--Device-ElementAttributeValues-focusable: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## hintText
@@ -344,6 +388,8 @@ Hint text.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-hintText: string--><!--Device-ElementAttributeValues-hintText: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -359,6 +405,8 @@ Touchable area of an element.
 
 **Since:** 12
 
+<!--Device-ElementAttributeValues-hotArea: Rect--><!--Device-ElementAttributeValues-hotArea: Rect-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## inputType
@@ -373,6 +421,8 @@ Type of the input text. Different values correspond to different input modes: **
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-inputType: int--><!--Device-ElementAttributeValues-inputType: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## inspectorKey
@@ -386,6 +436,8 @@ Alias of the element.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-inspectorKey: string--><!--Device-ElementAttributeValues-inspectorKey: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -403,6 +455,8 @@ Default value: **true**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-isActive: boolean--><!--Device-ElementAttributeValues-isActive: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## isEnable
@@ -418,6 +472,8 @@ Default value: **false**.
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-isEnable: boolean--><!--Device-ElementAttributeValues-isEnable: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -435,6 +491,8 @@ Default value: **false**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-isFocused: boolean--><!--Device-ElementAttributeValues-isFocused: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## isHint
@@ -450,6 +508,8 @@ Default value: **false**.
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-isHint: boolean--><!--Device-ElementAttributeValues-isHint: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -467,6 +527,8 @@ Default value: **false**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-isPassword: boolean--><!--Device-ElementAttributeValues-isPassword: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## isVisible
@@ -483,6 +545,8 @@ Default value: **false**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-isVisible: boolean--><!--Device-ElementAttributeValues-isVisible: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## itemCount
@@ -496,6 +560,8 @@ Total number of items. The value range is greater than or equal to 0. The defaul
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-itemCount: int--><!--Device-ElementAttributeValues-itemCount: int-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -511,6 +577,8 @@ Content of the last item in a list or scrollable control.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-lastContent: string--><!--Device-ElementAttributeValues-lastContent: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## layer
@@ -525,6 +593,8 @@ Display layer of the element. The value range is greater than or equal to 0. The
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-layer: int--><!--Device-ElementAttributeValues-layer: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## longClickable
@@ -538,6 +608,8 @@ Whether the element is long-clickable. The value **true** indicates that the ele
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-longClickable: boolean--><!--Device-ElementAttributeValues-longClickable: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -555,6 +627,8 @@ Default value: **0**.
 
 **Since:** 12
 
+<!--Device-ElementAttributeValues-offset: double--><!--Device-ElementAttributeValues-offset: double-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## pageId
@@ -569,6 +643,8 @@ Page ID. The default value is **-1**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-pageId: int--><!--Device-ElementAttributeValues-pageId: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## parent
@@ -582,6 +658,8 @@ Parent element of the element.
 **Type:** [AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-parent: AccessibilityElement--><!--Device-ElementAttributeValues-parent: AccessibilityElement-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -599,6 +677,8 @@ Default value: **false**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-pluralLineSupported: boolean--><!--Device-ElementAttributeValues-pluralLineSupported: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## rect
@@ -612,6 +692,8 @@ Rectangular area of the element, including position and size information.
 **Type:** [Rect](arkts-accessibility-accessibilityextensioncontext-rect-i.md)
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-rect: Rect--><!--Device-ElementAttributeValues-rect: Rect-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -627,6 +709,8 @@ Resource name of the element.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-resourceName: string--><!--Device-ElementAttributeValues-resourceName: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## rootElement
@@ -640,6 +724,8 @@ Root node element of the window element.
 **Type:** [AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md)
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-rootElement: AccessibilityElement--><!--Device-ElementAttributeValues-rootElement: AccessibilityElement-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -655,6 +741,8 @@ Display area of the element.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-screenRect: Rect--><!--Device-ElementAttributeValues-screenRect: Rect-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## scrollable
@@ -668,6 +756,8 @@ Whether the element is scrollable. The value **true** indicates that the element
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-scrollable: boolean--><!--Device-ElementAttributeValues-scrollable: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -685,6 +775,8 @@ Default value: **false**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-selected: boolean--><!--Device-ElementAttributeValues-selected: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## startIndex
@@ -698,6 +790,8 @@ List index of the first item on the screen. The value range is greater than or e
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-startIndex: int--><!--Device-ElementAttributeValues-startIndex: int-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -713,6 +807,8 @@ Text of the element.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-text: string--><!--Device-ElementAttributeValues-text: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## textLengthLimit
@@ -726,6 +822,8 @@ Maximum length limit of the element text. The value range is greater than or equ
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-textLengthLimit: int--><!--Device-ElementAttributeValues-textLengthLimit: int-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -741,6 +839,8 @@ Granularity of movement when the text is read.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-textMoveUnit: accessibility.TextMoveUnit--><!--Device-ElementAttributeValues-textMoveUnit: accessibility.TextMoveUnit-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## textType
@@ -754,6 +854,8 @@ Accessibility text type of an element, which is configured by the **accessibilit
 **Type:** string
 
 **Since:** 12
+
+<!--Device-ElementAttributeValues-textType: string--><!--Device-ElementAttributeValues-textType: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -769,6 +871,8 @@ Action that triggers the element event.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-triggerAction: accessibility.Action--><!--Device-ElementAttributeValues-triggerAction: accessibility.Action-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## type
@@ -782,6 +886,8 @@ Window type of the element.
 **Type:** [WindowType](arkts-accessibility-windowtype-t.md)
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-type: WindowType--><!--Device-ElementAttributeValues-type: WindowType-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -799,6 +905,8 @@ Default value: **0**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-valueMax: double--><!--Device-ElementAttributeValues-valueMax: double-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## valueMin
@@ -814,6 +922,8 @@ Default value: **0**.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-valueMin: double--><!--Device-ElementAttributeValues-valueMin: double-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -831,6 +941,8 @@ Default value: **0**.
 
 **Since:** 9
 
+<!--Device-ElementAttributeValues-valueNow: double--><!--Device-ElementAttributeValues-valueNow: double-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## windowId
@@ -846,5 +958,7 @@ Default value: **-1**.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ElementAttributeValues-windowId: int--><!--Device-ElementAttributeValues-windowId: int-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core

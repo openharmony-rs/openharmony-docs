@@ -18,6 +18,8 @@ Removes one or more assets. This API returns the result synchronously.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-asset-function removeSync(query: AssetMap): void--><!--Device-asset-function removeSync(query: AssetMap): void-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**

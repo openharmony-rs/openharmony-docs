@@ -13,6 +13,8 @@ The **DriverExtensionContext** module provides the context of **DriverExtensionA
 
 **Since:** 10
 
+<!--Device-unnamed-declare class DriverExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class DriverExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 ## updateDriverState
@@ -26,6 +28,8 @@ Updates the driver state. This interface is reserved and does not provide specif
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DriverExtensionContext-updateDriverState(): void--><!--Device-DriverExtensionContext-updateDriverState(): void-End-->
 
 **System capability:** SystemCapability.Driver.ExternalDevice
 

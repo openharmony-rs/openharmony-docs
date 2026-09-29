@@ -16,6 +16,8 @@ function toggleShownStateForAllAppWindows(callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
+<!--Device-window-function toggleShownStateForAllAppWindows(callback: AsyncCallback<void>): void--><!--Device-window-function toggleShownStateForAllAppWindows(callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -61,6 +63,8 @@ function toggleShownStateForAllAppWindows(): Promise<void>
 多窗口快速切换时隐藏或者恢复应用窗口，使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-window-function toggleShownStateForAllAppWindows(): Promise<void>--><!--Device-window-function toggleShownStateForAllAppWindows(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

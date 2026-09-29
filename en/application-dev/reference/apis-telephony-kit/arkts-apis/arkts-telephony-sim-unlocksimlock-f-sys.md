@@ -18,6 +18,8 @@ Unlock SIM card.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-sim-function unlockSimLock(slotId: int, lockInfo: PersoLockInfo, callback: AsyncCallback<LockStatusResponse>): void--><!--Device-sim-function unlockSimLock(slotId: int, lockInfo: PersoLockInfo, callback: AsyncCallback<LockStatusResponse>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -73,6 +75,8 @@ Unlock SIM card.
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-sim-function unlockSimLock(slotId: int, lockInfo: PersoLockInfo): Promise<LockStatusResponse>--><!--Device-sim-function unlockSimLock(slotId: int, lockInfo: PersoLockInfo): Promise<LockStatusResponse>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

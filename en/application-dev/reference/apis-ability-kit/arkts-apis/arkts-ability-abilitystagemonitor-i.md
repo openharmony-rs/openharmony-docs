@@ -8,6 +8,8 @@ The module provides the capability to listen for a specified [AbilityStage](arkt
 
 **Since:** 9
 
+<!--Device-unnamed-export interface AbilityStageMonitor--><!--Device-unnamed-export interface AbilityStageMonitor-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## moduleName
@@ -22,7 +24,9 @@ Module name of the AbilityStage object.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AbilityStageMonitor-moduleName: string--><!--Device-AbilityStageMonitor-moduleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -38,7 +42,9 @@ Source path of the AbilityStage object.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AbilityStageMonitor-srcEntrance: string--><!--Device-AbilityStageMonitor-srcEntrance: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

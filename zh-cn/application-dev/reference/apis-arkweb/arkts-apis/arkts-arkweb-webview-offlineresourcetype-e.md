@@ -8,52 +8,62 @@ enum OfflineResourceType
 
 **起始版本：** 12
 
+<!--Device-webview-enum OfflineResourceType--><!--Device-webview-enum OfflineResourceType-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## IMAGE
 
 ```TypeScript
-IMAGE = 0
+IMAGE
 ```
 
 图片类型的资源。
 
 **起始版本：** 12
 
+<!--Device-OfflineResourceType-IMAGE--><!--Device-OfflineResourceType-IMAGE-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## CSS
 
 ```TypeScript
-CSS = 1
+CSS
 ```
 
 CSS类型的资源。
 
 **起始版本：** 12
 
+<!--Device-OfflineResourceType-CSS--><!--Device-OfflineResourceType-CSS-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## CLASSIC_JS
 
 ```TypeScript
-CLASSIC_JS = 2
+CLASSIC_JS
 ```
 
 通过&lt;script src="" /&gt;标签加载的JavaScript资源。
 
 **起始版本：** 12
 
+<!--Device-OfflineResourceType-CLASSIC_JS--><!--Device-OfflineResourceType-CLASSIC_JS-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## MODULE_JS
 
 ```TypeScript
-MODULE_JS = 3
+MODULE_JS
 ```
 
 通过&lt;script src="" type="module" /&gt;标签加载的JavaScript资源。
 
 **起始版本：** 12
+
+<!--Device-OfflineResourceType-MODULE_JS--><!--Device-OfflineResourceType-MODULE_JS-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

@@ -24,6 +24,8 @@ function spring(velocity: number, mass: number, stiffness: number, damping: numb
 
 **替代接口：** [springCurve](arkts-arkui-curves-springcurve-f.md)
 
+<!--Device-curves-function spring(velocity: number, mass: number, stiffness: number, damping: number): string--><!--Device-curves-function spring(velocity: number, mass: number, stiffness: number, damping: number): string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

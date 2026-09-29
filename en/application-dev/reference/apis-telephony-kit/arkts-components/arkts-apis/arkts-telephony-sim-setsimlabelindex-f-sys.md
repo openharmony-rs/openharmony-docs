@@ -20,6 +20,8 @@ Set the SIM card labelIndex.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-sim-function setSimLabelIndex(simId: int, simLabelIndex: int): Promise<void>--><!--Device-sim-function setSimLabelIndex(simId: int, simLabelIndex: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.

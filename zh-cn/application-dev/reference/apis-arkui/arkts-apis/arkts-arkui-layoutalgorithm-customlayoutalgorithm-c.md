@@ -17,6 +17,8 @@ export class CustomLayoutAlgorithm implements LayoutAlgorithm
 
 **装饰器类型：** @ObservedV2
 
+<!--Device-unnamed-export class CustomLayoutAlgorithm implements LayoutAlgorithm--><!--Device-unnamed-export class CustomLayoutAlgorithm implements LayoutAlgorithm-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onLayout
@@ -42,6 +44,8 @@ onLayout(self: FrameNode, position: Position): void
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CustomLayoutAlgorithm-onLayout(self: FrameNode, position: Position): void--><!--Device-CustomLayoutAlgorithm-onLayout(self: FrameNode, position: Position): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -53,7 +57,7 @@ onLayout(self: FrameNode, position: Position): void
 
 **示例**
 
-请参考DynamicLayout组件示例1（自定义布局算法实现瀑布流布局）。
+请参考DynamicLayout组件[示例1（自定义布局算法实现瀑布流布局）](../arkui-ts/ts-container-dynamiclayout.md#示例1自定义布局算法实现瀑布流布局)。
 
 ## onMeasure
 
@@ -78,6 +82,8 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint): void
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CustomLayoutAlgorithm-onMeasure(self: FrameNode, constraint: LayoutConstraint): void--><!--Device-CustomLayoutAlgorithm-onMeasure(self: FrameNode, constraint: LayoutConstraint): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

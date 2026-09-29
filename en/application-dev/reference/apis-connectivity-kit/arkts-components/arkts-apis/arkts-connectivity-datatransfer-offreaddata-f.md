@@ -18,6 +18,8 @@ Unsubscribes from the port channel data receiving event. This API uses an asynch
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dataTransfer-function offReadData(callback?: Callback<DataParams>): void--><!--Device-dataTransfer-function offReadData(callback?: Callback<DataParams>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

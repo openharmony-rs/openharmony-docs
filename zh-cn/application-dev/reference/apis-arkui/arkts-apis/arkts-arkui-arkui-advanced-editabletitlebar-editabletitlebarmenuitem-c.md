@@ -6,6 +6,8 @@ export declare class EditableTitleBarMenuItem
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare class EditableTitleBarMenuItem--><!--Device-unnamed-export declare class EditableTitleBarMenuItem-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,6 +30,8 @@ action?: () => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBarMenuItem-action?: () => void--><!--Device-EditableTitleBarMenuItem-action?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -47,6 +51,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableTitleBarMenuItem-accessibilityDescription?: ResourceStr--><!--Device-EditableTitleBarMenuItem-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +86,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBarMenuItem-accessibilityLevel?: string--><!--Device-EditableTitleBarMenuItem-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -99,6 +107,8 @@ accessibilityText?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableTitleBarMenuItem-accessibilityText?: ResourceStr--><!--Device-EditableTitleBarMenuItem-accessibilityText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,6 +140,8 @@ false: 不获焦
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBarMenuItem-defaultFocus?: boolean--><!--Device-EditableTitleBarMenuItem-defaultFocus?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isEnabled
@@ -154,6 +166,8 @@ isEnabled为false时，表示为禁用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBarMenuItem-isEnabled?: boolean--><!--Device-EditableTitleBarMenuItem-isEnabled?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## label
@@ -171,6 +185,8 @@ label?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableTitleBarMenuItem-label?: ResourceStr--><!--Device-EditableTitleBarMenuItem-label?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,6 +206,8 @@ Symbol图标资源，优先级大于value。不设置时使用value参数显示�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBarMenuItem-symbolStyle?: SymbolGlyphModifier--><!--Device-EditableTitleBarMenuItem-symbolStyle?: SymbolGlyphModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -207,5 +225,7 @@ value: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableTitleBarMenuItem-value: ResourceStr--><!--Device-EditableTitleBarMenuItem-value: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

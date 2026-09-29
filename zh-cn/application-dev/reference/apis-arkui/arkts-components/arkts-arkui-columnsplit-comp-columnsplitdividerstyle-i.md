@@ -14,6 +14,8 @@ interface ColumnSplitDividerStyle
 
 **起始版本：** 10
 
+<!--Device-unnamed-interface ColumnSplitDividerStyle--><!--Device-unnamed-interface ColumnSplitDividerStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## endMargin
@@ -40,6 +42,8 @@ endMargin?: Dimension
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ColumnSplitDividerStyle-endMargin?: Dimension--><!--Device-ColumnSplitDividerStyle-endMargin?: Dimension-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## startMargin
@@ -65,5 +69,7 @@ startMargin?: Dimension
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColumnSplitDividerStyle-startMargin?: Dimension--><!--Device-ColumnSplitDividerStyle-startMargin?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -12,6 +12,8 @@ Describes the notification timing information.
 
 **Since:** 11
 
+<!--Device-unnamed-export interface NotificationTime--><!--Device-unnamed-export interface NotificationTime-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## initialTime
@@ -25,6 +27,8 @@ Initial time for the timer, which is used to set the starting point of the timer
 **Type:** number
 
 **Since:** 11
+
+<!--Device-NotificationTime-initialTime?: int--><!--Device-NotificationTime-initialTime?: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -43,6 +47,8 @@ Whether it is countdown mode. The default value is **false**.
 
 **Since:** 11
 
+<!--Device-NotificationTime-isCountDown?: boolean--><!--Device-NotificationTime-isCountDown?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## isInTitle
@@ -60,6 +66,8 @@ Whether the time information is displayed in the notification title. The default
 
 **Since:** 11
 
+<!--Device-NotificationTime-isInTitle?: boolean--><!--Device-NotificationTime-isInTitle?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## isPaused
@@ -76,5 +84,7 @@ Whether the timer is paused. The default value is **false**.
 **Type:** boolean
 
 **Since:** 11
+
+<!--Device-NotificationTime-isPaused?: boolean--><!--Device-NotificationTime-isPaused?: boolean-End-->
 
 **System capability:** SystemCapability.Notification.Notification

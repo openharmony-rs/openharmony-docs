@@ -18,6 +18,8 @@ Sets the scroll direction of the mouse wheel. This API uses a promise to return 
 
 **Required permissions:** ohos.permission.INPUT_DEVICE_CONTROLLER
 
+<!--Device-pointer-function setMouseScrollDirection(inverted: boolean): Promise<void>--><!--Device-pointer-function setMouseScrollDirection(inverted: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.

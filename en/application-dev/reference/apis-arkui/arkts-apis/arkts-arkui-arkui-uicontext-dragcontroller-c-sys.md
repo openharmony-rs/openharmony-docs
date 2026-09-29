@@ -13,6 +13,8 @@ Provides APIs for initiating drag actions. When receiving a gesture event, such 
 
 **Since:** 11
 
+<!--Device-unnamed-export class DragController--><!--Device-unnamed-export class DragController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Interrupt the pending follow-hand morph drop animation and trigger the finish se
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DragController-interruptFollowHandMorphDropAnimation(): boolean--><!--Device-DragController-interruptFollowHandMorphDropAnimation(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

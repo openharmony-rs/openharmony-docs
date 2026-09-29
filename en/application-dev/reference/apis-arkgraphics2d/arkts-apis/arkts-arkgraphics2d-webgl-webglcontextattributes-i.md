@@ -8,6 +8,8 @@ WebGL 1.0
 
 **Since:** 7
 
+<!--Device-unnamed-export interface WebGLContextAttributes--><!--Device-unnamed-export interface WebGLContextAttributes-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 ## alpha
@@ -23,6 +25,8 @@ If true, the drawing buffer has an alpha channel for the purposes of storing bot
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLContextAttributes-alpha?: boolean--><!--Device-WebGLContextAttributes-alpha?: boolean-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -40,6 +44,8 @@ If true, request antialiasing.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLContextAttributes-antialias?: boolean--><!--Device-WebGLContextAttributes-antialias?: boolean-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 ## depth
@@ -55,6 +61,8 @@ If true, the drawing buffer has a depth buffer of at least 16 bits.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLContextAttributes-depth?: boolean--><!--Device-WebGLContextAttributes-depth?: boolean-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -72,6 +80,8 @@ If true, the drawing buffer is not synchronized with the display's refresh.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLContextAttributes-desynchronized?: boolean--><!--Device-WebGLContextAttributes-desynchronized?: boolean-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 ## failIfMajorPerformanceCaveat
@@ -87,6 +97,8 @@ If true, a context creation fails if the implementation determines that the perf
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLContextAttributes-failIfMajorPerformanceCaveat?: boolean--><!--Device-WebGLContextAttributes-failIfMajorPerformanceCaveat?: boolean-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -104,6 +116,8 @@ Hint for power preference.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLContextAttributes-powerPreference?: WebGLPowerPreference--><!--Device-WebGLContextAttributes-powerPreference?: WebGLPowerPreference-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 ## premultipliedAlpha
@@ -119,6 +133,8 @@ If true, the alpha values in the drawing buffer are premultiplied.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLContextAttributes-premultipliedAlpha?: boolean--><!--Device-WebGLContextAttributes-premultipliedAlpha?: boolean-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -136,6 +152,8 @@ If true, the drawing buffer is preserved after rendering.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLContextAttributes-preserveDrawingBuffer?: boolean--><!--Device-WebGLContextAttributes-preserveDrawingBuffer?: boolean-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 ## stencil
@@ -151,5 +169,7 @@ If true, the drawing buffer has a stencil buffer of at least 8 bits.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLContextAttributes-stencil?: boolean--><!--Device-WebGLContextAttributes-stencil?: boolean-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL

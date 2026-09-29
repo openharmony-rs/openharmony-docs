@@ -14,6 +14,8 @@ Defines a brush, which is used to describe the style and color to fill in a shap
 
 **Since:** 11
 
+<!--Device-drawing-class Brush--><!--Device-drawing-class Brush-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -31,6 +33,8 @@ constructor()
 A constructor used to create a **Brush** object.
 
 **Since:** 12
+
+<!--Device-Brush-constructor()--><!--Device-Brush-constructor()-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -53,6 +57,8 @@ constructor(brush: Brush)
 Copies a **Brush** object to create a new one.
 
 **Since:** 12
+
+<!--Device-Brush-constructor(brush: Brush)--><!--Device-Brush-constructor(brush: Brush)-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -89,6 +95,8 @@ Obtains the alpha value of this brush.
 
 **Since:** 12
 
+<!--Device-Brush-getAlpha(): int--><!--Device-Brush-getAlpha(): int-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -115,6 +123,8 @@ getColor(): common2D.Color
 Obtains the color of this brush.
 
 **Since:** 12
+
+<!--Device-Brush-getColor(): common2D.Color--><!--Device-Brush-getColor(): common2D.Color-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -144,6 +154,8 @@ getColor4f(): common2D.Color4f
 Obtains the brush color. The difference between this method and [getColor](#getcolor) is that this method returns a floating point number.
 
 **Since:** 20
+
+<!--Device-Brush-getColor4f(): common2D.Color4f--><!--Device-Brush-getColor4f(): common2D.Color4f-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -175,6 +187,8 @@ Obtains the color filter of this brush.
 
 **Since:** 12
 
+<!--Device-Brush-getColorFilter(): ColorFilter--><!--Device-Brush-getColorFilter(): ColorFilter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -203,6 +217,8 @@ getHexColor(): number
 Obtains the color of this brush.
 
 **Since:** 18
+
+<!--Device-Brush-getHexColor(): int--><!--Device-Brush-getHexColor(): int-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -234,6 +250,8 @@ Checks whether anti-aliasing is enabled for this brush.
 
 **Since:** 12
 
+<!--Device-Brush-isAntiAlias(): boolean--><!--Device-Brush-isAntiAlias(): boolean-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -261,6 +279,8 @@ Resets this brush to the initial state.
 
 **Since:** 12
 
+<!--Device-Brush-reset(): void--><!--Device-Brush-reset(): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Examples**
@@ -281,6 +301,8 @@ setAlpha(alpha: number): void
 Sets an alpha value for this brush.
 
 **Since:** 11
+
+<!--Device-Brush-setAlpha(alpha: int): void--><!--Device-Brush-setAlpha(alpha: int): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -315,6 +337,8 @@ Enables anti-aliasing for this brush. Anti-aliasing makes the edges of the conte
 
 **Since:** 11
 
+<!--Device-Brush-setAntiAlias(aa: boolean): void--><!--Device-Brush-setAntiAlias(aa: boolean): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -348,6 +372,8 @@ Sets a blend mode for this brush. If this API is not called, the default blend m
 
 **Since:** 11
 
+<!--Device-Brush-setBlendMode(mode: BlendMode): void--><!--Device-Brush-setBlendMode(mode: BlendMode): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -380,6 +406,8 @@ setColor(color: common2D.Color): void
 Sets a color for this brush.
 
 **Since:** 11
+
+<!--Device-Brush-setColor(color: common2D.Color): void--><!--Device-Brush-setColor(color: common2D.Color): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -416,6 +444,8 @@ setColor(alpha: number, red: number, green: number, blue: number): void
 Sets a color for this brush. This API provides better performance than [setColor](#setcolor) and is recommended.
 
 **Since:** 12
+
+<!--Device-Brush-setColor(alpha: int, red: int, green: int, blue: int): void--><!--Device-Brush-setColor(alpha: int, red: int, green: int, blue: int): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -455,6 +485,8 @@ Sets a color for this brush.
 
 **Since:** 18
 
+<!--Device-Brush-setColor(color: int): void--><!--Device-Brush-setColor(color: int): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -488,6 +520,8 @@ Sets the color and standard color gamut for this brush. The difference between t
 
 **Since:** 20
 
+<!--Device-Brush-setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void--><!--Device-Brush-setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -517,6 +551,8 @@ setColorFilter(filter: ColorFilter | null): void
 Sets a color filter for this brush.
 
 **Since:** 11
+
+<!--Device-Brush-setColorFilter(filter: ColorFilter | null): void--><!--Device-Brush-setColorFilter(filter: ColorFilter | null): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -552,6 +588,8 @@ Sets an image filter for this brush.
 
 **Since:** 12
 
+<!--Device-Brush-setImageFilter(filter: ImageFilter | null): void--><!--Device-Brush-setImageFilter(filter: ImageFilter | null): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -586,6 +624,8 @@ setMaskFilter(filter: MaskFilter | null): void
 Adds a mask filter for this brush.
 
 **Since:** 12
+
+<!--Device-Brush-setMaskFilter(filter: MaskFilter | null): void--><!--Device-Brush-setMaskFilter(filter: MaskFilter | null): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -626,6 +666,8 @@ Sets the shader effect for this brush.
 
 **Since:** 12
 
+<!--Device-Brush-setShaderEffect(shaderEffect: ShaderEffect | null): void--><!--Device-Brush-setShaderEffect(shaderEffect: ShaderEffect | null): void-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -659,6 +701,8 @@ setShadowLayer(shadowLayer: ShadowLayer | null): void
 Sets a shadow layer for this brush. The shadow layer effect takes effect only when text is drawn.
 
 **Since:** 12
+
+<!--Device-Brush-setShadowLayer(shadowLayer: ShadowLayer | null): void--><!--Device-Brush-setShadowLayer(shadowLayer: ShadowLayer | null): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

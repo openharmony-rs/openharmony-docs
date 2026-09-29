@@ -8,6 +8,8 @@ Describes the status of `Progress`.
 
 **Since:** 10
 
+<!--Device-relationalStore-enum ProgressCode--><!--Device-relationalStore-enum ProgressCode-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## SUCCESS
@@ -19,6 +21,8 @@ SUCCESS = 0
 The device-cloud sync is successful.
 
 **Since:** 10
+
+<!--Device-ProgressCode-SUCCESS = 0--><!--Device-ProgressCode-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -32,6 +36,8 @@ An unknown error occurs during the device-cloud sync.
 
 **Since:** 10
 
+<!--Device-ProgressCode-UNKNOWN_ERROR = 1--><!--Device-ProgressCode-UNKNOWN_ERROR = 1-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## NETWORK_ERROR
@@ -44,6 +50,8 @@ A network error occurs during the device-cloud sync.
 
 **Since:** 10
 
+<!--Device-ProgressCode-NETWORK_ERROR = 2--><!--Device-ProgressCode-NETWORK_ERROR = 2-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## CLOUD_DISABLED
@@ -55,6 +63,8 @@ CLOUD_DISABLED = 3
 The cloud is unavailable.
 
 **Since:** 10
+
+<!--Device-ProgressCode-CLOUD_DISABLED = 3--><!--Device-ProgressCode-CLOUD_DISABLED = 3-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -70,6 +80,8 @@ The sync of the local device can be performed only when the cloud resources are 
 
 **Since:** 10
 
+<!--Device-ProgressCode-LOCKED_BY_OTHERS = 4--><!--Device-ProgressCode-LOCKED_BY_OTHERS = 4-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## RECORD_LIMIT_EXCEEDED
@@ -81,6 +93,8 @@ RECORD_LIMIT_EXCEEDED = 5
 The number of records or size of the data to be synced exceeds the maximum. The maximum value is configured on the cloud.
 
 **Since:** 10
+
+<!--Device-ProgressCode-RECORD_LIMIT_EXCEEDED = 5--><!--Device-ProgressCode-RECORD_LIMIT_EXCEEDED = 5-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -94,6 +108,8 @@ The remaining cloud space is less than the size of the data to be synced.
 
 **Since:** 10
 
+<!--Device-ProgressCode-NO_SPACE_FOR_ASSET = 6--><!--Device-ProgressCode-NO_SPACE_FOR_ASSET = 6-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## BLOCKED_BY_NETWORK_STRATEGY
@@ -105,6 +121,8 @@ BLOCKED_BY_NETWORK_STRATEGY = 7
 The device-cloud sync is blocked due to the network strategy.
 
 **Since:** 12
+
+<!--Device-ProgressCode-BLOCKED_BY_NETWORK_STRATEGY = 7--><!--Device-ProgressCode-BLOCKED_BY_NETWORK_STRATEGY = 7-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -119,5 +137,7 @@ STOP_CLOUD_SYNC: means cloud synchronization has been stopped.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ProgressCode-STOP_CLOUD_SYNC = 8--><!--Device-ProgressCode-STOP_CLOUD_SYNC = 8-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

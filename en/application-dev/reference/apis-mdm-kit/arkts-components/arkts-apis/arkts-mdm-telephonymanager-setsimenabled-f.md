@@ -22,6 +22,8 @@ Enables the SIM card in a specified slot. After it has been disabled with **setS
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-telephonyManager-function setSimEnabled(admin: Want, slotId: number): void--><!--Device-telephonyManager-function setSimEnabled(admin: Want, slotId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

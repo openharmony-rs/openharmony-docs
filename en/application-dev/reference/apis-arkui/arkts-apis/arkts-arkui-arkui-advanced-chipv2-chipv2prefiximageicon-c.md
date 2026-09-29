@@ -14,6 +14,8 @@ This API inherits from [ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export declare class ChipV2PrefixImageIcon extends ChipV2ImageIcon--><!--Device-unnamed-export declare class ChipV2PrefixImageIcon extends ChipV2ImageIcon-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ A constructor used to create a **ChipV2PrefixImageIcon** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2PrefixImageIcon-constructor(config: ChipV2PrefixImageIconConfig)--><!--Device-ChipV2PrefixImageIcon-constructor(config: ChipV2PrefixImageIconConfig)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

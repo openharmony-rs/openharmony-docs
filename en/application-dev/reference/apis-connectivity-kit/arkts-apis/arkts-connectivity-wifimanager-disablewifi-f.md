@@ -18,6 +18,8 @@ Disable Wi-Fi.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and (ohos.permission.MANAGE_WIFI_CONNECTION or ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION)
 
+<!--Device-wifiManager-function disableWifi(): void--><!--Device-wifiManager-function disableWifi(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Error codes:**

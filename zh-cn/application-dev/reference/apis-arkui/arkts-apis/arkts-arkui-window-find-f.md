@@ -24,6 +24,8 @@ function find(id: string, callback: AsyncCallback<Window>): void
 
 **替代接口：** [findWindow](arkts-arkui-window-findwindow-f.md)
 
+<!--Device-window-function find(id: string, callback: AsyncCallback<Window>): void--><!--Device-window-function find(id: string, callback: AsyncCallback<Window>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
@@ -70,6 +72,8 @@ function find(id: string): Promise<Window>
 **废弃版本：** 9
 
 **替代接口：** [findWindow](arkts-arkui-window-findwindow-f.md)
+
+<!--Device-window-function find(id: string): Promise<Window>--><!--Device-window-function find(id: string): Promise<Window>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

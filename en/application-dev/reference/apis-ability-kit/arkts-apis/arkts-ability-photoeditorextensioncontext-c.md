@@ -12,6 +12,8 @@ The context of Photo Editor extension. It allows access to PhotoEditorExtension-
 
 **Since:** 12
 
+<!--Device-unnamed-declare class PhotoEditorExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class PhotoEditorExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.AppExtension.PhotoEditorExtension
 
 ## saveEditedContentWithImage
@@ -23,6 +25,8 @@ saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption)
 Save image data by image pixmap.
 
 **Since:** 12
+
+<!--Device-PhotoEditorExtensionContext-saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption): Promise<AbilityResult>--><!--Device-PhotoEditorExtensionContext-saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption): Promise<AbilityResult>-End-->
 
 **System capability:** SystemCapability.Ability.AppExtension.PhotoEditorExtension
 
@@ -99,6 +103,8 @@ saveEditedContentWithUri(uri: string): Promise<AbilityResult>
 Save image data by uri.
 
 **Since:** 12
+
+<!--Device-PhotoEditorExtensionContext-saveEditedContentWithUri(uri: string): Promise<AbilityResult>--><!--Device-PhotoEditorExtensionContext-saveEditedContentWithUri(uri: string): Promise<AbilityResult>-End-->
 
 **System capability:** SystemCapability.Ability.AppExtension.PhotoEditorExtension
 

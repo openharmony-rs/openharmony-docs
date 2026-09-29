@@ -10,6 +10,8 @@ AnimationResult
 
 **Since:** 4
 
+<!--Device-unnamed-export interface AnimationResult--><!--Device-unnamed-export interface AnimationResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## cancel
@@ -23,6 +25,8 @@ Cancels the animation.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimationResult-cancel(): void--><!--Device-AnimationResult-cancel(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,6 +42,8 @@ Ends the animation.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimationResult-finish(): void--><!--Device-AnimationResult-finish(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## oncancel
@@ -51,6 +57,8 @@ The animation is canceled.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimationResult-oncancel: () => void--><!--Device-AnimationResult-oncancel: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +74,8 @@ The animation is finished.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimationResult-onfinish: () => void--><!--Device-AnimationResult-onfinish: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onrepeat
@@ -79,6 +89,8 @@ The animation is repeated.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimationResult-onrepeat: () => void--><!--Device-AnimationResult-onrepeat: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +106,8 @@ The animation is started.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimationResult-onstart: () => void--><!--Device-AnimationResult-onstart: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## pause
@@ -107,6 +121,8 @@ Pauses the animation.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimationResult-pause(): void--><!--Device-AnimationResult-pause(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +138,8 @@ Starts the animation.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimationResult-play(): void--><!--Device-AnimationResult-play(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## reverse
@@ -135,6 +153,8 @@ Plays the animation in reverse direction.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimationResult-reverse(): void--><!--Device-AnimationResult-reverse(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,6 +172,8 @@ Read-only attribute, which indicates whether the animation playback is complete.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimationResult-finished: boolean--><!--Device-AnimationResult-finished: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## pending
@@ -167,6 +189,8 @@ Read-only attribute, which indicates whether an animation is waiting for the com
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimationResult-pending: boolean--><!--Device-AnimationResult-pending: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,6 +208,8 @@ Animation running state: idle: The animation is not running (playback ended or n
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimationResult-playstate: string--><!--Device-AnimationResult-playstate: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## startTime
@@ -199,5 +225,7 @@ Animation start time. This attribute is similar to that of delay in the options 
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimationResult-startTime: number--><!--Device-AnimationResult-startTime: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

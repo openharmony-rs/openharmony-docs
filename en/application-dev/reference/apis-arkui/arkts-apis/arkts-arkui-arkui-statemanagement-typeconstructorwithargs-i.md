@@ -8,6 +8,8 @@ Represents a class constructor that accepts arbitrary arguments.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface TypeConstructorWithArgs<T>--><!--Device-unnamed-export interface TypeConstructorWithArgs<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,16 +32,18 @@ Creates and returns an instance of the specified type T.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TypeConstructorWithArgs-new(...args: any): T--><!--Device-TypeConstructorWithArgs-new(...args: any): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| args | any | Yes | Function arguments. |
+| args | any | Yes | Constructor arguments passed when creating an instance of type **T**, used to initialize the instance. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| T | Instance of the T type. |
+| T | Instance of type **T** created using the **new** API. By default, no constructor arguments are passed. |

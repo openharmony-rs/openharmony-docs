@@ -6,6 +6,8 @@ As a part of the Unified Data Management Framework (UDMF), the **unifiedDataChan
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace unifiedDataChannel--><!--Device-unnamed-declare namespace unifiedDataChannel-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -65,6 +67,16 @@ import { unifiedDataChannel } from '@kit.ArkData';
 | [Options](arkts-arkdata-unifieddatachannel-options-i.md) | Defines the data operation performed by the UDMF. It includes three optional parameters: **intention**, **key**, and **visibility**. The three parameters can be left unspecified. For details, see the parameter description of the specific API. |
 | [ProgressInfo](arkts-arkdata-unifieddatachannel-progressinfo-i.md) | Represents the progress information. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [DataLoadHandler](arkts-arkdata-unifieddatachannel-dataloadhandler-t.md) | Defines a handler for lazy data loading. The data sender can dynamically generate data based on the information passed by the data receiver to implement more flexible and precise data interaction policies. |
+| [DataProgressListener](arkts-arkdata-unifieddatachannel-dataprogresslistener-t.md) | Defines the callback used to return the data retrieval progress information and data obtained. |
+| [DelayedDataLoadHandler](arkts-arkdata-unifieddatachannel-delayeddataloadhandler-t.md) | Defines a handler for lazy data loading. The data sender can dynamically generate data based on the information passed by the data receiver to implement more flexible and precise data interaction policies. |
+| [GetDelayData](arkts-arkdata-unifieddatachannel-getdelaydata-t.md) | Defines a function used to obtain a deferred **UnifiedData** object. Currently, it can be used only in the pasteboard application of the same device. |
+| [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | Enumerates the data field types allowed in a unified data record. |
+
 ### Enums
 
 | Name | Description |
@@ -76,13 +88,3 @@ import { unifiedDataChannel } from '@kit.ArkData';
 | [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md) | Enumerates the options for using **UnifiedData** in a device. |
 | [UriPermission](arkts-arkdata-unifieddatachannel-uripermission-e.md) | URI authorization policy in drag-and-drop scenarios. |
 | [Visibility](arkts-arkdata-unifieddatachannel-visibility-e.md) | Enumerates the data visibility levels. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [DataLoadHandler](arkts-arkdata-unifieddatachannel-dataloadhandler-t.md) | Defines a handler for lazy data loading. The data sender can dynamically generate data based on the information passed by the data receiver to implement more flexible and precise data interaction policies. |
-| [DataProgressListener](arkts-arkdata-unifieddatachannel-dataprogresslistener-t.md) | Defines the callback used to return the data retrieval progress information and data obtained. |
-| [DelayedDataLoadHandler](arkts-arkdata-unifieddatachannel-delayeddataloadhandler-t.md) | Defines a handler for lazy data loading. The data sender can dynamically generate data based on the information passed by the data receiver to implement more flexible and precise data interaction policies. |
-| [GetDelayData](arkts-arkdata-unifieddatachannel-getdelaydata-t.md) | Defines a function used to obtain a deferred **UnifiedData** object. Currently, it can be used only in the pasteboard application of the same device. |
-| [ValueType](arkts-arkdata-unifieddatachannel-valuetype-t.md) | Enumerates the data field types allowed in a unified data record. |

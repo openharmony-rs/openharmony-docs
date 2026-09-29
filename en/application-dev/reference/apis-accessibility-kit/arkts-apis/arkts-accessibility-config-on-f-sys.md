@@ -20,6 +20,8 @@ This API must be used together with [config.off('enabledAccessibilityExtensionLi
 
 **Required permissions:** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
+<!--Device-config-function on(type: 'enabledAccessibilityExtensionListChange', callback: Callback<void>): void--><!--Device-config-function on(type: 'enabledAccessibilityExtensionListChange', callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -63,6 +65,8 @@ This API must be used together with [config.off('installedAccessibilityListChang
 **Since:** 12
 
 **Required permissions:** ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+<!--Device-config-function on(type: 'installedAccessibilityListChange', callback: Callback<void>): void--><!--Device-config-function on(type: 'installedAccessibilityListChange', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

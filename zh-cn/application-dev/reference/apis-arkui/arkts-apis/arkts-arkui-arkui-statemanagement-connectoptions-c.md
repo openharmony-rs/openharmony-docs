@@ -8,6 +8,8 @@ globalConnect参数类型。
 
 **起始版本：** 18
 
+<!--Device-unnamed-export class ConnectOptions<T extends object>--><!--Device-unnamed-export class ConnectOptions<T extends object>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ defaultCreator?: StorageDefaultCreator<T>
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ConnectOptions-defaultCreator?: StorageDefaultCreator<T>--><!--Device-ConnectOptions-defaultCreator?: StorageDefaultCreator<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## areaMode
@@ -47,6 +51,8 @@ areaMode?: contextConstant.AreaMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ConnectOptions-areaMode?: contextConstant.AreaMode--><!--Device-ConnectOptions-areaMode?: contextConstant.AreaMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +72,8 @@ ignoreReadOnlyProperties?: boolean
 
 **原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ConnectOptions-ignoreReadOnlyProperties?: boolean--><!--Device-ConnectOptions-ignoreReadOnlyProperties?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## key
@@ -84,6 +92,8 @@ key?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ConnectOptions-key?: string--><!--Device-ConnectOptions-key?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -101,5 +111,7 @@ type: TypeConstructorWithArgs<T>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ConnectOptions-type: TypeConstructorWithArgs<T>--><!--Device-ConnectOptions-type: TypeConstructorWithArgs<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

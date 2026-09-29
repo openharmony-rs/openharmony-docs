@@ -8,6 +8,8 @@ declare namespace abilityAccessCtrl
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-unnamed-declare namespace abilityAccessCtrl--><!--Device-unnamed-declare namespace abilityAccessCtrl-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 ## Modules to Import

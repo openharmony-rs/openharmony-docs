@@ -16,6 +16,8 @@ Creates an AVMetadataExtractor instance. This API uses a promise to return the r
 
 **Since:** 11
 
+<!--Device-media-function createAVMetadataExtractor(): Promise<AVMetadataExtractor>--><!--Device-media-function createAVMetadataExtractor(): Promise<AVMetadataExtractor>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **Return value:**
@@ -60,6 +62,8 @@ function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>)
 Creates an AVMetadataExtractor instance. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-media-function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>): void--><!--Device-media-function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVMetadataExtractor
 

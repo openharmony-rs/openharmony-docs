@@ -10,6 +10,8 @@ Describes the region information. It inherits from [lang.ISendable](../../../ark
 
 **Since:** 12
 
+<!--Device-sendableImage-interface Region extends lang.ISendable--><!--Device-sendableImage-interface Region extends lang.ISendable-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Region size.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-Region-size: Size--><!--Device-Region-size: Size-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## x
@@ -52,6 +56,8 @@ X coordinate, in px.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-Region-x: number--><!--Device-Region-x: number-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## y
@@ -69,5 +75,7 @@ Y coordinate, in px.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-Region-y: number--><!--Device-Region-y: number-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

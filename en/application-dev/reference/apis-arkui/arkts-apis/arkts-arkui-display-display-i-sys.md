@@ -10,6 +10,8 @@ Before calling any API in Display, you must use [getAllDisplays()](arkts-arkui-d
 
 **Since:** 7
 
+<!--Device-display-interface Display--><!--Device-display-interface Display-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ hasImmersiveWindow(callback: AsyncCallback<boolean>): void
 Checks whether this display contains an immersive window. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-Display-hasImmersiveWindow(callback: AsyncCallback<boolean>): void--><!--Device-Display-hasImmersiveWindow(callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -78,6 +82,8 @@ hasImmersiveWindow(): Promise<boolean>
 Checks whether this display contains an immersive window. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-Display-hasImmersiveWindow(): Promise<boolean>--><!--Device-Display-hasImmersiveWindow(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

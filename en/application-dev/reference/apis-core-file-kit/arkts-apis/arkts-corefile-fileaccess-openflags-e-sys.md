@@ -12,6 +12,8 @@ Enumerates the file open modes.
 
 **Substitutes:** [OpenMode](arkts-corefile-fileio-openmode-n.md)
 
+<!--Device-fileAccess-enum OPENFLAGS--><!--Device-fileAccess-enum OPENFLAGS-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Read mode.
 **Substitutes:** [OpenMode](arkts-corefile-fileio-openmode-n.md)
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OPENFLAGS-READ = 0o0--><!--Device-OPENFLAGS-READ = 0o0-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -52,6 +56,8 @@ Write mode.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OPENFLAGS-WRITE = 0o1--><!--Device-OPENFLAGS-WRITE = 0o1-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -71,6 +77,8 @@ Read/Write mode.
 **Substitutes:** [OpenMode](arkts-corefile-fileio-openmode-n.md)
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OPENFLAGS-WRITE_READ = 0o2--><!--Device-OPENFLAGS-WRITE_READ = 0o2-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

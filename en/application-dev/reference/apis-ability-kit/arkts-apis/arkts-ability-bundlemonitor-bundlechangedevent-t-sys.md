@@ -10,6 +10,8 @@ Indicates the event type of bundle change
 
 **Since:** 9
 
+<!--Device-bundleMonitor-type BundleChangedEvent = 'add' | 'update' | 'remove'--><!--Device-bundleMonitor-type BundleChangedEvent = 'add' | 'update' | 'remove'-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

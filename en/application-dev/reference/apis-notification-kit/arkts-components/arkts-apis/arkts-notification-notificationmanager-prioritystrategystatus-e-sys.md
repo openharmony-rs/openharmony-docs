@@ -8,6 +8,8 @@ Describes the application notification strategy.
 
 **Since:** 23
 
+<!--Device-notificationManager-export enum PriorityStrategyStatus--><!--Device-notificationManager-export enum PriorityStrategyStatus-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Default priority strategy.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PriorityStrategyStatus-STATUS_SYSTEM_DEFAULT = 1 << 0--><!--Device-PriorityStrategyStatus-STATUS_SYSTEM_DEFAULT = 1 << 0-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -40,6 +44,8 @@ Only system rule.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PriorityStrategyStatus-STATUS_SYSTEM_RULE = 1 << 1--><!--Device-PriorityStrategyStatus-STATUS_SYSTEM_RULE = 1 << 1-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Only intelligent recognition.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PriorityStrategyStatus-STATUS_INTELLIGENT = 1 << 2--><!--Device-PriorityStrategyStatus-STATUS_INTELLIGENT = 1 << 2-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -72,6 +80,8 @@ Only user-defined.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PriorityStrategyStatus-STATUS_USER_DEFINED = 1 << 3--><!--Device-PriorityStrategyStatus-STATUS_USER_DEFINED = 1 << 3-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -88,6 +98,8 @@ Only application-defined.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PriorityStrategyStatus-STATUS_APPLICATION_DEFINED = 1 << 4--><!--Device-PriorityStrategyStatus-STATUS_APPLICATION_DEFINED = 1 << 4-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -103,6 +115,8 @@ All.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PriorityStrategyStatus-STATUS_ALL_PRIORITY = 1 << 5--><!--Device-PriorityStrategyStatus-STATUS_ALL_PRIORITY = 1 << 5-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

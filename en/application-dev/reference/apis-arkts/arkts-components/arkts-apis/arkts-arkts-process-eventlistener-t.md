@@ -10,6 +10,8 @@ Event to store.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-process-type EventListener = (evt: Object) => void--><!--Device-process-type EventListener = (evt: Object) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

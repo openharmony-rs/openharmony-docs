@@ -14,6 +14,8 @@ This API will be deprecated. Use [AlbumType](arkts-corefile-userfilemanager-albu
 
 **Substitutes:** [AlbumSubtype](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumsubtype-e.md)
 
+<!--Device-userFileManager-enum PrivateAlbumType--><!--Device-userFileManager-enum PrivateAlbumType-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Favorites.
 
 **Substitutes:** [FAVORITE](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumsubtype-e.md#favorite)
 
+<!--Device-PrivateAlbumType-TYPE_FAVORITE = 0--><!--Device-PrivateAlbumType-TYPE_FAVORITE = 0-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Trash.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [TRASH](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumsubtype-e-sys.md#trash)
+
+<!--Device-PrivateAlbumType-TYPE_TRASH = 1--><!--Device-PrivateAlbumType-TYPE_TRASH = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

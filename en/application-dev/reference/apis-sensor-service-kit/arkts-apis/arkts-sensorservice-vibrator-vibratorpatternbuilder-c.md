@@ -4,9 +4,11 @@
 class VibratorPatternBuilder
 ```
 
-Provide methods for adding long or short vibration events and generate VibratorPattern objects.
+Provides methods for adding continuous and transient vibration events and generating a **VibratorPattern** object.
 
 **Since:** 18
+
+<!--Device-vibrator-class VibratorPatternBuilder--><!--Device-vibrator-class VibratorPatternBuilder-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 
@@ -22,9 +24,11 @@ import { vibrator } from '@kit.SensorServiceKit';
 addContinuousEvent(time: number, duration: number, options?: ContinuousParam): VibratorPatternBuilder
 ```
 
-Adds a long vibration event as a **VibratorPattern** object.
+Adds a continuous vibration event. After the event is added, use the [build](#build) method to generate a [VibratorPattern](arkts-sensorservice-vibrator-vibratorpattern-i.md) object.
 
 **Since:** 18
+
+<!--Device-VibratorPatternBuilder-addContinuousEvent(time: int, duration: int, options?: ContinuousParam): VibratorPatternBuilder--><!--Device-VibratorPatternBuilder-addContinuousEvent(time: int, duration: int, options?: ContinuousParam): VibratorPatternBuilder-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 
@@ -90,9 +94,11 @@ try {
 addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilder
 ```
 
-Adds a short vibration event as a **VibratorPattern** object.
+Adds a transient vibration event. After the event is added, use the [build](#build) method to generate a [VibratorPattern](arkts-sensorservice-vibrator-vibratorpattern-i.md) object.
 
 **Since:** 18
+
+<!--Device-VibratorPatternBuilder-addTransientEvent(time: int, options?: TransientParam): VibratorPatternBuilder--><!--Device-VibratorPatternBuilder-addTransientEvent(time: int, options?: TransientParam): VibratorPatternBuilder-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 
@@ -146,6 +152,8 @@ build(): VibratorPattern
 Constructor used to create a **VibratorPattern** object, which determines the vibration sequence of short or long events.
 
 **Since:** 18
+
+<!--Device-VibratorPatternBuilder-build(): VibratorPattern--><!--Device-VibratorPatternBuilder-build(): VibratorPattern-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 

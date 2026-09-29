@@ -8,6 +8,8 @@ The module defines the view data used for auto-fill.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export default interface ViewData--><!--Device-unnamed-export default interface ViewData-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## abilityName
@@ -23,6 +25,8 @@ Ability name, used to specify the Ability to which the auto-fill data belongs.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ViewData-abilityName: string--><!--Device-ViewData-abilityName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -42,6 +46,8 @@ Whether to display other account information saved in the password box for the u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ViewData-isOtherAccount: boolean--><!--Device-ViewData-isOtherAccount: boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -60,6 +66,8 @@ Whether the content to be filled is selected by the user. **true** if the conten
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ViewData-isUserSelected: boolean--><!--Device-ViewData-isUserSelected: boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Module name, used to specify the module to which the auto-fill data belongs.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ViewData-moduleName: string--><!--Device-ViewData-moduleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

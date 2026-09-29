@@ -8,6 +8,8 @@ Provides enhanced audio device management capabilities.
 
 **Since:** 26.0.0
 
+<!--Device-audio-interface AudioDeviceEnhanceManager--><!--Device-audio-interface AudioDeviceEnhanceManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.DeviceEnhance
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Obtains the sound card information. This method uses a Promise to return the que
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioDeviceEnhanceManager-getSoundCardInfo(): Promise<SoundCardInfo>--><!--Device-AudioDeviceEnhanceManager-getSoundCardInfo(): Promise<SoundCardInfo>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.DeviceEnhance
 

@@ -8,6 +8,8 @@ MacroQuery provides the API to check the support for macro photography.
 
 **Since:** 19
 
+<!--Device-camera-interface MacroQuery--><!--Device-camera-interface MacroQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Checks whether macro photography is supported in the current state. This API mus
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-MacroQuery-isMacroSupported(): boolean--><!--Device-MacroQuery-isMacroSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

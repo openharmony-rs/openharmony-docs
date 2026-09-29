@@ -19,6 +19,8 @@ Sets an upgrade flag for a module. This API uses an asynchronous callback to ret
 
 **Required permissions:** ohos.permission.INSTALL_BUNDLE
 
+<!--Device-freeInstall-function setHapModuleUpgradeFlag(bundleName: string,     moduleName: string, upgradeFlag: UpgradeFlag, callback: AsyncCallback<void>): void--><!--Device-freeInstall-function setHapModuleUpgradeFlag(bundleName: string,     moduleName: string, upgradeFlag: UpgradeFlag, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -57,6 +59,8 @@ Sets an upgrade flag for a module. This API uses a promise to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.INSTALL_BUNDLE
+
+<!--Device-freeInstall-function setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: UpgradeFlag): Promise<void>--><!--Device-freeInstall-function setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: UpgradeFlag): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

@@ -16,6 +16,8 @@ Subscribes to application shortcut key change events. This API obtains combinati
 
 **Since:** 14
 
+<!--Device-inputConsumer-function on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback<HotkeyOptions>): void--><!--Device-inputConsumer-function on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback<HotkeyOptions>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **Parameters:**
@@ -82,6 +84,8 @@ Subscribes to key press events. If the current application is in the foreground 
 If the API call is successful, the system's default response to the key event will be intercepted; that is, system- level actions, such as volume adjustment, will no longer be triggered. To restore the system response, call [off](arkts-input-inputconsumer-off-f.md#offkeypressed) to disable listening for the key event.
 
 **Since:** 16
+
+<!--Device-inputConsumer-function on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback<KeyEvent>): void--><!--Device-inputConsumer-function on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback<KeyEvent>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 

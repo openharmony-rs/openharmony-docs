@@ -20,6 +20,8 @@ Enable the advertising with a specific ID temporarily.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ble-function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams, callback: AsyncCallback<void>): void--><!--Device-ble-function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -129,6 +131,8 @@ Enable the advertising with a specific ID temporarily.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ble-function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Promise<void>--><!--Device-ble-function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

@@ -8,6 +8,8 @@ Represents detailed information about the use of a permission.
 
 **Since:** 12
 
+<!--Device-privacyManager-interface PermissionUsedTypeInfo--><!--Device-privacyManager-interface PermissionUsedTypeInfo-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Name of the sensitive permission accessed.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedTypeInfo-permissionName: Permissions--><!--Device-PermissionUsedTypeInfo-permissionName: Permissions-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ Token ID of the application that accesses the sensitive permission.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedTypeInfo-tokenId: int--><!--Device-PermissionUsedTypeInfo-tokenId: int-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ Usage type of the sensitive permission.
 **Since:** 12
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionUsedTypeInfo-usedType: PermissionUsedType--><!--Device-PermissionUsedTypeInfo-usedType: PermissionUsedType-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

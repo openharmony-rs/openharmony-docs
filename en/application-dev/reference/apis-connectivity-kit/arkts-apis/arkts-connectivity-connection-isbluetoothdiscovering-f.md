@@ -20,6 +20,8 @@ Check if bluetooth is discovering.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function isBluetoothDiscovering(): boolean--><!--Device-connection-function isBluetoothDiscovering(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

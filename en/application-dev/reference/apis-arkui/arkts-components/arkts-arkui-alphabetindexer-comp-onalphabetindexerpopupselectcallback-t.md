@@ -12,6 +12,8 @@ Represents the callback invoked when a secondary index item in the pop-up window
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare type OnAlphabetIndexerPopupSelectCallback = (index: number) => void--><!--Device-unnamed-declare type OnAlphabetIndexerPopupSelectCallback = (index: number) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

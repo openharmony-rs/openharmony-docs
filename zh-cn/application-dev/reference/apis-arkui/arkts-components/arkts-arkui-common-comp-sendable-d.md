@@ -12,4 +12,6 @@ Defining Sendable ClassDecorator The Sendable decorator can be used only for cla
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare const Sendable: ClassDecorator--><!--Device-unnamed-declare const Sendable: ClassDecorator-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

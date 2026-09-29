@@ -4,11 +4,13 @@
 declare class SaveButtonAttribute extends SecurityComponentMethod<SaveButtonAttribute>
 ```
 
-不支持通用属性，除了继承安全控件通用属性，还支持以下属性。不支持通用事件，仅支持以下事件。
+不支持通用属性，除了继承[安全控件通用属性](../arkts-apis/arkts-arkui-securitycomponent.md#security_component)，还支持以下属性。不支持通用事件，仅支持以下事件。
 
-**继承/实现关系：** SaveButtonAttribute extends SecurityComponentMethod&lt;SaveButtonAttribute&gt;
+**继承/实现关系：** SaveButtonAttribute extends SecurityComponentMethod<SaveButtonAttribute>
 
 **起始版本：** 10
+
+<!--Device-unnamed-declare class SaveButtonAttribute extends SecurityComponentMethod<SaveButtonAttribute>--><!--Device-unnamed-declare class SaveButtonAttribute extends SecurityComponentMethod<SaveButtonAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ iconBorderRadius(radius: Dimension | BorderRadiuses)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SaveButtonAttribute-iconBorderRadius(radius: Dimension | BorderRadiuses): SaveButtonAttribute--><!--Device-SaveButtonAttribute-iconBorderRadius(radius: Dimension | BorderRadiuses): SaveButtonAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ iconSize(size: Dimension | SizeOptions)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-SaveButtonAttribute-iconSize(size: Dimension | SizeOptions): SaveButtonAttribute--><!--Device-SaveButtonAttribute-iconSize(size: Dimension | SizeOptions): SaveButtonAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -64,13 +70,15 @@ iconSize(size: Dimension | SizeOptions)
 onClick(event: SaveButtonCallback)
 ```
 
-点击保存控件触发该回调。用户首次点击保存控件时会展示授权弹窗，点击允许后授权成功，应用会获取访问媒体库接口的临时授权（授权持续时间见SaveButton构造函数说明）；点击拒绝或关闭弹窗则授权失败。
+点击保存控件触发该回调。用户首次点击保存控件时会展示授权弹窗，点击允许后授权成功，应用会获取访问媒体库接口的临时授权（授权持续时间见[SaveButton](arkts-arkui-savebutton-comp.md)构造函数说明）；点击拒绝或关闭弹窗则授权失败。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SaveButtonAttribute-onClick(event: SaveButtonCallback): SaveButtonAttribute--><!--Device-SaveButtonAttribute-onClick(event: SaveButtonCallback): SaveButtonAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,13 +104,15 @@ setIcon(icon: Resource)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-SaveButtonAttribute-setIcon(icon: Resource): SaveButtonAttribute--><!--Device-SaveButtonAttribute-setIcon(icon: Resource): SaveButtonAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| icon | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 自定义图标资源信息，仅支持Resource类型的数据源。<br>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image]{@link./image}。当资源为非图片资源或不支持的格式时，图标显示为空白。<br>从API版本26.0.0开始，支持Symbol格式的Resource类型的数据源。<br>若应用不具备ohos.permission.CUS TOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。 |
+| icon | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 自定义图标资源信息，仅支持Resource类型的数据源。<br>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](arkts-arkui-image-comp.md)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br>从API版本26.0.0开始，支持Symbol格式的Resource类型的数据源。<br>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。 |
 
 ## setText
 
@@ -119,6 +129,8 @@ setText(text: string | Resource)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SaveButtonAttribute-setText(text: string | Resource): SaveButtonAttribute--><!--Device-SaveButtonAttribute-setText(text: string | Resource): SaveButtonAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,6 +155,8 @@ stateEffect(enabled: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SaveButtonAttribute-stateEffect(enabled: boolean): SaveButtonAttribute--><!--Device-SaveButtonAttribute-stateEffect(enabled: boolean): SaveButtonAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,13 +185,15 @@ symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-SaveButtonAttribute-symbolFontWeight(fontWeight: number | FontWeight | string | Resource): SaveButtonAttribute--><!--Device-SaveButtonAttribute-symbolFontWeight(fontWeight: number | FontWeight | string | Resource): SaveButtonAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fontWeight | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 设置保存控件Symbol图标粗细。<br>支持number类型：取值范围为[100, 900]，取值间隔为100，数值越大字体越粗。<br>支持string类型：可传入number类型的数字字符串（如"400"），或FontWeight的枚举值的小写字符串（如"normal"）。<br>默认值：FontWeight.Normal（对应数值400）。<br>若应用不具备ohos.permission.CUSTOMIZE_SAVE_ BUTTON权限，则该设置不生效。 |
+| fontWeight | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 设置保存控件Symbol图标粗细。<br>支持number类型：取值范围为[100, 900]，取值间隔为100，数值越大字体越粗。<br>支持string类型：可传入number类型的数字字符串（如"400"），或FontWeight的枚举值的小写字符串（如"normal"）。<br>默认值：FontWeight.Normal（对应数值400）。<br>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则该设置不生效。 |
 
 ## symbolIconColor
 
@@ -198,6 +214,8 @@ symbolIconColor(color: Array<ResourceColor>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SaveButtonAttribute-symbolIconColor(color: Array<ResourceColor>): SaveButtonAttribute--><!--Device-SaveButtonAttribute-symbolIconColor(color: Array<ResourceColor>): SaveButtonAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -227,6 +245,8 @@ symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-SaveButtonAttribute-symbolRenderingStrategy(strategy: SymbolRenderingStrategy): SaveButtonAttribute--><!--Device-SaveButtonAttribute-symbolRenderingStrategy(strategy: SymbolRenderingStrategy): SaveButtonAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -248,6 +268,8 @@ userCancelEvent(enabled: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
+
+<!--Device-SaveButtonAttribute-userCancelEvent(enabled: boolean): SaveButtonAttribute--><!--Device-SaveButtonAttribute-userCancelEvent(enabled: boolean): SaveButtonAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

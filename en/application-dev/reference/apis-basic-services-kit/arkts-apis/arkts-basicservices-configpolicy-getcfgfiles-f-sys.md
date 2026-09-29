@@ -16,6 +16,8 @@ Obtains a list of all files with the specified names, in ascending order of prio
 
 **Since:** 8
 
+<!--Device-configPolicy-function getCfgFiles(relPath: string, callback: AsyncCallback<Array<string>>): void--><!--Device-configPolicy-function getCfgFiles(relPath: string, callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Customization.ConfigPolicy
 
 **System API:** This is a system API.
@@ -45,6 +47,8 @@ function getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCa
 Obtains a list of all files of a specified file name based on the provided follow mode, in ascending order of priority. This API uses an asynchronous callback to return the result. For example, if the paths of **config.xml** on the device are **\/system/etc/config.xml**, **\/sys_pod/etc/config.xml**, and **\/sys_pod/etc/carrier/46060/etc/config.xml** in ascending order of priority, the default opkey of the device is **46060**, and **followMode** is set to **configPolicy.FollowXMode.SIM_DEFAULT**, the return value is **\/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml**.
 
 **Since:** 11
+
+<!--Device-configPolicy-function getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback<Array<string>>): void--><!--Device-configPolicy-function getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.Customization.ConfigPolicy
 
@@ -77,6 +81,8 @@ Obtains a list of all files of a specified file name based on the provided follo
 
 **Since:** 11
 
+<!--Device-configPolicy-function getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback<Array<string>>): void--><!--Device-configPolicy-function getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Customization.ConfigPolicy
 
 **System API:** This is a system API.
@@ -108,6 +114,8 @@ function getCfgFiles(relPath: string): Promise<Array<string>>
 Obtains a list of all files with the specified names, in ascending order of priority. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-configPolicy-function getCfgFiles(relPath: string): Promise<Array<string>>--><!--Device-configPolicy-function getCfgFiles(relPath: string): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Customization.ConfigPolicy
 
@@ -143,6 +151,8 @@ function getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): 
 Obtains a list of all files of a specified file name based on the provided follow mode, in ascending order of priority. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-configPolicy-function getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): Promise<Array<string>>--><!--Device-configPolicy-function getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Customization.ConfigPolicy
 

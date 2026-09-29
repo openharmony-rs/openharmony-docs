@@ -20,6 +20,8 @@ Get the system data size.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-storageStatistics-function getSystemDataSize(): Promise<long>--><!--Device-storageStatistics-function getSystemDataSize(): Promise<long>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **System API:** This is a system API.

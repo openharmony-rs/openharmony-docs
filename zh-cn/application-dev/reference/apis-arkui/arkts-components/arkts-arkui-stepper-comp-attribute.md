@@ -8,13 +8,15 @@ declare class StepperAttribute extends CommonMethod<StepperAttribute>
 
 @extends CommonMethod&lt;StepperAttribute&gt;
 
-**继承/实现关系：** StepperAttribute extends CommonMethod&lt;StepperAttribute&gt;
+**继承/实现关系：** StepperAttribute extends CommonMethod<StepperAttribute>
 
 **起始版本：** 8
 
 **废弃版本：** 22
 
 **替代接口：** [SwiperAttribute](arkts-arkui-swiper-comp-attribute.md)
+
+<!--Device-unnamed-declare class StepperAttribute extends CommonMethod<StepperAttribute>--><!--Device-unnamed-declare class StepperAttribute extends CommonMethod<StepperAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +35,8 @@ Callback when the change label is clicked.
 **替代接口：** onChange
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-StepperAttribute-onChange(callback: (prevIndex: number, index: number) => void): StepperAttribute--><!--Device-StepperAttribute-onChange(callback: (prevIndex: number, index: number) => void): StepperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ Callback when the finish label is clicked.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-StepperAttribute-onFinish(callback: () => void): StepperAttribute--><!--Device-StepperAttribute-onFinish(callback: () => void): StepperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -81,6 +87,8 @@ Callback when the next label is clicked.
 **替代接口：** onChange
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-StepperAttribute-onNext(callback: (index: number, pendingIndex: number) => void): StepperAttribute--><!--Device-StepperAttribute-onNext(callback: (index: number, pendingIndex: number) => void): StepperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +114,8 @@ Callback when the previous label is clicked.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-StepperAttribute-onPrevious(callback: (index: number, pendingIndex: number) => void): StepperAttribute--><!--Device-StepperAttribute-onPrevious(callback: (index: number, pendingIndex: number) => void): StepperAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -129,6 +139,8 @@ Callback when the skip label is clicked.
 **替代接口：** onChange
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-StepperAttribute-onSkip(callback: () => void): StepperAttribute--><!--Device-StepperAttribute-onSkip(callback: () => void): StepperAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

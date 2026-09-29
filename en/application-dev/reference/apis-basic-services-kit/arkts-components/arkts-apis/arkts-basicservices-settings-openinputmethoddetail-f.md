@@ -18,6 +18,8 @@ Open the input method detail page.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-settings-function openInputMethodDetail(context: Context, bundleName: string, inputMethodId: string): void--><!--Device-settings-function openInputMethodDetail(context: Context, bundleName: string, inputMethodId: string): void-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**

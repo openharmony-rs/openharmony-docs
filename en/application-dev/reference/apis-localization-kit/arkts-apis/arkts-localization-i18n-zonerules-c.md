@@ -8,6 +8,8 @@ Queries the time zone transition rule.
 
 **Since:** 20
 
+<!--Device-i18n-export class ZoneRules--><!--Device-i18n-export class ZoneRules-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Obtains the **nextTransition** object for the specified time.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-ZoneRules-public nextTransition(date?: double): ZoneOffsetTransition--><!--Device-ZoneRules-public nextTransition(date?: double): ZoneOffsetTransition-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

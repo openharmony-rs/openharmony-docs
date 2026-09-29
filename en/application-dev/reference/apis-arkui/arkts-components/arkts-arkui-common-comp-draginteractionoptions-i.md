@@ -8,6 +8,8 @@ Interaction behavior for the floating preview image
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface DragInteractionOptions--><!--Device-unnamed-declare interface DragInteractionOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## defaultAnimationBeforeLifting
@@ -27,6 +29,8 @@ Default value: **false**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DragInteractionOptions-defaultAnimationBeforeLifting?: boolean--><!--Device-DragInteractionOptions-defaultAnimationBeforeLifting?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ Default value: **true**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-DragInteractionOptions-enableEdgeAutoScroll?: boolean--><!--Device-DragInteractionOptions-enableEdgeAutoScroll?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,6 +83,8 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-DragInteractionOptions-enableHapticFeedback?: boolean--><!--Device-DragInteractionOptions-enableHapticFeedback?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +114,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-DragInteractionOptions-isLiftingDisabled?: boolean--><!--Device-DragInteractionOptions-isLiftingDisabled?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isMultiSelectionEnabled
@@ -114,7 +124,7 @@ Default value: **false**
 isMultiSelectionEnabled?: boolean
 ```
 
-Whether to enable multi-select clustering during drag operations. **true** to enable, **false** otherwise. This parameter takes effect only for the [grid items](arkts-arkui-griditem-comp.md#griditem) and [list items](arkts-arkui-listitem-comp.md#list_item) in the [Grid](arkts-arkui-grid-comp.md#grid) and [List](arkts-arkui-list-comp.md#list) containers.
+Whether to enable multi-select clustering during drag operations. **true** to enable, **false** otherwise. This parameter takes effect only for the [grid items](arkts-arkui-griditem-comp.md) and [list items](arkts-arkui-listitem-comp.md) in the [Grid](arkts-arkui-grid-comp.md) and [List](arkts-arkui-list-comp.md) containers.
 
 When this feature is enabled, child components cannot be dragged individually. Preview priority: string in [dragPreview](arkts-arkui-common-comp-commonmethod-c.md#dragpreview) &gt; PixelMap in **dragPreview**  
 > component snapshot. Builder previews not supported.
@@ -130,5 +140,7 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DragInteractionOptions-isMultiSelectionEnabled?: boolean--><!--Device-DragInteractionOptions-isMultiSelectionEnabled?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

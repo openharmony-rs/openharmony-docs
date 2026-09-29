@@ -8,6 +8,8 @@ declare enum Placement
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare enum Placement--><!--Device-unnamed-declare enum Placement-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Left
@@ -23,6 +25,8 @@ Left
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Placement-Left--><!--Device-Placement-Left-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Right
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Placement-Right--><!--Device-Placement-Right-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Top
@@ -55,6 +61,8 @@ Top
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Placement-Top--><!--Device-Placement-Top-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ Bottom
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Placement-Bottom--><!--Device-Placement-Bottom-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TopLeft
@@ -87,6 +97,8 @@ TopLeft
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Placement-TopLeft--><!--Device-Placement-TopLeft-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +116,8 @@ TopRight
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Placement-TopRight--><!--Device-Placement-TopRight-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BottomLeft
@@ -119,6 +133,8 @@ BottomLeft
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Placement-BottomLeft--><!--Device-Placement-BottomLeft-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +152,8 @@ BottomRight
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Placement-BottomRight--><!--Device-Placement-BottomRight-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LeftTop
@@ -151,6 +169,8 @@ LeftTop
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Placement-LeftTop--><!--Device-Placement-LeftTop-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +188,8 @@ LeftBottom
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Placement-LeftBottom--><!--Device-Placement-LeftBottom-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RightTop
@@ -184,6 +206,8 @@ RightTop
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Placement-RightTop--><!--Device-Placement-RightTop-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RightBottom
@@ -199,5 +223,7 @@ RightBottom
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Placement-RightBottom--><!--Device-Placement-RightBottom-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

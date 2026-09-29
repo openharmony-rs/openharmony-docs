@@ -29,6 +29,8 @@ To obtain information about accessibility applications in the system, you are ad
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-accessibility-function on(type: 'accessibilityStateChange', callback: Callback<boolean>): void--><!--Device-accessibility-function on(type: 'accessibilityStateChange', callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**
@@ -98,6 +100,8 @@ To obtain information about accessibility applications in the system, you are ad
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-accessibility-function on(type: 'touchGuideStateChange', callback: Callback<boolean>): void--><!--Device-accessibility-function on(type: 'touchGuideStateChange', callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Vision
 
 **Parameters:**
@@ -165,6 +169,8 @@ Subscribes to the state changes of screen reader mode. This API uses an asynchro
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-accessibility-function on(type: 'screenReaderStateChange', callback: Callback<boolean>): void--><!--Device-accessibility-function on(type: 'screenReaderStateChange', callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**
@@ -228,6 +234,8 @@ Subscribes to the single-tap/double-tap operation mode change event in touch gui
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-accessibility-function on(type: 'touchModeChange', callback: Callback<string>): void--><!--Device-accessibility-function on(type: 'touchModeChange', callback: Callback<string>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

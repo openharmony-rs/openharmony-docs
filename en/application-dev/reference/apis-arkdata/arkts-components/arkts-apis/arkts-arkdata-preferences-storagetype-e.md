@@ -18,6 +18,8 @@ Enumerates the storage types of preferences.
 
 **Since:** 18
 
+<!--Device-preferences-enum StorageType--><!--Device-preferences-enum StorageType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 ## XML
@@ -32,7 +34,9 @@ In this mode, data is stored in XML format. Data operations are performed in the
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-StorageType-XML = 0--><!--Device-StorageType-XML = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -48,6 +52,8 @@ Data is stored in GSKV mode. Data operations are flushed on a real-time basis wi
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-StorageType-GSKV--><!--Device-StorageType-GSKV-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core

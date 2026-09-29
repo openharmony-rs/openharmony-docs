@@ -8,6 +8,8 @@ declare enum ContentType
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare enum ContentType--><!--Device-unnamed-declare enum ContentType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## USER_NAME
@@ -23,6 +25,8 @@ USER_NAME = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-USER_NAME = 0--><!--Device-ContentType-USER_NAME = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ PASSWORD = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-PASSWORD = 1--><!--Device-ContentType-PASSWORD = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NEW_PASSWORD
@@ -55,6 +61,8 @@ NEW_PASSWORD = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-NEW_PASSWORD = 2--><!--Device-ContentType-NEW_PASSWORD = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ FULL_STREET_ADDRESS = 3
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-FULL_STREET_ADDRESS = 3--><!--Device-ContentType-FULL_STREET_ADDRESS = 3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## HOUSE_NUMBER
@@ -87,6 +97,8 @@ HOUSE_NUMBER = 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-HOUSE_NUMBER = 4--><!--Device-ContentType-HOUSE_NUMBER = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +116,8 @@ DISTRICT_ADDRESS = 5
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-DISTRICT_ADDRESS = 5--><!--Device-ContentType-DISTRICT_ADDRESS = 5-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CITY_ADDRESS
@@ -119,6 +133,8 @@ CITY_ADDRESS = 6
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-CITY_ADDRESS = 6--><!--Device-ContentType-CITY_ADDRESS = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +152,8 @@ PROVINCE_ADDRESS = 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-PROVINCE_ADDRESS = 7--><!--Device-ContentType-PROVINCE_ADDRESS = 7-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## COUNTRY_ADDRESS
@@ -151,6 +169,8 @@ COUNTRY_ADDRESS = 8
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-COUNTRY_ADDRESS = 8--><!--Device-ContentType-COUNTRY_ADDRESS = 8-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +188,8 @@ PERSON_FULL_NAME = 9
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-PERSON_FULL_NAME = 9--><!--Device-ContentType-PERSON_FULL_NAME = 9-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PERSON_LAST_NAME
@@ -183,6 +205,8 @@ PERSON_LAST_NAME = 10
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-PERSON_LAST_NAME = 10--><!--Device-ContentType-PERSON_LAST_NAME = 10-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,6 +224,8 @@ PERSON_FIRST_NAME = 11
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-PERSON_FIRST_NAME = 11--><!--Device-ContentType-PERSON_FIRST_NAME = 11-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PHONE_NUMBER
@@ -215,6 +241,8 @@ PHONE_NUMBER = 12
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-PHONE_NUMBER = 12--><!--Device-ContentType-PHONE_NUMBER = 12-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,6 +260,8 @@ PHONE_COUNTRY_CODE = 13
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-PHONE_COUNTRY_CODE = 13--><!--Device-ContentType-PHONE_COUNTRY_CODE = 13-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FULL_PHONE_NUMBER
@@ -247,6 +277,8 @@ FULL_PHONE_NUMBER = 14
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-FULL_PHONE_NUMBER = 14--><!--Device-ContentType-FULL_PHONE_NUMBER = 14-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,6 +296,8 @@ EMAIL_ADDRESS = 15
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-EMAIL_ADDRESS = 15--><!--Device-ContentType-EMAIL_ADDRESS = 15-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BANK_CARD_NUMBER
@@ -279,6 +313,8 @@ BANK_CARD_NUMBER = 16
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-BANK_CARD_NUMBER = 16--><!--Device-ContentType-BANK_CARD_NUMBER = 16-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -296,6 +332,8 @@ ID_CARD_NUMBER = 17
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-ID_CARD_NUMBER = 17--><!--Device-ContentType-ID_CARD_NUMBER = 17-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NICKNAME
@@ -311,6 +349,8 @@ NICKNAME = 23
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-NICKNAME = 23--><!--Device-ContentType-NICKNAME = 23-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -328,6 +368,8 @@ DETAIL_INFO_WITHOUT_STREET = 24
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-DETAIL_INFO_WITHOUT_STREET = 24--><!--Device-ContentType-DETAIL_INFO_WITHOUT_STREET = 24-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FORMAT_ADDRESS
@@ -343,6 +385,8 @@ FORMAT_ADDRESS = 25
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-FORMAT_ADDRESS = 25--><!--Device-ContentType-FORMAT_ADDRESS = 25-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -360,6 +404,8 @@ PASSPORT_NUMBER = 26
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-PASSPORT_NUMBER = 26--><!--Device-ContentType-PASSPORT_NUMBER = 26-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## VALIDITY
@@ -375,6 +421,8 @@ VALIDITY = 27
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-VALIDITY = 27--><!--Device-ContentType-VALIDITY = 27-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,6 +440,8 @@ ISSUE_AT = 28
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-ISSUE_AT = 28--><!--Device-ContentType-ISSUE_AT = 28-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ORGANIZATION
@@ -407,6 +457,8 @@ ORGANIZATION = 29
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-ORGANIZATION = 29--><!--Device-ContentType-ORGANIZATION = 29-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -424,6 +476,8 @@ TAX_ID = 30
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-TAX_ID = 30--><!--Device-ContentType-TAX_ID = 30-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ADDRESS_CITY_AND_STATE
@@ -439,6 +493,8 @@ ADDRESS_CITY_AND_STATE = 31
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-ADDRESS_CITY_AND_STATE = 31--><!--Device-ContentType-ADDRESS_CITY_AND_STATE = 31-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -456,6 +512,8 @@ FLIGHT_NUMBER = 32
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-FLIGHT_NUMBER = 32--><!--Device-ContentType-FLIGHT_NUMBER = 32-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LICENSE_NUMBER
@@ -471,6 +529,8 @@ LICENSE_NUMBER = 33
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-LICENSE_NUMBER = 33--><!--Device-ContentType-LICENSE_NUMBER = 33-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -488,6 +548,8 @@ LICENSE_FILE_NUMBER = 34
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-LICENSE_FILE_NUMBER = 34--><!--Device-ContentType-LICENSE_FILE_NUMBER = 34-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LICENSE_PLATE
@@ -503,6 +565,8 @@ LICENSE_PLATE = 35
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-LICENSE_PLATE = 35--><!--Device-ContentType-LICENSE_PLATE = 35-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -520,6 +584,8 @@ ENGINE_NUMBER = 36
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContentType-ENGINE_NUMBER = 36--><!--Device-ContentType-ENGINE_NUMBER = 36-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LICENSE_CHASSIS_NUMBER
@@ -535,5 +601,7 @@ LICENSE_CHASSIS_NUMBER = 37
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContentType-LICENSE_CHASSIS_NUMBER = 37--><!--Device-ContentType-LICENSE_CHASSIS_NUMBER = 37-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

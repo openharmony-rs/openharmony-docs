@@ -27,6 +27,8 @@ Obtains the information of the widget that has been added to the home screen on 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-formProvider-function getPublishedFormInfoById(formId: string): Promise<formInfo.FormInfo>--><!--Device-formProvider-function getPublishedFormInfoById(formId: string): Promise<formInfo.FormInfo>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **Parameters:**

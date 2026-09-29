@@ -14,6 +14,8 @@ For details, see [Audio Session Management](../../../media/audio/audio-session-m
 
 **Since:** 20
 
+<!--Device-audio-enum AudioSessionStateChangeHint--><!--Device-audio-enum AudioSessionStateChangeHint-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## AUDIO_SESSION_STATE_CHANGE_HINT_RESUME
@@ -25,6 +27,8 @@ AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0
 A hint is displayed, indicating that the audio session is resuming. The application can proactively trigger operations such as rendering.
 
 **Since:** 20
+
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -38,6 +42,8 @@ A hint is displayed, indicating that the audio session is paused and the audio f
 
 **Since:** 20
 
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## AUDIO_SESSION_STATE_CHANGE_HINT_STOP
@@ -50,6 +56,8 @@ A hint is displayed, indicating that the audio session is stopped and the audio 
 
 **Since:** 20
 
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_STOP = 2--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_STOP = 2-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP
@@ -61,6 +69,8 @@ AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP = 3
 A hint is displayed, indicating that the audio session is stopped by the system due to no activity, and the audio focus is lost.
 
 **Since:** 20
+
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP = 3--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -76,6 +86,8 @@ If [enableMuteSuggestionWhenMixWithOthers](arkts-audio-audio-audiosessionmanager
 
 **Since:** 20
 
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK
@@ -89,6 +101,8 @@ A hint is displayed, indicating that audio ducking ends and the audio is played 
 If [enableMuteSuggestionWhenMixWithOthers](arkts-audio-audio-audiosessionmanager-i.md#enablemutesuggestionwhenmixwithothers) is enabled, you can unmute the audio.
 
 **Since:** 20
+
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -104,6 +118,8 @@ Suggests to mute the playback because there is another application begin to play
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION
@@ -117,6 +133,8 @@ Suggest to unmute the playback because another application's nonmixable audio en
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -132,6 +150,8 @@ The hint can be received only after the parameter [MUTE_WHEN_INTERRUPTED](arkts-
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE
@@ -145,5 +165,7 @@ The hint can be received only after the parameter [MUTE_WHEN_INTERRUPTED](arkts-
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

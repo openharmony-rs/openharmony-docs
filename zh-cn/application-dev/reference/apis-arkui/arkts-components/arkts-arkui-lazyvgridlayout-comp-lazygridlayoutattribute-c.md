@@ -8,9 +8,11 @@ declare class LazyGridLayoutAttribute<T> extends CommonMethod<T>
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** LazyGridLayoutAttribute extends CommonMethod&lt;T&gt;
+**继承/实现关系：** LazyGridLayoutAttribute extends CommonMethod<T>
 
 **起始版本：** 19
+
+<!--Device-unnamed-declare class LazyGridLayoutAttribute<T> extends CommonMethod<T>--><!--Device-unnamed-declare class LazyGridLayoutAttribute<T> extends CommonMethod<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ columnsGap(value: LengthMetrics): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-LazyGridLayoutAttribute-columnsGap(value: LengthMetrics): T--><!--Device-LazyGridLayoutAttribute-columnsGap(value: LengthMetrics): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +59,8 @@ footer(builder: CustomBuilder | undefined): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-LazyGridLayoutAttribute-footer(builder: CustomBuilder | undefined): T--><!--Device-LazyGridLayoutAttribute-footer(builder: CustomBuilder | undefined): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,6 +95,8 @@ header(builder: CustomBuilder | undefined): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-LazyGridLayoutAttribute-header(builder: CustomBuilder | undefined): T--><!--Device-LazyGridLayoutAttribute-header(builder: CustomBuilder | undefined): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,6 +134,8 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-LazyGridLayoutAttribute-onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T--><!--Device-LazyGridLayoutAttribute-onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -154,6 +164,8 @@ rowsGap(value: LengthMetrics): T
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-LazyGridLayoutAttribute-rowsGap(value: LengthMetrics): T--><!--Device-LazyGridLayoutAttribute-rowsGap(value: LengthMetrics): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -181,6 +193,8 @@ sticky(sticky: StickyStyle | undefined): T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-LazyGridLayoutAttribute-sticky(sticky: StickyStyle | undefined): T--><!--Device-LazyGridLayoutAttribute-sticky(sticky: StickyStyle | undefined): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

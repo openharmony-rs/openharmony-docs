@@ -18,6 +18,8 @@ Converts an ArkTS object or array into a JSON string. In the case of a container
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-json-function stringify(value: Object, replacer?: (number | string)[] | null, space?: string | number): string--><!--Device-json-function stringify(value: Object, replacer?: (number | string)[] | null, space?: string | number): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -48,6 +50,8 @@ Converts an ArkTS object or array into a JSON string. In the case of a container
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-json-function stringify(value: Object, replacer?: Transformer, space?: string | number): string--><!--Device-json-function stringify(value: Object, replacer?: Transformer, space?: string | number): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

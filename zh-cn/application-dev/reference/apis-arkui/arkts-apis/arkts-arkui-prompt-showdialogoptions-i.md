@@ -12,6 +12,8 @@ interface ShowDialogOptions
 
 **替代接口：** [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i.md)
 
+<!--Device-prompt-interface ShowDialogOptions--><!--Device-prompt-interface ShowDialogOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -38,6 +40,8 @@ buttons?: [Button, Button?, Button?]
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-ShowDialogOptions-buttons?: [Button, Button?, Button?]--><!--Device-ShowDialogOptions-buttons?: [Button, Button?, Button?]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## message
@@ -58,6 +62,8 @@ message?: string
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-ShowDialogOptions-message?: string--><!--Device-ShowDialogOptions-message?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -77,5 +83,7 @@ title?: string
 **替代接口：** [title](arkts-arkui-promptaction-showdialogoptions-i.md#title)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-ShowDialogOptions-title?: string--><!--Device-ShowDialogOptions-title?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

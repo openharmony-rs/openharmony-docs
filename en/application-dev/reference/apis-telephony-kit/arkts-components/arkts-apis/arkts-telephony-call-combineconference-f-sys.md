@@ -16,6 +16,8 @@ Combines two calls into a conference call. This API uses an asynchronous callbac
 
 **Since:** 11
 
+<!--Device-call-function combineConference(callId: int, callback: AsyncCallback<void>): void--><!--Device-call-function combineConference(callId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ function combineConference(callId: number): Promise<void>
 Combines two calls into a conference call. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-call-function combineConference(callId: int): Promise<void>--><!--Device-call-function combineConference(callId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

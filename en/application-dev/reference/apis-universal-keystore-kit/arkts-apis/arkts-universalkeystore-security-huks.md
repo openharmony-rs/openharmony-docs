@@ -8,6 +8,8 @@ The keys managed by OpenHarmony Universal KeyStore (HUKS) can be imported by app
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-unnamed-declare namespace huks--><!--Device-unnamed-declare namespace huks-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## Modules to Import

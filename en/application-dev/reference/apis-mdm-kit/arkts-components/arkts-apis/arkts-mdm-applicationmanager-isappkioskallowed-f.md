@@ -18,6 +18,8 @@ Checks whether an application is allowed to run in kiosk mode.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function isAppKioskAllowed(appIdentifier: string): boolean--><!--Device-applicationManager-function isAppKioskAllowed(appIdentifier: string): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

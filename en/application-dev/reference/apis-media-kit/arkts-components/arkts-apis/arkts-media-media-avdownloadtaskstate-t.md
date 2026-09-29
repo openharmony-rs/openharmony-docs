@@ -10,6 +10,8 @@ Enumerates the states of the download task.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-media-type AVDownloadTaskState = 'init' | 'queued' | 'running' | 'completed' | 'paused' | 'removing' | 'error'--><!--Device-media-type AVDownloadTaskState = 'init' | 'queued' | 'running' | 'completed' | 'paused' | 'removing' | 'error'-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 | Type | Description |

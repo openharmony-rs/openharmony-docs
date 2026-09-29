@@ -8,6 +8,8 @@ The maintenance of this interface has been stopped since version api 9. Please u
 
 **Since:** 9
 
+<!--Device-media-interface VideoRecorder--><!--Device-media-interface VideoRecorder-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ getInputSurface(callback: AsyncCallback<string>): void
 get input surface.it must be called between prepare completed and start.
 
 **Since:** 9
+
+<!--Device-VideoRecorder-getInputSurface(callback: AsyncCallback<string>): void--><!--Device-VideoRecorder-getInputSurface(callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -76,6 +80,8 @@ get input surface. it must be called between prepare completed and start.
 
 **Since:** 9
 
+<!--Device-VideoRecorder-getInputSurface(): Promise<string>--><!--Device-VideoRecorder-getInputSurface(): Promise<string>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -120,6 +126,8 @@ Listens for video recording error events.
 
 **Since:** 9
 
+<!--Device-VideoRecorder-on(type: 'error', callback: ErrorCallback): void--><!--Device-VideoRecorder-on(type: 'error', callback: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -160,6 +168,8 @@ pause(callback: AsyncCallback<void>): void
 Pauses video recording.
 
 **Since:** 9
+
+<!--Device-VideoRecorder-pause(callback: AsyncCallback<void>): void--><!--Device-VideoRecorder-pause(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -207,6 +217,8 @@ Pauses video recording.
 
 **Since:** 9
 
+<!--Device-VideoRecorder-pause(): Promise<void>--><!--Device-VideoRecorder-pause(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -250,6 +262,8 @@ Prepares for recording.
 **Since:** 9
 
 **Required permissions:** ohos.permission.MICROPHONE
+
+<!--Device-VideoRecorder-prepare(config: VideoRecorderConfig, callback: AsyncCallback<void>): void--><!--Device-VideoRecorder-prepare(config: VideoRecorderConfig, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -324,6 +338,8 @@ Prepares for recording.
 
 **Required permissions:** ohos.permission.MICROPHONE
 
+<!--Device-VideoRecorder-prepare(config: VideoRecorderConfig): Promise<void>--><!--Device-VideoRecorder-prepare(config: VideoRecorderConfig): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -396,6 +412,8 @@ Releases resources used for video recording.
 
 **Since:** 9
 
+<!--Device-VideoRecorder-release(callback: AsyncCallback<void>): void--><!--Device-VideoRecorder-release(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -440,6 +458,8 @@ Releases resources used for video recording.
 
 **Since:** 9
 
+<!--Device-VideoRecorder-release(): Promise<void>--><!--Device-VideoRecorder-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -479,6 +499,8 @@ reset(callback: AsyncCallback<void>): void
 Resets video recording. Before resetting video recording, you must call stop() to stop recording. After video recording is reset, you must call prepare() to set the recording configurations for another recording.
 
 **Since:** 9
+
+<!--Device-VideoRecorder-reset(callback: AsyncCallback<void>): void--><!--Device-VideoRecorder-reset(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -525,6 +547,8 @@ Resets video recording. Before resetting video recording, you must call stop() t
 
 **Since:** 9
 
+<!--Device-VideoRecorder-reset(): Promise<void>--><!--Device-VideoRecorder-reset(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -565,6 +589,8 @@ resume(callback: AsyncCallback<void>): void
 Resumes video recording.
 
 **Since:** 9
+
+<!--Device-VideoRecorder-resume(callback: AsyncCallback<void>): void--><!--Device-VideoRecorder-resume(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -612,6 +638,8 @@ Resumes video recording.
 
 **Since:** 9
 
+<!--Device-VideoRecorder-resume(): Promise<void>--><!--Device-VideoRecorder-resume(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -653,6 +681,8 @@ start(callback: AsyncCallback<void>): void
 Starts video recording.
 
 **Since:** 9
+
+<!--Device-VideoRecorder-start(callback: AsyncCallback<void>): void--><!--Device-VideoRecorder-start(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -700,6 +730,8 @@ Starts video recording.
 
 **Since:** 9
 
+<!--Device-VideoRecorder-start(): Promise<void>--><!--Device-VideoRecorder-start(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -741,6 +773,8 @@ stop(callback: AsyncCallback<void>): void
 Stops video recording.
 
 **Since:** 9
+
+<!--Device-VideoRecorder-stop(callback: AsyncCallback<void>): void--><!--Device-VideoRecorder-stop(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -788,6 +822,8 @@ Stops video recording.
 
 **Since:** 9
 
+<!--Device-VideoRecorder-stop(): Promise<void>--><!--Device-VideoRecorder-stop(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -831,6 +867,8 @@ video recorder state.
 **Type:** [VideoRecordState](arkts-media-media-videorecordstate-t-sys.md)
 
 **Since:** 9
+
+<!--Device-VideoRecorder-readonly state: VideoRecordState--><!--Device-VideoRecorder-readonly state: VideoRecordState-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 

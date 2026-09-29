@@ -8,6 +8,8 @@ Describes the value and reason returned upon a window rectangle (position and si
 
 **Since:** 12
 
+<!--Device-window-interface RectChangeOptions--><!--Device-window-interface RectChangeOptions-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Reason for the window rectangle change.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RectChangeOptions-reason: RectChangeReason--><!--Device-RectChangeOptions-reason: RectChangeReason-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -44,6 +48,8 @@ New value of the window rectangle.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-RectChangeOptions-rect: Rect--><!--Device-RectChangeOptions-rect: Rect-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

@@ -12,6 +12,8 @@ Describes the parameters required for bundle installation, recovery, or uninstal
 
 **Substitutes:** [InstallParam](arkts-ability-installer-installparam-i-sys.md)
 
+<!--Device-unnamed-export interface InstallParam--><!--Device-unnamed-export interface InstallParam-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -40,6 +42,8 @@ The value can be:
 
 **Substitutes:** [installFlag](arkts-ability-installer-installparam-i-sys.md#installflag)
 
+<!--Device-InstallParam-installFlag: number--><!--Device-InstallParam-installFlag: number-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -62,6 +66,8 @@ Whether to retain the bundle data when the application is uninstalled. The defau
 
 **Substitutes:** [isKeepData](arkts-ability-installer-installparam-i-sys.md#iskeepdata)
 
+<!--Device-InstallParam-isKeepData: boolean--><!--Device-InstallParam-isKeepData: boolean-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -83,6 +89,8 @@ User ID. The default value is the user ID of the caller.
 **Deprecated since:** 9
 
 **Substitutes:** [userId](arkts-ability-installer-installparam-i-sys.md#userid)
+
+<!--Device-InstallParam-userId: number--><!--Device-InstallParam-userId: number-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

@@ -18,6 +18,8 @@ Carries parameters to request a widget update. This API uses a promise to return
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Promise<void>--><!--Device-formHost-function requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

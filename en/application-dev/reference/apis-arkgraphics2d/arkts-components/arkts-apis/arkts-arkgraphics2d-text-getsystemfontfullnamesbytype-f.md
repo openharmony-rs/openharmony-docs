@@ -16,7 +16,9 @@ Obtains the full names of all fonts of the specified type. This API uses a promi
 
 **Since:** 14
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-text-function getSystemFontFullNamesByType(fontType: SystemFontType): Promise<Array<string>>--><!--Device-text-function getSystemFontFullNamesByType(fontType: SystemFontType): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

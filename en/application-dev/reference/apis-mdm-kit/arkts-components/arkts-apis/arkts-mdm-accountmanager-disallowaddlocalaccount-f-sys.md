@@ -24,6 +24,8 @@ Forbids the creation of local accounts on the device. This API uses an asynchron
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accountManager-function disallowAddLocalAccount(admin: Want, disallow: boolean, callback: AsyncCallback<void>): void--><!--Device-accountManager-function disallowAddLocalAccount(admin: Want, disallow: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -87,6 +89,8 @@ Forbids the creation of local accounts on the device. This API uses a promise to
 **Required permissions:** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-accountManager-function disallowAddLocalAccount(admin: Want, disallow: boolean): Promise<void>--><!--Device-accountManager-function disallowAddLocalAccount(admin: Want, disallow: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

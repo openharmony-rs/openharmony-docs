@@ -16,6 +16,8 @@ Obtains the total number of bytes occupied by the total free space (**fordblks**
 
 **Since:** 8
 
+<!--Device-hidebug-function getNativeHeapFreeSize() : bigint--><!--Device-hidebug-function getNativeHeapFreeSize() : bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value:**

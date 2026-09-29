@@ -8,6 +8,8 @@ declare class DatePickerDialog
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class DatePickerDialog--><!--Device-unnamed-declare class DatePickerDialog-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## show
@@ -32,6 +34,8 @@ static show(options?: DatePickerDialogOptions)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerDialog-static show(options?: DatePickerDialogOptions)--><!--Device-DatePickerDialog-static show(options?: DatePickerDialogOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

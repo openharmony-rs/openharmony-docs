@@ -26,6 +26,8 @@ Encapsulates the parameters for encryption or decryption using the ChaCha20-Poly
 
 **Since:** 22
 
+<!--Device-cryptoFramework-interface Poly1305ParamsSpec extends ParamsSpec--><!--Device-cryptoFramework-interface Poly1305ParamsSpec extends ParamsSpec-End-->
+
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
 ## Modules to Import
@@ -46,7 +48,9 @@ Additional authenticated data.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Poly1305ParamsSpec-aad: DataBlob--><!--Device-Poly1305ParamsSpec-aad: DataBlob-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -62,7 +66,9 @@ Authentication tag, which is of 16 bytes.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Poly1305ParamsSpec-authTag: DataBlob--><!--Device-Poly1305ParamsSpec-authTag: DataBlob-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -78,6 +84,8 @@ Nonce (passed as the **iv** field), which is of 12 bytes.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Poly1305ParamsSpec-iv: DataBlob--><!--Device-Poly1305ParamsSpec-iv: DataBlob-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher

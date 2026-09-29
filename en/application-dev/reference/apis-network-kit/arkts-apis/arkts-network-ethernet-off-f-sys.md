@@ -18,6 +18,8 @@ Unregisters the observer for NIC hot swap events. This API uses an asynchronous 
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-ethernet-function off(type: 'interfaceStateChange', callback?: Callback<InterfaceStateInfo>): void--><!--Device-ethernet-function off(type: 'interfaceStateChange', callback?: Callback<InterfaceStateInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 
 **System API:** This is a system API.

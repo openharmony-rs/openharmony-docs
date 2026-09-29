@@ -10,6 +10,8 @@ Describes the configuration parameters for raycasting, defining the behavior of 
 
 **Since:** 20
 
+<!--Device-unnamed-export interface RaycastParameters--><!--Device-unnamed-export interface RaycastParameters-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## rootNode
@@ -23,5 +25,7 @@ Limits the detection scope to this node and its child nodes. If this parameter i
 **Type:** [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 
 **Since:** 20
+
+<!--Device-RaycastParameters-rootNode?: Node--><!--Device-RaycastParameters-rootNode?: Node-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

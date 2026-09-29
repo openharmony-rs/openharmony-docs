@@ -8,6 +8,8 @@ Enumerate the album subtypes.
 
 **Since:** 10
 
+<!--Device-photoAccessHelper-enum AlbumSubtype--><!--Device-photoAccessHelper-enum AlbumSubtype-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## USER_GENERIC
@@ -19,6 +21,8 @@ USER_GENERIC = 1
 User album.
 
 **Since:** 10
+
+<!--Device-AlbumSubtype-USER_GENERIC = 1--><!--Device-AlbumSubtype-USER_GENERIC = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -32,17 +36,21 @@ Favorites.
 
 **Since:** 10
 
+<!--Device-AlbumSubtype-FAVORITE = 1025--><!--Device-AlbumSubtype-FAVORITE = 1025-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## VIDEO
 
 ```TypeScript
-VIDEO
+VIDEO = 1026
 ```
 
 Video album.
 
 **Since:** 10
+
+<!--Device-AlbumSubtype-VIDEO = 1026--><!--Device-AlbumSubtype-VIDEO = 1026-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -56,6 +64,8 @@ Photo album.
 
 **Since:** 12
 
+<!--Device-AlbumSubtype-IMAGE = 1031--><!--Device-AlbumSubtype-IMAGE = 1031-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## SOURCE_GENERIC
@@ -67,6 +77,8 @@ SOURCE_GENERIC = 2049
 Source album.
 
 **Since:** 23
+
+<!--Device-AlbumSubtype-SOURCE_GENERIC = 2049--><!--Device-AlbumSubtype-SOURCE_GENERIC = 2049-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -82,6 +94,8 @@ Source album from FileManager
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AlbumSubtype-SOURCE_GENERIC_FROM_FILE_MANAGER = 2050--><!--Device-AlbumSubtype-SOURCE_GENERIC_FROM_FILE_MANAGER = 2050-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## ANY
@@ -93,5 +107,7 @@ ANY = 2147483647
 Any album.
 
 **Since:** 10
+
+<!--Device-AlbumSubtype-ANY = 2147483647--><!--Device-AlbumSubtype-ANY = 2147483647-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

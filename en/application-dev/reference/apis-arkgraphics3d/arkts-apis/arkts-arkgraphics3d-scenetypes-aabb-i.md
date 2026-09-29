@@ -10,6 +10,8 @@ Axis aligned boundary box used to determine whether two objects in space are ove
 
 **Since:** 12
 
+<!--Device-unnamed-export interface Aabb--><!--Device-unnamed-export interface Aabb-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## aabbMax
@@ -24,6 +26,8 @@ Maximum point of the axis-aligned bounding box, in scene units of the world coor
 
 **Since:** 12
 
+<!--Device-Aabb-aabbMax: Vec3--><!--Device-Aabb-aabbMax: Vec3-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## aabbMin
@@ -37,5 +41,7 @@ Minimum point of the axis-aligned bounding box, in scene units of the world coor
 **Type:** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)
 
 **Since:** 12
+
+<!--Device-Aabb-aabbMin: Vec3--><!--Device-Aabb-aabbMin: Vec3-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

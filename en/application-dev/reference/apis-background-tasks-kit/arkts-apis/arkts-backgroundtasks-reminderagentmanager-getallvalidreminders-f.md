@@ -18,6 +18,8 @@ Obtains all [valid (not yet expired) reminders](../../../task-management/agent-p
 
 **Required permissions:** ohos.permission.PUBLISH_AGENT_REMINDER
 
+<!--Device-reminderAgentManager-function getAllValidReminders(): Promise<Array<ReminderInfo>>--><!--Device-reminderAgentManager-function getAllValidReminders(): Promise<Array<ReminderInfo>>-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **Return value:**

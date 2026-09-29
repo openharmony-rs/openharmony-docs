@@ -14,6 +14,8 @@ Manager pan profile.
 
 **Substitutes:** [PanProfile](arkts-connectivity-pan-panprofile-i.md)
 
+<!--Device-bluetoothManager-interface PanProfile extends BaseProfile--><!--Device-bluetoothManager-interface PanProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -39,6 +41,8 @@ Disconnect to device with pan. On API 10 and above, the permission required by t
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.USE_BLUETOOTH
+
+<!--Device-PanProfile-disconnect(device: string): void--><!--Device-PanProfile-disconnect(device: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -81,6 +85,8 @@ Obtains the tethering enable or disable. On API 10 and above, the permission req
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: N/A
 
+<!--Device-PanProfile-isTetheringOn(): boolean--><!--Device-PanProfile-isTetheringOn(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -115,6 +121,8 @@ Enable bluetooth tethering. On API 10 and above, the permission required by this
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 - API version 9: ohos.permission.DISCOVER_BLUETOOTH
+
+<!--Device-PanProfile-setTethering(enable: boolean): void--><!--Device-PanProfile-setTethering(enable: boolean): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

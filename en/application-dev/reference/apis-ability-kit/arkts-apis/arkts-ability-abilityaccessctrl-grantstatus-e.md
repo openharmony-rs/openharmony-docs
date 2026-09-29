@@ -8,6 +8,8 @@ Enumerates the permission grant states.
 
 **Since:** 8
 
+<!--Device-abilityAccessCtrl-export enum GrantStatus--><!--Device-abilityAccessCtrl-export enum GrantStatus-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 ## PERMISSION_DENIED
@@ -22,7 +24,9 @@ The permission is not granted.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-GrantStatus-PERMISSION_DENIED = -1--><!--Device-GrantStatus-PERMISSION_DENIED = -1-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -38,6 +42,8 @@ The permission is granted.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-GrantStatus-PERMISSION_GRANTED = 0--><!--Device-GrantStatus-PERMISSION_GRANTED = 0-End-->
 
 **System capability:** SystemCapability.Security.AccessToken

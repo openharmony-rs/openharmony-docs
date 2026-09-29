@@ -8,6 +8,8 @@ Provides text style settings.
 
 **Since:** 11
 
+<!--Device-unnamed-export interface PopupTextOptions--><!--Device-unnamed-export interface PopupTextOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Default value: **$r('sys.color.ohos_id_color_text_secondary')**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PopupTextOptions-fontColor?: ResourceColor--><!--Device-PopupTextOptions-fontColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontSize
@@ -42,13 +46,13 @@ Default value: **$r('sys.color.ohos_id_color_text_secondary')**
 fontSize?: number | string | Resource
 ```
 
-Text font size.
+Font size of the text.
 
-Default value: **$r('sys.float.ohos_id_text_size_body2')**
+Default value: `$r('sys.float.ohos_id_text_size_body2')`
 
-The string value must be convertible to a number (for example, **'10'**) or include a length unit (for example, **'10px'**); percentage-based strings are not supported.
+For the string type, the value can be a string that can be converted to a number (such as '10') or a string with a length unit (such as '10px'). Setting a percentage string is not supported.
 
-Value range of number values: (0, +∞)
+For the number type, the value range is (0, +∞). When the type is number, the unit is fp.
 
 **Type:** number &#124; string &#124; [Resource](arkts-arkui-resource-t.md)
 
@@ -57,6 +61,8 @@ Value range of number values: (0, +∞)
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PopupTextOptions-fontSize?: number | string | Resource--><!--Device-PopupTextOptions-fontSize?: number | string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ Default value: **FontWeight.Regular**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PopupTextOptions-fontWeight?: number | FontWeight | string--><!--Device-PopupTextOptions-fontWeight?: number | FontWeight | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -99,5 +107,7 @@ Text content.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PopupTextOptions-text: ResourceStr--><!--Device-PopupTextOptions-text: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

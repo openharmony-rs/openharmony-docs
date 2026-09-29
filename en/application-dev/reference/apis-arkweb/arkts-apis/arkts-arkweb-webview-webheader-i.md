@@ -10,6 +10,8 @@ Describes the request/response header returned by the **Web** component.
 
 **Since:** 9
 
+<!--Device-webview-interface WebHeader--><!--Device-webview-interface WebHeader-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Key of the request/response header.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebHeader-headerKey: string--><!--Device-WebHeader-headerKey: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## headerValue
@@ -47,5 +51,7 @@ Value of the request/response header.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebHeader-headerValue: string--><!--Device-WebHeader-headerValue: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

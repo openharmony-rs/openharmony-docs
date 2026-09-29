@@ -8,6 +8,8 @@ Defines the options for initializing a **SubHeaderV2OperationItem** object.
 
 **Since:** 18
 
+<!--Device-unnamed-export interface SubHeaderV2OperationItemOptions--><!--Device-unnamed-export interface SubHeaderV2OperationItemOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Event triggered when the item is operated. Default value: **() =&gt; void**.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2OperationItemOptions-action?: SubHeaderV2OperationItemAction--><!--Device-SubHeaderV2OperationItemOptions-action?: SubHeaderV2OperationItemAction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -49,6 +53,8 @@ Default value: **"Double-tap to activate"**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2OperationItemOptions-accessibilityDescription?: ResourceStr--><!--Device-SubHeaderV2OperationItemOptions-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ Default value: **"yes"**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2OperationItemOptions-accessibilityLevel?: string--><!--Device-SubHeaderV2OperationItemOptions-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -102,6 +110,8 @@ Default value: **undefined**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2OperationItemOptions-accessibilityText?: ResourceStr--><!--Device-SubHeaderV2OperationItemOptions-accessibilityText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
@@ -119,6 +129,8 @@ Content of the item in the operation area.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2OperationItemOptions-content: SubHeaderV2OperationItemType--><!--Device-SubHeaderV2OperationItemOptions-content: SubHeaderV2OperationItemType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,6 +158,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2OperationItemOptions-defaultFocus?: boolean--><!--Device-SubHeaderV2OperationItemOptions-defaultFocus?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -163,5 +177,7 @@ Set the id for SubHeaderV2OperationItem.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-SubHeaderV2OperationItemOptions-id?: string--><!--Device-SubHeaderV2OperationItemOptions-id?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

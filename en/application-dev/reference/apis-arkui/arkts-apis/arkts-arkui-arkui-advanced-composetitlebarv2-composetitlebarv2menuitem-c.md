@@ -10,6 +10,8 @@ Declaration of the menu item on the right side.
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export declare class ComposeTitleBarV2MenuItem--><!--Device-unnamed-export declare class ComposeTitleBarV2MenuItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Callback function when click on this menu item.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ComposeTitleBarV2MenuItem-action?: OnActionCallback--><!--Device-ComposeTitleBarV2MenuItem-action?: OnActionCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -49,6 +53,8 @@ Constructor of ComposeTitleBarV2MenuItem.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ComposeTitleBarV2MenuItem-constructor(params?: ComposeTitleBarV2MenuItemParams)--><!--Device-ComposeTitleBarV2MenuItem-constructor(params?: ComposeTitleBarV2MenuItemParams)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +82,8 @@ The accessibilityDescription of this menu item.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ComposeTitleBarV2MenuItem-accessibilityDescription?: ResourceStr--><!--Device-ComposeTitleBarV2MenuItem-accessibilityDescription?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityLevel
@@ -98,6 +106,8 @@ The accessibilityLevel of this menu item.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ComposeTitleBarV2MenuItem-accessibilityLevel?: string--><!--Device-ComposeTitleBarV2MenuItem-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -117,6 +127,8 @@ The accessibilityText of this menu item.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ComposeTitleBarV2MenuItem-accessibilityText?: ResourceStr--><!--Device-ComposeTitleBarV2MenuItem-accessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,6 +150,8 @@ Whether to enable this menu item.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ComposeTitleBarV2MenuItem-isEnabled?: boolean--><!--Device-ComposeTitleBarV2MenuItem-isEnabled?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## label
@@ -157,6 +171,8 @@ Icon label for this menu item.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ComposeTitleBarV2MenuItem-label?: ResourceStr--><!--Device-ComposeTitleBarV2MenuItem-label?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,6 +194,8 @@ Symbol icon resource for this menu item, which has higher priority than value.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ComposeTitleBarV2MenuItem-symbolStyle?: SymbolGlyphModifier--><!--Device-ComposeTitleBarV2MenuItem-symbolStyle?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -197,5 +215,7 @@ Icon resource for this menu item.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ComposeTitleBarV2MenuItem-value: ResourceStr--><!--Device-ComposeTitleBarV2MenuItem-value: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Enumerates the selection modes.
 
 **Since:** 12
 
+<!--Device-unnamed-export declare enum SelectMode--><!--Device-unnamed-export declare enum SelectMode-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## SINGLE_SELECT
@@ -22,6 +24,8 @@ Select a single option.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SelectMode-SINGLE_SELECT = 0--><!--Device-SelectMode-SINGLE_SELECT = 0-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## MULTI_SELECT
@@ -35,5 +39,7 @@ Select multiple options.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SelectMode-MULTI_SELECT = 1--><!--Device-SelectMode-MULTI_SELECT = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

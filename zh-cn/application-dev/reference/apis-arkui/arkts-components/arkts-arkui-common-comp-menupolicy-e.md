@@ -8,6 +8,8 @@ declare enum MenuPolicy
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare enum MenuPolicy--><!--Device-unnamed-declare enum MenuPolicy-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -23,6 +25,8 @@ DEFAULT = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuPolicy-DEFAULT = 0--><!--Device-MenuPolicy-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ HIDE = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-MenuPolicy-HIDE = 1--><!--Device-MenuPolicy-HIDE = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SHOW
@@ -55,5 +61,7 @@ SHOW = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuPolicy-SHOW = 2--><!--Device-MenuPolicy-SHOW = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

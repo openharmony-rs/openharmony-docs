@@ -22,6 +22,8 @@ Provides the capability to draw overlays.
 
 **Since:** 12
 
+<!--Device-unnamed-export class OverlayManager--><!--Device-unnamed-export class OverlayManager-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -46,6 +48,8 @@ Adds a specified **ComponentContent** node to the **OverlayManager**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OverlayManager-addComponentContent(content: ComponentContent, index?: number): void--><!--Device-OverlayManager-addComponentContent(content: ComponentContent, index?: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,6 +170,8 @@ This API allows you to define the stacking order of the nodes when they are crea
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-OverlayManager-addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder): void--><!--Device-OverlayManager-addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -270,6 +276,8 @@ Hides all **ComponentContent** nodes on the **OverlayManager**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OverlayManager-hideAllComponentContents(): void--><!--Device-OverlayManager-hideAllComponentContents(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Examples**
@@ -289,6 +297,8 @@ Hides a specified **ComponentContent** node on the **OverlayManager**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OverlayManager-hideComponentContent(content: ComponentContent): void--><!--Device-OverlayManager-hideComponentContent(content: ComponentContent): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -315,6 +325,8 @@ Opens an overlay with the specified ComponentContent and options.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-OverlayManager-openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Promise<void>--><!--Device-OverlayManager-openOrderOverlay(content: ComponentContent, options?: OrderOverlayOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -351,6 +363,8 @@ Removes a specified node from the **OverlayManager**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OverlayManager-removeComponentContent(content: ComponentContent): void--><!--Device-OverlayManager-removeComponentContent(content: ComponentContent): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -377,6 +391,8 @@ Shows all **ComponentContent** nodes on the **OverlayManager**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OverlayManager-showAllComponentContents(): void--><!--Device-OverlayManager-showAllComponentContents(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Examples**
@@ -396,6 +412,8 @@ Shows a specified **ComponentContent** node on the **OverlayManager**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OverlayManager-showComponentContent(content: ComponentContent): void--><!--Device-OverlayManager-showComponentContent(content: ComponentContent): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

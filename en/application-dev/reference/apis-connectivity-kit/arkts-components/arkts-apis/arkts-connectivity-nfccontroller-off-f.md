@@ -18,6 +18,8 @@ Unsubscribes from the NFC state changes. Upon successful unsubscription, the sub
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-nfcController-function off(type: "nfcStateChange", callback?: Callback<NfcState>): void--><!--Device-nfcController-function off(type: "nfcStateChange", callback?: Callback<NfcState>): void-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Core
 
 **Parameters:**

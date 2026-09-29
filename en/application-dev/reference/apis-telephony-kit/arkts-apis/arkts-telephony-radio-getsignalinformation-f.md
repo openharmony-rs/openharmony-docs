@@ -16,6 +16,8 @@ Obtains a list of signal strengths of the network with which the SIM card in the
 
 **Since:** 7
 
+<!--Device-radio-function getSignalInformation(slotId: int, callback: AsyncCallback<Array<SignalInformation>>): void--><!--Device-radio-function getSignalInformation(slotId: int, callback: AsyncCallback<Array<SignalInformation>>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -62,6 +64,8 @@ function getSignalInformation(slotId: number): Promise<Array<SignalInformation>>
 Obtains a list of signal strengths of the network with which the SIM card in the specified slot is registered. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-radio-function getSignalInformation(slotId: int): Promise<Array<SignalInformation>>--><!--Device-radio-function getSignalInformation(slotId: int): Promise<Array<SignalInformation>>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

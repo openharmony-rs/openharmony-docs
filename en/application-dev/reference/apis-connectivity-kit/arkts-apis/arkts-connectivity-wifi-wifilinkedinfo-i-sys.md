@@ -14,6 +14,8 @@ Wi-Fi connection information.
 
 **Substitutes:** [WifiLinkedInfo](arkts-connectivity-wifimanager-wifilinkedinfo-i.md)
 
+<!--Device-wifi-interface WifiLinkedInfo--><!--Device-wifi-interface WifiLinkedInfo-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## Modules to Import
@@ -38,6 +40,8 @@ The load value of this Wi-Fi connection. A greater value indicates a higher load
 
 **Substitutes:** [chload](arkts-connectivity-wifimanager-wifilinkedinfo-i-sys.md#chload)
 
+<!--Device-WifiLinkedInfo-chload: number--><!--Device-WifiLinkedInfo-chload: number-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -57,6 +61,8 @@ The ID(uniquely identifies) of a Wi-Fi connection.
 **Deprecated since:** 9
 
 **Substitutes:** [networkId](arkts-connectivity-wifimanager-wifilinkedinfo-i-sys.md#networkid)
+
+<!--Device-WifiLinkedInfo-networkId: number--><!--Device-WifiLinkedInfo-networkId: number-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -78,6 +84,8 @@ The signal-to-noise ratio (SNR) of this Wi-Fi connection.
 
 **Substitutes:** [snr](arkts-connectivity-wifimanager-wifilinkedinfo-i-sys.md#snr)
 
+<!--Device-WifiLinkedInfo-snr: number--><!--Device-WifiLinkedInfo-snr: number-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -97,6 +105,8 @@ The state of the supplicant of this Wi-Fi connection.
 **Deprecated since:** 9
 
 **Substitutes:** [suppState](arkts-connectivity-wifimanager-wifilinkedinfo-i-sys.md#suppstate)
+
+<!--Device-WifiLinkedInfo-suppState: SuppState--><!--Device-WifiLinkedInfo-suppState: SuppState-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

@@ -8,6 +8,8 @@ External volume information.
 
 **Since:** 26.0.1
 
+<!--Device-volumeManager-export interface ExternalVolumeInfo--><!--Device-volumeManager-export interface ExternalVolumeInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Description of the volume. Formatting the volume changes its description, such a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExternalVolumeInfo-description: string--><!--Device-ExternalVolumeInfo-description: string-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 ## diskId
@@ -45,6 +49,8 @@ ID of the disk to which the volume belongs. A disk can have one or more volumes.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExternalVolumeInfo-diskId: string--><!--Device-ExternalVolumeInfo-diskId: string-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
@@ -62,6 +68,8 @@ Available size of the volume. Unit: Byte.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExternalVolumeInfo-freeSize: long--><!--Device-ExternalVolumeInfo-freeSize: long-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 ## fsType
@@ -77,6 +85,8 @@ File system type. Common file systems are **fat32**, **ntfs**, **exfat**, **ext4
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExternalVolumeInfo-fsType: string--><!--Device-ExternalVolumeInfo-fsType: string-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
@@ -94,6 +104,8 @@ Path of the volume mounted. Generally, the path is **\/mnt/data/external/{uuid}*
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExternalVolumeInfo-path: string--><!--Device-ExternalVolumeInfo-path: string-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 ## state
@@ -109,6 +121,8 @@ Volume status. **0**: The volume is unmounted. **1**: The volume is being checke
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExternalVolumeInfo-state: int--><!--Device-ExternalVolumeInfo-state: int-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
@@ -126,6 +140,8 @@ Total size of the volume. Unit: Byte.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExternalVolumeInfo-totalSize: long--><!--Device-ExternalVolumeInfo-totalSize: long-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 ## uuid
@@ -142,6 +158,8 @@ Volume UUID, which uniquely identifies a volume irrespective of the card inserti
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExternalVolumeInfo-uuid: string--><!--Device-ExternalVolumeInfo-uuid: string-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 ## volumeId
@@ -157,5 +175,7 @@ Volume ID, in the vol-{Primary device ID}-{Secondary device ID} format, such as 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExternalVolumeInfo-volumeId: string--><!--Device-ExternalVolumeInfo-volumeId: string-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume

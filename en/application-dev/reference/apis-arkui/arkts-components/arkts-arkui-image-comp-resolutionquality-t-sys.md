@@ -4,11 +4,13 @@
 declare type ResolutionQuality = import('../api/@ohos.multimedia.image').default.ResolutionQuality
 ```
 
-Enumerates all the levels available for the image resolution quality.
+Sets a resolution quality level.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-unnamed-declare type ResolutionQuality = import('../api/@ohos.multimedia.image').default.ResolutionQuality--><!--Device-unnamed-declare type ResolutionQuality = import('../api/@ohos.multimedia.image').default.ResolutionQuality-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

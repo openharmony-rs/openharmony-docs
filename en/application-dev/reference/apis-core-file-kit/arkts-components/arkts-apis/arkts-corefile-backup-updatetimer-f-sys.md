@@ -18,6 +18,8 @@ Update backup or restore timeout.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-backup-function updateTimer(bundleName: string, timeout: int): boolean--><!--Device-backup-function updateTimer(bundleName: string, timeout: int): boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.

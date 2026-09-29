@@ -12,6 +12,8 @@ The &lt;dialog&gt; component is a custom pop-up container.
 
 **Since:** 4
 
+<!--Device-unnamed-export interface DialogElement extends Element--><!--Device-unnamed-export interface DialogElement extends Element-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## close
@@ -26,6 +28,8 @@ Closes a dialog box.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-DialogElement-close(): void--><!--Device-DialogElement-close(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## show
@@ -39,5 +43,7 @@ Shows a dialog box.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-DialogElement-show(): void--><!--Device-DialogElement-show(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

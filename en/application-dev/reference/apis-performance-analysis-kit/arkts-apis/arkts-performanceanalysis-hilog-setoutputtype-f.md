@@ -18,7 +18,9 @@ Sets the output type of hilog.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-hilog-function setOutputType(type: OutputType): OutputType--><!--Device-hilog-function setOutputType(type: OutputType): OutputType-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiLog
 

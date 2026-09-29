@@ -8,6 +8,8 @@ Defines the parameters of the **Canvas** component.
 
 **Since:** 23
 
+<!--Device-unnamed-declare interface CanvasParams--><!--Device-unnamed-declare interface CanvasParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageAIOptions
@@ -26,6 +28,8 @@ AI analysis option for the component. Through this option, you can configure the
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-CanvasParams-imageAIOptions?: ImageAIOptions--><!--Device-CanvasParams-imageAIOptions?: ImageAIOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## unit
@@ -43,5 +47,7 @@ Unit mode used for **Canvas** drawing. Different unit modes affect the coordinat
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-CanvasParams-unit?: LengthMetricsUnit--><!--Device-CanvasParams-unit?: LengthMetricsUnit-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

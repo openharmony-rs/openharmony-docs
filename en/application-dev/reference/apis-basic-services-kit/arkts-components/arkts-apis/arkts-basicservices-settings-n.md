@@ -10,6 +10,8 @@ This module provides settings data access abilities.
 
 **Since:** 18
 
+<!--Device-unnamed-declare namespace settings--><!--Device-unnamed-declare namespace settings-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## Modules to Import

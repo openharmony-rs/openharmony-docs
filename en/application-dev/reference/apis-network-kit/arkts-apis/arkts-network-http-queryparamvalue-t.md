@@ -10,6 +10,8 @@ Defines the single-value type that can be used in **QueryParamObject**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-http-export type QueryParamValue = string | int | boolean | null | undefined--><!--Device-http-export type QueryParamValue = string | int | boolean | null | undefined-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 | Type | Description |

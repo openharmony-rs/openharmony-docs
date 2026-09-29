@@ -8,6 +8,8 @@ Represents the upgrade file, including the file type and file path, which are us
 
 **Since:** 9
 
+<!--Device-update-export interface UpgradeFile--><!--Device-update-export interface UpgradeFile-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ File path, which can be an absolute path or a relative path. The path length ran
 
 **Since:** 9
 
+<!--Device-UpgradeFile-filePath: string--><!--Device-UpgradeFile-filePath: string-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ File type, which specifies the type of the upgrade package. If this parameter is
 **Type:** [ComponentType](arkts-basicservices-update-componenttype-e-sys.md)
 
 **Since:** 9
+
+<!--Device-UpgradeFile-fileType: ComponentType--><!--Device-UpgradeFile-fileType: ComponentType-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

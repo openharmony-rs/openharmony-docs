@@ -12,6 +12,8 @@ export type CornerRadius = Corners<Vector2>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export type CornerRadius = Corners<Vector2>--><!--Device-unnamed-export type CornerRadius = Corners<Vector2>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** [Corners](arkts-arkui-graphics-corners-i.md)&lt;[Vector2](arkts-arkui-graphics-vector2-i.md)&gt;

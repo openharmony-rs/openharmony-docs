@@ -16,6 +16,8 @@ Writes event information to the event file. This API uses a promise to return th
 
 **Since:** 9
 
+<!--Device-hiSysEvent-function write(info: SysEventInfo): Promise<void>--><!--Device-hiSysEvent-function write(info: SysEventInfo): Promise<void>-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.
@@ -92,6 +94,8 @@ function write(info: SysEventInfo, callback: AsyncCallback<void>): void
 Writes event information to the event file. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-hiSysEvent-function write(info: SysEventInfo, callback: AsyncCallback<void>): void--><!--Device-hiSysEvent-function write(info: SysEventInfo, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 

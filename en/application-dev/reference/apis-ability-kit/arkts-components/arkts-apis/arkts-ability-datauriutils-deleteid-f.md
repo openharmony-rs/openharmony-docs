@@ -16,6 +16,8 @@ Deletes the ID from the end of a given URI.
 
 **Since:** 9
 
+<!--Device-dataUriUtils-function deleteId(uri: string): string--><!--Device-dataUriUtils-function deleteId(uri: string): string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

@@ -8,6 +8,8 @@ Defines the information about the transient task.
 
 **Since:** 9
 
+<!--Device-backgroundTaskManager-interface DelaySuspendInfo--><!--Device-backgroundTaskManager-interface DelaySuspendInfo-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Note: The maximum duration of a transient task is 3 minutes in normal cases. In 
 
 **Since:** 9
 
+<!--Device-DelaySuspendInfo-actualDelayTime: int--><!--Device-DelaySuspendInfo-actualDelayTime: int-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 ## requestId
@@ -43,5 +47,7 @@ Request ID of the transient task.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-DelaySuspendInfo-requestId: int--><!--Device-DelaySuspendInfo-requestId: int-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask

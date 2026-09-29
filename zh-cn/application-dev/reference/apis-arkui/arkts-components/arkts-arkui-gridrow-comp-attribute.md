@@ -8,9 +8,11 @@ declare class GridRowAttribute extends CommonMethod<GridRowAttribute>
 
 除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件：
 
-**继承/实现关系：** GridRowAttribute extends CommonMethod&lt;GridRowAttribute&gt;
+**继承/实现关系：** GridRowAttribute extends CommonMethod<GridRowAttribute>
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare class GridRowAttribute extends CommonMethod<GridRowAttribute>--><!--Device-unnamed-declare class GridRowAttribute extends CommonMethod<GridRowAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,6 +32,8 @@ alignItems(value: ItemAlign)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GridRowAttribute-alignItems(value: ItemAlign): GridRowAttribute--><!--Device-GridRowAttribute-alignItems(value: ItemAlign): GridRowAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -48,13 +52,15 @@ onBreakpointChange(callback: (breakpoints: string) => void)
 
 > **说明：** 
 > 
-> - 当断点参照物设置为BreakpointsReference.ComponentSize时，不要在onBreakpointChange回调中动态修改GridRow组件的[padding](arkts-arkui-common-comp-commonmethod-c.md#padding)或[margin](arkts-arkui-common-comp-commonmethod-c.md#margin)属性值，否则可能导致组件尺寸计算循环触发、布局抖动或渲染性能下降。
+> - 当[断点参照物](../../../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpointsreference枚举说明)设置为BreakpointsReference.ComponentSize时，不要在onBreakpointChange回调中动态修改GridRow组件的[padding](arkts-arkui-common-comp-commonmethod-c.md#padding)或[margin](arkts-arkui-common-comp-commonmethod-c.md#margin)属性值，否则可能导致组件尺寸计算循环触发、布局抖动或渲染性能下降。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GridRowAttribute-onBreakpointChange(callback: (breakpoints: string) => void): GridRowAttribute--><!--Device-GridRowAttribute-onBreakpointChange(callback: (breakpoints: string) => void): GridRowAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -18,6 +18,8 @@ Get scan always allowed flag.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG
 
+<!--Device-wifiManager-function getScanAlwaysAllowed(): boolean--><!--Device-wifiManager-function getScanAlwaysAllowed(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

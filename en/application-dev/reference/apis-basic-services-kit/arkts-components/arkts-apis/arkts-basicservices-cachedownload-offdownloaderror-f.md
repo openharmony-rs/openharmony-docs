@@ -16,6 +16,8 @@ Unsubscribes from the pre-download error events. This API uses an asynchronous c
 
 **Since:** 23
 
+<!--Device-cacheDownload-function offDownloadError(url: string, callback?: Callback<DownloadError>): void--><!--Device-cacheDownload-function offDownloadError(url: string, callback?: Callback<DownloadError>): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

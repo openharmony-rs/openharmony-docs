@@ -4,9 +4,9 @@
 declare class ForEachAttribute extends DynamicNode<ForEachAttribute>
 ```
 
-支持拖拽排序属性。
+支持[拖拽排序](arkts-arkui-common-comp.md)属性。
 
-**继承/实现关系：** ForEachAttribute extends DynamicNode&lt;ForEachAttribute&gt;
+**继承/实现关系：** ForEachAttribute extends DynamicNode<ForEachAttribute>
 
 **起始版本：** 12
 
@@ -15,5 +15,7 @@ declare class ForEachAttribute extends DynamicNode<ForEachAttribute>
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-unnamed-declare class ForEachAttribute extends DynamicNode<ForEachAttribute>--><!--Device-unnamed-declare class ForEachAttribute extends DynamicNode<ForEachAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

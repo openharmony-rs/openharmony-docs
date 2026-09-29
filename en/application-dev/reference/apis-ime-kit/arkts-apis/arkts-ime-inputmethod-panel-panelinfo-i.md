@@ -8,6 +8,8 @@ Defines the attributes of the input method panel.
 
 **Since:** 11
 
+<!--Device-unnamed-export interface PanelInfo--><!--Device-unnamed-export interface PanelInfo-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -30,6 +32,8 @@ State type of the input method panel. <br> <br>- The default value is **FLAG_FIX
 
 **Since:** 11
 
+<!--Device-PanelInfo-flag?: PanelFlag--><!--Device-PanelInfo-flag?: PanelFlag-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## type
@@ -43,5 +47,7 @@ Type of the input method panel.
 **Type:** [PanelType](arkts-ime-inputmethod-panel-paneltype-e.md)
 
 **Since:** 11
+
+<!--Device-PanelInfo-type: PanelType--><!--Device-PanelInfo-type: PanelType-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

@@ -10,6 +10,8 @@ Represent the asset (such as a document, image, or video). **Asset** inherits fr
 
 **Since:** 12
 
+<!--Device-sendableRelationalStore-interface Asset extends lang.ISendable--><!--Device-sendableRelationalStore-interface Asset extends lang.ISendable-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Time when the asset was created.
 
 **Since:** 12
 
+<!--Device-Asset-createTime: string--><!--Device-Asset-createTime: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## modifyTime
@@ -43,6 +47,8 @@ Time when the asset was last modified.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-Asset-modifyTime: string--><!--Device-Asset-modifyTime: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -58,6 +64,8 @@ Asset name.
 
 **Since:** 12
 
+<!--Device-Asset-name: string--><!--Device-Asset-name: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## path
@@ -71,6 +79,8 @@ Application sandbox path of the asset.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-Asset-path: string--><!--Device-Asset-path: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -86,6 +96,8 @@ Size of the asset.
 
 **Since:** 12
 
+<!--Device-Asset-size: string--><!--Device-Asset-size: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## status
@@ -100,6 +112,8 @@ Asset status. For details, see [relationalStore.AssetStatus](arkts-arkdata-relat
 
 **Since:** 12
 
+<!--Device-Asset-status?: number--><!--Device-Asset-status?: number-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## uri
@@ -113,5 +127,7 @@ Asset URI, which is an absolute path in the system.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-Asset-uri: string--><!--Device-Asset-uri: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

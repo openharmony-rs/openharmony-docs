@@ -10,6 +10,8 @@ export declare class OperateButtonV2
 
 **装饰器类型：** @ObservedV2
 
+<!--Device-unnamed-export declare class OperateButtonV2--><!--Device-unnamed-export declare class OperateButtonV2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,6 +33,8 @@ OperateButtonV2的构造函数。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateButtonV2-constructor(options?: OperateButtonV2Options)--><!--Device-OperateButtonV2-constructor(options?: OperateButtonV2Options)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,6 +63,8 @@ public accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateButtonV2-public accessibilityDescription?: ResourceStr--><!--Device-OperateButtonV2-public accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +100,8 @@ public accessibilityLevel?: string
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateButtonV2-public accessibilityLevel?: string--><!--Device-OperateButtonV2-public accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -116,6 +124,8 @@ public accessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateButtonV2-public accessibilityText?: ResourceStr--><!--Device-OperateButtonV2-public accessibilityText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -137,5 +147,7 @@ public text?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateButtonV2-public text?: ResourceStr--><!--Device-OperateButtonV2-public text?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Enumerates the color modes.
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum ThemeColorMode--><!--Device-unnamed-declare enum ThemeColorMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SYSTEM
@@ -23,6 +25,8 @@ System color mode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ThemeColorMode-SYSTEM = 0--><!--Device-ThemeColorMode-SYSTEM = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Light color mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ThemeColorMode-LIGHT = 1--><!--Device-ThemeColorMode-LIGHT = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DARK
@@ -55,5 +61,7 @@ Dark color mode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ThemeColorMode-DARK = 2--><!--Device-ThemeColorMode-DARK = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -16,6 +16,8 @@ Obtains information about the running processes by bundle name. This API uses an
 
 **Since:** 10
 
+<!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback<Array<ProcessInformation>>): void--><!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback<Array<ProcessInformation>>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -71,6 +73,8 @@ function getRunningProcessInfoByBundleName(bundleName: string, userId: number, c
 Obtains information about the running processes by bundle name and user ID. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string, userId: int, callback: AsyncCallback<Array<ProcessInformation>>): void--><!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string, userId: int, callback: AsyncCallback<Array<ProcessInformation>>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -130,6 +134,8 @@ Obtains information about the running processes by bundle name. This API uses a 
 
 **Since:** 10
 
+<!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string): Promise<Array<ProcessInformation>>--><!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string): Promise<Array<ProcessInformation>>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -187,6 +193,8 @@ function getRunningProcessInfoByBundleName(bundleName: string, userId: number): 
 Obtains information about the running processes by bundle name and user ID. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string, userId: int): Promise<Array<ProcessInformation>>--><!--Device-appManager-function getRunningProcessInfoByBundleName(bundleName: string, userId: int): Promise<Array<ProcessInformation>>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

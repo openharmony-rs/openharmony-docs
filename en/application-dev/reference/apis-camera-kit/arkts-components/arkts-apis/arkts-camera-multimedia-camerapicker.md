@@ -4,6 +4,8 @@ The module provides APIs for an application to use the system camera to take pho
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace cameraPicker--><!--Device-unnamed-declare namespace cameraPicker-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import

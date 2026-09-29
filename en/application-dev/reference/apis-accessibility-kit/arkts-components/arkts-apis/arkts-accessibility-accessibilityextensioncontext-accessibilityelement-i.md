@@ -10,6 +10,8 @@ Before calling methods of AccessibilityElement, obtain an AccessibilityElement i
 
 **Since:** 9
 
+<!--Device-unnamed-export declare interface AccessibilityElement--><!--Device-unnamed-export declare interface AccessibilityElement-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## actionNames
@@ -23,6 +25,8 @@ Obtains the names of all actions supported by the node element. This API uses an
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityElement-actionNames(callback: AsyncCallback<Array<string>>): void--><!--Device-AccessibilityElement-actionNames(callback: AsyncCallback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -61,6 +65,8 @@ Obtains the names of all actions supported by the node element. This API uses a 
 
 **Deprecated since:** 12
 
+<!--Device-AccessibilityElement-actionNames(): Promise<Array<string>>--><!--Device-AccessibilityElement-actionNames(): Promise<Array<string>>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Return value:**
@@ -93,6 +99,8 @@ Obtains all attribute names of the node element. This API uses an asynchronous c
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityElement-attributeNames<T extends keyof ElementAttributeValues>(callback: AsyncCallback<Array<T>>): void--><!--Device-AccessibilityElement-attributeNames<T extends keyof ElementAttributeValues>(callback: AsyncCallback<Array<T>>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -132,6 +140,8 @@ Obtains all attribute names of the node element. This API uses a promise to retu
 
 **Deprecated since:** 12
 
+<!--Device-AccessibilityElement-attributeNames<T extends keyof ElementAttributeValues>(): Promise<Array<T>>--><!--Device-AccessibilityElement-attributeNames<T extends keyof ElementAttributeValues>(): Promise<Array<T>>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Return value:**
@@ -168,6 +178,8 @@ Obtains the attribute value based on an attribute name. This API uses an asynchr
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(    attributeName: T,    callback: AsyncCallback<ElementAttributeValues[T]>  ): void--><!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(    attributeName: T,    callback: AsyncCallback<ElementAttributeValues[T]>  ): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -216,6 +228,8 @@ Obtains the attribute value based on the attribute name. This API uses a promise
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promise<ElementAttributeValues[T]>--><!--Device-AccessibilityElement-attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promise<ElementAttributeValues[T]>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -266,6 +280,8 @@ Finds an element based on the content type. This API uses an asynchronous callba
 
 **Deprecated since:** 12
 
+<!--Device-AccessibilityElement-findElement(type: 'content', condition: string, callback: AsyncCallback<Array<AccessibilityElement>>): void--><!--Device-AccessibilityElement-findElement(type: 'content', condition: string, callback: AsyncCallback<Array<AccessibilityElement>>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**
@@ -311,6 +327,8 @@ Finds all node elements based on the node content. This API uses a promise to re
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityElement-findElement(type: 'content', condition: string): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityElement-findElement(type: 'content', condition: string): Promise<Array<AccessibilityElement>>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -361,6 +379,8 @@ Finds a node element based on the focus element type. This API uses an asynchron
 
 **Deprecated since:** 12
 
+<!--Device-AccessibilityElement-findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<AccessibilityElement>): void--><!--Device-AccessibilityElement-findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<AccessibilityElement>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**
@@ -406,6 +426,8 @@ Finds a node element based on the focus element type. This API uses a promise to
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityElement-findElement(type: 'focusType', condition: FocusType): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElement(type: 'focusType', condition: FocusType): Promise<AccessibilityElement>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -456,6 +478,8 @@ Finds a node element based on the next focus element direction. This API uses an
 
 **Deprecated since:** 12
 
+<!--Device-AccessibilityElement-findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCallback<AccessibilityElement>): void--><!--Device-AccessibilityElement-findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCallback<AccessibilityElement>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**
@@ -501,6 +525,8 @@ Finds a node element based on the next focus element direction. This API uses a 
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityElement-findElement(type: 'focusDirection', condition: FocusDirection): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElement(type: 'focusDirection', condition: FocusDirection): Promise<AccessibilityElement>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -551,6 +577,8 @@ Performs the specified action on the accessibility node element. This API uses a
 
 **Deprecated since:** 12
 
+<!--Device-AccessibilityElement-performAction(actionName: string, parameters: object, callback: AsyncCallback<void>): void--><!--Device-AccessibilityElement-performAction(actionName: string, parameters: object, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**
@@ -599,6 +627,8 @@ Performs the specified action on the accessibility node element. This API uses a
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityElement-performAction(actionName: string, parameters?: object): Promise<void>--><!--Device-AccessibilityElement-performAction(actionName: string, parameters?: object): Promise<void>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -685,6 +715,8 @@ Performs the specified action on the accessibility node element. This API uses a
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityElement-performAction(actionName: string, callback: AsyncCallback<void>): void--><!--Device-AccessibilityElement-performAction(actionName: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

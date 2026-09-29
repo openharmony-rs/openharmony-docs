@@ -8,6 +8,8 @@ Parameters for ranging operation.
 
 **Since:** 26.0.0
 
+<!--Device-ranging-interface RangingParams--><!--Device-ranging-interface RangingParams-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Indicates the capability type for ranging.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RangingParams-capabilityType: RangingTypes--><!--Device-RangingParams-capabilityType: RangingTypes-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 ## deviceId
@@ -45,5 +49,7 @@ Address of the ranging device.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RangingParams-deviceId: string--><!--Device-RangingParams-deviceId: string-End-->
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core

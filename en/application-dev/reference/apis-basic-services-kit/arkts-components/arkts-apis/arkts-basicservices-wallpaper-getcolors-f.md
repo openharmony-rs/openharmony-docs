@@ -18,6 +18,8 @@ Obtains the wallpaper colors for the wallpaper of the specified type. Returns rg
 
 **Deprecated since:** 9
 
+<!--Device-wallpaper-function getColors(wallpaperType: WallpaperType, callback: AsyncCallback<Array<RgbaColor>>): void--><!--Device-wallpaper-function getColors(wallpaperType: WallpaperType, callback: AsyncCallback<Array<RgbaColor>>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **Parameters:**
@@ -55,6 +57,8 @@ Obtains the wallpaper colors for the wallpaper of the specified type. Returns rg
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-wallpaper-function getColors(wallpaperType: WallpaperType): Promise<Array<RgbaColor>>--><!--Device-wallpaper-function getColors(wallpaperType: WallpaperType): Promise<Array<RgbaColor>>-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

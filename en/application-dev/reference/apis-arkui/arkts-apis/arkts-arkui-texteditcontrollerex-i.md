@@ -12,6 +12,8 @@ Inherits [TextBaseController](arkts-arkui-textbasecontroller-i.md).
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface TextEditControllerEx extends TextBaseController--><!--Device-unnamed-declare interface TextEditControllerEx extends TextBaseController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getCaretOffset
@@ -27,6 +29,8 @@ Obtains the current position of the caret.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextEditControllerEx-getCaretOffset(): number--><!--Device-TextEditControllerEx-getCaretOffset(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,13 +54,15 @@ Obtains the preview text.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextEditControllerEx-getPreviewText?(): PreviewText--><!--Device-TextEditControllerEx-getPreviewText?(): PreviewText-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [PreviewText](arkts-arkui-previewtext-i.md) | Preview text. |
+| [PreviewText](arkts-arkui-previewtext-i.md) | Preview text information, including the start position index and text content of the preview text. |
 
 ## isEditing
 
@@ -71,6 +77,8 @@ Obtains the editing status of the rich text.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextEditControllerEx-isEditing(): boolean--><!--Device-TextEditControllerEx-isEditing(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,19 +102,21 @@ Sets the offset of the caret.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextEditControllerEx-setCaretOffset(offset: number): boolean--><!--Device-TextEditControllerEx-setCaretOffset(offset: number): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| offset | number | Yes | Offset of the caret. If the offset is outside the range of all content, the setting fails. |
+| offset | number | Yes | Caret offset position. The value ranges from 0 to the text length. If the value exceeds the content range, the setting fails. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the caret offset is set successfully.<br>Returns **true** if it is set successfully; returns **false** otherwise. |
+| boolean | Whether the cursor is set successfully.<br>The value **true** indicates that the cursor is set successfully, and **false** indicates the opposite. |
 
 ## stopEditing
 
@@ -121,5 +131,7 @@ Stops editing.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextEditControllerEx-stopEditing(): void--><!--Device-TextEditControllerEx-stopEditing(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

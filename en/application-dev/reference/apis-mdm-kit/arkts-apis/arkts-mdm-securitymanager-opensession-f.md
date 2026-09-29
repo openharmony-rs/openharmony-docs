@@ -20,6 +20,8 @@ Opens a credential change session for the specified account.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function openSession(accountId: number): Promise<Uint8Array>--><!--Device-securityManager-function openSession(accountId: number): Promise<Uint8Array>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

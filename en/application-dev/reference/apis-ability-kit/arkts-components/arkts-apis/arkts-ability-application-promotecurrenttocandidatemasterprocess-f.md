@@ -41,6 +41,8 @@ master process. If no available process exists, it creates an empty process as t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-application-export function promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise<void>--><!--Device-application-export function promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

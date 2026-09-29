@@ -8,6 +8,8 @@ Remote authorization package.
 
 **Since:** 26.0.1
 
+<!--Device-abilityToolAccessCtrl-interface RemoteAuthPackage--><!--Device-abilityToolAccessCtrl-interface RemoteAuthPackage-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Challenge value.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-RemoteAuthPackage-challenge: string--><!--Device-RemoteAuthPackage-challenge: string-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Remote message.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-RemoteAuthPackage-remoteMessage: string--><!--Device-RemoteAuthPackage-remoteMessage: string-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -66,6 +72,8 @@ Ticket string.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-RemoteAuthPackage-ticket: string--><!--Device-RemoteAuthPackage-ticket: string-End-->
 
 **System capability:** SystemCapability.Security.Asset
 

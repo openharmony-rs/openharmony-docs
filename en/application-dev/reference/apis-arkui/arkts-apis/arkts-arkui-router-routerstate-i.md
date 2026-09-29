@@ -8,6 +8,8 @@ Describes the page routing state.
 
 **Since:** 8
 
+<!--Device-router-interface RouterState--><!--Device-router-interface RouterState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Index of the current page in the stack. The index starts from 1 from the bottom 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RouterState-index: number--><!--Device-RouterState-index: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -45,6 +49,8 @@ Name of the current page, that is, the file name.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RouterState-name: string--><!--Device-RouterState-name: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +70,8 @@ Parameters carried on the current page.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RouterState-params: Object--><!--Device-RouterState-params: Object-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## path
@@ -79,5 +87,7 @@ Path of the current page.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RouterState-path: string--><!--Device-RouterState-path: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

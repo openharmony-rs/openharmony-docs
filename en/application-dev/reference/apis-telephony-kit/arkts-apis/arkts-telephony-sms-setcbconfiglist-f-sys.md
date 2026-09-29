@@ -18,6 +18,8 @@ Turn on Cell BroadCast by list.
 
 **Required permissions:** ohos.permission.RECEIVE_SMS
 
+<!--Device-sms-function setCBConfigList(configs: CBConfigListConfigs): Promise<void>--><!--Device-sms-function setCBConfigList(configs: CBConfigListConfigs): Promise<void>-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Enumerates the window modes.
 
 **Since:** 11
 
+<!--Device-window-enum WindowStatusType--><!--Device-window-enum WindowStatusType-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## UNDEFINED
@@ -20,7 +22,9 @@ The window mode is not defined by the application.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowStatusType-UNDEFINED = 0--><!--Device-WindowStatusType-UNDEFINED = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -42,7 +46,9 @@ In non-[freeform window](../../../windowmanager/window-terminology.md#freeform-w
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowStatusType-FULL_SCREEN = 1--><!--Device-WindowStatusType-FULL_SCREEN = 1-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -56,7 +62,9 @@ The application window is maximized. In [freeform window](../../../windowmanager
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowStatusType-MAXIMIZE = 2--><!--Device-WindowStatusType-MAXIMIZE = 2-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -70,7 +78,9 @@ The application window is minimized.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowStatusType-MINIMIZE = 3--><!--Device-WindowStatusType-MINIMIZE = 3-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -84,7 +94,9 @@ The application is displayed in a floating window.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowStatusType-FLOATING = 4--><!--Device-WindowStatusType-FLOATING = 4-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -98,6 +110,8 @@ The application is displayed in split-screen mode.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowStatusType-SPLIT_SCREEN = 5--><!--Device-WindowStatusType-SPLIT_SCREEN = 5-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

@@ -10,6 +10,8 @@ Describes the callback invoked when thumbnails are obtained in batches.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-media-type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError<void>) => void--><!--Device-media-type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError<void>) => void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **Parameters:**

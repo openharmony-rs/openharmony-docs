@@ -12,4 +12,6 @@ Callback to be invoked when the user stops scrolling and is positioned at the en
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-unnamed-export type ScrollStopAtEndCallback = () => void--><!--Device-unnamed-export type ScrollStopAtEndCallback = () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

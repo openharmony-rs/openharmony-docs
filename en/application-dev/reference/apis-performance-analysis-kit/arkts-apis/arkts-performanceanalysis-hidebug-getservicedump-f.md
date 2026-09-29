@@ -18,6 +18,8 @@ Obtains system service information.
 
 **Required permissions:** ohos.permission.DUMP
 
+<!--Device-hidebug-function getServiceDump(serviceid : int, fd : int, args : Array<string>) : void--><!--Device-hidebug-function getServiceDump(serviceid : int, fd : int, args : Array<string>) : void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Parameters:**
@@ -32,7 +34,7 @@ Obtains system service information.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | the parameter check failed, Possible causes: 1.the parameter type error 2.the args parameter is not string array |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed, Possible causes: 1.The parameter type error. 2.The args parameter is not string array. |
 | [11400101](../errorcode-hiviewdfx-hidebug.md#11400101-failed-to-obtain-the-system-service) | ServiceId invalid. The system ability does not exist. |
 
 **Examples**

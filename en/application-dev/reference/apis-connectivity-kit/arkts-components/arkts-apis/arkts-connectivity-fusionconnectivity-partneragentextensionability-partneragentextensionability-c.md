@@ -10,6 +10,8 @@ Class for the PartnerAgentExtensionAbility. Applications can use this ability to
 
 **Since:** 23
 
+<!--Device-unnamed-export default declare class PartnerAgentExtensionAbility extends ExtensionAbility--><!--Device-unnamed-export default declare class PartnerAgentExtensionAbility extends ExtensionAbility-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Called when the PartnerAgentExtensionAbility is to be destroyed. Applications ca
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PartnerAgentExtensionAbility-onDestroyWithReason(reason: PartnerAgentExtensionAbilityDestroyReason): void--><!--Device-PartnerAgentExtensionAbility-onDestroyWithReason(reason: PartnerAgentExtensionAbilityDestroyReason): void-End-->
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
@@ -59,6 +63,8 @@ Called when a device is discovered.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PartnerAgentExtensionAbility-onDeviceDiscovered(deviceAddress: PartnerDeviceAddress): void--><!--Device-PartnerAgentExtensionAbility-onDeviceDiscovered(deviceAddress: PartnerDeviceAddress): void-End-->
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
@@ -91,5 +97,7 @@ Context of the PartnerAgentExtensionAbility.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PartnerAgentExtensionAbility-context: PartnerAgentExtensionContext--><!--Device-PartnerAgentExtensionAbility-context: PartnerAgentExtensionContext-End-->
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core

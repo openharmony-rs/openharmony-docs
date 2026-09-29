@@ -10,6 +10,8 @@ WebResourceHandler is a handler used to return the result of an intercepted requ
 
 **Since:** 12
 
+<!--Device-webview-class WebResourceHandler--><!--Device-webview-class WebResourceHandler-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Notifies the ArkWeb kernel that the intercepted request will fail and ends the n
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebResourceHandler-didFail(code: WebNetErrorList): void--><!--Device-WebResourceHandler-didFail(code: WebNetErrorList): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -60,6 +64,8 @@ didFail(code: WebNetErrorList, completeIfNoResponse: boolean): void
 Notifies the ArkWeb kernel that the intercepted request will fail. If **completeIfNoResponse** is set to **false**, call [didReceiveResponse](#didreceiveresponse) first to pass in the response header. If **completeIfNoResponse** is set to **true** and [didReceiveResponse](#didreceiveresponse) is not called beforehand, a response header is automatically generated with the network error code -104. For details, see [WebNetErrorList](arkts-arkweb-web-neterrorlist-webneterrorlist-e.md).
 
 **Since:** 20
+
+<!--Device-WebResourceHandler-didFail(code: WebNetErrorList, completeIfNoResponse: boolean): void--><!--Device-WebResourceHandler-didFail(code: WebNetErrorList, completeIfNoResponse: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -162,6 +168,8 @@ didFail(code: WebNetErrorList, completeIfNoResponse: boolean, customErrorCode: n
 Notify that this request should be failed.
 
 **Since:** 26.0.1
+
+<!--Device-WebResourceHandler-didFail(code: WebNetErrorList, completeIfNoResponse: boolean, customErrorCode: number): void--><!--Device-WebResourceHandler-didFail(code: WebNetErrorList, completeIfNoResponse: boolean, customErrorCode: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -267,6 +275,8 @@ Notifies the **Web** component that the intercepted request is complete and no m
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebResourceHandler-didFinish(): void--><!--Device-WebResourceHandler-didFinish(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -290,6 +300,8 @@ Passes the constructed response header to the intercepted request. This API must
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebResourceHandler-didReceiveResponse(response: WebSchemeHandlerResponse): void--><!--Device-WebResourceHandler-didReceiveResponse(response: WebSchemeHandlerResponse): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -321,6 +333,8 @@ Passes the constructed response body to the intercepted request. This API must b
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebResourceHandler-didReceiveResponseBody(data: ArrayBuffer): void--><!--Device-WebResourceHandler-didReceiveResponseBody(data: ArrayBuffer): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

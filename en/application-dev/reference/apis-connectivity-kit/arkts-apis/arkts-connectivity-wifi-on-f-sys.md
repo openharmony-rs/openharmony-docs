@@ -22,6 +22,8 @@ Subscribe Wi-Fi stream change events.
 
 **Required permissions:** ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifi-function on(type: 'streamChange', callback: Callback<number>): void--><!--Device-wifi-function on(type: 'streamChange', callback: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -50,6 +52,8 @@ Subscribe Wi-Fi hotspot sta join events.
 
 **Required permissions:** ohos.permission.MANAGE_WIFI_HOTSPOT
 
+<!--Device-wifi-function on(type: 'hotspotStaJoin', callback: Callback<StationInfo>): void--><!--Device-wifi-function on(type: 'hotspotStaJoin', callback: Callback<StationInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 **System API:** This is a system API.
@@ -77,6 +81,8 @@ Subscribe Wi-Fi hotspot sta leave events.
 **Substitutes:** hotspotStaLeave
 
 **Required permissions:** ohos.permission.MANAGE_WIFI_HOTSPOT
+
+<!--Device-wifi-function on(type: 'hotspotStaLeave', callback: Callback<StationInfo>): void--><!--Device-wifi-function on(type: 'hotspotStaLeave', callback: Callback<StationInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 

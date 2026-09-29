@@ -10,6 +10,8 @@ declare interface LocalizedEdgeColors
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface LocalizedEdgeColors--><!--Device-unnamed-declare interface LocalizedEdgeColors-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -29,6 +31,8 @@ bottom?: ResourceColor
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LocalizedEdgeColors-bottom?: ResourceColor--><!--Device-LocalizedEdgeColors-bottom?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ end?: ResourceColor
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LocalizedEdgeColors-end?: ResourceColor--><!--Device-LocalizedEdgeColors-end?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -74,6 +80,8 @@ start?: ResourceColor
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LocalizedEdgeColors-start?: ResourceColor--><!--Device-LocalizedEdgeColors-start?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -93,5 +101,7 @@ top?: ResourceColor
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LocalizedEdgeColors-top?: ResourceColor--><!--Device-LocalizedEdgeColors-top?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

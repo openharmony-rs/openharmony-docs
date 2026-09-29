@@ -8,6 +8,8 @@ Options for creating the **NumberFormat** object. Since API version 9, the **Num
 
 **Since:** 6
 
+<!--Device-intl-export interface NumberOptions--><!--Device-intl-export interface NumberOptions-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -36,6 +38,8 @@ For details about their display effects, see [Table 18](../../../reference/apis-
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NumberOptions-compactDisplay?: string--><!--Device-NumberOptions-compactDisplay?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## currency
@@ -55,6 +59,8 @@ This API can be used in atomic services since API version 12.
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NumberOptions-currency?: string--><!--Device-NumberOptions-currency?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -78,6 +84,8 @@ For details about their display effects, see [Table 20](../../../reference/apis-
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NumberOptions-currencyDisplay?: string--><!--Device-NumberOptions-currencyDisplay?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## currencySign
@@ -100,6 +108,8 @@ For details about their display effects, see [Table 19](../../../reference/apis-
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NumberOptions-currencySign?: string--><!--Device-NumberOptions-currencySign?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## locale
@@ -120,6 +130,8 @@ This API can be used in atomic services since API version 12.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NumberOptions-locale?: string--><!--Device-NumberOptions-locale?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## localeMatcher
@@ -139,6 +151,8 @@ This API can be used in atomic services since API version 12.
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NumberOptions-localeMatcher?: string--><!--Device-NumberOptions-localeMatcher?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -162,6 +176,8 @@ For details about their display effects, see [Table 13](../../../reference/apis-
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NumberOptions-maximumFractionDigits?: int--><!--Device-NumberOptions-maximumFractionDigits?: int-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## maximumSignificantDigits
@@ -183,6 +199,8 @@ For details about their display effects, see [Table 15](../../../reference/apis-
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NumberOptions-maximumSignificantDigits?: int--><!--Device-NumberOptions-maximumSignificantDigits?: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -206,6 +224,8 @@ For details about their display effects, see [Table 12](../../../reference/apis-
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NumberOptions-minimumFractionDigits?: int--><!--Device-NumberOptions-minimumFractionDigits?: int-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## minimumIntegerDigits
@@ -227,6 +247,8 @@ For details about their display effects, see [Table 11](../../../reference/apis-
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NumberOptions-minimumIntegerDigits?: int--><!--Device-NumberOptions-minimumIntegerDigits?: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -250,6 +272,8 @@ For details about their display effects, see [Table 14](../../../reference/apis-
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NumberOptions-minimumSignificantDigits?: int--><!--Device-NumberOptions-minimumSignificantDigits?: int-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## notation
@@ -271,6 +295,8 @@ For details about their display effects, see [Table 17](../../../reference/apis-
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NumberOptions-notation?: string--><!--Device-NumberOptions-notation?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -294,6 +320,8 @@ This API can be used in atomic services since API version 12.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NumberOptions-numberingSystem?: string--><!--Device-NumberOptions-numberingSystem?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## roundingIncrement
@@ -313,6 +341,8 @@ This API can be used in atomic services since API version 18.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-NumberOptions-roundingIncrement?: int--><!--Device-NumberOptions-roundingIncrement?: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -349,6 +379,8 @@ This API can be used in atomic services since API version 18.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-NumberOptions-roundingMode?: string--><!--Device-NumberOptions-roundingMode?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## roundingPriority
@@ -368,6 +400,8 @@ This API can be used in atomic services since API version 18.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-NumberOptions-roundingPriority?: string--><!--Device-NumberOptions-roundingPriority?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -394,6 +428,8 @@ This API can be used in atomic services since API version 12.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NumberOptions-signDisplay?: string--><!--Device-NumberOptions-signDisplay?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## style
@@ -414,6 +450,8 @@ This API can be used in atomic services since API version 12.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NumberOptions-style?: string--><!--Device-NumberOptions-style?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## unit
@@ -433,6 +471,8 @@ This API can be used in atomic services since API version 12.
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NumberOptions-unit?: string--><!--Device-NumberOptions-unit?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -456,6 +496,8 @@ For details about their display effects, see [Table 21](../../../reference/apis-
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NumberOptions-unitDisplay?: string--><!--Device-NumberOptions-unitDisplay?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## unitUsage
@@ -478,6 +520,8 @@ For details about their display effects, see [Table 22](../../../reference/apis-
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NumberOptions-unitUsage?: string--><!--Device-NumberOptions-unitUsage?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## useGrouping
@@ -499,5 +543,7 @@ For details about their display effects, see [Table 16](../../../reference/apis-
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NumberOptions-useGrouping?: boolean--><!--Device-NumberOptions-useGrouping?: boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n

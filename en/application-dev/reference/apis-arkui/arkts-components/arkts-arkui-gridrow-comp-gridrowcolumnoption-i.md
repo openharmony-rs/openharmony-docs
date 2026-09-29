@@ -30,6 +30,8 @@ The width of each column is the content area size of the **GridRow** component m
 
 **Since:** 9
 
+<!--Device-unnamed-declare interface GridRowColumnOption--><!--Device-unnamed-declare interface GridRowColumnOption-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## lg
@@ -52,6 +54,8 @@ If an invalid value is set, the default value is used.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridRowColumnOption-lg?: number--><!--Device-GridRowColumnOption-lg?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +80,8 @@ If an invalid value is set, the default value is used.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-GridRowColumnOption-md?: number--><!--Device-GridRowColumnOption-md?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## sm
@@ -98,6 +104,8 @@ If an invalid value is set, the default value is used.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridRowColumnOption-sm?: number--><!--Device-GridRowColumnOption-sm?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +130,8 @@ If an invalid value is set, the default value is used.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-GridRowColumnOption-xl?: number--><!--Device-GridRowColumnOption-xl?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## xs
@@ -145,6 +155,8 @@ If an invalid value is set, the default value is used.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-GridRowColumnOption-xs?: number--><!--Device-GridRowColumnOption-xs?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## xxl
@@ -167,5 +179,7 @@ If an invalid value is set, the default value is used.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridRowColumnOption-xxl?: number--><!--Device-GridRowColumnOption-xxl?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

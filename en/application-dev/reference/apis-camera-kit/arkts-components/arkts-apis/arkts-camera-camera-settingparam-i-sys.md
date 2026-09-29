@@ -8,6 +8,8 @@ Defines the effect parameters used to preheat an image.
 
 **Since:** 11
 
+<!--Device-camera-interface SettingParam--><!--Device-camera-interface SettingParam-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Face slimming level, which is obtained through [Beauty.getSupportedBeautyRange](
 
 **Since:** 11
 
+<!--Device-SettingParam-faceSlender: int--><!--Device-SettingParam-faceSlender: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Skin smoothing level, which is obtained through [Beauty.getSupportedBeautyRange]
 
 **Since:** 11
 
+<!--Device-SettingParam-skinSmoothLevel: int--><!--Device-SettingParam-skinSmoothLevel: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Skin tone perfection level, which is obtained through [Beauty.getSupportedBeauty
 **Type:** number
 
 **Since:** 11
+
+<!--Device-SettingParam-skinTone: int--><!--Device-SettingParam-skinTone: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

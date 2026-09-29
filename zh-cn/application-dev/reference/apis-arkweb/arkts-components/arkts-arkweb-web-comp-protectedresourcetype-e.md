@@ -8,6 +8,8 @@ ProtectedResourceType 枚举定义了 Web 组件需要访问的受保护资源�
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare enum ProtectedResourceType--><!--Device-unnamed-declare enum ProtectedResourceType-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## MidiSysex
@@ -24,6 +26,8 @@ MIDI SYSEX资源。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProtectedResourceType-MidiSysex = "TYPE_MIDI_SYSEX"--><!--Device-ProtectedResourceType-MidiSysex = "TYPE_MIDI_SYSEX"-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## VIDEO_CAPTURE
@@ -37,6 +41,8 @@ VIDEO_CAPTURE = "TYPE_VIDEO_CAPTURE"
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProtectedResourceType-VIDEO_CAPTURE = "TYPE_VIDEO_CAPTURE"--><!--Device-ProtectedResourceType-VIDEO_CAPTURE = "TYPE_VIDEO_CAPTURE"-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -52,6 +58,8 @@ AUDIO_CAPTURE = "TYPE_AUDIO_CAPTURE"
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProtectedResourceType-AUDIO_CAPTURE = "TYPE_AUDIO_CAPTURE"--><!--Device-ProtectedResourceType-AUDIO_CAPTURE = "TYPE_AUDIO_CAPTURE"-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SENSOR
@@ -65,5 +73,7 @@ SENSOR = 'TYPE_SENSOR'
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProtectedResourceType-SENSOR = 'TYPE_SENSOR'--><!--Device-ProtectedResourceType-SENSOR = 'TYPE_SENSOR'-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

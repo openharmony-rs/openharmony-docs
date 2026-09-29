@@ -13,6 +13,8 @@ Provides capabilities to control focus, including features such as clearing, mov
 
 **Since:** 12
 
+<!--Device-unnamed-export class FocusController--><!--Device-unnamed-export class FocusController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Sets the [focus activation state](../../../ui/arkts-common-events-focus-event.md
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-FocusController-activate(isActive: boolean, autoInactive?: boolean): void--><!--Device-FocusController-activate(isActive: boolean, autoInactive?: boolean): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,6 +101,8 @@ Clears the focus and forcibly moves the focus to the root container node of the 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FocusController-clearFocus(): void--><!--Device-FocusController-clearFocus(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -165,6 +171,8 @@ For details about the focus activation state, see [Basic Concepts](../../../ui/a
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-FocusController-isActive(): boolean--><!--Device-FocusController-isActive(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,6 +245,8 @@ Transfers focus to a component node by the component ID, which is effective imme
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FocusController-requestFocus(key: string): void--><!--Device-FocusController-requestFocus(key: string): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -324,6 +334,8 @@ Sets whether the new page automatically obtains focus during page switching.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-FocusController-setAutoFocusTransfer(isAutoFocusTransfer: boolean): void--><!--Device-FocusController-setAutoFocusTransfer(isAutoFocusTransfer: boolean): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -397,6 +409,8 @@ Sets the mode for processing key events.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-FocusController-setKeyProcessingMode(mode: KeyProcessingMode): void--><!--Device-FocusController-setKeyProcessingMode(mode: KeyProcessingMode): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

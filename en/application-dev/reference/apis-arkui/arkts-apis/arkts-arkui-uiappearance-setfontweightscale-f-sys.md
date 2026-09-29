@@ -20,6 +20,8 @@ Sets the system font weight scale.
 
 **Required permissions:** ohos.permission.UPDATE_CONFIGURATION
 
+<!--Device-uiAppearance-function setFontWeightScale(fontWeightScale: number): Promise<void>--><!--Device-uiAppearance-function setFontWeightScale(fontWeightScale: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.UiAppearance
 
 **System API:** This is a system API.

@@ -20,6 +20,8 @@ Enables the device administrator application to open a page for the BYOD adminis
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function startAdminProvision(admin: Want, type: AdminType, context: common.Context, parameters: Record<string, string>): void--><!--Device-adminManager-function startAdminProvision(admin: Want, type: AdminType, context: common.Context, parameters: Record<string, string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

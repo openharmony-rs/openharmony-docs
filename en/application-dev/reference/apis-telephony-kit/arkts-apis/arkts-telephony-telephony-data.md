@@ -4,6 +4,8 @@ The **data** module provides basic mobile data management functions. With the AP
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace data--><!--Device-unnamed-declare namespace data-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 ## Modules to Import

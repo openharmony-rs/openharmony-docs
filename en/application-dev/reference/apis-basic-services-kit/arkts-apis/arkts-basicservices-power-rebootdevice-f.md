@@ -22,6 +22,8 @@ Restarts the system.
 
 **Required permissions:** ohos.permission.REBOOT
 
+<!--Device-power-function rebootDevice(reason: string): void--><!--Device-power-function rebootDevice(reason: string): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **Parameters:**

@@ -8,6 +8,8 @@ Defines the final search result after decryption, indicating whether a match was
 
 **Since:** 26.0.1
 
+<!--Device-privacyComputation-interface SearchResult--><!--Device-privacyComputation-interface SearchResult-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## Modules to Import
@@ -31,6 +33,8 @@ The attached value associated with the matched element. This field is available 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-SearchResult-attachedValues?: Uint8Array[]--><!--Device-SearchResult-attachedValues?: Uint8Array[]-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## matchedResult
@@ -48,5 +52,7 @@ Indicates whether the privacy target was found in the dataset. True means a matc
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-SearchResult-matchedResult: boolean--><!--Device-SearchResult-matchedResult: boolean-End-->
 
 **System capability:** SystemCapability.Security.Asset

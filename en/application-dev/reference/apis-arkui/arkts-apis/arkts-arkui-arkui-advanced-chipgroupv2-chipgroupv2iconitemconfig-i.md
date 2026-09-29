@@ -8,6 +8,8 @@ Defines the configuration of the suffix icon item, which is used to set the styl
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface ChipGroupV2IconItemConfig--><!--Device-unnamed-export interface ChipGroupV2IconItemConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2IconItemConfig-accessibilityDescription?: ResourceStr--><!--Device-ChipGroupV2IconItemConfig-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +76,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2IconItemConfig-accessibilityLevel?: string--><!--Device-ChipGroupV2IconItemConfig-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -94,6 +100,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2IconItemConfig-accessibilityText?: ResourceStr--><!--Device-ChipGroupV2IconItemConfig-accessibilityText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -111,6 +119,8 @@ Response event of the custom suffix icon.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2IconItemConfig-action: Callback<void>--><!--Device-ChipGroupV2IconItemConfig-action: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,5 +141,7 @@ To dynamically change the icon size, you must use the SymbolGlyphModifier type w
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2IconItemConfig-icon: ChipV2ImageIconConfig--><!--Device-ChipGroupV2IconItemConfig-icon: ChipV2ImageIconConfig-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

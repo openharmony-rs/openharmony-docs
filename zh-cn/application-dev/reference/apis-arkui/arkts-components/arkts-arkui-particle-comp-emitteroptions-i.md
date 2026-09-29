@@ -8,6 +8,8 @@ interface EmitterOptions<PARTICLE extends ParticleType>
 
 **起始版本：** 10
 
+<!--Device-unnamed-interface EmitterOptions<PARTICLE extends ParticleType>--><!--Device-unnamed-interface EmitterOptions<PARTICLE extends ParticleType>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## annulusRegion
@@ -28,6 +30,8 @@ annulusRegion?: ParticleAnnulusRegion
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-EmitterOptions-annulusRegion?: ParticleAnnulusRegion--><!--Device-EmitterOptions-annulusRegion?: ParticleAnnulusRegion-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## emitRate
@@ -47,6 +51,8 @@ emitRate?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EmitterOptions-emitRate?: number--><!--Device-EmitterOptions-emitRate?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,6 +89,8 @@ lifetimeRange表示粒子生命周期取值范围，设置lifetimeRange后粒子
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-EmitterOptions-particle: EmitterParticleOptions<PARTICLE>--><!--Device-EmitterOptions-particle: EmitterParticleOptions<PARTICLE>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## position
@@ -104,6 +112,8 @@ position?: ParticleTuple<Dimension, Dimension>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EmitterOptions-position?: ParticleTuple<Dimension, Dimension>--><!--Device-EmitterOptions-position?: ParticleTuple<Dimension, Dimension>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,6 +137,8 @@ shape?: ParticleEmitterShape
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-EmitterOptions-shape?: ParticleEmitterShape--><!--Device-EmitterOptions-shape?: ParticleEmitterShape-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -148,5 +160,7 @@ size?: ParticleTuple<Dimension, Dimension>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EmitterOptions-size?: ParticleTuple<Dimension, Dimension>--><!--Device-EmitterOptions-size?: ParticleTuple<Dimension, Dimension>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

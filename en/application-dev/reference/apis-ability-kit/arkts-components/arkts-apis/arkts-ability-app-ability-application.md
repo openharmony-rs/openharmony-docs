@@ -6,6 +6,8 @@ You can use this module to create a [Context](../../../application-models/applic
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace application--><!--Device-unnamed-declare namespace application-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import

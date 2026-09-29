@@ -8,6 +8,8 @@ declare enum SwipeActionState
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare enum SwipeActionState--><!--Device-unnamed-declare enum SwipeActionState-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## COLLAPSED
@@ -23,6 +25,8 @@ COLLAPSED
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwipeActionState-COLLAPSED--><!--Device-SwipeActionState-COLLAPSED-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ EXPANDED
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwipeActionState-EXPANDED--><!--Device-SwipeActionState-EXPANDED-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ACTIONING
@@ -63,5 +69,7 @@ actionAreaDistance的最终取值大于0，且小于ListItem在划动方向上�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwipeActionState-ACTIONING--><!--Device-SwipeActionState-ACTIONING-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

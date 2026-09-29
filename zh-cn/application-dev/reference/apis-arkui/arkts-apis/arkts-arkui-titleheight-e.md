@@ -8,6 +8,8 @@ declare enum TitleHeight
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare enum TitleHeight--><!--Device-unnamed-declare enum TitleHeight-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MainOnly
@@ -22,6 +24,8 @@ MainOnly
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TitleHeight-MainOnly--><!--Device-TitleHeight-MainOnly-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MainWithSub
@@ -35,5 +39,7 @@ MainWithSub
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TitleHeight-MainWithSub--><!--Device-TitleHeight-MainWithSub-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

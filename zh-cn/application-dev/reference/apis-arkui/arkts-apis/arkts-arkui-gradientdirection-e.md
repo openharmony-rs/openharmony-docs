@@ -8,6 +8,8 @@ declare enum GradientDirection
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum GradientDirection--><!--Device-unnamed-declare enum GradientDirection-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Left
@@ -25,6 +27,8 @@ Left = 0
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GradientDirection-Left = 0--><!--Device-GradientDirection-Left = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Top = 1
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GradientDirection-Top = 1--><!--Device-GradientDirection-Top = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Right
@@ -61,6 +67,8 @@ Right = 2
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GradientDirection-Right = 2--><!--Device-GradientDirection-Right = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +88,8 @@ Bottom = 3
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GradientDirection-Bottom = 3--><!--Device-GradientDirection-Bottom = 3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LeftTop
@@ -97,6 +107,8 @@ LeftTop = 4
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GradientDirection-LeftTop = 4--><!--Device-GradientDirection-LeftTop = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,6 +128,8 @@ LeftBottom = 5
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GradientDirection-LeftBottom = 5--><!--Device-GradientDirection-LeftBottom = 5-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RightTop
@@ -133,6 +147,8 @@ RightTop = 6
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GradientDirection-RightTop = 6--><!--Device-GradientDirection-RightTop = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,6 +168,8 @@ RightBottom = 7
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GradientDirection-RightBottom = 7--><!--Device-GradientDirection-RightBottom = 7-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -169,5 +187,7 @@ None = 8
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GradientDirection-None = 8--><!--Device-GradientDirection-None = 8-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

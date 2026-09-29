@@ -8,6 +8,8 @@ interface TrailOptimization
 
 **起始版本：** 26.0.0
 
+<!--Device-curves-interface TrailOptimization--><!--Device-curves-interface TrailOptimization-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -38,6 +40,8 @@ progressThreshold?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-TrailOptimization-progressThreshold?: number--><!--Device-TrailOptimization-progressThreshold?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -61,6 +65,8 @@ responseDecayFactor?: number
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TrailOptimization-responseDecayFactor?: number--><!--Device-TrailOptimization-responseDecayFactor?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

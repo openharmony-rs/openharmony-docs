@@ -8,6 +8,8 @@ Defines the options used in **read()**.
 
 **Since:** 11
 
+<!--Device-unnamed-export interface ReadOptions--><!--Device-unnamed-export interface ReadOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Length of the data to read, in bytes. This parameter is optional. The default va
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ReadOptions-length?: number--><!--Device-ReadOptions-length?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## offset
@@ -45,5 +49,7 @@ Start position of the file to read, in bytes. This parameter is optional. By def
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ReadOptions-offset?: number--><!--Device-ReadOptions-offset?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

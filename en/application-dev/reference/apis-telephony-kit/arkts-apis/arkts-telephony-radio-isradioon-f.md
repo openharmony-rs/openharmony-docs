@@ -20,6 +20,8 @@ Checks whether the radio service is enabled on the SIM card in the specified slo
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-radio-function isRadioOn(slotId: int, callback: AsyncCallback<boolean>): void--><!--Device-radio-function isRadioOn(slotId: int, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -71,6 +73,8 @@ Checks whether the radio service is enabled on the SIM card in the specified slo
 **Since:** 7
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-radio-function isRadioOn(slotId?: int): Promise<boolean>--><!--Device-radio-function isRadioOn(slotId?: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -126,6 +130,8 @@ Checks whether the radio service is enabled on the primary SIM card. This API us
 **Since:** 7
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-radio-function isRadioOn(callback: AsyncCallback<boolean>): void--><!--Device-radio-function isRadioOn(callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

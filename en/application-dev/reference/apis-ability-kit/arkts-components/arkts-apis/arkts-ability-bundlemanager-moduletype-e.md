@@ -8,6 +8,8 @@ Enumerates the module types.
 
 **Since:** 9
 
+<!--Device-bundleManager-export enum ModuleType--><!--Device-bundleManager-export enum ModuleType-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## ENTRY
@@ -20,7 +22,9 @@ Main module of and entry to the application, providing the basic application fun
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ModuleType-ENTRY = 1--><!--Device-ModuleType-ENTRY = 1-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -34,7 +38,9 @@ Dynamic feature module of the application, extending the application functionali
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ModuleType-FEATURE = 2--><!--Device-ModuleType-FEATURE = 2-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -48,6 +54,8 @@ SHARED = 3
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ModuleType-SHARED = 3--><!--Device-ModuleType-SHARED = 3-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core

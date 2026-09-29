@@ -20,6 +20,8 @@ Creates a keyboard controller for simulating key operations. This API uses a pro
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-inputEventClient-function createKeyboardController(): Promise<KeyboardController>--><!--Device-inputEventClient-function createKeyboardController(): Promise<KeyboardController>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **Return value:**

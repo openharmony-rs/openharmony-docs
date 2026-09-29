@@ -6,6 +6,8 @@ Audio-haptic enables users to get rhythmic auditory and haptic feedback while ha
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace audioHaptic--><!--Device-unnamed-declare namespace audioHaptic-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 ## Modules to Import

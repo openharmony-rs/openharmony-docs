@@ -20,6 +20,8 @@ Write data through the socket.
 
 **Substitutes:** [sppWrite](arkts-connectivity-bluetoothmanager-sppwrite-f.md)
 
+<!--Device-bluetooth-function sppWrite(clientSocket: number, data: ArrayBuffer): boolean--><!--Device-bluetooth-function sppWrite(clientSocket: number, data: ArrayBuffer): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

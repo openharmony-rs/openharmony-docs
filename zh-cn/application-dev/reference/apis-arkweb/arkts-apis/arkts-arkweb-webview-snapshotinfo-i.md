@@ -8,6 +8,8 @@ interface SnapshotInfo
 
 **起始版本：** 12
 
+<!--Device-webview-interface SnapshotInfo--><!--Device-webview-interface SnapshotInfo-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -30,6 +32,8 @@ snapshot的id，用于标识本次全量绘制请求，便于在回调结果中�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SnapshotInfo-id?: string--><!--Device-SnapshotInfo-id?: string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## size
@@ -45,5 +49,7 @@ Web绘制的尺寸，最多支持16000px * 16000px，长度单位支持px、vp�
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SnapshotInfo-size?: SizeOptions--><!--Device-SnapshotInfo-size?: SizeOptions-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

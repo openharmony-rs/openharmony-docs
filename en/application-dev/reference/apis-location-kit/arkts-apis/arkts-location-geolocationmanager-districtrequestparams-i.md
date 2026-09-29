@@ -8,6 +8,8 @@ Indicates request parameters for obtaining the district information.
 
 **Since:** 26.0.0
 
+<!--Device-geoLocationManager-export interface DistrictRequestParams--><!--Device-geoLocationManager-export interface DistrictRequestParams-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Indicates the language area information. ISO 639 alpha-2 or alpha-3 language cod
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-DistrictRequestParams-locale?: string--><!--Device-DistrictRequestParams-locale?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -48,6 +52,8 @@ Indicates the timeout period. The default value is 5000 ms. The value range is a
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-DistrictRequestParams-timeoutMs?: int--><!--Device-DistrictRequestParams-timeoutMs?: int-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder

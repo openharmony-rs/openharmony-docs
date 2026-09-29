@@ -4,13 +4,15 @@
 declare class ImageAnimatorAttribute extends CommonMethod<ImageAnimatorAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-除支持通用事件外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
 
-**继承/实现关系：** ImageAnimatorAttribute extends CommonMethod&lt;ImageAnimatorAttribute&gt;
+**继承/实现关系：** ImageAnimatorAttribute extends CommonMethod<ImageAnimatorAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class ImageAnimatorAttribute extends CommonMethod<ImageAnimatorAttribute>--><!--Device-unnamed-declare class ImageAnimatorAttribute extends CommonMethod<ImageAnimatorAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +31,8 @@ duration(value: number)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageAnimatorAttribute-duration(value: number): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-duration(value: number): ImageAnimatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ fillMode(value: FillMode)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageAnimatorAttribute-fillMode(value: FillMode): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-fillMode(value: FillMode): ImageAnimatorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -77,6 +83,8 @@ fixedSize(value: boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageAnimatorAttribute-fixedSize(value: boolean): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-fixedSize(value: boolean): ImageAnimatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +110,8 @@ images(value: Array<ImageFrameInfo>)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageAnimatorAttribute-images(value: Array<ImageFrameInfo>): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-images(value: Array<ImageFrameInfo>): ImageAnimatorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -124,6 +134,8 @@ iterations(value: number)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ImageAnimatorAttribute-iterations(value: number): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-iterations(value: number): ImageAnimatorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -145,6 +157,8 @@ monitorInvisibleArea(monitorInvisibleArea: boolean) : ImageAnimatorAttribute
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
+
+<!--Device-ImageAnimatorAttribute-monitorInvisibleArea(monitorInvisibleArea: boolean) : ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-monitorInvisibleArea(monitorInvisibleArea: boolean) : ImageAnimatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -170,6 +184,8 @@ onCancel(event: () => void)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageAnimatorAttribute-onCancel(event: () => void): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-onCancel(event: () => void): ImageAnimatorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -193,6 +209,8 @@ onFinish(event: () => void)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageAnimatorAttribute-onFinish(event: () => void): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-onFinish(event: () => void): ImageAnimatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,6 +236,8 @@ onPause(event: () => void)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageAnimatorAttribute-onPause(event: () => void): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-onPause(event: () => void): ImageAnimatorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -239,6 +259,8 @@ onRepeat(event: () => void)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ImageAnimatorAttribute-onRepeat(event: () => void): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-onRepeat(event: () => void): ImageAnimatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,6 +286,8 @@ onStart(event: () => void)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageAnimatorAttribute-onStart(event: () => void): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-onStart(event: () => void): ImageAnimatorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -288,6 +312,8 @@ reverse(value: boolean)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageAnimatorAttribute-reverse(value: boolean): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-reverse(value: boolean): ImageAnimatorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -311,6 +337,8 @@ state(value: AnimationStatus)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageAnimatorAttribute-state(value: AnimationStatus): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-state(value: AnimationStatus): ImageAnimatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -337,6 +365,8 @@ preDecode(value: number)
 **废弃版本：** 9
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-ImageAnimatorAttribute-preDecode(value: number): ImageAnimatorAttribute--><!--Device-ImageAnimatorAttribute-preDecode(value: number): ImageAnimatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

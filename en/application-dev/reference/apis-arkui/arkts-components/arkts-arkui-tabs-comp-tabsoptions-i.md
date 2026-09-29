@@ -8,6 +8,8 @@ Provides parameters for configuring the **Tabs** component, including tab positi
 
 **Since:** 15
 
+<!--Device-unnamed-declare interface TabsOptions--><!--Device-unnamed-declare interface TabsOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## barModifier
@@ -38,6 +40,8 @@ When set to the bottom tab style, [tabBar](arkts-arkui-tabcontent-comp-attribute
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-TabsOptions-barModifier?: CommonModifier--><!--Device-TabsOptions-barModifier?: CommonModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## barPosition
@@ -59,6 +63,8 @@ Default value: **BarPosition.Start**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TabsOptions-barPosition?: BarPosition--><!--Device-TabsOptions-barPosition?: BarPosition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## controller
@@ -74,6 +80,8 @@ Tab controller.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TabsOptions-controller?: TabsController--><!--Device-TabsOptions-controller?: TabsController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,5 +115,7 @@ When the **Tabs** component is rebuilt, system resources are switched (for examp
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TabsOptions-index?: number--><!--Device-TabsOptions-index?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

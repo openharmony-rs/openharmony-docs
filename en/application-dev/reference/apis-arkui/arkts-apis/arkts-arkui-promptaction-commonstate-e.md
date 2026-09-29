@@ -8,6 +8,8 @@ Enumerates states of the custom dialog box.
 
 **Since:** 20
 
+<!--Device-promptAction-enum CommonState--><!--Device-promptAction-enum CommonState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## UNINITIALIZED
@@ -23,6 +25,8 @@ State before the controller is bound to the dialog box.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-CommonState-UNINITIALIZED = 0--><!--Device-CommonState-UNINITIALIZED = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ State after the controller is bound to the dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-CommonState-INITIALIZED = 1--><!--Device-CommonState-INITIALIZED = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## APPEARING
@@ -55,6 +61,8 @@ State during the dialog box appearance animation.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-CommonState-APPEARING = 2--><!--Device-CommonState-APPEARING = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ State after the dialog display appearance ends.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-CommonState-APPEARED = 3--><!--Device-CommonState-APPEARED = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DISAPPEARING
@@ -88,6 +98,8 @@ State during the dialog box disappearance animation.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-CommonState-DISAPPEARING = 4--><!--Device-CommonState-DISAPPEARING = 4-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DISAPPEARED
@@ -103,5 +115,7 @@ State after the dialog box disappearance animation ends.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-CommonState-DISAPPEARED = 5--><!--Device-CommonState-DISAPPEARED = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

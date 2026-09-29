@@ -16,6 +16,8 @@ Obtains a collection of thread, process, and alarm rules that have been added.
 
 **Since:** 8
 
+<!--Device-hichecker-function getRule() : bigint--><!--Device-hichecker-function getRule() : bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 **Return value:**

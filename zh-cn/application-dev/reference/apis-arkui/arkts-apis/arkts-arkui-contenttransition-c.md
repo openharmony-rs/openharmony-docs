@@ -12,4 +12,6 @@ declare class ContentTransition
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare class ContentTransition--><!--Device-unnamed-declare class ContentTransition-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

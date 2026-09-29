@@ -8,6 +8,8 @@ Defines the attributes specific to the dialog box and custom click actions for t
 
 **Since:** 12
 
+<!--Device-unnamed-export declare interface DialogOptions--><!--Device-unnamed-export declare interface DialogOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The background of the dialog.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DialogOptions-backgroundImage?: Resource--><!--Device-DialogOptions-backgroundImage?: Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottomOffsetType
@@ -45,6 +49,8 @@ The type of the bottom offset.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DialogOptions-bottomOffsetType?: BottomOffset--><!--Device-DialogOptions-bottomOffsetType?: BottomOffset-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +68,8 @@ The foreground of the dialog.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DialogOptions-foregroundImage?: Resource--><!--Device-DialogOptions-foregroundImage?: Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconStyle
@@ -77,6 +85,8 @@ The style of the close button.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DialogOptions-iconStyle?: IconStyle--><!--Device-DialogOptions-iconStyle?: IconStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +104,8 @@ The action after clicking dialog.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DialogOptions-onDialogClick?: Callback<void>--><!--Device-DialogOptions-onDialogClick?: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDialogClose
@@ -109,6 +121,8 @@ The action after clicking close button.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DialogOptions-onDialogClose?: Callback<void>--><!--Device-DialogOptions-onDialogClose?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,6 +140,8 @@ The subtitle of the dialog.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DialogOptions-subtitle?: ResourceStr--><!--Device-DialogOptions-subtitle?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## subtitleColor
@@ -141,6 +157,8 @@ The color of the subtitle.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DialogOptions-subtitleColor?: ResourceStr | Color--><!--Device-DialogOptions-subtitleColor?: ResourceStr | Color-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,6 +176,8 @@ The title of the dialog.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DialogOptions-title?: ResourceStr--><!--Device-DialogOptions-title?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## titleColor
@@ -173,6 +193,8 @@ The color of the title.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DialogOptions-titleColor?: ResourceStr | Color--><!--Device-DialogOptions-titleColor?: ResourceStr | Color-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,6 +212,8 @@ The relative position of the title and subtitle.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DialogOptions-titlePosition?: TitlePosition--><!--Device-DialogOptions-titlePosition?: TitlePosition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## uiContext
@@ -205,5 +229,7 @@ The UIContext required by the dialog.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DialogOptions-uiContext: UIContext--><!--Device-DialogOptions-uiContext: UIContext-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

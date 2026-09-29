@@ -8,6 +8,8 @@ Defines the communication parameters of the serial port.
 
 **Since:** 26.0.0
 
+<!--Device-serial-interface SerialConfigs--><!--Device-serial-interface SerialConfigs-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Baud rate. The value must be a positive integer. Whether non-standard baud rates
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialConfigs-baudRate?: int--><!--Device-SerialConfigs-baudRate?: int-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 ## dataBits
@@ -49,6 +53,8 @@ Data bits. The default value is **EIGHT**, indicating 8 data bits for standard c
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialConfigs-dataBits?: DataBits--><!--Device-SerialConfigs-dataBits?: DataBits-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 
@@ -68,6 +74,8 @@ Parity bit. The default value is **NONE**, indicating no parity check. **EVEN** 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialConfigs-parity?: Parity--><!--Device-SerialConfigs-parity?: Parity-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 ## rtscts
@@ -85,6 +93,8 @@ Whether to enable hardware-based automatic flow control via RTS/CTS. Hardware-ba
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialConfigs-rtscts?: boolean--><!--Device-SerialConfigs-rtscts?: boolean-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 
@@ -104,6 +114,8 @@ Stop bits. The default value is **ONE**. One stop bit is used for standard commu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialConfigs-stopBits?: StopBits--><!--Device-SerialConfigs-stopBits?: StopBits-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 ## xany
@@ -121,6 +133,8 @@ Whether to enable XANY (Any Character Resume) to control the flow. XANY is an ex
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialConfigs-xany?: boolean--><!--Device-SerialConfigs-xany?: boolean-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
 
@@ -140,6 +154,8 @@ Whether to enable XOFF (Xmitter Off) to control the sending of flows. XOFF indic
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SerialConfigs-xoff?: boolean--><!--Device-SerialConfigs-xoff?: boolean-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 ## xon
@@ -157,5 +173,7 @@ Whether to enable XON (Xmitter On) to control the sending of flows. XON indicate
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SerialConfigs-xon?: boolean--><!--Device-SerialConfigs-xon?: boolean-End-->
 
 **System capability:** SystemCapability.BusManager.Serial

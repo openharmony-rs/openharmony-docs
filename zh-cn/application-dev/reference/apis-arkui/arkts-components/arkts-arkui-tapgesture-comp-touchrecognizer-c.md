@@ -8,6 +8,8 @@ declare class TouchRecognizer
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare class TouchRecognizer--><!--Device-unnamed-declare class TouchRecognizer-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## cancelTouch
@@ -24,6 +26,8 @@ cancelTouch(): void
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TouchRecognizer-cancelTouch(): void--><!--Device-TouchRecognizer-cancelTouch(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getEventTargetInfo
@@ -39,6 +43,8 @@ getEventTargetInfo(): EventTargetInfo
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TouchRecognizer-getEventTargetInfo(): EventTargetInfo--><!--Device-TouchRecognizer-getEventTargetInfo(): EventTargetInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,6 +67,8 @@ Check whether the current gesture binding node is a descendant of the passed-in 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TouchRecognizer-isHostBelongsTo(uniqueId: number): boolean--><!--Device-TouchRecognizer-isHostBelongsTo(uniqueId: number): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,6 +99,8 @@ isHostBelongsTo(uniqueId: number): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TouchRecognizer-isHostBelongsTo(uniqueId: int): boolean--><!--Device-TouchRecognizer-isHostBelongsTo(uniqueId: int): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

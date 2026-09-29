@@ -20,6 +20,8 @@ Removes the permission for an application to use the public credentials of a use
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function removeGrantedPublicCertificate(keyUri: string, clientAppUid: int) : Promise<void>--><!--Device-certificateManager-function removeGrantedPublicCertificate(keyUri: string, clientAppUid: int) : Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

@@ -18,6 +18,8 @@ Sets the system hotkey shield status.
 
 **Required permissions:** ohos.permission.INPUT_CONTROL_DISPATCHING
 
+<!--Device-inputConsumer-function setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void--><!--Device-inputConsumer-function setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **System API:** This is a system API.

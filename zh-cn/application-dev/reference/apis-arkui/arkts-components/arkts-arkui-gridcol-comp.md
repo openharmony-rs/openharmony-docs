@@ -1,6 +1,6 @@
 # GridCol
 
-栅格布局系统中的列组件，必须作为栅格容器组件(GridRow)的子组件使用。适用于响应式布局、多设备适配等需要动态调整列宽的场景。支持响应式断点配置、跨列布局、偏移和排序功能。使用GridCol组件可以快速实现响应式布局，简化多设备适配的开发工作。
+栅格布局系统中的列组件，必须作为栅格容器组件([GridRow](arkts-arkui-gridrow-comp.md))的子组件使用。适用于响应式布局、多设备适配等需要动态调整列宽的场景。支持响应式断点配置、跨列布局、偏移和排序功能。使用GridCol组件可以快速实现响应式布局，简化多设备适配的开发工作。
 
 > **说明：** 
 > 
@@ -23,6 +23,8 @@ GridCol(option?: GridColOptions)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GridColInterface-(option?: GridColOptions): GridColAttribute--><!--Device-GridColInterface-(option?: GridColOptions): GridColAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

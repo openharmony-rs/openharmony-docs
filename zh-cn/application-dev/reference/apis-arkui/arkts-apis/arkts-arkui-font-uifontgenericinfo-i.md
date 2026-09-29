@@ -8,6 +8,8 @@ interface UIFontGenericInfo
 
 **起始版本：** 11
 
+<!--Device-font-interface UIFontGenericInfo--><!--Device-font-interface UIFontGenericInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ adjust: Array<UIFontAdjustInfo>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-UIFontGenericInfo-adjust: Array<UIFontAdjustInfo>--><!--Device-UIFontGenericInfo-adjust: Array<UIFontAdjustInfo>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## alias
@@ -50,6 +54,8 @@ alias: Array<UIFontAliasInfo>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-UIFontGenericInfo-alias: Array<UIFontAliasInfo>--><!--Device-UIFontGenericInfo-alias: Array<UIFontAliasInfo>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## family
@@ -67,5 +73,7 @@ family: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIFontGenericInfo-family: string--><!--Device-UIFontGenericInfo-family: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

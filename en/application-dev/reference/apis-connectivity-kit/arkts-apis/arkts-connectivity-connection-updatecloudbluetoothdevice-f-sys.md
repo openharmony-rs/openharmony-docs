@@ -20,6 +20,8 @@ update cloud devices.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise<void>--><!--Device-connection-function updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

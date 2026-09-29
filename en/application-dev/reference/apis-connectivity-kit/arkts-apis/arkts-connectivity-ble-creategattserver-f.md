@@ -20,6 +20,8 @@ create a JavaScript Gatt server instance.
 
 **Substitutes:** [createGattServer](arkts-connectivity-ble-creategattserver-f.md)
 
+<!--Device-BLE-function createGattServer(): GattServer--><!--Device-BLE-function createGattServer(): GattServer-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

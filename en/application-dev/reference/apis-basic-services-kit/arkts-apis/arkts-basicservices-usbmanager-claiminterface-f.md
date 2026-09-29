@@ -26,6 +26,8 @@ Claims a USB device interface. After this API is called successfully, the app ob
 
 **Since:** 9
 
+<!--Device-usbManager-function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): int--><!--Device-usbManager-function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

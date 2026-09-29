@@ -8,6 +8,8 @@ Describes wakeup source file information. @typedef WakeupSourceFile
 
 **Since:** 12
 
+<!--Device-intelligentVoice-interface WakeupSourceFile--><!--Device-intelligentVoice-interface WakeupSourceFile-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ File content.
 
 **Since:** 12
 
+<!--Device-WakeupSourceFile-fileContent: ArrayBuffer--><!--Device-WakeupSourceFile-fileContent: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ File path.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-WakeupSourceFile-filePath: string--><!--Device-WakeupSourceFile-filePath: string-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 

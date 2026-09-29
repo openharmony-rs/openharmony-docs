@@ -10,6 +10,8 @@ Defines an AppVersionInfo object.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-featureAbility-export type AppVersionInfo = _AppVersionInfo--><!--Device-featureAbility-export type AppVersionInfo = _AppVersionInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _AppVersionInfo

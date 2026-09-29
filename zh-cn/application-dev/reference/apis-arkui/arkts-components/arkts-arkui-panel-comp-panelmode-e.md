@@ -14,6 +14,8 @@ declare enum PanelMode
 
 **废弃版本：** 12
 
+<!--Device-unnamed-declare enum PanelMode--><!--Device-unnamed-declare enum PanelMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Mini
@@ -31,6 +33,8 @@ Mini = 0
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanelMode-Mini = 0--><!--Device-PanelMode-Mini = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ Half
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PanelMode-Half--><!--Device-PanelMode-Half-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Full
@@ -67,5 +73,7 @@ Full
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanelMode-Full--><!--Device-PanelMode-Full-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

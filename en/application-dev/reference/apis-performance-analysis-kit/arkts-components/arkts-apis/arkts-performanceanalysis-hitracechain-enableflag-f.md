@@ -16,6 +16,8 @@ Enables the trace flag specified in HiTraceId. This API returns the result synch
 
 **Since:** 8
 
+<!--Device-hiTraceChain-function enableFlag(id: HiTraceId, flag: HiTraceFlag): void--><!--Device-hiTraceChain-function enableFlag(id: HiTraceId, flag: HiTraceFlag): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 **Parameters:**

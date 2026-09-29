@@ -13,6 +13,8 @@ declare interface PluginComponentOptions
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare interface PluginComponentOptions--><!--Device-unnamed-declare interface PluginComponentOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -29,6 +31,8 @@ data: any
 
 **起始版本：** 9
 
+<!--Device-PluginComponentOptions-data: any--><!--Device-PluginComponentOptions-data: any-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -44,6 +48,8 @@ template: PluginComponentTemplate
 **类型：** [PluginComponentTemplate](arkts-arkui-plugincomponent-comp-plugincomponenttemplate-i-sys.md)
 
 **起始版本：** 9
+
+<!--Device-PluginComponentOptions-template: PluginComponentTemplate--><!--Device-PluginComponentOptions-template: PluginComponentTemplate-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

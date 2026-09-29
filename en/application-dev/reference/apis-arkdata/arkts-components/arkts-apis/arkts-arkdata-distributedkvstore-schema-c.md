@@ -8,6 +8,8 @@ Defines the schema of a KV store. You can create a **Schema** object and pass it
 
 **Since:** 9
 
+<!--Device-distributedKVStore-class Schema--><!--Device-distributedKVStore-class Schema-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Defines a constructor used to create a **Schema** instance.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Schema-constructor()--><!--Device-Schema-constructor()-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -64,6 +68,8 @@ Get the string array of json.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Schema-get indexes(): Array<string>--><!--Device-Schema-get indexes(): Array<string>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ```TypeScript
@@ -77,6 +83,8 @@ Set the string array of json.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Schema-set indexes(indexes: Array<string>)--><!--Device-Schema-set indexes(indexes: Array<string>)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -94,6 +102,8 @@ Get the mode of schema.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Schema-get mode(): int--><!--Device-Schema-get mode(): int-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ```TypeScript
@@ -107,6 +117,8 @@ Set the mode of schema.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Schema-set mode(mode: int)--><!--Device-Schema-set mode(mode: int)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -124,6 +136,8 @@ Get the root json object.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Schema-get root(): FieldNode--><!--Device-Schema-get root(): FieldNode-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ```TypeScript
@@ -137,6 +151,8 @@ Set the root json object.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Schema-set root(root: FieldNode)--><!--Device-Schema-set root(root: FieldNode)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -154,6 +170,8 @@ Get the skip size of schema.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Schema-get skip(): int--><!--Device-Schema-get skip(): int-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ```TypeScript
@@ -167,5 +185,7 @@ Set the skip size of schema.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Schema-set skip(skip: int)--><!--Device-Schema-set skip(skip: int)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore

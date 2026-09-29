@@ -20,6 +20,8 @@ Set Wi-Fi capability
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function setWifiCapability(capability: WifiCapability, enable: boolean): void--><!--Device-wifiManager-function setWifiCapability(capability: WifiCapability, enable: boolean): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

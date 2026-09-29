@@ -8,6 +8,8 @@ interface SystemBarRegionTint
 
 **起始版本：** 8
 
+<!--Device-window-interface SystemBarRegionTint--><!--Device-window-interface SystemBarRegionTint-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,6 +32,8 @@ backgroundColor?: string
 
 **起始版本：** 8
 
+<!--Device-SystemBarRegionTint-backgroundColor?: string--><!--Device-SystemBarRegionTint-backgroundColor?: string-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -45,6 +49,8 @@ contentColor?: string
 **类型：** string
 
 **起始版本：** 8
+
+<!--Device-SystemBarRegionTint-contentColor?: string--><!--Device-SystemBarRegionTint-contentColor?: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,6 +68,8 @@ isEnable?: boolean
 
 **起始版本：** 8
 
+<!--Device-SystemBarRegionTint-isEnable?: boolean--><!--Device-SystemBarRegionTint-isEnable?: boolean-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -78,6 +86,8 @@ region?: Rect
 
 **起始版本：** 8
 
+<!--Device-SystemBarRegionTint-region?: Rect--><!--Device-SystemBarRegionTint-region?: Rect-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -93,6 +103,8 @@ type: WindowType
 **类型：** [WindowType](arkts-arkui-window-windowtype-e.md)
 
 **起始版本：** 8
+
+<!--Device-SystemBarRegionTint-type: WindowType--><!--Device-SystemBarRegionTint-type: WindowType-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

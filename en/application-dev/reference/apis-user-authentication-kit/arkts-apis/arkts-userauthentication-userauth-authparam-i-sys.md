@@ -8,6 +8,8 @@ Defines the user authentication parameters. This API is used to configure user a
 
 **Since:** 10
 
+<!--Device-userAuth-interface AuthParam--><!--Device-userAuth-interface AuthParam-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Credential ID list, which is used to specify the credentials to be authenticated
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AuthParam-credentialIdList?: Uint8Array[]--><!--Device-AuthParam-credentialIdList?: Uint8Array[]-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ ID of the target user to be authenticated, which specifies the user to be authen
 **Default:** The ID of the current user. The value is a positive integer greater than or equal to 0.
 
 **Since:** 18
+
+<!--Device-AuthParam-userId?: int--><!--Device-AuthParam-userId?: int-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

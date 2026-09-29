@@ -14,6 +14,8 @@ Describes the drawing attributes of the rounded rectangle component.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface RoundedRectOptions--><!--Device-unnamed-declare interface RoundedRectOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -39,6 +41,8 @@ Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled a
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RoundedRectOptions-height?: Length--><!--Device-RoundedRectOptions-height?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled a
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-RoundedRectOptions-radiusHeight?: Length--><!--Device-RoundedRectOptions-radiusHeight?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## radiusWidth
@@ -92,6 +98,8 @@ Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled a
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-RoundedRectOptions-radiusWidth?: Length--><!--Device-RoundedRectOptions-radiusWidth?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -117,5 +125,7 @@ Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled a
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RoundedRectOptions-width?: Length--><!--Device-RoundedRectOptions-width?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

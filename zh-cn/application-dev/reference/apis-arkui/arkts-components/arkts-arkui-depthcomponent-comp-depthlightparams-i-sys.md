@@ -8,6 +8,8 @@ declare interface DepthLightParams
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare interface DepthLightParams--><!--Device-unnamed-declare interface DepthLightParams-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -28,6 +30,8 @@ color: DepthColorRGB
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-DepthLightParams-color: DepthColorRGB--><!--Device-DepthLightParams-color: DepthColorRGB-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -47,6 +51,8 @@ direction: DepthVector3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DepthLightParams-direction: DepthVector3--><!--Device-DepthLightParams-direction: DepthVector3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,6 +75,8 @@ intensity: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DepthLightParams-intensity: double--><!--Device-DepthLightParams-intensity: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

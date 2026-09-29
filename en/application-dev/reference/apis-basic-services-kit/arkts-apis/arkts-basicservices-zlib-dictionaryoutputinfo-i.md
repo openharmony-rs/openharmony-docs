@@ -8,6 +8,8 @@ InflateGetDictionary and deflateGetDictionary return value information.
 
 **Since:** 12
 
+<!--Device-zlib-interface DictionaryOutputInfo--><!--Device-zlib-interface DictionaryOutputInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Length of a dictionary.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DictionaryOutputInfo-dictionaryLength: int--><!--Device-DictionaryOutputInfo-dictionaryLength: int-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -44,6 +48,8 @@ For details, see [ReturnStatus](arkts-basicservices-zlib-returnstatus-e.md).
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DictionaryOutputInfo-status: ReturnStatus--><!--Device-DictionaryOutputInfo-status: ReturnStatus-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib

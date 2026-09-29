@@ -22,6 +22,8 @@ Initiates a P2P connection to a device with the specified configuration.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
+<!--Device-wifi-function p2pConnect(config: WifiP2PConfig): boolean--><!--Device-wifi-function p2pConnect(config: WifiP2PConfig): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Parameters:**

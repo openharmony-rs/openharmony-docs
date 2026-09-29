@@ -8,6 +8,8 @@ Defines the callback triggered when the user is about to leave the current page 
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnBeforeUnloadEvent--><!--Device-unnamed-declare interface OnBeforeUnloadEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## isReload
@@ -21,6 +23,8 @@ The isReload parameter is set to true when the page is refreshed; otherwise, it 
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-OnBeforeUnloadEvent-isReload?: boolean--><!--Device-OnBeforeUnloadEvent-isReload?: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -38,6 +42,8 @@ The message of confirm dialog.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnBeforeUnloadEvent-message: string--><!--Device-OnBeforeUnloadEvent-message: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## result
@@ -54,6 +60,8 @@ Handle the user's JavaScript result.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnBeforeUnloadEvent-result: JsResult--><!--Device-OnBeforeUnloadEvent-result: JsResult-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## url
@@ -69,5 +77,7 @@ The url of the page.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnBeforeUnloadEvent-url: string--><!--Device-OnBeforeUnloadEvent-url: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

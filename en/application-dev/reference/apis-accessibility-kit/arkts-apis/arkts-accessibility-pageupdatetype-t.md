@@ -8,6 +8,8 @@ Enumerates the page update types. A page update event is triggered by the access
 
 **Since:** 9
 
+<!--Device-unnamed-type PageUpdateType = 'pageContentUpdate' | 'pageStateUpdate'--><!--Device-unnamed-type PageUpdateType = 'pageContentUpdate' | 'pageStateUpdate'-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 | Type | Description |

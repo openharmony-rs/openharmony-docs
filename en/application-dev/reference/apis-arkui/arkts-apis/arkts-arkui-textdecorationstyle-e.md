@@ -4,9 +4,11 @@
 declare enum TextDecorationStyle
 ```
 
-The style of the text decoration.
+Sets the style of the text decoration.
 
 **Since:** 12
+
+<!--Device-unnamed-declare enum TextDecorationStyle--><!--Device-unnamed-declare enum TextDecorationStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ Single solid line (default value).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextDecorationStyle-SOLID = 0--><!--Device-TextDecorationStyle-SOLID = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DOUBLE
@@ -39,6 +43,8 @@ Double solid line.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextDecorationStyle-DOUBLE = 1--><!--Device-TextDecorationStyle-DOUBLE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +62,8 @@ Dotted line.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextDecorationStyle-DOTTED = 2--><!--Device-TextDecorationStyle-DOTTED = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DASHED
@@ -72,6 +80,8 @@ Dashed line.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextDecorationStyle-DASHED = 3--><!--Device-TextDecorationStyle-DASHED = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WAVY
@@ -87,5 +97,7 @@ Wavy line.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextDecorationStyle-WAVY = 4--><!--Device-TextDecorationStyle-WAVY = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

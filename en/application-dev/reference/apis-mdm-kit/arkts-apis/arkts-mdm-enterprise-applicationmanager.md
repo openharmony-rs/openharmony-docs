@@ -11,6 +11,8 @@ This module provides application management capabilities, including managing the
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace applicationManager--><!--Device-unnamed-declare namespace applicationManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -67,6 +69,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [publishFormToDesktop](arkts-mdm-applicationmanager-publishformtodesktop-f.md) | Publishes the form to the desktop. |
 | [queryBundleStatsInfos](arkts-mdm-applicationmanager-querybundlestatsinfos-f.md) | Queries the accumulated foreground runtime statistics of applications under a specified user account within a given time period. The minimum query granularity is one day. The API requires the start time (**startTime**), end time (**endTime**), and target user account ID (**accountId**) to be passed in. **startTime** and **endTime** are millisecond-level timestamps. The caller can pass custom values. The default value of **startTime** is 00:00:00.000 of the current day, and the default of **endTime** is 24:00:00.000 of the current day (that is, 00:00:00 of the following day). The API returns an array of **BundleStatsInfo**, where each element contains the bundle name of an application, its clone index, and the foreground usage duration (in milliseconds) within the specified time period. If **startTime** is set to **0**, the query starts from the device's first boot time. If **startTime** is later than **endTime**, the API returns error code 9200012. |
 | [queryTrafficStats](arkts-mdm-applicationmanager-querytrafficstats-f.md) | Queries the data usage of a specified application within a specified period for the current user. This API uses a promise to return the result. |
+| [releaseExemptionResource](arkts-mdm-applicationmanager-releaseexemptionresource-f.md) | Releases a standby resource exemption for a specified application. |
 | [removeAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-removealloweddistributeabilityconnbundles-f.md) | Removes the cross-device application trustlist for a specific distributed service for a specified user. After the trustlist is removed, if there are still remaining applications in the list, only those applications can use the specific distributed service to transmit data across devices without being subject to the restrictions imposed by [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md). If the list has been removed and there are no remaining applications, no applications under the specified user are allowed to use the specific distributed service for cross-device data transmission. |
 | [removeAllowedNotificationBundles](arkts-mdm-applicationmanager-removeallowednotificationbundles-f.md) | Removes applications from the notification trustlist. |
 | [removeAllowedRunningBundles](arkts-mdm-applicationmanager-removeallowedrunningbundles-f.md) | Removes applications from the application running trustlist of the specified user. After an application is removed, it is not allowed to run under the current or specified user. |
@@ -78,6 +81,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [removeHideLauncherIcon](arkts-mdm-applicationmanager-removehidelaunchericon-f.md) | Removes applications from the home screen icon hide list. |
 | [removeKeepAliveApps](arkts-mdm-applicationmanager-removekeepaliveapps-f.md) | Removes a specified application from the keep-alive list. |
 | [removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md) | Removes the non-stoppable application list for a specified user. After the removal, the user can stop the applications on the device. If the parameter list includes uninstalled applications, the removal will still succeed. Installed applications will be removed from the list, while uninstalled ones will not impact the removal process. |
+| [requestExemptionResource](arkts-mdm-applicationmanager-requestexemptionresource-f.md) | Applies for a standby resource exemption for a specified application. After a successful application, the specified application can use the exempted resources (such as network access) even when the device enters standby mode. |
 | [setAbilityDisabled](arkts-mdm-applicationmanager-setabilitydisabled-f.md) | Sets whether to disable the Ability component of a specified application (system application or third-party application). Currently, only the UIAbility type is supported. After the UIAbility type is disabled, the UI of the Ability component cannot be started. |
 | [setAllowedKioskApps](arkts-mdm-applicationmanager-setallowedkioskapps-f.md) | Sets applications allowed to run in kiosk mode. |
 | [setKioskFeatures](arkts-mdm-applicationmanager-setkioskfeatures-f.md) | Sets the features of the kiosk mode. You can use this API to control whether the notification center and control panel can be accessed in kiosk mode. |
@@ -113,4 +117,5 @@ import { applicationManager } from '@kit.MDMKit';
 | --- | --- |
 | [KioskFeature](arkts-mdm-applicationmanager-kioskfeature-e.md) | Defines the features of the kiosk mode. |
 | [ServiceType](arkts-mdm-applicationmanager-servicetype-e.md) | Distributed service type. |
+| [StandbyResourceType](arkts-mdm-applicationmanager-standbyresourcetype-e.md) | Enumerates the standby resource types. These types represent resources that can be exempted from device standby restrictions. When a device enters standby mode, the system restricts network access and other resources for background applications. By applying for standby resource exemptions, specified applications can continue to use these resources even when the device is in standby mode. |
 | [WindowState](arkts-mdm-applicationmanager-windowstate-e.md) | Enumerates application window states. |

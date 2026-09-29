@@ -8,6 +8,8 @@ WebKeyboardController is a controller class provided by ArkWeb for controlling t
 
 **Since:** 12
 
+<!--Device-unnamed-declare class WebKeyboardController--><!--Device-unnamed-declare class WebKeyboardController-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## close
@@ -19,6 +21,8 @@ close(): void
 Closes this custom keyboard.
 
 **Since:** 12
+
+<!--Device-WebKeyboardController-close(): void--><!--Device-WebKeyboardController-close(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -34,6 +38,8 @@ Constructs a **WebKeyboardController** API.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebKeyboardController-constructor()--><!--Device-WebKeyboardController-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## deleteBackward
@@ -45,6 +51,8 @@ deleteBackward(length: number): void
 Deletes a specified length of characters after the cursor.
 
 **Since:** 12
+
+<!--Device-WebKeyboardController-deleteBackward(length: number): void--><!--Device-WebKeyboardController-deleteBackward(length: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -64,6 +72,8 @@ Deletes a specified length of characters before the cursor.
 
 **Since:** 12
 
+<!--Device-WebKeyboardController-deleteForward(length: number): void--><!--Device-WebKeyboardController-deleteForward(length: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -82,6 +92,8 @@ Inserts characters into the **Web** component text box.
 
 **Since:** 12
 
+<!--Device-WebKeyboardController-insertText(text: string): void--><!--Device-WebKeyboardController-insertText(text: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -99,6 +111,8 @@ sendFunctionKey(key: number): void
 Inserts a function key. Currently, only the Enter key type is supported. For details about the value, see [EnterKeyType](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-enterkeytype-e.md).
 
 **Since:** 12
+
+<!--Device-WebKeyboardController-sendFunctionKey(key: number): void--><!--Device-WebKeyboardController-sendFunctionKey(key: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

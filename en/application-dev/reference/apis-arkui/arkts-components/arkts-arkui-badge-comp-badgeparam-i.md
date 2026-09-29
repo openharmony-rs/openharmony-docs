@@ -4,9 +4,11 @@
 declare interface BadgeParam
 ```
 
-Provides basic parameters for creating a badge.
+Contains the basic parameters for creating a Badge component.
 
 **Since:** 7
+
+<!--Device-unnamed-declare interface BadgeParam--><!--Device-unnamed-declare interface BadgeParam-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,15 +18,15 @@ Provides basic parameters for creating a badge.
 position?: BadgePosition | Position
 ```
 
-Position to display the badge relative to the parent component.
+Badge display position.
 
 Default value: **BadgePosition.RightTop**
 
 **NOTE:** 
 
-With the **Position** type, percentage values are not supported. If an invalid value is set, the default value **(0,0)**, which indicates the upper left corner of the component, will be used.
+When **Position** is used as an input parameter, percentage is not supported. If an invalid value is set, it is processed as (0,0), which is the upper left corner of the component.
 
-With the **BadgePosition** type, the position is mirrored based on the Direction property.
+When **BadgePosition** is used as an input parameter, the mirrored display is controlled by the Direction attribute.
 
 **Type:** [BadgePosition](arkts-arkui-badge-comp-badgeposition-e.md) &#124; Position
 
@@ -36,6 +38,8 @@ With the **BadgePosition** type, the position is mirrored based on the Direction
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-BadgeParam-position?: BadgePosition | Position--><!--Device-BadgeParam-position?: BadgePosition | Position-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -44,7 +48,7 @@ With the **BadgePosition** type, the position is mirrored based on the Direction
 style: BadgeStyle
 ```
 
-Style of the badge, including the font color, font size, badge color, and badge size.
+Style of the **Badge** component, including the text color, size, badge color, and badge size.
 
 **Type:** [BadgeStyle](arkts-arkui-badge-comp-badgestyle-i.md)
 
@@ -53,5 +57,7 @@ Style of the badge, including the font color, font size, badge color, and badge 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-BadgeParam-style: BadgeStyle--><!--Device-BadgeParam-style: BadgeStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

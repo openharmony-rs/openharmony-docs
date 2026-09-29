@@ -23,6 +23,8 @@ needed. Silent authorization enables system apps to directly obtain the permissi
 
 **Required permissions:** ohos.permission.MANAGE_USB_CONFIG
 
+<!--Device-serialManager-function addSerialRight(tokenId: int, portId: int): void--><!--Device-serialManager-function addSerialRight(tokenId: int, portId: int): void-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 **System API:** This is a system API.

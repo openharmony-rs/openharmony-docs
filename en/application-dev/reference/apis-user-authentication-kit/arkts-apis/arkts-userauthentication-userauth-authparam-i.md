@@ -8,6 +8,8 @@ Defines the user authentication parameters. This API is used to configure user a
 
 **Since:** 10
 
+<!--Device-userAuth-interface AuthParam--><!--Device-userAuth-interface AuthParam-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -36,7 +38,9 @@ For details, see [Principles for Classifying Biometric Authentication Trust Leve
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AuthParam-authTrustLevel: AuthTrustLevel--><!--Device-AuthParam-authTrustLevel: AuthTrustLevel-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -52,7 +56,9 @@ Authentication type list, which specifies the types of authentication provided o
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AuthParam-authType: UserAuthType[]--><!--Device-AuthParam-authType: UserAuthType[]-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -68,7 +74,9 @@ Random challenge value, which can be used to prevent replay attacks. It cannot e
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AuthParam-challenge: Uint8Array--><!--Device-AuthParam-challenge: Uint8Array-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -84,7 +92,9 @@ Information about the authentication result reuse. After this parameter is set, 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AuthParam-reuseUnlockResult?: ReuseUnlockResult--><!--Device-AuthParam-reuseUnlockResult?: ReuseUnlockResult-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -105,6 +115,8 @@ retrying the authentication mode or manually switching.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-AuthParam-skipLockedBiometricAuth?: boolean--><!--Device-AuthParam-skipLockedBiometricAuth?: boolean-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

@@ -8,6 +8,8 @@ Defines the style of a localized barrier, which is used to define the ID, direct
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface LocalizedBarrierStyle--><!--Device-unnamed-declare interface LocalizedBarrierStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -25,6 +27,8 @@ ID of the barrier, used to identify the barrier. A child component can reference
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LocalizedBarrierStyle-id : string--><!--Device-LocalizedBarrierStyle-id : string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ Invalid value: the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LocalizedBarrierStyle-localizedDirection : LocalizedBarrierDirection--><!--Device-LocalizedBarrierStyle-localizedDirection : LocalizedBarrierDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## referencedId
@@ -67,5 +73,7 @@ Components on which the barrier is generated. Put the IDs of the components that
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LocalizedBarrierStyle-referencedId : Array<string>--><!--Device-LocalizedBarrierStyle-referencedId : Array<string>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

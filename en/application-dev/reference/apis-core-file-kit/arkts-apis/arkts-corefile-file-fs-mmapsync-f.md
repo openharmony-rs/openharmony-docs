@@ -18,6 +18,8 @@ Creates a file mapping object based on a file descriptor or file object by using
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare function mmapSync(file: number | File, mode: MappingMode, offset: number, size: number): FileMapping--><!--Device-unnamed-declare function mmapSync(file: number | File, mode: MappingMode, offset: number, size: number): FileMapping-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

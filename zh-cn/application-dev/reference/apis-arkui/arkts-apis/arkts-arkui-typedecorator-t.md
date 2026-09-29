@@ -12,6 +12,8 @@ export declare type TypeDecorator = <T>(type: TypeConstructor<T>) => PropertyDec
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export declare type TypeDecorator = <T>(type: TypeConstructor<T>) => PropertyDecorator--><!--Device-unnamed-export declare type TypeDecorator = <T>(type: TypeConstructor<T>) => PropertyDecorator-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

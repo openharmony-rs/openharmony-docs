@@ -8,6 +8,8 @@ Ad request callback.
 
 **Since:** 11
 
+<!--Device-unnamed-export interface RespCallback--><!--Device-unnamed-export interface RespCallback-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## Modules to Import
@@ -25,6 +27,8 @@ import { AdsServiceExtensionAbility, RespCallback } from '@kit.AdsKit';
 Data in the ad request callback.
 
 **Since:** 11
+
+<!--Device-RespCallback-(respData: Map<string, Array<advertising.Advertisement>>): void--><!--Device-RespCallback-(respData: Map<string, Array<advertising.Advertisement>>): void-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 

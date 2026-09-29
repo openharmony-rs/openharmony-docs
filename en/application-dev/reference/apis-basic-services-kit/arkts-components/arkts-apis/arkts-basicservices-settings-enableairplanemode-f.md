@@ -18,6 +18,8 @@ Enables or disables airplane mode.
 
 **Deprecated since:** 26.0.0
 
+<!--Device-settings-function enableAirplaneMode(enable: boolean, callback: AsyncCallback<void>): void--><!--Device-settings-function enableAirplaneMode(enable: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**
@@ -54,6 +56,8 @@ Enables or disables airplane mode.
 **Since:** 7
 
 **Deprecated since:** 26.0.0
+
+<!--Device-settings-function enableAirplaneMode(enable: boolean): Promise<void>--><!--Device-settings-function enableAirplaneMode(enable: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 

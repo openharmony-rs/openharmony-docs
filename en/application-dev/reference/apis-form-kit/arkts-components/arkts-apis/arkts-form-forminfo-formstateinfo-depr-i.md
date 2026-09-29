@@ -12,6 +12,8 @@ Describes the widget state information.
 
 **Substitutes:** [FormStateInfo](arkts-form-forminfo-formstateinfo-i.md)
 
+<!--Device-formInfo-interface FormStateInfo--><!--Device-formInfo-interface FormStateInfo-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Widget state.
 
 **Substitutes:** [formState](arkts-form-forminfo-formstateinfo-i.md#formstate)
 
+<!--Device-FormStateInfo-formState: FormState--><!--Device-FormStateInfo-formState: FormState-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## want
@@ -52,5 +56,7 @@ Want text.
 **Deprecated since:** 9
 
 **Substitutes:** [want](arkts-form-forminfo-formstateinfo-i.md#want)
+
+<!--Device-FormStateInfo-want: Want--><!--Device-FormStateInfo-want: Want-End-->
 
 **System capability:** SystemCapability.Ability.Form

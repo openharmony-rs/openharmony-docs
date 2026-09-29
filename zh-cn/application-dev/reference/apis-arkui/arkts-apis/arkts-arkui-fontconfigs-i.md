@@ -8,6 +8,8 @@ declare interface FontConfigs
 
 **起始版本：** 24
 
+<!--Device-unnamed-declare interface FontConfigs--><!--Device-unnamed-declare interface FontConfigs-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontWeightConfigs
@@ -25,5 +27,7 @@ fontWeightConfigs?: FontWeightConfigs
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
+
+<!--Device-FontConfigs-fontWeightConfigs?: FontWeightConfigs--><!--Device-FontConfigs-fontWeightConfigs?: FontWeightConfigs-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -18,6 +18,8 @@ Enable semi - Wifi.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifiManager-function enableSemiWifi(): void--><!--Device-wifiManager-function enableSemiWifi(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Defines the clearance information of a device-cloud synergy database.
 
 **Since:** 23
 
+<!--Device-cloudData-interface DBActionInfo--><!--Device-cloudData-interface DBActionInfo-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Default data clearance mode of the database.
 
 **Since:** 23
 
+<!--Device-DBActionInfo-action: ClearAction--><!--Device-DBActionInfo-action: ClearAction-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Information about the table whose data is to be cleared and the clearance rules.
 **Type:** Record&lt;string, [ClearAction](arkts-arkdata-clouddata-clearaction-e-sys.md)&gt;
 
 **Since:** 23
+
+<!--Device-DBActionInfo-tableInfo?: Record<string, ClearAction>--><!--Device-DBActionInfo-tableInfo?: Record<string, ClearAction>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 

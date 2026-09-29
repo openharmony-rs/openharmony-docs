@@ -20,6 +20,8 @@ Disables Bluetooth. After Bluetooth is disabled, the user can manually enable it
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bluetoothManager-function turnOffBluetooth(admin: Want): void--><!--Device-bluetoothManager-function turnOffBluetooth(admin: Want): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

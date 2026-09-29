@@ -14,6 +14,8 @@ Specifies the attribute of drawing the end of each line segment.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare type CanvasLineCap = "butt" | "round" | "square"--><!--Device-unnamed-declare type CanvasLineCap = "butt" | "round" | "square"-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

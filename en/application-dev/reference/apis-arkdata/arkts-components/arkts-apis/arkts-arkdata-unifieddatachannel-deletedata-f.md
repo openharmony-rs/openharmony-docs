@@ -18,7 +18,9 @@ Deletes data from the UDMF public data channel. This API uses an asynchronous ca
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-unifiedDataChannel-function deleteData(options: Options, callback: AsyncCallback<Array<UnifiedData>>): void--><!--Device-unifiedDataChannel-function deleteData(options: Options, callback: AsyncCallback<Array<UnifiedData>>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -84,7 +86,9 @@ Deletes data from the UDMF public data channel. This API uses a promise to retur
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-unifiedDataChannel-function deleteData(options: Options): Promise<Array<UnifiedData>>--><!--Device-unifiedDataChannel-function deleteData(options: Options): Promise<Array<UnifiedData>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 

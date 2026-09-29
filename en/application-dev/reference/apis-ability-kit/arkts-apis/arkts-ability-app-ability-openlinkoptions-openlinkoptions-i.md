@@ -8,6 +8,8 @@ export default interface OpenLinkOptions
 
 **Since:** 12
 
+<!--Device-unnamed-export default interface OpenLinkOptions--><!--Device-unnamed-export default interface OpenLinkOptions-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -22,7 +24,7 @@ import { OpenLinkOptions } from '@kit.AbilityKit';
 appLinkingOnly?: boolean
 ```
 
-Whether the UIAbility must be started using &lt;!--RP1--&gt; [App Linking](../../../application-models/app-linking-startup.md)&lt;!--RP1End--&gt;.
+Whether the UIAbility must be started using <!--RP1--> [App Linking](../../../application-models/app-linking-startup.md)<!--RP1End-->.
 
 - If this parameter is set to **true** and no UIAbility matches the URL in App Linking, the result is returned  
 directly.  
@@ -36,7 +38,9 @@ When the aa command is used to implicitly start an ability, you can set **--pb a
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-OpenLinkOptions-appLinkingOnly?: boolean--><!--Device-OpenLinkOptions-appLinkingOnly?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -54,7 +58,9 @@ Operation class used to handle the result of an application launch request.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 21.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+
+<!--Device-OpenLinkOptions-completionHandler?: CompletionHandler--><!--Device-OpenLinkOptions-completionHandler?: CompletionHandler-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -79,7 +85,9 @@ Note: If **appLinkingOnly** is set to **true**, the Deep Linking process is not 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 21.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+
+<!--Device-OpenLinkOptions-hideFailureTipDialog?: boolean--><!--Device-OpenLinkOptions-hideFailureTipDialog?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -100,6 +108,8 @@ Note: For details about the usage rules, see **parameters** in [want](arkts-abil
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OpenLinkOptions-parameters?: Record<string, Object>--><!--Device-OpenLinkOptions-parameters?: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

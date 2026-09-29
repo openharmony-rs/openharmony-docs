@@ -16,6 +16,8 @@ Called by a system dialog box to obtain shared data, which is set by the target 
 
 **Since:** 10
 
+<!--Device-abilityManager-function acquireShareData(missionId: int, callback: AsyncCallback<Record<string, Object>>): void--><!--Device-abilityManager-function acquireShareData(missionId: int, callback: AsyncCallback<Record<string, Object>>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -47,6 +49,8 @@ function acquireShareData(missionId: number): Promise<Record<string, Object>>
 Called by a system dialog box to obtain shared data, which is set by the target UIAbility through [onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare). This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-abilityManager-function acquireShareData(missionId: int): Promise<Record<string, Object>>--><!--Device-abilityManager-function acquireShareData(missionId: int): Promise<Record<string, Object>>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -8,6 +8,8 @@ export declare class ArcButtonOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-export declare class ArcButtonOptions--><!--Device-unnamed-export declare class ArcButtonOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -27,6 +29,8 @@ constructor(options: CommonArcButtonOptions)
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonOptions-constructor(options: CommonArcButtonOptions)--><!--Device-ArcButtonOptions-constructor(options: CommonArcButtonOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -52,6 +56,8 @@ backgroundBlurStyle: BlurStyle
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonOptions-backgroundBlurStyle: BlurStyle--><!--Device-ArcButtonOptions-backgroundBlurStyle: BlurStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## backgroundColor
@@ -71,6 +77,8 @@ ArcButtonStyleMode需要设置为CUSTOM。
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonOptions-backgroundColor: ColorMetrics--><!--Device-ArcButtonOptions-backgroundColor: ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -92,6 +100,8 @@ ArcButtonStyleMode需要设置为CUSTOM。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonOptions-fontColor: ColorMetrics--><!--Device-ArcButtonOptions-fontColor: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## fontFamily
@@ -107,6 +117,8 @@ fontFamily: string | Resource
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonOptions-fontFamily: string | Resource--><!--Device-ArcButtonOptions-fontFamily: string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -126,6 +138,8 @@ fontMargin: LocalizedMargin
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonOptions-fontMargin: LocalizedMargin--><!--Device-ArcButtonOptions-fontMargin: LocalizedMargin-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## fontSize
@@ -143,6 +157,8 @@ fontSize: LengthMetrics
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonOptions-fontSize: LengthMetrics--><!--Device-ArcButtonOptions-fontSize: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -162,6 +178,8 @@ fontStyle: FontStyle
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonOptions-fontStyle: FontStyle--><!--Device-ArcButtonOptions-fontStyle: FontStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## label
@@ -177,6 +195,8 @@ label: ResourceStr
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonOptions-label: ResourceStr--><!--Device-ArcButtonOptions-label: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -194,6 +214,8 @@ onClick?: Callback<ClickEvent>
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonOptions-onClick?: Callback<ClickEvent>--><!--Device-ArcButtonOptions-onClick?: Callback<ClickEvent>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## onTouch
@@ -209,6 +231,8 @@ onTouch?: Callback<TouchEvent>
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonOptions-onTouch?: Callback<TouchEvent>--><!--Device-ArcButtonOptions-onTouch?: Callback<TouchEvent>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -227,6 +251,8 @@ position: ArcButtonPosition
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonOptions-position: ArcButtonPosition--><!--Device-ArcButtonOptions-position: ArcButtonPosition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -248,6 +274,8 @@ ArcButtonStyleMode需要设置为CUSTOM。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonOptions-pressedFontColor: ColorMetrics--><!--Device-ArcButtonOptions-pressedFontColor: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## progressConfig
@@ -268,6 +296,8 @@ ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮�
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonOptions-progressConfig?: ArcButtonProgressConfig--><!--Device-ArcButtonOptions-progressConfig?: ArcButtonProgressConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## shadowColor
@@ -285,6 +315,8 @@ shadowColor: ColorMetrics
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonOptions-shadowColor: ColorMetrics--><!--Device-ArcButtonOptions-shadowColor: ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -306,6 +338,8 @@ shadowEnabled: boolean
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonOptions-shadowEnabled: boolean--><!--Device-ArcButtonOptions-shadowEnabled: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## status
@@ -324,6 +358,8 @@ status: ArcButtonStatus
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonOptions-status: ArcButtonStatus--><!--Device-ArcButtonOptions-status: ArcButtonStatus-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## styleMode
@@ -341,5 +377,7 @@ styleMode: ArcButtonStyleMode
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonOptions-styleMode: ArcButtonStyleMode--><!--Device-ArcButtonOptions-styleMode: ArcButtonStyleMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

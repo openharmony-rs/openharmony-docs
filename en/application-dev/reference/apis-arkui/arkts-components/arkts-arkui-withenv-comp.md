@@ -2,7 +2,11 @@
 
 The **WithEnv** component is used to set a local environment variable scope for a child component tree. Developers can use this component to provide custom environment variables for descendant components, or set system environment variables.
 
-> **NOTE** > > - Custom environment variables can be set through [customEnv](arkts-arkui-withenv-comp-attribute.md#customenv). > - System environment variable keys can be set through [env](arkts-arkui-withenv-comp-attribute.md#env). They are stored in > [WritableEnvKey](arkts-arkui-common-comp-writableenvkey-c.md). > - When **WithEnv** is nested, the nearest scope takes effect for environment variables with the same name.
+> **NOTE:** 
+> 
+> - Custom environment variables can be set through [customEnv](arkts-arkui-withenv-comp-attribute.md#customenv).
+> - System environment variable keys can be set through [env](arkts-arkui-withenv-comp-attribute.md#env). They are stored in [WritableEnvKey](arkts-arkui-common-comp-writableenvkey-c.md).
+> - When **WithEnv** is nested, the nearest scope takes effect for environment variables with the same name.
 
 ## Summary
 

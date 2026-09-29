@@ -1,8 +1,10 @@
-# @ohos.application.uriPermissionManager
+# @ohos.application.uriPermissionManager(URI Permission Manager)
 
 The **uriPermissionManager** module provides capabilities for granting the permission on a file to another application and revoking the granted permissions. The file is identified by a uniform resource identifier (URI).
 
 **Since:** 10
+
+<!--Device-unnamed-declare namespace uriPermissionManager--><!--Device-unnamed-declare namespace uriPermissionManager-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

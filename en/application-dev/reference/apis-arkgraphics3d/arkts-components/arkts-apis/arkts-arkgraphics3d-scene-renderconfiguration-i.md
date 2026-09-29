@@ -10,6 +10,8 @@ Describes the rendering configuration.
 
 **Since:** 23
 
+<!--Device-unnamed-export interface RenderConfiguration--><!--Device-unnamed-export interface RenderConfiguration-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## shadowResolution
@@ -25,6 +27,8 @@ Global shadow map resolution, in pixels (px). The default value is undefined, in
 **Default:** undefined
 
 **Since:** 23
+
+<!--Device-RenderConfiguration-shadowResolution?: Vec2--><!--Device-RenderConfiguration-shadowResolution?: Vec2-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -43,5 +47,7 @@ param config for soft shadow, control the algorithm type and its configuration.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RenderConfiguration-softShadowConfig?: SoftShadowConfig--><!--Device-RenderConfiguration-softShadowConfig?: SoftShadowConfig-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

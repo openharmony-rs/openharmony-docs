@@ -21,6 +21,8 @@ declare enum WaterFlowLayoutMode
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare enum WaterFlowLayoutMode--><!--Device-unnamed-declare enum WaterFlowLayoutMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALWAYS_TOP_DOWN
@@ -36,6 +38,8 @@ ALWAYS_TOP_DOWN = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WaterFlowLayoutMode-ALWAYS_TOP_DOWN = 0--><!--Device-WaterFlowLayoutMode-ALWAYS_TOP_DOWN = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,5 +66,7 @@ SLIDING_WINDOW = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WaterFlowLayoutMode-SLIDING_WINDOW = 1--><!--Device-WaterFlowLayoutMode-SLIDING_WINDOW = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

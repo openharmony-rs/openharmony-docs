@@ -18,6 +18,8 @@ Starts an ability based on the specified [shortcut information](arkts-ability-sh
 
 **Required permissions:** ohos.permission.START_SHORTCUT
 
+<!--Device-launcherBundleManager-function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise<void>--><!--Device-launcherBundleManager-function startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **System API:** This is a system API.

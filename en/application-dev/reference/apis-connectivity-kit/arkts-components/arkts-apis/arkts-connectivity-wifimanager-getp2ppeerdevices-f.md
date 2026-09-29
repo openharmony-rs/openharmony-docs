@@ -18,6 +18,8 @@ Obtain the information about the found devices.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function getP2pPeerDevices(): Promise<WifiP2pDevice[]>--><!--Device-wifiManager-function getP2pPeerDevices(): Promise<WifiP2pDevice[]>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Return value:**
@@ -66,6 +68,8 @@ Obtain the information about the found devices.
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManager-function getP2pPeerDevices(callback: AsyncCallback<WifiP2pDevice[]>): void--><!--Device-wifiManager-function getP2pPeerDevices(callback: AsyncCallback<WifiP2pDevice[]>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 

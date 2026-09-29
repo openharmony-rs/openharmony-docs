@@ -8,6 +8,8 @@ Enumerates the device-cloud file sync states.
 
 **Since:** 20
 
+<!--Device-cloudSync-enum FileState--><!--Device-cloudSync-enum FileState-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## INITIAL_AFTER_DOWNLOAD
@@ -19,6 +21,8 @@ INITIAL_AFTER_DOWNLOAD = 0
 Initial state after the first download.
 
 **Since:** 20
+
+<!--Device-FileState-INITIAL_AFTER_DOWNLOAD = 0--><!--Device-FileState-INITIAL_AFTER_DOWNLOAD = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -32,6 +36,8 @@ The file is being uploaded.
 
 **Since:** 20
 
+<!--Device-FileState-UPLOADING = 1--><!--Device-FileState-UPLOADING = 1-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## STOPPED
@@ -43,6 +49,8 @@ STOPPED = 2
 The upload has been stopped.
 
 **Since:** 20
+
+<!--Device-FileState-STOPPED = 2--><!--Device-FileState-STOPPED = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -56,6 +64,8 @@ The file is going to be uploaded.
 
 **Since:** 20
 
+<!--Device-FileState-TO_BE_UPLOADED = 3--><!--Device-FileState-TO_BE_UPLOADED = 3-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## UPLOAD_SUCCESS
@@ -68,6 +78,8 @@ The file has been successfully uploaded.
 
 **Since:** 20
 
+<!--Device-FileState-UPLOAD_SUCCESS = 4--><!--Device-FileState-UPLOAD_SUCCESS = 4-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## UPLOAD_FAILURE
@@ -79,5 +91,7 @@ UPLOAD_FAILURE = 5
 The file fails to be uploaded.
 
 **Since:** 20
+
+<!--Device-FileState-UPLOAD_FAILURE = 5--><!--Device-FileState-UPLOAD_FAILURE = 5-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

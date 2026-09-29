@@ -18,6 +18,8 @@ Sets the cell broadcast configuration. This API uses an asynchronous callback to
 
 **Required permissions:** ohos.permission.RECEIVE_SMS
 
+<!--Device-sms-function setCBConfig(options: CBConfigOptions, callback: AsyncCallback<void>): void--><!--Device-sms-function setCBConfig(options: CBConfigOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -73,6 +75,8 @@ Sets the cell broadcast configuration. This API uses a promise to return the res
 **Since:** 7
 
 **Required permissions:** ohos.permission.RECEIVE_SMS
+
+<!--Device-sms-function setCBConfig(options: CBConfigOptions): Promise<void>--><!--Device-sms-function setCBConfig(options: CBConfigOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

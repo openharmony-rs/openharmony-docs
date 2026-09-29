@@ -6,6 +6,8 @@ To subscribe to call status changes, use [`observer.on('callStateChange')`](arkt
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace call--><!--Device-unnamed-declare namespace call-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 ## Modules to Import

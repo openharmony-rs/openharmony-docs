@@ -14,6 +14,8 @@ Defines a gradient blur stop.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type FractionStop = [ number, number ]--><!--Device-unnamed-declare type FractionStop = [ number, number ]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [ number, number ]

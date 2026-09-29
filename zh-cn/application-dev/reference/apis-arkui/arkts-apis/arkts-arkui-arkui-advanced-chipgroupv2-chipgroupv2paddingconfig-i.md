@@ -8,6 +8,8 @@ ChipGroupV2PaddingConfig定义了ChipGroupV2的上下内边距配置，用于控
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface ChipGroupV2PaddingConfig--><!--Device-unnamed-export interface ChipGroupV2PaddingConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -38,6 +40,8 @@ ChipGroupV2的下方内边距（不支持百分比）。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2PaddingConfig-bottom: Length--><!--Device-ChipGroupV2PaddingConfig-bottom: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -61,5 +65,7 @@ ChipGroupV2的上方内边距（不支持百分比）。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2PaddingConfig-top: Length--><!--Device-ChipGroupV2PaddingConfig-top: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

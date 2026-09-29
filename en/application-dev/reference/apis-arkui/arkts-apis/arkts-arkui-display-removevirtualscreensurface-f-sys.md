@@ -18,6 +18,8 @@ Remove surface for the virtual screen.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-display-function removeVirtualScreenSurface(screenId: long, surfaceId: string): Promise<void>--><!--Device-display-function removeVirtualScreenSurface(screenId: long, surfaceId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.

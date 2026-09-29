@@ -16,6 +16,8 @@ Changes the device-cloud file sync switch for an application. This API uses a pr
 
 **Since:** 10
 
+<!--Device-cloudSyncManager-function changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise<void>--><!--Device-cloudSyncManager-function changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **System API:** This is a system API.
@@ -68,6 +70,8 @@ function changeAppCloudSwitch(accountId: string, bundleName: string, status: boo
 Changes the device-cloud file sync switch for an application. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-cloudSyncManager-function changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, callback: AsyncCallback<void>): void--><!--Device-cloudSyncManager-function changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

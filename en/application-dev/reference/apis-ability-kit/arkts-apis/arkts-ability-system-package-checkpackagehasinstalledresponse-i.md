@@ -15,6 +15,8 @@ Checks whether a bundle has been installed.
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-export interface CheckPackageHasInstalledResponse--><!--Device-unnamed-export interface CheckPackageHasInstalledResponse-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## Modules to Import
@@ -36,5 +38,7 @@ Check result for whether the bundle has been installed. **true** if installed, *
 **Since:** 3
 
 **Deprecated since:** 9
+
+<!--Device-CheckPackageHasInstalledResponse-result: boolean--><!--Device-CheckPackageHasInstalledResponse-result: boolean-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

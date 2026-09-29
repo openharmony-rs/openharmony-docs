@@ -14,6 +14,8 @@ Component3D(sceneOptions?: SceneOptions)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Component3DInterface-(sceneOptions?: SceneOptions): Component3DAttribute--><!--Device-Component3DInterface-(sceneOptions?: SceneOptions): Component3DAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数:**

@@ -1,4 +1,4 @@
-# @ohos.app.ability.AtomicServiceOptions
+# @ohos.app.ability.AtomicServiceOptions(openAtomicService Options)
 
 ## Modules to Import
 

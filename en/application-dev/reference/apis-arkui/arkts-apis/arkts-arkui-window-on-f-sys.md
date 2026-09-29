@@ -16,6 +16,8 @@ Subscribes to the property change event of the status bar and navigation bar.
 
 **Since:** 8
 
+<!--Device-window-function on(type: 'systemBarTintChange', callback: Callback<SystemBarTintState>): void--><!--Device-window-function on(type: 'systemBarTintChange', callback: Callback<SystemBarTintState>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -56,6 +58,8 @@ function on(type: 'gestureNavigationEnabledChange', callback: Callback<boolean>)
 Subscribes to the gesture navigation status change event.
 
 **Since:** 10
+
+<!--Device-window-function on(type: 'gestureNavigationEnabledChange', callback: Callback<boolean>): void--><!--Device-window-function on(type: 'gestureNavigationEnabledChange', callback: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -99,6 +103,8 @@ function on(type: 'waterMarkFlagChange', callback: Callback<boolean>): void
 Subscribes to the watermark status change event.
 
 **Since:** 10
+
+<!--Device-window-function on(type: 'waterMarkFlagChange', callback: Callback<boolean>): void--><!--Device-window-function on(type: 'waterMarkFlagChange', callback: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

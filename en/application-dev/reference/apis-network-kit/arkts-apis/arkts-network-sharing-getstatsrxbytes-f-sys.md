@@ -18,6 +18,8 @@ Obtains the volume of mobile data traffic received via network sharing. This API
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
 
+<!--Device-sharing-function getStatsRxBytes(callback: AsyncCallback<int>): void--><!--Device-sharing-function getStatsRxBytes(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ Obtains the volume of mobile data traffic received via network sharing. This API
 **Since:** 9
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
+
+<!--Device-sharing-function getStatsRxBytes(): Promise<int>--><!--Device-sharing-function getStatsRxBytes(): Promise<int>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 

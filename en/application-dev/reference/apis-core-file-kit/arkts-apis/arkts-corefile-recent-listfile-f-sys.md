@@ -22,6 +22,8 @@ Lists the files that are accessed recently.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-recent-function listFile(): Array<FileInfo>--><!--Device-recent-function listFile(): Array<FileInfo>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.

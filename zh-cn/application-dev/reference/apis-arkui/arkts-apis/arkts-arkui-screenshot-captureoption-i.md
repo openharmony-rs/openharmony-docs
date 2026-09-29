@@ -8,6 +8,8 @@ interface CaptureOption
 
 **起始版本：** 14
 
+<!--Device-screenshot-interface CaptureOption--><!--Device-screenshot-interface CaptureOption-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
@@ -28,7 +30,9 @@ blackWindowIds?: Array<number>
 
 **起始版本：** 21
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+
+<!--Device-CaptureOption-blackWindowIds?: Array<int>--><!--Device-CaptureOption-blackWindowIds?: Array<int>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -44,6 +48,8 @@ displayId?: number
 
 **起始版本：** 14
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-CaptureOption-displayId?: long--><!--Device-CaptureOption-displayId?: long-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

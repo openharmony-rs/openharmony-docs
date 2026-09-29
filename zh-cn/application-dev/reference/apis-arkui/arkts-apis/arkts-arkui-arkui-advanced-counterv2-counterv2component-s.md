@@ -10,15 +10,8 @@ CounterV2组件用于精确调节数值，包含列表型、紧凑型、数值�
 
 > **说明：** 
 > 
-> - 如果CounterV2设置通用属性或通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到CounterV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议CounterV2设置通用属性和通用事件。
+> - 如果CounterV2设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)或[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到CounterV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议CounterV2设置通用属性和通用事件。
 
-## 导入模块
-
-```ts
-import { CounterV2Type, CounterV2Component, CounterV2Options, CounterV2DateData } from '@kit.ArkUI';
-```
-
-  
 ## 子组件
 
 无
@@ -26,6 +19,8 @@ import { CounterV2Type, CounterV2Component, CounterV2Options, CounterV2DateData 
 **起始版本：** 26.0.0
 
 **装饰器类型：** @ComponentV2
+
+<!--Device-unnamed-declare struct CounterV2Component--><!--Device-unnamed-declare struct CounterV2Component-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,5 +45,7 @@ options: CounterV2Options
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CounterV2Component-options: CounterV2Options--><!--Device-CounterV2Component-options: CounterV2Options-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

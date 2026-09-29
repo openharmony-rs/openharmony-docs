@@ -18,6 +18,8 @@ Queries the printer capability. This API uses an asynchronous callback to return
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function queryPrinterCapability(printerId: string, callback: AsyncCallback<void>): void--><!--Device-print-function queryPrinterCapability(printerId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Queries the printer capability. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function queryPrinterCapability(printerId: string): Promise<void>--><!--Device-print-function queryPrinterCapability(printerId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

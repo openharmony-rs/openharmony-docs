@@ -8,6 +8,8 @@ The module defines the parameters required for initiating mission continuation. 
 
 **Since:** 9
 
+<!--Device-unnamed-export interface ContinueDeviceInfo--><!--Device-unnamed-export interface ContinueDeviceInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Indicates the target deviceId to continue mission.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinueDeviceInfo-dstDeviceId: string--><!--Device-ContinueDeviceInfo-dstDeviceId: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -44,6 +48,8 @@ Indicates the mission to continue.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinueDeviceInfo-missionId: int--><!--Device-ContinueDeviceInfo-missionId: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -62,6 +68,8 @@ Indicates the original deviceId to continue mission.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinueDeviceInfo-srcDeviceId: string--><!--Device-ContinueDeviceInfo-srcDeviceId: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -79,6 +87,8 @@ Indicates the extended param.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinueDeviceInfo-wantParam: Record<string, Object>--><!--Device-ContinueDeviceInfo-wantParam: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

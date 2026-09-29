@@ -17,6 +17,8 @@ match(matcher: { [Symbol.match](string: string): RegExpMatchArray | null; }): Re
 
 Matches a string or an object that supports being matched against, and returns an array containing the results of that search, or null if no matches are found.
 
+<!--Device-String-match(matcher: { [Symbol.match](string: string): RegExpMatchArray | null; }): RegExpMatchArray | null--><!--Device-String-match(matcher: { [Symbol.match](string: string): RegExpMatchArray | null; }): RegExpMatchArray | null-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -30,6 +32,8 @@ replace(searchValue: { [Symbol.replace](string: string, replaceValue: string): s
 ```
 
 Passes a string and {@linkcode replaceValue} to the `[Symbol.replace]` method on {@linkcode searchValue}. This method is expected to implement its own replacement algorithm.
+
+<!--Device-String-replace(searchValue: { [Symbol.replace](string: string, replaceValue: string): string; }, replaceValue: string): string--><!--Device-String-replace(searchValue: { [Symbol.replace](string: string, replaceValue: string): string; }, replaceValue: string): string-End-->
 
 **Parameters:**
 
@@ -48,6 +52,8 @@ replace(searchValue: { [Symbol.replace](string: string, replacer: (substring: st
 
 Replaces text in a string, using an object that supports replacement within a string.
 
+<!--Device-String-replace(searchValue: { [Symbol.replace](string: string, replacer: (substring: string, ...args: any[]) => string): string; }, replacer: (substring: string, ...args: any[]) => string): string--><!--Device-String-replace(searchValue: { [Symbol.replace](string: string, replacer: (substring: string, ...args: any[]) => string): string; }, replacer: (substring: string, ...args: any[]) => string): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -63,6 +69,8 @@ search(searcher: { [Symbol.search](string: string): number; }): number
 
 Finds the first substring match in a regular expression search.
 
+<!--Device-String-search(searcher: { [Symbol.search](string: string): number; }): number--><!--Device-String-search(searcher: { [Symbol.search](string: string): number; }): number-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -76,6 +84,8 @@ split(splitter: { [Symbol.split](string: string, limit?: number): string[]; }, l
 ```
 
 Split a string into substrings using the specified separator and return them as an array.
+
+<!--Device-String-split(splitter: { [Symbol.split](string: string, limit?: number): string[]; }, limit?: number): string[]--><!--Device-String-split(splitter: { [Symbol.split](string: string, limit?: number): string[]; }, limit?: number): string[]-End-->
 
 **Parameters:**
 

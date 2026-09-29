@@ -12,6 +12,8 @@ Function for initializing the reusable custom component.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-unnamed-declare type ReusableComponentConstructor = Function--><!--Device-unnamed-declare type ReusableComponentConstructor = Function-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** Function

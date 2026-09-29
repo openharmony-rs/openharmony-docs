@@ -8,6 +8,8 @@ View
 
 **Since:** 7
 
+<!--Device-unnamed-declare class View--><!--Device-unnamed-declare class View-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Just use for generate tsbundle
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-View-create(value: any): any--><!--Device-View-create(value: any): any-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

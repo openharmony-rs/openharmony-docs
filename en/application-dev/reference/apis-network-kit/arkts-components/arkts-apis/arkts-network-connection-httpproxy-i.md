@@ -8,6 +8,8 @@ Represents the HTTP proxy configuration.
 
 **Since:** 10
 
+<!--Device-connection-export interface HttpProxy--><!--Device-connection-export interface HttpProxy-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -41,7 +43,9 @@ host names; that is, the HTTP proxy is disabled. A wildcard can only be added in
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HttpProxy-exclusionList: Array<string>--><!--Device-HttpProxy-exclusionList: Array<string>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -57,7 +61,9 @@ Host name of the proxy server.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HttpProxy-host: string--><!--Device-HttpProxy-host: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -75,6 +81,8 @@ Note: The setting takes effect only when the username parameter is set.
 
 **Since:** 12
 
+<!--Device-HttpProxy-password?: string--><!--Device-HttpProxy-password?: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## port
@@ -89,7 +97,9 @@ Host port. The value range is [0, 65535].
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-HttpProxy-port: int--><!--Device-HttpProxy-port: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -106,5 +116,7 @@ Note: This parameter takes effect only when the password parameter is set.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-HttpProxy-username?: string--><!--Device-HttpProxy-username?: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

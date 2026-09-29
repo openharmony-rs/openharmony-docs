@@ -8,6 +8,8 @@ Provides a **ReaderIterator** object. Before calling APIs of **ReaderIterator**,
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface ReaderIterator--><!--Device-unnamed-declare interface ReaderIterator-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -25,6 +27,8 @@ next(): ReaderIteratorResult
 Obtains the **ReaderIterator** result.
 
 **Since:** 11
+
+<!--Device-ReaderIterator-next(): ReaderIteratorResult--><!--Device-ReaderIterator-next(): ReaderIteratorResult-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

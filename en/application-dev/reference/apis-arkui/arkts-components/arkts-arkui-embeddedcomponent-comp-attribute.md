@@ -4,15 +4,17 @@
 declare class EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentAttribute>
 ```
 
-The [universal attributes](arkts-arkui-common-comp.md#common) are supported.
+The [universal attributes](arkts-arkui-common-comp.md) are supported.
 
 Event information related to screen coordinates is converted based on the position, width, and height of the **EmbeddedComponent**, before being transferred to the EmbeddedUIExtensionAbility for processing.
 
-Universal events, such as the [click event](arkts-arkui-common-comp.md#common), are not supported. Only the following events are supported.
+Universal events, such as the [click event](arkts-arkui-common-comp.md), are not supported. Only the following events are supported.
 
 **Inheritance/Implementation:** EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentAttribute>
 
 **Since:** 12
+
+<!--Device-unnamed-declare class EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentAttribute>--><!--Device-unnamed-declare class EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +31,8 @@ Callback called when the EmbeddedUIExtensionAbility draw the first frame.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-EmbeddedComponentAttribute-onDrawReady(callback: Callback<void>): EmbeddedComponentAttribute--><!--Device-EmbeddedComponentAttribute-onDrawReady(callback: Callback<void>): EmbeddedComponentAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Called when an error occurs during the running of the started EmbeddedUIExtensio
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EmbeddedComponentAttribute-onError(callback: import('../api/@ohos.base').ErrorCallback): EmbeddedComponentAttribute--><!--Device-EmbeddedComponentAttribute-onError(callback: import('../api/@ohos.base').ErrorCallback): EmbeddedComponentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -81,6 +87,8 @@ Triggered when the the launched EmbeddedUIExtensionAbility exits normally by cal
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-EmbeddedComponentAttribute-onTerminated(callback: import('../api/@ohos.base').Callback<TerminationInfo>): EmbeddedComponentAttribute--><!--Device-EmbeddedComponentAttribute-onTerminated(callback: import('../api/@ohos.base').Callback<TerminationInfo>): EmbeddedComponentAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

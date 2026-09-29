@@ -8,6 +8,8 @@ Provides the information about page switching of the **Navigation** component.
 
 **Since:** 12
 
+<!--Device-uiObserver-export interface NavDestinationSwitchInfo--><!--Device-uiObserver-export interface NavDestinationSwitchInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Context information corresponding to **Navigation** component that triggers page
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NavDestinationSwitchInfo-context: UIAbilityContext | UIContext--><!--Device-NavDestinationSwitchInfo-context: UIAbilityContext | UIContext-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## from
@@ -49,6 +53,8 @@ Source page for page switching.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavDestinationSwitchInfo-from: NavDestinationInfo | NavBar--><!--Device-NavDestinationSwitchInfo-from: NavDestinationInfo | NavBar-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +74,8 @@ Page switching operation type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NavDestinationSwitchInfo-operation: NavigationOperation--><!--Device-NavDestinationSwitchInfo-operation: NavigationOperation-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## to
@@ -85,5 +93,7 @@ Destination page for page switching.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavDestinationSwitchInfo-to: NavDestinationInfo | NavBar--><!--Device-NavDestinationSwitchInfo-to: NavDestinationInfo | NavBar-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

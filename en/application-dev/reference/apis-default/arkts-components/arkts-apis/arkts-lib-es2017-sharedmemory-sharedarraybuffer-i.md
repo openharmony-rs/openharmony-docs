@@ -17,6 +17,8 @@ slice(begin: number, end?: number): SharedArrayBuffer
 
 Returns a section of an SharedArrayBuffer.
 
+<!--Device-SharedArrayBuffer-slice(begin: number, end?: number): SharedArrayBuffer--><!--Device-SharedArrayBuffer-slice(begin: number, end?: number): SharedArrayBuffer-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -49,3 +51,5 @@ readonly byteLength: number
 Read-only. The length of the ArrayBuffer (in bytes).
 
 **Type:** number
+
+<!--Device-SharedArrayBuffer-readonly byteLength: number--><!--Device-SharedArrayBuffer-readonly byteLength: number-End-->

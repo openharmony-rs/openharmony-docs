@@ -22,6 +22,8 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-huks-function updateSession(handle: long, options: HuksOptions, callback: AsyncCallback<HuksReturnResult>): void--><!--Device-huks-function updateSession(handle: long, options: HuksOptions, callback: AsyncCallback<HuksReturnResult>): void-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 **Parameters:**
@@ -79,6 +81,8 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-huks-function updateSession(    handle: long,    options: HuksOptions,    token: Uint8Array,    callback: AsyncCallback<HuksReturnResult>  ): void--><!--Device-huks-function updateSession(    handle: long,    options: HuksOptions,    token: Uint8Array,    callback: AsyncCallback<HuksReturnResult>  ): void-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 **Parameters:**
@@ -127,6 +131,8 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-huks-function updateSession(handle: long, options: HuksOptions, token?: Uint8Array): Promise<HuksReturnResult>--><!--Device-huks-function updateSession(handle: long, options: HuksOptions, token?: Uint8Array): Promise<HuksReturnResult>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

@@ -8,12 +8,14 @@ declare enum SeekMode
 
 | 名称 |值| 说明 |  
 | ---------------- |--| ---------------------------- |  
-| [PreviousKeyframe](arkts-arkui-video-comp-seekmode-e.md) |0| 跳转到当前播放位置之前最近的关键帧。 |
-| [NextKeyframe](arkts-arkui-video-comp-seekmode-e.md) |1| 跳转到当前播放位置之后最近的关键帧。 |
-| [ClosestKeyframe](arkts-arkui-video-comp-seekmode-e.md) |2| 跳转到距离当前播放位置最近的关键帧。 |
-| [Accurate](arkts-arkui-video-comp-seekmode-e.md) |3| 精准跳转到指定时间点，不论是否为关键帧。精度高但可能需要解码更多帧。 |
+| PreviousKeyframe |0| 跳转到当前播放位置之前最近的关键帧。 |
+| NextKeyframe |1| 跳转到当前播放位置之后最近的关键帧。 |
+| ClosestKeyframe |2| 跳转到距离当前播放位置最近的关键帧。 |
+| Accurate |3| 精准跳转到指定时间点，不论是否为关键帧。精度高但可能需要解码更多帧。 |
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare enum SeekMode--><!--Device-unnamed-declare enum SeekMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,6 +33,8 @@ Seek to the nearest previous keyframe.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SeekMode-PreviousKeyframe--><!--Device-SeekMode-PreviousKeyframe-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NextKeyframe
@@ -46,6 +50,8 @@ Seek to the nearest next keyframe.
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SeekMode-NextKeyframe--><!--Device-SeekMode-NextKeyframe-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,6 +69,8 @@ Seek to the nearest keyframe.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SeekMode-ClosestKeyframe--><!--Device-SeekMode-ClosestKeyframe-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Accurate
@@ -78,5 +86,7 @@ Seek to a specific frame, regardless of whether the frame is a keyframe.
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SeekMode-Accurate--><!--Device-SeekMode-Accurate-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

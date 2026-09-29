@@ -12,6 +12,8 @@ Provides APIs to obtain information about trusted devices and local devices. Bef
 
 **Substitutes:** [DeviceManager](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md)
 
+<!--Device-deviceManager-interface DeviceManager--><!--Device-deviceManager-interface DeviceManager-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 ## Modules to Import
@@ -39,6 +41,8 @@ Authenticates a device.
 **Substitutes:** [bindTarget](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#bindtarget)(deviceId: string, bindParam: { [key: string]: Object; }, callback: AsyncCallback&lt;{deviceId: string;}&gt;)
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-authenticateDevice(      deviceInfo: DeviceInfo,      authParam: AuthParam,      callback: AsyncCallback<{ deviceId: string, pinToken?: number }>    ): void--><!--Device-DeviceManager-authenticateDevice(      deviceInfo: DeviceInfo,      authParam: AuthParam,      callback: AsyncCallback<{ deviceId: string, pinToken?: number }>    ): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -140,6 +144,8 @@ Deletes credential information.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-deleteCredential(queryInfo: string, callback: AsyncCallback<{ resultInfo: string }>): void--><!--Device-DeviceManager-deleteCredential(queryInfo: string, callback: AsyncCallback<{ resultInfo: string }>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -212,6 +218,8 @@ Obtains the information about a specific device based on the network ID. This AP
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-getDeviceInfo(networkId: string, callback: AsyncCallback<DeviceInfo>): void--><!--Device-DeviceManager-getDeviceInfo(networkId: string, callback: AsyncCallback<DeviceInfo>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -272,6 +280,8 @@ Obtains the information about a specific device based on the network ID. This AP
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-getDeviceInfo(networkId: string): Promise<DeviceInfo>--><!--Device-DeviceManager-getDeviceInfo(networkId: string): Promise<DeviceInfo>-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -327,6 +337,8 @@ Obtains local device information. This API uses an asynchronous callback to retu
 **Substitutes:** [getLocalDeviceNetworkId](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getlocaldevicenetworkid)
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-getLocalDeviceInfo(callback: AsyncCallback<DeviceInfo>): void--><!--Device-DeviceManager-getLocalDeviceInfo(callback: AsyncCallback<DeviceInfo>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -386,6 +398,8 @@ Obtains local device information. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-getLocalDeviceInfo(): Promise<DeviceInfo>--><!--Device-DeviceManager-getLocalDeviceInfo(): Promise<DeviceInfo>-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -432,6 +446,8 @@ Obtains local device information synchronously.
 **Substitutes:** [getLocalDeviceNetworkId](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getlocaldevicenetworkid)
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-getLocalDeviceInfoSync(): DeviceInfo--><!--Device-DeviceManager-getLocalDeviceInfoSync(): DeviceInfo-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -482,6 +498,8 @@ Obtains all trusted devices. This API uses an asynchronous callback to return th
 **Substitutes:** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelist)(callback: AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt;)
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-getTrustedDeviceList(callback: AsyncCallback<Array<DeviceInfo>>): void--><!--Device-DeviceManager-getTrustedDeviceList(callback: AsyncCallback<Array<DeviceInfo>>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -540,6 +558,8 @@ Obtains all trusted devices. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-getTrustedDeviceList(): Promise<Array<DeviceInfo>>--><!--Device-DeviceManager-getTrustedDeviceList(): Promise<Array<DeviceInfo>>-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -586,6 +606,8 @@ Obtains all trusted devices synchronously.
 **Substitutes:** [getAvailableDeviceListSync](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-getTrustedDeviceListSync(): Array<DeviceInfo>--><!--Device-DeviceManager-getTrustedDeviceListSync(): Array<DeviceInfo>-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -636,6 +658,8 @@ Enables the DSoftBus heartbeat mode to quickly bring offline trusted devices onl
 **Deprecated since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-getTrustedDeviceListSync(isRefresh: boolean): Array<DeviceInfo>--><!--Device-DeviceManager-getTrustedDeviceListSync(isRefresh: boolean): Array<DeviceInfo>-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -691,6 +715,8 @@ Imports credential information.
 **Deprecated since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-importCredential(credentialInfo: string, callback: AsyncCallback<{ resultInfo: string }>): void--><!--Device-DeviceManager-importCredential(credentialInfo: string, callback: AsyncCallback<{ resultInfo: string }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -793,6 +819,8 @@ Unsubscribes from UI status changes.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-off(type: 'uiStateChange', callback?: Callback<{ param: string }>): void--><!--Device-DeviceManager-off(type: 'uiStateChange', callback?: Callback<{ param: string }>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -841,6 +869,8 @@ Unsubscribes from changes in the device state.
 **Substitutes:** [off](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#offdevicestatechange)(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;)
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-off(type: 'deviceStateChange', callback?: Callback<{ action: DeviceStateChangeAction, device: DeviceInfo }>): void--><!--Device-DeviceManager-off(type: 'deviceStateChange', callback?: Callback<{ action: DeviceStateChangeAction, device: DeviceInfo }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -906,6 +936,8 @@ Unsubscribes from device discovery events.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-off(type: 'deviceFound', callback?: Callback<{ subscribeId: number, device: DeviceInfo }>): void--><!--Device-DeviceManager-off(type: 'deviceFound', callback?: Callback<{ subscribeId: number, device: DeviceInfo }>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -970,6 +1002,8 @@ Unsubscribes from device discovery failures.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-off(type: 'discoverFail', callback?: Callback<{ subscribeId: number, reason: number }>): void--><!--Device-DeviceManager-off(type: 'discoverFail', callback?: Callback<{ subscribeId: number, reason: number }>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -1024,6 +1058,8 @@ Unsubscribes from device information publication success events.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-off(type: 'publishSuccess', callback?: Callback<{ publishId: number }>): void--><!--Device-DeviceManager-off(type: 'publishSuccess', callback?: Callback<{ publishId: number }>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -1076,6 +1112,8 @@ Unsubscribes from device information publication failures.
 **Deprecated since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-off(type: 'publishFail', callback?: Callback<{ publishId: number, reason: number }>): void--><!--Device-DeviceManager-off(type: 'publishFail', callback?: Callback<{ publishId: number, reason: number }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -1133,6 +1171,8 @@ Unsubscribes from dead events of the **DeviceManager** service.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-off(type: 'serviceDie', callback?: () => void): void--><!--Device-DeviceManager-off(type: 'serviceDie', callback?: () => void): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -1183,6 +1223,8 @@ Subscribes to UI status changes.
 **Substitutes:** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i-sys.md#onreplyresult)(type: 'replyResult', callback: Callback&lt;{ param: string; }&gt;)
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-on(type: 'uiStateChange', callback: Callback<{ param: string }>): void--><!--Device-DeviceManager-on(type: 'uiStateChange', callback: Callback<{ param: string }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -1245,6 +1287,8 @@ Subscribes to changes in the device state.
 **Substitutes:** [on](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#ondevicestatechange)(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;)
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-on(type: 'deviceStateChange', callback: Callback<{ action: DeviceStateChangeAction, device: DeviceInfo }>): void--><!--Device-DeviceManager-on(type: 'deviceStateChange', callback: Callback<{ action: DeviceStateChangeAction, device: DeviceInfo }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -1310,6 +1354,8 @@ Subscribes to device discovery events.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-on(type: 'deviceFound', callback: Callback<{ subscribeId: number, device: DeviceInfo }>): void--><!--Device-DeviceManager-on(type: 'deviceFound', callback: Callback<{ subscribeId: number, device: DeviceInfo }>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -1374,6 +1420,8 @@ Subscribes to device discovery failures.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-on(type: 'discoverFail', callback: Callback<{ subscribeId: number, reason: number }>): void--><!--Device-DeviceManager-on(type: 'discoverFail', callback: Callback<{ subscribeId: number, reason: number }>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -1428,6 +1476,8 @@ Subscribes to device information publication success events.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-on(type: 'publishSuccess', callback: Callback<{ publishId: number }>): void--><!--Device-DeviceManager-on(type: 'publishSuccess', callback: Callback<{ publishId: number }>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -1480,6 +1530,8 @@ Subscribes to device information publication failures.
 **Deprecated since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-on(type: 'publishFail', callback: Callback<{ publishId: number, reason: number }>): void--><!--Device-DeviceManager-on(type: 'publishFail', callback: Callback<{ publishId: number, reason: number }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -1537,6 +1589,8 @@ Subscribes to dead events of the **DeviceManager** service.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-on(type: 'serviceDie', callback: () => void): void--><!--Device-DeviceManager-on(type: 'serviceDie', callback: () => void): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -1585,6 +1639,8 @@ Publishes device information for discovery purposes. The publish process lasts 2
 **Deprecated since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-publishDeviceDiscovery(publishInfo: PublishInfo): void--><!--Device-DeviceManager-publishDeviceDiscovery(publishInfo: PublishInfo): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -1653,6 +1709,8 @@ Releases this **DeviceManager** instance when it is no longer used.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-release(): void--><!--Device-DeviceManager-release(): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -1693,6 +1751,8 @@ Obtains the registration information of the credential.
 **Deprecated since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-requestCredentialRegisterInfo(requestInfo: string, callback: AsyncCallback<{ registerInfo: string }>): void--><!--Device-DeviceManager-requestCredentialRegisterInfo(requestInfo: string, callback: AsyncCallback<{ registerInfo: string }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -1763,6 +1823,8 @@ Sets a user operation.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-setUserOperation(operateAction: number, params: string): void--><!--Device-DeviceManager-setUserOperation(operateAction: number, params: string): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -1821,6 +1883,8 @@ Starts to discover peripheral devices. The discovery process lasts 2 minutes. A 
 **Substitutes:** [startDiscovering](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-startDeviceDiscovery(subscribeInfo: SubscribeInfo): void--><!--Device-DeviceManager-startDeviceDiscovery(subscribeInfo: SubscribeInfo): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -1895,6 +1959,8 @@ Starts to discover peripheral devices. The discovery process lasts 2 minutes. A 
 **Substitutes:** [startDiscovering](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-startDeviceDiscovery(subscribeInfo: SubscribeInfo, filterOptions?: string): void--><!--Device-DeviceManager-startDeviceDiscovery(subscribeInfo: SubscribeInfo, filterOptions?: string): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -1991,6 +2057,8 @@ Stops device discovery.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-stopDeviceDiscovery(subscribeId: number): void--><!--Device-DeviceManager-stopDeviceDiscovery(subscribeId: number): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -2042,6 +2110,8 @@ Deauthenticates a device.
 **Substitutes:** [unbindTarget](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#unbindtarget)
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-unAuthenticateDevice(deviceInfo: DeviceInfo): void--><!--Device-DeviceManager-unAuthenticateDevice(deviceInfo: DeviceInfo): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -2107,6 +2177,8 @@ Stops publishing device information.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-unPublishDeviceDiscovery(publishId: number): void--><!--Device-DeviceManager-unPublishDeviceDiscovery(publishId: number): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -2156,6 +2228,8 @@ Verifies authentication information.
 **Deprecated since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-verifyAuthInfo(authInfo: AuthInfo, callback: AsyncCallback<{ deviceId: string, level: number }>): void--><!--Device-DeviceManager-verifyAuthInfo(authInfo: AuthInfo, callback: AsyncCallback<{ deviceId: string, level: number }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

@@ -10,6 +10,8 @@ Describes the image embedding functions of the multi-modal embedding model.
 
 **Since:** 15
 
+<!--Device-intelligence-interface ImageEmbedding--><!--Device-intelligence-interface ImageEmbedding-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ getEmbedding(image: Image): Promise<Array<number>>
 Obtains the embedding vector of the given image. The model can handle images below 20 MB in size in a single inference.
 
 **Since:** 15
+
+<!--Device-ImageEmbedding-getEmbedding(image: Image): Promise<Array<double>>--><!--Device-ImageEmbedding-getEmbedding(image: Image): Promise<Array<double>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -80,6 +84,8 @@ Loads this image embedding model. If the loading fails, an error code is returne
 
 **Since:** 15
 
+<!--Device-ImageEmbedding-loadModel(): Promise<void>--><!--Device-ImageEmbedding-loadModel(): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **Return value:**
@@ -119,6 +125,8 @@ releaseModel(): Promise<void>
 Releases this image embedding model. If the releasing fails, an error code is returned.
 
 **Since:** 15
+
+<!--Device-ImageEmbedding-releaseModel(): Promise<void>--><!--Device-ImageEmbedding-releaseModel(): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 

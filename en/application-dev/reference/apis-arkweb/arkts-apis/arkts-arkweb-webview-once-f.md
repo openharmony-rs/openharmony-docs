@@ -20,6 +20,8 @@ When the first **Web** component is loaded in an app, the Web engine is initiali
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-webview-function once(type: string, callback: Callback<void>): void--><!--Device-webview-function once(type: string, callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

@@ -24,6 +24,8 @@ Queries whether the printing capability of a device is disabled. This API uses a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function isPrinterDisabled(admin: Want, callback: AsyncCallback<boolean>): void--><!--Device-restrictions-function isPrinterDisabled(admin: Want, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -86,6 +88,8 @@ Queries whether the printing capability of a device is disabled. This API uses a
 **Required permissions:** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-restrictions-function isPrinterDisabled(admin: Want): Promise<boolean>--><!--Device-restrictions-function isPrinterDisabled(admin: Want): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

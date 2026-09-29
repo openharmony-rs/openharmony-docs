@@ -37,6 +37,8 @@ Configures menu item information.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface ContextMenuOptions--><!--Device-unnamed-declare interface ContextMenuOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## aboutToAppear
@@ -52,6 +54,8 @@ Callback triggered when the menu is about to appear.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContextMenuOptions-aboutToAppear?: () => void--><!--Device-ContextMenuOptions-aboutToAppear?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,6 +73,8 @@ Callback triggered when the menu is about to disappear.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ContextMenuOptions-aboutToDisappear?: () => void--><!--Device-ContextMenuOptions-aboutToDisappear?: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onAppear
@@ -85,6 +91,8 @@ Callback invoked after the menu appears.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ContextMenuOptions-onAppear?: () => void--><!--Device-ContextMenuOptions-onAppear?: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDisappear
@@ -100,6 +108,8 @@ Callback invoked after the menu disappears.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ContextMenuOptions-onDisappear?: () => void--><!--Device-ContextMenuOptions-onDisappear?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,6 +140,8 @@ Default value: **{ x: undefined, y: undefined }**. Percentage values are not sup
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ContextMenuOptions-anchorPosition?: Position--><!--Device-ContextMenuOptions-anchorPosition?: Position-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,6 +181,8 @@ This API is supported in **bindContextMenu** since API version 10 and **bindMenu
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ContextMenuOptions-arrowOffset?: Length--><!--Device-ContextMenuOptions-arrowOffset?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## availableLayoutArea
@@ -190,6 +204,8 @@ If this parameter is not set or is set to **undefined**, the percentage is calcu
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ContextMenuOptions-availableLayoutArea?: AvailableLayoutArea--><!--Device-ContextMenuOptions-availableLayoutArea?: AvailableLayoutArea-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -213,6 +229,8 @@ Default value: **BlurStyle.COMPONENT_ULTRA_THICK**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ContextMenuOptions-backgroundBlurStyle?: BlurStyle--><!--Device-ContextMenuOptions-backgroundBlurStyle?: BlurStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundBlurStyleOptions
@@ -230,6 +248,8 @@ Background blur style.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ContextMenuOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions--><!--Device-ContextMenuOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -253,6 +273,8 @@ Default value: **Color.Transparent**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ContextMenuOptions-backgroundColor?: ResourceColor--><!--Device-ContextMenuOptions-backgroundColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundEffect
@@ -270,6 +292,8 @@ Background effect.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ContextMenuOptions-backgroundEffect?: BackgroundEffectOptions--><!--Device-ContextMenuOptions-backgroundEffect?: BackgroundEffectOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -301,6 +325,8 @@ When the BorderRadiuses or LocalizedBorderRadiuses type is used: Invalid input v
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ContextMenuOptions-borderRadius?: Length | BorderRadiuses | LocalizedBorderRadiuses--><!--Device-ContextMenuOptions-borderRadius?: Length | BorderRadiuses | LocalizedBorderRadiuses-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorMode
@@ -320,6 +346,8 @@ Define the menu theme color mode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ContextMenuOptions-colorMode?: AnchoredColorMode--><!--Device-ContextMenuOptions-colorMode?: AnchoredColorMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -346,6 +374,8 @@ When **enableArrow** is set to **true** and **placement** is not set or set to a
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ContextMenuOptions-enableArrow?: boolean--><!--Device-ContextMenuOptions-enableArrow?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -375,6 +405,8 @@ Default value: **false** (**true** for 2-in-1 devices by default) If this parame
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ContextMenuOptions-enableHoverMode?: boolean--><!--Device-ContextMenuOptions-enableHoverMode?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## gridStyle
@@ -392,6 +424,8 @@ Define the grid style of menu. Only fixed-style menus are effective. For example
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ContextMenuOptions-gridStyle?: MenuGridStyleOptions--><!--Device-ContextMenuOptions-gridStyle?: MenuGridStyleOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -423,6 +457,8 @@ This parameter takes effect only when the user enables the haptic feedback funct
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ContextMenuOptions-hapticFeedbackMode?: HapticFeedbackMode--><!--Device-ContextMenuOptions-hapticFeedbackMode?: HapticFeedbackMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## keyboardAvoidMode
@@ -446,6 +482,8 @@ If this parameter is not set or is set to **undefined**, the value **MenuKeyboar
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-ContextMenuOptions-keyboardAvoidMode?: MenuKeyboardAvoidMode--><!--Device-ContextMenuOptions-keyboardAvoidMode?: MenuKeyboardAvoidMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -483,6 +521,8 @@ The default margin values are 16 vp for the left and right, 16 vp for top, and 4
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-ContextMenuOptions-layoutRegionMargin?: Margin--><!--Device-ContextMenuOptions-layoutRegionMargin?: Margin-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## mask
@@ -511,6 +551,8 @@ This API does not take effect when the device is configured not to display the m
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ContextMenuOptions-mask?: boolean | MenuMaskType--><!--Device-ContextMenuOptions-mask?: boolean | MenuMaskType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxHeight
@@ -528,6 +570,8 @@ Defines the max height of menu.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ContextMenuOptions-maxHeight?: LengthMetrics--><!--Device-ContextMenuOptions-maxHeight?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -550,6 +594,8 @@ If this parameter is not set, or set to a negative value or **undefined**, the v
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-ContextMenuOptions-minKeyboardAvoidDistance?: LengthMetrics--><!--Device-ContextMenuOptions-minKeyboardAvoidDistance?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -574,6 +620,8 @@ Default value: **ModalMode.AUTO**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ContextMenuOptions-modalMode?: ModalMode--><!--Device-ContextMenuOptions-modalMode?: ModalMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -609,6 +657,8 @@ If the display position of the menu is adjusted (different from the main directi
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ContextMenuOptions-offset?: Position--><!--Device-ContextMenuOptions-offset?: Position-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDidAppear
@@ -641,6 +691,8 @@ Callback invoked after the menu appears.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ContextMenuOptions-onDidAppear?: Callback<void>--><!--Device-ContextMenuOptions-onDidAppear?: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDidDisappear
@@ -671,6 +723,8 @@ Callback invoked after the menu disappears.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ContextMenuOptions-onDidDisappear?: Callback<void>--><!--Device-ContextMenuOptions-onDidDisappear?: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillAppear
@@ -700,6 +754,8 @@ Callback triggered when the menu is about to appear.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ContextMenuOptions-onWillAppear?: Callback<void>--><!--Device-ContextMenuOptions-onWillAppear?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -732,6 +788,8 @@ Callback triggered when the menu is about to disappear.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ContextMenuOptions-onWillDisappear?: Callback<void>--><!--Device-ContextMenuOptions-onWillDisappear?: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## outlineColor
@@ -755,6 +813,8 @@ Default value: **'#19ffffff'**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ContextMenuOptions-outlineColor?: ResourceColor | EdgeColors--><!--Device-ContextMenuOptions-outlineColor?: ResourceColor | EdgeColors-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -781,6 +841,8 @@ Percentage values are not supported. **outlineWidth** is mandatory for customizi
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ContextMenuOptions-outlineWidth?: Dimension | EdgeOutlineWidths--><!--Device-ContextMenuOptions-outlineWidth?: Dimension | EdgeOutlineWidths-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -811,6 +873,8 @@ Preferred position of the context menu. If the set position is insufficient for 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ContextMenuOptions-placement?: Placement--><!--Device-ContextMenuOptions-placement?: Placement-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## preview
@@ -840,6 +904,8 @@ Default value: **MenuPreviewMode.NONE**, indicating no preview.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ContextMenuOptions-preview?: MenuPreviewMode | CustomBuilder--><!--Device-ContextMenuOptions-preview?: MenuPreviewMode | CustomBuilder-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## previewAnimationOptions
@@ -866,6 +932,8 @@ If the value is less than or equal to **0**, this parameter does not take effect
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContextMenuOptions-previewAnimationOptions?: ContextMenuAnimationOptions--><!--Device-ContextMenuOptions-previewAnimationOptions?: ContextMenuAnimationOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -895,6 +963,8 @@ A larger corner radius results in a faster animation change for the corners.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-ContextMenuOptions-previewBorderRadius?: BorderRadiusType--><!--Device-ContextMenuOptions-previewBorderRadius?: BorderRadiusType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## previewScaleMode
@@ -923,6 +993,8 @@ The maximum width and height of the preview image do not exceed the maximum avai
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-ContextMenuOptions-previewScaleMode?: PreviewScaleMode--><!--Device-ContextMenuOptions-previewScaleMode?: PreviewScaleMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## scrollBar
@@ -943,6 +1015,8 @@ Defines the scroll bar state of menu.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ContextMenuOptions-scrollBar?: BarState--><!--Device-ContextMenuOptions-scrollBar?: BarState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -961,6 +1035,8 @@ Set system-styled materials for menu. The material effect behaves differently on
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-ContextMenuOptions-systemMaterial?: SystemUiMaterial--><!--Device-ContextMenuOptions-systemMaterial?: SystemUiMaterial-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## targetSpace
@@ -978,6 +1054,8 @@ Sets the space between the menu and target. When both targetSpace and offset are
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ContextMenuOptions-targetSpace?: LengthMetrics--><!--Device-ContextMenuOptions-targetSpace?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1004,5 +1082,7 @@ The menu animation uses a spring curve. Due to the rebound and oscillation of th
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContextMenuOptions-transition?: TransitionEffect--><!--Device-ContextMenuOptions-transition?: TransitionEffect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

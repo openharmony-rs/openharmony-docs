@@ -19,6 +19,8 @@ Queries whether an assessment session is active.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-assessment-function isActive(): boolean--><!--Device-assessment-function isActive(): boolean-End-->
+
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 
 **Return value:**

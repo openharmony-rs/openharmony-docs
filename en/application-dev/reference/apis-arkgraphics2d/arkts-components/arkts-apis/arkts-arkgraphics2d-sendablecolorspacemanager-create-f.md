@@ -16,6 +16,8 @@ Creates a criterion color space management instance that is sendable.
 
 **Since:** 12
 
+<!--Device-sendableColorSpaceManager-function create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager--><!--Device-sendableColorSpaceManager-function create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Parameters:**
@@ -58,6 +60,8 @@ function create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number)
 Creates a custom color space object that is sendable.
 
 **Since:** 12
+
+<!--Device-sendableColorSpaceManager-function create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number): ColorSpaceManager--><!--Device-sendableColorSpaceManager-function create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number): ColorSpaceManager-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 

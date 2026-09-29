@@ -20,6 +20,8 @@ Stop ManualNetworkScan.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-radio-function stopManualNetworkScan(slotId: int): Promise<void>--><!--Device-radio-function stopManualNetworkScan(slotId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.

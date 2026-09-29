@@ -10,6 +10,8 @@ declare interface DialogStyleOptions extends DialogBaseOptions
 
 **起始版本：** 26.0.1
 
+<!--Device-dialog-declare interface DialogStyleOptions extends DialogBaseOptions--><!--Device-dialog-declare interface DialogStyleOptions extends DialogBaseOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ buttonDirection?: DialogButtonOrientation
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogStyleOptions-buttonDirection?: DialogButtonOrientation--><!--Device-DialogStyleOptions-buttonDirection?: DialogButtonOrientation-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttons
@@ -53,6 +57,8 @@ buttons?: Array<DialogButton>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogStyleOptions-buttons?: Array<DialogButton>--><!--Device-DialogStyleOptions-buttons?: Array<DialogButton>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ gridCount?: number
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogStyleOptions-gridCount?: int--><!--Device-DialogStyleOptions-gridCount?: int-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## message
@@ -89,6 +97,8 @@ message?: DialogMessage
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogStyleOptions-message?: DialogMessage--><!--Device-DialogStyleOptions-message?: DialogMessage-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +118,8 @@ action-sheet样式的表单项数组。提供时，对话框将显示供用户�
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogStyleOptions-sheets?: Array<DialogSheet>--><!--Device-DialogStyleOptions-sheets?: Array<DialogSheet>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## subtitle
@@ -126,6 +138,8 @@ subtitle?: ResourceStr
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogStyleOptions-subtitle?: ResourceStr--><!--Device-DialogStyleOptions-subtitle?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -143,5 +157,7 @@ title?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogStyleOptions-title?: ResourceStr--><!--Device-DialogStyleOptions-title?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

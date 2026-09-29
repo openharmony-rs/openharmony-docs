@@ -14,6 +14,8 @@ FileSelectorParam是ArkWeb组件中的文件选择器参数类，用于获取Web
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare class FileSelectorParam--><!--Device-unnamed-declare class FileSelectorParam-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -28,6 +30,8 @@ FileSelectorParam的构造函数。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FileSelectorParam-constructor()--><!--Device-FileSelectorParam-constructor()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## getAcceptableFileTypes
@@ -39,6 +43,8 @@ getAcceptableFileTypes(): Array<Array<AcceptableFileType>>
 获取文件类型信息。对应HTML里[option](../../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`types`。返回值为二维数组，每个子数组代表一组允许的文件类型。开发者应在构建文件选择器时使用该返回值设置文件类型过滤规则，确保用户只能选择符合前端要求的文件。该参数与getAcceptType和getMimeTypes的区别在于types支持更精细的文件类型控制，可按MIME类型或扩展名分组设置。
 
 **起始版本：** 23
+
+<!--Device-FileSelectorParam-getAcceptableFileTypes(): Array<Array<AcceptableFileType>>--><!--Device-FileSelectorParam-getAcceptableFileTypes(): Array<Array<AcceptableFileType>>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -60,6 +66,8 @@ getAcceptType(): Array<string>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FileSelectorParam-getAcceptType(): Array<string>--><!--Device-FileSelectorParam-getAcceptType(): Array<string>-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -77,6 +85,8 @@ getDefaultPath(): string
 获取文件选择器默认起始路径。对应HTML里[option](../../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`startIn`。
 
 **起始版本：** 23
+
+<!--Device-FileSelectorParam-getDefaultPath(): string--><!--Device-FileSelectorParam-getDefaultPath(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -96,6 +106,8 @@ getDescriptions(): Array<string>
 
 **起始版本：** 23
 
+<!--Device-FileSelectorParam-getDescriptions(): Array<string>--><!--Device-FileSelectorParam-getDescriptions(): Array<string>-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -113,6 +125,8 @@ getMimeTypes(): Array<string>
 获取文件MIME类型。
 
 **起始版本：** 18
+
+<!--Device-FileSelectorParam-getMimeTypes(): Array<string>--><!--Device-FileSelectorParam-getMimeTypes(): Array<string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -134,6 +148,8 @@ getMode(): FileSelectorMode
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FileSelectorParam-getMode(): FileSelectorMode--><!--Device-FileSelectorParam-getMode(): FileSelectorMode-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -151,6 +167,8 @@ getSuggestedName(): string
 获取建议选择的文件名。对应HTML里[option](../../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`suggestedName`。若前端未设置suggestedName，返回空字符串。开发者可在构建文件选择器时使用该返回值作为默认文件名，与[getDefaultPath](#getdefaultpath)配合使用可预设完整的文件路径和名称。
 
 **起始版本：** 23
+
+<!--Device-FileSelectorParam-getSuggestedName(): string--><!--Device-FileSelectorParam-getSuggestedName(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -172,6 +190,8 @@ getTitle(): string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FileSelectorParam-getTitle(): string--><!--Device-FileSelectorParam-getTitle(): string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -189,6 +209,8 @@ isAcceptAllOptionExcluded(): boolean
 获取文件选择器是否排除选项（\*\/\*），即所有文件。对应HTML里[option](../../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`excludeAcceptAllOption`。
 
 **起始版本：** 23
+
+<!--Device-FileSelectorParam-isAcceptAllOptionExcluded(): boolean--><!--Device-FileSelectorParam-isAcceptAllOptionExcluded(): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -209,6 +231,8 @@ isCapture(): boolean
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FileSelectorParam-isCapture(): boolean--><!--Device-FileSelectorParam-isCapture(): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

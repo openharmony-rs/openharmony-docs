@@ -12,6 +12,8 @@ Download control type startDownload & deleteDownload, resumeDownload, pauseDownl
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avMusicTemplate-type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload' | 'pauseDownload'--><!--Device-avMusicTemplate-type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload' | 'pauseDownload'-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | Type | Description |

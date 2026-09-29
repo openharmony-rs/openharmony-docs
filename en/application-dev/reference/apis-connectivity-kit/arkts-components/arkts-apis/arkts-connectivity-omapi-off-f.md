@@ -16,6 +16,8 @@ Disables listening for service status change events.
 
 **Since:** 18
 
+<!--Device-omapi-function off(type: 'stateChanged', callback?: Callback<ServiceState>): void--><!--Device-omapi-function off(type: 'stateChanged', callback?: Callback<ServiceState>): void-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 **Parameters:**

@@ -1,8 +1,18 @@
 # Marquee
 
-The **Marquee** component is used to display a scrolling piece of text. Text scrolling is activated only when the content width is greater than or equal to the component's width.
+The **Marquee** component is used to scroll and display a single line of text. It supports custom scrolling speed, direction, and loop count. Text scrolling is activated only when the content width is greater than or equal to the component's width; otherwise, no scrolling occurs. It is suitable for scenarios where long text needs to be displayed in limited space, such as scrolling news headlines, notifications and announcements, and advertisement carousels. It effectively saves interface space and attracts user attention.
 
-> **NOTE** > > To ensure that scrolling frame rates are not affected, it is recommended that the number of **Marquee** components > in a scroll container does not exceed four, or alternatively, use the Text component's > [TextOverflow.MARQUEE](../arkts-apis/arkts-arkui-textoverflow-e.md) as a substitute. > > For the scenario where the frame rate of the **Marquee** component is dynamic, you can use the > [MarqueeDynamicSyncScene](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) API. > > If the text width is less than the **Marquee** component width, use the [property animation](arkts-arkui-common-comp.md#common) to > implement scrolling.
+> **NOTE:** 
+> 
+> To ensure that scrolling frame rates are not affected, it is recommended that the number of **Marquee** components
+> in a scrolling component does not exceed 4, or use [TextOverflow.MARQUEE](../arkts-apis/arkts-arkui-textoverflow-e.md) of the
+> [Text](arkts-arkui-text-comp.md) component instead.
+> 
+> For scenarios where the **Marquee** component requires dynamic frame rates, use the
+> [MarqueeDynamicSyncScene](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) API.
+> 
+> When the text width is smaller than the **Marquee** component's width, use the [property animation](arkts-arkui-common-comp.md)
+> to implement scrolling.
 
 ## Child Components
 
@@ -21,6 +31,8 @@ Creates a marquee.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-MarqueeInterface-(options: MarqueeOptions): MarqueeAttribute--><!--Device-MarqueeInterface-(options: MarqueeOptions): MarqueeAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

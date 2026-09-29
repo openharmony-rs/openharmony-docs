@@ -8,6 +8,8 @@ Defines the detailed parameter object that can be used during the accessibility 
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface AccessibilityNextFocusParams--><!--Device-unnamed-declare interface AccessibilityNextFocusParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isConsiderDescendants
@@ -31,5 +33,7 @@ Default value: **false**
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-AccessibilityNextFocusParams-isConsiderDescendants?: boolean--><!--Device-AccessibilityNextFocusParams-isConsiderDescendants?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

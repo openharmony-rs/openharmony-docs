@@ -8,6 +8,8 @@ The WebSchemeHandlerRequest class defines a wrapper object for resource requests
 
 **Since:** 12
 
+<!--Device-webview-class WebSchemeHandlerRequest--><!--Device-webview-class WebSchemeHandlerRequest-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ getFrameUrl(): string
 Obtains the URL of the frame that triggers this request.
 
 **Since:** 12
+
+<!--Device-WebSchemeHandlerRequest-getFrameUrl(): string--><!--Device-WebSchemeHandlerRequest-getFrameUrl(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -50,6 +54,8 @@ Obtains the information about the resource request header.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebSchemeHandlerRequest-getHeader(): Array<WebHeader>--><!--Device-WebSchemeHandlerRequest-getHeader(): Array<WebHeader>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -73,6 +79,8 @@ Obtains the **WebHttpBodyStream** instance in this resource request.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandlerRequest-getHttpBodyStream(): WebHttpBodyStream | null--><!--Device-WebSchemeHandlerRequest-getHttpBodyStream(): WebHttpBodyStream | null-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -98,6 +106,8 @@ Obtains the referrer.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebSchemeHandlerRequest-getReferrer(): string--><!--Device-WebSchemeHandlerRequest-getReferrer(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -122,6 +132,8 @@ Obtains the request method.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebSchemeHandlerRequest-getRequestMethod(): string--><!--Device-WebSchemeHandlerRequest-getRequestMethod(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -143,6 +155,8 @@ getRequestResourceType(): WebResourceType
 Obtains the resource type of this resource request.
 
 **Since:** 12
+
+<!--Device-WebSchemeHandlerRequest-getRequestResourceType(): WebResourceType--><!--Device-WebSchemeHandlerRequest-getRequestResourceType(): WebResourceType-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -168,6 +182,8 @@ Obtains the URL of the resource request.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebSchemeHandlerRequest-getRequestUrl(): string--><!--Device-WebSchemeHandlerRequest-getRequestUrl(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -192,6 +208,8 @@ Checks whether the resource request is associated with a gesture (for example, a
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebSchemeHandlerRequest-hasGesture(): boolean--><!--Device-WebSchemeHandlerRequest-hasGesture(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -215,6 +233,8 @@ Checks whether the resource request is from the main frame.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandlerRequest-isMainFrame(): boolean--><!--Device-WebSchemeHandlerRequest-isMainFrame(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

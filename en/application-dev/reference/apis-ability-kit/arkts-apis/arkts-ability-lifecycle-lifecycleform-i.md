@@ -10,6 +10,8 @@ interface of form lifecycle.
 
 **Since:** 7
 
+<!--Device-unnamed-export declare interface LifecycleForm--><!--Device-unnamed-export declare interface LifecycleForm-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Called to return a FormState object. <p>You must override this callback if you w
 **Since:** 8
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleForm-onAcquireFormState?(want: Want): formInfo.FormState--><!--Device-LifecycleForm-onAcquireFormState?(want: Want): formInfo.FormState-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -55,6 +59,8 @@ Called when the form provider is notified that a temporary form is successfully 
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleForm-onCastToNormal?(formId: string): void--><!--Device-LifecycleForm-onCastToNormal?(formId: string): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -74,6 +80,8 @@ Called to return a FormBindingData object.
 **Since:** 8
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleForm-onCreate?(want: Want): formBindingData.FormBindingData--><!--Device-LifecycleForm-onCreate?(want: Want): formBindingData.FormBindingData-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -101,6 +109,8 @@ Called to notify the form provider that a specified form has been deleted. Overr
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleForm-onDestroy?(formId: string): void--><!--Device-LifecycleForm-onDestroy?(formId: string): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -120,6 +130,8 @@ Called when a specified message event defined by the form provider is triggered.
 **Since:** 8
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleForm-onEvent?(formId: string, message: string): void--><!--Device-LifecycleForm-onEvent?(formId: string, message: string): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -142,6 +154,8 @@ Called to notify the form provider to update a specified form.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-LifecycleForm-onUpdate?(formId: string): void--><!--Device-LifecycleForm-onUpdate?(formId: string): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -161,6 +175,8 @@ Called when the form provider receives form events from the system.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LifecycleForm-onVisibilityChange?(newStatus: Record<string, number>): void--><!--Device-LifecycleForm-onVisibilityChange?(newStatus: Record<string, number>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 

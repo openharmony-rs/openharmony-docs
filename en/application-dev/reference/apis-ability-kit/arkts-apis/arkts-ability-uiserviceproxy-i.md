@@ -12,6 +12,8 @@ UIServiceProxy functions as a proxy to send data from the UIServiceExtensionAbil
 
 **Since:** 14
 
+<!--Device-unnamed-export default interface UIServiceProxy--><!--Device-unnamed-export default interface UIServiceProxy-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## sendData
@@ -32,6 +34,8 @@ Sends data to the UIServiceExtensionAbility server.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-UIServiceProxy-sendData(data: Record<string, Object>): void--><!--Device-UIServiceProxy-sendData(data: Record<string, Object>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

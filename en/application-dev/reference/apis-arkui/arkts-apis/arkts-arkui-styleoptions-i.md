@@ -8,6 +8,8 @@ Describes the style options.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface StyleOptions--><!--Device-unnamed-declare interface StyleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## length
@@ -16,9 +18,9 @@ Describes the style options.
 length?: number
 ```
 
-Length of the styled string style.
+Length for setting the style of the styled string.
 
-If the value is less than 0 or exceeds the difference between the string length and the value of **start**, it is treated as the difference between the string length and the value of **start**.
+If the value of **length** is less than 0 or exceeds the difference between the string length and **start**, it is processed as the difference between the string length and **start**.
 
 **Type:** number
 
@@ -27,6 +29,8 @@ If the value is less than 0 or exceeds the difference between the string length 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-StyleOptions-length?: number--><!--Device-StyleOptions-length?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,9 +40,9 @@ If the value is less than 0 or exceeds the difference between the string length 
 start?: number
 ```
 
-Start position of the styled string style.
+Start position for setting the style of the styled string.
 
-If the value is less than 0 or exceeds the string length, it is treated as **0**.
+If the value of **start** is less than 0 or exceeds the string length, it is processed as 0.
 
 **Type:** number
 
@@ -47,6 +51,8 @@ If the value is less than 0 or exceeds the string length, it is treated as **0**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-StyleOptions-start?: number--><!--Device-StyleOptions-start?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +72,8 @@ Style key.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-StyleOptions-styledKey: StyledStringKey--><!--Device-StyleOptions-styledKey: StyledStringKey-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## styledValue
@@ -74,7 +82,7 @@ Style key.
 styledValue: StyledStringValue
 ```
 
-Style object.
+Style object used to set the style of the styled string.
 
 **Type:** [StyledStringValue](arkts-arkui-styledstringvalue-t.md)
 
@@ -83,5 +91,7 @@ Style object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-StyleOptions-styledValue: StyledStringValue--><!--Device-StyleOptions-styledValue: StyledStringValue-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

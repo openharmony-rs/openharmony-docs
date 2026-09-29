@@ -8,6 +8,8 @@ Indicates the Authentication type
 
 **Since:** 14
 
+<!--Device-sim-export enum AuthType--><!--Device-sim-export enum AuthType-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -22,6 +24,8 @@ Authentication type is EAP-SIM. See RFC 4186
 
 **Since:** 14
 
+<!--Device-AuthType-SIM_AUTH_EAP_SIM_TYPE = 128--><!--Device-AuthType-SIM_AUTH_EAP_SIM_TYPE = 128-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -35,6 +39,8 @@ SIM_AUTH_EAP_AKA_TYPE = 129
 Authentication type is EAP-AKA. See RFC 4187
 
 **Since:** 14
+
+<!--Device-AuthType-SIM_AUTH_EAP_AKA_TYPE = 129--><!--Device-AuthType-SIM_AUTH_EAP_AKA_TYPE = 129-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

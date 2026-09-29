@@ -4,13 +4,15 @@
 declare class CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md#common), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-In addition to the [universal events](arkts-arkui-common-comp.md#common), the following events are supported.
+In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
 
 **Inheritance/Implementation:** CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>
 
 **Since:** 10
+
+<!--Device-unnamed-declare class CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>--><!--Device-unnamed-declare class CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,6 +30,8 @@ Sets how the picker is aligned with the entry component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CalendarPickerAttribute-edgeAlign(alignType: CalendarAlign, offset?: Offset): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-edgeAlign(alignType: CalendarAlign, offset?: Offset): CalendarPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -35,7 +39,7 @@ Sets how the picker is aligned with the entry component.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | alignType | [CalendarAlign](arkts-arkui-calendarpicker-comp-calendaralign-e.md) | Yes | Alignment type.<br>Default value: **CalendarAlign.END**. |
-| offset | Offset | No | Offset of the picker relative to the entry component after alignment based on the specified alignment type.<br>Default value: **{dx: 0, dy: 0}** |
+| offset | Offset | No | Offset of the picker relative to the entry component after alignment based on the specified alignment type.<br>Default value: **{dx: 0, dy: 0}** <br>Unit: vp. |
 
 <a id="edgealign-1"></a>
 
@@ -53,14 +57,16 @@ Sets how the picker is aligned with the entry component. Compared with [edgeAlig
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CalendarPickerAttribute-edgeAlign(alignType: Optional<CalendarAlign>, offset?: Offset): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-edgeAlign(alignType: Optional<CalendarAlign>, offset?: Offset): CalendarPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| alignType | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CalendarAlign](arkts-arkui-calendarpicker-comp-calendaralign-e.md)&gt; | Yes | Alignment type.<br>Default value: **CalendarAlign.END**.<br>If the value of **alignType** is **undefined**, the default value is used. |
-| offset | Offset | No | Offset of the picker relative to the entry component after alignment based on the specified alignment type.<br>Default value: **{dx: 0, dy: 0}** |
+| alignType | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CalendarAlign](arkts-arkui-calendarpicker-comp-calendaralign-e.md)&gt; | Yes | Alignment type.<br>Default value: **CalendarAlign.END**. <br>If the value of **alignType** is **undefined**, the default value is used. |
+| offset | Offset | No | Offset of the picker relative to the entry component after alignment based on the specified alignment type.<br>Default value: **{dx: 0, dy: 0}** <br>Unit: vp. |
 
 ## markToday
 
@@ -76,13 +82,15 @@ Whether to highlight the current system date.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-CalendarPickerAttribute-markToday(enabled: boolean): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-markToday(enabled: boolean): CalendarPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to highlight the current system date.<br>- **true**: Highlight the current system date.<br>- **false**: Do not highlight the current system date.<br>Default value: **false**. |
+| enabled | boolean | Yes | Whether to highlight the current system date.<br>- **true**: Highlight the current system date. <br>- **false**: Do not highlight the current system date. <br>Default value: **false**. |
 
 ## onChange
 
@@ -98,13 +106,15 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CalendarPickerAttribute-onChange(callback: Callback<Date>): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-onChange(callback: Callback<Date>): CalendarPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;Date&gt; | Yes | Selected date value.<br>**Since:** 18 |
+| callback | Callback&lt;Date&gt; | Yes | Called when a date is selected. The callback parameter is the selected date of the **Date** type. You can obtain the selected date in the callback function and perform corresponding processing.<br>**Since:** 18 |
 
 <a id="onchange-1"></a>
 
@@ -126,13 +136,15 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CalendarPickerAttribute-onChange(callback: Optional<Callback<Date>>): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-onChange(callback: Optional<Callback<Date>>): CalendarPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;Date&gt;&gt; | Yes | Selected date value.<br>If **callback** is set to **undefined**, the callback function is not used. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;Date&gt;&gt; | Yes | Called when a date is selected. The callback parameter is the selected date.<br>If **callback** is set to **undefined**, the callback function is not used. |
 
 ## textStyle
 
@@ -148,13 +160,15 @@ Sets the font color, font size, and font weight in the entry area.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CalendarPickerAttribute-textStyle(value: PickerTextStyle): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-textStyle(value: PickerTextStyle): CalendarPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Font color, font size, and font weight in the entry area.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>} |
+| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Font color, font size, and font weight in the entry area.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} |
 
 <a id="textstyle-1"></a>
 
@@ -172,10 +186,12 @@ Sets the font color, font size, and font weight in the entry area. Compared with
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CalendarPickerAttribute-textStyle(style: Optional<PickerTextStyle>): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-textStyle(style: Optional<PickerTextStyle>): CalendarPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Font color, font size, and font weight in the entry area.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used. |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Font color, font size, and font weight in the entry area.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} <br>If the value of **style** is **undefined**, the default value is used. |

@@ -16,6 +16,8 @@ Obtains the default slot of the SIM card used for mobile data. This API uses an 
 
 **Since:** 7
 
+<!--Device-data-function getDefaultCellularDataSlotId(callback: AsyncCallback<int>): void--><!--Device-data-function getDefaultCellularDataSlotId(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **Parameters:**
@@ -51,6 +53,8 @@ function getDefaultCellularDataSlotId(): Promise<number>
 Obtains the default slot of the SIM card used for mobile data. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-data-function getDefaultCellularDataSlotId(): Promise<int>--><!--Device-data-function getDefaultCellularDataSlotId(): Promise<int>-End-->
 
 **System capability:** SystemCapability.Telephony.CellularData
 

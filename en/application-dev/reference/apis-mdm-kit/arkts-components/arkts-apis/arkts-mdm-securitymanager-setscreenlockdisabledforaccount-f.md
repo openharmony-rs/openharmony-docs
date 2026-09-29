@@ -30,6 +30,8 @@ Disables or enables swipe-to-unlock for the current user. When enabled, the user
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function setScreenLockDisabledForAccount(admin: Want, disable: boolean): void--><!--Device-securityManager-function setScreenLockDisabledForAccount(admin: Want, disable: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

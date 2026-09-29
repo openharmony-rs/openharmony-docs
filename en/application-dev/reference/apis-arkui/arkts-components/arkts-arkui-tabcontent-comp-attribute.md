@@ -12,6 +12,8 @@ In addition to the universal events, the following events are supported.
 
 **Since:** 7
 
+<!--Device-unnamed-declare class TabContentAttribute extends CommonMethod<TabContentAttribute>--><!--Device-unnamed-declare class TabContentAttribute extends CommonMethod<TabContentAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillHide
@@ -31,6 +33,8 @@ Called when the tab content is about to be hidden. The scenarios include the tab
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TabContentAttribute-onWillHide(event: VoidCallback): TabContentAttribute--><!--Device-TabContentAttribute-onWillHide(event: VoidCallback): TabContentAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ Called when the tab content is about to be displayed. The scenarios include the 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TabContentAttribute-onWillShow(event: VoidCallback): TabContentAttribute--><!--Device-TabContentAttribute-onWillShow(event: VoidCallback): TabContentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -81,6 +87,8 @@ If the content exceeds the space provided by the tab bar, it will be clipped.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TabContentAttribute-tabBar(options: string | Resource | CustomBuilder | TabBarOptions): TabContentAttribute--><!--Device-TabContentAttribute-tabBar(options: string | Resource | CustomBuilder | TabBarOptions): TabContentAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +120,8 @@ Sets the content displayed on the tab bar. The bottom tab style does not include
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TabContentAttribute-tabBar(value: SubTabBarStyle | BottomTabBarStyle): TabContentAttribute--><!--Device-TabContentAttribute-tabBar(value: SubTabBarStyle | BottomTabBarStyle): TabContentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -141,6 +151,8 @@ If the content exceeds the space provided by the tab bar, it will be clipped.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabContentAttribute-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder |     TabBarOptions): TabContentAttribute--><!--Device-TabContentAttribute-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder |     TabBarOptions): TabContentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -169,6 +181,8 @@ Sets the default visibility of the tab.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-TabContentAttribute-tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode): TabContentAttribute--><!--Device-TabContentAttribute-tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode): TabContentAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

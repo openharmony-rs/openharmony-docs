@@ -8,6 +8,8 @@ GridItem样式对象，用于配置GridItem的样式选项。
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface GridItemOptions--><!--Device-unnamed-declare interface GridItemOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -31,5 +33,7 @@ style?: GridItemStyle
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GridItemOptions-style?: GridItemStyle--><!--Device-GridItemOptions-style?: GridItemStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ export class ArcDotIndicator
 
 **起始版本：** 18
 
+<!--Device-unnamed-export class ArcDotIndicator--><!--Device-unnamed-export class ArcDotIndicator-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -27,6 +29,8 @@ arcDirection(direction: Optional<ArcDirection>): ArcDotIndicator
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcDotIndicator-arcDirection(direction: Optional<ArcDirection>): ArcDotIndicator--><!--Device-ArcDotIndicator-arcDirection(direction: Optional<ArcDirection>): ArcDotIndicator-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -54,6 +58,8 @@ backgroundColor(color: Optional<ResourceColor>): ArcDotIndicator
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcDotIndicator-backgroundColor(color: Optional<ResourceColor>): ArcDotIndicator--><!--Device-ArcDotIndicator-backgroundColor(color: Optional<ResourceColor>): ArcDotIndicator-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
@@ -80,6 +86,8 @@ ArcDotIndicator的构造函数。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcDotIndicator-constructor()--><!--Device-ArcDotIndicator-constructor()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## itemColor
@@ -93,6 +101,8 @@ itemColor(color: Optional<ResourceColor>): ArcDotIndicator
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcDotIndicator-itemColor(color: Optional<ResourceColor>): ArcDotIndicator--><!--Device-ArcDotIndicator-itemColor(color: Optional<ResourceColor>): ArcDotIndicator-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -120,6 +130,8 @@ maskColor(color: Optional<LinearGradient>): ArcDotIndicator
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcDotIndicator-maskColor(color: Optional<LinearGradient>): ArcDotIndicator--><!--Device-ArcDotIndicator-maskColor(color: Optional<LinearGradient>): ArcDotIndicator-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
@@ -145,6 +157,8 @@ selectedItemColor(color: Optional<ResourceColor>): ArcDotIndicator
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcDotIndicator-selectedItemColor(color: Optional<ResourceColor>): ArcDotIndicator--><!--Device-ArcDotIndicator-selectedItemColor(color: Optional<ResourceColor>): ArcDotIndicator-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 

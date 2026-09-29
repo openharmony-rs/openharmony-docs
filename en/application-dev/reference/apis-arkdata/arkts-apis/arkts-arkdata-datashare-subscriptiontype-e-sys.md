@@ -8,6 +8,8 @@ Enumerates the data subscription types.
 
 **Since:** 12
 
+<!--Device-dataShare-enum SubscriptionType--><!--Device-dataShare-enum SubscriptionType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Data change of the specified URI.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SubscriptionType-SUBSCRIPTION_TYPE_EXACT_URI = 0--><!--Device-SubscriptionType-SUBSCRIPTION_TYPE_EXACT_URI = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 

@@ -18,6 +18,8 @@ Sets the video call screen to follow the device direction. This API uses a promi
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function setDeviceDirection(callId: int, deviceDirection: DeviceDirection): Promise<void>--><!--Device-call-function setDeviceDirection(callId: int, deviceDirection: DeviceDirection): Promise<void>-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.

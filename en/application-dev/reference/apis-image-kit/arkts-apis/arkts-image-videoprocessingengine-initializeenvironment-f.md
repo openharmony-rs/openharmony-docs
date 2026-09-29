@@ -16,7 +16,9 @@ Initialize global environment for image processing.
 
 **Since:** 18
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 18.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 18.
+
+<!--Device-videoProcessingEngine-function initializeEnvironment(): Promise<void>--><!--Device-videoProcessingEngine-function initializeEnvironment(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 

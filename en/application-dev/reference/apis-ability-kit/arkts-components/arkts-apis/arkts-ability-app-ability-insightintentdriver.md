@@ -12,6 +12,8 @@ The module provides APIs for executing intent calls. The system executes intent 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace insightIntentDriver--><!--Device-unnamed-declare namespace insightIntentDriver-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

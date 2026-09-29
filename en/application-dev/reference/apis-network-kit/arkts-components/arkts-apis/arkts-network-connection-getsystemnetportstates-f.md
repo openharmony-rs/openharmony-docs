@@ -30,6 +30,8 @@ Obtains information about all TCP and UDP ports currently listened by the system
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getSystemNetPortStates(): Promise<NetPortStatesInfo>--><!--Device-connection-function getSystemNetPortStates(): Promise<NetPortStatesInfo>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Return value:**

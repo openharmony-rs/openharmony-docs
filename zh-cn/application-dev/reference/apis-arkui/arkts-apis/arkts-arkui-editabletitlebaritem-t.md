@@ -12,6 +12,8 @@ Declaration of the image item .
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export type EditableTitleBarItem = EditableTitleBarMenuItem--><!--Device-unnamed-export type EditableTitleBarItem = EditableTitleBarMenuItem-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** [EditableTitleBarMenuItem](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebarmenuitem-c.md)

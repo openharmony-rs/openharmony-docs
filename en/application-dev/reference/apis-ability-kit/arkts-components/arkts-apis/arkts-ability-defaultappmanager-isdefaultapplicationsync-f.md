@@ -16,6 +16,8 @@ Checks whether this application is the default application of a system-defined a
 
 **Since:** 10
 
+<!--Device-defaultAppManager-function isDefaultApplicationSync(type: string): boolean--><!--Device-defaultAppManager-function isDefaultApplicationSync(type: string): boolean-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
 **Parameters:**

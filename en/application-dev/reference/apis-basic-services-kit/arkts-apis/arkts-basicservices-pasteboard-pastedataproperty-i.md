@@ -8,6 +8,8 @@ Defines the properties of PasteData in the pasteboard, including the timestamp, 
 
 **Since:** 7
 
+<!--Device-pasteboard-interface PasteDataProperty--><!--Device-pasteboard-interface PasteDataProperty-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Additional property data. It does not allow for dynamic adding of properties. Pr
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PasteDataProperty-additions: Record<string, object>--><!--Device-PasteDataProperty-additions: Record<string, object>-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 ## localOnly
@@ -44,7 +48,9 @@ Whether the pasteboard content is for local access only. The default value is **
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataProperty-localOnly: boolean--><!--Device-PasteDataProperty-localOnly: boolean-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -60,7 +66,9 @@ Data types of all records in PasteData.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataProperty-readonly mimeTypes: Array<string>--><!--Device-PasteDataProperty-readonly mimeTypes: Array<string>-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -76,7 +84,9 @@ Pasteable ranges of PasteData. The default value is **CROSSDEVICE**.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataProperty-shareOption: ShareOption--><!--Device-PasteDataProperty-shareOption: ShareOption-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -92,7 +102,9 @@ Custom tag. This parameter is left empty by default.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataProperty-tag: string--><!--Device-PasteDataProperty-tag: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -108,6 +120,8 @@ Timestamp when data is written to the pasteboard (unit: nanoseconds since the de
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataProperty-readonly timestamp: long--><!--Device-PasteDataProperty-readonly timestamp: long-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard

@@ -8,6 +8,8 @@ Provides the VideoProcessor type, including AIHDR related functions.
 
 **Since:** 26.0.0
 
+<!--Device-videoProcessing-interface VideoProcessor--><!--Device-videoProcessing-interface VideoProcessor-End-->
+
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Gets the current status of video processor features.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VideoProcessor-getStatus(): Promise<VideoProcessorStatus | undefined>--><!--Device-VideoProcessor-getStatus(): Promise<VideoProcessorStatus | undefined>-End-->
 
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -53,6 +57,8 @@ Unregisters a listener for video processor status changes.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VideoProcessor-offStatusChange(callback?: VideoProcessorStatusCallback): void--><!--Device-VideoProcessor-offStatusChange(callback?: VideoProcessorStatusCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -81,6 +87,8 @@ Registers a listener for video processor status changes.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VideoProcessor-onStatusChange(callback: VideoProcessorStatusCallback): void--><!--Device-VideoProcessor-onStatusChange(callback: VideoProcessorStatusCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 

@@ -8,6 +8,8 @@ interface ParticleColorPropertyOptions<UPDATER extends ParticleUpdater>
 
 **起始版本：** 10
 
+<!--Device-unnamed-interface ParticleColorPropertyOptions<UPDATER extends ParticleUpdater>--><!--Device-unnamed-interface ParticleColorPropertyOptions<UPDATER extends ParticleUpdater>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## distributionType
@@ -30,6 +32,8 @@ distributionType?: DistributionType
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ParticleColorPropertyOptions-distributionType?: DistributionType--><!--Device-ParticleColorPropertyOptions-distributionType?: DistributionType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## range
@@ -49,6 +53,8 @@ range: ParticleTuple<ResourceColor, ResourceColor>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleColorPropertyOptions-range: ParticleTuple<ResourceColor, ResourceColor>--><!--Device-ParticleColorPropertyOptions-range: ParticleTuple<ResourceColor, ResourceColor>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -81,5 +87,7 @@ updater?: ParticleColorUpdaterOptions<UPDATER>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleColorPropertyOptions-updater?: ParticleColorUpdaterOptions<UPDATER>--><!--Device-ParticleColorPropertyOptions-updater?: ParticleColorUpdaterOptions<UPDATER>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

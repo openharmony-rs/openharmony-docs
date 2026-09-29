@@ -14,6 +14,8 @@ Defines the callback triggered when the page transition animation starts.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-unnamed-declare type OnSwiperAnimationStartCallback = (index: number, targetIndex: number, extraInfo: SwiperAnimationEvent) => void--><!--Device-unnamed-declare type OnSwiperAnimationStartCallback = (index: number, targetIndex: number, extraInfo: SwiperAnimationEvent) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -4,9 +4,11 @@
 export declare class UIUtils
 ```
 
-Provides APIs for handling data transformations related to state management.
+Provides APIs related to state management, including obtaining the original object from a proxy object, converting non-observable data into observable data, dynamically adding and removing state variable listeners, synchronously refreshing state variable modifications, and creating data bindings. It is suitable for scenarios where manual management of state observation, listening, and synchronous refresh is required.
 
 **Since:** 12
+
+<!--Device-unnamed-export declare class UIUtils--><!--Device-unnamed-export declare class UIUtils-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,16 +32,18 @@ Dynamically adds a listener to the state variable of state management V2. For de
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-UIUtils-static addMonitor(target: object, path: string | string[], monitorCallback: MonitorCallback, options?: MonitorOptions): void--><!--Device-UIUtils-static addMonitor(target: object, path: string | string[], monitorCallback: MonitorCallback, options?: MonitorOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| target | object | Yes | Target object. Only [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2) and [@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported. <br>If an unsupported type is provided, a runtime error is thrown. |
-| path | string[] | Yes | Name path of the variable to be listened for. You can specify a path or pass a string array to specify multiple variable paths to be listened for at a time.<br>Only string and string array are supported. If an unsupported type is provided, a runtime error is thrown. |
-| monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | Yes | Listener function registered with the corresponding state variable. That is, when the state variable corresponding to the path changes, a specific function is called.<br>If an unsupported type is provided, a runtime error is thrown. |
-| options | [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md) | No | Configuration item of the listener. For details, see [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md). By default, the asynchronous callback is used. |
+| target | object | Yes | Target object. Only [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2) and [@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported. <br>For unsupported types, a runtime error is thrown. |
+| path | string[] | Yes | Path of the variable name to be listened for. You can specify a path or pass a string array to specify multiple variable paths to be listened for at a time.<br>Only string and string arrays are supported. For unsupported types, a runtime error is thrown. |
+| monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | Yes | Callback registered for the corresponding state variable. When the state variable corresponding to the path changes, the callback is invoked.<br>For unsupported types, a runtime error is thrown. |
+| options | [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md) | No | Configuration options of the listener. For details, see [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md). By default, the asynchronous callback is used. |
 
 **Error codes:**
 
@@ -62,6 +66,8 @@ Synchronously updates a specified state variable. This API receives a closure fu
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-UIUtils-static applySync<T>(task: TaskCallback): T--><!--Device-UIUtils-static applySync<T>(task: TaskCallback): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,13 +149,15 @@ Determines whether a data object can be observed and returns the observation res
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-UIUtils-static canBeObserved<T extends object>(source: T): ObservedResult--><!--Device-UIUtils-static canBeObserved<T extends object>(source: T): ObservedResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| source | T | Yes | Data object to be determined. Array, Map, Set, and Date types are supported. <br>For details, see [canBeObserved API: Determining Whether an Object Can Be Observed](../../../ui/state-management/arkts-new-canBeObserved.md). |
+| source | T | Yes | Data object to be determined for observability. **Array**, **Map**, **Set**, and **Date** types are supported. <br>For details about the usage rules, see [canBeObserved API: Determining Whether an Object Can Be Observed](../../../ui/state-management/arkts-new-canBeObserved.md). |
 
 **Return value:**
 
@@ -282,15 +290,17 @@ Deletes the listener added to the state variable of the state management V2 by c
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-UIUtils-static clearMonitor(target: object, path: string | string[], monitorCallback?: MonitorCallback) : void--><!--Device-UIUtils-static clearMonitor(target: object, path: string | string[], monitorCallback?: MonitorCallback) : void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| target | object | Yes | Target object. Only [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2) and [@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported. <br>If an unsupported type is provided, a runtime error is thrown. |
-| path | string[] | Yes | Name path of the variable to be deleted. You can specify a path or pass a string array to delete the listener functions of multiple state variables at a time.<br>Only string and string array are supported. If an unsupported type is provided, a runtime error is thrown. |
-| monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | No | Listener function to be deleted.<br>If this parameter is not specified, all listener functions registered with the variable corresponding to the path will be deleted. <br>If an unsupported type is provided, a runtime error is thrown. |
+| target | object | Yes | Target object. Only instances of [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2) and [@ObservedV2](../../../ui/state-management/arkts-new-observedV2-and-trace.md) are supported. <br>For unsupported types, a runtime error is thrown. |
+| path | string[] | Yes | Path of the variable name for which the listener is to be deleted. You can specify a single path or pass a string array to delete listeners of multiple state variables at a time.<br>Only strings and arrays are supported. For unsupported types, a runtime error is thrown. |
+| monitorCallback | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | No | Callback to be deleted.<br>If this parameter is not passed, all listeners registered for the variable corresponding to the path are deleted. <br>For unsupported types, a runtime error is thrown. |
 
 **Error codes:**
 
@@ -314,13 +324,15 @@ Enables V1 state variables to be observable in @ComponentV2. This API is primari
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-UIUtils-static enableV2Compatibility<T extends object>(source: T): T--><!--Device-UIUtils-static enableV2Compatibility<T extends object>(source: T): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| source | T | Yes | Data source, which must be V1 state data. |
+| source | T | Yes | Data source. Only V1 state data is supported, such as objects decorated by **@Observed** or objects converted by the **makeV1Observed** API. When non-V1 state data is passed in, the data source itself is returned. |
 
 **Return value:**
 
@@ -382,6 +394,8 @@ Processes all state variable modifications before this API call and synchronizes
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-UIUtils-static flushUIUpdates(): void--><!--Device-UIUtils-static flushUIUpdates(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -452,6 +466,8 @@ Synchronously updates all state variable modifications before this API call, inc
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-UIUtils-static flushUpdates(): void--><!--Device-UIUtils-static flushUpdates(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Error codes:**
@@ -519,6 +535,8 @@ Obtains [CustomComponentContext](arkts-arkui-arkui-statemanagement-customcompone
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-UIUtils-static getCustomComponentContext<T extends BaseCustomComponent>(customComponent: T): CustomComponentContext--><!--Device-UIUtils-static getCustomComponentContext<T extends BaseCustomComponent>(customComponent: T): CustomComponentContext-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -608,6 +626,8 @@ Obtains the [lifecycle of a custom component](arkts-arkui-arkui-statemanagement-
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-UIUtils-static getLifecycle<T extends BaseCustomComponent>(customComponent: T): CustomComponentLifecycle--><!--Device-UIUtils-static getLifecycle<T extends BaseCustomComponent>(customComponent: T): CustomComponentLifecycle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -659,13 +679,15 @@ Obtains the original object from a proxy object wrapped by the state management 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIUtils-static getTarget<T extends object>(source: T): T--><!--Device-UIUtils-static getTarget<T extends object>(source: T): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| source | T | Yes | Source object. |
+| source | T | Yes | Data source object, that is, the proxy object wrapped by the state management framework. It is used to obtain the original object after removing the proxy. |
 
 **Return value:**
 
@@ -712,6 +734,8 @@ Creates a read-only one-way data binding instance, which is used to construct th
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-UIUtils-static makeBinding<T>(getter: GetterCallback<T>): Binding<T>--><!--Device-UIUtils-static makeBinding<T>(getter: GetterCallback<T>): Binding<T>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -786,6 +810,8 @@ Creates a mutable two-way data binding instance, which is used to construct the 
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-UIUtils-static makeBinding<T>(getter: GetterCallback<T>, setter: SetterCallback<T>): MutableBinding<T>--><!--Device-UIUtils-static makeBinding<T>(getter: GetterCallback<T>, setter: SetterCallback<T>): MutableBinding<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -799,7 +825,7 @@ Creates a mutable two-way data binding instance, which is used to construct the 
 
 | Type | Description |
 | --- | --- |
-| [MutableBinding](arkts-arkui-arkui-statemanagement-mutablebinding-c.md)&lt;T&gt; | Returns a two-way data binding instance with a **value** attribute, which allows you to read and modify data. If the value is set, the system checks whether the value type matches the generic type **T**. |
+| [MutableBinding](arkts-arkui-arkui-statemanagement-mutablebinding-c.md)&lt;T&gt; | Two-way data binding instance with a **value** attribute, which allows you to read and modify data. If the value is set, the system checks whether the value type matches the generic type **T**. |
 
 **Examples**
 
@@ -862,6 +888,8 @@ Converts ordinary unobservable data into observable data. For details, see [make
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIUtils-static makeObserved<T extends object>(source: T): T--><!--Device-UIUtils-static makeObserved<T extends object>(source: T): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -874,7 +902,7 @@ Converts ordinary unobservable data into observable data. For details, see [make
 
 | Type | Description |
 | --- | --- |
-| T | Observable data. |
+| T | Observable data for supported input parameter types; data source object itself for unsupported input parameter types. |
 
 **Examples**
 
@@ -913,7 +941,7 @@ struct Index {
 static makeV1Observed<T extends object>(source: T): T
 ```
 
-Wraps an unobservable object into an object that is observable by V1 state management. This API is equivalent to @ Observed and can be used to initialize @ObjectLink.
+Wraps an unobservable object into an object that is observable by V1 state management. This API is equivalent to @Observed and can be used to initialize @ObjectLink.
 
 This API can be used together with [enableV2Compatibility](#enablev2compatibility) in scenarios where state management V1 and V2 are used together. For details, see [Mixed Use of State Management V1 and V2 (API Version 19 and Later)](../../../ui/state-management/arkts-v1-v2-mixusage.md).
 
@@ -923,13 +951,15 @@ This API can be used together with [enableV2Compatibility](#enablev2compatibilit
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-UIUtils-static makeV1Observed<T extends object>(source: T): T--><!--Device-UIUtils-static makeV1Observed<T extends object>(source: T): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| source | T | Yes | Data source. Common classes, Array, Map, Set, and Date types are supported. <br>[@arkts.collections](../../apis-arkts/arkts-apis/arkts-arkts-collections.md) (ArkTS containers) and classes decorated with [@Sendable](../../../arkts-utils/arkts-sendable.md) are not supported. <br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported. |
+| source | T | Yes | Data source. Common classes, **Array**, **Map**, **Set**, and **Date** types are supported. <br>[@arkts.collections](../../apis-arkts/arkts-apis/arkts-arkts-collections.md) (ArkTS containers) and classes decorated with [@Sendable](../../../arkts-utils/arkts-sendable.md) are not supported. <br>**undefined** and **null** are not supported. State management V2 data and the return value of [makeObserved](#makeobserved) are not supported. |
 
 **Return value:**
 

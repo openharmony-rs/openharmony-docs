@@ -8,6 +8,8 @@ Defines the input method client type bound to an input component.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface IMEClient--><!--Device-unnamed-declare interface IMEClient-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## setExtraConfig
@@ -23,6 +25,8 @@ Sets the extension configuration of an input method.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-IMEClient-setExtraConfig(config: InputMethodExtraConfig): void--><!--Device-IMEClient-setExtraConfig(config: InputMethodExtraConfig): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,5 +51,7 @@ Unique ID of the current input component. The value must be greater than or equa
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-IMEClient-nodeId: number--><!--Device-IMEClient-nodeId: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -6,6 +6,8 @@ The **abilityConnectionManager** module provides APIs for cross-device connectio
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace abilityConnectionManager--><!--Device-unnamed-declare namespace abilityConnectionManager-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## Modules to Import

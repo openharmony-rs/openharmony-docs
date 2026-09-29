@@ -10,6 +10,8 @@ Describes the callback function of the ad content playback start event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-media-type OnAdsEventAdsStartedHandle = (adsId: string, duration: int) => void--><!--Device-media-type OnAdsEventAdsStartedHandle = (adsId: string, duration: int) => void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**

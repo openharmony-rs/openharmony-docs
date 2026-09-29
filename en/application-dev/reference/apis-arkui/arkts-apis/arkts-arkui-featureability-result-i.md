@@ -10,6 +10,8 @@ export interface Result
 
 **Deprecated since:** 8
 
+<!--Device-unnamed-export interface Result--><!--Device-unnamed-export interface Result-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## code
@@ -26,6 +28,8 @@ Result code.
 
 **Deprecated since:** 8
 
+<!--Device-Result-code: number--><!--Device-Result-code: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## data
@@ -41,5 +45,7 @@ Returned data.
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-Result-data: object--><!--Device-Result-data: object-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite

@@ -10,6 +10,8 @@ Manager PBAP server profile.
 
 **Since:** 11
 
+<!--Device-pbap-interface PbapServerProfile extends BaseProfile--><!--Device-pbap-interface PbapServerProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Disconnect the PBAP connection with the remote device.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
+
+<!--Device-PbapServerProfile-disconnect(deviceId: string): void--><!--Device-PbapServerProfile-disconnect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -76,6 +80,8 @@ Get the phone book access authorization.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-PbapServerProfile-getPhoneBookAccessAuthorization(deviceId: string, callback: AsyncCallback<AccessAuthorization>): void--><!--Device-PbapServerProfile-getPhoneBookAccessAuthorization(deviceId: string, callback: AsyncCallback<AccessAuthorization>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -128,6 +134,8 @@ Get the phone book access authorization.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-PbapServerProfile-getPhoneBookAccessAuthorization(deviceId: string): Promise<AccessAuthorization>--><!--Device-PbapServerProfile-getPhoneBookAccessAuthorization(deviceId: string): Promise<AccessAuthorization>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -184,6 +192,8 @@ Get the PBAP sharing type.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
+<!--Device-PbapServerProfile-getShareType(deviceId: string, callback: AsyncCallback<ShareType>): void--><!--Device-PbapServerProfile-getShareType(deviceId: string, callback: AsyncCallback<ShareType>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -235,6 +245,8 @@ Get the PBAP sharing type.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-PbapServerProfile-getShareType(deviceId: string): Promise<ShareType>--><!--Device-PbapServerProfile-getShareType(deviceId: string): Promise<ShareType>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -295,6 +307,8 @@ Set the phone book access authorization.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
+<!--Device-PbapServerProfile-setPhoneBookAccessAuthorization(      deviceId: string,      authorization: AccessAuthorization,      callback: AsyncCallback<void>    ): void--><!--Device-PbapServerProfile-setPhoneBookAccessAuthorization(      deviceId: string,      authorization: AccessAuthorization,      callback: AsyncCallback<void>    ): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -347,6 +361,8 @@ Set the phone book access authorization.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-PbapServerProfile-setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthorization): Promise<void>--><!--Device-PbapServerProfile-setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthorization): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -404,6 +420,8 @@ Set the PBAP sharing type.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
+<!--Device-PbapServerProfile-setShareType(deviceId: string, type: ShareType, callback: AsyncCallback<void>): void--><!--Device-PbapServerProfile-setShareType(deviceId: string, type: ShareType, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -456,6 +474,8 @@ Set the PBAP sharing type.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-PbapServerProfile-setShareType(deviceId: string, type: ShareType): Promise<void>--><!--Device-PbapServerProfile-setShareType(deviceId: string, type: ShareType): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

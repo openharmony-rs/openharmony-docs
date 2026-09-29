@@ -14,6 +14,8 @@ Defines the CircleShape type.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-unnamed-declare type CircleShape = import('../api/@ohos.arkui.shape').CircleShape--><!--Device-unnamed-declare type CircleShape = import('../api/@ohos.arkui.shape').CircleShape-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.arkui.shape').CircleShape

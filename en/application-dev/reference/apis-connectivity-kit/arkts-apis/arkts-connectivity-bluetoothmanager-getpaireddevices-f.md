@@ -24,6 +24,8 @@ Obtains the list of Bluetooth devices that have been paired with the current dev
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetoothManager-function getPairedDevices(): Array<string>--><!--Device-bluetoothManager-function getPairedDevices(): Array<string>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

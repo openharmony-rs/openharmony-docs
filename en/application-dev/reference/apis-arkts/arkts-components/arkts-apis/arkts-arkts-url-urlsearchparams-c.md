@@ -12,6 +12,8 @@ The URLSearchParams interface defines some practical methods to process URL quer
 
 **Substitutes:** [URLParams](arkts-arkts-url-urlparams-c.md)
 
+<!--Device-url-class URLSearchParams--><!--Device-url-class URLSearchParams-End-->
+
 **System capability:** SystemCapability.Utils.Lang @name URLSearchParams
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Returns an iterator allowing to go through all key/value pairs contained in this
 **Deprecated since:** 9
 
 **Substitutes:** [Symbol.iterator]
+
+<!--Device-URLSearchParams-[Symbol.iterator](): IterableIterator<[string, string]>--><!--Device-URLSearchParams-[Symbol.iterator](): IterableIterator<[string, string]>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -68,6 +72,8 @@ Appends a specified key/value pair as a new search parameter.
 
 **Substitutes:** append
 
+<!--Device-URLSearchParams-append(name: string, value: string): void--><!--Device-URLSearchParams-append(name: string, value: string): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -98,6 +104,8 @@ A parameterized constructor used to create an URLSearchParams instance. As the i
 **Deprecated since:** 9
 
 **Substitutes:** constructor
+
+<!--Device-URLSearchParams-constructor(init?: string[][] | Record<string, string> | string | URLSearchParams)--><!--Device-URLSearchParams-constructor(init?: string[][] | Record<string, string> | string | URLSearchParams)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -131,6 +139,8 @@ Deletes the given search parameter and its associated value,from the list of all
 
 **Substitutes:** delete
 
+<!--Device-URLSearchParams-delete(name: string): void--><!--Device-URLSearchParams-delete(name: string): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -160,6 +170,8 @@ Returns an ES6 iterator. Each item of the iterator is a JavaScript Array. The fi
 **Deprecated since:** 9
 
 **Substitutes:** entries
+
+<!--Device-URLSearchParams-entries(): IterableIterator<[string, string]>--><!--Device-URLSearchParams-entries(): IterableIterator<[string, string]>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -195,6 +207,8 @@ Callback functions are used to traverse key-value pairs on the URLSearchParams i
 
 **Substitutes:** forEach
 
+<!--Device-URLSearchParams-forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) => void, thisArg?: Object): void--><!--Device-URLSearchParams-forEach(callbackFn: (value: string, key: string, searchParams: URLSearchParams) => void, thisArg?: Object): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -226,6 +240,8 @@ Returns the first value associated to the given search parameter.
 **Deprecated since:** 9
 
 **Substitutes:** get
+
+<!--Device-URLSearchParams-get(name: string): string | null--><!--Device-URLSearchParams-get(name: string): string | null-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -264,6 +280,8 @@ Returns all key-value pairs associated with a given search parameter as an array
 
 **Substitutes:** getAll
 
+<!--Device-URLSearchParams-getAll(name: string): string[]--><!--Device-URLSearchParams-getAll(name: string): string[]-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -301,6 +319,8 @@ Returns a Boolean that indicates whether a parameter with the specified name exi
 
 **Substitutes:** has
 
+<!--Device-URLSearchParams-has(name: string): boolean--><!--Device-URLSearchParams-has(name: string): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -337,6 +357,8 @@ Returns an iterator allowing to go through all keys contained in this object.
 
 **Substitutes:** keys
 
+<!--Device-URLSearchParams-keys(): IterableIterator<string>--><!--Device-URLSearchParams-keys(): IterableIterator<string>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -371,6 +393,8 @@ Sets the value associated with a given search parameter to the given value. If t
 
 **Substitutes:** set
 
+<!--Device-URLSearchParams-set(name: string, value: string): void--><!--Device-URLSearchParams-set(name: string, value: string): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -402,6 +426,8 @@ Sort all key/value pairs contained in this object in place and return undefined.
 
 **Substitutes:** sort
 
+<!--Device-URLSearchParams-sort(): void--><!--Device-URLSearchParams-sort(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Examples**
@@ -425,6 +451,8 @@ Returns a query string suitable for use in a URL.
 **Deprecated since:** 9
 
 **Substitutes:** toString
+
+<!--Device-URLSearchParams-toString(): string--><!--Device-URLSearchParams-toString(): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -456,6 +484,8 @@ Returns an iterator allowing to go through all values contained in this object.
 **Deprecated since:** 9
 
 **Substitutes:** values
+
+<!--Device-URLSearchParams-values(): IterableIterator<string>--><!--Device-URLSearchParams-values(): IterableIterator<string>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

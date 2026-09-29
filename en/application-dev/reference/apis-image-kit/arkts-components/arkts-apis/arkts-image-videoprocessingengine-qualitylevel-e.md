@@ -8,6 +8,8 @@ Levels of processing quality for detail enhancement. @enum {int}
 
 **Since:** 18
 
+<!--Device-videoProcessingEngine-enum QualityLevel--><!--Device-videoProcessingEngine-enum QualityLevel-End-->
+
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 
 ## NONE
@@ -20,7 +22,9 @@ No detail enhancement.
 
 **Since:** 18
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 18.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 18.
+
+<!--Device-QualityLevel-NONE = 0--><!--Device-QualityLevel-NONE = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -34,7 +38,9 @@ A low level of detail enhancement quality but with a fast speed. It's the defaul
 
 **Since:** 18
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 18.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 18.
+
+<!--Device-QualityLevel-LOW = 1--><!--Device-QualityLevel-LOW = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -48,7 +54,9 @@ A medium level of detail enhancement quality. Its speed is between the low setti
 
 **Since:** 18
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 18.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 18.
+
+<!--Device-QualityLevel-MEDIUM = 2--><!--Device-QualityLevel-MEDIUM = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -62,6 +70,8 @@ A high level of detail enhancement quality but with a relatively slow speed.
 
 **Since:** 18
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 18.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 18.
+
+<!--Device-QualityLevel-HIGH = 3--><!--Device-QualityLevel-HIGH = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine

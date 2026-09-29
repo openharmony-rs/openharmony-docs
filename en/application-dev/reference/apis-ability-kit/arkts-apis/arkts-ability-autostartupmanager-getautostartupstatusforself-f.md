@@ -18,6 +18,8 @@ Checks whether the current application is enabled for automatic startup at boot 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-autoStartupManager-function getAutoStartupStatusForSelf(): Promise<boolean>--><!--Device-autoStartupManager-function getAutoStartupStatusForSelf(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**

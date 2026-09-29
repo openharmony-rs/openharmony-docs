@@ -18,6 +18,8 @@ This API is used to query the detailed information list of all stored notificati
 
 **Since:** 9
 
+<!--Device-notificationManager-function getActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void--><!--Device-notificationManager-function getActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) sets the notification badge number.
@@ -66,6 +68,8 @@ Obtains the active notifications of this application. This API uses a promise to
 This API is used to query the detailed information list of all stored notifications of the current application in the notification center, including the ID, tag, content, and creation time of each notification.
 
 **Since:** 9
+
+<!--Device-notificationManager-function getActiveNotifications(): Promise<Array<NotificationRequest>>--><!--Device-notificationManager-function getActiveNotifications(): Promise<Array<NotificationRequest>>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

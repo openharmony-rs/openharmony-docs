@@ -18,6 +18,8 @@ Obtain the backupVersion.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-backup-function getBackupVersion(): string--><!--Device-backup-function getBackupVersion(): string-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.

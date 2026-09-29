@@ -22,6 +22,8 @@ Creates a Bluetooth server listening socket.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetooth-function sppListen(name: string, option: SppOption, callback: AsyncCallback<number>): void--><!--Device-bluetooth-function sppListen(name: string, option: SppOption, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

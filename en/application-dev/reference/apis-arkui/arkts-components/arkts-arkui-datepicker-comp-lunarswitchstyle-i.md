@@ -8,6 +8,8 @@ Defines the style of the lunar calendar switch in the **DatePickerDialog** compo
 
 **Since:** 14
 
+<!--Device-unnamed-declare interface LunarSwitchStyle--><!--Device-unnamed-declare interface LunarSwitchStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedColor
@@ -30,6 +32,8 @@ Default value: **$r('sys.color.ohos_id_color_text_primary_actived')**
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-LunarSwitchStyle-selectedColor?: ResourceColor--><!--Device-LunarSwitchStyle-selectedColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeColor
@@ -38,7 +42,7 @@ Default value: **$r('sys.color.ohos_id_color_text_primary_actived')**
 strokeColor?: ResourceColor
 ```
 
-Color of the icon inside the switch.
+Color of the inner icon of the switch.
 
 Default value: **Color.White**
 
@@ -51,6 +55,8 @@ Default value: **Color.White**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-LunarSwitchStyle-strokeColor?: ResourceColor--><!--Device-LunarSwitchStyle-strokeColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,5 +79,7 @@ Default value: **$r('sys.color.ohos_id_color_switch_outline_off')**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-LunarSwitchStyle-unselectedColor?: ResourceColor--><!--Device-LunarSwitchStyle-unselectedColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

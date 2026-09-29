@@ -17,6 +17,8 @@ export declare struct CustomContentDialog
 
 **装饰器类型：** @CustomDialog
 
+<!--Device-unnamed-export declare struct CustomContentDialog--><!--Device-unnamed-export declare struct CustomContentDialog-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -39,6 +41,8 @@ contentBuilder: () => void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomContentDialog-contentBuilder: () => void--><!--Device-CustomContentDialog-contentBuilder: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttons
@@ -57,6 +61,8 @@ buttons?: ButtonOptions[]
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomContentDialog-buttons?: ButtonOptions[]--><!--Device-CustomContentDialog-buttons?: ButtonOptions[]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## contentAreaPadding
@@ -74,6 +80,8 @@ contentAreaPadding?: Padding
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomContentDialog-contentAreaPadding?: Padding--><!--Device-CustomContentDialog-contentAreaPadding?: Padding-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,6 +103,8 @@ controller: CustomDialogController
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomContentDialog-controller: CustomDialogController--><!--Device-CustomContentDialog-controller: CustomDialogController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## localizedContentAreaPadding
@@ -112,6 +122,8 @@ localizedContentAreaPadding?: LocalizedPadding
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomContentDialog-localizedContentAreaPadding?: LocalizedPadding--><!--Device-CustomContentDialog-localizedContentAreaPadding?: LocalizedPadding-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,6 +147,8 @@ primaryTitle?: ResourceStr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomContentDialog-primaryTitle?: ResourceStr--><!--Device-CustomContentDialog-primaryTitle?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryTitle
@@ -157,6 +171,8 @@ secondaryTitle?: ResourceStr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomContentDialog-secondaryTitle?: ResourceStr--><!--Device-CustomContentDialog-secondaryTitle?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## theme
@@ -174,6 +190,8 @@ theme?: Theme | CustomTheme
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomContentDialog-theme?: Theme | CustomTheme--><!--Device-CustomContentDialog-theme?: Theme | CustomTheme-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -194,5 +212,7 @@ themeColorMode?: ThemeColorMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomContentDialog-themeColorMode?: ThemeColorMode--><!--Device-CustomContentDialog-themeColorMode?: ThemeColorMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Configuration for invoking an analysis tool.
 
 **Since:** 26.0.1
 
+<!--Device-photoAccessHelper-interface ToolInvokeConfig--><!--Device-photoAccessHelper-interface ToolInvokeConfig-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Parameters of the analysis tool to invoke, in JSON string format. The total leng
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ToolInvokeConfig-param?: string--><!--Device-ToolInvokeConfig-param?: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Type of the analysis tool to invoke.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ToolInvokeConfig-type: AnalysisToolType--><!--Device-ToolInvokeConfig-type: AnalysisToolType-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

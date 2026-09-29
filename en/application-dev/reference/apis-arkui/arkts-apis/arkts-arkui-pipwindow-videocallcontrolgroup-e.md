@@ -8,6 +8,8 @@ Enumerates the video call component groups. They are used only when [PiPTemplate
 
 **Since:** 12
 
+<!--Device-PiPWindow-enum VideoCallControlGroup--><!--Device-PiPWindow-enum VideoCallControlGroup-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## MICROPHONE_SWITCH
@@ -20,7 +22,9 @@ Microphone on/off component group.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201--><!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -34,7 +38,9 @@ Hang-up component group.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-VideoCallControlGroup-HANG_UP_BUTTON = 202--><!--Device-VideoCallControlGroup-HANG_UP_BUTTON = 202-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -48,7 +54,9 @@ Camera on/off component group.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203--><!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -62,6 +70,8 @@ Mute/Unmute component group.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-VideoCallControlGroup-MUTE_SWITCH = 204--><!--Device-VideoCallControlGroup-MUTE_SWITCH = 204-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

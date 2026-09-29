@@ -1,8 +1,13 @@
 # ListItem
 
-The ListItem component displays specific items in the list. It must be used together with List.
+**ListItem** is used to display a specific list item in a list. It supports capabilities such as swipe-out menus, selected states, mouse frame selection, and card styles. It must be used with the **List** component. It is applicable to scenarios where content needs to be displayed in a list and interactive operations (such as swipe-to- delete and selection marking) need to be performed on individual list items.
 
-> **NOTE** > > - This component is supported since API version 7. Updates will be marked with a superscript to indicate > their earliest API version. > > - The parent of this component can only be List or ListItemGroup. > > - When this component is used with LazyForEach, its child components are created when it is created. > When this component is used with if/else or ForEach, or when the parent component is List or ListItemGroup, > its child components are created when it is laid out.
+> **NOTE:** 
+> 
+> - The parent of this component can only be [List](arkts-arkui-list-comp.md) or [ListItemGroup](arkts-arkui-listitemgroup-comp.md).
+> 
+> - When this component is used with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), its child components are created when it is created. When this component is used with [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) or [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), or when the parent component is
+> **List** or **ListItemGroup**, its child components are created when it is laid out.
 
 ## Child Components
 
@@ -14,7 +19,7 @@ This component can contain a single child component.
 ListItem(value?: ListItemOptions)
 ```
 
-Creates a ListItem component.
+Creates a **ListItem** component.
 
 **Since:** 10
 
@@ -24,13 +29,15 @@ Creates a ListItem component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-ListItemInterface-(value?: ListItemOptions): ListItemAttribute--><!--Device-ListItemInterface-(value?: ListItemOptions): ListItemAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ListItemOptions](arkts-arkui-listitem-comp-listitemoptions-i.md) | No |  |
+| value | [ListItemOptions](arkts-arkui-listitem-comp-listitemoptions-i.md) | No | Provides optional parameters for the **ListItem**. This object contains the **style** parameter of the [ListItemStyle](arkts-arkui-listitem-comp-listitemstyle-e.md) enum type. Pass this parameter when the card style (**ListItemStyle.CARD**) needs to be set. If it is not passed, the default configuration (no style) is used.<br>Default value: **{ style: ListItemStyle.NONE }** |
 
 ## ListItem
 
@@ -38,7 +45,7 @@ Creates a ListItem component.
 ListItem(value?: string)
 ```
 
-Creates a ListItem component.
+Creates a **ListItem** component.
 
 **Since:** 7
 
@@ -50,13 +57,15 @@ Creates a ListItem component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ListItemInterface-(value?: string): ListItemAttribute--><!--Device-ListItemInterface-(value?: string): ListItemAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | No |  |
+| value | string | No | This parameter is deprecated and does not take effect in the current version. You are advised to use [ListItem&lt;sup&gt;10+&lt;/sup&gt;](#listitem) instead. |
 
 ## Summary
 
@@ -64,17 +73,17 @@ Creates a ListItem component.
 
 | Name | Description |
 | --- | --- |
-| [ListItemOptions](arkts-arkui-listitem-comp-listitemoptions-i.md) | Defines ListItem component configuration options. |
-| [SwipeActionItem](arkts-arkui-listitem-comp-swipeactionitem-i.md) | Describes the swipe action item. For a list in vertical layout, it refers to the delete option displayed on the left (or right) of the list item when the list item is swiped right (or left). |
-| [SwipeActionOptions](arkts-arkui-listitem-comp-swipeactionoptions-i.md) | The top layer of the @builder function corresponding to start and end must be a single component. Otherwise, undefined behavior occurs. If the top layer of the @builder function is a statement such as if/else or ForEach, ensure that these statements can generate a single component. |
+| [ListItemOptions](arkts-arkui-listitem-comp-listitemoptions-i.md) | Defines **ListItem** component configuration options. |
+| [SwipeActionItem](arkts-arkui-listitem-comp-swipeactionitem-i.md) | Used to configure the **start** or **end** swipe-out item in [SwipeActionOptions](arkts-arkui-listitem-comp-swipeactionoptions-i.md), including the action item displayed when swiping out, the distance threshold of the long-distance action area, and the callbacks for entering and exiting the long-distance action area, triggering the action when the finger is lifted, and state changes. |
+| [SwipeActionOptions](arkts-arkui-listitem-comp-swipeactionoptions-i.md) | In the **@builder** functions corresponding to **start** and **end**, the top-level component must be a single component. If the top level is a rendering control statement such as **if**\/**else** or **ForEach**, ensure that it can generate only a single component. Otherwise, undefined behavior may occur. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
 | [EditMode](arkts-arkui-listitem-comp-editmode-e.md) | Enumerates the edit modes of list items. |
-| [ListItemStyle](arkts-arkui-listitem-comp-listitemstyle-e.md) | Enumerates the card styles of the List component. |
-| [ListItemSwipeActionDirection](arkts-arkui-listitem-comp-listitemswipeactiondirection-e.md) | Enumerates the swipe action menu display directions for ListItem components. |
+| [ListItemStyle](arkts-arkui-listitem-comp-listitemstyle-e.md) | Enumerates the card styles of the **ListItem** component. |
+| [ListItemSwipeActionDirection](arkts-arkui-listitem-comp-listitemswipeactiondirection-e.md) | Enumerates the swipe action menu display directions for **ListItem** components. |
 | [Sticky](arkts-arkui-listitem-comp-sticky-e.md) | Enumerates the sticky effects for list items. |
 | [SwipeActionState](arkts-arkui-listitem-comp-swipeactionstate-e.md) | Enumerates swipe states of list items. |
 | [SwipeEdgeEffect](arkts-arkui-listitem-comp-swipeedgeeffect-e.md) | Enumerates the edge effects. |

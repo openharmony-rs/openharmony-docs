@@ -8,6 +8,8 @@ ProxyConfig is a class in the ArkWeb framework used to configure network proxy r
 
 **Since:** 15
 
+<!--Device-webview-class ProxyConfig--><!--Device-webview-class ProxyConfig-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Hostnames without a period character will bypass the proxy and directly connect 
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-ProxyConfig-bypassHostnamesWithoutPeriod(): void--><!--Device-ProxyConfig-bypassHostnamesWithoutPeriod(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -46,6 +50,8 @@ Overrides the default behavior and forcibly sends the local host address or loca
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-ProxyConfig-clearImplicitRules(): void--><!--Device-ProxyConfig-clearImplicitRules(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -63,6 +69,8 @@ Reverses the bypass rule.
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-ProxyConfig-enableReverseBypass(reverse: boolean): void--><!--Device-ProxyConfig-enableReverseBypass(reverse: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -94,6 +102,8 @@ Obtains the list of URLs that do not use the proxy.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-ProxyConfig-getBypassRules(): Array<string>--><!--Device-ProxyConfig-getBypassRules(): Array<string>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -118,6 +128,8 @@ Obtains proxy rules.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-ProxyConfig-getProxyRules(): Array<ProxyRule>--><!--Device-ProxyConfig-getProxyRules(): Array<ProxyRule>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -141,6 +153,8 @@ Inserts a bypass rule, specifying which URLs should bypass the proxy and directl
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-ProxyConfig-insertBypassRule(bypassRule: string): void--><!--Device-ProxyConfig-insertBypassRule(bypassRule: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -175,6 +189,8 @@ Inserts a direct rule, specifying that URLs matching the schemeFilter condition 
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-ProxyConfig-insertDirectRule(schemeFilter?: ProxySchemeFilter): void--><!--Device-ProxyConfig-insertDirectRule(schemeFilter?: ProxySchemeFilter): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -224,6 +240,8 @@ For example:
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-ProxyConfig-insertProxyRule(proxyRule: string, schemeFilter?: ProxySchemeFilter): void--><!--Device-ProxyConfig-insertProxyRule(proxyRule: string, schemeFilter?: ProxySchemeFilter): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -254,6 +272,8 @@ Obtains the value of [enableReverseBypass](#enablereversebypass). For details, s
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-ProxyConfig-isReverseBypassEnabled(): boolean--><!--Device-ProxyConfig-isReverseBypassEnabled(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

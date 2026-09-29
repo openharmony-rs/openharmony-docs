@@ -8,6 +8,8 @@ Defines continuous authentication parameters. They are used to configure paramet
 
 **Since:** 23
 
+<!--Device-companionDeviceAuth-interface ContinuousAuthParam--><!--Device-companionDeviceAuth-interface ContinuousAuthParam-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Template ID. It is used to specify the target template to be subscribed to. If t
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousAuthParam-templateId?: Uint8Array--><!--Device-ContinuousAuthParam-templateId?: Uint8Array-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 

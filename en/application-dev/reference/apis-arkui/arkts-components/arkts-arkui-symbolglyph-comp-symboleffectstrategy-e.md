@@ -8,6 +8,8 @@ Enumerates symbol effect types. Once applied, the symbol effect becomes active i
 
 **Since:** 11
 
+<!--Device-unnamed-declare enum SymbolEffectStrategy--><!--Device-unnamed-declare enum SymbolEffectStrategy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## NONE
@@ -25,6 +27,8 @@ No effect (default value).
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-SymbolEffectStrategy-NONE = 0--><!--Device-SymbolEffectStrategy-NONE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Scale effect as a whole.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-SymbolEffectStrategy-SCALE = 1--><!--Device-SymbolEffectStrategy-SCALE = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## HIERARCHICAL
@@ -61,5 +67,7 @@ Hierarchical effect.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-SymbolEffectStrategy-HIERARCHICAL = 2--><!--Device-SymbolEffectStrategy-HIERARCHICAL = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

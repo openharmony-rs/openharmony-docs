@@ -8,6 +8,8 @@ Defines the size of the printed page.
 
 **Since:** 11
 
+<!--Device-print-interface PrintPageSize--><!--Device-print-interface PrintPageSize-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Page height, in millimeters.
 
 **Since:** 11
 
+<!--Device-PrintPageSize-height: int--><!--Device-PrintPageSize-height: int-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## id
@@ -41,6 +45,8 @@ Paper size ID.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-PrintPageSize-id: string--><!--Device-PrintPageSize-id: string-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -56,6 +62,8 @@ Paper size name.
 
 **Since:** 11
 
+<!--Device-PrintPageSize-name: string--><!--Device-PrintPageSize-name: string-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## width
@@ -69,5 +77,7 @@ Page width, in millimeters.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-PrintPageSize-width: int--><!--Device-PrintPageSize-width: int-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

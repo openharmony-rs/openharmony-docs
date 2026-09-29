@@ -10,6 +10,8 @@ Defines the DownloadFileButton style option.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface DownloadStyleOptions--><!--Device-unnamed-export interface DownloadStyleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Font color.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DownloadStyleOptions-fontColor?: ResourceColor--><!--Device-DownloadStyleOptions-fontColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontFamily
@@ -47,6 +51,8 @@ Font family.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DownloadStyleOptions-fontFamily?: string | Resource--><!--Device-DownloadStyleOptions-fontFamily?: string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +70,8 @@ Font size.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DownloadStyleOptions-fontSize?: Dimension--><!--Device-DownloadStyleOptions-fontSize?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontStyle
@@ -79,6 +87,8 @@ Font Style.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DownloadStyleOptions-fontStyle?: FontStyle--><!--Device-DownloadStyleOptions-fontStyle?: FontStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,6 +106,8 @@ Font weight.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DownloadStyleOptions-fontWeight?: number | FontWeight | string--><!--Device-DownloadStyleOptions-fontWeight?: number | FontWeight | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconColor
@@ -111,6 +123,8 @@ Icon color.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DownloadStyleOptions-iconColor?: ResourceColor--><!--Device-DownloadStyleOptions-iconColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +142,8 @@ Icon size.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DownloadStyleOptions-iconSize?: Dimension--><!--Device-DownloadStyleOptions-iconSize?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## layoutDirection
@@ -144,6 +160,8 @@ Layout direction.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DownloadStyleOptions-layoutDirection?: DownloadLayoutDirection--><!--Device-DownloadStyleOptions-layoutDirection?: DownloadLayoutDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textIconSpace
@@ -159,5 +177,7 @@ Text and Icon space.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DownloadStyleOptions-textIconSpace?: Dimension--><!--Device-DownloadStyleOptions-textIconSpace?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

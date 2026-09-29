@@ -4,11 +4,13 @@
 declare class CounterAttribute extends CommonMethod<CounterAttribute>
 ```
 
-除支持通用属性外，还支持以下属性。
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性。
 
-**继承/实现关系：** CounterAttribute extends CommonMethod&lt;CounterAttribute&gt;
+**继承/实现关系：** CounterAttribute extends CommonMethod<CounterAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class CounterAttribute extends CommonMethod<CounterAttribute>--><!--Device-unnamed-declare class CounterAttribute extends CommonMethod<CounterAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ enableDec(value: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CounterAttribute-enableDec(value: boolean): CounterAttribute--><!--Device-CounterAttribute-enableDec(value: boolean): CounterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ enableInc(value: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-CounterAttribute-enableInc(value: boolean): CounterAttribute--><!--Device-CounterAttribute-enableInc(value: boolean): CounterAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -70,6 +76,8 @@ onDec(event: VoidCallback)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CounterAttribute-onDec(event: VoidCallback): CounterAttribute--><!--Device-CounterAttribute-onDec(event: VoidCallback): CounterAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -91,6 +99,8 @@ onInc(event: VoidCallback)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CounterAttribute-onInc(event: VoidCallback): CounterAttribute--><!--Device-CounterAttribute-onInc(event: VoidCallback): CounterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

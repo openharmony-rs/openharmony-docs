@@ -8,6 +8,8 @@ Enumerates the GWP-ASan configuration items. You can configure whether to enable
 
 **Since:** 20
 
+<!--Device-hidebug-interface GwpAsanOptions--><!--Device-hidebug-interface GwpAsanOptions-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## Modules to Import
@@ -31,6 +33,8 @@ The default value is **false**.
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-GwpAsanOptions-alwaysEnabled?: boolean--><!--Device-GwpAsanOptions-alwaysEnabled?: boolean-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -56,6 +60,8 @@ The default value is **false**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GwpAsanOptions-isRecover?: boolean--><!--Device-GwpAsanOptions-isRecover?: boolean-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## maxSimutaneousAllocations
@@ -76,6 +82,8 @@ You are advised to set this parameter to a value less than or equal to 20000. If
 
 **Since:** 20
 
+<!--Device-GwpAsanOptions-maxSimutaneousAllocations?: int--><!--Device-GwpAsanOptions-maxSimutaneousAllocations?: int-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## sampleRate
@@ -93,5 +101,7 @@ You are advised to set this parameter to a value greater than or equal to 1000. 
 **Type:** number
 
 **Since:** 20
+
+<!--Device-GwpAsanOptions-sampleRate?: int--><!--Device-GwpAsanOptions-sampleRate?: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug

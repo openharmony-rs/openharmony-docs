@@ -8,6 +8,8 @@ Defines the device information discovered by perception scanning, including the 
 
 **Since:** 26.0.1
 
+<!--Device-softbusBase-export interface PerceptionDeviceInfo--><!--Device-softbusBase-export interface PerceptionDeviceInfo-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Custom data carried in the advertising, which is binary data in ArrayBuffer form
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PerceptionDeviceInfo-customData: ArrayBuffer--><!--Device-PerceptionDeviceInfo-customData: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Device ID, which is binary data in **ArrayBuffer** format. The bytes are in netw
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PerceptionDeviceInfo-deviceId: ArrayBuffer--><!--Device-PerceptionDeviceInfo-deviceId: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.
@@ -66,6 +72,8 @@ Device type. The specific value is subject to the system definition. The value s
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PerceptionDeviceInfo-deviceType: int--><!--Device-PerceptionDeviceInfo-deviceType: int-End-->
 
 **System capability:** SystemCapability.Communication.SoftBus.Core
 

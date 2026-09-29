@@ -12,6 +12,8 @@ Enumerates the subscription types.
 
 **Substitutes:** SubscribeType
 
+<!--Device-distributedData-enum SubscribeType--><!--Device-distributedData-enum SubscribeType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## SUBSCRIBE_TYPE_LOCAL
@@ -27,6 +29,8 @@ Local data changes.
 **Deprecated since:** 9
 
 **Substitutes:** SUBSCRIBE_TYPE_LOCAL
+
+<!--Device-SubscribeType-SUBSCRIBE_TYPE_LOCAL = 0--><!--Device-SubscribeType-SUBSCRIBE_TYPE_LOCAL = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -44,6 +48,8 @@ Remote data changes.
 
 **Substitutes:** SUBSCRIBE_TYPE_REMOTE
 
+<!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 1--><!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 1-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## SUBSCRIBE_TYPE_ALL
@@ -59,5 +65,7 @@ Local and remote data changes.
 **Deprecated since:** 9
 
 **Substitutes:** SUBSCRIBE_TYPE_ALL
+
+<!--Device-SubscribeType-SUBSCRIBE_TYPE_ALL = 2--><!--Device-SubscribeType-SUBSCRIBE_TYPE_ALL = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

@@ -8,6 +8,8 @@ Manages the audio-haptic feature. Before calling any API in AudioHapticManager, 
 
 **Since:** 11
 
+<!--Device-audioHaptic-interface AudioHapticManager--><!--Device-audioHaptic-interface AudioHapticManager-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Create an audio haptic player. This method uses a promise to return the result. 
 **Since:** 11
 
 **Required permissions:** ohos.permission.VIBRATE
+
+<!--Device-AudioHapticManager-createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise<AudioHapticPlayer>--><!--Device-AudioHapticManager-createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise<AudioHapticPlayer>-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -88,6 +92,8 @@ Registers audio and haptic resources via URIs. This API uses a promise to return
 
 **Since:** 11
 
+<!--Device-AudioHapticManager-registerSource(audioUri: string, hapticUri: string): Promise<int>--><!--Device-AudioHapticManager-registerSource(audioUri: string, hapticUri: string): Promise<int>-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 **Parameters:**
@@ -142,6 +148,8 @@ Registers audio and haptic resources via file descriptors. This API uses a promi
 > manner.
 
 **Since:** 20
+
+<!--Device-AudioHapticManager-registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise<int>--><!--Device-AudioHapticManager-registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -200,6 +208,8 @@ Sets the latency mode for an audio-haptic source.
 
 **Since:** 11
 
+<!--Device-AudioHapticManager-setAudioLatencyMode(id:int, latencyMode: AudioLatencyMode): void--><!--Device-AudioHapticManager-setAudioLatencyMode(id:int, latencyMode: AudioLatencyMode): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 **Parameters:**
@@ -237,6 +247,8 @@ setStreamUsage(id: number, usage: audio.StreamUsage): void
 Sets the stream usage for an audio-haptic source.
 
 **Since:** 11
+
+<!--Device-AudioHapticManager-setStreamUsage(id: int, usage: audio.StreamUsage): void--><!--Device-AudioHapticManager-setStreamUsage(id: int, usage: audio.StreamUsage): void-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -281,6 +293,8 @@ Unregisters an audio-haptic source. This API uses a promise to return the result
 > such as resource leaks or the number of resources exceeding the upper limit.
 
 **Since:** 11
+
+<!--Device-AudioHapticManager-unregisterSource(id: int): Promise<void>--><!--Device-AudioHapticManager-unregisterSource(id: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 

@@ -22,6 +22,8 @@ Enables a Wi-Fi hotspot.
 
 **Required permissions:** ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
 
+<!--Device-wifiext-function enableHotspot(): boolean--><!--Device-wifiext-function enableHotspot(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 
 **Return value:**

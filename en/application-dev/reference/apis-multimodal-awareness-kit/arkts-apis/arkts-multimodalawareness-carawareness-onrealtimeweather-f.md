@@ -20,6 +20,8 @@ Enables real-time weather awareness and subscribes to real-time weather awarenes
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-carAwareness-function onRealTimeWeather(callback: Callback<RealTimeWeatherInfo>): void--><!--Device-carAwareness-function onRealTimeWeather(callback: Callback<RealTimeWeatherInfo>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **Parameters:**

@@ -8,6 +8,8 @@ Represents the access records of an application or device.
 
 **Since:** 9
 
+<!--Device-privacyManager-interface BundleUsedRecord--><!--Device-privacyManager-interface BundleUsedRecord-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Bundle name of the application using the permission. In local scenarios, it can 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-BundleUsedRecord-bundleName: string--><!--Device-BundleUsedRecord-bundleName: string-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ ID of the device where the application using the permission is located. Mainly u
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-BundleUsedRecord-deviceId: string--><!--Device-BundleUsedRecord-deviceId: string-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -68,6 +74,8 @@ Name of the device where the application using the permission is located, used o
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-BundleUsedRecord-deviceName?: string--><!--Device-BundleUsedRecord-deviceName?: string-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Whether it is an access record in a distributed scenario. false indicates a loca
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-BundleUsedRecord-isRemote: boolean--><!--Device-BundleUsedRecord-isRemote: boolean-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -104,6 +114,8 @@ Collection of permission usage records under the current application or device. 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-BundleUsedRecord-permissionRecords: Array<PermissionUsedRecord>--><!--Device-BundleUsedRecord-permissionRecords: Array<PermissionUsedRecord>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -121,6 +133,8 @@ Application identity identifier for using the permission. This field is invalid 
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-BundleUsedRecord-tokenId: int--><!--Device-BundleUsedRecord-tokenId: int-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

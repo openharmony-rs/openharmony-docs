@@ -16,6 +16,8 @@ Subscribes to privacy mode changes of this display. When there is a privacy wind
 
 **Since:** 10
 
+<!--Device-display-function on(type: 'privateModeChange', callback: Callback<boolean>): void--><!--Device-display-function on(type: 'privateModeChange', callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.

@@ -24,6 +24,8 @@ When the function is enabled, the application can recommend content based on the
 
 **Deprecated since:** 24
 
+<!--Device-userStatus-function on(type: 'userAgeGroupDetected', callback: Callback<UserClassification>): void--><!--Device-userStatus-function on(type: 'userAgeGroupDetected', callback: Callback<UserClassification>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **Parameters:**

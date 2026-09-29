@@ -16,6 +16,8 @@ Tuple type that stores button information.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type ItemRestriction<T> = [T, T, T?, T?, T?]--><!--Device-unnamed-declare type ItemRestriction<T> = [T, T, T?, T?, T?]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [T, T, T?, T?, T?]

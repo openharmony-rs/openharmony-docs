@@ -22,6 +22,8 @@ Before you do this, ensure that you have claimed the interface by calling [usb.c
 
 **Substitutes:** [releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md)
 
+<!--Device-usb-function releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number--><!--Device-usb-function releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

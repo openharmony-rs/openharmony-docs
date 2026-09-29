@@ -8,6 +8,8 @@ Represents the holder of a remote proxy object. It is used to obtain a proxy obj
 
 **Since:** 7
 
+<!--Device-rpc-interface IRemoteBroker--><!--Device-rpc-interface IRemoteBroker-End-->
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ asObject(): IRemoteObject
 Obtains a proxy or remote object. This API must be implemented by its derived classes.
 
 **Since:** 7
+
+<!--Device-IRemoteBroker-asObject(): IRemoteObject--><!--Device-IRemoteBroker-asObject(): IRemoteObject-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 

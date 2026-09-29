@@ -20,6 +20,8 @@ Enables listening for screen hopping status change events.
 
 **Substitutes:** [on](arkts-distributedservice-cooperate-on-f-sys.md)(type: 'cooperateMessage', callback: Callback&lt;CooperateMessage&gt;)
 
+<!--Device-cooperate-function on(type: 'cooperate', callback: Callback<{ networkId: string, msg: CooperateMsg }>): void--><!--Device-cooperate-function on(type: 'cooperate', callback: Callback<{ networkId: string, msg: CooperateMsg }>): void-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -50,6 +52,8 @@ Enables listening for screen hopping status change events.
 **Since:** 11
 
 **Required permissions:** ohos.permission.COOPERATE_MANAGER
+
+<!--Device-cooperate-function on(type: 'cooperateMessage', callback: Callback<CooperateMessage>): void--><!--Device-cooperate-function on(type: 'cooperateMessage', callback: Callback<CooperateMessage>): void-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -82,6 +86,8 @@ Registers a listener for the mouse cursor position of a device.
 **Since:** 12
 
 **Required permissions:** ohos.permission.COOPERATE_MANAGER
+
+<!--Device-cooperate-function on(type: 'cooperateMouse', networkId: string, callback: Callback<MouseLocation>): void--><!--Device-cooperate-function on(type: 'cooperateMouse', networkId: string, callback: Callback<MouseLocation>): void-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 

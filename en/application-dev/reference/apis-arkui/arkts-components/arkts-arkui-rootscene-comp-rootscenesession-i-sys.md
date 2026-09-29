@@ -12,6 +12,8 @@ Defines the session of RootScene.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-interface RootSceneSession--><!--Device-unnamed-interface RootSceneSession-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

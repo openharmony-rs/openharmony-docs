@@ -8,6 +8,8 @@ Provides APIs to check whether a camera device supports manual ISO setting and o
 
 **Since:** 24
 
+<!--Device-camera-interface ManualIsoQuery--><!--Device-camera-interface ManualIsoQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ getIsoRange(): Array<number>
 Obtains the supported ISO range.
 
 **Since:** 12
+
+<!--Device-ManualIsoQuery-getIsoRange(): Array<int>--><!--Device-ManualIsoQuery-getIsoRange(): Array<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -70,6 +74,8 @@ isManualIsoSupported(): boolean
 Checks whether manual ISO setting is supported.
 
 **Since:** 12
+
+<!--Device-ManualIsoQuery-isManualIsoSupported(): boolean--><!--Device-ManualIsoQuery-isManualIsoSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

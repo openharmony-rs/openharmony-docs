@@ -22,6 +22,8 @@ Creates an AVRecorder instance. This API uses an asynchronous callback to return
 
 **Since:** 9
 
+<!--Device-media-function createAVRecorder(callback: AsyncCallback<AVRecorder>): void--><!--Device-media-function createAVRecorder(callback: AsyncCallback<AVRecorder>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **Parameters:**
@@ -72,6 +74,8 @@ Creates an AVRecorder instance. This API uses a promise to return the result.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-media-function createAVRecorder(): Promise<AVRecorder>--><!--Device-media-function createAVRecorder(): Promise<AVRecorder>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 

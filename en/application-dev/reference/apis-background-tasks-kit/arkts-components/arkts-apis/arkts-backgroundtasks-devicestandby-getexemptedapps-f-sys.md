@@ -18,6 +18,8 @@ Returns the information about the specified exempted application.
 
 **Required permissions:** ohos.permission.DEVICE_STANDBY_EXEMPTION
 
+<!--Device-deviceStandby-function getExemptedApps(resourceTypes: int, callback: AsyncCallback<Array<ExemptedAppInfo>>): void--><!--Device-deviceStandby-function getExemptedApps(resourceTypes: int, callback: AsyncCallback<Array<ExemptedAppInfo>>): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.DeviceStandby
 
 **System API:** This is a system API.
@@ -75,6 +77,8 @@ Returns the information about the specified exempted application.
 **Since:** 10
 
 **Required permissions:** ohos.permission.DEVICE_STANDBY_EXEMPTION
+
+<!--Device-deviceStandby-function getExemptedApps(resourceTypes: int): Promise<Array<ExemptedAppInfo>>--><!--Device-deviceStandby-function getExemptedApps(resourceTypes: int): Promise<Array<ExemptedAppInfo>>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.DeviceStandby
 

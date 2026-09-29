@@ -26,6 +26,8 @@ Obtains the number of pages in the current stack.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-router-function getLength(): string--><!--Device-router-function getLength(): string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**

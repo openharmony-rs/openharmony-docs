@@ -10,6 +10,8 @@ The module provides the APIs for creating a WantAgent object, obtaining the bund
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace wantAgent--><!--Device-unnamed-declare namespace wantAgent-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import

@@ -4,6 +4,8 @@ The multimedia subsystem provides a set of simple and easy-to-use APIs for you t
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace media--><!--Device-unnamed-declare namespace media-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Multimedia.Media.Core
 
@@ -121,6 +123,43 @@ import { media } from '@kit.MediaKit';
 | [WatermarkConfig](arkts-media-media-watermarkconfig-i-sys.md) | Set configures of a watermark to AVRecorder. The position starts at top left corner. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [AudioState](arkts-media-media-audiostate-t.md) | Describes the audio playback state. You can obtain the state through the **state** property. |
+| [AVDownloadTaskState](arkts-media-media-avdownloadtaskstate-t.md) | Enumerates the states of the download task. |
+| [AVPlayerState](arkts-media-media-avplayerstate-t.md) | Describes the state of the [AVPlayer](arkts-media-multimedia-media.md). Your application can proactively obtain the AVPlayer state through the **state** property or obtain the reported AVPlayer state by subscribing to the [stateChange](arkts-media-media-avplayer-i.md#onstatechange) event. For details about the rules for state transition, see [Audio Playback](../../../media/media/using-avplayer-for-playback.md). |
+| [AVRecorderState](arkts-media-media-avrecorderstate-t.md) | Enumerates the AVRecorder states. You can obtain the state through the **state** property. |
+| [OnAdsEventAdsStartedHandle](arkts-media-media-onadseventadsstartedhandle-t.md) | Describes the callback function of the ad content playback start event. |
+| [OnAdsEventLoadingErrorHandle](arkts-media-media-onadseventloadingerrorhandle-t.md) | Describes the callback function for the ad media resource loading error event. |
+| [OnAVDownloadProgressChangeHandle](arkts-media-media-onavdownloadprogresschangehandle-t.md) | Describes the callback invoked for the AVDownloader progress change event. |
+| [OnAVDownloadTaskStateHandle](arkts-media-media-onavdownloadtaskstatehandle-t.md) | Describes the callback invoked for the AVDownloader state change event. |
+| [OnAVPlayerStateChangeHandle](arkts-media-media-onavplayerstatechangehandle-t.md) | Describes the callback invoked for the AVPlayer state change event. |
+| [OnAVRecorderStateChangeHandler](arkts-media-media-onavrecorderstatechangehandler-t.md) | Describes the callback invoked for the AVRecorder state change event. |
+| [OnBufferingUpdateHandler](arkts-media-media-onbufferingupdatehandler-t.md) | Describes the callback invoked for the buffering update event. |
+| [OnFrameFetched](arkts-media-media-onframefetched-t.md) | Describes the callback invoked when thumbnails are obtained in batches. |
+| [OnPlaybackRateDone](arkts-media-media-onplaybackratedone-t.md) | Describes the callback invoked for the event indicating that the playback rate setting is complete. |
+| [OnSeiMessageHandle](arkts-media-media-onseimessagehandle-t.md) | Describes the handle used to obtain SEI messages. This is used when in subscriptions to SEI message events, and the callback returns detailed SEI information. |
+| [OnSuperResolutionChanged](arkts-media-media-onsuperresolutionchanged-t.md) | Describes the callback used to listen for video super resolution status changes. If super resolution is enabled by using [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md), this callback is invoked to report the super resolution status changes. It is also invoked to report the initial status when the video starts. However, this callback is not invoked when super resolution is not enabled. |
+| [OnTrackChangeHandler](arkts-media-media-ontrackchangehandler-t.md) | Describes the callback invoked for the track change event. |
+| [OnVideoSizeChangeHandler](arkts-media-media-onvideosizechangehandler-t.md) | Describes the callback invoked for the video size change event. |
+| [PlaybackMetrics](arkts-media-media-playbackmetrics-t.md) | Describes the container for the key-value pairs of playback metrics. |
+| [PlayParameters](arkts-media-media-playparameters-t.md) | Describes the playback parameters of the sound pool. |
+| [SoundPool](arkts-media-media-soundpool-t.md) | SoundPool, which provides APIs for loading, unloading, playing, and stopping playing system sounds, setting the volume, and setting the number of loops. |
+| [SourceCloseCallback](arkts-media-media-sourceclosecallback-t.md) | This callback function is implemented by applications to release related resources. |
+| [SourceOpenCallback](arkts-media-media-sourceopencallback-t.md) | This callback function is implemented by applications to handle resource open requests and return a unique handle for the opened resource. |
+| [SourceReadCallback](arkts-media-media-sourcereadcallback-t.md) | This callback function is implemented by applications to handle resource read requests. When data is available, applications should push it to the player using the [respondData](arkts-media-media-mediasourceloadingrequest-i.md#responddata) API of the corresponding MediaSourceLoadingRequest object. |
+| [VideoPlayState](arkts-media-media-videoplaystate-t.md) | Describes the video playback state. You can obtain the state through the **state** property. |
+
+<!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [VideoRecordState](arkts-media-media-videorecordstate-t-sys.md) | The maintenance of this interface has been stopped since version api 9. Please use AVRecorderState. Describes video recorder states. |
+<!--DelEnd-->
+
 ### Enums
 
 | Name | Description |
@@ -167,41 +206,4 @@ import { media } from '@kit.MediaKit';
 | [MetaSourceType](arkts-media-media-metasourcetype-e-sys.md) | Enumerates meta source type for recorder. |
 | [PixelFormat](arkts-media-media-pixelformat-e-sys.md) | Enumerates the color formats supported by the video thumbnail. |
 | [ScreenCaptureEvent](arkts-media-media-screencaptureevent-e-sys.md) | Enumerates the states available for the system screen recorder. |
-<!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [AudioState](arkts-media-media-audiostate-t.md) | Describes the audio playback state. You can obtain the state through the **state** property. |
-| [AVDownloadTaskState](arkts-media-media-avdownloadtaskstate-t.md) | Enumerates the states of the download task. |
-| [AVPlayerState](arkts-media-media-avplayerstate-t.md) | Describes the state of the [AVPlayer](arkts-media-multimedia-media.md). Your application can proactively obtain the AVPlayer state through the **state** property or obtain the reported AVPlayer state by subscribing to the [stateChange](arkts-media-media-avplayer-i.md#onstatechange) event. For details about the rules for state transition, see [Audio Playback](../../../media/media/using-avplayer-for-playback.md). |
-| [AVRecorderState](arkts-media-media-avrecorderstate-t.md) | Enumerates the AVRecorder states. You can obtain the state through the **state** property. |
-| [OnAdsEventAdsStartedHandle](arkts-media-media-onadseventadsstartedhandle-t.md) | Describes the callback function of the ad content playback start event. |
-| [OnAdsEventLoadingErrorHandle](arkts-media-media-onadseventloadingerrorhandle-t.md) | Describes the callback function for the ad media resource loading error event. |
-| [OnAVDownloadProgressChangeHandle](arkts-media-media-onavdownloadprogresschangehandle-t.md) | Describes the callback invoked for the AVDownloader progress change event. |
-| [OnAVDownloadTaskStateHandle](arkts-media-media-onavdownloadtaskstatehandle-t.md) | Describes the callback invoked for the AVDownloader state change event. |
-| [OnAVPlayerStateChangeHandle](arkts-media-media-onavplayerstatechangehandle-t.md) | Describes the callback invoked for the AVPlayer state change event. |
-| [OnAVRecorderStateChangeHandler](arkts-media-media-onavrecorderstatechangehandler-t.md) | Describes the callback invoked for the AVRecorder state change event. |
-| [OnBufferingUpdateHandler](arkts-media-media-onbufferingupdatehandler-t.md) | Describes the callback invoked for the buffering update event. |
-| [OnFrameFetched](arkts-media-media-onframefetched-t.md) | Describes the callback invoked when thumbnails are obtained in batches. |
-| [OnPlaybackRateDone](arkts-media-media-onplaybackratedone-t.md) | Describes the callback invoked for the event indicating that the playback rate setting is complete. |
-| [OnSeiMessageHandle](arkts-media-media-onseimessagehandle-t.md) | Describes the handle used to obtain SEI messages. This is used when in subscriptions to SEI message events, and the callback returns detailed SEI information. |
-| [OnSuperResolutionChanged](arkts-media-media-onsuperresolutionchanged-t.md) | Describes the callback used to listen for video super resolution status changes. If super resolution is enabled by using [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md), this callback is invoked to report the super resolution status changes. It is also invoked to report the initial status when the video starts. However, this callback is not invoked when super resolution is not enabled. |
-| [OnTrackChangeHandler](arkts-media-media-ontrackchangehandler-t.md) | Describes the callback invoked for the track change event. |
-| [OnVideoSizeChangeHandler](arkts-media-media-onvideosizechangehandler-t.md) | Describes the callback invoked for the video size change event. |
-| [PlaybackMetrics](arkts-media-media-playbackmetrics-t.md) | Describes the container for the key-value pairs of playback metrics. |
-| [PlayParameters](arkts-media-media-playparameters-t.md) | Describes the playback parameters of the sound pool. |
-| [SoundPool](arkts-media-media-soundpool-t.md) | SoundPool, which provides APIs for loading, unloading, playing, and stopping playing system sounds, setting the volume, and setting the number of loops. |
-| [SourceCloseCallback](arkts-media-media-sourceclosecallback-t.md) | This callback function is implemented by applications to release related resources. |
-| [SourceOpenCallback](arkts-media-media-sourceopencallback-t.md) | This callback function is implemented by applications to handle resource open requests and return a unique handle for the opened resource. |
-| [SourceReadCallback](arkts-media-media-sourcereadcallback-t.md) | This callback function is implemented by applications to handle resource read requests. When data is available, applications should push it to the player using the [respondData](arkts-media-media-mediasourceloadingrequest-i.md#responddata) API of the corresponding MediaSourceLoadingRequest object. |
-| [VideoPlayState](arkts-media-media-videoplaystate-t.md) | Describes the video playback state. You can obtain the state through the **state** property. |
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [VideoRecordState](arkts-media-media-videorecordstate-t-sys.md) | The maintenance of this interface has been stopped since version api 9. Please use AVRecorderState. Describes video recorder states. |
 <!--DelEnd-->

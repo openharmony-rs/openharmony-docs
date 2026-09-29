@@ -4,6 +4,8 @@ The **backgroundProcessManager** module provides APIs for background child proce
 
 **Since:** 17
 
+<!--Device-unnamed-declare namespace backgroundProcessManager--><!--Device-unnamed-declare namespace backgroundProcessManager-End-->
+
 **System capability:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 ## Modules to Import

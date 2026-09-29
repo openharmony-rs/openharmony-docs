@@ -8,6 +8,8 @@ Type of form.
 
 **Since:** 9
 
+<!--Device-formInfo-enum FormType--><!--Device-formInfo-enum FormType-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## JS
@@ -20,7 +22,9 @@ JS form.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormType-JS = 1--><!--Device-FormType-JS = 1-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -34,6 +38,8 @@ eTS form.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormType-eTS = 2--><!--Device-FormType-eTS = 2-End-->
 
 **System capability:** SystemCapability.Ability.Form

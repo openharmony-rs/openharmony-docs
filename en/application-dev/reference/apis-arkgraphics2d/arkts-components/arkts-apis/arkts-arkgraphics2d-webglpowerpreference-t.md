@@ -10,6 +10,8 @@ WebGL 1.0
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-type WebGLPowerPreference = "default" | "low-power" | "high-performance"--><!--Device-unnamed-type WebGLPowerPreference = "default" | "low-power" | "high-performance"-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 | Type | Description |

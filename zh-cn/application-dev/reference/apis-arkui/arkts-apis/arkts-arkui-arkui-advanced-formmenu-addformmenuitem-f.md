@@ -20,7 +20,9 @@ export declare function AddFormMenuItem(
 
 **装饰器类型：** @Builder
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-unnamed-export declare function AddFormMenuItem(  want: Want,  componentId: string,  options?: AddFormOptions): void--><!--Device-unnamed-export declare function AddFormMenuItem(  want: Want,  componentId: string,  options?: AddFormOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

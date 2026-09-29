@@ -16,7 +16,9 @@ Obtains all system font descriptors that match the provided font descriptor. Thi
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-text-function matchFontDescriptors(desc: FontDescriptor): Promise<Array<FontDescriptor>>--><!--Device-text-function matchFontDescriptors(desc: FontDescriptor): Promise<Array<FontDescriptor>>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

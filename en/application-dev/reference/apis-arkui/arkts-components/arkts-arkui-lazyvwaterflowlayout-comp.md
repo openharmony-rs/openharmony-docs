@@ -16,6 +16,8 @@ Construct the lazy vertical waterflow attribute.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-LazyVWaterFlowLayoutInterface-(): LazyVWaterFlowLayoutAttribute--><!--Device-LazyVWaterFlowLayoutInterface-(): LazyVWaterFlowLayoutAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Summary

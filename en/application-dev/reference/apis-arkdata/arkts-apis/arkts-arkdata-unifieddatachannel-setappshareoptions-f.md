@@ -22,6 +22,8 @@ Sets the [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md) for 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unifiedDataChannel-function setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void--><!--Device-unifiedDataChannel-function setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters:**

@@ -27,6 +27,8 @@ function getTopWindow(callback: AsyncCallback<Window>): void
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
+<!--Device-window-function getTopWindow(callback: AsyncCallback<Window>): void--><!--Device-window-function getTopWindow(callback: AsyncCallback<Window>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
@@ -75,6 +77,8 @@ function getTopWindow(): Promise<Window>
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
+<!--Device-window-function getTopWindow(): Promise<Window>--><!--Device-window-function getTopWindow(): Promise<Window>-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **返回值：**
@@ -118,6 +122,8 @@ function getTopWindow(ctx: BaseContext): Promise<Window>
 **废弃版本：** 9
 
 **替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)(ctx: BaseContext)
+
+<!--Device-window-function getTopWindow(ctx: BaseContext): Promise<Window>--><!--Device-window-function getTopWindow(ctx: BaseContext): Promise<Window>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -176,6 +182,8 @@ function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 **废弃版本：** 9
 
 **替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
+
+<!--Device-window-function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void--><!--Device-window-function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

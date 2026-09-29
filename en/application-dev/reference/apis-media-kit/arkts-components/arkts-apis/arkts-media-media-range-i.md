@@ -8,6 +8,8 @@ Provides Range with lower and upper limit.
 
 **Since:** 11
 
+<!--Device-media-interface Range--><!--Device-media-interface Range-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Maximum value.
 
 **Since:** 11
 
+<!--Device-Range-max: int--><!--Device-Range-max: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## min
@@ -41,5 +45,7 @@ Minimum value.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-Range-min: int--><!--Device-Range-min: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder

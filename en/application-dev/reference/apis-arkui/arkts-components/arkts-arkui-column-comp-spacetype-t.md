@@ -14,6 +14,8 @@ Describes the supported data types for the **space** parameter in the constructo
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-unnamed-declare type SpaceType = string | number | Resource--><!--Device-unnamed-declare type SpaceType = string | number | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

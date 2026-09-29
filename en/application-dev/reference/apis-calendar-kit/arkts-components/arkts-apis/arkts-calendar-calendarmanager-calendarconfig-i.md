@@ -8,6 +8,8 @@ Describes the calendar configuration information.
 
 **Since:** 10
 
+<!--Device-calendarManager-interface CalendarConfig--><!--Device-calendarManager-interface CalendarConfig-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Calendar color. If the value is a number, the value ranges from 0x000001 to 0xFF
 
 **Since:** 10
 
+<!--Device-CalendarConfig-color?: number | string--><!--Device-CalendarConfig-color?: number | string-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## enableReminder
@@ -41,5 +45,7 @@ Whether to enable the reminder for events in the calendar. The value **true** me
 **Type:** boolean
 
 **Since:** 10
+
+<!--Device-CalendarConfig-enableReminder?: boolean--><!--Device-CalendarConfig-enableReminder?: boolean-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData

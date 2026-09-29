@@ -4,6 +4,8 @@ Provides the functionalities such as registration and deregistration of external
 
 **Since:** 22
 
+<!--Device-unnamed-declare namespace huksExternalCrypto--><!--Device-unnamed-declare namespace huksExternalCrypto-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 ## Modules to Import

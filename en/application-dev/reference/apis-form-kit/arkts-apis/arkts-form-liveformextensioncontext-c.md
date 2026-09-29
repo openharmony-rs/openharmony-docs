@@ -10,6 +10,8 @@ declare class LiveFormExtensionContext extends ExtensionContext
 
 **Since:** 20
 
+<!--Device-unnamed-declare class LiveFormExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class LiveFormExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## startAbilityByLiveForm
@@ -24,7 +26,9 @@ Starts the widget provider (application) page. This API uses a promise to return
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-LiveFormExtensionContext-startAbilityByLiveForm(want: Want): Promise<void>--><!--Device-LiveFormExtensionContext-startAbilityByLiveForm(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

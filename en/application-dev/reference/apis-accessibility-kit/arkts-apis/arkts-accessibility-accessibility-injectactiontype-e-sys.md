@@ -8,6 +8,8 @@ Enumerates injection actions.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export enum InjectActionType--><!--Device-unnamed-export enum InjectActionType-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Injects a click action.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InjectActionType-CLICK = 1--><!--Device-InjectActionType-CLICK = 1-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -40,6 +44,8 @@ Injects a double-click action.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InjectActionType-DOUBLE_CLICK = 2--><!--Device-InjectActionType-DOUBLE_CLICK = 2-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Injects a long-click action.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InjectActionType-LONG_CLICK = 3--><!--Device-InjectActionType-LONG_CLICK = 3-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

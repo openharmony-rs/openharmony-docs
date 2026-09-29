@@ -18,6 +18,8 @@ Applies a quick fix patch. This API uses an asynchronous callback to return the 
 
 **Required permissions:** ohos.permission.INSTALL_BUNDLE
 
+<!--Device-quickFixManager-function applyQuickFix(hapModuleQuickFixFiles: Array<string>, callback: AsyncCallback<void>): void--><!--Device-quickFixManager-function applyQuickFix(hapModuleQuickFixFiles: Array<string>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.QuickFix
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Applies a quick fix patch. This API uses a promise to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.INSTALL_BUNDLE
+
+<!--Device-quickFixManager-function applyQuickFix(hapModuleQuickFixFiles: Array<string>): Promise<void>--><!--Device-quickFixManager-function applyQuickFix(hapModuleQuickFixFiles: Array<string>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.QuickFix
 

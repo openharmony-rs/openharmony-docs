@@ -10,6 +10,8 @@ Parameters used to open the NodeGraphComponent.
 
 **Since:** 23
 
+<!--Device-imageGeneration-interface GeneratorNodeGraphOptions--><!--Device-imageGeneration-interface GeneratorNodeGraphOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Custom icons used on the AI generated image results page.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GeneratorNodeGraphOptions-customIcons?: Array<GeneratorResultPageIcon>--><!--Device-GeneratorNodeGraphOptions-customIcons?: Array<GeneratorResultPageIcon>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ The following configuration parameters are used to customize the imported icon.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GeneratorNodeGraphOptions-customImportIcon?: CustomImportIcon--><!--Device-GeneratorNodeGraphOptions-customImportIcon?: CustomImportIcon-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ Model used for AI generate image tasks.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GeneratorNodeGraphOptions-imageGenerationModel?: ImageGenerationModel--><!--Device-GeneratorNodeGraphOptions-imageGenerationModel?: ImageGenerationModel-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -88,6 +96,8 @@ Information for LiveView in AI image generation.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GeneratorNodeGraphOptions-liveViewInfo?: LiveViewInfo--><!--Device-GeneratorNodeGraphOptions-liveViewInfo?: LiveViewInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -105,6 +115,8 @@ Text polishing model used in AI generate image tasks.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GeneratorNodeGraphOptions-textGenerationModel?: TextGenerationModel--><!--Device-GeneratorNodeGraphOptions-textGenerationModel?: TextGenerationModel-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

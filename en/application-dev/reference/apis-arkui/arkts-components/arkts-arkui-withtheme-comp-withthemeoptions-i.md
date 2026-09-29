@@ -8,6 +8,8 @@ Defines the default theme and color mode for components within the **WithTheme**
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface WithThemeOptions--><!--Device-unnamed-declare interface WithThemeOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorMode
@@ -28,6 +30,8 @@ Default value: **ThemeColorMode.SYSTEM**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WithThemeOptions-colorMode?: ThemeColorMode--><!--Device-WithThemeOptions-colorMode?: ThemeColorMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## theme
@@ -47,5 +51,7 @@ Default value: **undefined**. The default style follows the [default token style
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WithThemeOptions-theme?: CustomTheme--><!--Device-WithThemeOptions-theme?: CustomTheme-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

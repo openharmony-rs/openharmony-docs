@@ -6,6 +6,8 @@ Provides APIs for Fusion Connectivity ranging.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace ranging--><!--Device-unnamed-declare namespace ranging-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 ## Modules to Import

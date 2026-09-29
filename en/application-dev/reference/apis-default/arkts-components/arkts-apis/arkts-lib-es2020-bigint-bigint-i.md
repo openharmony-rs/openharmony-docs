@@ -17,6 +17,8 @@ toLocaleString(locales?: Intl.LocalesArgument, options?: BigIntToLocaleStringOpt
 
 Returns a string representation appropriate to the host environment's current locale.
 
+<!--Device-BigInt-toLocaleString(locales?: Intl.LocalesArgument, options?: BigIntToLocaleStringOptions): string--><!--Device-BigInt-toLocaleString(locales?: Intl.LocalesArgument, options?: BigIntToLocaleStringOptions): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -32,6 +34,8 @@ toString(radix?: number): string
 
 Returns a string representation of an object.
 
+<!--Device-BigInt-toString(radix?: number): string--><!--Device-BigInt-toString(radix?: number): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -45,6 +49,8 @@ valueOf(): bigint
 ```
 
 Returns the primitive value of the specified object.
+
+<!--Device-BigInt-valueOf(): bigint--><!--Device-BigInt-valueOf(): bigint-End-->
 
 ## [Symbol.toStringTag]
 

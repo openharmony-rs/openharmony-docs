@@ -29,6 +29,8 @@ Queries the UID of the application that initiates a specified network connection
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): int--><!--Device-connection-function getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAddress): int-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

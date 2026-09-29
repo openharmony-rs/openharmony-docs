@@ -2,9 +2,13 @@
 
 The **WaterFlow** component is a water flow container that consists of cells formed by rows and columns and arranges items of different sizes from top to bottom according to the preset rules.
 
-> **NOTE**
+> **NOTE:** 
 
-> The **WaterFlow** component supports the waterfall layout but does not support the edit mode or dragging of child > elements. > > The component has been bound with gestures to implement functions such as following the finger. If you need to add > custom gestures, refer to Enhanced Gesture Interception.
+> The **WaterFlow** component supports the waterfall layout but does not support the edit mode or dragging of child
+> elements.
+> 
+> The component has been bound with gestures to implement functions such as following the finger. If you need to add
+> custom gestures, refer to Enhanced Gesture Interception.
 
 ## Child Components
 
@@ -45,6 +49,8 @@ Creates a **WaterFlow** component.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WaterFlowInterface-(options?: WaterFlowOptions): WaterFlowAttribute--><!--Device-WaterFlowInterface-(options?: WaterFlowOptions): WaterFlowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

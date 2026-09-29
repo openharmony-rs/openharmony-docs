@@ -8,6 +8,8 @@ Enumerates the types for expanding layout safe areas.
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum SafeAreaType--><!--Device-unnamed-declare enum SafeAreaType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SYSTEM
@@ -23,6 +25,8 @@ Default non-safe area of the system, including the status bar and navigation bar
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SafeAreaType-SYSTEM = 0--><!--Device-SafeAreaType-SYSTEM = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ The non-safe area of the device, for example, the notch or punch-hole area. The 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SafeAreaType-CUTOUT = 1--><!--Device-SafeAreaType-CUTOUT = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## KEYBOARD
@@ -55,5 +61,7 @@ Soft keyboard area.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SafeAreaType-KEYBOARD = 2--><!--Device-SafeAreaType-KEYBOARD = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

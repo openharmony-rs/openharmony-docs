@@ -18,6 +18,8 @@ Connect to Wi-Fi hotspot by networkId.
 
 **Required permissions:** ohos.permission.MANAGE_WIFI_CONNECTION or ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
+<!--Device-wifiManager-function connectToNetwork(networkId: int): void--><!--Device-wifiManager-function connectToNetwork(networkId: int): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Parameters:**

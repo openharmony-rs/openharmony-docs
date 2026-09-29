@@ -8,6 +8,8 @@ Describes a **Panel** object, which is created using [createPanel](arkts-basicse
 
 **Since:** 24
 
+<!--Device-selectionManager-interface Panel--><!--Device-selectionManager-interface Panel-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Moves the word selection panel to the specified coordinates in the global coordi
 **Deprecated since:** 24
 
 **Substitutes:** [moveToGlobalDisplay](arkts-basicservices-selectionmanager-panel-i.md#movetoglobaldisplay)
+
+<!--Device-Panel-moveTo(x: int, y: int): Promise<void>--><!--Device-Panel-moveTo(x: int, y: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
 

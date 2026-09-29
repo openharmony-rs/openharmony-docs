@@ -8,6 +8,8 @@ Describes XMP enumerate option parameters.
 
 **Since:** 26.0.0
 
+<!--Device-image-interface XMPEnumerateOptions--><!--Device-image-interface XMPEnumerateOptions-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The option that controls recursive enabling.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-XMPEnumerateOptions-isRecursive?: boolean--><!--Device-XMPEnumerateOptions-isRecursive?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## onlyQualifier
@@ -45,5 +49,7 @@ Whether to return only qualifier data. <br>Default value:false.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-XMPEnumerateOptions-onlyQualifier?: boolean--><!--Device-XMPEnumerateOptions-onlyQualifier?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

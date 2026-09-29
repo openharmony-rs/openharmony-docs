@@ -8,6 +8,8 @@
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare namespace uiAppearance--><!--Device-unnamed-declare namespace uiAppearance-End-->
+
 **系统能力：** SystemCapability.ArkUI.UiAppearance
 
 ## 导入模块

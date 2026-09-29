@@ -8,6 +8,8 @@ The Buffer object is a method of handling buffers dedicated to binary data.
 
 **Since:** 9
 
+<!--Device-buffer-class Buffer--><!--Device-buffer-class Buffer-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Compares this **Buffer** object with another object.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Buffer-compare(      target: Buffer | Uint8Array,      targetStart?: number,      targetEnd?: number,      sourceStart?: number,      sourceEnd?: number    ): -1 | 0 | 1--><!--Device-Buffer-compare(      target: Buffer | Uint8Array,      targetStart?: number,      targetEnd?: number,      sourceStart?: number,      sourceEnd?: number    ): -1 | 0 | 1-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -84,7 +88,9 @@ Copies data at the specified position in this **Buffer** object to the specified
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-copy(target: Buffer | Uint8Array, targetStart?: int, sourceStart?: int, sourceEnd?: int): int--><!--Device-Buffer-copy(target: Buffer | Uint8Array, targetStart?: int, sourceStart?: int, sourceEnd?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -136,7 +142,9 @@ Creates and returns an iterator that contains key-value pairs of this **Buffer**
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-entries(): IterableIterator<[int, long]>--><!--Device-Buffer-entries(): IterableIterator<[int, long]>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -179,7 +187,9 @@ Checks whether this **Buffer** object is the same as another **Buffer** object.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-equals(otherBuffer: Uint8Array | Buffer): boolean--><!--Device-Buffer-equals(otherBuffer: Uint8Array | Buffer): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -225,7 +235,9 @@ Fills this **Buffer** object at the specified position. By default, data is fill
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-fill(      value: string | Buffer | Uint8Array | int | double | long,      offset?: int,      end?: int,      encoding?: BufferEncoding    ): Buffer--><!--Device-Buffer-fill(      value: string | Buffer | Uint8Array | int | double | long,      offset?: int,      end?: int,      encoding?: BufferEncoding    ): Buffer-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -270,7 +282,9 @@ Checks whether this **Buffer** object contains the specified value.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): boolean--><!--Device-Buffer-includes(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -310,7 +324,9 @@ Obtains the index of the first occurrence of the specified value in this **Buffe
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-indexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int--><!--Device-Buffer-indexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -350,7 +366,9 @@ Creates and returns an iterator that contains the keys of this **Buffer** object
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-keys(): IterableIterator<int>--><!--Device-Buffer-keys(): IterableIterator<int>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -390,7 +408,9 @@ Obtains the index of the last occurrence of the specified value in this **Buffer
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-lastIndexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int--><!--Device-Buffer-lastIndexOf(value: string | int | double | long | Buffer | Uint8Array, byteOffset?: int, encoding?: BufferEncoding): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -430,7 +450,9 @@ Reads a 64-bit, big-endian, signed big integer from this **Buffer** object at th
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readBigInt64BE(offset?: int): bigint--><!--Device-Buffer-readBigInt64BE(offset?: int): bigint-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -478,7 +500,9 @@ Reads a 64-bit, little-endian, signed big integer from this **Buffer** object at
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readBigInt64LE(offset?: int): bigint--><!--Device-Buffer-readBigInt64LE(offset?: int): bigint-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -526,7 +550,9 @@ Reads a 64-bit, big-endian, unsigned big integer from this **Buffer** object at 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readBigUInt64BE(offset?: int): bigint--><!--Device-Buffer-readBigUInt64BE(offset?: int): bigint-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -573,7 +599,9 @@ Reads a 64-bit, little-endian, unsigned big integer from this **Buffer** object 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readBigUInt64LE(offset?: int): bigint--><!--Device-Buffer-readBigUInt64LE(offset?: int): bigint-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -621,7 +649,9 @@ Reads a 64-bit, big-endian, double-precision floating-point number from this **B
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readDoubleBE(offset?: int): double--><!--Device-Buffer-readDoubleBE(offset?: int): double-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -667,7 +697,9 @@ Reads a 64-bit, little-endian, double-precision floating-point number from this 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readDoubleLE(offset?: int): double--><!--Device-Buffer-readDoubleLE(offset?: int): double-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -713,7 +745,9 @@ Reads a 32-bit, big-endian, single-precision floating-point number from this **B
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readFloatBE(offset?: int): double--><!--Device-Buffer-readFloatBE(offset?: int): double-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -759,7 +793,9 @@ Reads a 32-bit, little-endian, single-precision floating-point number from this 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readFloatLE(offset?: int): double--><!--Device-Buffer-readFloatLE(offset?: int): double-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -805,7 +841,9 @@ Reads a 16-bit, big-endian, signed integer from this **Buffer** object at the sp
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readInt16BE(offset?: int): long--><!--Device-Buffer-readInt16BE(offset?: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -851,7 +889,9 @@ Reads a 16-bit, little-endian, signed integer from this **Buffer** object at the
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readInt16LE(offset?: int): long--><!--Device-Buffer-readInt16LE(offset?: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -897,7 +937,9 @@ Reads a 32-bit, big-endian, signed integer from this **Buffer** object at the sp
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readInt32BE(offset?: int): long--><!--Device-Buffer-readInt32BE(offset?: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -943,7 +985,9 @@ Reads a 32-bit, little-endian, signed integer from this **Buffer** object at the
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readInt32LE(offset?: int): long--><!--Device-Buffer-readInt32LE(offset?: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -989,7 +1033,9 @@ Reads an 8-bit signed integer from this **Buffer** object at the specified offse
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readInt8(offset?: int): long--><!--Device-Buffer-readInt8(offset?: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1037,7 +1083,9 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readIntBE(offset: int, byteLength: int): long--><!--Device-Buffer-readIntBE(offset: int, byteLength: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1085,7 +1133,9 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readIntLE(offset: int, byteLength: int): long--><!--Device-Buffer-readIntLE(offset: int, byteLength: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1132,7 +1182,9 @@ Reads a 16-bit, big-endian, unsigned integer from this **Buffer** object at the 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readUInt16BE(offset?: int): long--><!--Device-Buffer-readUInt16BE(offset?: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1180,7 +1232,9 @@ Reads a 16-bit, little-endian, unsigned integer from this **Buffer** object at t
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readUInt16LE(offset?: int): long--><!--Device-Buffer-readUInt16LE(offset?: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1228,7 +1282,9 @@ Reads a 32-bit, big-endian, unsigned integer from this **Buffer** object at the 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readUInt32BE(offset?: int): long--><!--Device-Buffer-readUInt32BE(offset?: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1274,7 +1330,9 @@ Reads a 32-bit, little-endian, unsigned integer from this **Buffer** object at t
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readUInt32LE(offset?: int): long--><!--Device-Buffer-readUInt32LE(offset?: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1320,7 +1378,9 @@ Reads an 8-bit unsigned integer from this **Buffer** object at the specified off
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readUInt8(offset?: int): long--><!--Device-Buffer-readUInt8(offset?: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1368,7 +1428,9 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readUIntBE(offset: int, byteLength: int): long--><!--Device-Buffer-readUIntBE(offset: int, byteLength: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1415,7 +1477,9 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-readUIntLE(offset: int, byteLength: int): long--><!--Device-Buffer-readUIntLE(offset: int, byteLength: int): long-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1462,7 +1526,9 @@ Truncates this **Buffer** object from the specified position to create a new **B
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-subarray(start?: int, end?: int): Buffer--><!--Device-Buffer-subarray(start?: int, end?: int): Buffer-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1504,7 +1570,9 @@ Converts this **Buffer** object into an array of unsigned 16-bit integers and sw
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-swap16(): Buffer--><!--Device-Buffer-swap16(): Buffer-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1543,7 +1611,9 @@ Converts this **Buffer** object into an array of unsigned 32-bit integers and sw
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-swap32(): Buffer--><!--Device-Buffer-swap32(): Buffer-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1582,7 +1652,9 @@ Converts this **Buffer** object into an array of unsigned 64-bit integers and sw
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-swap64(): Buffer--><!--Device-Buffer-swap64(): Buffer-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1623,6 +1695,8 @@ Converts this **Buffer** object into a JSON object.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Buffer-toJSON(): Object--><!--Device-Buffer-toJSON(): Object-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -1653,6 +1727,8 @@ Converts the data at the specified position in this **Buffer** object into a str
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Buffer-toString(encoding?: string, start?: number, end?: number): string--><!--Device-Buffer-toString(encoding?: string, start?: number, end?: number): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1693,7 +1769,9 @@ Creates and returns an iterator that contains the values of this **Buffer** obje
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-values(): IterableIterator<long>--><!--Device-Buffer-values(): IterableIterator<long>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1735,7 +1813,9 @@ Writes a string of the specified length to this **Buffer** object at the specifi
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-write(str: string, offset?: int, length?: int, encoding?: string): int--><!--Device-Buffer-write(str: string, offset?: int, length?: int, encoding?: string): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1786,7 +1866,9 @@ Writes a 64-bit, big-endian, signed big integer to this **Buffer** object at the
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeBigInt64BE(value: bigint, offset?: int): int--><!--Device-Buffer-writeBigInt64BE(value: bigint, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1830,7 +1912,9 @@ Writes a 64-bit, little-endian, signed big integer to this **Buffer** object at 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeBigInt64LE(value: bigint, offset?: int): int--><!--Device-Buffer-writeBigInt64LE(value: bigint, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1874,7 +1958,9 @@ Writes a 64-bit, big-endian, signed big integer to this **Buffer** object at the
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeBigUInt64BE(value: bigint, offset?: int): int--><!--Device-Buffer-writeBigUInt64BE(value: bigint, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1918,7 +2004,9 @@ Writes a 64-bit, little-endian, unsigned big integer to this **Buffer** object a
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeBigUInt64LE(value: bigint, offset?: int): int--><!--Device-Buffer-writeBigUInt64LE(value: bigint, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1962,7 +2050,9 @@ Writes a 64-bit, big-endian, double-precision floating-point number to this **Bu
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeDoubleBE(value: double, offset?: int): int--><!--Device-Buffer-writeDoubleBE(value: double, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2006,7 +2096,9 @@ Writes a 64-bit, little-endian, double-precision floating-point number to this *
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeDoubleLE(value: double, offset?: int): int--><!--Device-Buffer-writeDoubleLE(value: double, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2050,7 +2142,9 @@ Writes a 32-bit, big-endian, single-precision floating-point number to this **Bu
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeFloatBE(value: double, offset?: int): int--><!--Device-Buffer-writeFloatBE(value: double, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2094,7 +2188,9 @@ Writes a 32-bit, little-endian, single-precision floating-point number to this *
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeFloatLE(value: double, offset?: int): int--><!--Device-Buffer-writeFloatLE(value: double, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2138,7 +2234,9 @@ Writes a 16-bit, big-endian, signed integer to this **Buffer** object at the spe
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeInt16BE(value: long, offset?: int): int--><!--Device-Buffer-writeInt16BE(value: long, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2182,7 +2280,9 @@ Writes a 16-bit, little-endian, signed integer to this **Buffer** object at the 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeInt16LE(value: long, offset?: int): int--><!--Device-Buffer-writeInt16LE(value: long, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2226,7 +2326,9 @@ Writes a 32-bit, big-endian, signed integer to this **Buffer** object at the spe
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeInt32BE(value: long, offset?: int): int--><!--Device-Buffer-writeInt32BE(value: long, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2270,7 +2372,9 @@ Writes a 32-bit, little-endian, signed integer to this **Buffer** object at the 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeInt32LE(value: long, offset?: int): int--><!--Device-Buffer-writeInt32LE(value: long, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2314,7 +2418,9 @@ Writes an 8-bit signed integer to this **Buffer** object at the specified offset
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeInt8(value: long, offset?: int): int--><!--Device-Buffer-writeInt8(value: long, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2361,7 +2467,9 @@ Writes a big-endian signed value of the specified length to this **Buffer** obje
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeIntBE(value: long, offset: int, byteLength: int): int--><!--Device-Buffer-writeIntBE(value: long, offset: int, byteLength: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2406,7 +2514,9 @@ Writes a little-endian signed value of the specified length to this **Buffer** o
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeIntLE(value: long, offset: int, byteLength: int): int--><!--Device-Buffer-writeIntLE(value: long, offset: int, byteLength: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2451,7 +2561,9 @@ Writes a 16-bit, big-endian, unsigned integer to this **Buffer** object at the s
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeUInt16BE(value: long, offset?: int): int--><!--Device-Buffer-writeUInt16BE(value: long, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2498,7 +2610,9 @@ Writes a 16-bit, little-endian, unsigned integer to this **Buffer** object at th
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeUInt16LE(value: long, offset?: int): int--><!--Device-Buffer-writeUInt16LE(value: long, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2545,7 +2659,9 @@ Writes a 32-bit, big-endian, unsigned integer to this **Buffer** object at the s
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeUInt32BE(value: long, offset?: int): int--><!--Device-Buffer-writeUInt32BE(value: long, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2589,7 +2705,9 @@ Writes a 32-bit, little-endian, unsigned integer to this **Buffer** object at th
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeUInt32LE(value: long, offset?: int): int--><!--Device-Buffer-writeUInt32LE(value: long, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2633,7 +2751,9 @@ Writes an 8-bit unsigned integer to this **Buffer** object at the specified offs
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeUInt8(value: long, offset?: int): int--><!--Device-Buffer-writeUInt8(value: long, offset?: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2686,7 +2806,9 @@ Writes an unsigned big-endian value of the specified length to this **Buffer** o
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeUIntBE(value: long, offset: int, byteLength: int): int--><!--Device-Buffer-writeUIntBE(value: long, offset: int, byteLength: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2731,7 +2853,9 @@ Writes an unsigned little-endian value of the specified length to this **Buffer*
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Buffer-writeUIntLE(value: long, offset: int, byteLength: int): int--><!--Device-Buffer-writeUIntLE(value: long, offset: int, byteLength: int): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2780,6 +2904,8 @@ buffer: ArrayBuffer
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Buffer-buffer: ArrayBuffer--><!--Device-Buffer-buffer: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -2802,6 +2928,8 @@ Offset of the **Buffer** object in the memory pool.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Buffer-byteOffset: number--><!--Device-Buffer-byteOffset: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -2823,6 +2951,8 @@ Length of the **Buffer** object, in bytes.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Buffer-length: number--><!--Device-Buffer-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

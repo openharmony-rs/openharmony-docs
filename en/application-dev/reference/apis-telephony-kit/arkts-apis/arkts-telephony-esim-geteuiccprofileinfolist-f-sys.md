@@ -18,6 +18,8 @@ Obtains the profile information list. This API uses a promise to return the resu
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_ESIM_STATE
 
+<!--Device-eSIM-function getEuiccProfileInfoList(slotId: int): Promise<GetEuiccProfileInfoListResult>--><!--Device-eSIM-function getEuiccProfileInfoList(slotId: int): Promise<GetEuiccProfileInfoListResult>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.

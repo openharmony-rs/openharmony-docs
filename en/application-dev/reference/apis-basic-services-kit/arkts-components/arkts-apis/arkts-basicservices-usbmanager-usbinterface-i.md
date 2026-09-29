@@ -8,6 +8,8 @@ Represents a USB interface. One [USBConfiguration](arkts-basicservices-usbmanage
 
 **Since:** 9
 
+<!--Device-usbManager-interface USBInterface--><!--Device-usbManager-interface USBInterface-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Alternative setting index of the interface, which is used to switch between mult
 
 **Since:** 9
 
+<!--Device-USBInterface-alternateSetting: int--><!--Device-USBInterface-alternateSetting: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## clazz
@@ -41,6 +45,8 @@ Device type.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-USBInterface-clazz: int--><!--Device-USBInterface-clazz: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -56,6 +62,8 @@ Endpoints that belong to the USB interface.
 
 **Since:** 9
 
+<!--Device-USBInterface-endpoints: Array<USBEndpoint>--><!--Device-USBInterface-endpoints: Array<USBEndpoint>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## id
@@ -69,6 +77,8 @@ Unique ID of the USB interface.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-USBInterface-id: int--><!--Device-USBInterface-id: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -84,6 +94,8 @@ Interface name.
 
 **Since:** 9
 
+<!--Device-USBInterface-name: string--><!--Device-USBInterface-name: string-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## protocol
@@ -98,6 +110,8 @@ Interface protocol.
 
 **Since:** 9
 
+<!--Device-USBInterface-protocol: int--><!--Device-USBInterface-protocol: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## subClass
@@ -111,5 +125,7 @@ Device subclass.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-USBInterface-subClass: int--><!--Device-USBInterface-subClass: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager

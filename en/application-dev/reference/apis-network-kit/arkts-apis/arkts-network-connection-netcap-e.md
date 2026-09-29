@@ -8,6 +8,8 @@ Defines the network capability.
 
 **Since:** 8
 
+<!--Device-connection-export enum NetCap--><!--Device-connection-export enum NetCap-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## NET_CAPABILITY_MMS
@@ -20,7 +22,9 @@ The network can connect to the carrier's Multimedia Messaging Service Center (MM
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetCap-NET_CAPABILITY_MMS = 0--><!--Device-NetCap-NET_CAPABILITY_MMS = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -34,7 +38,9 @@ The network traffic is not metered.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetCap-NET_CAPABILITY_NOT_METERED = 11--><!--Device-NetCap-NET_CAPABILITY_NOT_METERED = 11-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -48,7 +54,9 @@ The network is capable of Internet access but the network connectivity is not su
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetCap-NET_CAPABILITY_INTERNET = 12--><!--Device-NetCap-NET_CAPABILITY_INTERNET = 12-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -62,7 +70,9 @@ The network does not use a virtual private network (VPN).
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetCap-NET_CAPABILITY_NOT_VPN = 15--><!--Device-NetCap-NET_CAPABILITY_NOT_VPN = 15-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -78,7 +88,9 @@ Note: If the network management module fails to connect to the Huawei Cloud addr
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetCap-NET_CAPABILITY_VALIDATED = 16--><!--Device-NetCap-NET_CAPABILITY_VALIDATED = 16-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -92,7 +104,9 @@ The network is found to have a captive portal and user login authentication is r
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NetCap-NET_CAPABILITY_PORTAL = 17--><!--Device-NetCap-NET_CAPABILITY_PORTAL = 17-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -106,6 +120,8 @@ The network management module is verifying the network connectivity. This flag r
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NetCap-NET_CAPABILITY_CHECKING_CONNECTIVITY = 31--><!--Device-NetCap-NET_CAPABILITY_CHECKING_CONNECTIVITY = 31-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

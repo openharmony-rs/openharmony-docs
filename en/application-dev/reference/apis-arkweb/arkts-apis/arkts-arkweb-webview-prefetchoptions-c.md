@@ -8,6 +8,8 @@ PrefetchOptions is a configuration class in the ArkWeb framework for customizing
 
 **Since:** 21
 
+<!--Device-webview-class PrefetchOptions--><!--Device-webview-class PrefetchOptions-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -26,6 +28,8 @@ A constructor used to create a **PrefetchOptions** instance.
 
 **Since:** 21
 
+<!--Device-PrefetchOptions-constructor()--><!--Device-PrefetchOptions-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ignoreCacheControlNoStore
@@ -41,6 +45,8 @@ If set to true, the header is ignored; if set to false, it is not ignored.
 **Type:** boolean
 
 **Since:** 21
+
+<!--Device-PrefetchOptions-ignoreCacheControlNoStore: boolean--><!--Device-PrefetchOptions-ignoreCacheControlNoStore: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -63,5 +69,7 @@ Unit: ms
 **Type:** number
 
 **Since:** 21
+
+<!--Device-PrefetchOptions-minTimeBetweenPrefetchesMs: number--><!--Device-PrefetchOptions-minTimeBetweenPrefetchesMs: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

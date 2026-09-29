@@ -17,6 +17,8 @@ Creates a **RandomAccessFile** instance based on the specified file path or file
 
 **Since:** 10
 
+<!--Device-unnamed-declare function createRandomAccessFile(file: string | File, mode?: number,  options?: RandomAccessFileOptions): Promise<RandomAccessFile>--><!--Device-unnamed-declare function createRandomAccessFile(file: string | File, mode?: number,  options?: RandomAccessFileOptions): Promise<RandomAccessFile>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -78,6 +80,8 @@ Creates a **RandomAccessFile** object in read-only mode based on a file path or 
 
 **Since:** 10
 
+<!--Device-unnamed-declare function createRandomAccessFile(file: string | File, callback: AsyncCallback<RandomAccessFile>): void--><!--Device-unnamed-declare function createRandomAccessFile(file: string | File, callback: AsyncCallback<RandomAccessFile>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -130,6 +134,8 @@ declare function createRandomAccessFile(file: string | File, mode: number, callb
 Creates a **RandomAccessFile** instance based on a file path or file object. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-unnamed-declare function createRandomAccessFile(file: string | File, mode: number, callback: AsyncCallback<RandomAccessFile>): void--><!--Device-unnamed-declare function createRandomAccessFile(file: string | File, mode: number, callback: AsyncCallback<RandomAccessFile>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

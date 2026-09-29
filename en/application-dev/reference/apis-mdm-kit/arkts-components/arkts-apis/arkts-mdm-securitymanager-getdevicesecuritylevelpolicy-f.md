@@ -20,6 +20,8 @@ Gets the device security level policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy--><!--Device-securityManager-function getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Return value:**

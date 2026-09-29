@@ -8,6 +8,8 @@ Defines the screen capture parameters.
 
 **Since:** 12
 
+<!--Device-media-interface AVScreenCaptureRecordConfig--><!--Device-media-interface AVScreenCaptureRecordConfig-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Audio bit rate, in bit/s. This value is used for both internal capture and exter
 
 **Since:** 12
 
+<!--Device-AVScreenCaptureRecordConfig-audioBitrate?: int--><!--Device-AVScreenCaptureRecordConfig-audioBitrate?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 ## audioChannelCount
@@ -41,6 +45,8 @@ Number of audio channels. This value is used for both internal capture and exter
 **Type:** number
 
 **Since:** 12
+
+<!--Device-AVScreenCaptureRecordConfig-audioChannelCount?: int--><!--Device-AVScreenCaptureRecordConfig-audioChannelCount?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -56,6 +62,8 @@ Audio sampling rate, in Hz. This value is used for both internal capture and ext
 
 **Since:** 12
 
+<!--Device-AVScreenCaptureRecordConfig-audioSampleRate?: int--><!--Device-AVScreenCaptureRecordConfig-audioSampleRate?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 ## displayId
@@ -69,6 +77,8 @@ ID of the display used for screen capture. By default, the main screen is captur
 **Type:** number
 
 **Since:** 15
+
+<!--Device-AVScreenCaptureRecordConfig-displayId?: int--><!--Device-AVScreenCaptureRecordConfig-displayId?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -84,6 +94,8 @@ FD of the file output.
 
 **Since:** 12
 
+<!--Device-AVScreenCaptureRecordConfig-fd: int--><!--Device-AVScreenCaptureRecordConfig-fd: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 ## fillMode
@@ -97,6 +109,8 @@ Video fill mode during screen capture.
 **Type:** [AVScreenCaptureFillMode](arkts-media-media-avscreencapturefillmode-e.md)
 
 **Since:** 18
+
+<!--Device-AVScreenCaptureRecordConfig-fillMode?: AVScreenCaptureFillMode--><!--Device-AVScreenCaptureRecordConfig-fillMode?: AVScreenCaptureFillMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -112,6 +126,8 @@ Video height, in px. The default value varies according to the display in use.
 
 **Since:** 12
 
+<!--Device-AVScreenCaptureRecordConfig-frameHeight?: int--><!--Device-AVScreenCaptureRecordConfig-frameHeight?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 ## frameWidth
@@ -126,6 +142,8 @@ Video width, in px. The default value varies according to the display in use.
 
 **Since:** 12
 
+<!--Device-AVScreenCaptureRecordConfig-frameWidth?: int--><!--Device-AVScreenCaptureRecordConfig-frameWidth?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 ## preset
@@ -139,6 +157,8 @@ Encoding and container format used. The default value is **SCREEN_RECORD_PRESET_
 **Type:** [AVScreenCaptureRecordPreset](arkts-media-media-avscreencapturerecordpreset-e.md)
 
 **Since:** 12
+
+<!--Device-AVScreenCaptureRecordConfig-preset?: AVScreenCaptureRecordPreset--><!--Device-AVScreenCaptureRecordConfig-preset?: AVScreenCaptureRecordPreset-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -156,6 +176,8 @@ Screen Capture Policy Configuration Fields
 
 **Since:** 20
 
+<!--Device-AVScreenCaptureRecordConfig-strategy?: AVScreenCaptureStrategy--><!--Device-AVScreenCaptureRecordConfig-strategy?: AVScreenCaptureStrategy-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 ## videoBitrate
@@ -169,5 +191,7 @@ Video bit rate, in bit/s. The default value is **10000000**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-AVScreenCaptureRecordConfig-videoBitrate?: int--><!--Device-AVScreenCaptureRecordConfig-videoBitrate?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture

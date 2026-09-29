@@ -18,6 +18,8 @@ A linear data structure that is implemented on arrays and can be passed between 
 
 **Decorator:** @Sendable
 
+<!--Device-collections-class Array<T> implements ConcatArray<T>--><!--Device-collections-class Array<T> implements ConcatArray<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Obtains an iterator, each item of which is a JavaScript object.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-[Symbol.iterator](): IterableIterator<T>--><!--Device-Array-[Symbol.iterator](): IterableIterator<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -63,6 +67,8 @@ Returns the element at a given index in this ArkTS array.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-at(index: number): T | undefined--><!--Device-Array-at(index: number): T | undefined-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -97,6 +103,8 @@ Concatenates this ArkTS array with one or more arrays.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-concat(...items: ConcatArray<T>[]): Array<T>--><!--Device-Array-concat(...items: ConcatArray<T>[]): Array<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -130,6 +138,8 @@ A constructor used to create an empty ArkTS array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-constructor()--><!--Device-Array-constructor()-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -151,6 +161,8 @@ A constructor used to create an ArkTS array with the given elements.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-constructor(first: T, ...left: T[])--><!--Device-Array-constructor(first: T, ...left: T[])-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -181,6 +193,8 @@ A constructor used to create an ArkTS array with the given elements.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-constructor(...items: T[])--><!--Device-Array-constructor(...items: T[])-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -208,6 +222,8 @@ Checks whether all elements in a specified ArkTS Array are contained in this Ark
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-Array-containsAll(elements: Array<T>): boolean--><!--Device-Array-containsAll(elements: Array<T>): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -246,6 +262,8 @@ Checks whether all elements in a specified JavaScript built-in Array are contain
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-Array-containsAll(elements: readonly T[]): boolean--><!--Device-Array-containsAll(elements: readonly T[]): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -278,6 +296,8 @@ Copies elements within a given range from this ArkTS array to another position i
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Array-copyWithin(target: number, start: number, end?: number): Array<T>--><!--Device-Array-copyWithin(target: number, start: number, end?: number): Array<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -314,6 +334,8 @@ Creates an ArkTS array of a fixed length, with each element set to a given initi
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-static create<T>(arrayLength: number, initialValue: T): Array<T>--><!--Device-Array-static create<T>(arrayLength: number, initialValue: T): Array<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -347,6 +369,8 @@ Returns an iterator object that contains the key-value pair of each element in t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-entries(): IterableIterator<[number, T]>--><!--Device-Array-entries(): IterableIterator<[number, T]>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -373,6 +397,8 @@ Checks whether all elements in this ArkTS array meet a given condition.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Array-every(predicate: ArrayPredicateFn<T, Array<T>>): boolean--><!--Device-Array-every(predicate: ArrayPredicateFn<T, Array<T>>): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -409,6 +435,8 @@ Extends this array to a given length by adding elements with the specified initi
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-extendTo(arrayLength: number, initialValue: T): void--><!--Device-Array-extendTo(arrayLength: number, initialValue: T): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -436,6 +464,8 @@ Fills elements in the specified range of this ArkTS array with a given value.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-fill(value: T, start?: number, end?: number): Array<T>--><!--Device-Array-fill(value: T, start?: number, end?: number): Array<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -472,6 +502,8 @@ Returns a new array containing all elements that pass a test provided by a callb
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<T>--><!--Device-Array-filter(predicate: (value: T, index: number, array: Array<T>) => boolean): Array<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Test API:** This API is used only in automated test scripts.
@@ -506,6 +538,8 @@ Returns the value of the first element that passes a test provided by a callback
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefined--><!--Device-Array-find(predicate: (value: T, index: number, obj: Array<T>) => boolean): T | undefined-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -542,6 +576,8 @@ Returns the index of the first element that passes a test provided by a callback
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): number--><!--Device-Array-findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Test API:** This API is used only in automated test scripts.
@@ -577,6 +613,8 @@ Calls a callback function for each element in this ArkTS Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void--><!--Device-Array-forEach(callbackFn: (value: T, index: number, array: Array<T>) => void): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -603,6 +641,8 @@ Creates an ArkTS array from an array-like object.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-static from<T>(arrayLike: ArrayLike<T>): Array<T>--><!--Device-Array-static from<T>(arrayLike: ArrayLike<T>): Array<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -638,6 +678,8 @@ Creates an ArkTS array from an iterable object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-static from<T>(iterable: Iterable<T>): Array<T>--><!--Device-Array-static from<T>(iterable: Iterable<T>): Array<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -672,6 +714,8 @@ Creates an ArkTS array from an array-like object, and uses a custom function to 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Array-static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T>): Array<T>--><!--Device-Array-static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T>): Array<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -701,6 +745,8 @@ Creates an ArkTS array from an array-like object, and uses a custom function to 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Array-static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U, T>): Array<T>--><!--Device-Array-static from<U, T>(arrayLike: ArrayLike<U> | Iterable<U>, mapFn: ArrayFromMapFn<U, T>): Array<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -727,6 +773,8 @@ Checks whether this ArkTS array contains an element and returns a Boolean value.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-includes(searchElement: T, fromIndex?: number): boolean--><!--Device-Array-includes(searchElement: T, fromIndex?: number): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -762,6 +810,8 @@ Returns the index of the first occurrence of a value in this ArkTS Array. If the
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-indexOf(searchElement: T, fromIndex?: number): number--><!--Device-Array-indexOf(searchElement: T, fromIndex?: number): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -796,6 +846,8 @@ Check whether the input parameter is an ArkTS array.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Array-static isArray(value: Object | undefined | null): boolean--><!--Device-Array-static isArray(value: Object | undefined | null): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -821,6 +873,8 @@ Concatenates all elements in this ArkTS array into a string, with a given separa
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-join(separator?: string): string--><!--Device-Array-join(separator?: string): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -855,6 +909,8 @@ Returns an iterator object that contains the index of each element in this ArkTS
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-keys(): IterableIterator<number>--><!--Device-Array-keys(): IterableIterator<number>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -882,6 +938,8 @@ Obtains the index of the last occurrence of the specified value in this ArkTS ar
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Array-lastIndexOf(searchElement: T, fromIndex?: number): number--><!--Device-Array-lastIndexOf(searchElement: T, fromIndex?: number): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -889,7 +947,7 @@ Obtains the index of the last occurrence of the specified value in this ArkTS ar
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | searchElement | T | Yes | Value to search for. |
-| fromIndex | number | No | Index from which the search starts. The default value is the ArkTS Int8Array length minus 1 (i.e., starting from the end). If the index is greater than or equal to the length of the ArkTS array, **-1** is returned. If a negative number is passed in, it refers to the index of **fromIndex + array.length**. |
+| fromIndex | number | No | Index from which the search starts. The default value is the ArkTS array length minus 1 (i.e., starting from the end). If the index is greater than or equal to the length of the ArkTS array, **-1** is returned. If a negative number is passed in, it refers to the index of **fromIndex + array.length**. |
 
 **Return value:**
 
@@ -915,6 +973,8 @@ Calls a callback function for each element in this ArkTS Array and returns a new
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>--><!--Device-Array-map<U>(callbackFn: (value: T, index: number, array: Array<T>) => U): Array<U>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -949,6 +1009,8 @@ Creates an ArkTS array with a variable number of parameters.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Array-static of<T>(...items: T[]): Array<T>--><!--Device-Array-static of<T>(...items: T[]): Array<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -974,6 +1036,8 @@ Removes the last element from this ArkTS array and returns that element. If the 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-pop(): T | undefined--><!--Device-Array-pop(): T | undefined-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1001,6 +1065,8 @@ Adds elements to the end of this ArkTS array and returns the new length of the a
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-push(...items: T[]): number--><!--Device-Array-push(...items: T[]): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1034,6 +1100,8 @@ Calls a callback function for each element in this ArkTS array, uses the previou
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, array: Array<T>) => T): T--><!--Device-Array-reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, array: Array<T>) => T): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1073,6 +1141,8 @@ Similar to the previous API, this API takes an initial value as the second param
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-reduce<U>(      callbackFn: (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U,      initialValue: U    ): U--><!--Device-Array-reduce<U>(      callbackFn: (previousValue: U, currentValue: T, currentIndex: number, array: Array<T>) => U,      initialValue: U    ): U-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -1106,6 +1176,8 @@ This API is similar to the [reduceRight](#reduceright-1) API, but it takes an in
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Array-reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue: U): U--><!--Device-Array-reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue: U): U-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1143,6 +1215,8 @@ Goes through each element in this ArkTS array from right to left, uses a callbac
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Array-reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T--><!--Device-Array-reduceRight(callbackFn: ArrayReduceCallback<T, T, Array<T>>): T-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -1177,6 +1251,8 @@ Retains only the elements in this ArkTS Array that are contained in the specifie
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-Array-retainAll(elements: Array<T>): boolean--><!--Device-Array-retainAll(elements: Array<T>): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1215,6 +1291,8 @@ Retains only the elements in this ArkTS Array that are contained in the specifie
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-Array-retainAll(elements: readonly T[]): boolean--><!--Device-Array-retainAll(elements: readonly T[]): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -1252,6 +1330,8 @@ Retains only the elements in this ArkTS Array that satisfy the specified predica
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-Array-retainAll(predicate: ArrayElementPredicateFn<T>): boolean--><!--Device-Array-retainAll(predicate: ArrayElementPredicateFn<T>): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Test API:** This API is used only in automated test scripts.
@@ -1287,6 +1367,8 @@ Reverses elements in this ArkTS array and returns a reference to the same array.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Array-reverse(): Array<T>--><!--Device-Array-reverse(): Array<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -1313,6 +1395,8 @@ Removes the first element from this ArkTS array and returns that element. If the
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-shift(): T | undefined--><!--Device-Array-shift(): T | undefined-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1341,6 +1425,8 @@ Shrinks this ArkTS array to a given length.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-shrinkTo(arrayLength: number): void--><!--Device-Array-shrinkTo(arrayLength: number): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -1367,6 +1453,8 @@ Selects a range of elements in this ArkTS array to create an array.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-slice(start?: number, end?: number): Array<T>--><!--Device-Array-slice(start?: number, end?: number): Array<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1401,6 +1489,8 @@ Checks whether this ArkTS array contains an element that meets certain condition
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Array-some(predicate: ArrayPredicateFn<T, Array<T>>): boolean--><!--Device-Array-some(predicate: ArrayPredicateFn<T, Array<T>>): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1437,6 +1527,8 @@ Sorts elements in this ArkTS array and returns a new array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-sort(compareFn?: (a: T, b: T) => number): Array<T>--><!--Device-Array-sort(compareFn?: (a: T, b: T) => number): Array<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -1469,6 +1561,8 @@ Removes elements from a specified position (start) and all elements after the sp
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-splice(start: number): Array<T>--><!--Device-Array-splice(start: number): Array<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1505,6 +1599,8 @@ Removes elements from a specified position in an array, and inserts new elements
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-splice(start: number, deleteCount: number, ...items: T[]): Array<T>--><!--Device-Array-splice(start: number, deleteCount: number, ...items: T[]): Array<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -1540,6 +1636,8 @@ Generates a string that matches the cultural conversions of the current system l
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Array-toLocaleString(): string--><!--Device-Array-toLocaleString(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -1567,6 +1665,8 @@ Converts an ArkTS array into a string.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Array-toString(): string--><!--Device-Array-toString(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -1593,6 +1693,8 @@ Adds elements to the beginning of this ArkTS array and returns the new length of
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-unshift(...items: T[]): number--><!--Device-Array-unshift(...items: T[]): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1627,6 +1729,8 @@ Returns an iterator object that contains the value of each element in this ArkTS
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-values(): IterableIterator<T>--><!--Device-Array-values(): IterableIterator<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -1656,6 +1760,8 @@ Returns the element at a given index in this array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Array-[index: number]: T--><!--Device-Array-[index: number]: T-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -1677,5 +1783,7 @@ Number of elements in an ArkTS array.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Array-readonly length: number--><!--Device-Array-readonly length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

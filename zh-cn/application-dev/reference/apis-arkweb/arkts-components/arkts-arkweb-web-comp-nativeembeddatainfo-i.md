@@ -10,6 +10,8 @@ declare interface NativeEmbedDataInfo
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface NativeEmbedDataInfo--><!--Device-unnamed-declare interface NativeEmbedDataInfo-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## embedId
@@ -25,6 +27,8 @@ embedId?: string
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NativeEmbedDataInfo-embedId?: string--><!--Device-NativeEmbedDataInfo-embedId?: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -42,6 +46,8 @@ info?: NativeEmbedInfo
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NativeEmbedDataInfo-info?: NativeEmbedInfo--><!--Device-NativeEmbedDataInfo-info?: NativeEmbedInfo-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## status
@@ -58,6 +64,8 @@ status?: NativeEmbedStatus
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NativeEmbedDataInfo-status?: NativeEmbedStatus--><!--Device-NativeEmbedDataInfo-status?: NativeEmbedStatus-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## surfaceId
@@ -73,5 +81,7 @@ NativeImage的surfaceId。
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NativeEmbedDataInfo-surfaceId?: string--><!--Device-NativeEmbedDataInfo-surfaceId?: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

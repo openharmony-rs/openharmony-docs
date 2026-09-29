@@ -8,9 +8,11 @@ export declare class CircleShape extends BaseShape<CircleShape>
 
 继承自[BaseShape](arkts-arkui-arkui-shape-baseshape-c.md)。
 
-**继承/实现关系：** CircleShape extends BaseShape&lt;CircleShape&gt;
+**继承/实现关系：** CircleShape extends BaseShape<CircleShape>
 
 **起始版本：** 12
+
+<!--Device-unnamed-export declare class CircleShape extends BaseShape<CircleShape>--><!--Device-unnamed-export declare class CircleShape extends BaseShape<CircleShape>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,6 +37,8 @@ constructor(options?: ShapeSize)
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CircleShape-constructor(options?: ShapeSize)--><!--Device-CircleShape-constructor(options?: ShapeSize)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

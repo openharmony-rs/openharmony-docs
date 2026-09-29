@@ -8,6 +8,8 @@ Implements wakeup management. @typedef WakeupManager
 
 **Since:** 12
 
+<!--Device-intelligentVoice-interface WakeupManager--><!--Device-intelligentVoice-interface WakeupManager-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Clears user data.
 **Since:** 12
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupManager-clearUserData(): Promise<void>--><!--Device-WakeupManager-clearUserData(): Promise<void>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -73,6 +77,8 @@ Enrolls with wakeup files for result. This method uses a promise to return the e
 **Since:** 12
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupManager-enrollWithWakeupFilesForResult(wakeupFiles: Array<WakeupSourceFile>, wakeupInfo: string): Promise<EnrollResult>--><!--Device-WakeupManager-enrollWithWakeupFilesForResult(wakeupFiles: Array<WakeupSourceFile>, wakeupInfo: string): Promise<EnrollResult>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -135,6 +141,8 @@ Obtains the value of an intelligent voice parameter. This method uses a promise 
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-WakeupManager-getParameter(key: string): Promise<string>--><!--Device-WakeupManager-getParameter(key: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -187,6 +195,8 @@ Obtains files needed to upload. This method uses a promise to return the files n
 **Since:** 12
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupManager-getUploadFiles (maxCount: int): Promise<Array<UploadFile>>--><!--Device-WakeupManager-getUploadFiles (maxCount: int): Promise<Array<UploadFile>>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -242,6 +252,8 @@ Obtains wakeup source files. This method uses a promise to return the wakeup sou
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-WakeupManager-getWakeupSourceFiles(): Promise<Array<WakeupSourceFile>>--><!--Device-WakeupManager-getWakeupSourceFiles(): Promise<Array<WakeupSourceFile>>-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -288,6 +300,8 @@ Sets an intelligent voice parameter. This method uses a promise to return the re
 **Since:** 12
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-WakeupManager-setParameter(key: string, value: string): Promise<void>--><!--Device-WakeupManager-setParameter(key: string, value: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 

@@ -8,6 +8,8 @@ Provides the password data callback.
 
 **Since:** 8
 
+<!--Device-osAccount-interface IInputData--><!--Device-osAccount-interface IInputData-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ onSetData(authSubType: AuthSubType, data: Uint8Array): void
 Called to notify the caller the data is set.
 
 **Since:** 8
+
+<!--Device-IInputData-onSetData(authSubType: AuthSubType, data: Uint8Array): void--><!--Device-IInputData-onSetData(authSubType: AuthSubType, data: Uint8Array): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

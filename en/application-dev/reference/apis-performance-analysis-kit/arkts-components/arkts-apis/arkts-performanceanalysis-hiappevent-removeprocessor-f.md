@@ -16,7 +16,9 @@ Removes the data processor of a reported event.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-hiAppEvent-function removeProcessor(id: long): void--><!--Device-hiAppEvent-function removeProcessor(id: long): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 

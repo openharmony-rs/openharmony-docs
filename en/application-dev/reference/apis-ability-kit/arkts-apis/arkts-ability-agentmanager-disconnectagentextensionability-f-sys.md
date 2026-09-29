@@ -20,6 +20,8 @@ Disconnects to an AgentExtensionAbility.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-agentManager-function disconnectAgentExtensionAbility(proxy: AgentProxy): Promise<void>--><!--Device-agentManager-function disconnectAgentExtensionAbility(proxy: AgentProxy): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

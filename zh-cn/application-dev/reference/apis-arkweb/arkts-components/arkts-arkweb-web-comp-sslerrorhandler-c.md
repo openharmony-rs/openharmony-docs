@@ -8,6 +8,8 @@ SslErrorHandler是Web组件中处理SSL证书验证错误的类。当加载安�
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare class SslErrorHandler--><!--Device-unnamed-declare class SslErrorHandler-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -21,6 +23,8 @@ SslErrorHandler的构造函数。
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SslErrorHandler-constructor()--><!--Device-SslErrorHandler-constructor()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ handleCancel(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SslErrorHandler-handleCancel(): void--><!--Device-SslErrorHandler-handleCancel(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 <a id="handlecancel-1"></a>
@@ -49,6 +55,8 @@ handleCancel(abortLoading: boolean): void
 通知Web组件取消此请求，并根据参数abortLoading决定是否停止加载。
 
 **起始版本：** 20
+
+<!--Device-SslErrorHandler-handleCancel(abortLoading: boolean): void--><!--Device-SslErrorHandler-handleCancel(abortLoading: boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -69,5 +77,7 @@ handleConfirm(): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SslErrorHandler-handleConfirm(): void--><!--Device-SslErrorHandler-handleConfirm(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

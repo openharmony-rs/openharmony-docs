@@ -16,6 +16,8 @@ Checks whether an ability of an application or an application clone is enabled. 
 
 **Since:** 12
 
+<!--Device-bundleManager-function isAbilityEnabled(info: AbilityInfo, appIndex: int): Promise<boolean>--><!--Device-bundleManager-function isAbilityEnabled(info: AbilityInfo, appIndex: int): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -90,6 +92,8 @@ Checks whether an ability is enabled. This API uses an asynchronous callback to 
 
 **Since:** 9
 
+<!--Device-bundleManager-function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): void--><!--Device-bundleManager-function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -158,6 +162,8 @@ function isAbilityEnabled(info: AbilityInfo): Promise<boolean>
 Checks whether an ability is enabled. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-bundleManager-function isAbilityEnabled(info: AbilityInfo): Promise<boolean>--><!--Device-bundleManager-function isAbilityEnabled(info: AbilityInfo): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

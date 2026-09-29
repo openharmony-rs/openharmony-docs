@@ -20,6 +20,8 @@ Import the certificate to the USB Key.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Promise<void>--><!--Device-certificateManager-function importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **Parameters:**

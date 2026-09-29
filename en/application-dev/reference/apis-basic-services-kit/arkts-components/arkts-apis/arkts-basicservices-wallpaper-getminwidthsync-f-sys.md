@@ -16,6 +16,8 @@ Obtains the minimum width of the wallpaper. in pixels. returns 0 if no wallpaper
 
 **Since:** 9
 
+<!--Device-wallpaper-function getMinWidthSync(): int--><!--Device-wallpaper-function getMinWidthSync(): int-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.

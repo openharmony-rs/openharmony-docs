@@ -8,6 +8,8 @@ Manages the ble scanner. Before calling a ble scanner method, you must use [crea
 
 **Since:** 15
 
+<!--Device-ble-interface BleScanner--><!--Device-ble-interface BleScanner-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Unsubscribe BLE scan result.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-BleScanner-off(type: 'BLEDeviceFind', callback?: Callback<ScanReport>): void--><!--Device-BleScanner-off(type: 'BLEDeviceFind', callback?: Callback<ScanReport>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -86,6 +90,8 @@ Subscribe BLE scan result. On API 26.0.0 and above, if the application has ohos.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-BleScanner-on(type: 'BLEDeviceFind', callback: Callback<ScanReport>): void--><!--Device-BleScanner-on(type: 'BLEDeviceFind', callback: Callback<ScanReport>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -135,6 +141,8 @@ Starts scanning for specified BLE devices with filters.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-BleScanner-startScan(filters: Array<ScanFilter>, options?: ScanOptions): Promise<void>--><!--Device-BleScanner-startScan(filters: Array<ScanFilter>, options?: ScanOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -210,7 +218,9 @@ Stops BLE scanning.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-BleScanner-stopScan(): Promise<void>--><!--Device-BleScanner-stopScan(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

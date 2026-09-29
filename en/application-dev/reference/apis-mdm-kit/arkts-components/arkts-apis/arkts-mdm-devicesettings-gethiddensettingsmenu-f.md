@@ -20,6 +20,8 @@ Obtains the hidden setting item list of the current user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function getHiddenSettingsMenu(admin: Want): Array<SettingsMenu>--><!--Device-deviceSettings-function getHiddenSettingsMenu(admin: Want): Array<SettingsMenu>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

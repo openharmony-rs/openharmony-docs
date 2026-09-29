@@ -20,6 +20,8 @@ Determine whether the current manual network scan is in progress.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-radio-function isManualNetworkScanning(slotId: int): Promise<boolean>--><!--Device-radio-function isManualNetworkScanning(slotId: int): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.

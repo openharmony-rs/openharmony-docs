@@ -8,6 +8,8 @@ Provides the event information when the first screen paint is detected, includin
 
 **Since:** 23
 
+<!--Device-unnamed-declare interface FirstScreenPaint--><!--Device-unnamed-declare interface FirstScreenPaint-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## firstScreenPaintTime
@@ -23,6 +25,8 @@ Unit: ms.
 **Type:** number
 
 **Since:** 23
+
+<!--Device-FirstScreenPaint-firstScreenPaintTime: number--><!--Device-FirstScreenPaint-firstScreenPaintTime: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -40,6 +44,8 @@ Unit: ms.
 
 **Since:** 23
 
+<!--Device-FirstScreenPaint-navigationStartTime: number--><!--Device-FirstScreenPaint-navigationStartTime: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## url
@@ -53,5 +59,7 @@ URL of the first screen paint statistics.
 **Type:** string
 
 **Since:** 23
+
+<!--Device-FirstScreenPaint-url: string--><!--Device-FirstScreenPaint-url: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

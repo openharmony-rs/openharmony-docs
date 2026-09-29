@@ -18,6 +18,8 @@ Obtains all IP addresses of the default network by resolving the host name. This
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-connection-function getAddressesByName(host: string, callback: AsyncCallback<Array<NetAddress>>): void--><!--Device-connection-function getAddressesByName(host: string, callback: AsyncCallback<Array<NetAddress>>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -66,6 +68,8 @@ Obtains all IP addresses of the default network by resolving the host name. This
 **Since:** 8
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-connection-function getAddressesByName(host: string): Promise<Array<NetAddress>>--><!--Device-connection-function getAddressesByName(host: string): Promise<Array<NetAddress>>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

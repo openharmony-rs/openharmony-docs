@@ -4,6 +4,8 @@ The **sms** module provides basic SMS management functions. With the APIs provid
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace sms--><!--Device-unnamed-declare namespace sms-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 ## Modules to Import

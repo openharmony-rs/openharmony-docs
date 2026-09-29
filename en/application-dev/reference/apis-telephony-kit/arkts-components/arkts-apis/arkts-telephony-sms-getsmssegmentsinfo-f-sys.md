@@ -16,6 +16,8 @@ Obtains SMS message segment information. This API uses an asynchronous callback 
 
 **Since:** 8
 
+<!--Device-sms-function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean, callback: AsyncCallback<SmsSegmentsInfo>): void--><!--Device-sms-function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean, callback: AsyncCallback<SmsSegmentsInfo>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ function getSmsSegmentsInfo(slotId: number, message: string, force7bit: boolean)
 Obtains SMS message segment information. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-sms-function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean): Promise<SmsSegmentsInfo>--><!--Device-sms-function getSmsSegmentsInfo(slotId: int, message: string, force7bit: boolean): Promise<SmsSegmentsInfo>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

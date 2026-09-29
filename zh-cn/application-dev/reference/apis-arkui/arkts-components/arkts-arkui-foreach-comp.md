@@ -14,7 +14,7 @@ ForEach(
   )
 ```
 
-该接口需要与容器组件配合使用，且接口返回的组件应当是允许包含在ForEach父容器组件中的子组件。例如，ListItem组件要求ForEach的父容器组件必须为List组件或ListItemGroup组件。
+该接口需要与容器组件配合使用，且接口返回的组件应当是允许包含在ForEach父容器组件中的子组件。例如，[ListItem](arkts-arkui-listitem-comp.md)组件要求ForEach的父容器组件必须为[List](arkts-arkui-list-comp.md)组件或[ListItemGroup](arkts-arkui-listitemgroup-comp.md)组件。
 
 **起始版本：** 7
 
@@ -23,6 +23,8 @@ ForEach(
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ForEachInterface-(    arr: Array<any>,    itemGenerator: (item: any, index: number) => void,    keyGenerator?: (item: any, index: number) => string,  ): ForEachAttribute--><!--Device-ForEachInterface-(    arr: Array<any>,    itemGenerator: (item: any, index: number) => void,    keyGenerator?: (item: any, index: number) => string,  ): ForEachAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

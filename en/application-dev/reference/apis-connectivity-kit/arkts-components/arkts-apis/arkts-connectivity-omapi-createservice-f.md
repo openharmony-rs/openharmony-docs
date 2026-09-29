@@ -18,6 +18,8 @@ The **SEService** object is available only when [isConnected](arkts-connectivity
 
 **Since:** 12
 
+<!--Device-omapi-function createService(): Promise<SEService>--><!--Device-omapi-function createService(): Promise<SEService>-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 **Return value:**

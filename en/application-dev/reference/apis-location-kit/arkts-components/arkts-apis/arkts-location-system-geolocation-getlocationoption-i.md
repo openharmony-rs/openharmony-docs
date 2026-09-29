@@ -12,6 +12,8 @@ export interface GetLocationOption
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-unnamed-export interface GetLocationOption--><!--Device-unnamed-export interface GetLocationOption-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Called when the execution is completed.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-GetLocationOption-complete?: () => void--><!--Device-GetLocationOption-complete?: () => void-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 ## fail
@@ -53,6 +57,8 @@ Called when the location types fail to be obtained
 **Substitutes:** callback
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-GetLocationOption-fail?: (data: string, code: number) => void--><!--Device-GetLocationOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.Location.Location.Lite
 
@@ -79,6 +85,8 @@ Called when the geographic location is obtained.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-GetLocationOption-success?: (data: GeolocationResponse) => void--><!--Device-GetLocationOption-success?: (data: GeolocationResponse) => void-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 **Parameters:**
@@ -103,6 +111,8 @@ Coordinate system type. Available types can be obtained using getSupportedCoordT
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-GetLocationOption-coordType?: string--><!--Device-GetLocationOption-coordType?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 ## timeout
@@ -122,5 +132,7 @@ Timeout duration, in milliseconds. For the rich device, the default value is 300
 **Substitutes:** [timeoutMs](arkts-location-geolocationmanager-currentlocationrequest-i.md#timeoutms)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-GetLocationOption-timeout?: number--><!--Device-GetLocationOption-timeout?: number-End-->
 
 **System capability:** SystemCapability.Location.Location.Lite

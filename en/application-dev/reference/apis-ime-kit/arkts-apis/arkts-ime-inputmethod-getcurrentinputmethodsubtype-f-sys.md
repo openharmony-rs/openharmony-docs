@@ -20,6 +20,8 @@ Get the current input method subtype of a specified user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-inputMethod-function getCurrentInputMethodSubtype(userId?: int): InputMethodSubtype--><!--Device-inputMethod-function getCurrentInputMethodSubtype(userId?: int): InputMethodSubtype-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API:** This is a system API.

@@ -28,6 +28,8 @@ Setting the global topmost state requires the ohos.permission.WINDOW_TOPMOST per
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-window-function setWindowPosition(list: Array<WindowPositionParams>): Promise<void>--><!--Device-window-function setWindowPosition(list: Array<WindowPositionParams>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**

@@ -6,9 +6,11 @@ declare class GestureGroupHandler extends GestureHandler<GestureGroupHandler>
 
 手势组处理器对象类型。
 
-**继承/实现关系：** GestureGroupHandler extends GestureHandler&lt;GestureGroupHandler&gt;
+**继承/实现关系：** GestureGroupHandler extends GestureHandler<GestureGroupHandler>
 
 **起始版本：** 12
+
+<!--Device-unnamed-declare class GestureGroupHandler extends GestureHandler<GestureGroupHandler>--><!--Device-unnamed-declare class GestureGroupHandler extends GestureHandler<GestureGroupHandler>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ constructor(options?: GestureGroupGestureHandlerOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureGroupHandler-constructor(options?: GestureGroupGestureHandlerOptions)--><!--Device-GestureGroupHandler-constructor(options?: GestureGroupGestureHandlerOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +51,8 @@ onCancel(event: Callback<void>): GestureGroupHandler
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureGroupHandler-onCancel(event: Callback<void>): GestureGroupHandler--><!--Device-GestureGroupHandler-onCancel(event: Callback<void>): GestureGroupHandler-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

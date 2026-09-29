@@ -8,6 +8,8 @@ An object with properties reflecting the locale and formatting options computed 
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions#Description).
 
+<!--Device-Intl-interface ResolvedRelativeTimeFormatOptions--><!--Device-Intl-interface ResolvedRelativeTimeFormatOptions-End-->
+
 ## Modules to Import
 
 ```TypeScript

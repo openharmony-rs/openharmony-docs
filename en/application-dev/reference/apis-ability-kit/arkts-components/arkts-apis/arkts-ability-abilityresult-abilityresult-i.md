@@ -8,6 +8,8 @@ The module defines the result code and data returned to the caller when a starte
 
 **Since:** 7
 
+<!--Device-unnamed-export interface AbilityResult--><!--Device-unnamed-export interface AbilityResult-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## resultCode
@@ -22,7 +24,9 @@ Indicates the result code returned after the ability is destroyed. You can defin
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AbilityResult-resultCode: int--><!--Device-AbilityResult-resultCode: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -38,6 +42,8 @@ Indicates the data returned after the ability is destroyed. You can define the d
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AbilityResult-want?: Want--><!--Device-AbilityResult-want?: Want-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase

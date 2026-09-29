@@ -4,13 +4,15 @@
 declare class TimePickerAttribute extends CommonMethod<TimePickerAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-除支持通用事件外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
 
-**继承/实现关系：** TimePickerAttribute extends CommonMethod&lt;TimePickerAttribute&gt;
+**继承/实现关系：** TimePickerAttribute extends CommonMethod<TimePickerAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class TimePickerAttribute extends CommonMethod<TimePickerAttribute>--><!--Device-unnamed-declare class TimePickerAttribute extends CommonMethod<TimePickerAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ dateTimeOptions(value: DateTimeOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerAttribute-dateTimeOptions(value: DateTimeOptions): TimePickerAttribute--><!--Device-TimePickerAttribute-dateTimeOptions(value: DateTimeOptions): TimePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ dateTimeOptions(timeFormat: Optional<DateTimeOptions>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerAttribute-dateTimeOptions(timeFormat: Optional<DateTimeOptions>): TimePickerAttribute--><!--Device-TimePickerAttribute-dateTimeOptions(timeFormat: Optional<DateTimeOptions>): TimePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -74,6 +80,8 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): TimePickerAttribute--><!--Device-TimePickerAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): TimePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -95,6 +103,8 @@ disappearTextStyle(value: PickerTextStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerAttribute-disappearTextStyle(value: PickerTextStyle): TimePickerAttribute--><!--Device-TimePickerAttribute-disappearTextStyle(value: PickerTextStyle): TimePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,6 +130,8 @@ disappearTextStyle(style: Optional<PickerTextStyle>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerAttribute-disappearTextStyle(style: Optional<PickerTextStyle>): TimePickerAttribute--><!--Device-TimePickerAttribute-disappearTextStyle(style: Optional<PickerTextStyle>): TimePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -141,6 +153,8 @@ enableCascade(enabled: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerAttribute-enableCascade(enabled: boolean): TimePickerAttribute--><!--Device-TimePickerAttribute-enableCascade(enabled: boolean): TimePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -170,6 +184,8 @@ enableHapticFeedback(enable: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerAttribute-enableHapticFeedback(enable: boolean): TimePickerAttribute--><!--Device-TimePickerAttribute-enableHapticFeedback(enable: boolean): TimePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -196,6 +212,8 @@ enableHapticFeedback(enable: Optional<boolean>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerAttribute-enableHapticFeedback(enable: Optional<boolean>): TimePickerAttribute--><!--Device-TimePickerAttribute-enableHapticFeedback(enable: Optional<boolean>): TimePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -217,6 +235,8 @@ loop(value: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerAttribute-loop(value: boolean): TimePickerAttribute--><!--Device-TimePickerAttribute-loop(value: boolean): TimePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -246,6 +266,8 @@ loop(isLoop: Optional<boolean>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerAttribute-loop(isLoop: Optional<boolean>): TimePickerAttribute--><!--Device-TimePickerAttribute-loop(isLoop: Optional<boolean>): TimePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -269,6 +291,8 @@ onChange(callback: (value: TimePickerResult) => void)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerAttribute-onChange(callback: (value: TimePickerResult) => void): TimePickerAttribute--><!--Device-TimePickerAttribute-onChange(callback: (value: TimePickerResult) => void): TimePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -295,6 +319,8 @@ onChange(callback: Optional<OnTimePickerChangeCallback>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerAttribute-onChange(callback: Optional<OnTimePickerChangeCallback>): TimePickerAttribute--><!--Device-TimePickerAttribute-onChange(callback: Optional<OnTimePickerChangeCallback>): TimePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -324,6 +350,8 @@ onEnterSelectedArea(callback: Callback<TimePickerResult>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerAttribute-onEnterSelectedArea(callback: Callback<TimePickerResult>): TimePickerAttribute--><!--Device-TimePickerAttribute-onEnterSelectedArea(callback: Callback<TimePickerResult>): TimePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -345,6 +373,8 @@ selectedTextStyle(value: PickerTextStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerAttribute-selectedTextStyle(value: PickerTextStyle): TimePickerAttribute--><!--Device-TimePickerAttribute-selectedTextStyle(value: PickerTextStyle): TimePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -370,6 +400,8 @@ selectedTextStyle(style: Optional<PickerTextStyle>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerAttribute-selectedTextStyle(style: Optional<PickerTextStyle>): TimePickerAttribute--><!--Device-TimePickerAttribute-selectedTextStyle(style: Optional<PickerTextStyle>): TimePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -391,6 +423,8 @@ textStyle(value: PickerTextStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerAttribute-textStyle(value: PickerTextStyle): TimePickerAttribute--><!--Device-TimePickerAttribute-textStyle(value: PickerTextStyle): TimePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -416,6 +450,8 @@ textStyle(style: Optional<PickerTextStyle>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerAttribute-textStyle(style: Optional<PickerTextStyle>): TimePickerAttribute--><!--Device-TimePickerAttribute-textStyle(style: Optional<PickerTextStyle>): TimePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -437,6 +473,8 @@ useMilitaryTime(value: boolean)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerAttribute-useMilitaryTime(value: boolean): TimePickerAttribute--><!--Device-TimePickerAttribute-useMilitaryTime(value: boolean): TimePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -461,6 +499,8 @@ useMilitaryTime(isMilitaryTime: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerAttribute-useMilitaryTime(isMilitaryTime: Optional<boolean>): TimePickerAttribute--><!--Device-TimePickerAttribute-useMilitaryTime(isMilitaryTime: Optional<boolean>): TimePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

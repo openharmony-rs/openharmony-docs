@@ -20,6 +20,8 @@ Querying disk information based on the disk ID.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-volumeManager-function getDiskById(diskId: string): Promise<Disk>--><!--Device-volumeManager-function getDiskById(diskId: string): Promise<Disk>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.

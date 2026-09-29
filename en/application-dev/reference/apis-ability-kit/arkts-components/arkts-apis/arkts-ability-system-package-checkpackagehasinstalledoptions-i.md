@@ -15,6 +15,8 @@ Checks whether a bundle has been installed.
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-export interface CheckPackageHasInstalledOptions--><!--Device-unnamed-export interface CheckPackageHasInstalledOptions-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Called when API call is complete.
 
 **Deprecated since:** 9
 
+<!--Device-CheckPackageHasInstalledOptions-complete?: () => void--><!--Device-CheckPackageHasInstalledOptions-complete?: () => void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## fail
@@ -48,6 +52,8 @@ Called when API call has failed.
 **Since:** 3
 
 **Deprecated since:** 9
+
+<!--Device-CheckPackageHasInstalledOptions-fail?: (data: any, code: number) => void--><!--Device-CheckPackageHasInstalledOptions-fail?: (data: any, code: number) => void-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -70,6 +76,8 @@ Called when API call is successful.
 
 **Deprecated since:** 9
 
+<!--Device-CheckPackageHasInstalledOptions-success?: (data: CheckPackageHasInstalledResponse) => void--><!--Device-CheckPackageHasInstalledOptions-success?: (data: CheckPackageHasInstalledResponse) => void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **Parameters:**
@@ -91,5 +99,7 @@ Bundle name.
 **Since:** 3
 
 **Deprecated since:** 9
+
+<!--Device-CheckPackageHasInstalledOptions-bundleName: string--><!--Device-CheckPackageHasInstalledOptions-bundleName: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

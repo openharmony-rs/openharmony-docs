@@ -8,6 +8,8 @@ A gradient object that allows multiple color breakpoints to be set through the *
 
 **Since:** 8
 
+<!--Device-unnamed-declare class CanvasGradient--><!--Device-unnamed-declare class CanvasGradient-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## addColorStop
@@ -25,6 +27,8 @@ Sets the gradient breakpoint value, including the offset and color. You can call
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasGradient-addColorStop(offset: number, color: string): void--><!--Device-CanvasGradient-addColorStop(offset: number, color: string): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,6 +100,8 @@ Sets the gradient breakpoint value, including the offset and color. Colors in RG
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-CanvasGradient-addColorStop(offset: number, color: string | ColorMetrics): void--><!--Device-CanvasGradient-addColorStop(offset: number, color: string | ColorMetrics): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

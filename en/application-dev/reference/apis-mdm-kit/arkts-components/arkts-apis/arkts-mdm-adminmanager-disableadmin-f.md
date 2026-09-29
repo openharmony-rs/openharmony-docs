@@ -25,6 +25,8 @@ Disables a device administrator application for the specified user. This API use
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function disableAdmin(admin: Want, userId?: number): Promise<void>--><!--Device-adminManager-function disableAdmin(admin: Want, userId?: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

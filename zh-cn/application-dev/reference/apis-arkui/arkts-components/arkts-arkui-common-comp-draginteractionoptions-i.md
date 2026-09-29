@@ -8,6 +8,8 @@ declare interface DragInteractionOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface DragInteractionOptions--><!--Device-unnamed-declare interface DragInteractionOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## defaultAnimationBeforeLifting
@@ -28,6 +30,8 @@ defaultAnimationBeforeLifting?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragInteractionOptions-defaultAnimationBeforeLifting?: boolean--><!--Device-DragInteractionOptions-defaultAnimationBeforeLifting?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableEdgeAutoScroll
@@ -47,6 +51,8 @@ enableEdgeAutoScroll?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragInteractionOptions-enableEdgeAutoScroll?: boolean--><!--Device-DragInteractionOptions-enableEdgeAutoScroll?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,6 +75,8 @@ enableHapticFeedback?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragInteractionOptions-enableHapticFeedback?: boolean--><!--Device-DragInteractionOptions-enableHapticFeedback?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +102,8 @@ isLiftingDisabled?: boolean
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragInteractionOptions-isLiftingDisabled?: boolean--><!--Device-DragInteractionOptions-isLiftingDisabled?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isMultiSelectionEnabled
@@ -102,7 +112,7 @@ isLiftingDisabled?: boolean
 isMultiSelectionEnabled?: boolean
 ```
 
-表示拖拽过程中背板图是否支持多选聚拢效果。true表示支持多选聚拢效果，false表示不支持多选聚拢效果。该参数只在Grid和List组件中的GridItem组件和ListItem组件生效。
+表示拖拽过程中背板图是否支持多选聚拢效果。true表示支持多选聚拢效果，false表示不支持多选聚拢效果。该参数只在[Grid](arkts-arkui-grid-comp.md)和[List](arkts-arkui-list-comp.md)组件中的[GridItem](arkts-arkui-griditem-comp.md)组件和[ListItem](arkts-arkui-listitem-comp.md)组件生效。
 
 当一个item组件设置为多选拖拽时，该组件的子组件不可拖拽。聚拢组件预览图设置的优先级为[dragPreview](arkts-arkui-common-comp-commonmethod-c.md#dragpreview)中的string，dragPreview中的PixelMap，组件自截图，不支持dragPreview中的Builder形式。
 
@@ -117,5 +127,7 @@ isMultiSelectionEnabled?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragInteractionOptions-isMultiSelectionEnabled?: boolean--><!--Device-DragInteractionOptions-isMultiSelectionEnabled?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

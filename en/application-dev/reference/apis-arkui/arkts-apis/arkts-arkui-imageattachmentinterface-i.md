@@ -8,6 +8,8 @@ Defines the ImageAttachmentInterface.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface ImageAttachmentInterface--><!--Device-unnamed-declare interface ImageAttachmentInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorFilter
@@ -16,7 +18,7 @@ Defines the ImageAttachmentInterface.
 colorFilter?: ColorFilterType
 ```
 
-Image color filter of the styled string.
+Color filter effect of the image in the styled string. If this parameter is not passed, no color filter is applied and the image is displayed in its original color.
 
 **Type:** [ColorFilterType](arkts-arkui-colorfiltertype-t.md)
 
@@ -26,6 +28,8 @@ Image color filter of the styled string.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-ImageAttachmentInterface-colorFilter?: ColorFilterType--><!--Device-ImageAttachmentInterface-colorFilter?: ColorFilterType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## layoutStyle
@@ -34,7 +38,7 @@ Image color filter of the styled string.
 layoutStyle?: ImageAttachmentLayoutStyle
 ```
 
-Image layout.
+Image layout. If this parameter is not passed, the default layout is used (the margin, padding, and corner radius are all 0).
 
 **Type:** [ImageAttachmentLayoutStyle](arkts-arkui-imageattachmentlayoutstyle-i.md)
 
@@ -44,6 +48,8 @@ Image layout.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ImageAttachmentInterface-layoutStyle?: ImageAttachmentLayoutStyle--><!--Device-ImageAttachmentInterface-layoutStyle?: ImageAttachmentLayoutStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## objectFit
@@ -52,7 +58,7 @@ Image layout.
 objectFit?: ImageFit
 ```
 
-Image scaling type. The **ImageFit.MATRIX** enum value is not supported.
+Sets the scaling type of the image. The current enum type does not support **ImageFit.MATRIX**. For details about the enums, see **ImageFit**.
 
 Default value: **ImageFit.Cover**
 
@@ -63,6 +69,8 @@ Default value: **ImageFit.Cover**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ImageAttachmentInterface-objectFit?: ImageFit--><!--Device-ImageAttachmentInterface-objectFit?: ImageFit-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +90,8 @@ Resizable image options of the styled string.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-ImageAttachmentInterface-resizable?: ResizableOptions--><!--Device-ImageAttachmentInterface-resizable?: ResizableOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -90,9 +100,9 @@ Resizable image options of the styled string.
 size?: SizeOptions
 ```
 
-Image size, which does not support percentage values.
+Image size. Percentage values are not supported.
 
-The default value of **size** depends on the value of **objectFit**. For example, if the value of **objectFit** is **Cover**, the image height is the component height minus the top and bottom paddings, and the image width is the component width minus the left and right paddings.
+The default value of size is related to the value of **objectFit**. Different **objectFit** values correspond to different default values of size. For example, when **objectFit** is **Cover**, the image height is the component height minus the top and bottom padding of the component, and the image width is the component width minus the left and right padding of the component.
 
 **Type:** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
@@ -101,6 +111,8 @@ The default value of **size** depends on the value of **objectFit**. For example
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ImageAttachmentInterface-size?: SizeOptions--><!--Device-ImageAttachmentInterface-size?: SizeOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,6 +132,8 @@ Image data source.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ImageAttachmentInterface-value: PixelMap--><!--Device-ImageAttachmentInterface-value: PixelMap-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## verticalAlign
@@ -128,7 +142,7 @@ Image data source.
 verticalAlign?: ImageSpanAlignment
 ```
 
-Alignment mode of the image with the text.
+Alignment of the image relative to the text.
 
 Default value: **ImageSpanAlignment.BOTTOM**
 
@@ -139,5 +153,7 @@ Default value: **ImageSpanAlignment.BOTTOM**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ImageAttachmentInterface-verticalAlign?: ImageSpanAlignment--><!--Device-ImageAttachmentInterface-verticalAlign?: ImageSpanAlignment-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -18,6 +18,8 @@ Checks whether the ringtone is playing. This API uses an asynchronous callback t
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function isRinging(callback: AsyncCallback<boolean>): void--><!--Device-call-function isRinging(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -68,6 +70,8 @@ Checks whether the ringtone is playing. This API uses a promise to return the re
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function isRinging(): Promise<boolean>--><!--Device-call-function isRinging(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

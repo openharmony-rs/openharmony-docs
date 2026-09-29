@@ -10,6 +10,8 @@ Scene options used by 3D scene control
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface SceneOptions--><!--Device-unnamed-declare interface SceneOptions-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## modelType
@@ -28,6 +30,8 @@ Scene type when 3D rendering
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SceneOptions-modelType?: ModelType--><!--Device-SceneOptions-modelType?: ModelType-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## scene
@@ -43,5 +47,7 @@ ResourceStr type for 3D rendering, Scene type for 3d scene controlling
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SceneOptions-scene?: ResourceStr | Scene--><!--Device-SceneOptions-scene?: ResourceStr | Scene-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

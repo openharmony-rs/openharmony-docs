@@ -14,6 +14,8 @@ GeolocationPermissions is suitable for scenarios where proactive management of W
 
 **Since:** 9
 
+<!--Device-webview-class GeolocationPermissions--><!--Device-webview-class GeolocationPermissions-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Allows the specified origin to use the geolocation APIs. It is used to pre-autho
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GeolocationPermissions-static allowGeolocation(origin: string, incognito?: boolean): void--><!--Device-GeolocationPermissions-static allowGeolocation(origin: string, incognito?: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -92,6 +96,8 @@ Clears the geolocation permission status of all origins. It is used to revoke ge
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-GeolocationPermissions-static deleteAllGeolocation(incognito?: boolean): void--><!--Device-GeolocationPermissions-static deleteAllGeolocation(incognito?: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -113,6 +119,8 @@ Clears the geolocation permission status of the specified origin. It is used to 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GeolocationPermissions-static deleteGeolocation(origin: string, incognito?: boolean): void--><!--Device-GeolocationPermissions-static deleteGeolocation(origin: string, incognito?: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -175,6 +183,8 @@ Obtains the geolocation permission status of the specified origin. This API uses
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GeolocationPermissions-static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise<boolean>--><!--Device-GeolocationPermissions-static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -247,6 +257,8 @@ Obtains the geolocation permission status of the specified origin. This API uses
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-GeolocationPermissions-static getAccessibleGeolocation(origin: string, callback: AsyncCallback<boolean>, incognito?: boolean): void--><!--Device-GeolocationPermissions-static getAccessibleGeolocation(origin: string, callback: AsyncCallback<boolean>, incognito?: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -311,6 +323,8 @@ Obtains the geolocation permission status of all origins. This API uses a promis
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GeolocationPermissions-static getStoredGeolocation(incognito?: boolean): Promise<Array<string>>--><!--Device-GeolocationPermissions-static getStoredGeolocation(incognito?: boolean): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -380,6 +394,8 @@ Obtains the geolocation permission status of all origins. This API uses an async
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GeolocationPermissions-static getStoredGeolocation(callback: AsyncCallback<Array<string>>, incognito?: boolean): void--><!--Device-GeolocationPermissions-static getStoredGeolocation(callback: AsyncCallback<Array<string>>, incognito?: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

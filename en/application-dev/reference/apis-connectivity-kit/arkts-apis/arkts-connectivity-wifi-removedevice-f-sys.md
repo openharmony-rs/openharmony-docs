@@ -24,6 +24,8 @@ Deletes a Wi-Fi network with a specified ID.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifi-function removeDevice(id: number): boolean--><!--Device-wifi-function removeDevice(id: number): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

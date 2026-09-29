@@ -10,6 +10,8 @@ interface PanGestureHandlerOptions extends BaseHandlerOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface PanGestureHandlerOptions extends BaseHandlerOptions--><!--Device-unnamed-interface PanGestureHandlerOptions extends BaseHandlerOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -29,6 +31,8 @@ direction?: PanDirection
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanGestureHandlerOptions-direction?: PanDirection--><!--Device-PanGestureHandlerOptions-direction?: PanDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +64,8 @@ distance?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PanGestureHandlerOptions-distance?: number--><!--Device-PanGestureHandlerOptions-distance?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## distanceMap
@@ -81,6 +87,8 @@ distanceMap?: Map<SourceTool, number>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanGestureHandlerOptions-distanceMap?: Map<SourceTool, number>--><!--Device-PanGestureHandlerOptions-distanceMap?: Map<SourceTool, number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,5 +115,7 @@ fingers?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanGestureHandlerOptions-fingers?: number--><!--Device-PanGestureHandlerOptions-fingers?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

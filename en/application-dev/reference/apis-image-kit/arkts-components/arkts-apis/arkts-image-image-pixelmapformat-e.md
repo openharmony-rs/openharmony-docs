@@ -8,6 +8,8 @@ Enumerates the pixel formats of images.
 
 **Since:** 7
 
+<!--Device-image-enum PixelMapFormat--><!--Device-image-enum PixelMapFormat-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## UNKNOWN
@@ -20,9 +22,11 @@ Unknown format.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMapFormat-UNKNOWN = 0--><!--Device-PixelMapFormat-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -36,6 +40,8 @@ Indicates that each pixel is stored on 32 bits. Each pixel contains 4 components
 
 **Since:** 18
 
+<!--Device-PixelMapFormat-ARGB_8888 = 1--><!--Device-PixelMapFormat-ARGB_8888 = 1-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## RGB_565
@@ -48,9 +54,11 @@ The color information consists of three components: R (Red), G (Green), and B (B
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMapFormat-RGB_565 = 2--><!--Device-PixelMapFormat-RGB_565 = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -64,9 +72,11 @@ The color information consists of four components: R (Red), G (Green), B (Blue),
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMapFormat-RGBA_8888 = 3--><!--Device-PixelMapFormat-RGBA_8888 = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -80,9 +90,11 @@ The color information consists of four components: B (Blue), G (Green), R (Red),
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMapFormat-BGRA_8888 = 4--><!--Device-PixelMapFormat-BGRA_8888 = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -96,9 +108,11 @@ The color information consists of three components: R (Red), G (Green), and B (B
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMapFormat-RGB_888 = 5--><!--Device-PixelMapFormat-RGB_888 = 5-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -112,9 +126,11 @@ The color information consists of only the alpha component, which occupies eight
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMapFormat-ALPHA_8 = 6--><!--Device-PixelMapFormat-ALPHA_8 = 6-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -128,9 +144,11 @@ The color information consists of four components: R (Red), G (Green), B (Blue),
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMapFormat-RGBA_F16 = 7--><!--Device-PixelMapFormat-RGBA_F16 = 7-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -144,9 +162,11 @@ YVU pixel arrangement, where the V component precedes the U component. The color
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMapFormat-NV21 = 8--><!--Device-PixelMapFormat-NV21 = 8-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -160,9 +180,11 @@ YUV pixel arrangement, where the U component precedes the V component. The color
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMapFormat-NV12 = 9--><!--Device-PixelMapFormat-NV12 = 9-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -176,6 +198,8 @@ The color information consists of four components: R (Red), G (Green), B (Blue),
 
 **Since:** 12
 
+<!--Device-PixelMapFormat-RGBA_1010102 = 10--><!--Device-PixelMapFormat-RGBA_1010102 = 10-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## YCBCR_P010
@@ -188,6 +212,8 @@ The color information consists of the luminance component Y and the chrominance 
 
 **Since:** 12
 
+<!--Device-PixelMapFormat-YCBCR_P010 = 11--><!--Device-PixelMapFormat-YCBCR_P010 = 11-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## YCRCB_P010
@@ -199,6 +225,8 @@ YCRCB_P010 = 12
 The color information consists of the luminance component Y and the chrominance components Cr and Cb. Each component has effective 10 bits. In storage, the Y plane uses 16 bits per pixel (10 of which are effective). The UV plane is interleaved, with every four pixels taking up 32 bits of data (each chrominance component having 10 effective bits), resulting in an average of 15 effective bits overall. It corresponds to [CAMERA_FORMAT_YCRCB_P010 in CameraFormat](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameraformat-e.md).
 
 **Since:** 12
+
+<!--Device-PixelMapFormat-YCRCB_P010 = 12--><!--Device-PixelMapFormat-YCRCB_P010 = 12-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -214,6 +242,8 @@ Indicates that each pixel is stored on 8 bits, a YUV planar format comprised of 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PixelMapFormat-Y8 = 14--><!--Device-PixelMapFormat-Y8 = 14-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## ALPHA_U8
@@ -228,7 +258,9 @@ Indicates that each pixel is stored on 8 bits, without 4-byte stride alignment. 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMapFormat-ALPHA_U8 = 15--><!--Device-PixelMapFormat-ALPHA_U8 = 15-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -244,7 +276,9 @@ Indicates that each pixel is stored on 16 bits. Each pixel contains 1 component:
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMapFormat-ALPHA_F16 = 16--><!--Device-PixelMapFormat-ALPHA_F16 = 16-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -257,5 +291,7 @@ ASTC_4x4 = 102
 The storage format is ASTC 4x4 format, and the memory usage is only 1/4 of RGBA_8888. This format is only used for direct display scenes and does not support pixel access or post- processing editing.
 
 **Since:** 18
+
+<!--Device-PixelMapFormat-ASTC_4x4 = 102--><!--Device-PixelMapFormat-ASTC_4x4 = 102-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

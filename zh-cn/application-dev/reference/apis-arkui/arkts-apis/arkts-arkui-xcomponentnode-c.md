@@ -16,6 +16,8 @@ export declare class XComponentNode extends FrameNode
 
 **替代接口：** XComponent
 
+<!--Device-unnamed-export declare class XComponentNode extends FrameNode--><!--Device-unnamed-export declare class XComponentNode extends FrameNode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## changeRenderType
@@ -33,6 +35,8 @@ changeRenderType(type: NodeRenderType): boolean
 **替代接口：** appendChild
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-XComponentNode-changeRenderType(type: NodeRenderType): boolean--><!--Device-XComponentNode-changeRenderType(type: NodeRenderType): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,6 +69,8 @@ XComponentNode的构造函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-XComponentNode-constructor(uiContext: UIContext, options: RenderOptions,    id: string, type: XComponentType, libraryName?: string)--><!--Device-XComponentNode-constructor(uiContext: UIContext, options: RenderOptions,    id: string, type: XComponentType, libraryName?: string)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -93,6 +99,8 @@ XComponentNode加载完成时触发该回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-XComponentNode-onCreate(event?: Object): void--><!--Device-XComponentNode-onCreate(event?: Object): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -116,5 +124,7 @@ XComponentNode销毁时触发该回调。
 **替代接口：** onDestroy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-XComponentNode-onDestroy(): void--><!--Device-XComponentNode-onDestroy(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

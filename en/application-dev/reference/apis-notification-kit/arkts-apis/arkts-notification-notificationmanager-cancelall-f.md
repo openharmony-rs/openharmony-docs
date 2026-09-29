@@ -18,6 +18,8 @@ After cancellation, all notifications of the current application will be removed
 
 **Since:** 9
 
+<!--Device-notificationManager-function cancelAll(callback: AsyncCallback<void>): void--><!--Device-notificationManager-function cancelAll(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:**
@@ -71,6 +73,8 @@ Cancels all notifications of this application. This API uses a promise to return
 After cancellation, all notifications of the current application will be removed from the notification center, status bar, and other locations, and will no longer be visible to the user. This is suitable for scenarios such as application exit or when the user manually clears all notifications.
 
 **Since:** 9
+
+<!--Device-notificationManager-function cancelAll(): Promise<void>--><!--Device-notificationManager-function cancelAll(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

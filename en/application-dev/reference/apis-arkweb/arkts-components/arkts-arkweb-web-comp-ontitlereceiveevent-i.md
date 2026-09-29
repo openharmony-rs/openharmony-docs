@@ -8,6 +8,8 @@ Defines the callback information triggered when the document title of the web pa
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnTitleReceiveEvent--><!--Device-unnamed-declare interface OnTitleReceiveEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## isRealTitle
@@ -24,6 +26,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-OnTitleReceiveEvent-isRealTitle?: boolean--><!--Device-OnTitleReceiveEvent-isRealTitle?: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## title
@@ -39,5 +43,7 @@ Document title.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnTitleReceiveEvent-title: string--><!--Device-OnTitleReceiveEvent-title: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

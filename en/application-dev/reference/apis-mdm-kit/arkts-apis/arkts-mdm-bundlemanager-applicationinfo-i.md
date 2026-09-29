@@ -8,6 +8,8 @@ Defines the application information.
 
 **Since:** 20
 
+<!--Device-bundleManager-interface ApplicationInfo--><!--Device-bundleManager-interface ApplicationInfo-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Access token ID of the application, which is used in the [checkAccessToken](../.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly accessTokenId: number--><!--Device-ApplicationInfo-readonly accessTokenId: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## appDistributionType
@@ -45,6 +49,8 @@ Distribution type of the application signing certificate. For details, see the *
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly appDistributionType: string--><!--Device-ApplicationInfo-readonly appDistributionType: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -62,6 +68,8 @@ Index of an application clone. It takes effect only for application clones.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly appIndex: number--><!--Device-ApplicationInfo-readonly appIndex: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## appProvisionType
@@ -77,6 +85,8 @@ Type of the application signing certificate file. The options are **debug** and 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly appProvisionType: string--><!--Device-ApplicationInfo-readonly appProvisionType: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -94,6 +104,8 @@ Installation directory of the application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly codePath: string--><!--Device-ApplicationInfo-readonly codePath: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## dataUnclearable
@@ -109,6 +121,8 @@ Whether the application data is unclearable. The value **true** means that the a
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly dataUnclearable: boolean--><!--Device-ApplicationInfo-readonly dataUnclearable: boolean-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -126,6 +140,8 @@ Whether the application is running in debug mode. **true** if in debug mode, **f
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly debug: boolean--><!--Device-ApplicationInfo-readonly debug: boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## description
@@ -141,6 +157,8 @@ Description of the application. It corresponds to the **description** field in [
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly description: string--><!--Device-ApplicationInfo-readonly description: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -158,6 +176,8 @@ Resource ID of the application description. It is automatically generated during
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly descriptionId: number--><!--Device-ApplicationInfo-readonly descriptionId: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## descriptionResource
@@ -173,6 +193,8 @@ Resource information of the application description, including the bundle name, 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly descriptionResource: Resource--><!--Device-ApplicationInfo-readonly descriptionResource: Resource-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -190,6 +212,8 @@ Whether the application is enabled. **true** if enabled, **false** otherwise.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly enabled: boolean--><!--Device-ApplicationInfo-readonly enabled: boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## icon
@@ -205,6 +229,8 @@ Application icon. It corresponds to the **icon** field in the [app.json5](../../
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly icon: string--><!--Device-ApplicationInfo-readonly icon: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -222,6 +248,8 @@ Application icon, which is in Base64 encoding format.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly iconData: string--><!--Device-ApplicationInfo-readonly iconData: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## iconId
@@ -238,6 +266,8 @@ Resource ID of the application icon. It is automatically generated during compil
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly iconId: number--><!--Device-ApplicationInfo-readonly iconId: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## iconResource
@@ -253,6 +283,8 @@ Resource information of the application icon, including the bundle name, module 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly iconResource: Resource--><!--Device-ApplicationInfo-readonly iconResource: Resource-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -276,6 +308,8 @@ Installation source of the application. The options are as follows:
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly installSource: string--><!--Device-ApplicationInfo-readonly installSource: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## label
@@ -291,6 +325,8 @@ Application label.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly label: string--><!--Device-ApplicationInfo-readonly label: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -308,6 +344,8 @@ Resource ID of the application label. It is automatically generated during compi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly labelId: number--><!--Device-ApplicationInfo-readonly labelId: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## labelResource
@@ -323,6 +361,8 @@ Resource information of the application label, including the bundle name, module
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly labelResource: Resource--><!--Device-ApplicationInfo-readonly labelResource: Resource-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -340,6 +380,8 @@ Name of the application bundle. It corresponds to the **bundleName** field in th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly name: string--><!--Device-ApplicationInfo-readonly name: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## nativeLibraryPath
@@ -355,6 +397,8 @@ Local library file path of the application.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly nativeLibraryPath: string--><!--Device-ApplicationInfo-readonly nativeLibraryPath: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -372,6 +416,8 @@ Process name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly process: string--><!--Device-ApplicationInfo-readonly process: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## releaseType
@@ -387,6 +433,8 @@ Release type of the SDK used for application packing. Currently, the SDK release
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly releaseType: string--><!--Device-ApplicationInfo-readonly releaseType: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -404,6 +452,8 @@ Whether the application is removable. **true** if removable, **false** otherwise
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly removable: boolean--><!--Device-ApplicationInfo-readonly removable: boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## systemApp
@@ -420,6 +470,8 @@ Whether the application is a system application. **true** if it is a system appl
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInfo-readonly systemApp: boolean--><!--Device-ApplicationInfo-readonly systemApp: boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## uid
@@ -435,5 +487,7 @@ UID of the application.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly uid: number--><!--Device-ApplicationInfo-readonly uid: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

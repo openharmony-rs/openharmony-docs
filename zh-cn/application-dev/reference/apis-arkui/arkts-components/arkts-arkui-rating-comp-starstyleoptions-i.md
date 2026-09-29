@@ -16,6 +16,8 @@ declare interface StarStyleOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface StarStyleOptions--><!--Device-unnamed-declare interface StarStyleOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **测试接口：** 此接口仅在自动化测试脚本中使用。
@@ -28,7 +30,7 @@ backgroundUri: ResourceStr
 
 未选中的星级的图片路径，可由用户自定义或使用系统默认图片。
 
-从API version 20开始，该接口支持设置Resource资源。参考示例3（通过Resource资源设置评分的样式）代码。
+从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](arkts-arkui-rating-comp.md)代码。
 
 **类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -39,6 +41,8 @@ backgroundUri: ResourceStr
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-StarStyleOptions-backgroundUri: ResourceStr--><!--Device-StarStyleOptions-backgroundUri: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,7 +54,7 @@ foregroundUri: ResourceStr
 
 选中的星级的图片路径，可由用户自定义或使用系统默认图片。
 
-从API version 20开始，该接口支持设置Resource资源。参考示例3（通过Resource资源设置评分的样式）代码。
+从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](arkts-arkui-rating-comp.md)代码。
 
 **类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -61,6 +65,8 @@ foregroundUri: ResourceStr
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-StarStyleOptions-foregroundUri: ResourceStr--><!--Device-StarStyleOptions-foregroundUri: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +78,7 @@ secondaryUri?: ResourceStr
 
 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。未设置时将优先使用backgroundUri，效果等同于仅设置foregroundUri和backgroundUri。
 
-从API version 20开始，该接口支持设置Resource资源。参考示例3（通过Resource资源设置评分的样式）代码。
+从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](arkts-arkui-rating-comp.md)代码。
 
 **类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -83,5 +89,7 @@ secondaryUri?: ResourceStr
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-StarStyleOptions-secondaryUri?: ResourceStr--><!--Device-StarStyleOptions-secondaryUri?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

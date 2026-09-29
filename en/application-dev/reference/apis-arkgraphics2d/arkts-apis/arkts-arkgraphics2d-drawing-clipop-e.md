@@ -13,6 +13,8 @@ Enumerates the canvas clipping modes.
 
 **Since:** 12
 
+<!--Device-drawing-enum ClipOp--><!--Device-drawing-enum ClipOp-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## DIFFERENCE
@@ -25,6 +27,8 @@ Clips a specified area. That is, the difference set is obtained.
 
 **Since:** 12
 
+<!--Device-ClipOp-DIFFERENCE = 0--><!--Device-ClipOp-DIFFERENCE = 0-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## INTERSECT
@@ -36,5 +40,7 @@ INTERSECT = 1
 Retains a specified area. That is, the intersection is obtained.
 
 **Since:** 12
+
+<!--Device-ClipOp-INTERSECT = 1--><!--Device-ClipOp-INTERSECT = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

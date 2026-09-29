@@ -1,4 +1,4 @@
-# @ohos.app.ability.OpenLinkOptions
+# @ohos.app.ability.OpenLinkOptions(openLink Options)
 
 ## Modules to Import
 

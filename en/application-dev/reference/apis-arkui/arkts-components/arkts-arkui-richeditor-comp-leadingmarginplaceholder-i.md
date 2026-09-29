@@ -8,6 +8,8 @@ Describes the leading margin placeholder, which dictates the distance between th
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface LeadingMarginPlaceholder--><!--Device-unnamed-declare interface LeadingMarginPlaceholder-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## pixelMap
@@ -26,6 +28,8 @@ Image content.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LeadingMarginPlaceholder-pixelMap: PixelMap--><!--Device-LeadingMarginPlaceholder-pixelMap: PixelMap-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -43,5 +47,7 @@ Image size, in vp by default. Percentage is not supported.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LeadingMarginPlaceholder-size: [Dimension, Dimension]--><!--Device-LeadingMarginPlaceholder-size: [Dimension, Dimension]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

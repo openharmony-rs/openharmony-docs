@@ -14,6 +14,8 @@ This module defines the notification template, which is used to specify the temp
 
 **Since:** 8
 
+<!--Device-unnamed-export interface NotificationTemplate--><!--Device-unnamed-export interface NotificationTemplate-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## data
@@ -33,6 +35,8 @@ to 100, representing the percentage progress. When **progressValue** is less tha
 
 **Since:** 8
 
+<!--Device-NotificationTemplate-data: Record<string, Object>--><!--Device-NotificationTemplate-data: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## name
@@ -46,5 +50,7 @@ Template name. Currently, only the progress bar notification template indicating
 **Type:** string
 
 **Since:** 8
+
+<!--Device-NotificationTemplate-name: string--><!--Device-NotificationTemplate-name: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification

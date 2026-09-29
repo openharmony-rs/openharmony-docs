@@ -8,6 +8,8 @@ ArcSliderValueOptions的构造信息。
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface ArcSliderValueOptionsConstructorOptions--><!--Device-unnamed-interface ArcSliderValueOptionsConstructorOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -42,6 +44,8 @@ progress不在[min, max]范围之内，取min或者max，靠近min取min，靠�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcSliderValueOptionsConstructorOptions-max?: number--><!--Device-ArcSliderValueOptionsConstructorOptions-max?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## min
@@ -64,6 +68,8 @@ min?: number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcSliderValueOptionsConstructorOptions-min?: number--><!--Device-ArcSliderValueOptionsConstructorOptions-min?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## progress
@@ -83,5 +89,7 @@ progress?: number
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcSliderValueOptionsConstructorOptions-progress?: number--><!--Device-ArcSliderValueOptionsConstructorOptions-progress?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

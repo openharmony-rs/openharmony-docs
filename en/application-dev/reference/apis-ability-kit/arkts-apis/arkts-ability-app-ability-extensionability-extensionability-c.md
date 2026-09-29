@@ -12,7 +12,9 @@ ExtensionAbility is the base class for scenario-specific ExtensionAbilities. It 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-unnamed-export default class ExtensionAbility extends Ability--><!--Device-unnamed-export default class ExtensionAbility extends Ability-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

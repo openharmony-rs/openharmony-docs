@@ -20,6 +20,8 @@ Sets the application clone preference configuration.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function setAppClonePreference(bundleName: string, appClonePreference: AppClonePreference): Promise<void>--><!--Device-bundleManager-function setAppClonePreference(bundleName: string, appClonePreference: AppClonePreference): Promise<void>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

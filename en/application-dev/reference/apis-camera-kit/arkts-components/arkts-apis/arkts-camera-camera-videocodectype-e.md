@@ -8,6 +8,8 @@ Enumerates the video codec types.
 
 **Since:** 13
 
+<!--Device-camera-enum VideoCodecType--><!--Device-camera-enum VideoCodecType-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## AVC
@@ -20,7 +22,9 @@ AVC.
 
 **Since:** 13
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-VideoCodecType-AVC = 0--><!--Device-VideoCodecType-AVC = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -34,6 +38,8 @@ HEVC.
 
 **Since:** 13
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-VideoCodecType-HEVC = 1--><!--Device-VideoCodecType-HEVC = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

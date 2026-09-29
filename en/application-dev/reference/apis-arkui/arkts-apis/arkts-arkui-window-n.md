@@ -8,6 +8,8 @@ Window manager.
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace window--><!--Device-unnamed-declare namespace window-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## Modules to Import
@@ -72,7 +74,7 @@ import { window } from '@kit.ArkUI';
 | [setWaterMarkImage](arkts-arkui-window-setwatermarkimage-f-sys.md#setwatermarkimage-1) | Set watermark image. |
 | [setWaterMarkImage](arkts-arkui-window-setwatermarkimage-f-sys.md#setwatermarkimage-2) | Controls whether a watermark image is displayed on the screen. This API uses an asynchronous callback to return the result. |
 | [setSpecificSystemWindowZIndex](arkts-arkui-window-setspecificsystemwindowzindex-f-sys.md) | Sets the z-level of a system window. This API uses a promise to return the result. |
-| [getTopNavDestinationName](arkts-arkui-window-gettopnavdestinationname-f-sys.md) | Obtains the name of [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#navdestination) in the current top-level [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) component of the specified foreground window. This API uses a promise to return the result. |
+| [getTopNavDestinationName](arkts-arkui-window-gettopnavdestinationname-f-sys.md) | Obtains the name of [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) in the current top-level [Navigation](../arkts-components/arkts-arkui-navigation-comp.md) component of the specified foreground window. This API uses a promise to return the result. |
 | [getSnapshot](arkts-arkui-window-getsnapshot-f-sys.md) | Obtains a snapshot of the same size as the specified window. This API uses a promise to return the result. If privacy mode is enabled for the current window (using [setWindowPrivacyMode](arkts-arkui-window-window-i.md#setwindowprivacymode-1)), taking a screenshot will result in a blank screen. |
 | [on](arkts-arkui-window-on-f-sys.md#onsystembartintchange) | Subscribes to the property change event of the status bar and navigation bar. |
 | [off](arkts-arkui-window-off-f-sys.md#offsystembartintchange) | Unsubscribes from the property change event of the status bar and navigation bar. |

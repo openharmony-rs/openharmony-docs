@@ -24,6 +24,8 @@ Obtains the device IP address based on the network interface. This API uses an a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function getIpAddress(admin: Want, networkInterface: string, callback: AsyncCallback<string>): void--><!--Device-networkManager-function getIpAddress(admin: Want, networkInterface: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -88,6 +90,8 @@ Obtains the device IP address based on the network interface. This API uses a pr
 **Required permissions:** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-networkManager-function getIpAddress(admin: Want, networkInterface: string): Promise<string>--><!--Device-networkManager-function getIpAddress(admin: Want, networkInterface: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

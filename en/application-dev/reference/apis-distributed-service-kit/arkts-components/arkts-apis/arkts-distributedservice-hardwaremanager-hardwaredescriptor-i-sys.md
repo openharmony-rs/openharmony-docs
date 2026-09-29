@@ -10,6 +10,8 @@ Represents the distributed hardware information.
 
 **Since:** 11
 
+<!--Device-hardwareManager-interface HardwareDescriptor--><!--Device-hardwareManager-interface HardwareDescriptor-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DistributedHardwareFWK
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Source device. If this parameter is not specified, it indicates all source devic
 
 **Required permissions:** ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
 
+<!--Device-HardwareDescriptor-srcNetworkId?: string--><!--Device-HardwareDescriptor-srcNetworkId?: string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DistributedHardwareFWK
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Type of the distributed hardware.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
+
+<!--Device-HardwareDescriptor-type: DistributedHardwareType--><!--Device-HardwareDescriptor-type: DistributedHardwareType-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DistributedHardwareFWK
 

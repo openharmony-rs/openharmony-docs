@@ -8,6 +8,8 @@ Describes audio capturer configurations.
 
 **Since:** 8
 
+<!--Device-audio-interface AudioCapturerOptions--><!--Device-audio-interface AudioCapturerOptions-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The target application uid for voice/video communication playback capture. This 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioCapturerOptions-playbackCaptureUid?: int--><!--Device-AudioCapturerOptions-playbackCaptureUid?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Perfered input device for this audio capturer. The preferredInputDevice must be 
 **Type:** [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md)
 
 **Since:** 22
+
+<!--Device-AudioCapturerOptions-preferredInputDevice?: AudioDeviceDescriptor--><!--Device-AudioCapturerOptions-preferredInputDevice?: AudioDeviceDescriptor-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 

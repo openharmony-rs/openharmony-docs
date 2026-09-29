@@ -10,6 +10,8 @@ Before calling any API in AudioManager, you must use [getAudioManager](arkts-aud
 
 **Since:** 7
 
+<!--Device-audio-interface AudioManager--><!--Device-audio-interface AudioManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ user disable the safe media volume state.
 **Since:** 12
 
 **Required permissions:** ohos.permission.MODIFY_AUDIO_SETTINGS
+
+<!--Device-AudioManager-disableSafeMediaVolume(): Promise<void>--><!--Device-AudioManager-disableSafeMediaVolume(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -69,6 +73,8 @@ Obtains a collaborative playback management instance.
 
 **Since:** 20
 
+<!--Device-AudioManager-getCollaborativeManager(): AudioCollaborativeManager--><!--Device-AudioManager-getCollaborativeManager(): AudioCollaborativeManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **System API:** This is a system API.
@@ -94,6 +100,8 @@ getEffectManager(): AudioEffectManager
 Obtains an [AudioEffectManager](arkts-audio-audio-audioeffectmanager-i-sys.md) instance.
 
 **Since:** 18
+
+<!--Device-AudioManager-getEffectManager(): AudioEffectManager--><!--Device-AudioManager-getEffectManager(): AudioEffectManager-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -128,6 +136,8 @@ getExtraParameters(mainKey: string, subKeys?: Array<string>): Promise<Record<str
 Obtains the values of a certain key. This method uses a promise to return the query result.
 
 **Since:** 11
+
+<!--Device-AudioManager-getExtraParameters(mainKey: string, subKeys?: Array<string>): Promise<Record<string, string>>--><!--Device-AudioManager-getExtraParameters(mainKey: string, subKeys?: Array<string>): Promise<Record<string, string>>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -167,74 +177,6 @@ audioManager.getExtraParameters('key_example', subKeys).then((value: Record<stri
 });
 ```
 
-## on('volumeChange')
-
-```TypeScript
-on(type: 'volumeChange', callback: Callback<VolumeEvent>): void
-```
-
-Listens for system volume change events. This method uses a callback to get volume change events.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** volumeChange
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| type | 'volumeChange' | Yes | Type of the event to listen for. Only the volumeChange event is supported. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | Yes | Callback used to get the system volume change event. |
-
-**Examples**
-
-```TypeScript
-audioManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
-  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
-  console.info(`Volume level: ${volumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
-});
-```
-
-## on('ringerModeChange')
-
-```TypeScript
-on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void
-```
-
-Listens for ringer mode change events. This method uses a callback to get ringer mode changes.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** ringerModeChange
-
-**System capability:** SystemCapability.Multimedia.Audio.Communication
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| type | 'ringerModeChange' | Yes | Type of the event to listen for. Only the ringerModeChange event is supported. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | Yes | Callback used to get the updated ringer mode. |
-
-**Examples**
-
-```TypeScript
-audioManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
-  console.info(`Updated ringermode: ${ringerMode}`);
-});
-```
-
 ## setAudioScene
 
 ```TypeScript
@@ -244,6 +186,8 @@ setAudioScene(scene: AudioScene, callback: AsyncCallback<void>): void
 Sets the audio scene mode to change audio strategies. This method uses an asynchronous callback to return the result.
 
 **Since:** 8
+
+<!--Device-AudioManager-setAudioScene(scene: AudioScene, callback: AsyncCallback<void>): void--><!--Device-AudioManager-setAudioScene(scene: AudioScene, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
@@ -281,6 +225,8 @@ setAudioScene(scene: AudioScene): Promise<void>
 Sets the audio scene mode to change audio strategies. This method uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-AudioManager-setAudioScene(scene: AudioScene): Promise<void>--><!--Device-AudioManager-setAudioScene(scene: AudioScene): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
@@ -322,6 +268,8 @@ Sets extra audio parameters. This method uses a promise to return the result.
 
 **Required permissions:** ohos.permission.MODIFY_AUDIO_SETTINGS
 
+<!--Device-AudioManager-setExtraParameters(mainKey: string, kvpairs: Record<string, string>): Promise<void>--><!--Device-AudioManager-setExtraParameters(mainKey: string, kvpairs: Record<string, string>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **System API:** This is a system API.
@@ -362,5 +310,77 @@ audioManager.setExtraParameters('key_example', kvpairs).then(() => {
   console.info('Promise returned to indicate a successful setting of the extra parameters.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to set the audio extra parameters ${err}`);
+});
+```
+
+## on('volumeChange')
+
+```TypeScript
+on(type: 'volumeChange', callback: Callback<VolumeEvent>): void
+```
+
+Listens for system volume change events. This method uses a callback to get volume change events.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** volumeChange
+
+<!--Device-AudioManager-on(type: 'volumeChange', callback: Callback<VolumeEvent>): void--><!--Device-AudioManager-on(type: 'volumeChange', callback: Callback<VolumeEvent>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| type | 'volumeChange' | Yes | Type of the event to listen for. Only the volumeChange event is supported. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | Yes | Callback used to get the system volume change event. |
+
+**Examples**
+
+```TypeScript
+audioManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+});
+```
+
+## on('ringerModeChange')
+
+```TypeScript
+on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void
+```
+
+Listens for ringer mode change events. This method uses a callback to get ringer mode changes.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** ringerModeChange
+
+<!--Device-AudioManager-on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void--><!--Device-AudioManager-on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Communication
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| type | 'ringerModeChange' | Yes | Type of the event to listen for. Only the ringerModeChange event is supported. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | Yes | Callback used to get the updated ringer mode. |
+
+**Examples**
+
+```TypeScript
+audioManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
+  console.info(`Updated ringermode: ${ringerMode}`);
 });
 ```

@@ -20,6 +20,8 @@ Removes Wi-Fi networks from the allowed list. If some Wi-Fi networks are removed
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function removeAllowedWifiList(admin: Want, list: Array<WifiAccessInfo>): void--><!--Device-wifiManager-function removeAllowedWifiList(admin: Want, list: Array<WifiAccessInfo>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -8,9 +8,11 @@ declare class RowSplitAttribute extends CommonMethod<RowSplitAttribute>
 
 支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** RowSplitAttribute extends CommonMethod&lt;RowSplitAttribute&gt;
+**继承/实现关系：** RowSplitAttribute extends CommonMethod<RowSplitAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class RowSplitAttribute extends CommonMethod<RowSplitAttribute>--><!--Device-unnamed-declare class RowSplitAttribute extends CommonMethod<RowSplitAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +31,8 @@ resizeable(value: boolean)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RowSplitAttribute-resizeable(value: boolean): RowSplitAttribute--><!--Device-RowSplitAttribute-resizeable(value: boolean): RowSplitAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

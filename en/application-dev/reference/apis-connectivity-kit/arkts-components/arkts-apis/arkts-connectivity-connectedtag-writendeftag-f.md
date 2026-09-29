@@ -27,6 +27,8 @@ Writes data to this active tag. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.NFC_TAG
 
+<!--Device-connectedTag-function writeNdefTag(data: string): Promise<void>--><!--Device-connectedTag-function writeNdefTag(data: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.ConnectedTag
 
 **Parameters:**
@@ -78,6 +80,8 @@ Writes data to this active tag. This API uses an asynchronous callback to return
 **Substitutes:** [write](arkts-connectivity-connectedtag-write-f.md)
 
 **Required permissions:** ohos.permission.NFC_TAG
+
+<!--Device-connectedTag-function writeNdefTag(data: string, callback: AsyncCallback<void>): void--><!--Device-connectedTag-function writeNdefTag(data: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.ConnectedTag
 

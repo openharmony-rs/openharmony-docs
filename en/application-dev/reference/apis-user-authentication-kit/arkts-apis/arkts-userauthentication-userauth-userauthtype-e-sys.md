@@ -8,6 +8,8 @@ Enumerates the identity authentication types. This enum defines the authenticati
 
 **Since:** 8
 
+<!--Device-userAuth-enum UserAuthType--><!--Device-userAuth-enum UserAuthType-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## PRIVATE_PIN
@@ -19,6 +21,8 @@ PRIVATE_PIN = 16
 Privacy PIN. It is a special PIN authentication type, which is generally used for secondary access control after the screen is unlocked. (That is, after the device is unlocked, the user needs to be authenticated again before accessing specific apps or content.) For example, a user can use the privacy PIN to protect the application lock (the application lock is a secondary verification function for application startup, which can prevent others from opening the user's application), so as to prevent family members who know the lock screen password from accessing some applications of the user.
 
 **Since:** 14
+
+<!--Device-UserAuthType-PRIVATE_PIN = 16--><!--Device-UserAuthType-PRIVATE_PIN = 16-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

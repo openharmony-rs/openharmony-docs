@@ -6,6 +6,8 @@ This module provides the SparkLink Service Access Protocol (SSAP) connection cap
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace ssap--><!--Device-unnamed-declare namespace ssap-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -48,6 +50,12 @@ import { ssap } from '@kit.ConnectivityKit';
 | [Service](arkts-connectivity-ssap-service-i-sys.md) | Represents the NearLink service. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [ConnectionState](arkts-connectivity-ssap-connectionstate-t.md) | Enumerates the connection states with a remote device. |
+
 ### Enums
 
 | Name | Description |
@@ -55,9 +63,3 @@ import { ssap } from '@kit.ConnectivityKit';
 | [Operation](arkts-connectivity-ssap-operation-e.md) | Enumerates the operation types supported by a property. |
 | [PropertyDescriptorType](arkts-connectivity-ssap-propertydescriptortype-e.md) | Enumerates the property descriptor types. |
 | [PropertyWriteType](arkts-connectivity-ssap-propertywritetype-e.md) | Enumerates the write types supported by a property. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [ConnectionState](arkts-connectivity-ssap-connectionstate-t.md) | Enumerates the connection states with a remote device. |

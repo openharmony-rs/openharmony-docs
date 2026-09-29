@@ -8,6 +8,8 @@ Provides the NNRT device info
 
 **Since:** 10
 
+<!--Device-mindSporeLite-interface NNRTDevice--><!--Device-mindSporeLite-interface NNRTDevice-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## Modules to Import
@@ -30,6 +32,8 @@ NNRT device id.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NNRTDevice-deviceID?: bigint--><!--Device-NNRTDevice-deviceID?: bigint-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## extensions
@@ -45,6 +49,8 @@ NNRT device extension array.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NNRTDevice-extensions?: Extension[]--><!--Device-NNRTDevice-extensions?: Extension[]-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -62,6 +68,8 @@ NNRT device performance mode.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NNRTDevice-performanceMode?: PerformanceMode--><!--Device-NNRTDevice-performanceMode?: PerformanceMode-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## priority
@@ -77,5 +85,7 @@ NNRT device priority.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NNRTDevice-priority?: Priority--><!--Device-NNRTDevice-priority?: Priority-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite

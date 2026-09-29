@@ -18,6 +18,8 @@ Obtains the browser policy of the current device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-browser-function getSelfManagedBrowserPolicy(): ArrayBuffer--><!--Device-browser-function getSelfManagedBrowserPolicy(): ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Return value:**

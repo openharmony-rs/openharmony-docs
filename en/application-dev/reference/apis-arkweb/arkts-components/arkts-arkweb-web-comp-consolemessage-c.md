@@ -8,6 +8,26 @@ ConsoleMessage is an object that encapsulates JavaScript console output informat
 
 **Since:** 8
 
+<!--Device-unnamed-declare class ConsoleMessage--><!--Device-unnamed-declare class ConsoleMessage-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+<a id="constructor-1"></a>
+
+## constructor
+
+```TypeScript
+constructor()
+```
+
+Constructs a **ConsoleMessage** object.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ConsoleMessage-constructor()--><!--Device-ConsoleMessage-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -24,6 +44,8 @@ Constructs a **ConsoleMessage** object.
 
 **Substitutes:** constructor
 
+<!--Device-ConsoleMessage-constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)--><!--Device-ConsoleMessage-constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -34,22 +56,6 @@ Constructs a **ConsoleMessage** object.
 | sourceId | string | Yes | Path and name of the web page source file. |
 | lineNumber | number | Yes | Line number of **ConsoleMessage**. |
 | messageLevel | [MessageLevel](arkts-arkweb-web-comp-messagelevel-e.md) | Yes | Log level of **ConsoleMessage**. |
-
-<a id="constructor-1"></a>
-
-## constructor
-
-```TypeScript
-constructor()
-```
-
-Constructs a **ConsoleMessage** object.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Web.Webview.Core
 
 ## getLineNumber
 
@@ -62,6 +68,8 @@ Obtains the line number of the console output in the web source file.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ConsoleMessage-getLineNumber(): number--><!--Device-ConsoleMessage-getLineNumber(): number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -83,6 +91,8 @@ Obtains the log message of the console output.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ConsoleMessage-getMessage(): string--><!--Device-ConsoleMessage-getMessage(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -103,6 +113,8 @@ Obtains the level of this console message.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ConsoleMessage-getMessageLevel(): MessageLevel--><!--Device-ConsoleMessage-getMessageLevel(): MessageLevel-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -120,6 +132,8 @@ getSource() : ConsoleMessageSource
 Obtains the log source of this console message.
 
 **Since:** 23
+
+<!--Device-ConsoleMessage-getSource() : ConsoleMessageSource--><!--Device-ConsoleMessage-getSource() : ConsoleMessageSource-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -140,6 +154,8 @@ Obtains the path and file name of the web source file.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ConsoleMessage-getSourceId(): string--><!--Device-ConsoleMessage-getSourceId(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

@@ -8,6 +8,8 @@ Defines the request for publishing a reminder.
 
 **Since:** 9
 
+<!--Device-reminderAgentManager-interface ReminderRequest--><!--Device-reminderAgentManager-interface ReminderRequest-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import
@@ -32,6 +34,8 @@ For system applications, a maximum of three buttons are supported in API version
 
 **Since:** 9
 
+<!--Device-ReminderRequest-actionButton?: [ActionButton?, ActionButton?, ActionButton?]--><!--Device-ReminderRequest-actionButton?: [ActionButton?, ActionButton?, ActionButton?]-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## autoDeletedTime
@@ -48,6 +52,8 @@ The data format is timestamp, in milliseconds. For details, please refer to [Not
 
 **Since:** 10
 
+<!--Device-ReminderRequest-autoDeletedTime?: long--><!--Device-ReminderRequest-autoDeletedTime?: long-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## content
@@ -61,6 +67,8 @@ Reminder content.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-ReminderRequest-content?: string--><!--Device-ReminderRequest-content?: string-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -76,6 +84,8 @@ Resource ID of the reminder content, which can be obtained through $r(*resource-
 
 **Since:** 18
 
+<!--Device-ReminderRequest-contentResourceId?: int--><!--Device-ReminderRequest-contentResourceId?: int-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## customRingUri
@@ -89,6 +99,8 @@ URI of the custom prompt tone. The prompt tone file must be stored in the **reso
 **Type:** string
 
 **Since:** 11
+
+<!--Device-ReminderRequest-customRingUri?: string--><!--Device-ReminderRequest-customRingUri?: string-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -104,6 +116,8 @@ Content to be displayed after the reminder expires.
 
 **Since:** 9
 
+<!--Device-ReminderRequest-expiredContent?: string--><!--Device-ReminderRequest-expiredContent?: string-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## expiredContentResourceId
@@ -117,6 +131,8 @@ Resource ID of the content to be displayed after the reminder expires, which can
 **Type:** number
 
 **Since:** 18
+
+<!--Device-ReminderRequest-expiredContentResourceId?: int--><!--Device-ReminderRequest-expiredContentResourceId?: int-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -134,6 +150,8 @@ Time zone type. The default value is **TimeZoneType.DEFAULT**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ReminderRequest-fixedTimeZone?: TimeZoneType--><!--Device-ReminderRequest-fixedTimeZone?: TimeZoneType-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## groupId
@@ -147,6 +165,8 @@ Group ID used for the reminder. If "Don't ask again" or similar information is s
 **Type:** string
 
 **Since:** 11
+
+<!--Device-ReminderRequest-groupId?: string--><!--Device-ReminderRequest-groupId?: string-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -164,6 +184,8 @@ This API is reserved.
 
 **Since:** 9
 
+<!--Device-ReminderRequest-maxScreenWantAgent?: MaxScreenWantAgent--><!--Device-ReminderRequest-maxScreenWantAgent?: MaxScreenWantAgent-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## notificationId
@@ -177,6 +199,8 @@ Notification ID used by the reminder. You must pass in a notification ID. If the
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ReminderRequest-notificationId?: int--><!--Device-ReminderRequest-notificationId?: int-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -194,6 +218,8 @@ Notification request message. This parameter is left empty by default.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ReminderRequest-notificationRequestProxy?: NotificationRequestProxy--><!--Device-ReminderRequest-notificationRequestProxy?: NotificationRequestProxy-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## reminderType
@@ -208,6 +234,8 @@ Type of the reminder.
 
 **Since:** 9
 
+<!--Device-ReminderRequest-reminderType: ReminderType--><!--Device-ReminderRequest-reminderType: ReminderType-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## ringChannel
@@ -221,6 +249,8 @@ Audio channel of the custom prompt tone. The default channel is the alarm channe
 **Type:** [RingChannel](arkts-backgroundtasks-reminderagentmanager-ringchannel-e.md)
 
 **Since:** 20
+
+<!--Device-ReminderRequest-ringChannel?: RingChannel--><!--Device-ReminderRequest-ringChannel?: RingChannel-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -244,6 +274,8 @@ The device vibrates when the reminder rings. Since API version 26.0.0, long vibr
 
 **Since:** 9
 
+<!--Device-ReminderRequest-ringDuration?: long--><!--Device-ReminderRequest-ringDuration?: long-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## slotType
@@ -257,6 +289,8 @@ Type of the slot used by the reminder.
 **Type:** [notification.SlotType](../../apis-notification-kit/arkts-apis/arkts-notification-notificationmanager.md)
 
 **Since:** 9
+
+<!--Device-ReminderRequest-slotType?: notification.SlotType--><!--Device-ReminderRequest-slotType?: notification.SlotType-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -272,6 +306,8 @@ Content to be displayed when the reminder is snoozing. (It is not applicable to 
 
 **Since:** 9
 
+<!--Device-ReminderRequest-snoozeContent?: string--><!--Device-ReminderRequest-snoozeContent?: string-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## snoozeContentResourceId
@@ -285,6 +321,8 @@ Resource ID of the content to be displayed when the reminder is snoozing, which 
 **Type:** number
 
 **Since:** 18
+
+<!--Device-ReminderRequest-snoozeContentResourceId?: int--><!--Device-ReminderRequest-snoozeContentResourceId?: int-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -300,6 +338,8 @@ Type of the slot used by the snoozed reminder. (It is not applicable to countdow
 
 **Since:** 11
 
+<!--Device-ReminderRequest-snoozeSlotType?: notification.SlotType--><!--Device-ReminderRequest-snoozeSlotType?: notification.SlotType-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## snoozeTimes
@@ -313,6 +353,8 @@ Number of reminder snooze times. The default value is **0**. (It is not applicab
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ReminderRequest-snoozeTimes?: int--><!--Device-ReminderRequest-snoozeTimes?: int-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -331,6 +373,8 @@ Whether the reminder is automatically cleared. The default value is **true**. Fo
 
 **Since:** 10
 
+<!--Device-ReminderRequest-tapDismissed?: boolean--><!--Device-ReminderRequest-tapDismissed?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## timeInterval
@@ -347,6 +391,8 @@ in seconds. The minimum value is 30s. (It is not applicable to countdown reminde
 
 **Since:** 9
 
+<!--Device-ReminderRequest-timeInterval?: long--><!--Device-ReminderRequest-timeInterval?: long-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## title
@@ -360,6 +406,8 @@ Reminder title.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-ReminderRequest-title?: string--><!--Device-ReminderRequest-title?: string-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -375,6 +423,8 @@ Resource ID of the reminder title, which can be obtained through $r(*resource-na
 
 **Since:** 18
 
+<!--Device-ReminderRequest-titleResourceId?: int--><!--Device-ReminderRequest-titleResourceId?: int-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## wantAgent
@@ -388,5 +438,7 @@ Information about the ability that is redirected to when the reminder is clicked
 **Type:** [WantAgent](arkts-backgroundtasks-reminderagentmanager-wantagent-i.md)
 
 **Since:** 9
+
+<!--Device-ReminderRequest-wantAgent?: WantAgent--><!--Device-ReminderRequest-wantAgent?: WantAgent-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent

@@ -16,6 +16,8 @@ This module applies to the following scenarios:
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export default struct UserAuthIcon--><!--Device-unnamed-export default struct UserAuthIcon-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -38,6 +40,8 @@ Note:The application must request the **ohos.permission.ACCESS_BIOMETRIC** permi
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UserAuthIcon-onAuthResult: (result: userAuth.UserAuthResult) => void--><!--Device-UserAuthIcon-onAuthResult: (result: userAuth.UserAuthResult) => void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **Parameters:**
@@ -58,6 +62,8 @@ Icon click callback. This callback is triggered when a user taps the authenticat
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UserAuthIcon-onIconClick?: () => void--><!--Device-UserAuthIcon-onIconClick?: () => void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## authParam
@@ -73,6 +79,8 @@ User authentication parameters. The parameters include the **challenge** value, 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UserAuthIcon-authParam: userAuth.AuthParam--><!--Device-UserAuthIcon-authParam: userAuth.AuthParam-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -92,6 +100,8 @@ Icon color. Multiple formats are supported, such as color values and resource re
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UserAuthIcon-iconColor?: ResourceColor--><!--Device-UserAuthIcon-iconColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## iconHeight
@@ -110,6 +120,8 @@ Icon height, with an aspect ratio of 1:1. Percentage strings are not supported. 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UserAuthIcon-iconHeight?: Dimension--><!--Device-UserAuthIcon-iconHeight?: Dimension-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## widgetParam
@@ -125,5 +137,7 @@ Parameters on the user authentication page. The parameters include the authentic
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UserAuthIcon-widgetParam: userAuth.WidgetParam--><!--Device-UserAuthIcon-widgetParam: userAuth.WidgetParam-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

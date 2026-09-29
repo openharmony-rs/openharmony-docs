@@ -10,6 +10,8 @@ Describes the pedometer sensor data. It extends from [Response](arkts-sensorserv
 
 **Since:** 8
 
+<!--Device-sensor-interface PedometerResponse extends Response--><!--Device-sensor-interface PedometerResponse extends Response-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 ## Modules to Import
@@ -24,10 +26,12 @@ import { sensor } from '@kit.SensorServiceKit';
 steps: number
 ```
 
-Number of steps a user has walked.
+Number of steps a user has walked. Unit: step
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-PedometerResponse-steps: double--><!--Device-PedometerResponse-steps: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

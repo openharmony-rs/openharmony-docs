@@ -15,6 +15,8 @@ A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-arkts-c
 
 **Decorator:** @Sendable
 
+<!--Device-collections-class Uint8ClampedArray--><!--Device-collections-class Uint8ClampedArray-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Returns an iterator that iterates over numbers.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-[Symbol.iterator](): IterableIterator<number>--><!--Device-Uint8ClampedArray-[Symbol.iterator](): IterableIterator<number>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -60,6 +64,8 @@ Returns the element at the given index. If no element is found, **undefined** is
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-at(index: number): number | undefined--><!--Device-Uint8ClampedArray-at(index: number): number | undefined-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -94,6 +100,8 @@ A constructor used to create an empty ArkTS Uint8ClampedArray.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-constructor()--><!--Device-Uint8ClampedArray-constructor()-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -115,6 +123,8 @@ A constructor used to create an ArkTS Uint8ClampedArray of a given length.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-constructor(length: number)--><!--Device-Uint8ClampedArray-constructor(length: number)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -144,6 +154,8 @@ A constructor that creates an ArkTS Uint8ClampedArray from an iterable object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-constructor(elements: Iterable<number>)--><!--Device-Uint8ClampedArray-constructor(elements: Iterable<number>)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -171,6 +183,8 @@ A constructor that creates an ArkTS Uint8ClampedArray from an array-like object 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-constructor(array: ArrayLike<number> | ArrayBuffer)--><!--Device-Uint8ClampedArray-constructor(array: ArrayLike<number> | ArrayBuffer)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -200,6 +214,8 @@ A constructor that creates an ArkTS Uint8ClampedArray from an ArrayBuffer.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)--><!--Device-Uint8ClampedArray-constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -227,6 +243,8 @@ Copies elements within a given range from this ArkTS Uint8ClampedArray to anothe
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-copyWithin(target: number, start: number, end?: number): Uint8ClampedArray--><!--Device-Uint8ClampedArray-copyWithin(target: number, start: number, end?: number): Uint8ClampedArray-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -263,6 +281,8 @@ Returns an iterator object that contains the key-value pair of each element in t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-entries(): IterableIterator<[number, number]>--><!--Device-Uint8ClampedArray-entries(): IterableIterator<[number, number]>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -289,6 +309,8 @@ Checks whether all elements in this ArkTS Uint8ClampedArray meet a given conditi
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-every(predicate: TypedArrayPredicateFn<number, Uint8ClampedArray>): boolean--><!--Device-Uint8ClampedArray-every(predicate: TypedArrayPredicateFn<number, Uint8ClampedArray>): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -325,6 +347,8 @@ Fills all elements in a given range in this ArkTS Uint8ClampedArray with a value
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-fill(value: number, start?: number, end?: number): Uint8ClampedArray--><!--Device-Uint8ClampedArray-fill(value: number, start?: number, end?: number): Uint8ClampedArray-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -359,6 +383,8 @@ Returns a new ArkTS Uint8ClampedArray that contains all elements that meet the g
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-filter(predicate: TypedArrayPredicateFn<number, Uint8ClampedArray>): Uint8ClampedArray--><!--Device-Uint8ClampedArray-filter(predicate: TypedArrayPredicateFn<number, Uint8ClampedArray>): Uint8ClampedArray-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -395,6 +421,8 @@ Returns the value of the first element that passes a test provided by a callback
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-find(predicate: TypedArrayPredicateFn<number, Uint8ClampedArray>): number | undefined--><!--Device-Uint8ClampedArray-find(predicate: TypedArrayPredicateFn<number, Uint8ClampedArray>): number | undefined-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Test API:** This API is used only in automated test scripts.
@@ -429,6 +457,8 @@ Returns the index of the first element that passes a test provided by a callback
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-findIndex(predicate: TypedArrayPredicateFn<number, Uint8ClampedArray>): number--><!--Device-Uint8ClampedArray-findIndex(predicate: TypedArrayPredicateFn<number, Uint8ClampedArray>): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -465,6 +495,8 @@ Calls a callback function for each element in this ArkTS Uint8ClampedArray.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-forEach(callbackFn: TypedArrayForEachCallback<number, Uint8ClampedArray>): void--><!--Device-Uint8ClampedArray-forEach(callbackFn: TypedArrayForEachCallback<number, Uint8ClampedArray>): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -491,6 +523,8 @@ Creates an ArkTS Uint8ClampedArray from an array-like or iterator object.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-static from(arrayLike: ArrayLike<number>): Uint8ClampedArray--><!--Device-Uint8ClampedArray-static from(arrayLike: ArrayLike<number>): Uint8ClampedArray-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -519,6 +553,8 @@ Creates an ArkTS Uint8ClampedArray from an array-like object.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): Uint8ClampedArray--><!--Device-Uint8ClampedArray-static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): Uint8ClampedArray-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -549,6 +585,8 @@ Creates an ArkTS Uint8ClampedArray from an iterator object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, number>): Uint8ClampedArray--><!--Device-Uint8ClampedArray-static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, number>): Uint8ClampedArray-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -575,6 +613,8 @@ Checks whether elements are contained in this ArkTS Uint8ClampedArray.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-includes(searchElement: number, fromIndex?: number): boolean--><!--Device-Uint8ClampedArray-includes(searchElement: number, fromIndex?: number): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -610,6 +650,8 @@ Returns the index of the first occurrence of a value in this ArkTS Uint8ClampedA
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-indexOf(searchElement: number, fromIndex?: number): number--><!--Device-Uint8ClampedArray-indexOf(searchElement: number, fromIndex?: number): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -644,6 +686,8 @@ Concatenates all elements in this ArkTS Uint8ClampedArray into a string, with a 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-join(separator?: string): string--><!--Device-Uint8ClampedArray-join(separator?: string): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -677,6 +721,8 @@ Returns an iterator object that contains the key (index) of each element in this
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-keys(): IterableIterator<number>--><!--Device-Uint8ClampedArray-keys(): IterableIterator<number>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -703,6 +749,8 @@ Obtains the index of the last occurrence of the specified value in this ArkTS Ui
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Uint8ClampedArray-lastIndexOf(searchElement: number, fromIndex?: number): number--><!--Device-Uint8ClampedArray-lastIndexOf(searchElement: number, fromIndex?: number): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -738,6 +786,8 @@ Applies a callback function to each element in this ArkTS Uint8ClampedArray and 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-map(callbackFn: TypedArrayMapCallback<number, Uint8ClampedArray>): Uint8ClampedArray--><!--Device-Uint8ClampedArray-map(callbackFn: TypedArrayMapCallback<number, Uint8ClampedArray>): Uint8ClampedArray-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -771,6 +821,8 @@ Creates an ArkTS Uint8ClampedArray with a variable number of parameters.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Uint8ClampedArray-static of(...items: number[]): Uint8ClampedArray--><!--Device-Uint8ClampedArray-static of(...items: number[]): Uint8ClampedArray-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -796,6 +848,8 @@ Applies a reduce function on each element in this ArkTS Uint8ClampedArray and re
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint8ClampedArray>): number--><!--Device-Uint8ClampedArray-reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint8ClampedArray>): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -832,6 +886,8 @@ Applies a reduce function for each element in this ArkTS Uint8ClampedArray, rece
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-reduce<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Uint8ClampedArray>, initialValue: U): U--><!--Device-Uint8ClampedArray-reduce<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Uint8ClampedArray>, initialValue: U): U-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -865,6 +921,8 @@ Reversely traverses this ArkTS Uint8ClampedArray, applies a reduce function for 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Uint8ClampedArray-reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Uint8ClampedArray>, initialValue: U): U--><!--Device-Uint8ClampedArray-reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Uint8ClampedArray>, initialValue: U): U-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -902,6 +960,8 @@ Reversely traverses this ArkTS Uint8ClampedArray, applies a reduce function on e
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Uint8ClampedArray-reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Uint8ClampedArray>): number--><!--Device-Uint8ClampedArray-reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Uint8ClampedArray>): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -935,6 +995,8 @@ Reverses this ArkTS Uint8ClampedArray.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-reverse(): Uint8ClampedArray--><!--Device-Uint8ClampedArray-reverse(): Uint8ClampedArray-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -961,6 +1023,8 @@ Writes the elements in an array-like object to the given start position in seque
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-set(array: ArrayLike<number>, offset?: number): void--><!--Device-Uint8ClampedArray-set(array: ArrayLike<number>, offset?: number): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -989,6 +1053,8 @@ Selects a range of elements in this ArkTS Uint8ClampedArray to create an ArkTS U
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-slice(start?: number, end?: number): Uint8ClampedArray--><!--Device-Uint8ClampedArray-slice(start?: number, end?: number): Uint8ClampedArray-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1023,6 +1089,8 @@ Checks whether any element in this ArkTS Uint8ClampedArray meets a given conditi
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-some(predicate: TypedArrayPredicateFn<number, Uint8ClampedArray>): boolean--><!--Device-Uint8ClampedArray-some(predicate: TypedArrayPredicateFn<number, Uint8ClampedArray>): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1059,6 +1127,8 @@ Sorts elements in this ArkTS Uint8ClampedArray and returns the sorted ArkTS Uint
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-sort(compareFn?: TypedArrayCompareFn<number>): Uint8ClampedArray--><!--Device-Uint8ClampedArray-sort(compareFn?: TypedArrayCompareFn<number>): Uint8ClampedArray-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -1091,6 +1161,8 @@ Truncates an array from a specified position and returns a new ArkTS Uint8Clampe
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-subarray(begin?: number, end?: number): Uint8ClampedArray--><!--Device-Uint8ClampedArray-subarray(begin?: number, end?: number): Uint8ClampedArray-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1126,6 +1198,8 @@ Generates digits that match the cultural conventions of the current system local
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Uint8ClampedArray-toLocaleString(): string--><!--Device-Uint8ClampedArray-toLocaleString(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -1153,6 +1227,8 @@ Converts an ArkTS Uint8ClampedArray into a string.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Uint8ClampedArray-toString(): string--><!--Device-Uint8ClampedArray-toString(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -1179,6 +1255,8 @@ Returns an iterator object that contains the value of each element in this ArkTS
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-values(): IterableIterator<number>--><!--Device-Uint8ClampedArray-values(): IterableIterator<number>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1209,6 +1287,8 @@ Returns the item at that index.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-[index: number]: number--><!--Device-Uint8ClampedArray-[index: number]: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## buffer
@@ -1224,6 +1304,8 @@ Bottom-layer buffer used by an ArkTS Uint8ClampedArray.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-readonly buffer: ArrayBuffer--><!--Device-Uint8ClampedArray-readonly buffer: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1241,6 +1323,8 @@ Number of bytes occupied by an ArkTS Uint8ClampedArray.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-readonly byteLength: number--><!--Device-Uint8ClampedArray-readonly byteLength: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## byteOffset
@@ -1256,6 +1340,8 @@ Offset between the ArkTS Uint8ClampedArray and the start position of the ArrayBu
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-readonly byteOffset: number--><!--Device-Uint8ClampedArray-readonly byteOffset: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1273,6 +1359,8 @@ Number of bytes occupied by each element in the ArkTS Uint8ClampedArray.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Uint8ClampedArray-static readonly BYTES_PER_ELEMENT: number--><!--Device-Uint8ClampedArray-static readonly BYTES_PER_ELEMENT: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## length
@@ -1288,5 +1376,7 @@ Number of elements in an ArkTS Uint8ClampedArray.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Uint8ClampedArray-readonly length: number--><!--Device-Uint8ClampedArray-readonly length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

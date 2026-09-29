@@ -12,6 +12,8 @@ Defines a onResult function.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-type OnResultFn = (parameter: AbilityResult) => void--><!--Device-unnamed-type OnResultFn = (parameter: AbilityResult) => void-End-->
+
 **System capability:** SystemCapability.Ability.AppExtension.VerticalPanel
 
 **System API:** This is a system API.

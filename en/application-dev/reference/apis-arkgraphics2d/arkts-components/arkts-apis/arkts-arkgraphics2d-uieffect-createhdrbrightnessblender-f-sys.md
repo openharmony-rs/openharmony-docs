@@ -16,6 +16,8 @@ Creates an HdrBrightnessBlender instance for adding an HDR-enabled brightness ef
 
 **Since:** 20
 
+<!--Device-uiEffect-function createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender--><!--Device-uiEffect-function createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.

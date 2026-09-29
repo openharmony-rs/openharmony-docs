@@ -20,6 +20,8 @@ Creates a **WebSocketServer** object, which provides methods to start or stop th
 
 **Since:** 19
 
+<!--Device-webSocket-function createWebSocketServer(): WebSocketServer--><!--Device-webSocket-function createWebSocketServer(): WebSocketServer-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**

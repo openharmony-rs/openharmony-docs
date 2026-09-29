@@ -10,6 +10,8 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 **Since:** 7
 
+<!--Device-unnamed-declare class ShapeAttribute extends CommonMethod<ShapeAttribute>--><!--Device-unnamed-declare class ShapeAttribute extends CommonMethod<ShapeAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## antiAlias
@@ -27,6 +29,8 @@ Sets whether to enable anti-aliasing. This attribute can be dynamically set usin
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ShapeAttribute-antiAlias(value: boolean): ShapeAttribute--><!--Device-ShapeAttribute-antiAlias(value: boolean): ShapeAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ Sets the color of the fill area. This attribute can be dynamically set using [at
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ShapeAttribute-fill(value: ResourceColor): ShapeAttribute--><!--Device-ShapeAttribute-fill(value: ResourceColor): ShapeAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -75,6 +81,8 @@ Sets the opacity of the fill area. This attribute can be dynamically set using [
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ShapeAttribute-fillOpacity(value: number | string | Resource): ShapeAttribute--><!--Device-ShapeAttribute-fillOpacity(value: number | string | Resource): ShapeAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,6 +118,8 @@ The coordinate array is stored in row-major order. After the original image is e
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ShapeAttribute-mesh(value: Array<any>, column: number, row: number): ShapeAttribute--><!--Device-ShapeAttribute-mesh(value: Array<any>, column: number, row: number): ShapeAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -136,6 +146,8 @@ Sets the stroke color. This attribute can be dynamically set using [attributeMod
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ShapeAttribute-stroke(value: ResourceColor): ShapeAttribute--><!--Device-ShapeAttribute-stroke(value: ResourceColor): ShapeAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -159,6 +171,8 @@ Sets the stroke dashes. This attribute can be dynamically set using [attributeMo
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ShapeAttribute-strokeDashArray(value: Array<any>): ShapeAttribute--><!--Device-ShapeAttribute-strokeDashArray(value: Array<any>): ShapeAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,6 +198,8 @@ Sets the offset of the start point for drawing the stroke. This attribute can be
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ShapeAttribute-strokeDashOffset(value: Length): ShapeAttribute--><!--Device-ShapeAttribute-strokeDashOffset(value: Length): ShapeAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -208,6 +224,8 @@ Sets the cap style of the stroke. This attribute can be dynamically set using [a
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ShapeAttribute-strokeLineCap(value: LineCapStyle): ShapeAttribute--><!--Device-ShapeAttribute-strokeLineCap(value: LineCapStyle): ShapeAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -231,6 +249,8 @@ Sets the join style of the stroke. This attribute can be dynamically set using [
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ShapeAttribute-strokeLineJoin(value: LineJoinStyle): ShapeAttribute--><!--Device-ShapeAttribute-strokeLineJoin(value: LineJoinStyle): ShapeAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -258,6 +278,8 @@ The value must be greater than or equal to 1.0. If the value is in the [0, 1) ra
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ShapeAttribute-strokeMiterLimit(value: Length): ShapeAttribute--><!--Device-ShapeAttribute-strokeMiterLimit(value: Length): ShapeAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -282,6 +304,8 @@ Sets the stroke opacity. This attribute can be dynamically set using [attributeM
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ShapeAttribute-strokeOpacity(value: number | string | Resource): ShapeAttribute--><!--Device-ShapeAttribute-strokeOpacity(value: number | string | Resource): ShapeAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -305,6 +329,8 @@ Sets the stroke width. This attribute can be dynamically set using [attributeMod
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ShapeAttribute-strokeWidth(value: Length): ShapeAttribute--><!--Device-ShapeAttribute-strokeWidth(value: Length): ShapeAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -331,6 +357,8 @@ The viewport defines the coordinate system and display area of the drawing conte
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ShapeAttribute-viewPort(value: ViewportRect): ShapeAttribute--><!--Device-ShapeAttribute-viewPort(value: ViewportRect): ShapeAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

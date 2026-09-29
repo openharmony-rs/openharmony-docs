@@ -4,6 +4,8 @@ The **backgroundTaskManager** module provides APIs to request background tasks. 
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace backgroundTaskManager--><!--Device-unnamed-declare namespace backgroundTaskManager-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## Modules to Import

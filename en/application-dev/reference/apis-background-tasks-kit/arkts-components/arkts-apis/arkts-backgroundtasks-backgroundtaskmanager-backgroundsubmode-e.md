@@ -8,6 +8,8 @@ Defines the subtype of a continuous task.
 
 **Since:** 16
 
+<!--Device-backgroundTaskManager-export enum BackgroundSubMode--><!--Device-backgroundTaskManager-export enum BackgroundSubMode-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## CAR_KEY
@@ -24,5 +26,7 @@ Car key.
 2. Continuous tasks of this type cannot be updated through the [updateBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-updatebackgroundrunning-f.md) API.
 
 **Since:** 16
+
+<!--Device-BackgroundSubMode-CAR_KEY = 1--><!--Device-BackgroundSubMode-CAR_KEY = 1-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask

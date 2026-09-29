@@ -6,13 +6,15 @@ declare class NavRouterAttribute extends CommonMethod<NavRouterAttribute>
 
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** NavRouterAttribute extends CommonMethod&lt;NavRouterAttribute&gt;
+**继承/实现关系：** NavRouterAttribute extends CommonMethod<NavRouterAttribute>
 
 **起始版本：** 9
 
 **废弃版本：** 13
 
 **替代接口：** NavPathStack and navDestination
+
+<!--Device-unnamed-declare class NavRouterAttribute extends CommonMethod<NavRouterAttribute>--><!--Device-unnamed-declare class NavRouterAttribute extends CommonMethod<NavRouterAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +35,8 @@ mode(mode: NavRouteMode)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavRouterAttribute-mode(mode: NavRouteMode): NavRouterAttribute--><!--Device-NavRouterAttribute-mode(mode: NavRouteMode): NavRouterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,6 +61,8 @@ onStateChange(callback: (isActivated: boolean) => void)
 **替代接口：** [onShown](arkts-arkui-navdestination-comp-attribute.md#onshown)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavRouterAttribute-onStateChange(callback: (isActivated: boolean) => void): NavRouterAttribute--><!--Device-NavRouterAttribute-onStateChange(callback: (isActivated: boolean) => void): NavRouterAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -12,6 +12,8 @@ Application events are defined by application developers and can be customized u
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace hiAppEvent--><!--Device-unnamed-declare namespace hiAppEvent-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import

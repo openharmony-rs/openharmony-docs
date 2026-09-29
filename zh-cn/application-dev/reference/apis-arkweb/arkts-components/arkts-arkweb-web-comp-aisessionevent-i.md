@@ -8,6 +8,8 @@ declare interface AISessionEvent
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare interface AISessionEvent--><!--Device-unnamed-declare interface AISessionEvent-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## onCreateAISession
@@ -21,6 +23,8 @@ AI会话创建时触发的回调函数。返回`true`跳过系统默认行为，
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AISessionEvent-onCreateAISession: OnCreateAISession--><!--Device-AISessionEvent-onCreateAISession: OnCreateAISession-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ AI会话销毁时触发的回调函数，用于清理与自定义AI模型关联�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-AISessionEvent-onDestroyAISession: OnDestroyAISession--><!--Device-AISessionEvent-onDestroyAISession: OnDestroyAISession-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## onExecuteAIAction
@@ -49,6 +55,8 @@ AI会话执行操作时触发的回调函数。
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AISessionEvent-onExecuteAIAction: OnExecuteAIAction--><!--Device-AISessionEvent-onExecuteAIAction: OnExecuteAIAction-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -65,5 +73,7 @@ AI会话类型。
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AISessionEvent-aiSessionType: AISessionType--><!--Device-AISessionEvent-aiSessionType: AISessionType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

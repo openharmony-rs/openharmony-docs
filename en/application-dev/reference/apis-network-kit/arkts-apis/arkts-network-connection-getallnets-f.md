@@ -20,6 +20,8 @@ Obtains the list of all connected networks. This API uses an asynchronous callba
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-connection-function getAllNets(callback: AsyncCallback<Array<NetHandle>>): void--><!--Device-connection-function getAllNets(callback: AsyncCallback<Array<NetHandle>>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -68,6 +70,8 @@ Obtains the list of all connected networks. This API uses a promise to return th
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-connection-function getAllNets(): Promise<Array<NetHandle>>--><!--Device-connection-function getAllNets(): Promise<Array<NetHandle>>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

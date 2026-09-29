@@ -8,6 +8,8 @@ Enumerates the NearLink pairing types.
 
 **Since:** 26.0.0
 
+<!--Device-remoteDevice-enum PairingType--><!--Device-remoteDevice-enum PairingType-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## NO_PASSKEY_CONFIRMATION
@@ -21,6 +23,8 @@ Pairing type that does not require a passkey. Users do not need to check the pai
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PairingType-NO_PASSKEY_CONFIRMATION = 0--><!--Device-PairingType-NO_PASSKEY_CONFIRMATION = 0-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -36,6 +40,8 @@ Pairing type with passcode authentication. Users need to enter the pairing code 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PairingType-PAIRING_TYPE_PASSCODE = 1--><!--Device-PairingType-PAIRING_TYPE_PASSCODE = 1-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## PAIRING_TYPE_NUMBER_COMPARE
@@ -49,5 +55,7 @@ Pairing type with authentication based on digit comparison. Users must ensure th
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PairingType-PAIRING_TYPE_NUMBER_COMPARE = 2--><!--Device-PairingType-PAIRING_TYPE_NUMBER_COMPARE = 2-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

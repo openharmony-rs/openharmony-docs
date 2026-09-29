@@ -8,6 +8,8 @@ This class offers a set of operations to generate drawing commands.
 
 **Since:** 26.0.1
 
+<!--Device-drawing-class RecordCmdUtils--><!--Device-drawing-class RecordCmdUtils-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Gets the canvas that records the drawing commands.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RecordCmdUtils-beginRecording(width: number, height: number): Canvas--><!--Device-RecordCmdUtils-beginRecording(width: number, height: number): Canvas-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -61,6 +65,8 @@ Finishes recording and returns the recorded command object.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RecordCmdUtils-finishRecording(): RecordCmd--><!--Device-RecordCmdUtils-finishRecording(): RecordCmd-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -81,6 +87,8 @@ Gets the height of the recording canvas.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RecordCmdUtils-getHeight(): int--><!--Device-RecordCmdUtils-getHeight(): int-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -100,6 +108,8 @@ Gets the width of the recording canvas.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RecordCmdUtils-getWidth(): int--><!--Device-RecordCmdUtils-getWidth(): int-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

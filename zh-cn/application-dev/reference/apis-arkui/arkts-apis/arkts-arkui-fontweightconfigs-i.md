@@ -8,6 +8,8 @@ declare interface FontWeightConfigs
 
 **起始版本：** 24
 
+<!--Device-unnamed-declare interface FontWeightConfigs--><!--Device-unnamed-declare interface FontWeightConfigs-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableDeviceFontWeightCategory
@@ -32,6 +34,8 @@ false：当设备的字体粗细级别发生变化时，字重不会自动更新
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
+<!--Device-FontWeightConfigs-enableDeviceFontWeightCategory?: boolean--><!--Device-FontWeightConfigs-enableDeviceFontWeightCategory?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableVariableFontWeight
@@ -55,5 +59,7 @@ false：禁用可变字重调节。此时如果weight取值为[100, 900]范围�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
+
+<!--Device-FontWeightConfigs-enableVariableFontWeight?: boolean--><!--Device-FontWeightConfigs-enableVariableFontWeight?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

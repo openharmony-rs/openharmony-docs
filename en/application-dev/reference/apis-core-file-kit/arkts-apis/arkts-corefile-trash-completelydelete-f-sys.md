@@ -22,6 +22,8 @@ Permanently deletes a file or directory from the **Recently deleted** list.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-trash-function completelyDelete(uri: string): void--><!--Device-trash-function completelyDelete(uri: string): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.

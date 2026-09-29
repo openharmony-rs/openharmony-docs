@@ -8,6 +8,8 @@ Interface for car awareness response info.
 
 **Since:** 26.0.1
 
+<!--Device-carAwareness-export interface CarAwarenessInfo--><!--Device-carAwareness-export interface CarAwarenessInfo-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Interface for car awareness data items list information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CarAwarenessInfo-awarenessEvent?:Record<string, Object>--><!--Device-CarAwarenessInfo-awarenessEvent?:Record<string, Object>-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ Indicates specific capability.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CarAwarenessInfo-capability: Capability--><!--Device-CarAwarenessInfo-capability: Capability-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ Indicates timestamp . Unit: milliseconds.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CarAwarenessInfo-timestamp: number--><!--Device-CarAwarenessInfo-timestamp: number-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 

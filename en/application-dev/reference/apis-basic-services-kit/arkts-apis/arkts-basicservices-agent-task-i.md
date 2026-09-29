@@ -13,6 +13,8 @@ Implements an upload or download task. Before using this API, you must obtain a 
 
 **Since:** 10
 
+<!--Device-agent-interface Task--><!--Device-agent-interface Task-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## Modules to Import
@@ -38,6 +40,8 @@ Unsubscribes from task progress events.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Task-off(event: 'progress', callback?: (progress: Progress) => void): void--><!--Device-Task-off(event: 'progress', callback?: (progress: Progress) => void): void-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -75,6 +79,8 @@ Unsubscribes from task completion events.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Task-off(event: 'completed', callback?: (progress: Progress) => void): void--><!--Device-Task-off(event: 'completed', callback?: (progress: Progress) => void): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -111,6 +117,8 @@ Unsubscribes from task failure events.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Task-off(event: 'failed', callback?: (progress: Progress) => void): void--><!--Device-Task-off(event: 'failed', callback?: (progress: Progress) => void): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -145,6 +153,8 @@ Unsubscribes from the foreground task pause event.
 
 **Since:** 11
 
+<!--Device-Task-off(event: 'pause', callback?: (progress: Progress) => void): void--><!--Device-Task-off(event: 'pause', callback?: (progress: Progress) => void): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -178,6 +188,8 @@ Unsubscribes from foreground task resume events.
 
 **Since:** 11
 
+<!--Device-Task-off(event: 'resume', callback?: (progress: Progress) => void): void--><!--Device-Task-off(event: 'resume', callback?: (progress: Progress) => void): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -210,6 +222,8 @@ Unsubscribes from the task removal event.
 > .
 
 **Since:** 11
+
+<!--Device-Task-off(event: 'remove', callback?: (progress: Progress) => void): void--><!--Device-Task-off(event: 'remove', callback?: (progress: Progress) => void): void-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -246,6 +260,8 @@ Unsubscribes from task response headers.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Task-off(event: 'response', callback?: Callback<HttpResponse>): void--><!--Device-Task-off(event: 'response', callback?: Callback<HttpResponse>): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -278,6 +294,8 @@ Unsubscribes from task failure events.
 > .
 
 **Since:** 20
+
+<!--Device-Task-off(event: 'faultOccur', callback?: Callback<Faults>): void--><!--Device-Task-off(event: 'faultOccur', callback?: Callback<Faults>): void-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -312,6 +330,8 @@ Unsubscribes from task waiting events.
 
 **Since:** 20
 
+<!--Device-Task-off(event: 'wait', callback?: Callback<WaitingReason>): void--><!--Device-Task-off(event: 'wait', callback?: Callback<WaitingReason>): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -344,6 +364,8 @@ Subscribes to task progress changes. This API uses an asynchronous callback to r
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Task-on(event: 'progress', callback: (progress: Progress) => void): void--><!--Device-Task-on(event: 'progress', callback: (progress: Progress) => void): void-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -381,6 +403,8 @@ Subscribes to task completion events. This API uses an asynchronous callback to 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Task-on(event: 'completed', callback: (progress: Progress) => void): void--><!--Device-Task-on(event: 'completed', callback: (progress: Progress) => void): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -417,6 +441,8 @@ Subscribes to task failure events. This API uses an asynchronous callback to ret
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Task-on(event: 'failed', callback: (progress: Progress) => void): void--><!--Device-Task-on(event: 'failed', callback: (progress: Progress) => void): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -451,6 +477,8 @@ Subscribes to task pause events. This API uses an asynchronous callback to retur
 
 **Since:** 11
 
+<!--Device-Task-on(event: 'pause', callback: (progress: Progress) => void): void--><!--Device-Task-on(event: 'pause', callback: (progress: Progress) => void): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -484,6 +512,8 @@ Subscribes to task resume events. This API uses an asynchronous callback to retu
 
 **Since:** 11
 
+<!--Device-Task-on(event: 'resume', callback: (progress: Progress) => void): void--><!--Device-Task-on(event: 'resume', callback: (progress: Progress) => void): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -516,6 +546,8 @@ Subscribes to task removal events. This API uses an asynchronous callback to ret
 > .
 
 **Since:** 11
+
+<!--Device-Task-on(event: 'remove', callback: (progress: Progress) => void): void--><!--Device-Task-on(event: 'remove', callback: (progress: Progress) => void): void-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -552,6 +584,8 @@ Subscribes to task response headers. This API uses an asynchronous callback to r
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Task-on(event: 'response', callback: Callback<HttpResponse>): void--><!--Device-Task-on(event: 'response', callback: Callback<HttpResponse>): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -584,6 +618,8 @@ Subscribes to task failure events. This API uses a callback to return the result
 > .
 
 **Since:** 20
+
+<!--Device-Task-on(event: 'faultOccur', callback: Callback<Faults>): void--><!--Device-Task-on(event: 'faultOccur', callback: Callback<Faults>): void-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -618,6 +654,8 @@ Subscribes to task wait events. This API uses a callback to return the result.
 
 **Since:** 20
 
+<!--Device-Task-on(event: 'wait', callback: Callback<WaitingReason>): void--><!--Device-Task-on(event: 'wait', callback: Callback<WaitingReason>): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**
@@ -642,6 +680,8 @@ pause(callback: AsyncCallback<void>): void
 Pauses a task that is waiting, running, or retrying. A paused task can be resumed by [resume](#resume). This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-Task-pause(callback: AsyncCallback<void>): void--><!--Device-Task-pause(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -671,6 +711,8 @@ Pauses a task that is waiting, running, or retrying. A paused task can be resume
 
 **Since:** 10
 
+<!--Device-Task-pause(): Promise<void>--><!--Device-Task-pause(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Return value:**
@@ -698,6 +740,8 @@ Resumes a paused task. This API uses an asynchronous callback to return the resu
 **Since:** 10
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-Task-resume(callback: AsyncCallback<void>): void--><!--Device-Task-resume(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -730,6 +774,8 @@ Resumes a paused task. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-Task-resume(): Promise<void>--><!--Device-Task-resume(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Return value:**
@@ -756,6 +802,8 @@ setMaxSpeed(speed: number): Promise<void>
 Sets the maximum number of bytes that can be transmitted by a task per second. This API uses a promise to return the result.
 
 **Since:** 18
+
+<!--Device-Task-setMaxSpeed(speed: long): Promise<void>--><!--Device-Task-setMaxSpeed(speed: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -801,7 +849,9 @@ Tasks in the following states can be started:
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Task-start(callback: AsyncCallback<void>): void--><!--Device-Task-start(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -844,7 +894,9 @@ Tasks in the following states can be started:
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Task-start(): Promise<void>--><!--Device-Task-start(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -872,7 +924,9 @@ Stops a task that is running, waiting, or retrying. A paused task can be resumed
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Task-stop(callback: AsyncCallback<void>): void--><!--Device-Task-stop(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -901,7 +955,9 @@ Stops a task that is running, waiting, or retrying. A paused task can be resumed
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Task-stop(): Promise<void>--><!--Device-Task-stop(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -930,7 +986,9 @@ Task configuration.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Task-config: Config--><!--Device-Task-config: Config-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -946,6 +1004,8 @@ Task ID, which is unique and automatically generated by the system.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Task-readonly tid: string--><!--Device-Task-readonly tid: string-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

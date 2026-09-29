@@ -18,6 +18,8 @@ Check whether Bluetooth is available.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-access-function isBluetoothSupported(): boolean--><!--Device-access-function isBluetoothSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

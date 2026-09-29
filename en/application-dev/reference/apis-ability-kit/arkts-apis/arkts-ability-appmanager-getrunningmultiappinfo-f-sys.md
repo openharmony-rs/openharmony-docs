@@ -20,6 +20,8 @@ Obtains the information about running applications in multi-app mode. The multi-
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-appManager-function getRunningMultiAppInfo(bundleName: string): Promise<RunningMultiAppInfo>--><!--Device-appManager-function getRunningMultiAppInfo(bundleName: string): Promise<RunningMultiAppInfo>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

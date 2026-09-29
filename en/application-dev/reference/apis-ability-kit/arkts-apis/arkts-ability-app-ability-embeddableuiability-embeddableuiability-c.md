@@ -10,6 +10,8 @@ EmbeddableUIAbility is an embeddable UIAbility component provided for atomic ser
 
 **Since:** 12
 
+<!--Device-unnamed-export default class EmbeddableUIAbility extends UIAbility--><!--Device-unnamed-export default class EmbeddableUIAbility extends UIAbility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -33,5 +35,7 @@ Context of the EmbeddableUIAbility.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-EmbeddableUIAbility-context: EmbeddableUIAbilityContext--><!--Device-EmbeddableUIAbility-context: EmbeddableUIAbilityContext-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

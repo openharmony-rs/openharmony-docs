@@ -8,6 +8,8 @@ Describes the HDR metadata values used by a PixelMap, which corresponds to the v
 
 **Since:** 12
 
+<!--Device-image-type HdrMetadataValue = HdrMetadataType | HdrStaticMetadata | ArrayBuffer | HdrGainmapMetadata--><!--Device-image-type HdrMetadataValue = HdrMetadataType | HdrStaticMetadata | ArrayBuffer | HdrGainmapMetadata-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 | Type | Description |

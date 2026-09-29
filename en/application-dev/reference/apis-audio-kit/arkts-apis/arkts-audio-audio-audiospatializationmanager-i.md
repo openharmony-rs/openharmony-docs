@@ -14,6 +14,8 @@ Before calling any API in AudioSpatializationManager, you must use [getSpatializ
 
 **Since:** 18
 
+<!--Device-audio-interface AudioSpatializationManager--><!--Device-audio-interface AudioSpatializationManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Spatialization
 
 ## Modules to Import
@@ -31,6 +33,8 @@ isSpatializationEnabledForCurrentDevice(): boolean
 Checks whether spatial audio rendering is enabled for the current device. This API returns the result synchronously.
 
 **Since:** 18
+
+<!--Device-AudioSpatializationManager-isSpatializationEnabledForCurrentDevice(): boolean--><!--Device-AudioSpatializationManager-isSpatializationEnabledForCurrentDevice(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -58,6 +62,8 @@ off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boo
 Unsubscribes from the spatial audio rendering status change event of the current device. This API uses an asynchronous callback to return the result.
 
 **Since:** 18
+
+<!--Device-AudioSpatializationManager-off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boolean>): void--><!--Device-AudioSpatializationManager-off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -90,6 +96,8 @@ on(type: 'spatializationEnabledChangeForCurrentDevice', callback: Callback<boole
 Subscribes to the spatial audio rendering status change event of the current device. This API uses an asynchronous callback to return the result.
 
 **Since:** 18
+
+<!--Device-AudioSpatializationManager-on(type: 'spatializationEnabledChangeForCurrentDevice', callback: Callback<boolean>): void--><!--Device-AudioSpatializationManager-on(type: 'spatializationEnabledChangeForCurrentDevice', callback: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Spatialization
 

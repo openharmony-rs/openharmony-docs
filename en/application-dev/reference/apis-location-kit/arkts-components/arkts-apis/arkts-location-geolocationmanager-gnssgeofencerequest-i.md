@@ -8,6 +8,8 @@ Configuring parameters in GNSS geofence requests.
 
 **Since:** 12
 
+<!--Device-geoLocationManager-export interface GnssGeofenceRequest--><!--Device-geoLocationManager-export interface GnssGeofenceRequest-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Indicates the name of FenceExtensionAbility.
 
 **Since:** 23
 
+<!--Device-GnssGeofenceRequest-fenceExtensionAbilityName?: string--><!--Device-GnssGeofenceRequest-fenceExtensionAbilityName?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## geofence
@@ -41,6 +45,8 @@ Circular fence information.
 **Type:** [Geofence](arkts-location-geolocationmanager-geofence-i.md)
 
 **Since:** 12
+
+<!--Device-GnssGeofenceRequest-geofence: Geofence--><!--Device-GnssGeofenceRequest-geofence: Geofence-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -56,6 +62,8 @@ Indicates the callback for reporting the geofence transition status.
 
 **Since:** 12
 
+<!--Device-GnssGeofenceRequest-geofenceTransitionCallback: AsyncCallback<GeofenceTransition>--><!--Device-GnssGeofenceRequest-geofenceTransitionCallback: AsyncCallback<GeofenceTransition>-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## loiterTimeMs
@@ -69,6 +77,8 @@ Indicates time for which a device is dwelling in the geofence, in milliseconds. 
 **Type:** number
 
 **Since:** 23
+
+<!--Device-GnssGeofenceRequest-loiterTimeMs?: int--><!--Device-GnssGeofenceRequest-loiterTimeMs?: int-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -84,6 +94,8 @@ Indicates geofence transition status monitored.
 
 **Since:** 12
 
+<!--Device-GnssGeofenceRequest-monitorTransitionEvents: Array<GeofenceTransitionEvent>--><!--Device-GnssGeofenceRequest-monitorTransitionEvents: Array<GeofenceTransitionEvent>-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## notifications
@@ -97,5 +109,7 @@ Indicates the geofence notifications to publish.
 **Type:** Array&lt;[NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md)&gt;
 
 **Since:** 12
+
+<!--Device-GnssGeofenceRequest-notifications?: Array<NotificationRequest>--><!--Device-GnssGeofenceRequest-notifications?: Array<NotificationRequest>-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence

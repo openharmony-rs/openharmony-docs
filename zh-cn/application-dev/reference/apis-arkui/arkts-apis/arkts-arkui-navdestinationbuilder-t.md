@@ -10,11 +10,13 @@ export type NavDestinationBuilder = (name: string, param?: Object) => void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export type NavDestinationBuilder = (name: string, param?: Object) => void--><!--Device-unnamed-export type NavDestinationBuilder = (name: string, param?: Object) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | NavDestination页面名称。 |
-| param | Object | 否 | NavDestination页面详细参数。默认值为空。 |
+| name | string | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md)页面名称。 |
+| param | Object | 否 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md)页面详细参数。默认值为空。 |

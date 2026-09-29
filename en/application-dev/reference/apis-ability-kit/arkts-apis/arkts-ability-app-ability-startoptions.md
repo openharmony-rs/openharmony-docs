@@ -1,4 +1,4 @@
-# @ohos.app.ability.StartOptions
+# @ohos.app.ability.StartOptions(startAbility Options)
 
 ## Modules to Import
 

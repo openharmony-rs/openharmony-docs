@@ -18,6 +18,8 @@ Obtains the Want corresponding to the ability to start. This API uses an asynchr
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-featureAbility-function getWant(callback: AsyncCallback<Want>): void--><!--Device-featureAbility-function getWant(callback: AsyncCallback<Want>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -55,6 +57,8 @@ Obtains the Want corresponding to the ability to start. This API uses a promise 
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-featureAbility-function getWant(): Promise<Want>--><!--Device-featureAbility-function getWant(): Promise<Want>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 

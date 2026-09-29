@@ -8,6 +8,8 @@ Defines arguments for an event query.
 
 **Since:** 9
 
+<!--Device-hiSysEvent-interface QueryArg--><!--Device-hiSysEvent-interface QueryArg-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Start time of the system event to be queried. The value is a 13-digit timestamp,
 
 **Since:** 9
 
+<!--Device-QueryArg-beginTime: long--><!--Device-QueryArg-beginTime: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ End time of the system event to be queried. The value is a 13-digit timestamp, i
 **Type:** number
 
 **Since:** 9
+
+<!--Device-QueryArg-endTime: long--><!--Device-QueryArg-endTime: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -62,6 +68,8 @@ Start SN of the events to be queried. The default value is **-1**
 
 **Since:** 10
 
+<!--Device-QueryArg-fromSeq?: long--><!--Device-QueryArg-fromSeq?: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.
@@ -78,6 +86,8 @@ Maximum number of events that can be queried.
 
 **Since:** 9
 
+<!--Device-QueryArg-maxEvents: long--><!--Device-QueryArg-maxEvents: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ End SN of the system events to be queried. The default value is **-1**.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-QueryArg-toSeq?: long--><!--Device-QueryArg-toSeq?: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 

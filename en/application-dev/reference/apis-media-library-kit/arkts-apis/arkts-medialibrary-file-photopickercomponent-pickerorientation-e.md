@@ -10,6 +10,8 @@ This capability can be configured since API version 20. If this capability is se
 
 **Since:** 12
 
+<!--Device-unnamed-export declare enum PickerOrientation--><!--Device-unnamed-export declare enum PickerOrientation-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## VERTICAL
@@ -24,6 +26,8 @@ Vertical direction.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PickerOrientation-VERTICAL = 0--><!--Device-PickerOrientation-VERTICAL = 0-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## HORIZONTAL
@@ -37,5 +41,7 @@ Horizontal direction.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerOrientation-HORIZONTAL = 1--><!--Device-PickerOrientation-HORIZONTAL = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

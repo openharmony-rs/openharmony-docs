@@ -8,6 +8,8 @@ Describes the named route options.
 
 **Since:** 10
 
+<!--Device-router-interface NamedRouterOptions--><!--Device-router-interface NamedRouterOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Name of the target named route.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NamedRouterOptions-name: string--><!--Device-NamedRouterOptions-name: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## params
@@ -53,6 +57,8 @@ The **params** parameter cannot pass objects returned by methods and system APIs
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NamedRouterOptions-params?: Object--><!--Device-NamedRouterOptions-params?: Object-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,5 +83,7 @@ If an application is switched to the background and is later closed by the syste
 **Type:** boolean
 
 **Since:** 14
+
+<!--Device-NamedRouterOptions-recoverable?: boolean--><!--Device-NamedRouterOptions-recoverable?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite

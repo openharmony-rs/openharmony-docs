@@ -8,6 +8,8 @@ Mode Indicates the open flags.
 
 **Since:** 9
 
+<!--Device-fileIo-namespace OpenMode--><!--Device-fileIo-namespace OpenMode-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import

@@ -8,6 +8,8 @@ Defines the parameters for sending data over a TCP socket connection.
 
 **Since:** 7
 
+<!--Device-socket-export interface TCPSendOptions--><!--Device-socket-export interface TCPSendOptions-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Data to send.
 
 **Since:** 7
 
+<!--Device-TCPSendOptions-data: string | ArrayBuffer--><!--Device-TCPSendOptions-data: string | ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## encoding
@@ -41,5 +45,7 @@ Character encoding format. The options are as follows: **UTF-8**, **UTF-16BE**, 
 **Type:** string
 
 **Since:** 7
+
+<!--Device-TCPSendOptions-encoding?: string--><!--Device-TCPSendOptions-encoding?: string-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

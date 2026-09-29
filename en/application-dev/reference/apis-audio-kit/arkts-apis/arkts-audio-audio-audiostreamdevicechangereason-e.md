@@ -8,6 +8,8 @@ Enumerates the reasons for audio stream device changes.
 
 **Since:** 11
 
+<!--Device-audio-enum AudioStreamDeviceChangeReason--><!--Device-audio-enum AudioStreamDeviceChangeReason-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 ## REASON_UNKNOWN
@@ -20,7 +22,9 @@ Unknown reason.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AudioStreamDeviceChangeReason-REASON_UNKNOWN = 0--><!--Device-AudioStreamDeviceChangeReason-REASON_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -34,7 +38,9 @@ A new device is available.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AudioStreamDeviceChangeReason-REASON_NEW_DEVICE_AVAILABLE = 1--><!--Device-AudioStreamDeviceChangeReason-REASON_NEW_DEVICE_AVAILABLE = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -48,7 +54,9 @@ The old device is unavailable. When this reason is reported, consider pausing au
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AudioStreamDeviceChangeReason-REASON_OLD_DEVICE_UNAVAILABLE = 2--><!--Device-AudioStreamDeviceChangeReason-REASON_OLD_DEVICE_UNAVAILABLE = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -62,7 +70,9 @@ Forcibly selected.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AudioStreamDeviceChangeReason-REASON_OVERRODE = 3--><!--Device-AudioStreamDeviceChangeReason-REASON_OVERRODE = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -76,6 +86,8 @@ The audio session has been activated.
 
 **Since:** 20
 
+<!--Device-AudioStreamDeviceChangeReason-REASON_SESSION_ACTIVATED = 4--><!--Device-AudioStreamDeviceChangeReason-REASON_SESSION_ACTIVATED = 4-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 ## REASON_STREAM_PRIORITY_CHANGED
@@ -87,5 +99,7 @@ REASON_STREAM_PRIORITY_CHANGED = 5
 An audio stream with higher priority appears.
 
 **Since:** 20
+
+<!--Device-AudioStreamDeviceChangeReason-REASON_STREAM_PRIORITY_CHANGED = 5--><!--Device-AudioStreamDeviceChangeReason-REASON_STREAM_PRIORITY_CHANGED = 5-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device

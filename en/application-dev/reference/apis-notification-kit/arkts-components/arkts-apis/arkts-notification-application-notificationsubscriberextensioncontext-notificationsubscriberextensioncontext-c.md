@@ -12,6 +12,8 @@ The **NotificationSubscriberExtensionContext** module provides the context for t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export default class NotificationSubscriberExtensionContext extends ExtensionContext--><!--Device-unnamed-export default class NotificationSubscriberExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## Modules to Import

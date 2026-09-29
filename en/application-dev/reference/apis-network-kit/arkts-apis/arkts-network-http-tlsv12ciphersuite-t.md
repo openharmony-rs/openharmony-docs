@@ -8,7 +8,9 @@ Declares the cipher suite for TLS 1.2, which is also compatible with TLS 1.1.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-http-export type TlsV12CipherSuite = TlsV11CipherSuite | TlsV12SpecificCipherSuite--><!--Device-http-export type TlsV12CipherSuite = TlsV11CipherSuite | TlsV12SpecificCipherSuite-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 

@@ -24,6 +24,8 @@ Uninstalls a user certificate. This API uses a callback to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function uninstallUserCertificate(admin: Want, certUri: string, callback: AsyncCallback<void>): void--><!--Device-deviceSettings-function uninstallUserCertificate(admin: Want, certUri: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -89,6 +91,8 @@ Uninstalls a user certificate. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-deviceSettings-function uninstallUserCertificate(admin: Want, certUri: string): Promise<void>--><!--Device-deviceSettings-function uninstallUserCertificate(admin: Want, certUri: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

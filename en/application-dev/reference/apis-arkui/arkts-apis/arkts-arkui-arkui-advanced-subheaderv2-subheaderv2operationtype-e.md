@@ -8,6 +8,8 @@ Defines the style of elements in the operation area.
 
 **Since:** 18
 
+<!--Device-unnamed-export declare enum SubHeaderV2OperationType--><!--Device-unnamed-export declare enum SubHeaderV2OperationType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXT_ARROW
@@ -23,6 +25,8 @@ Text button with a right arrow.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2OperationType-TEXT_ARROW = 0--><!--Device-SubHeaderV2OperationType-TEXT_ARROW = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Text button without a right arrow.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2OperationType-BUTTON = 1--><!--Device-SubHeaderV2OperationType-BUTTON = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ICON_GROUP
@@ -56,6 +62,8 @@ Icon-attached button (A maximum of three icons can be configured.)
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2OperationType-ICON_GROUP = 2--><!--Device-SubHeaderV2OperationType-ICON_GROUP = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## LOADING
@@ -71,5 +79,7 @@ Loading animation.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2OperationType-LOADING = 3--><!--Device-SubHeaderV2OperationType-LOADING = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

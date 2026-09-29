@@ -10,6 +10,8 @@ interface TapGestureHandlerOptions extends BaseHandlerOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface TapGestureHandlerOptions extends BaseHandlerOptions--><!--Device-unnamed-interface TapGestureHandlerOptions extends BaseHandlerOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## count
@@ -36,6 +38,8 @@ count?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TapGestureHandlerOptions-count?: number--><!--Device-TapGestureHandlerOptions-count?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,6 +69,8 @@ distanceThreshold?: number
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-TapGestureHandlerOptions-distanceThreshold?: number--><!--Device-TapGestureHandlerOptions-distanceThreshold?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fingers
@@ -89,5 +95,7 @@ fingers?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TapGestureHandlerOptions-fingers?: number--><!--Device-TapGestureHandlerOptions-fingers?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -20,6 +20,8 @@ Recycles widgets, that is, reclaiming widget memory. This API uses a promise to 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function recycleForms(formIds: Array<string>): Promise<void>--><!--Device-formHost-function recycleForms(formIds: Array<string>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

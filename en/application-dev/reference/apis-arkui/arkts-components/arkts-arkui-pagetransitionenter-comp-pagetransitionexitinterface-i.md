@@ -6,11 +6,11 @@ interface PageTransitionExitInterface extends CommonTransition<PageTransitionExi
 
 Provide an interface to set transition style when a page exits.
 
-@extends CommonTransition&lt;PageTransitionExitInterface&gt; @interface PageTransitionExitInterface
-
 **Inheritance/Implementation:** PageTransitionExitInterface extends CommonTransition<PageTransitionExitInterface>
 
 **Since:** 7
+
+<!--Device-unnamed-interface PageTransitionExitInterface extends CommonTransition<PageTransitionExitInterface>--><!--Device-unnamed-interface PageTransitionExitInterface extends CommonTransition<PageTransitionExitInterface>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +25,8 @@ Sets the page exit animation.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PageTransitionExitInterface-(value: PageTransitionOptions): PageTransitionExitInterface--><!--Device-PageTransitionExitInterface-(value: PageTransitionOptions): PageTransitionExitInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +53,8 @@ Invoked on a per-frame basis until the exit animation is complete, with the **pr
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PageTransitionExitInterface-onExit(event: PageTransitionCallback): PageTransitionExitInterface--><!--Device-PageTransitionExitInterface-onExit(event: PageTransitionCallback): PageTransitionExitInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

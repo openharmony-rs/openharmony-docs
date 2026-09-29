@@ -10,6 +10,8 @@ Sets the type of sliding panel.
 
 **Deprecated since:** 12
 
+<!--Device-unnamed-declare enum PanelType--><!--Device-unnamed-declare enum PanelType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Minibar
@@ -27,6 +29,8 @@ The switch between the minibar and full-screen display is provided.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanelType-Minibar = 0--><!--Device-PanelType-Minibar = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Permanent content display class. The switchover effect is provided in three size
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanelType-Foldable = 1--><!--Device-PanelType-Foldable = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Temporary
@@ -64,6 +70,8 @@ Temporary content display area. The switchover effect is provided in three sizes
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanelType-Temporary = 2--><!--Device-PanelType-Temporary = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CUSTOM
@@ -81,5 +89,7 @@ Custom content display area. The switchover effect is provided in three sizes: l
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanelType-CUSTOM = 3--><!--Device-PanelType-CUSTOM = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -18,6 +18,8 @@ Check whether screen lock is disabled for os account local userId.
 
 **Required permissions:** ohos.permission.ACCESS_SCREEN_LOCK
 
+<!--Device-screenLock-function isScreenLockDisabled(userId: int): boolean--><!--Device-screenLock-function isScreenLockDisabled(userId: int): boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **System API:** This is a system API.

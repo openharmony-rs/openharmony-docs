@@ -8,6 +8,8 @@ Represents media query list information.
 
 **Since:** 3
 
+<!--Device-unnamed-export interface MediaQueryList--><!--Device-unnamed-export interface MediaQueryList-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Adds a listener for this **MediaQueryList** object. The listener must be added b
 **Since:** 3
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MediaQueryList-addListener(callback: (event: MediaQueryEvent) => void): void--><!--Device-MediaQueryList-addListener(callback: (event: MediaQueryEvent) => void): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +66,8 @@ Callback invoked when the match result changes. **matches** indicates whether th
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MediaQueryList-onchange?: (matches: boolean) => void--><!--Device-MediaQueryList-onchange?: (matches: boolean) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -81,6 +87,8 @@ Removes the listener for this **MediaQueryList** object.
 **Since:** 3
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MediaQueryList-removeListener(callback: (event: MediaQueryEvent) => void): void--><!--Device-MediaQueryList-removeListener(callback: (event: MediaQueryEvent) => void): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,6 +126,8 @@ Matching result. The value **true** means that the query condition is met, and *
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MediaQueryList-matches?: boolean--><!--Device-MediaQueryList-matches?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## media
@@ -133,5 +143,7 @@ Serialized media query condition.
 **Since:** 3
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MediaQueryList-media?: string--><!--Device-MediaQueryList-media?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

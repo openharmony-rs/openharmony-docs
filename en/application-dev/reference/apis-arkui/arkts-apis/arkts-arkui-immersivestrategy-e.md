@@ -8,6 +8,8 @@ Enumerates the immersive strategies for the safe area.
 
 **Since:** 26.2.0
 
+<!--Device-unnamed-declare enum ImmersiveStrategy--><!--Device-unnamed-declare enum ImmersiveStrategy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## AVOID_CUTOUT
@@ -30,6 +32,8 @@ Avoid the cutout area.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-ImmersiveStrategy-AVOID_CUTOUT = 0--><!--Device-ImmersiveStrategy-AVOID_CUTOUT = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## AVOID_FLOAT_NAV
@@ -45,5 +49,7 @@ Avoid the three-button navigation bar area on the phone.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-ImmersiveStrategy-AVOID_FLOAT_NAV = 1--><!--Device-ImmersiveStrategy-AVOID_FLOAT_NAV = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

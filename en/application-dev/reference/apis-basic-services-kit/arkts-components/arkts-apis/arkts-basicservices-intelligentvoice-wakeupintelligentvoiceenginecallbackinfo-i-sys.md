@@ -8,6 +8,8 @@ Describes wakeup intelligent voice engine callback information. @typedef WakeupI
 
 **Since:** 10
 
+<!--Device-intelligentVoice-interface WakeupIntelligentVoiceEngineCallbackInfo--><!--Device-intelligentVoice-interface WakeupIntelligentVoiceEngineCallbackInfo-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Describes wakeup event context.
 
 **Since:** 10
 
+<!--Device-WakeupIntelligentVoiceEngineCallbackInfo-context: string--><!--Device-WakeupIntelligentVoiceEngineCallbackInfo-context: string-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Wakeup event id.
 
 **Since:** 10
 
+<!--Device-WakeupIntelligentVoiceEngineCallbackInfo-eventId: WakeupIntelligentVoiceEventType--><!--Device-WakeupIntelligentVoiceEngineCallbackInfo-eventId: WakeupIntelligentVoiceEventType-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Is success.
 **Type:** boolean
 
 **Since:** 10
+
+<!--Device-WakeupIntelligentVoiceEngineCallbackInfo-isSuccess: boolean--><!--Device-WakeupIntelligentVoiceEngineCallbackInfo-isSuccess: boolean-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 

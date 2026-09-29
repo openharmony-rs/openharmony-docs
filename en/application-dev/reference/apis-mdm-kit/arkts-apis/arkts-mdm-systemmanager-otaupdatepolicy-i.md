@@ -8,6 +8,8 @@ Represents an OTA update policy.
 
 **Since:** 12
 
+<!--Device-systemManager-export interface OtaUpdatePolicy--><!--Device-systemManager-export interface OtaUpdatePolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Period for which the update is postponed, in hours.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OtaUpdatePolicy-delayUpdateTime?: number--><!--Device-OtaUpdatePolicy-delayUpdateTime?: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## disableSystemOtaUpdate
@@ -45,6 +49,8 @@ Whether to disable public network upgrade. The value **true** indicates that pub
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OtaUpdatePolicy-disableSystemOtaUpdate?: boolean--><!--Device-OtaUpdatePolicy-disableSystemOtaUpdate?: boolean-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -62,6 +68,8 @@ End time (timestamp) of the installation window.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OtaUpdatePolicy-installEndTime?: number--><!--Device-OtaUpdatePolicy-installEndTime?: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## installStartTime
@@ -77,6 +85,8 @@ Start time (timestamp) of the installation window.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OtaUpdatePolicy-installStartTime?: number--><!--Device-OtaUpdatePolicy-installStartTime?: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -94,6 +104,8 @@ Latest update time (timestamp).
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OtaUpdatePolicy-latestUpdateTime?: number--><!--Device-OtaUpdatePolicy-latestUpdateTime?: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## policyType
@@ -110,6 +122,8 @@ Type of the update policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OtaUpdatePolicy-policyType: PolicyType--><!--Device-OtaUpdatePolicy-policyType: PolicyType-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## version
@@ -125,5 +139,7 @@ Version of the software to update.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OtaUpdatePolicy-version: string--><!--Device-OtaUpdatePolicy-version: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

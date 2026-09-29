@@ -8,6 +8,8 @@ Enumerates options for file copy conflicts.
 
 **Since:** 15
 
+<!--Device-pasteboard-enum FileConflictOptions--><!--Device-pasteboard-enum FileConflictOptions-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 ## OVERWRITE
@@ -20,7 +22,9 @@ Overwrites the file with the same name in the destination path.
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-FileConflictOptions-OVERWRITE = 0--><!--Device-FileConflictOptions-OVERWRITE = 0-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -34,6 +38,8 @@ Skips the file with the same name in the destination path. If **SKIP** is set, t
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-FileConflictOptions-SKIP = 1--><!--Device-FileConflictOptions-SKIP = 1-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard

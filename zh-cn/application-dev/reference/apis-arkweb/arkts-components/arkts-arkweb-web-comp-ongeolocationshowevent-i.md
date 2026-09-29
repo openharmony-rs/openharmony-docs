@@ -8,6 +8,8 @@ declare interface OnGeolocationShowEvent
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface OnGeolocationShowEvent--><!--Device-unnamed-declare interface OnGeolocationShowEvent-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## geolocation
@@ -24,6 +26,8 @@ geolocation: JsGeolocation
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-OnGeolocationShowEvent-geolocation: JsGeolocation--><!--Device-OnGeolocationShowEvent-geolocation: JsGeolocation-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## origin
@@ -39,5 +43,7 @@ origin: string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnGeolocationShowEvent-origin: string--><!--Device-OnGeolocationShowEvent-origin: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

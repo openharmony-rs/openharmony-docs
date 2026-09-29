@@ -8,6 +8,8 @@ Enumerates the types of the cloud-device sync strategy.
 
 **Since:** 12
 
+<!--Device-cloudData-enum StrategyType--><!--Device-cloudData-enum StrategyType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 ## NETWORK
@@ -19,5 +21,7 @@ NETWORK
 Sync over the network.
 
 **Since:** 12
+
+<!--Device-StrategyType-NETWORK--><!--Device-StrategyType-NETWORK-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client

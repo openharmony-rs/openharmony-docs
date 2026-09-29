@@ -10,6 +10,8 @@ Represents a change request for managing the share album.
 
 **Since:** 26.0.1
 
+<!--Device-photoAccessHelper-class MediaShareAlbumChangeRequest implements MediaChangeRequest--><!--Device-photoAccessHelper-class MediaShareAlbumChangeRequest implements MediaChangeRequest-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Add member of share Album.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MediaShareAlbumChangeRequest-public addShareMember(owner: string, member: string, status: ShareMemberStatus): void--><!--Device-MediaShareAlbumChangeRequest-public addShareMember(owner: string, member: string, status: ShareMemberStatus): void-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -50,8 +54,8 @@ Add member of share Album.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: 1. The albums are not share album. |
 
 ## constructor
@@ -68,6 +72,8 @@ Constructor used to initialize a new MediaShareAlbumChangeRequest.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MediaShareAlbumChangeRequest-public constructor(album: Album)--><!--Device-MediaShareAlbumChangeRequest-public constructor(album: Album)-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -82,15 +88,15 @@ Constructor used to initialize a new MediaShareAlbumChangeRequest.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: 1. the album is not share album. |
 
 ## createShareAlbum
 
 ```TypeScript
 public static createShareAlbum(context: Context, owner: string, name: string, cloudId: 
-      string, lpath: string): MediaShareAlbumChangeRequest|null
+      string, albumConfig: ValuesBucket): MediaShareAlbumChangeRequest|null
 ```
 
 Creates a MediaShareAlbumChangeRequest instance of creating share album.
@@ -100,6 +106,8 @@ Creates a MediaShareAlbumChangeRequest instance of creating share album.
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaShareAlbumChangeRequest-public static createShareAlbum(context: Context, owner: string, name: string, cloudId:       string, albumConfig: ValuesBucket): MediaShareAlbumChangeRequest|null--><!--Device-MediaShareAlbumChangeRequest-public static createShareAlbum(context: Context, owner: string, name: string, cloudId:       string, albumConfig: ValuesBucket): MediaShareAlbumChangeRequest|null-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -113,7 +121,7 @@ Creates a MediaShareAlbumChangeRequest instance of creating share album.
 | owner | string | Yes | The OwnerId of share album. |
 | name | string | Yes | Name of the album. |
 | cloudId | string | Yes | The cloudId of share album. |
-| lpath | string | Yes | The virtual path of share album. |
+| albumConfig | [ValuesBucket](arkts-medialibrary-photoaccesshelper-valuesbucket-t-sys.md) | Yes | The configuration of share album. |
 
 **Return value:**
 
@@ -125,8 +133,8 @@ Creates a MediaShareAlbumChangeRequest instance of creating share album.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: 1. The context is null. 2. The album name must meet the following requirements: The total length of the album name must be between 1 and 255 characters. It must not contain any invalid characters, which are: . \ / : * ? " ' ` &lt; &gt; &#124; { } [ ]It is case-insensitive. 3. The lpath does not meet the uniqueness requirement. |
 
 ## deleteMemberShareAlbum
@@ -142,6 +150,8 @@ Delete member share album.
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaShareAlbumChangeRequest-public static deleteMemberShareAlbum(context: Context, owner: string, albums: Album[]): Promise<void>--><!--Device-MediaShareAlbumChangeRequest-public static deleteMemberShareAlbum(context: Context, owner: string, albums: Album[]): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -165,8 +175,8 @@ Delete member share album.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. The context is null. <br>2. The albums are not share album. <br>3. The operator must be the member of the share album when deleting the local share album. |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -184,6 +194,8 @@ Delete share album.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MediaShareAlbumChangeRequest-public static deleteShareAlbum(context: Context, owner: string, albums: Album[]): Promise<void>--><!--Device-MediaShareAlbumChangeRequest-public static deleteShareAlbum(context: Context, owner: string, albums: Album[]): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -206,8 +218,8 @@ Delete share album.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. The context is null. <br>2. The albums are not share album. <br>3. The operator must be the owner of the share album when deleting the album. |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -224,6 +236,8 @@ Delete assets of share album.
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaShareAlbumChangeRequest-public static deleteShareAssets(context: Context, owner: string, assets: string[]): Promise<void>--><!--Device-MediaShareAlbumChangeRequest-public static deleteShareAssets(context: Context, owner: string, assets: string[]): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -247,8 +261,8 @@ Delete assets of share album.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. The context is null. <br>2. The albums are not share album. <br>3. Asset uri array size is empty or bigger than 500. <br>4. When a deleted photo belongs to a shared album, only the album owner or the person who shared the photo can delete it. |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -266,6 +280,8 @@ delete share member.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MediaShareAlbumChangeRequest-public deleteShareMember(owner: string, member: string): void--><!--Device-MediaShareAlbumChangeRequest-public deleteShareMember(owner: string, member: string): void-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -281,8 +297,8 @@ delete share member.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. The albums are not share album. |
 
 ## getShareAlbumMemberInfo
@@ -299,6 +315,8 @@ Get the member information of share album.
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaShareAlbumChangeRequest-public static getShareAlbumMemberInfo(context: Context, owner: string,       album: Album): Promise<ShareAlbumMemberInfo>--><!--Device-MediaShareAlbumChangeRequest-public static getShareAlbumMemberInfo(context: Context, owner: string,       album: Album): Promise<ShareAlbumMemberInfo>-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -322,10 +340,44 @@ Get the member information of share album.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes:<br>1. The context is null. <br>2. The albums are not share album. |
 | [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error.It is recommended to retry and check the logs.<br>Possible causes:1. Database corrupted.2. The file system is abnormal.3. The IPC request timed out. |
+
+## resetShareCoverUri
+
+```TypeScript
+public resetShareCoverUri(owner: string): void
+```
+
+reset the cover of share album.
+
+**Since:** 26.0.1
+
+**Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaShareAlbumChangeRequest-public resetShareCoverUri(owner: string): void--><!--Device-MediaShareAlbumChangeRequest-public resetShareCoverUri(owner: string): void-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| owner | string | Yes | The OwnerId of share album. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: 1. The albums are not share album. |
 
 ## setShareAlbumName
 
@@ -340,6 +392,8 @@ set the name of share album.
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaShareAlbumChangeRequest-public setShareAlbumName(owner: string, name: string): void--><!--Device-MediaShareAlbumChangeRequest-public setShareAlbumName(owner: string, name: string): void-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -356,9 +410,44 @@ set the name of share album.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: <br>1. The albums are not share album. <br>2. The album name must meet the following requirements: The total length of the album name must be between 1 and 255 characters. It must not contain any invalid characters, which are: . \ / : * ? " ' ` &lt; &gt; &#124; { } [ ] |
+
+## setShareCoverUri
+
+```TypeScript
+public setShareCoverUri(owner: string, coverUri: string): void
+```
+
+set the cover of share album.
+
+**Since:** 26.0.1
+
+**Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaShareAlbumChangeRequest-public setShareCoverUri(owner: string, coverUri: string): void--><!--Device-MediaShareAlbumChangeRequest-public setShareCoverUri(owner: string, coverUri: string): void-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| owner | string | Yes | The OwnerId of share album. |
+| coverUri | string | Yes | The coverUri of share album. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: 1. The albums are not share album. |
 
 ## updateShareMemberStatus
 
@@ -373,6 +462,8 @@ update share member status.
 **Required permissions:** ohos.permission.MANAGE_SHARE_PHOTO and ohos.permission.WRITE_IMAGEVIDEO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaShareAlbumChangeRequest-public updateShareMemberStatus(owner: string, member: string, status: ShareMemberStatus): void--><!--Device-MediaShareAlbumChangeRequest-public updateShareMemberStatus(owner: string, member: string, status: ShareMemberStatus): void-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -390,8 +481,8 @@ update share member status.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: The albums are not share album. |
 
 ## comment
@@ -407,6 +498,8 @@ A readonly member for type checking.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaShareAlbumChangeRequest-readonly comment: string--><!--Device-MediaShareAlbumChangeRequest-readonly comment: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

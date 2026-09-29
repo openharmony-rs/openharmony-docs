@@ -8,6 +8,8 @@ Obtains the list of default downloadable profiles.
 
 **Since:** 18
 
+<!--Device-eSIM-export interface GetDownloadableProfilesResult--><!--Device-eSIM-export interface GetDownloadableProfilesResult-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Downloadable file array.
 
 **Since:** 18
 
+<!--Device-GetDownloadableProfilesResult-downloadableProfiles: Array<DownloadableProfile>--><!--Device-GetDownloadableProfilesResult-downloadableProfiles: Array<DownloadableProfile>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Promise used to return the operation result.
 **Type:** [ResultCode](arkts-telephony-esim-resultcode-e-sys.md)
 
 **Since:** 18
+
+<!--Device-GetDownloadableProfilesResult-responseResult: ResultCode--><!--Device-GetDownloadableProfilesResult-responseResult: ResultCode-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 

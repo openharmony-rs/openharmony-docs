@@ -20,6 +20,8 @@ Creates an SSAP client instance.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ssap-function createClient(address: string): Client--><!--Device-ssap-function createClient(address: string): Client-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

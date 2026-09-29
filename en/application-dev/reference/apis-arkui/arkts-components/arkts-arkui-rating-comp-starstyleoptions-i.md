@@ -14,6 +14,8 @@ Provides style settings for the selected, unselected, and partially selected sta
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface StarStyleOptions--><!--Device-unnamed-declare interface StarStyleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Test API:** This API is used only in automated test scripts.
@@ -26,7 +28,7 @@ backgroundUri: ResourceStr
 
 Image path for the unselected star. You can use the default system image or a custom image.
 
-Resource configuration is supported since API version 20. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](../../../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md#example-3-setting-the-rating-style-through-resource-configuration).
+Since API version 20, this parameter supports **Resource** configuration. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](../../../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md#example-3-setting-the-rating-style-through-resource-configuration).
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -37,6 +39,8 @@ Resource configuration is supported since API version 20. For details, see [Exam
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-StarStyleOptions-backgroundUri: ResourceStr--><!--Device-StarStyleOptions-backgroundUri: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,7 +52,7 @@ foregroundUri: ResourceStr
 
 Image path for the selected star. You can use the default system image or a custom image.
 
-Resource configuration is supported since API version 20. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](../../../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md#example-3-setting-the-rating-style-through-resource-configuration).
+Since API version 20, this parameter supports **Resource** configuration. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](../../../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md#example-3-setting-the-rating-style-through-resource-configuration).
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -59,6 +63,8 @@ Resource configuration is supported since API version 20. For details, see [Exam
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-StarStyleOptions-foregroundUri: ResourceStr--><!--Device-StarStyleOptions-foregroundUri: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,9 +74,9 @@ Resource configuration is supported since API version 20. For details, see [Exam
 secondaryUri?: ResourceStr
 ```
 
-Image path for the partially selected star. You can use the default system image or a custom image.
+Image path for the partially selected star. You can use the default system image or a custom image. If this parameter is not set, **backgroundUri** is used preferentially. The effect is the same as that when only **foregroundUri** and **backgroundUri** are set.
 
-Resource configuration is supported since API version 20. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](../../../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md#example-3-setting-the-rating-style-through-resource-configuration).
+Since API version 20, this parameter supports **Resource** configuration. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](../../../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md#example-3-setting-the-rating-style-through-resource-configuration).
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -81,5 +87,7 @@ Resource configuration is supported since API version 20. For details, see [Exam
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-StarStyleOptions-secondaryUri?: ResourceStr--><!--Device-StarStyleOptions-secondaryUri?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

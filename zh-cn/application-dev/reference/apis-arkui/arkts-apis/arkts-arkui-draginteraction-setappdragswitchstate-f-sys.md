@@ -16,6 +16,8 @@ function setAppDragSwitchState(enabled: boolean, bundleName: string): void
 
 **起始版本：** 18
 
+<!--Device-dragInteraction-function setAppDragSwitchState(enabled: boolean, bundleName: string): void--><!--Device-dragInteraction-function setAppDragSwitchState(enabled: boolean, bundleName: string): void-End-->
+
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
 **系统接口：** 此接口为系统接口。

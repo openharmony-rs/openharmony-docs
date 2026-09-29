@@ -18,6 +18,8 @@ Verifies an .abc file. This API uses an asynchronous callback to return the resu
 
 **Required permissions:** ohos.permission.RUN_DYN_CODE
 
+<!--Device-bundleManager-function verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean, callback: AsyncCallback<void>): void--><!--Device-bundleManager-function verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ Verifies an .abc file. This API uses a promise to return the result.
 **Since:** 11
 
 **Required permissions:** ohos.permission.RUN_DYN_CODE
+
+<!--Device-bundleManager-function verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean): Promise<void>--><!--Device-bundleManager-function verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

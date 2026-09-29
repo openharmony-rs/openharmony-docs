@@ -18,6 +18,8 @@ Obtains all the bundle information in the system based on the given bundle flags
 
 **Required permissions:** ohos.permission.GET_INSTALLED_BUNDLE_LIST
 
+<!--Device-bundleManager-function getAllBundleInfo(bundleFlags: int, callback: AsyncCallback<Array<BundleInfo>>): void--><!--Device-bundleManager-function getAllBundleInfo(bundleFlags: int, callback: AsyncCallback<Array<BundleInfo>>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -74,6 +76,8 @@ Obtains all the bundle information in the system based on the given bundle flags
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_INSTALLED_BUNDLE_LIST
+
+<!--Device-bundleManager-function getAllBundleInfo(bundleFlags: int, userId: int, callback: AsyncCallback<Array<BundleInfo>>): void--><!--Device-bundleManager-function getAllBundleInfo(bundleFlags: int, userId: int, callback: AsyncCallback<Array<BundleInfo>>): void-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -134,6 +138,8 @@ Obtains all the bundle information in the system based on the given bundle flags
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_INSTALLED_BUNDLE_LIST
+
+<!--Device-bundleManager-function getAllBundleInfo(bundleFlags: int, userId?: int): Promise<Array<BundleInfo>>--><!--Device-bundleManager-function getAllBundleInfo(bundleFlags: int, userId?: int): Promise<Array<BundleInfo>>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

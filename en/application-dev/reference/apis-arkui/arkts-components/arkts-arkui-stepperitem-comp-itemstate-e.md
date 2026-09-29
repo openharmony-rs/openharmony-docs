@@ -12,6 +12,8 @@ Display status of **nextLabel** in the stepper.
 
 **Substitutes:** Swiper
 
+<!--Device-unnamed-declare enum ItemState--><!--Device-unnamed-declare enum ItemState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Normal
@@ -33,6 +35,8 @@ This API is supported since API version 8 and deprecated since API version 22. Y
 **Substitutes:** index
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ItemState-Normal--><!--Device-ItemState-Normal-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ This API is supported since API version 8 and deprecated since API version 22. Y
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ItemState-Disabled--><!--Device-ItemState-Disabled-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Waiting
@@ -78,6 +84,8 @@ This API is supported since API version 8 and deprecated since API version 22. Y
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ItemState-Waiting--><!--Device-ItemState-Waiting-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Skip
@@ -99,5 +107,7 @@ This API is supported since API version 8 and deprecated since API version 22. Y
 **Substitutes:** index
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ItemState-Skip--><!--Device-ItemState-Skip-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

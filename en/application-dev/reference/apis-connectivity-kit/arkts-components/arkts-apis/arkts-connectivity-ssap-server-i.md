@@ -12,6 +12,8 @@ An app only needs to create one [Server](arkts-connectivity-ssap-server-i.md) in
 
 **Since:** 26.0.0
 
+<!--Device-ssap-interface Server--><!--Device-ssap-interface Server-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Adds a service on the server.
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Server-addService(service: Service): void--><!--Device-Server-addService(service: Service): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -66,6 +70,8 @@ Closes the server and unregisters the callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Server-close(): void--><!--Device-Server-close(): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Error codes:**
@@ -89,6 +95,8 @@ Notifies the client of property value updates. This API uses a promise to return
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Server-notifyPropertyChanged(address: string, property: Property): Promise<void>--><!--Device-Server-notifyPropertyChanged(address: string, property: Property): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -128,6 +136,8 @@ Unsubscribes from the connection status change event. This API uses an asynchron
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Server-offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void--><!--Device-Server-offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**
@@ -147,6 +157,8 @@ Unsubscribes from the MTU change event. This API uses an asynchronous callback t
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Server-offMtuChange(callback?: Callback<int>): void--><!--Device-Server-offMtuChange(callback?: Callback<int>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -168,6 +180,8 @@ Unsubscribes from the client property read request event. This API uses an async
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Server-offPropertyRead(callback?: Callback<PropertyReadRequest>): void--><!--Device-Server-offPropertyRead(callback?: Callback<PropertyReadRequest>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**
@@ -187,6 +201,8 @@ Unsubscribes from the client property write request event. This API uses an asyn
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Server-offPropertyWrite(callback?: Callback<PropertyWriteRequest>): void--><!--Device-Server-offPropertyWrite(callback?: Callback<PropertyWriteRequest>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -210,6 +226,8 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Server-onConnectionStateChange(callback: Callback<ConnectionChangeState>): void--><!--Device-Server-onConnectionStateChange(callback: Callback<ConnectionChangeState>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**
@@ -231,6 +249,8 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Server-onMtuChange(callback: Callback<int>): void--><!--Device-Server-onMtuChange(callback: Callback<int>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -254,6 +274,8 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Server-onPropertyRead(callback: Callback<PropertyReadRequest>): void--><!--Device-Server-onPropertyRead(callback: Callback<PropertyReadRequest>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**
@@ -276,6 +298,8 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Server-onPropertyWrite(callback: Callback<PropertyWriteRequest>): void--><!--Device-Server-onPropertyWrite(callback: Callback<PropertyWriteRequest>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**
@@ -297,6 +321,8 @@ Removes a service from the server.
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Server-removeService(serviceUuid: string): void--><!--Device-Server-removeService(serviceUuid: string): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -329,6 +355,8 @@ Responds to read or write requests from the client. After receiving a request re
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Server-sendResponse(response: ServerResponse): void--><!--Device-Server-sendResponse(response: ServerResponse): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 

@@ -8,6 +8,8 @@ Base class for smart gesture handling. When dynamically customizing smart gestur
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export abstract class BaseGestureHandlingProposal--><!--Device-unnamed-export abstract class BaseGestureHandlingProposal-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Final action of the smart gesture.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-BaseGestureHandlingProposal-action: SmartGestureAction--><!--Device-BaseGestureHandlingProposal-action: SmartGestureAction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## operateIntention
@@ -52,5 +56,7 @@ Underlying operation intention of the smart gesture.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-BaseGestureHandlingProposal-operateIntention: OperateIntention--><!--Device-BaseGestureHandlingProposal-operateIntention: OperateIntention-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Provides APIs for randomly reading and writing a stream. Before invoking any API
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface RandomAccessFile--><!--Device-unnamed-declare interface RandomAccessFile-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -25,6 +27,8 @@ close(): void
 Closes the **RandomAccessFile** instance. This API returns the result synchronously.
 
 **Since:** 10
+
+<!--Device-RandomAccessFile-close(): void--><!--Device-RandomAccessFile-close(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -56,6 +60,8 @@ getReadStream(): ReadStream
 Obtains a **ReadStream** instance of this **RandomAccessFile**.
 
 **Since:** 12
+
+<!--Device-RandomAccessFile-getReadStream(): ReadStream--><!--Device-RandomAccessFile-getReadStream(): ReadStream-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -95,6 +101,8 @@ getWriteStream(): WriteStream
 Obtains a **WriteStream** instance of this **RandomAccessFile**.
 
 **Since:** 12
+
+<!--Device-RandomAccessFile-getWriteStream(): WriteStream--><!--Device-RandomAccessFile-getWriteStream(): WriteStream-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -137,6 +145,8 @@ read(
 Reads data from a file. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options?: ReadOptions  ): Promise<number>--><!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options?: ReadOptions  ): Promise<number>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -205,6 +215,8 @@ Reads data from a file. This API uses an asynchronous callback to return the res
 
 **Since:** 10
 
+<!--Device-RandomAccessFile-read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void--><!--Device-RandomAccessFile-read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -267,6 +279,8 @@ read(
 Reads data from a file. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options: ReadOptions,    callback: AsyncCallback<number>  ): void--><!--Device-RandomAccessFile-read(    buffer: ArrayBuffer,    options: ReadOptions,    callback: AsyncCallback<number>  ): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -333,6 +347,8 @@ Reads data from a file. This API returns the result synchronously.
 
 **Since:** 10
 
+<!--Device-RandomAccessFile-readSync(    buffer: ArrayBuffer,    options?: ReadOptions  ): number--><!--Device-RandomAccessFile-readSync(    buffer: ArrayBuffer,    options?: ReadOptions  ): number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -386,6 +402,8 @@ Sets the file offset pointer.
 
 **Since:** 10
 
+<!--Device-RandomAccessFile-setFilePointer(filePointer: number): void--><!--Device-RandomAccessFile-setFilePointer(filePointer: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -425,6 +443,8 @@ write(
 Writes data into a file. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): Promise<number>--><!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): Promise<number>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -496,6 +516,8 @@ Writes data to a file. This API uses an asynchronous callback to return the resu
 
 **Since:** 10
 
+<!--Device-RandomAccessFile-write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void--><!--Device-RandomAccessFile-write(buffer: ArrayBuffer | string, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -560,6 +582,8 @@ write(
 Writes data to a file. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options: WriteOptions,    callback: AsyncCallback<number>  ): void--><!--Device-RandomAccessFile-write(    buffer: ArrayBuffer | string,    options: WriteOptions,    callback: AsyncCallback<number>  ): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -630,6 +654,8 @@ Writes data to a file. This API returns the result synchronously.
 
 **Since:** 10
 
+<!--Device-RandomAccessFile-writeSync(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): number--><!--Device-RandomAccessFile-writeSync(    buffer: ArrayBuffer | string,    options?: WriteOptions  ): number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -690,6 +716,8 @@ FD of the file.
 
 **Since:** 10
 
+<!--Device-RandomAccessFile-readonly fd: number--><!--Device-RandomAccessFile-readonly fd: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## filePointer
@@ -703,5 +731,7 @@ Offset pointer to the **RandomAccessFile** instance, in bytes.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-RandomAccessFile-readonly filePointer: number--><!--Device-RandomAccessFile-readonly filePointer: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

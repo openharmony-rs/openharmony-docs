@@ -8,6 +8,8 @@ Enumerates the storage status that triggers the deferred task callback.
 
 **Since:** 9
 
+<!--Device-workScheduler-export enum StorageRequest--><!--Device-workScheduler-export enum StorageRequest-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 ## STORAGE_LEVEL_LOW
@@ -21,6 +23,8 @@ The storage space is insufficient.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StorageRequest-STORAGE_LEVEL_LOW = 0--><!--Device-StorageRequest-STORAGE_LEVEL_LOW = 0-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -36,6 +40,8 @@ The storage space is restored from insufficient to normal.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StorageRequest-STORAGE_LEVEL_OKAY = 1--><!--Device-StorageRequest-STORAGE_LEVEL_OKAY = 1-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 ## STORAGE_LEVEL_LOW_OR_OKAY
@@ -49,5 +55,7 @@ The storage space is insufficient, or the storage space is restored from insuffi
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StorageRequest-STORAGE_LEVEL_LOW_OR_OKAY = 2--><!--Device-StorageRequest-STORAGE_LEVEL_LOW_OR_OKAY = 2-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler

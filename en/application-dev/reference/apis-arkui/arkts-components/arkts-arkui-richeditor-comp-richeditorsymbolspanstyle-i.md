@@ -8,6 +8,8 @@ Sets the symbol span style.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface RichEditorSymbolSpanStyle--><!--Device-unnamed-declare interface RichEditorSymbolSpanStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## effectStrategy
@@ -28,6 +30,8 @@ Default value: **SymbolEffectStrategy.NONE**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorSymbolSpanStyle-effectStrategy?: SymbolEffectStrategy--><!--Device-RichEditorSymbolSpanStyle-effectStrategy?: SymbolEffectStrategy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -47,6 +51,8 @@ Default value: depending on the rendering strategy
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorSymbolSpanStyle-fontColor?: Array<ResourceColor>--><!--Device-RichEditorSymbolSpanStyle-fontColor?: Array<ResourceColor>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,6 +75,8 @@ Default value: follows the theme.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorSymbolSpanStyle-fontSize?: number | string | Resource--><!--Device-RichEditorSymbolSpanStyle-fontSize?: number | string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +102,8 @@ Default value: **FontWeight.Normal**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorSymbolSpanStyle-fontWeight?: number | FontWeight | string--><!--Device-RichEditorSymbolSpanStyle-fontWeight?: number | FontWeight | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## renderingStrategy
@@ -113,5 +123,7 @@ Default value: **SymbolRenderingStrategy.SINGLE**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorSymbolSpanStyle-renderingStrategy?: SymbolRenderingStrategy--><!--Device-RichEditorSymbolSpanStyle-renderingStrategy?: SymbolRenderingStrategy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

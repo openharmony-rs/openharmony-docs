@@ -10,6 +10,8 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 **Since:** 12
 
+<!--Device-sendableImage-interface ImageSource--><!--Device-sendableImage-interface ImageSource-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-ImageSource-createPixelMap(options?: image.DecodingOptions): Promise<PixelMap>--><!--Device-ImageSource-createPixelMap(options?: image.DecodingOptions): Promise<PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -78,6 +82,8 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 12
+
+<!--Device-ImageSource-release(): Promise<void>--><!--Device-ImageSource-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 

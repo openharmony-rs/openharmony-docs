@@ -14,6 +14,8 @@ Priorities of the **confirm** parameters: **fontColor** and **backgroundColor**
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface AlertDialogParamWithConfirm extends AlertDialogParam--><!--Device-unnamed-declare interface AlertDialogParamWithConfirm extends AlertDialogParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## confirm
@@ -31,5 +33,7 @@ Information about the confirm button. When the dialog box has focus and the **Ta
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlertDialogParamWithConfirm-confirm?: AlertDialogButtonBaseOptions--><!--Device-AlertDialogParamWithConfirm-confirm?: AlertDialogButtonBaseOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

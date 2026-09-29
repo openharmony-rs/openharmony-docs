@@ -10,6 +10,8 @@ Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md). In non-event 
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface TouchEvent extends BaseEvent--><!--Device-unnamed-declare interface TouchEvent extends BaseEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getHistoricalPoints
@@ -25,6 +27,8 @@ Obtains all historical touch points for the current frame. The touch event frequ
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TouchEvent-getHistoricalPoints(): Array<HistoricalPoint>--><!--Device-TouchEvent-getHistoricalPoints(): Array<HistoricalPoint>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ This API is only supported by the Hyperlink component. Using it with unsupported
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TouchEvent-preventDefault: () => void--><!--Device-TouchEvent-preventDefault: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Error codes:**
@@ -72,6 +78,8 @@ Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#even
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TouchEvent-stopPropagation: () => void--><!--Device-TouchEvent-stopPropagation: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## changedTouches
@@ -87,6 +95,8 @@ Information about touch points that changed and triggered the event. When using 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TouchEvent-changedTouches: TouchObject[]--><!--Device-TouchEvent-changedTouches: TouchObject[]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,6 +124,8 @@ Using the same **eventHandleId** for multiple event dispatches will cause abnorm
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-TouchEvent-eventHandleId?: number--><!--Device-TouchEvent-eventHandleId?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## touches
@@ -130,6 +142,8 @@ Information about all touch points (for multi-touch). Each element represents on
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TouchEvent-touches: TouchObject[]--><!--Device-TouchEvent-touches: TouchObject[]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -145,5 +159,7 @@ Type of the touch event.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TouchEvent-type: TouchType--><!--Device-TouchEvent-type: TouchType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

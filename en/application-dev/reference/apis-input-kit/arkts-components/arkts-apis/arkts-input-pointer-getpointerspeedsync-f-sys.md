@@ -16,6 +16,8 @@ Obtains the mouse pointer speed. This API returns the result synchronously.
 
 **Since:** 10
 
+<!--Device-pointer-function getPointerSpeedSync(): int--><!--Device-pointer-function getPointerSpeedSync(): int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.

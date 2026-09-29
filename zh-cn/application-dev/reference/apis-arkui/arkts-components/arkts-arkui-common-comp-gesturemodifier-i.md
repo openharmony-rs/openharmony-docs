@@ -8,6 +8,8 @@ declare interface GestureModifier
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface GestureModifier--><!--Device-unnamed-declare interface GestureModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## applyGesture
@@ -25,6 +27,8 @@ applyGesture(event: UIGestureEvent): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureModifier-applyGesture(event: UIGestureEvent): void--><!--Device-GestureModifier-applyGesture(event: UIGestureEvent): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

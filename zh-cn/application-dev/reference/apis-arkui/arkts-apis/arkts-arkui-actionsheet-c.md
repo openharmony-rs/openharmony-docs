@@ -10,6 +10,8 @@ declare class ActionSheet
 
 **替代接口：** [showActionSheet](arkts-arkui-arkui-uicontext-uicontext-c.md#showactionsheet)
 
+<!--Device-unnamed-declare class ActionSheet--><!--Device-unnamed-declare class ActionSheet-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## show
@@ -36,6 +38,8 @@ showActionSheet需先获取[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.m
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ActionSheet-static show(value: ActionSheetOptions)--><!--Device-ActionSheet-static show(value: ActionSheetOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

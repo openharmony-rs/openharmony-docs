@@ -11,6 +11,8 @@ Defines the ArkTS Array reduction function, which is used by the 'some' and 'eve
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-collections-type ArrayPredicateFn<ElementType, ArrayType> =    (value: ElementType, index: number, array: ArrayType) => boolean--><!--Device-collections-type ArrayPredicateFn<ElementType, ArrayType> =    (value: ElementType, index: number, array: ArrayType) => boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Test API:** This API is used only in automated test scripts.

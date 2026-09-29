@@ -8,6 +8,8 @@ Ability type of the Ukey authentication dialog box.
 
 **Since:** 26.0.1
 
+<!--Device-certificateManagerDialog-export enum AbilityType--><!--Device-certificateManagerDialog-export enum AbilityType-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## UKEY_AUTH_EXTENSION_ABILITY
@@ -21,5 +23,7 @@ Ability of type UkeyAuthExtensionAbility.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AbilityType-UKEY_AUTH_EXTENSION_ABILITY = 1--><!--Device-AbilityType-UKEY_AUTH_EXTENSION_ABILITY = 1-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog

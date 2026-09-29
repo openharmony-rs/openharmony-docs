@@ -8,9 +8,19 @@ Response type of the menu.
 
 > **NOTE:** 
 > 
-> The system follows the priority order below when determining the menu type to display during text interactions: &gt;
+> The system follows the priority order below when determining the menu type to display during text interactions:
+> 
+> 1. Check whether a menu is registered for **TextSpanType.TEXT** and **TextResponseType.LONG_PRESS**.
+> 
+> 2. Check whether a menu is registered for **TextSpanType.TEXT** and **TextResponseType.DEFAULT**.
+> 
+> 3. Check whether a menu is registered for **TextSpanType.DEFAULT** and **TextResponseType.LONG_PRESS**.
+> 
+> 4. Check whether a menu is registered for **TextSpanType.DEFAULT** and **TextResponseType.DEFAULT**.
 
 **Since:** 11
+
+<!--Device-unnamed-declare enum TextResponseType--><!--Device-unnamed-declare enum TextResponseType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,6 +38,8 @@ The menu is displayed when the component is right-clicked.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextResponseType-RIGHT_CLICK = 0--><!--Device-TextResponseType-RIGHT_CLICK = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## LONG_PRESS
@@ -43,6 +55,8 @@ The menu is displayed when the component is long-pressed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextResponseType-LONG_PRESS = 1--><!--Device-TextResponseType-LONG_PRESS = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +74,8 @@ The menu is displayed when the component is selected.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextResponseType-SELECT = 2--><!--Device-TextResponseType-SELECT = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -75,5 +91,7 @@ When this type is registered but **RIGHT_CLICK**, **LONG_PRESS**, or **SELECT** 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-TextResponseType-DEFAULT = 3--><!--Device-TextResponseType-DEFAULT = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

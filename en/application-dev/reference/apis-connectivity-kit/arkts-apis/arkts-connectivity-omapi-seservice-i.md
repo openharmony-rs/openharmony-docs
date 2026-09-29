@@ -8,6 +8,8 @@ export interface SEService
 
 **Since:** 10
 
+<!--Device-omapi-export interface SEService--><!--Device-omapi-export interface SEService-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 ## Modules to Import
@@ -25,6 +27,8 @@ getReaders(): Reader[]
 Obtains available SE readers, which include all the SEs on the device.
 
 **Since:** 10
+
+<!--Device-SEService-getReaders(): Reader[]--><!--Device-SEService-getReaders(): Reader[]-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -76,6 +80,8 @@ Obtains the version of the Open Mobile API (OMAPI) specification used.
 
 **Since:** 10
 
+<!--Device-SEService-getVersion(): string--><!--Device-SEService-getVersion(): string-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 **Return value:**
@@ -118,6 +124,8 @@ isConnected(): boolean
 Checks whether this SE service is connected.
 
 **Since:** 10
+
+<!--Device-SEService-isConnected(): boolean--><!--Device-SEService-isConnected(): boolean-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -165,6 +173,8 @@ shutdown(): void
 Releases all SE resources allocated to this SE service. After that, [isConnected](#isconnected) returns **false**.
 
 **Since:** 10
+
+<!--Device-SEService-shutdown(): void--><!--Device-SEService-shutdown(): void-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 

@@ -8,6 +8,80 @@ Defines progress bar options.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface ProgressOptions<Type extends keyof ProgressStyleMap>--><!--Device-unnamed-declare interface ProgressOptions<Type extends keyof ProgressStyleMap>-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## total
+
+```TypeScript
+total?: number
+```
+
+Specifies the total length of the progress. When the value is set less than 0, it is set to 100.
+
+Default value: **100**
+
+Value range: (0, +∞).
+
+**Type:** number
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ProgressOptions-total?: number--><!--Device-ProgressOptions-total?: number-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## type
+
+```TypeScript
+type?: Type
+```
+
+Specifies the progress bar type. Type inherits from [ProgressStyleMap](arkts-arkui-progress-comp-progressstylemap-i.md).
+
+Default value: **ProgressType.Linear**
+
+**Note:** Different [ProgressType](arkts-arkui-progress-comp-progresstype-e.md) values must correspond to the respective [style](arkts-arkui-progress-comp-attribute.md#style) attribute settings. For the detailed mapping, see [ProgressStyleMap](arkts-arkui-progress-comp-progressstylemap-i.md).
+
+**Type:** [Type](../arkts-apis/arkts-arkui-arkui-statemanagement-type-d.md)
+
+**Since:** 8
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ProgressOptions-type?: Type--><!--Device-ProgressOptions-type?: Type-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## value
+
+```TypeScript
+value: number
+```
+
+Specified progress value.
+
+Default value: **0**
+
+Value range: [0, total]. When the value is set less than 0, it is set to 0. When the value is set greater than total, it is set to total. When an invalid value is set, it is handled as the default value.
+
+**Type:** number
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ProgressOptions-value: number--><!--Device-ProgressOptions-value: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -16,9 +90,7 @@ Defines progress bar options.
 style?: ProgressStyle
 ```
 
-Style of the progress indicator.
-
-This parameter is deprecated since API version 8. You are advised to use **type** instead.
+Specifies the progress bar style.&lt;br
 
 Default value: **ProgressStyle.Linear**
 
@@ -30,66 +102,6 @@ Default value: **ProgressStyle.Linear**
 
 **Substitutes:** [type](#type)
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## total
-
-```TypeScript
-total?: number
-```
-
-Total progress. If this parameter is set to a value less than or equal to 0, the value **100** is used.
-
-Default value: **100**
-
-**Type:** number
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## type
-
-```TypeScript
-type?: Type
-```
-
-Style of the progress indicator.
-
-Default value: **ProgressType.Linear**
-
-**Type:** [Type](../arkts-apis/arkts-arkui-arkui-statemanagement-type-d.md)
-
-**Since:** 8
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## value
-
-```TypeScript
-value: number
-```
-
-Current progress. Values less than 0 are adjusted to **0**, and values greater than the **total** value are capped at the **total** value.
-
-Default value: **0**
-
-Value range: [0, total]
-
-**Type:** number
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+<!--Device-ProgressOptions-style?: ProgressStyle--><!--Device-ProgressOptions-style?: ProgressStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

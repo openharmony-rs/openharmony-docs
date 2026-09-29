@@ -4,6 +4,8 @@ The **ethernet** module provides Ethernet management functions such as configuri
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace ethernet--><!--Device-unnamed-declare namespace ethernet-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 
 ## Modules to Import
@@ -57,6 +59,12 @@ import { ethernet } from '@kit.NetworkKit';
 | [InterfaceStateInfo](arkts-network-ethernet-interfacestateinfo-i-sys.md) | Listens for status changes of an Ethernet NIC. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [HttpProxy](arkts-network-ethernet-httpproxy-t.md) | Defines the network proxy configuration. |
+
 <!--Del-->
 ### Enums(System API)
 
@@ -65,9 +73,3 @@ import { ethernet } from '@kit.NetworkKit';
 | [DeviceConnectionType](arkts-network-ethernet-deviceconnectiontype-e-sys.md) | Enumerates Ethernet device connection modes. |
 | [IPSetMode](arkts-network-ethernet-ipsetmode-e-sys.md) | Defines the configuration mode of the Ethernet connection. |
 <!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [HttpProxy](arkts-network-ethernet-httpproxy-t.md) | Defines the network proxy configuration. |

@@ -8,6 +8,8 @@ interface Size
 
 **起始版本：** 7
 
+<!--Device-window-interface Size--><!--Device-window-interface Size-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
@@ -28,7 +30,9 @@ height: number
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Size-height: int--><!--Device-Size-height: int-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -44,6 +48,8 @@ width: number
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Size-width: int--><!--Device-Size-width: int-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

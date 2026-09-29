@@ -10,6 +10,8 @@ Window animation target.
 
 **Since:** 9
 
+<!--Device-windowAnimationManager-export interface WindowAnimationTarget--><!--Device-windowAnimationManager-export interface WindowAnimationTarget-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ readonly abilityName: string
 
 **Since:** 9
 
+<!--Device-WindowAnimationTarget-readonly abilityName: string--><!--Device-WindowAnimationTarget-readonly abilityName: string-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ The bundle name of the window animation target.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-WindowAnimationTarget-readonly bundleName: string--><!--Device-WindowAnimationTarget-readonly bundleName: string-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -64,6 +70,8 @@ readonly missionId: number
 
 **Since:** 9
 
+<!--Device-WindowAnimationTarget-readonly missionId: int--><!--Device-WindowAnimationTarget-readonly missionId: int-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -79,6 +87,8 @@ readonly windowBounds: RRect
 **Type:** [RRect](arkts-arkui-windowanimationmanager-rrect-i-sys.md)
 
 **Since:** 9
+
+<!--Device-WindowAnimationTarget-readonly windowBounds: RRect--><!--Device-WindowAnimationTarget-readonly windowBounds: RRect-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

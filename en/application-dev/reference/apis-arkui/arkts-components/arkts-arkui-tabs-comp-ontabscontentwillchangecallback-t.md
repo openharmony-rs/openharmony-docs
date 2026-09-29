@@ -12,6 +12,8 @@ Defines the callback invoked when a new page is about to be displayed.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare type OnTabsContentWillChangeCallback = (currentIndex: number, comingIndex: number) => boolean--><!--Device-unnamed-declare type OnTabsContentWillChangeCallback = (currentIndex: number, comingIndex: number) => boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

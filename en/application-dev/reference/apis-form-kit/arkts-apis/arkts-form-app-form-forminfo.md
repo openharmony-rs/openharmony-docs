@@ -8,6 +8,8 @@ The **formInfo** module provides types and enums related to the widget informati
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace formInfo--><!--Device-unnamed-declare namespace formInfo-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -51,6 +53,20 @@ import { formInfo } from '@kit.FormKit';
 | [TemplateFormDetailInfo](arkts-form-forminfo-templateformdetailinfo-i-sys.md) | [TemplateFormDetailInfo](arkts-form-forminfo-templateformdetailinfo-i-sys.md) |
 <!--DelEnd-->
 
+<!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [DeleteFormsCallback](arkts-form-forminfo-deleteformscallback-t-sys.md) | callback for deleting the forms. |
+| [GetFormRectInfoCallback](arkts-form-forminfo-getformrectinfocallback-t-sys.md) | Get form rect info callback |
+| [GetLiveFormStatusCallback](arkts-form-forminfo-getliveformstatuscallback-t-sys.md) | Get live form status info callback |
+| [GetWantParamsCallback](arkts-form-forminfo-getwantparamscallback-t-sys.md) | Get want parameters callback. |
+| [PublishFormCrossBundleControlCallback](arkts-form-forminfo-publishformcrossbundlecontrolcallback-t-sys.md) | publish form cross bundle control callback. |
+| [TemplateFormDetailInfoCallback](arkts-form-forminfo-templateformdetailinfocallback-t-sys.md) | template form detail info callback. |
+| [UpdateFormsConfigCallback](arkts-form-forminfo-updateformsconfigcallback-t-sys.md) | Callback for updating the forms. |
+<!--DelEnd-->
+
 ### Enums
 
 | Name | Description |
@@ -77,18 +93,4 @@ import { formInfo } from '@kit.FormKit';
 | [PublishFormErrorCode](arkts-form-forminfo-publishformerrorcode-e-sys.md) | Enumerates the result codes that may be used for the operation of adding a widget to the home screen. |
 | [RenderingMode](arkts-form-forminfo-renderingmode-e-sys.md) | Enumerates the rendering modes supported by the widget. |
 | [SceneAnimationTriggerType](arkts-form-forminfo-sceneanimationtriggertype-e-sys.md) | The trigger type of the scene animation. |
-<!--DelEnd-->
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [DeleteFormsCallback](arkts-form-forminfo-deleteformscallback-t-sys.md) | callback for deleting the forms. |
-| [GetFormRectInfoCallback](arkts-form-forminfo-getformrectinfocallback-t-sys.md) | Get form rect info callback |
-| [GetLiveFormStatusCallback](arkts-form-forminfo-getliveformstatuscallback-t-sys.md) | Get live form status info callback |
-| [GetWantParamsCallback](arkts-form-forminfo-getwantparamscallback-t-sys.md) | Get want parameters callback. |
-| [PublishFormCrossBundleControlCallback](arkts-form-forminfo-publishformcrossbundlecontrolcallback-t-sys.md) | publish form cross bundle control callback. |
-| [TemplateFormDetailInfoCallback](arkts-form-forminfo-templateformdetailinfocallback-t-sys.md) | template form detail info callback. |
-| [UpdateFormsConfigCallback](arkts-form-forminfo-updateformsconfigcallback-t-sys.md) | Callback for updating the forms. |
 <!--DelEnd-->

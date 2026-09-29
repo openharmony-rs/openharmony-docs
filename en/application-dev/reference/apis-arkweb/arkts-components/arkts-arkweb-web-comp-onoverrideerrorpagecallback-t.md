@@ -8,6 +8,8 @@ Defines a callback of **onOverrideErrorPage**. This callback is triggered when a
 
 **Since:** 20
 
+<!--Device-unnamed-type OnOverrideErrorPageCallback = (errorPageEvent: OnErrorReceiveEvent) => string--><!--Device-unnamed-type OnOverrideErrorPageCallback = (errorPageEvent: OnErrorReceiveEvent) => string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

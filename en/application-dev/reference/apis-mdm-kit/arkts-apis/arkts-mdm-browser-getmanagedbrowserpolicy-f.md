@@ -18,6 +18,8 @@ Obtains the policy of a specified browser based on the application bundle name. 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-browser-function getManagedBrowserPolicy(admin: Want, bundleName: string): ArrayBuffer--><!--Device-browser-function getManagedBrowserPolicy(admin: Want, bundleName: string): ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

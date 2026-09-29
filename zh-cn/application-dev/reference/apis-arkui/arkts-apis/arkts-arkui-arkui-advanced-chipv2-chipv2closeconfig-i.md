@@ -12,6 +12,8 @@ ChipV2CloseConfig用于定义ChipV2组件关闭图标的功能属性配置，包
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface ChipV2CloseConfig extends ChipV2AccessibilityConfig--><!--Device-unnamed-export interface ChipV2CloseConfig extends ChipV2AccessibilityConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -45,5 +47,7 @@ size不为ChipV2Size.SMALL时，默认值：`$r('sys.float.chip_normal_font_size
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2CloseConfig-fontSize?: LengthMetrics--><!--Device-ChipV2CloseConfig-fontSize?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

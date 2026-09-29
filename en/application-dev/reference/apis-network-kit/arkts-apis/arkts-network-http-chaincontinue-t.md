@@ -10,6 +10,8 @@ Specifies whether to continue to process the interceptor chain.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-http-export type ChainContinue = boolean--><!--Device-http-export type ChainContinue = boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Type:** boolean

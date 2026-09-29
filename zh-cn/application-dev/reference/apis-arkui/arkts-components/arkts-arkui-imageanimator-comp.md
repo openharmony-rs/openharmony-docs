@@ -4,7 +4,7 @@
 
 > **说明：** 
 > 
-> - 该组件从API版本26.0.0开始支持WithTheme。
+> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md)。
 
 ## 子组件
 
@@ -25,6 +25,8 @@ ImageAnimator()
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageAnimatorInterface-(): ImageAnimatorAttribute--><!--Device-ImageAnimatorInterface-(): ImageAnimatorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -235,7 +237,7 @@ struct ImageAnimatorExample {
 
 ### 示例3（设置不可见自动停播）
 
-通过[monitorInvisibleArea](arkts-arkui-imageanimator-comp-attribute.md#monitorinvisiblearea)属性实现了当ImageAnimator的state属性为AnimationStatus.Running时，控制组件在不可见时停止播放，在可见时恢复播放。
+通过[monitorInvisibleArea](arkts-arkui-imageanimator-comp-attribute.md#monitorinvisiblearea)属性实现了当ImageAnimator的[state](#state)属性为AnimationStatus.Running时，控制组件在不可见时停止播放，在可见时恢复播放。
 
 ```TypeScript
 @Entry

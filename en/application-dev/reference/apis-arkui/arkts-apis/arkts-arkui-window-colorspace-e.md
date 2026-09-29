@@ -8,6 +8,8 @@ Enumerates the color spaces.
 
 **Since:** 8
 
+<!--Device-window-enum ColorSpace--><!--Device-window-enum ColorSpace-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## DEFAULT
@@ -20,7 +22,9 @@ Default SRGB gamut.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ColorSpace-DEFAULT = 0--><!--Device-ColorSpace-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -34,6 +38,8 @@ Wide-gamut.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ColorSpace-WIDE_GAMUT = 1--><!--Device-ColorSpace-WIDE_GAMUT = 1-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core

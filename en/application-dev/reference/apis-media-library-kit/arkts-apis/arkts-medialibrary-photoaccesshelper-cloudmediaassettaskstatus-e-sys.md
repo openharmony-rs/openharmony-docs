@@ -8,6 +8,8 @@ Enumerates the statuses of tasks used for downloading cloud media assets.
 
 **Since:** 14
 
+<!--Device-photoAccessHelper-enum CloudMediaAssetTaskStatus--><!--Device-photoAccessHelper-enum CloudMediaAssetTaskStatus-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ DOWNLOADING = 0
 The task is in progress.
 
 **Since:** 14
+
+<!--Device-CloudMediaAssetTaskStatus-DOWNLOADING = 0--><!--Device-CloudMediaAssetTaskStatus-DOWNLOADING = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -36,6 +40,8 @@ The task is paused.
 
 **Since:** 14
 
+<!--Device-CloudMediaAssetTaskStatus-PAUSED = 1--><!--Device-CloudMediaAssetTaskStatus-PAUSED = 1-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -49,6 +55,8 @@ IDLE = 2
 There is no download task.
 
 **Since:** 14
+
+<!--Device-CloudMediaAssetTaskStatus-IDLE = 2--><!--Device-CloudMediaAssetTaskStatus-IDLE = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

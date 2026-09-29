@@ -10,6 +10,8 @@ Manages configurations of the embedding model.
 
 **Since:** 15
 
+<!--Device-intelligence-interface ModelConfig--><!--Device-intelligence-interface ModelConfig-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ If NPU is used for accelerating, a local path is required for model caching.
 
 **Since:** 15
 
+<!--Device-ModelConfig-cachePath?: string--><!--Device-ModelConfig-cachePath?: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 ## isNpuAvailable
@@ -43,6 +47,8 @@ Indicates whether NPU is used.
 **Type:** boolean
 
 **Since:** 15
+
+<!--Device-ModelConfig-isNpuAvailable: boolean--><!--Device-ModelConfig-isNpuAvailable: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -60,6 +66,8 @@ Indicates cloud embedding model information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ModelConfig-modelInfo?: CloudModelInfo--><!--Device-ModelConfig-modelInfo?: CloudModelInfo-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 ## networkPolicy
@@ -76,6 +84,8 @@ Indicates cloud embedding model network policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ModelConfig-networkPolicy?: NetworkPolicy--><!--Device-ModelConfig-networkPolicy?: NetworkPolicy-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 ## version
@@ -89,5 +99,7 @@ Version of the model. The outputs of text or image embedding models with the sam
 **Type:** [ModelVersion](arkts-arkdata-intelligence-modelversion-e.md)
 
 **Since:** 15
+
+<!--Device-ModelConfig-version: ModelVersion--><!--Device-ModelConfig-version: ModelVersion-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core

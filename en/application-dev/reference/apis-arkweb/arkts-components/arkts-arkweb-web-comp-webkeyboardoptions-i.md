@@ -8,6 +8,8 @@ Return value of the callback that intercepts the soft keyboard started from edit
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface WebKeyboardOptions--><!--Device-unnamed-declare interface WebKeyboardOptions-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## customKeyboard
@@ -24,6 +26,8 @@ Builder of a custom keyboard. This parameter is required when **useSystemKeyboar
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebKeyboardOptions-customKeyboard?: CustomBuilder--><!--Device-WebKeyboardOptions-customKeyboard?: CustomBuilder-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## enterKeyType
@@ -39,6 +43,8 @@ Type of the **Enter** key on the system soft keyboard. For details about the val
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebKeyboardOptions-enterKeyType?: number--><!--Device-WebKeyboardOptions-enterKeyType?: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -59,5 +65,7 @@ Default value: **true**.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebKeyboardOptions-useSystemKeyboard: boolean--><!--Device-WebKeyboardOptions-useSystemKeyboard: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

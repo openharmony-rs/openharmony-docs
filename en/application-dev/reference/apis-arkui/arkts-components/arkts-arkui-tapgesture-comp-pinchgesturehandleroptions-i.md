@@ -10,6 +10,8 @@ Provides the parameters of the pinch gesture handler. Inherits from [BaseHandler
 
 **Since:** 12
 
+<!--Device-unnamed-interface PinchGestureHandlerOptions extends BaseHandlerOptions--><!--Device-unnamed-interface PinchGestureHandlerOptions extends BaseHandlerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## distance
@@ -34,6 +36,8 @@ If the value is less than or equal to 0, it will be converted to the default val
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PinchGestureHandlerOptions-distance?: number--><!--Device-PinchGestureHandlerOptions-distance?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fingers
@@ -57,5 +61,7 @@ While more fingers than the minimum number can be pressed to trigger the gesture
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PinchGestureHandlerOptions-fingers?: number--><!--Device-PinchGestureHandlerOptions-fingers?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

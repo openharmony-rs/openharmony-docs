@@ -8,6 +8,8 @@ Describes the window transition animation.
 
 **Since:** 20
 
+<!--Device-window-interface TransitionAnimation--><!--Device-window-interface TransitionAnimation-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Transition animation configuration.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-TransitionAnimation-config: WindowAnimationConfig--><!--Device-TransitionAnimation-config: WindowAnimationConfig-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -44,6 +48,8 @@ Opacity of the window during the transition animation. If this parameter is set 
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-TransitionAnimation-opacity?: double--><!--Device-TransitionAnimation-opacity?: double-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

@@ -18,6 +18,8 @@ Checks whether network sharing is supported. This API uses an asynchronous callb
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
 
+<!--Device-sharing-function isSharingSupported(callback: AsyncCallback<boolean>): void--><!--Device-sharing-function isSharingSupported(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ Checks whether network sharing is supported. This API uses a promise to return t
 **Since:** 9
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
+
+<!--Device-sharing-function isSharingSupported(): Promise<boolean>--><!--Device-sharing-function isSharingSupported(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 

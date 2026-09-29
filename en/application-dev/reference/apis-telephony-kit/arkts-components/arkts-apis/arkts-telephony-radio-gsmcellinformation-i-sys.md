@@ -8,6 +8,8 @@ Obtains GSM cell information.
 
 **Since:** 8
 
+<!--Device-radio-export interface GsmCellInformation--><!--Device-radio-export interface GsmCellInformation-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Indicates the ARFCN(absolute radio frequency channel int).
 
 **Since:** 8
 
+<!--Device-GsmCellInformation-arfcn: int--><!--Device-GsmCellInformation-arfcn: int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Indicates the base station identification code.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-GsmCellInformation-bsic: int--><!--Device-GsmCellInformation-bsic: int-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -62,6 +68,8 @@ Indicates the cell identification.
 
 **Since:** 8
 
+<!--Device-GsmCellInformation-cellId: int--><!--Device-GsmCellInformation-cellId: int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Indicates the location area code.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-GsmCellInformation-lac: int--><!--Device-GsmCellInformation-lac: int-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -94,6 +104,8 @@ Indicates the mobile country code.
 
 **Since:** 8
 
+<!--Device-GsmCellInformation-mcc: string--><!--Device-GsmCellInformation-mcc: string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Indicates the mobile network code.
 **Type:** string
 
 **Since:** 8
+
+<!--Device-GsmCellInformation-mnc: string--><!--Device-GsmCellInformation-mnc: string-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

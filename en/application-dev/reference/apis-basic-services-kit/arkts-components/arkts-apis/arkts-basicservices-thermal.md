@@ -4,6 +4,8 @@ The **thermal** module provides thermal level-related callback and query APIs to
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace thermal--><!--Device-unnamed-declare namespace thermal-End-->
+
 **System capability:** SystemCapability.PowerManager.ThermalManager
 
 ## Modules to Import

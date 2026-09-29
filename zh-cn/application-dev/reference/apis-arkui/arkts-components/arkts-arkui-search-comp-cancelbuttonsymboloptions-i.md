@@ -8,6 +8,8 @@ interface CancelButtonSymbolOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface CancelButtonSymbolOptions--><!--Device-unnamed-interface CancelButtonSymbolOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -26,6 +28,8 @@ icon?: SymbolGlyphModifier
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CancelButtonSymbolOptions-icon?: SymbolGlyphModifier--><!--Device-CancelButtonSymbolOptions-icon?: SymbolGlyphModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -43,5 +47,7 @@ style?: CancelButtonStyle
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CancelButtonSymbolOptions-style?: CancelButtonStyle--><!--Device-CancelButtonSymbolOptions-style?: CancelButtonStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ declare enum AvoidanceMode
 
 **起始版本：** 19
 
+<!--Device-unnamed-declare enum AvoidanceMode--><!--Device-unnamed-declare enum AvoidanceMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## COVER_TARGET
@@ -24,6 +26,8 @@ COVER_TARGET
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-AvoidanceMode-COVER_TARGET--><!--Device-AvoidanceMode-COVER_TARGET-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## AVOID_AROUND_TARGET
@@ -39,5 +43,7 @@ AVOID_AROUND_TARGET
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-AvoidanceMode-AVOID_AROUND_TARGET--><!--Device-AvoidanceMode-AVOID_AROUND_TARGET-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

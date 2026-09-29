@@ -41,6 +41,8 @@ This module enables users to quickly troubleshoot, free up storage space, and pr
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace update--><!--Device-unnamed-declare namespace update-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -99,6 +101,14 @@ import { update } from '@kit.BasicServicesKit';
 <!--DelEnd-->
 
 <!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [UpgradeTaskCallback](arkts-basicservices-update-upgradetaskcallback-t-sys.md) | Represents an event callback. |
+<!--DelEnd-->
+
+<!--Del-->
 ### Enums(System API)
 
 | Name | Description |
@@ -117,12 +127,4 @@ import { update } from '@kit.BasicServicesKit';
 | [OtaMode](arkts-basicservices-update-otamode-e-sys.md) | Enumerates the update modes. |
 | [UpgradeAction](arkts-basicservices-update-upgradeaction-e-sys.md) | Represents an update mode. |
 | [UpgradeStatus](arkts-basicservices-update-upgradestatus-e-sys.md) | Enumerates update states. |
-<!--DelEnd-->
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [UpgradeTaskCallback](arkts-basicservices-update-upgradetaskcallback-t-sys.md) | Represents an event callback. |
 <!--DelEnd-->

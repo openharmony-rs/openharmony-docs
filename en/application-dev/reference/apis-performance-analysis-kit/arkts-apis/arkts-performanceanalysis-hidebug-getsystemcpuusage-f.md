@@ -21,6 +21,8 @@ Obtains the CPU usage of the system.
 
 **Since:** 12
 
+<!--Device-hidebug-function getSystemCpuUsage(): double--><!--Device-hidebug-function getSystemCpuUsage(): double-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value:**

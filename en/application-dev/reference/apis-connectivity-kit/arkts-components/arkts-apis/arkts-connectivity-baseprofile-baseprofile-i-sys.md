@@ -8,6 +8,8 @@ Base interface of profile.
 
 **Since:** 10
 
+<!--Device-baseProfile-export interface BaseProfile--><!--Device-baseProfile-export interface BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Get connection strategy of this profile.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BaseProfile-getConnectionStrategy(deviceId: string, callback: AsyncCallback<ConnectionStrategy>): void--><!--Device-BaseProfile-getConnectionStrategy(deviceId: string, callback: AsyncCallback<ConnectionStrategy>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -69,6 +73,8 @@ Get connection strategy of this profile.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BaseProfile-getConnectionStrategy(deviceId: string): Promise<ConnectionStrategy>--><!--Device-BaseProfile-getConnectionStrategy(deviceId: string): Promise<ConnectionStrategy>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -112,6 +118,8 @@ Set connection strategy of this profile.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BaseProfile-setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise<void>--><!--Device-BaseProfile-setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -158,6 +166,8 @@ Set connection strategy of this profile.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BaseProfile-setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: AsyncCallback<void>): void--><!--Device-BaseProfile-setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

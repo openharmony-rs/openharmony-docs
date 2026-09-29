@@ -4,11 +4,11 @@
 declare interface FieldRegion
 ```
 
-Defines the area information of the particle field.
-
-@interface FieldRegion
+Sets the region information of the particle field.
 
 **Since:** 22
+
+<!--Device-unnamed-declare interface FieldRegion--><!--Device-unnamed-declare interface FieldRegion-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,6 +30,8 @@ The coordinates of the center position of the field. The top-left corner of the 
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-FieldRegion-position?: PositionT<number>--><!--Device-FieldRegion-position?: PositionT<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## shape
@@ -50,6 +52,8 @@ The shape of the field
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-FieldRegion-shape?: DisturbanceFieldShape--><!--Device-FieldRegion-shape?: DisturbanceFieldShape-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -69,5 +73,7 @@ The size of the field. The unit of value is vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-FieldRegion-size?: SizeT<number>--><!--Device-FieldRegion-size?: SizeT<number>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

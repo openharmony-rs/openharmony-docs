@@ -20,6 +20,8 @@ Allows administrators to perform operations such as factory reset, restart, shut
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceControl-function operateDevice(admin: Want, operate: string, addition?: string): void--><!--Device-deviceControl-function operateDevice(admin: Want, operate: string, addition?: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -75,6 +77,8 @@ Allows the administrator to operate devices, for example, erasing disks.
 **Required permissions:** ohos.permission.ENTERPRISE_OPERATE_DEVICE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-deviceControl-function operateDevice(admin: Want, operation: Operation, addition?: string): void--><!--Device-deviceControl-function operateDevice(admin: Want, operation: Operation, addition?: string): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

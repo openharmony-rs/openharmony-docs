@@ -10,6 +10,8 @@ ManualIso object.
 
 **Since:** 24
 
+<!--Device-camera-interface ManualIso extends ManualIsoQuery--><!--Device-camera-interface ManualIso extends ManualIsoQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Gets current ISO.
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-ManualIso-getIso(): int--><!--Device-ManualIso-getIso(): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -56,7 +60,9 @@ Sets ISO sensitivity value, within the range of getSupportedIsoRange. This contr
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-ManualIso-setIso(iso: int): void--><!--Device-ManualIso-setIso(iso: int): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -8,6 +8,8 @@ Defines the window configuration corresponding to this ability. The configuratio
 
 **Since:** 7
 
+<!--Device-featureAbility-export enum AbilityWindowConfiguration--><!--Device-featureAbility-export enum AbilityWindowConfiguration-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## WINDOW_MODE_UNDEFINED
@@ -21,6 +23,8 @@ The PageAbility is in an undefined window display mode.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AbilityWindowConfiguration-WINDOW_MODE_UNDEFINED = 0--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_UNDEFINED = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -36,6 +40,8 @@ The PageAbility is in full screen mode.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AbilityWindowConfiguration-WINDOW_MODE_FULLSCREEN = 1--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_FULLSCREEN = 1-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## WINDOW_MODE_SPLIT_PRIMARY
@@ -49,6 +55,8 @@ The left screen in horizontal direction or the upper screen in vertical directio
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AbilityWindowConfiguration-WINDOW_MODE_SPLIT_PRIMARY = 100--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_SPLIT_PRIMARY = 100-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
@@ -64,6 +72,8 @@ The right screen in horizontal direction or the lower screen in vertical directi
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AbilityWindowConfiguration-WINDOW_MODE_SPLIT_SECONDARY = 101--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_SPLIT_SECONDARY = 101-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## WINDOW_MODE_FLOATING
@@ -77,5 +87,7 @@ The PageAbility is displayed in floating window mode.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AbilityWindowConfiguration-WINDOW_MODE_FLOATING = 102--><!--Device-AbilityWindowConfiguration-WINDOW_MODE_FLOATING = 102-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel

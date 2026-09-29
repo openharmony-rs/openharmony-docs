@@ -18,6 +18,8 @@ Switches the uninstall state of an application. This API is independent of EDM a
 
 **Required permissions:** ohos.permission.CHANGE_BUNDLE_UNINSTALL_STATE
 
+<!--Device-bundleManager-function switchUninstallState(bundleName: string, state: boolean): void--><!--Device-bundleManager-function switchUninstallState(bundleName: string, state: boolean): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

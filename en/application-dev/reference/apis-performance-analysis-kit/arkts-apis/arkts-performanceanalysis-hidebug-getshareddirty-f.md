@@ -22,6 +22,8 @@ Obtains the size of the shared dirty memory of a process. This API is implemente
 
 **Since:** 8
 
+<!--Device-hidebug-function getSharedDirty() : bigint--><!--Device-hidebug-function getSharedDirty() : bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value:**

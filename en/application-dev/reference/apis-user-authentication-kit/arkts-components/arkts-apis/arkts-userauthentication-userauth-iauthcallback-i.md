@@ -8,6 +8,8 @@ Provides callbacks to return the authentication result. This API defines the aut
 
 **Since:** 10
 
+<!--Device-userAuth-interface IAuthCallback--><!--Device-userAuth-interface IAuthCallback-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Called to return the authentication result. If the authentication is successful,
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-IAuthCallback-onResult(result: UserAuthResult): void--><!--Device-IAuthCallback-onResult(result: UserAuthResult): void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

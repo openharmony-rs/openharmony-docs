@@ -12,6 +12,8 @@ Rating类型的FrameNode节点类型。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-typeNode-type Rating = TypedFrameNode<RatingInterface, RatingAttribute>--><!--Device-typeNode-type Rating = TypedFrameNode<RatingInterface, RatingAttribute>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;RatingInterface, [RatingAttribute](../arkts-components/arkts-arkui-rating-comp-attribute.md)&gt;

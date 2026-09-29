@@ -8,6 +8,8 @@ Information required for encryption.
 
 **Since:** 20
 
+<!--Device-eSIM-export interface ContractRequestData--><!--Device-eSIM-export interface ContractRequestData-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Random number.
 
 **Since:** 20
 
+<!--Device-ContractRequestData-nonce: string--><!--Device-ContractRequestData-nonce: string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Selected public key ID.
 
 **Since:** 20
 
+<!--Device-ContractRequestData-pkid: string--><!--Device-ContractRequestData-pkid: string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Public key.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-ContractRequestData-publicKey: string--><!--Device-ContractRequestData-publicKey: string-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 

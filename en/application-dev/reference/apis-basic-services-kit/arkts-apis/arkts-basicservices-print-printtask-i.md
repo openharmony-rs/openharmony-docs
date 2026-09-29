@@ -8,6 +8,8 @@ Implements event listeners for print jobs.
 
 **Since:** 10
 
+<!--Device-print-interface PrintTask--><!--Device-print-interface PrintTask-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Unsubscribes from the block events of a print job. This API uses an asynchronous
 **Since:** 10
 
 **Required permissions:** ohos.permission.PRINT
+
+<!--Device-PrintTask-off(type: 'block', callback?: Callback<void>): void--><!--Device-PrintTask-off(type: 'block', callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -91,6 +95,8 @@ Unsubscribes from the success events of a print job. This API uses an asynchrono
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-PrintTask-off(type: 'succeed', callback?: Callback<void>): void--><!--Device-PrintTask-off(type: 'succeed', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**
@@ -153,6 +159,8 @@ Unsubscribes from the failure events of a print job. This API uses an asynchrono
 **Since:** 10
 
 **Required permissions:** ohos.permission.PRINT
+
+<!--Device-PrintTask-off(type: 'fail', callback?: Callback<void>): void--><!--Device-PrintTask-off(type: 'fail', callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -217,6 +225,8 @@ Unsubscribes from the cancellation events of a print job. This API uses an async
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-PrintTask-off(type: 'cancel', callback?: Callback<void>): void--><!--Device-PrintTask-off(type: 'cancel', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**
@@ -279,6 +289,8 @@ Subscribes to the block events of a print job. This API uses an asynchronous cal
 **Since:** 10
 
 **Required permissions:** ohos.permission.PRINT
+
+<!--Device-PrintTask-on(type: 'block', callback: Callback<void>): void--><!--Device-PrintTask-on(type: 'block', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -343,6 +355,8 @@ Subscribes to the success events of a print job. This API uses an asynchronous c
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-PrintTask-on(type: 'succeed', callback: Callback<void>): void--><!--Device-PrintTask-on(type: 'succeed', callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**
@@ -406,6 +420,8 @@ Subscribes to the failure events of a print job. This API uses an asynchronous c
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-PrintTask-on(type: 'fail', callback: Callback<void>): void--><!--Device-PrintTask-on(type: 'fail', callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**
@@ -468,6 +484,8 @@ Subscribes to the cancellation events of a print job. This API uses an asynchron
 **Since:** 10
 
 **Required permissions:** ohos.permission.PRINT
+
+<!--Device-PrintTask-on(type: 'cancel', callback: Callback<void>): void--><!--Device-PrintTask-on(type: 'cancel', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

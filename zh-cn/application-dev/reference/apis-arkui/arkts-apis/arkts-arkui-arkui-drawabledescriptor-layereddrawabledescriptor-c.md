@@ -12,6 +12,8 @@ drawable.json位于项目工程entry/src/main/resources/base/media目录下。�
 
 **起始版本：** 10
 
+<!--Device-unnamed-export class LayeredDrawableDescriptor extends DrawableDescriptor--><!--Device-unnamed-export class LayeredDrawableDescriptor extends DrawableDescriptor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -38,6 +40,8 @@ LayeredDrawableDescriptor的构造函数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LayeredDrawableDescriptor-constructor(    foreground?: DrawableDescriptor,    background?: DrawableDescriptor,    mask?: DrawableDescriptor  )--><!--Device-LayeredDrawableDescriptor-constructor(    foreground?: DrawableDescriptor,    background?: DrawableDescriptor,    mask?: DrawableDescriptor  )-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -61,6 +65,8 @@ getBackground(): DrawableDescriptor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LayeredDrawableDescriptor-getBackground(): DrawableDescriptor--><!--Device-LayeredDrawableDescriptor-getBackground(): DrawableDescriptor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +134,8 @@ getForeground(): DrawableDescriptor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LayeredDrawableDescriptor-getForeground(): DrawableDescriptor--><!--Device-LayeredDrawableDescriptor-getForeground(): DrawableDescriptor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -201,6 +209,8 @@ getMask(): DrawableDescriptor
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-LayeredDrawableDescriptor-getMask(): DrawableDescriptor--><!--Device-LayeredDrawableDescriptor-getMask(): DrawableDescriptor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -268,6 +278,8 @@ LayeredDrawableDescriptor的静态方法，获取系统内置的裁切路径参�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-LayeredDrawableDescriptor-static getMaskClipPath(): string--><!--Device-LayeredDrawableDescriptor-static getMaskClipPath(): string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -315,6 +327,8 @@ setBlendMode(mode: drawing.BlendMode): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-LayeredDrawableDescriptor-setBlendMode(mode: drawing.BlendMode): void--><!--Device-LayeredDrawableDescriptor-setBlendMode(mode: drawing.BlendMode): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

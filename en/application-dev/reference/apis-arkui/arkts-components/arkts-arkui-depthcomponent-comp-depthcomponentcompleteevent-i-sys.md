@@ -4,9 +4,11 @@
 declare interface DepthComponentCompleteEvent
 ```
 
-Information about the background resource loaded successfully.
+Provides the event information about the successful loading of the background resource.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-declare interface DepthComponentCompleteEvent--><!--Device-unnamed-declare interface DepthComponentCompleteEvent-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,7 +20,7 @@ Information about the background resource loaded successfully.
 componentHeight: number
 ```
 
-Component height.
+Height of the component, in vp.
 
 **Type:** number
 
@@ -27,6 +29,8 @@ Component height.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-DepthComponentCompleteEvent-componentHeight: double--><!--Device-DepthComponentCompleteEvent-componentHeight: double-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,7 +42,7 @@ Component height.
 componentWidth: number
 ```
 
-Component width.
+Width of the component, in vp.
 
 **Type:** number
 
@@ -47,6 +51,8 @@ Component width.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-DepthComponentCompleteEvent-componentWidth: double--><!--Device-DepthComponentCompleteEvent-componentWidth: double-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

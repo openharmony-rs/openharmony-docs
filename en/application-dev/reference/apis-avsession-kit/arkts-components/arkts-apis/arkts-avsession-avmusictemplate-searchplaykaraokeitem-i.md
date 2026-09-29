@@ -8,6 +8,8 @@ The definition of SearchPlayKaraokeItem.
 
 **Since:** 26.2.0
 
+<!--Device-avMusicTemplate-interface SearchPlayKaraokeItem--><!--Device-avMusicTemplate-interface SearchPlayKaraokeItem-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The unique identifier of the media resource.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayKaraokeItem-entityId: string--><!--Device-SearchPlayKaraokeItem-entityId: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## entityName
@@ -45,5 +49,7 @@ The name of the audio. When this parameter is left blank, the application search
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SearchPlayKaraokeItem-entityName?: string--><!--Device-SearchPlayKaraokeItem-entityName?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

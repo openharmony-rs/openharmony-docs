@@ -8,6 +8,8 @@ declare enum FoldStatus
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare enum FoldStatus--><!--Device-unnamed-declare enum FoldStatus-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FOLD_STATUS_UNKNOWN
@@ -23,6 +25,8 @@ FOLD_STATUS_UNKNOWN = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FoldStatus-FOLD_STATUS_UNKNOWN = 0--><!--Device-FoldStatus-FOLD_STATUS_UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ FOLD_STATUS_EXPANDED = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-FoldStatus-FOLD_STATUS_EXPANDED = 1--><!--Device-FoldStatus-FOLD_STATUS_EXPANDED = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FOLD_STATUS_FOLDED
@@ -56,6 +62,8 @@ FOLD_STATUS_FOLDED = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-FoldStatus-FOLD_STATUS_FOLDED = 2--><!--Device-FoldStatus-FOLD_STATUS_FOLDED = 2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FOLD_STATUS_HALF_FOLDED
@@ -71,5 +79,7 @@ FOLD_STATUS_HALF_FOLDED = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED = 3--><!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

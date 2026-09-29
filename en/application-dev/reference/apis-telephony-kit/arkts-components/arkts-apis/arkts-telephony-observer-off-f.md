@@ -21,6 +21,8 @@ Unregisters the observer for network status change events. This API uses an asyn
 
 **Since:** 6
 
+<!--Device-observer-function off(type: 'networkStateChange', callback?: Callback<NetworkState>): void--><!--Device-observer-function off(type: 'networkStateChange', callback?: Callback<NetworkState>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**
@@ -67,6 +69,8 @@ Unregisters the observer for signal status change events. This API uses an async
 > you do not pass the callback, you will cancel listening for all events.
 
 **Since:** 6
+
+<!--Device-observer-function off(type: 'signalInfoChange', callback?: Callback<Array<SignalInformation>>): void--><!--Device-observer-function off(type: 'signalInfoChange', callback?: Callback<Array<SignalInformation>>): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
@@ -117,6 +121,8 @@ Unregisters the observer for connection status change events of the cellular dat
 
 **Since:** 7
 
+<!--Device-observer-function off(type: 'cellularDataConnectionStateChange', callback?: Callback<DataConnectionStateInfo>): void--><!--Device-observer-function off(type: 'cellularDataConnectionStateChange', callback?: Callback<DataConnectionStateInfo>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**
@@ -163,6 +169,8 @@ Unregisters the observer for the uplink and downlink data flow status change eve
 > you do not pass the callback, you will cancel listening for all events.
 
 **Since:** 7
+
+<!--Device-observer-function off(type: 'cellularDataFlowChange', callback?: Callback<DataFlowType>): void--><!--Device-observer-function off(type: 'cellularDataFlowChange', callback?: Callback<DataFlowType>): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
@@ -213,6 +221,8 @@ Unregisters the observer for call status change events. This API uses an asynchr
 
 **Since:** 6
 
+<!--Device-observer-function off(type: 'callStateChange', callback?: Callback<CallStateInfo>): void--><!--Device-observer-function off(type: 'callStateChange', callback?: Callback<CallStateInfo>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**
@@ -259,6 +269,8 @@ Unregisters the observer for extended call status change events. This API uses a
 > you do not pass the callback, you will cancel listening for all events.
 
 **Since:** 21
+
+<!--Device-observer-function off(type: 'callStateChangeEx', callback?: Callback<TelCallState>): void--><!--Device-observer-function off(type: 'callStateChangeEx', callback?: Callback<TelCallState>): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
@@ -307,6 +319,8 @@ Unregisters the observer for SIM card status change events. This API uses an asy
 
 **Since:** 7
 
+<!--Device-observer-function off(type: 'simStateChange', callback?: Callback<SimStateData>): void--><!--Device-observer-function off(type: 'simStateChange', callback?: Callback<SimStateData>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**
@@ -353,6 +367,8 @@ Unregisters the observer for account information change events of the SIM card. 
 > you do not pass the callback, you will cancel listening for all events.
 
 **Since:** 10
+
+<!--Device-observer-function off(type: 'iccAccountInfoChange', callback?: Callback<void>): void--><!--Device-observer-function off(type: 'iccAccountInfoChange', callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 

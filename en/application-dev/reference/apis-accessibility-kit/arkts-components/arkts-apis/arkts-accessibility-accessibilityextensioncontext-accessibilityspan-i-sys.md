@@ -8,6 +8,8 @@ Hyperlink text information for accessibility. For details, see the attribute spa
 
 **Since:** 20
 
+<!--Device-unnamed-export interface AccessibilitySpan--><!--Device-unnamed-export interface AccessibilitySpan-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Accessibility description of the hyperlink text.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AccessibilitySpan-accessibilityDescription: string--><!--Device-AccessibilitySpan-accessibilityDescription: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -40,6 +44,8 @@ Accessibility level of the hyperlink text. 'auto': whether the text can be ident
 
 **Since:** 20
 
+<!--Device-AccessibilitySpan-accessibilityLevel: string--><!--Device-AccessibilitySpan-accessibilityLevel: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Accessibility text of the hyperlink text.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AccessibilitySpan-accessibilityText: string--><!--Device-AccessibilitySpan-accessibilityText: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -72,6 +80,8 @@ Hyperlink text number.
 
 **Since:** 20
 
+<!--Device-AccessibilitySpan-spanId: int--><!--Device-AccessibilitySpan-spanId: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -87,6 +97,8 @@ Text content of the hyperlink text.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AccessibilitySpan-spanText: string--><!--Device-AccessibilitySpan-spanText: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

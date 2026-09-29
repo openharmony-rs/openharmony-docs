@@ -4,6 +4,8 @@ The distributedAccount module provides APIs for managing distributed accounts, i
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace distributedAccount--><!--Device-unnamed-declare namespace distributedAccount-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## Modules to Import

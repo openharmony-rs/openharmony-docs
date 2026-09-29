@@ -14,6 +14,8 @@ Defines a length in lpx.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-unnamed-declare type LPX = `${number}lpx`--><!--Device-unnamed-declare type LPX = `${number}lpx`-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** `${number}lpx`

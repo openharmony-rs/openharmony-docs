@@ -18,6 +18,8 @@ Obtain the IPv4 information of the Wi-Fi connection. The IP information includes
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function getIpInfo(): IpInfo--><!--Device-wifiManager-function getIpInfo(): IpInfo-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**

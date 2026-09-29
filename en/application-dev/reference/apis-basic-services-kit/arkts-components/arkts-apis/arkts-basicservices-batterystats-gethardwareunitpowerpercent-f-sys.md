@@ -16,6 +16,8 @@ Obtains the proportion of the power consumption of a hardware unit according to 
 
 **Since:** 8
 
+<!--Device-batteryStats-function getHardwareUnitPowerPercent(type: ConsumptionType): double--><!--Device-batteryStats-function getHardwareUnitPowerPercent(type: ConsumptionType): double-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryStatistics
 
 **System API:** This is a system API.

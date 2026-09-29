@@ -10,7 +10,7 @@ export declare struct ToolBar
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 如果ToolBar设置通用属性和通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ToolBar本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ToolBar设置通用属性和通用事件。
+> - 如果ToolBar设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ToolBar本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ToolBar设置通用属性和通用事件。
 
 ## 子组件
 
@@ -19,6 +19,8 @@ export declare struct ToolBar
 **起始版本：** 10
 
 **装饰器类型：** @Component
+
+<!--Device-unnamed-export declare struct ToolBar--><!--Device-unnamed-export declare struct ToolBar-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +50,8 @@ activateIndex?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBar-activateIndex?: number--><!--Device-ToolBar-activateIndex?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## controller
@@ -70,6 +74,8 @@ controller: TabsController
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBar-controller: TabsController--><!--Device-ToolBar-controller: TabsController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## dividerModifier
@@ -82,7 +88,7 @@ dividerModifier?: DividerModifier
 
 默认值：系统默认值。
 
-**类型：** DividerModifier
+**类型：** [DividerModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 13
 
@@ -91,6 +97,8 @@ dividerModifier?: DividerModifier
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToolBar-dividerModifier?: DividerModifier--><!--Device-ToolBar-dividerModifier?: DividerModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,6 +119,8 @@ toolBarList: ToolBarOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToolBar-toolBarList: ToolBarOptions--><!--Device-ToolBar-toolBarList: ToolBarOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,5 +151,7 @@ toolBarModifier?: ToolBarModifier
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToolBar-toolBarModifier?: ToolBarModifier--><!--Device-ToolBar-toolBarModifier?: ToolBarModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

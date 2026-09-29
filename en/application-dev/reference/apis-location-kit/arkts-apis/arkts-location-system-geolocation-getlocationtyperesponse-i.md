@@ -8,6 +8,8 @@ export interface GetLocationTypeResponse
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-export interface GetLocationTypeResponse--><!--Device-unnamed-export interface GetLocationTypeResponse-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 ## Modules to Import
@@ -29,5 +31,7 @@ types: Array<string>
 **Deprecated since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-GetLocationTypeResponse-types: Array<string>--><!--Device-GetLocationTypeResponse-types: Array<string>-End-->
 
 **System capability:** SystemCapability.Location.Location.Lite

@@ -16,6 +16,8 @@ interface ParticleOptions<
 
 **起始版本：** 10
 
+<!--Device-unnamed-interface ParticleOptions<  PARTICLE extends ParticleType,  COLOR_UPDATER extends ParticleUpdater,  OPACITY_UPDATER extends ParticleUpdater,  SCALE_UPDATER extends ParticleUpdater,  ACC_SPEED_UPDATER extends ParticleUpdater,  ACC_ANGLE_UPDATER extends ParticleUpdater,  SPIN_UPDATER extends ParticleUpdater>--><!--Device-unnamed-interface ParticleOptions<  PARTICLE extends ParticleType,  COLOR_UPDATER extends ParticleUpdater,  OPACITY_UPDATER extends ParticleUpdater,  SCALE_UPDATER extends ParticleUpdater,  ACC_SPEED_UPDATER extends ParticleUpdater,  ACC_ANGLE_UPDATER extends ParticleUpdater,  SPIN_UPDATER extends ParticleUpdater>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## acceleration
@@ -42,6 +44,8 @@ speed表示加速度大小，angle表示加速度方向（单位：度）。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ParticleOptions-acceleration?: AccelerationOptions<ACC_SPEED_UPDATER, ACC_ANGLE_UPDATER>--><!--Device-ParticleOptions-acceleration?: AccelerationOptions<ACC_SPEED_UPDATER, ACC_ANGLE_UPDATER>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -66,6 +70,8 @@ color?: ParticleColorPropertyOptions<COLOR_UPDATER>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ParticleOptions-color?: ParticleColorPropertyOptions<COLOR_UPDATER>--><!--Device-ParticleOptions-color?: ParticleColorPropertyOptions<COLOR_UPDATER>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## emitter
@@ -83,6 +89,8 @@ emitter: EmitterOptions<PARTICLE>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleOptions-emitter: EmitterOptions<PARTICLE>--><!--Device-ParticleOptions-emitter: EmitterOptions<PARTICLE>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +114,8 @@ opacity?: ParticlePropertyOptions<number, OPACITY_UPDATER>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ParticleOptions-opacity?: ParticlePropertyOptions<number, OPACITY_UPDATER>--><!--Device-ParticleOptions-opacity?: ParticlePropertyOptions<number, OPACITY_UPDATER>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## scale
@@ -127,6 +137,8 @@ scale?: ParticlePropertyOptions<number, SCALE_UPDATER>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleOptions-scale?: ParticlePropertyOptions<number, SCALE_UPDATER>--><!--Device-ParticleOptions-scale?: ParticlePropertyOptions<number, SCALE_UPDATER>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -151,6 +163,8 @@ spin?: ParticlePropertyOptions<number, SPIN_UPDATER>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleOptions-spin?: ParticlePropertyOptions<number, SPIN_UPDATER>--><!--Device-ParticleOptions-spin?: ParticlePropertyOptions<number, SPIN_UPDATER>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -177,5 +191,7 @@ speed表示速度大小。angle表示速度的方向（单位：度），以元�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleOptions-velocity?: VelocityOptions--><!--Device-ParticleOptions-velocity?: VelocityOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

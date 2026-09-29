@@ -18,6 +18,8 @@ Configures feature parameters.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-userStatus-function configure(featureId: UserStatusFeature, detail: string): int--><!--Device-userStatus-function configure(featureId: UserStatusFeature, detail: string): int-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.

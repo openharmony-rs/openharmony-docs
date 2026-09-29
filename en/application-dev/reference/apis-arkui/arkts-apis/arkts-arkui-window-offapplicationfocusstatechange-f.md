@@ -18,6 +18,8 @@ Unregister the callback for application process focus state changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-window-function offApplicationFocusStateChange(callback?: Callback<boolean>): void--><!--Device-window-function offApplicationFocusStateChange(callback?: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**

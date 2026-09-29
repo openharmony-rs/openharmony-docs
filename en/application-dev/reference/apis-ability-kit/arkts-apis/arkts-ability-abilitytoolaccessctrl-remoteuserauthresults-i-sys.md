@@ -8,6 +8,8 @@ Remote user authorization results.
 
 **Since:** 26.0.1
 
+<!--Device-abilityToolAccessCtrl-interface RemoteUserAuthResults--><!--Device-abilityToolAccessCtrl-interface RemoteUserAuthResults-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Permission query information.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-RemoteUserAuthResults-permissionQuery: PermissionQuery--><!--Device-RemoteUserAuthResults-permissionQuery: PermissionQuery-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ Authorization result list.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-RemoteUserAuthResults-results: RemoteUserAuthItem[]--><!--Device-RemoteUserAuthResults-results: RemoteUserAuthItem[]-End-->
 
 **System capability:** SystemCapability.Security.Asset
 

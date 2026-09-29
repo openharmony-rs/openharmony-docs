@@ -20,6 +20,8 @@ Removes the extended user credential.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function removeUserExtendCredential(info: RemoveCredentialInfo, accountId: number): void--><!--Device-securityManager-function removeUserExtendCredential(info: RemoveCredentialInfo, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -14,4 +14,6 @@ Defining LocalBuilder MethodDecorator
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-unnamed-declare const LocalBuilder: MethodDecorator--><!--Device-unnamed-declare const LocalBuilder: MethodDecorator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

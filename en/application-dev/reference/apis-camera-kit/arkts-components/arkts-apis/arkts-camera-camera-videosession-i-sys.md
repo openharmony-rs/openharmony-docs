@@ -18,6 +18,8 @@ It implements a video session, which provides operations on the flash, exposure,
 
 **Since:** 11
 
+<!--Device-camera-interface VideoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, Stabilization,    ColorManagement, ControlCenter, AutoDeviceSwitch, Macro, ManualExposure, ManualFocus, ManualIso, OIS,    Aperture--><!--Device-camera-interface VideoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, Stabilization,    ColorManagement, ControlCenter, AutoDeviceSwitch, Macro, ManualExposure, ManualFocus, ManualIso, OIS,    Aperture-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Disable the color cube.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VideoSession-disableColorCube(): void--><!--Device-VideoSession-disableColorCube(): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -62,6 +66,8 @@ Before the setting, call [isColorCubeSupported] [isColorCubeSupported](#iscolorc
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VideoSession-enableColorCube(lutData: Uint8Array): void--><!--Device-VideoSession-enableColorCube(lutData: Uint8Array): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -90,6 +96,8 @@ Gets session conflict functions.
 
 **Since:** 13
 
+<!--Device-VideoSession-getSessionConflictFunctions(): Array<VideoConflictFunctions>--><!--Device-VideoSession-getSessionConflictFunctions(): Array<VideoConflictFunctions>-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -115,6 +123,8 @@ getSessionFunctions(outputCapability: CameraOutputCapability): Array<VideoFuncti
 Gets session functions.
 
 **Since:** 13
+
+<!--Device-VideoSession-getSessionFunctions(outputCapability: CameraOutputCapability): Array<VideoFunctions>--><!--Device-VideoSession-getSessionFunctions(outputCapability: CameraOutputCapability): Array<VideoFunctions>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -151,6 +161,8 @@ Gets color cube dimension.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-VideoSession-getSupportedCubeDimension(): int--><!--Device-VideoSession-getSupportedCubeDimension(): int-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -180,6 +192,8 @@ Checks whether the color cube is supported.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-VideoSession-isColorCubeSupported(): boolean--><!--Device-VideoSession-isColorCubeSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -206,6 +220,8 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback<LcdFlashStatus>): void
 Unsubscribes from LCD flash status change events.
 
 **Since:** 13
+
+<!--Device-VideoSession-off(type: 'lcdFlashStatus', callback?: AsyncCallback<LcdFlashStatus>): void--><!--Device-VideoSession-off(type: 'lcdFlashStatus', callback?: AsyncCallback<LcdFlashStatus>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -242,6 +258,8 @@ Unsubscribes from focus tracking information events.
 
 **Since:** 15
 
+<!--Device-VideoSession-off(type: 'focusTrackingInfoAvailable', callback?: Callback<FocusTrackingInfo>): void--><!--Device-VideoSession-off(type: 'focusTrackingInfoAvailable', callback?: Callback<FocusTrackingInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -277,6 +295,8 @@ Unsubscribes from effect suggestion change events.
 
 **Since:** 18
 
+<!--Device-VideoSession-off(type: 'effectSuggestionChange', callback?: AsyncCallback<EffectSuggestionType>): void--><!--Device-VideoSession-off(type: 'effectSuggestionChange', callback?: AsyncCallback<EffectSuggestionType>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -303,6 +323,8 @@ off(type: 'lightStatusChange', callback?: AsyncCallback<LightStatus>): void
 Unsubscribes from camera light status changes.
 
 **Since:** 18
+
+<!--Device-VideoSession-off(type: 'lightStatusChange', callback?: AsyncCallback<LightStatus>): void--><!--Device-VideoSession-off(type: 'lightStatusChange', callback?: AsyncCallback<LightStatus>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -357,6 +379,8 @@ Unsubscribes from aperture info event callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-VideoSession-offApertureInfoChange(callback?: Callback<ApertureInfo>): void--><!--Device-VideoSession-offApertureInfoChange(callback?: Callback<ApertureInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -382,6 +406,8 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback<LcdFlashStatus>): void
 Subscribes to LCD flash status change events. This API uses an asynchronous callback to return the result.
 
 **Since:** 13
+
+<!--Device-VideoSession-on(type: 'lcdFlashStatus', callback: AsyncCallback<LcdFlashStatus>): void--><!--Device-VideoSession-on(type: 'lcdFlashStatus', callback: AsyncCallback<LcdFlashStatus>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -429,6 +455,8 @@ Subscribes to focus tracking information events. This API uses an asynchronous c
 
 **Since:** 15
 
+<!--Device-VideoSession-on(type: 'focusTrackingInfoAvailable', callback: Callback<FocusTrackingInfo>): void--><!--Device-VideoSession-on(type: 'focusTrackingInfoAvailable', callback: Callback<FocusTrackingInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -472,6 +500,8 @@ Subscribes to effect suggestion change events.
 
 **Since:** 18
 
+<!--Device-VideoSession-on(type: 'effectSuggestionChange', callback: AsyncCallback<EffectSuggestionType>): void--><!--Device-VideoSession-on(type: 'effectSuggestionChange', callback: AsyncCallback<EffectSuggestionType>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -498,6 +528,8 @@ on(type: 'lightStatusChange', callback: AsyncCallback<LightStatus>): void
 Subscribes to camera light status changes. This API uses an asynchronous callback to return the result.
 
 **Since:** 18
+
+<!--Device-VideoSession-on(type: 'lightStatusChange', callback: AsyncCallback<LightStatus>): void--><!--Device-VideoSession-on(type: 'lightStatusChange', callback: AsyncCallback<LightStatus>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -551,6 +583,8 @@ Subscribes aperture info event callback.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VideoSession-onApertureInfoChange(callback: Callback<ApertureInfo>): void--><!--Device-VideoSession-onApertureInfoChange(callback: Callback<ApertureInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

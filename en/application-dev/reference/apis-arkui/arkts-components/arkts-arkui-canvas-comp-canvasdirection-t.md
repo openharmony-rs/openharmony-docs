@@ -14,6 +14,8 @@ Defines the current text direction. The value type is a union of the types liste
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare type CanvasDirection = "inherit" | "ltr" | "rtl"--><!--Device-unnamed-declare type CanvasDirection = "inherit" | "ltr" | "rtl"-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

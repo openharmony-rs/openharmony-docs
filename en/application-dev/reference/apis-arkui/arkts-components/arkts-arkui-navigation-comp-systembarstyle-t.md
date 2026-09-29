@@ -12,6 +12,8 @@ Describes the properties of the status bar. These properties are valid for the p
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type SystemBarStyle = import('../api/@ohos.window').default.SystemBarStyle--><!--Device-unnamed-declare type SystemBarStyle = import('../api/@ohos.window').default.SystemBarStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.window').default.SystemBarStyle

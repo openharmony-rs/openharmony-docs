@@ -4,15 +4,16 @@
 declare interface SearchOptions
 ```
 
-Describes the initialization options of the **Search** component.
+Initialization parameters of Search.
 
 > **NOTE:** 
 > 
-> To standardize anonymous object definitions, the element definitions here have been revised in API version 18.
-> While historical version information is preserved for anonymous objects, there may be cases where the outer element
-> 's
+> To standardize the definition of anonymous objects, the element definitions here were modified in API version 18.
+> The since version information of the historical anonymous objects is retained, which may result in the
 
 **Since:** 18
+
+<!--Device-unnamed-declare interface SearchOptions--><!--Device-unnamed-declare interface SearchOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,13 +23,15 @@ Describes the initialization options of the **Search** component.
 controller?: SearchController
 ```
 
-Controller of the **Search** component.
+Sets the controller of the Search component. Pass this parameter when you need to operate the search box through the controller (for example, setting the cursor position or stopping editing). If it is not passed, the controller- related methods cannot be used.
 
 **Type:** [SearchController](arkts-arkui-search-comp-searchcontroller-c.md)
 
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SearchOptions-controller?: SearchController--><!--Device-SearchOptions-controller?: SearchController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,23 +41,27 @@ Controller of the **Search** component.
 icon?: string
 ```
 
-Path to the search icon. By default, the system search icon is used.
+Sets the path of the search icon. The system search icon is used by default.
 
 **NOTE:** 
 
-The icon data source supports both [relative paths](../../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#example-25-displaying-an-image-using-a-relative-path) and network images.
+The data source of icon supports [displaying an image using a relative path](../../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#example-25-displaying-an-image-using-a-relative-path) and network images.
 
-- The supported formats include PNG, JPG, BMP, SVG, GIF, pixelmap, and HEIF.  
-- The Base64 string is supported in the following format: data:image/[png|jpeg|bmp|webp|heif];base64,[base64 data],  
-where *[base64 data]* is a Base64 string.
+- The supported image formats include png, jpg, bmp, svg, gif, pixelmap, and heif.
 
-If this attribute and the **searchIcon** attribute are both set, the **searchIcon** attribute takes precedence.
+- Base64 strings are supported. Format data:image/[png|jpeg|bmp|webp|heif];base64,[base64 data], where [base64 data] is the Base64 string data.
+
+If this parameter is set together with the searchIcon attribute, searchIcon takes precedence.
+
+On wearable devices, the default icon size is 16 vp.
 
 **Type:** string
 
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SearchOptions-icon?: string--><!--Device-SearchOptions-icon?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,13 +71,15 @@ If this attribute and the **searchIcon** attribute are both set, the **searchIco
 placeholder?: ResourceStr
 ```
 
-Text displayed when there is no input.
+Sets the placeholder text displayed when there is no input. Pass this parameter when you need to customize the placeholder text. If it is not passed, no placeholder text is displayed.
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SearchOptions-placeholder?: ResourceStr--><!--Device-SearchOptions-placeholder?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,18 +89,20 @@ Text displayed when there is no input.
 value?: ResourceStr
 ```
 
-Sets the text input in the search text box.
+Sets the search text currently displayed. Pass this parameter when you need to set the initial text content of the search box. If it is not passed, the search box is empty.
 
-Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
+Since API version 10, this parameter supports [$$](../../../ui/state-management/arkts-two-way-sync.md) two-way binding variables.
 
-Since API version 18, this parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
+Since API version 18, this parameter supports [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters) two- way binding variables.
 
-The Resource type is supported since API version 20.
+Since API version 20, the Resource type is supported.
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SearchOptions-value?: ResourceStr--><!--Device-SearchOptions-value?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

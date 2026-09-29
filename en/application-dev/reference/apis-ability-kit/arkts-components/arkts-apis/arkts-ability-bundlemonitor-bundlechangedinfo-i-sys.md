@@ -10,6 +10,8 @@ This module defines the result information of monitoring install, update and uni
 
 **Since:** 9
 
+<!--Device-bundleMonitor-interface BundleChangedInfo--><!--Device-bundleMonitor-interface BundleChangedInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The app index of clone app
 
 **Since:** 12
 
+<!--Device-BundleChangedInfo-readonly appIndex: int--><!--Device-BundleChangedInfo-readonly appIndex: int-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ The bundle name
 
 **Since:** 9
 
+<!--Device-BundleChangedInfo-readonly bundleName: string--><!--Device-BundleChangedInfo-readonly bundleName: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -63,6 +69,8 @@ The user id
 **Type:** number
 
 **Since:** 9
+
+<!--Device-BundleChangedInfo-readonly userId: int--><!--Device-BundleChangedInfo-readonly userId: int-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

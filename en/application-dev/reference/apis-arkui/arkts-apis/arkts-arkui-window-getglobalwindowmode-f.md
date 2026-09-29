@@ -16,7 +16,9 @@ Obtains the window mode of the window that is in the foreground lifecycle on the
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-window-function getGlobalWindowMode(displayId?: long): Promise<int>--><!--Device-window-function getGlobalWindowMode(displayId?: long): Promise<int>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

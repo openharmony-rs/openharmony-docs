@@ -20,6 +20,8 @@ Obtains the system region.
 
 **Substitutes:** [getSystemRegion](arkts-localization-i18n-system-c.md#getsystemregion)
 
+<!--Device-i18n-export function getSystemRegion(): string--><!--Device-i18n-export function getSystemRegion(): string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Return value:**

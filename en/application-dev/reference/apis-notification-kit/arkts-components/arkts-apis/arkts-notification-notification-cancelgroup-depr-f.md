@@ -19,6 +19,8 @@ Cancels notifications under a notification group of this application. This API u
 
 **Substitutes:** [cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md)
 
+<!--Device-notification-function cancelGroup(groupName: string, callback: AsyncCallback<void>): void--><!--Device-notification-function cancelGroup(groupName: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -44,6 +46,8 @@ Cancels notifications under a notification group of this application. This API u
 **Deprecated since:** 9
 
 **Substitutes:** [cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md)
+
+<!--Device-notification-function cancelGroup(groupName: string): Promise<void>--><!--Device-notification-function cancelGroup(groupName: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

@@ -2,6 +2,8 @@
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace inputMethod--><!--Device-unnamed-declare namespace inputMethod-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Constant
@@ -82,20 +84,6 @@ import { inputMethod } from '@kit.IMEKit';
 | [InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i-sys.md) | Describes the window information of the input method keyboard. |
 <!--DelEnd-->
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [AttachFailureReason](arkts-ime-inputmethod-attachfailurereason-e.md) | Enumerates the reasons for attachment failure. |
-| [CapitalizeMode](arkts-ime-inputmethod-capitalizemode-e.md) | Enumerates the modes of capitalizing the first letter of a text.<br> |
-| [Direction](arkts-ime-inputmethod-direction-e.md) | Enumerates the directions of cursor movement of the input method. |
-| [EnabledState](arkts-ime-inputmethod-enabledstate-e.md) | Indicates whether the input method is enabled. |
-| [EnterKeyType](arkts-ime-inputmethod-enterkeytype-e.md) | Enumerates the function types represented by the Enter key of the input method. |
-| [ExtendAction](arkts-ime-inputmethod-extendaction-e.md) | Describes the type of the extended edit action on the text box. |
-| [KeyboardStatus](arkts-ime-inputmethod-keyboardstatus-e.md) | Enumerates the soft keyboard states of the input method. |
-| [RequestKeyboardReason](arkts-ime-inputmethod-requestkeyboardreason-e.md) | Enumerates the reasons for requesting the keyboard. |
-| [TextInputType](arkts-ime-inputmethod-textinputtype-e.md) | Enumerates the text input types. |
-
 ### Types
 
 | Name | Description |
@@ -109,6 +97,20 @@ import { inputMethod } from '@kit.IMEKit';
 | --- | --- |
 | [ImeChangeWithUserIdCallback](arkts-ime-inputmethod-imechangewithuseridcallback-t-sys.md) | The callback of the inputmethod change event which carries the user ID whose inputmethod is changed. |
 <!--DelEnd-->
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [AttachFailureReason](arkts-ime-inputmethod-attachfailurereason-e.md) | Enumerates the reasons for attachment failure. |
+| [CapitalizeMode](arkts-ime-inputmethod-capitalizemode-e.md) | Enumerates the modes of capitalizing the first letter of a text.<br> |
+| [Direction](arkts-ime-inputmethod-direction-e.md) | Enumerates the directions of cursor movement of the input method. |
+| [EnabledState](arkts-ime-inputmethod-enabledstate-e.md) | Indicates whether the input method is enabled. |
+| [EnterKeyType](arkts-ime-inputmethod-enterkeytype-e.md) | Enumerates the function types represented by the Enter key of the input method. |
+| [ExtendAction](arkts-ime-inputmethod-extendaction-e.md) | Describes the type of the extended edit action on the text box. |
+| [KeyboardStatus](arkts-ime-inputmethod-keyboardstatus-e.md) | Enumerates the soft keyboard states of the input method. |
+| [RequestKeyboardReason](arkts-ime-inputmethod-requestkeyboardreason-e.md) | Enumerates the reasons for requesting the keyboard. |
+| [TextInputType](arkts-ime-inputmethod-textinputtype-e.md) | Enumerates the text input types. |
 
 ### Constants
 

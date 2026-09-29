@@ -1,60 +1,22 @@
-# ExecCmdOptions (System API)
+# ExecCmdOptions
 
 ```TypeScript
 interface ExecCmdOptions
 ```
 
-Options for executing a command.
+Describes the options for executing a raw command string via [execCmd](arkts-ability-climanager-execcmd-f.md).
 
-**Since:** 26.0.0
+**Since:** 26.0.1
+
+<!--Device-cliManager-interface ExecCmdOptions--><!--Device-cliManager-interface ExecCmdOptions-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
-
-**System API:** This is a system API.
 
 ## Modules to Import
 
 ```TypeScript
 import { cliManager, CliHook, ExecToolParam, ExecCmdParam, ExecResultWrap } from '@kit.AbilityKit';
 ```
-
-## background
-
-```TypeScript
-background?: boolean
-```
-
-Indicates whether the command is executed in the background.
-
-**Type:** boolean
-
-**Default:** false
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**System capability:** SystemCapability.Ability.AgentRuntime.Core
-
-**System API:** This is a system API.
-
-## callback
-
-```TypeScript
-callback?: ToolEventCallback
-```
-
-Indicates the event callback for receiving tool events. If provided, auto-subscribe is performed.
-
-**Type:** [ToolEventCallback](arkts-ability-tooleventcallback-i-sys.md)
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**System capability:** SystemCapability.Ability.AgentRuntime.Core
-
-**System API:** This is a system API.
 
 ## challenge
 
@@ -72,23 +34,27 @@ Indicates the unique identifier obtained from the access token manager.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExecCmdOptions-challenge?: string--><!--Device-ExecCmdOptions-challenge?: string-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
 
-## env
+## dmSessionId
 
 ```TypeScript
-env?: Record<string, string>
+dmSessionId?: string
 ```
 
-Indicates the environment variables for the command.
+Indicates the session ID of the dialog manager (DM), which uniquely identifies the agent session. The value consists of letters, digits, '_' and '-', with a maximum length of 256.
 
-**Type:** Record&lt;string, string&gt;
+**Type:** string
 
-**Since:** 26.0.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecCmdOptions-dmSessionId?: string--><!--Device-ExecCmdOptions-dmSessionId?: string-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -110,81 +76,27 @@ Indicates whether the command is executed as a shell command.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExecCmdOptions-isShellCommand?: boolean--><!--Device-ExecCmdOptions-isShellCommand?: boolean-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
 
-## policy
+## toolCallId
 
 ```TypeScript
-policy?: string
+toolCallId?: string
 ```
 
-Indicates the security policy.
+Indicates the unique identifier assigned to a tool call by the agent. The value consists of letters, digits, '_' and '-', with a maximum length of 256.
 
 **Type:** string
 
-**Since:** 26.0.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**System capability:** SystemCapability.Ability.AgentRuntime.Core
-
-**System API:** This is a system API.
-
-## timeout
-
-```TypeScript
-timeout?: number
-```
-
-Indicates the maximum execution time of the command, in seconds.
-
-**Type:** number
-
-**Default:** 1800
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**System capability:** SystemCapability.Ability.AgentRuntime.Core
-
-**System API:** This is a system API.
-
-## workDir
-
-```TypeScript
-workDir?: string
-```
-
-Indicates the working directory for the command.
-
-**Type:** string
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**System capability:** SystemCapability.Ability.AgentRuntime.Core
-
-**System API:** This is a system API.
-
-## yieldMs
-
-```TypeScript
-yieldMs?: number
-```
-
-Indicates the foreground waiting timeout in milliseconds.
-
-**Type:** number
-
-**Default:** 0
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
+<!--Device-ExecCmdOptions-toolCallId?: string--><!--Device-ExecCmdOptions-toolCallId?: string-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 

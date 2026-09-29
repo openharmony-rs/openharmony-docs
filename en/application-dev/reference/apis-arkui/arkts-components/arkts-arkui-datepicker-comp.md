@@ -1,14 +1,16 @@
 # DatePicker
 
-**DatePicker** is a component for selecting a date through scrolling interaction.
+**DatePicker** is a component for selecting a date through scrolling interaction. It supports switching between the Gregorian and lunar calendars, and allows you to configure the date range, selection mode, and text style. It is used in application scenarios where users need to select a date, providing a unified date selection interaction experience, improving user experience, and reducing development workload.
 
-> **NOTE**
+> **NOTE:** 
+> 
+> - Avoid changing component attributes during animation processes.
+> 
+> - The maximum number of rows that can be displayed varies by screen orientation: In portrait mode, the default number of rows is 5. In landscape mode, the number of rows depends on the system configuration. If no system configuration is set, the default is 3 rows. To check the specific system configuration value for landscape mode,use **$r('sys.float.ohos_id_picker_show_count_landscape')**.
 
-> - Avoid changing component attributes during animation processes. > > - The maximum number of rows that can be displayed varies by screen orientation: In portrait mode, the default > number of rows is 5. In landscape mode, the number of rows depends on the system configuration. If no system > configuration is set, the default is 3 rows. To check the specific system configuration value for landscape mode, > use **$r('sys.float.ohos_id_picker_show_count_landscape')**.
+## Child Components
 
-Child Components
-
-Not supported
+This is a basic component and is not recommended to contain child components.
 
 ## DatePicker
 
@@ -16,7 +18,7 @@ Not supported
 DatePicker(options?: DatePickerOptions)
 ```
 
-Creates a date picker in the given date range.
+Creates a date picker based on the specified date range. Use cases include application features that require users to select a date, such as birthday selection, meeting booking, and itinerary arrangement.
 
 **Since:** 8
 
@@ -24,13 +26,15 @@ Creates a date picker in the given date range.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-DatePickerInterface-(options?: DatePickerOptions): DatePickerAttribute--><!--Device-DatePickerInterface-(options?: DatePickerOptions): DatePickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [DatePickerOptions](arkts-arkui-datepicker-comp-datepickeroptions-i.md) | No | Parameters of the date picker. |
+| options | [DatePickerOptions](arkts-arkui-datepicker-comp-datepickeroptions-i.md) | No | Parameters for configuring the date picker component. If this parameter is not passed, the default configuration is used (**start** defaults to **Date('1970-01-01')**, **end** defaults to **Date('2100-12-31')**, and **selected** defaults to the current system date). |
 
 ## Summary
 

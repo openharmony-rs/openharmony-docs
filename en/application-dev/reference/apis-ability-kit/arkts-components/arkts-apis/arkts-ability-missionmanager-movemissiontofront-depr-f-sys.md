@@ -21,6 +21,8 @@ Switches a given mission to the foreground. This API uses an asynchronous callba
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function moveMissionToFront(missionId: number, callback: AsyncCallback<void>): void--><!--Device-missionManager-function moveMissionToFront(missionId: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Switches a given mission to the foreground, with the startup parameters for the 
 **Substitutes:** [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md)
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function moveMissionToFront(missionId: number, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-missionManager-function moveMissionToFront(missionId: number, options: StartOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -125,6 +129,8 @@ Switches a given mission to the foreground, with the startup parameters for the 
 **Substitutes:** [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-f-sys.md)
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function moveMissionToFront(missionId: number, options?: StartOptions): Promise<void>--><!--Device-missionManager-function moveMissionToFront(missionId: number, options?: StartOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

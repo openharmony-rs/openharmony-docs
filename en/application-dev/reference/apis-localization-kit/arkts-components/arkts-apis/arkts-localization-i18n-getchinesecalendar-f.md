@@ -20,6 +20,8 @@ Obtains the ChineseCalendar object for the specified locale.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-i18n-export function getChineseCalendar(locale?: Intl.Locale): ChineseCalendar--><!--Device-i18n-export function getChineseCalendar(locale?: Intl.Locale): ChineseCalendar-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**

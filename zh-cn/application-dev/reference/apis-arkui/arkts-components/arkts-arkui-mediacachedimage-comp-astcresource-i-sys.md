@@ -10,6 +10,8 @@ interface ASTCResource
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface ASTCResource--><!--Device-unnamed-interface ASTCResource-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -28,6 +30,8 @@ column: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-ASTCResource-column: number--><!--Device-ASTCResource-column: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -45,6 +49,8 @@ ASTC URI 资源数组，指示要获取的 ASTC 数据范围。
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ASTCResource-sources: Array<string>--><!--Device-ASTCResource-sources: Array<string>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

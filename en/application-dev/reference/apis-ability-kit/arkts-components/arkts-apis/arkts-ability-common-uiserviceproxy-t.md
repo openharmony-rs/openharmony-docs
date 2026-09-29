@@ -12,6 +12,8 @@ Defines the capability for data communication with the UIServiceExtensionAbility
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-common-export type UIServiceProxy = _UIServiceProxy.default--><!--Device-common-export type UIServiceProxy = _UIServiceProxy.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _UIServiceProxy.default

@@ -8,6 +8,8 @@ Defines the left and right padding of the chip group, and the spacing between ch
 
 **Since:** 12
 
+<!--Device-unnamed-export interface ChipGroupSpaceOptions--><!--Device-unnamed-export interface ChipGroupSpaceOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -39,6 +41,8 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChipGroupSpaceOptions-endSpace?: Length--><!--Device-ChipGroupSpaceOptions-endSpace?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +76,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ChipGroupSpaceOptions-itemSpace?: string | number--><!--Device-ChipGroupSpaceOptions-itemSpace?: string | number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## startSpace
@@ -97,5 +103,7 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChipGroupSpaceOptions-startSpace?: Length--><!--Device-ChipGroupSpaceOptions-startSpace?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

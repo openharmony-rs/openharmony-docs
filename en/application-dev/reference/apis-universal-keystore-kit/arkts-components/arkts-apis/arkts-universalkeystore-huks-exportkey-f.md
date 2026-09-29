@@ -20,6 +20,8 @@ Exports a key. This API uses an asynchronous callback to return the result.
 
 **Substitutes:** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt;)
 
+<!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 **Parameters:**
@@ -60,6 +62,8 @@ Exports a key. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [exportKeyItem](arkts-universalkeystore-huks-exportkeyitem-f.md#exportkeyitem-1)(keyAlias: string, options: HuksOptions)
+
+<!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function exportKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

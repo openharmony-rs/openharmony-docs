@@ -8,6 +8,8 @@ declare interface TextBaseController
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface TextBaseController--><!--Device-unnamed-declare interface TextBaseController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## closeSelectionMenu
@@ -24,6 +26,8 @@ closeSelectionMenu(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextBaseController-closeSelectionMenu(): void--><!--Device-TextBaseController-closeSelectionMenu(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getLayoutManager
@@ -39,6 +43,8 @@ getLayoutManager(): LayoutManager
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextBaseController-getLayoutManager(): LayoutManager--><!--Device-TextBaseController-getLayoutManager(): LayoutManager-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,6 +81,8 @@ selectionStart和selectionEnd均为-1时表示全选。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextBaseController-setSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void--><!--Device-TextBaseController-setSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

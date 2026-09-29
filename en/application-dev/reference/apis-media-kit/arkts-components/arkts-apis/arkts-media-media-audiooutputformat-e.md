@@ -12,6 +12,8 @@ Enumerates the audio output formats.
 
 **Substitutes:** [ContainerFormatType](arkts-media-media-containerformattype-e.md)
 
+<!--Device-media-enum AudioOutputFormat--><!--Device-media-enum AudioOutputFormat-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## DEFAULT
@@ -30,6 +32,8 @@ Note: It is supported since API version 6 and deprecated since API version 8. Yo
 
 **Deprecated since:** 8
 
+<!--Device-AudioOutputFormat-DEFAULT = 0--><!--Device-AudioOutputFormat-DEFAULT = 0-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## MPEG_4
@@ -47,6 +51,8 @@ Note: It is supported since API version 6 and deprecated since API version 8. Yo
 **Deprecated since:** 8
 
 **Substitutes:** [CFT_MPEG_4](arkts-media-media-containerformattype-e.md#cft_mpeg_4)
+
+<!--Device-AudioOutputFormat-MPEG_4 = 2--><!--Device-AudioOutputFormat-MPEG_4 = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -68,6 +74,8 @@ Note: It is supported since API version 6 and deprecated since API version 8. Yo
 
 **Substitutes:** [CFT_AMR](arkts-media-media-containerformattype-e.md#cft_amr)
 
+<!--Device-AudioOutputFormat-AMR_NB = 3--><!--Device-AudioOutputFormat-AMR_NB = 3-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## AMR_WB
@@ -88,6 +96,8 @@ Note: It is supported since API version 6 and deprecated since API version 8. Yo
 
 **Substitutes:** [CFT_AMR](arkts-media-media-containerformattype-e.md#cft_amr)
 
+<!--Device-AudioOutputFormat-AMR_WB = 4--><!--Device-AudioOutputFormat-AMR_WB = 4-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## AAC_ADTS
@@ -105,5 +115,7 @@ Note: It is supported since API version 6 and deprecated since API version 8. Yo
 **Deprecated since:** 8
 
 **Substitutes:** [CFT_AAC](arkts-media-media-containerformattype-e.md#cft_aac)
+
+<!--Device-AudioOutputFormat-AAC_ADTS = 6--><!--Device-AudioOutputFormat-AAC_ADTS = 6-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder

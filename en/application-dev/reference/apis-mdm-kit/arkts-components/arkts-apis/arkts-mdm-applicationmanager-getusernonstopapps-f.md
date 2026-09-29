@@ -20,6 +20,8 @@ Obtains the non-stoppable application list of all users on the current device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function getUserNonStopApps(admin: Want): Array<common.ApplicationInstance>--><!--Device-applicationManager-function getUserNonStopApps(admin: Want): Array<common.ApplicationInstance>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -78,6 +80,8 @@ Obtains the non-stoppable application list of all users on the current device.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function getUserNonStopApps(admin: Want | null): Array<common.ApplicationInstance>--><!--Device-applicationManager-function getUserNonStopApps(admin: Want | null): Array<common.ApplicationInstance>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

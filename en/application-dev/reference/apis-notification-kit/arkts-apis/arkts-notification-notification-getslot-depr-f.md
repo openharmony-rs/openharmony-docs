@@ -19,6 +19,8 @@ Obtains a notification slot of a specified type. This API uses an asynchronous c
 
 **Substitutes:** [getSlot](arkts-notification-notificationmanager-getslot-f.md)
 
+<!--Device-notification-function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>): void--><!--Device-notification-function getSlot(slotType: SlotType, callback: AsyncCallback<NotificationSlot>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -44,6 +46,8 @@ Obtains a notification slot of a specified type. This API uses a promise to retu
 **Deprecated since:** 9
 
 **Substitutes:** [getSlot](arkts-notification-notificationmanager-getslot-f.md)
+
+<!--Device-notification-function getSlot(slotType: SlotType): Promise<NotificationSlot>--><!--Device-notification-function getSlot(slotType: SlotType): Promise<NotificationSlot>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

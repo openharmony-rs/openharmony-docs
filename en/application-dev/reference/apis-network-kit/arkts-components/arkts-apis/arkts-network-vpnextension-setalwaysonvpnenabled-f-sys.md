@@ -20,6 +20,8 @@ Enables or disables the **always on** mode. This API uses a promise to return th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-vpnExtension-function setAlwaysOnVpnEnabled(enable: boolean, bundleName: string): Promise<void>--><!--Device-vpnExtension-function setAlwaysOnVpnEnabled(enable: boolean, bundleName: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 **System API:** This is a system API.

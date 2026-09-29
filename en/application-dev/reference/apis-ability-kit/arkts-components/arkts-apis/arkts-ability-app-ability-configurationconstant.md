@@ -4,6 +4,8 @@ The ConfigurationConstant module provides preset enumerated values related to [C
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace ConfigurationConstant--><!--Device-unnamed-declare namespace ConfigurationConstant-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## Modules to Import

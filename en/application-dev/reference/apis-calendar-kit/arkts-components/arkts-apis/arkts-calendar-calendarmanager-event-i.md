@@ -8,6 +8,8 @@ Describes an **Event** object, including the event title, start time, and end ti
 
 **Since:** 10
 
+<!--Device-calendarManager-interface Event--><!--Device-calendarManager-interface Event-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Attendees in a meeting. If this parameter is not set, the default null value is 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Event-attendee?: Attendee[]--><!--Device-Event-attendee?: Attendee[]-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## description
@@ -45,6 +49,8 @@ Event description, with a maximum of 5,000 characters. If this parameter is not 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Event-description?: string--><!--Device-Event-description?: string-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -62,6 +68,8 @@ End time of an event. The value is a 13-digit timestamp. For an all-day event, t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Event-endTime: number--><!--Device-Event-endTime: number-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## id
@@ -77,6 +85,8 @@ Event ID. This parameter does not need to be set in [addEvent()](arkts-calendar-
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Event-id?: number--><!--Device-Event-id?: number-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -94,6 +104,8 @@ Unique ID of an event, with a maximum of 5,000 characters. If this parameter is 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Event-identifier?: string--><!--Device-Event-identifier?: string-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## instanceEndTime
@@ -109,6 +121,8 @@ End time of an event instance, which must be a 13-digit timestamp. The default v
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Event-instanceEndTime?: number--><!--Device-Event-instanceEndTime?: number-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -126,6 +140,8 @@ Start time of an event instance, which must be a 13-digit timestamp. The default
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Event-instanceStartTime?: number--><!--Device-Event-instanceStartTime?: number-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## isAllDay
@@ -141,6 +157,8 @@ Whether the event is an all-day event. The value **true** means that the event i
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Event-isAllDay?: boolean--><!--Device-Event-isAllDay?: boolean-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -158,6 +176,8 @@ Unique ID of an event, with a maximum of 5,000 characters. If this parameter is 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Event-isLunar?: boolean--><!--Device-Event-isLunar?: boolean-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## location
@@ -173,6 +193,8 @@ Event location. If this parameter is not set, the default null value is used.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Event-location?: Location--><!--Device-Event-location?: Location-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -190,6 +212,8 @@ Recurrence rule of an event. The event is a recurring event if this parameter is
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Event-recurrenceRule?: RecurrenceRule--><!--Device-Event-recurrenceRule?: RecurrenceRule-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## reminderTime
@@ -206,6 +230,8 @@ Reminder time of the event, in minutes. For example, if the value is 5, the remi
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Event-reminderTime?: number[]--><!--Device-Event-reminderTime?: number[]-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## service
@@ -214,13 +240,15 @@ Reminder time of the event, in minutes. For example, if the value is 5, the remi
 service?: EventService
 ```
 
-&lt;!--RP1--&gt;Event service. If this parameter is not set, no one-click service is available. This function is not supported currently.&lt;!--RP1End--&gt;
+<!--RP1-->Event service. If this parameter is not set, no one-click service is available. This function is not supported currently.<!--RP1End-->
 
 **Type:** [EventService](arkts-calendar-calendarmanager-eventservice-i.md)
 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Event-service?: EventService--><!--Device-Event-service?: EventService-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -238,6 +266,8 @@ Start time of an event. The value is a 13-digit timestamp. For an all-day event,
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Event-startTime: number--><!--Device-Event-startTime: number-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## timeZone
@@ -253,6 +283,8 @@ Time zone of the event, with a maximum of 5,000 characters. If this parameter is
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Event-timeZone?: string--><!--Device-Event-timeZone?: string-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -270,6 +302,8 @@ Event title, with a maximum of 5,000 characters. If this parameter is not specif
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Event-title?: string--><!--Device-Event-title?: string-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## type
@@ -285,5 +319,7 @@ Event type.When [getEvents()](arkts-calendar-calendarmanager-calendar-i.md#getev
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Event-type: EventType--><!--Device-Event-type: EventType-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData

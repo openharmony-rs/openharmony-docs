@@ -8,6 +8,8 @@ Describes the extended configuration of component operation event listening, whi
 
 **Since:** 22
 
+<!--Device-unnamed-declare interface ComponentEventOptions--><!--Device-unnamed-declare interface ComponentEventOptions-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -31,7 +33,9 @@ Attribute requirements of the target component to listen for. By default, all co
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ComponentEventOptions-on?: On--><!--Device-ComponentEventOptions-on?: On-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -49,7 +53,9 @@ Listening timeout interval, in milliseconds. The value is an integer greater tha
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ComponentEventOptions-timeout?: int--><!--Device-ComponentEventOptions-timeout?: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

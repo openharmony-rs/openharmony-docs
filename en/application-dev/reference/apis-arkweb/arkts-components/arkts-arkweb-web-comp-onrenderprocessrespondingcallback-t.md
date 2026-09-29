@@ -8,4 +8,6 @@ Defines a callback invoked when the rendering process transitions back to a norm
 
 **Since:** 12
 
+<!--Device-unnamed-type OnRenderProcessRespondingCallback = () => void--><!--Device-unnamed-type OnRenderProcessRespondingCallback = () => void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core

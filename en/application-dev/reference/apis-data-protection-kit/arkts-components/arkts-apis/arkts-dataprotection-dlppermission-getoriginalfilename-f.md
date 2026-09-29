@@ -18,6 +18,8 @@ Determine the file type based on the original file name extension and select an 
 
 **Since:** 10
 
+<!--Device-dlpPermission-function getOriginalFileName(fileName: string): string--><!--Device-dlpPermission-function getOriginalFileName(fileName: string): string-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Test API:** This API is used only in automated test scripts.

@@ -19,6 +19,8 @@ This module provides the capability of displaying ads, covering native, roll, sp
 
 **Decorator:** @Component
 
+<!--Device-unnamed-declare struct AdComponent--><!--Device-unnamed-declare struct AdComponent-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## Modules to Import
@@ -41,6 +43,8 @@ Application self-rendered ad style. The application self-rendered ad style is a 
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-AdComponent-adRenderer?: () => void--><!--Device-AdComponent-adRenderer?: () => void-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## build
@@ -54,6 +58,8 @@ A constructor used to create an **AdComponent** object.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdComponent-build(): void--><!--Device-AdComponent-build(): void-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 
@@ -73,6 +79,8 @@ NOTE: For non-roll ad types, the component only displays the first data in the a
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AdComponent-ads: advertising.Advertisement[]--><!--Device-AdComponent-ads: advertising.Advertisement[]-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## displayOptions
@@ -89,6 +97,8 @@ Ad display parameters.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AdComponent-displayOptions: advertising.AdDisplayOptions--><!--Device-AdComponent-displayOptions: advertising.AdDisplayOptions-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## interactionListener
@@ -104,6 +114,8 @@ Callback for ad status changes.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdComponent-interactionListener: advertising.AdInteractionListener--><!--Device-AdComponent-interactionListener: advertising.AdInteractionListener-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 
@@ -122,6 +134,8 @@ Used to provide the playback status of roll ads externally. Set to 1 for playing
 **Decorator:** @Prop
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-AdComponent-rollPlayState?: number--><!--Device-AdComponent-rollPlayState?: number-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 

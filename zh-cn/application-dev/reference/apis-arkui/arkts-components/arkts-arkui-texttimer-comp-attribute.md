@@ -4,11 +4,13 @@
 declare class TextTimerAttribute extends CommonMethod<TextTimerAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-**继承/实现关系：** TextTimerAttribute extends CommonMethod&lt;TextTimerAttribute&gt;
+**继承/实现关系：** TextTimerAttribute extends CommonMethod<TextTimerAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class TextTimerAttribute extends CommonMethod<TextTimerAttribute>--><!--Device-unnamed-declare class TextTimerAttribute extends CommonMethod<TextTimerAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ contentModifier(modifier: ContentModifier<TextTimerConfiguration>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextTimerAttribute-contentModifier(modifier: ContentModifier<TextTimerConfiguration>): TextTimerAttribute--><!--Device-TextTimerAttribute-contentModifier(modifier: ContentModifier<TextTimerConfiguration>): TextTimerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ fontColor(value: ResourceColor)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-TextTimerAttribute-fontColor(value: ResourceColor): TextTimerAttribute--><!--Device-TextTimerAttribute-fontColor(value: ResourceColor): TextTimerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -69,6 +75,8 @@ fontFamily(value: ResourceStr)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextTimerAttribute-fontFamily(value: ResourceStr): TextTimerAttribute--><!--Device-TextTimerAttribute-fontFamily(value: ResourceStr): TextTimerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,13 +100,15 @@ fontSize(value: Length)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-TextTimerAttribute-fontSize(value: Length): TextTimerAttribute--><!--Device-TextTimerAttribute-fontSize(value: Length): TextTimerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 字体大小。<br>默认值：16fp <br>value为Length中的number类型时，单位为fp。value为Length中的string类型时，若设置值为非数字开头，则按0fp处理；若设置值为数字开头，当数字后内容包含除像素单位外的字符（如字母、特殊符号等）时，取值字符串开头的数字部分，单位为fp。<br>例如：设置值为"abc"时取值为0fp，设置值为"10vp"时取值为10vp，设置值为"10vp11abc"时取值为10fp。不支持设置百分比字符串。 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 字体大小。<br>默认值：16fp <br>value为Length中的number类型时，单位为fp。value为Length中的string类型时，若设置值为非数字开头，则按0fp处理；若设置值为数字开头，当数字后内容包含除[像素单位](arkts-arkui-common-comp.md)外的字符（如字母、特殊符号等）时，取值字符串开头的数字部分，单位为fp。<br>例如：设置值为"abc"时取值为0fp，设置值为"10vp"时取值为10vp，设置值为"10vp11abc"时取值为10fp。不支持设置百分比字符串。 |
 
 ## fontStyle
 
@@ -113,6 +123,8 @@ fontStyle(value: FontStyle)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextTimerAttribute-fontStyle(value: FontStyle): TextTimerAttribute--><!--Device-TextTimerAttribute-fontStyle(value: FontStyle): TextTimerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,6 +147,8 @@ fontWeight(value: number | FontWeight | ResourceStr)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextTimerAttribute-fontWeight(value: number | FontWeight | ResourceStr): TextTimerAttribute--><!--Device-TextTimerAttribute-fontWeight(value: number | FontWeight | ResourceStr): TextTimerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,6 +174,8 @@ format(value: string)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-TextTimerAttribute-format(value: string): TextTimerAttribute--><!--Device-TextTimerAttribute-format(value: string): TextTimerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -181,6 +197,8 @@ onTimer(event: (utc: number, elapsedTime: number) => void)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextTimerAttribute-onTimer(event: (utc: number, elapsedTime: number) => void): TextTimerAttribute--><!--Device-TextTimerAttribute-onTimer(event: (utc: number, elapsedTime: number) => void): TextTimerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,6 +225,8 @@ textShadow(value: ShadowOptions | Array<ShadowOptions>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextTimerAttribute-textShadow(value: ShadowOptions | Array<ShadowOptions>): TextTimerAttribute--><!--Device-TextTimerAttribute-textShadow(value: ShadowOptions | Array<ShadowOptions>): TextTimerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

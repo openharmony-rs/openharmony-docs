@@ -22,6 +22,8 @@ Obtains the SDK version of the current system.
 
 **Deprecated since:** 11
 
+<!--Device-huks-function getSdkVersion(options: HuksOptions): string--><!--Device-huks-function getSdkVersion(options: HuksOptions): string-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 **Parameters:**

@@ -8,6 +8,8 @@ declare enum SlideEffect
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum SlideEffect--><!--Device-unnamed-declare enum SlideEffect-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Left
@@ -21,6 +23,8 @@ Left = 0
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SlideEffect-Left = 0--><!--Device-SlideEffect-Left = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +40,8 @@ Right = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SlideEffect-Right = 1--><!--Device-SlideEffect-Right = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Top
@@ -50,6 +56,8 @@ Top = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SlideEffect-Top = 2--><!--Device-SlideEffect-Top = 2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Bottom
@@ -63,6 +71,8 @@ Bottom = 3
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SlideEffect-Bottom = 3--><!--Device-SlideEffect-Bottom = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +90,8 @@ START = 5
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SlideEffect-START = 5--><!--Device-SlideEffect-START = 5-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## END
@@ -95,5 +107,7 @@ END = 6
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SlideEffect-END = 6--><!--Device-SlideEffect-END = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

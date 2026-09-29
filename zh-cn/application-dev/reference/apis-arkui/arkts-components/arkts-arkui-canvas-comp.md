@@ -24,13 +24,15 @@ Canvas(context?: CanvasRenderingContext2D | DrawingRenderingContext)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CanvasInterface-(context?: CanvasRenderingContext2D | DrawingRenderingContext): CanvasAttribute--><!--Device-CanvasInterface-(context?: CanvasRenderingContext2D | DrawingRenderingContext): CanvasAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md) &#124; [DrawingRenderingContext](arkts-arkui-canvas-comp-drawingrenderingcontext-c.md) | 否 | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见CanvasRenderingContext2D对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见DrawingRenderingContext对象。<br>异常值null和undefined按未设置context处理。 |
+| context | [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md) &#124; [DrawingRenderingContext](arkts-arkui-canvas-comp-drawingrenderingcontext-c.md) | 否 | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见[CanvasRenderingContext2D](#canvas)对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见[DrawingRenderingContext](#canvas)对象。<br>异常值null和undefined按未设置context处理。 |
 
 ## Canvas
 
@@ -48,13 +50,15 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CanvasInterface-(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptions: ImageAIOptions): CanvasAttribute--><!--Device-CanvasInterface-(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptions: ImageAIOptions): CanvasAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md) &#124; [DrawingRenderingContext](arkts-arkui-canvas-comp-drawingrenderingcontext-c.md) | 是 | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见CanvasRenderingContext2D对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见DrawingRenderingContext对象。<br>异常值null和undefined按未设置context处理。 |
+| context | [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md) &#124; [DrawingRenderingContext](arkts-arkui-canvas-comp-drawingrenderingcontext-c.md) | 是 | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见[CanvasRenderingContext2D](#canvas)对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见[DrawingRenderingContext](#canvas)对象。<br>异常值null和undefined按未设置context处理。 |
 | imageAIOptions | [ImageAIOptions](../arkts-apis/arkts-arkui-imageaioptions-i.md) | 是 | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。<br>异常值null和undefined按[ImageAIOptions](../arkts-apis/arkts-arkui-imageaioptions-i.md)的默认值处理，默认取值为{ type: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT], aiController: new ImageAnalyzerController() }，即开启主体识别和文字识别功能。 |
 
 ## Canvas
@@ -67,7 +71,7 @@ Canvas(params: CanvasParams)
 
 > **说明：** 
 > 
-> - 使用本接口创建的Canvas组件将在[onReady&lt;sup&gt;23+&lt;/sup&gt;](arkts-arkui-canvas-comp-attribute.md#onready-1)回调的入参中返回一个DrawingRenderingContext&lt;sup&gt;12+&lt;/sup&gt;对象，可用于在该Canvas组件上进行绘制。
+> - 使用本接口创建的Canvas组件将在[onReady&lt;sup&gt;23+&lt;/sup&gt;](arkts-arkui-canvas-comp-attribute.md#onready-1)回调的入参中返回一个[DrawingRenderingContext&lt;sup&gt;12+&lt;/sup&gt;](#canvas)对象，可用于在该Canvas组件上进行绘制。
 > 
 > - 使用本接口创建的Canvas组件在组件不可见时将不响应绘制指令。
 > 
@@ -78,6 +82,8 @@ Canvas(params: CanvasParams)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-CanvasInterface-(params: CanvasParams): CanvasAttribute--><!--Device-CanvasInterface-(params: CanvasParams): CanvasAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,7 +124,7 @@ Canvas(params: CanvasParams)
 
 ### 示例1（使用CanvasRenderingContext2D中的方法）
 
-该示例实现了如何在Canvas组件使用CanvasRenderingContext2D中的方法进行绘制。
+该示例实现了如何在Canvas组件使用[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)中的方法进行绘制。
 
 
 
@@ -148,7 +154,7 @@ struct CanvasExample {
 
 ### 示例2（使用DrawingRenderingContext中的方法）
 
-该示例实现了如何在Canvas组件使用DrawingRenderingContext中的方法进行绘制。
+该示例实现了如何在Canvas组件使用[DrawingRenderingContext](./ts-drawingrenderingcontext.md)中的方法进行绘制。
 
 
 
@@ -178,7 +184,7 @@ struct CanvasExample {
 
 ### 示例3（使用attributeModifier动态设置Canvas组件的属性及方法）
 
-该示例展示了如何使用attributeModifier动态设置Canvas组件的enableAnalyzer属性和onReady方法。
+该示例展示了如何使用[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置Canvas组件的[enableAnalyzer](#enableanalyzer12)属性和[onReady](#onready)方法。
 
 > 说明：
 > 

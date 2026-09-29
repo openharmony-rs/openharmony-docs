@@ -8,6 +8,8 @@ Defines the socket proxy information.
 
 **Since:** 18
 
+<!--Device-socket-export interface ProxyOptions--><!--Device-socket-export interface ProxyOptions-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Proxy address.
 
 **Since:** 18
 
+<!--Device-ProxyOptions-address: NetAddress--><!--Device-ProxyOptions-address: NetAddress-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## password
@@ -41,6 +45,8 @@ Password. This field must be specified if the user password authentication mode 
 **Type:** string
 
 **Since:** 18
+
+<!--Device-ProxyOptions-password?: string--><!--Device-ProxyOptions-password?: string-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -56,6 +62,8 @@ Proxy type.
 
 **Since:** 18
 
+<!--Device-ProxyOptions-type: ProxyTypes--><!--Device-ProxyOptions-type: ProxyTypes-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## username
@@ -69,5 +77,7 @@ User name. This field must be specified if the user password authentication mode
 **Type:** string
 
 **Since:** 18
+
+<!--Device-ProxyOptions-username?: string--><!--Device-ProxyOptions-username?: string-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

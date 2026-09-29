@@ -8,6 +8,8 @@ export class Matrix2D
 
 **Since:** 11
 
+<!--Device-unnamed-export class Matrix2D--><!--Device-unnamed-export class Matrix2D-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -26,6 +28,8 @@ Constructs a 2D change matrix object. The default value is the unit matrix.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Matrix2D-constructor()--><!--Device-Matrix2D-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## identity
@@ -43,6 +47,8 @@ Transforms the current 2D matrix back to the identity matrix (i.e., without any 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Matrix2D-identity(): Matrix2D--><!--Device-Matrix2D-identity(): Matrix2D-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +74,8 @@ Transform the current 2D matrix into an inverse matrix (that is, the transformat
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Matrix2D-invert(): Matrix2D--><!--Device-Matrix2D-invert(): Matrix2D-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -91,6 +99,8 @@ The matrix is superimposed in right multiplication mode. When the input paramete
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Matrix2D-multiply(other?: Matrix2D): Matrix2D--><!--Device-Matrix2D-multiply(other?: Matrix2D): Matrix2D-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,6 +131,8 @@ Adds the rotation effect of the X and Y axes to the current matrix.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Matrix2D-rotate(rx?: number, ry?: number): Matrix2D--><!--Device-Matrix2D-rotate(rx?: number, ry?: number): Matrix2D-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,6 +165,8 @@ Adds the scaling effect of the X and Y axes to the current matrix.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Matrix2D-scale(sx?: number, sy?: number): Matrix2D--><!--Device-Matrix2D-scale(sx?: number, sy?: number): Matrix2D-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -183,6 +197,8 @@ Adds the translation effect of the X and Y axes to the current matrix.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Matrix2D-translate(tx?: number, ty?: number): Matrix2D--><!--Device-Matrix2D-translate(tx?: number, ty?: number): Matrix2D-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,6 +233,8 @@ Horizontal Tilt
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Matrix2D-rotateX?: number--><!--Device-Matrix2D-rotateX?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## rotateY
@@ -236,6 +254,8 @@ Vertical Tilt
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Matrix2D-rotateY?: number--><!--Device-Matrix2D-rotateY?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -257,6 +277,8 @@ Horizontal Zoom
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Matrix2D-scaleX?: number--><!--Device-Matrix2D-scaleX?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## scaleY
@@ -276,6 +298,8 @@ Vertical Zoom
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Matrix2D-scaleY?: number--><!--Device-Matrix2D-scaleY?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -297,6 +321,8 @@ Horizontal movement
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Matrix2D-translateX?: number--><!--Device-Matrix2D-translateX?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## translateY
@@ -316,5 +342,7 @@ Vertical movement
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Matrix2D-translateY?: number--><!--Device-Matrix2D-translateY?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

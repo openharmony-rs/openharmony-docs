@@ -8,6 +8,8 @@ Senior mode state information of an app.
 
 **Since:** 26.0.0
 
+<!--Device-config-interface AppSeniorModeInfo--><!--Device-config-interface AppSeniorModeInfo-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Clone index of the app bundle. The value is an integer greater than or equal to 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AppSeniorModeInfo-appIndex?: int--><!--Device-AppSeniorModeInfo-appIndex?: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ Bundle name of the app, used to identify the app, in the format of **'com.exampl
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AppSeniorModeInfo-bundleName: string--><!--Device-AppSeniorModeInfo-bundleName: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ Senior mode enabled state of the app. The value **true** indicates enabled, and 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AppSeniorModeInfo-seniorModeState: boolean--><!--Device-AppSeniorModeInfo-seniorModeState: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

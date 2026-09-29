@@ -18,6 +18,8 @@ Disables the cellular data service. This API uses an asynchronous callback to re
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-data-function disableCellularData(callback: AsyncCallback<void>): void--><!--Device-data-function disableCellularData(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Disables the cellular data service. This API uses a promise to return the result
 **Since:** 7
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-data-function disableCellularData(): Promise<void>--><!--Device-data-function disableCellularData(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CellularData
 

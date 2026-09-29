@@ -8,6 +8,8 @@ The **ImageReceiver** class provides APIs to obtain the surface ID of a componen
 
 **Since:** 9
 
+<!--Device-image-interface ImageReceiver--><!--Device-image-interface ImageReceiver-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 ## Modules to Import
@@ -25,6 +27,8 @@ getReceivingSurfaceId(callback: AsyncCallback<string>): void
 Obtains a surface ID for the camera or other components. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-ImageReceiver-getReceivingSurfaceId(callback: AsyncCallback<string>): void--><!--Device-ImageReceiver-getReceivingSurfaceId(callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -62,6 +66,8 @@ Obtains a surface ID for the camera or other components. This API uses a promise
 
 **Since:** 9
 
+<!--Device-ImageReceiver-getReceivingSurfaceId(): Promise<string>--><!--Device-ImageReceiver-getReceivingSurfaceId(): Promise<string>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 **Return value:**
@@ -94,6 +100,8 @@ Unregisters the callback function that is triggered when the buffer is released.
 
 **Since:** 13
 
+<!--Device-ImageReceiver-off(type: 'imageArrival', callback?: AsyncCallback<void>): void--><!--Device-ImageReceiver-off(type: 'imageArrival', callback?: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 **Parameters:**
@@ -124,6 +132,8 @@ on(type: 'imageArrival', callback: AsyncCallback<void>): void
 Listens for image arrival events. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-ImageReceiver-on(type: 'imageArrival', callback: AsyncCallback<void>): void--><!--Device-ImageReceiver-on(type: 'imageArrival', callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -167,6 +177,8 @@ Reads the latest image from the ImageReceiver instance. This API uses an asynchr
 > object. New data can be received only after the release.
 
 **Since:** 9
+
+<!--Device-ImageReceiver-readLatestImage(callback: AsyncCallback<Image>): void--><!--Device-ImageReceiver-readLatestImage(callback: AsyncCallback<Image>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -224,6 +236,8 @@ Reads the latest image from the ImageReceiver instance. This API uses a promise 
 
 **Since:** 9
 
+<!--Device-ImageReceiver-readLatestImage(): Promise<Image>--><!--Device-ImageReceiver-readLatestImage(): Promise<Image>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 **Return value:**
@@ -275,6 +289,8 @@ Reads the next image from the ImageReceiver instance. This API uses an asynchron
 > object. New data can be received only after the release.
 
 **Since:** 9
+
+<!--Device-ImageReceiver-readNextImage(callback: AsyncCallback<Image>): void--><!--Device-ImageReceiver-readNextImage(callback: AsyncCallback<Image>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -332,6 +348,8 @@ Reads the next image from the ImageReceiver instance. This API uses a promise to
 
 **Since:** 9
 
+<!--Device-ImageReceiver-readNextImage(): Promise<Image>--><!--Device-ImageReceiver-readNextImage(): Promise<Image>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 **Return value:**
@@ -380,6 +398,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 9
 
+<!--Device-ImageReceiver-release(callback: AsyncCallback<void>): void--><!--Device-ImageReceiver-release(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 **Parameters:**
@@ -420,6 +440,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 9
 
+<!--Device-ImageReceiver-release(): Promise<void>--><!--Device-ImageReceiver-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 **Return value:**
@@ -456,6 +478,8 @@ Only visible ASCII characters are supported. Spaces, newlines, tabs, and other c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ImageReceiver-setMemoryName(name: string): void--><!--Device-ImageReceiver-setMemoryName(name: string): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 **Parameters:**
@@ -482,6 +506,8 @@ Maximum number of images that can be accessed at the same time. This parameter i
 
 **Since:** 9
 
+<!--Device-ImageReceiver-readonly capacity: int--><!--Device-ImageReceiver-readonly capacity: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 ## format
@@ -496,6 +522,8 @@ Image format. The value is an enum value of [ImageFormat](arkts-image-image-imag
 
 **Since:** 9
 
+<!--Device-ImageReceiver-readonly format: ImageFormat--><!--Device-ImageReceiver-readonly format: ImageFormat-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 ## size
@@ -509,5 +537,7 @@ Image size. This parameter does not affect the size of the received image. The a
 **Type:** Size
 
 **Since:** 9
+
+<!--Device-ImageReceiver-readonly size: Size--><!--Device-ImageReceiver-readonly size: Size-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver

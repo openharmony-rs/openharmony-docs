@@ -2,7 +2,10 @@
 
 Defines a container that lays out child components horizontally. It supports setting the spacing between child components and the alignment mode, and is suitable for scenarios where multiple child components need to be arranged horizontally, such as toolbars, tab bars, and button groups.
 
-> **NOTE** > > If no width or height is set for the **Row** component, it adapts to the size of child components in the main axis > or cross axis direction.
+> **NOTE:** 
+> 
+> If no width or height is set for the **Row** component, it adapts to the size of child components in the main axis
+> or cross axis direction.
 
 ## Child Components
 
@@ -28,6 +31,8 @@ Creates a horizontal linear layout container. You can set the spacing between ch
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RowInterface-(options?: RowOptions): RowAttribute--><!--Device-RowInterface-(options?: RowOptions): RowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,6 +64,8 @@ Creates a horizontal linear layout container. You can set the spacing between ch
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-RowInterface-(options?: RowOptions | RowOptionsV2): RowAttribute--><!--Device-RowInterface-(options?: RowOptions | RowOptionsV2): RowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,8 +1,12 @@
 # QRCode
 
-The **QRCode** component is used to display a QR code.
+The **QRCode** component is used to display a single QR code. It supports customizing the QR code color, background color, and content opacity, and is suitable for scenarios where a QR code needs to be displayed for scanning to obtain string information.
 
-> **NOTE** > > - The pixel count of the **QRCode** component is subject to the content. If the component size is not large enough, > the content may fail to be displayed. In this case, you need to resize the component.
+> **NOTE:** 
+> 
+> - This component is supported since API version 7. Newly added APIs in later versions are marked with a superscript to indicate their
+> 
+> - The pixel count of the **QRCode** component is related to its content. If the component size is too small, the content may not be displayed. In this case, adjust the component size appropriately. &gt;
 
 ## Child Components
 
@@ -22,13 +26,15 @@ Creates a **QRCode** component. The displayed QR code can be scanned to obtain t
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-QRCodeInterface-(value: ResourceStr): QRCodeAttribute--><!--Device-QRCodeInterface-(value: ResourceStr): QRCodeAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Content of the QR code. A maximum of 512 characters are supported. If this limit is exceeded, the first 512 characters are used.<br>The Resource type is supported since API version 20.<br> **NOTE:** <br>If this parameter is set to **null**, it is equivalent to passing the string **"null"**. If it is set to **undefined**, it is equivalent to passing the string **"undefined"**. Passing an empty string will result in an invalid QR code. |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | QR code content string. It supports a maximum of 512 characters. If the limit is exceeded, only the first 512 characters are used.<br>Since API version 20, the Resource type is supported. <br>**Note:** <br>Setting it to null has the same effect as setting it to the string "null"; setting it to undefined has the same effect as setting it to the string "undefined"; passing an empty string generates an invalid QR code. |
 
 ## Summary
 

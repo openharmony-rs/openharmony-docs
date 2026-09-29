@@ -12,6 +12,8 @@ Provides APIs for encapsulating file asset attributes.
 
 **Substitutes:** [PhotoAsset](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md)
 
+<!--Device-userFileManager-interface FileAsset--><!--Device-userFileManager-interface FileAsset-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -35,6 +37,8 @@ Closes a file. This API uses an asynchronous callback to return the result.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** close
+
+<!--Device-FileAsset-close(fd: number, callback: AsyncCallback<void>): void--><!--Device-FileAsset-close(fd: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -95,6 +99,8 @@ Closes this file. This API uses a promise to return the result.
 
 **Substitutes:** close
 
+<!--Device-FileAsset-close(fd: number): Promise<void>--><!--Device-FileAsset-close(fd: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -153,6 +159,8 @@ Commits the modification on the file metadata to the database. This API uses an 
 **Substitutes:** [commitModify](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md#commitmodify)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.WRITE_AUDIO
+
+<!--Device-FileAsset-commitModify(callback: AsyncCallback<void>): void--><!--Device-FileAsset-commitModify(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -215,6 +223,8 @@ Commits the modification on the file metadata to the database. This API uses a p
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.WRITE_AUDIO
 
+<!--Device-FileAsset-commitModify(): Promise<void>--><!--Device-FileAsset-commitModify(): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -273,6 +283,8 @@ Favorites or unfavorites a file. This API uses an asynchronous callback to retur
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.WRITE_AUDIO
 
+<!--Device-FileAsset-favorite(isFavorite: boolean, callback: AsyncCallback<void>): void--><!--Device-FileAsset-favorite(isFavorite: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -328,6 +340,8 @@ Favorites or unfavorites this file asset. This API uses a promise to return the 
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.WRITE_AUDIO
 
+<!--Device-FileAsset-favorite(isFavorite: boolean): Promise<void>--><!--Device-FileAsset-favorite(isFavorite: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -382,6 +396,8 @@ Obtains the value of a **FileAsset** parameter.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [get](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md#get)
+
+<!--Device-FileAsset-get(member: string): MemberType--><!--Device-FileAsset-get(member: string): MemberType-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -447,7 +463,7 @@ For details about the EXIF tags, see [image.PropertyKey](../../apis-image-kit/ar
 | GPSLongitudeRef | Latitude reference, for example, N or S.|
 | DateTimeOriginal | Shooting time.|
 | ExposureTime | Exposure time.|
-| [SceneType](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-scenetype-e.md) | Scene type.|
+| SceneType | Scene type.|
 | ISOSpeedRatings | ISO sensitivity or speed.|
 | FNumber | f-number.|
 | DateTime | Modification time.|
@@ -456,20 +472,20 @@ For details about the EXIF tags, see [image.PropertyKey](../../apis-image-kit/ar
 | ImageDescription | Image description.|
 | Make | Manufacturer.|
 | MakeNote | Manufacturer.|
-| [Model](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-model-i.md) | Model.|
+| Model | Model.|
 | PhotoMode | Photo mode.|
 | SensitivityType | Sensitivity type.|
 | StandardOutputSensitivity | Standard output sensitivity.|
 | RecommendedExposureIndex | Recommended exposure index.|
 | ApertureValue | Aperture value.|
 | MeteringMode | Metering mode.|
-| [LightSource](../../apis-arkui/arkts-components/arkts-arkui-common-comp-lightsource-i-sys.md) | Light source.|
-| [Flash](../../apis-camera-kit/arkts-apis/arkts-camera-camera-flash-i.md) | Flash status.|
+| LightSource | Light source.|
+| Flash | Flash status.|
 | FocalLength | Focal length.|
 | UserComment | User comments.|
 | PixelXDimension | Pixel X dimension.|
 | PixelYDimension | Pixel Y dimension.|
-| [WhiteBalance](../../apis-camera-kit/arkts-apis/arkts-camera-camera-whitebalance-i.md) | White balance.|
+| WhiteBalance | White balance.|
 | FocalLengthIn35mmFilm | Focal length in 35 mm film.|
 | ExposureBiasValue | Exposure compensation.|
 
@@ -486,6 +502,8 @@ For details about the EXIF tags, see [image.PropertyKey](../../apis-image-kit/ar
 **Substitutes:** [getExif](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i-sys.md#getexif)
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+<!--Device-FileAsset-getExif(callback: AsyncCallback<string>): void--><!--Device-FileAsset-getExif(callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -567,7 +585,7 @@ For details about the EXIF tags, see [image.PropertyKey](../../apis-image-kit/ar
 | GPSLongitudeRef | Latitude reference, for example, N or S.|
 | DateTimeOriginal | Shooting time.|
 | ExposureTime | Exposure time.|
-| [SceneType](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-scenetype-e.md) | Scene type.|
+| SceneType | Scene type.|
 | ISOSpeedRatings | ISO sensitivity or speed.|
 | FNumber | f-number.|
 | DateTime | Modification time.|
@@ -576,20 +594,20 @@ For details about the EXIF tags, see [image.PropertyKey](../../apis-image-kit/ar
 | ImageDescription | Image description.|
 | Make | Manufacturer.|
 | MakeNote | Manufacturer.|
-| [Model](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-model-i.md) | Model.|
+| Model | Model.|
 | PhotoMode | Photo mode.|
 | SensitivityType | Sensitivity type.|
 | StandardOutputSensitivity | Standard output sensitivity.|
 | RecommendedExposureIndex | Recommended exposure index.|
 | ApertureValue | Aperture value.|
 | MeteringMode | Metering mode.|
-| [LightSource](../../apis-arkui/arkts-components/arkts-arkui-common-comp-lightsource-i-sys.md) | Light source.|
-| [Flash](../../apis-camera-kit/arkts-apis/arkts-camera-camera-flash-i.md) | Flash status.|
+| LightSource | Light source.|
+| Flash | Flash status.|
 | FocalLength | Focal length.|
 | UserComment | User comments.|
 | PixelXDimension | Pixel X dimension.|
 | PixelYDimension | Pixel Y dimension.|
-| [WhiteBalance](../../apis-camera-kit/arkts-apis/arkts-camera-camera-whitebalance-i.md) | White balance.|
+| WhiteBalance | White balance.|
 | FocalLengthIn35mmFilm | Focal length in 35 mm film.|
 | ExposureBiasValue | Exposure compensation.|
 
@@ -606,6 +624,8 @@ For details about the EXIF tags, see [image.PropertyKey](../../apis-image-kit/ar
 **Substitutes:** [getExif](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i-sys.md#getexif)
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+<!--Device-FileAsset-getExif(): Promise<string>--><!--Device-FileAsset-getExif(): Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -669,6 +689,8 @@ Obtains the thumbnail of a file. This API uses an asynchronous callback to retur
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO or ohos.permission.READ_AUDIO
 
+<!--Device-FileAsset-getThumbnail(callback: AsyncCallback<image.PixelMap>): void--><!--Device-FileAsset-getThumbnail(callback: AsyncCallback<image.PixelMap>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -723,6 +745,8 @@ Obtains the file thumbnail of the given size. This API uses an asynchronous call
 **Substitutes:** [getThumbnail](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md#getthumbnail)
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO or ohos.permission.READ_AUDIO
+
+<!--Device-FileAsset-getThumbnail(size: image.Size, callback: AsyncCallback<image.PixelMap>): void--><!--Device-FileAsset-getThumbnail(size: image.Size, callback: AsyncCallback<image.PixelMap>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -781,6 +805,8 @@ Obtains the file thumbnail of the given size. This API uses a promise to return 
 **Substitutes:** [getThumbnail](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md#getthumbnail)
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO or ohos.permission.READ_AUDIO
+
+<!--Device-FileAsset-getThumbnail(size?: image.Size): Promise<image.PixelMap>--><!--Device-FileAsset-getThumbnail(size?: image.Size): Promise<image.PixelMap>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -847,6 +873,8 @@ Opens this file asset. This API uses an asynchronous callback to return the resu
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO or ohos.permission.READ_AUDIO or ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.WRITE_AUDIO
 
+<!--Device-FileAsset-open(mode: string, callback: AsyncCallback<number>): void--><!--Device-FileAsset-open(mode: string, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -901,6 +929,8 @@ Opens this file asset. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO or ohos.permission.READ_AUDIO or ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.WRITE_AUDIO
 
+<!--Device-FileAsset-open(mode: string): Promise<number>--><!--Device-FileAsset-open(mode: string): Promise<number>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -953,6 +983,8 @@ Sets a **FileAsset** parameter.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [set](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md#set)
+
+<!--Device-FileAsset-set(member: string, value: string): void--><!--Device-FileAsset-set(member: string, value: string): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1007,6 +1039,8 @@ The private files set to hidden state are located in the private album (in hidde
 **Substitutes:** [setHidden](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c-sys.md#sethidden)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+<!--Device-FileAsset-setHidden(hiddenState: boolean, callback: AsyncCallback<void>): void--><!--Device-FileAsset-setHidden(hiddenState: boolean, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1071,6 +1105,8 @@ The private files set to hidden state are located in the private album (in hidde
 **Substitutes:** [setHidden](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-mediaassetchangerequest-c-sys.md#sethidden)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+<!--Device-FileAsset-setHidden(hiddenState: boolean): Promise<void>--><!--Device-FileAsset-setHidden(hiddenState: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1143,6 +1179,8 @@ Sets user comment information of an image or video. This API uses an asynchronou
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
 
+<!--Device-FileAsset-setUserComment(userComment: string, callback: AsyncCallback<void>): void--><!--Device-FileAsset-setUserComment(userComment: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -1214,6 +1252,8 @@ Sets user comment information of an image or video. This API uses a promise to r
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
 
+<!--Device-FileAsset-setUserComment(userComment: string): Promise<void>--><!--Device-FileAsset-setUserComment(userComment: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -1278,6 +1318,8 @@ File name, including the file name extension, to display.
 
 **Substitutes:** [displayName](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md#displayname)
 
+<!--Device-FileAsset-displayName: string--><!--Device-FileAsset-displayName: string-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -1298,6 +1340,8 @@ Type of the file.
 
 **Substitutes:** [photoType](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md#phototype)
 
+<!--Device-FileAsset-readonly fileType: FileType--><!--Device-FileAsset-readonly fileType: FileType-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -1317,6 +1361,8 @@ Media asset URI, for example, **file://media/Photo/1/IMG_datetime_0001/displayNa
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [uri](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoasset-i.md#uri)
+
+<!--Device-FileAsset-readonly uri: string--><!--Device-FileAsset-readonly uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

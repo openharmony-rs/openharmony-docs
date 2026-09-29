@@ -20,6 +20,8 @@ API version 20及以后，仅配置部分断点下GridRow组件的栅格列数�
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare interface GridRowColumnOption--><!--Device-unnamed-declare interface GridRowColumnOption-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## lg
@@ -42,6 +44,8 @@ lg?: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GridRowColumnOption-lg?: number--><!--Device-GridRowColumnOption-lg?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ md?: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GridRowColumnOption-md?: number--><!--Device-GridRowColumnOption-md?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## sm
@@ -88,6 +94,8 @@ sm?: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GridRowColumnOption-sm?: number--><!--Device-GridRowColumnOption-sm?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +120,8 @@ xl?: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GridRowColumnOption-xl?: number--><!--Device-GridRowColumnOption-xl?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## xs
@@ -135,6 +145,8 @@ xs?: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GridRowColumnOption-xs?: number--><!--Device-GridRowColumnOption-xs?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## xxl
@@ -157,5 +169,7 @@ xxl?: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-GridRowColumnOption-xxl?: number--><!--Device-GridRowColumnOption-xxl?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines the VPN configuration.
 
 **Since:** 11
 
+<!--Device-vpnExtension-export interface VpnConfig--><!--Device-vpnExtension-export interface VpnConfig-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 ## Modules to Import
@@ -28,6 +30,8 @@ IP addresses of vNICs. Before API version 23, a maximum of 64 IP addresses are s
 
 **Since:** 11
 
+<!--Device-VpnConfig-addresses: Array<LinkAddress>--><!--Device-VpnConfig-addresses: Array<LinkAddress>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 ## blockedApplications
@@ -44,6 +48,8 @@ List of blocked applications, which are represented by bundle names of the strin
 
 **Since:** 11
 
+<!--Device-VpnConfig-blockedApplications?: Array<string>--><!--Device-VpnConfig-blockedApplications?: Array<string>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 ## dnsAddresses
@@ -57,6 +63,8 @@ IP address of the DNS server. After the IP address is configured, when the VPN i
 **Type:** Array&lt;string&gt;
 
 **Since:** 11
+
+<!--Device-VpnConfig-dnsAddresses?: Array<string>--><!--Device-VpnConfig-dnsAddresses?: Array<string>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
@@ -72,6 +80,8 @@ Whether the blocking mode is used. The value **true** indicates that the blockin
 
 **Since:** 11
 
+<!--Device-VpnConfig-isBlocking?: boolean--><!--Device-VpnConfig-isBlocking?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 ## isInternal
@@ -85,6 +95,8 @@ Whether the built-in VPN is supported. The value **true** indicates that the bui
 **Type:** boolean
 
 **Since:** 11
+
+<!--Device-VpnConfig-isInternal?: boolean--><!--Device-VpnConfig-isInternal?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
@@ -102,6 +114,8 @@ Note: If the IPv4 is supported, you need to configure IPv4 addresses in **addres
 
 **Since:** 11
 
+<!--Device-VpnConfig-isIPv4Accepted?: boolean--><!--Device-VpnConfig-isIPv4Accepted?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 ## isIPv6Accepted
@@ -118,6 +132,8 @@ Note: If the IPv6 is supported, you need to configure IPv6 addresses in **addres
 
 **Since:** 11
 
+<!--Device-VpnConfig-isIPv6Accepted?: boolean--><!--Device-VpnConfig-isIPv6Accepted?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 ## mtu
@@ -131,6 +147,8 @@ Maximum transmission unit (MTU), in bytes. The value range is [576,1500].
 **Type:** number
 
 **Since:** 11
+
+<!--Device-VpnConfig-mtu?: int--><!--Device-VpnConfig-mtu?: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
@@ -146,6 +164,8 @@ Route information of the vNIC. Before API version 23, a maximum of 1024 routes c
 
 **Since:** 11
 
+<!--Device-VpnConfig-routes?: Array<RouteInfo>--><!--Device-VpnConfig-routes?: Array<RouteInfo>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 ## searchDomains
@@ -159,6 +179,8 @@ List of DNS search domains.
 **Type:** Array&lt;string&gt;
 
 **Since:** 11
+
+<!--Device-VpnConfig-searchDomains?: Array<string>--><!--Device-VpnConfig-searchDomains?: Array<string>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
@@ -176,6 +198,8 @@ List of trusted applications, which are represented by bundle names of the strin
 
 **Since:** 11
 
+<!--Device-VpnConfig-trustedApplications?: Array<string>--><!--Device-VpnConfig-trustedApplications?: Array<string>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 ## vpnId
@@ -189,5 +213,7 @@ Unique VPN ID.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-VpnConfig-vpnId?: string--><!--Device-VpnConfig-vpnId?: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn

@@ -8,6 +8,8 @@ declare interface RichEditorChangeValue
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface RichEditorChangeValue--><!--Device-unnamed-declare interface RichEditorChangeValue-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## changeReason
@@ -23,6 +25,8 @@ changeReason?: TextChangeReason
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-RichEditorChangeValue-changeReason?: TextChangeReason--><!--Device-RichEditorChangeValue-changeReason?: TextChangeReason-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

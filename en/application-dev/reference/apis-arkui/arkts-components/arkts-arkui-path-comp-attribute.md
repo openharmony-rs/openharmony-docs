@@ -4,11 +4,13 @@
 declare class PathAttribute extends CommonShapeMethod<PathAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md#common) and [universal drawing attributes](arkts-arkui-common-comp.md#common), the following attributes are supported:
+In addition to the [universal attributes](arkts-arkui-common-comp.md) and [universal drawing attributes](arkts-arkui-common-comp.md), the following attributes are supported:
 
 **Inheritance/Implementation:** PathAttribute extends CommonShapeMethod<PathAttribute>
 
 **Since:** 7
+
+<!--Device-unnamed-declare class PathAttribute extends CommonShapeMethod<PathAttribute>--><!--Device-unnamed-declare class PathAttribute extends CommonShapeMethod<PathAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +20,15 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md#common) and
 commands(value: ResourceStr)
 ```
 
-Sets the command string that complies with the [SVG path syntax](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg-path-syntax), in px. The command string determines the drawing shape and trajectory of the path. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). For details about the pixel unit conversion method, see [Pixel Units](arkts-arkui-common-comp.md#common).
+Sets the command string that complies with the [SVG path syntax](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg-path-syntax), in px. The command string determines the drawing shape and trajectory of the path. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). For details about the pixel unit conversion method, see [Pixel Units](arkts-arkui-common-comp.md).
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PathAttribute-commands(value: ResourceStr): PathAttribute--><!--Device-PathAttribute-commands(value: ResourceStr): PathAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

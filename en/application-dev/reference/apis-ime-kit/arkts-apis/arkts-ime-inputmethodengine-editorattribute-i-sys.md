@@ -8,6 +8,8 @@ Represents the attributes of the edit box.
 
 **Since:** 8
 
+<!--Device-inputMethodEngine-interface EditorAttribute--><!--Device-inputMethodEngine-interface EditorAttribute-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Fluid light mode. If this attribute is not specified or is set to an invalid val
 **Type:** [FluidLightMode](arkts-ime-inputmethodengine-fluidlightmode-e-sys.md)
 
 **Since:** 20
+
+<!--Device-EditorAttribute-readonly fluidLightMode?: FluidLightMode--><!--Device-EditorAttribute-readonly fluidLightMode?: FluidLightMode-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

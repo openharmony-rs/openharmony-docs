@@ -8,6 +8,8 @@ Stream from which data can be read. A readable stream is used to read data from 
 
 **Since:** 12
 
+<!--Device-stream-export class Readable--><!--Device-stream-export class Readable-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -26,7 +28,9 @@ A constructor used to create a **Readable** object.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-constructor()--><!--Device-Readable-constructor()-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -48,7 +52,9 @@ A constructor used to create a **Readable** object.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-constructor(options: ReadableOptions)--><!--Device-Readable-constructor(options: ReadableOptions)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -77,7 +83,9 @@ You need to implement this API. It is called when the readable stream calls on f
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-doInitialize(callback: Function): void--><!--Device-Readable-doInitialize(callback: Function): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -115,7 +123,9 @@ A data read API that needs to be implemented in child classes.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-doRead(size: int): void--><!--Device-Readable-doRead(size: int): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -153,7 +163,9 @@ Checks whether the readable stream is paused. The stream is paused after [pause(
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-isPaused(): boolean--><!--Device-Readable-isPaused(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -192,6 +204,8 @@ Unregisters an event processing callback used to listen for different events on 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Readable-off(event: string, callback?: Callback<emitter.EventData>): void--><!--Device-Readable-off(event: string, callback?: Callback<emitter.EventData>): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -239,6 +253,8 @@ Registers an event processing callback to listen for different events on the rea
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Readable-on(event: string, callback: Callback<emitter.EventData>): void--><!--Device-Readable-on(event: string, callback: Callback<emitter.EventData>): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -278,7 +294,9 @@ Pauses the readable stream in flowing mode. You can use **isPaused** to check wh
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-pause(): Readable--><!--Device-Readable-pause(): Readable-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -315,7 +333,9 @@ Attaches a writable stream to the readable stream to implement automatic data tr
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-pipe(destination: Writable, options?: Object): Writable--><!--Device-Readable-pipe(destination: Writable, options?: Object): Writable-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -372,7 +392,9 @@ Pushes data into the buffer of the readable stream.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean--><!--Device-Readable-push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -418,6 +440,8 @@ Reads data from the buffer of the readable stream and returns the read data. If 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Readable-read(size?: number): string | null--><!--Device-Readable-read(size?: number): string | null-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -468,7 +492,9 @@ Resumes an explicitly paused readable stream. You can use **isPaused** to check 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-resume(): Readable--><!--Device-Readable-resume(): Readable-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -505,7 +531,9 @@ Sets an encoding format for the readable stream. If the buffer contains data, se
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-setEncoding(encoding?: string): boolean--><!--Device-Readable-setEncoding(encoding?: string): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -548,7 +576,9 @@ Detaches a writable stream previously attached to the readable stream.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-unpipe(destination?: Writable): Readable--><!--Device-Readable-unpipe(destination?: Writable): Readable-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -610,7 +640,9 @@ Is true if it is safe to call readable.read(), which means the stream has not be
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-get readable(): boolean--><!--Device-Readable-get readable(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -626,7 +658,9 @@ Getter for the property encoding of a given Readable stream. The encoding proper
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-get readableEncoding(): string | null--><!--Device-Readable-get readableEncoding(): string | null-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -642,7 +676,9 @@ Whether all data has been generated.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-get readableEnded(): boolean--><!--Device-Readable-get readableEnded(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -658,7 +694,9 @@ This property reflects the current state of the readable stream null/true/false.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-get readableFlowing(): boolean | null--><!--Device-Readable-get readableFlowing(): boolean | null-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -674,7 +712,9 @@ Returns the value of highWatermark passed when creating this Readable.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-get readableHighWatermark(): int--><!--Device-Readable-get readableHighWatermark(): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -690,7 +730,9 @@ Size of the data that can be read, in bytes or objects.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-get readableLength(): int--><!--Device-Readable-get readableLength(): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -706,6 +748,8 @@ Returns boolean indicating whether it is in ObjectMode.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Readable-get readableObjectMode(): boolean--><!--Device-Readable-get readableObjectMode(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang

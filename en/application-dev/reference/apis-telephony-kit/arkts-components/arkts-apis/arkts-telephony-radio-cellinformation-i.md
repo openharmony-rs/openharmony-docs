@@ -8,6 +8,8 @@ Defines the cell information.
 
 **Since:** 8
 
+<!--Device-radio-export interface CellInformation--><!--Device-radio-export interface CellInformation-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Network type of the cell.
 
 **Since:** 8
 
+<!--Device-CellInformation-networkType: NetworkType--><!--Device-CellInformation-networkType: NetworkType-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## signalInformation
@@ -41,5 +45,7 @@ Signal information.
 **Type:** [SignalInformation](arkts-telephony-radio-signalinformation-i.md)
 
 **Since:** 8
+
+<!--Device-CellInformation-signalInformation: SignalInformation--><!--Device-CellInformation-signalInformation: SignalInformation-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService

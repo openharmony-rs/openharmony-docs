@@ -4,9 +4,11 @@
 export interface ForegroundBlur
 ```
 
-Sets a foreground blur effect.
+Sets the foreground blur effect. The blur radius can be used to control the blur degree.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-export interface ForegroundBlur--><!--Device-unnamed-export interface ForegroundBlur-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +18,11 @@ Sets a foreground blur effect.
 radius: number
 ```
 
-Blur radius. The value range is [0, +∞). The default value is **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious foreground blur effect. If the value is **0**, the foreground is not blurred.
+Blur radius.
+
+Unit: px
+
+Value range: [0, +∞). Default value: **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious background blur effect. If the value is **0**, the background is not blurred.
 
 **Type:** number
 
@@ -25,5 +31,7 @@ Blur radius. The value range is [0, +∞). The default value is **0**. A negativ
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ForegroundBlur-radius: double--><!--Device-ForegroundBlur-radius: double-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

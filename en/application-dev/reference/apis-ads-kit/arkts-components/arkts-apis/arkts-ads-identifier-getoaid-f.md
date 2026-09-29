@@ -23,6 +23,8 @@ Obtains the OAID. This API uses an asynchronous callback to return the result.
 
 **Required permissions:** ohos.permission.APP_TRACKING_CONSENT
 
+<!--Device-identifier-function getOAID(callback: AsyncCallback<string>): void--><!--Device-identifier-function getOAID(callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Advertising.OAID
 
 **Parameters:**
@@ -70,6 +72,8 @@ Obtains the OAID. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.APP_TRACKING_CONSENT
+
+<!--Device-identifier-function getOAID(): Promise<string>--><!--Device-identifier-function getOAID(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Advertising.OAID
 

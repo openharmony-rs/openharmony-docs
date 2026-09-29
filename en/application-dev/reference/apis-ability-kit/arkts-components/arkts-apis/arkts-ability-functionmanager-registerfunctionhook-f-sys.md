@@ -20,6 +20,8 @@ Register a function hook for intercepting function invocation. Only one function
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-functionManager-function registerFunctionHook(hook: FunctionHook): Promise<void>--><!--Device-functionManager-function registerFunctionHook(hook: FunctionHook): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

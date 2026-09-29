@@ -18,4 +18,6 @@ The @Preview decorator decorates custom components for preview.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare const Preview: ClassDecorator & ((value: PreviewParams) => ClassDecorator)--><!--Device-unnamed-declare const Preview: ClassDecorator & ((value: PreviewParams) => ClassDecorator)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -10,9 +10,11 @@ export interface FetchResponse
 | -------- | -------- | -------- |  
 | N/A| string | When the type in the header returned by the server is **text/\***, **application/json**, **application/javascript**, or **application/xml**, the value is the text content.|
 | text | string | Text content.|
-| [json](../../apis-arkts/arkts-apis/arkts-arkts-util-json.md) | Object | A JSON object.|
+| json | Object | A JSON object.|
 
 **Since:** 3
+
+<!--Device-unnamed-export interface FetchResponse--><!--Device-unnamed-export interface FetchResponse-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -33,6 +35,8 @@ Server status code.
 
 **Since:** 3
 
+<!--Device-FetchResponse-code: number--><!--Device-FetchResponse-code: number-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## data
@@ -47,6 +51,8 @@ The type of the returned data is determined by **responseType**. For details, se
 
 **Since:** 3
 
+<!--Device-FetchResponse-data: string | object--><!--Device-FetchResponse-data: string | object-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## headers
@@ -60,6 +66,8 @@ All headers in the response from the server.
 **Type:** Object
 
 **Since:** 3
+
+<!--Device-FetchResponse-headers: Object--><!--Device-FetchResponse-headers: Object-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 

@@ -12,6 +12,8 @@ Represents a callback for visible area changes of the component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) => void--><!--Device-unnamed-declare type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

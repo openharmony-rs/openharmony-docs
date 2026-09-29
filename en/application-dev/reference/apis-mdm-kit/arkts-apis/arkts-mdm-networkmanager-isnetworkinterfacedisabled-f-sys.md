@@ -24,6 +24,8 @@ Queries whether a specified network interface is disabled. This API uses an asyn
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function isNetworkInterfaceDisabled(admin: Want, networkInterface: string, callback: AsyncCallback<boolean>): void--><!--Device-networkManager-function isNetworkInterfaceDisabled(admin: Want, networkInterface: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -88,6 +90,8 @@ Queries whether a specified network interface is disabled. This API uses a promi
 **Required permissions:** ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-networkManager-function isNetworkInterfaceDisabled(admin: Want, networkInterface: string): Promise<boolean>--><!--Device-networkManager-function isNetworkInterfaceDisabled(admin: Want, networkInterface: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

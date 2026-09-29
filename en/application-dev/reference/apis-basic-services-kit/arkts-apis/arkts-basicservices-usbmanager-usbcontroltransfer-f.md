@@ -16,6 +16,8 @@ Performs control transfer. After the control command is transferred successfully
 
 **Since:** 12
 
+<!--Device-usbManager-function usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout?: int): Promise<int>--><!--Device-usbManager-function usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout?: int): Promise<int>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

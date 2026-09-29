@@ -8,6 +8,8 @@ Provides APIs for observing the changes of files or directories. Before using th
 
 **Since:** 10
 
+<!--Device-unnamed-export interface Watcher--><!--Device-unnamed-export interface Watcher-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -25,6 +27,8 @@ start(): void
 Starts listening.
 
 **Since:** 10
+
+<!--Device-Watcher-start(): void--><!--Device-Watcher-start(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -65,6 +69,8 @@ stop(): void
 Stops listening and removes the **Watcher** object.
 
 **Since:** 10
+
+<!--Device-Watcher-stop(): void--><!--Device-Watcher-stop(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

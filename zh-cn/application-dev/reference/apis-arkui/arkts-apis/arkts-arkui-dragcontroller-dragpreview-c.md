@@ -8,6 +8,8 @@ export class DragPreview
 
 **起始版本：** 11
 
+<!--Device-dragController-export class DragPreview--><!--Device-dragController-export class DragPreview-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ animate(options: AnimationOptions, handler: () =>void): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragPreview-animate(options: AnimationOptions, handler: () =>void): void--><!--Device-DragPreview-animate(options: AnimationOptions, handler: () =>void): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -43,7 +47,7 @@ animate(options: AnimationOptions, handler: () =>void): void
 
 > 说明：
 > 
-> 推荐通过使用UIContext中的[getDragController](arkts-arkui-arkui-uicontext-uicontext-c.md#getdragcontroller)方法获取当前UI上下文关联的DragController对象。
+> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-arkui-arkui-uicontext-uicontext-c.md#getdragcontroller)方法获取当前UI上下文关联的DragController对象。
 
 在EntryAbility.ets中获取UI上下文并保存至LocalStorage中。
 
@@ -194,6 +198,8 @@ setForegroundColor(color: ResourceColor): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragPreview-setForegroundColor(color: ResourceColor): void--><!--Device-DragPreview-setForegroundColor(color: ResourceColor): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

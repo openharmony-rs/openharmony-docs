@@ -12,6 +12,8 @@ interface ParticleColorUpdaterOptions<UPDATER extends ParticleUpdater>
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface ParticleColorUpdaterOptions<UPDATER extends ParticleUpdater>--><!--Device-unnamed-interface ParticleColorUpdaterOptions<UPDATER extends ParticleUpdater>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## config
@@ -40,6 +42,8 @@ config: ParticleColorPropertyUpdaterConfigs[UPDATER]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ParticleColorUpdaterOptions-config: ParticleColorPropertyUpdaterConfigs[UPDATER]--><!--Device-ParticleColorUpdaterOptions-config: ParticleColorPropertyUpdaterConfigs[UPDATER]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -59,5 +63,7 @@ type: UPDATER
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleColorUpdaterOptions-type: UPDATER--><!--Device-ParticleColorUpdaterOptions-type: UPDATER-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

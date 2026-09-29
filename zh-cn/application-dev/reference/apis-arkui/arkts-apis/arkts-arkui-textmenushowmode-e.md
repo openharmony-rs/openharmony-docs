@@ -8,6 +8,8 @@ declare enum TextMenuShowMode
 
 **起始版本：** 16
 
+<!--Device-unnamed-declare enum TextMenuShowMode--><!--Device-unnamed-declare enum TextMenuShowMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -23,6 +25,8 @@ DEFAULT = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本16开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextMenuShowMode-DEFAULT = 0--><!--Device-TextMenuShowMode-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +46,7 @@ PREFER_WINDOW = 1
 
 在[UIExtension](arkts-arkui-arkui-uiextension.md)中不支持将文本选择菜单显示在独立窗口中。
 
-当文本类组件已经显示在子窗类型的[Popup](arkts-arkui-arkui-advanced-popup.md)、[Dialog](arkts-arkui-arkui-advanced-dialog.md)、[Toast](../../../ui/arkts-create-toast.md)、Menu中时，不支持将其对应的文本选择菜单显示在独立窗口中。
+当文本类组件已经显示在子窗类型的[Popup](arkts-arkui-arkui-advanced-popup.md)、[Dialog](arkts-arkui-arkui-advanced-dialog.md)、[Toast](../../../ui/arkts-create-toast.md)、[Menu](../arkts-components/arkts-arkui-menu-comp.md)中时，不支持将其对应的文本选择菜单显示在独立窗口中。
 
 当TextInput、TextArea可支持拉起AutoFill时，不支持将其对应的文本选择菜单显示在独立窗口中。
 
@@ -51,5 +55,7 @@ PREFER_WINDOW = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本16开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextMenuShowMode-PREFER_WINDOW = 1--><!--Device-TextMenuShowMode-PREFER_WINDOW = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

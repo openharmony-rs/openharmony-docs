@@ -17,6 +17,8 @@ declare interface BackgroundBrightnessOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface BackgroundBrightnessOptions--><!--Device-unnamed-declare interface BackgroundBrightnessOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## lightUpDegree
@@ -43,6 +45,8 @@ lightUpDegree: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-BackgroundBrightnessOptions-lightUpDegree: number--><!--Device-BackgroundBrightnessOptions-lightUpDegree: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## rate
@@ -64,5 +68,7 @@ rate: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BackgroundBrightnessOptions-rate: number--><!--Device-BackgroundBrightnessOptions-rate: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -12,6 +12,8 @@ Defines the name of the navigation home page.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type NavBar = 'navBar'--><!--Device-unnamed-declare type NavBar = 'navBar'-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** 'navBar'

@@ -8,6 +8,8 @@ Defines the notification flags.
 
 **Since:** 8
 
+<!--Device-unnamed-export interface NotificationFlags--><!--Device-unnamed-export interface NotificationFlags-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## reminderFlags
@@ -29,6 +31,8 @@ opposite.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-NotificationFlags-readonly reminderFlags?: long--><!--Device-NotificationFlags-readonly reminderFlags?: long-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

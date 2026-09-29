@@ -8,6 +8,8 @@ Provides APIs for the file manager application to download files from the Drive 
 
 **Since:** 11
 
+<!--Device-cloudSync-class CloudFileCache--><!--Device-cloudSync-class CloudFileCache-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Clean all downloaded files except those not yet migrated to the cloud or those t
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CloudFileCache-cleanAllFileCache(): Promise<void>--><!--Device-CloudFileCache-cleanAllFileCache(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -51,6 +55,8 @@ cleanFileCache(uri: string): void
 Deletes a cache file. This API returns the result synchronously.
 
 **Since:** 20
+
+<!--Device-CloudFileCache-cleanFileCache(uri: string): void--><!--Device-CloudFileCache-cleanFileCache(uri: string): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -100,6 +106,8 @@ A constructor used to create a **CloudFileCache** instance. Data is not shared b
 
 **Since:** 11
 
+<!--Device-CloudFileCache-constructor()--><!--Device-CloudFileCache-constructor()-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Error codes:**
@@ -126,6 +134,8 @@ Query the total size of cached files.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CloudFileCache-getCachedTotalSize(): Promise<long>--><!--Device-CloudFileCache-getCachedTotalSize(): Promise<long>-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Return value:**
@@ -149,6 +159,8 @@ off(event: 'progress', callback?: Callback<DownloadProgress>): void
 Removes the specified callback from the device-cloud file cache progress.
 
 **Since:** 11
+
+<!--Device-CloudFileCache-off(event: 'progress', callback?: Callback<DownloadProgress>): void--><!--Device-CloudFileCache-off(event: 'progress', callback?: Callback<DownloadProgress>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -198,6 +210,8 @@ Removes the listener added via the [on](#on-1) API for file batch downloads.
 
 **Since:** 20
 
+<!--Device-CloudFileCache-off(event: 'batchDownload', callback?: Callback<MultiDownloadProgress>): void--><!--Device-CloudFileCache-off(event: 'batchDownload', callback?: Callback<MultiDownloadProgress>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Parameters:**
@@ -242,6 +256,8 @@ on(event: 'progress', callback: Callback<DownloadProgress>): void
 Registers a listener for the download progress of a file from the Drive Kit.
 
 **Since:** 11
+
+<!--Device-CloudFileCache-on(event: 'progress', callback: Callback<DownloadProgress>): void--><!--Device-CloudFileCache-on(event: 'progress', callback: Callback<DownloadProgress>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -288,6 +304,8 @@ on(event: 'batchDownload', callback: Callback<MultiDownloadProgress>): void
 Registers a listener for the batch download of a file from the Drive Kit.
 
 **Since:** 20
+
+<!--Device-CloudFileCache-on(event: 'batchDownload', callback: Callback<MultiDownloadProgress>): void--><!--Device-CloudFileCache-on(event: 'batchDownload', callback: Callback<MultiDownloadProgress>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -337,6 +355,8 @@ start(uri: string): Promise<void>
 Starts downloading a file from the Drive Kit to the local device. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-CloudFileCache-start(uri: string): Promise<void>--><!--Device-CloudFileCache-start(uri: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -400,6 +420,8 @@ Starts downloading a file from the Drive Kit to the local device. This API uses 
 
 **Since:** 11
 
+<!--Device-CloudFileCache-start(uri: string, callback: AsyncCallback<void>): void--><!--Device-CloudFileCache-start(uri: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Parameters:**
@@ -449,6 +471,8 @@ Starts the batch download of a file from the Drive Kit. This API uses a promise 
 Different batch download tasks can be distinguished by the task ID returned.
 
 **Since:** 20
+
+<!--Device-CloudFileCache-startBatch(uris: Array<string>, fileType?: DownloadFileType): Promise<long>--><!--Device-CloudFileCache-startBatch(uris: Array<string>, fileType?: DownloadFileType): Promise<long>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -510,6 +534,8 @@ When **stop()** is called, the current file download process terminates, and dow
 
 **Since:** 12
 
+<!--Device-CloudFileCache-stop(uri: string, needClean?: boolean): Promise<void>--><!--Device-CloudFileCache-stop(uri: string, needClean?: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Parameters:**
@@ -565,6 +591,8 @@ When **stop()** is called, the current file download process terminates, and dow
 
 **Since:** 11
 
+<!--Device-CloudFileCache-stop(uri: string, callback: AsyncCallback<void>): void--><!--Device-CloudFileCache-stop(uri: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Parameters:**
@@ -613,6 +641,8 @@ Stops the batch download task enabled by [startBatch](#startbatch) of a file fro
 When **stopBatch()** is called, the batch download terminates. The **needClean** parameter determines whether to delete incompletely downloaded files.
 
 **Since:** 20
+
+<!--Device-CloudFileCache-stopBatch(downloadId: long, needClean?: boolean): Promise<void>--><!--Device-CloudFileCache-stopBatch(downloadId: long, needClean?: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

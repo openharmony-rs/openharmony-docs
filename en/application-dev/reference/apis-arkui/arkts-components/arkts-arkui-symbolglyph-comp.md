@@ -1,8 +1,10 @@
 # SymbolGlyph
 
-The **SymbolGlyph** component represents a symbol glyph.<!--RP1--><!--RP1End-->
+The **SymbolGlyph** component is used to display system preset symbol glyphs. It supports setting style attributes such as color, size, font weight, rendering strategy, and effect strategy, and is applicable to scenarios where system icons need to be displayed in an application, such as navigation bar icons, button icons, and status indicator icons. Compared with using image resources, **SymbolGlyph** offers advantages such as a smaller size, dynamic coloring, and animation support.<!--RP1--><!--RP1End-->
 
-> **NOTE**
+> **NOTE:** 
+> 
+> - This component is supported since API version 11. Newly added APIs will be marked with a superscript to indicate their
 
 ## Child Components
 
@@ -24,13 +26,15 @@ Defines the constructor of SymbolGlyph.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-SymbolGlyphInterface-(value?: Resource): SymbolGlyphAttribute--><!--Device-SymbolGlyphInterface-(value?: Resource): SymbolGlyphAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | No | Resource of the **SymbolGlyph** component, for example, **$r('sys.symbol.ohos_wifi')**. |
+| value | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | No | Resource name of the SymbolGlyph component, for example, $r('sys.symbol.ohos_wifi'). If it is not passed in, no icon is displayed. |
 
 ## Summary
 
@@ -41,9 +45,9 @@ Defines the constructor of SymbolGlyph.
 | [EffectDirection](arkts-arkui-symbolglyph-comp-effectdirection-e.md) | The direction type of symbol effect. |
 | [EffectFillStyle](arkts-arkui-symbolglyph-comp-effectfillstyle-e.md) | The fill style of symbol effect. |
 | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | The scope type of the symbol effect. |
-| [ReplaceEffectType](arkts-arkui-symbolglyph-comp-replaceeffecttype-e.md) | The replace effect type of symbol. |
+| [ReplaceEffectType](arkts-arkui-symbolglyph-comp-replaceeffecttype-e.md) | Enumerates symbol replacement effect types. |
 | [SymbolEffectStrategy](arkts-arkui-symbolglyph-comp-symboleffectstrategy-e.md) | Enumerates symbol effect types. Once applied, the symbol effect becomes active instantly, eliminating the need for triggering. |
-| [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md) | The symbol rendering strategy. |
+| [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md) | Enumerates the rendering modes. |
 
 ## Examples
 

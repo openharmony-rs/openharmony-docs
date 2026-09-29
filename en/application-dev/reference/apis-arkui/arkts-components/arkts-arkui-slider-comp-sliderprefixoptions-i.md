@@ -14,4 +14,6 @@ Provides accessibility configuration of the slider prefix.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-unnamed-interface SliderPrefixOptions extends SliderCustomContentOptions--><!--Device-unnamed-interface SliderPrefixOptions extends SliderCustomContentOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

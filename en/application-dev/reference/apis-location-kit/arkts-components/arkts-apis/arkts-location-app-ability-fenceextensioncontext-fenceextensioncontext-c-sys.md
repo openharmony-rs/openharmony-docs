@@ -12,6 +12,8 @@ class of static subscriber extension context.
 
 **Since:** 14
 
+<!--Device-unnamed-export default class FenceExtensionContext extends ExtensionContext--><!--Device-unnamed-export default class FenceExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Starts a new service extension ability. If the target service extension ability 
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FenceExtensionContext-startAbility(want: Want): Promise<void>--><!--Device-FenceExtensionContext-startAbility(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 

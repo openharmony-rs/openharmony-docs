@@ -10,6 +10,8 @@ ScrollParam
 
 **Since:** 4
 
+<!--Device-unnamed-export interface ScrollParam--><!--Device-unnamed-export interface ScrollParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## dx
@@ -25,6 +27,8 @@ Offset for scrolling in the horizontal direction, in px.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ScrollParam-dx?: number--><!--Device-ScrollParam-dx?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ Offset for scrolling in the vertical direction, in px.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-ScrollParam-dy?: number--><!--Device-ScrollParam-dy?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## smooth
@@ -57,5 +63,7 @@ Whether a sliding animation is displayed when scroll position is changed.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ScrollParam-smooth?: boolean--><!--Device-ScrollParam-smooth?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

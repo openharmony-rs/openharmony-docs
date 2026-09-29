@@ -17,6 +17,8 @@ Enumerates the error codes.
 
 **Substitutes:** null
 
+<!--Device-huks-export enum HuksErrorCode--><!--Device-huks-export enum HuksErrorCode-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_SUCCESS
@@ -32,6 +34,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_SUCCESS = 0--><!--Device-HuksErrorCode-HUKS_SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -49,6 +53,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_FAILURE = -1--><!--Device-HuksErrorCode-HUKS_FAILURE = -1-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_BAD_STATE
@@ -64,6 +70,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_BAD_STATE = -2--><!--Device-HuksErrorCode-HUKS_ERROR_BAD_STATE = -2-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -81,6 +89,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_ARGUMENT = -3--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_ARGUMENT = -3-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_NOT_SUPPORTED
@@ -96,6 +106,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_NOT_SUPPORTED = -4--><!--Device-HuksErrorCode-HUKS_ERROR_NOT_SUPPORTED = -4-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -113,6 +125,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_NO_PERMISSION = -5--><!--Device-HuksErrorCode-HUKS_ERROR_NO_PERMISSION = -5-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_INSUFFICIENT_DATA
@@ -128,6 +142,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INSUFFICIENT_DATA = -6--><!--Device-HuksErrorCode-HUKS_ERROR_INSUFFICIENT_DATA = -6-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -145,6 +161,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_BUFFER_TOO_SMALL = -7--><!--Device-HuksErrorCode-HUKS_ERROR_BUFFER_TOO_SMALL = -7-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_INSUFFICIENT_MEMORY
@@ -160,6 +178,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INSUFFICIENT_MEMORY = -8--><!--Device-HuksErrorCode-HUKS_ERROR_INSUFFICIENT_MEMORY = -8-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -177,6 +197,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_COMMUNICATION_FAILURE = -9--><!--Device-HuksErrorCode-HUKS_ERROR_COMMUNICATION_FAILURE = -9-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_STORAGE_FAILURE
@@ -192,6 +214,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_STORAGE_FAILURE = -10--><!--Device-HuksErrorCode-HUKS_ERROR_STORAGE_FAILURE = -10-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -209,6 +233,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_HARDWARE_FAILURE = -11--><!--Device-HuksErrorCode-HUKS_ERROR_HARDWARE_FAILURE = -11-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_ALREADY_EXISTS
@@ -224,6 +250,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_ALREADY_EXISTS = -12--><!--Device-HuksErrorCode-HUKS_ERROR_ALREADY_EXISTS = -12-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -241,6 +269,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_NOT_EXIST = -13--><!--Device-HuksErrorCode-HUKS_ERROR_NOT_EXIST = -13-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_NULL_POINTER
@@ -256,6 +286,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_NULL_POINTER = -14--><!--Device-HuksErrorCode-HUKS_ERROR_NULL_POINTER = -14-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -273,6 +305,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_FILE_SIZE_FAIL = -15--><!--Device-HuksErrorCode-HUKS_ERROR_FILE_SIZE_FAIL = -15-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_READ_FILE_FAIL
@@ -288,6 +322,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_READ_FILE_FAIL = -16--><!--Device-HuksErrorCode-HUKS_ERROR_READ_FILE_FAIL = -16-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -305,6 +341,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PUBLIC_KEY = -17--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PUBLIC_KEY = -17-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_INVALID_PRIVATE_KEY
@@ -320,6 +358,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PRIVATE_KEY = -18--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PRIVATE_KEY = -18-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -337,6 +377,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_INFO = -19--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_INFO = -19-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_HASH_NOT_EQUAL
@@ -352,6 +394,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_HASH_NOT_EQUAL = -20--><!--Device-HuksErrorCode-HUKS_ERROR_HASH_NOT_EQUAL = -20-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -369,6 +413,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_MALLOC_FAIL = -21--><!--Device-HuksErrorCode-HUKS_ERROR_MALLOC_FAIL = -21-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_WRITE_FILE_FAIL
@@ -384,6 +430,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_WRITE_FILE_FAIL = -22--><!--Device-HuksErrorCode-HUKS_ERROR_WRITE_FILE_FAIL = -22-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -401,6 +449,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_REMOVE_FILE_FAIL = -23--><!--Device-HuksErrorCode-HUKS_ERROR_REMOVE_FILE_FAIL = -23-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_OPEN_FILE_FAIL
@@ -416,6 +466,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_OPEN_FILE_FAIL = -24--><!--Device-HuksErrorCode-HUKS_ERROR_OPEN_FILE_FAIL = -24-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -433,6 +485,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_CLOSE_FILE_FAIL = -25--><!--Device-HuksErrorCode-HUKS_ERROR_CLOSE_FILE_FAIL = -25-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_MAKE_DIR_FAIL
@@ -448,6 +502,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_MAKE_DIR_FAIL = -26--><!--Device-HuksErrorCode-HUKS_ERROR_MAKE_DIR_FAIL = -26-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -465,6 +521,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_FILE = -27--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_FILE = -27-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_IPC_MSG_FAIL
@@ -480,6 +538,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_IPC_MSG_FAIL = -28--><!--Device-HuksErrorCode-HUKS_ERROR_IPC_MSG_FAIL = -28-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -497,6 +557,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_REQUEST_OVERFLOWS = -29--><!--Device-HuksErrorCode-HUKS_ERROR_REQUEST_OVERFLOWS = -29-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_PARAM_NOT_EXIST
@@ -512,6 +574,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_PARAM_NOT_EXIST = -30--><!--Device-HuksErrorCode-HUKS_ERROR_PARAM_NOT_EXIST = -30-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -529,6 +593,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_CRYPTO_ENGINE_ERROR = -31--><!--Device-HuksErrorCode-HUKS_ERROR_CRYPTO_ENGINE_ERROR = -31-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_COMMUNICATION_TIMEOUT
@@ -544,6 +610,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_COMMUNICATION_TIMEOUT = -32--><!--Device-HuksErrorCode-HUKS_ERROR_COMMUNICATION_TIMEOUT = -32-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -561,6 +629,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_IPC_INIT_FAIL = -33--><!--Device-HuksErrorCode-HUKS_ERROR_IPC_INIT_FAIL = -33-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_IPC_DLOPEN_FAIL
@@ -576,6 +646,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_IPC_DLOPEN_FAIL = -34--><!--Device-HuksErrorCode-HUKS_ERROR_IPC_DLOPEN_FAIL = -34-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -593,6 +665,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_EFUSE_READ_FAIL = -35--><!--Device-HuksErrorCode-HUKS_ERROR_EFUSE_READ_FAIL = -35-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_NEW_ROOT_KEY_MATERIAL_EXIST
@@ -608,6 +682,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_NEW_ROOT_KEY_MATERIAL_EXIST = -36--><!--Device-HuksErrorCode-HUKS_ERROR_NEW_ROOT_KEY_MATERIAL_EXIST = -36-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -625,6 +701,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_UPDATE_ROOT_KEY_MATERIAL_FAIL = -37--><!--Device-HuksErrorCode-HUKS_ERROR_UPDATE_ROOT_KEY_MATERIAL_FAIL = -37-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_VERIFICATION_FAILED
@@ -640,6 +718,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_VERIFICATION_FAILED = -38--><!--Device-HuksErrorCode-HUKS_ERROR_VERIFICATION_FAILED = -38-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -657,6 +737,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_ALG_FAIL = -100--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_ALG_FAIL = -100-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_CHECK_GET_KEY_SIZE_FAIL
@@ -672,6 +754,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_KEY_SIZE_FAIL = -101--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_KEY_SIZE_FAIL = -101-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -689,6 +773,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_PADDING_FAIL = -102--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_PADDING_FAIL = -102-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_CHECK_GET_PURPOSE_FAIL
@@ -704,6 +790,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_PURPOSE_FAIL = -103--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_PURPOSE_FAIL = -103-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -721,6 +809,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_DIGEST_FAIL = -104--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_DIGEST_FAIL = -104-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_CHECK_GET_MODE_FAIL
@@ -736,6 +826,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_MODE_FAIL = -105--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_MODE_FAIL = -105-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -753,6 +845,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_NONCE_FAIL = -106--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_NONCE_FAIL = -106-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_CHECK_GET_AAD_FAIL
@@ -768,6 +862,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_AAD_FAIL = -107--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_AAD_FAIL = -107-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -785,6 +881,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_IV_FAIL = -108--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_IV_FAIL = -108-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_CHECK_GET_AE_TAG_FAIL
@@ -800,6 +898,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_AE_TAG_FAIL = -109--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_AE_TAG_FAIL = -109-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -817,6 +917,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_SALT_FAIL = -110--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_SALT_FAIL = -110-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_CHECK_GET_ITERATION_FAIL
@@ -832,6 +934,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_ITERATION_FAIL = -111--><!--Device-HuksErrorCode-HUKS_ERROR_CHECK_GET_ITERATION_FAIL = -111-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -849,6 +953,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_ALGORITHM = -112--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_ALGORITHM = -112-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_INVALID_KEY_SIZE
@@ -864,6 +970,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_SIZE = -113--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_KEY_SIZE = -113-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -881,6 +989,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PADDING = -114--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PADDING = -114-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_INVALID_PURPOSE
@@ -896,6 +1006,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PURPOSE = -115--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_PURPOSE = -115-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -913,6 +1025,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_MODE = -116--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_MODE = -116-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_INVALID_DIGEST
@@ -928,6 +1042,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_DIGEST = -117--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_DIGEST = -117-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -945,6 +1061,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_SIGNATURE_SIZE = -118--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_SIGNATURE_SIZE = -118-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_INVALID_IV
@@ -960,6 +1078,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_IV = -119--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_IV = -119-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -977,6 +1097,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_AAD = -120--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_AAD = -120-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_INVALID_NONCE
@@ -992,6 +1114,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_NONCE = -121--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_NONCE = -121-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -1009,6 +1133,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_AE_TAG = -122--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_AE_TAG = -122-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_INVALID_SALT
@@ -1024,6 +1150,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_SALT = -123--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_SALT = -123-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -1041,6 +1169,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_ITERATION = -124--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_ITERATION = -124-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_INVALID_OPERATION
@@ -1056,6 +1186,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_INVALID_OPERATION = -125--><!--Device-HuksErrorCode-HUKS_ERROR_INVALID_OPERATION = -125-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -1073,6 +1205,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksErrorCode-HUKS_ERROR_INTERNAL_ERROR = -999--><!--Device-HuksErrorCode-HUKS_ERROR_INTERNAL_ERROR = -999-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## HUKS_ERROR_UNKNOWN_ERROR
@@ -1088,5 +1222,7 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksErrorCode-HUKS_ERROR_UNKNOWN_ERROR = -1000--><!--Device-HuksErrorCode-HUKS_ERROR_UNKNOWN_ERROR = -1000-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension

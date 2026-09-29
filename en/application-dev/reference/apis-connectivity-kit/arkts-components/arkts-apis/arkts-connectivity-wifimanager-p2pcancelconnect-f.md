@@ -18,6 +18,8 @@ Stop an ongoing p2p connection that is being established.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function p2pCancelConnect(): void--><!--Device-wifiManager-function p2pCancelConnect(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Error codes:**

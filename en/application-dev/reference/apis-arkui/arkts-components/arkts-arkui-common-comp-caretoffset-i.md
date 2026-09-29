@@ -8,6 +8,8 @@ Describes the position of the caret relative to the text box.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface CaretOffset--><!--Device-unnamed-declare interface CaretOffset-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
@@ -25,6 +27,8 @@ Index of the caret position.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CaretOffset-index: number--><!--Device-CaretOffset-index: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ X coordinate of the cursor relative to the text box, in px.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CaretOffset-x: number--><!--Device-CaretOffset-x: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -61,5 +67,7 @@ Y coordinate of the cursor relative to the text box, in px.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CaretOffset-y: number--><!--Device-CaretOffset-y: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

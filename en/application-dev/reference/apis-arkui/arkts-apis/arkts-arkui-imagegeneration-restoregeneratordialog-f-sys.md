@@ -18,6 +18,8 @@ Restore the AI image generation task popup.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-imageGeneration-function restoreGeneratorDialog(uiContext: UIContext): Promise<void>--><!--Device-imageGeneration-function restoreGeneratorDialog(uiContext: UIContext): Promise<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

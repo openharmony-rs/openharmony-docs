@@ -18,6 +18,8 @@ Images occupy a large amount of memory. When you finish using a Picture instance
 
 **Since:** 13
 
+<!--Device-image-function createPicture(mainPixelmap : PixelMap): Picture--><!--Device-image-function createPicture(mainPixelmap : PixelMap): Picture-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**

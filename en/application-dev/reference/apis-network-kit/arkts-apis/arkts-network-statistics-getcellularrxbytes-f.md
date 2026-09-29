@@ -21,6 +21,8 @@ Obtains the total downlink traffic (in bytes) of the NIC corresponding to the cu
 
 **Since:** 10
 
+<!--Device-statistics-function getCellularRxBytes(callback: AsyncCallback<long>): void--><!--Device-statistics-function getCellularRxBytes(callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -71,6 +73,8 @@ Obtains the total downlink traffic (in bytes) of the NIC corresponding to the cu
 > 3012 will be thrown.
 
 **Since:** 10
+
+<!--Device-statistics-function getCellularRxBytes(): Promise<long>--><!--Device-statistics-function getCellularRxBytes(): Promise<long>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

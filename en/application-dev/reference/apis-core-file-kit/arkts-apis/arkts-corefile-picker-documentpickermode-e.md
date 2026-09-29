@@ -8,6 +8,8 @@ Enumerates the modes for saving documents.
 
 **Since:** 12
 
+<!--Device-picker-export enum DocumentPickerMode--><!--Device-picker-export enum DocumentPickerMode-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## DEFAULT
@@ -20,7 +22,9 @@ Standard mode.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DocumentPickerMode-DEFAULT = 0--><!--Device-DocumentPickerMode-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -36,6 +40,8 @@ Download mode.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DocumentPickerMode-DOWNLOAD = 1--><!--Device-DocumentPickerMode-DOWNLOAD = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService

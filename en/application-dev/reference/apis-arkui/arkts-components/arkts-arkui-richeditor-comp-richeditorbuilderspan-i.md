@@ -13,6 +13,8 @@ Defines the BuilderSpan object of **RichEditor**, providing identity recognition
 
 **Since:** 26.2.0
 
+<!--Device-unnamed-declare interface RichEditorBuilderSpan--><!--Device-unnamed-declare interface RichEditorBuilderSpan-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilitySpanOptions
@@ -30,6 +32,8 @@ Accessibility reading feature. When omitted, the default value of [Accessibility
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-RichEditorBuilderSpan-accessibilitySpanOptions?: AccessibilitySpanOptions--><!--Device-RichEditorBuilderSpan-accessibilitySpanOptions?: AccessibilitySpanOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +53,8 @@ Custom component builder.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-RichEditorBuilderSpan-builder: CustomBuilder--><!--Device-RichEditorBuilderSpan-builder: CustomBuilder-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onAttach
@@ -66,6 +72,8 @@ Callback triggered when the BuilderSpan is attached to **RichEditor**. The callb
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-RichEditorBuilderSpan-onAttach?: Callback<BuilderSpanInfo>--><!--Device-RichEditorBuilderSpan-onAttach?: Callback<BuilderSpanInfo>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,5 +97,7 @@ Callback triggered when the BuilderSpan is removed from **RichEditor**. This inc
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-RichEditorBuilderSpan-onDetach?: Callback<BuilderSpanInfo>--><!--Device-RichEditorBuilderSpan-onDetach?: Callback<BuilderSpanInfo>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

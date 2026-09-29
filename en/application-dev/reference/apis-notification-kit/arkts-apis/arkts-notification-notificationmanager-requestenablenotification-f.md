@@ -20,6 +20,8 @@ Requests notification to be enabled for this application. This API uses an async
 
 **Substitutes:** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md)
 
+<!--Device-notificationManager-function requestEnableNotification(callback: AsyncCallback<void>): void--><!--Device-notificationManager-function requestEnableNotification(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -74,6 +76,8 @@ Requests notification to be enabled for this application. You can call this API 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-notificationManager-function requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -150,6 +154,8 @@ Requests notification to be enabled for this application. This API uses a promis
 
 **Substitutes:** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md)
 
+<!--Device-notificationManager-function requestEnableNotification(): Promise<void>--><!--Device-notificationManager-function requestEnableNotification(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Return value:**
@@ -200,6 +206,8 @@ Requests notification to be enabled for this application. You can call this API 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-notificationManager-function requestEnableNotification(context: UIAbilityContext): Promise<void>--><!--Device-notificationManager-function requestEnableNotification(context: UIAbilityContext): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

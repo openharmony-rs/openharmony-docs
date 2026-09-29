@@ -8,6 +8,8 @@ Enumerates the media description keys.
 
 **Since:** 8
 
+<!--Device-media-enum MediaDescriptionKey--><!--Device-media-enum MediaDescriptionKey-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## MD_KEY_TRACK_INDEX
@@ -20,7 +22,9 @@ Track index. The corresponding key value type is number.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MediaDescriptionKey-MD_KEY_TRACK_INDEX = 'track_index'--><!--Device-MediaDescriptionKey-MD_KEY_TRACK_INDEX = 'track_index'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -34,7 +38,9 @@ Track type. The corresponding key value type is number. For details, see [MediaT
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MediaDescriptionKey-MD_KEY_TRACK_TYPE = 'track_type'--><!--Device-MediaDescriptionKey-MD_KEY_TRACK_TYPE = 'track_type'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -48,7 +54,9 @@ Codec MIME type. The corresponding key value type is string.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MediaDescriptionKey-MD_KEY_CODEC_MIME = 'codec_mime'--><!--Device-MediaDescriptionKey-MD_KEY_CODEC_MIME = 'codec_mime'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -62,7 +70,9 @@ Media duration. The corresponding key value type is number, measured in ms.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MediaDescriptionKey-MD_KEY_DURATION = 'duration'--><!--Device-MediaDescriptionKey-MD_KEY_DURATION = 'duration'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -76,7 +86,9 @@ Bit rate. The corresponding key value type is number, measured in bit/s. If the 
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MediaDescriptionKey-MD_KEY_BITRATE = 'bitrate'--><!--Device-MediaDescriptionKey-MD_KEY_BITRATE = 'bitrate'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -90,7 +102,9 @@ Video width. The corresponding key value type is number, measured in px.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MediaDescriptionKey-MD_KEY_WIDTH = 'width'--><!--Device-MediaDescriptionKey-MD_KEY_WIDTH = 'width'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -104,7 +118,9 @@ Video height. The corresponding key value type is number, measured in px.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MediaDescriptionKey-MD_KEY_HEIGHT = 'height'--><!--Device-MediaDescriptionKey-MD_KEY_HEIGHT = 'height'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -118,7 +134,9 @@ Video frame rate. The corresponding key value type is number, measured in frames
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MediaDescriptionKey-MD_KEY_FRAME_RATE = 'frame_rate'--><!--Device-MediaDescriptionKey-MD_KEY_FRAME_RATE = 'frame_rate'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -132,7 +150,9 @@ Audio channel count. The corresponding key value type is number.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MediaDescriptionKey-MD_KEY_AUD_CHANNEL_COUNT = 'channel_count'--><!--Device-MediaDescriptionKey-MD_KEY_AUD_CHANNEL_COUNT = 'channel_count'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -146,7 +166,9 @@ Sample rate. The corresponding key value type is number, measured in Hz.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MediaDescriptionKey-MD_KEY_AUD_SAMPLE_RATE = 'sample_rate'--><!--Device-MediaDescriptionKey-MD_KEY_AUD_SAMPLE_RATE = 'sample_rate'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -160,7 +182,9 @@ Bit depth. The corresponding key value type is number, measured in bits.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-MediaDescriptionKey-MD_KEY_AUD_SAMPLE_DEPTH = 'sample_depth'--><!--Device-MediaDescriptionKey-MD_KEY_AUD_SAMPLE_DEPTH = 'sample_depth'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -174,7 +198,9 @@ Subtitle language. The corresponding key value type is string.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-MediaDescriptionKey-MD_KEY_LANGUAGE = 'language'--><!--Device-MediaDescriptionKey-MD_KEY_LANGUAGE = 'language'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -188,7 +214,9 @@ Track name. The corresponding key value type is string.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-MediaDescriptionKey-MD_KEY_TRACK_NAME = 'track_name'--><!--Device-MediaDescriptionKey-MD_KEY_TRACK_NAME = 'track_name'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -202,7 +230,9 @@ Codec track type. The corresponding key value type is string.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-MediaDescriptionKey-MD_KEY_HDR_TYPE = 'hdr_type'--><!--Device-MediaDescriptionKey-MD_KEY_HDR_TYPE = 'hdr_type'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -216,7 +246,9 @@ Original video width. The corresponding key value type is number, measured in px
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 21.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+
+<!--Device-MediaDescriptionKey-MD_KEY_ORIGINAL_WIDTH = 'original_width'--><!--Device-MediaDescriptionKey-MD_KEY_ORIGINAL_WIDTH = 'original_width'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -230,7 +262,9 @@ Original video height. The corresponding key value type is number, measured in p
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 21.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+
+<!--Device-MediaDescriptionKey-MD_KEY_ORIGINAL_HEIGHT = 'original_height'--><!--Device-MediaDescriptionKey-MD_KEY_ORIGINAL_HEIGHT = 'original_height'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -244,7 +278,9 @@ MIME type of the track. The corresponding key value type is string. For audio an
 
 **Since:** 23
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-MediaDescriptionKey-MD_KEY_MIME_TYPE = 'mime_type'--><!--Device-MediaDescriptionKey-MD_KEY_MIME_TYPE = 'mime_type'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -258,7 +294,9 @@ Reference relationships between this track and other tracks. The corresponding k
 
 **Since:** 23
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-MediaDescriptionKey-MD_KEY_REFERENCE_TRACK_IDS = 'ref_track_ids'--><!--Device-MediaDescriptionKey-MD_KEY_REFERENCE_TRACK_IDS = 'ref_track_ids'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -272,6 +310,8 @@ Auxiliary type of this track when it acts as a reference track. The correspondin
 
 **Since:** 23
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-MediaDescriptionKey-MD_KEY_TRACK_REFERENCE_TYPE = 'track_ref_type'--><!--Device-MediaDescriptionKey-MD_KEY_TRACK_REFERENCE_TYPE = 'track_ref_type'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core

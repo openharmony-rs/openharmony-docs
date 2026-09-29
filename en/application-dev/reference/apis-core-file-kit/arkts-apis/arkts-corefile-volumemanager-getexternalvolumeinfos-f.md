@@ -20,6 +20,8 @@ Obtains information about all external storage volumes. This API uses a promise 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-volumeManager-function getExternalVolumeInfos(): Promise<Array<ExternalVolumeInfo>>--><!--Device-volumeManager-function getExternalVolumeInfos(): Promise<Array<ExternalVolumeInfo>>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **Return value:**

@@ -14,4 +14,6 @@ The extended user data does not affect the display effect.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare abstract class UserDataSpan--><!--Device-unnamed-declare abstract class UserDataSpan-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

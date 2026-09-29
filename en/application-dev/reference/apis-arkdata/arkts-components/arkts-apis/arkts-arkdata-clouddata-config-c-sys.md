@@ -8,6 +8,8 @@ Provides APIs for setting device-cloud synergy, including enabling and disabling
 
 **Since:** 10
 
+<!--Device-cloudData-class Config--><!--Device-cloudData-class Config-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Queries the last synchronization information in batch
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Config-static batchQueryLastSyncInfo(        accountId: string,        bundleInfos: Array<BundleInfo>    ): Promise<Record<string, Record<string, SyncInfo>>>--><!--Device-Config-static batchQueryLastSyncInfo(        accountId: string,        bundleInfos: Array<BundleInfo>    ): Promise<Record<string, Record<string, SyncInfo>>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -101,6 +105,8 @@ Changes the device-cloud synergy setting for an application. This API uses an as
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
+<!--Device-Config-static changeAppCloudSwitch(      accountId: string,      bundleName: string,      status: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-Config-static changeAppCloudSwitch(      accountId: string,      bundleName: string,      status: boolean,      callback: AsyncCallback<void>    ): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -157,6 +163,8 @@ Changes the device-cloud synergy setting for an application. This API uses a pro
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
+
+<!--Device-Config-static changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise<void>--><!--Device-Config-static changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -224,6 +232,8 @@ Changes the device-cloud synergy setting for an application. This API uses a pro
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Config-static changeAppCloudSwitch(      accountId: string,      bundleName: string,      status: boolean,      config?: SwitchConfig    ): Promise<void>--><!--Device-Config-static changeAppCloudSwitch(      accountId: string,      bundleName: string,      status: boolean,      config?: SwitchConfig    ): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -298,6 +308,8 @@ Clears the cloud data locally. This API uses an asynchronous callback to return 
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
+<!--Device-Config-static clear(      accountId: string,      appActions: Record<string, ClearAction>,      callback: AsyncCallback<void>    ): void--><!--Device-Config-static clear(      accountId: string,      appActions: Record<string, ClearAction>,      callback: AsyncCallback<void>    ): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -357,6 +369,8 @@ Clears the cloud data locally. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
+
+<!--Device-Config-static clear(accountId: string, appActions: Record<string, ClearAction>): Promise<void>--><!--Device-Config-static clear(accountId: string, appActions: Record<string, ClearAction>): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -426,6 +440,8 @@ Clears the cloud data locally. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Config-static clear(      accountId: string,      appActions: Record<string, ClearAction>,      config?: Record<string, ClearConfig>    ): Promise<void>--><!--Device-Config-static clear(      accountId: string,      appActions: Record<string, ClearAction>,      config?: Record<string, ClearConfig>    ): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -506,6 +522,8 @@ Synchronizes data of a specified application on the device to the cloud. This AP
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
+<!--Device-Config-static cloudSync(      bundleName: string,      storeId: string,      mode: relationalStore.SyncMode,      progress: Callback<relationalStore.ProgressDetails>    ): Promise<void>--><!--Device-Config-static cloudSync(      bundleName: string,      storeId: string,      mode: relationalStore.SyncMode,      progress: Callback<relationalStore.ProgressDetails>    ): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -571,6 +589,8 @@ Sync data to cloud. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Config-static cloudSyncEx(        bundleInfo: BundleInfo,        config: relationalStore.CloudSyncConfig,        progress: Callback<relationalStore.ProgressDetails>    ): Promise<void>--><!--Device-Config-static cloudSyncEx(        bundleInfo: BundleInfo,        config: relationalStore.CloudSyncConfig,        progress: Callback<relationalStore.ProgressDetails>    ): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -641,6 +661,8 @@ Disables device-cloud synergy. This API uses an asynchronous callback to return 
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
+<!--Device-Config-static disableCloud(accountId: string, callback: AsyncCallback<void>): void--><!--Device-Config-static disableCloud(accountId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -694,6 +716,8 @@ Disables device-cloud synergy. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
+
+<!--Device-Config-static disableCloud(accountId: string): Promise<void>--><!--Device-Config-static disableCloud(accountId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -754,6 +778,8 @@ Enables device-cloud synergy. This API uses an asynchronous callback to return t
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
+<!--Device-Config-static enableCloud(      accountId: string,      switches: Record<string, boolean>,      callback: AsyncCallback<void>    ): void--><!--Device-Config-static enableCloud(      accountId: string,      switches: Record<string, boolean>,      callback: AsyncCallback<void>    ): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -809,6 +835,8 @@ Enables device-cloud synergy. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
+
+<!--Device-Config-static enableCloud(accountId: string, switches: Record<string, boolean>): Promise<void>--><!--Device-Config-static enableCloud(accountId: string, switches: Record<string, boolean>): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -866,6 +894,8 @@ Notifies the data changes in the cloud. This API uses a promise to return the re
 **Since:** 11
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
+
+<!--Device-Config-static notifyDataChange(extInfo: ExtraData, userId?: int): Promise<void>--><!--Device-Config-static notifyDataChange(extInfo: ExtraData, userId?: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -929,6 +959,8 @@ Notifies the data changes in the cloud with the specified information, such as t
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
+<!--Device-Config-static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback<void>): void--><!--Device-Config-static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -985,6 +1017,8 @@ Notifies the data changes of a user in the cloud. This API uses an asynchronous 
 **Since:** 11
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
+
+<!--Device-Config-static notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback<void>): void--><!--Device-Config-static notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -1045,6 +1079,8 @@ Notifies the data changes in the cloud. This API uses a promise to return the re
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
+<!--Device-Config-static notifyDataChange(accountId: string, bundleName: string): Promise<void>--><!--Device-Config-static notifyDataChange(accountId: string, bundleName: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -1104,6 +1140,8 @@ Notifies the data changes in the cloud. This API uses an asynchronous callback t
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
+<!--Device-Config-static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-Config-static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -1162,6 +1200,8 @@ Remove specified observer of specified type from the database.
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Config-static offSyncInfoChanged(        bundleInfos: Array<BundleInfo>,        progress?: Callback<Record<string, Record<string, SyncInfo>>>    ): void--><!--Device-Config-static offSyncInfoChanged(        bundleInfos: Array<BundleInfo>,        progress?: Callback<Record<string, Record<string, SyncInfo>>>    ): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -1239,6 +1279,8 @@ Subscribes to changes in the sync information of a specified application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Config-static onSyncInfoChanged(        bundleInfos: Array<BundleInfo>,        progress: Callback<Record<string, Record<string, SyncInfo>>>    ): void--><!--Device-Config-static onSyncInfoChanged(        bundleInfos: Array<BundleInfo>,        progress: Callback<Record<string, Record<string, SyncInfo>>>    ): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -1294,6 +1336,8 @@ Queries information about the last device-cloud sync. This API uses a promise to
 **Since:** 12
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
+
+<!--Device-Config-static queryLastSyncInfo(        accountId: string,        bundleName: string,        storeId?: string    ): Promise<Record<string, SyncInfo>>--><!--Device-Config-static queryLastSyncInfo(        accountId: string,        bundleName: string,        storeId?: string    ): Promise<Record<string, SyncInfo>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -1358,6 +1402,8 @@ Queries device-cloud data statistics, which include the data not synced, data sy
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
+<!--Device-Config-static queryStatistics(        accountId: string,        bundleName: string,        storeId?: string    ): Promise<Record<string, Array<StatisticInfo>>>--><!--Device-Config-static queryStatistics(        accountId: string,        bundleName: string,        storeId?: string    ): Promise<Record<string, Array<StatisticInfo>>>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -1413,6 +1459,8 @@ Sets a global device-cloud sync strategy. This API uses a promise to return the 
 
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
+<!--Device-Config-static setGlobalCloudStrategy(strategy: StrategyType, param?: Array<commonType.ValueType>): Promise<void>--><!--Device-Config-static setGlobalCloudStrategy(strategy: StrategyType, param?: Array<commonType.ValueType>): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -1464,6 +1512,8 @@ Stops syncing data to the cloud.
 **Required permissions:** ohos.permission.CLOUDDATA_CONFIG
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Config-static stopCloudSync(bundleInfos: Array<BundleInfo>): Promise<void>--><!--Device-Config-static stopCloudSync(bundleInfos: Array<BundleInfo>): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 

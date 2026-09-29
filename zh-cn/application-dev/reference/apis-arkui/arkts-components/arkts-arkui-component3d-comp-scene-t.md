@@ -12,6 +12,8 @@ declare type Scene = import('../api/@ohos.graphics.scene').Scene
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type Scene = import('../api/@ohos.graphics.scene').Scene--><!--Device-unnamed-declare type Scene = import('../api/@ohos.graphics.scene').Scene-End-->
+
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **类型：** import('../api/@ohos.graphics.scene').Scene

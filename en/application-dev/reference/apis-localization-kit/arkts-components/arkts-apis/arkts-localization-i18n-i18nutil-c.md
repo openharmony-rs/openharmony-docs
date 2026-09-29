@@ -8,6 +8,8 @@ Internationalization utility class, which provides the capabilities of unit conv
 
 **Since:** 9
 
+<!--Device-i18n-export class I18NUtil--><!--Device-i18n-export class I18NUtil-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Adjusts a locale ID to a format that complies with the [BCP47](https://www.rfc-e
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-I18NUtil-static convertCanonicalLocaleIdentifier(locale: string): string--><!--Device-I18NUtil-static convertCanonicalLocaleIdentifier(locale: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -60,7 +64,9 @@ Obtains the locale that best matches a region from the specified locale list.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-I18NUtil-static getBestMatchLocale(locale: string, localeList: string[]): string--><!--Device-I18NUtil-static getBestMatchLocale(locale: string, localeList: string[]): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -109,7 +115,9 @@ Obtains the sequence of the year, month, and day in the specified locale.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-I18NUtil-static getDateOrder(locale: string): string--><!--Device-I18NUtil-static getDateOrder(locale: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -145,7 +153,9 @@ For example, the two-letter language code of Chinese is **zh**, and the correspo
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-I18NUtil-static getThreeLetterLanguage(locale: string): string--><!--Device-I18NUtil-static getThreeLetterLanguage(locale: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -194,7 +204,9 @@ For example, the two-letter region code of China is **CN**, and the correspondin
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-I18NUtil-static getThreeLetterRegion(locale: string): string--><!--Device-I18NUtil-static getThreeLetterRegion(locale: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -241,7 +253,9 @@ Obtains the localized expression of the specified time in the specified locale.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-I18NUtil-static getTimePeriodName(hour:int, locale?: string): string--><!--Device-I18NUtil-static getTimePeriodName(hour:int, locale?: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -291,7 +305,9 @@ For example, "/data/out/tmp" is changed to "tmp/out/data/" after localization.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-I18NUtil-static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: Intl.Locale): string--><!--Device-I18NUtil-static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: Intl.Locale): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -353,6 +369,8 @@ For example, "/data/out/tmp" is changed to "tmp/out/data/" after localization.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-I18NUtil-static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: intl.Locale): string--><!--Device-I18NUtil-static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: intl.Locale): string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -407,6 +425,8 @@ Sets the text direction for certain text within a paragraph, including RTL (righ
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-I18NUtil-static setUnicodeWrappedBidiDirection(text: string, direction: 'RTL' | 'LTR'): string--><!--Device-I18NUtil-static setUnicodeWrappedBidiDirection(text: string, direction: 'RTL' | 'LTR'): string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -448,7 +468,9 @@ Converts one measurement unit into another and formats the unit based on the spe
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-I18NUtil-static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: double, locale: string, style?: string): string--><!--Device-I18NUtil-static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: double, locale: string, style?: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

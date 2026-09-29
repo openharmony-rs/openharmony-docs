@@ -12,6 +12,8 @@ Describes the parameters for scan.
 
 **Substitutes:** [ScanOptions](arkts-connectivity-bluetoothmanager-scanoptions-i.md)
 
+<!--Device-bluetooth-interface ScanOptions--><!--Device-bluetooth-interface ScanOptions-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Bluetooth LE scan mode
 
 **Substitutes:** [dutyMode](arkts-connectivity-bluetoothmanager-scanoptions-i.md#dutymode)
 
+<!--Device-ScanOptions-dutyMode?: ScanDuty--><!--Device-ScanOptions-dutyMode?: ScanDuty-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## interval
@@ -54,6 +58,8 @@ Time of delay for reporting the scan result
 
 **Substitutes:** [interval](arkts-connectivity-bluetoothmanager-scanoptions-i.md#interval)
 
+<!--Device-ScanOptions-interval?: number--><!--Device-ScanOptions-interval?: number-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## matchMode
@@ -71,5 +77,7 @@ Match mode for Bluetooth LE scan filters hardware match
 **Deprecated since:** 9
 
 **Substitutes:** [matchMode](arkts-connectivity-bluetoothmanager-scanoptions-i.md#matchmode)
+
+<!--Device-ScanOptions-matchMode?: MatchMode--><!--Device-ScanOptions-matchMode?: MatchMode-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

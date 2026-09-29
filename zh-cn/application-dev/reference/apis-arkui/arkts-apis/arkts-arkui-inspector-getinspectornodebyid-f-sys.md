@@ -14,6 +14,8 @@ declare function getInspectorNodeById(id: number): object
 
 **替代接口：** [getInspectorByKey](arkts-arkui-global-getinspectorbykey-f.md)
 
+<!--Device-unnamed-declare function getInspectorNodeById(id: number): object--><!--Device-unnamed-declare function getInspectorNodeById(id: number): object-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。

@@ -10,6 +10,8 @@ A constructor used to create a **DotIndicator** object. It inherits from [Indica
 
 **Since:** 10
 
+<!--Device-unnamed-declare class DotIndicator extends Indicator<DotIndicator>--><!--Device-unnamed-declare class DotIndicator extends Indicator<DotIndicator>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -27,6 +29,8 @@ Sets the color of the dot-style navigation indicator.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-DotIndicator-color(value: ResourceColor): DotIndicator--><!--Device-DotIndicator-color(value: ResourceColor): DotIndicator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ A constructor used to create a **DotIndicator** object.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-DotIndicator-constructor()--><!--Device-DotIndicator-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## indicatorIcon
@@ -83,6 +89,8 @@ Set indicator icon.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-DotIndicator-indicatorIcon(iconList: Array<IndicatorIconInfo>): DotIndicator--><!--Device-DotIndicator-indicatorIcon(iconList: Array<IndicatorIconInfo>): DotIndicator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,6 +122,8 @@ Sets the height of a dot-style navigation indicator of the **Swiper** component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-DotIndicator-itemHeight(value: Length): DotIndicator--><!--Device-DotIndicator-itemHeight(value: Length): DotIndicator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -143,6 +153,8 @@ Sets the width of a dot-style navigation indicator of the **Swiper** component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-DotIndicator-itemWidth(value: Length): DotIndicator--><!--Device-DotIndicator-itemWidth(value: Length): DotIndicator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,6 +186,8 @@ Sets whether to enable the mask for the dot-style navigation indicator.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-DotIndicator-mask(value: boolean): DotIndicator--><!--Device-DotIndicator-mask(value: boolean): DotIndicator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -201,6 +215,8 @@ Sets the maximum number of navigation dots in the dot-style navigation indicator
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DotIndicator-maxDisplayCount(maxDisplayCount: number): DotIndicator--><!--Device-DotIndicator-maxDisplayCount(maxDisplayCount: number): DotIndicator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,6 +248,8 @@ Sets the color of the selected dot-style navigation indicator.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-DotIndicator-selectedColor(value: ResourceColor): DotIndicator--><!--Device-DotIndicator-selectedColor(value: ResourceColor): DotIndicator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -261,6 +279,8 @@ Sets the height of the selected dot-style navigation indicator.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-DotIndicator-selectedItemHeight(value: Length): DotIndicator--><!--Device-DotIndicator-selectedItemHeight(value: Length): DotIndicator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -292,6 +312,8 @@ Sets the width of the selected dot-style navigation indicator.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-DotIndicator-selectedItemWidth(value: Length): DotIndicator--><!--Device-DotIndicator-selectedItemWidth(value: Length): DotIndicator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -321,6 +343,8 @@ Sets the spacing between dot-style navigation indicators of the **Swiper** compo
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 19.
+
+<!--Device-DotIndicator-space(space: LengthMetrics): DotIndicator--><!--Device-DotIndicator-space(space: LengthMetrics): DotIndicator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -4,15 +4,17 @@
 declare class DatePickerAttribute extends CommonMethod<DatePickerAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-除支持通用事件外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
 
 @extends CommonMethod [since 8 - 10] @extends CommonMethod&lt;DatePickerAttribute&gt; [since 11]
 
-**继承/实现关系：** DatePickerAttribute extends CommonMethod&lt;DatePickerAttribute&gt;
+**继承/实现关系：** DatePickerAttribute extends CommonMethod<DatePickerAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class DatePickerAttribute extends CommonMethod<DatePickerAttribute>--><!--Device-unnamed-declare class DatePickerAttribute extends CommonMethod<DatePickerAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +31,8 @@ canLoop(isLoop: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerAttribute-canLoop(isLoop: Optional<boolean>): DatePickerAttribute--><!--Device-DatePickerAttribute-canLoop(isLoop: Optional<boolean>): DatePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-DatePickerAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): DatePickerAttribute--><!--Device-DatePickerAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): DatePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -73,6 +79,8 @@ disappearTextStyle(value: PickerTextStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerAttribute-disappearTextStyle(value: PickerTextStyle): DatePickerAttribute--><!--Device-DatePickerAttribute-disappearTextStyle(value: PickerTextStyle): DatePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ disappearTextStyle(style: Optional<PickerTextStyle>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-DatePickerAttribute-disappearTextStyle(style: Optional<PickerTextStyle>): DatePickerAttribute--><!--Device-DatePickerAttribute-disappearTextStyle(style: Optional<PickerTextStyle>): DatePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -119,6 +129,8 @@ enableHapticFeedback(enable: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerAttribute-enableHapticFeedback(enable: Optional<boolean>): DatePickerAttribute--><!--Device-DatePickerAttribute-enableHapticFeedback(enable: Optional<boolean>): DatePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,6 +157,8 @@ lunar(value: boolean)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerAttribute-lunar(value: boolean): DatePickerAttribute--><!--Device-DatePickerAttribute-lunar(value: boolean): DatePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,6 +188,8 @@ lunar(isLunar: Optional<boolean>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-DatePickerAttribute-lunar(isLunar: Optional<boolean>): DatePickerAttribute--><!--Device-DatePickerAttribute-lunar(isLunar: Optional<boolean>): DatePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -195,6 +211,8 @@ onDateChange(callback: Callback<Date>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerAttribute-onDateChange(callback: Callback<Date>): DatePickerAttribute--><!--Device-DatePickerAttribute-onDateChange(callback: Callback<Date>): DatePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -224,6 +242,8 @@ onDateChange(callback: Optional<Callback<Date>>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-DatePickerAttribute-onDateChange(callback: Optional<Callback<Date>>): DatePickerAttribute--><!--Device-DatePickerAttribute-onDateChange(callback: Optional<Callback<Date>>): DatePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -245,6 +265,8 @@ selectedTextStyle(value: PickerTextStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerAttribute-selectedTextStyle(value: PickerTextStyle): DatePickerAttribute--><!--Device-DatePickerAttribute-selectedTextStyle(value: PickerTextStyle): DatePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -270,6 +292,8 @@ selectedTextStyle(style: Optional<PickerTextStyle>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-DatePickerAttribute-selectedTextStyle(style: Optional<PickerTextStyle>): DatePickerAttribute--><!--Device-DatePickerAttribute-selectedTextStyle(style: Optional<PickerTextStyle>): DatePickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -291,6 +315,8 @@ textStyle(value: PickerTextStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerAttribute-textStyle(value: PickerTextStyle): DatePickerAttribute--><!--Device-DatePickerAttribute-textStyle(value: PickerTextStyle): DatePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -315,6 +341,8 @@ textStyle(style: Optional<PickerTextStyle>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerAttribute-textStyle(style: Optional<PickerTextStyle>): DatePickerAttribute--><!--Device-DatePickerAttribute-textStyle(style: Optional<PickerTextStyle>): DatePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -341,6 +369,8 @@ onChange(callback: (value: DatePickerResult) => void)
 **替代接口：** [onDateChange](#ondatechange)(callback: Callback&lt;Date&gt;)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-DatePickerAttribute-onChange(callback: (value: DatePickerResult) => void): DatePickerAttribute--><!--Device-DatePickerAttribute-onChange(callback: (value: DatePickerResult) => void): DatePickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

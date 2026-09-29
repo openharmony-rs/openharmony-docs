@@ -8,6 +8,8 @@ Enumerates the equalizer types of audio loopback.
 
 **Since:** 21
 
+<!--Device-audio-enum AudioLoopbackEqualizerPreset--><!--Device-audio-enum AudioLoopbackEqualizerPreset-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 ## FLAT
@@ -19,6 +21,8 @@ FLAT = 1
 Maintains the original sound without equalization.
 
 **Since:** 21
+
+<!--Device-AudioLoopbackEqualizerPreset-FLAT = 1--><!--Device-AudioLoopbackEqualizerPreset-FLAT = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -32,6 +36,8 @@ Enhances the fullness of vocals (default).
 
 **Since:** 21
 
+<!--Device-AudioLoopbackEqualizerPreset-FULL = 2--><!--Device-AudioLoopbackEqualizerPreset-FULL = 2-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 ## BRIGHT
@@ -43,5 +49,7 @@ BRIGHT = 3
 Enhances the brightness of vocals.
 
 **Since:** 21
+
+<!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3--><!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer

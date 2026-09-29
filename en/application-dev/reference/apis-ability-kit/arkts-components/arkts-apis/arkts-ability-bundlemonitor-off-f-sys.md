@@ -18,6 +18,8 @@ Unregister to monitor the installation status
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
 
+<!--Device-bundleMonitor-function off(type: BundleChangedEvent, callback?: Callback<BundleChangedInfo>): void--><!--Device-bundleMonitor-function off(type: BundleChangedEvent, callback?: Callback<BundleChangedInfo>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

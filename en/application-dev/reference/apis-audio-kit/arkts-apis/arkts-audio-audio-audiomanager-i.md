@@ -10,83 +10,14 @@ Before calling any API in AudioManager, you must use [getAudioManager](arkts-aud
 
 **Since:** 7
 
+<!--Device-audio-interface AudioManager--><!--Device-audio-interface AudioManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## Modules to Import
 
 ```TypeScript
 import { audio } from '@kit.AudioKit';
-```
-
-## getAudioParameter
-
-```TypeScript
-getAudioParameter(key: string, callback: AsyncCallback<string>): void
-```
-
-Obtains the value of an audio parameter. This method uses an asynchronous callback to return the query result.
-
-**Since:** 7
-
-**Deprecated since:** 11
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| key | string | Yes | Key of the audio parameter whose value is to be obtained. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the value of the audio parameter. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.getAudioParameter('key_example', (err: BusinessError, value: string) => {
-  if (err) {
-    console.error(`Failed to obtain the value of the audio parameter. ${err}`);
-    return;
-  }
-  console.info(`Callback invoked to indicate that the value of the audio parameter is obtained ${value}.`);
-});
-```
-
-<a id="getaudioparameter-1"></a>
-
-## getAudioParameter
-
-```TypeScript
-getAudioParameter(key: string): Promise<string>
-```
-
-Obtains the value of an audio parameter. This method uses a promise to return the query result.
-
-**Since:** 7
-
-**Deprecated since:** 11
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| key | string | Yes | Key of the audio parameter whose value is to be obtained. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the value of the audio parameter. |
-
-**Examples**
-
-```TypeScript
-audioManager.getAudioParameter('key_example').then((value: string) => {
-  console.info(`Promise returned to indicate that the value of the audio parameter is obtained ${value}.`);
-});
 ```
 
 ## getAudioScene
@@ -98,6 +29,8 @@ getAudioScene(callback: AsyncCallback<AudioScene>): void
 Obtains the audio scene. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
+
+<!--Device-AudioManager-getAudioScene(callback: AsyncCallback<AudioScene>): void--><!--Device-AudioManager-getAudioScene(callback: AsyncCallback<AudioScene>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
@@ -133,6 +66,8 @@ Obtains the audio scene. This API uses a promise to return the result.
 
 **Since:** 8
 
+<!--Device-AudioManager-getAudioScene(): Promise<AudioScene>--><!--Device-AudioManager-getAudioScene(): Promise<AudioScene>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
 **Return value:**
@@ -162,6 +97,8 @@ getAudioSceneSync(): AudioScene
 Obtains the audio scene. This API returns the result synchronously.
 
 **Since:** 10
+
+<!--Device-AudioManager-getAudioSceneSync(): AudioScene--><!--Device-AudioManager-getAudioSceneSync(): AudioScene-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
@@ -197,6 +134,8 @@ Obtains an AudioDebuggingManager instance. <p>&lt;strong&gt;NOTE&lt;/strong&gt;:
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioManager-getDebuggingManager(): AudioDebuggingManager--><!--Device-AudioManager-getDebuggingManager(): AudioDebuggingManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Return value:**
@@ -224,6 +163,8 @@ Obtains a device enhancement manager instance.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioManager-getDeviceEnhanceManager(): AudioDeviceEnhanceManager--><!--Device-AudioManager-getDeviceEnhanceManager(): AudioDeviceEnhanceManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.DeviceEnhance
 
 **Return value:**
@@ -240,231 +181,6 @@ import { audio } from '@kit.AudioKit';
 let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
 ```
 
-## getDevices
-
-```TypeScript
-getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptors>): void
-```
-
-Obtains the audio devices with a specific flag. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** getDevices
-
-**System capability:** SystemCapability.Multimedia.Audio.Device
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| deviceFlag | [DeviceFlag](arkts-audio-audio-deviceflag-e.md) | Yes | Audio device flag. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the audio devices obtained; otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err: BusinessError, value: audio.AudioDeviceDescriptors) => {
-  if (err) {
-    console.error(`Failed to obtain the device list. ${err}`);
-    return;
-  }
-  console.info('Callback invoked to indicate that the device list is obtained.');
-});
-```
-
-<a id="getdevices-1"></a>
-
-## getDevices
-
-```TypeScript
-getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>
-```
-
-Obtains the audio devices with a specific flag. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** getDevices
-
-**System capability:** SystemCapability.Multimedia.Audio.Device
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| deviceFlag | [DeviceFlag](arkts-audio-audio-deviceflag-e.md) | Yes | Audio device flag. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)&gt; | Promise used to return the device list. |
-
-**Examples**
-
-```TypeScript
-audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data: audio.AudioDeviceDescriptors) => {
-  console.info('Promise returned to indicate that the device list is obtained.');
-});
-```
-
-## getMaxVolume
-
-```TypeScript
-getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
-```
-
-Obtains the maximum volume allowed for a stream. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** getMaxVolume
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum stream volume obtained; otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
-  if (err) {
-    console.error(`Failed to obtain the maximum volume. ${err}`);
-    return;
-  }
-  console.info(`Callback invoked to indicate that the maximum volume is obtained. ${value}`);
-});
-```
-
-<a id="getmaxvolume-1"></a>
-
-## getMaxVolume
-
-```TypeScript
-getMaxVolume(volumeType: AudioVolumeType): Promise<number>
-```
-
-Obtains the maximum volume allowed for a stream. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** getMaxVolume
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;number&gt; | Promise used to return the maximum volume. |
-
-**Examples**
-
-```TypeScript
-audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((data: number) => {
-  console.info('Promise returned to indicate that the maximum volume is obtained.');
-});
-```
-
-## getMinVolume
-
-```TypeScript
-getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
-```
-
-Obtains the minimum volume allowed for a stream. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** getMinVolume
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum stream volume obtained; otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
-  if (err) {
-    console.error(`Failed to obtain the minimum volume. ${err}`);
-    return;
-  }
-  console.info(`Callback invoked to indicate that the minimum volume is obtained. ${value}`);
-});
-```
-
-<a id="getminvolume-1"></a>
-
-## getMinVolume
-
-```TypeScript
-getMinVolume(volumeType: AudioVolumeType): Promise<number>
-```
-
-Obtains the minimum volume allowed for a stream. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** getMinVolume
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;number&gt; | Promise used to return the minimum volume. |
-
-**Examples**
-
-```TypeScript
-audioManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
-  console.info(`Promise returned to indicate that the minimum volume is obtained. ${value}`);
-});
-```
-
 ## getRecordingManager
 
 ```TypeScript
@@ -476,6 +192,8 @@ Obtains a recording manager instance. Provides recording strategy management, in
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioManager-getRecordingManager(): AudioRecordingManager--><!--Device-AudioManager-getRecordingManager(): AudioRecordingManager-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -493,74 +211,6 @@ import { audio } from '@kit.AudioKit';
 let audioRecordingManager: audio.AudioRecordingManager = audioManager.getRecordingManager();
 ```
 
-## getRingerMode
-
-```TypeScript
-getRingerMode(callback: AsyncCallback<AudioRingMode>): void
-```
-
-Obtains the ringer mode. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** getRingerMode
-
-**System capability:** SystemCapability.Multimedia.Audio.Communication
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the ringer mode obtained; otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.getRingerMode((err: BusinessError, value: audio.AudioRingMode) => {
-  if (err) {
-    console.error(`Failed to obtain the ringer mode. ${err}`);
-    return;
-  }
-  console.info(`Callback invoked to indicate that the ringer mode is obtained ${value}.`);
-});
-```
-
-<a id="getringermode-1"></a>
-
-## getRingerMode
-
-```TypeScript
-getRingerMode(): Promise<AudioRingMode>
-```
-
-Obtains the ringer mode. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** getRingerMode
-
-**System capability:** SystemCapability.Multimedia.Audio.Communication
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | Promise used to return the ringer mode. |
-
-**Examples**
-
-```TypeScript
-audioManager.getRingerMode().then((value: audio.AudioRingMode) => {
-  console.info(`Promise returned to indicate that the ringer mode is obtained ${value}.`);
-});
-```
-
 ## getRoutingManager
 
 ```TypeScript
@@ -570,6 +220,8 @@ getRoutingManager(): AudioRoutingManager
 Obtains an AudioRoutingManager instance.
 
 **Since:** 9
+
+<!--Device-AudioManager-getRoutingManager(): AudioRoutingManager--><!--Device-AudioManager-getRoutingManager(): AudioRoutingManager-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -597,7 +249,9 @@ Obtains an AudioSessionManager instance.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AudioManager-getSessionManager(): AudioSessionManager--><!--Device-AudioManager-getSessionManager(): AudioSessionManager-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -625,6 +279,8 @@ Obtains an AudioSpatializationManager instance.
 
 **Since:** 18
 
+<!--Device-AudioManager-getSpatializationManager(): AudioSpatializationManager--><!--Device-AudioManager-getSpatializationManager(): AudioSpatializationManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Spatialization
 
 **Return value:**
@@ -650,6 +306,8 @@ Obtains an AudioStreamManager instance.
 
 **Since:** 9
 
+<!--Device-AudioManager-getStreamManager(): AudioStreamManager--><!--Device-AudioManager-getStreamManager(): AudioStreamManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Return value:**
@@ -666,81 +324,6 @@ import { audio } from '@kit.AudioKit';
 let audioStreamManager: audio.AudioStreamManager = audioManager.getStreamManager();
 ```
 
-## getVolume
-
-```TypeScript
-getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
-```
-
-Obtains the volume of a stream. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** getVolume
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolume) and [getMaxVolume](#getmaxvolume). |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
-  if (err) {
-    console.error(`Failed to obtain the volume. ${err}`);
-    return;
-  }
-  console.info('Callback invoked to indicate that the volume is obtained.');
-});
-```
-
-<a id="getvolume-1"></a>
-
-## getVolume
-
-```TypeScript
-getVolume(volumeType: AudioVolumeType): Promise<number>
-```
-
-Obtains the volume of a stream. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** getVolume
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;number&gt; | Promise used to return the volume of the stream. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolume) and [getMaxVolume](#getmaxvolume). |
-
-**Examples**
-
-```TypeScript
-audioManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
-  console.info(`Promise returned to indicate that the volume is obtained ${value} .`);
-});
-```
-
 ## getVolumeManager
 
 ```TypeScript
@@ -751,7 +334,9 @@ Obtains an AudioVolumeManager instance.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-AudioManager-getVolumeManager(): AudioVolumeManager--><!--Device-AudioManager-getVolumeManager(): AudioVolumeManager-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -769,380 +354,6 @@ import { audio } from '@kit.AudioKit';
 let audioVolumeManager: audio.AudioVolumeManager = audioManager.getVolumeManager();
 ```
 
-## isActive
-
-```TypeScript
-isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
-```
-
-Checks whether a stream is active. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** isActive
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the stream is active or **false** if not active; otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
-  if (err) {
-    console.error(`Failed to obtain the active status of the stream. ${err}`);
-    return;
-  }
-  console.info(`Callback invoked to indicate that the active status of the stream is obtained ${value}.`);
-});
-```
-
-<a id="isactive-1"></a>
-
-## isActive
-
-```TypeScript
-isActive(volumeType: AudioVolumeType): Promise<boolean>
-```
-
-Checks whether a stream is active. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** isActive
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the stream is active. **true** if active, **false** otherwise. |
-
-**Examples**
-
-```TypeScript
-audioManager.isActive(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
-  console.info(`Promise returned to indicate that the active status of the stream is obtained ${value}.`);
-});
-```
-
-## isDeviceActive
-
-```TypeScript
-isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback<boolean>): void
-```
-
-Checks whether a device is active. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#iscommunicationdeviceactive)
-
-**System capability:** SystemCapability.Multimedia.Audio.Device
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| deviceType | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | Yes | Active audio device type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the device is active or **false** if not active; otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER, (err: BusinessError, value: boolean) => {
-  if (err) {
-    console.error(`Failed to obtain the active status of the device. ${err}`);
-    return;
-  }
-  console.info('Callback invoked to indicate that the active status of the device is obtained.');
-});
-```
-
-<a id="isdeviceactive-1"></a>
-
-## isDeviceActive
-
-```TypeScript
-isDeviceActive(deviceType: ActiveDeviceType): Promise<boolean>
-```
-
-Checks whether a device is active. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#iscommunicationdeviceactive)
-
-**System capability:** SystemCapability.Multimedia.Audio.Device
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| deviceType | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | Yes | Active audio device type. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the device is active. **true** if active, **false** otherwise. |
-
-**Examples**
-
-```TypeScript
-audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER).then((value: boolean) => {
-  console.info(`Promise returned to indicate that the active status of the device is obtained ${value}.`);
-});
-```
-
-## isMicrophoneMute
-
-```TypeScript
-isMicrophoneMute(callback: AsyncCallback<boolean>): void
-```
-
-Checks whether the microphone is muted. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** isMicrophoneMute
-
-**Required permissions:** ohos.permission.MICROPHONE
-
-**System capability:** SystemCapability.Multimedia.Audio.Device
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the microphone is muted or **false** if not muted; otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.isMicrophoneMute((err: BusinessError, value: boolean) => {
-  if (err) {
-    console.error(`Failed to obtain the mute status of the microphone. ${err}`);
-    return;
-  }
-  console.info(`Callback invoked to indicate that the mute status of the microphone is obtained ${value}.`);
-});
-```
-
-<a id="ismicrophonemute-1"></a>
-
-## isMicrophoneMute
-
-```TypeScript
-isMicrophoneMute(): Promise<boolean>
-```
-
-Checks whether the microphone is muted. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** isMicrophoneMute
-
-**Required permissions:** ohos.permission.MICROPHONE
-
-**System capability:** SystemCapability.Multimedia.Audio.Device
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the microphone is muted. **true** if muted, **false** otherwise. |
-
-**Examples**
-
-```TypeScript
-audioManager.isMicrophoneMute().then((value: boolean) => {
-  console.info(`Promise returned to indicate that the mute status of the microphone is obtained ${value}.`);
-});
-```
-
-## isMute
-
-```TypeScript
-isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
-```
-
-Checks whether a stream is muted. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** isMute
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the stream is muted or **false** if not muted; otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
-  if (err) {
-    console.error(`Failed to obtain the mute status. ${err}`);
-    return;
-  }
-  console.info(`Callback invoked to indicate that the mute status of the stream is obtained. ${value}`);
-});
-```
-
-<a id="ismute-1"></a>
-
-## isMute
-
-```TypeScript
-isMute(volumeType: AudioVolumeType): Promise<boolean>
-```
-
-Checks whether a stream is muted. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** isMute
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the stream is muted. **true** if muted, **false** otherwise. |
-
-**Examples**
-
-```TypeScript
-audioManager.isMute(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
-  console.info(`Promise returned to indicate that the mute status of the stream is obtained ${value}.`);
-});
-```
-
-## mute
-
-```TypeScript
-mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>): void
-```
-
-Mutes a volume type. This method uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [AVVolumePanel](arkts-audio-multimedia-avvolumepanel-avvolumepanel-s.md)
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-| mute | boolean | Yes | Mute status to set. The value true means to mute the volume type, and false means the opposite. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to mute the stream. ${err}`);
-    return;
-  }
-  console.info('Callback invoked to indicate that the stream is muted.');
-});
-```
-
-<a id="mute-1"></a>
-
-## mute
-
-```TypeScript
-mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>
-```
-
-Mutes a volume type. This method uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [AVVolumePanel](arkts-audio-multimedia-avvolumepanel-avvolumepanel-s.md)
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-| mute | boolean | Yes | Mute status to set. The value true means to mute the volume type, and false means the opposite. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
-
-**Examples**
-
-```TypeScript
-audioManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
-  console.info('Promise returned to indicate that the stream is muted.');
-});
-```
-
 ## off('audioSceneChange')
 
 ```TypeScript
@@ -1152,6 +363,8 @@ off(type: 'audioSceneChange', callback?: Callback<AudioScene>): void
 Unsubscribes from the audio scene change event. This API uses an asynchronous callback to return the result.
 
 **Since:** 20
+
+<!--Device-AudioManager-off(type: 'audioSceneChange', callback?: Callback<AudioScene>): void--><!--Device-AudioManager-off(type: 'audioSceneChange', callback?: Callback<AudioScene>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
@@ -1191,6 +404,8 @@ Unsubscribes from the audio device change event. This API uses an asynchronous c
 **Deprecated since:** 9
 
 **Substitutes:** deviceChange
+
+<!--Device-AudioManager-off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void--><!--Device-AudioManager-off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -1233,6 +448,8 @@ Unsubscribes from the audio interruption event. This API uses an asynchronous ca
 **Deprecated since:** 11
 
 **Substitutes:** audioInterrupt
+
+<!--Device-AudioManager-off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback<InterruptAction>): void--><!--Device-AudioManager-off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback<InterruptAction>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -1285,6 +502,8 @@ Subscribes to the audio scene change event. This API uses an asynchronous callba
 
 **Since:** 20
 
+<!--Device-AudioManager-on(type: 'audioSceneChange', callback: Callback<AudioScene>): void--><!--Device-AudioManager-on(type: 'audioSceneChange', callback: Callback<AudioScene>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
 **Parameters:**
@@ -1315,6 +534,8 @@ Subscribes to the event indicating that the connection status of an audio device
 **Deprecated since:** 9
 
 **Substitutes:** deviceChange
+
+<!--Device-AudioManager-on(type: 'deviceChange', callback: Callback<DeviceChangeAction>): void--><!--Device-AudioManager-on(type: 'deviceChange', callback: Callback<DeviceChangeAction>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -1352,6 +573,8 @@ Same as [on('audioInterrupt')](arkts-audio-audio-audiorenderer-i.md#onaudiointer
 
 **Substitutes:** audioInterrupt
 
+<!--Device-AudioManager-on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback<InterruptAction>): void--><!--Device-AudioManager-on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback<InterruptAction>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **Parameters:**
@@ -1385,6 +608,863 @@ audioManager.on('interrupt', interAudioInterrupt, (interruptAction: audio.Interr
 });
 ```
 
+## getAudioParameter
+
+```TypeScript
+getAudioParameter(key: string, callback: AsyncCallback<string>): void
+```
+
+Obtains the value of an audio parameter. This method uses an asynchronous callback to return the query result.
+
+**Since:** 7
+
+**Deprecated since:** 11
+
+<!--Device-AudioManager-getAudioParameter(key: string, callback: AsyncCallback<string>): void--><!--Device-AudioManager-getAudioParameter(key: string, callback: AsyncCallback<string>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| key | string | Yes | Key of the audio parameter whose value is to be obtained. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the value of the audio parameter. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.getAudioParameter('key_example', (err: BusinessError, value: string) => {
+  if (err) {
+    console.error(`Failed to obtain the value of the audio parameter. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the value of the audio parameter is obtained ${value}.`);
+});
+```
+
+<a id="getaudioparameter-1"></a>
+
+## getAudioParameter
+
+```TypeScript
+getAudioParameter(key: string): Promise<string>
+```
+
+Obtains the value of an audio parameter. This method uses a promise to return the query result.
+
+**Since:** 7
+
+**Deprecated since:** 11
+
+<!--Device-AudioManager-getAudioParameter(key: string): Promise<string>--><!--Device-AudioManager-getAudioParameter(key: string): Promise<string>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| key | string | Yes | Key of the audio parameter whose value is to be obtained. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the value of the audio parameter. |
+
+**Examples**
+
+```TypeScript
+audioManager.getAudioParameter('key_example').then((value: string) => {
+  console.info(`Promise returned to indicate that the value of the audio parameter is obtained ${value}.`);
+});
+```
+
+## getDevices
+
+```TypeScript
+getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptors>): void
+```
+
+Obtains the audio devices with a specific flag. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** getDevices
+
+<!--Device-AudioManager-getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptors>): void--><!--Device-AudioManager-getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptors>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Device
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| deviceFlag | [DeviceFlag](arkts-audio-audio-deviceflag-e.md) | Yes | Audio device flag. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the audio devices obtained; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err: BusinessError, value: audio.AudioDeviceDescriptors) => {
+  if (err) {
+    console.error(`Failed to obtain the device list. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the device list is obtained.');
+});
+```
+
+<a id="getdevices-1"></a>
+
+## getDevices
+
+```TypeScript
+getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>
+```
+
+Obtains the audio devices with a specific flag. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** getDevices
+
+<!--Device-AudioManager-getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>--><!--Device-AudioManager-getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Device
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| deviceFlag | [DeviceFlag](arkts-audio-audio-deviceflag-e.md) | Yes | Audio device flag. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md)&gt; | Promise used to return the device list. |
+
+**Examples**
+
+```TypeScript
+audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data: audio.AudioDeviceDescriptors) => {
+  console.info('Promise returned to indicate that the device list is obtained.');
+});
+```
+
+## getMaxVolume
+
+```TypeScript
+getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
+```
+
+Obtains the maximum volume allowed for a stream. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** getMaxVolume
+
+<!--Device-AudioManager-getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void--><!--Device-AudioManager-getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum stream volume obtained; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
+  if (err) {
+    console.error(`Failed to obtain the maximum volume. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the maximum volume is obtained. ${value}`);
+});
+```
+
+<a id="getmaxvolume-1"></a>
+
+## getMaxVolume
+
+```TypeScript
+getMaxVolume(volumeType: AudioVolumeType): Promise<number>
+```
+
+Obtains the maximum volume allowed for a stream. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** getMaxVolume
+
+<!--Device-AudioManager-getMaxVolume(volumeType: AudioVolumeType): Promise<number>--><!--Device-AudioManager-getMaxVolume(volumeType: AudioVolumeType): Promise<number>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;number&gt; | Promise used to return the maximum volume. |
+
+**Examples**
+
+```TypeScript
+audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((data: number) => {
+  console.info('Promise returned to indicate that the maximum volume is obtained.');
+});
+```
+
+## getMinVolume
+
+```TypeScript
+getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
+```
+
+Obtains the minimum volume allowed for a stream. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** getMinVolume
+
+<!--Device-AudioManager-getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void--><!--Device-AudioManager-getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum stream volume obtained; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
+  if (err) {
+    console.error(`Failed to obtain the minimum volume. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the minimum volume is obtained. ${value}`);
+});
+```
+
+<a id="getminvolume-1"></a>
+
+## getMinVolume
+
+```TypeScript
+getMinVolume(volumeType: AudioVolumeType): Promise<number>
+```
+
+Obtains the minimum volume allowed for a stream. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** getMinVolume
+
+<!--Device-AudioManager-getMinVolume(volumeType: AudioVolumeType): Promise<number>--><!--Device-AudioManager-getMinVolume(volumeType: AudioVolumeType): Promise<number>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;number&gt; | Promise used to return the minimum volume. |
+
+**Examples**
+
+```TypeScript
+audioManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
+  console.info(`Promise returned to indicate that the minimum volume is obtained. ${value}`);
+});
+```
+
+## getRingerMode
+
+```TypeScript
+getRingerMode(callback: AsyncCallback<AudioRingMode>): void
+```
+
+Obtains the ringer mode. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** getRingerMode
+
+<!--Device-AudioManager-getRingerMode(callback: AsyncCallback<AudioRingMode>): void--><!--Device-AudioManager-getRingerMode(callback: AsyncCallback<AudioRingMode>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Communication
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the ringer mode obtained; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.getRingerMode((err: BusinessError, value: audio.AudioRingMode) => {
+  if (err) {
+    console.error(`Failed to obtain the ringer mode. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the ringer mode is obtained ${value}.`);
+});
+```
+
+<a id="getringermode-1"></a>
+
+## getRingerMode
+
+```TypeScript
+getRingerMode(): Promise<AudioRingMode>
+```
+
+Obtains the ringer mode. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** getRingerMode
+
+<!--Device-AudioManager-getRingerMode(): Promise<AudioRingMode>--><!--Device-AudioManager-getRingerMode(): Promise<AudioRingMode>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Communication
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | Promise used to return the ringer mode. |
+
+**Examples**
+
+```TypeScript
+audioManager.getRingerMode().then((value: audio.AudioRingMode) => {
+  console.info(`Promise returned to indicate that the ringer mode is obtained ${value}.`);
+});
+```
+
+## getVolume
+
+```TypeScript
+getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
+```
+
+Obtains the volume of a stream. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** getVolume
+
+<!--Device-AudioManager-getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void--><!--Device-AudioManager-getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolume) and [getMaxVolume](#getmaxvolume). |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: number) => {
+  if (err) {
+    console.error(`Failed to obtain the volume. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the volume is obtained.');
+});
+```
+
+<a id="getvolume-1"></a>
+
+## getVolume
+
+```TypeScript
+getVolume(volumeType: AudioVolumeType): Promise<number>
+```
+
+Obtains the volume of a stream. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** getVolume
+
+<!--Device-AudioManager-getVolume(volumeType: AudioVolumeType): Promise<number>--><!--Device-AudioManager-getVolume(volumeType: AudioVolumeType): Promise<number>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;number&gt; | Promise used to return the volume of the stream. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolume) and [getMaxVolume](#getmaxvolume). |
+
+**Examples**
+
+```TypeScript
+audioManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
+  console.info(`Promise returned to indicate that the volume is obtained ${value} .`);
+});
+```
+
+## isActive
+
+```TypeScript
+isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
+```
+
+Checks whether a stream is active. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** isActive
+
+<!--Device-AudioManager-isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void--><!--Device-AudioManager-isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the stream is active or **false** if not active; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
+  if (err) {
+    console.error(`Failed to obtain the active status of the stream. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the active status of the stream is obtained ${value}.`);
+});
+```
+
+<a id="isactive-1"></a>
+
+## isActive
+
+```TypeScript
+isActive(volumeType: AudioVolumeType): Promise<boolean>
+```
+
+Checks whether a stream is active. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** isActive
+
+<!--Device-AudioManager-isActive(volumeType: AudioVolumeType): Promise<boolean>--><!--Device-AudioManager-isActive(volumeType: AudioVolumeType): Promise<boolean>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the stream is active. **true** if active, **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+audioManager.isActive(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
+  console.info(`Promise returned to indicate that the active status of the stream is obtained ${value}.`);
+});
+```
+
+## isDeviceActive
+
+```TypeScript
+isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback<boolean>): void
+```
+
+Checks whether a device is active. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#iscommunicationdeviceactive)
+
+<!--Device-AudioManager-isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback<boolean>): void--><!--Device-AudioManager-isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback<boolean>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Device
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| deviceType | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | Yes | Active audio device type. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the device is active or **false** if not active; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER, (err: BusinessError, value: boolean) => {
+  if (err) {
+    console.error(`Failed to obtain the active status of the device. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the active status of the device is obtained.');
+});
+```
+
+<a id="isdeviceactive-1"></a>
+
+## isDeviceActive
+
+```TypeScript
+isDeviceActive(deviceType: ActiveDeviceType): Promise<boolean>
+```
+
+Checks whether a device is active. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#iscommunicationdeviceactive)
+
+<!--Device-AudioManager-isDeviceActive(deviceType: ActiveDeviceType): Promise<boolean>--><!--Device-AudioManager-isDeviceActive(deviceType: ActiveDeviceType): Promise<boolean>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Device
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| deviceType | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | Yes | Active audio device type. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the device is active. **true** if active, **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER).then((value: boolean) => {
+  console.info(`Promise returned to indicate that the active status of the device is obtained ${value}.`);
+});
+```
+
+## isMicrophoneMute
+
+```TypeScript
+isMicrophoneMute(callback: AsyncCallback<boolean>): void
+```
+
+Checks whether the microphone is muted. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** isMicrophoneMute
+
+**Required permissions:** ohos.permission.MICROPHONE
+
+<!--Device-AudioManager-isMicrophoneMute(callback: AsyncCallback<boolean>): void--><!--Device-AudioManager-isMicrophoneMute(callback: AsyncCallback<boolean>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Device
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the microphone is muted or **false** if not muted; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.isMicrophoneMute((err: BusinessError, value: boolean) => {
+  if (err) {
+    console.error(`Failed to obtain the mute status of the microphone. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the mute status of the microphone is obtained ${value}.`);
+});
+```
+
+<a id="ismicrophonemute-1"></a>
+
+## isMicrophoneMute
+
+```TypeScript
+isMicrophoneMute(): Promise<boolean>
+```
+
+Checks whether the microphone is muted. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** isMicrophoneMute
+
+**Required permissions:** ohos.permission.MICROPHONE
+
+<!--Device-AudioManager-isMicrophoneMute(): Promise<boolean>--><!--Device-AudioManager-isMicrophoneMute(): Promise<boolean>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Device
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the microphone is muted. **true** if muted, **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+audioManager.isMicrophoneMute().then((value: boolean) => {
+  console.info(`Promise returned to indicate that the mute status of the microphone is obtained ${value}.`);
+});
+```
+
+## isMute
+
+```TypeScript
+isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
+```
+
+Checks whether a stream is muted. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** isMute
+
+<!--Device-AudioManager-isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void--><!--Device-AudioManager-isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the stream is muted or **false** if not muted; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boolean) => {
+  if (err) {
+    console.error(`Failed to obtain the mute status. ${err}`);
+    return;
+  }
+  console.info(`Callback invoked to indicate that the mute status of the stream is obtained. ${value}`);
+});
+```
+
+<a id="ismute-1"></a>
+
+## isMute
+
+```TypeScript
+isMute(volumeType: AudioVolumeType): Promise<boolean>
+```
+
+Checks whether a stream is muted. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** isMute
+
+<!--Device-AudioManager-isMute(volumeType: AudioVolumeType): Promise<boolean>--><!--Device-AudioManager-isMute(volumeType: AudioVolumeType): Promise<boolean>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise used to return the result, indicating whether the stream is muted. **true** if muted, **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+audioManager.isMute(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
+  console.info(`Promise returned to indicate that the mute status of the stream is obtained ${value}.`);
+});
+```
+
+## mute
+
+```TypeScript
+mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>): void
+```
+
+Mutes a volume type. This method uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [AVVolumePanel](arkts-audio-multimedia-avvolumepanel-avvolumepanel-s.md)
+
+<!--Device-AudioManager-mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>): void--><!--Device-AudioManager-mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
+| mute | boolean | Yes | Mute status to set. The value true means to mute the volume type, and false means the opposite. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to mute the stream. ${err}`);
+    return;
+  }
+  console.info('Callback invoked to indicate that the stream is muted.');
+});
+```
+
+<a id="mute-1"></a>
+
+## mute
+
+```TypeScript
+mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>
+```
+
+Mutes a volume type. This method uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [AVVolumePanel](arkts-audio-multimedia-avvolumepanel-avvolumepanel-s.md)
+
+<!--Device-AudioManager-mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>--><!--Device-AudioManager-mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
+| mute | boolean | Yes | Mute status to set. The value true means to mute the volume type, and false means the opposite. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise used to return the result. |
+
+**Examples**
+
+```TypeScript
+audioManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
+  console.info('Promise returned to indicate that the stream is muted.');
+});
+```
+
 ## setAudioParameter
 
 ```TypeScript
@@ -1398,6 +1478,8 @@ Sets an audio parameter. This method uses an asynchronous callback to return the
 **Deprecated since:** 11
 
 **Required permissions:** ohos.permission.MODIFY_AUDIO_SETTINGS
+
+<!--Device-AudioManager-setAudioParameter(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-AudioManager-setAudioParameter(key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -1439,6 +1521,8 @@ Sets an audio parameter. This method uses a promise to return the result.
 
 **Required permissions:** ohos.permission.MODIFY_AUDIO_SETTINGS
 
+<!--Device-AudioManager-setAudioParameter(key: string, value: string): Promise<void>--><!--Device-AudioManager-setAudioParameter(key: string, value: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Parameters:**
@@ -1475,6 +1559,8 @@ Sets a device to the active state. This API uses an asynchronous callback to ret
 **Deprecated since:** 9
 
 **Substitutes:** [setCommunicationDevice](arkts-audio-audio-audioroutingmanager-i.md#setcommunicationdevice)
+
+<!--Device-AudioManager-setDeviceActive(deviceType: ActiveDeviceType, active: boolean, callback: AsyncCallback<void>): void--><!--Device-AudioManager-setDeviceActive(deviceType: ActiveDeviceType, active: boolean, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -1516,6 +1602,8 @@ Sets a device to the active state. This API uses a promise to return the result.
 
 **Substitutes:** [setCommunicationDevice](arkts-audio-audio-audioroutingmanager-i.md#setcommunicationdevice)
 
+<!--Device-AudioManager-setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise<void>--><!--Device-AudioManager-setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -1552,6 +1640,8 @@ Mutes or unmutes the microphone. This method uses an asynchronous callback to re
 **Deprecated since:** 9
 
 **Required permissions:** ohos.permission.MICROPHONE
+
+<!--Device-AudioManager-setMicrophoneMute(mute: boolean, callback: AsyncCallback<void>): void--><!--Device-AudioManager-setMicrophoneMute(mute: boolean, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -1592,6 +1682,8 @@ Mutes or unmutes the microphone. This method uses a promise to return the result
 
 **Required permissions:** ohos.permission.MICROPHONE
 
+<!--Device-AudioManager-setMicrophoneMute(mute: boolean): Promise<void>--><!--Device-AudioManager-setMicrophoneMute(mute: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -1627,6 +1719,8 @@ Sets the ringer mode. This method uses an asynchronous callback to return the re
 **Deprecated since:** 9
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
+
+<!--Device-AudioManager-setRingerMode(mode: AudioRingMode, callback: AsyncCallback<void>): void--><!--Device-AudioManager-setRingerMode(mode: AudioRingMode, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
@@ -1667,6 +1761,8 @@ Sets the ringer mode. This method uses a promise to return the result.
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
+<!--Device-AudioManager-setRingerMode(mode: AudioRingMode): Promise<void>--><!--Device-AudioManager-setRingerMode(mode: AudioRingMode): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
 **Parameters:**
@@ -1704,6 +1800,8 @@ Sets the volume for a volume type. This method uses an asynchronous callback to 
 **Substitutes:** [AVVolumePanel](arkts-audio-multimedia-avvolumepanel-avvolumepanel-s.md)
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
+
+<!--Device-AudioManager-setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback<void>): void--><!--Device-AudioManager-setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -1746,6 +1844,8 @@ Sets the volume for a volume type. This method uses a promise to return the resu
 **Substitutes:** [AVVolumePanel](arkts-audio-multimedia-avvolumepanel-avvolumepanel-s.md)
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
+
+<!--Device-AudioManager-setVolume(volumeType: AudioVolumeType, volume: number): Promise<void>--><!--Device-AudioManager-setVolume(volumeType: AudioVolumeType, volume: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 

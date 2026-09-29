@@ -8,6 +8,8 @@ Defines a tab controller, which is used to control switching of tabs. One **Tabs
 
 **Since:** 7
 
+<!--Device-unnamed-declare class TabsController--><!--Device-unnamed-declare class TabsController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## changeIndex
@@ -21,6 +23,8 @@ Switches to the specified tab.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TabsController-changeIndex(value: number): void--><!--Device-TabsController-changeIndex(value: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ A constructor used to create a **TabsController** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TabsController-constructor()--><!--Device-TabsController-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getBarDisplayMode
@@ -57,6 +63,8 @@ Get the current display mode of the Tabs.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-TabsController-getBarDisplayMode(): TabBarDisplayMode--><!--Device-TabsController-getBarDisplayMode(): TabBarDisplayMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -87,6 +95,8 @@ Preloads child nodes. After this API is called, all specified child nodes will b
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TabsController-preloadItems(indices: Optional<Array<number>>): Promise<void>--><!--Device-TabsController-preloadItems(indices: Optional<Array<number>>): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,6 +141,8 @@ Sets the opacity of the tab bar.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-TabsController-setTabBarOpacity(opacity: number): void--><!--Device-TabsController-setTabBarOpacity(opacity: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -161,6 +173,8 @@ Sets the translation distance of the tab bar.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-TabsController-setTabBarTranslate(translate: TranslateOptions): void--><!--Device-TabsController-setTabBarTranslate(translate: TranslateOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

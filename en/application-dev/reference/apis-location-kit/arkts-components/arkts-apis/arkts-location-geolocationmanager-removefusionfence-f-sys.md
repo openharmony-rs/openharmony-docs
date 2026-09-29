@@ -18,6 +18,8 @@ Remove a fusion fence.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-geoLocationManager-function removeFusionFence(identifier: string): Promise<void>--><!--Device-geoLocationManager-function removeFusionFence(identifier: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **System API:** This is a system API.

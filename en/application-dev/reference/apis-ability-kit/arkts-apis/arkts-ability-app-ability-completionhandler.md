@@ -1,4 +1,4 @@
-# @ohos.app.ability.CompletionHandler
+# @ohos.app.ability.CompletionHandler(Completion Handler)
 
 **CompletionHandler** is an optional parameter of [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)
  and [OpenLinkOptions](arkts-ability-app-ability-openlinkoptions-openlinkoptions-i.md). It is used to process the result of

@@ -8,6 +8,8 @@ Represents Wi-Fi access information containing Service Set Identifier (SSID) and
 
 **Since:** 19
 
+<!--Device-wifiManager-interface WifiAccessInfo--><!--Device-wifiManager-interface WifiAccessInfo-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -36,6 +38,8 @@ This property is optional (available since API version 21) when the [addAllowedW
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiAccessInfo-bssid?: string--><!--Device-WifiAccessInfo-bssid?: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## ssid
@@ -51,5 +55,7 @@ Name of the Wi-Fi hotspot. The encoding format is UTF-8 and the maximum length i
 **Since:** 19
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiAccessInfo-ssid: string--><!--Device-WifiAccessInfo-ssid: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

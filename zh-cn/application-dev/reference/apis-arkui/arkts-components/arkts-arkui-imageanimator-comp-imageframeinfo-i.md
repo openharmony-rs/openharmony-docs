@@ -8,6 +8,8 @@ interface ImageFrameInfo
 
 **起始版本：** 7
 
+<!--Device-unnamed-interface ImageFrameInfo--><!--Device-unnamed-interface ImageFrameInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## duration
@@ -29,6 +31,8 @@ duration?: number
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ImageFrameInfo-duration?: number--><!--Device-ImageFrameInfo-duration?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ height?: number | string
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageFrameInfo-height?: number | string--><!--Device-ImageFrameInfo-height?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## left
@@ -81,6 +87,8 @@ left?: number | string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageFrameInfo-left?: number | string--><!--Device-ImageFrameInfo-left?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,6 +118,8 @@ rawfile）来引用，引用方式请参考[加载图片资源](../../../ui/arkt
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageFrameInfo-src: string | Resource | PixelMap--><!--Device-ImageFrameInfo-src: string | Resource | PixelMap-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -136,6 +146,8 @@ top?: number | string
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageFrameInfo-top?: number | string--><!--Device-ImageFrameInfo-top?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -161,5 +173,7 @@ width?: number | string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageFrameInfo-width?: number | string--><!--Device-ImageFrameInfo-width?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

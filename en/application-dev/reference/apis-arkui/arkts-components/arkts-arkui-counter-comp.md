@@ -1,8 +1,10 @@
 # Counter
 
-The **Counter** component provides an operation to increase or decrease the number.
+The **Counter** component provides increment and decrement operations. It is suitable for scenarios that require frequent value changes, such as product quantity selection and parameter adjustment, helping users adjust values quickly and intuitively.
 
-> **NOTE** > > - This component supports [WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component) since API version 26.0.0.
+> **NOTE:** 
+> 
+> - This component supports [WithTheme](arkts-arkui-withtheme-comp.md) since API version 26.0.0.
 
 ## Child Components
 
@@ -21,6 +23,8 @@ Create Counter component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CounterInterface-(): CounterAttribute--><!--Device-CounterInterface-(): CounterAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

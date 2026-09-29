@@ -18,6 +18,8 @@ Deletes log files of the specified type in synchronous mode.
 
 **Required permissions:** ohos.permission.WRITE_HIVIEW_SYSTEM
 
+<!--Device-logLibrary-function remove(logType: string, logName: string): void--><!--Device-logLibrary-function remove(logType: string, logName: string): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
 **System API:** This is a system API.

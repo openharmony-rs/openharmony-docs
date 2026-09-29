@@ -8,6 +8,8 @@ Defines the callback information triggered when the web page loading begins, inc
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnPageBeginEvent--><!--Device-unnamed-declare interface OnPageBeginEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## url
@@ -23,5 +25,7 @@ URL of the page to be loaded when page loading starts.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnPageBeginEvent-url: string--><!--Device-OnPageBeginEvent-url: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

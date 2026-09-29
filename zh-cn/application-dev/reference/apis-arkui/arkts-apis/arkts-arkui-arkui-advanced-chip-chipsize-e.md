@@ -8,6 +8,8 @@ ChipSize定义Chip组件可指定的尺寸类型，如普通类型和小尺寸�
 
 **起始版本：** 11
 
+<!--Device-unnamed-export declare enum ChipSize--><!--Device-unnamed-export declare enum ChipSize-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NORMAL
@@ -24,6 +26,8 @@ normal尺寸操作块，适用于常规展示场景。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipSize-NORMAL = "NORMAL"--><!--Device-ChipSize-NORMAL = "NORMAL"-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SMALL
@@ -39,5 +43,7 @@ small尺寸操作块，适用于紧凑布局场景。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipSize-SMALL = "SMALL"--><!--Device-ChipSize-SMALL = "SMALL"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

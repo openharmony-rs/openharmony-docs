@@ -18,6 +18,8 @@ Sets the power mode of a device. This API uses an asynchronous callback to retur
 
 **Required permissions:** ohos.permission.POWER_OPTIMIZATION
 
+<!--Device-power-function setPowerMode(mode: DevicePowerMode, callback: AsyncCallback<void>): void--><!--Device-power-function setPowerMode(mode: DevicePowerMode, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ Sets the power mode of a device. This API uses a promise to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.POWER_OPTIMIZATION
+
+<!--Device-power-function setPowerMode(mode: DevicePowerMode): Promise<void>--><!--Device-power-function setPowerMode(mode: DevicePowerMode): Promise<void>-End-->
 
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 

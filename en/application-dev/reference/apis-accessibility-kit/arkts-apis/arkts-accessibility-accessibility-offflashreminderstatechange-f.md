@@ -19,6 +19,8 @@ Unsubscribes from the state changes in flash alerts mode. This API uses an async
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accessibility-function offFlashReminderStateChange(callback?: Callback<boolean>): void--><!--Device-accessibility-function offFlashReminderStateChange(callback?: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**

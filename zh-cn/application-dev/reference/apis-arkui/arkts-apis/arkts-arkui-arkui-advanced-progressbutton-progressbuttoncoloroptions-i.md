@@ -8,6 +8,8 @@ export declare interface ProgressButtonColorOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-export declare interface ProgressButtonColorOptions--><!--Device-unnamed-export declare interface ProgressButtonColorOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -34,6 +36,8 @@ backgroundColor?: ResourceColor
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProgressButtonColorOptions-backgroundColor?: ResourceColor--><!--Device-ProgressButtonColorOptions-backgroundColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderColor
@@ -53,6 +57,8 @@ borderColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProgressButtonColorOptions-borderColor?: ResourceColor--><!--Device-ProgressButtonColorOptions-borderColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +80,8 @@ progressColor?: ResourceColor
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProgressButtonColorOptions-progressColor?: ResourceColor--><!--Device-ProgressButtonColorOptions-progressColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## textColor
@@ -93,5 +101,7 @@ textColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProgressButtonColorOptions-textColor?: ResourceColor--><!--Device-ProgressButtonColorOptions-textColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

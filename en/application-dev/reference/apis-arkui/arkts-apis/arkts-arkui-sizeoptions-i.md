@@ -8,6 +8,8 @@ Defines the width and height of a component during layout.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface SizeOptions--><!--Device-unnamed-declare interface SizeOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -28,6 +30,8 @@ Height of the component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SizeOptions-height?: Length--><!--Device-SizeOptions-height?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -47,5 +51,7 @@ Width of the component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-SizeOptions-width?: Length--><!--Device-SizeOptions-width?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

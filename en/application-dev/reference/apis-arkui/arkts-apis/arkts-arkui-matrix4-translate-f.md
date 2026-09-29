@@ -12,7 +12,7 @@ import { matrix4 } from '@kit.ArkUI';
 function translate(options: TranslateOption): Matrix4Transit
 ```
 
-Translates this matrix object along the x, y, and z axes.
+Translates this matrix object along the x, y, and z axes. The matrix that calls this API will be changed.
 
 **Since:** 7
 
@@ -20,13 +20,15 @@ Translates this matrix object along the x, y, and z axes.
 
 **Substitutes:** [translate](arkts-arkui-matrix4-matrix4transit-i.md#translate)
 
+<!--Device-matrix4-function translate(options: TranslateOption): Matrix4Transit--><!--Device-matrix4-function translate(options: TranslateOption): Matrix4Transit-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [TranslateOption](arkts-arkui-matrix4-translateoption-i.md) | Yes | Translation configuration. |
+| options | [TranslateOption](arkts-arkui-matrix4-translateoption-i.md) | Yes | Translation options for setting the translation distance on the x-axis, y- axis, and z-axis. |
 
 **Return value:**
 

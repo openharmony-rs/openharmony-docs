@@ -10,6 +10,8 @@ Represents the AgentProxy type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-common-export type AgentProxy = _AgentProxy--><!--Device-common-export type AgentProxy = _AgentProxy-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

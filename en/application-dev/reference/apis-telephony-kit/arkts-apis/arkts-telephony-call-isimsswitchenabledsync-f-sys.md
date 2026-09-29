@@ -16,6 +16,8 @@ Checks whether the IMS service is enabled. This API returns the result synchrono
 
 **Since:** 12
 
+<!--Device-call-function isImsSwitchEnabledSync(slotId: int): boolean--><!--Device-call-function isImsSwitchEnabledSync(slotId: int): boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.

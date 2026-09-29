@@ -8,6 +8,8 @@ Defines additional options for binding an input method.
 
 **Since:** 19
 
+<!--Device-inputMethodEngine-export interface AttachOptions--><!--Device-inputMethodEngine-export interface AttachOptions-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -30,6 +32,8 @@ If this attribute is not set or is set to an invalid value, the simple keyboard 
 
 **Since:** 20
 
+<!--Device-AttachOptions-isSimpleKeyboardEnabled?: boolean--><!--Device-AttachOptions-isSimpleKeyboardEnabled?: boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## requestKeyboardReason
@@ -43,5 +47,7 @@ Reason for requesting the keyboard. This attribute is set by the edit box applic
 **Type:** [RequestKeyboardReason](arkts-ime-inputmethodengine-requestkeyboardreason-e.md)
 
 **Since:** 19
+
+<!--Device-AttachOptions-requestKeyboardReason?: RequestKeyboardReason--><!--Device-AttachOptions-requestKeyboardReason?: RequestKeyboardReason-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

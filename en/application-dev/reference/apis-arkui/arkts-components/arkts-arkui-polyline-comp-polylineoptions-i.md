@@ -14,6 +14,8 @@ Describes the options of the polyline.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface PolylineOptions--><!--Device-unnamed-declare interface PolylineOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -40,6 +42,8 @@ If the given value is less than 0, the default value is used. The abnormal value
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-PolylineOptions-height?: Length--><!--Device-PolylineOptions-height?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -65,5 +69,7 @@ If the given value is less than 0, the default value is used. The abnormal value
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PolylineOptions-width?: Length--><!--Device-PolylineOptions-width?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

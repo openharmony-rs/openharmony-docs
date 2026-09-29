@@ -4,13 +4,15 @@
 declare class RichEditorAttribute extends CommonMethod<RichEditorAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md#common), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-In addition to the [universal events](arkts-arkui-common-comp.md#common), [OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md), [StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md), [StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md), and the following events are supported.
+In addition to the [universal events](arkts-arkui-common-comp.md), [OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md), [StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md), [StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md), and the following events are supported.
 
 **Inheritance/Implementation:** RichEditorAttribute extends CommonMethod<RichEditorAttribute>
 
 **Since:** 10
+
+<!--Device-unnamed-declare class RichEditorAttribute extends CommonMethod<RichEditorAttribute>--><!--Device-unnamed-declare class RichEditorAttribute extends CommonMethod<RichEditorAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,6 +33,8 @@ This callback is not supported when the **RichEditor** component built with [Ric
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorAttribute-aboutToDelete(callback: Callback<RichEditorDeleteValue, boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-aboutToDelete(callback: Callback<RichEditorDeleteValue, boolean>): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ This callback is not supported when the **RichEditor** component built with [Ric
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorAttribute-aboutToIMEInput(callback: Callback<RichEditorInsertValue, boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-aboutToIMEInput(callback: Callback<RichEditorInsertValue, boolean>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -84,6 +90,8 @@ Display mode of the RichEditor scroll bar.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-RichEditorAttribute-barState(state: BarState): RichEditorAttribute--><!--Device-RichEditorAttribute-barState(state: BarState): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -99,13 +107,15 @@ bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, response
     options?: SelectionMenuOptions)
 ```
 
-Sets a custom selection menu. It supports custom menu styles and trigger conditions, and is suitable for scenarios that require deep menu customization. When the custom menu is too long, it is recommended to nest a [Scroll](arkts-arkui-scroll-comp.md#scroll) component inside to prevent the keyboard from being obscured.
+Sets a custom selection menu. It supports custom menu styles and trigger conditions, and is suitable for scenarios that require deep menu customization. When the custom menu is too long, it is recommended to nest a [Scroll](arkts-arkui-scroll-comp.md) component inside to prevent the keyboard from being obscured.
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorAttribute-bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, responseType: ResponseType | RichEditorResponseType,    options?: SelectionMenuOptions): RichEditorAttribute--><!--Device-RichEditorAttribute-bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, responseType: ResponseType | RichEditorResponseType,    options?: SelectionMenuOptions): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,6 +141,8 @@ Sets the color of the caret and selection handle in the text box.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorAttribute-caretColor(value: ResourceColor): RichEditorAttribute--><!--Device-RichEditorAttribute-caretColor(value: ResourceColor): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,6 +175,8 @@ This is applicable to scenarios where leading punctuation needs to be aligned wi
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-RichEditorAttribute-compressLeadingPunctuation(enabled: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-compressLeadingPunctuation(enabled: Optional<boolean>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -194,6 +208,8 @@ When **copyOptions** is set to **CopyOptions.None**, the copy, cut, translate, s
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorAttribute-copyOptions(value: CopyOptions): RichEditorAttribute--><!--Device-RichEditorAttribute-copyOptions(value: CopyOptions): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,6 +248,8 @@ The custom keyboard supports the continue function. You can call the [setCustomK
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorAttribute-customKeyboard(value: CustomBuilder | ComponentContent | undefined,                 options?: KeyboardOptions | undefined): RichEditorAttribute--><!--Device-RichEditorAttribute-customKeyboard(value: CustomBuilder | ComponentContent | undefined,                 options?: KeyboardOptions | undefined): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -261,6 +279,8 @@ When entities A and B overlap, the following rules are followed:
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorAttribute-dataDetectorConfig(config: TextDataDetectorConfig): RichEditorAttribute--><!--Device-RichEditorAttribute-dataDetectorConfig(config: TextDataDetectorConfig): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -292,6 +312,8 @@ When [disableMenuItems](../arkts-apis/arkts-arkui-arkui-uicontext-textmenucontro
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorAttribute-editMenuOptions(editMenu: EditMenuOptions): RichEditorAttribute--><!--Device-RichEditorAttribute-editMenuOptions(editMenu: EditMenuOptions): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -313,6 +335,8 @@ Whether to enable automatic spacing between Chinese and Western characters. This
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-RichEditorAttribute-enableAutoSpacing(enable: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-enableAutoSpacing(enable: Optional<boolean>): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -340,13 +364,15 @@ This feature does not take effect on the node text of [addBuilderSpan](arkts-ark
 
 When **copyOptions** is set to **CopyOptions.None**, the menu displayed after an entity is clicked does not provide the text selection or copy functionality.
 
-&lt;!--RP1--&gt;&lt;!--RP1End--&gt;
+<!--RP1--><!--RP1End-->
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorAttribute-enableDataDetector(enable: boolean): RichEditorAttribute--><!--Device-RichEditorAttribute-enableDataDetector(enable: boolean): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -374,6 +400,8 @@ Sets whether to enable haptic feedback.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-RichEditorAttribute-enableHapticFeedback(isEnabled: boolean): RichEditorAttribute--><!--Device-RichEditorAttribute-enableHapticFeedback(isEnabled: boolean): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -399,6 +427,8 @@ Sets whether to enable the input method when the **RichEditor** component obtain
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorAttribute-enableKeyboardOnFocus(isEnabled: boolean): RichEditorAttribute--><!--Device-RichEditorAttribute-enableKeyboardOnFocus(isEnabled: boolean): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -427,6 +457,8 @@ After this feature is enabled, the pinyin and stroke characters entered during i
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorAttribute-enablePreviewText(enable: boolean): RichEditorAttribute--><!--Device-RichEditorAttribute-enablePreviewText(enable: boolean): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -458,6 +490,8 @@ This API depends on the text recognition capability of the device; otherwise, th
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-RichEditorAttribute-enableSelectedDataDetector(enable: boolean | undefined): RichEditorAttribute--><!--Device-RichEditorAttribute-enableSelectedDataDetector(enable: boolean | undefined): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -481,6 +515,8 @@ After this attribute is set, the icon and trigger behavior of the Enter key on t
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorAttribute-enterKeyType(value: EnterKeyType): RichEditorAttribute--><!--Device-RichEditorAttribute-enterKeyType(value: EnterKeyType): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -508,6 +544,8 @@ This API depends on the **lineHeight** property of [RichEditorTextStyle](arkts-a
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-RichEditorAttribute-fallbackLineSpacing(enabled: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-fallbackLineSpacing(enabled: Optional<boolean>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -530,6 +568,8 @@ Sets whether to enable horizontal scrolling when the text width exceeds the cont
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-RichEditorAttribute-horizontalScrolling(enabled: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-horizontalScrolling(enabled: Optional<boolean>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -551,6 +591,8 @@ Whether to add spacing to the first and last lines to avoid text truncation. Thi
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-RichEditorAttribute-includeFontPadding(include: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-includeFontPadding(include: Optional<boolean>): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -576,6 +618,8 @@ Applicable to scenarios where the keyboard visual style needs to be adjusted bas
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-RichEditorAttribute-keyboardAppearance(appearance: Optional<KeyboardAppearance>): RichEditorAttribute--><!--Device-RichEditorAttribute-keyboardAppearance(appearance: Optional<KeyboardAppearance>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -598,6 +642,8 @@ Sets the maximum length of the component content.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-RichEditorAttribute-maxLength(maxLength: Optional<number>): RichEditorAttribute--><!--Device-RichEditorAttribute-maxLength(maxLength: Optional<number>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -619,6 +665,8 @@ Sets the maximum number of lines that the component can display.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-RichEditorAttribute-maxLines(maxLines: Optional<number>): RichEditorAttribute--><!--Device-RichEditorAttribute-maxLines(maxLines: Optional<number>): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -644,6 +692,8 @@ The **RichEditor** component built with [RichEditorStyledStringOptions](arkts-ar
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorAttribute-onCopy(callback: Callback<CopyEvent>): RichEditorAttribute--><!--Device-RichEditorAttribute-onCopy(callback: Callback<CopyEvent>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -668,6 +718,8 @@ The **RichEditor** component built with [RichEditorStyledStringOptions](arkts-ar
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorAttribute-onCut(callback: Callback<CutEvent>): RichEditorAttribute--><!--Device-RichEditorAttribute-onCut(callback: Callback<CutEvent>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -691,6 +743,8 @@ This callback is not supported when the **RichEditor** component built with [Ric
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorAttribute-onDeleteComplete(callback: Callback<void>): RichEditorAttribute--><!--Device-RichEditorAttribute-onDeleteComplete(callback: Callback<void>): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -720,6 +774,8 @@ This callback is not supported when the **RichEditor** component built with [Ric
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorAttribute-onDidChange(callback: OnDidChangeCallback) : RichEditorAttribute--><!--Device-RichEditorAttribute-onDidChange(callback: OnDidChangeCallback) : RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -748,6 +804,8 @@ This callback is not supported when the **RichEditor** component built with [Ric
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorAttribute-onDidIMEInput(callback: Callback<TextRange>): RichEditorAttribute--><!--Device-RichEditorAttribute-onDidIMEInput(callback: Callback<TextRange>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -769,6 +827,8 @@ Triggered when the content editing state in the component changes.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorAttribute-onEditingChange(callback: Callback<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-onEditingChange(callback: Callback<boolean>): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -796,6 +856,8 @@ This callback is not supported when the **RichEditor** component built with [Ric
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorAttribute-onIMEInputComplete(callback: Callback<RichEditorTextSpanResult>): RichEditorAttribute--><!--Device-RichEditorAttribute-onIMEInputComplete(callback: Callback<RichEditorTextSpanResult>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -820,6 +882,8 @@ Developers can use this method to override the default system behavior and imple
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorAttribute-onPaste(callback: PasteEventCallback): RichEditorAttribute--><!--Device-RichEditorAttribute-onPaste(callback: PasteEventCallback): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -841,6 +905,8 @@ Triggered after the rich text component is initialized. After initialization, th
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorAttribute-onReady(callback: Callback<void>): RichEditorAttribute--><!--Device-RichEditorAttribute-onReady(callback: Callback<void>): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -870,6 +936,8 @@ If the selection area needs to be detected in real time or the **RichEditor** co
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorAttribute-onSelect(callback: Callback<RichEditorSelection>): RichEditorAttribute--><!--Device-RichEditorAttribute-onSelect(callback: Callback<RichEditorSelection>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -892,6 +960,8 @@ Triggered when the selection area or caret position changes in the editing state
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorAttribute-onSelectionChange(callback: Callback<RichEditorRange>): RichEditorAttribute--><!--Device-RichEditorAttribute-onSelectionChange(callback: Callback<RichEditorRange>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -913,6 +983,8 @@ Triggered when the Enter key on the soft keyboard is pressed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorAttribute-onSubmit(callback: SubmitCallback): RichEditorAttribute--><!--Device-RichEditorAttribute-onSubmit(callback: SubmitCallback): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -944,6 +1016,8 @@ Since API version 26.0.0, before the input box is about to bind the input method
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-RichEditorAttribute-onWillAttachIME(callback: Callback<IMEClient> | undefined): RichEditorAttribute--><!--Device-RichEditorAttribute-onWillAttachIME(callback: Callback<IMEClient> | undefined): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -972,6 +1046,8 @@ This callback is not supported when the **RichEditor** component built with [Ric
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorAttribute-onWillChange(callback: Callback<RichEditorChangeValue, boolean>) : RichEditorAttribute--><!--Device-RichEditorAttribute-onWillChange(callback: Callback<RichEditorChangeValue, boolean>) : RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -995,6 +1071,8 @@ Orphan character optimization improves text layout by processing orphan characte
 **Since:** 26.0.0
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-RichEditorAttribute-orphanCharOptimization(enabled: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-orphanCharOptimization(enabled: Optional<boolean>): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1024,6 +1102,8 @@ After this attribute is set, the prompt text is displayed when the component has
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorAttribute-placeholder(value: ResourceStr, style?: PlaceholderStyle): RichEditorAttribute--><!--Device-RichEditorAttribute-placeholder(value: ResourceStr, style?: PlaceholderStyle): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1049,6 +1129,8 @@ When enabled, a single punctuation mark at the end of a line is allowed to excee
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-RichEditorAttribute-punctuationOverflow(enabled: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-punctuationOverflow(enabled: Optional<boolean>): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1070,6 +1152,8 @@ Sets the color of the scrollbar.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-RichEditorAttribute-scrollBarColor(color: Optional<ColorMetrics>): RichEditorAttribute--><!--Device-RichEditorAttribute-scrollBarColor(color: Optional<ColorMetrics>): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1093,6 +1177,8 @@ Sets the highlight color of the selected text. If the opacity is not set or is s
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorAttribute-selectedBackgroundColor(value: ResourceColor): RichEditorAttribute--><!--Device-RichEditorAttribute-selectedBackgroundColor(value: ResourceColor): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1114,6 +1200,8 @@ Sets the drag preview style. This is applicable to scenarios where the appearanc
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-RichEditorAttribute-selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined): RichEditorAttribute--><!--Device-RichEditorAttribute-selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1141,6 +1229,8 @@ Sets whether to enable single-line mode. The single-line mode is disabled by def
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-RichEditorAttribute-singleLine(isEnable: boolean | undefined): RichEditorAttribute--><!--Device-RichEditorAttribute-singleLine(isEnable: boolean | undefined): RichEditorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1162,6 +1252,8 @@ Sets whether to prevent the back key from being passed through. This is applicab
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-RichEditorAttribute-stopBackPress(isStopped: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-stopBackPress(isStopped: Optional<boolean>): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1186,6 +1278,8 @@ When the [RichEditorStyledStringOptions](arkts-arkui-richeditor-comp-richeditors
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-RichEditorAttribute-undoStyle(style: Optional<UndoStyle>): RichEditorAttribute--><!--Device-RichEditorAttribute-undoStyle(style: Optional<UndoStyle>): RichEditorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

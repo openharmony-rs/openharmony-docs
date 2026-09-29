@@ -10,6 +10,8 @@ Provides the parameters used for initializing [OverlayManager](arkts-arkui-arkui
 
 **Since:** 15
 
+<!--Device-unnamed-export interface OverlayManagerOptions--><!--Device-unnamed-export interface OverlayManagerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -41,6 +43,8 @@ to lower layers), or **false** to allow the event to propagate through to the co
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OverlayManagerOptions-onBackPress?: OnOverlayBackPressCallback--><!--Device-OverlayManagerOptions-onBackPress?: OnOverlayBackPressCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableBackPressedEvent
@@ -61,6 +65,8 @@ hether to enable the swipe-to-dismiss gesture for **ComponentContent** under **O
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-OverlayManagerOptions-enableBackPressedEvent?: boolean--><!--Device-OverlayManagerOptions-enableBackPressedEvent?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## renderRootOverlay
@@ -80,5 +86,7 @@ Whether to render the overlay root node. The value **true** means to render the 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-OverlayManagerOptions-renderRootOverlay?: boolean--><!--Device-OverlayManagerOptions-renderRootOverlay?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

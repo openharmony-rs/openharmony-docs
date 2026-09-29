@@ -4,6 +4,8 @@ The **systemload** module allows the system to determine the system load level b
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace systemLoad--><!--Device-unnamed-declare namespace systemLoad-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
 ## Modules to Import

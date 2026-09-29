@@ -8,6 +8,8 @@ Defines a disposed rule.
 
 **Since:** 11
 
+<!--Device-appControl-export interface DisposedRule--><!--Device-appControl-export interface DisposedRule-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Type of application component that functions as the displayed page.
 
 **Since:** 11
 
+<!--Device-DisposedRule-componentType: ComponentType--><!--Device-DisposedRule-componentType: ComponentType-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Control type of application disposal.
 **Type:** [ControlType](arkts-ability-appcontrol-controltype-e-sys.md)
 
 **Since:** 11
+
+<!--Device-DisposedRule-controlType: ControlType--><!--Device-DisposedRule-controlType: ControlType-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -62,6 +68,8 @@ Type of application disposal.
 
 **Since:** 11
 
+<!--Device-DisposedRule-disposedType: DisposedType--><!--Device-DisposedRule-disposedType: DisposedType-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ List of application components to be disposed of or exempted.
 **Type:** Array&lt;[ElementName](arkts-ability-elementname-i.md)&gt;
 
 **Since:** 11
+
+<!--Device-DisposedRule-elementList: Array<ElementName>--><!--Device-DisposedRule-elementList: Array<ElementName>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -96,6 +106,8 @@ Specifies whether to jump to another page when the target application is blocked
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DisposedRule-pageJump?: PageJumpMode--><!--Device-DisposedRule-pageJump?: PageJumpMode-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -112,6 +124,8 @@ Priority of the disposed rule, which is used to sort the query results of the ru
 
 **Since:** 11
 
+<!--Device-DisposedRule-priority: int--><!--Device-DisposedRule-priority: int-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -127,6 +141,8 @@ Page displayed when the application is disposed of.
 **Type:** [Want](arkts-ability-app-ability-want-want-c.md)
 
 **Since:** 11
+
+<!--Device-DisposedRule-want: Want--><!--Device-DisposedRule-want: Want-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 

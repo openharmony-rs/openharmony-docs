@@ -8,6 +8,8 @@ Defines the SearchButton options.
 
 **Since:** 10
 
+<!--Device-unnamed-interface SearchButtonOptions--><!--Device-unnamed-interface SearchButtonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## autoDisable
@@ -16,11 +18,11 @@ Defines the SearchButton options.
 autoDisable?: Boolean
 ```
 
-Whether to disable the search button when there is no text input.
+Whether the button is grayed out and not clickable when the Search component has no text content.
 
-Default value: **false**
+Default value: false
 
-**true**: The search button is disabled when there is no text input. **false**: The search button remains enabled regardless of the text input.
+true indicates that the button graying-out feature is enabled, and false indicates that it is not enabled.
 
 **Type:** Boolean
 
@@ -32,6 +34,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SearchButtonOptions-autoDisable?: Boolean--><!--Device-SearchButtonOptions-autoDisable?: Boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -40,7 +44,7 @@ Default value: **false**
 fontColor?: ResourceColor
 ```
 
-Font color of the button.
+Font color of the text button. **Atomic service API:** This API is supported in atomic services since API version 11.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -50,6 +54,8 @@ Font color of the button.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SearchButtonOptions-fontColor?: ResourceColor--><!--Device-SearchButtonOptions-fontColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontSize
@@ -58,7 +64,9 @@ Font color of the button.
 fontSize?: Length
 ```
 
-Font size of the button. It cannot be set in percentage.
+Font size of the text button. If no unit is specified, the default unit is vp. Percentage is not supported. If a percentage is passed in, it does not take effect.
+
+Default value: follows the theme. **Atomic service API:** This API is supported in atomic services since API version 11.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -67,5 +75,7 @@ Font size of the button. It cannot be set in percentage.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SearchButtonOptions-fontSize?: Length--><!--Device-SearchButtonOptions-fontSize?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

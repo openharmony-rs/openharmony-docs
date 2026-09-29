@@ -12,6 +12,8 @@ Custom Component
 
 **Since:** 7
 
+<!--Device-unnamed-declare class CustomComponent extends BaseCustomComponent--><!--Device-unnamed-declare class CustomComponent extends BaseCustomComponent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## aboutToReuse
@@ -27,6 +29,8 @@ aboutToReuse Method
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CustomComponent-aboutToReuse?(params: Record<string, Object | undefined | null>): void--><!--Device-CustomComponent-aboutToReuse?(params: Record<string, Object | undefined | null>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ Invoked when the custom component lays out its child components. Through this ca
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CustomComponent-onLayout?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void--><!--Device-CustomComponent-onLayout?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -76,6 +82,8 @@ Invoked when the custom component needs to determine its size. Through this call
 **Substitutes:** [onMeasureSize](arkts-arkui-common-comp-basecustomcomponent-c.md#onmeasuresize)
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CustomComponent-onMeasure?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void--><!--Device-CustomComponent-onMeasure?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

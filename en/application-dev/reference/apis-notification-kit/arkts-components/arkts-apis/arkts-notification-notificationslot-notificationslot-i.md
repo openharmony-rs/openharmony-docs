@@ -8,6 +8,8 @@ The **NotificationSlot** module provides APIs for defining the notification slot
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NotificationSlot--><!--Device-unnamed-export interface NotificationSlot-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## badgeFlag
@@ -24,6 +26,8 @@ Whether to display the badge. The default value is **true**.
 **Type:** boolean
 
 **Since:** 7
+
+<!--Device-NotificationSlot-badgeFlag?: boolean--><!--Device-NotificationSlot-badgeFlag?: boolean-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -42,6 +46,8 @@ Whether to bypass Do Not Disturb mode in the system. The default value is **fals
 
 **Since:** 7
 
+<!--Device-NotificationSlot-bypassDnd?: boolean--><!--Device-NotificationSlot-bypassDnd?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## desc
@@ -55,6 +61,8 @@ Description of the notification channel. The size cannot exceed 243 bytes, and t
 **Type:** string
 
 **Since:** 7
+
+<!--Device-NotificationSlot-desc?: string--><!--Device-NotificationSlot-desc?: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -72,6 +80,142 @@ Whether to allow notifications of this slot type to be published.
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-NotificationSlot-readonly enabled?: boolean--><!--Device-NotificationSlot-readonly enabled?: boolean-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+## lightColor
+
+```TypeScript
+lightColor?: number
+```
+
+Indicator color of the notification. This is a reserved capability and is not supported currently.
+
+**Type:** number
+
+**Since:** 7
+
+<!--Device-NotificationSlot-lightColor?: int--><!--Device-NotificationSlot-lightColor?: int-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+## lightEnabled
+
+```TypeScript
+lightEnabled?: boolean
+```
+
+Whether to enable the light. The default value is **false**.
+
+- **true**: yes.  
+- **false**: no.
+
+**Type:** boolean
+
+**Since:** 7
+
+<!--Device-NotificationSlot-lightEnabled?: boolean--><!--Device-NotificationSlot-lightEnabled?: boolean-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+## lockscreenVisibility
+
+```TypeScript
+lockscreenVisibility?: number
+```
+
+Mode for displaying the notification on the lock screen. This is a reserved capability and is not supported currently.
+
+**Type:** number
+
+**Since:** 7
+
+<!--Device-NotificationSlot-lockscreenVisibility?: int--><!--Device-NotificationSlot-lockscreenVisibility?: int-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+## notificationLevel
+
+```TypeScript
+notificationLevel?: notificationManager.SlotLevel
+```
+
+Notification level, which is used to describe the display priority and alert intensity of notifications of this channel type.
+
+**Type:** [notificationManager.SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)
+
+**Since:** 20
+
+<!--Device-NotificationSlot-notificationLevel?: notificationManager.SlotLevel--><!--Device-NotificationSlot-notificationLevel?: notificationManager.SlotLevel-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+## notificationType
+
+```TypeScript
+notificationType?: notificationManager.SlotType
+```
+
+Slot type. Different slot types have different notification reminder types.
+
+**Type:** [notificationManager.SlotType](arkts-notification-notificationmanager-slottype-e.md)
+
+**Since:** 11
+
+<!--Device-NotificationSlot-notificationType?: notificationManager.SlotType--><!--Device-NotificationSlot-notificationType?: notificationManager.SlotType-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+## sound
+
+```TypeScript
+sound?: string
+```
+
+File name of the custom ringtone for notifications from this channel. The file is placed in the **resources/rawfile** directory, and formats such as M4A, AAC, MP3, OGG, WAV, FLAC, and AMR are supported. The size cannot exceed 243 bytes, and the excess part will be truncated.
+
+**Type:** string
+
+**Since:** 7
+
+<!--Device-NotificationSlot-sound?: string--><!--Device-NotificationSlot-sound?: string-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+## vibrationEnabled
+
+```TypeScript
+vibrationEnabled?: boolean
+```
+
+Whether to enable vibration. The default value is **false**.
+
+- **true**: yes.  
+- **false**: no.
+
+**Type:** boolean
+
+**Since:** 7
+
+<!--Device-NotificationSlot-vibrationEnabled?: boolean--><!--Device-NotificationSlot-vibrationEnabled?: boolean-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+## vibrationValues
+
+```TypeScript
+vibrationValues?: Array<number>
+```
+
+Vibration mode of the notification. This is a reserved capability and is not supported currently.
+
+**Type:** Array&lt;number&gt;
+
+**Since:** 7
+
+<!--Device-NotificationSlot-vibrationValues?: Array<long>--><!--Device-NotificationSlot-vibrationValues?: Array<long>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -91,92 +235,7 @@ Notification level.
 
 **Substitutes:** [notificationLevel](#notificationlevel)
 
-**System capability:** SystemCapability.Notification.Notification
-
-## lightColor
-
-```TypeScript
-lightColor?: number
-```
-
-Indicator color of the notification. This is a reserved capability and is not supported currently.
-
-**Type:** number
-
-**Since:** 7
-
-**System capability:** SystemCapability.Notification.Notification
-
-## lightEnabled
-
-```TypeScript
-lightEnabled?: boolean
-```
-
-Whether to enable the light. The default value is **false**.
-
-- **true**: yes.  
-- **false**: no.
-
-**Type:** boolean
-
-**Since:** 7
-
-**System capability:** SystemCapability.Notification.Notification
-
-## lockscreenVisibility
-
-```TypeScript
-lockscreenVisibility?: number
-```
-
-Mode for displaying the notification on the lock screen. This is a reserved capability and is not supported currently.
-
-**Type:** number
-
-**Since:** 7
-
-**System capability:** SystemCapability.Notification.Notification
-
-## notificationLevel
-
-```TypeScript
-notificationLevel?: notificationManager.SlotLevel
-```
-
-Notification level, which is used to describe the display priority and alert intensity of notifications of this channel type.
-
-**Type:** [notificationManager.SlotLevel](arkts-notification-notificationmanager-slotlevel-e.md)
-
-**Since:** 20
-
-**System capability:** SystemCapability.Notification.Notification
-
-## notificationType
-
-```TypeScript
-notificationType?: notificationManager.SlotType
-```
-
-Slot type. Different slot types have different notification reminder types.
-
-**Type:** [notificationManager.SlotType](arkts-notification-notificationmanager-slottype-e.md)
-
-**Since:** 11
-
-**System capability:** SystemCapability.Notification.Notification
-
-## sound
-
-```TypeScript
-sound?: string
-```
-
-File name of the custom ringtone for notifications from this channel. The file is placed in the **resources/rawfile** directory, and formats such as M4A, AAC, MP3, OGG, WAV, FLAC, and AMR are supported. The size cannot exceed 243 bytes, and the excess part will be truncated.
-
-**Type:** string
-
-**Since:** 7
+<!--Device-NotificationSlot-level?: notification.SlotLevel--><!--Device-NotificationSlot-level?: notification.SlotLevel-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -196,35 +255,6 @@ Channel type.
 
 **Substitutes:** [notificationType](#notificationtype)
 
-**System capability:** SystemCapability.Notification.Notification
-
-## vibrationEnabled
-
-```TypeScript
-vibrationEnabled?: boolean
-```
-
-Whether to enable vibration. The default value is **false**.
-
-- **true**: yes.  
-- **false**: no.
-
-**Type:** boolean
-
-**Since:** 7
-
-**System capability:** SystemCapability.Notification.Notification
-
-## vibrationValues
-
-```TypeScript
-vibrationValues?: Array<number>
-```
-
-Vibration mode of the notification. This is a reserved capability and is not supported currently.
-
-**Type:** Array&lt;number&gt;
-
-**Since:** 7
+<!--Device-NotificationSlot-type?: notification.SlotType--><!--Device-NotificationSlot-type?: notification.SlotType-End-->
 
 **System capability:** SystemCapability.Notification.Notification

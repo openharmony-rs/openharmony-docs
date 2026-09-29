@@ -10,6 +10,8 @@ HDR-enabled brightness blender (inherited from BrightnessBlender), used to add a
 
 **Since:** 20
 
+<!--Device-uiEffect-interface HdrBrightnessBlender extends BrightnessBlender--><!--Device-uiEffect-interface HdrBrightnessBlender extends BrightnessBlender-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.

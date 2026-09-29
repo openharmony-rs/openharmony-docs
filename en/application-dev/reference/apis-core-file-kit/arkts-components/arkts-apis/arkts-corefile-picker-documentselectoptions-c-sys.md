@@ -8,6 +8,8 @@ Defines the options for selecting documents.
 
 **Since:** 9
 
+<!--Device-picker-class DocumentSelectOptions--><!--Device-picker-class DocumentSelectOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Theme color parameter. By default, it is left empty and follows the color settin
 **Type:** [CustomColors](../../apis-arkui/arkts-apis/arkts-arkui-customcolors-t.md)
 
 **Since:** 18
+
+<!--Device-DocumentSelectOptions-themeColor?: CustomColors--><!--Device-DocumentSelectOptions-themeColor?: CustomColors-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

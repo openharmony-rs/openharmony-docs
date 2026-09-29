@@ -8,6 +8,8 @@ The **NotificationSubscribeInfo** module provides APIs for defining the informat
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NotificationSubscribeInfo--><!--Device-unnamed-export interface NotificationSubscribeInfo-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ Bundle names of the applications whose notifications to subscribe to. If this pa
 
 **Since:** 7
 
+<!--Device-NotificationSubscribeInfo-bundleNames?: Array<string>--><!--Device-NotificationSubscribeInfo-bundleNames?: Array<string>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Device type. If this parameter is not specified, the subscription defaults to no
 **Type:** string
 
 **Since:** 12
+
+<!--Device-NotificationSubscribeInfo-deviceType?: string--><!--Device-NotificationSubscribeInfo-deviceType?: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -61,6 +67,8 @@ Whether to enable notification classification.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotificationSubscribeInfo-enableClassification?: boolean--><!--Device-NotificationSubscribeInfo-enableClassification?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -80,6 +88,8 @@ Notification filtering range. The default value is **0**. The options are as fol
 **Type:** number
 
 **Since:** 18
+
+<!--Device-NotificationSubscribeInfo-filterLimit?: long--><!--Device-NotificationSubscribeInfo-filterLimit?: long-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -104,6 +114,8 @@ After this feature is enabled, historical notifications are silently re-pushed u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotificationSubscribeInfo-needSilentReplayOnSubscribe?: boolean--><!--Device-NotificationSubscribeInfo-needSilentReplayOnSubscribe?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -122,6 +134,8 @@ Image options of the live notification.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotificationSubscribeInfo-pictureOptions?: PictureOptions--><!--Device-NotificationSubscribeInfo-pictureOptions?: PictureOptions-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -138,6 +152,8 @@ Types of the notification slots. If this parameter is not specified, the subscri
 
 **Since:** 18
 
+<!--Device-NotificationSubscribeInfo-slotTypes?: Array<notificationManager.SlotType>--><!--Device-NotificationSubscribeInfo-slotTypes?: Array<notificationManager.SlotType>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -153,6 +169,8 @@ User ID. If this parameter is not specified, the subscription defaults to notifi
 **Type:** number
 
 **Since:** 7
+
+<!--Device-NotificationSubscribeInfo-userId?: int--><!--Device-NotificationSubscribeInfo-userId?: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -171,6 +189,8 @@ Configuration options for notification voice broadcast.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotificationSubscribeInfo-voiceContentOptions?: VoiceContentOptions--><!--Device-NotificationSubscribeInfo-voiceContentOptions?: VoiceContentOptions-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

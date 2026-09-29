@@ -16,6 +16,8 @@ Obtains a list of configuration level directories, in ascending order of priorit
 
 **Since:** 8
 
+<!--Device-configPolicy-function getCfgDirList(callback: AsyncCallback<Array<string>>): void--><!--Device-configPolicy-function getCfgDirList(callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Customization.ConfigPolicy
 
 **System API:** This is a system API.
@@ -44,6 +46,8 @@ function getCfgDirList(): Promise<Array<string>>
 Obtains a list of configuration level directories, in ascending order of priority. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-configPolicy-function getCfgDirList(): Promise<Array<string>>--><!--Device-configPolicy-function getCfgDirList(): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Customization.ConfigPolicy
 

@@ -8,6 +8,8 @@ Defines the MMS message information.
 
 **Since:** 8
 
+<!--Device-sms-export interface MmsInformation--><!--Device-sms-export interface MmsInformation-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Attachment.
 
 **Since:** 8
 
+<!--Device-MmsInformation-attachment?: Array<MmsAttachment>--><!--Device-MmsInformation-attachment?: Array<MmsAttachment>-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Message type.
 
 **Since:** 8
 
+<!--Device-MmsInformation-messageType: MessageType--><!--Device-MmsInformation-messageType: MessageType-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ PDU header type.
 **Type:** [MmsSendReq](arkts-telephony-sms-mmssendreq-i-sys.md) &#124; [MmsSendConf](arkts-telephony-sms-mmssendconf-i-sys.md) &#124; [MmsNotificationInd](arkts-telephony-sms-mmsnotificationind-i-sys.md) &#124; [MmsRespInd](arkts-telephony-sms-mmsrespind-i-sys.md) &#124; [MmsRetrieveConf](arkts-telephony-sms-mmsretrieveconf-i-sys.md) &#124; [MmsAcknowledgeInd](arkts-telephony-sms-mmsacknowledgeind-i-sys.md) &#124; [MmsDeliveryInd](arkts-telephony-sms-mmsdeliveryind-i-sys.md) &#124; [MmsReadOrigInd](arkts-telephony-sms-mmsreadorigind-i-sys.md) &#124; [MmsReadRecInd](arkts-telephony-sms-mmsreadrecind-i-sys.md)
 
 **Since:** 8
+
+<!--Device-MmsInformation-mmsType: MmsSendReq | MmsSendConf | MmsNotificationInd | MmsRespInd | MmsRetrieveConf | MmsAcknowledgeInd | MmsDeliveryInd | MmsReadOrigInd | MmsReadRecInd--><!--Device-MmsInformation-mmsType: MmsSendReq | MmsSendConf | MmsNotificationInd | MmsRespInd | MmsRetrieveConf | MmsAcknowledgeInd | MmsDeliveryInd | MmsReadOrigInd | MmsReadRecInd-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

@@ -12,6 +12,8 @@ The **usbManager** module provides APIs for USB management.
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace usbManager--><!--Device-unnamed-declare namespace usbManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

@@ -18,6 +18,8 @@ Enables NFC. This API can be called only by system applications.
 
 **Required permissions:** ohos.permission.MANAGE_SECURE_SETTINGS
 
+<!--Device-nfcController-function enableNfc(): void--><!--Device-nfcController-function enableNfc(): void-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Core
 
 **Error codes:**

@@ -1,6 +1,6 @@
 # @ohos.arkui.uiExtension
 
-用于[EmbeddedUIExtensionAbility](../../../application-models/embeddeduiextensionability.md)（或[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)）中获取宿主应用的窗口信息或对应的EmbeddedComponent<!--Del-->（或[UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md#ui_extension_componentsystem-api)）<!--DelEnd-->组件的信息。
+用于[EmbeddedUIExtensionAbility](../../../application-models/embeddeduiextensionability.md)（或[UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)）中获取宿主应用的窗口信息或对应的[EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md)<!--Del-->（或[UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md)）<!--DelEnd-->组件的信息。
 
 > **说明：** 
 > 
@@ -9,6 +9,8 @@
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-unnamed-declare namespace uiExtension--><!--Device-unnamed-declare namespace uiExtension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

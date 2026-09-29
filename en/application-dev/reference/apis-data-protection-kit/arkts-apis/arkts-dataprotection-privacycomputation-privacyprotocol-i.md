@@ -8,6 +8,8 @@ Defines the privacy protocol configuration, including the data set size and prot
 
 **Since:** 26.0.1
 
+<!--Device-privacyComputation-interface PrivacyProtocol--><!--Device-privacyComputation-interface PrivacyProtocol-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## Modules to Import
@@ -31,6 +33,8 @@ The data set size for the privacy protocol. Determines the number of comparisons
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-PrivacyProtocol-dataSetSize: DataSetSize--><!--Device-PrivacyProtocol-dataSetSize: DataSetSize-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## protocolType
@@ -48,5 +52,7 @@ The protocol type for the privacy computation. Determines the privacy-preserving
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-PrivacyProtocol-protocolType: ProtocolType--><!--Device-PrivacyProtocol-protocolType: ProtocolType-End-->
 
 **System capability:** SystemCapability.Security.Asset

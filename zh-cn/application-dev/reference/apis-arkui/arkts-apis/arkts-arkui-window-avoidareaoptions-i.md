@@ -8,6 +8,8 @@ interface AvoidAreaOptions
 
 **起始版本：** 12
 
+<!--Device-window-interface AvoidAreaOptions--><!--Device-window-interface AvoidAreaOptions-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
@@ -28,7 +30,9 @@ area: AvoidArea
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-AvoidAreaOptions-area: AvoidArea--><!--Device-AvoidAreaOptions-area: AvoidArea-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -44,6 +48,8 @@ type: AvoidAreaType
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-AvoidAreaOptions-type: AvoidAreaType--><!--Device-AvoidAreaOptions-type: AvoidAreaType-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

@@ -8,6 +8,8 @@ Optional configuration for startMovingWithOptions.
 
 **Since:** 26.0.0
 
+<!--Device-window-interface StartMovingOptions--><!--Device-window-interface StartMovingOptions-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The avoidance rect of window during drag-moving. If unspecified, the system defa
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StartMovingOptions-avoidRect?: Rect--><!--Device-StartMovingOptions-avoidRect?: Rect-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Indicates whether the window needs to be focused when moving starts.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartMovingOptions-needFocused?: boolean--><!--Device-StartMovingOptions-needFocused?: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

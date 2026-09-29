@@ -8,6 +8,8 @@ Enumerates the exposure metering modes.
 
 **Since:** 24
 
+<!--Device-camera-enum ExposureMeteringMode--><!--Device-camera-enum ExposureMeteringMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## MATRIX
@@ -20,7 +22,9 @@ Matrix metering mode. A wide area of the screen is selected, which is ideal for 
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-ExposureMeteringMode-MATRIX = 0--><!--Device-ExposureMeteringMode-MATRIX = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -34,7 +38,9 @@ Center-weighted metering mode. Metering is performed on the entire image, with t
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-ExposureMeteringMode-CENTER = 1--><!--Device-ExposureMeteringMode-CENTER = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -48,6 +54,8 @@ Spot metering mode. Metering is performed around 2.5% of the metering points, fo
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-ExposureMeteringMode-SPOT = 2--><!--Device-ExposureMeteringMode-SPOT = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

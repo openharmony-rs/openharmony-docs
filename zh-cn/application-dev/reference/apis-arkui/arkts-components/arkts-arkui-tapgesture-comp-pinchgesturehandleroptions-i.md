@@ -10,6 +10,8 @@ interface PinchGestureHandlerOptions extends BaseHandlerOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface PinchGestureHandlerOptions extends BaseHandlerOptions--><!--Device-unnamed-interface PinchGestureHandlerOptions extends BaseHandlerOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## distance
@@ -34,6 +36,8 @@ distance?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PinchGestureHandlerOptions-distance?: number--><!--Device-PinchGestureHandlerOptions-distance?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fingers
@@ -57,5 +61,7 @@ fingers?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PinchGestureHandlerOptions-fingers?: number--><!--Device-PinchGestureHandlerOptions-fingers?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Material effect parameters, used to control the display properties of the materi
 
 **Since:** 22
 
+<!--Device-uiEffect-interface LiquidMaterialEffectParam--><!--Device-uiEffect-interface LiquidMaterialEffectParam-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ The perturbation effect coefficient. The value must be greater than or equal to 
 
 **Since:** 22
 
+<!--Device-LiquidMaterialEffectParam-distortFactor : double--><!--Device-LiquidMaterialEffectParam-distortFactor : double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ The perturbation effect progress. The value range is [0, 1]. Values less than 0 
 **Type:** number
 
 **Since:** 22
+
+<!--Device-LiquidMaterialEffectParam-distortProgress : double--><!--Device-LiquidMaterialEffectParam-distortProgress : double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -62,6 +68,8 @@ Whether to enable the material effect. true means enabled, false means disabled.
 
 **Since:** 22
 
+<!--Device-LiquidMaterialEffectParam-enable : boolean--><!--Device-LiquidMaterialEffectParam-enable : boolean-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ The material coefficient. The value range is [0, 1]. Values less than 0 are trea
 **Type:** number
 
 **Since:** 22
+
+<!--Device-LiquidMaterialEffectParam-materialFactor : double--><!--Device-LiquidMaterialEffectParam-materialFactor : double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -94,6 +104,8 @@ The reflection coefficient. The value range is [0, 10]. Values less than 0 are t
 
 **Since:** 22
 
+<!--Device-LiquidMaterialEffectParam-reflectionFactor : double--><!--Device-LiquidMaterialEffectParam-reflectionFactor : double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ The refraction coefficient. The value range is [0, 10]. Values less than 0 are t
 **Type:** number
 
 **Since:** 22
+
+<!--Device-LiquidMaterialEffectParam-refractionFactor : double--><!--Device-LiquidMaterialEffectParam-refractionFactor : double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -126,6 +140,8 @@ The positions where the ripple effect is applied. Pass this parameter when you n
 
 **Since:** 22
 
+<!--Device-LiquidMaterialEffectParam-ripplePosition?: Array<[double, double]>--><!--Device-LiquidMaterialEffectParam-ripplePosition?: Array<[double, double]>-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -142,6 +158,8 @@ The ripple effect progress. The value must be greater than or equal to 0. Values
 
 **Since:** 22
 
+<!--Device-LiquidMaterialEffectParam-rippleProgress : double--><!--Device-LiquidMaterialEffectParam-rippleProgress : double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -157,6 +175,8 @@ The overlay color of the material, where the four variables correspond to RGBA r
 **Type:** [number, number, number, number]
 
 **Since:** 22
+
+<!--Device-LiquidMaterialEffectParam-tintColor : [double, double, double, double]--><!--Device-LiquidMaterialEffectParam-tintColor : [double, double, double, double]-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

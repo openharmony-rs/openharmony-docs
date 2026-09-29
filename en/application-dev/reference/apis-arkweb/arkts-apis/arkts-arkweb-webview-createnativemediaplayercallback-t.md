@@ -11,6 +11,8 @@ Parameter of the [onCreateNativeMediaPlayer](arkts-arkweb-webview-webviewcontrol
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-webview-type CreateNativeMediaPlayerCallback =      (handler: NativeMediaPlayerHandler, mediaInfo: MediaInfo) => NativeMediaPlayerBridge--><!--Device-webview-type CreateNativeMediaPlayerCallback =      (handler: NativeMediaPlayerHandler, mediaInfo: MediaInfo) => NativeMediaPlayerBridge-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

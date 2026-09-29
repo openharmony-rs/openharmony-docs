@@ -8,6 +8,8 @@ Represents the RDB data change result. The data returned by the callback is not 
 
 **Since:** 10
 
+<!--Device-dataShare-interface RdbDataChangeNode--><!--Device-dataShare-interface RdbDataChangeNode-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Data of the callback. If an error occurs during callback data processing, the ca
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RdbDataChangeNode-data: Array<string>--><!--Device-RdbDataChangeNode-data: Array<string>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ ID of the template that triggers the callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RdbDataChangeNode-templateId: TemplateId--><!--Device-RdbDataChangeNode-templateId: TemplateId-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ URI of the callback.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RdbDataChangeNode-uri: string--><!--Device-RdbDataChangeNode-uri: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 

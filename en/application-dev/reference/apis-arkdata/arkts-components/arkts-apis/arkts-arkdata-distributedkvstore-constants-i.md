@@ -8,6 +8,8 @@ Provides constants of the distributed KV store.
 
 **Since:** 9
 
+<!--Device-distributedKVStore-interface Constants--><!--Device-distributedKVStore-interface Constants-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Maximum number of batch operations allowed, which is 128.
 
 **Since:** 9
 
+<!--Device-Constants-readonly MAX_BATCH_SIZE: number--><!--Device-Constants-readonly MAX_BATCH_SIZE: number-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## MAX_KEY_LENGTH
@@ -41,6 +45,8 @@ Maximum length of a key in the database, which is 1024 bytes.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Constants-readonly MAX_KEY_LENGTH: number--><!--Device-Constants-readonly MAX_KEY_LENGTH: number-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -56,6 +62,8 @@ Maximum length of a key in a device KV store, which is 896 bytes.
 
 **Since:** 9
 
+<!--Device-Constants-readonly MAX_KEY_LENGTH_DEVICE: number--><!--Device-Constants-readonly MAX_KEY_LENGTH_DEVICE: number-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## MAX_QUERY_LENGTH
@@ -69,6 +77,8 @@ Maximum query length, which is 512000 bytes.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Constants-readonly MAX_QUERY_LENGTH: number--><!--Device-Constants-readonly MAX_QUERY_LENGTH: number-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -84,6 +94,8 @@ Maximum length of a KV store ID, which is 128 bytes.
 
 **Since:** 9
 
+<!--Device-Constants-readonly MAX_STORE_ID_LENGTH: number--><!--Device-Constants-readonly MAX_STORE_ID_LENGTH: number-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## MAX_VALUE_LENGTH
@@ -97,5 +109,7 @@ Maximum length of a value in the database, which is 4194303 bytes.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Constants-readonly MAX_VALUE_LENGTH: number--><!--Device-Constants-readonly MAX_VALUE_LENGTH: number-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

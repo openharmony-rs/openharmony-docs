@@ -20,6 +20,8 @@ start ManualNetworkScan , Real-time report.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-radio-function startManualNetworkScan(slotId: int, callback: Callback<NetworkSearchRealTimeResult>): void--><!--Device-radio-function startManualNetworkScan(slotId: int, callback: Callback<NetworkSearchRealTimeResult>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.

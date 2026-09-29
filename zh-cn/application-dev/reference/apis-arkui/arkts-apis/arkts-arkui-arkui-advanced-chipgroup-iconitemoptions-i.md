@@ -8,6 +8,8 @@ export interface IconItemOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface IconItemOptions--><!--Device-unnamed-export interface IconItemOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-IconItemOptions-accessibilityDescription?: ResourceStr--><!--Device-IconItemOptions-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +74,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-IconItemOptions-accessibilityLevel?: string--><!--Device-IconItemOptions-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -92,6 +98,8 @@ accessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-IconItemOptions-accessibilityText?: ResourceStr--><!--Device-IconItemOptions-accessibilityText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -111,6 +119,8 @@ action: Callback<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-IconItemOptions-action: Callback<void>--><!--Device-IconItemOptions-action: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,5 +147,7 @@ Chip大小是ChipSize.NORMAL时，icon的size默认值：{width: '24vp',height: 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-IconItemOptions-icon: IconOptions--><!--Device-IconItemOptions-icon: IconOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

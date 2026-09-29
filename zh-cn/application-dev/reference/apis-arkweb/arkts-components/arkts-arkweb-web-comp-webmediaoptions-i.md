@@ -8,6 +8,8 @@ declare interface WebMediaOptions
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface WebMediaOptions--><!--Device-unnamed-declare interface WebMediaOptions-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## audioExclusive
@@ -28,6 +30,8 @@ true表示应用内多个Web实例的音频独占，false表示不独占。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebMediaOptions-audioExclusive?: boolean--><!--Device-WebMediaOptions-audioExclusive?: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## audioSessionType
@@ -41,6 +45,8 @@ audioSessionType?: AudioSessionType
 **类型：** [AudioSessionType](arkts-arkweb-web-comp-audiosessiontype-e.md)
 
 **起始版本：** 20
+
+<!--Device-WebMediaOptions-audioSessionType?: AudioSessionType--><!--Device-WebMediaOptions-audioSessionType?: AudioSessionType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -63,5 +69,7 @@ HLS视频被打断后，回到前台将自动续播，不受该时间控制。
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebMediaOptions-resumeInterval?: number--><!--Device-WebMediaOptions-resumeInterval?: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

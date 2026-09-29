@@ -18,6 +18,8 @@ Set the name of the Wi-Fi P2P device.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifiManager-function setDeviceName(devName: string): void--><!--Device-wifiManager-function setDeviceName(devName: string): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **System API:** This is a system API.

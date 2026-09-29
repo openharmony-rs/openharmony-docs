@@ -8,6 +8,8 @@ Provides APIs to implement device-cloud sync of media assets in **Gallery**. Bef
 
 **Since:** 10
 
+<!--Device-cloudSync-class GallerySync--><!--Device-cloudSync-class GallerySync-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ constructor()
 A constructor used to create a **GallerySync** instance.
 
 **Since:** 10
+
+<!--Device-GallerySync-constructor()--><!--Device-GallerySync-constructor()-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -49,6 +53,8 @@ Removes the specified callback from the device-cloud sync progress.
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-GallerySync-off(evt: 'progress', callback: (pg: SyncProgress) => void): void--><!--Device-GallerySync-off(evt: 'progress', callback: (pg: SyncProgress) => void): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -98,6 +104,8 @@ Removes all callbacks from the device-cloud sync progress.
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
+<!--Device-GallerySync-off(evt: 'progress'): void--><!--Device-GallerySync-off(evt: 'progress'): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -141,6 +149,8 @@ Registers a listener for the device-cloud sync progress.
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
+<!--Device-GallerySync-on(evt: 'progress', callback: (pg: SyncProgress) => void): void--><!--Device-GallerySync-on(evt: 'progress', callback: (pg: SyncProgress) => void): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -182,6 +192,8 @@ Starts device-cloud sync. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-GallerySync-start(): Promise<void>--><!--Device-GallerySync-start(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -235,6 +247,8 @@ Starts device-cloud sync. This API uses an asynchronous callback to return the r
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-GallerySync-start(callback: AsyncCallback<void>): void--><!--Device-GallerySync-start(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -290,6 +304,8 @@ Stops device-cloud sync. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
+<!--Device-GallerySync-stop(): Promise<void>--><!--Device-GallerySync-stop(): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -340,6 +356,8 @@ Stops device-cloud sync. This API uses an asynchronous callback to return the re
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-GallerySync-stop(callback: AsyncCallback<void>): void--><!--Device-GallerySync-stop(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

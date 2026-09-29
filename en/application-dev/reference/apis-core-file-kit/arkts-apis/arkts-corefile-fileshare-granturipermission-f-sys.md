@@ -23,6 +23,8 @@ Provides grant uri permission for app
 
 **Required permissions:** ohos.permission.WRITE_MEDIA
 
+<!--Device-fileShare-function grantUriPermission(    uri: string,    bundleName: string,    flag: wantConstant.Flags,    callback: AsyncCallback<void>  ): void--><!--Device-fileShare-function grantUriPermission(    uri: string,    bundleName: string,    flag: wantConstant.Flags,    callback: AsyncCallback<void>  ): void-End-->
+
 **System capability:** SystemCapability.FileManagement.AppFileService
 
 **System API:** This is a system API.
@@ -84,6 +86,8 @@ Provides grant uri permission for app
 **Since:** 9
 
 **Required permissions:** ohos.permission.WRITE_MEDIA
+
+<!--Device-fileShare-function grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags): Promise<void>--><!--Device-fileShare-function grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.AppFileService
 
@@ -149,6 +153,8 @@ Grant URI permissions for an application.
 **Since:** 20
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-fileShare-function grantUriPermission(policies: Array<PolicyInfo>, targetBundleName: string, appCloneIndex: int): Promise<void>--><!--Device-fileShare-function grantUriPermission(policies: Array<PolicyInfo>, targetBundleName: string, appCloneIndex: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 

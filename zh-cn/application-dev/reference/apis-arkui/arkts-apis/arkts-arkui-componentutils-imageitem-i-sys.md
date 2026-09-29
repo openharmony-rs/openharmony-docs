@@ -10,6 +10,8 @@ interface ImageItem
 
 **起始版本：** 23
 
+<!--Device-componentUtils-interface ImageItem--><!--Device-componentUtils-interface ImageItem-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -34,6 +36,8 @@ image: image.PixelMap
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-ImageItem-image: image.PixelMap--><!--Device-ImageItem-image: image.PixelMap-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +55,8 @@ rect: common2D.Rect
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ImageItem-rect: common2D.Rect--><!--Device-ImageItem-rect: common2D.Rect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ rotation?: Rotation2D
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-ImageItem-rotation?: Rotation2D--><!--Device-ImageItem-rotation?: Rotation2D-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -87,6 +95,8 @@ zIndex: number
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ImageItem-zIndex: int--><!--Device-ImageItem-zIndex: int-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -8,6 +8,8 @@ Define the display mode of the sheet.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum SheetMode--><!--Device-unnamed-declare enum SheetMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## OVERLAY
@@ -24,6 +26,8 @@ The sheet is displayed at the top of the window corresponding to the current **U
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SheetMode-OVERLAY = 0--><!--Device-SheetMode-OVERLAY = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## EMBEDDED
@@ -39,5 +43,7 @@ The sheet is displayed at the top of the current page. <br>**NOTE:** <br>Current
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SheetMode-EMBEDDED = 1--><!--Device-SheetMode-EMBEDDED = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

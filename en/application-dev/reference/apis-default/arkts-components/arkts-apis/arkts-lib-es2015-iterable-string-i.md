@@ -16,3 +16,5 @@ interface String
 ```
 
 Iterator
+
+<!--Device-String-[Symbol.iterator](): IterableIterator<string>--><!--Device-String-[Symbol.iterator](): IterableIterator<string>-End-->

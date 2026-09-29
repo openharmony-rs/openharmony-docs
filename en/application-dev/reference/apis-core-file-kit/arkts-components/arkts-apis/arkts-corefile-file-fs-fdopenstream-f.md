@@ -18,6 +18,8 @@ Opens a stream based on an FD. This API uses a promise to return the result. To 
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-unnamed-declare function fdopenStream(fd: number, mode: string): Promise<Stream>--><!--Device-unnamed-declare function fdopenStream(fd: number, mode: string): Promise<Stream>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -79,6 +81,8 @@ Opens a stream based on an FD. This API uses an asynchronous callback to return 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-unnamed-declare function fdopenStream(fd: number, mode: string, callback: AsyncCallback<Stream>): void--><!--Device-unnamed-declare function fdopenStream(fd: number, mode: string, callback: AsyncCallback<Stream>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

@@ -8,6 +8,8 @@ Describes the anchor point information used to maintain the relative position be
 
 **Since:** 24
 
+<!--Device-window-interface WindowAnchorInfo--><!--Device-window-interface WindowAnchorInfo-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Type of the anchor point used to maintain the relative position.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowAnchorInfo-anchorType: WindowAnchor--><!--Device-WindowAnchorInfo-anchorType: WindowAnchor-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -52,6 +56,8 @@ X-axis offset between the anchor points of the child window and the main window,
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowAnchorInfo-offsetX?: int--><!--Device-WindowAnchorInfo-offsetX?: int-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -71,6 +77,8 @@ Y-axis offset between the anchor points of the child window and the main window,
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowAnchorInfo-offsetY?: int--><!--Device-WindowAnchorInfo-offsetY?: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

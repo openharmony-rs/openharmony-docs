@@ -8,6 +8,8 @@ interface ScaleOption
 
 **起始版本：** 7
 
+<!--Device-matrix4-interface ScaleOption--><!--Device-matrix4-interface ScaleOption-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ centerX?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ScaleOption-centerX?: number--><!--Device-ScaleOption-centerX?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerY
@@ -58,6 +62,8 @@ centerY?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ScaleOption-centerY?: number--><!--Device-ScaleOption-centerY?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -77,6 +83,8 @@ x轴的缩放倍数。x=1时表示不缩放，保持原始大小；x&gt;1时以x
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScaleOption-x?: number--><!--Device-ScaleOption-x?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ y轴的缩放倍数。y&gt;1时以y轴方向放大，0&lt;y&lt;1时以y轴方向
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ScaleOption-y?: number--><!--Device-ScaleOption-y?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## z
@@ -117,5 +127,7 @@ z轴的缩放倍数。z=1时表示不缩放，保持原始大小；z&gt;1时以z
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScaleOption-z?: number--><!--Device-ScaleOption-z?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

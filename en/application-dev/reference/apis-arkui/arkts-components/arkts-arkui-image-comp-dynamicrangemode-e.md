@@ -8,6 +8,8 @@ Describes the dynamic range of the image to be displayed.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum DynamicRangeMode--><!--Device-unnamed-declare enum DynamicRangeMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## HIGH
@@ -23,6 +25,8 @@ Unrestricted dynamic range, which allows for the maximum brightening of an image
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DynamicRangeMode-HIGH = 0--><!--Device-DynamicRangeMode-HIGH = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Restricted dynamic range, which brightens an image within certain constraints.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DynamicRangeMode-CONSTRAINT = 1--><!--Device-DynamicRangeMode-CONSTRAINT = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## STANDARD
@@ -55,5 +61,7 @@ Standard dynamic range, which does not brighten an image.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DynamicRangeMode-STANDARD = 2--><!--Device-DynamicRangeMode-STANDARD = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

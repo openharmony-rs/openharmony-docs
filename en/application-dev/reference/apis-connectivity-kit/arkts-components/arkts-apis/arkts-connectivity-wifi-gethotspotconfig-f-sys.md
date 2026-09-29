@@ -22,6 +22,8 @@ Obtains the Wi-Fi hotspot configuration.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG
 
+<!--Device-wifi-function getHotspotConfig(): HotspotConfig--><!--Device-wifi-function getHotspotConfig(): HotspotConfig-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 **System API:** This is a system API.

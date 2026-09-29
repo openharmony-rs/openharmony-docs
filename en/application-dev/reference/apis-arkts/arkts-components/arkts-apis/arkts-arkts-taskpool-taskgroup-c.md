@@ -8,6 +8,8 @@ Implements a task group, in which tasks are associated with each other and all t
 
 **Since:** 10
 
+<!--Device-taskpool-class TaskGroup--><!--Device-taskpool-class TaskGroup-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Adds the function to be executed to this task group. Before using this API, you 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TaskGroup-addTask(func: Function, ...args: Object[]): void--><!--Device-TaskGroup-addTask(func: Function, ...args: Object[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -70,6 +74,8 @@ Adds a created task to this task group. Before using this API, you must create a
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TaskGroup-addTask(task: Task): void--><!--Device-TaskGroup-addTask(task: Task): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -112,6 +118,8 @@ Constructor used to create a **TaskGroup** instance.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TaskGroup-constructor()--><!--Device-TaskGroup-constructor()-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Examples**
@@ -133,6 +141,8 @@ A constructor used to create a **TaskGroup** instance, with the task group name 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TaskGroup-constructor(name: string)--><!--Device-TaskGroup-constructor(name: string)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -163,5 +173,7 @@ Name of the task group specified when the task group is created.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TaskGroup-name: string--><!--Device-TaskGroup-name: string-End-->
 
 **System capability:** SystemCapability.Utils.Lang

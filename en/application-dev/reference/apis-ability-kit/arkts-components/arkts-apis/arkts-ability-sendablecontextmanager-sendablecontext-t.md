@@ -12,6 +12,8 @@ Level-2 module SendableContext.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-sendableContextManager-export type SendableContext = _SendableContext--><!--Device-sendableContextManager-export type SendableContext = _SendableContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _SendableContext

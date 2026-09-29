@@ -14,6 +14,8 @@ Provides APIs to manage albums.
 
 **Substitutes:** [Album](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-album-i.md)
 
+<!--Device-userFileManager-interface Album extends AbsAlbum--><!--Device-userFileManager-interface Album extends AbsAlbum-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -39,6 +41,8 @@ Adds image and video assets to an album. Before the operation, ensure that the i
 **Substitutes:** [addAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c.md#addassets)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+<!--Device-Album-addPhotoAssets(assets: Array<FileAsset>, callback: AsyncCallback<void>): void--><!--Device-Album-addPhotoAssets(assets: Array<FileAsset>, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -106,6 +110,8 @@ Adds image and video assets to an album. Before the operation, ensure that the i
 **Substitutes:** [addAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c.md#addassets)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+<!--Device-Album-addPhotoAssets(assets: Array<FileAsset>): Promise<void>--><!--Device-Album-addPhotoAssets(assets: Array<FileAsset>): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -176,6 +182,8 @@ Commits the modification on the album attributes to the database. This API uses 
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
 
+<!--Device-Album-commitModify(callback: AsyncCallback<void>): void--><!--Device-Album-commitModify(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -229,6 +237,8 @@ Commits the modification on the album attributes to the database. This API uses 
 **Substitutes:** [commitModify](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-album-i.md#commitmodify)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+<!--Device-Album-commitModify(): Promise<void>--><!--Device-Album-commitModify(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -289,6 +299,8 @@ Deletes image or video assets from the recycle bin. Before the operation, ensure
 **Substitutes:** [deleteAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c-sys.md#deleteassets)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+<!--Device-Album-deletePhotoAssets(assets: Array<FileAsset>, callback: AsyncCallback<void>): void--><!--Device-Album-deletePhotoAssets(assets: Array<FileAsset>, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -362,6 +374,8 @@ Deletes image or video assets from the recycle bin. Before the operation, ensure
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
 
+<!--Device-Album-deletePhotoAssets(assets: Array<FileAsset>): Promise<void>--><!--Device-Album-deletePhotoAssets(assets: Array<FileAsset>): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -431,6 +445,8 @@ Recovers image or video assets from the recycle bin. Before the operation, ensur
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
 
+<!--Device-Album-recoverPhotoAssets(assets: Array<FileAsset>, callback: AsyncCallback<void>): void--><!--Device-Album-recoverPhotoAssets(assets: Array<FileAsset>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -497,6 +513,8 @@ Recovers image or video assets from the recycle bin. Before the operation, ensur
 **Substitutes:** [recoverAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-album-i-sys.md#recoverassets)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+<!--Device-Album-recoverPhotoAssets(assets: Array<FileAsset>): Promise<void>--><!--Device-Album-recoverPhotoAssets(assets: Array<FileAsset>): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -567,6 +585,8 @@ Removes image and video assets from an album. The album and file resources must 
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
 
+<!--Device-Album-removePhotoAssets(assets: Array<FileAsset>, callback: AsyncCallback<void>): void--><!--Device-Album-removePhotoAssets(assets: Array<FileAsset>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -633,6 +653,8 @@ Removes image and video assets from an album. The album and file resources must 
 **Substitutes:** [removeAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-mediaalbumchangerequest-c.md#removeassets)
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+<!--Device-Album-removePhotoAssets(assets: Array<FileAsset>): Promise<void>--><!--Device-Album-removePhotoAssets(assets: Array<FileAsset>): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

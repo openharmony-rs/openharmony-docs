@@ -4,6 +4,8 @@ The **FormAgent** module provides APIs related to the widget agent. Currently, y
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace formAgent--><!--Device-unnamed-declare namespace formAgent-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

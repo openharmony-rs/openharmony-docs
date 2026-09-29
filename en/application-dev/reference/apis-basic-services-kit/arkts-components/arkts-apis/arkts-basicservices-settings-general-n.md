@@ -10,6 +10,8 @@ Provides methods for setting general information about devices, including the de
 
 **Since:** 7
 
+<!--Device-settings-namespace general--><!--Device-settings-namespace general-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## Modules to Import

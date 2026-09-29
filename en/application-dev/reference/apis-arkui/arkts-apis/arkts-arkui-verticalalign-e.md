@@ -4,9 +4,11 @@
 declare enum VerticalAlign
 ```
 
-VerticalAlign enumeration description
+Sets the vertical alignment mode of child components.
 
 **Since:** 7
+
+<!--Device-unnamed-declare enum VerticalAlign--><!--Device-unnamed-declare enum VerticalAlign-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +18,7 @@ VerticalAlign enumeration description
 Top
 ```
 
-Top alignment.
+Top aligned.
 
 **Since:** 7
 
@@ -25,6 +27,8 @@ Top alignment.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-VerticalAlign-Top--><!--Device-VerticalAlign-Top-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +38,7 @@ Top alignment.
 Center
 ```
 
-Center alignment. The default alignment mode is used.
+Center aligned. This is the default alignment mode.
 
 **Since:** 7
 
@@ -43,6 +47,8 @@ Center alignment. The default alignment mode is used.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-VerticalAlign-Center--><!--Device-VerticalAlign-Center-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +58,7 @@ Center alignment. The default alignment mode is used.
 Bottom
 ```
 
-Bottom alignment.
+Bottom aligned.
 
 **Since:** 7
 
@@ -61,5 +67,7 @@ Bottom alignment.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-VerticalAlign-Bottom--><!--Device-VerticalAlign-Bottom-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

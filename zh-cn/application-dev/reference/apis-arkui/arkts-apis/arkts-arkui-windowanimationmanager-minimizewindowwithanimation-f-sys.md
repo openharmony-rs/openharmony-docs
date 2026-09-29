@@ -17,6 +17,8 @@ function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,
 
 **起始版本：** 9
 
+<!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,    callback: AsyncCallback<WindowAnimationFinishedCallback>): void--><!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,    callback: AsyncCallback<WindowAnimationFinishedCallback>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -104,6 +106,8 @@ function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promi
 最小化动画目标窗口，并返回动画完成的回调。使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promise<WindowAnimationFinishedCallback>--><!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promise<WindowAnimationFinishedCallback>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

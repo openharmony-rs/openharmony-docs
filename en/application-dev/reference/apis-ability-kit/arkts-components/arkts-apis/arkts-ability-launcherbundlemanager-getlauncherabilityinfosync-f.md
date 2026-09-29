@@ -18,6 +18,8 @@ Obtains the [launcher ability information](arkts-ability-launcherabilityinfo-i.m
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
+<!--Device-launcherBundleManager-function getLauncherAbilityInfoSync(bundleName: string, userId: int): Array<LauncherAbilityInfo>--><!--Device-launcherBundleManager-function getLauncherAbilityInfoSync(bundleName: string, userId: int): Array<LauncherAbilityInfo>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **Parameters:**

@@ -14,6 +14,8 @@ max batch operation size. Maximum number of batch operations.
 
 **Substitutes:** MAX_BATCH_SIZE
 
+<!--Device-Constants-const MAX_BATCH_SIZE = 128--><!--Device-Constants-const MAX_BATCH_SIZE = 128-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## MAX_KEY_LENGTH
@@ -29,6 +31,8 @@ max key length. Maximum length of a key in the KV store, in bytes.
 **Deprecated since:** 9
 
 **Substitutes:** MAX_KEY_LENGTH
+
+<!--Device-Constants-const MAX_KEY_LENGTH = 1024--><!--Device-Constants-const MAX_KEY_LENGTH = 1024-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -46,6 +50,8 @@ max device coordinate key length. Maximum length of a device key, in bytes.
 
 **Substitutes:** MAX_KEY_LENGTH_DEVICEs
 
+<!--Device-Constants-const MAX_KEY_LENGTH_DEVICE = 896--><!--Device-Constants-const MAX_KEY_LENGTH_DEVICE = 896-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## MAX_QUERY_LENGTH
@@ -61,6 +67,8 @@ max query length. Maximum query length, in bytes.
 **Deprecated since:** 9
 
 **Substitutes:** MAX_QUERY_LENGTH
+
+<!--Device-Constants-const MAX_QUERY_LENGTH = 512000--><!--Device-Constants-const MAX_QUERY_LENGTH = 512000-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -78,6 +86,8 @@ max store id length. Maximum length of a KV store ID, in bytes.
 
 **Substitutes:** MAX_STORE_ID_LENGTH
 
+<!--Device-Constants-const MAX_STORE_ID_LENGTH = 128--><!--Device-Constants-const MAX_STORE_ID_LENGTH = 128-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## MAX_VALUE_LENGTH
@@ -93,5 +103,7 @@ max value length. Maximum length of a value in the KV store, in bytes.
 **Deprecated since:** 9
 
 **Substitutes:** MAX_VALUE_LENGTH
+
+<!--Device-Constants-const MAX_VALUE_LENGTH = 4194303--><!--Device-Constants-const MAX_VALUE_LENGTH = 4194303-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

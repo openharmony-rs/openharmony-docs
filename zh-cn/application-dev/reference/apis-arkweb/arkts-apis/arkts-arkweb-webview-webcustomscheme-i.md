@@ -10,6 +10,8 @@ interface WebCustomScheme
 
 **起始版本：** 9
 
+<!--Device-webview-interface WebCustomScheme--><!--Device-webview-interface WebCustomScheme-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -34,6 +36,8 @@ true表示设置了该选项的scheme的JavaScript资源支持生成code cache�
 
 **起始版本：** 12
 
+<!--Device-WebCustomScheme-isCodeCacheSupported?: boolean--><!--Device-WebCustomScheme-isCodeCacheSupported?: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isCspBypassing
@@ -56,6 +60,8 @@ true表示设置了该选项的scheme可以绕过内容安全策略（CSP）检�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebCustomScheme-isCspBypassing?: boolean--><!--Device-WebCustomScheme-isCspBypassing?: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isDisplayIsolated
@@ -75,6 +81,8 @@ true表示设置了该选项的scheme的内容只能从相同scheme的其他内�
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebCustomScheme-isDisplayIsolated?: boolean--><!--Device-WebCustomScheme-isDisplayIsolated?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -96,6 +104,8 @@ true表示设置了该选项的scheme将使用与“file”协议相同的安全
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebCustomScheme-isLocal?: boolean--><!--Device-WebCustomScheme-isLocal?: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isSecure
@@ -113,6 +123,8 @@ isSecure?: boolean
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebCustomScheme-isSecure?: boolean--><!--Device-WebCustomScheme-isSecure?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -134,6 +146,8 @@ true表示设置了该选项的scheme将作为标准scheme进行处理，false�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebCustomScheme-isStandard?: boolean--><!--Device-WebCustomScheme-isStandard?: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## isSupportCORS
@@ -153,6 +167,8 @@ true表示支持跨域请求，false表示不支持跨域请求。
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebCustomScheme-isSupportCORS: boolean--><!--Device-WebCustomScheme-isSupportCORS: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -174,6 +190,8 @@ true表示支持fetch请求，false表示不支持fetch请求。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebCustomScheme-isSupportFetch: boolean--><!--Device-WebCustomScheme-isSupportFetch: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## schemeName
@@ -189,5 +207,7 @@ schemeName: string
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebCustomScheme-schemeName: string--><!--Device-WebCustomScheme-schemeName: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

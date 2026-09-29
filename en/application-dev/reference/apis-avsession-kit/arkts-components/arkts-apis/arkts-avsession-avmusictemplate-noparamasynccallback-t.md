@@ -12,4 +12,6 @@ Defines the basic callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avMusicTemplate-type NoParamAsyncCallback = () => Promise<void>--><!--Device-avMusicTemplate-type NoParamAsyncCallback = () => Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

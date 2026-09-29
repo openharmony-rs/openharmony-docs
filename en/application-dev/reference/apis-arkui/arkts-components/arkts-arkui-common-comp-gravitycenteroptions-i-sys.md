@@ -8,6 +8,8 @@ Defines the parameters of the center of gravity.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface GravityCenterOptions--><!--Device-unnamed-declare interface GravityCenterOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -26,6 +28,8 @@ Specifies whether the current component is the center of gravity. <br>Default va
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GravityCenterOptions-gravityCenter?: boolean--><!--Device-GravityCenterOptions-gravityCenter?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -43,6 +47,8 @@ Defines the gravitational strength of the attraction/repulsion force at the grav
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GravityCenterOptions-gravityIntensity?: double--><!--Device-GravityCenterOptions-gravityIntensity?: double-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

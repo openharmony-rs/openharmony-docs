@@ -20,6 +20,8 @@ Obtains the list of disallowed NearLink protocols for a specified user. This API
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function getDisallowedNearLinkProtocols(admin: Want, accountId: number): Array<NearLinkProtocol>--><!--Device-systemManager-function getDisallowedNearLinkProtocols(admin: Want, accountId: number): Array<NearLinkProtocol>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

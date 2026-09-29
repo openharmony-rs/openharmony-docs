@@ -19,6 +19,8 @@ Checks whether this process can access a file. This API uses a promise to return
 
 **Substitutes:** [access](arkts-corefile-file-fs-access-f.md)
 
+<!--Device-unnamed-declare function access(path: string, mode?: number): Promise<void>--><!--Device-unnamed-declare function access(path: string, mode?: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -51,6 +53,8 @@ Checks whether this process can access a file. This API uses an asynchronous cal
 
 **Substitutes:** [access](arkts-corefile-file-fs-access-f.md)
 
+<!--Device-unnamed-declare function access(path: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function access(path: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -76,6 +80,8 @@ Checks whether this process can access a file. This API uses an asynchronous cal
 **Deprecated since:** 9
 
 **Substitutes:** [access](arkts-corefile-file-fs-access-f.md)
+
+<!--Device-unnamed-declare function access(path: string, mode: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function access(path: string, mode: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

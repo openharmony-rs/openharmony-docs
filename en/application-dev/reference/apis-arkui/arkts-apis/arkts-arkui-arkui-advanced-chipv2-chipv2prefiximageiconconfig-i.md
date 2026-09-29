@@ -16,6 +16,8 @@ This API inherits from [ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-unnamed-export interface ChipV2PrefixImageIconConfig extends ChipV2ImageIconConfig--><!--Device-unnamed-export interface ChipV2PrefixImageIconConfig extends ChipV2ImageIconConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import

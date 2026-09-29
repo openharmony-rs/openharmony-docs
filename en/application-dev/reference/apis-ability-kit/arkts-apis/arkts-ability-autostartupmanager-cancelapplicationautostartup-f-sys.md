@@ -20,6 +20,8 @@ Cancels the auto-startup setting for an application component. This API uses an 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-autoStartupManager-function cancelApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback<void>): void--><!--Device-autoStartupManager-function cancelApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -58,6 +60,8 @@ Cancels the auto-startup setting for an application component. This API uses a p
 **Required permissions:** ohos.permission.MANAGE_APP_BOOT
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-autoStartupManager-function cancelApplicationAutoStartup(info: AutoStartupInfo): Promise<void>--><!--Device-autoStartupManager-function cancelApplicationAutoStartup(info: AutoStartupInfo): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

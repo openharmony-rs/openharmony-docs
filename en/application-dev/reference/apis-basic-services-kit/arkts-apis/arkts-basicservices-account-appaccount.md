@@ -4,6 +4,8 @@ The **appAccount** module provides APIs for adding, deleting, modifying, and que
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace appAccount--><!--Device-unnamed-declare namespace appAccount-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## Modules to Import

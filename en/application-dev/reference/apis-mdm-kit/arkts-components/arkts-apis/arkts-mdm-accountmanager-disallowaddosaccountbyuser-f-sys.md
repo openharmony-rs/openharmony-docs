@@ -24,6 +24,8 @@ Disallows a user to add accounts.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accountManager-function disallowAddOsAccountByUser(admin: Want, userId: number, disallow: boolean): void--><!--Device-accountManager-function disallowAddOsAccountByUser(admin: Want, userId: number, disallow: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

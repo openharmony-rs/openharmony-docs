@@ -10,6 +10,8 @@ Enumerates the polygon drawing mode.
 
 **Since:** 23
 
+<!--Device-unnamed-export enum PolygonMode--><!--Device-unnamed-export enum PolygonMode-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## FILL
@@ -21,6 +23,8 @@ FILL = 0
 Draws each face of the polygon.
 
 **Since:** 23
+
+<!--Device-PolygonMode-FILL = 0--><!--Device-PolygonMode-FILL = 0-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -34,6 +38,8 @@ Draws only the wireframe of the polygon.
 
 **Since:** 23
 
+<!--Device-PolygonMode-LINE = 1--><!--Device-PolygonMode-LINE = 1-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## POINT
@@ -45,5 +51,7 @@ POINT = 2
 Draws only the vertices of the polygon.
 
 **Since:** 23
+
+<!--Device-PolygonMode-POINT = 2--><!--Device-PolygonMode-POINT = 2-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

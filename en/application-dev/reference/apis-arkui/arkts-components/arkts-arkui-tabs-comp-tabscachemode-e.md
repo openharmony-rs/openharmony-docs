@@ -8,6 +8,8 @@ Enumerates the caching modes for child components.
 
 **Since:** 19
 
+<!--Device-unnamed-declare enum TabsCacheMode--><!--Device-unnamed-declare enum TabsCacheMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CACHE_BOTH_SIDE
@@ -24,6 +26,8 @@ Cache the currently displayed child component and the child components on both s
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-TabsCacheMode-CACHE_BOTH_SIDE = 0--><!--Device-TabsCacheMode-CACHE_BOTH_SIDE = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CACHE_LATEST_SWITCHED
@@ -39,5 +43,7 @@ Cache the currently displayed child component and the most recently switched chi
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-TabsCacheMode-CACHE_LATEST_SWITCHED = 1--><!--Device-TabsCacheMode-CACHE_LATEST_SWITCHED = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

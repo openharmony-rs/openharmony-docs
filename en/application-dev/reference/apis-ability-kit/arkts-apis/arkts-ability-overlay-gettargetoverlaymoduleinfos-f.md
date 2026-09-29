@@ -16,6 +16,8 @@ Obtains the OverlayModuleInfo associated with the specified target module. Modul
 
 **Since:** 10
 
+<!--Device-overlay-function getTargetOverlayModuleInfos(targetModuleName: string, callback: AsyncCallback<Array<OverlayModuleInfo>>): void--><!--Device-overlay-function getTargetOverlayModuleInfos(targetModuleName: string, callback: AsyncCallback<Array<OverlayModuleInfo>>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Overlay
 
 **Parameters:**
@@ -69,6 +71,8 @@ function getTargetOverlayModuleInfos(targetModuleName: string): Promise<Array<Ov
 Obtains the OverlayModuleInfo associated with the specified target module. Modules with the overlay feature generally provide an overlay resource file for other modules (target module) on the device. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-overlay-function getTargetOverlayModuleInfos(targetModuleName: string): Promise<Array<OverlayModuleInfo>>--><!--Device-overlay-function getTargetOverlayModuleInfos(targetModuleName: string): Promise<Array<OverlayModuleInfo>>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Overlay
 

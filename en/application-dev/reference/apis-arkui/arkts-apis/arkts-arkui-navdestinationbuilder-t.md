@@ -10,11 +10,13 @@ Defines the content of the **NavDestination** component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export type NavDestinationBuilder = (name: string, param?: Object) => void--><!--Device-unnamed-export type NavDestinationBuilder = (name: string, param?: Object) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| name | string | Yes | Name of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination) page. |
-| param | Object | No | Settings of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination) page. The default value is undefined. |
+| name | string | Yes | Name of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
+| param | Object | No | Settings of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. The default value is undefined. |

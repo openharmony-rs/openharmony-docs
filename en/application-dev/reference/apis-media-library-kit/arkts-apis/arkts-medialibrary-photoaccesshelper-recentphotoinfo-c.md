@@ -4,9 +4,11 @@
 export class RecentPhotoInfo
 ```
 
-Recent photo info
+Describes the information about the recent image or video.
 
 **Since:** 20
+
+<!--Device-photoAccessHelper-export class RecentPhotoInfo--><!--Device-photoAccessHelper-export class RecentPhotoInfo-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -28,7 +30,9 @@ Time when the recent image or video was shot (in milliseconds since January 1, 1
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-RecentPhotoInfo-dateTaken?: long--><!--Device-RecentPhotoInfo-dateTaken?: long-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -44,6 +48,8 @@ Hash value of the name of the recent image or video, which is used to help the a
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-RecentPhotoInfo-identifier?: string--><!--Device-RecentPhotoInfo-identifier?: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

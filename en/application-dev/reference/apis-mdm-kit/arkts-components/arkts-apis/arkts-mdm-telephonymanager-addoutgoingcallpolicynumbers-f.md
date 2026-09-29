@@ -29,6 +29,8 @@ will return error code 9200010. To resolve the conflict, remove the previously s
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-telephonyManager-function addOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array<string>): void--><!--Device-telephonyManager-function addOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

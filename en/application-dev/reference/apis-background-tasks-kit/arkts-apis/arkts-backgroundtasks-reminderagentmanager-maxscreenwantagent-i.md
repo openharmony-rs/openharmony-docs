@@ -8,6 +8,8 @@ Describes the information about the ability that is started automatically and di
 
 **Since:** 9
 
+<!--Device-reminderAgentManager-interface MaxScreenWantAgent--><!--Device-reminderAgentManager-interface MaxScreenWantAgent-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Name of the target ability. (If the device is in use, only a notification banner
 
 **Since:** 9
 
+<!--Device-MaxScreenWantAgent-abilityName: string--><!--Device-MaxScreenWantAgent-abilityName: string-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## pkgName
@@ -41,5 +45,7 @@ Name of the target package. (If the device is in use, only a notification banner
 **Type:** string
 
 **Since:** 9
+
+<!--Device-MaxScreenWantAgent-pkgName: string--><!--Device-MaxScreenWantAgent-pkgName: string-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent

@@ -20,6 +20,8 @@ Only assets with the same [GROUP_ID](arkts-assetstore-asset-tag-e.md#group_id) a
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-asset-function batchAdd(attributesArray: Array<AssetMap>): Promise<BatchResult>--><!--Device-asset-function batchAdd(attributesArray: Array<AssetMap>): Promise<BatchResult>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**

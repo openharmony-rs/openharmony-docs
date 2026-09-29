@@ -8,6 +8,8 @@ Encapsulates the success or failure status of function invocation.
 
 **Since:** 26.0.0
 
+<!--Device-functionManager-interface InvokeResult--><!--Device-functionManager-interface InvokeResult-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The returned data on success. The type can be any JSON value. Only present when 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InvokeResult-data?: any--><!--Device-InvokeResult-data?: any-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ The error code on failure (numeric). Only present when [success](#success) is fa
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InvokeResult-errorCode?: number--><!--Device-InvokeResult-errorCode?: number-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -68,6 +74,8 @@ The error description on failure. Only present when [success](#success) is false
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InvokeResult-errorMsg?: string--><!--Device-InvokeResult-errorMsg?: string-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Indicates whether the invocation was successful (at business logic level). true:
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InvokeResult-success: boolean--><!--Device-InvokeResult-success: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 

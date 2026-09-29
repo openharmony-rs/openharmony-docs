@@ -18,7 +18,9 @@ Obtains the ability information based on the given resource identifier and abili
 
 **Required permissions:** ohos.permission.GET_ABILITY_INFO
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-bundleManager-function getAbilityInfo(uri: string, abilityFlags: int): Promise<Array<AbilityInfo>>--><!--Device-bundleManager-function getAbilityInfo(uri: string, abilityFlags: int): Promise<Array<AbilityInfo>>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

@@ -8,6 +8,8 @@ WindowStage生命周期状态枚举。
 
 **起始版本：** 9
 
+<!--Device-window-enum WindowStageEventType--><!--Device-window-enum WindowStageEventType-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## SHOWN
@@ -22,7 +24,9 @@ SHOWN = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowStageEventType-SHOWN = 1--><!--Device-WindowStageEventType-SHOWN = 1-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -38,7 +42,9 @@ ACTIVE = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowStageEventType-ACTIVE = 2--><!--Device-WindowStageEventType-ACTIVE = 2-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -54,7 +60,9 @@ INACTIVE = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowStageEventType-INACTIVE = 3--><!--Device-WindowStageEventType-INACTIVE = 3-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -70,7 +78,9 @@ HIDDEN = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowStageEventType-HIDDEN = 4--><!--Device-WindowStageEventType-HIDDEN = 4-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -86,7 +96,9 @@ RESUMED = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowStageEventType-RESUMED = 5--><!--Device-WindowStageEventType-RESUMED = 5-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -102,6 +114,8 @@ PAUSED = 6
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowStageEventType-PAUSED = 6--><!--Device-WindowStageEventType-PAUSED = 6-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

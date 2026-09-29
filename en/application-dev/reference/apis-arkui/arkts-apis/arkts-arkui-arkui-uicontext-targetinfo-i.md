@@ -8,6 +8,8 @@ Specifies the target node for component binding.
 
 **Since:** 18
 
+<!--Device-unnamed-export interface TargetInfo--><!--Device-unnamed-export interface TargetInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Unique ID of the custom component where the target node is located. When the abo
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TargetInfo-componentId?: number--><!--Device-TargetInfo-componentId?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -52,5 +56,7 @@ Target node for binding popups or menus.<br>**NOTE:** <br>1. When **id** is a nu
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TargetInfo-id: string | number--><!--Device-TargetInfo-id: string | number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

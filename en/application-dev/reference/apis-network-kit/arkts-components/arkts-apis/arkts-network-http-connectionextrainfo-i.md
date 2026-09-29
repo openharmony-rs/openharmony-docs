@@ -8,6 +8,8 @@ Defines the detailed information about the HTTP request interaction.
 
 **Since:** 24
 
+<!--Device-http-export interface ConnectionExtraInfo--><!--Device-http-export interface ConnectionExtraInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Cipher suite used in the request. It is returned only when the TLS protocol is u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionExtraInfo-cipherSuite?: CipherSuite--><!--Device-ConnectionExtraInfo-cipherSuite?: CipherSuite-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## isCacheHit
@@ -45,6 +49,8 @@ Whether the local cache is hit in the request process. **true**: yes; **false**:
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionExtraInfo-isCacheHit: boolean--><!--Device-ConnectionExtraInfo-isCacheHit: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -62,6 +68,8 @@ Whether to use a proxy in the request process. **true**: yes; **false**: no.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionExtraInfo-isProxyConnection: boolean--><!--Device-ConnectionExtraInfo-isProxyConnection: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## isReusedConnection
@@ -77,6 +85,8 @@ Whether to reuse the connection in the request process. **true**: yes; **false**
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionExtraInfo-isReusedConnection: boolean--><!--Device-ConnectionExtraInfo-isReusedConnection: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -94,6 +104,8 @@ IP address of the client in the request process.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionExtraInfo-localAddress: string--><!--Device-ConnectionExtraInfo-localAddress: string-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## localPort
@@ -109,6 +121,8 @@ Port number of the client in the request process. The value ranges from 1 to 655
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionExtraInfo-localPort: int--><!--Device-ConnectionExtraInfo-localPort: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -126,6 +140,8 @@ HTTP version used in the [request](arkts-network-http-httprequest-i.md#request),
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionExtraInfo-networkProtocolName: string--><!--Device-ConnectionExtraInfo-networkProtocolName: string-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## redirectCount
@@ -141,6 +157,8 @@ Number of redirections in the request process.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionExtraInfo-redirectCount: int--><!--Device-ConnectionExtraInfo-redirectCount: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -158,6 +176,8 @@ IP address of the server in the request process.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionExtraInfo-remoteAddress: string--><!--Device-ConnectionExtraInfo-remoteAddress: string-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## remotePort
@@ -174,6 +194,8 @@ Port number of the server in the request process. The value ranges from 1 to 655
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionExtraInfo-remotePort: int--><!--Device-ConnectionExtraInfo-remotePort: int-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## tlsVersion
@@ -189,5 +211,7 @@ TLS version used in the request. It is returned only when the TLS protocol is us
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionExtraInfo-tlsVersion?: TlsVersion--><!--Device-ConnectionExtraInfo-tlsVersion?: TlsVersion-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

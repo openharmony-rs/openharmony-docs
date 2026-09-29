@@ -20,6 +20,8 @@ Queries the APN ID. This API is suitable for enterprise mobile network configura
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function queryApn(admin: Want, apnInfo: Record<string, string>): Array<string>--><!--Device-networkManager-function queryApn(admin: Want, apnInfo: Record<string, string>): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -85,6 +87,8 @@ Queries the APN parameter information. This API is suitable for enterprise mobil
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APN
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-networkManager-function queryApn(admin: Want, apnId: string): Record<string, string>--><!--Device-networkManager-function queryApn(admin: Want, apnId: string): Record<string, string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
