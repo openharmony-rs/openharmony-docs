@@ -11,6 +11,11 @@
 
 开发者可指定SM2签名参数，将其转换成DER格式签名数据。反之，也可以从DER格式签名数据中提取出SM2的具体签名参数。
 
+## 在CMake脚本中链接相关动态库
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
+
 **指定签名参数，转换为DER格式**
 1. 调用[OH_CryptoEccSignatureSpec_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_create)，创建[OH_CryptoEccSignatureSpec](../../reference/apis-crypto-architecture-kit/capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md)对象，用于设置SM2签名参数。
 
