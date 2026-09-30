@@ -458,7 +458,7 @@ struct WatchChild {
 
 ![image](./figures/custom-env-16.png)
 
-当\@CustomEnv装饰的变量其内部属性的变化时，也会触发回调。
+当\@CustomEnv装饰的变量内部属性发生变化时，也会触发回调。
 
 <!-- @[CustomEnvDeepWatch]
 (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportDeepWatchPage.ets) -->
