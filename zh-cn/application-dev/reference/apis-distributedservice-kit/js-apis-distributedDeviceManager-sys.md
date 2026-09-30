@@ -138,7 +138,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  hardwareVersion | string |  否   | 否  |  硬件版本。          |
 |  softwareVersion | string |  否  | 否  |  软件版本。          |
 |  protocolType    | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  协议类型。 |
-|  setupType       | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  设备类型。 |
+|  setupType       | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  设置类型。 |
 |  wiseDeviceId    | string |  否   | 否  |  已注册设备标识。        |
 |  wiseUserId      | string |  否   | 否  |  已注册用户标识。        |
 |  registerTime    | string |  否   | 否  |  注册时间。          |
@@ -169,7 +169,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  productId      | string  | 否 | 否   |  设备所属产品ID。          |
 |  subProductId   | string  | 否 | 是   |  设备所属产品子ID。默认为空。      |
 |  imageType      | string  | 否 | 否   |  图片类型。固定值为"ID"，表示产品实物图。 |
-|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br /> - lg：大图，尺寸为1016064px。<br /> - sm：小图，尺寸为65536px。         |
+|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br /> - lg：大图（尺寸：1008×1008像素）。<br /> - sm：小图（尺寸：256×256像素）。         |
 |  internalModel  | string  | 否 | 是   |  设备所属产品的内部型号。默认为空。        |
 
 ## DeviceIconInfo<sup>18+</sup>
@@ -191,7 +191,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  productId      | string  | 否 | 否   |  设备所属产品ID。          |
 |  subProductId   | string  | 否 | 是   |  设备所属产品子ID。默认为空字符。     |
 |  imageType      | string  | 否 | 否   |  图片类型。固定值为"ID"，表示产品实物图。        |
-|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br /> - lg：大图，尺寸为1016064px。<br /> - sm：小图，尺寸为65536px。         |
+|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br /> - lg：大图（尺寸：1008×1008像素）。<br /> - sm：小图（尺寸：256×256像素）。         |
 |  url            | string  | 否 | 否   |  URL。          |
 |  icon           | ArrayBuffer | 否| 否 | 图标。         |
 |  internalModel  | string  | 否 | 是   |  设备所属产品的内部型号。默认为空。         |
@@ -1247,7 +1247,7 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 根据设备ID查询设备标识。
 
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM，ohos.permission.DISTRIBUTED_DATASYNC，ohos.permission.sec.ACCESS_UDID
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM、ohos.permission.DISTRIBUTED_DATASYNC和ohos.permission.sec.ACCESS_UDID
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
