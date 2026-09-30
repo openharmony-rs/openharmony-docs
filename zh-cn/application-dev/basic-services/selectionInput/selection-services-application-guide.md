@@ -416,7 +416,7 @@
             this.onSelected(info);
           });
         } catch(error) {
-          hilog.info(0x0000, 'SelectionExtensionAbility',
+          hilog.error(0x0000, 'SelectionExtensionAbility',
             `Failed to onConnect, error code: ${error.code}, error message: ${error.message}`);
         }
         return new SelectionAbilityStub('remote');
@@ -454,12 +454,12 @@
           } catch (error) {
             hilog.error(0x0000, 'SelectionExtensionAbility', 'Failed to listen panel hidden');
           }
-            await panel.setUiContent('pages/MenuPanel')   // 设置菜单面板样式
-          } catch(error) {
-            hilog.info(0x0000, 'SelectionExtensionAbility',
-              `Failed to createPanel, error code: ${error.code}, error message: ${error.message}`);
-          }
+          await panel.setUiContent('pages/MenuPanel')   // 设置菜单面板样式
+        } catch(error) {
+          hilog.error(0x0000, 'SelectionExtensionAbility',
+            `Failed to createPanel, error code: ${error.code}, error message: ${error.message}`);
         }
+      }
     
       async onSelected(info: selectionManager.SelectionInfo): Promise<void> {
         SelectionModel.getInstance()?.setSelectionInfo(info);
@@ -484,7 +484,7 @@
               `Failed to move, error code: ${error.code}, error message: ${error.message}`);
             return;
           }
-
+    
           try {
             await panelTemp.show()    // 显示弹窗
             hilog.info(0x0000, 'SelectionExtensionAbility', 'Show succeed.');
