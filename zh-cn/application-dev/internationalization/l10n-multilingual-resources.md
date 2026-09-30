@@ -47,6 +47,10 @@
   应用如果需要识别语言，应避免通过硬编码的方式直接比较语言码。推荐使用如下方式：
 
    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) --> 
+   
+   ``` TypeScript
+   import { i18n } from '@kit.LocalizationKit';
+   ```
 
    <!-- @[best_match_locale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) --> 
 
