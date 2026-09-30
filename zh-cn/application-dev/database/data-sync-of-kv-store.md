@@ -110,6 +110,20 @@
 1. 导入模块获取context，此处以Stage模型为例，FA模型context的获取请见[context](../application-models/application-context-fa.md)。
 
    <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   import { distributedKVStore } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+   import EntryAbility from '../entryability/EntryAbility';
+   import Logger from '../common/Logger';
+   
+   let kvManager: distributedKVStore.KVManager | undefined = undefined;
+   let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
+   let appId: string = 'com.example.kvstoresamples';
+   let storeId: string = 'storeId';
+   const context = EntryAbility.getContext();
+   ```
 
 2. 请求权限。
 
