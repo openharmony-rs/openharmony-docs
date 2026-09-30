@@ -622,7 +622,6 @@
   - [InsightIntentExecutor](arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md)
 - [@ohos.app.ability.InteropAbilityLifecycleCallback](arkts-ability-app-ability-interopabilitylifecyclecallback.md)
   - [InteropAbilityLifecycleCallback](arkts-ability-app-ability-interopabilitylifecyclecallback-interopabilitylifecyclecallback-i.md)
-  - [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
   - [WindowStageCallbackFn](arkts-ability-windowstagecallbackfn-t.md)
 - [@ohos.app.ability.kioskManager(Kiosk模式管理)](arkts-ability-app-ability-kioskmanager.md)
   - [enterKioskMode](arkts-ability-kioskmanager-enterkioskmode-f.md)
@@ -1575,10 +1574,6 @@
 - app<!--arkts-abilitykit-app-->
   - [appVersionInfo(AppVersionInfo)](arkts-ability-appversioninfo.md)
     - [AppVersionInfo](arkts-ability-appversioninfo-appversioninfo-depr-i.md)
-  - [context(FA模型的上下文基类)](arkts-ability-context.md)
-    - [Context](arkts-ability-context-context-depr-i.md)
-    - [PermissionOptions](arkts-ability-context-permissionoptions-depr-i.md)
-    - [PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)
   - [processInfo](arkts-ability-processinfo.md)
     - [ProcessInfo](arkts-ability-processinfo-processinfo-depr-i.md)
 - application<!--arkts-abilitykit-application-->
@@ -1867,14 +1862,6 @@
     <!--Del-->
     - [ViewData(系统接口)](arkts-ability-viewdata-i-sys.md)<!--DelEnd-->
 - bundle<!--arkts-abilitykit-bundle-->
-  - [abilityInfo](arkts-ability-abilityinfo.md)
-    - [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)
-  - [applicationInfo](arkts-ability-applicationinfo.md)
-    - [ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)
-  - [bundleInfo](arkts-ability-bundleinfo.md)
-    - [BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md)
-    - [ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-depr-i.md)
-    - [UsedScene](arkts-ability-bundleinfo-usedscene-depr-i.md)
   <!--Del-->
   - [bundleInstaller](arkts-ability-bundleinstaller.md)<!--DelEnd-->
     <!--Del-->
@@ -1889,10 +1876,6 @@
     - [BundleStatusCallback(系统接口)](arkts-ability-bundlestatuscallback-bundlestatuscallback-depr-i-sys.md)<!--DelEnd-->
   - [customizeData](arkts-ability-customizedata.md)
     - [CustomizeData](arkts-ability-customizedata-customizedata-depr-i.md)
-  - [elementName](arkts-ability-elementname.md)
-    - [ElementName](arkts-ability-elementname-elementname-depr-i.md)
-  - [hapModuleInfo](arkts-ability-hapmoduleinfo.md)
-    - [HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)
   <!--Del-->
   - [launcherAbilityInfo](arkts-ability-launcherabilityinfo.md)<!--DelEnd-->
     <!--Del-->
@@ -1907,10 +1890,6 @@
   - [remoteAbilityInfo](arkts-ability-remoteabilityinfo.md)<!--DelEnd-->
     <!--Del-->
     - [RemoteAbilityInfo(系统接口)](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)<!--DelEnd-->
-  - [shortcutInfo](arkts-ability-shortcutinfo.md)
-    - [ShortcutInfo](arkts-ability-shortcutinfo-shortcutinfo-depr-i.md)
-    <!--Del-->
-    - [ShortcutWant(系统接口)](arkts-ability-shortcutinfo-shortcutwant-depr-i-sys.md)<!--DelEnd-->
 - bundleManager<!--arkts-abilitykit-bundlemanager-->
   - [AbilityInfo](arkts-ability-abilityinfo.md)
     - [AbilityInfo](arkts-ability-abilityinfo-i.md)
