@@ -22065,6 +22065,56 @@
 						"start_line":37
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerDemo.ets",
+				"functions":[
+					{
+						"end_line":81,
+						"name":"cross_node_selection_demo",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerJoinStyle.ets",
+				"functions":[
+					{
+						"end_line":97,
+						"name":"cross_node_join_style",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerCustomMenu.ets",
+				"functions":[
+					{
+						"end_line":108,
+						"name":"cross_node_custom_menu",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerExtendMenu.ets",
+				"functions":[
+					{
+						"end_line":129,
+						"name":"cross_node_extend_menu",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerControllerDemo.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"cross_node_controller",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
