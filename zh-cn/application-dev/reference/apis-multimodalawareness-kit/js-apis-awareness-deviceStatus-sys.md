@@ -25,7 +25,7 @@
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
-**系统接口**：此接口为系统接口
+**系统接口**：此接口为系统接口。
 
 | 名称 | 类型   | 只读 | 可选 | 说明             |
 | ------ | ------- | ------- | ----- | -------------- |
@@ -49,7 +49,7 @@ getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
 
 | 类型                                | 说明               |
 | ----------------------------------- | ------------------ |
-| Promise&lt;DeviceRotationRadian&gt; | 设备旋转弧度的结果。 |
+| Promise&lt;DeviceRotationRadian&gt; | 设备三维旋转状态信息。 |
 
 **错误码**：
 
