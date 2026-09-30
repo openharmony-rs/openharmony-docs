@@ -107,35 +107,9 @@
 >
 > 数据只允许向数据安全标签不高于对端设备安全等级的设备同步数据，具体规则可见[跨设备同步访问控制机制](access-control-by-device-and-data-level.md#跨设备同步访问控制机制)。
 
-1. 导入模块获取context。
+1. 导入模块获取context，此处以Stage模型为例，FA模型context的获取请见[context](../application-models/application-context-fa.md)。
 
-   ```ts
-   // 导入模块
-   // 在pages目录下新建KvStoreInterface.ets
-   import { distributedKVStore } from '@kit.ArkData';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-   import EntryAbility from '../entryability/EntryAbility';
-   // Logger为hilog封装后实现的打印功能
-   import Logger from '../common/Logger';
-
-   let kvManager: distributedKVStore.KVManager | undefined = undefined;
-   let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
-   let appId: string = 'com.example.kvstoresamples';
-   let storeId: string = 'storeId';
-   // Stage模型context从EntryAbility.ets中获取
-   const context = EntryAbility.getContext();
-
-   // FA模型获取context
-   import { featureAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   let context = featureAbility.getContext();
-
-   // 下面所有接口的代码都实现在KvInterface中
-   export class KvInterface {
-   }
-   ```
+   <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) --> 
 
 2. 请求权限。
 
