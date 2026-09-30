@@ -52,7 +52,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | [buildVersion](arkts-basicservices-deviceinfo-con.md#buildversion) | Build版本号，标识编译构建的版本号，值为osFullName中的第四位数值，建议直接使用deviceInfo.buildVersion获取，可提升效率，不建议开发者自主解析osFullName获取。 |
 | [chipType](arkts-basicservices-deviceinfo-con.md#chiptype) | 当前设备CPU芯片型号。 |
 | [deviceColor](arkts-basicservices-deviceinfo-con.md#devicecolor) | 当前设备颜色。如果无法获取，则返回空字符串 |
-| [deviceType](arkts-basicservices-deviceinfo-con.md#devicetype) | 设备类型。详细请参考[deviceTypes标签](../../../quick-start/module-configuration-file.md#devicetypes标签)。 |
+| [deviceType](arkts-basicservices-deviceinfo-con.md#devicetype) | 设备类型。详细请参考deviceTypes标签。 |
 | [diskSN](arkts-basicservices-deviceinfo-con.md#disksn) | 硬盘序列号，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。 |
 | [displayVersion](arkts-basicservices-deviceinfo-con.md#displayversion) | 产品版本。 |
 | [distributionOSApiName](arkts-basicservices-deviceinfo-con.md#distributionosapiname) | 发行版系统API版本名称<!--Del-->，由发行方定义<!--DelEnd-->。 |

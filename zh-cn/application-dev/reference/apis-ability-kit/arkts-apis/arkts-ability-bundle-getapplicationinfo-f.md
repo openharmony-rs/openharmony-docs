@@ -34,7 +34,7 @@ function getApplicationInfo(bundleName: string,
 | bundleName | string | 是 | 要查询的应用Bundle名称。 |
 | bundleFlags | number | 是 | 用于指定返回的应用信息对象中包含信息的标记。取值范围：参考[BundleFlag说明](arkts-ability-bundle-bundleflag-e.md)中应用信息相关flag。 |
 | userId | number | 是 | 用户ID。取值范围：大于等于0。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt; | 是 | 程序启动作为入参的回调函数，返回应用程序信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ApplicationInfo&gt; | 是 | 程序启动作为入参的回调函数，返回应用程序信息。 |
 
 **示例**
 
@@ -83,7 +83,7 @@ function getApplicationInfo(bundleName: string, bundleFlags: number, callback: A
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 要查询的应用Bundle名称。 |
 | bundleFlags | number | 是 | 用于指定返回的应用信息对象中包含信息的标记。取值范围：参考[BundleFlag说明](arkts-ability-bundle-bundleflag-e.md)中应用信息相关flag。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt; | 是 | 程序启动作为入参的回调函数，返回应用程序信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ApplicationInfo&gt; | 是 | 程序启动作为入参的回调函数，返回应用程序信息。 |
 
 **示例**
 
@@ -137,7 +137,7 @@ function getApplicationInfo(bundleName: string, bundleFlags: number, userId?: nu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt; | Promise形式返回应用程序信息。 |
+| Promise&lt;ApplicationInfo&gt; | Promise形式返回应用程序信息。 |
 
 **示例**
 

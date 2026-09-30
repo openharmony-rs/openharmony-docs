@@ -87,7 +87,7 @@ Swiper(controller?: SwiperController)
 
 ### 示例1（设置导航点交互及翻页动效）
 
-该示例通过[changeIndex](arkts-arkui-swiper-comp-attribute.md#index)接口设置[SwiperAnimationMode](#swiper)动效以跳转指定页面，并使用[onScrollStateChanged](arkts-arkui-swiper-comp-attribute.md#onscrollstatechanged)回调监听滑动状态的变化。
+该示例通过[changeIndex](arkts-arkui-swiper-comp-attribute.md#index)接口设置SwiperAnimationMode动效以跳转指定页面，并使用[onScrollStateChanged](arkts-arkui-swiper-comp-attribute.md#onscrollstatechanged)回调监听滑动状态的变化。
 
 从API version 20开始，新增onScrollStateChanged事件。
 

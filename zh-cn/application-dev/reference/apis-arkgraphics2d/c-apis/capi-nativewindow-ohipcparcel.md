@@ -1,4 +1,4 @@
-# OHIPCParcel
+# OHIPCParcel (NativeWindow)
 
 ```c
 typedef struct OHIPCParcel OHIPCParcel

@@ -302,7 +302,7 @@ getUrl(): string
 setCustomErrorCode(customErrorCode: number): void
 ```
 
-给当前的Response设置自定义错误码。详情参考[WebResourceError.getCustomErrorCode](../arkts-components/arkts-arkweb-web-comp-webresourceerror-c.md#getcustomerrorcode)。
+给当前的Response设置自定义错误码。详情参考WebResourceError.getCustomErrorCode。
 
 **起始版本：** 26.0.1
 

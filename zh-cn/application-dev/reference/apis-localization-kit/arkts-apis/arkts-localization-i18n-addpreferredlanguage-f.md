@@ -18,7 +18,7 @@ export function addPreferredLanguage(language: string, index?: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [addPreferredLanguage](arkts-localization-i18n-system-c-sys.md#addpreferredlanguage)
+**替代接口：** addPreferredLanguage
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 

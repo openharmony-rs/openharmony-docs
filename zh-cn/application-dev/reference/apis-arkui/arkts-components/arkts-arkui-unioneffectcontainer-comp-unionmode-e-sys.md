@@ -46,7 +46,7 @@ GRAVITY_UNION = 1
 
 **说明：** 
 
-设置该类型时，需配合[useUnionEffect](arkts-arkui-common-comp-commonmethod-c-sys.md#useunioneffect-1)并设置[GravityCenterOptions](arkts-arkui-common-comp-gravitycenteroptions-i-sys.md)的gravityCenter为true才能生效；不满足上述条件时，GRAVITY_UNION效果不生效。
+设置该类型时，需配合[useUnionEffect](arkts-arkui-common-comp-commonmethod-c-sys.md#useunioneffect-1)并设置GravityCenterOptions的gravityCenter为true才能生效；不满足上述条件时，GRAVITY_UNION效果不生效。
 
 **起始版本：** 26.0.0
 

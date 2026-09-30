@@ -1,4 +1,4 @@
-# ArkUI_NodeHandle
+# ArkUI_NodeHandle (ArkUI_NativeModule)
 
 ```c
 typedef struct ArkUI_NodeHandle ArkUI_NodeHandle

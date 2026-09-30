@@ -7,5 +7,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [PageNodeInfo](arkts-ability-pagenodeinfo-i-sys.md) | 自动填充的页面节点信息。 |
+| PageNodeInfo | 自动填充的页面节点信息。 |
 <!--DelEnd-->

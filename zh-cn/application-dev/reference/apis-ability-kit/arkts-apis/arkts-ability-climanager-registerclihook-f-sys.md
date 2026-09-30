@@ -46,4 +46,4 @@ function registerCliHook(hook: CliHook): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. Interface caller is not a system app. |
 | 35600034 | The device is not in developer mode. |
 | 35600035 | A hook is already registered; unregister it first. |
-| [35600050](../errorcode-ability.md#35600050-偶发性报错) | System Error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module. |
+| 35600050 | System Error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module. |

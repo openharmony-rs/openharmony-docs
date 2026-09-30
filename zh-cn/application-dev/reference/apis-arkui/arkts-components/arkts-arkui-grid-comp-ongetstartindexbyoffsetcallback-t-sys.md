@@ -24,4 +24,4 @@ declare type OnGetStartIndexByOffsetCallback = (totalOffset: number) => StartLin
 
 | 类型 | 说明 |
 | --- | --- |
-| [StartLineInfo](arkts-arkui-grid-comp-startlineinfo-i-sys.md) | 用于记录Grid页面内起始行的位置信息。 |
+| StartLineInfo | 用于记录Grid页面内起始行的位置信息。 |

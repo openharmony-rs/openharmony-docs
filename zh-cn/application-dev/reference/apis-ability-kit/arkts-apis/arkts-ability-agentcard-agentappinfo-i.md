@@ -60,7 +60,7 @@ Agent所属AgentExtensionAbility的Bundle名称。
 deviceTypes?: Array<string>
 ```
 
-Agent支持的设备类型列表。取值范围参考[deviceTypes](../../../quick-start/module-configuration-file.md#devicetypes标签)。
+Agent支持的设备类型列表。取值范围参考deviceTypes。
 
 **类型：** Array&lt;string&gt;
 

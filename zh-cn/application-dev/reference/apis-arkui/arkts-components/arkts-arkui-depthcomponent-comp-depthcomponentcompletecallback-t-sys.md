@@ -22,4 +22,4 @@ declare type DepthComponentCompleteCallback = (event: DepthComponentCompleteEven
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [DepthComponentCompleteEvent](arkts-arkui-depthcomponent-comp-depthcomponentcompleteevent-i-sys.md) | 是 | 背景资源加载成功的事件信息。 |
+| event | DepthComponentCompleteEvent | 是 | 背景资源加载成功的事件信息。 |

@@ -24,7 +24,7 @@ dpiFollowStrategy?: SecurityDpiFollowStrategy
 
 默认值：**FOLLOW_UI_EXTENSION_ABILITY_DPI**
 
-**类型：** [SecurityDpiFollowStrategy](arkts-arkui-securityuiextensioncomponent-comp-securitydpifollowstrategy-e-sys.md)
+**类型：** SecurityDpiFollowStrategy
 
 **默认值：** SecurityDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI
 

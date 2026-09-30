@@ -257,7 +257,7 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 14
 
@@ -584,7 +584,7 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 14
 
@@ -905,7 +905,7 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<Abilit
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 12
 
@@ -994,7 +994,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<Abili
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 12
 
@@ -1170,7 +1170,7 @@ requestDialogService(want: Want, result: AsyncCallback<dialogRequest.RequestResu
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -1255,7 +1255,7 @@ requestDialogService(want: Want): Promise<dialogRequest.RequestResult>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -2210,7 +2210,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -2307,7 +2307,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -2413,7 +2413,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -2525,7 +2525,7 @@ startAbilityByCall(want: Want): Promise<Caller>
 > 
 > - 同设备场景下，要求调用方与目标方为不同应用，且调用方具备ohos.permission.ABILITY_BACKGROUND_COMMUNICATION权限（该权限仅系统应用可申请）。
 > 
-> - 此外如果应用需要在后台调用该接口，需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> - 此外如果应用需要在后台调用该接口，需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见组件启动规则（Stage模型）。
 > 
 > **说明：** 
 > 
@@ -2872,7 +2872,7 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -2975,7 +2975,7 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -3082,7 +3082,7 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -3372,7 +3372,7 @@ startUIServiceExtensionAbility(want: Want): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 14
 

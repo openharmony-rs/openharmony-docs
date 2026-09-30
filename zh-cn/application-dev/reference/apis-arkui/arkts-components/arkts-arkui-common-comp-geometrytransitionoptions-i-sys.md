@@ -24,7 +24,7 @@ hierarchyStrategy?: TransitionHierarchyStrategy
 
 **系统接口：** 此接口为系统接口。
 
-**类型：** [TransitionHierarchyStrategy](arkts-arkui-common-comp-transitionhierarchystrategy-e-sys.md)
+**类型：** TransitionHierarchyStrategy
 
 **默认值：** TransitionHierarchyStrategy.ADAPTIVE
 

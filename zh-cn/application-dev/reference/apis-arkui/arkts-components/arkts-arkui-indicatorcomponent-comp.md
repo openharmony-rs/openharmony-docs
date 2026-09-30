@@ -34,7 +34,7 @@ Called when a indicator is set.
 
 ### 示例1（圆点单独导航点与Swiper绑定使用）
 
-该示例通过Swiper组件的indicator接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](arkts-arkui-indicatorcomponent-comp-indicatorcomponentcontroller-c.md)对象，实现了圆点单独导航点与Swiper的交互。
+该示例通过Swiper组件的indicator接口与IndicatorComponent的构造函数绑定同一[IndicatorComponentController](arkts-arkui-indicatorcomponent-comp-indicatorcomponentcontroller-c.md)对象，实现了圆点单独导航点与Swiper的交互。
 
 
 
@@ -99,7 +99,7 @@ struct DotIndicatorDemo {
 
 ### 示例2（数字单独导航点与Swiper绑定使用）
 
-该示例通过Swiper组件的indicator接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](arkts-arkui-indicatorcomponent-comp-indicatorcomponentcontroller-c.md)对象，实现了数字单独导航点与Swiper的交互。
+该示例通过Swiper组件的indicator接口与IndicatorComponent的构造函数绑定同一[IndicatorComponentController](arkts-arkui-indicatorcomponent-comp-indicatorcomponentcontroller-c.md)对象，实现了数字单独导航点与Swiper的交互。
 
 ```TypeScript
 @Entry

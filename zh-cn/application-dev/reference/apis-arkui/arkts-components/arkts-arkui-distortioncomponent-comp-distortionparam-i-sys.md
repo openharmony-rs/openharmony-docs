@@ -46,7 +46,7 @@ barrelDistortion的四个分量共同决定四条边的桶形扭曲强度，可�
 
 由于极端值可能导致画面折叠或采样异常，建议将x、y、z、w保持在[-1, 1]范围内使用。
 
-**类型：** [Vector4](arkts-arkui-distortioncomponent-comp-vector4-t-sys.md)
+**类型：** Vector4
 
 **默认值：** [0, 0, 0, 0]
 
@@ -70,7 +70,7 @@ bottomLeft: Vector2
 
 默认值：[0, 1]
 
-**类型：** [Vector2](arkts-arkui-distortioncomponent-comp-vector2-t-sys.md)
+**类型：** Vector2
 
 **默认值：** [0, 1]
 
@@ -94,7 +94,7 @@ bottomRight: Vector2
 
 默认值：[1, 1]
 
-**类型：** [Vector2](arkts-arkui-distortioncomponent-comp-vector2-t-sys.md)
+**类型：** Vector2
 
 **默认值：** [1, 1]
 
@@ -118,7 +118,7 @@ topLeft: Vector2
 
 默认值：[0, 0]
 
-**类型：** [Vector2](arkts-arkui-distortioncomponent-comp-vector2-t-sys.md)
+**类型：** Vector2
 
 **默认值：** [0, 0]
 
@@ -142,7 +142,7 @@ topRight: Vector2
 
 默认值：[1, 0]
 
-**类型：** [Vector2](arkts-arkui-distortioncomponent-comp-vector2-t-sys.md)
+**类型：** Vector2
 
 **默认值：** [1, 0]
 

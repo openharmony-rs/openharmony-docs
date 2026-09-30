@@ -26,7 +26,7 @@ function deleteWebAdInterface(controller: web_webview.WebviewController, needRef
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controller | [web_webview.WebviewController](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md) | 是 | Web组件控制器。 |
+| controller | web_webview.WebviewController | 是 | Web组件控制器。 |
 | needRefresh | boolean | 是 | 是否需要刷新页面（true: 需要；false: 不需要）。 |
 
 **错误码：**

@@ -1,4 +1,4 @@
-# OH_AVBuffer
+# OH_AVBuffer (Multimedia_Drm)
 
 ```c
 typedef struct OH_AVBuffer OH_AVBuffer

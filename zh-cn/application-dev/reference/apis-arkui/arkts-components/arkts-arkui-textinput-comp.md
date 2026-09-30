@@ -1217,7 +1217,7 @@ struct TextInputExample {
 
 ### 示例18（设置最小字体范围与最大字体范围）
 
-从API version 18开始，该示例通过[minFontScale](arkts-arkui-textinput-comp-attribute.md#minfontscale)、[maxFontScale](arkts-arkui-textinput-comp-attribute.md#maxfontscale)设置字体显示最小与最大范围（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）。
+从API version 18开始，该示例通过[minFontScale](arkts-arkui-textinput-comp-attribute.md#minfontscale)、[maxFontScale](arkts-arkui-textinput-comp-attribute.md#maxfontscale)设置字体显示最小与最大范围（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的系统接口说明）。
 
 ```TypeScript
 // 开启应用缩放跟随系统

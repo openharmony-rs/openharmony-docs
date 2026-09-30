@@ -4,7 +4,7 @@
 declare type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 ```
 
-懒加载布局容器[LazyColumnLayout](arkts-arkui-lazycolumnlayout-comp-attribute.md#lazycolumnlayout属性事件)、[LazyVGridLayout](arkts-arkui-lazyvgridlayout-comp.md)、[LazyVWaterFlowLayout](arkts-arkui-lazyvwaterflowlayout-comp.md)所显示的子组件索引发生变化时的回调类型。
+懒加载布局容器[LazyColumnLayout](arkts-arkui-lazycolumnlayout-comp-attribute.md)、[LazyVGridLayout](arkts-arkui-lazyvgridlayout-comp.md)、[LazyVWaterFlowLayout](arkts-arkui-lazyvwaterflowlayout-comp.md)所显示的子组件索引发生变化时的回调类型。
 
 > **说明：** 
 > 

@@ -44,7 +44,7 @@ dpiFollowStrategy?: DpiFollowStrategy
 
 默认值：**FOLLOW_UI_EXTENSION_ABILITY_DPI**
 
-**类型：** [DpiFollowStrategy](arkts-arkui-uiextensioncomponent-comp-dpifollowstrategy-e-sys.md)
+**类型：** DpiFollowStrategy
 
 **默认值：** DpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI
 
@@ -112,7 +112,7 @@ windowModeFollowStrategy?: WindowModeFollowStrategy
 
 默认值：**FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE**
 
-**类型：** [WindowModeFollowStrategy](arkts-arkui-uiextensioncomponent-comp-windowmodefollowstrategy-e-sys.md)
+**类型：** WindowModeFollowStrategy
 
 **默认值：** WindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE
 

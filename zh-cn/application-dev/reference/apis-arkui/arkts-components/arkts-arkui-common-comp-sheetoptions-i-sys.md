@@ -28,7 +28,7 @@ blurSnapshot?: BlurSnapshotOptions
 
 **系统接口：** 此接口为系统接口。
 
-**类型：** [BlurSnapshotOptions](arkts-arkui-common-comp-blursnapshotoptions-i-sys.md)
+**类型：** BlurSnapshotOptions
 
 **默认值：** undefined
 
@@ -54,7 +54,7 @@ edgeLightMode?: EdgeLightMode
 
 **系统接口：** 此接口为系统接口。
 
-**类型：** [EdgeLightMode](arkts-arkui-common-comp-edgelightmode-e-sys.md)
+**类型：** EdgeLightMode
 
 **默认值：** EdgeLightMode.EDGELIGHT_DISABLED
 

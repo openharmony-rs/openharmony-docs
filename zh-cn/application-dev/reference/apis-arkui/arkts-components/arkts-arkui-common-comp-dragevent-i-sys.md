@@ -87,7 +87,7 @@ dragAnimationType?: DragAnimationType
 
 **系统接口：** 此接口为系统接口。
 
-**类型：** [DragAnimationType](arkts-arkui-common-comp-draganimationtype-e-sys.md)
+**类型：** DragAnimationType
 
 **默认值：** DragAnimationType.DEFAULT
 

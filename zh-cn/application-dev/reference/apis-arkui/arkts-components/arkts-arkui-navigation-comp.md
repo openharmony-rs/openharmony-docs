@@ -2966,7 +2966,7 @@ struct NavigationExample {
 
 ### 示例16（Navigation使用NavDestination作为导航页）
 
-该示例展示了Navigation组件通过配置[homeDestination](#navigation)参数，实现以NavDestination作为根导航页的效果。
+该示例展示了Navigation组件通过配置homeDestination参数，实现以NavDestination作为根导航页的效果。
 
 从API version 20开始，新增创建Navigation组件的方式。
 

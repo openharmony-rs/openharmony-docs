@@ -1,4 +1,4 @@
-# AbilityInfo
+# deprecated AbilityInfo
 
 ```TypeScript
 export interface AbilityInfo
@@ -8,13 +8,13 @@ Ability信息，未做特殊说明的属性，均通过[bundle.getAbilityInfo](a
 
 > **说明：** 
 > 
-> 从API version 9开始，该模块不再维护，建议使用[bundleManager-AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)替代。
+> 从API version 9开始，该模块不再维护，建议使用bundleManager-AbilityInfo替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)
+**替代接口：** AbilityInfo
 
 <!--Device-unnamed-export interface AbilityInfo--><!--Device-unnamed-export interface AbilityInfo-End-->
 
@@ -30,7 +30,7 @@ readonly applicationInfo: ApplicationInfo
 
 通过调用[bundle.getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo-1)接口时，传入GET_ABILITY_INFO_WITH_APPLICATION获取。
 
-**类型：** [ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)
+**类型：** ApplicationInfo
 
 **默认值：** Obtains configuration information about an application
 

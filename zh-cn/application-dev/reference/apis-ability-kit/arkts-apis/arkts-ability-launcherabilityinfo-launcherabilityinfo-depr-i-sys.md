@@ -32,7 +32,7 @@ readonly applicationInfo: ApplicationInfo
 
 launcher ability的应用程序的配置信息。
 
-**类型：** [ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)
+**类型：** ApplicationInfo
 
 **起始版本：** 8
 

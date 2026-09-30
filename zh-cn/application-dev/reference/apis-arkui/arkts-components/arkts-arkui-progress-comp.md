@@ -64,7 +64,7 @@ Progress(options: ProgressOptions<Type>)
 
 ### 示例1（设置进度条的类型）
 
-该示例通过[ProgressOptions](#progress)的入参type，实现了设置进度条类型的功能。
+该示例通过ProgressOptions的入参type，实现了设置进度条类型的功能。
 
 
 

@@ -22,9 +22,9 @@ typeNode提供创建具体类型的FrameNode能力，可通过FrameNode的基础
 
 | 名称 | 说明 |
 | --- | --- |
-| [createNode](arkts-arkui-typenode-createnode-f.md#createnode) | 创建Text类型的FrameNode节点。使用typeNode创建Text节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。 |
-| [getAttribute](arkts-arkui-typenode-getattribute-f.md#getattribute) | 获取Text节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
-| [bindController](arkts-arkui-typenode-bindcontroller-f.md#bindcontroller) | 将文本控制器[TextController](../arkts-components/arkts-arkui-text-comp-textcontroller-c.md)绑定到[Text](arkts-arkui-typenode-text-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。 |
+| [createNode](arkts-arkui-typenode-createnode-f.md) | 创建Text类型的FrameNode节点。使用typeNode创建Text节点时，当传入的UIContext对应的UI实例销毁后，调用该接口会返回一个无效的FrameNode节点，无法正常挂载和显示。 |
+| [getAttribute](arkts-arkui-typenode-getattribute-f.md) | 获取Text节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
+| [bindController](arkts-arkui-typenode-bindcontroller-f.md) | 将文本控制器[TextController](../arkts-components/arkts-arkui-text-comp-textcontroller-c.md)绑定到[Text](arkts-arkui-typenode-text-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-1) | 创建Column类型的FrameNode节点。 |
 | [getAttribute](arkts-arkui-typenode-getattribute-f.md#getattribute-1) | 获取Column节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-2) | 创建Row类型的FrameNode节点。 |
@@ -42,7 +42,7 @@ typeNode提供创建具体类型的FrameNode能力，可通过FrameNode的基础
 | [getAttribute](arkts-arkui-typenode-getattribute-f.md#getattribute-6) | 获取Progress节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-9) | 创建Scroll类型的FrameNode节点。 |
 | [getAttribute](arkts-arkui-typenode-getattribute-f.md#getattribute-7) | 获取Scroll节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |
-| [getEvent](arkts-arkui-typenode-getevent-f.md#getevent) | 获取Scroll节点中持有的UIScrollEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。 |
+| [getEvent](arkts-arkui-typenode-getevent-f.md) | 获取Scroll节点中持有的UIScrollEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。 |
 | [bindController](arkts-arkui-typenode-bindcontroller-f.md#bindcontroller-2) | 将滚动控制器[Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md)绑定到[Scroll](arkts-arkui-typenode-scroll-t.md)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。从API version 26.0.0开始，该接口支持声明式方式创建的节点，API version 26.0.0以下版本不支持。 |
 | [createNode](arkts-arkui-typenode-createnode-f.md#createnode-10) | 创建RelativeContainer类型的FrameNode节点。 |
 | [getAttribute](arkts-arkui-typenode-getattribute-f.md#getattribute-8) | 获取RelativeContainer节点的属性。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。 |

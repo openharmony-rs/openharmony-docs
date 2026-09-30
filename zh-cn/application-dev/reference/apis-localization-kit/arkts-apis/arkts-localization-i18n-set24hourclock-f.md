@@ -18,7 +18,7 @@ export function set24HourClock(option: boolean): boolean
 
 **废弃版本：** 9
 
-**替代接口：** [set24HourClock](arkts-localization-i18n-system-c-sys.md#set24hourclock)
+**替代接口：** set24HourClock
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 

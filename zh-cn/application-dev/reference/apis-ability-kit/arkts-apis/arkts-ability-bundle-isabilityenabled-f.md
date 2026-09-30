@@ -26,7 +26,7 @@ function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md) | 是 | Ability的配置信息。 |
+| info | AbilityInfo | 是 | Ability的配置信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数，返回boolean代表是否启用。 |
 
 **示例**
@@ -71,7 +71,7 @@ function isAbilityEnabled(info: AbilityInfo): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md) | 是 | Ability的配置信息。 |
+| info | AbilityInfo | 是 | Ability的配置信息。 |
 
 **返回值：**
 

@@ -28,7 +28,7 @@ function refreshGlobalHttpProxy(): Promise<HttpProxy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[HttpProxy](arkts-network-connection-httpproxy-i.md)&gt; | 函数返回的Promise。 |
+| Promise&lt;HttpProxy&gt; | 函数返回的Promise。 |
 
 **错误码：**
 

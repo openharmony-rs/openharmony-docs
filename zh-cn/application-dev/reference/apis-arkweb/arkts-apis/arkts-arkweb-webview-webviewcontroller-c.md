@@ -281,7 +281,7 @@ avoidVisibleViewportBottom(avoidHeight: number): void
 > 
 > - 该接口高度设置为非0时，Web组件位置和尺寸不变，可视视口向上避让avoidHeight，表现为Web网页内容抬升avoidHeight。该接口一般用于应用自定义网页底部避让区，不建议和点击web网页可编辑区拉起键盘的场景同时使用。同时使用时，键盘弹起避让模式将使用OVERLAYS_CONTENT。
 > 
-> - 该接口高度设置为0时，Web网页内容可恢复，键盘弹起避让模式将使用[keyboardAvoidMode()](../arkts-components/arkts-arkweb-web-comp-attribute.md#keyboardavoidmode)声明的模式。
+> - 该接口高度设置为0时，Web网页内容可恢复，键盘弹起避让模式将使用keyboardAvoidMode()声明的模式。
 
 **起始版本：** 20
 
@@ -1445,7 +1445,7 @@ struct WebComponent {
 static customizeSchemes(schemes: Array<WebCustomScheme>): void
 ```
 
-对Web内核赋予自定义协议URL的跨域请求与fetch请求的权限。当Web在跨域fetch自定义协议URL时，该fetch请求可被[onInterceptRequest](../arkts-components/arkts-arkweb-web-comp-attribute.md#oninterceptrequest)事件接口所拦截，从而开发者可以进一步处理该请求。建议在任何Web组件初始化之前调用该接口。
+对Web内核赋予自定义协议URL的跨域请求与fetch请求的权限。当Web在跨域fetch自定义协议URL时，该fetch请求可被onInterceptRequest事件接口所拦截，从而开发者可以进一步处理该请求。建议在任何Web组件初始化之前调用该接口。
 
 **起始版本：** 9
 
@@ -1514,7 +1514,7 @@ struct WebComponent {
 static customizeSchemes(schemes: Array<WebCustomScheme>, lazyInitWebEngine: boolean): void
 ```
 
-对Web内核赋予自定义协议URL的跨域请求与fetch请求的权限。当Web在跨域fetch自定义协议URL时，该fetch请求可被[onInterceptRequest](../arkts-components/arkts-arkweb-web-comp-attribute.md#oninterceptrequest)事件接口所拦截，从而开发者可以进一步处理该请求。建议在任何Web组件初始化之前调用该接口。
+对Web内核赋予自定义协议URL的跨域请求与fetch请求的权限。当Web在跨域fetch自定义协议URL时，该fetch请求可被onInterceptRequest事件接口所拦截，从而开发者可以进一步处理该请求。建议在任何Web组件初始化之前调用该接口。
 
 **起始版本：** 21
 
@@ -1576,7 +1576,7 @@ struct WebComponent {
 deleteJavaScriptRegister(name: string): void
 ```
 
-删除通过[registerJavaScriptProxy](#registerjavascriptproxy)或者[javaScriptProxy](../arkts-components/arkts-arkweb-web-comp-attribute.md#javascriptproxy)注册到window上的指定name的应用侧JavaScript对象。删除操作在页面下次（重新）加载后生效。
+删除通过[registerJavaScriptProxy](#registerjavascriptproxy)或者javaScriptProxy注册到window上的指定name的应用侧JavaScript对象。删除操作在页面下次（重新）加载后生效。
 
 **起始版本：** 9
 
@@ -2245,7 +2245,7 @@ getBackForwardEntries(): BackForwardList
 
 > **说明：** 
 > 
-> [onLoadIntercept](../arkts-components/arkts-arkweb-web-comp-attribute.md#onloadintercept)在加载开始的时候触发，该时刻还未生成历史节点，所以在onLoadIntercept中调用
+> onLoadIntercept在加载开始的时候触发，该时刻还未生成历史节点，所以在onLoadIntercept中调用
 > getBackForwardEntries拿到的历史栈不包括当前正在加载中的跳转。
 
 **起始版本：** 9
@@ -2984,7 +2984,7 @@ struct WebComponent {
 getLastJavascriptProxyCallingFrameUrl(): string
 ```
 
-通过[registerJavaScriptProxy](#registerjavascriptproxy)或者[javaScriptProxy](../arkts-components/arkts-arkweb-web-comp-attribute.md#javascriptproxy)注入JavaScript对象到window对象中。该接口可以获取最后一次调用注入的对象的frame的URL。
+通过[registerJavaScriptProxy](#registerjavascriptproxy)或者javaScriptProxy注入JavaScript对象到window对象中。该接口可以获取最后一次调用注入的对象的frame的URL。
 
 **起始版本：** 12
 
@@ -5679,7 +5679,7 @@ struct WebComponent {
 onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void
 ```
 
-注册回调函数，使用[enableNativeMediaPlayer](../arkts-components/arkts-arkweb-web-comp-attribute.md#enablenativemediaplayer)开启应用接管网页媒体播放功能后，当网页中有播放媒体时，触发注册的回调函数。
+注册回调函数，使用enableNativeMediaPlayer开启应用接管网页媒体播放功能后，当网页中有播放媒体时，触发注册的回调函数。
 
 如果应用接管网页媒体播放功能未开启，则注册的回调函数不会被触发。
 
@@ -6701,7 +6701,7 @@ async function readRawFile(path: string, context: UIContext) {
 }
 ```
 
-JavaScript资源的获取方式也可通过[数据请求](../../apis-network-kit/arkts-apis/arkts-network-net-http.md)的方式获取，但此方法获取到的HTTP响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过数据请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
+JavaScript资源的获取方式也可通过数据请求的方式获取，但此方法获取到的HTTP响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过数据请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
 
 编写业务用组件代码。
 
@@ -8157,7 +8157,7 @@ struct WebComponent {
 runJavaScriptExt(script: string | ArrayBuffer): Promise<JsMessageExt>
 ```
 
-异步执行JavaScript脚本，并通过Promise方式返回脚本执行的结果。runJavaScriptExt需要在loadUrl完成后，比如[onPageEnd](../arkts-components/arkts-arkweb-web-comp-attribute.md#onpageend)中调用。
+异步执行JavaScript脚本，并通过Promise方式返回脚本执行的结果。runJavaScriptExt需要在loadUrl完成后，比如onPageEnd中调用。
 
 > **说明：** 
 > 
@@ -8884,7 +8884,7 @@ Scroll Test
 searchAllAsync(searchString: string): void
 ```
 
-异步查找网页中所有匹配关键字'searchString'的内容并高亮，结果通过[onSearchResultReceive](../arkts-components/arkts-arkweb-web-comp-attribute.md#onsearchresultreceive)异步返回。
+异步查找网页中所有匹配关键字'searchString'的内容并高亮，结果通过onSearchResultReceive异步返回。
 
 **起始版本：** 9
 
@@ -9647,7 +9647,7 @@ setCustomUserAgent(userAgent: string): void
 
 > **说明：** 
 > 
-> - 当Web组件src设置了URL时，建议在[onControllerAttached](../arkts-components/arkts-arkweb-web-comp-attribute.md#oncontrollerattached)回调中设置User-Agent。不要在onLoadIntercept回调中设置，否则可能会设置失败或导致不可预期的后果。
+> - 当Web组件src设置了URL时，建议在onControllerAttached回调中设置User-Agent。不要在onLoadIntercept回调中设置，否则可能会设置失败或导致不可预期的后果。
 > 
 > - 若未在onControllerAttached回调中设置User-Agent，再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
 > 
@@ -9771,7 +9771,7 @@ setErrorPageEnabled(enable: boolean): void
 
 设置是否启用默认错误页。
 
-在当前接口设置为true时如果页面加载发生错误将触发[onOverrideErrorPage](../arkts-components/arkts-arkweb-web-comp-attribute.md#onoverrideerrorpage)回调，可在该回调接口中设置自定义的错误展示页面。
+在当前接口设置为true时如果页面加载发生错误将触发onOverrideErrorPage回调，可在该回调接口中设置自定义的错误展示页面。
 
 **起始版本：** 20
 
@@ -9824,7 +9824,7 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 
 设置是否启用mainframe错误页功能，并可控制是否同时启用subframe错误页功能。
 
-当enable设置为true时，mainframe加载发生错误将展示错误页：若设置了[onOverrideErrorPage](../arkts-components/arkts-arkweb-web-comp-attribute.md#onoverrideerrorpage)回调，则展示用户自定义的错误页；若未设置，则展示ArkWeb提供的默认错误页。当enable和includeSubframe同时设置为true时，subframe加载发生错误也会展示错误页，onOverrideErrorPage回调对subframe同样生效。
+当enable设置为true时，mainframe加载发生错误将展示错误页：若设置了onOverrideErrorPage回调，则展示用户自定义的错误页；若未设置，则展示ArkWeb提供的默认错误页。当enable和includeSubframe同时设置为true时，subframe加载发生错误也会展示错误页，onOverrideErrorPage回调对subframe同样生效。
 
 > **说明：** 
 > 
@@ -9832,7 +9832,7 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 > 
 > - 当includeSubframe设置为false时，本接口行为与[setErrorPageEnabled](#seterrorpageenabled)一致，即仅启用mainframe错误页功能，不启用subframe错误页功能。
 > 
-> - 可通过[errorPageEvent.request.isMainFrame()](../arkts-components/arkts-arkweb-web-comp-webresourcerequest-c.md#ismainframe)判断错误来源是mainframe还是subframe，以便在onOverrideErrorPage回调中分别设置对应的自定义错误页。26.0.0
+> - 可通过errorPageEvent.request.isMainFrame()判断错误来源是mainframe还是subframe，以便在onOverrideErrorPage回调中分别设置对应的自定义错误页。26.0.0
 
 **起始版本：** 26.0.0
 
@@ -10075,7 +10075,7 @@ struct WebComponent {
 setPathAllowingUniversalAccess(pathList: Array<string>): void
 ```
 
-设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源。典型使用场景：用于需要允许Web组件跨域访问本地资源文件，同时限制访问范围以保证安全的场景。（[fileAccess](../arkts-components/arkts-arkweb-web-comp-attribute.md#fileaccess)的行为将会被此接口行为覆盖）。
+设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源。典型使用场景：用于需要允许Web组件跨域访问本地资源文件，同时限制访问范围以保证安全的场景。（fileAccess的行为将会被此接口行为覆盖）。
 
 setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
 
@@ -10100,7 +10100,7 @@ setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风�
 * /data/storage/el2/base/temp  
 * /data/storage/el2/base/haps/entry/temp/example
 
-当路径列表中有其中一个路径不满足以上条件之一，则会抛出异常码401，并且设置路径列表失败。当设置的路径列表为空，则file协议可访问范围以[fileAccess](../arkts-components/arkts-arkweb-web-comp-attribute.md#fileaccess)的行为为准。
+当路径列表中有其中一个路径不满足以上条件之一，则会抛出异常码401，并且设置路径列表失败。当设置的路径列表为空，则file协议可访问范围以fileAccess的行为为准。
 
 **起始版本：** 12
 
@@ -10395,7 +10395,7 @@ static setScrollbarMode(scrollbarMode: ScrollbarMode): void
 > 
 > - 根据滚动条模式，改变当前应用所有web滚动条模式为常驻滚动条或非常驻滚动条。
 > 
-> - 若[forceDisplayScrollBar](../arkts-components/arkts-arkweb-web-comp-attribute.md#forcedisplayscrollbar)接口与当前接口同时设置，forceDisplayScrollBar接口设置不生效。
+> - 若forceDisplayScrollBar接口与当前接口同时设置，forceDisplayScrollBar接口设置不生效。
 > 
 > - 该接口需要在WebViewController绑定Web组件之前调用。
 
@@ -11302,7 +11302,7 @@ struct WebComponent {
 setZoomFactor(zoomFactor: number): void
 ```
 
-调用此接口设置当前网页的浏览器级缩放倍率。文字与图片同时缩放，页面重新布局（reflow）以适应Web组件宽度。该接口与[zoom](#zoom)、[zoomIn](#zoomin)、[zoomOut](#zoomout)（仅视觉缩放，不触发重新布局）以及[textZoomRatio](../arkts-components/arkts-arkweb-web-comp-attribute.md#textzoomratio)（仅缩放文字）相互独立。缩放倍率仅作用于当前Web组件实例，页面内跨文档跳转后保持不变。
+调用此接口设置当前网页的浏览器级缩放倍率。文字与图片同时缩放，页面重新布局（reflow）以适应Web组件宽度。该接口与[zoom](#zoom)、[zoomIn](#zoomin)、[zoomOut](#zoomout)（仅视觉缩放，不触发重新布局）以及textZoomRatio（仅缩放文字）相互独立。缩放倍率仅作用于当前Web组件实例，页面内跨文档跳转后保持不变。
 
 **起始版本：** 26.2.0
 
@@ -12195,7 +12195,7 @@ struct WebComponent {
 zoom(factor: number): void
 ```
 
-调整当前网页的缩放比例，[zoomAccess](../arkts-components/arkts-arkweb-web-comp-attribute.md#zoomaccess)需为true。
+调整当前网页的缩放比例，zoomAccess需为true。
 
 **起始版本：** 9
 

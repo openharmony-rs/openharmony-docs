@@ -70,15 +70,15 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 | --- | --- |
 | [ComputedBarAttribute](arkts-arkui-grid-comp-computedbarattribute-i.md) | 滚动条位置和长度对象。 |
 | [GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md) | Grid布局选项。其中，irregularIndexes和onGetIrregularSizeByIndex可对仅设置rowsTemplate或columnsTemplate的Grid使用，可以指定一个index数组，并为其中的index对应的GridItem设置其占据的行数与列数，使用方法参见[示例3](arkts-arkui-grid-comp.md)；onGetRectByIndex可对同时设置rowsTemplate和columnsTemplate的Grid使用，为指定的index对应的GridItem设置位置和大小，使用方法参见[示例1](arkts-arkui-grid-comp.md)。 |
-| [StartLineInfo](arkts-arkui-grid-comp-startlineinfo-i-sys.md) | 用于记录Grid页面内起始行的位置信息。 |
+| StartLineInfo | 用于记录Grid页面内起始行的位置信息。 |
 | [UIGridEvent](arkts-arkui-grid-comp-uigridevent-i.md) | frameNode中[getEvent('Grid')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-3)方法的返回值，可用于给Grid节点设置滚动事件。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnGetStartIndexByIndexCallback](arkts-arkui-grid-comp-ongetstartindexbyindexcallback-t-sys.md) | 根据指定的目标索引，计算Grid滚动到该位置时页面内对应的起始行，用于支持[scrollToIndex](arkts-arkui-scroll-comp-scroller-c.md#scrolltoindex)等操作。此回调需与onGetStartIndexByOffset同时设置才能生效。 |
-| [OnGetStartIndexByOffsetCallback](arkts-arkui-grid-comp-ongetstartindexbyoffsetcallback-t-sys.md) | 根据Grid的总偏移量，计算当前页面起始行的位置，用于快速滑动或反向滑动场景。此回调需与onGetStartIndexByIndex同时设置才能生效。 |
+| OnGetStartIndexByIndexCallback | 根据指定的目标索引，计算Grid滚动到该位置时页面内对应的起始行，用于支持[scrollToIndex](arkts-arkui-scroll-comp-scroller-c.md#scrolltoindex)等操作。此回调需与onGetStartIndexByOffset同时设置才能生效。 |
+| OnGetStartIndexByOffsetCallback | 根据Grid的总偏移量，计算当前页面起始行的位置，用于快速滑动或反向滑动场景。此回调需与onGetStartIndexByIndex同时设置才能生效。 |
 | [OnGridScrollIndexCallback](arkts-arkui-grid-comp-ongridscrollindexcallback-t.md) | Grid组件可见区域item变化事件的回调类型。 |
 
 ### 枚举
@@ -92,7 +92,7 @@ Grid(scroller?: Scroller, layoutOptions?: GridLayoutOptions)
 
 ### 示例1（固定行列Grid）
 
-可以使用[GridLayoutOptions](#grid)中的onGetRectByIndex指定GridItem的位置和大小。
+可以使用GridLayoutOptions中的onGetRectByIndex指定GridItem的位置和大小。
 
 
 
@@ -325,7 +325,7 @@ struct GridExample {
 
 ### 示例3（可滚动Grid设置跨行跨列节点）
 
-[GridLayoutOptions](#grid)的使用：irregularIndexes与onGetIrregularSizeByIndex。
+GridLayoutOptions的使用：irregularIndexes与onGetIrregularSizeByIndex。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 

@@ -27,7 +27,7 @@ import { browser } from '@kit.MDMKit';
 | 名称 | 说明 |
 | --- | --- |
 | [getManagedBrowserPolicy](arkts-mdm-browser-getmanagedbrowserpolicy-f.md) | 通过应用包名获取指定浏览器的浏览器策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。 |
-| [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getpoliciessync) | 通过appid获取指定浏览器设置的策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。 |
+| [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md) | 通过appid获取指定浏览器设置的策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。 |
 | [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md#getpoliciessync-1) | 通过appid获取指定浏览器设置的策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。 |
 | [getSelfManagedBrowserPolicy](arkts-mdm-browser-getselfmanagedbrowserpolicy-f.md) | 获取当前设备浏览器策略。 |
 | [getSelfManagedBrowserPolicyVersion](arkts-mdm-browser-getselfmanagedbrowserpolicyversion-f.md) | 获取当前设备浏览器策略版本。 |

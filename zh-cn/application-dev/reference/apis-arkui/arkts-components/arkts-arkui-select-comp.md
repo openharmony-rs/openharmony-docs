@@ -58,7 +58,7 @@ Select(options: Array<SelectOption>)
 
 ### 示例1（设置下拉菜单）
 
-该示例通过配置[SelectOption](#select)实现下拉菜单，并从API version 19开始通过设置[avoidance](arkts-arkui-select-comp-attribute.md#avoidance)属性实现菜单的避让方式。
+该示例通过配置SelectOption实现下拉菜单，并从API version 19开始通过设置[avoidance](arkts-arkui-select-comp-attribute.md#avoidance)属性实现菜单的避让方式。
 
 
 

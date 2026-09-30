@@ -72,7 +72,7 @@ struct LoadingProgressExample {
 
 ### 示例2（设置定制内容区）
 
-该示例通过[contentModifier](arkts-arkui-loadingprogress-comp-attribute.md#contentmodifier)接口，实现了定制内容区的功能，并展示了如何基于[LoadingProgressConfiguration](#loadingprogress)的[enableLoading](arkts-arkui-loadingprogress-comp-attribute.md#enableloading)属性切换自定义内容的显示效果。
+该示例通过[contentModifier](arkts-arkui-loadingprogress-comp-attribute.md#contentmodifier)接口，实现了定制内容区的功能，并展示了如何基于LoadingProgressConfiguration的[enableLoading](arkts-arkui-loadingprogress-comp-attribute.md#enableloading)属性切换自定义内容的显示效果。
 
 ```TypeScript
 // xxx.ets

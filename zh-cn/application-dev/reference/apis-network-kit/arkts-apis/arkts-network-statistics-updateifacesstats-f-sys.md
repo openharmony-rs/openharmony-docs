@@ -33,7 +33,7 @@ function updateIfacesStats(iface: string, start: number, end: number, stats: Net
 | iface | string | 是 | Network interface name. |
 | start | number | 是 | Start timestamp for the statistics data to update. |
 | end | number | 是 | End timestamp for the statistics data to update. |
-| stats | [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md) | 是 | Network statistics information. |
+| stats | NetStatsInfo | 是 | Network statistics information. |
 
 **返回值：**
 

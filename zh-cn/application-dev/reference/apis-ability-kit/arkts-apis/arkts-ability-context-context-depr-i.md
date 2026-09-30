@@ -1,4 +1,4 @@
-# Context
+# deprecated Context
 
 ```TypeScript
 export interface Context extends BaseContext
@@ -34,7 +34,7 @@ getAbilityInfo(callback: AsyncCallback<AbilityInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | 是 | 回调函数，返回true表示该Ability的配置正在更改，否则返回false。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AbilityInfo&gt; | 是 | 回调函数，返回true表示该Ability的配置正在更改，否则返回false。 |
 
 <a id="getabilityinfo-1"></a>
 
@@ -58,7 +58,7 @@ getAbilityInfo(): Promise<AbilityInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | Promise对象，返回当前归属Ability详细信息。 |
+| Promise&lt;AbilityInfo&gt; | Promise对象，返回当前归属Ability详细信息。 |
 
 ## getApplicationContext
 
@@ -80,7 +80,7 @@ getApplicationContext(): Context
 
 | 类型 | 说明 |
 | --- | --- |
-| [Context](arkts-ability-context-context-depr-i.md) | 返回应用上下文信息。 |
+| Context | 返回应用上下文信息。 |
 
 ## getApplicationInfo
 
@@ -102,7 +102,7 @@ getApplicationInfo(callback: AsyncCallback<ApplicationInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt; | 是 | 回调函数，返回当前应用程序的信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ApplicationInfo&gt; | 是 | 回调函数，返回当前应用程序的信息。 |
 
 <a id="getapplicationinfo-1"></a>
 
@@ -126,7 +126,7 @@ getApplicationInfo(): Promise<ApplicationInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt; | Promise对象，返回当前应用程序的信息。 |
+| Promise&lt;ApplicationInfo&gt; | Promise对象，返回当前应用程序的信息。 |
 
 ## getAppType
 
@@ -516,7 +516,7 @@ getHapModuleInfo(callback: AsyncCallback<HapModuleInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)&gt; | 是 | 回调函数，返回应用的ModuleInfo对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HapModuleInfo&gt; | 是 | 回调函数，返回应用的ModuleInfo对象。 |
 
 <a id="gethapmoduleinfo-1"></a>
 
@@ -540,7 +540,7 @@ getHapModuleInfo(): Promise<HapModuleInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)&gt; | Promise对象，返回应用的ModuleInfo对象。 |
+| Promise&lt;HapModuleInfo&gt; | Promise对象，返回应用的ModuleInfo对象。 |
 
 ## getOrCreateDistributedDir
 

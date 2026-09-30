@@ -3295,9 +3295,9 @@ struct Index {
 
 ### 示例2（设置节点组剔除属性）
 
-该示例演示在组件的属性动画场景下，如何通过使用节点组剔除属性[excludeFromRenderGroup](arkts-arkui-common-comp-commonmethod-c-sys.md#excludefromrendergroup)，避免节点组缓存反复失效。
+该示例演示在组件的属性动画场景下，如何通过使用节点组剔除属性excludeFromRenderGroup，避免节点组缓存反复失效。
 
-从API version 22开始，新增[excludeFromRenderGroup](arkts-arkui-common-comp-commonmethod-c-sys.md#excludefromrendergroup)属性。
+从API version 22开始，新增excludeFromRenderGroup属性。
 
 
 
@@ -12321,7 +12321,7 @@ struct Index {
 
 ### 示例2（动态调整属性值）
 
-通过[Slider](../../apis-arkui/arkui-js/js-components-basic-slider.md)接口动态调整[borderImage](arkts-arkui-common-comp-commonmethod-c.md#borderimage)接口中属性值。
+通过Slider接口动态调整[borderImage](arkts-arkui-common-comp-commonmethod-c.md#borderimage)接口中属性值。
 
 
 
@@ -16395,9 +16395,9 @@ struct FatherControlChild {
 
 ### 示例1（设置跟手变形拖拽动画）
 
-该示例通过设置[dragAnimationType](#focuscontrol)为FOLLOW_HAND_MORPH实现跟手变形拖拽动画效果，并在拖拽结束时通过[executeFollowHandMorphDropAnimation](arkts-arkui-common-comp-dragevent-i-sys.md#executefollowhandmorphdropanimation)执行自定义落位动效。
+该示例通过设置[dragAnimationType](#focuscontrol)为FOLLOW_HAND_MORPH实现跟手变形拖拽动画效果，并在拖拽结束时通过executeFollowHandMorphDropAnimation执行自定义落位动效。
 
-从API版本26.0.0开始，新增[dragAnimationType](#focuscontrol)属性、[executeFollowHandMorphDropAnimation](arkts-arkui-common-comp-dragevent-i-sys.md#executefollowhandmorphdropanimation)方法、[interruptFollowHandMorphDropAnimation](../arkts-apis/arkts-arkui-arkui-uicontext-dragcontroller-c-sys.md#interruptfollowhandmorphdropanimation)方法。
+从API版本26.0.0开始，新增[dragAnimationType](#focuscontrol)属性、executeFollowHandMorphDropAnimation方法、interruptFollowHandMorphDropAnimation方法。
 
 ```TypeScript
 // xxx.ets

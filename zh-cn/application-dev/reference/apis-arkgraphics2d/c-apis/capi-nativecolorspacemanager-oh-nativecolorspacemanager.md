@@ -1,4 +1,4 @@
-# OH_NativeColorSpaceManager
+# OH_NativeColorSpaceManager (NativeColorSpaceManager)
 
 ```c
 typedef struct OH_NativeColorSpaceManager OH_NativeColorSpaceManager

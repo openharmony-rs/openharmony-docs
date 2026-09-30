@@ -347,7 +347,7 @@ getCookieManager(): WebCookie
 
 | 类型 | 说明 |
 | --- | --- |
-| [WebCookie](arkts-arkweb-web-comp-webcookie-c.md) | Web组件cookie管理对象，参考[WebCookie](arkts-arkweb-web-comp.md)定义。 |
+| [WebCookie](arkts-arkweb-web-comp-webcookie-c.md) | Web组件cookie管理对象，参考WebCookie定义。 |
 
 **示例**
 

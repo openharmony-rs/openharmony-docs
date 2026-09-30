@@ -28,8 +28,8 @@ import { hfp } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [HandsFreeAudioGatewayProfile](arkts-connectivity-hfp-handsfreeaudiogatewayprofile-i-sys.md) | 该实例表示蓝牙通话音频中的HFP AG角色‌。 |
-| [HandsFreeHfProfile](arkts-connectivity-hfp-handsfreehfprofile-i-sys.md) | 该实例表示蓝牙通话音频中的HF角色‌。 |
+| HandsFreeAudioGatewayProfile | 该实例表示蓝牙通话音频中的HFP AG角色‌。 |
+| HandsFreeHfProfile | 该实例表示蓝牙通话音频中的HF角色‌。 |
 <!--DelEnd-->
 
 ### 类型

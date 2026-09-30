@@ -44,7 +44,7 @@ UIExtensionComponent(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | import('../api/@ohos.app.ability.Want').default | 是 | 表示UIExtensionAbility的want |
-| options | [UIExtensionOptions](arkts-arkui-uiextensioncomponent-comp-uiextensionoptions-i-sys.md) | 否 | UIExtensionComponentAttribute的构造配置 |
+| options | UIExtensionOptions | 否 | UIExtensionComponentAttribute的构造配置 |
 
 ## 汇总
 
@@ -52,22 +52,22 @@ UIExtensionComponent(
 
 | 名称 | 说明 |
 | --- | --- |
-| [TerminationInfo](arkts-arkui-uiextensioncomponent-comp-terminationinfo-i-sys.md) | 用于表示被拉起的UIExtensionAbility通过调用`terminateSelfWithResult`或者`terminateSelf`正常退出时的返回结果。 |
-| [UIExtensionOptions](arkts-arkui-uiextensioncomponent-comp-uiextensionoptions-i-sys.md) | 用于在UIExtensionComponent进行构造时传递可选的构造参数。 |
-| [UIExtensionProxy](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md) | 用于在双方建立连接成功后，组件使用方将数据发送给被拉起的Ability，并订阅和取消订阅扩展Ability的注册事件。 |
+| TerminationInfo | 用于表示被拉起的UIExtensionAbility通过调用`terminateSelfWithResult`或者`terminateSelf`正常退出时的返回结果。 |
+| UIExtensionOptions | 用于在UIExtensionComponent进行构造时传递可选的构造参数。 |
+| UIExtensionProxy | 用于在双方建立连接成功后，组件使用方将数据发送给被拉起的Ability，并订阅和取消订阅扩展Ability的注册事件。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [ReceiveCallback](arkts-arkui-uiextensioncomponent-comp-receivecallback-t-sys.md) | 回调函数，用于封装被拉起的Ability发送的数据。 |
+| ReceiveCallback | 回调函数，用于封装被拉起的Ability发送的数据。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [DpiFollowStrategy](arkts-arkui-uiextensioncomponent-comp-dpifollowstrategy-e-sys.md) | 表示不同类型的DpiFollowStrategy的枚举。 |
-| [WindowModeFollowStrategy](arkts-arkui-uiextensioncomponent-comp-windowmodefollowstrategy-e-sys.md) | 窗口Mode跟随策略，用于设置窗口Mode，使其能够跟随宿主或UIExtensionAbility。 |
+| DpiFollowStrategy | 表示不同类型的DpiFollowStrategy的枚举。 |
+| WindowModeFollowStrategy | 窗口Mode跟随策略，用于设置窗口Mode，使其能够跟随宿主或UIExtensionAbility。 |
 
 ## 示例
 

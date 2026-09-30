@@ -1,4 +1,4 @@
-# ApplicationInfo
+# deprecated ApplicationInfo
 
 ```TypeScript
 export interface ApplicationInfo
@@ -8,13 +8,13 @@ export interface ApplicationInfo
 
 > **说明：** 
 > 
-> 从API version 9开始，该模块不再维护，建议使用[bundleManager-ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)替代。
+> 从API version 9开始，该模块不再维护，建议使用bundleManager-ApplicationInfo替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)
+**替代接口：** ApplicationInfo
 
 <!--Device-unnamed-export interface ApplicationInfo--><!--Device-unnamed-export interface ApplicationInfo-End-->
 

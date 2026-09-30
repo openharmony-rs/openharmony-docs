@@ -48,7 +48,7 @@ function invokeFunction(functionNamespace: string, functionName: string,
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [35600050](../errorcode-ability.md#35600050-偶发性报错) | System Error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module. |
+| 35600050 | System Error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module. |
 | [35600060](../errorcode-ability.md#35600060-function不存在) | The function does not exist. |
 | [35600061](../errorcode-ability.md#35600061-function执行失败) | The function execute failed. |
 | [35600062](../errorcode-ability.md#35600062-function执行超时) | The function execute timeout. |
