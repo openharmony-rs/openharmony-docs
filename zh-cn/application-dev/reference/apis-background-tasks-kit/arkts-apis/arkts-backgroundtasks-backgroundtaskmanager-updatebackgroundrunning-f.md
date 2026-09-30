@@ -127,7 +127,7 @@ function updateBackgroundRunning(context: Context, request: ContinuousTaskReques
 | [9800005](../errorcode-backgroundTaskMgr.md#9800005-长时任务校验失败) | Continuous task verification failed. |
 | [9800006](../errorcode-backgroundTaskMgr.md#9800006-长时任务通知信息校验失败) | Notification verification failed for a continuous task. |
 | [9800007](../errorcode-backgroundTaskMgr.md#9800007-长时任务信息存储失败) | Continuous task storage failed. |
-| [9800008](../errorcode-backgroundTaskMgr.md#9800008-请求的长时任务不支持此设备类型) | The requested continuous task is not supported on this device type.<br>**适用版本：** 26.2.0+ |
+| 9800008 | The requested continuous task is not supported on this device type.<br>**适用版本：** 26.2.0+ |
 
 **示例**
 

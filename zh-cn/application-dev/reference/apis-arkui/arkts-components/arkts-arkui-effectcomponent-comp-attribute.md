@@ -8,7 +8,7 @@ declare class EffectComponentAttribute extends CommonMethod<EffectComponentAttri
 
 不支持通用事件。
 
-**继承/实现关系：** EffectComponentAttribute extends CommonMethod<EffectComponentAttribute>
+**继承/实现关系：** EffectComponentAttribute extends CommonMethod&lt;EffectComponentAttribute&gt;
 
 **起始版本：** 10
 

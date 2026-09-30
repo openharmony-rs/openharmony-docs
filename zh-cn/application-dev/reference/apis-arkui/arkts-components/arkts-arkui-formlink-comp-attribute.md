@@ -8,7 +8,7 @@ declare class FormLinkAttribute extends CommonMethod<FormLinkAttribute>
 
 不支持[通用事件](arkts-arkui-common-comp.md)。
 
-**继承/实现关系：** FormLinkAttribute extends CommonMethod<FormLinkAttribute>
+**继承/实现关系：** FormLinkAttribute extends CommonMethod&lt;FormLinkAttribute&gt;
 
 **起始版本：** 10
 

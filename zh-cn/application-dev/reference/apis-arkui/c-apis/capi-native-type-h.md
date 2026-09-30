@@ -54,19 +54,19 @@ Defines the common types for the native module.
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_Alignment](#arkui_alignment) | ArkUI_Alignment | Enumerates the alignment modes. |
-| [ArkUI_XComponentType](#arkui_xcomponenttype) | ArkUI_XComponentType | Enumerates the types of the <b><XComponent></b> component. |
+| [ArkUI_XComponentType](#arkui_xcomponenttype) | ArkUI_XComponentType | Enumerates the types of the <b>&lt;XComponent&gt;</b> component. |
 | [ArkUI_CopyOptions](#arkui_copyoptions) | ArkUI_CopyOptions | Enumerates the text copy and paste modes. |
 | [ArkUI_ShadowType](#arkui_shadowtype) | ArkUI_ShadowType | Enumerates the shadow types. |
 | [ArkUI_FocusWrapMode](#arkui_focuswrapmode) | ArkUI_FocusWrapMode | Enumerates the focus wrap mode of components. |
 | [ArkUI_ItemFillPolicy](#arkui_itemfillpolicy) | ArkUI_ItemFillPolicy | Specifies the number of columns for different responsive breakpoint specifications. |
-| [ArkUI_Axis](#arkui_axis) | ArkUI_Axis | Enumerates the scroll directions for the <b><List></b> component. |
+| [ArkUI_Axis](#arkui_axis) | ArkUI_Axis | Enumerates the scroll directions for the <b>&lt;List&gt;</b> component. |
 | [ArkUI_BorderStyle](#arkui_borderstyle) | ArkUI_BorderStyle | Enumerates the border styles. |
 | [ArkUI_ShadowStyle](#arkui_shadowstyle) | ArkUI_ShadowStyle | Enumerates the shadow styles. |
 | [ArkUI_AnimationCurve](#arkui_animationcurve) | ArkUI_AnimationCurve | Enumerates the animation curves. |
 | [ArkUI_SwiperArrow](#arkui_swiperarrow) | ArkUI_SwiperArrow | Enumerates arrow styles of the navigation point indicator. |
 | [ArkUI_SwiperNestedScrollMode](#arkui_swipernestedscrollmode) | ArkUI_SwiperNestedScrollMode | Nested scrolling mode for Swiper components and parent components. |
 | [ArkUI_PageFlipMode](#arkui_pageflipmode) | ArkUI_PageFlipMode | Enumerates the page flipping modes using the mouse wheel for the <b>Swiper</b> component. |
-| [ArkUI_SwiperAnimationMode](#arkui_swiperanimationmode) | ArkUI_SwiperAnimationMode | Enumerates the animation modes for [NODE_SWIPER_INDEX](capi-native-node-h.md#arkui_nodeattributetype). |
+| [ArkUI_SwiperAnimationMode](#arkui_swiperanimationmode) | ArkUI_SwiperAnimationMode | Enumerates the animation modes for NODE_SWIPER_INDEX. |
 | [ArkUI_AccessibilityMode](#arkui_accessibilitymode) | ArkUI_AccessibilityMode | Enumerates the accessibility modes. |
 | [ArkUI_AnimationPlayMode](#arkui_animationplaymode) | ArkUI_AnimationPlayMode | Enumerates the animation playback modes. |
 | [ArkUI_AdaptiveColor](#arkui_adaptivecolor) | ArkUI_AdaptiveColor | Enumerates the adaptive color modes. |
@@ -594,7 +594,7 @@ enum ArkUI_XComponentType
 
 **描述：**
 
-Enumerates the types of the <b><XComponent></b> component.
+Enumerates the types of the <b>&lt;XComponent&gt;</b> component.
 
 **起始版本：** 12
 
@@ -683,7 +683,7 @@ enum ArkUI_Axis
 
 **描述：**
 
-Enumerates the scroll directions for the <b><List></b> component.
+Enumerates the scroll directions for the <b>&lt;List&gt;</b> component.
 
 **起始版本：** 12
 
@@ -819,7 +819,7 @@ enum ArkUI_SwiperAnimationMode
 
 **描述：**
 
-Enumerates the animation modes for [NODE_SWIPER_INDEX](capi-native-node-h.md#arkui_nodeattributetype).
+Enumerates the animation modes for NODE_SWIPER_INDEX.
 
 **起始版本：** 15
 
@@ -1489,11 +1489,11 @@ Define accessible action types.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0 | click action. |
-| ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1 | long click action. |
-| ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2 | cut action. |
-| ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3 | copy action. |
-| ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4 | paste action. |
+| ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 &lt;&lt; 0 | click action. |
+| ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 &lt;&lt; 1 | long click action. |
+| ARKUI_ACCESSIBILITY_ACTION_CUT = 1 &lt;&lt; 2 | cut action. |
+| ARKUI_ACCESSIBILITY_ACTION_COPY = 1 &lt;&lt; 3 | copy action. |
+| ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 &lt;&lt; 4 | paste action. |
 
 ### ArkUI_NavDestinationState
 
@@ -1556,8 +1556,8 @@ defines the enumerated value of the extended security zone.
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | The default security zone includes the status bar and navigation bar. |
-| ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | Non-secure areas of the device, such as bangs or hole holes. |
-| ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2 | Soft keyboard area. |
+| ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 &lt;&lt; 1 | Non-secure areas of the device, such as bangs or hole holes. |
+| ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 &lt;&lt; 2 | Soft keyboard area. |
 
 ### ArkUI_SafeAreaEdge
 
@@ -1574,9 +1574,9 @@ defines the enumerated value of the direction of the extended security zone.
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SAFE_AREA_EDGE_TOP = 1 | Upper area. |
-| ARKUI_SAFE_AREA_EDGE_BOTTOM = 1 << 1 | Lower area. |
-| ARKUI_SAFE_AREA_EDGE_START = 1 << 2 | Front area. |
-| ARKUI_SAFE_AREA_EDGE_END = 1 << 3 | Tail area. |
+| ARKUI_SAFE_AREA_EDGE_BOTTOM = 1 &lt;&lt; 1 | Lower area. |
+| ARKUI_SAFE_AREA_EDGE_START = 1 &lt;&lt; 2 | Front area. |
+| ARKUI_SAFE_AREA_EDGE_END = 1 &lt;&lt; 3 | Tail area. |
 
 ### ArkUI_KeyboardAvoidMode
 
@@ -1737,9 +1737,9 @@ Define the edges for expanding the safe area in layout.
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP = 1 | Top edge of the safe area. |
-| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM = 1 << 1 | Bottom edge of the safe area. |
-| ARKUI_LAYOUT_SAFE_AREA_EDGE_START = 1 << 2 | Start edge of the safe area. |
-| ARKUI_LAYOUT_SAFE_AREA_EDGE_END = 1 << 3 | End edge of the safe area. |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM = 1 &lt;&lt; 1 | Bottom edge of the safe area. |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_START = 1 &lt;&lt; 2 | Start edge of the safe area. |
+| ARKUI_LAYOUT_SAFE_AREA_EDGE_END = 1 &lt;&lt; 3 | End edge of the safe area. |
 | ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM | Vertical edge of the safe area. |
 | ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL = ARKUI_LAYOUT_SAFE_AREA_EDGE_START \| ARKUI_LAYOUT_SAFE_AREA_EDGE_END | Horizontal edge of the safe area. |
 | ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL = ARKUI_LAYOUT_SAFE_AREA_EDGE_VERTICAL \| ARKUI_LAYOUT_SAFE_AREA_EDGE_HORIZONTAL | All edges of the safe area. |

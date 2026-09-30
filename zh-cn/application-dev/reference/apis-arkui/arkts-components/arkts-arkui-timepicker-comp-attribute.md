@@ -8,7 +8,7 @@ declare class TimePickerAttribute extends CommonMethod<TimePickerAttribute>
 
 除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
 
-**继承/实现关系：** TimePickerAttribute extends CommonMethod<TimePickerAttribute>
+**继承/实现关系：** TimePickerAttribute extends CommonMethod&lt;TimePickerAttribute&gt;
 
 **起始版本：** 8
 

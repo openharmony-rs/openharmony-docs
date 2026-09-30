@@ -42,7 +42,7 @@ drawBehind?(drawContext: DrawContext): void
 
 **示例**
 
-请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
+请参考[示例1（通过DrawModifier进行自定义绘制）](#drawmodifier)。
 
 ## drawContent
 
@@ -70,7 +70,7 @@ drawContent?(drawContext: DrawContext): void
 
 **示例**
 
-请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
+请参考[示例1（通过DrawModifier进行自定义绘制）](#drawmodifier)。
 
 ## drawForeground
 
@@ -98,7 +98,7 @@ drawForeground(drawContext: DrawContext): void
 
 **示例**
 
-请参考[示例2（通过DrawModifier对容器的前景进行自定义绘制）](#示例2通过drawmodifier对容器的前景进行自定义绘制)。
+请参考[示例2（通过DrawModifier对容器的前景进行自定义绘制）](#drawmodifier)。
 
 ## drawFront
 
@@ -126,7 +126,7 @@ drawFront?(drawContext: DrawContext): void
 
 **示例**
 
-请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
+请参考[示例1（通过DrawModifier进行自定义绘制）](#drawmodifier)。
 
 ## drawOverlay
 
@@ -237,4 +237,4 @@ invalidate(): void
 
 **示例**
 
-请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
+请参考[示例1（通过DrawModifier进行自定义绘制）](#drawmodifier)。

@@ -6,7 +6,7 @@ declare class DepthComponentAttribute extends CommonMethod<DepthComponentAttribu
 
 除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-**继承/实现关系：** DepthComponentAttribute extends CommonMethod<DepthComponentAttribute>
+**继承/实现关系：** DepthComponentAttribute extends CommonMethod&lt;DepthComponentAttribute&gt;
 
 **起始版本：** 26.0.0
 

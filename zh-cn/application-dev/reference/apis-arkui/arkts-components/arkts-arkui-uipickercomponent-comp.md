@@ -248,7 +248,7 @@ struct UIPickerComponentSelectedIndexExample {
 
 ### 示例4（设置选中项指示器）
 
-从API version 22开始，该示例实现了设置UIPickerComponent容器的选中项指示器。具体包括：在使用背景指示器时，设置[PickerIndicatorStyle](#pickerindicatorstyle对象说明)的backgroundColor、borderRadius；在使用分割线指示器时，设置[PickerIndicatorStyle](#pickerindicatorstyle对象说明)的strokeWidth、dividerColor、startMargin、endMargin。
+从API version 22开始，该示例实现了设置UIPickerComponent容器的选中项指示器。具体包括：在使用背景指示器时，设置PickerIndicatorStyle的backgroundColor、borderRadius；在使用分割线指示器时，设置PickerIndicatorStyle的strokeWidth、dividerColor、startMargin、endMargin。
 
 
 
@@ -1291,9 +1291,9 @@ struct TimeUIPickerComponentExample {
 
 ### 示例9（设置选项高度）
 
-该示例通过[itemHeight](#itemheight)设置UIPickerComponent容器的选项高度。
+该示例通过[itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight)设置UIPickerComponent容器的选项高度。
 
-从API版本26.0.0开始，新增[itemHeight](#itemheight)属性。
+从API版本26.0.0开始，新增[itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight)属性。
 
 
 

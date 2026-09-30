@@ -51,7 +51,7 @@ didFail(code: WebNetErrorList): void
 
 **示例**
 
-示例请参考[OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
+示例请参考OnRequestStart。
 
 <a id="didfail-1"></a>
 
@@ -265,7 +265,7 @@ didFinish(): void
 
 **示例**
 
-示例请参考[OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
+示例请参考OnRequestStart。
 
 ## didReceiveResponse
 
@@ -298,7 +298,7 @@ didReceiveResponse(response: WebSchemeHandlerResponse): void
 
 **示例**
 
-示例请参考[OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
+示例请参考OnRequestStart。
 
 ## didReceiveResponseBody
 
@@ -331,4 +331,4 @@ didReceiveResponseBody(data: ArrayBuffer): void
 
 **示例**
 
-示例请参考[OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
+示例请参考OnRequestStart。

@@ -158,7 +158,7 @@ struct UnionEffectContainerPage {
 
 ### 示例2（设置不同类型的融合形变效果）
 
-该示例主要演示如何使用[unionMode](#unionmode)接口，通过设置不同的融合类型，产生不同的融合形变效果。
+该示例主要演示如何使用unionMode接口，通过设置不同的融合类型，产生不同的融合形变效果。
 
 从API版本26.0.0开始，新增unionMode接口。
 

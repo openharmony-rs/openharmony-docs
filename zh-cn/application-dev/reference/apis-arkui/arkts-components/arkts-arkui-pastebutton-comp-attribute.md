@@ -8,7 +8,7 @@ declare class PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAt
 
 不支持通用事件，仅支持以下事件。
 
-**继承/实现关系：** PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAttribute>
+**继承/实现关系：** PasteButtonAttribute extends SecurityComponentMethod&lt;PasteButtonAttribute&gt;
 
 **起始版本：** 10
 

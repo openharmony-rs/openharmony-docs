@@ -1375,7 +1375,7 @@ createWebMessagePorts(isExtentionType?: boolean): Array<WebMessagePort>
 
 **示例**
 
-完整示例代码参考[onMessageEventExt](./arkts-apis-webview-WebMessagePort.md#onmessageeventext)。
+完整示例代码参考onMessageEventExt。
 
 ## createWebPrintDocumentAdapter
 
@@ -2073,7 +2073,7 @@ executeAIPageCommand(command: string): Promise<string>
 
 > **说明：** 
 > 
-> - 不同命令的返回格式不同，详细说明请参见[AIPageCommand](../../../reference/apis-arkweb/arkts-apis-webview-AIPageCommand.md)和[AIPageInteraction](../../../reference/apis-arkweb/arkts-apis-webview-AIPageInteraction.md)。
+> - 不同命令的返回格式不同，详细说明请参见AIPageCommand和AIPageInteraction。
 > 
 > - 当命令无法分发或无结果返回时，Promise可能返回空字符串。
 > 
@@ -2091,7 +2091,7 @@ executeAIPageCommand(command: string): Promise<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| command | string | 是 | JSON格式的命令参数。不同命令的参数格式不同，查询类命令请参见[AIPageCommand](../../../reference/apis-arkweb/arkts-apis-webview-AIPageCommand.md)，交互类命令请参见[AIPageInteraction](../../../reference/apis-arkweb/arkts-apis-webview-AIPageInteraction.md)。 |
+| command | string | 是 | JSON格式的命令参数。不同命令的参数格式不同，查询类命令请参见AIPageCommand，交互类命令请参见AIPageInteraction。 |
 
 **返回值：**
 
@@ -4444,7 +4444,7 @@ injectOfflineResources(resourceMaps: Array<OfflineResourceMap>): void
 
 接口推荐配合动态组件使用，使用离线的Web组件用于将资源注入到内核的内存缓存中，并在适当的时机加载业务用Web组件使用这些资源。下方是代码示例：
 
-首先，在EntryAbility中将[UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md)存到[localStorage](../../../ui/state-management/arkts-localstorage.md)中。
+首先，在EntryAbility中将UIContext存到[localStorage](../../../ui/state-management/arkts-localstorage.md)中。
 
 ```TypeScript
 // EntryAbility.ets
@@ -6581,7 +6581,7 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
 
 接口推荐配合动态组件使用，使用离线的Web组件用于生成字节码缓存，并在适当的时机加载业务用Web组件使用这些字节码缓存。下方是代码示例：
 
-首先，在EntryAbility中将[UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md)存到[localStorage](../../../ui/state-management/arkts-localstorage.md)中。
+首先，在EntryAbility中将UIContext存到[localStorage](../../../ui/state-management/arkts-localstorage.md)中。
 
 ```TypeScript
 // EntryAbility.ets
@@ -10079,23 +10079,23 @@ setPathAllowingUniversalAccess(pathList: Array<string>): void
 
 setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
 
-1.应用文件目录的子目录（应用文件目录通过Ability Kit中的[Context.filesDir](../../../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
+1.应用文件目录的子目录（应用文件目录通过Ability Kit中的Context.filesDir获取），例如：
 
 * /data/storage/el2/base/files/example  
 * /data/storage/el2/base/haps/entry/files/example
 
-2.应用资源目录及其子目录（应用资源目录通过Ability Kit中的[Context.resourceDir](../../../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
+2.应用资源目录及其子目录（应用资源目录通过Ability Kit中的Context.resourceDir获取），例如：
 
 * /data/storage/el1/bundle/entry/resources/resfile  
 * /data/storage/el1/bundle/entry/resources/resfile/example
 
-3.从API version 21开始，还包括了应用缓存目录及其子目录（应用缓存目录通过Ability Kit中的[Context.cacheDir](../../../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
+3.从API version 21开始，还包括了应用缓存目录及其子目录（应用缓存目录通过Ability Kit中的Context.cacheDir获取），例如：
 
 * /data/storage/el2/base/cache  
 * /data/storage/el2/base/haps/entry/cache/example  
 * 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。
 
-4.从API version 21开始，还包括了应用临时目录及其子目录（应用临时目录通过Ability Kit中的[Context.tempDir](../../../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
+4.从API version 21开始，还包括了应用临时目录及其子目录（应用临时目录通过Ability Kit中的Context.tempDir获取），例如：
 
 * /data/storage/el2/base/temp  
 * /data/storage/el2/base/haps/entry/temp/example

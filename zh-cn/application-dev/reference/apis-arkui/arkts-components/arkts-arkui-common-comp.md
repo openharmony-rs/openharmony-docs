@@ -269,7 +269,7 @@ Common()
 | [OnMoveHandler](arkts-arkui-common-comp-onmovehandler-t.md) | 定义数据源拖拽回调。 |
 | [OnNeedSoftkeyboardCallback](arkts-arkui-common-comp-onneedsoftkeyboardcallback-t.md) | 当绑定该方法的组件判断是否需要键盘时，将触发此回调。前提条件：组件需可获焦，否则本接口不生效。 |
 | [OnScrollCallback](arkts-arkui-common-comp-onscrollcallback-t.md) | 滚动组件滑动时触发的回调。 |
-| [OnVisibleIndexesChangeCallback](arkts-arkui-common-comp-onvisibleindexeschangecallback-t.md) | 懒加载布局容器[LazyColumnLayout](arkts-arkui-lazycolumnlayout-comp-attribute.md#lazycolumnlayout)、[LazyVGridLayout](arkts-arkui-lazyvgridlayout-comp.md)、[LazyVWaterFlowLayout](arkts-arkui-lazyvwaterflowlayout-comp.md)所显示的子组件索引发生变化时的回调类型。 |
+| [OnVisibleIndexesChangeCallback](arkts-arkui-common-comp-onvisibleindexeschangecallback-t.md) | 懒加载布局容器[LazyColumnLayout](arkts-arkui-lazycolumnlayout-comp-attribute.md#lazycolumnlayout属性事件)、[LazyVGridLayout](arkts-arkui-lazyvgridlayout-comp.md)、[LazyVWaterFlowLayout](arkts-arkui-lazyvwaterflowlayout-comp.md)所显示的子组件索引发生变化时的回调类型。 |
 | [OnWillScrollCallback](arkts-arkui-common-comp-onwillscrollcallback-t.md) | Called before scroll to allow developer to control real offset the Scrollable can scroll. |
 | [OnWillStopDraggingCallback](arkts-arkui-common-comp-onwillstopdraggingcallback-t.md) | 滚动组件划动离手时触发的回调。 |
 | [Optional](arkts-arkui-common-comp-optional-t.md) | 定义可选类型，其值可以是undefined。 |
@@ -389,7 +389,7 @@ struct ForegroundBlurStyleDemo {
 
 ### 示例1（半模态设置边缘光效动画）
 
-以下示例通过设置edgeLightMode属性开启边缘光效动画，同时使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial接口实现了半透明材质效果。
+以下示例通过设置edgeLightMode属性开启边缘光效动画，同时使用SheetOptions中的systemMaterial接口实现了半透明材质效果。
 
 从API版本26.0.0开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增edgeLightMode属性。
 
@@ -447,7 +447,7 @@ struct SheetMaterialExample {
 
 ### 示例2（半模态设置模糊优化）
 
-以下示例通过设置blurSnapshot属性开启模糊优化。当使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial接口设置材质效果或使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的blurStyle接口设置模糊时发现功耗明显增加时，可以尝试开启模糊优化。
+以下示例通过设置blurSnapshot属性开启模糊优化。当使用SheetOptions中的systemMaterial接口设置材质效果或使用SheetOptions中的blurStyle接口设置模糊时发现功耗明显增加时，可以尝试开启模糊优化。
 
 从API版本26.0.0开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增blurSnapshot属性。
 
@@ -818,7 +818,7 @@ struct GridOnMoveExample {
 
 ### 示例4（Grid不规则布局使用ForEach的onMove进行拖拽，并设置拖拽事件回调）
 
-从API版本26.0.0开始，以下示例展示了ForEach在Grid组件设置拖拽效果后触发的回调事件，Grid里存在不规则的GridItem。应用可通过[irregularIndexes](ts-container-grid.md#gridlayoutoptions10对象说明)设置哪些索引是不规则节点，通过修改对应索引的rectSize调整该GridItem所占的行列数。
+从API版本26.0.0开始，以下示例展示了ForEach在Grid组件设置拖拽效果后触发的回调事件，Grid里存在不规则的GridItem。应用可通过irregularIndexes设置哪些索引是不规则节点，通过修改对应索引的rectSize调整该GridItem所占的行列数。
 
 
 
@@ -1375,7 +1375,7 @@ struct Test {
 
 ### 示例1（触摸测试模式为Block和Transparent的触摸测试效果）
 
-该示例通过设置不同的[HitTestMode](./ts-appendix-enums.md#hittestmode9)值演示了Block和Transparent的触摸测试效果。
+该示例通过设置不同的HitTestMode值演示了Block和Transparent的触摸测试效果。
 
 ```TypeScript
 // xxx.ets
@@ -1550,7 +1550,7 @@ struct BlockDescendants {
 
 ### 示例4（Stack组件中多节点重合时的触摸测试效果）
 
-该示例演示了在Stack组件中存在多节点触摸区域重叠时的触摸测试效果。此时设置[HitTestMode](./ts-appendix-enums.md#hittestmode9)为None时，重叠的背景区域无法响应触摸测试；只有设置为Transparent时，背景区域才能响应触摸测试。
+该示例演示了在Stack组件中存在多节点触摸区域重叠时的触摸测试效果。此时设置HitTestMode为None时，重叠的背景区域无法响应触摸测试；只有设置为Transparent时，背景区域才能响应触摸测试。
 
 ```TypeScript
 // xxx.ets
@@ -2184,7 +2184,7 @@ struct SafeAreaController {
 
 ### 示例1（设置组件获焦和走焦的效果）
 
-该示例通过配置[defaultFocus](#defaultfocus9)可以使绑定的组件成为[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)创建后首次获焦的焦点，配置[groupDefaultFocus](arkts-arkui-common-comp-commonmethod-c.md#groupdefaultfocus)可以使绑定的组件成为tabIndex容器创建后首次获焦的焦点，配置[focusOnTouch](arkts-arkui-common-comp-commonmethod-c.md#focusontouch)可以使绑定的组件点击后立即获焦。
+该示例通过配置defaultFocus可以使绑定的组件成为[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)创建后首次获焦的焦点，配置[groupDefaultFocus](arkts-arkui-common-comp-commonmethod-c.md#groupdefaultfocus)可以使绑定的组件成为tabIndex容器创建后首次获焦的焦点，配置[focusOnTouch](arkts-arkui-common-comp-commonmethod-c.md#focusontouch)可以使绑定的组件点击后立即获焦。
 
 示意图：
 
@@ -2341,7 +2341,7 @@ struct FocusableExample {
 
 ### 示例2（设置指定组件获焦）
 
-该示例通过配置[focusControl.requestFocus](#requestfocus9)使指定组件获取焦点。
+该示例通过配置focusControl.requestFocus使指定组件获取焦点。
 
 示意图：
 
@@ -2430,7 +2430,7 @@ struct RequestFocusExample {
 
 ### 示例3（设置焦点框样式）
 
-该示例通过配置[focusBox](#focusbox12)修改组件的焦点框样式。
+该示例通过配置focusBox修改组件的焦点框样式。
 
 
 
@@ -2709,7 +2709,7 @@ struct TabStop {
 
 从API version 18开始，该示例通过配置[nextFocus](arkts-arkui-common-comp-commonmethod-c.md#nextfocus)实现自定义走焦规则。
 
-如果不配置[nextFocus](arkts-arkui-common-comp-commonmethod-c.md#nextfocus)，默认的按下Tab键的走焦顺序为：M->A->B->C->D->E->F；配置了[nextFocus](arkts-arkui-common-comp-commonmethod-c.md#nextfocus)以后，走焦顺序变更为：M->D->F->B->C。
+如果不配置[nextFocus](arkts-arkui-common-comp-commonmethod-c.md#nextfocus)，默认的按下Tab键的走焦顺序为：M-&gt;A-&gt;B-&gt;C-&gt;D-&gt;E-&gt;F；配置了[nextFocus](arkts-arkui-common-comp-commonmethod-c.md#nextfocus)以后，走焦顺序变更为：M-&gt;D-&gt;F-&gt;B-&gt;C。
 
 ```TypeScript
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
@@ -2830,9 +2830,9 @@ struct AreaExample {
 
 ### 示例2（使用onAreaChange自定义间隔监听区域变化）
 
-该示例通过设置[expectedUpdateInterval](arkts-arkui-common-comp-areachangeoptions-i.md)，当Text布局变化时可以触发[onAreaChange](#onareachange-1)事件，达到间隔回调的效果。
+该示例通过设置[expectedUpdateInterval](arkts-arkui-common-comp-areachangeoptions-i.md)，当Text布局变化时可以触发onAreaChange事件，达到间隔回调的效果。
 
-从API版本26.0.0开始，新增[onAreaChange](#onareachange-1)、[AreaChangeCallback](arkts-arkui-common-comp-areachangecallback-t.md)和[AreaChangeOptions](arkts-arkui-common-comp-areachangeoptions-i.md)。
+从API版本26.0.0开始，新增onAreaChange、[AreaChangeCallback](arkts-arkui-common-comp-areachangecallback-t.md)和[AreaChangeOptions](arkts-arkui-common-comp-areachangeoptions-i.md)。
 
 ```TypeScript
 // xxx.ets
@@ -2912,7 +2912,7 @@ struct OutlineExample {
 
 ### 示例2（使用LocalizedEdgeColors类型）
 
-该示例将[outline](arkts-arkui-common-comp-commonmethod-c.md#outline)属性中的color属性值设置为[LocalizedEdgeColors](ts-types.md#localizededgecolors12)类型。
+该示例将[outline](arkts-arkui-common-comp-commonmethod-c.md#outline)属性中的color属性值设置为LocalizedEdgeColors类型。
 
 ```TypeScript
 // xxx.ets
@@ -2959,7 +2959,7 @@ struct OutlineExample {
 
 ### 示例1（系统组件设置自定义属性）
 
-在[Column](ts-container-column.md)组件上设置自定义属性，并在其对应的FrameNode上获取所设置的自定义属性。
+在Column组件上设置自定义属性，并在其对应的FrameNode上获取所设置的自定义属性。
 
 ```TypeScript
 // xxx.ets
@@ -3007,7 +3007,7 @@ struct CustomPropertyExample {
 
 ### 示例2（自定义组件设置自定义属性）
 
-从API版本26.0.0开始，自定义组件支持通过[customProperty](#customproperty)接口设置自定义属性。本示例以[自定义组件的自定义布局](../../../ui/state-management/arkts-page-custom-components-layout.md)场景为例，在自定义组件上设置自定义属性，并在其[onMeasureSize](ts-custom-component-layout.md#onmeasuresize10)回调中获取所设置的自定义属性。
+从API版本26.0.0开始，自定义组件支持通过customProperty接口设置自定义属性。本示例以[自定义组件的自定义布局](../../../ui/state-management/arkts-page-custom-components-layout.md)场景为例，在自定义组件上设置自定义属性，并在其onMeasureSize回调中获取所设置的自定义属性。
 
 ```TypeScript
 // xxx.ets
@@ -3216,7 +3216,7 @@ struct Index {
 
 ### 示例4（Modifier和自定义Modifier的属性同时生效）
 
-该示例通过自定义Modifier设置了width、height和margin，点击按钮时设置[borderStyle](ts-appendix-enums.md#borderstyle)和[borderWidth](ts-universal-attributes-border.md#borderwidth)，点击后5个属性同时生效。
+该示例通过自定义Modifier设置了width、height和margin，点击按钮时设置borderStyle和borderWidth，点击后5个属性同时生效。
 
 
 
@@ -3499,7 +3499,7 @@ struct AttributeHoveredDemo {
 
 ### 示例1（使用onHover）
 
-该示例通过按钮设置了悬浮事件[onHover](#onhover)，鼠标悬浮可触发该事件修改按钮颜色。
+该示例通过按钮设置了悬浮事件onHover，鼠标悬浮可触发该事件修改按钮颜色。
 
 示意图：
 
@@ -3877,7 +3877,7 @@ struct TipsExample {
 
 ### 示例3（设置悬浮气泡的沉浸光感视效）
 
-该示例通过[TipsOptions](#tipsoptions类型说明)中的systemMaterial属性设置组件的系统材质，实现了bindTips的沉浸光感视效。
+该示例通过[TipsOptions](#类型)中的systemMaterial属性设置组件的系统材质，实现了bindTips的沉浸光感视效。
 
 该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
@@ -4050,7 +4050,7 @@ struct Index {
 
 ### 示例1（自定义手势判定）
 
-该示例通过配置[onGestureJudgeBegin](arkts-arkui-common-comp-commonmethod-c.md#ongesturejudgebegin)实现了对长按、快滑、滑动、捏合和拖动手势的自定义判定。从API version 21开始，支持通过[BaseEvent](ts-universal-events-click.md#baseevent8)的axisPinch属性获取双指缩放比例。
+该示例通过配置[onGestureJudgeBegin](arkts-arkui-common-comp-commonmethod-c.md#ongesturejudgebegin)实现了对长按、快滑、滑动、捏合和拖动手势的自定义判定。从API version 21开始，支持通过BaseEvent的axisPinch属性获取双指缩放比例。
 
 
 
@@ -4860,7 +4860,7 @@ struct Index {
 
 ### 示例1（使用不同裁剪属性）
 
-该示例通过[clipShape](arkts-arkui-common-comp-commonmethod-c.md#clipshape)、[clip](#clip12)、[maskShape](arkts-arkui-common-comp-commonmethod-c.md#maskshape)实现图片的裁剪和遮罩。
+该示例通过[clipShape](arkts-arkui-common-comp-commonmethod-c.md#clipshape)、clip、[maskShape](arkts-arkui-common-comp-commonmethod-c.md#maskshape)实现图片的裁剪和遮罩。
 
 
 
@@ -4908,7 +4908,7 @@ struct ClipAndMaskExample {
 
 ### 示例2（实现组件遮罩）
 
-该示例通过[mask](#mask12)实现图片的遮罩。
+该示例通过mask实现图片的遮罩。
 
 ```TypeScript
 @Entry
@@ -4975,7 +4975,7 @@ struct ProgressMaskExample {
 
 ### 示例1（通过DrawModifier进行自定义绘制）
 
-通过DrawModifier对[Text](ts-basic-components-text.md)组件进行自定义绘制。
+通过DrawModifier对Text组件进行自定义绘制。
 
 
 
@@ -5174,7 +5174,7 @@ struct DrawModifierExample {
 
 ### 示例2（通过DrawModifier对容器的前景进行自定义绘制）
 
-通过DrawModifier对[Column](ts-container-column.md)容器的前景进行自定义绘制。
+通过DrawModifier对Column容器的前景进行自定义绘制。
 
 ```TypeScript
 // xxx.ets
@@ -5519,7 +5519,7 @@ struct Index {
 
 ### 示例5（设置无障碍屏幕朗读滚动和焦点绿框绘制）
 
-该示例主要演示accessibilityScrollTriggerable设置无障碍节点是否支持屏幕朗读滚动、accessibilityFocusDrawLevel设置无障碍焦点绿框的绘制层级和accessibilityUseSamePage为跨进程嵌入式显示的组件（如[EmbeddedComponent](ts-container-embedded-component.md)）设置同page模式。
+该示例主要演示accessibilityScrollTriggerable设置无障碍节点是否支持屏幕朗读滚动、accessibilityFocusDrawLevel设置无障碍焦点绿框的绘制层级和accessibilityUseSamePage为跨进程嵌入式显示的组件（如EmbeddedComponent）设置同page模式。
 
 
 
@@ -5678,7 +5678,7 @@ struct Index {
 
 ### 示例7（设置无障碍组件状态播报信息）
 
-该示例主要通过[accessibilityStateDescription](#accessibilitystatedescription23)接口修改组件的状态播报。在开启无障碍功能后，组件发生聚焦或者点击后，屏幕朗读进行组件的状态信息播报。
+该示例主要通过accessibilityStateDescription接口修改组件的状态播报。在开启无障碍功能后，组件发生聚焦或者点击后，屏幕朗读进行组件的状态信息播报。
 
 从API version 23开始，新增accessibilityStateDescription接口。
 
@@ -5706,7 +5706,7 @@ struct Index {
 
 ### 示例8（设置无障碍操作选项修改组件滑动步数）
 
-本示例主要演示如何通过[accessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明)中的scrollStep参数，自定义组件的滑动步数。以下将以slider组件在屏幕朗读场景下滑动距离变化为例进行说明。
+本示例主要演示如何通过accessibilityActionOptions中的scrollStep参数，自定义组件的滑动步数。以下将以slider组件在屏幕朗读场景下滑动距离变化为例进行说明。
 
 从API version 23开始，新增AccessibilityActionOptions。
 
@@ -5786,9 +5786,9 @@ struct Index {
 
 ### 示例1（设置Text多态样式）
 
-该示例展示了[stateStyles](#statestyles)设置状态为hovered、pressed和disabled时Text组件的样式变化。
+该示例展示了stateStyles设置状态为hovered、pressed和disabled时Text组件的样式变化。
 
-从API版本26.0.0开始，[stateStyles](#statestyles)新增hovered属性。
+从API版本26.0.0开始，stateStyles新增hovered属性。
 
 
 
@@ -7201,7 +7201,7 @@ struct SheetMaterialExample {
 
 ### 示例14（半模态滚动条状态）
 
-该示例通过scrollBarState属性设置半模态内容区滚动条的显示状态，点击按钮在[BarState](ts-appendix-enums.md#barstate)的Off、On、Auto和未设置之间切换。
+该示例通过scrollBarState属性设置半模态内容区滚动条的显示状态，点击按钮在BarState的Off、On、Auto和未设置之间切换。
 
 从API版本26.1.0开始，[SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md)新增scrollBarState属性。
 
@@ -7285,9 +7285,9 @@ struct SheetMaterialExample {
 
 ### 示例1（支持滚动手势）
 
-该示例通过设置[enableScrollInteraction](#enablescrollinteraction11)属性，实现了使用手势滚动纵向列表，并在当前显示界面发生改变时回调索引。
+该示例通过设置enableScrollInteraction属性，实现了使用手势滚动纵向列表，并在当前显示界面发生改变时回调索引。
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 
 
@@ -7354,9 +7354,9 @@ struct ListExample {
 
 ### 示例2（设置边缘渐隐）
 
-该示例通过设置[fadingEdge](#fadingedge14)属性，实现了[List](ts-container-list.md)组件开启边缘渐隐效果并设置边缘渐隐长度。
+该示例通过设置fadingEdge属性，实现了List组件开启边缘渐隐效果并设置边缘渐隐长度。
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 
 
@@ -7460,9 +7460,9 @@ struct ScrollExample {
 
 ### 示例4（设置滚动条边距）
 
-从API version 20开始，该示例通过设置[scrollBarMargin](#scrollbarmargin20)属性，调整滚动组件的滚动条边距。
+从API version 20开始，该示例通过设置scrollBarMargin属性，调整滚动组件的滚动条边距。
 
-ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考示例1（添加滚动事件）。
 
 ```TypeScript
 // xxx.ets
@@ -7562,7 +7562,7 @@ struct Index {
 
 ### 示例1（弹出不同类型的气泡）
 
-该示例通过配置[PopupOptions](#popupoptions类型说明)或[CustomPopupOptions](#custompopupoptions8类型说明)中的keyboardAvoidMode属性，设置气泡是否避让软键盘。
+该示例通过配置[PopupOptions](#类型)或[CustomPopupOptions](#类型)中的keyboardAvoidMode属性，设置气泡是否避让软键盘。
 
 从API version 15开始，分别在PopupOptions和CustomPopupOptions中新增了keyboardAvoidMode属性。
 
@@ -7649,7 +7649,7 @@ struct PopupExample {
 
 ### 示例2（设置气泡的文本样式）
 
-该示例通过配置[PopupOptions](#popupoptions类型说明)中的messageOptions属性，实现了弹出自定义文本样式的气泡。
+该示例通过配置[PopupOptions](#类型)中的messageOptions属性，实现了弹出自定义文本样式的气泡。
 
 
 
@@ -7696,7 +7696,7 @@ struct PopupExample {
 
 ### 示例3（设置气泡的样式）
 
-该示例通过配置[PopupOptions](#popupoptions类型说明)中的arrowHeight、arrowWidth、radius、shadow和popupColor属性，实现了气泡箭头以及气泡本身的样式。
+该示例通过配置[PopupOptions](#类型)中的arrowHeight、arrowWidth、radius、shadow和popupColor属性，实现了气泡箭头以及气泡本身的样式。
 
 
 
@@ -7744,7 +7744,7 @@ struct PopupExample {
 
 ### 示例4（设置气泡的动效）
 
-该示例通过配置[PopupOptions](#popupoptions类型说明)或[CustomPopupOptions](#custompopupoptions8类型说明)中的transition属性，实现了气泡显示以及退出的动效。
+该示例通过配置[PopupOptions](#类型)或[CustomPopupOptions](#类型)中的transition属性，实现了气泡显示以及退出的动效。
 
 
 
@@ -7814,7 +7814,7 @@ struct PopupExample {
 
 ### 示例5（为气泡添加事件）
 
-该示例通过配置[PopupOptions](#popupoptions类型说明)中的onWillDismiss属性，实现了当气泡退出时，拦截退出事件并执行回调函数。
+该示例通过配置[PopupOptions](#类型)中的onWillDismiss属性，实现了当气泡退出时，拦截退出事件并执行回调函数。
 
 
 
@@ -7869,7 +7869,7 @@ struct PopupExample {
 
 ### 示例6（为气泡拦截退出事件）
 
-该示例将[PopupOptions](#popupoptions类型说明)的onWillDismiss属性设为false，使气泡不响应退出事件。同时，配置[PopupOptions](#popupoptions类型说明)的followTransformOfTarget属性，设置气泡是否跟随宿主组件变换。
+该示例将[PopupOptions](#类型)的onWillDismiss属性设为false，使气泡不响应退出事件。同时，配置[PopupOptions](#类型)的followTransformOfTarget属性，设置气泡是否跟随宿主组件变换。
 
 
 
@@ -7927,7 +7927,7 @@ struct PopupExample {
 
 ### 示例7（为气泡内外描边设置线性渐变）
 
-该示例通过配置[PopupOptions](#popupoptions类型说明)中的outlineWidth、borderWidth、outlineLinearGradient、borderLinearGradient属性，为气泡设置内外描边线性渐变的颜色和方向。
+该示例通过配置[PopupOptions](#类型)中的outlineWidth、borderWidth、outlineLinearGradient、borderLinearGradient属性，为气泡设置内外描边线性渐变的颜色和方向。
 
 从API version 20开始，在PopupOptions中新增了outlineWidth、borderWidth、outlineLinearGradient、borderLinearGradient属性。
 
@@ -7978,7 +7978,7 @@ struct PopupExample {
 
 ### 示例8（设置气泡避让绑定的组件模式）
 
-该示例通过配置[PopupOptions](#popupoptions类型说明)的avoidTarget属性，实现气泡对其绑定组件的避让。
+该示例通过配置[PopupOptions](#类型)的avoidTarget属性，实现气泡对其绑定组件的避让。
 
 从API version 20开始，在PopupOptions中新增了avoidTarget属性。
 
@@ -8011,7 +8011,7 @@ struct PopupExample {
 
 ### 示例9（设置Popup的沉浸光感视觉效果）
 
-该示例通过[PopupOptions](#popupoptions类型说明)中的systemMaterial属性设置组件的系统材质，实现了Popup的沉浸光感视效。
+该示例通过[PopupOptions](#类型)中的systemMaterial属性设置组件的系统材质，实现了Popup的沉浸光感视效。
 
 该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
@@ -8066,7 +8066,7 @@ struct PopupExample {
 
 ### 示例10（自定义气泡背景效果参数）
 
-该示例通过配置[PopupOptions](#popupoptions类型说明)的backgroundBlurStyleOptions和backgroundEffect属性，实现自定义气泡背景效果。
+该示例通过配置[PopupOptions](#类型)的backgroundBlurStyleOptions和backgroundEffect属性，实现自定义气泡背景效果。
 
 从API版本26.0.0开始，在PopupOptions中新增了backgroundBlurStyleOptions和backgroundEffect属性。
 
@@ -8138,7 +8138,7 @@ struct PopupExample {
 
 ### 示例11（设置气泡的显示层级模式）
 
-该示例通过配置[PopupOptions](#popupoptions类型说明)的levelMode属性，实现气泡在页面内嵌入显示。点击按钮后页面级的气泡不会显示在下一个路由页面中。
+该示例通过配置[PopupOptions](#类型)的levelMode属性，实现气泡在页面内嵌入显示。点击按钮后页面级的气泡不会显示在下一个路由页面中。
 
 从API版本26.0.0开始，在PopupOptions中新增了levelMode属性。
 
@@ -8198,7 +8198,7 @@ struct PageTwo {
 
 ### 示例1（获取轴事件相关参数）
 
-该示例中，对按钮设置轴事件，通过滚动鼠标滚轮可获取轴事件的相关参数。从API version 21开始，该示例通过[BaseEvent](./ts-universal-events-click.md#baseevent8)的属性和[getPinchAxisScaleValue](arkts-arkui-common-comp-axisevent-i.md#getpinchaxisscalevalue)获取双指缩放比例；从API version 22开始，该示例通过[hasAxis](arkts-arkui-common-comp-axisevent-i.md#hasaxis)判断轴事件是否包含指定的轴类型。
+该示例中，对按钮设置轴事件，通过滚动鼠标滚轮可获取轴事件的相关参数。从API version 21开始，该示例通过BaseEvent的属性和[getPinchAxisScaleValue](arkts-arkui-common-comp-axisevent-i.md#getpinchaxisscalevalue)获取双指缩放比例；从API version 22开始，该示例通过[hasAxis](arkts-arkui-common-comp-axisevent-i.md#hasaxis)判断轴事件是否包含指定的轴类型。
 
 鼠标滚轮滚动时：
 
@@ -8236,7 +8236,7 @@ struct AxisEventExample {
 
 ### 示例2（获取组件实时位置）
 
-该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取鼠标光标位置相对于当前组件实时位置左上角的坐标。
+该示例通过getCurrentLocalPosition方法获取鼠标光标位置相对于当前组件实时位置左上角的坐标。
 
 从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
 
@@ -8510,7 +8510,7 @@ struct PreImeEventExample {
 > 
 > 事件冒泡：在一个树形结构中，当子节点处理完一个事件后，再将该事件交给它的父节点处理。
 > 
-> 可以在[onKeyEvent15+](#onkeyevent15)中，通过返回true消费按键事件阻止冒泡，效果等同于stopPropagation。
+> 可以在onKeyEvent15+中，通过返回true消费按键事件阻止冒泡，效果等同于stopPropagation。
 
 ```TypeScript
 @Entry
@@ -8937,7 +8937,7 @@ struct RenderStrategyExample {
 
 ### 示例4（设置异形圆角）
 
-该示例通过[borderRadius](#borderradius)设置四个不同圆角值。当其中一个圆角值超过高度或宽度最小值的一半时，按值的比例绘制异形圆角。
+该示例通过borderRadius设置四个不同圆角值。当其中一个圆角值超过高度或宽度最小值的一半时，按值的比例绘制异形圆角。
 
 ```TypeScript
 // xxx.ets
@@ -9794,7 +9794,7 @@ struct Example3 {
 
 ### 示例4（镜像效果）
 
-通用布局属性支持[使用镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。下述示例从上到下依次通过[position](#position)、[offset](#offset)和[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色对应镜像前效果，深蓝色对应镜像后效果。
+通用布局属性支持[使用镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。下述示例从上到下依次通过position、offset和markAnchor实现镜像效果，为对比镜像前后的差异，浅蓝色对应镜像前效果，深蓝色对应镜像后效果。
 
 镜像前效果：
 
@@ -10027,7 +10027,7 @@ struct Index5 {
 }
 ```
 
-该示例主要显示通过[opacity](#opacity)设置组件的不透明度。
+该示例主要显示通过opacity设置组件的不透明度。
 
 ```TypeScript
 // xxx.ets
@@ -10053,7 +10053,7 @@ struct OpacityExample {
 }
 ```
 
-该示例通过为[Navigation](ts-basic-components-navigation.md)下的[Button](ts-basic-components-button.md)组件绑定toolbar通用属性，为标题栏NavBar分栏开头位置添加包含两个[Button](ts-basic-components-button.md)组件的工具栏项。为[NavDestination](ts-basic-components-navdestination.md)下的[Text](ts-basic-components-text.md)组件绑定toolbar通用属性，为标题栏NavDestination分栏末尾位置添加两个工具栏项，分别包含一个滑动条组件和一个搜索框组件。
+该示例通过为Navigation下的Button组件绑定toolbar通用属性，为标题栏NavBar分栏开头位置添加包含两个Button组件的工具栏项。为NavDestination下的Text组件绑定toolbar通用属性，为标题栏NavDestination分栏末尾位置添加两个工具栏项，分别包含一个滑动条组件和一个搜索框组件。
 
 ```TypeScript
 // xxx.ets
@@ -10164,7 +10164,7 @@ struct ToolbarExample {
 
 ### 示例1（允许拖拽和落入）
 
-示例1通过配置[allowDrop](arkts-arkui-common-comp-commonmethod-c.md#allowdrop)设置组件是否可落入，通过配置[draggable](#draggable)设置组件是否可拖拽。
+示例1通过配置[allowDrop](arkts-arkui-common-comp-commonmethod-c.md#allowdrop)设置组件是否可落入，通过配置draggable设置组件是否可拖拽。
 
 
 
@@ -10285,7 +10285,7 @@ struct ImageExample {
 
 ### 示例2（设置预览图）
 
-示例2通过配置[dragPreview](#dragpreview11)设置拖拽过程的预览图。
+示例2通过配置dragPreview设置拖拽过程的预览图。
 
 
 
@@ -10353,7 +10353,7 @@ struct DragPreviewDemo {
 
 ### 示例3（设置背板图样式）
 
-示例3通过配置[dragPreviewOptions](#dragpreviewoptions11)为ENABLE_DEFAULT_SHADOW、ENABLE_DEFAULT_RADIUS设置默认阴影和统一圆角效果。从API version 18开始，通过配置[dragPreviewOptions](#dragpreviewoptions11)为ENABLE_DRAG_ITEM_GRAY_EFFECT设置灰显效果。
+示例3通过配置dragPreviewOptions为ENABLE_DEFAULT_SHADOW、ENABLE_DEFAULT_RADIUS设置默认阴影和统一圆角效果。从API version 18开始，通过配置dragPreviewOptions为ENABLE_DRAG_ITEM_GRAY_EFFECT设置灰显效果。
 
 
 
@@ -10814,7 +10814,7 @@ struct DragPreviewDemo {
 
 ### 示例9（自定义预览图）
 
-从API version 15开始，示例9通过配置[onlyForLifting](./ts-universal-events-drag-drop.md#previewconfiguration15)实现自定义预览图，仅用于浮起效果以及配置[isLiftingDisabled](arkts-arkui-common-comp-draginteractionoptions-i.md)实现禁用浮起效果。
+从API version 15开始，示例9通过配置onlyForLifting实现自定义预览图，仅用于浮起效果以及配置[isLiftingDisabled](arkts-arkui-common-comp-draginteractionoptions-i.md)实现禁用浮起效果。
 
 自定义预览图用于浮起效果。
 
@@ -10919,7 +10919,7 @@ struct LiftingExampleDemo {
 
 ### 示例10（以拖拽预览图初始尺寸计算跟手点位置）
 
-从API version 19开始，示例10通过配置[DragPreviewMode](#dragpreviewmode11枚举说明)为ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW实现基于最终拖拽预览图的原始尺寸来计算拖拽过程中跟手点位置。当设置[DragPreviewMode](#dragpreviewmode11枚举说明)为ENABLE_MULTI_TILE_EFFECT时，该属性不生效。
+从API version 19开始，示例10通过配置[DragPreviewMode](#枚举)为ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW实现基于最终拖拽预览图的原始尺寸来计算拖拽过程中跟手点位置。当设置[DragPreviewMode](#枚举)为ENABLE_MULTI_TILE_EFFECT时，该属性不生效。
 
 
 
@@ -10998,7 +10998,7 @@ struct Index {
 
 ### 示例11（长按浮起预览图与拖拽预览图过渡动效）
 
-从API version 19开始，示例11通过配置[DraggingSizeChangeEffect](#draggingsizechangeeffect19枚举说明)实现不同拖拽过渡效果。
+从API version 19开始，示例11通过配置[DraggingSizeChangeEffect](#枚举)实现不同拖拽过渡效果。
 
 
 
@@ -11085,7 +11085,7 @@ struct Index {
 
 ### 示例12（设置自定义组件落入）
 
-从API version 23开始，示例12通过组件的[onDragStart](ts-universal-events-drag-drop.md#ondragstart)接口传递其类型，并在目标组件的[allowDrop](arkts-arkui-common-comp-commonmethod-c.md#allowdrop)属性中设置允许该类型落入，即可实现自定义组件的拖拽落入功能。
+从API version 23开始，示例12通过组件的onDragStart接口传递其类型，并在目标组件的[allowDrop](arkts-arkui-common-comp-commonmethod-c.md#allowdrop)属性中设置允许该类型落入，即可实现自定义组件的拖拽落入功能。
 
 
 
@@ -11216,9 +11216,9 @@ struct CustomCard {
 
 ### 示例13（设置背板图材质效果）
 
-该示例通过配置[ImageModifier](arkts-arkui-common-comp-imagemodifier-t.md)中的[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)属性，设置拖拽背板的材质效果。
+该示例通过配置[ImageModifier](arkts-arkui-common-comp-imagemodifier-t.md)中的systemMaterial属性，设置拖拽背板的材质效果。
 
-从API版本26.0.0开始，[DragPreviewOptions](#dragpreviewoptions11-1)接口中的modifier参数新增支持[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)属性。
+从API版本26.0.0开始，DragPreviewOptions接口中的modifier参数新增支持systemMaterial属性。
 
 ```TypeScript
 // xxx.ets
@@ -11502,7 +11502,7 @@ struct ForegroundColorExample {
 
 ### 示例2（设置前景色为组件背景色反色）
 
-该示例通过[ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).INVERT将前景色设置为背景色反色。
+该示例通过ColoringStrategy.INVERT将前景色设置为背景色反色。
 
 
 
@@ -11833,7 +11833,7 @@ struct ToggleExample {
 
 ### 示例1（为组件添加图形变换效果）
 
-该示例通过[rotate](#rotate)、[translate](#translate)、[scale](#scale)、[transform](#transform)为组件添加旋转、平移、缩放、变换矩阵效果。
+该示例通过rotate、translate、scale、[transform](#示例4通过transform3d实现图形变换)为组件添加旋转、平移、缩放、变换矩阵效果。
 
 
 
@@ -11887,7 +11887,7 @@ struct TransformExample {
 
 ### 示例2（设置旋转视距）
 
-该示例通过[perspective](#rotateoptions对象说明)为组件添加视距效果。
+该示例通过perspective为组件添加视距效果。
 
 
 
@@ -11931,7 +11931,7 @@ struct Index {
 
 ### 示例3（按中心点旋转）
 
-该示例通过设置[rotate](#rotate)和[transform](#transform)为不同的参数实现相同的旋转效果。
+该示例通过设置rotate和[transform](#示例4通过transform3d实现图形变换)为不同的参数实现相同的旋转效果。
 
 
 
@@ -12043,7 +12043,7 @@ struct Transform3DExample {
 
 ### 示例5（按各轴旋转角的方式实现旋转）
 
-从API version 20开始，该示例通过设置rotate的[RotateAngleOptions](#rotateangleoptions20对象说明)参数实现旋转效果。
+从API version 20开始，该示例通过设置rotate的RotateAngleOptions参数实现旋转效果。
 
 ```TypeScript
 // xxx.ets
@@ -12460,7 +12460,7 @@ struct ExpandSafeAreaTest {
 
 ### 示例8（ignoreLayoutSafeArea延伸组件布局范围）
 
-该示例利用[ignoreLayoutSafeArea](#ignorelayoutsafearea20)改变组件位置。相比未使用该属性，配置ignoreLayoutSafeArea后，Row组件基于Stack内容区、Stack组件级安全区、系统状态栏共同组成的范围，取其左上部分，作左上对齐。
+该示例利用ignoreLayoutSafeArea改变组件位置。相比未使用该属性，配置ignoreLayoutSafeArea后，Row组件基于Stack内容区、Stack组件级安全区、系统状态栏共同组成的范围，取其左上部分，作左上对齐。
 
 
 
@@ -12501,7 +12501,7 @@ struct IgnoreLayoutSafeAreaTest1 {
 
 ### 示例9（ignoreLayoutSafeArea配合LayoutPolicy.matchParent延伸组件布局范围）
 
-该示例利用[ignoreLayoutSafeArea](#ignorelayoutsafearea20)和[LayoutPolicy.matchParent](ts-universal-attributes-size.md#layoutpolicy15)同时改变组件大小和位置。相比未使用该属性，配置ignoreLayoutSafeArea后，Row组件基于Stack内容区、Stack组件级安全区，取其右下部分并撑满可用空间。
+该示例利用ignoreLayoutSafeArea和LayoutPolicy.matchParent同时改变组件大小和位置。相比未使用该属性，配置ignoreLayoutSafeArea后，Row组件基于Stack内容区、Stack组件级安全区，取其右下部分并撑满可用空间。
 
 
 
@@ -12763,7 +12763,7 @@ struct BorderImage {
 
 ### 示例3（使用LocalizedEdgeWidths类型值）
 
-通过[borderImage](arkts-arkui-common-comp-commonmethod-c.md#borderimage)接口中的slice、width和outset属性值使用[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)类型。
+通过[borderImage](arkts-arkui-common-comp-commonmethod-c.md#borderimage)接口中的slice、width和outset属性值使用LocalizedEdgeWidths类型。
 
 ```TypeScript
 // xxx.ets
@@ -13292,7 +13292,7 @@ struct BlurEffectsExample {
 
 ### 示例6（设置文字异形模糊效果）
 
-该示例通过[blendMode](ts-universal-attributes-image-effect.md#blendmode11)和backgroundEffect实现文字异形模糊效果。如果出现漏线问题，开发者应首先确保两个blendMode所在组件大小严格相同。如果确认相同，可能是组件边界落在浮点数坐标上导致，可尝试设置[pixelRound](ts-universal-attributes-pixelRoundForComponent.md#pixelround)通用属性，使产生的白线、暗线两侧的组件边界对齐到整数像素坐标上。
+该示例通过blendMode和backgroundEffect实现文字异形模糊效果。如果出现漏线问题，开发者应首先确保两个blendMode所在组件大小严格相同。如果确认相同，可能是组件边界落在浮点数坐标上导致，可尝试设置pixelRound通用属性，使产生的白线、暗线两侧的组件边界对齐到整数像素坐标上。
 
 
 
@@ -13390,7 +13390,7 @@ struct Index {
 
 ### 示例7（模糊效果对比）
 
-该示例对比了[backgroundEffect11+](#backgroundeffect11)、[backdropBlur](arkts-arkui-common-comp-commonmethod-c.md#backdropblur)和[backgroundBlurStyle9+](#backgroundblurstyle9)三种不同的模糊效果。
+该示例对比了backgroundEffect11+、[backdropBlur](arkts-arkui-common-comp-commonmethod-c.md#backdropblur)和backgroundBlurStyle9+三种不同的模糊效果。
 
 
 
@@ -13447,7 +13447,7 @@ struct BackgroundBlur {
 
 ### 示例8（设置P3色域背景效果）
 
-从API version 20开始，该示例通过[backgroundColor](#backgroundcolor20)设置P3色域背景效果。
+从API version 20开始，该示例通过backgroundColor设置P3色域背景效果。
 
 
 
@@ -13474,7 +13474,7 @@ struct P3BackgroundDemo {
 
 ### 示例9（设置组件背景扩展）
 
-从API version 20开始，该示例通过[background](#background10)实现组件背景扩展到父组件的安全区。
+从API version 20开始，该示例通过background实现组件背景扩展到父组件的安全区。
 
 ```TypeScript
 import { LengthMetrics } from '@kit.ArkUI';
@@ -13774,7 +13774,7 @@ struct MenuExample {
 
 ### 示例3（长按弹出菜单）
 
-该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress弹出菜单。
+该示例为bindContextMenu通过配置responseType.LongPress弹出菜单。
 
 
 
@@ -13811,7 +13811,7 @@ struct ContextMenuExample {
 
 ### 示例4（右键弹出指向型菜单）
 
-该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).RightClick和[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)中的enableArrow属性弹出指向型菜单。同时，从API version 18开始支持通过配置[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)中的hapticFeedbackMode属性实现菜单弹出时的振动效果。
+该示例为bindContextMenu通过配置responseType.RightClick和[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)中的enableArrow属性弹出指向型菜单。同时，从API version 18开始支持通过配置[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)中的hapticFeedbackMode属性实现菜单弹出时的振动效果。
 
 
 
@@ -13854,7 +13854,7 @@ struct DirectiveMenuExample {
 
 ### 示例5（长按弹出菜单的截图预览样式）
 
-该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress和[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)中preview属性的[MenuPreviewMode](arkts-arkui-common-comp-menupreviewmode-e.md)类型弹出菜单预览样式。
+该示例为bindContextMenu通过配置responseType.LongPress和[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)中preview属性的[MenuPreviewMode](arkts-arkui-common-comp-menupreviewmode-e.md)类型弹出菜单预览样式。
 
 
 
@@ -13898,7 +13898,7 @@ struct Index {
 
 ### 示例6（长按弹出菜单的自定义预览样式）
 
-该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress和[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)中preview属性的[CustomBuilder](ts-types.md#custombuilder8)类型弹出菜单自定义预览样式。
+该示例为bindContextMenu通过配置responseType.LongPress和[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)中preview属性的CustomBuilder类型弹出菜单自定义预览样式。
 
 
 
@@ -14324,7 +14324,7 @@ struct Index {
 
 ### 示例14（设置预览图边框圆角半径）
 
-该示例通过bindContextMenu配置[responseType](ts-appendix-enums.md#responsetype8).LongPress来实现功能。同时，在[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)中配置preview属性的[MenuPreviewMode](arkts-arkui-common-comp-menupreviewmode-e.md)类型来设置菜单预览样式。最后，通过设置previewBorderRadius来实现预览图边框的圆角半径。
+该示例通过bindContextMenu配置responseType.LongPress来实现功能。同时，在[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)中配置preview属性的[MenuPreviewMode](arkts-arkui-common-comp-menupreviewmode-e.md)类型来设置菜单预览样式。最后，通过设置previewBorderRadius来实现预览图边框的圆角半径。
 
 从API version 19开始，在[ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)中新增了previewBorderRadius属性。
 
@@ -14589,7 +14589,7 @@ struct Index {
 
 ### 示例19（根据触发方式弹出不同内容的菜单）
 
-该示例通过在[bindContextMenuWithResponse](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse)中传入CustomBuilderT<ResponseType>给目标组件绑定菜单，组件会在UI函数中返回弹出菜单的触发方式，开发者可根据返回的触发方式实现差异化显示。
+该示例通过在[bindContextMenuWithResponse](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse)中传入CustomBuilderT&lt;ResponseType&gt;给目标组件绑定菜单，组件会在UI函数中返回弹出菜单的触发方式，开发者可根据返回的触发方式实现差异化显示。
 
 从API version 23开始，新增了bindContextMenuWithResponse的接口。
 
@@ -14983,9 +14983,9 @@ struct ContextMenuGridStyleExample {
 
 ### 示例1（获取鼠标事件相关参数）
 
-该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发[onMouse](#onmouse)事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件[MouseEvent](#mouseevent对象说明)的targetDisplayId、rawDeltaX、rawDeltaY、pressedButtons等参数。
+该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发onMouse事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件MouseEvent的targetDisplayId、rawDeltaX、rawDeltaY、pressedButtons等参数。
 
-鼠标滚轮的处理请参考[轴事件示例](ts-universal-events-axis.md#示例)。
+鼠标滚轮的处理请参考轴事件示例。
 
 示意图：
 
@@ -15084,7 +15084,7 @@ struct MouseEventExample {
 
 ### 示例2（获取当前帧历史点）
 
-该示例通过调用[getHistoricalPoints](#gethistoricalpoints)接口，获取当前帧的历史点，可以用来实现更平滑的绘制等操作。
+该示例通过调用getHistoricalPoints接口，获取当前帧的历史点，可以用来实现更平滑的绘制等操作。
 
 从API版本26.0.0开始，新增getHistoricalPoints接口。
 
@@ -15125,7 +15125,7 @@ struct HistoricalPointsExample {
 
 ### 示例3（获取组件实时位置）
 
-该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取鼠标位置相对于当前组件实时位置左上角的坐标。
+该示例通过getCurrentLocalPosition方法获取鼠标位置相对于当前组件实时位置左上角的坐标。
 
 从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
 
@@ -15459,7 +15459,7 @@ struct RestoreIdExample {
 }
 ```
 
-该示例主要演示使用[animateToImmediately](#animatetoimmediately)接口实现显式动画立即下发。
+该示例主要演示使用animateToImmediately接口实现显式动画立即下发。
 
 ```TypeScript
 // xxx.ets
@@ -15587,7 +15587,7 @@ struct ClickExample {
 
 ### 示例2（获取组件实时位置）
 
-该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取当前组件基于其实时位置的左上角坐标。
+该示例通过getCurrentLocalPosition方法获取当前组件基于其实时位置的左上角坐标。
 
 从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
 
@@ -15674,7 +15674,7 @@ struct PixelRoundExample {
 
 ### 示例1（使用同一接口实现图片出现消失）
 
-该示例主要演示如何通过同一[TransitionEffect](#transitioneffect10对象说明)来实现图片的出现与消失，出现和消失互为逆过程。
+该示例主要演示如何通过同一TransitionEffect来实现图片的出现与消失，出现和消失互为逆过程。
 
 示意图：
 
@@ -15715,7 +15715,7 @@ struct TransitionEffectExample1 {
 
 ### 示例2（使用不同接口实现图片出现消失）
 
-该示例主要演示使用不同[TransitionEffect](#transitioneffect10对象说明)来实现图片的出现和消失。
+该示例主要演示使用不同TransitionEffect来实现图片的出现和消失。
 
 示意图：
 
@@ -15776,7 +15776,7 @@ struct TransitionEffectExample2 {
 
 ### 示例3（设置父子组件为transition）
 
-该示例主要演示通过父子组件都配置[transition](#transition)来实现图片的出现和消失。
+该示例主要演示通过父子组件都配置[transition](#示例3设置父子组件为transition)来实现图片的出现和消失。
 
 示意图：
 
@@ -15835,7 +15835,7 @@ struct TransitionEffectExample3 {
 
 ### 示例4（visibility切换时的双动画复合效果）
 
-该示例演示当[visibility](ts-universal-attributes-visibility.md#visibility)在Visibility.Visible与Visibility.None之间切换时，[transition](#transition)动画与布局动画叠加形成双动画复合表现的效果。
+该示例演示当visibility在Visibility.Visible与Visibility.None之间切换时，[transition](#示例3设置父子组件为transition)动画与布局动画叠加形成双动画复合表现的效果。
 
 ```TypeScript
 // xxx.ets
@@ -16412,7 +16412,7 @@ struct FatherControlChild {
 
 ### 示例5（自定义手势识别器是否参与手势处理）
 
-从API version 20开始，该示例通过配置[onTouchTestDone](arkts-arkui-common-comp-commonmethod-c.md#ontouchtestdone)指定手势识别器不参与后续手势处理，触发回调时，调用[preventBegin](./ts-gesture-common.md#preventbegin20)阻止手势识别器参与后续处理。点击Tap2和Tap1的重合区域，不调用preventBegin时，触发Tap2对应的手势；调用preventBegin阻止Tap2时，触发Tap1对应的手势。
+从API version 20开始，该示例通过配置[onTouchTestDone](arkts-arkui-common-comp-commonmethod-c.md#ontouchtestdone)指定手势识别器不参与后续手势处理，触发回调时，调用preventBegin阻止手势识别器参与后续处理。点击Tap2和Tap1的重合区域，不调用preventBegin时，触发Tap2对应的手势；调用preventBegin阻止Tap2时，触发Tap1对应的手势。
 
 
 
@@ -16935,7 +16935,7 @@ struct TouchExample {
 
 ### 示例2（获取组件实时位置）
 
-该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取触摸位置相对于当前组件实时位置左上角的坐标。
+该示例通过getCurrentLocalPosition方法获取触摸位置相对于当前组件实时位置左上角的坐标。
 
 从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
 
@@ -16968,7 +16968,7 @@ struct GetCurrentLocalPositionExample {
 
 ### 示例1（颜色线性渐变）
 
-该示例通过[linearGradient](#lineargradient)来实现组件的颜色线性渐变。
+该示例通过linearGradient来实现组件的颜色线性渐变。
 
 
 
@@ -17254,7 +17254,7 @@ struct OverlayContentPage {
 
 > 说明：
 > 
-> 直接使用animateTo可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)调用绑定实例的animateTo。
+> 直接使用animateTo可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取UIContext实例，并使用animateTo调用绑定实例的animateTo。
 
 该示例通过在onAppear方法中创建组件出现时的动画效果。
 
@@ -17654,7 +17654,7 @@ struct RenderGroupExample {
 
 ### 示例4（当前组件内容与下方画布内容混合）
 
-该示例主要演示通过[blendMode](#blendmode11)将当前组件内容与下方画布内容混合。
+该示例主要演示通过blendMode将当前组件内容与下方画布内容混合。
 
 
 
@@ -17697,7 +17697,7 @@ struct Index {
 
 ### 示例5（前景智能取反色）
 
-该示例主要通过[InvertOptions](#invertoptions11对象说明)来实现前景智能取反色。
+该示例主要通过InvertOptions来实现前景智能取反色。
 
 
 
@@ -17737,7 +17737,7 @@ struct Index {
 
 ### 示例6（设置同层阴影不重叠效果）
 
-该示例主要通过[useShadowBatching](arkts-arkui-common-comp-commonmethod-c.md#useshadowbatching)搭配[shadow](#shadow)实现同层阴影不重叠效果。
+该示例主要通过[useShadowBatching](arkts-arkui-common-comp-commonmethod-c.md#useshadowbatching)搭配shadow实现同层阴影不重叠效果。
 
 
 
@@ -18633,7 +18633,7 @@ struct ImageExample {
 
 ### 示例4（获取当前拖拽的屏幕ID）
 
-从API version 20开始，示例4展示了通过onDragXXX（不支持onDragEnd）接口获取拖拽事件，并调用拖拽事件的[getDisplayId](#getdisplayid20)接口获取屏幕ID。
+从API version 20开始，示例4展示了通过onDragXXX（不支持onDragEnd）接口获取拖拽事件，并调用拖拽事件的getDisplayId接口获取屏幕ID。
 
 
 
@@ -18884,7 +18884,7 @@ struct Index {
 
 ### 示例6（拖拽支持悬停检测）
 
-从API version 20开始，示例6展示了通过[onDragSpringLoading](arkts-arkui-common-comp-commonmethod-c.md#ondragspringloading)接口注册回调，并通过回调中的[SpringLoadingContext](#springloadingcontext20)获取上下文信息（当前状态、通知序列）。
+从API version 20开始，示例6展示了通过[onDragSpringLoading](arkts-arkui-common-comp-commonmethod-c.md#ondragspringloading)接口注册回调，并通过回调中的SpringLoadingContext获取上下文信息（当前状态、通知序列）。
 
 
 
@@ -18968,7 +18968,7 @@ struct Index {
 
 ### 示例7（拖起方延迟提供数据）
 
-从API version 20开始，示例7展示了在[onDragStart](#ondragstart)中调用[setDataLoadParams](arkts-arkui-common-comp-dragevent-i.md#setdataloadparams)延迟提供数据接口，并在[onDrop](#ondrop)中调用[startDataLoading](arkts-arkui-common-comp-dragevent-i.md#startdataloading)异步获取数据接口。
+从API version 20开始，示例7展示了在onDragStart中调用[setDataLoadParams](arkts-arkui-common-comp-dragevent-i.md#setdataloadparams)延迟提供数据接口，并在onDrop中调用[startDataLoading](arkts-arkui-common-comp-dragevent-i.md#startdataloading)异步获取数据接口。
 
 
 
@@ -19503,7 +19503,7 @@ struct CustomLayout {
 
 ### 示例4（子组件超过父组件大小约束）
 
-在自定义布局的自定义组件中，为子组件设置了[LayoutPolicy](./ts-universal-attributes-size.md#layoutpolicy15)对象的fixAtIdealSize属性。
+在自定义布局的自定义组件中，为子组件设置了LayoutPolicy对象的fixAtIdealSize属性。
 
 ```TypeScript
 @Entry

@@ -4,9 +4,9 @@
 declare class PolygonAttribute extends CommonShapeMethod<PolygonAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及图形绘制通用属性外，还支持以下属性：
 
-**继承/实现关系：** PolygonAttribute extends CommonShapeMethod<PolygonAttribute>
+**继承/实现关系：** PolygonAttribute extends CommonShapeMethod&lt;PolygonAttribute&gt;
 
 **起始版本：** 7
 

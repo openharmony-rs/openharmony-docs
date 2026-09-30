@@ -44,7 +44,7 @@ getSchemeFilter(): ProxySchemeFilter
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。
 
 ## getUrl
 
@@ -70,4 +70,4 @@ getUrl(): string
 
 **示例**
 
-完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
+完整示例代码参考removeProxyOverride。

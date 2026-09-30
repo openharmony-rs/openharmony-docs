@@ -148,7 +148,7 @@ delete(key: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当删除成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
@@ -194,7 +194,7 @@ delete(key: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
 
 **返回值：**
 
@@ -242,7 +242,7 @@ deleteSync(key: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要删除的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
 
 **错误码：**
 
@@ -409,7 +409,7 @@ get(key: string, defValue: ValueType, callback: AsyncCallback<ValueType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
 | defValue | [ValueType](arkts-arkdata-preferences-valuetype-t.md) | 是 | 默认返回值。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ValueType](arkts-arkdata-preferences-valuetype-t.md)&gt; | 是 | 回调函数。当获取成功时，err为undefined，data为键对应的值；否则err为错误对象。 |
 
@@ -456,7 +456,7 @@ get(key: string, defValue: ValueType): Promise<ValueType>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
 | defValue | [ValueType](arkts-arkdata-preferences-valuetype-t.md) | 是 | 默认返回值。 |
 
 **返回值：**
@@ -653,7 +653,7 @@ getSync(key: string, defValue: ValueType): ValueType
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要获取的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
 | defValue | [ValueType](arkts-arkdata-preferences-valuetype-t.md) | 是 | 默认返回值。 |
 
 **返回值：**
@@ -695,7 +695,7 @@ has(key: string, callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
@@ -745,7 +745,7 @@ has(key: string): Promise<boolean>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
 
 **返回值：**
 
@@ -797,7 +797,7 @@ hasSync(key: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要检查的存储Key名称，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
 
 **返回值：**
 
@@ -1194,7 +1194,7 @@ put(key: string, value: ValueType, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
 | value | [ValueType](arkts-arkdata-preferences-valuetype-t.md) | 是 | 存储的新值。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当数据写入成功，err为undefined；否则为错误对象。 |
 
@@ -1247,7 +1247,7 @@ put(key: string, value: ValueType): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
 | value | [ValueType](arkts-arkdata-preferences-valuetype-t.md) | 是 | 存储的新值。 |
 
 **返回值：**
@@ -1302,7 +1302,7 @@ putSync(key: string, value: ValueType): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](../../../reference/apis-arkdata/js-apis-data-sendablePreferences.md#constants)。 |
+| key | string | 是 | 要修改的存储的Key，不能为空，最大长度限制为MAX_KEY_LENGTH。 |
 | value | [ValueType](arkts-arkdata-preferences-valuetype-t.md) | 是 | 存储的新值。 |
 
 **错误码：**

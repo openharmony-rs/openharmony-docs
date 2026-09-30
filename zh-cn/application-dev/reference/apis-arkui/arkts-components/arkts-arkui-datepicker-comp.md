@@ -96,7 +96,7 @@ struct DatePickerExample {
 
 ### 示例2（设置文本样式）
 
-该示例通过配置[disappearTextStyle](#disappeartextstyle10)、[textStyle](#textstyle10)、[selectedTextStyle](#selectedtextstyle10)设置文本样式。
+该示例通过配置[disappearTextStyle](arkts-arkui-datepicker-comp-attribute.md#disappeartextstyle)、[textStyle](arkts-arkui-datepicker-comp-attribute.md#textstyle)、[selectedTextStyle](arkts-arkui-datepicker-comp-attribute.md#selectedtextstyle)设置文本样式。
 
 
 
@@ -131,7 +131,7 @@ struct DatePickerExample {
 
 该示例通过配置mode参数实现显示年、月和月、日列。
 
-从API version 18开始，新增了[DatePickerOptions](#datepickeroptions对象说明)的mode属性。
+从API version 18开始，新增了[DatePickerOptions](#datepicker)的mode属性。
 
 
 
@@ -182,7 +182,7 @@ struct DatePickerExample {
 
 ### 示例4（设置循环滚动）
 
-从API version 20开始，可以通过配置[canLoop](#canloop20)参数设置DatePicker是否循环滚动。
+从API version 20开始，可以通过配置[canLoop](arkts-arkui-datepicker-comp-attribute.md#canloop)参数设置DatePicker是否循环滚动。
 
 ```TypeScript
 // xxx.ets

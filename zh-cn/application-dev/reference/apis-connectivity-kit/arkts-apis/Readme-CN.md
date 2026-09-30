@@ -3,13 +3,6 @@
 - [@ohos.bluetooth(蓝牙)](arkts-connectivity-bluetooth.md)
   - [bluetooth](arkts-connectivity-bluetooth-n.md)
     - [BLE](arkts-connectivity-bluetooth-ble-n.md)
-      - [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md)
-      - [createGattServer](arkts-connectivity-ble-creategattserver-f.md)
-      - [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md)
-      - [off](arkts-connectivity-ble-off-f.md)
-      - [on](arkts-connectivity-ble-on-f.md)
-      - [startBLEScan](arkts-connectivity-ble-startblescan-f.md)
-      - [stopBLEScan](arkts-connectivity-ble-stopblescan-f.md)
     <!--Del-->
     - [cancelPairedDevice(系统接口)](arkts-connectivity-bluetooth-cancelpaireddevice-f-sys.md)<!--DelEnd-->
     - [disableBluetooth](arkts-connectivity-bluetooth-disablebluetooth-f.md)
@@ -432,13 +425,6 @@
 - [@ohos.bluetoothManager(蓝牙)](arkts-connectivity-bluetoothmanager.md)
   - [bluetoothManager](arkts-connectivity-bluetoothmanager-n.md)
     - [BLE](arkts-connectivity-bluetoothmanager-ble-n.md)
-      - [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md)
-      - [createGattServer](arkts-connectivity-ble-creategattserver-f.md)
-      - [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md)
-      - [off](arkts-connectivity-ble-off-f.md)
-      - [on](arkts-connectivity-ble-on-f.md)
-      - [startBLEScan](arkts-connectivity-ble-startblescan-f.md)
-      - [stopBLEScan](arkts-connectivity-ble-stopblescan-f.md)
     <!--Del-->
     - [cancelPairedDevice(系统接口)](arkts-connectivity-bluetoothmanager-cancelpaireddevice-f-sys.md)<!--DelEnd-->
     - [disableBluetooth](arkts-connectivity-bluetoothmanager-disablebluetooth-f.md)

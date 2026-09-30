@@ -91,7 +91,7 @@ off: (name: AuthEventKey) => void
 
 **废弃版本：** 10
 
-**替代接口：** [off](arkts-userauthentication-userauth-userauthinstance-i.md#off)
+**替代接口：** off
 
 <!--Device-AuthInstance-off: (name: AuthEventKey) => void--><!--Device-AuthInstance-off: (name: AuthEventKey) => void-End-->
 
@@ -154,7 +154,7 @@ on: (name: AuthEventKey, callback: AuthEvent) => void
 
 **废弃版本：** 10
 
-**替代接口：** [on](arkts-userauthentication-userauth-userauthinstance-i.md#on)
+**替代接口：** on
 
 <!--Device-AuthInstance-on: (name: AuthEventKey, callback: AuthEvent) => void--><!--Device-AuthInstance-on: (name: AuthEventKey, callback: AuthEvent) => void-End-->
 

@@ -622,7 +622,7 @@ struct CustomDialogUser {
 
 ### 示例7（自定义带loading的弹窗）
 
-该示例使用maskColor，maskRect和[LoadingProgress](ts-basic-components-loadingprogress.md)，实现带loading的弹窗，并展示不在maskRect区域的事件透传效果。
+该示例使用maskColor，maskRect和LoadingProgress，实现带loading的弹窗，并展示不在maskRect区域的事件透传效果。
 
 
 
@@ -727,7 +727,7 @@ struct CustomDialogUser {
 
 ### 示例8（不使用keyboardAvoidDistance调整弹窗与软键盘的间距）
 
-该示例通过监听键盘变化，调整布局[margin](ts-universal-attributes-size.md#margin)的属性，实现与使用keyboardAvoidDistance调整弹窗与软键盘的间距一样的效果。
+该示例通过监听键盘变化，调整布局margin的属性，实现与使用keyboardAvoidDistance调整弹窗与软键盘的间距一样的效果。
 
 从API version 15开始，在CustomDialogControllerOptions中新增了keyboardAvoidDistance属性。
 
@@ -965,7 +965,7 @@ struct Example3 {
 
 ### 示例10（不同customStyle下的弹窗示例）
 
-该示例是在对齐方式为[DialogAlignment.Bottom](ts-methods-alert-dialog-box.md#dialogalignment枚举说明)时，展示customStyle不同值下，弹窗内容与安全区域的效果。
+该示例是在对齐方式为DialogAlignment.Bottom时，展示customStyle不同值下，弹窗内容与安全区域的效果。
 
 
 

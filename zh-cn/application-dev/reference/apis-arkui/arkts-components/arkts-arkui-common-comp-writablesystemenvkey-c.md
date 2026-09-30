@@ -6,7 +6,7 @@ declare class WritableSystemEnvKey<T> extends SystemEnvKey<T>
 
 定义可写的系统环境变量Key，继承自[SystemEnvKey\&lt;T\&gt;](arkts-arkui-common-comp-systemenvkey-c.md)。
 
-**继承/实现关系：** WritableSystemEnvKey extends SystemEnvKey<T>
+**继承/实现关系：** WritableSystemEnvKey extends SystemEnvKey&lt;T&gt;
 
 **起始版本：** 26.0.0
 

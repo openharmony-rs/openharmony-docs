@@ -6,7 +6,7 @@ declare class RepeatAttribute<T> extends DynamicNode<RepeatAttribute<T>>
 
 除支持[拖拽排序](arkts-arkui-common-comp.md)属性外，还支持以下属性。
 
-**继承/实现关系：** RepeatAttribute extends DynamicNode<RepeatAttribute<T>>
+**继承/实现关系：** RepeatAttribute extends DynamicNode&lt;RepeatAttribute&lt;T&gt;&gt;
 
 **起始版本：** 12
 

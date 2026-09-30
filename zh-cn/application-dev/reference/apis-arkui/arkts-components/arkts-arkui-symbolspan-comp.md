@@ -46,7 +46,7 @@ SymbolSpan(value: Resource)
 
 ### 示例1（设置渲染和动效策略）
 
-从API version 11开始，该示例通过[renderingStrategy](#renderingstrategy)、[effectStrategy](#effectstrategy)属性展示了不同的渲染和动效策略。
+从API version 11开始，该示例通过[renderingStrategy](arkts-arkui-symbolspan-comp-attribute.md#renderingstrategy)、[effectStrategy](arkts-arkui-symbolspan-comp-attribute.md#effectstrategy)属性展示了不同的渲染和动效策略。
 
 
 
@@ -153,7 +153,7 @@ struct Index {
 
 ### 示例2（设置动态属性）
 
-从API version 12开始，该示例通过[attributeModifier](#attributemodifier12)属性创建指定样式图标。
+从API version 12开始，该示例通过[attributeModifier](arkts-arkui-symbolspan-comp-attribute.md#attributemodifier)属性创建指定样式图标。
 
 
 
@@ -187,9 +187,9 @@ struct Index {
 
 ### 示例3（设置字体粗细）
 
-该示例通过[fontWeight](#fontweight-1)属性展示SymbolSpan不同粗细配置下的效果：第一行图标小符号展示启用可变字重后，分别设置字重值为220和660的效果；第二行图标小符号展示在将设备的系统字体粗细设置为粗体后，分别设置跟随和不跟随设备的字体粗细级别自动更新的效果。
+该示例通过[fontWeight](arkts-arkui-symbolspan-comp-attribute.md#fontweight-1)属性展示SymbolSpan不同粗细配置下的效果：第一行图标小符号展示启用可变字重后，分别设置字重值为220和660的效果；第二行图标小符号展示在将设备的系统字体粗细设置为粗体后，分别设置跟随和不跟随设备的字体粗细级别自动更新的效果。
 
-从API版本26.0.0开始，新增[fontWeight](#fontweight-1)属性。
+从API版本26.0.0开始，新增[fontWeight](arkts-arkui-symbolspan-comp-attribute.md#fontweight-1)属性。
 
 ```TypeScript
 // xxx.ets

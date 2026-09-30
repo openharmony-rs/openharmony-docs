@@ -227,7 +227,7 @@ struct SpanExample {
 
 ### 示例2（设置文本阴影）
 
-从API version 11开始，该示例通过[textShadow](#textshadow11)属性展示了文本设置阴影的效果。
+从API version 11开始，该示例通过[textShadow](arkts-arkui-span-comp-attribute.md#textshadow)属性展示了文本设置阴影的效果。
 
 
 
@@ -281,7 +281,7 @@ struct SpanExample {
 
 ### 示例3（设置背景样式）
 
-从API version 11开始，该示例通过[textBackgroundStyle](#textbackgroundstyle11)属性展示了文本设置背景样式的效果。
+从API version 11开始，该示例通过textBackgroundStyle属性展示了文本设置背景样式的效果。
 
 
 
@@ -305,7 +305,7 @@ struct SpanExample {
 
 ### 示例4（设置文本基线偏移量）
 
-从API version 12开始，该示例通过[baselineOffset](#baselineoffset12)属性展示了文本设置不同基线偏移量的效果。
+从API version 12开始，该示例通过baselineOffset属性展示了文本设置不同基线偏移量的效果。
 
 
 
@@ -342,9 +342,9 @@ struct SpanExample {
 
 ### 示例5（设置文本可变字体的属性）
 
-该示例通过[fontVariations](#fontvariations)属性设置可变字体的属性。
+该示例通过[fontVariations](arkts-arkui-span-comp-attribute.md#fontvariations)属性设置可变字体的属性。
 
-从API版本26.0.0开始，新增[fontVariations](#fontvariations)接口。
+从API版本26.0.0开始，新增[fontVariations](arkts-arkui-span-comp-attribute.md#fontvariations)接口。
 
 ```TypeScript
 // xxx.ets

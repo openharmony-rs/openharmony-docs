@@ -8,7 +8,7 @@ declare class DividerAttribute extends CommonMethod<DividerAttribute>
 
 支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** DividerAttribute extends CommonMethod<DividerAttribute>
+**继承/实现关系：** DividerAttribute extends CommonMethod&lt;DividerAttribute&gt;
 
 **起始版本：** 7
 

@@ -63,12 +63,12 @@ backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string)
 connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 ```
 
-将当前UIAbility连接到[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)。通过返回的proxy与AppServiceExtensionAbility进行通信，以使用AppServiceExtensionAbility对外提供的能力。仅支持在主线程调用。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+将当前UIAbility连接到AppServiceExtensionAbility。通过返回的proxy与AppServiceExtensionAbility进行通信，以使用AppServiceExtensionAbility对外提供的能力。仅支持在主线程调用。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 > **说明：** 
 > 
 > 如果
-> [AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)
+> AppServiceExtensionAbility
 > 实例未启动，该接口的调用方必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即
 > [extensionAbilities标签](../../../quick-start/module-configuration-file.md#extensionabilities标签)的
 > appIdentifierAllowList属性）中的应用。
@@ -85,7 +85,7 @@ connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 连接[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的Want信息。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 连接AppServiceExtensionAbility的Want信息。 |
 | callback | [ConnectOptions](arkts-ability-connectoptions-connectoptions-i.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、连接失败、断开的信息。 |
 
 **返回值：**
@@ -371,7 +371,7 @@ struct UIServiceExtensionAbility {
 disconnectAppServiceExtensionAbility(connection: number): Promise<void>
 ```
 
-断开与[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的连接。仅支持在主线程调用。使用Promise异步回调。断开连接之后，为了防止使用可能失效的remote对象进行通信，建议将连接成功时返回的remote对象设置为null。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+断开与AppServiceExtensionAbility的连接。仅支持在主线程调用。使用Promise异步回调。断开连接之后，为了防止使用可能失效的remote对象进行通信，建议将连接成功时返回的remote对象设置为null。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **起始版本：** 20
 
@@ -681,7 +681,7 @@ struct UIServiceExtensionAbility {
 hideAbility(): Promise<void>
 ```
 
-隐藏当前UIAbility。使用Promise异步回调。仅支持在主线程调用。调用此接口前要求确保应用已添加至状态栏。该接口仅在PC/2in1设备中、或处于[自由多窗模式](../../../windowmanager/window-terminology.md#自由多窗模式)的Tablet设备中可正常调用，在其他设备中返回801错误码。
+隐藏当前UIAbility。使用Promise异步回调。仅支持在主线程调用。调用此接口前要求确保应用已添加至状态栏。该接口仅在PC/2in1设备中、或处于[自由多窗模式](../../../windowmanager/window-terminology.md#free-windows自由多窗模式)的Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **起始版本：** 12
 
@@ -2102,7 +2102,7 @@ export default class EntryAbility extends UIAbility {
 showAbility(): Promise<void>
 ```
 
-显示当前UIAbility。使用Promise异步回调。仅支持在主线程调用。调用此接口前要求确保应用已添加至状态栏。该接口仅在PC/2in1设备中、或处于[自由多窗模式](../../../windowmanager/window-terminology.md#自由多窗模式)的Tablet设备中可正常调用，在其他设备中返回801错误码。
+显示当前UIAbility。使用Promise异步回调。仅支持在主线程调用。调用此接口前要求确保应用已添加至状态栏。该接口仅在PC/2in1设备中、或处于[自由多窗模式](../../../windowmanager/window-terminology.md#free-windows自由多窗模式)的Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **起始版本：** 12
 
@@ -3182,12 +3182,12 @@ export default class EntryAbility extends UIAbility {
 startAppServiceExtensionAbility(want: Want): Promise<void>
 ```
 
-启动[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)实例。使用Promise异步回调。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+启动AppServiceExtensionAbility实例。使用Promise异步回调。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 > **说明：** 
 > 
 > 该接口的调用方必须为
-> [AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)
+> AppServiceExtensionAbility
 > 所属应用或者在AppServiceExtensionAbility支持的应用清单（即
 > [extensionAbilities标签](../../../quick-start/module-configuration-file.md#extensionabilities标签)的
 > appIdentifierAllowList属性）中的应用。
@@ -3204,7 +3204,7 @@ startAppServiceExtensionAbility(want: Want): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的Want信息。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动AppServiceExtensionAbility的Want信息。 |
 
 **返回值：**
 
@@ -3459,12 +3459,12 @@ struct Index {
 stopAppServiceExtensionAbility(want: Want): Promise<void>
 ```
 
-停止[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)实例。使用Promise异步回调。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+停止AppServiceExtensionAbility实例。使用Promise异步回调。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 > **说明：** 
 > 
 > 该接口的调用方必须为
-> [AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)
+> AppServiceExtensionAbility
 > 所属应用或者在AppServiceExtensionAbility支持的应用清单（即
 > [extensionAbilities标签](../../../quick-start/module-configuration-file.md#extensionabilities标签)的
 > appIdentifierAllowList属性）中的应用。
@@ -3481,7 +3481,7 @@ stopAppServiceExtensionAbility(want: Want): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 停止[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的Want信息。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 停止AppServiceExtensionAbility的Want信息。 |
 
 **返回值：**
 

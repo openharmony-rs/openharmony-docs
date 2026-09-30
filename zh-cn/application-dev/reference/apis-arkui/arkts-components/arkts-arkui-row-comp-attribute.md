@@ -8,7 +8,7 @@ declare class RowAttribute extends CommonMethod<RowAttribute>
 
 支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** RowAttribute extends CommonMethod<RowAttribute>
+**继承/实现关系：** RowAttribute extends CommonMethod&lt;RowAttribute&gt;
 
 **起始版本：** 7
 

@@ -128,7 +128,7 @@ struct RefreshExample {
 
 ### 示例2（设置刷新区域显示文本）
 
-通过[promptText](#refreshoptions对象说明)参数设置刷新区域显示文本。
+通过[promptText](#refresh)参数设置刷新区域显示文本。
 
 
 
@@ -188,7 +188,7 @@ struct RefreshExample {
 
 ### 示例3（自定义刷新区域显示内容-builder）
 
-通过[builder](#refreshoptions对象说明)参数自定义刷新区域显示内容。
+通过[builder](#refresh)参数自定义刷新区域显示内容。
 
 
 
@@ -260,7 +260,7 @@ struct RefreshExample {
 
 ### 示例4（自定义刷新区域显示内容-refreshingContent）
 
-通过[refreshingContent](#refreshoptions对象说明)参数自定义刷新区域显示内容。
+通过[refreshingContent](#refresh)参数自定义刷新区域显示内容。
 
 
 
@@ -354,7 +354,7 @@ struct RefreshExample {
 
 ### 示例5（实现最大下拉距离）
 
-通过[pullDownRatio](arkts-arkui-refresh-comp-attribute.md#pulldownratio)属性和[onOffsetChange](#onoffsetchange12)事件实现最大下拉距离。
+通过[pullDownRatio](arkts-arkui-refresh-comp-attribute.md#pulldownratio)属性和[onOffsetChange](arkts-arkui-refresh-comp-attribute.md#onoffsetchange)事件实现最大下拉距离。
 
 
 
@@ -440,7 +440,7 @@ struct RefreshExample {
 
 ### 示例6（实现下拉刷新上拉加载更多）
 
-Refresh组件与[List](ts-container-list.md)组件组合实现下拉刷新上拉加载更多效果。
+Refresh组件与List组件组合实现下拉刷新上拉加载更多效果。
 
 
 
@@ -669,7 +669,7 @@ struct RefreshExample {
 
 ### 示例9（不满一屏场景实现下拉刷新）
 
-调用[edgeEffect](ts-container-scrollable-common.md#edgeeffect11)时，将options参数的[alwaysEnabled](ts-container-scrollable-common.md#edgeeffectoptions11对象说明)设置为true，可以在不满一屏的情况下实现Refresh组件的下拉刷新效果。
+调用edgeEffect时，将options参数的alwaysEnabled设置为true，可以在不满一屏的情况下实现Refresh组件的下拉刷新效果。
 
 
 

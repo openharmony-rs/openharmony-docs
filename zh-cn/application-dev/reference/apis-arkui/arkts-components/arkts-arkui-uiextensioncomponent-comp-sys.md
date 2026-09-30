@@ -12,7 +12,7 @@
 
 组件的宽高必须显式设置为非零有效值。
 
-不支持到达边缘后继续滚动的场景。当**UIExtensionComponent**宿主和UIExtensionAbility都支持内容滚动时，基于手势的滚动会导致**UIExtensionComponent**内外同时响应，包括但不限于[Scroll](arkts-arkui-scroll-comp.md)、[Swiper](arkts-arkui-swiper-comp.md)、[List](arkts-arkui-list-comp.md)、[Grid](arkts-arkui-grid-comp.md)等可滚动容器。关于如何避免**UIExtensionComponent**内外同时滚动的详细信息，请参见[示例2](../../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#example-2-isolating-scrolling-inside-and-outside-of-uiextensioncomponent)。
+不支持到达边缘后继续滚动的场景。当**UIExtensionComponent**宿主和UIExtensionAbility都支持内容滚动时，基于手势的滚动会导致**UIExtensionComponent**内外同时响应，包括但不限于[Scroll](arkts-arkui-scroll-comp.md)、[Swiper](arkts-arkui-swiper-comp.md)、[List](arkts-arkui-list-comp.md)、[Grid](arkts-arkui-grid-comp.md)等可滚动容器。关于如何避免**UIExtensionComponent**内外同时滚动的详细信息，请参见示例2。
 
 ## 子组件
 
@@ -356,7 +356,7 @@ function onReceiveDataForResult(data: Record<string, Object>): Record<string, Ob
 
 ### 示例2 (UIExtensionComponent内外部同时响应滚动时隔离处理)
 
-本示例展示了当UIExtensionComponent组件使用方和扩展的Ability同时使用[Scroll](ts-container-scroll.md)容器的场景，通过对UIExtensionComponent设置手势拦截处理，实现当UIExtensionComponent内部滚动时，外部组件不响应滚动。
+本示例展示了当UIExtensionComponent组件使用方和扩展的Ability同时使用Scroll容器的场景，通过对UIExtensionComponent设置手势拦截处理，实现当UIExtensionComponent内部滚动时，外部组件不响应滚动。
 
 手势使用方式：
 

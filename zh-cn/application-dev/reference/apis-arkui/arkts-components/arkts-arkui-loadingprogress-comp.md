@@ -50,7 +50,7 @@ LoadingProgress()
 
 ### 示例1（设置颜色）
 
-该示例通过[color](#color)接口，实现了设置加载进度条颜色的功能。
+该示例通过[color](arkts-arkui-loadingprogress-comp-attribute.md#color)接口，实现了设置加载进度条颜色的功能。
 
 
 
@@ -72,7 +72,7 @@ struct LoadingProgressExample {
 
 ### 示例2（设置定制内容区）
 
-该示例通过[contentModifier](#contentmodifier12)接口，实现了定制内容区的功能，并展示了如何基于[LoadingProgressConfiguration](#loadingprogressconfiguration12对象说明)的[enableLoading](#enableloading10)属性切换自定义内容的显示效果。
+该示例通过[contentModifier](arkts-arkui-loadingprogress-comp-attribute.md#contentmodifier)接口，实现了定制内容区的功能，并展示了如何基于[LoadingProgressConfiguration](#loadingprogress)的[enableLoading](arkts-arkui-loadingprogress-comp-attribute.md#enableloading)属性切换自定义内容的显示效果。
 
 ```TypeScript
 // xxx.ets

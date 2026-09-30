@@ -8,7 +8,7 @@ declare class UIPickerComponentAttribute extends CommonMethod<UIPickerComponentA
 
 除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
 
-**继承/实现关系：** UIPickerComponentAttribute extends CommonMethod<UIPickerComponentAttribute>
+**继承/实现关系：** UIPickerComponentAttribute extends CommonMethod&lt;UIPickerComponentAttribute&gt;
 
 **起始版本：** 22
 

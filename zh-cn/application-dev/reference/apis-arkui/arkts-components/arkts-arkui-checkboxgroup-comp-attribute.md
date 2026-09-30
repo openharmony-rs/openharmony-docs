@@ -8,7 +8,7 @@ declare class CheckboxGroupAttribute extends CommonMethod<CheckboxGroupAttribute
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** CheckboxGroupAttribute extends CommonMethod<CheckboxGroupAttribute>
+**继承/实现关系：** CheckboxGroupAttribute extends CommonMethod&lt;CheckboxGroupAttribute&gt;
 
 **起始版本：** 8
 

@@ -6,7 +6,7 @@ declare interface ProgressConfiguration extends CommonConfiguration<ProgressConf
 
 进度条配置。继承自[CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md)。
 
-**继承/实现关系：** ProgressConfiguration extends CommonConfiguration<ProgressConfiguration>
+**继承/实现关系：** ProgressConfiguration extends CommonConfiguration&lt;ProgressConfiguration&gt;
 
 **起始版本：** 12
 

@@ -64,7 +64,7 @@ Progress(options: ProgressOptions<Type>)
 
 ### 示例1（设置进度条的类型）
 
-该示例通过[ProgressOptions](#progressoptions对象说明)的入参type，实现了设置进度条类型的功能。
+该示例通过[ProgressOptions](#progress)的入参type，实现了设置进度条类型的功能。
 
 
 
@@ -128,7 +128,7 @@ struct ProgressExample {
 
 ### 示例2（设置环形进度条属性）
 
-该示例通过[style](#style8)接口的strokeWidth和shadow属性，实现了环形进度条视觉属性设置功能。
+该示例通过[style](arkts-arkui-progress-comp-attribute.md#style)接口的strokeWidth和shadow属性，实现了环形进度条视觉属性设置功能。
 
 
 
@@ -158,7 +158,7 @@ struct ProgressExample {
 
 ### 示例3（设置环形进度条动画）
 
-该示例通过[style](#style8)接口的status和enableScanEffect属性，实现了环形进度条动效的开关功能。
+该示例通过[style](arkts-arkui-progress-comp-attribute.md#style)接口的status和enableScanEffect属性，实现了环形进度条动效的开关功能。
 
 
 
@@ -185,7 +185,7 @@ struct ProgressExample {
 
 ### 示例4（设置胶囊形进度条属性）
 
-该示例通过[style](#style8)接口的borderColor、borderWidth、content、font、fontColor、enableScanEffect、showDefaultPercentage属性，实现胶囊形进度条的视觉属性设置。
+该示例通过[style](arkts-arkui-progress-comp-attribute.md#style)接口的borderColor、borderWidth、content、font、fontColor、enableScanEffect、showDefaultPercentage属性，实现胶囊形进度条的视觉属性设置。
 
 
 
@@ -215,7 +215,7 @@ struct ProgressExample {
 
 ### 示例5（设置进度平滑动效）
 
-该示例通过[style](#style8)接口的enableSmoothEffect属性，实现了进度平滑动效开关的功能。
+该示例通过[style](arkts-arkui-progress-comp-attribute.md#style)接口的enableSmoothEffect属性，实现了进度平滑动效开关的功能。
 
 
 
@@ -257,7 +257,7 @@ struct Index {
 
 ### 示例6（设置定制内容区）
 
-该示例通过[contentModifier](#contentmodifier12)接口，实现了自定义进度条的功能，自定义实现星形，其中总进度为3，且当前值可通过按钮进行增减，达到的进度使用自定义颜色填充。
+该示例通过[contentModifier](arkts-arkui-progress-comp-attribute.md#contentmodifier)接口，实现了自定义进度条的功能，自定义实现星形，其中总进度为3，且当前值可通过按钮进行增减，达到的进度使用自定义颜色填充。
 
 
 
@@ -337,7 +337,7 @@ struct Index {
 
 ### 示例7（设置隐私隐藏）
 
-该示例通过[privacySensitive](#privacysensitive12)属性，实现了隐私隐藏效果。效果展示需要卡片框架支持。
+该示例通过[privacySensitive](arkts-arkui-progress-comp-attribute.md#privacysensitive)属性，实现了隐私隐藏效果。效果展示需要卡片框架支持。
 
 
 
@@ -411,7 +411,7 @@ struct ProgressExample {
 
 ### 示例9（设置线性进度条和胶囊进度条属性）
 
-从API version 23开始，该示例通过[color](#color)属性中的LinearGradient，实现线性进度条和胶囊进度条渐变色的功能。
+从API version 23开始，该示例通过[color](arkts-arkui-progress-comp-attribute.md#color)属性中的LinearGradient，实现线性进度条和胶囊进度条渐变色的功能。
 
 ```TypeScript
 // xxx.ets

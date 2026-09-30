@@ -10,7 +10,7 @@ declare class ParticleAttribute extends CommonMethod<ParticleAttribute>
 
 @extends CommonMethod&lt;ParticleAttribute&gt;
 
-**继承/实现关系：** ParticleAttribute extends CommonMethod<ParticleAttribute>
+**继承/实现关系：** ParticleAttribute extends CommonMethod&lt;ParticleAttribute&gt;
 
 **起始版本：** 10
 

@@ -14,7 +14,7 @@
     - [oh_archive.h](capi-oh-archive-h.md)
     - [oh_archive_errcode.h](capi-oh-archive-errcode-h.md)
     - [oh_fileio.h](capi-oh-fileio-h.md)
-    - [error_code.h](capi-error-code-h.md)
+    - [error_code.h](capi-error-code-h-1.md)
     - [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
     - [cloud_disk_error_code.h](capi-cloud-disk-error-code-h.md)
     - [oh_environment.h](capi-oh-environment-h.md)

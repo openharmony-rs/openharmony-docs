@@ -10,7 +10,7 @@ declare class EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentA
 
 不支持[点击事件](arkts-arkui-common-comp.md)等通用事件。仅支持以下事件。
 
-**继承/实现关系：** EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentAttribute>
+**继承/实现关系：** EmbeddedComponentAttribute extends CommonMethod&lt;EmbeddedComponentAttribute&gt;
 
 **起始版本：** 12
 

@@ -8,7 +8,7 @@ declare class PanelAttribute extends CommonMethod<PanelAttribute>
 
 除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
 
-**继承/实现关系：** PanelAttribute extends CommonMethod<PanelAttribute>
+**继承/实现关系：** PanelAttribute extends CommonMethod&lt;PanelAttribute&gt;
 
 **起始版本：** 7
 

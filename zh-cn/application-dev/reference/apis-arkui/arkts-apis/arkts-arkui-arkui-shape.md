@@ -36,7 +36,7 @@ import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 
 ## 示例
 
-该示例主要演示通过[clipShape](../arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12)和[maskShape](../arkui-ts/ts-universal-attributes-sharp-clipping.md#maskshape12)将图片裁剪和遮罩成不同形状。
+该示例主要演示通过clipShape和maskShape将图片裁剪和遮罩成不同形状。
 
 ```TypeScript
 import { CircleShape, EllipseShape, PathShape, RectShape } from '@kit.ArkUI';
