@@ -54,7 +54,7 @@ ImageSpan(value: ResourceStr | PixelMap)
 
 ### 示例1（设置对齐方式）
 
-从API version 10开始，该示例通过[verticalAlign](arkts-arkui-imagespan-comp-attribute.md#verticalalign (exact))、[objectFit](arkts-arkui-imagespan-comp-attribute.md#objectfit (exact))属性展示了ImageSpan组件的对齐方式以及缩放效果。
+从API version 10开始，该示例通过[verticalAlign](arkts-arkui-imagespan-comp-attribute.md#verticalalign)、[objectFit](arkts-arkui-imagespan-comp-attribute.md#objectfit)属性展示了ImageSpan组件的对齐方式以及缩放效果。
 
 
 
@@ -135,7 +135,7 @@ struct Index {
 
 ### 示例3（为图片添加事件）
 
-从API version 12开始，该示例通过[onComplete](arkts-arkui-imagespan-comp-attribute.md#oncomplete (prefix))、[onError](arkts-arkui-imagespan-comp-attribute.md#onerror (prefix))为图片添加加载成功和加载异常的事件。
+从API version 12开始，该示例通过[onComplete](arkts-arkui-imagespan-comp-attribute.md#oncomplete)、[onError](arkts-arkui-imagespan-comp-attribute.md#onerror)为图片添加加载成功和加载异常的事件。
 
 ```TypeScript
 // xxx.ets
@@ -164,7 +164,7 @@ struct Index {
 
 ### 示例4（设置颜色滤镜）
 
-从API version 14开始，该示例通过[colorFilter](arkts-arkui-imagespan-comp-attribute.md#colorfilter (prefix))属性展示了给ImageSpan图像设置颜色滤镜的效果。
+从API version 14开始，该示例通过[colorFilter](arkts-arkui-imagespan-comp-attribute.md#colorfilter)属性展示了给ImageSpan图像设置颜色滤镜的效果。
 
 
 
@@ -211,7 +211,7 @@ struct SpanExample {
 
 ### 示例5（设置加载占位图）
 
-从API version 12开始，该示例通过[alt](arkts-arkui-imagespan-comp-attribute.md#alt (prefix))属性展示了ImageSpan设置加载网络图片时占位图的效果。
+从API version 12开始，该示例通过[alt](arkts-arkui-imagespan-comp-attribute.md#alt)属性展示了ImageSpan设置加载网络图片时占位图的效果。
 
 使用网络图片时，需要申请权限ohos.permission.INTERNET。具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
 
@@ -284,7 +284,7 @@ struct SpanExample {
 
 ### 示例6（使用supportSvg2属性时，SVG图片的显示效果）
 
-从API version 22开始，该示例通过设置[supportSvg2](arkts-arkui-imagespan-comp-attribute.md#supportsvg2 (prefix))属性，使SVG标签解析能力增强功能的SVG易用性提升能力生效。
+从API version 22开始，该示例通过设置[supportSvg2](arkts-arkui-imagespan-comp-attribute.md#supportsvg2)属性，使SVG标签解析能力增强功能的SVG易用性提升能力生效。
 
 
 
@@ -325,7 +325,7 @@ struct Index {
 
 ### 示例7（设置图片拉伸）
 
-该示例通过[resizable](arkts-arkui-imagespan-comp-attribute.md#resizable (exact))属性的slice选项，对ImageSpan图片不同方向进行拉伸。
+该示例通过[resizable](arkts-arkui-imagespan-comp-attribute.md#resizable)属性的slice选项，对ImageSpan图片不同方向进行拉伸。
 
 从API版本26.1.0开始，新增resizable属性。
 

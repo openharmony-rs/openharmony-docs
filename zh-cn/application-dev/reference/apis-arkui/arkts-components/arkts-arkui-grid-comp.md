@@ -418,7 +418,7 @@ struct GridExample {
 
 ### 示例4（Grid嵌套滚动）
 
-[nestedScroll](arkts-arkui-grid-comp-attribute.md#nestedscroll (prefix))和onScrollFrameBegin的使用。
+[nestedScroll](arkts-arkui-grid-comp-attribute.md#nestedscroll)和onScrollFrameBegin的使用。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -600,11 +600,11 @@ struct GridExample {
 
 ### 示例5（Grid拖拽场景）
 
-通过属性[editMode](arkts-arkui-grid-comp-attribute.md#editmode (prefix))设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem。
+通过属性[editMode](arkts-arkui-grid-comp-attribute.md#editmode)设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem。
 
-在[onItemDragStart](arkts-arkui-grid-comp-attribute.md#onitemdragstart (prefix))回调中设置拖拽过程中显示的图片。
+在[onItemDragStart](arkts-arkui-grid-comp-attribute.md#onitemdragstart)回调中设置拖拽过程中显示的图片。
 
-在[onItemDrop](arkts-arkui-grid-comp-attribute.md#onitemdrop (prefix))中获取拖拽起始位置，和拖拽插入位置，并在[onItemDrop](arkts-arkui-grid-comp-attribute.md#onitemdrop (prefix))中完成交换数组位置逻辑。
+在[onItemDrop](arkts-arkui-grid-comp-attribute.md#onitemdrop)中获取拖拽起始位置，和拖拽插入位置，并在[onItemDrop](arkts-arkui-grid-comp-attribute.md#onitemdrop)中完成交换数组位置逻辑。
 
 设置属性支持动画。
 
@@ -706,7 +706,7 @@ struct GridExample {
 
 ### 示例6（自适应Grid）
 
-[layoutDirection](arkts-arkui-grid-comp-attribute.md#layoutdirection (prefix))、[maxCount](arkts-arkui-grid-comp-attribute.md#maxcount (prefix))、[minCount](arkts-arkui-grid-comp-attribute.md#mincount (prefix))、[cellLength](arkts-arkui-grid-comp-attribute.md#celllength)的使用。
+[layoutDirection](arkts-arkui-grid-comp-attribute.md#layoutdirection)、[maxCount](arkts-arkui-grid-comp-attribute.md#maxcount)、[minCount](arkts-arkui-grid-comp-attribute.md#mincount)、[cellLength](arkts-arkui-grid-comp-attribute.md#celllength)的使用。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -845,7 +845,7 @@ struct GridExample {
 
 ### 示例8（设置自适应列数）
 
-属性[columnsTemplate](arkts-arkui-grid-comp-attribute.md#columnstemplate (exact))中auto-fill、auto-fit和auto-stretch的使用示例。
+属性[columnsTemplate](arkts-arkui-grid-comp-attribute.md#columnstemplate)中auto-fill、auto-fit和auto-stretch的使用示例。
 
 
 
@@ -917,7 +917,7 @@ struct GridColumnsTemplate {
 
 下面的Grid中包含两列，每列中的GridItem包括高度确定的两个Column和一个高度不确定的Text共三个子组件。
 
-在默认情况下，左右两个GridItem的高度可能是不同的；在设置了Grid的[alignItems](arkts-arkui-grid-comp-attribute.md#alignitems (prefix))属性为GridItemAlignment.STRETCH后，一行左右两个GridItem中原本高度较小的GridItem会以另一个高度较大的GridItem的高度作为自己的高度。
+在默认情况下，左右两个GridItem的高度可能是不同的；在设置了Grid的[alignItems](arkts-arkui-grid-comp-attribute.md#alignitems)属性为GridItemAlignment.STRETCH后，一行左右两个GridItem中原本高度较小的GridItem会以另一个高度较大的GridItem的高度作为自己的高度。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -1040,7 +1040,7 @@ struct GridExample {
 
 ### 示例11（单边边缘效果）
 
-该示例通过[edgeEffect](arkts-arkui-grid-comp-attribute.md#edgeeffect (prefix))接口，实现了Grid组件设置单边边缘效果。
+该示例通过[edgeEffect](arkts-arkui-grid-comp-attribute.md#edgeeffect)接口，实现了Grid组件设置单边边缘效果。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -1095,7 +1095,7 @@ struct GridExample {
 
 ### 示例12（方向键走焦换行模式）
 
-从API version 20开始，该示例通过[focusWrapMode](arkts-arkui-grid-comp-attribute.md#focuswrapmode (prefix))接口，实现了Grid组件方向键走焦换行效果。
+从API version 20开始，该示例通过[focusWrapMode](arkts-arkui-grid-comp-attribute.md#focuswrapmode)接口，实现了Grid组件方向键走焦换行效果。
 
 
 
@@ -2236,7 +2236,7 @@ struct GridExample {
 
 该示例通过使用双向绑定和事件监听在Grid上双指滑动进入多选模式的通知，实现了在Grid上边滑动边选择的效果。
 
-从API版本26.0.0开始，Grid组件新增[enableEditMode](arkts-arkui-grid-comp-attribute.md#enableeditmode (exact))接口和[onEditModeChange](arkts-arkui-grid-comp-attribute.md#oneditmodechange (exact))事件。
+从API版本26.0.0开始，Grid组件新增[enableEditMode](arkts-arkui-grid-comp-attribute.md#enableeditmode)接口和[onEditModeChange](arkts-arkui-grid-comp-attribute.md#oneditmodechange)事件。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 

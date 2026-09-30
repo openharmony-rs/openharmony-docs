@@ -294,9 +294,9 @@ struct LazyVGridLayoutStickyDemo {
 
 ### 示例3（设置自适应列数）
 
-该示例通过设置[columnsTemplate](arkts-arkui-lazyvgridlayout-comp-attribute.md#columnstemplate (exact))属性实现了LazyVGridLayout组件自适应列数，并使用了属性[columnsTemplate](arkts-arkui-lazyvgridlayout-comp-attribute.md#columnstemplate (exact))中的auto-fill、auto-fit和auto-stretch。
+该示例通过设置[columnsTemplate](arkts-arkui-lazyvgridlayout-comp-attribute.md#columnstemplate)属性实现了LazyVGridLayout组件自适应列数，并使用了属性[columnsTemplate](arkts-arkui-lazyvgridlayout-comp-attribute.md#columnstemplate)中的auto-fill、auto-fit和auto-stretch。
 
-从API version 19开始，新增[columnsTemplate](arkts-arkui-lazyvgridlayout-comp-attribute.md#columnstemplate (exact))接口。
+从API version 19开始，新增[columnsTemplate](arkts-arkui-lazyvgridlayout-comp-attribute.md#columnstemplate)接口。
 
 ```TypeScript
 import { LazyColumnLayout, LazyColumnLayoutAttribute, LengthMetrics } from '@kit.ArkUI';

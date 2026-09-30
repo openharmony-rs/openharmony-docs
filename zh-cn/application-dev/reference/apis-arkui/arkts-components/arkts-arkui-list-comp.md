@@ -419,7 +419,7 @@ struct ListExample {
 
 ### 示例5（跳转准确）
 
-该示例通过设置[childrenMainSize](arkts-arkui-list-comp-attribute.md#childrenmainsize (prefix))属性，实现了List在子组件高度不一致时调用scrollTo接口也可以跳转准确。
+该示例通过设置[childrenMainSize](arkts-arkui-list-comp-attribute.md#childrenmainsize)属性，实现了List在子组件高度不一致时调用scrollTo接口也可以跳转准确。
 
 如果配合状态管理V2使用，详情见：[List与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 
@@ -738,7 +738,7 @@ struct ListExample {
 
 ### 示例9（设置折行走焦）
 
-从API version 20开始，该示例通过[focusWrapMode](arkts-arkui-list-comp-attribute.md#focuswrapmode (prefix))接口，实现了List组件方向键走焦换行效果。
+从API version 20开始，该示例通过[focusWrapMode](arkts-arkui-list-comp-attribute.md#focuswrapmode)接口，实现了List组件方向键走焦换行效果。
 
 
 
@@ -831,7 +831,7 @@ struct ListExample {
 
 ### 示例11（设置滚动条的边距）
 
-从API version 20开始，该示例展示了通过scrollBarMargin属性设置滚动条边距并避让[contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset (prefix))、[contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset (prefix))区域的效果。
+从API version 20开始，该示例展示了通过scrollBarMargin属性设置滚动条边距并避让[contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset)、[contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset)区域的效果。
 
 
 

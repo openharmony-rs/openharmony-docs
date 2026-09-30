@@ -162,7 +162,7 @@ struct TextPickerExample {
 
 ### 示例2（设置文本样式）
 
-该示例使用[disappearTextStyle](arkts-arkui-textpicker-comp-attribute.md#disappeartextstyle (prefix))、[textStyle](arkts-arkui-textpicker-comp-attribute.md#textstyle (prefix))、[selectedTextStyle](arkts-arkui-textpicker-comp-attribute.md#selectedtextstyle (prefix))设置文本选择器中的文本样式。
+该示例使用[disappearTextStyle](arkts-arkui-textpicker-comp-attribute.md#disappeartextstyle)、[textStyle](arkts-arkui-textpicker-comp-attribute.md#textstyle)、[selectedTextStyle](arkts-arkui-textpicker-comp-attribute.md#selectedtextstyle)设置文本选择器中的文本样式。
 
 
 
@@ -200,7 +200,7 @@ struct TextPickerExample {
 
 ### 示例3（设置无分割线样式）
 
-该示例通过配置[divider](arkts-arkui-textpicker-comp-attribute.md#divider (prefix))为null实现无分割线样式的文本选择器。
+该示例通过配置[divider](arkts-arkui-textpicker-comp-attribute.md#divider)为null实现无分割线样式的文本选择器。
 
 
 
@@ -269,7 +269,7 @@ struct TextPickerExample {
 
 ### 示例5（设置渐隐效果）
 
-该示例通过配置[gradientHeight](arkts-arkui-textpicker-comp-attribute.md#gradientheight (prefix))设置文本选择器的渐隐效果高度。
+该示例通过配置[gradientHeight](arkts-arkui-textpicker-comp-attribute.md#gradientheight)设置文本选择器的渐隐效果高度。
 
 
 
@@ -301,7 +301,7 @@ struct TextPickerExample {
 
 ### 示例6（设置选择项高度）
 
-该示例通过配置[defaultPickerItemHeight](arkts-arkui-textpicker-comp-attribute.md#defaultpickeritemheight (exact))设置选择项的高度。
+该示例通过配置[defaultPickerItemHeight](arkts-arkui-textpicker-comp-attribute.md#defaultpickeritemheight)设置选择项的高度。
 
 
 
@@ -330,7 +330,7 @@ struct TextPickerExample {
 
 ### 示例7（设置循环滚动）
 
-该示例通过配置[canLoop](arkts-arkui-textpicker-comp-attribute.md#canloop (prefix))设置文本选择器是否循环滚动。
+该示例通过配置[canLoop](arkts-arkui-textpicker-comp-attribute.md#canloop)设置文本选择器是否循环滚动。
 
 
 
@@ -370,7 +370,7 @@ struct TextPickerExample {
 
 ### 示例8（设置选中项索引值）
 
-该示例通过配置[selectedIndex](arkts-arkui-textpicker-comp-attribute.md#selectedindex (prefix))设置默认选中项的索引值。
+该示例通过配置[selectedIndex](arkts-arkui-textpicker-comp-attribute.md#selectedindex)设置默认选中项的索引值。
 
 
 
@@ -398,7 +398,7 @@ struct TextPickerExample {
 
 ### 示例9（设置关闭文本样式变化动效与对应文本样式）
 
-该示例通过配置[disableTextStyleAnimation](arkts-arkui-textpicker-comp-attribute.md#disabletextstyleanimation (prefix))、[defaultTextStyle](arkts-arkui-textpicker-comp-attribute.md#defaulttextstyle (prefix))实现关闭文本选择器文本样式变化的动效，并设置文本样式。
+该示例通过配置[disableTextStyleAnimation](arkts-arkui-textpicker-comp-attribute.md#disabletextstyleanimation)、[defaultTextStyle](arkts-arkui-textpicker-comp-attribute.md#defaulttextstyle)实现关闭文本选择器文本样式变化的动效，并设置文本样式。
 
 从API version 15开始，新增disableTextStyleAnimation、defaultTextStyle接口。
 
@@ -435,7 +435,7 @@ struct TextPickerExample {
 
 ### 示例10（设置选中项背景样式）
 
-该示例通过配置[selectedBackgroundStyle](arkts-arkui-textpicker-comp-attribute.md#selectedbackgroundstyle (prefix))实现文本选择器选中项的背景样式。
+该示例通过配置[selectedBackgroundStyle](arkts-arkui-textpicker-comp-attribute.md#selectedbackgroundstyle)实现文本选择器选中项的背景样式。
 
 
 
@@ -497,7 +497,7 @@ struct TextPickerExample {
 
 ### 示例11（设置文本的最大字号、最小字号、超长文本截断方式）
 
-该示例通过配置[disappearTextStyle](arkts-arkui-textpicker-comp-attribute.md#disappeartextstyle (prefix))、[textStyle](arkts-arkui-textpicker-comp-attribute.md#textstyle (prefix))和[selectedTextStyle](arkts-arkui-textpicker-comp-attribute.md#selectedtextstyle (prefix))，设置文本的颜色、最大字号、最小字号、超长文本截断方式。
+该示例通过配置[disappearTextStyle](arkts-arkui-textpicker-comp-attribute.md#disappeartextstyle)、[textStyle](arkts-arkui-textpicker-comp-attribute.md#textstyle)和[selectedTextStyle](arkts-arkui-textpicker-comp-attribute.md#selectedtextstyle)，设置文本的颜色、最大字号、最小字号、超长文本截断方式。
 
 从API version 20开始，新增disappearTextStyle、textStyle和selectedTextStyle接口。
 

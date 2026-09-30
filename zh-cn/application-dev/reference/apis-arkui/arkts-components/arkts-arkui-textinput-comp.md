@@ -148,7 +148,7 @@ struct TextInputExample {
 
 ### 示例2（设置下划线）
 
-从API version 10开始支持，该示例通过[showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline)、[showError](arkts-arkui-textinput-comp-attribute.md#showerror)、[showUnit](arkts-arkui-textinput-comp-attribute.md#showunit)、[passwordIcon](arkts-arkui-textinput-comp-attribute.md#passwordicon (prefix))属性展示了下划线在不同场景的效果，同时，可以通过[underlineColor](arkts-arkui-textinput-comp-attribute.md#underlinecolor (prefix))（从API version 12开始）支持配置下划线颜色。
+从API version 10开始支持，该示例通过[showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline)、[showError](arkts-arkui-textinput-comp-attribute.md#showerror)、[showUnit](arkts-arkui-textinput-comp-attribute.md#showunit)、[passwordIcon](arkts-arkui-textinput-comp-attribute.md#passwordicon)属性展示了下划线在不同场景的效果，同时，可以通过[underlineColor](arkts-arkui-textinput-comp-attribute.md#underlinecolor)（从API version 12开始）支持配置下划线颜色。
 
 
 
@@ -250,9 +250,9 @@ struct TextInputExample {
 
 ### 示例3（设置自定义键盘）
 
-该示例通过[customKeyboard](arkts-arkui-textinput-comp-attribute.md#customkeyboard (prefix))（从API version 10开始）属性分别将value中的入参类型设置为CustomBuilder和ComponentContent，实现了自定义键盘的功能。
+该示例通过[customKeyboard](arkts-arkui-textinput-comp-attribute.md#customkeyboard)（从API version 10开始）属性分别将value中的入参类型设置为CustomBuilder和ComponentContent，实现了自定义键盘的功能。
 
-从API version 22开始[customKeyboard](arkts-arkui-textinput-comp-attribute.md#customkeyboard (prefix))属性新增了入参类型ComponentContent。
+从API version 22开始[customKeyboard](arkts-arkui-textinput-comp-attribute.md#customkeyboard)属性新增了入参类型ComponentContent。
 
 
 
@@ -321,7 +321,7 @@ struct TextInputExample {
 
 ### 示例4（设置右侧清除按钮样式）
 
-该示例通过[cancelButton](arkts-arkui-textinput-comp-attribute.md#cancelbutton (prefix))属性展示了自定义右侧清除按钮样式的效果。
+该示例通过[cancelButton](arkts-arkui-textinput-comp-attribute.md#cancelbutton)属性展示了自定义右侧清除按钮样式的效果。
 
 
 
@@ -357,7 +357,7 @@ struct TextInputExample {
 
 ### 示例5（设置计数器）
 
-该示例通过[maxLength](arkts-arkui-textinput-comp-attribute.md#maxlength (exact))、[showCounter](arkts-arkui-textinput-comp-attribute.md#showcounter (prefix))（从API version 11开始）、[showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline)（从API version 10开始）属性实现了计数器的功能。
+该示例通过[maxLength](arkts-arkui-textinput-comp-attribute.md#maxlength)、[showCounter](arkts-arkui-textinput-comp-attribute.md#showcounter)（从API version 11开始）、[showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline)（从API version 10开始）属性实现了计数器的功能。
 
 
 
@@ -392,7 +392,7 @@ struct TextInputExample {
 
 ### 示例6（电话号码格式化）
 
-该示例通过[onChange](arkts-arkui-textinput-comp-attribute.md#onchange (exact))回调实现了电话号码格式化为XXX XXXX XXXX的功能。
+该示例通过[onChange](arkts-arkui-textinput-comp-attribute.md#onchange)回调实现了电话号码格式化为XXX XXXX XXXX的功能。
 
 
 
@@ -541,7 +541,7 @@ struct TextInputExample {
 
 ### 示例7（设置文本断行规则）
 
-从API version 12开始，该示例通过[wordBreak](arkts-arkui-textinput-comp-attribute.md#wordbreak (prefix))属性实现了TextInput不同断行规则下的效果。
+从API version 12开始，该示例通过[wordBreak](arkts-arkui-textinput-comp-attribute.md#wordbreak)属性实现了TextInput不同断行规则下的效果。
 
 
 
@@ -601,7 +601,7 @@ struct TextInputExample {
 
 ### 示例8（设置文本样式）
 
-从API version 12开始，该示例通过[lineHeight](arkts-arkui-textinput-comp-attribute.md#lineheight (prefix))、[letterSpacing](arkts-arkui-textinput-comp-attribute.md#letterspacing (prefix))、[decoration](arkts-arkui-textinput-comp-attribute.md#decoration (prefix))属性展示了不同样式的文本效果。
+从API version 12开始，该示例通过[lineHeight](arkts-arkui-textinput-comp-attribute.md#lineheight)、[letterSpacing](arkts-arkui-textinput-comp-attribute.md#letterspacing)、[decoration](arkts-arkui-textinput-comp-attribute.md#decoration)属性展示了不同样式的文本效果。
 
 
 
@@ -649,7 +649,7 @@ struct TextInputExample {
 
 ### 示例9（设置文字特性效果）
 
-从API version 12开始，该示例通过[fontFeature](arkts-arkui-textinput-comp-attribute.md#fontfeature (prefix))属性实现了文本在不同文字特性下的展示效果。
+从API version 12开始，该示例通过[fontFeature](arkts-arkui-textinput-comp-attribute.md#fontfeature)属性实现了文本在不同文字特性下的展示效果。
 
 
 
@@ -680,7 +680,7 @@ struct TextInputExample {
 
 ### 示例10（自定义键盘避让）
 
-该示例通过[customKeyboard](arkts-arkui-textinput-comp-attribute.md#customkeyboard (prefix))（从API version 10开始）属性配置KeyboardOptions（从API version 12开始）接口实现了自定义键盘避让的效果。
+该示例通过[customKeyboard](arkts-arkui-textinput-comp-attribute.md#customkeyboard)（从API version 10开始）属性配置KeyboardOptions（从API version 12开始）接口实现了自定义键盘避让的效果。
 
 
 
@@ -751,7 +751,7 @@ struct TextInputExample {
 
 ### 示例11（设置文本自适应）
 
-从API version 12开始，该示例通过[minFontSize](arkts-arkui-textinput-comp-attribute.md#minfontsize (prefix))、[maxFontSize](arkts-arkui-textinput-comp-attribute.md#maxfontsize (prefix))、[heightAdaptivePolicy](arkts-arkui-textinput-comp-attribute.md#heightadaptivepolicy (prefix))属性实现了文本自适应字号的功能。
+从API version 12开始，该示例通过[minFontSize](arkts-arkui-textinput-comp-attribute.md#minfontsize)、[maxFontSize](arkts-arkui-textinput-comp-attribute.md#maxfontsize)、[heightAdaptivePolicy](arkts-arkui-textinput-comp-attribute.md#heightadaptivepolicy)属性实现了文本自适应字号的功能。
 
 
 
@@ -803,7 +803,7 @@ struct TextInputExample {
 
 ### 示例12（设置折行规则）
 
-从API version 12开始，该示例通过[lineBreakStrategy](arkts-arkui-textinput-comp-attribute.md#linebreakstrategy (prefix))属性实现了TextInput不同折行规则下的效果。
+从API version 12开始，该示例通过[lineBreakStrategy](arkts-arkui-textinput-comp-attribute.md#linebreakstrategy)属性实现了TextInput不同折行规则下的效果。
 
 
 
@@ -847,7 +847,7 @@ struct TextInputExample {
 
 ### 示例13（支持插入和删除回调）
 
-从API version 12开始，该示例通过[onWillInsert](arkts-arkui-textinput-comp-attribute.md#onwillinsert (prefix))、[onDidInsert](arkts-arkui-textinput-comp-attribute.md#ondidinsert (prefix))、[onWillDelete](arkts-arkui-textinput-comp-attribute.md#onwilldelete (prefix))、[onDidDelete](arkts-arkui-textinput-comp-attribute.md#ondiddelete (prefix))接口实现了插入和删除的效果。
+从API version 12开始，该示例通过[onWillInsert](arkts-arkui-textinput-comp-attribute.md#onwillinsert)、[onDidInsert](arkts-arkui-textinput-comp-attribute.md#ondidinsert)、[onWillDelete](arkts-arkui-textinput-comp-attribute.md#onwilldelete)、[onDidDelete](arkts-arkui-textinput-comp-attribute.md#ondiddelete)接口实现了插入和删除的效果。
 
 
 
@@ -913,7 +913,7 @@ struct TextInputExample {
 
 ### 示例14（文本扩展自定义菜单）
 
-从API version 12开始，该示例通过[editMenuOptions](arkts-arkui-textinput-comp-attribute.md#editmenuoptions (prefix))接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在onPrepareMenu（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过[editMenuOptions](arkts-arkui-textinput-comp-attribute.md#editmenuoptions)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在onPrepareMenu（从API version 20开始）回调中，进行菜单数据的设置。
 
 
 
@@ -999,7 +999,7 @@ struct TextInputExample {
 
 ### 示例15（设置symbol类型清除按钮）
 
-从API version 18开始，该示例通过[cancelButton](arkts-arkui-textinput-comp-attribute.md#cancelbutton (prefix))属性展示了自定义右侧symbol类型清除按钮样式的效果。
+从API version 18开始，该示例通过[cancelButton](arkts-arkui-textinput-comp-attribute.md#cancelbutton)属性展示了自定义右侧symbol类型清除按钮样式的效果。
 
 
 
@@ -1028,13 +1028,13 @@ struct TextInputExample {
 
 ### 示例16（文本设置省略模式）
 
-该示例通过[textOverflow](arkts-arkui-textinput-comp-attribute.md#textoverflow (prefix))、[ellipsisMode](arkts-arkui-textinput-comp-attribute.md#ellipsismode (prefix))、[style](arkts-arkui-textinput-comp-attribute.md#style (prefix))属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。
+该示例通过[textOverflow](arkts-arkui-textinput-comp-attribute.md#textoverflow)、[ellipsisMode](arkts-arkui-textinput-comp-attribute.md#ellipsismode)、[style](arkts-arkui-textinput-comp-attribute.md#style)属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。
 
-从API version 9开始，通过[style](arkts-arkui-textinput-comp-attribute.md#style (prefix))设置输入框的风格。
+从API version 9开始，通过[style](arkts-arkui-textinput-comp-attribute.md#style)设置输入框的风格。
 
-从API version 12开始，通过[textOverflow](arkts-arkui-textinput-comp-attribute.md#textoverflow (prefix))设置文本超长时的显示方式。
+从API version 12开始，通过[textOverflow](arkts-arkui-textinput-comp-attribute.md#textoverflow)设置文本超长时的显示方式。
 
-从API version 18开始，通过[ellipsisMode](arkts-arkui-textinput-comp-attribute.md#ellipsismode (prefix))设置省略号位置。
+从API version 18开始，通过[ellipsisMode](arkts-arkui-textinput-comp-attribute.md#ellipsismode)设置省略号位置。
 
 从API version 24开始，EllipsisMode新增了MULTILINE_START和MULTILINE_CENTER枚举。
 
@@ -1096,9 +1096,9 @@ struct EllipsisModeExample {
 
 ### 示例17（输入框支持输入状态变化等回调）
 
-从API version 8开始，该示例通过[onEditChange](arkts-arkui-textinput-comp-attribute.md#oneditchange (prefix))、[onCopy](arkts-arkui-textinput-comp-attribute.md#oncopy (prefix))、[onCut](arkts-arkui-textinput-comp-attribute.md#oncut (prefix))、[onPaste](arkts-arkui-textinput-comp-attribute.md#onpaste (prefix))、[onContentScroll](arkts-arkui-textinput-comp-attribute.md#oncontentscroll (prefix))（从API version 10开始）、[onWillCopy](arkts-arkui-textinput-comp-attribute.md#onwillcopy (exact))、[onWillCut](arkts-arkui-textinput-comp-attribute.md#onwillcut (exact))接口实现了输入框监测输入状态变化、复制、剪切、粘贴、文本内容滚动回调的效果、如何屏蔽系统复制功能，以及如何屏蔽系统剪切功能，同时，可以通过设置[selectAll](arkts-arkui-textinput-comp-attribute.md#selectall (prefix))（从API version 11开始）属性，输入框初始状态下是否全选文本。
+从API version 8开始，该示例通过[onEditChange](arkts-arkui-textinput-comp-attribute.md#oneditchange)、[onCopy](arkts-arkui-textinput-comp-attribute.md#oncopy)、[onCut](arkts-arkui-textinput-comp-attribute.md#oncut)、[onPaste](arkts-arkui-textinput-comp-attribute.md#onpaste)、[onContentScroll](arkts-arkui-textinput-comp-attribute.md#oncontentscroll)（从API version 10开始）、[onWillCopy](arkts-arkui-textinput-comp-attribute.md#onwillcopy)、[onWillCut](arkts-arkui-textinput-comp-attribute.md#onwillcut)接口实现了输入框监测输入状态变化、复制、剪切、粘贴、文本内容滚动回调的效果、如何屏蔽系统复制功能，以及如何屏蔽系统剪切功能，同时，可以通过设置[selectAll](arkts-arkui-textinput-comp-attribute.md#selectall)（从API version 11开始）属性，输入框初始状态下是否全选文本。
 
-从API版本26.0.0开始，新增[onWillCopy](arkts-arkui-textinput-comp-attribute.md#onwillcopy (exact))、[onWillCut](arkts-arkui-textinput-comp-attribute.md#onwillcut (exact))接口。
+从API版本26.0.0开始，新增[onWillCopy](arkts-arkui-textinput-comp-attribute.md#onwillcopy)、[onWillCut](arkts-arkui-textinput-comp-attribute.md#onwillcut)接口。
 
 
 
@@ -1217,7 +1217,7 @@ struct TextInputExample {
 
 ### 示例18（设置最小字体范围与最大字体范围）
 
-从API version 18开始，该示例通过[minFontScale](arkts-arkui-textinput-comp-attribute.md#minfontscale (prefix))、[maxFontScale](arkts-arkui-textinput-comp-attribute.md#maxfontscale (prefix))设置字体显示最小与最大范围（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）。
+从API version 18开始，该示例通过[minFontScale](arkts-arkui-textinput-comp-attribute.md#minfontscale)、[maxFontScale](arkts-arkui-textinput-comp-attribute.md#maxfontscale)设置字体显示最小与最大范围（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）。
 
 ```TypeScript
 // 开启应用缩放跟随系统
@@ -1354,9 +1354,9 @@ struct TextInputExample {
 
 ### 示例20（设置文本描边）
 
-从API version 20开始，该示例通过[strokeWidth](arkts-arkui-textinput-comp-attribute.md#strokewidth (prefix))和[strokeColor](arkts-arkui-textinput-comp-attribute.md#strokecolor (prefix))属性设置文本的描边宽度及颜色。
+从API version 20开始，该示例通过[strokeWidth](arkts-arkui-textinput-comp-attribute.md#strokewidth)和[strokeColor](arkts-arkui-textinput-comp-attribute.md#strokecolor)属性设置文本的描边宽度及颜色。
 
-从API版本26.0.0开始，新增[strokeJoinStyle](arkts-arkui-textinput-comp-attribute.md#strokejoinstyle (exact))接口，支持设置文本描边拐角样式。
+从API版本26.0.0开始，新增[strokeJoinStyle](arkts-arkui-textinput-comp-attribute.md#strokejoinstyle)接口，支持设置文本描边拐角样式。
 
 
 
@@ -1402,7 +1402,7 @@ struct TextInputExample {
 
 ### 示例21（设置中西文自动间距）
 
-从API version 20开始，该示例通过[enableAutoSpacing](arkts-arkui-textinput-comp-attribute.md#enableautospacing (prefix))属性设置中西文自动间距。
+从API version 20开始，该示例通过[enableAutoSpacing](arkts-arkui-textinput-comp-attribute.md#enableautospacing)属性设置中西文自动间距。
 
 
 
@@ -1429,7 +1429,7 @@ struct TextInputExample {
 
 ### 示例22（设置字符计数颜色以及超出字符颜色）
 
-从API version 22开始，该示例通过[showCounter](arkts-arkui-textinput-comp-attribute.md#showcounter (prefix))属性的counterTextColor和counterTextOverflowColor设置字符计数颜色以及超出字符颜色。
+从API version 22开始，该示例通过[showCounter](arkts-arkui-textinput-comp-attribute.md#showcounter)属性的counterTextColor和counterTextOverflowColor设置字符计数颜色以及超出字符颜色。
 
 
 
@@ -1559,7 +1559,7 @@ struct TextInputExample {
 
 ### 示例25（设置内联输入风格编辑态时滚动条的显示模式）
 
-从API version 10开始，该示例通过[barState](arkts-arkui-textinput-comp-attribute.md#barstate (prefix))接口设置内联输入风格编辑态时滚动条的显示或隐藏状态。
+从API version 10开始，该示例通过[barState](arkts-arkui-textinput-comp-attribute.md#barstate)接口设置内联输入风格编辑态时滚动条的显示或隐藏状态。
 
 
 
@@ -1589,7 +1589,7 @@ struct TextInputBarStateDemo {
 
 ### 示例26（设置行首标点符号压缩和行尾标点符号悬挂）
 
-本示例通过[compressLeadingPunctuation](arkts-arkui-textinput-comp-attribute.md#compressleadingpunctuation (prefix))接口设置行首标点符号压缩，通过[punctuationOverflow](arkts-arkui-textinput-comp-attribute.md#punctuationoverflow (exact))设置行尾标点符号悬挂。
+本示例通过[compressLeadingPunctuation](arkts-arkui-textinput-comp-attribute.md#compressleadingpunctuation)接口设置行首标点符号压缩，通过[punctuationOverflow](arkts-arkui-textinput-comp-attribute.md#punctuationoverflow)设置行尾标点符号悬挂。
 
 左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
 
@@ -1640,9 +1640,9 @@ struct PunctuationDemo {
 
 ### 示例27（设置自适应间距）
 
-该示例通过[includeFontPadding](arkts-arkui-textinput-comp-attribute.md#includefontpadding (prefix))接口增加首行尾行间距和[fallbackLineSpacing](arkts-arkui-textinput-comp-attribute.md#fallbacklinespacing (prefix))接口设置自适应行间距。
+该示例通过[includeFontPadding](arkts-arkui-textinput-comp-attribute.md#includefontpadding)接口增加首行尾行间距和[fallbackLineSpacing](arkts-arkui-textinput-comp-attribute.md#fallbacklinespacing)接口设置自适应行间距。
 
-从API version 23开始，新增[includeFontPadding](arkts-arkui-textinput-comp-attribute.md#includefontpadding (prefix))和[fallbackLineSpacing](arkts-arkui-textinput-comp-attribute.md#fallbacklinespacing (prefix))接口。
+从API version 23开始，新增[includeFontPadding](arkts-arkui-textinput-comp-attribute.md#includefontpadding)和[fallbackLineSpacing](arkts-arkui-textinput-comp-attribute.md#fallbacklinespacing)接口。
 
 
 
@@ -1707,7 +1707,7 @@ struct Index {
 
 ### 示例28（设置文本拖拽时的背板样式）
 
-该示例通过[selectedDragPreviewStyle](arkts-arkui-textinput-comp-attribute.md#selecteddragpreviewstyle (prefix))接口设置文本拖拽时的背板样式。
+该示例通过[selectedDragPreviewStyle](arkts-arkui-textinput-comp-attribute.md#selecteddragpreviewstyle)接口设置文本拖拽时的背板样式。
 
 从API version 23开始，新增selectedDragPreviewStyle接口。
 
@@ -1761,7 +1761,7 @@ struct Page {
 
 ### 示例30（设置文本排版方向）
 
-该示例通过[textDirection](arkts-arkui-textinput-comp-attribute.md#textdirection (prefix))接口设置文本排版方向。
+该示例通过[textDirection](arkts-arkui-textinput-comp-attribute.md#textdirection)接口设置文本排版方向。
 
 从API version 23开始，新增textDirection接口。
 
@@ -1839,7 +1839,7 @@ struct TextInputExample {
 
 ### 示例32（设置文本排版时是否使能孤字优化）
 
-该示例通过[orphanCharOptimization](arkts-arkui-textinput-comp-attribute.md#orphancharoptimization (exact))接口设置使能孤字优化，确保段落最后一行不出现孤字。
+该示例通过[orphanCharOptimization](arkts-arkui-textinput-comp-attribute.md#orphancharoptimization)接口设置使能孤字优化，确保段落最后一行不出现孤字。
 
 从API版本26.0.0开始，新增orphanCharOptimization接口。
 
@@ -1886,7 +1886,7 @@ struct TextExample {
 
 ### 示例33（设置文本着色器效果）
 
-该示例通过[shaderStyle](arkts-arkui-textinput-comp-attribute.md#shaderstyle (exact))接口实现对TextInput组件内文本着色效果。
+该示例通过[shaderStyle](arkts-arkui-textinput-comp-attribute.md#shaderstyle)接口实现对TextInput组件内文本着色效果。
 
 从API版本26.0.0开始，新增shaderStyle接口。
 
@@ -1956,7 +1956,7 @@ struct ShaderColorStyle {
 
 ### 示例34（设置文本选择的AI菜单）
 
-该示例通过[enableSelectedDataDetector](arkts-arkui-textinput-comp-attribute.md#enableselecteddatadetector (prefix))，配置文本选择AI菜单功能。
+该示例通过[enableSelectedDataDetector](arkts-arkui-textinput-comp-attribute.md#enableselecteddatadetector)，配置文本选择AI菜单功能。
 
 从API version 22开始，新增enableSelectedDataDetector。
 

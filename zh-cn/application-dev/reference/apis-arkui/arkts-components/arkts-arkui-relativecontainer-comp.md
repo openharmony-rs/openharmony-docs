@@ -651,7 +651,7 @@ struct Index {
 
 ### 示例9（设置镜像模式）
 
-本示例展示了在镜像模式（direction声明Direction.Rtl）下以屏障为锚点时使用LocalizedAlignRuleOptions和[LocalizedBarrierDirection](arkts-arkui-relativecontainer-comp-attribute.md#barrier (contains))设置对齐方式的用法。
+本示例展示了在镜像模式（direction声明Direction.Rtl）下以屏障为锚点时使用LocalizedAlignRuleOptions和[LocalizedBarrierDirection](arkts-arkui-relativecontainer-comp-attribute.md#barrier)设置对齐方式的用法。
 
 
 

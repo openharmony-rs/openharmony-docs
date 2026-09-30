@@ -115,7 +115,7 @@ struct SearchExample {
 
 ### 示例2（设置搜索和删除图标）
 
-该示例通过[searchButton](arkts-arkui-search-comp-attribute.md#searchbutton (exact))（从API version 8开始）、[searchIcon](arkts-arkui-search-comp-attribute.md#searchicon (prefix))（从API version 10开始）、[cancelButton](arkts-arkui-search-comp-attribute.md#cancelbutton (prefix))（从API version 10开始）属性展示了设置搜索和删除图标的效果。
+该示例通过[searchButton](arkts-arkui-search-comp-attribute.md#searchbutton)（从API version 8开始）、[searchIcon](arkts-arkui-search-comp-attribute.md#searchicon)（从API version 10开始）、[cancelButton](arkts-arkui-search-comp-attribute.md#cancelbutton)（从API version 10开始）属性展示了设置搜索和删除图标的效果。
 
 
 
@@ -162,9 +162,9 @@ struct SearchExample {
 
 ### 示例3（设置自定义键盘）
 
-该示例通过[customKeyboard](arkts-arkui-search-comp-attribute.md#customkeyboard (prefix))（从API version 10开始）属性分别将value中的入参类型设置为CustomBuilder和ComponentContent，实现了自定义键盘的功能。
+该示例通过[customKeyboard](arkts-arkui-search-comp-attribute.md#customkeyboard)（从API version 10开始）属性分别将value中的入参类型设置为CustomBuilder和ComponentContent，实现了自定义键盘的功能。
 
-从API version 22开始[customKeyboard](arkts-arkui-search-comp-attribute.md#customkeyboard (prefix))属性新增了入参类型ComponentContent。
+从API version 22开始[customKeyboard](arkts-arkui-search-comp-attribute.md#customkeyboard)属性新增了入参类型ComponentContent。
 
 
 
@@ -238,7 +238,7 @@ struct SearchExample {
 
 ### 示例4（设置输入法回车键类型）
 
-该示例通过[enterKeyType](arkts-arkui-search-comp-attribute.md#enterkeytype (prefix))（从API version 12开始）属性实现了动态切换输入法回车键的效果。
+该示例通过[enterKeyType](arkts-arkui-search-comp-attribute.md#enterkeytype)（从API version 12开始）属性实现了动态切换输入法回车键的效果。
 
 
 
@@ -272,7 +272,7 @@ struct SearchExample {
 
 ### 示例5（设置文本样式）
 
-从API version 12开始，该示例通过[lineHeight](arkts-arkui-search-comp-attribute.md#lineheight (prefix))、[letterSpacing](arkts-arkui-search-comp-attribute.md#letterspacing (prefix))、[decoration](arkts-arkui-search-comp-attribute.md#decoration (prefix))属性展示了不同样式的文本效果。
+从API version 12开始，该示例通过[lineHeight](arkts-arkui-search-comp-attribute.md#lineheight)、[letterSpacing](arkts-arkui-search-comp-attribute.md#letterspacing)、[decoration](arkts-arkui-search-comp-attribute.md#decoration)属性展示了不同样式的文本效果。
 
 
 
@@ -320,7 +320,7 @@ struct SearchExample {
 
 ### 示例6（设置文字特性效果）
 
-该示例通过[fontFeature](arkts-arkui-search-comp-attribute.md#fontfeature (prefix))（从API version 12开始）属性实现了文本在不同文字特性下的展示效果。
+该示例通过[fontFeature](arkts-arkui-search-comp-attribute.md#fontfeature)（从API version 12开始）属性实现了文本在不同文字特性下的展示效果。
 
 
 
@@ -349,7 +349,7 @@ struct SearchExample {
 
 ### 示例7（自定义键盘避让）
 
-该示例通过[customKeyboard](arkts-arkui-search-comp-attribute.md#customkeyboard (prefix))（从API version 10开始）属性配置KeyboardOptions（从API version 12开始）接口实现了自定义键盘避让的效果。
+该示例通过[customKeyboard](arkts-arkui-search-comp-attribute.md#customkeyboard)（从API version 10开始）属性配置KeyboardOptions（从API version 12开始）接口实现了自定义键盘避让的效果。
 
 
 
@@ -423,7 +423,7 @@ struct SearchExample {
 
 ### 示例8（设置文本自适应）
 
-从API version 12开始，该示例通过[minFontSize](arkts-arkui-search-comp-attribute.md#minfontsize (prefix))、[maxFontSize](arkts-arkui-search-comp-attribute.md#maxfontsize (prefix))属性展示了文本自适应字号的效果。
+从API version 12开始，该示例通过[minFontSize](arkts-arkui-search-comp-attribute.md#minfontsize)、[maxFontSize](arkts-arkui-search-comp-attribute.md#maxfontsize)属性展示了文本自适应字号的效果。
 
 
 
@@ -453,7 +453,7 @@ struct SearchExample {
 
 ### 示例9（支持插入和删除回调）
 
-从API version 12开始，该示例通过[onWillInsert](arkts-arkui-search-comp-attribute.md#onwillinsert (prefix))、[onDidInsert](arkts-arkui-search-comp-attribute.md#ondidinsert (prefix))、[onWillDelete](arkts-arkui-search-comp-attribute.md#onwilldelete (prefix))、[onDidDelete](arkts-arkui-search-comp-attribute.md#ondiddelete (prefix))接口实现了插入和删除的效果。从API version 15开始，通过[onWillChange](arkts-arkui-search-comp-attribute.md#onwillchange (prefix))接口展示了文本内容将要发生变化时的具体信息。
+从API version 12开始，该示例通过[onWillInsert](arkts-arkui-search-comp-attribute.md#onwillinsert)、[onDidInsert](arkts-arkui-search-comp-attribute.md#ondidinsert)、[onWillDelete](arkts-arkui-search-comp-attribute.md#onwilldelete)、[onDidDelete](arkts-arkui-search-comp-attribute.md#ondiddelete)接口实现了插入和删除的效果。从API version 15开始，通过[onWillChange](arkts-arkui-search-comp-attribute.md#onwillchange)接口展示了文本内容将要发生变化时的具体信息。
 
 
 
@@ -570,7 +570,7 @@ struct SearchExample {
 
 ### 示例10（文本扩展自定义菜单）
 
-从API version 12开始，该示例通过[editMenuOptions](arkts-arkui-search-comp-attribute.md#editmenuoptions (prefix))接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在onPrepareMenu（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过[editMenuOptions](arkts-arkui-search-comp-attribute.md#editmenuoptions)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在onPrepareMenu（从API version 20开始）回调中，进行菜单数据的设置。
 
 
 
@@ -666,7 +666,7 @@ struct SearchExample {
 
 ### 示例11（设置symbol类型清除按钮）
 
-从API version 10开始，该示例通过[searchIcon](arkts-arkui-search-comp-attribute.md#searchicon (prefix))、[cancelButton](arkts-arkui-search-comp-attribute.md#cancelbutton (prefix))属性展示了自定义右侧symbol类型清除按钮样式的效果。
+从API version 10开始，该示例通过[searchIcon](arkts-arkui-search-comp-attribute.md#searchicon)、[cancelButton](arkts-arkui-search-comp-attribute.md#cancelbutton)属性展示了自定义右侧symbol类型清除按钮样式的效果。
 
 
 
@@ -706,9 +706,9 @@ struct SearchExample {
 
 ### 示例12（设置文本是否可复制）
 
-该示例通过[copyOption](arkts-arkui-search-comp-attribute.md#copyoption (prefix))、[onWillCopy](arkts-arkui-search-comp-attribute.md#onwillcopy (exact))、[onWillCut](arkts-arkui-search-comp-attribute.md#onwillcut (exact))接口展示如何设置文本复制、如何拦截系统复制、如何拦截系统剪切。
+该示例通过[copyOption](arkts-arkui-search-comp-attribute.md#copyoption)、[onWillCopy](arkts-arkui-search-comp-attribute.md#onwillcopy)、[onWillCut](arkts-arkui-search-comp-attribute.md#onwillcut)接口展示如何设置文本复制、如何拦截系统复制、如何拦截系统剪切。
 
-从API版本26.0.0开始，新增[onWillCopy](arkts-arkui-search-comp-attribute.md#onwillcopy (exact))、[onWillCut](arkts-arkui-search-comp-attribute.md#onwillcut (exact))接口。
+从API版本26.0.0开始，新增[onWillCopy](arkts-arkui-search-comp-attribute.md#onwillcopy)、[onWillCut](arkts-arkui-search-comp-attribute.md#onwillcut)接口。
 
 
 
@@ -775,7 +775,7 @@ struct SearchExample {
 
 ### 示例13（设置文本水平对齐/光标样式/选中背景色）
 
-该示例通过[textAlign](arkts-arkui-search-comp-attribute.md#textalign (prefix))（从API version 9开始）、[caretStyle](arkts-arkui-search-comp-attribute.md#caretstyle (prefix))（从API version 10开始）、[selectedBackgroundColor](arkts-arkui-search-comp-attribute.md#selectedbackgroundcolor (prefix))（从API version 12开始）属性展示如何设置文本的水平对齐、光标样式和选中背景色。
+该示例通过[textAlign](arkts-arkui-search-comp-attribute.md#textalign)（从API version 9开始）、[caretStyle](arkts-arkui-search-comp-attribute.md#caretstyle)（从API version 10开始）、[selectedBackgroundColor](arkts-arkui-search-comp-attribute.md#selectedbackgroundcolor)（从API version 12开始）属性展示如何设置文本的水平对齐、光标样式和选中背景色。
 
 
 
@@ -805,7 +805,7 @@ struct SearchExample {
 
 ### 示例14（设置默认获焦并拉起软键盘）
 
-该示例通过defaultFocus（从API version 9开始）、[enableKeyboardOnFocus](arkts-arkui-search-comp-attribute.md#enablekeyboardonfocus (prefix))（从API version 10开始）属性展示如何设置默认获焦并拉起软键盘。
+该示例通过defaultFocus（从API version 9开始）、[enableKeyboardOnFocus](arkts-arkui-search-comp-attribute.md#enablekeyboardonfocus)（从API version 10开始）属性展示如何设置默认获焦并拉起软键盘。
 
 
 
@@ -840,7 +840,7 @@ struct SearchExample {
 
 ### 示例15（关闭系统文本选择菜单）
 
-该示例通过[selectionMenuHidden](arkts-arkui-search-comp-attribute.md#selectionmenuhidden (prefix))（从API version 10开始）属性展示如何关闭系统文本选择菜单。
+该示例通过[selectionMenuHidden](arkts-arkui-search-comp-attribute.md#selectionmenuhidden)（从API version 10开始）属性展示如何关闭系统文本选择菜单。
 
 
 
@@ -868,7 +868,7 @@ struct SearchExample {
 
 ### 示例16（对输入的文本进行过滤）
 
-从API version 12开始，该示例通过[inputFilter](arkts-arkui-search-comp-attribute.md#inputfilter (prefix))属性展示如何对输入的文本进行内容的过滤，以限制输入内容。
+从API version 12开始，该示例通过[inputFilter](arkts-arkui-search-comp-attribute.md#inputfilter)属性展示如何对输入的文本进行内容的过滤，以限制输入内容。
 
 
 
@@ -942,7 +942,7 @@ struct SearchExample {
 
 ### 示例18（设置文本滚动事件）
 
-从API version 10开始，该示例通过[onContentScroll](arkts-arkui-search-comp-attribute.md#oncontentscroll (prefix))事件展示如何设置文本滚动事件的回调。
+从API version 10开始，该示例通过[onContentScroll](arkts-arkui-search-comp-attribute.md#oncontentscroll)事件展示如何设置文本滚动事件的回调。
 
 
 
@@ -975,7 +975,7 @@ struct SearchExample {
 
 ### 示例19（设置最小字体范围与最大字体范围）
 
-从API version 18开始，该示例通过[minFontScale](arkts-arkui-search-comp-attribute.md#minfontscale (prefix))、[maxFontScale](arkts-arkui-search-comp-attribute.md#maxfontscale (prefix))设置字体显示最小与最大范围。调整系统字体大小后，文本字体大小不会超过[minFontScale](arkts-arkui-search-comp-attribute.md#minfontscale (prefix))、[maxFontScale](arkts-arkui-search-comp-attribute.md#maxfontscale (prefix))设置的范围。如下示例展示了Search组件在不同的字体大小限制条件下，调整系统字体后的放大缩小效果。
+从API version 18开始，该示例通过[minFontScale](arkts-arkui-search-comp-attribute.md#minfontscale)、[maxFontScale](arkts-arkui-search-comp-attribute.md#maxfontscale)设置字体显示最小与最大范围。调整系统字体大小后，文本字体大小不会超过[minFontScale](arkts-arkui-search-comp-attribute.md#minfontscale)、[maxFontScale](arkts-arkui-search-comp-attribute.md#maxfontscale)设置的范围。如下示例展示了Search组件在不同的字体大小限制条件下，调整系统字体后的放大缩小效果。
 
 ```TypeScript
 // 开启应用缩放跟随系统
@@ -1047,9 +1047,9 @@ struct SearchExample {
 
 ### 示例20（设置文本描边）
 
-从API version 20开始，该示例通过[strokeWidth](arkts-arkui-search-comp-attribute.md#strokewidth (prefix))和[strokeColor](arkts-arkui-search-comp-attribute.md#strokecolor (prefix))属性设置文本的描边宽度及颜色。
+从API version 20开始，该示例通过[strokeWidth](arkts-arkui-search-comp-attribute.md#strokewidth)和[strokeColor](arkts-arkui-search-comp-attribute.md#strokecolor)属性设置文本的描边宽度及颜色。
 
-从API版本26.0.0开始，新增[strokeJoinStyle](arkts-arkui-search-comp-attribute.md#strokejoinstyle (exact))接口，支持设置文本描边拐角样式。
+从API版本26.0.0开始，新增[strokeJoinStyle](arkts-arkui-search-comp-attribute.md#strokejoinstyle)接口，支持设置文本描边拐角样式。
 
 
 
@@ -1098,7 +1098,7 @@ struct SearchExample {
 
 ### 示例21（设置中西文自动间距）
 
-从API version 20开始，该示例通过[enableAutoSpacing](arkts-arkui-search-comp-attribute.md#enableautospacing (prefix))属性设置中西文自动间距。
+从API version 20开始，该示例通过[enableAutoSpacing](arkts-arkui-search-comp-attribute.md#enableautospacing)属性设置中西文自动间距。
 
 
 
@@ -1220,7 +1220,7 @@ struct SearchExample {
 
 ### 示例24（设置输入框分割线颜色）
 
-从API version 23开始，该示例通过[dividerColor](arkts-arkui-search-comp-attribute.md#dividercolor (prefix))接口设置输入框分割线颜色。
+从API version 23开始，该示例通过[dividerColor](arkts-arkui-search-comp-attribute.md#dividercolor)接口设置输入框分割线颜色。
 
 
 
@@ -1261,7 +1261,7 @@ struct SearchExample {
 
 ### 示例25（设置行首标点压缩）
 
-该示例通过[compressLeadingPunctuation](arkts-arkui-search-comp-attribute.md#compressleadingpunctuation (prefix))接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+该示例通过[compressLeadingPunctuation](arkts-arkui-search-comp-attribute.md#compressleadingpunctuation)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
 
 从API version 23开始，支持compressLeadingPunctuation接口。
 
@@ -1290,9 +1290,9 @@ struct Index {
 
 ### 示例26（设置自适应间距）
 
-该示例通过[includeFontPadding](arkts-arkui-search-comp-attribute.md#includefontpadding (prefix))接口增加首行尾行间距和[fallbackLineSpacing](arkts-arkui-search-comp-attribute.md#fallbacklinespacing (prefix))接口设置自适应行间距。
+该示例通过[includeFontPadding](arkts-arkui-search-comp-attribute.md#includefontpadding)接口增加首行尾行间距和[fallbackLineSpacing](arkts-arkui-search-comp-attribute.md#fallbacklinespacing)接口设置自适应行间距。
 
-从API version 23开始，新增[includeFontPadding](arkts-arkui-search-comp-attribute.md#includefontpadding (prefix))和[fallbackLineSpacing](arkts-arkui-search-comp-attribute.md#fallbacklinespacing (prefix))接口。
+从API version 23开始，新增[includeFontPadding](arkts-arkui-search-comp-attribute.md#includefontpadding)和[fallbackLineSpacing](arkts-arkui-search-comp-attribute.md#fallbacklinespacing)接口。
 
 
 
@@ -1357,7 +1357,7 @@ struct Index {
 
 ### 示例27（设置文本拖拽时的背板样式）
 
-该示例通过[selectedDragPreviewStyle](arkts-arkui-search-comp-attribute.md#selecteddragpreviewstyle (prefix))接口设置文本拖拽时的背板样式。
+该示例通过[selectedDragPreviewStyle](arkts-arkui-search-comp-attribute.md#selecteddragpreviewstyle)接口设置文本拖拽时的背板样式。
 
 从API version 23开始，新增selectedDragPreviewStyle接口。
 
@@ -1410,7 +1410,7 @@ struct Page {
 
 ### 示例29（设置文本排版方向）
 
-该示例通过[textDirection](arkts-arkui-search-comp-attribute.md#textdirection (prefix))接口设置文本排版方向。
+该示例通过[textDirection](arkts-arkui-search-comp-attribute.md#textdirection)接口设置文本排版方向。
 
 从API version 23开始，新增textDirection接口。
 
@@ -1483,7 +1483,7 @@ struct SearchExample {
 
 ### 示例31（设置文本着色器效果）
 
-该示例通过[shaderStyle](arkts-arkui-search-comp-attribute.md#shaderstyle (exact))接口实现对Search组件内文本着色效果。
+该示例通过[shaderStyle](arkts-arkui-search-comp-attribute.md#shaderstyle)接口实现对Search组件内文本着色效果。
 
 从API版本26.0.0开始，新增shaderStyle接口。
 
@@ -1553,7 +1553,7 @@ struct ShaderColorStyle {
 
 ### 示例32（设置文本选择的AI菜单）
 
-该示例通过[enableSelectedDataDetector](arkts-arkui-search-comp-attribute.md#enableselecteddatadetector (prefix))，配置文本选择AI菜单功能。
+该示例通过[enableSelectedDataDetector](arkts-arkui-search-comp-attribute.md#enableselecteddatadetector)，配置文本选择AI菜单功能。
 
 从API version 22开始，新增enableSelectedDataDetector。
 

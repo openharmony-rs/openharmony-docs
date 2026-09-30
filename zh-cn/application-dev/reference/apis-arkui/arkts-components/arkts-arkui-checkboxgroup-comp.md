@@ -204,7 +204,7 @@ struct Index {
 
 ### 示例3（自定义多选框样式）
 
-该示例通过[contentModifier](arkts-arkui-checkboxgroup-comp-attribute.md#contentmodifier (prefix))属性实现了自定义复选框群组样式的功能。自定义样式实现了一个五边形复选框群组，如果全部选中，内部会出现红色三角图案，标题会显示全选字样；如果部分选中，三角图案显示蓝色，标题会显示部分选中字样；如果未选中，三角图案消失，标题会显示未选中。
+该示例通过[contentModifier](arkts-arkui-checkboxgroup-comp-attribute.md#contentmodifier)属性实现了自定义复选框群组样式的功能。自定义样式实现了一个五边形复选框群组，如果全部选中，内部会出现红色三角图案，标题会显示全选字样；如果部分选中，三角图案显示蓝色，标题会显示部分选中字样；如果未选中，三角图案消失，标题会显示未选中。
 
 从API version 21开始，支持contentModifier属性。
 

@@ -354,7 +354,7 @@ struct RefreshExample {
 
 ### 示例5（实现最大下拉距离）
 
-通过[pullDownRatio](arkts-arkui-refresh-comp-attribute.md#pulldownratio)属性和[onOffsetChange](arkts-arkui-refresh-comp-attribute.md#onoffsetchange (prefix))事件实现最大下拉距离。
+通过[pullDownRatio](arkts-arkui-refresh-comp-attribute.md#pulldownratio)属性和[onOffsetChange](arkts-arkui-refresh-comp-attribute.md#onoffsetchange)事件实现最大下拉距离。
 
 
 

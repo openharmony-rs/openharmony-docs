@@ -138,7 +138,7 @@ struct Index {
 
 ### 示例3（自定义多选框样式）
 
-该示例通过[contentModifier](arkts-arkui-checkbox-comp-attribute.md#contentmodifier (prefix))属性实现自定义多选框样式，自定义样式实现了一个五边形多选框。选中时，内部显示红色三角图案，标题显示"选中"；取消选中时，红色三角图案消失，标题显示"非选中"。
+该示例通过[contentModifier](arkts-arkui-checkbox-comp-attribute.md#contentmodifier)属性实现自定义多选框样式，自定义样式实现了一个五边形多选框。选中时，内部显示红色三角图案，标题显示"选中"；取消选中时，红色三角图案消失，标题显示"非选中"。
 
 
 

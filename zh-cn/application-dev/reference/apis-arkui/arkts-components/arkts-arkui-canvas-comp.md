@@ -184,7 +184,7 @@ struct CanvasExample {
 
 ### 示例3（使用attributeModifier动态设置Canvas组件的属性及方法）
 
-该示例展示了如何使用attributeModifier动态设置Canvas组件的[enableAnalyzer](arkts-arkui-canvas-comp-attribute.md#enableanalyzer (prefix))属性和[onReady](arkts-arkui-canvas-comp-attribute.md#onready (exact))方法。
+该示例展示了如何使用attributeModifier动态设置Canvas组件的[enableAnalyzer](arkts-arkui-canvas-comp-attribute.md#enableanalyzer)属性和[onReady](arkts-arkui-canvas-comp-attribute.md#onready)方法。
 
 > 说明：
 > 

@@ -64,7 +64,7 @@ Text(content?: string | Resource, value?: TextOptions)
 
 ### 示例1（设置文本布局）
 
-该示例通过[textAlign](arkts-arkui-text-comp-attribute.md#textalign (exact))、[lineHeight](arkts-arkui-text-comp-attribute.md#lineheight (exact))、[baselineOffset](arkts-arkui-text-comp-attribute.md#baselineoffset (exact))、[halfLeading](arkts-arkui-text-comp-attribute.md#halfleading (prefix))（从API version 12开始）属性展示了文本布局的效果。
+该示例通过[textAlign](arkts-arkui-text-comp-attribute.md#textalign)、[lineHeight](arkts-arkui-text-comp-attribute.md#lineheight)、[baselineOffset](arkts-arkui-text-comp-attribute.md#baselineoffset)、[halfLeading](arkts-arkui-text-comp-attribute.md#halfleading)（从API version 12开始）属性展示了文本布局的效果。
 
 
 
@@ -146,7 +146,7 @@ struct TextExample1 {
 
 ### 示例2（设置文本样式）
 
-该示例通过[decoration](arkts-arkui-text-comp-attribute.md#decoration (exact))、[letterSpacing](arkts-arkui-text-comp-attribute.md#letterspacing (exact))、[textCase](arkts-arkui-text-comp-attribute.md#textcase (exact))、[fontFamily](arkts-arkui-text-comp-attribute.md#fontfamily (exact))、[textShadow](arkts-arkui-text-comp-attribute.md#textshadow (prefix))（从API version 10开始）、[fontStyle](arkts-arkui-text-comp-attribute.md#fontstyle (exact))、[textIndent](arkts-arkui-text-comp-attribute.md#textindent (prefix))（从API version 10开始）、fontWeight（从API version 12开始，支持设置字重无极调节配置项）属性展示了不同样式的文本效果。
+该示例通过[decoration](arkts-arkui-text-comp-attribute.md#decoration)、[letterSpacing](arkts-arkui-text-comp-attribute.md#letterspacing)、[textCase](arkts-arkui-text-comp-attribute.md#textcase)、[fontFamily](arkts-arkui-text-comp-attribute.md#fontfamily)、[textShadow](arkts-arkui-text-comp-attribute.md#textshadow)（从API version 10开始）、[fontStyle](arkts-arkui-text-comp-attribute.md#fontstyle)、[textIndent](arkts-arkui-text-comp-attribute.md#textindent)（从API version 10开始）、fontWeight（从API version 12开始，支持设置字重无极调节配置项）属性展示了不同样式的文本效果。
 
 
 
@@ -266,11 +266,11 @@ struct TextExample2 {
 
 ### 示例3（设置文本超长省略）
 
-该示例通过[maxLines](arkts-arkui-text-comp-attribute.md#maxlines (exact))、[textOverflow](arkts-arkui-text-comp-attribute.md#textoverflow (exact))、[ellipsisMode](arkts-arkui-text-comp-attribute.md#ellipsismode (prefix))属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。同时，可以通过[marqueeOptions](arkts-arkui-text-comp-attribute.md#marqueeoptions (prefix))配置跑马灯模式下的配置项以及跑马灯动画进行到特定的阶段时，触发的回调[onMarqueeStateChange](arkts-arkui-text-comp-attribute.md#onmarqueestatechange)。
+该示例通过[maxLines](arkts-arkui-text-comp-attribute.md#maxlines)、[textOverflow](arkts-arkui-text-comp-attribute.md#textoverflow)、[ellipsisMode](arkts-arkui-text-comp-attribute.md#ellipsismode)属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。同时，可以通过[marqueeOptions](arkts-arkui-text-comp-attribute.md#marqueeoptions)配置跑马灯模式下的配置项以及跑马灯动画进行到特定的阶段时，触发的回调[onMarqueeStateChange](arkts-arkui-text-comp-attribute.md#onmarqueestatechange)。
 
-从API version 11开始，通过[ellipsisMode](arkts-arkui-text-comp-attribute.md#ellipsismode (prefix))属性设置文本超长时的显示方式。
+从API version 11开始，通过[ellipsisMode](arkts-arkui-text-comp-attribute.md#ellipsismode)属性设置文本超长时的显示方式。
 
-从API version 18开始，新增[marqueeOptions](arkts-arkui-text-comp-attribute.md#marqueeoptions (prefix))属性设置跑马灯模式下的配置项，同时新增回调[onMarqueeStateChange](arkts-arkui-text-comp-attribute.md#onmarqueestatechange)。
+从API version 18开始，新增[marqueeOptions](arkts-arkui-text-comp-attribute.md#marqueeoptions)属性设置跑马灯模式下的配置项，同时新增回调[onMarqueeStateChange](arkts-arkui-text-comp-attribute.md#onmarqueestatechange)。
 
 从API version 24开始，EllipsisMode新增了MULTILINE_START和MULTILINE_CENTER枚举。
 
@@ -376,7 +376,7 @@ struct TextExample3 {
 
 ### 示例4（设置文本断行及折行）
 
-该示例通过[wordBreak](arkts-arkui-text-comp-attribute.md#wordbreak (prefix))（从API version 11开始）、[lineBreakStrategy](arkts-arkui-text-comp-attribute.md#linebreakstrategy (prefix))（从API version 12开始）、clip属性展示了文本在不同断行、折行规则下的效果以及文本超长时是否截断。
+该示例通过[wordBreak](arkts-arkui-text-comp-attribute.md#wordbreak)（从API version 11开始）、[lineBreakStrategy](arkts-arkui-text-comp-attribute.md#linebreakstrategy)（从API version 12开始）、clip属性展示了文本在不同断行、折行规则下的效果以及文本超长时是否截断。
 
 
 
@@ -461,9 +461,9 @@ struct TextExample4 {
 
 ### 示例5（设置文本选中和复制）
 
-该示例通过[selection](arkts-arkui-text-comp-attribute.md#selection (prefix))（从API version 11开始）、[onCopy](arkts-arkui-text-comp-attribute.md#oncopy (prefix))（从API version 11开始）、[draggable](arkts-arkui-text-comp-attribute.md#draggable (prefix))（从API version 9开始）、[caretColor](arkts-arkui-text-comp-attribute.md#caretcolor (prefix))（从API version 14开始）、[selectedBackgroundColor](arkts-arkui-text-comp-attribute.md#selectedbackgroundcolor (prefix))（从API version 14开始）、[onWillCopy](arkts-arkui-text-comp-attribute.md#onwillcopy (exact))接口展示了文本选中、触发复制回调、设置文本选中可拖拽、修改手柄和选中颜色的效果以及如何拦截系统复制。
+该示例通过[selection](arkts-arkui-text-comp-attribute.md#selection)（从API version 11开始）、[onCopy](arkts-arkui-text-comp-attribute.md#oncopy)（从API version 11开始）、[draggable](arkts-arkui-text-comp-attribute.md#draggable)（从API version 9开始）、[caretColor](arkts-arkui-text-comp-attribute.md#caretcolor)（从API version 14开始）、[selectedBackgroundColor](arkts-arkui-text-comp-attribute.md#selectedbackgroundcolor)（从API version 14开始）、[onWillCopy](arkts-arkui-text-comp-attribute.md#onwillcopy)接口展示了文本选中、触发复制回调、设置文本选中可拖拽、修改手柄和选中颜色的效果以及如何拦截系统复制。
 
-从API版本26.0.0开始，新增[onWillCopy](arkts-arkui-text-comp-attribute.md#onwillcopy (exact))接口。
+从API版本26.0.0开始，新增[onWillCopy](arkts-arkui-text-comp-attribute.md#onwillcopy)接口。
 
 
 
@@ -515,7 +515,7 @@ struct TextExample5 {
 
 ### 示例6（设置文本自适应和缩放倍数限制范围）
 
-该示例通过[heightAdaptivePolicy](arkts-arkui-text-comp-attribute.md#heightadaptivepolicy (prefix))（从API version 10开始）属性展示文本自适应效果以及通过[minFontScale](arkts-arkui-text-comp-attribute.md#minfontscale (prefix))（从API version 12开始）、[maxFontScale](arkts-arkui-text-comp-attribute.md#maxfontscale (prefix))（从API version 12开始）展示设置字体缩放倍数限制范围。
+该示例通过[heightAdaptivePolicy](arkts-arkui-text-comp-attribute.md#heightadaptivepolicy)（从API version 10开始）属性展示文本自适应效果以及通过[minFontScale](arkts-arkui-text-comp-attribute.md#minfontscale)（从API version 12开始）、[maxFontScale](arkts-arkui-text-comp-attribute.md#maxfontscale)（从API version 12开始）展示设置字体缩放倍数限制范围。
 
 
 
@@ -560,7 +560,7 @@ struct TextExample6 {
 
 ### 示例7（设置文本识别）
 
-从API version 11开始，该示例通过[enableDataDetector](arkts-arkui-text-comp-attribute.md#enabledatadetector (prefix))、[dataDetectorConfig](arkts-arkui-text-comp-attribute.md#datadetectorconfig (prefix))接口实现了文本识别的功能。当[enableDataDetector](arkts-arkui-text-comp-attribute.md#enabledatadetector (prefix))设为true且不设置[dataDetectorConfig](arkts-arkui-text-comp-attribute.md#datadetectorconfig (prefix))时，系统会识别所有实体类型，并将识别实体的字体颜色改为蓝色、添加蓝色下划线。
+从API version 11开始，该示例通过[enableDataDetector](arkts-arkui-text-comp-attribute.md#enabledatadetector)、[dataDetectorConfig](arkts-arkui-text-comp-attribute.md#datadetectorconfig)接口实现了文本识别的功能。当[enableDataDetector](arkts-arkui-text-comp-attribute.md#enabledatadetector)设为true且不设置[dataDetectorConfig](arkts-arkui-text-comp-attribute.md#datadetectorconfig)时，系统会识别所有实体类型，并将识别实体的字体颜色改为蓝色、添加蓝色下划线。
 
 
 
@@ -613,7 +613,7 @@ struct TextExample7 {
 
 ### 示例8（文本绑定自定义菜单）
 
-从API version 11开始，该示例通过[bindSelectionMenu](arkts-arkui-text-comp-attribute.md#bindselectionmenu (prefix))、[onTextSelectionChange](arkts-arkui-text-comp-attribute.md#ontextselectionchange (prefix))、[closeSelectionMenu](arkts-arkui-text-comp-attribute.md#selection (contains))接口实现了文本绑定自定义菜单的功能。
+从API version 11开始，该示例通过[bindSelectionMenu](arkts-arkui-text-comp-attribute.md#bindselectionmenu)、[onTextSelectionChange](arkts-arkui-text-comp-attribute.md#ontextselectionchange)、[closeSelectionMenu](arkts-arkui-text-comp-attribute.md#selection)接口实现了文本绑定自定义菜单的功能。
 
 
 
@@ -735,7 +735,7 @@ function MenuStyles() {
 
 ### 示例9（设置文本特性与行间距）
 
-从API version 12开始，该示例通过fontFeature、[lineSpacing](arkts-arkui-text-comp-attribute.md#linespacing (prefix))接口展示了设置文本特性与行间距的效果，同时，配置LineSpacingOptions中的onlyBetweenLines（从API version 20开始）属性，可以设置文本的行间距，是否仅在行与行之间生效。
+从API version 12开始，该示例通过fontFeature、[lineSpacing](arkts-arkui-text-comp-attribute.md#linespacing)接口展示了设置文本特性与行间距的效果，同时，配置LineSpacingOptions中的onlyBetweenLines（从API version 20开始）属性，可以设置文本的行间距，是否仅在行与行之间生效。
 
 
 
@@ -923,7 +923,7 @@ struct TextExample11 {
 
 ### 示例12（文本扩展自定义菜单）
 
-从API version 12开始，该示例通过[editMenuOptions](arkts-arkui-text-comp-attribute.md#editmenuoptions (prefix))接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在onPrepareMenu（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过[editMenuOptions](arkts-arkui-text-comp-attribute.md#editmenuoptions)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在onPrepareMenu（从API version 20开始）回调中，进行菜单数据的设置。
 
 
 
@@ -1012,7 +1012,7 @@ struct TextExample12 {
 
 ### 示例13（配置隐私隐藏）
 
-从API version 12开始，该示例通过[privacySensitive](arkts-arkui-text-comp-attribute.md#privacysensitive (prefix))属性展示了文本如何配置隐私隐藏的效果，实际显示需要卡片框架支持。
+从API version 12开始，该示例通过[privacySensitive](arkts-arkui-text-comp-attribute.md#privacysensitive)属性展示了文本如何配置隐私隐藏的效果，实际显示需要卡片框架支持。
 
 
 
@@ -1035,7 +1035,7 @@ struct TextExample13 {
 
 ### 示例14（设置中西文自动间距）
 
-从API version 20开始，该示例通过[enableAutoSpacing](arkts-arkui-text-comp-attribute.md#enableautospacing (prefix))属性设置中西文自动间距。
+从API version 20开始，该示例通过[enableAutoSpacing](arkts-arkui-text-comp-attribute.md#enableautospacing)属性设置中西文自动间距。
 
 
 
@@ -1062,7 +1062,7 @@ struct TextExample {
 
 ### 示例15（文本颜色按线性或径向渐变）
 
-从API version 20开始，该示例通过[shaderStyle](arkts-arkui-text-comp-attribute.md#shaderstyle (prefix))接口实现了对Text组件显示为渐变色和纯色的功能。
+从API version 20开始，该示例通过[shaderStyle](arkts-arkui-text-comp-attribute.md#shaderstyle)接口实现了对Text组件显示为渐变色和纯色的功能。
 
 
 
@@ -1161,7 +1161,7 @@ struct TextExample16 {
 
 ### 示例17（文本垂直对齐）
 
-从API version 20开始，该示例通过[textVerticalAlign](arkts-arkui-text-comp-attribute.md#textverticalalign (prefix))属性展示了文本如何设置文本垂直对齐效果。
+从API version 20开始，该示例通过[textVerticalAlign](arkts-arkui-text-comp-attribute.md#textverticalalign)属性展示了文本如何设置文本垂直对齐效果。
 
 
 
@@ -1192,7 +1192,7 @@ struct TextExample14 {
 
 ### 示例18（文本翻牌动效）
 
-从API version 20开始，该示例通过[contentTransition](arkts-arkui-text-comp-attribute.md#contenttransition (prefix))属性展示了数字翻牌效果。
+从API version 20开始，该示例通过[contentTransition](arkts-arkui-text-comp-attribute.md#contenttransition)属性展示了数字翻牌效果。
 
 
 
@@ -1226,7 +1226,7 @@ struct TextNumberTransition {
 
 ### 示例19（文本内容区垂直对齐）
 
-从API version 21开始，该示例通过[textContentAlign](arkts-arkui-text-comp-attribute.md#textcontentalign (prefix))属性展示了当文本内容区高度大于组件高度时文本内容区的垂直对齐。
+从API version 21开始，该示例通过[textContentAlign](arkts-arkui-text-comp-attribute.md#textcontentalign)属性展示了当文本内容区高度大于组件高度时文本内容区的垂直对齐。
 
 
 
@@ -1296,7 +1296,7 @@ struct Index {
 
 ### 示例21（文本设置显示最小行数）
 
-从API version 22开始，该示例使用[minLines](arkts-arkui-text-comp-attribute.md#minlines (prefix))属性设置文本显示的最小行数。
+从API version 22开始，该示例使用[minLines](arkts-arkui-text-comp-attribute.md#minlines)属性设置文本显示的最小行数。
 
 
 
@@ -1328,7 +1328,7 @@ struct TextExample1 {
 
 ### 示例22（设置文本选择区域并高亮显示）
 
-从API version 23开始，该示例使用[TextController](arkts-arkui-text-comp-textcontroller-c.md)中的[setTextSelection](arkts-arkui-text-comp-attribute.md#selection (contains))设置文本选择区域并高亮显示。
+从API version 23开始，该示例使用[TextController](arkts-arkui-text-comp-textcontroller-c.md)中的[setTextSelection](arkts-arkui-text-comp-attribute.md#selection)设置文本选择区域并高亮显示。
 
 
 
@@ -1360,7 +1360,7 @@ struct Index {
 
 ### 示例23（设置行首标点符号压缩和行尾标点符号悬挂）
 
-本示例通过[compressLeadingPunctuation](arkts-arkui-text-comp-attribute.md#compressleadingpunctuation (prefix))接口设置行首标点符号压缩，通过[punctuationOverflow](arkts-arkui-text-comp-attribute.md#punctuationoverflow (exact))设置行尾标点符号悬挂。
+本示例通过[compressLeadingPunctuation](arkts-arkui-text-comp-attribute.md#compressleadingpunctuation)接口设置行首标点符号压缩，通过[punctuationOverflow](arkts-arkui-text-comp-attribute.md#punctuationoverflow)设置行尾标点符号悬挂。
 
 左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
 
@@ -1413,9 +1413,9 @@ struct PunctuationDemo {
 
 ### 示例24（设置自适应间距）
 
-该示例通过[includeFontPadding](arkts-arkui-text-comp-attribute.md#includefontpadding (prefix))接口增加首行尾行间距和[fallbackLineSpacing](arkts-arkui-text-comp-attribute.md#fallbacklinespacing (prefix))接口设置自适应行间距。
+该示例通过[includeFontPadding](arkts-arkui-text-comp-attribute.md#includefontpadding)接口增加首行尾行间距和[fallbackLineSpacing](arkts-arkui-text-comp-attribute.md#fallbacklinespacing)接口设置自适应行间距。
 
-从API version 23开始，新增[includeFontPadding](arkts-arkui-text-comp-attribute.md#includefontpadding (prefix))和[fallbackLineSpacing](arkts-arkui-text-comp-attribute.md#fallbacklinespacing (prefix))接口。
+从API version 23开始，新增[includeFontPadding](arkts-arkui-text-comp-attribute.md#includefontpadding)和[fallbackLineSpacing](arkts-arkui-text-comp-attribute.md#fallbacklinespacing)接口。
 
 
 
@@ -1477,7 +1477,7 @@ struct Index {
 
 ### 示例25（设置文本拖拽时的背板样式）
 
-该示例通过[selectedDragPreviewStyle](arkts-arkui-text-comp-attribute.md#selecteddragpreviewstyle (prefix))接口设置文本拖拽时的背板样式。
+该示例通过[selectedDragPreviewStyle](arkts-arkui-text-comp-attribute.md#selecteddragpreviewstyle)接口设置文本拖拽时的背板样式。
 
 从API version 23开始，新增selectedDragPreviewStyle接口。
 
@@ -1504,7 +1504,7 @@ struct TextTest {
 
 ### 示例26（设置文本排版方向）
 
-该示例通过[textDirection](arkts-arkui-text-comp-attribute.md#textdirection (prefix))接口设置文本排版方向。
+该示例通过[textDirection](arkts-arkui-text-comp-attribute.md#textdirection)接口设置文本排版方向。
 
 从API version 23开始，新增textDirection接口。
 
@@ -1625,7 +1625,7 @@ struct TextExample10 {
 
 ### 示例28（设置文本排版时是否使能孤字优化）
 
-该示例通过[orphanCharOptimization](arkts-arkui-text-comp-attribute.md#orphancharoptimization (exact))接口设置使能孤字优化，确保段落最后一行不出现孤字。
+该示例通过[orphanCharOptimization](arkts-arkui-text-comp-attribute.md#orphancharoptimization)接口设置使能孤字优化，确保段落最后一行不出现孤字。
 
 从API版本26.0.0开始，新增orphanCharOptimization接口。
 
@@ -1664,9 +1664,9 @@ struct TextExample {
 
 ### 示例29（设置可变字体的属性）
 
-该示例通过[fontVariations](arkts-arkui-text-comp-attribute.md#fontvariations (exact))接口设置可变字体的属性。
+该示例通过[fontVariations](arkts-arkui-text-comp-attribute.md#fontvariations)接口设置可变字体的属性。
 
-从API版本26.0.0开始，新增[fontVariations](arkts-arkui-text-comp-attribute.md#fontvariations (exact))接口。
+从API版本26.0.0开始，新增[fontVariations](arkts-arkui-text-comp-attribute.md#fontvariations)接口。
 
 
 
@@ -1694,7 +1694,7 @@ struct TextExample {
 
 ### 示例30（设置图片预览菜单）
 
-该示例通过[bindSelectionMenu](arkts-arkui-text-comp-attribute.md#bindselectionmenu (prefix))接口实现了文本设置图片预览菜单的功能。
+该示例通过[bindSelectionMenu](arkts-arkui-text-comp-attribute.md#bindselectionmenu)接口实现了文本设置图片预览菜单的功能。
 
 从API版本26.0.0开始，文本组件调用该接口时，options中的menuType属性传入MenuType.PREVIEW_MENU，设置图片预览菜单的能力生效。
 
@@ -1741,7 +1741,7 @@ struct TextExample {
 
 ### 示例31（设置属性字符串段落缓存策略）
 
-该示例通过[incrementalUpdatePolicy](arkts-arkui-text-comp-attribute.md#incrementalupdatepolicy (exact))接口设置文本渲染的增量更新策略，使用段落级缓存优化渲染性能。
+该示例通过[incrementalUpdatePolicy](arkts-arkui-text-comp-attribute.md#incrementalupdatepolicy)接口设置文本渲染的增量更新策略，使用段落级缓存优化渲染性能。
 
 从API版本26.0.0开始，新增incrementalUpdatePolicy属性。
 
@@ -1878,7 +1878,7 @@ struct StyledStringAppend {
 
 ### 示例32（设置文本尾部缩进）
 
-该示例通过[tailIndents](arkts-arkui-text-comp-attribute.md#tailindents (exact))接口实现了文本尾部缩进的功能。
+该示例通过[tailIndents](arkts-arkui-text-comp-attribute.md#tailindents)接口实现了文本尾部缩进的功能。
 
 从API版本26.0.0开始，通过tailIndents属性设置文本尾部缩进。
 
@@ -1924,7 +1924,7 @@ struct TailIndentsExample {
 
 ### 示例33（设置文本选择的AI菜单）
 
-该示例通过[enableSelectedDataDetector](arkts-arkui-text-comp-attribute.md#enableselecteddatadetector (prefix))，配置文本选择AI菜单功能。
+该示例通过[enableSelectedDataDetector](arkts-arkui-text-comp-attribute.md#enableselecteddatadetector)，配置文本选择AI菜单功能。
 
 从API version 22开始，新增enableSelectedDataDetector。
 

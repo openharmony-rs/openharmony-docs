@@ -306,9 +306,9 @@ struct LazyVWaterFlowLayoutStickyDemo {
 
 ### 示例3（设置自适应列数）
 
-该示例通过[columnsTemplate](arkts-arkui-lazyvwaterflowlayout-comp-attribute.md#columnstemplate (exact))设置repeat(auto-fill, track-size)和ItemFillPolicy，实现LazyVWaterFlowLayout列数自适应。
+该示例通过[columnsTemplate](arkts-arkui-lazyvwaterflowlayout-comp-attribute.md#columnstemplate)设置repeat(auto-fill, track-size)和ItemFillPolicy，实现LazyVWaterFlowLayout列数自适应。
 
-从API版本26.0.0开始，新增[columnsTemplate](arkts-arkui-lazyvwaterflowlayout-comp-attribute.md#columnstemplate (exact))接口。
+从API版本26.0.0开始，新增[columnsTemplate](arkts-arkui-lazyvwaterflowlayout-comp-attribute.md#columnstemplate)接口。
 
 ```TypeScript
 import {

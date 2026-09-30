@@ -428,7 +428,7 @@ struct ButtonExample {
 
 ### 示例8（设置label文本水平对齐方式）
 
-该示例通过配置[LabelStyle](arkts-arkui-button-comp-attribute.md#labelstyle (prefix))的textAlign，设置文本对齐方式。
+该示例通过配置[LabelStyle](arkts-arkui-button-comp-attribute.md#labelstyle)的textAlign，设置文本对齐方式。
 
 从API version 23开始，新增textAlign接口。
 

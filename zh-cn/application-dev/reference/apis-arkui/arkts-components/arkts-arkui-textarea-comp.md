@@ -111,7 +111,7 @@ struct TextAreaExample {
 
 ### 示例2（设置计数器）
 
-从API version 10开始，该示例通过[maxLength](arkts-arkui-textarea-comp-attribute.md#maxlength (prefix))、[showCounter](arkts-arkui-textarea-comp-attribute.md#showcounter (prefix))属性实现了计数器的功能。
+从API version 10开始，该示例通过[maxLength](arkts-arkui-textarea-comp-attribute.md#maxlength)、[showCounter](arkts-arkui-textarea-comp-attribute.md#showcounter)属性实现了计数器的功能。
 
 
 
@@ -152,9 +152,9 @@ struct TextAreaExample {
 
 ### 示例3（设置自定义键盘）
 
-该示例通过[customKeyboard](arkts-arkui-textarea-comp-attribute.md#customkeyboard (prefix))（从API version 10开始）属性分别将value中的入参类型设置为CustomBuilder和ComponentContent，实现了自定义键盘的功能。
+该示例通过[customKeyboard](arkts-arkui-textarea-comp-attribute.md#customkeyboard)（从API version 10开始）属性分别将value中的入参类型设置为CustomBuilder和ComponentContent，实现了自定义键盘的功能。
 
-从API version 22开始[customKeyboard](arkts-arkui-textarea-comp-attribute.md#customkeyboard (prefix))属性新增了入参类型ComponentContent。
+从API version 22开始[customKeyboard](arkts-arkui-textarea-comp-attribute.md#customkeyboard)属性新增了入参类型ComponentContent。
 
 
 
@@ -223,7 +223,7 @@ struct TextAreaExample {
 
 ### 示例4（设置输入法回车键类型）
 
-从API version 11开始，该示例通过[enterKeyType](arkts-arkui-textarea-comp-attribute.md#enterkeytype (prefix))属性实现了动态切换输入法回车键的效果。
+从API version 11开始，该示例通过[enterKeyType](arkts-arkui-textarea-comp-attribute.md#enterkeytype)属性实现了动态切换输入法回车键的效果。
 
 
 
@@ -260,7 +260,7 @@ struct TextAreaExample {
 
 ### 示例5（设置文本断行规则）
 
-从API version 12开始，该示例通过[wordBreak](arkts-arkui-textarea-comp-attribute.md#wordbreak (prefix))属性实现了TextArea不同断行规则下的效果。
+从API version 12开始，该示例通过[wordBreak](arkts-arkui-textarea-comp-attribute.md#wordbreak)属性实现了TextArea不同断行规则下的效果。
 
 
 
@@ -306,7 +306,7 @@ struct TextAreaExample {
 
 ### 示例6（设置文本样式）
 
-从API version 12开始，该示例通过[lineHeight](arkts-arkui-textarea-comp-attribute.md#lineheight (prefix))、[letterSpacing](arkts-arkui-textarea-comp-attribute.md#letterspacing (prefix))、[decoration](arkts-arkui-textarea-comp-attribute.md#decoration (prefix))属性展示了不同样式的文本效果。
+从API version 12开始，该示例通过[lineHeight](arkts-arkui-textarea-comp-attribute.md#lineheight)、[letterSpacing](arkts-arkui-textarea-comp-attribute.md#letterspacing)、[decoration](arkts-arkui-textarea-comp-attribute.md#decoration)属性展示了不同样式的文本效果。
 
 
 
@@ -354,7 +354,7 @@ struct TextAreaExample {
 
 ### 示例7（设置文字特性效果）
 
-从API version 12开始，该示例通过[fontFeature](arkts-arkui-textarea-comp-attribute.md#fontfeature (prefix))属性实现了文本在不同文字特性下的展示效果。
+从API version 12开始，该示例通过[fontFeature](arkts-arkui-textarea-comp-attribute.md#fontfeature)属性实现了文本在不同文字特性下的展示效果。
 
 
 
@@ -385,7 +385,7 @@ struct TextAreaExample {
 
 ### 示例8（自定义键盘避让）
 
-该示例通过[customKeyboard](arkts-arkui-textarea-comp-attribute.md#customkeyboard (prefix))（从API version 10开始）属性配置KeyboardOptions（从API version 12开始）接口实现了自定义键盘避让的效果。
+该示例通过[customKeyboard](arkts-arkui-textarea-comp-attribute.md#customkeyboard)（从API version 10开始）属性配置KeyboardOptions（从API version 12开始）接口实现了自定义键盘避让的效果。
 
 
 
@@ -456,7 +456,7 @@ struct TextAreaExample {
 
 ### 示例9（设置文本自适应）
 
-从API version 12开始，该示例通过[minFontSize](arkts-arkui-textarea-comp-attribute.md#minfontsize (prefix))、[maxFontSize](arkts-arkui-textarea-comp-attribute.md#maxfontsize (prefix))、[heightAdaptivePolicy](arkts-arkui-textarea-comp-attribute.md#heightadaptivepolicy (prefix))属性展示了文本自适应字号的效果。
+从API version 12开始，该示例通过[minFontSize](arkts-arkui-textarea-comp-attribute.md#minfontsize)、[maxFontSize](arkts-arkui-textarea-comp-attribute.md#maxfontsize)、[heightAdaptivePolicy](arkts-arkui-textarea-comp-attribute.md#heightadaptivepolicy)属性展示了文本自适应字号的效果。
 
 
 
@@ -497,7 +497,7 @@ struct TextAreaExample {
 
 ### 示例10（设置文本行间距）
 
-从API version 12开始，该示例通过[lineSpacing](arkts-arkui-textarea-comp-attribute.md#linespacing (prefix))属性展示了文本在不同行间距下的展示效果，同时，配置LineSpacingOptions中的onlyBetweenLines（从API version 20开始）属性，可以设置文本的行间距是否仅在行与行之间生效。
+从API version 12开始，该示例通过[lineSpacing](arkts-arkui-textarea-comp-attribute.md#linespacing)属性展示了文本在不同行间距下的展示效果，同时，配置LineSpacingOptions中的onlyBetweenLines（从API version 20开始）属性，可以设置文本的行间距是否仅在行与行之间生效。
 
 
 
@@ -538,7 +538,7 @@ struct TextAreaExample {
 
 ### 示例11（设置自动填充）
 
-从API version 12开始，该示例通过[contentType](arkts-arkui-textarea-comp-attribute.md#contenttype (prefix))、[enableAutoFill](arkts-arkui-textarea-comp-attribute.md#enableautofill (prefix))属性实现了文本自动填充的功能。
+从API version 12开始，该示例通过[contentType](arkts-arkui-textarea-comp-attribute.md#contenttype)、[enableAutoFill](arkts-arkui-textarea-comp-attribute.md#enableautofill)属性实现了文本自动填充的功能。
 
 ```TypeScript
 // xxx.ets
@@ -572,7 +572,7 @@ struct TextAreaExample {
 
 ### 示例12（设置折行规则）
 
-从API version 12开始，该示例通过[lineBreakStrategy](arkts-arkui-textarea-comp-attribute.md#linebreakstrategy (prefix))属性实现了TextArea不同折行规则下的效果。
+从API version 12开始，该示例通过[lineBreakStrategy](arkts-arkui-textarea-comp-attribute.md#linebreakstrategy)属性实现了TextArea不同折行规则下的效果。
 
 
 
@@ -614,7 +614,7 @@ struct TextAreaExample {
 
 ### 示例13（支持插入和删除回调）
 
-从API version 12开始，该示例通过[onWillInsert](arkts-arkui-textarea-comp-attribute.md#onwillinsert (prefix))、[onDidInsert](arkts-arkui-textarea-comp-attribute.md#ondidinsert (prefix))、[onWillDelete](arkts-arkui-textarea-comp-attribute.md#onwilldelete (prefix))、[onDidDelete](arkts-arkui-textarea-comp-attribute.md#ondiddelete (prefix))接口实现了插入和删除的功能。
+从API version 12开始，该示例通过[onWillInsert](arkts-arkui-textarea-comp-attribute.md#onwillinsert)、[onDidInsert](arkts-arkui-textarea-comp-attribute.md#ondidinsert)、[onWillDelete](arkts-arkui-textarea-comp-attribute.md#onwilldelete)、[onDidDelete](arkts-arkui-textarea-comp-attribute.md#ondiddelete)接口实现了插入和删除的功能。
 
 
 
@@ -682,7 +682,7 @@ struct TextAreaExample {
 
 ### 示例14（文本扩展自定义菜单）
 
-从API version 12开始，该示例通过[editMenuOptions](arkts-arkui-textarea-comp-attribute.md#editmenuoptions (prefix))接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在onPrepareMenu（从API version 20开始）回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过[editMenuOptions](arkts-arkui-textarea-comp-attribute.md#editmenuoptions)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能，同时，可以在onPrepareMenu（从API version 20开始）回调中，进行菜单数据的设置。
 
 
 
@@ -768,13 +768,13 @@ struct TextAreaExample {
 
 ### 示例15（文本设置省略模式）
 
-该示例通过[textOverflow](arkts-arkui-textarea-comp-attribute.md#textoverflow (prefix))、[ellipsisMode](arkts-arkui-textarea-comp-attribute.md#ellipsismode (prefix))、[maxLines](arkts-arkui-textarea-comp-attribute.md#maxlines (prefix))属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。
+该示例通过[textOverflow](arkts-arkui-textarea-comp-attribute.md#textoverflow)、[ellipsisMode](arkts-arkui-textarea-comp-attribute.md#ellipsismode)、[maxLines](arkts-arkui-textarea-comp-attribute.md#maxlines)属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。
 
-从API version 10开始，通过[maxLines](arkts-arkui-textarea-comp-attribute.md#maxlines (prefix))属性设置文本显示的最大行数。
+从API version 10开始，通过[maxLines](arkts-arkui-textarea-comp-attribute.md#maxlines)属性设置文本显示的最大行数。
 
-从API version 12开始，通过[textOverflow](arkts-arkui-textarea-comp-attribute.md#textoverflow (prefix))属性设置文本超长时的显示方式。
+从API version 12开始，通过[textOverflow](arkts-arkui-textarea-comp-attribute.md#textoverflow)属性设置文本超长时的显示方式。
 
-从API version 18开始，通过[ellipsisMode](arkts-arkui-textarea-comp-attribute.md#ellipsismode (prefix))属性设置省略号位置。
+从API version 18开始，通过[ellipsisMode](arkts-arkui-textarea-comp-attribute.md#ellipsismode)属性设置省略号位置。
 
 从API version 24开始，EllipsisMode新增了MULTILINE_START和MULTILINE_CENTER枚举。
 
@@ -847,9 +847,9 @@ struct EllipsisModeExample {
 
 ### 示例16（自定义复制、剪切、粘贴）
 
-该示例通过[onCopy](arkts-arkui-textarea-comp-attribute.md#oncopy (prefix))、[onCut](arkts-arkui-textarea-comp-attribute.md#oncut (prefix))、[onPaste](arkts-arkui-textarea-comp-attribute.md#onpaste (exact))、[onWillCopy](arkts-arkui-textarea-comp-attribute.md#onwillcopy (exact))、[onWillCut](arkts-arkui-textarea-comp-attribute.md#onwillcut (exact))展示如何监听文本选择菜单的复制、剪切、粘贴按钮、如何屏蔽系统粘贴功能并实现自定义的粘贴能力、如何屏蔽系统复制功能，以及如何屏蔽系统剪切功能，同时，可以通过[maxFontScale](arkts-arkui-textarea-comp-attribute.md#maxfontscale (prefix))、[minFontScale](arkts-arkui-textarea-comp-attribute.md#minfontscale (prefix))属性设置文本最大和最小的字体缩放倍数。
+该示例通过[onCopy](arkts-arkui-textarea-comp-attribute.md#oncopy)、[onCut](arkts-arkui-textarea-comp-attribute.md#oncut)、[onPaste](arkts-arkui-textarea-comp-attribute.md#onpaste)、[onWillCopy](arkts-arkui-textarea-comp-attribute.md#onwillcopy)、[onWillCut](arkts-arkui-textarea-comp-attribute.md#onwillcut)展示如何监听文本选择菜单的复制、剪切、粘贴按钮、如何屏蔽系统粘贴功能并实现自定义的粘贴能力、如何屏蔽系统复制功能，以及如何屏蔽系统剪切功能，同时，可以通过[maxFontScale](arkts-arkui-textarea-comp-attribute.md#maxfontscale)、[minFontScale](arkts-arkui-textarea-comp-attribute.md#minfontscale)属性设置文本最大和最小的字体缩放倍数。
 
-从API版本26.0.0开始，新增[onWillCopy](arkts-arkui-textarea-comp-attribute.md#onwillcopy (exact))、[onWillCut](arkts-arkui-textarea-comp-attribute.md#onwillcut (exact))接口。
+从API版本26.0.0开始，新增[onWillCopy](arkts-arkui-textarea-comp-attribute.md#onwillcopy)、[onWillCut](arkts-arkui-textarea-comp-attribute.md#onwillcut)接口。
 
 
 
@@ -935,7 +935,7 @@ struct TextAreaExample {
 
 ### 示例17（设置最小字体范围与最大字体范围）
 
-从API version 18开始，该示例通过[minFontScale](arkts-arkui-textarea-comp-attribute.md#minfontscale (prefix))、[maxFontScale](arkts-arkui-textarea-comp-attribute.md#maxfontscale (prefix))设置字体显示最小与最大范围（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）。
+从API version 18开始，该示例通过[minFontScale](arkts-arkui-textarea-comp-attribute.md#minfontscale)、[maxFontScale](arkts-arkui-textarea-comp-attribute.md#maxfontscale)设置字体显示最小与最大范围（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）。
 
 ```TypeScript
 // 开启应用缩放跟随系统
@@ -1073,9 +1073,9 @@ struct TextAreaExample {
 
 ### 示例19（设置文本描边）
 
-从API version 20开始，该示例通过[strokeWidth](arkts-arkui-textarea-comp-attribute.md#strokewidth (prefix))和[strokeColor](arkts-arkui-textarea-comp-attribute.md#strokecolor (prefix))属性设置文本的描边宽度及颜色。
+从API version 20开始，该示例通过[strokeWidth](arkts-arkui-textarea-comp-attribute.md#strokewidth)和[strokeColor](arkts-arkui-textarea-comp-attribute.md#strokecolor)属性设置文本的描边宽度及颜色。
 
-从API版本26.0.0开始，新增[strokeJoinStyle](arkts-arkui-textarea-comp-attribute.md#strokejoinstyle (exact))接口，支持设置文本描边拐角样式。
+从API版本26.0.0开始，新增[strokeJoinStyle](arkts-arkui-textarea-comp-attribute.md#strokejoinstyle)接口，支持设置文本描边拐角样式。
 
 
 
@@ -1121,7 +1121,7 @@ struct TextAreaExample {
 
 ### 示例20（设置中西文自动间距）
 
-从API version 20开始，该示例通过[enableAutoSpacing](arkts-arkui-textarea-comp-attribute.md#enableautospacing (prefix))属性设置中西文自动间距。
+从API version 20开始，该示例通过[enableAutoSpacing](arkts-arkui-textarea-comp-attribute.md#enableautospacing)属性设置中西文自动间距。
 
 
 
@@ -1148,7 +1148,7 @@ struct TextAreaExample {
 
 ### 示例21（设置最大行数）
 
-从API version 20开始，该示例通过[maxLines](arkts-arkui-textarea-comp-attribute.md#maxlines (prefix))属性设置显示最大行数，超出最大行数后可滚动。
+从API version 20开始，该示例通过[maxLines](arkts-arkui-textarea-comp-attribute.md#maxlines)属性设置显示最大行数，超出最大行数后可滚动。
 
 
 
@@ -1177,7 +1177,7 @@ struct TextAreaExample {
 
 ### 示例22（设置最小行数）
 
-从API version 20开始，该示例通过[minLines](arkts-arkui-textarea-comp-attribute.md#minlines (prefix))属性设置显示的最小行数。
+从API version 20开始，该示例通过[minLines](arkts-arkui-textarea-comp-attribute.md#minlines)属性设置显示的最小行数。
 
 
 
@@ -1206,7 +1206,7 @@ struct Index {
 
 ### 示例23（设置字符计数颜色以及超出字符颜色）
 
-从API version 22开始，该示例通过[showCounter](arkts-arkui-textarea-comp-attribute.md#showcounter (prefix))属性的counterTextColor和counterTextOverflowColor设置字符计数颜色以及超出字符颜色。
+从API version 22开始，该示例通过[showCounter](arkts-arkui-textarea-comp-attribute.md#showcounter)属性的counterTextColor和counterTextOverflowColor设置字符计数颜色以及超出字符颜色。
 
 
 
@@ -1248,7 +1248,7 @@ struct TextAreaExample {
 
 ### 示例24（设置滚动条颜色）
 
-从API version 22开始，该示例通过[scrollBarColor](arkts-arkui-textarea-comp-attribute.md#scrollbarcolor (prefix))属性设置滚动条颜色。
+从API version 22开始，该示例通过[scrollBarColor](arkts-arkui-textarea-comp-attribute.md#scrollbarcolor)属性设置滚动条颜色。
 
 
 
@@ -1404,7 +1404,7 @@ struct TextAreaExample {
 
 ### 示例27（设置行首标点符号压缩和行尾标点符号悬挂）
 
-本示例通过[compressLeadingPunctuation](arkts-arkui-textarea-comp-attribute.md#compressleadingpunctuation (prefix))接口设置行首标点符号压缩，通过[punctuationOverflow](arkts-arkui-textarea-comp-attribute.md#punctuationoverflow (exact))设置行尾标点符号悬挂。
+本示例通过[compressLeadingPunctuation](arkts-arkui-textarea-comp-attribute.md#compressleadingpunctuation)接口设置行首标点符号压缩，通过[punctuationOverflow](arkts-arkui-textarea-comp-attribute.md#punctuationoverflow)设置行尾标点符号悬挂。
 
 左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
 
@@ -1455,9 +1455,9 @@ struct PunctuationDemo {
 
 ### 示例28（设置自适应间距）
 
-该示例通过[includeFontPadding](arkts-arkui-textarea-comp-attribute.md#includefontpadding (prefix))接口增加首行尾行间距和[fallbackLineSpacing](arkts-arkui-textarea-comp-attribute.md#fallbacklinespacing (prefix))接口设置自适应行间距。
+该示例通过[includeFontPadding](arkts-arkui-textarea-comp-attribute.md#includefontpadding)接口增加首行尾行间距和[fallbackLineSpacing](arkts-arkui-textarea-comp-attribute.md#fallbacklinespacing)接口设置自适应行间距。
 
-从API version 23开始，新增[includeFontPadding](arkts-arkui-textarea-comp-attribute.md#includefontpadding (prefix))和[fallbackLineSpacing](arkts-arkui-textarea-comp-attribute.md#fallbacklinespacing (prefix))接口。
+从API version 23开始，新增[includeFontPadding](arkts-arkui-textarea-comp-attribute.md#includefontpadding)和[fallbackLineSpacing](arkts-arkui-textarea-comp-attribute.md#fallbacklinespacing)接口。
 
 
 
@@ -1522,7 +1522,7 @@ struct Index {
 
 ### 示例29（设置文本拖拽时的背板样式）
 
-该示例通过[selectedDragPreviewStyle](arkts-arkui-textarea-comp-attribute.md#selecteddragpreviewstyle (prefix))接口设置文本拖拽时的背板样式。
+该示例通过[selectedDragPreviewStyle](arkts-arkui-textarea-comp-attribute.md#selecteddragpreviewstyle)接口设置文本拖拽时的背板样式。
 
 从API version 23开始，新增selectedDragPreviewStyle接口。
 
@@ -1575,7 +1575,7 @@ struct Page {
 
 ### 示例31（设置文本排版方向）
 
-该示例通过[textDirection](arkts-arkui-textarea-comp-attribute.md#textdirection (prefix))接口设置文本排版方向。
+该示例通过[textDirection](arkts-arkui-textarea-comp-attribute.md#textdirection)接口设置文本排版方向。
 
 从API version 23开始，新增textDirection接口。
 
@@ -1664,7 +1664,7 @@ struct TextAreaExample {
 
 ### 示例33（设置水平滚动）
 
-本示例通过[horizontalScrolling](arkts-arkui-textarea-comp-attribute.md#horizontalscrolling (prefix))设置水平滚动。
+本示例通过[horizontalScrolling](arkts-arkui-textarea-comp-attribute.md#horizontalscrolling)设置水平滚动。
 
 从API version 24开始，新增horizontalScrolling接口。
 
@@ -1700,7 +1700,7 @@ Hello World Hello World Hello World Hello World Hello World\n
 
 ### 示例34（设置文本排版时是否使能孤字优化）
 
-该示例通过[orphanCharOptimization](arkts-arkui-textarea-comp-attribute.md#orphancharoptimization (exact))接口设置使能孤字优化，确保段落最后一行不出现孤字。
+该示例通过[orphanCharOptimization](arkts-arkui-textarea-comp-attribute.md#orphancharoptimization)接口设置使能孤字优化，确保段落最后一行不出现孤字。
 
 从API版本26.0.0开始，新增orphanCharOptimization接口。
 
@@ -1739,7 +1739,7 @@ struct TextExample {
 
 ### 示例35（设置文本着色器效果）
 
-该示例通过[shaderStyle](arkts-arkui-textarea-comp-attribute.md#shaderstyle (exact))接口实现对TextArea组件内文本着色效果。
+该示例通过[shaderStyle](arkts-arkui-textarea-comp-attribute.md#shaderstyle)接口实现对TextArea组件内文本着色效果。
 
 从API版本26.0.0开始，新增shaderStyle接口。
 
@@ -1809,7 +1809,7 @@ struct ShaderColorStyle {
 
 ### 示例36（设置文本选择的AI菜单）
 
-该示例通过[enableSelectedDataDetector](arkts-arkui-textarea-comp-attribute.md#enableselecteddatadetector (prefix))，配置文本选择AI菜单功能。
+该示例通过[enableSelectedDataDetector](arkts-arkui-textarea-comp-attribute.md#enableselecteddatadetector)，配置文本选择AI菜单功能。
 
 从API version 22开始，新增enableSelectedDataDetector。
 

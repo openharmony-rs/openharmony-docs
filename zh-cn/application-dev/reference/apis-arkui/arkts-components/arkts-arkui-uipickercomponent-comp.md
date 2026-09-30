@@ -1291,9 +1291,9 @@ struct TimeUIPickerComponentExample {
 
 ### 示例9（设置选项高度）
 
-该示例通过[itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight (exact))设置UIPickerComponent容器的选项高度。
+该示例通过[itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight)设置UIPickerComponent容器的选项高度。
 
-从API版本26.0.0开始，新增[itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight (exact))属性。
+从API版本26.0.0开始，新增[itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight)属性。
 
 
 

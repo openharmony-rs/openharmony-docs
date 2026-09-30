@@ -362,7 +362,7 @@ struct VideoObject {
 
 ### 示例5（onError事件上报错误码）
 
-从API version 20开始，支持通过[onError](arkts-arkui-video-comp-attribute.md#onerror (exact))获取错误信息，该示例以传入不存在的视频资源路径为例。
+从API version 20开始，支持通过[onError](arkts-arkui-video-comp-attribute.md#onerror)获取错误信息，该示例以传入不存在的视频资源路径为例。
 
 
 

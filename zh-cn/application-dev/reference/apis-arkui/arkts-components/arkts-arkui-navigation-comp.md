@@ -140,7 +140,7 @@ Navigation(pathInfos: NavPathStack, homeDestination: HomePathInfo)
 
 ### 示例1（Navigation页面布局）
 
-该示例主要演示Navigation页面的布局包括标题栏[title](arkts-arkui-navigation-comp-attribute.md#title (exact))，菜单栏[menus](arkts-arkui-navigation-comp-attribute.md#menus (exact))，内容区和工具栏toolbarConfiguration。
+该示例主要演示Navigation页面的布局包括标题栏[title](arkts-arkui-navigation-comp-attribute.md#title)，菜单栏[menus](arkts-arkui-navigation-comp-attribute.md#menus)，内容区和工具栏toolbarConfiguration。
 
 
 
@@ -2759,7 +2759,7 @@ export class CustomTransition {
 
 ### 示例14（设置Navigation双栏模式）
 
-该示例主要展示Navigation组件在双栏模式下的使用效果，通过[splitPlaceholder](arkts-arkui-navigation-comp-attribute.md#splitplaceholder)设置右侧默认占位页，使用navBarWidthRange配置导航栏宽度范围，并借助[divider](arkts-arkui-navigation-comp-attribute.md#divider (prefix))属性自定义导航栏与内容区之间的分割线样式。
+该示例主要展示Navigation组件在双栏模式下的使用效果，通过[splitPlaceholder](arkts-arkui-navigation-comp-attribute.md#splitplaceholder)设置右侧默认占位页，使用navBarWidthRange配置导航栏宽度范围，并借助[divider](arkts-arkui-navigation-comp-attribute.md#divider)属性自定义导航栏与内容区之间的分割线样式。
 
 从API version 20开始，新增splitPlaceholder属性；API version 23开始，新增divider属性。
 
@@ -3323,7 +3323,7 @@ export struct PageTwo {
 
 ### 示例18（设置Navigation可恢复）
 
-该示例演示如何使用[recoverable](arkts-arkui-navigation-comp-attribute.md#recoverable (prefix))配置Navigation可恢复，需要开发者在应用模块初始化时启用[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)的备份恢复功能，可参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)。
+该示例演示如何使用[recoverable](arkts-arkui-navigation-comp-attribute.md#recoverable)配置Navigation可恢复，需要开发者在应用模块初始化时启用[UIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md)的备份恢复功能，可参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)。
 
 从API version 14开始，新增recoverable接口。
 
@@ -3498,7 +3498,7 @@ export struct NavigationMenu {
 
 该示例演示如何使用[scrollEffectOptions](#示例19设置scrolleffectoptions开启标题栏滚动模糊)配置项，开启标题栏滚动模糊效果。
 
-从API版本26.0.0开始，[title](arkts-arkui-navigation-comp-attribute.md#title (exact))接口的参数options，新增了[scrollEffectOptions](#示例19设置scrolleffectoptions开启标题栏滚动模糊)属性。
+从API版本26.0.0开始，[title](arkts-arkui-navigation-comp-attribute.md#title)接口的参数options，新增了[scrollEffectOptions](#示例19设置scrolleffectoptions开启标题栏滚动模糊)属性。
 
 
 
