@@ -8,7 +8,7 @@ declare class RadioAttribute extends CommonMethod<RadioAttribute>
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** RadioAttribute extends CommonMethod<RadioAttribute>
+**继承/实现关系：** RadioAttribute extends CommonMethod&lt;RadioAttribute&gt;
 
 **起始版本：** 8
 

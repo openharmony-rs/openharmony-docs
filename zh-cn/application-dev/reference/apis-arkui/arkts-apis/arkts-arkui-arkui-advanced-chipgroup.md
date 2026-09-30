@@ -643,7 +643,7 @@ export struct ChipGroupExample2 {
 
 该示例通过配置backgroundSystemMaterial和iconBackgroundSystemMaterial实现系统材质样式，开启自动反色功能使文本颜色适配背景色。
 
-从API版本26.0.0开始，[ChipGroup](#chipgroup-1)新增backgroundSystemMaterial属性，[IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroup-icongroupsuffix-s.md)新增iconBackgroundSystemMaterial属性。
+从API版本26.0.0开始，ChipGroup新增backgroundSystemMaterial属性，[IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroup-icongroupsuffix-s.md)新增iconBackgroundSystemMaterial属性。
 
 该示例配图为高算力设备强档效果。
 
@@ -731,7 +731,7 @@ struct ChipGroupMaterialExample {
 
 该示例通过配置selectedBackgroundSystemMaterial实现组件选中状态的系统材质样式，开启自动反色功能使文本颜色适配背景色。
 
-从API版本26.0.0开始，[ChipGroup](#chipgroup-1)新增selectedBackgroundSystemMaterial属性。
+从API版本26.0.0开始，ChipGroup新增selectedBackgroundSystemMaterial属性。
 
 ```TypeScript
 import { ChipGroup, IconGroupSuffix, SymbolGlyphModifier, uiMaterial } from '@kit.ArkUI';

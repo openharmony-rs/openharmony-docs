@@ -43,7 +43,7 @@ declare class TextInputAttribute extends CommonMethod<TextInputAttribute>
 > 从API version 10开始，单行输入框可设置.width('auto')使组件宽度自适应文本宽度，自适应时组件宽度受constraintSize属性以及父容器传递的最大最小宽度限制，其余使用方式参考
 > [尺寸设置](arkts-arkui-common-comp.md)。
 
-**继承/实现关系：** TextInputAttribute extends CommonMethod<TextInputAttribute>
+**继承/实现关系：** TextInputAttribute extends CommonMethod&lt;TextInputAttribute&gt;
 
 **起始版本：** 7
 
@@ -105,7 +105,7 @@ barState(value: BarState)
 cancelButton(options: CancelButtonOptions)
 ```
 
-设置右侧清除按钮样式，仅支持图片类型的图标。不支持[TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式。示例请参考[示例4（设置右侧清除按钮样式）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例4设置右侧清除按钮样式)。未通过该接口设置时，默认为{
+设置右侧清除按钮样式，仅支持图片类型的图标。不支持[TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式。示例请参考示例4（设置右侧清除按钮样式）。未通过该接口设置时，默认为{
 
 style: CancelButtonStyle.INPUT
 
@@ -135,7 +135,7 @@ style: CancelButtonStyle.INPUT
 cancelButton(symbolOptions: CancelButtonSymbolOptions)
 ```
 
-设置右侧清除按钮样式，仅支持symbol图标。不支持[TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式。示例请参考[示例15（设置symbol类型清除按钮）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例15设置symbol类型清除按钮)。未通过该接口设置时，默认为{
+设置右侧清除按钮样式，仅支持symbol图标。不支持[TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式。示例请参考示例15（设置symbol类型清除按钮）。未通过该接口设置时，默认为{
 
 style: CancelButtonStyle.INPUT
 
@@ -965,7 +965,7 @@ letterSpacing(value: number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本字符间距。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本字符间距。<br>单位：fp |
 
 ## lineBreakStrategy
 
@@ -1047,7 +1047,7 @@ maxFontScale(scale: Optional<number|Resource>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最大的字体缩放倍数，支持undefined类型。<br>取值范围：[1, +∞) <br>**说明：** <br>设置的值小于1时，按值为1处理。异常值默认不生效。<br>当设置maxFontScale属性后，showError最多放大到2倍。<br>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见[示例18（设置最小字体范围与最大字体范围）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例18设置最小字体范围与最大字体范围)。 |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最大的字体缩放倍数，支持undefined类型。<br>取值范围：[1, +∞) <br>**说明：** <br>设置的值小于1时，按值为1处理。异常值默认不生效。<br>当设置maxFontScale属性后，showError最多放大到2倍。<br>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见示例18（设置最小字体范围与最大字体范围）。 |
 
 ## maxFontSize
 
@@ -1077,7 +1077,7 @@ maxFontSize小于等于0或者maxFontSize小于minFontSize时，自适应字号�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最大显示字号。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>需大于0且大于minFontSize，否则自适应字号不生效，按fontSize属性值生效。<br>需配合minFontSize使用，单独设置不生效。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最大显示字号。<br>单位：fp <br>需大于0且大于minFontSize，否则自适应字号不生效，按fontSize属性值生效。<br>需配合minFontSize使用，单独设置不生效。 |
 
 ## maxLength
 
@@ -1147,7 +1147,7 @@ minFontScale(scale: Optional<number|Resource>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最小的字体缩放倍数，支持undefined类型。<br>取值范围：[0, 1] <br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见[示例18（设置最小字体范围与最大字体范围）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例18设置最小字体范围与最大字体范围)。 |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最小的字体缩放倍数，支持undefined类型。<br>取值范围：[0, 1] <br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见示例18（设置最小字体范围与最大字体范围）。 |
 
 ## minFontSize
 
@@ -1177,7 +1177,7 @@ minFontSize小于或等于0时，自适应字号不生效，此时按照[fontSiz
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最小显示字号。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>需大于0，小于或等于0时自适应字号不生效，按fontSize属性值生效。<br>需配合maxFontSize使用，单独设置不生效。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最小显示字号。<br>单位：fp <br>需大于0，小于或等于0时自适应字号不生效，按fontSize属性值生效。<br>需配合maxFontSize使用，单独设置不生效。 |
 
 ## onChange
 
@@ -1421,7 +1421,7 @@ onSubmit(callback: OnSubmitCallback)
 
 按下输入法回车键触发该回调。
 
-非TV设备按下回车键时输入框默认会失焦且收起键盘，可在OnSubmitCallback回调中配置是否收起键盘，参考[示例2（设置下划线）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例2设置下划线)。
+非TV设备按下回车键时输入框默认会失焦且收起键盘，可在OnSubmitCallback回调中配置是否收起键盘，参考示例2（设置下划线）。
 
 **起始版本：** 7
 
@@ -1955,7 +1955,7 @@ showCounter(value: boolean, options?: InputCounterOptions)
 
 [TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式、[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)下字符计数器不显示。
 
-[示例5（设置计数器）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例5设置计数器)展示了设置showCounter的效果。
+示例5（设置计数器）展示了设置showCounter的效果。
 
 > **说明：** 
 > 
@@ -1986,7 +1986,7 @@ showError(value?: ResourceStr | undefined)
 
 设置错误状态下提示的错误文本或者不显示错误状态。
 
-当参数类型为ResourceStr并且输入内容不符合定义规范时，提示错误文本，当提示错误单行文本超长时，末尾以省略号显示。当参数类型为undefined时，不显示错误状态。请参考[示例2](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例2设置下划线)。
+当参数类型为ResourceStr并且输入内容不符合定义规范时，提示错误文本，当提示错误单行文本超长时，末尾以省略号显示。当参数类型为undefined时，不显示错误状态。请参考示例2。
 
 **起始版本：** 10
 
@@ -2014,7 +2014,7 @@ showPassword(visible: boolean)
 
 当[InputType](arkts-arkui-textinput-comp-inputtype-e.md)设置为Password、NEW_PASSWORD和NUMBER_PASSWORD模式时，密码保护功能才能生效。非密码输入模式则不会触发该功能。
 
-[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)时，由于输入框后端的状态和前端应用侧的状态管理变量会不一致，可能导致末尾图标的状态异常。建议在[onSecurityStateChange](#onsecuritystatechange)上增加状态同步。参考[示例1（设置与获取光标位置）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例1设置与获取光标位置)。
+[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)时，由于输入框后端的状态和前端应用侧的状态管理变量会不一致，可能导致末尾图标的状态异常。建议在[onSecurityStateChange](#onsecuritystatechange)上增加状态同步。参考示例1（设置与获取光标位置）。
 
 **起始版本：** 12
 
@@ -2298,7 +2298,7 @@ textIndent(value: Dimension)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 首行文本缩进。<br>单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>取值范围：大于等于0。设置负数时，按默认值处理。 |
+| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 首行文本缩进。<br>单位：vp <br>取值范围：大于等于0。设置负数时，按默认值处理。 |
 
 ## textOverflow
 

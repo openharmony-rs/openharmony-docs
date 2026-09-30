@@ -53,7 +53,7 @@ getAssets(options: FetchOptions, callback: AsyncCallback<FetchResult<PhotoAsset>
 
 **示例**
 
-参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例创建phAccessHelper。
+参考photoAccessHelper.getPhotoAccessHelper的示例创建phAccessHelper。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -125,7 +125,7 @@ getAssets(options: FetchOptions): Promise<FetchResult<PhotoAsset>>
 
 **示例**
 
-参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例创建phAccessHelper。
+参考photoAccessHelper.getPhotoAccessHelper的示例创建phAccessHelper。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';

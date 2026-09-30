@@ -53,4 +53,4 @@ function installScopeFont(url: string, scope: FontScope): Promise<void>
 | [31100104](../errorcode-font-manager.md#31100104-字体文件已安装) | The font file is installed. |
 | [31100105](../errorcode-font-manager.md#31100105-已安装字体文件超过最大数量) | Exceeded the maximum number of installed files. |
 | [31100110](../errorcode-font-manager.md#31100110-系统异常导致接口调用失败) | Call failed due to system error. |
-| [31100115](../errorcode-font-manager.md#31100115-字体服务状态变化监听器未注册) | The font observer is not registered. |
+| 31100115 | The font observer is not registered. |

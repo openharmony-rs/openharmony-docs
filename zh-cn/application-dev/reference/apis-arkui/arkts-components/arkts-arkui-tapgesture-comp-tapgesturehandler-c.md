@@ -6,7 +6,7 @@ declare class TapGestureHandler extends GestureHandler<TapGestureHandler>
 
 点击手势处理器对象类型。
 
-**继承/实现关系：** TapGestureHandler extends GestureHandler<TapGestureHandler>
+**继承/实现关系：** TapGestureHandler extends GestureHandler&lt;TapGestureHandler&gt;
 
 **起始版本：** 12
 

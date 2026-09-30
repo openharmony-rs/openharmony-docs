@@ -6,9 +6,9 @@ declare class ScrollAttribute extends ScrollableCommonMethod<ScrollAttribute>
 
 除支持[通用属性](arkts-arkui-common-comp.md)和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
 
-除支持[通用事件](arkts-arkui-common-comp.md)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp.md)和滚动组件通用事件外，还支持以下事件：
 
-**继承/实现关系：** ScrollAttribute extends ScrollableCommonMethod<ScrollAttribute>
+**继承/实现关系：** ScrollAttribute extends ScrollableCommonMethod&lt;ScrollAttribute&gt;
 
 **起始版本：** 7
 

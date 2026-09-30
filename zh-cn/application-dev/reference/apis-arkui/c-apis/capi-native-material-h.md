@@ -16,7 +16,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_ImmersiveMaterial](capi-arkui-nativemodule-arkui-immersivematerial.md) | ArkUI_ImmersiveMaterial | 定义Native侧的沉浸式材质对象，根据设备算力等级提供适配的视觉效果。<br>沉浸式材质的等级根据设备算力等级而不同。<br>材质等级由[ArkUI_MaterialLevel](capi-native-material-h.md#arkui_materiallevel)定义，可通过 [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)获取。<br>在高算力和中算力设备上，会影响沉浸式材质渲染层的滤镜效果和阴影（[NODE_SHADOW](capi-native-node-h.md#arkui_nodeattributetype)或 [NODE_CUSTOM_SHADOW](capi-native-node-h.md#arkui_nodeattributetype)）效果。在低算力设备上，会影响背景颜色[NODE_BACKGROUND_COLOR](capi-native-node-h.md#arkui_nodeattributetype)、边框颜色[NODE_BORDER_COLOR](capi-native-node-h.md#arkui_nodeattributetype)、边框宽度 [NODE_BORDER_WIDTH](capi-native-node-h.md#arkui_nodeattributetype)和阴影（[NODE_SHADOW](capi-native-node-h.md#arkui_nodeattributetype)或[NODE_CUSTOM_SHADOW](capi-native-node-h.md#arkui_nodeattributetype)）效果。 |
+| [ArkUI_ImmersiveMaterial](capi-arkui-nativemodule-arkui-immersivematerial.md) | ArkUI_ImmersiveMaterial | 定义Native侧的沉浸式材质对象，根据设备算力等级提供适配的视觉效果。<br>沉浸式材质的等级根据设备算力等级而不同。<br>材质等级由[ArkUI_MaterialLevel](capi-native-material-h.md#arkui_materiallevel)定义，可通过 [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)获取。<br>在高算力和中算力设备上，会影响沉浸式材质渲染层的滤镜效果和阴影（NODE_SHADOW或 NODE_CUSTOM_SHADOW）效果。在低算力设备上，会影响背景颜色NODE_BACKGROUND_COLOR、边框颜色NODE_BORDER_COLOR、边框宽度 NODE_BORDER_WIDTH和阴影（NODE_SHADOW或NODE_CUSTOM_SHADOW）效果。 |
 | [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) | ArkUI_ImmersiveMaterialHandle | 定义指向沉浸式材质对象的指针，沉浸式材质用于实现沉浸式视觉效果对象。<br>可以通过[OH_ArkUI_NativeModule_ImmersiveMaterial_Create](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_create)创建沉浸式材质对象， 创建后必须在使用完毕时调用[OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy)销毁沉浸式材质对象以释放资源，避免内存泄漏。 |
 | [ArkUI_LightEffectOptions](capi-arkui-nativemodule-arkui-lighteffectoptions.md) | ArkUI_LightEffectOptions | 定义沉浸式材质的光感交互效果配置对象，用于配置沉浸式材质在用户交互时产生的光感响应效果。详细设计逻辑请参见[native_material.h](capi-native-material-h.md)。沉浸式材质是一种具有深度感和层次感的视觉材质风格， 光感交互效果指用户与组件交互时产生的光影视觉反馈。创建后需通过[OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect)将配置对象设置到沉浸式材质对象上才能生效。 <br>未指定光感交互颜色时，默认光感交互颜色为白色（0xffffffff）。 |
 
@@ -37,7 +37,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [bool OH_ArkUI_NativeModule_GetSystemMaterialSupported()](#oh_arkui_nativemodule_getsystemmaterialsupported) | 检查当前设备是否支持系统材质（即设备系统内置的材质渲染能力）。 <br>如果返回true，则可以使用[NODE_SYSTEM_MATERIAL](capi-native-node-h.md#arkui_nodeattributetype)属性，否则设置该属性将无效。该配置项由设备定义，不可修改。 |
+| [bool OH_ArkUI_NativeModule_GetSystemMaterialSupported()](#oh_arkui_nativemodule_getsystemmaterialsupported) | 检查当前设备是否支持系统材质（即设备系统内置的材质渲染能力）。 <br>如果返回true，则可以使用NODE_SYSTEM_MATERIAL属性，否则设置该属性将无效。该配置项由设备定义，不可修改。 |
 | [ArkUI_MaterialLevel OH_ArkUI_NativeModule_GetGlobalMaterialLevel()](#oh_arkui_nativemodule_getglobalmateriallevel) | 获取全局材质等级，与设备的算力相关。该配置项由设备定义，不可修改。 |
 | [ArkUI_ImmersiveMaterialHandle OH_ArkUI_NativeModule_ImmersiveMaterial_Create(ArkUI_ImmersiveStyle style)](#oh_arkui_nativemodule_immersivematerial_create) | 创建具有指定样式的沉浸式材质对象。创建的材质等级跟随全局材质等级，可通过[OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)获取。 |
 | [void OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy(ArkUI_ImmersiveMaterialHandle material)](#oh_arkui_nativemodule_immersivematerial_destroy) | 销毁沉浸式材质对象。 |
@@ -112,7 +112,7 @@ bool OH_ArkUI_NativeModule_GetSystemMaterialSupported()
 
 **描述：**
 
-检查当前设备是否支持系统材质（即设备系统内置的材质渲染能力）。 <br>如果返回true，则可以使用[NODE_SYSTEM_MATERIAL](capi-native-node-h.md#arkui_nodeattributetype)属性，否则设置该属性将无效。该配置项由设备定义，不可修改。
+检查当前设备是否支持系统材质（即设备系统内置的材质渲染能力）。 <br>如果返回true，则可以使用NODE_SYSTEM_MATERIAL属性，否则设置该属性将无效。该配置项由设备定义，不可修改。
 
 **起始版本：** 26.0.0
 

@@ -10,7 +10,7 @@ declare class LoadingProgressAttribute extends CommonMethod<LoadingProgressAttri
 > 
 > 组件应设置合理的宽高，当组件宽高设置过大时加载进度条的动效可能不符合预期效果。
 
-**继承/实现关系：** LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>
+**继承/实现关系：** LoadingProgressAttribute extends CommonMethod&lt;LoadingProgressAttribute&gt;
 
 **起始版本：** 8
 

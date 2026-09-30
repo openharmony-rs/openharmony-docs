@@ -8,7 +8,7 @@ declare class RelativeContainerAttribute extends CommonMethod<RelativeContainerA
 
 支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** RelativeContainerAttribute extends CommonMethod<RelativeContainerAttribute>
+**继承/实现关系：** RelativeContainerAttribute extends CommonMethod&lt;RelativeContainerAttribute&gt;
 
 **起始版本：** 9
 

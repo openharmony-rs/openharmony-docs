@@ -22,7 +22,7 @@ Image为图片组件，常用于在应用中显示图片。Image支持加载[Pix
 
 除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
 
-**继承/实现关系：** ImageAttribute extends CommonMethod<ImageAttribute>
+**继承/实现关系：** ImageAttribute extends CommonMethod&lt;ImageAttribute&gt;
 
 **起始版本：** 7
 
@@ -334,7 +334,7 @@ enableAnalyzer(enable: boolean)
 
 不能和[overlay](arkts-arkui-common-comp-commonmethod-c.md#overlay)属性同时使用，两者同时设置时overlay中[CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)属性将失效。该特性依赖设备能力。
 
-分析图像要求是静态非矢量图，即svg、gif等图像类型不支持分析，支持传入[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)进行分析，目前仅支持[RGBA_8888](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md)类型，使用方式见[示例5（开启图像AI分析）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#示例5开启图像ai分析)。
+分析图像要求是静态非矢量图，即svg、gif等图像类型不支持分析，支持传入[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)进行分析，目前仅支持[RGBA_8888](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md)类型，使用方式见示例5（开启图像AI分析）。
 
 [alt](#alt)占位图不支持分析，[objectRepeat](#objectrepeat)属性仅在取值为ImageRepeat.NoRepeat时支持分析，隐私遮罩属性[obscured](arkts-arkui-common-comp-commonmethod-c.md#obscured)打开时不支持分析。
 

@@ -1048,7 +1048,7 @@ struct StyledStringSetLineheightParagraphstyleDemo {
 
 ### 示例6（设置自定义绘制Span）
 
-从API version 12开始，该示例通过[CustomSpan](arkts-arkui-customspan-c.md)接口和[measureTextSize](../arkts-apis-uicontext-measureutils.md#measuretextsize12)实现属性字符串设置自定义绘制Span。
+从API version 12开始，该示例通过[CustomSpan](arkts-arkui-customspan-c.md)接口和measureTextSize实现属性字符串设置自定义绘制Span。
 
 从API版本26.0.0开始，CustomSpanMeasureInfo新增maxWidth、layoutPolicy属性。
 
@@ -1876,7 +1876,7 @@ struct leadingMarginSpanDemo {
 
 ### 示例16（使用supportSvg2属性时，SVG图片的显示效果）
 
-从API version 22开始，该示例通过给[ResourceImageAttachmentOptions](arkts-arkui-resourceimageattachmentoptions-i.md)设置supportSvg2属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)的[SVG易用性提升](ts-image-svg2-capabilities.md#svg易用性提升)能力生效。
+从API version 22开始，该示例通过给[ResourceImageAttachmentOptions](arkts-arkui-resourceimageattachmentoptions-i.md)设置supportSvg2属性，使SVG标签解析能力增强功能的SVG易用性提升能力生效。
 
 
 
@@ -1946,7 +1946,7 @@ struct StyledStringProcessDemo {
 
 ### 示例17（设置字体配置）
 
-该示例通过TextStyleInterface中的[fontConfigs](ts-text-common.md#fontconfigs24对象说明)实现属性字符串的字体配置。
+该示例通过TextStyleInterface中的fontConfigs实现属性字符串的字体配置。
 
 从API version 24开始，TextStyleInterface新增fontConfigs属性。
 
@@ -2054,9 +2054,9 @@ struct StyledStringFontConfigsDemo {
 
 ### 示例18（fromHtml转换）
 
-该示例通过[fromHtml](arkts-arkui-styledstring-c.md#fromhtml)接口，将HTML中<cite>、<dfn>、<small>、<h1>、<h2>、<h3>、<h4>、<h5>、<h6>、<ol>、<ul>、<li>标签转换为属性字符串。
+该示例通过[fromHtml](arkts-arkui-styledstring-c.md#fromhtml)接口，将HTML中<cite>、&lt;dfn&gt;、<small>、<h1>、<h2>、<h3>、<h4>、<h5>、<h6>、<ol>、<ul>、<li>标签转换为属性字符串。
 
-从API版本26.0.0开始，fromHtml新增支持<cite>、<dfn>、<small>、<h1>、<h2>、<h3>、<h4>、<h5>、<h6>、<ol>、<ul>、<li>标签。
+从API版本26.0.0开始，fromHtml新增支持<cite>、&lt;dfn&gt;、<small>、<h1>、<h2>、<h3>、<h4>、<h5>、<h6>、<ol>、<ul>、<li>标签。
 
 
 

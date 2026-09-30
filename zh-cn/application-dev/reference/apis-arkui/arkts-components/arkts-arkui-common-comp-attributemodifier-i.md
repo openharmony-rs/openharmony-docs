@@ -107,7 +107,7 @@ declare interface AttributeModifier<T>
 | <!--DelRow-->FormComponentAttribute | FormComponent的[属性](arkts-arkui-formcomponent-comp-attribute.md#formcomponentattribute系统接口)。 |
 | <!--DelRow-->PluginComponentAttribute | PluginComponent的[属性](arkts-arkui-plugincomponent-comp-attribute.md#plugincomponentattribute系统接口)。 |
 | <!--DelRow-->RemoteWindowAttribute | RemoteWindow的[属性](arkts-arkui-remotewindow-comp-attribute.md#remotewindowattribute系统接口)。 |
-| UIExtensionComponentAttribute | UIExtensionComponent的[属性](arkts-arkui-uiextensioncomponent-comp-attribute.md#uiextensioncomponentattribute系统接口)。 |
+| UIExtensionComponentAttribute | UIExtensionComponent的属性。 |
 | ContainerReaderAttribute | ContainerReader的[属性](arkts-arkui-containerreader-comp-attribute.md)。<br>**起始版本：** 26.0.0|
 
 > **说明：** 

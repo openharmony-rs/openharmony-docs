@@ -52,7 +52,7 @@
 | [bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfromstart) | 获取文本跑马灯模式配置项的运行方向。 |
 | [void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int32_t delay)](#oh_arkui_textmarqueeoptions_setdelay) | 设置文本跑马灯模式配置项的每轮滚动延迟时间。 |
 | [int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getdelay) | 获取文本跑马灯模式配置项的每轮滚动延迟时间。 |
-| [void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)](#oh_arkui_textmarqueeoptions_setfadeout) | 设置文本跑马灯模式配置项是否支持文字超长时的渐隐效果。当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。 <br>若两端均有文字未完全显示，则两端同时应用渐隐效果。 <br>在渐隐效果开启状态下，[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_CLIP属性将自动锁定为true，不允许设置为false。 |
+| [void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)](#oh_arkui_textmarqueeoptions_setfadeout) | 设置文本跑马灯模式配置项是否支持文字超长时的渐隐效果。当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。 <br>若两端均有文字未完全显示，则两端同时应用渐隐效果。 <br>在渐隐效果开启状态下，ArkUI_NodeAttributeType中的NODE_CLIP属性将自动锁定为true，不允许设置为false。 |
 | [bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfadeout) | 获取文本跑马灯模式配置项是否支持文字超长时的渐隐效果。 |
 | [void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeStartPolicy startPolicy)](#oh_arkui_textmarqueeoptions_setstartpolicy) | 设置文本跑马灯模式配置项的启动策略。 |
 | [ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstartpolicy) | 获取文本跑马灯模式配置项的启动策略。 |
@@ -502,7 +502,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bo
 
 **描述：**
 
-设置文本跑马灯模式配置项是否支持文字超长时的渐隐效果。当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。 <br>若两端均有文字未完全显示，则两端同时应用渐隐效果。 <br>在渐隐效果开启状态下，[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_CLIP属性将自动锁定为true，不允许设置为false。
+设置文本跑马灯模式配置项是否支持文字超长时的渐隐效果。当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。 <br>若两端均有文字未完全显示，则两端同时应用渐隐效果。 <br>在渐隐效果开启状态下，ArkUI_NodeAttributeType中的NODE_CLIP属性将自动锁定为true，不允许设置为false。
 
 **起始版本：** 23
 

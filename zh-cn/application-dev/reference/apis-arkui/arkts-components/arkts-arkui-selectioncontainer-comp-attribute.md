@@ -12,7 +12,7 @@ export declare class SelectionContainerAttribute extends CommonMethod<SelectionC
 > 
 > - 不支持[图形变换](arkts-arkui-common-comp.md)，在SelectionContainer容器中子组件Text不支持图形变换。
 
-**继承/实现关系：** SelectionContainerAttribute extends CommonMethod<SelectionContainerAttribute>
+**继承/实现关系：** SelectionContainerAttribute extends CommonMethod&lt;SelectionContainerAttribute&gt;
 
 **起始版本：** 26.0.0
 

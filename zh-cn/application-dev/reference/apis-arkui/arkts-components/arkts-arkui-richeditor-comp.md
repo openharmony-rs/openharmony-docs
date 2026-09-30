@@ -312,7 +312,7 @@ struct Index {
 
 ### 示例2（绑定自定义键盘）
 
-通过[customKeyboard](#customkeyboard)给组件绑定自定义键盘。
+通过[customKeyboard](arkts-arkui-richeditor-comp-attribute.md#customkeyboard (exact))给组件绑定自定义键盘。
 
 
 
@@ -363,7 +363,7 @@ struct RichEditorExample {
 
 ### 示例3（绑定自定义菜单）
 
-通过[bindSelectionMenu](#bindselectionmenu)给组件绑定自定义菜单。
+通过[bindSelectionMenu](arkts-arkui-richeditor-comp-attribute.md#bindselectionmenu (exact))给组件绑定自定义菜单。
 
 示例中的粘贴菜单项涉及读取剪贴板数据，因此需按规范[申请访问剪贴板权限](../../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。
 
@@ -1241,7 +1241,7 @@ struct Index {
 
 ### 示例6（更新和获取段落样式）
 
-通过[updateParagraphStyle](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#updateparagraphstyle)接口更新段落样式，通过[getParagraphs](#getparagraphs11)接口获取指定范围段落的信息。
+通过[updateParagraphStyle](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#updateparagraphstyle)接口更新段落样式，通过getParagraphs接口获取指定范围段落的信息。
 
 
 
@@ -1990,7 +1990,7 @@ struct Index {
 
 ### 示例10（使用和管理组件内的BuilderSpan）
 
-通过[addBuilderSpan](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#addbuilderspan)接口添加的自定义布局Span，[getSpans](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#getspans)、[onWillChange](#onwillchange12)等API不会返回BuilderSpan内部的信息。开发者需要自行维护BuilderSpan的状态，并且在组件内容发生变化时同步更新。
+通过[addBuilderSpan](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#addbuilderspan)接口添加的自定义布局Span，[getSpans](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#getspans)、[onWillChange](arkts-arkui-richeditor-comp-attribute.md#onwillchange (prefix))等API不会返回BuilderSpan内部的信息。开发者需要自行维护BuilderSpan的状态，并且在组件内容发生变化时同步更新。
 
 
 
@@ -2336,7 +2336,7 @@ struct Index {
 
 ### 示例11（设置文本识别配置）
 
-设置[enableDataDetector](#enabledatadetector11)为true时，通过[dataDetectorConfig](#datadetectorconfig11)接口设置文本识别配置。
+设置[enableDataDetector](arkts-arkui-richeditor-comp-attribute.md#enabledatadetector (prefix))为true时，通过[dataDetectorConfig](arkts-arkui-richeditor-comp-attribute.md#datadetectorconfig (prefix))接口设置文本识别配置。
 
 ```TypeScript
 @Entry
@@ -2402,7 +2402,7 @@ struct TextExample7 {
 
 ### 示例12（设置光标、手柄和高亮颜色）
 
-通过[caretColor](#caretcolor12)属性设置输入框光标、手柄颜色，通过[selectedBackgroundColor](#selectedbackgroundcolor12)属性设置文本选中高亮颜色。
+通过[caretColor](arkts-arkui-richeditor-comp-attribute.md#caretcolor (prefix))属性设置输入框光标、手柄颜色，通过[selectedBackgroundColor](arkts-arkui-richeditor-comp-attribute.md#selectedbackgroundcolor (prefix))属性设置文本选中高亮颜色。
 
 
 
@@ -2563,7 +2563,7 @@ struct RichEditorDemo03 {
 
 ### 示例14（自定义粘贴事件）
 
-为组件添加[onPaste](#onpaste11)事件，通过[PasteEvent](arkts-arkui-richeditor-comp-pasteevent-i.md)自定义用户粘贴事件。
+为组件添加[onPaste](arkts-arkui-richeditor-comp-attribute.md#onpaste (prefix))事件，通过[PasteEvent](arkts-arkui-richeditor-comp-pasteevent-i.md)自定义用户粘贴事件。
 
 
 
@@ -2650,7 +2650,7 @@ struct RichEditorExample {
 
 ### 示例16（自定义键盘避让）
 
-通过[customKeyboard](#customkeyboard)属性绑定自定义键盘，通过参数[KeyboardOptions](arkts-arkui-richeditor-comp-keyboardoptions-i.md)设置自定义键盘是否支持避让功能。
+通过[customKeyboard](arkts-arkui-richeditor-comp-attribute.md#customkeyboard (exact))属性绑定自定义键盘，通过参数[KeyboardOptions](arkts-arkui-richeditor-comp-keyboardoptions-i.md)设置自定义键盘是否支持避让功能。
 
 
 
@@ -2734,7 +2734,7 @@ struct RichEditorExample {
 
 ### 示例17（查看编辑状态）
 
-通过[isEditing](#isediting12)接口获取当前富文本的编辑状态。为组件添加[onEditingChange](arkts-arkui-richeditor-comp-attribute.md#oneditingchange)事件，可通过打印日志，获取当前组件是否在编辑态。
+通过isEditing接口获取当前富文本的编辑状态。为组件添加[onEditingChange](arkts-arkui-richeditor-comp-attribute.md#oneditingchange)事件，可通过打印日志，获取当前组件是否在编辑态。
 
 
 
@@ -2774,7 +2774,7 @@ struct RichEditorOnEditingChange {
 
 ### 示例18（配置文本变化回调）
 
-为组件添加[onWillChange](#onwillchange12)事件，能够在组件执行增删操作前，触发回调。
+为组件添加[onWillChange](arkts-arkui-richeditor-comp-attribute.md#onwillchange (prefix))事件，能够在组件执行增删操作前，触发回调。
 
 
 
@@ -2880,7 +2880,7 @@ struct RichEditorExample {
 
 ### 示例19（配置输入法回车键功能）
 
-通过[enterKeyType](#enterkeytype12)属性设置软键盘输入法回车键类型。
+通过[enterKeyType](arkts-arkui-richeditor-comp-attribute.md#enterkeytype (prefix))属性设置软键盘输入法回车键类型。
 
 
 
@@ -2915,7 +2915,7 @@ struct SoftKeyboardEnterTypeExample {
 
 ### 示例20（设置段落折行规则）
 
-通过[updateParagraphStyle](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#updateparagraphstyle)接口设置折行类型（[lineBreakStrategy](arkts-arkui-richeditor-comp-richeditorparagraphstyle-i.md)），通过[getParagraphs](#getparagraphs11)接口获取当前段落的折行类型。
+通过[updateParagraphStyle](arkts-arkui-richeditor-comp-richeditorcontroller-c.md#updateparagraphstyle)接口设置折行类型（[lineBreakStrategy](arkts-arkui-richeditor-comp-richeditorparagraphstyle-i.md)），通过getParagraphs接口获取当前段落的折行类型。
 
 
 
@@ -2994,7 +2994,7 @@ struct LineBreakStrategyExample {
 
 ### 示例21（属性字符串基本功能）
 
-从API version 20开始，该示例中[属性字符串](./ts-universal-styled-string.md)通过[RichEditorStyledStringController](arkts-arkui-richeditor-comp-richeditorstyledstringcontroller-c.md)中的[setStyledString](#setstyledstring12)方法与RichEditor组件绑定。通过[getStyledString](#getstyledstring12)接口获取富文本组件显示的属性字符串。
+从API version 20开始，该示例中属性字符串通过[RichEditorStyledStringController](arkts-arkui-richeditor-comp-richeditorstyledstringcontroller-c.md)中的setStyledString方法与RichEditor组件绑定。通过getStyledString接口获取富文本组件显示的属性字符串。
 
 
 
@@ -3193,7 +3193,7 @@ struct Index {
 
 ### 示例22（获取布局信息）
 
-通过[getLayoutManager](#getlayoutmanager12)接口获取布局管理器对象，通过[getLineCount](ts-text-common.md#getlinecount12)接口获取组件内容或[placeholder](#placeholder12)的总行数，通过[getGlyphPositionAtCoordinate](ts-text-common.md#getglyphpositionatcoordinate12)接口获取较为接近给定坐标的字形的位置信息，通过[getLineMetrics](ts-text-common.md#getlinemetrics12)接口获取指定行的行信息、文本样式信息、以及字体属性信息。
+通过getLayoutManager接口获取布局管理器对象，通过getLineCount接口获取组件内容或[placeholder](arkts-arkui-richeditor-comp-attribute.md#placeholder (prefix))的总行数，通过getGlyphPositionAtCoordinate接口获取较为接近给定坐标的字形的位置信息，通过getLineMetrics接口获取指定行的行信息、文本样式信息、以及字体属性信息。
 
 
 
@@ -3264,7 +3264,7 @@ struct Index {
 
 ### 示例23（设置系统默认菜单扩展项）
 
-从API version 20开始，该示例通过[editMenuOptions](#editmenuoptions12)属性设置系统默认菜单的扩展项，允许配置扩展项的文本内容、图标和回调方法。
+从API version 20开始，该示例通过[editMenuOptions](arkts-arkui-richeditor-comp-attribute.md#editmenuoptions (prefix))属性设置系统默认菜单的扩展项，允许配置扩展项的文本内容、图标和回调方法。
 
 
 
@@ -3360,7 +3360,7 @@ struct RichEditorExample {
 
 ### 示例24（组件部分常用属性）
 
-从API version 18开始，该示例通过[barState](#barstate13)属性设置组件滚动条的显示模式。通过[enableKeyboardOnFocus](#enablekeyboardonfocus12)属性设置组件通过点击以外的方式获焦时，是否主动拉起软键盘。通过[enableHapticFeedback](#enablehapticfeedback13)属性设置组件是否支持触感反馈。通过[getPreviewText](#getpreviewtext12)接口获取组件预上屏信息。通过[stopBackPress](#stopbackpress18)属性设置是否阻止返回键向其他组件或应用侧传递。从API version 21开始，该示例通过[scrollBarColor](#scrollbarcolor21)属性设置RichEditor组件滚动条颜色。
+从API version 18开始，该示例通过[barState](arkts-arkui-richeditor-comp-attribute.md#barstate (prefix))属性设置组件滚动条的显示模式。通过[enableKeyboardOnFocus](arkts-arkui-richeditor-comp-attribute.md#enablekeyboardonfocus (prefix))属性设置组件通过点击以外的方式获焦时，是否主动拉起软键盘。通过[enableHapticFeedback](arkts-arkui-richeditor-comp-attribute.md#enablehapticfeedback (prefix))属性设置组件是否支持触感反馈。通过getPreviewText接口获取组件预上屏信息。通过[stopBackPress](arkts-arkui-richeditor-comp-attribute.md#stopbackpress (prefix))属性设置是否阻止返回键向其他组件或应用侧传递。从API version 21开始，该示例通过[scrollBarColor](arkts-arkui-richeditor-comp-attribute.md#scrollbarcolor (prefix))属性设置RichEditor组件滚动条颜色。
 
 
 
@@ -3505,7 +3505,7 @@ struct Index {
 
 ### 示例26（设置最大行数和最大字符数）
 
-从API version 18开始，该示例通过[maxLength](#maxlength18)设置可输入的最大字符数，通过[maxLines](#maxlines18)设置可输入的最大行数。
+从API version 18开始，该示例通过[maxLength](arkts-arkui-richeditor-comp-attribute.md#maxlength (prefix))设置可输入的最大字符数，通过[maxLines](arkts-arkui-richeditor-comp-attribute.md#maxlines (prefix))设置可输入的最大行数。
 
 
 
@@ -3644,7 +3644,7 @@ struct RichEditorExample {
 
 ### 示例28（开启带样式的撤销还原能力）
 
-从API version 20开始，该示例对于不使用属性字符串的富文本组件，可以通过配置[undoStyle](#undostyle20)属性为UndoStyle.KEEP_STYLE，以支持撤销还原时保留原内容的样式。
+从API version 20开始，该示例对于不使用属性字符串的富文本组件，可以通过配置[undoStyle](arkts-arkui-richeditor-comp-attribute.md#undostyle (prefix))属性为UndoStyle.KEEP_STYLE，以支持撤销还原时保留原内容的样式。
 
 
 
@@ -3880,7 +3880,7 @@ struct RichEditorExample {
 
 ### 示例30（设置装饰线粗细和多装饰线）
 
-从API version 20开始，该示例通过[DecorationStyle](ts-universal-styled-string.md#decorationstyle)中的thicknessScale设置装饰线粗细，通过[enableMultiType](ts-universal-styled-string.md#decorationoptions20)设置多装饰线。
+从API version 20开始，该示例通过DecorationStyle中的thicknessScale设置装饰线粗细，通过enableMultiType设置多装饰线。
 
 
 
@@ -4010,7 +4010,7 @@ struct Index {
 
 ### 示例31（设置开启中西文自动间距）
 
-从API version 20开始，该示例通过[enableAutoSpacing](#enableautospacing20)属性设置中西文自动间距。
+从API version 20开始，该示例通过[enableAutoSpacing](arkts-arkui-richeditor-comp-attribute.md#enableautospacing (prefix))属性设置中西文自动间距。
 
 
 
@@ -4117,7 +4117,7 @@ struct AutoSpacing {
 
 ### 示例32（设置文本选择的AI菜单）
 
-从API version 22开始，该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
+从API version 22开始，该示例通过[enableSelectedDataDetector](arkts-arkui-richeditor-comp-attribute.md#enableselecteddatadetector (prefix))，配置文本选择AI菜单功能。
 
 ```TypeScript
 @Entry
@@ -4147,7 +4147,7 @@ struct SelectedDataDetectorDemo {
 
 ### 示例33（设置监听输入法绑定事件）
 
-从API version 22开始，该示例通过[onWillAttachIME](#onwillattachime22)事件监听输入法绑定事件。
+从API version 22开始，该示例通过[onWillAttachIME](arkts-arkui-richeditor-comp-attribute.md#onwillattachime (prefix))事件监听输入法绑定事件。
 
 
 
@@ -4201,7 +4201,7 @@ struct SetOnWillAttachIME {
 
 ### 示例34（删除输入框文本尾部字符）
 
-从API version 23开始，该示例通过[deleteBackward](#deletebackward23)事件在编辑态用自定义键盘删除光标前字符。
+从API version 23开始，该示例通过deleteBackward事件在编辑态用自定义键盘删除光标前字符。
 
 
 
@@ -4258,7 +4258,7 @@ struct RichEditorExample {
 
 ### 示例35（优化小语种文字显示）
 
-该示例通过[includeFontPadding](#includefontpadding23)属性，在首行文字顶部和尾行文字底部添加文字内边距，同时通过[fallbackLineSpacing](#fallbacklinespacing23)属性实现行高自适应，基于文字实际高度动态调整。
+该示例通过[includeFontPadding](arkts-arkui-richeditor-comp-attribute.md#includefontpadding (prefix))属性，在首行文字顶部和尾行文字底部添加文字内边距，同时通过[fallbackLineSpacing](arkts-arkui-richeditor-comp-attribute.md#fallbacklinespacing (prefix))属性实现行高自适应，基于文字实际高度动态调整。
 
 从API version 23开始，新增includeFontPadding、fallbackLineSpacing属性。
 
@@ -4346,7 +4346,7 @@ struct RichEditorExample {
 
 ### 示例36（设置行首标点符号压缩和行尾标点符号悬挂）
 
-本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
+本示例通过[compressLeadingPunctuation](arkts-arkui-richeditor-comp-attribute.md#compressleadingpunctuation (prefix))设置行首标点符号压缩，通过[punctuationOverflow](arkts-arkui-richeditor-comp-attribute.md#punctuationoverflow (exact))设置行尾标点符号悬挂。
 
 文本自动换行后，剩余内容（含标点符号）需能放入上一行，标点符号悬挂才生效。
 
@@ -4400,7 +4400,7 @@ struct PunctuationDemo {
 
 ### 示例37（设置拖动预览样式）
 
-该示例通过[selectedDragPreviewStyle](#selecteddragpreviewstyle23)接口设置拖动预览样式。
+该示例通过[selectedDragPreviewStyle](arkts-arkui-richeditor-comp-attribute.md#selecteddragpreviewstyle (prefix))接口设置拖动预览样式。
 
 从API version 23开始，新增selectedDragPreviewStyle接口。
 
@@ -4473,7 +4473,7 @@ struct SingleLineDemo {
 
 ### 示例39（设置属性字符串样式的提示文本）
 
-该示例通过[setStyledPlaceholder](#setstyledplaceholder24)接口设置属性字符串样式的提示文本。
+该示例通过[setStyledPlaceholder](arkts-arkui-richeditor-comp-attribute.md#placeholder (contains))接口设置属性字符串样式的提示文本。
 
 从API version 24开始，新增setStyledPlaceholder接口。
 
@@ -4553,7 +4553,7 @@ struct RichEditorExample {
 
 ### 示例40（设置孤立字符不成行）
 
-该示例通过[orphanCharOptimization](#orphancharoptimization)接口启用孤字优化，确保段落最后一行不出现孤字。
+该示例通过[orphanCharOptimization](arkts-arkui-richeditor-comp-attribute.md#orphancharoptimization (exact))接口启用孤字优化，确保段落最后一行不出现孤字。
 
 从API版本26.0.0开始，新增orphanCharOptimization接口。
 
@@ -4602,7 +4602,7 @@ struct RichEditorDemo {
 
 ### 示例41（设置水平滚动）
 
-本示例通过[horizontalScrolling](#horizontalscrolling)设置水平滚动。
+本示例通过[horizontalScrolling](arkts-arkui-richeditor-comp-attribute.md#horizontalscrolling (exact))设置水平滚动。
 
 从API版本26.0.0开始，新增horizontalScrolling接口。
 
@@ -4749,7 +4749,7 @@ struct ShaderColorStyle {
 
 ### 示例43（将指定范围的文字滚动到可视区内）
 
-本示例通过[scrollToVisible](#scrolltovisible)将可视区外的文本滚动到可视区内。
+本示例通过scrollToVisible将可视区外的文本滚动到可视区内。
 
 从API版本26.0.0开始，新增scrollToVisible接口。
 

@@ -10,7 +10,7 @@ declare class XComponentAttribute extends CommonMethod<XComponentAttribute>
 
 从API版本12开始，当type设置为**SURFACE**或**TEXTURE**时，支持[通用事件](arkts-arkui-common-comp.md)。
 
-**继承/实现关系：** XComponentAttribute extends CommonMethod<XComponentAttribute>
+**继承/实现关系：** XComponentAttribute extends CommonMethod&lt;XComponentAttribute&gt;
 
 **起始版本：** 8
 

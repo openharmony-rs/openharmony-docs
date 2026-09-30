@@ -8,7 +8,7 @@ export declare class DynamicLayoutAttribute extends CommonMethod<DynamicLayoutAt
 
 支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** DynamicLayoutAttribute extends CommonMethod<DynamicLayoutAttribute>
+**继承/实现关系：** DynamicLayoutAttribute extends CommonMethod&lt;DynamicLayoutAttribute&gt;
 
 **起始版本：** 24
 

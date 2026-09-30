@@ -34,7 +34,7 @@ AbilityComponent(value: { want: import('../api/@ohos.app.ability.Want').default 
 
 **废弃版本：** 10
 
-**替代接口：** [UIExtensionComponentInterface](arkts-arkui-uiextensioncomponent-comp-sys.md#uiextensioncomponentinterface)
+**替代接口：** [UIExtensionComponentInterface](arkts-arkui-uiextensioncomponent-comp-sys.md#uiextensioncomponent)
 
 <!--Device-AbilityComponentInterface-(value: { want: import('../api/@ohos.app.ability.Want').default }): AbilityComponentAttribute--><!--Device-AbilityComponentInterface-(value: { want: import('../api/@ohos.app.ability.Want').default }): AbilityComponentAttribute-End-->
 

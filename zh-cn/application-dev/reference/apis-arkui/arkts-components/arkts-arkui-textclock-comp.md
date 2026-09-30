@@ -49,11 +49,11 @@ TextClock(options?: TextClockOptions)
 
 ### 示例1（支持启停的文本样式时钟）
 
-该示例展示了TextClock组件的基本使用方法，通过[format](#format)属性设置时钟文本的格式。
+该示例展示了TextClock组件的基本使用方法，通过[format](arkts-arkui-textclock-comp-attribute.md#format (exact))属性设置时钟文本的格式。
 
 点击"start TextClock"按钮，按钮回调函数会调用TextClockController启动文本时钟。点击"stop TextClock"按钮，会调用TextClockController停止文本时钟。
 
-示例中的组件通过设置[onDateChange](#ondatechange)回调函数，在文本时钟更新时，持续修改accumulateTime的内容。
+示例中的组件通过设置[onDateChange](arkts-arkui-textclock-comp-attribute.md#ondatechange (exact))回调函数，在文本时钟更新时，持续修改accumulateTime的内容。
 
 
 
@@ -97,7 +97,7 @@ struct Second {
 
 ### 示例2（设定文本阴影样式）
 
-该示例通过[textShadow](#textshadow11)属性设置时钟文本的阴影样式。
+该示例通过[textShadow](arkts-arkui-textclock-comp-attribute.md#textshadow (prefix))属性设置时钟文本的阴影样式。
 
 
 
@@ -229,7 +229,7 @@ struct TextClockExample {
 
 ### 示例4（设置前导零）
 
-该示例演示了[dateTimeOptions](#datetimeoptions12)属性为小时字段增加或去除前导0的功能。24小时制的小时字段默认带有前导0，可通过[dateTimeOptions](#datetimeoptions12)属性去除前导0，12小时制的小时字段默认不带有前导0，可通过[dateTimeOptions](#datetimeoptions12)属性增加前导0。
+该示例演示了[dateTimeOptions](arkts-arkui-textclock-comp-attribute.md#datetimeoptions (prefix))属性为小时字段增加或去除前导0的功能。24小时制的小时字段默认带有前导0，可通过[dateTimeOptions](arkts-arkui-textclock-comp-attribute.md#datetimeoptions (prefix))属性去除前导0，12小时制的小时字段默认不带有前导0，可通过[dateTimeOptions](arkts-arkui-textclock-comp-attribute.md#datetimeoptions (prefix))属性增加前导0。
 
 
 
@@ -264,7 +264,7 @@ struct TextClockExample {
 
 ### 示例5（设置文字显示样式）
 
-该示例演示了使用[fontFeature](#fontfeature11)、[fontColor](#fontcolor)、[fontStyle](#fontstyle)、[fontWeight](#fontweight)、[fontFamily](#fontfamily)属性设置时钟文字显示样式的功能。
+该示例演示了使用[fontFeature](arkts-arkui-textclock-comp-attribute.md#fontfeature (prefix))、[fontColor](arkts-arkui-textclock-comp-attribute.md#fontcolor (exact))、[fontStyle](arkts-arkui-textclock-comp-attribute.md#fontstyle (exact))、[fontWeight](arkts-arkui-textclock-comp-attribute.md#fontweight (exact))、[fontFamily](arkts-arkui-textclock-comp-attribute.md#fontfamily (exact))属性设置时钟文字显示样式的功能。
 
 ```TypeScript
 @Entry

@@ -57,7 +57,7 @@ DataPanel(options: DataPanelOptions)
 
 ### 示例1（设置数据面板类型）
 
-该示例通过[DataPanelOptions](#datapaneloptions对象说明)的type属性，实现了设置数据面板的类型的功能。
+该示例通过[DataPanelOptions](#datapanel)的type属性，实现了设置数据面板的类型的功能。
 
 
 
@@ -113,7 +113,7 @@ struct DataPanelExample {
 
 ### 示例2（设置渐变色和阴影）
 
-该示例通过[valueColors](arkts-arkui-datapanel-comp-attribute.md#valuecolors)和[trackShadow](#trackshadow10)接口设置[LinearGradient](#lineargradient10)颜色，实现了设置渐变色效果和阴影效果。
+该示例通过[valueColors](arkts-arkui-datapanel-comp-attribute.md#valuecolors)和[trackShadow](arkts-arkui-datapanel-comp-attribute.md#trackshadow (prefix))接口设置LinearGradient颜色，实现了设置渐变色效果和阴影效果。
 
 
 
@@ -213,7 +213,7 @@ struct LinearGradientDataPanelExample {
 
 ### 示例4（设置定制内容区）
 
-该示例通过[contentModifier](#contentmodifier12)接口，实现了定制数据面板内容区的功能。
+该示例通过[contentModifier](arkts-arkui-datapanel-comp-attribute.md#contentmodifier (prefix))接口，实现了定制数据面板内容区的功能。
 
 ```TypeScript
 // xxx.ets

@@ -642,7 +642,7 @@ struct Index {
 
 本示例展示了SegmentButton开启属性动画，即enableStateAnimation设置为true后，修改选中项编号selectedIndexes值会触发按钮切换动画。并且选中项编号相同的两个SegmentButton组件，是否开启属性动画，也会呈现不同的切换动画。
 
-从API version 24开始，[SegmentButton](#segmentbutton-1)新增enableStateAnimation属性。
+从API version 24开始，SegmentButton新增enableStateAnimation属性。
 
 
 

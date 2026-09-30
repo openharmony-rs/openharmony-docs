@@ -105,7 +105,7 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - 输入参数无效。可能的原因有：\n 1. 参数policies或参数result或参数resultNum为空指针；\n 2. 参数policyNum值为0或者超过最大长度(500)；\n 3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - 当前设备类型不支持此接口。\n [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - 接口权限校验失败。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - 分配或者拷贝内存失败。\n [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - 操作不被允许。\n [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回FileManagement模块错误码FileManagement_ErrCode。\n ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：\n 1. 参数policies或参数result或参数resultNum为空指针；\n 2. 参数policyNum值为0或者超过最大长度(500)；\n 3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。\n ERR_PERMISSION_ERROR 201 - 接口权限校验失败。\n ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。\n ERR_EPERM 13900001 - 操作不被允许。\n ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileShare_RevokePermission()
 
@@ -134,7 +134,7 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - 输入参数无效。可能的原因有：\n 1. 参数policies或参数result或参数resultNum为空指针；\n 2. 参数policyNum值为0或者超过最大长度(500)；\n 3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - 当前设备类型不支持此接口。\n [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - 接口权限校验失败。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - 分配或者拷贝内存失败。\n [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - 操作不被允许。\n [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回FileManagement模块错误码FileManagement_ErrCode。\n ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：\n 1. 参数policies或参数result或参数resultNum为空指针；\n 2. 参数policyNum值为0或者超过最大长度(500)；\n 3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。\n ERR_PERMISSION_ERROR 201 - 接口权限校验失败。\n ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。\n ERR_EPERM 13900001 - 操作不被允许。\n ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileShare_ActivatePermission()
 
@@ -163,7 +163,7 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - 输入参数无效。可能的原因有：\n 1. 参数policies或参数result或参数resultNum为空指针；\n 2. 参数policyNum值为0或者超过最大长度(500)；\n 3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - 当前设备类型不支持此接口。\n [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - 接口权限校验失败。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - 分配或者拷贝内存失败。\n [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - 操作不被允许。\n [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回FileManagement模块错误码FileManagement_ErrCode。\n ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：\n 1. 参数policies或参数result或参数resultNum为空指针；\n 2. 参数policyNum值为0或者超过最大长度(500)；\n 3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。\n ERR_PERMISSION_ERROR 201 - 接口权限校验失败。\n ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。\n ERR_EPERM 13900001 - 操作不被允许。\n ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileShare_DeactivatePermission()
 
@@ -192,7 +192,7 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - 输入参数无效。可能的原因有：\n 1. 参数policies或参数result或参数resultNum为空指针；\n 2. 参数policyNum值为0或者超过最大长度(500)；\n 3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - 当前设备类型不支持此接口。\n [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - 接口权限校验失败。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - 分配或者拷贝内存失败。\n [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - 操作不被允许。\n [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回FileManagement模块错误码FileManagement_ErrCode。\n ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：\n 1. 参数policies或参数result或参数resultNum为空指针；\n 2. 参数policyNum值为0或者超过最大长度(500)；\n 3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。\n ERR_PERMISSION_ERROR 201 - 接口权限校验失败。\n ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。\n ERR_EPERM 13900001 - 操作不被允许。\n ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileShare_CheckPersistentPermission()
 
@@ -221,7 +221,7 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - 输入参数无效。可能的原因有：\n 1. 参数policies或参数result或参数resultNum为空指针；\n 2. 参数policyNum值为0或者超过最大长度(500)；\n 3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - 当前设备类型不支持此接口。\n [ERR_PERMISSION_ERROR](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 201 - 接口权限校验失败。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - 分配或者拷贝内存失败。\n [ERR_EPERM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900001 - 操作不被允许。可能的原因为policies中携带的所有uri都不符合规范或者uri转换出来的路径不存在。\n [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回FileManagement模块错误码FileManagement_ErrCode。\n ERR_INVALID_PARAMETER 401 - 输入参数无效。可能的原因有：\n 1. 参数policies或参数result或参数resultNum为空指针；\n 2. 参数policyNum值为0或者超过最大长度(500)；\n 3. 参数policies中携带的uri为空或者length为0或者uri的长度与length不一致。\n ERR_DEVICE_NOT_SUPPORTED 801 - 当前设备类型不支持此接口。\n ERR_PERMISSION_ERROR 201 - 接口权限校验失败。\n ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。\n ERR_EPERM 13900001 - 操作不被允许。可能的原因为policies中携带的所有uri都不符合规范或者uri转换出来的路径不存在。\n ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileShare_ReleasePolicyErrorResult()
 

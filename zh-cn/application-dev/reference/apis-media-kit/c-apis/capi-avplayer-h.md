@@ -70,7 +70,7 @@
 | [OH_AVErrCode OH_AVPlayer_SetVolumeMode(OH_AVPlayer *player, OH_AudioStream_VolumeMode volumeMode)](#oh_avplayer_setvolumemode) | - | 设置player音频流音量模式。 |
 | [OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)](#oh_avplayer_setplaybackrate) | - | 在有效范围内，设置播放器的播放速率。 支持的状态：已准备/正在播放/已暂停/已完成。 |
 | [OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain)](#oh_avplayer_setloudnessgain) | - | 设置播放器的响度。当播放处于prepared/playing/paused/completed/stopped状态时，可调用该接口。 默认响度增益0.0dB。播放器流的usage参数必须是[OH_AudioStream_Usage](../../apis-audio-kit/c-apis/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC， [OH_AudioStream_Usage](../../apis-audio-kit/c-apis/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE，[OH_AudioStream_Usage](../../apis-audio-kit/c-apis/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK 之一。 音频渲染器的延迟模式必须是[OH_AudioStream_LatencyMode](../../apis-audio-kit/c-apis/capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL。 如果通过高分辨率管道播放，则不支持此操作。 |
-| [OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)](#oh_avplayer_getplaybackstatisticmetrics) | - | 获取当前播放器的统计指标信息。设置完播放资源，并且当播放处于准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态时，可调用该接口。 需要注意返回值[OH_AVFormat](capi-core-oh-avformat.md)指针对象的生命周期需要用户手动释放。 |
+| [OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)](#oh_avplayer_getplaybackstatisticmetrics) | - | 获取当前播放器的统计指标信息。设置完播放资源，并且当播放处于准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态时，可调用该接口。 需要注意返回值[OH_AVFormat](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md)指针对象的生命周期需要用户手动释放。 |
 | [OH_AVErrCode OH_AVPlayer_AddFdSubtitleSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)](#oh_avplayer_addfdsubtitlesource) | - | 将由文件描述符表示的字幕资源添加到播放器。目前，外挂字幕必须在AVPlayer设置完视频资源的fdSrc之后再设置。 |
 | [OH_AVErrCode OH_AVPlayer_AddUrlSubtitleSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_addurlsubtitlesource) | - | 将由URL表示的字幕资源添加到播放器。外挂字幕必须在AVPlayer设置完url之后再设置。 |
 | [OH_AVErrCode OH_AVPlayer_SetPlaybackRange(OH_AVPlayer *player, int32_t mSecondsStart, int32_t mSecondsEnd, bool closestRange)](#oh_avplayer_setplaybackrange) | - | 设置播放起始位置和结束位置。设置后，仅播放音视频文件中指定范围内的内容。可在初始化、已准备、暂停、停止或完成状态下调用。 |
@@ -646,7 +646,7 @@ OH_AVErrCode OH_AVPlayer_GetPlaybackRate(OH_AVPlayer *player, float *rate)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | 如果成功获取当前播放器的播放速率，返回[AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)；否则返回[native_averrors.h](capi-native-averrors-h.md)中定义的错误码。 |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | 如果成功获取当前播放器的播放速率，返回[AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode)；否则返回[native_averrors.h](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md)中定义的错误码。 |
 
 ### OH_AVPlayer_SetAudioRendererInfo()
 
@@ -1212,7 +1212,7 @@ OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)
 
 **描述：**
 
-获取当前播放器的统计指标信息。设置完播放资源，并且当播放处于准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态时，可调用该接口。 需要注意返回值[OH_AVFormat](capi-core-oh-avformat.md)指针对象的生命周期需要用户手动释放。
+获取当前播放器的统计指标信息。设置完播放资源，并且当播放处于准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态时，可调用该接口。 需要注意返回值[OH_AVFormat](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md)指针对象的生命周期需要用户手动释放。
 
 **起始版本：** 23
 
@@ -1322,7 +1322,7 @@ OH_AVErrCode OH_AVPlayer_SetMediaMuted(OH_AVPlayer *player, OH_MediaType mediaTy
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| [OH_MediaType](../../apis-avcodec-kit/c-apis/capi-native-avcodec-base-h.md#oh_mediatype) mediaType | 指定的媒体类型，参见[native_avcodec_base.h](capi-native-avcodec-base-h.md)中的[OH_MediaType](../../apis-avcodec-kit/c-apis/capi-native-avcodec-base-h.md#oh_mediatype)。 |
+| [OH_MediaType](../../apis-avcodec-kit/c-apis/capi-native-avcodec-base-h.md#oh_mediatype) mediaType | 指定的媒体类型，参见[native_avcodec_base.h](../../apis-avcodec-kit/c-apis/capi-native-avcodec-base-h.md)中的[OH_MediaType](../../apis-avcodec-kit/c-apis/capi-native-avcodec-base-h.md#oh_mediatype)。 |
 | bool muted | true表示静音，false表示取消静音。 |
 
 **返回值：**

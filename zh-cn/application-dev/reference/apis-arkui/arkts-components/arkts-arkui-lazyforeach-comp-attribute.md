@@ -6,7 +6,7 @@ declare class LazyForEachAttribute extends DynamicNode<LazyForEachAttribute>
 
 支持[拖拽排序](arkts-arkui-common-comp.md)属性。
 
-**继承/实现关系：** LazyForEachAttribute extends DynamicNode<LazyForEachAttribute>
+**继承/实现关系：** LazyForEachAttribute extends DynamicNode&lt;LazyForEachAttribute&gt;
 
 **起始版本：** 12
 

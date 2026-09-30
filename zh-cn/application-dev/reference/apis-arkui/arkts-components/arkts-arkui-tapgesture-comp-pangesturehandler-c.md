@@ -6,7 +6,7 @@ declare class PanGestureHandler extends GestureHandler<PanGestureHandler>
 
 滑动手势处理器对象类型。
 
-**继承/实现关系：** PanGestureHandler extends GestureHandler<PanGestureHandler>
+**继承/实现关系：** PanGestureHandler extends GestureHandler&lt;PanGestureHandler&gt;
 
 **起始版本：** 12
 

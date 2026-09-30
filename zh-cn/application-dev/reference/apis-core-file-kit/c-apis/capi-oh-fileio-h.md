@@ -73,6 +73,6 @@ Obtains the location of a file.
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码[ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_ENOENT](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900002 - No such file or directory. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码ERR_INVALID_PARAMETER 401 - Invalid input parameter, pointer is null. ERR_ENOENT 13900002 - No such file or directory. ERR_ENOMEM 13900011 - Failed to apply for memory. |
 
 

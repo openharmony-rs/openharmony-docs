@@ -38,7 +38,7 @@
 \| [OH_TextEditorProxy_ReceivePrivateCommandFunc](capi-inputmethod-text-editor-proxy-capi-h. md#oh_texteditorproxy_receiveprivatecommandfunc) \| 编辑框客户端接收私有指令的回调函数，PrivateCommand实例数组作为参数传 入。回调返回后实例内存被释放。 \| <br> <br>相关枚举：<br>
 \| 枚举 \| 说明 \|
 \| --- \| --- \|
-\| [InputMethod_CommandValueType](capi-inputmethod-types-capi-h.md# inputmethod_commandvaluetype) \| PrivateCommand中value的数据类型枚举（NONE/STRING/BOOL/INT32）。 \| |
+\| [InputMethod_CommandValueType](capi-inputmethod-types-capi-h.md#inputmethod_commandvaluetype) \| PrivateCommand中value的数据类型枚举（NONE/STRING/BOOL/INT32）。 \| |
 
 ### 函数
 

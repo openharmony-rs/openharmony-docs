@@ -8,7 +8,7 @@ declare class TextPickerAttribute extends CommonMethod<TextPickerAttribute>
 
 除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
 
-**继承/实现关系：** TextPickerAttribute extends CommonMethod<TextPickerAttribute>
+**继承/实现关系：** TextPickerAttribute extends CommonMethod&lt;TextPickerAttribute&gt;
 
 **起始版本：** 8
 

@@ -8,7 +8,7 @@ declare class ImageSpanAttribute extends BaseSpan<ImageSpanAttribute>
 
 @extends CommonMethod&lt;ImageSpanAttribute&gt; [since 10 - 10] @extends BaseSpan&lt;ImageSpanAttribute&gt; [since 11]
 
-**继承/实现关系：** ImageSpanAttribute extends BaseSpan<ImageSpanAttribute>
+**继承/实现关系：** ImageSpanAttribute extends BaseSpan&lt;ImageSpanAttribute&gt;
 
 **起始版本：** 10
 
@@ -170,7 +170,7 @@ resizable(value: ResizableOptions)
 supportSvg2(enable: Optional<boolean>)
 ```
 
-开启或关闭[SVG标签解析能力增强功能](../../../reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)，开启后支持SVG解析新能力，适用于需要使用SVG新特性的场景；关闭则保持原有SVG解析能力，适用于兼容旧版本SVG图片显示的场景。未通过该接口设置时，默认保持原有SVG解析能力。
+开启或关闭SVG标签解析能力增强功能，开启后支持SVG解析新能力，适用于需要使用SVG新特性的场景；关闭则保持原有SVG解析能力，适用于兼容旧版本SVG图片显示的场景。未通过该接口设置时，默认保持原有SVG解析能力。
 
 ImageSpan组件创建后，不支持动态修改该属性的值。
 
@@ -188,7 +188,7 @@ ImageSpan组件创建后，不支持动态修改该属性的值。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否开启[SVG标签解析能力增强功能](../../../reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
+| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否开启SVG标签解析能力增强功能。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。 |
 
 ## verticalAlign
 

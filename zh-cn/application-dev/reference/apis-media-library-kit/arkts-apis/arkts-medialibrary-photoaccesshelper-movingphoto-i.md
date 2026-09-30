@@ -53,7 +53,7 @@ getUri(): string
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -136,7 +136,7 @@ requestContent(imageFileUri: string, videoFileUri: string): Promise<void>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -233,7 +233,7 @@ requestContent(resourceType: ResourceType, fileUri: string): Promise<void>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -324,7 +324,7 @@ requestContent(resourceType: ResourceType): Promise<ArrayBuffer>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';

@@ -6,7 +6,7 @@ declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>
 
 Navigator的属性。
 
-**继承/实现关系：** NavigatorAttribute extends CommonMethod<NavigatorAttribute>
+**继承/实现关系：** NavigatorAttribute extends CommonMethod&lt;NavigatorAttribute&gt;
 
 **起始版本：** 7
 

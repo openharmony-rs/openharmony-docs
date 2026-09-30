@@ -79,7 +79,7 @@ Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNati
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 指向图像源的指针。 |
-| OH_ImageSource_SVGResourceLimitLevel level | SVG资源限制级别。详见[OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel)。 |
+| OH_ImageSource_SVGResourceLimitLevel level | SVG资源限制级别。详见OH_ImageSource_SVGResourceLimitLevel。 |
 
 **返回值：**
 
@@ -106,7 +106,7 @@ Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNati
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 指向图像源的指针。 |
-| OH_ImageSource_SVGResourceLimitLevel *level | 用于接收SVG资源限制级别的指针。 详见[OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel)。 |
+| OH_ImageSource_SVGResourceLimitLevel *level | 用于接收SVG资源限制级别的指针。 详见OH_ImageSource_SVGResourceLimitLevel。 |
 
 **返回值：**
 

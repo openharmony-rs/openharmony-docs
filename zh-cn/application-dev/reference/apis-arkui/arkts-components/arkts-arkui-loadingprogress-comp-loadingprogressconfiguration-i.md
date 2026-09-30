@@ -6,7 +6,7 @@ declare interface LoadingProgressConfiguration extends CommonConfiguration<Loadi
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md)。
 
-**继承/实现关系：** LoadingProgressConfiguration extends CommonConfiguration<LoadingProgressConfiguration>
+**继承/实现关系：** LoadingProgressConfiguration extends CommonConfiguration&lt;LoadingProgressConfiguration&gt;
 
 **起始版本：** 12
 

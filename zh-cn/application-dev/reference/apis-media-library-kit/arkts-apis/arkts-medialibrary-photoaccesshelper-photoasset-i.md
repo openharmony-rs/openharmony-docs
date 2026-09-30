@@ -56,7 +56,7 @@ clone(title: string): Promise<PhotoAsset>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -117,7 +117,7 @@ commitModify(callback: AsyncCallback<void>): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -192,7 +192,7 @@ commitModify(): Promise<void>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -261,7 +261,7 @@ get(member: string): MemberType
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -320,7 +320,7 @@ getThumbnail(callback: AsyncCallback<image.PixelMap>): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -383,7 +383,7 @@ getThumbnail(size: image.Size, callback: AsyncCallback<image.PixelMap>): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -457,7 +457,7 @@ getThumbnail(size?: image.Size): Promise<image.PixelMap>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -514,7 +514,7 @@ set(member: string, value: string): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -572,7 +572,7 @@ close(fd: number, callback: AsyncCallback<void>): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -644,7 +644,7 @@ close(fd: number): Promise<void>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -708,7 +708,7 @@ getReadOnlyFd(callback: AsyncCallback<number>): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -775,7 +775,7 @@ getReadOnlyFd(): Promise<number>
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -850,7 +850,7 @@ readonly photoType: PhotoType
 readonly uri: string
 ```
 
-媒体文件资源URI（如：**file://media/Photo/1/IMG_datetime_0001/displayName.jpg**）， 详情参见用户文件URI介绍中的[媒体文件URI](../../../file-management/user-file-uri-intro.md#媒体库uri).
+媒体文件资源URI（如：**file://media/Photo/1/IMG_datetime_0001/displayName.jpg**）， 详情参见用户文件URI介绍中的媒体文件URI.
 
 **类型：** string
 

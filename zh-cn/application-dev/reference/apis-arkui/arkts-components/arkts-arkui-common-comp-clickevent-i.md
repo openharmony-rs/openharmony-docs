@@ -114,7 +114,7 @@ displayY: number
 globalDisplayX?: number
 ```
 
-点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。
+点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。
 
 单位：vp
 
@@ -138,7 +138,7 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
+点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。
 
 单位：vp
 

@@ -4384,7 +4384,7 @@ Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNat
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 鼠标光标信息对象，可以通过[OH_Input_CursorInfo_Create](capi-oh-input-manager-h.md#oh_input_cursorinfo_create)接口创建鼠标光标信息对象。 |
-| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)** pixelmap | PixelMap位图对象，如果该参数非空且光标为应用自定义，则会返回光标的PixelMap位图对象，否则不返回PixelMap位图对象。首先通过 [OH_PixelmapInitializationOptions_Create](capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_create)接口创建OH_PixelmapInitializationOptions对象，然后调用 [OH_PixelmapInitializationOptions_SetWidth](capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_setwidth)接口设置大于0的宽度，调用 [OH_PixelmapInitializationOptions_SetHeight](capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_setheight)接口设置大于0的高度，最后以该 OH_PixelmapInitializationOptions对象作为入参调用 [OH_PixelmapNative_CreateEmptyPixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createemptypixelmap) 接口创建PixelMap位图对象。 <br>使用完需要先调用[OH_PixelmapNative_Release](capi-pixelmap-native-h.md#oh_pixelmapnative_release)接口释放PixelMap位图对象，然后调用 [OH_PixelmapNative_Destroy](capi-pixelmap-native-h.md#oh_pixelmapnative_destroy) 接口销毁PixelMap位图对象。 |
+| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)** pixelmap | PixelMap位图对象，如果该参数非空且光标为应用自定义，则会返回光标的PixelMap位图对象，否则不返回PixelMap位图对象。首先通过 [OH_PixelmapInitializationOptions_Create](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_create)接口创建OH_PixelmapInitializationOptions对象，然后调用 [OH_PixelmapInitializationOptions_SetWidth](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_setwidth)接口设置大于0的宽度，调用 [OH_PixelmapInitializationOptions_SetHeight](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_setheight)接口设置大于0的高度，最后以该 OH_PixelmapInitializationOptions对象作为入参调用 [OH_PixelmapNative_CreateEmptyPixelmap](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_createemptypixelmap) 接口创建PixelMap位图对象。 <br>使用完需要先调用[OH_PixelmapNative_Release](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_release)接口释放PixelMap位图对象，然后调用 [OH_PixelmapNative_Destroy](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy) 接口销毁PixelMap位图对象。 |
 
 **返回值：**
 
@@ -4482,7 +4482,7 @@ Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, in
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)* pixelMap | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)自定义鼠标光标像素图。最小限制为资源图本身的最小限制。最大限制为256 x 256px。 |
+| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)* pixelMap | [OH_PixelmapNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md)自定义鼠标光标像素图。最小限制为资源图本身的最小限制。最大限制为256 x 256px。 |
 | int32_t anchorX | 自定义鼠标光标焦点的水平坐标。该坐标受自定义鼠标光标大小的限制。最小值为0，最大值为资源图的宽度最大值，单位为像素（px）。 |
 | int32_t anchorY | 自定义鼠标光标焦点的垂直坐标。该坐标受自定义鼠标光标大小的限制。最小值为0，最大值为资源图的高度最大值，单位为像素（px）。 |
 
@@ -4527,7 +4527,7 @@ Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor,
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_CustomCursor](capi-input-input-customcursor.md)* customCursor | 自定义鼠标光标资源[Input_CustomCursor](capi-input-input-customcursor.md)。 |
-| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)** pixelMap | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)自定义鼠标光标像素图。 |
+| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)** pixelMap | [OH_PixelmapNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-pixelmapnative.md)自定义鼠标光标像素图。 |
 
 **返回值：**
 

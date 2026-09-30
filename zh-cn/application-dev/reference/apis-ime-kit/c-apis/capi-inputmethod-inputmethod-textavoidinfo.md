@@ -15,7 +15,7 @@ typedef struct InputMethod_TextAvoidInfo InputMethod_TextAvoidInfo
 \| [OH_TextAvoidInfo_SetHeight](capi-inputmethod-text-avoid-info-capi-h.md#oh_textavoidinfo_setheight) \| 设置高度值 \|
 \| [OH_TextAvoidInfo_GetPositionY](capi-inputmethod-text-avoid-info-capi-h. md#oh_textavoidinfo_getpositiony) \| 获取Y坐标值 \|
 \| [OH_TextAvoidInfo_GetHeight](capi-inputmethod-text-avoid-info-capi-h.md#oh_textavoidinfo_getheight) \| 获取高度值 \|
-\| [OH_TextConfig_GetTextAvoidInfo](capi-inputmethod-text-config-capi-h.md# oh_textconfig_gettextavoidinfo) \| 从TextConfig中获取TextAvoidInfo \| <br> <br>相关结构体：<br>
+\| [OH_TextConfig_GetTextAvoidInfo](capi-inputmethod-text-config-capi-h.md#oh_textconfig_gettextavoidinfo) \| 从TextConfig中获取TextAvoidInfo \| <br> <br>相关结构体：<br>
 \| 结构体 \| 说明 \|
 \| --- \| --- \|
 \| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) \| 文本输入框配置结构体，TextAvoidInfo作 为其子属性被包含 \|

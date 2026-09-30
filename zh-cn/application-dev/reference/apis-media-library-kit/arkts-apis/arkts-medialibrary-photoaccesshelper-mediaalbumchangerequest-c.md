@@ -56,7 +56,7 @@ addAssets(assets: Array<PhotoAsset>): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -113,7 +113,7 @@ constructor(album: Album)
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -172,7 +172,7 @@ getAlbum(): Album
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -220,7 +220,7 @@ removeAssets(assets: Array<PhotoAsset>): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -287,7 +287,7 @@ setAlbumName(name: string): void
 
 **示例**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
 
 ```TypeScript
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {

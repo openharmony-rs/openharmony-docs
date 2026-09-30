@@ -48,7 +48,7 @@ FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int 
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)  401 - 输入参数无效。可能的原因：\n 1. 参数path为空指针；\n 2. 参数result为空指针；\n 3. 输入的path长度与length不一致。\n [ERR_UNKNOWN](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900042 - 未知错误。转换后的URI长度为0会返回此错误。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - 分配或者拷贝内存失败。\n [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看FileManagement_ErrCode。\n ERR_INVALID_PARAMETER  401 - 输入参数无效。可能的原因：\n 1. 参数path为空指针；\n 2. 参数result为空指针；\n 3. 输入的path长度与length不一致。\n ERR_UNKNOWN 13900042 - 未知错误。转换后的URI长度为0会返回此错误。\n ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。\n ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileUri_GetPathFromUri()
 
@@ -74,7 +74,7 @@ FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int l
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)  401 - 输入参数无效。可能的原因：\n 1. 参数uri为空指针；\n 2. 参数result为空指针；\n 3. 输入的uri长度与length不一致。\n [ERR_UNKNOWN](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900042 - 未知错误。转换后的路径path长度为0会返回此错误。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)  13900011 - 分配或者拷贝内存失败。[ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看FileManagement_ErrCode。\n ERR_INVALID_PARAMETER  401 - 输入参数无效。可能的原因：\n 1. 参数uri为空指针；\n 2. 参数result为空指针；\n 3. 输入的uri长度与length不一致。\n ERR_UNKNOWN 13900042 - 未知错误。转换后的路径path长度为0会返回此错误。\n ERR_ENOMEM  13900011 - 分配或者拷贝内存失败。ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileUri_GetFullDirectoryUri()
 
@@ -100,7 +100,7 @@ FileManagement_ErrCode OH_FileUri_GetFullDirectoryUri(const char *uri, unsigned 
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)  401 - 输入参数无效。可能的原因：\n 1. 参数uri为空指针；\n 2. 参数result为空指针；\n 3. 输入的uri长度与length不一致。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - 分配或者拷贝内存失败。\n [ERR_ENOENT](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900002 - 没有该文件或目录。\n [ERR_UNKNOWN](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900042 - 未知错误。获取到的目录URI长度为0会返回此错误。\n [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看FileManagement_ErrCode。\n ERR_INVALID_PARAMETER  401 - 输入参数无效。可能的原因：\n 1. 参数uri为空指针；\n 2. 参数result为空指针；\n 3. 输入的uri长度与length不一致。\n ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。\n ERR_ENOENT 13900002 - 没有该文件或目录。\n ERR_UNKNOWN 13900042 - 未知错误。获取到的目录URI长度为0会返回此错误。\n ERR_OK 0 - 接口调用成功。 |
 
 ### OH_FileUri_IsValidUri()
 
@@ -151,6 +151,6 @@ FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int leng
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看[FileManagement_ErrCode](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)。\n [ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)  401 - 输入参数无效。可能的原因：\n 1. 参数uri为空指针；\n 2. 参数result为空指针；\n 3. 输入的uri长度与length不一致；\n 4. uri格式不正确。\n [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - 分配或者拷贝内存失败。\n [ERR_OK](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 0 - 接口调用成功。 |
+| FileManagement_ErrCode | 返回特定的错误码值，详细信息可以查看FileManagement_ErrCode。\n ERR_INVALID_PARAMETER  401 - 输入参数无效。可能的原因：\n 1. 参数uri为空指针；\n 2. 参数result为空指针；\n 3. 输入的uri长度与length不一致；\n 4. uri格式不正确。\n ERR_ENOMEM 13900011 - 分配或者拷贝内存失败。\n ERR_OK 0 - 接口调用成功。 |
 
 

@@ -67,7 +67,7 @@ TimePicker(options?: TimePickerOptions)
 
 ### 示例1（设置文本样式）
 
-该示例通过配置[disappearTextStyle](#disappeartextstyle10)、[textStyle](#textstyle10)和[selectedTextStyle](#selectedtextstyle10)实现文本选择器中的文本样式。
+该示例通过配置[disappearTextStyle](arkts-arkui-timepicker-comp-attribute.md#disappeartextstyle (prefix))、[textStyle](arkts-arkui-timepicker-comp-attribute.md#textstyle (prefix))和[selectedTextStyle](arkts-arkui-timepicker-comp-attribute.md#selectedtextstyle (prefix))实现文本选择器中的文本样式。
 
 
 
@@ -168,7 +168,7 @@ struct TimePickerExample {
 
 ### 示例4（设置循环滚动）
 
-该示例通过配置[loop](#loop11)设置TimePicker是否循环滚动。
+该示例通过配置[loop](arkts-arkui-timepicker-comp-attribute.md#loop (prefix))设置TimePicker是否循环滚动。
 
 
 
@@ -273,7 +273,7 @@ struct TimePickerExample {
 
 ### 示例7（设置上午/下午跟随时间联动）
 
-该示例通过配置[enableCascade](#enablecascade18)、[loop](#loop11)实现12小时制时上午/下午跟随时间联动。
+该示例通过配置[enableCascade](arkts-arkui-timepicker-comp-attribute.md#enablecascade (prefix))、[loop](arkts-arkui-timepicker-comp-attribute.md#loop (prefix))实现12小时制时上午/下午跟随时间联动。
 
 从API version 18开始，新增enableCascade接口。
 

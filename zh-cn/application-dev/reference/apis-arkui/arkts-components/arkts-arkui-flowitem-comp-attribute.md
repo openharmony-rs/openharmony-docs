@@ -6,7 +6,7 @@ declare class FlowItemAttribute extends CommonMethod<FlowItemAttribute>
 
 定义瀑布流子组件的属性
 
-**继承/实现关系：** FlowItemAttribute extends CommonMethod<FlowItemAttribute>
+**继承/实现关系：** FlowItemAttribute extends CommonMethod&lt;FlowItemAttribute&gt;
 
 **起始版本：** 9
 

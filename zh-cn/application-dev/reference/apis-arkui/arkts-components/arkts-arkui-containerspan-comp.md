@@ -34,7 +34,7 @@ ContainerSpan()
 
 ### 示例1（设置背景样式）
 
-从API version 11开始，该示例通过[textBackgroundStyle](#textbackgroundstyle)属性展示了文本设置背景样式的效果。
+从API version 11开始，该示例通过[textBackgroundStyle](arkts-arkui-containerspan-comp-attribute.md#textbackgroundstyle (exact))属性展示了文本设置背景样式的效果。
 
 
 
@@ -71,7 +71,7 @@ struct Index {
 
 ### 示例2（通过attributeModifier设置背景样式）
 
-从API version 12开始，该示例通过[attributeModifier](#attributemodifier12)属性展示了文本设置背景样式的效果。
+从API version 12开始，该示例通过[attributeModifier](arkts-arkui-containerspan-comp-attribute.md#attributemodifier (prefix))属性展示了文本设置背景样式的效果。
 
 ```TypeScript
 import { ContainerSpanModifier } from '@kit.ArkUI';

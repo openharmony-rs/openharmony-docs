@@ -6,7 +6,7 @@ declare class FolderStackAttribute extends CommonMethod<FolderStackAttribute>
 
 In addition to the [universal events](arkts-arkui-common-comp-commonmethod-c.md), the following events are supported.
 
-**继承/实现关系：** FolderStackAttribute extends CommonMethod<FolderStackAttribute>
+**继承/实现关系：** FolderStackAttribute extends CommonMethod&lt;FolderStackAttribute&gt;
 
 **起始版本：** 11
 

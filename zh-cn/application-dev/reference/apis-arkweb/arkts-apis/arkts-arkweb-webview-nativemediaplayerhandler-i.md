@@ -42,7 +42,7 @@ handleBufferedEndTimeChanged(bufferedEndTime: number): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handleDurationChanged
 
@@ -68,7 +68,7 @@ handleDurationChanged(duration: number): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handleEnded
 
@@ -88,7 +88,7 @@ handleEnded(): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handleError
 
@@ -115,7 +115,7 @@ handleError(error: MediaError, errorMessage: string): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handleFullscreenChanged
 
@@ -141,7 +141,7 @@ handleFullscreenChanged(fullscreen: boolean): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handleMutedChanged
 
@@ -167,7 +167,7 @@ handleMutedChanged(muted: boolean): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handleNetworkStateChanged
 
@@ -193,7 +193,7 @@ handleNetworkStateChanged(state: NetworkState): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handlePlaybackRateChanged
 
@@ -219,7 +219,7 @@ handlePlaybackRateChanged(playbackRate: number): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handleReadyStateChanged
 
@@ -245,7 +245,7 @@ handleReadyStateChanged(state: ReadyState): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handleSeekFinished
 
@@ -265,7 +265,7 @@ handleSeekFinished(): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handleSeeking
 
@@ -285,7 +285,7 @@ handleSeeking(): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handleStatusChanged
 
@@ -311,7 +311,7 @@ handleStatusChanged(status: PlaybackStatus): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handleTimeUpdate
 
@@ -337,7 +337,7 @@ handleTimeUpdate(currentPlayTime: number): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。
 
 ## handleVideoSizeChanged
 
@@ -388,4 +388,4 @@ handleVolumeChanged(volume: number): void
 
 **示例**
 
-完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer)。
+完整示例代码参考onCreateNativeMediaPlayer。

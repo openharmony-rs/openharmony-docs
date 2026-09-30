@@ -6,7 +6,7 @@ declare class RichTextAttribute extends CommonMethod<RichTextAttribute>
 
 定义RichText属性函数。
 
-**继承/实现关系：** RichTextAttribute extends CommonMethod<RichTextAttribute>
+**继承/实现关系：** RichTextAttribute extends CommonMethod&lt;RichTextAttribute&gt;
 
 **起始版本：** 8
 

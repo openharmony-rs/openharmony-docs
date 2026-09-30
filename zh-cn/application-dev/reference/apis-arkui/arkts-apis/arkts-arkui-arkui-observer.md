@@ -46,8 +46,8 @@ import { uiObserver } from '@kit.ArkUI';
 | [on](arkts-arkui-uiobserver-on-f.md#ondensityupdate) | 监听屏幕像素密度变化。 |
 | [on](arkts-arkui-uiobserver-on-f.md#onwilldraw) | 监听每一帧绘制指令下发情况。 |
 | [on](arkts-arkui-uiobserver-on-f.md#ondidlayout) | 监听每一帧布局完成情况。 |
-| [on](arkts-arkui-uiobserver-on-f.md#ontabcontentupdate) | 监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。 |
-| [on](arkts-arkui-uiobserver-on-f.md#ontabcontentupdate) | 监听TabContent页面的切换事件。相比[on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。 |
+| [on](arkts-arkui-uiobserver-on-f.md#ontabcontentupdate) | 监听指定Tabs组件id的TabContent页面切换事件。相比on('tabChange')，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。 |
+| [on](arkts-arkui-uiobserver-on-f.md#ontabcontentupdate) | 监听TabContent页面的切换事件。相比on('tabChange')，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。 |
 | [on](arkts-arkui-uiobserver-on-f.md#onnavdestinationswitch) | 监听Navigation的页面切换事件。 |
 | [on](arkts-arkui-uiobserver-on-f.md#onnavdestinationswitch) | 监听Navigation的页面切换事件。与uiObserver.on相比，新增了observerOptions参数，即支持设置监听选项。 |
 

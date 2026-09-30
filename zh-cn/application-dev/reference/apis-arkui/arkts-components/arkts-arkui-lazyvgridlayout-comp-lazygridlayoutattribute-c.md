@@ -8,7 +8,7 @@ declare class LazyGridLayoutAttribute<T> extends CommonMethod<T>
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** LazyGridLayoutAttribute extends CommonMethod<T>
+**继承/实现关系：** LazyGridLayoutAttribute extends CommonMethod&lt;T&gt;
 
 **起始版本：** 19
 

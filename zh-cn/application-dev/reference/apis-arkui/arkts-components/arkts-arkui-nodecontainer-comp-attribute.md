@@ -8,7 +8,7 @@ declare class NodeContainerAttribute extends CommonMethod<NodeContainerAttribute
 
 支持[通用事件](arkts-arkui-common-comp.md)。
 
-**继承/实现关系：** NodeContainerAttribute extends CommonMethod<NodeContainerAttribute>
+**继承/实现关系：** NodeContainerAttribute extends CommonMethod&lt;NodeContainerAttribute&gt;
 
 **起始版本：** 11
 

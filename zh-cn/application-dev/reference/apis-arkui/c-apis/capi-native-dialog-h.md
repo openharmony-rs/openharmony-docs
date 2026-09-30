@@ -733,7 +733,7 @@ int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| const ArkUI_AttributeItem* customShadow | 弹窗的自定义阴影参数，格式与[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_CUSTOM_SHADOW属性一致。 |
+| const ArkUI_AttributeItem* customShadow | 弹窗的自定义阴影参数，格式与ArkUI_NodeAttributeType中的NODE_CUSTOM_SHADOW属性一致。 |
 
 **返回值：**
 

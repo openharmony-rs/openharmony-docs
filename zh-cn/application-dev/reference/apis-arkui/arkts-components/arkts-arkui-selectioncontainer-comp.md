@@ -70,7 +70,7 @@ SelectionContainer(value?: SelectionContainerOptions)
 
 ### 示例1（跨节点选中文本并复制）
 
-该示例通过[SelectionContainer](#接口)、[copyOption](#copyoption)、[textJoinStyle](arkts-arkui-selectioncontainer-comp-attribute.md#textjoinstyle)、[onTextSelectionChange](#ontextselectionchange)、[onWillCopy](#onwillcopy)、[onCopy](#oncopy)接口展示跨多个Text组件选中文本、拼接选中文本并处理复制回调的能力。
+该示例通过[SelectionContainer](#接口)、[copyOption](arkts-arkui-selectioncontainer-comp-attribute.md#copyoption (exact))、[textJoinStyle](arkts-arkui-selectioncontainer-comp-attribute.md#textjoinstyle)、[onTextSelectionChange](arkts-arkui-selectioncontainer-comp-attribute.md#ontextselectionchange (exact))、[onWillCopy](arkts-arkui-selectioncontainer-comp-attribute.md#onwillcopy (exact))、[onCopy](arkts-arkui-selectioncontainer-comp-attribute.md#oncopy (exact))接口展示跨多个Text组件选中文本、拼接选中文本并处理复制回调的能力。
 
 从API版本26.0.0开始，新增SelectionContainer组件和copyOption等接口。
 
@@ -144,7 +144,7 @@ struct SelectionContainerExample1 {
 
 ### 示例2（绑定自定义选择菜单）
 
-该示例通过[bindSelectionMenu](#bindselectionmenu)接口实现了跨节点选中文本时绑定自定义菜单的功能。
+该示例通过[bindSelectionMenu](arkts-arkui-selectioncontainer-comp-attribute.md#bindselectionmenu (exact))接口实现了跨节点选中文本时绑定自定义菜单的功能。
 
 从API版本26.0.0开始，新增bindSelectionMenu属性。
 
@@ -243,7 +243,7 @@ struct SelectionContainerExample2 {
 
 ### 示例3（扩展菜单选项）
 
-该示例通过[editMenuOptions](#editmenuoptions)接口实现了去除系统菜单中的翻译和搜索菜单项，并添加5个自定义菜单项的功能。同时在[onMenuItemClick](arkts-arkui-selectioncontainer-comp-onmenuitemclickwithtextcallback-t.md)回调中展示拦截系统复制操作（return true）和不拦截全选操作（return false）的差异。
+该示例通过[editMenuOptions](arkts-arkui-selectioncontainer-comp-attribute.md#editmenuoptions (exact))接口实现了去除系统菜单中的翻译和搜索菜单项，并添加5个自定义菜单项的功能。同时在[onMenuItemClick](arkts-arkui-selectioncontainer-comp-onmenuitemclickwithtextcallback-t.md)回调中展示拦截系统复制操作（return true）和不拦截全选操作（return false）的差异。
 
 从API版本26.0.0开始，新增editMenuOptions属性。
 
@@ -386,7 +386,7 @@ struct SelectionContainerExample3 {
 
 ### 示例4（通过控制器关闭选择菜单与清除文本选中）
 
-该示例通过[SelectionContainer](#接口)传入[SelectionContainerController](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md)，调用[closeSelectionMenu](#closeselectionmenu)和[clearTextSelection](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md#cleartextselection)接口展示关闭选择菜单和清除选中文本的能力。
+该示例通过[SelectionContainer](#接口)传入[SelectionContainerController](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md)，调用closeSelectionMenu和[clearTextSelection](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md#cleartextselection)接口展示关闭选择菜单和清除选中文本的能力。
 
 从API版本26.0.0开始，新增[SelectionContainerController](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md)和[SelectionContainerOptions](arkts-arkui-selectioncontainer-comp-selectioncontaineroptions-i.md)接口。
 

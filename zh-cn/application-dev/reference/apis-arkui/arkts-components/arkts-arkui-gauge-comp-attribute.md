@@ -6,7 +6,7 @@ declare class GaugeAttribute extends CommonMethod<GaugeAttribute>
 
 除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-**继承/实现关系：** GaugeAttribute extends CommonMethod<GaugeAttribute>
+**继承/实现关系：** GaugeAttribute extends CommonMethod&lt;GaugeAttribute&gt;
 
 **起始版本：** 8
 

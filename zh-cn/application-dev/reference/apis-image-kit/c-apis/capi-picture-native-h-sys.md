@@ -25,7 +25,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_CreateUsingAllocator(uint8_t *data, uint32_t dataLength, OH_AuxiliaryPictureInfo *info, IMAGE_ALLOCATOR_MODE allocator, OH_AuxiliaryPictureNative **auxiliaryPicture)（系统接口）](#oh_auxiliarypicturenative_createusingallocator) | 创建一个具有指定内存类型的OH_AuxiliaryPictureNative对象。<ul><li>系统默认根据图像类型、图像大小、平台能力等因素选择内存类型。</li><li>处理该接口返回的辅助图时， 需要考虑stride的影响。</li><li>如果data为null或dataLength小于等于0，则不会初始化辅助图数据。</li></ul><br>**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions)（系统接口）](#oh_decomposeoptions_create) | 创建OH_DecomposeOptions实例。创建的实例需通过[OH_DecomposeOptions_Release](capi-picture-native-h.md#oh_decomposeoptions_release)释放。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions)（系统接口）](#oh_decomposeoptions_create) | 创建OH_DecomposeOptions实例。创建的实例需通过OH_DecomposeOptions_Release释放。<br>**系统接口：** 此接口为系统接口。 |
 | [Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *options, bool isFullSizeGainmap)（系统接口）](#oh_decomposeoptions_setisfullsizegainmap) | 设置是否生成全尺寸增益图（指增益图和主图尺寸一致）。若不自行设置，默认值为false，即增益图的尺寸是主图的一半。<br>**系统接口：** 此接口为系统接口。 |
 | [Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *options, bool *isFullSizeGainmap)（系统接口）](#oh_decomposeoptions_getisfullsizegainmap) | 获取是否生成全尺寸增益图（指增益图和主图尺寸一致）。如果isFullSizeGainmap为true，则增益图和主图尺寸一致；否则，增益图为主图尺寸的一半。<br>**系统接口：** 此接口为系统接口。 |
 | [Image_ErrorCode OH_DecomposeOptions_SetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t desiredPixelFormat)（系统接口）](#oh_decomposeoptions_setdesiredpixelformat) | 设置HDR分解后的SDR PixelMap和增益图的像素格式。若不设置，默认值为RGBA_8888。<br>**系统接口：** 此接口为系统接口。 |
@@ -75,7 +75,7 @@ Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions
 
 **描述：**
 
-创建OH_DecomposeOptions实例。创建的实例需通过[OH_DecomposeOptions_Release](capi-picture-native-h.md#oh_decomposeoptions_release)释放。
+创建OH_DecomposeOptions实例。创建的实例需通过OH_DecomposeOptions_Release释放。
 
 **起始版本：** 26.0.0
 

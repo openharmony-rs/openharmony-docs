@@ -8,7 +8,7 @@ declare class VideoAttribute extends CommonMethod<VideoAttribute>
 
 除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件：
 
-**继承/实现关系：** VideoAttribute extends CommonMethod<VideoAttribute>
+**继承/实现关系：** VideoAttribute extends CommonMethod&lt;VideoAttribute&gt;
 
 **起始版本：** 7
 

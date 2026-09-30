@@ -4,7 +4,7 @@
 declare class MenuItemGroupAttribute extends CommonMethod<MenuItemGroupAttribute>
 ```
 
-**继承/实现关系：** MenuItemGroupAttribute extends CommonMethod<MenuItemGroupAttribute>
+**继承/实现关系：** MenuItemGroupAttribute extends CommonMethod&lt;MenuItemGroupAttribute&gt;
 
 **起始版本：** 9
 

@@ -1,7 +1,7 @@
 # ShortcutInfo
 
 The module describes the shortcut information defined in the
- [module.json5](../../../quick-start/module-configuration-file.md#shortcuts) file of an application. The information
+ [module.json5](../../../quick-start/module-configuration-file.md#shortcuts标签) file of an application. The information
  can be obtained by running
  [getAllShortcutInfoForSelf](arkts-ability-shortcutmanager-getallshortcutinfoforself-f.md)<!--Del
  --> or

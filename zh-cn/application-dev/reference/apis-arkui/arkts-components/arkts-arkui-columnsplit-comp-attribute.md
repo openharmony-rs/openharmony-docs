@@ -8,7 +8,7 @@ declare class ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
 
 支持[通用事件](arkts-arkui-common-comp.md)。
 
-**继承/实现关系：** ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
+**继承/实现关系：** ColumnSplitAttribute extends CommonMethod&lt;ColumnSplitAttribute&gt;
 
 **起始版本：** 7
 

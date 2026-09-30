@@ -10,7 +10,7 @@ declare class DatePickerAttribute extends CommonMethod<DatePickerAttribute>
 
 @extends CommonMethod [since 8 - 10] @extends CommonMethod&lt;DatePickerAttribute&gt; [since 11]
 
-**继承/实现关系：** DatePickerAttribute extends CommonMethod<DatePickerAttribute>
+**继承/实现关系：** DatePickerAttribute extends CommonMethod&lt;DatePickerAttribute&gt;
 
 **起始版本：** 8
 

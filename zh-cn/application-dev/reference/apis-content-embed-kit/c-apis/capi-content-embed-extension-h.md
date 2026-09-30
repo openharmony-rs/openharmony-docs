@@ -143,7 +143,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetExtensionInstance(AbilityRun
 
 | 参数项 | 描述 |
 | -- | -- |
-| [AbilityRuntime_ExtensionInstanceHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-extensioninstancehandle.md) baseInstance | [AbilityRuntime_ExtensionInstanceHandle](capi-abilityruntime-abilityruntime-extensioninstancehandle.md)实例。 |
+| [AbilityRuntime_ExtensionInstanceHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-extensioninstancehandle.md) baseInstance | [AbilityRuntime_ExtensionInstanceHandle](../../apis-ability-kit/c-apis/capi-abilityruntime-abilityruntime-extensioninstancehandle.md)实例。 |
 | [ContentEmbed_ExtensionInstanceHandle](capi-contentembed-contentembed-extensioninstancehandle.md) *ceInstance | 输出参数。调用成功后，该指针指向OE Extension实例对象。 |
 
 **返回值：**

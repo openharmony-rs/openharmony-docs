@@ -50,7 +50,7 @@ int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的错误码。错误码定义详见[DeviceManager_ErrorCode](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)。返回[ERR_OK](../../apis-content-embed-kit/c-apis/capi-content-embed-common-h.md#contentembed_errorcode)，表示执行成功。返回[DM_ERR_FAILED](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)，表示函数执行失败。返回[DM_ERR_OBTAIN_SERVICE](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)，表示获取设备管理服务失败。返回[DM_ERR_OBTAIN_BUNDLE_NAME](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)，表示获取bundleName失败。返回[ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)，表示参数localDeviceName是空指针或者*localDeviceName是非空指针。 |
+| int32_t | 返回执行的错误码。错误码定义详见[DeviceManager_ErrorCode](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)。返回[ERR_OK](../../apis-content-embed-kit/c-apis/capi-content-embed-common-h.md#contentembed_errorcode)，表示执行成功。返回[DM_ERR_FAILED](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)，表示函数执行失败。返回[DM_ERR_OBTAIN_SERVICE](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)，表示获取设备管理服务失败。返回[DM_ERR_OBTAIN_BUNDLE_NAME](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)，表示获取bundleName失败。返回ERR_INVALID_PARAMETER，表示参数localDeviceName是空指针或者*localDeviceName是非空指针。 |
 
 ### OH_DeviceManager_GetLocalDeviceNameC()
 
@@ -77,6 +77,6 @@ int32_t OH_DeviceManager_GetLocalDeviceNameC(char **localDeviceName, unsigned in
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的错误码。错误码定义详见[DeviceManager_ErrorCode](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)。返回[ERR_OK](../../apis-content-embed-kit/c-apis/capi-content-embed-common-h.md#contentembed_errorcode)，表示执行成功。返回[DM_ERR_FAILED](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)，表示函数执行失败。返回[DM_ERR_OBTAIN_SERVICE](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)，表示获取设备管理服务失败。返回[DM_ERR_OBTAIN_BUNDLE_NAME](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)，表示获取bundleName失败。返回[ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode)，表示参数localDeviceName是空指针或者*localDeviceName是非空指针或者len是空指针。 |
+| int32_t | 返回执行的错误码。错误码定义详见[DeviceManager_ErrorCode](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)。返回[ERR_OK](../../apis-content-embed-kit/c-apis/capi-content-embed-common-h.md#contentembed_errorcode)，表示执行成功。返回[DM_ERR_FAILED](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)，表示函数执行失败。返回[DM_ERR_OBTAIN_SERVICE](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)，表示获取设备管理服务失败。返回[DM_ERR_OBTAIN_BUNDLE_NAME](capi-oh-device-manager-err-code-h.md#devicemanager_errorcode)，表示获取bundleName失败。返回ERR_INVALID_PARAMETER，表示参数localDeviceName是空指针或者*localDeviceName是非空指针或者len是空指针。 |
 
 

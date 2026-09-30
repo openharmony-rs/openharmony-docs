@@ -8,7 +8,7 @@ declare class RichEditorAttribute extends CommonMethod<RichEditorAttribute>
 
 除支持[通用事件](arkts-arkui-common-comp.md)外，还支持[OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md)、[StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md)、[StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md)和以下事件：
 
-**继承/实现关系：** RichEditorAttribute extends CommonMethod<RichEditorAttribute>
+**继承/实现关系：** RichEditorAttribute extends CommonMethod&lt;RichEditorAttribute&gt;
 
 **起始版本：** 10
 
