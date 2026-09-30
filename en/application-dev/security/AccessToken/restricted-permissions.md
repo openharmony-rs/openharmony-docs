@@ -1724,6 +1724,8 @@ Allows an application to enter exam mode. The system service will display a dial
 
 Allows an application to make calls with one tap.
 
+With this permission, the application can make calls directly without opening the Contacts screen when the device has a single SIM card or a default SIM card has been specified on a multi-SIM device. 
+
 <!--RP114--><!--RP114End-->
 
 **Permission level**: system_basic
