@@ -108,7 +108,7 @@ Ability的描述资源id，是编译构建时根据应用配置abilities下的de
 readonly deviceTypes: Array<string>
 ```
 
-Ability支持的设备类型，来源于module.json5配置的[deviceTypes](../../../quick-start/module-configuration-file.md#devicetypes标签)。
+Ability支持的设备类型，来源于module.json5配置的deviceTypes。
 
 **类型：** Array&lt;string&gt;
 

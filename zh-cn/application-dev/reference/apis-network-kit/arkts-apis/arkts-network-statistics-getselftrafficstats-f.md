@@ -32,13 +32,13 @@ function getSelfTrafficStats(networkInfo: NetworkInfo): Promise<NetStatsInfo>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| networkInfo | [NetworkInfo](arkts-network-statistics-networkinfo-i.md) | 是 | 指定查询的网络信息。 |
+| networkInfo | NetworkInfo | 是 | 指定查询的网络信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | Promise对象，返回应用历史流量统计信息。 |
+| Promise&lt;NetStatsInfo&gt; | Promise对象，返回应用历史流量统计信息。 |
 
 **错误码：**
 

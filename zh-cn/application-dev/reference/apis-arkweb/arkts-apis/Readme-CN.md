@@ -13,7 +13,7 @@
   - [ConnectionNativeInfo](arkts-arkweb-webnativemessagingextensionmanager-connectionnativeinfo-i.md)
   - [WebExtensionConnectionCallback](arkts-arkweb-webnativemessagingextensionmanager-webextensionconnectioncallback-i.md)
   - [NmErrorCode](arkts-arkweb-webnativemessagingextensionmanager-nmerrorcode-e.md)
-- [@ohos.web.webview(WebView控制)](arkts-arkweb-web-webview.md)
+- @ohos.web.webview(WebView控制)
   - [once](arkts-arkweb-webview-once-f.md)
   - [AdsBlockManager](arkts-arkweb-webview-adsblockmanager-c.md)
   - [BackForwardCacheOptions](arkts-arkweb-webview-backforwardcacheoptions-c.md)

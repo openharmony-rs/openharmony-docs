@@ -28,8 +28,8 @@ import { pbap } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [PbapClientProfile](arkts-connectivity-pbap-pbapclientprofile-i-sys.md) | 管理PBAP客户端配置文件。 |
-| [PbapServerProfile](arkts-connectivity-pbap-pbapserverprofile-i-sys.md) | 使用PbapServerProfile方法之前需要创建该类的实例进行操作，通过createPbapServerProfile()方法构造此实例。 |
+| PbapClientProfile | 管理PBAP客户端配置文件。 |
+| PbapServerProfile | 使用PbapServerProfile方法之前需要创建该类的实例进行操作，通过createPbapServerProfile()方法构造此实例。 |
 | [SyncStateChangeParam](arkts-connectivity-pbap-syncstatechangeparam-i-sys.md) | 电话本同步状态变化信息。 |
 <!--DelEnd-->
 

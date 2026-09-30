@@ -12,7 +12,7 @@ interface HidHostProfile extends BaseProfile
 
 **废弃版本：** 10
 
-**替代接口：** [HidHostProfile](arkts-connectivity-hid-hidhostprofile-i-sys.md)
+**替代接口：** HidHostProfile
 
 <!--Device-bluetoothManager-interface HidHostProfile extends BaseProfile--><!--Device-bluetoothManager-interface HidHostProfile extends BaseProfile-End-->
 

@@ -108,7 +108,7 @@ readonly descriptionId: number
 readonly deviceTypes: Array<string>
 ```
 
-模块支持安装运行的[设备类型](../../../quick-start/module-configuration-file.md#devicetypes标签)的集合。
+模块支持安装运行的设备类型的集合。
 
 **类型：** Array&lt;string&gt;
 

@@ -333,7 +333,7 @@ struct StickyNestedScroll {
 
 ### 示例4（嵌套滚动父组件向子组件传递滚动）
 
-该示例使用[enableScrollInteraction](arkts-arkui-scroll-comp-attribute.md#enablescrollinteraction)属性和[onScrollFrameBegin](#scroll)事件实现了父组件向子组件传递滚动。
+该示例使用[enableScrollInteraction](arkts-arkui-scroll-comp-attribute.md#enablescrollinteraction)属性和onScrollFrameBegin事件实现了父组件向子组件传递滚动。
 
 
 
@@ -659,7 +659,7 @@ struct EnablePagingExample {
 
 ### 示例10（设置过界停留）
 
-该示例通过[scrollTo](#scroll)接口，实现了Scroll组件设置过界停留效果。
+该示例通过scrollTo接口，实现了Scroll组件设置过界停留效果。
 
 
 

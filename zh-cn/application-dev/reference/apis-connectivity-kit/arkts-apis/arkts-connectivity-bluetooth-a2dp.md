@@ -36,7 +36,7 @@ import { a2dp } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [A2dpSinkProfile](arkts-connectivity-a2dp-a2dpsinkprofile-i-sys.md) | 管理a2dp sink业务。 |
+| A2dpSinkProfile | 管理a2dp sink业务。 |
 | [A2dpSourceProfile](arkts-connectivity-a2dp-a2dpsourceprofile-i-sys.md) | 该实例表示蓝牙媒体音频中的A2DP Source角色。 |
 <!--DelEnd-->
 

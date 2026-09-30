@@ -18,7 +18,7 @@ type OnOverrideUrlLoadingCallback = (webResourceRequest: WebResourceRequest) => 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| webResourceRequest | [WebResourceRequest](arkts-arkweb-web-comp-webresourcerequest-c.md) | 是 | url请求的相关信息。 |
+| webResourceRequest | WebResourceRequest | 是 | url请求的相关信息。 |
 
 **返回值：**
 

@@ -4,7 +4,7 @@
 
 API版本26.0.0之前，其父组件支持[WaterFlow](arkts-arkui-waterflow-comp.md)和[FlowItem](arkts-arkui-flowitem-comp-attribute.md)组件，并支持使用自定义组件或[NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md)组件封装后应用在WaterFlow或FlowItem中。
 
-从API版本26.0.0开始，其父组件新增支持[List](arkts-arkui-list-comp.md)、[Scroll](arkts-arkui-scroll-comp.md)和[LazyColumnLayout](arkts-arkui-lazycolumnlayout-comp-attribute.md#lazycolumnlayout属性事件)，同时新增支持使用自定义组件或[NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md)组件封装后应用在List、Scroll或LazyColumnLayout中。
+从API版本26.0.0开始，其父组件新增支持[List](arkts-arkui-list-comp.md)、[Scroll](arkts-arkui-scroll-comp.md)和[LazyColumnLayout](arkts-arkui-lazycolumnlayout-comp-attribute.md)，同时新增支持使用自定义组件或[NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md)组件封装后应用在List、Scroll或LazyColumnLayout中。
 
 更多关于懒加载布局的使用场景和完整示例，可参考[创建懒加载布局](../../../ui/arkts-layout-development-create-lazy-layout.md)。
 

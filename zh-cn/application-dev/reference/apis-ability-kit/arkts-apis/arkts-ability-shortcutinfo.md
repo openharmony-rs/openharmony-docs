@@ -5,7 +5,7 @@ The module describes the shortcut information defined in the
  can be obtained by running
  [getAllShortcutInfoForSelf](arkts-ability-shortcutmanager-getallshortcutinfoforself-f.md)<!--Del
  --> or
- [getShortcutInfo](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md)
+ getShortcutInfo
  <!--DelEnd-->.
 
 

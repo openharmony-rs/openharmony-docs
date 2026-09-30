@@ -42,7 +42,7 @@ import { hid } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [HidHostProfile](arkts-connectivity-hid-hidhostprofile-i-sys.md) | HidHostProfile类提供蓝牙HID设备的连接和断开等管理功能，适用于系统应用中管理蓝牙HID设备的场景。使用HidHostProfile方法之前需要创建该类的实例进行操作，通过[createHidHostProfile()](arkts-connectivity-hid-createhidhostprofile-f.md)方法构造此实例。 |
+| HidHostProfile | HidHostProfile类提供蓝牙HID设备的连接和断开等管理功能，适用于系统应用中管理蓝牙HID设备的场景。使用HidHostProfile方法之前需要创建该类的实例进行操作，通过[createHidHostProfile()](arkts-connectivity-hid-createhidhostprofile-f.md)方法构造此实例。 |
 <!--DelEnd-->
 
 ### 类型

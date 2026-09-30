@@ -16,7 +16,7 @@ CheckboxGroup(options?: CheckboxGroupOptions)
 
 创建多选框群组，用于控制群组内Checkbox的全选或取消全选状态，具有相同group值的Checkbox和CheckboxGroup属于同一群组。
 
-在结合带缓存功能的组件使用时（如List），未被创建的Checkbox选中状态需要应用手动控制。详细示例请参考[示例4](#checkboxgroup)。
+在结合带缓存功能的组件使用时（如List），未被创建的Checkbox选中状态需要应用手动控制。详细示例请参考示例4。
 
 **起始版本：** 8
 

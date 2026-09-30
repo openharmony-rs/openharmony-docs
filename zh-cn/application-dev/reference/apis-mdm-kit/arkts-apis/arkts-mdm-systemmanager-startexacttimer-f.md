@@ -28,8 +28,8 @@ function startExactTimer(timer: number, triggerTime: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timer | number | 是 | 定时器ID，通过调用[systemManager.createTimer](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-systemtimer-createtimer-f-sys.md)获取。 |
-| triggerTime | number | 是 | 定时器ID，通过调用[systemManager.createTimer](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-systemtimer-createtimer-f-sys.md)获取。 |
+| timer | number | 是 | 定时器ID，通过调用systemManager.createTimer获取。 |
+| triggerTime | number | 是 | 定时器ID，通过调用systemManager.createTimer获取。 |
 
 **返回值：**
 

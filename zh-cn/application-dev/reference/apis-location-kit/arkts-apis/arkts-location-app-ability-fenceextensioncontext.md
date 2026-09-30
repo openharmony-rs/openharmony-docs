@@ -13,5 +13,5 @@ import { FenceExtensionContext } from '@kit.LocationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [FenceExtensionContext](arkts-location-app-ability-fenceextensioncontext-fenceextensioncontext-c-sys.md) | FenceExtensionContext，继承自ExtensionContext，是FenceExtensionAbility的上下文环境。 |
+| FenceExtensionContext | FenceExtensionContext，继承自ExtensionContext，是FenceExtensionAbility的上下文环境。 |
 <!--DelEnd-->

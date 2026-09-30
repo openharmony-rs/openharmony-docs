@@ -22,7 +22,7 @@ color: DepthColorRGB
 
 光照颜色。
 
-**类型：** [DepthColorRGB](arkts-arkui-common-comp-depthcolorrgb-i-sys.md)
+**类型：** DepthColorRGB
 
 **起始版本：** 26.0.0
 
@@ -44,7 +44,7 @@ direction: DepthVector3
 
 光照方向向量。无单位，其值表示3D空间中的坐标。
 
-**类型：** [DepthVector3](arkts-arkui-common-comp-depthvector3-i-sys.md)
+**类型：** DepthVector3
 
 **起始版本：** 26.0.0
 

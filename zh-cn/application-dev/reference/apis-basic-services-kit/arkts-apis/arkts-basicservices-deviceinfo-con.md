@@ -226,7 +226,7 @@ const deviceColor: string
 const deviceType: string
 ```
 
-设备类型。详细请参考[deviceTypes标签](../../../quick-start/module-configuration-file.md#devicetypes标签)。
+设备类型。详细请参考deviceTypes标签。
 
 示例：<!--RP1-->wearable<!--RP1End-->
 

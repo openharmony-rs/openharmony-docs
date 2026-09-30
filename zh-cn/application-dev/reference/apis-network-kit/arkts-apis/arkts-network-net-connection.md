@@ -111,7 +111,7 @@ import { connection } from '@kit.NetworkKit';
 | 名称 | 说明 |
 | --- | --- |
 | [ConnectionProperties](arkts-network-connection-connectionproperties-i.md) | 网络连接信息。 |
-| [HttpProxy](arkts-network-connection-httpproxy-i.md) | 网络代理配置信息 |
+| HttpProxy | 网络代理配置信息 |
 | [LinkAddress](arkts-network-connection-linkaddress-i.md) | 网络链路信息。 |
 | [NetAddress](arkts-network-connection-netaddress-i.md) | 网络地址。 |
 | [NetBlockStatusInfo](arkts-network-connection-netblockstatusinfo-i.md) | 获取网络状态信息。 |

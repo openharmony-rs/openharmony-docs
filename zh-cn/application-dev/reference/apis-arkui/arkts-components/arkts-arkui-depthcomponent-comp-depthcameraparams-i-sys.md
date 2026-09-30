@@ -22,7 +22,7 @@ cameraBufferCrop?: CameraBufferCrop
 
 相机移轴裁剪参数。未设置时默认使用组件布局尺寸作为默认图像基准大小，裁剪偏移量为(0, 0)，缩放比例为1.0。
 
-**类型：** [CameraBufferCrop](arkts-arkui-depthcomponent-comp-camerabuffercrop-i-sys.md)
+**类型：** CameraBufferCrop
 
 **起始版本：** 26.0.0
 
@@ -44,7 +44,7 @@ position: DepthVector3
 
 相机在三维空间中的位置。无单位，其值表示3D空间中的坐标。
 
-**类型：** [DepthVector3](arkts-arkui-common-comp-depthvector3-i-sys.md)
+**类型：** DepthVector3
 
 **起始版本：** 26.0.0
 
@@ -66,7 +66,7 @@ quaternion: DepthVector4
 
 相机旋转四元数，按(x, y, z, w)表示。无单位。
 
-**类型：** [DepthVector4](arkts-arkui-common-comp-depthvector4-i-sys.md)
+**类型：** DepthVector4
 
 **起始版本：** 26.0.0
 

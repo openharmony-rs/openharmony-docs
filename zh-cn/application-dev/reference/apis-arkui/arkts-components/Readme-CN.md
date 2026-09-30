@@ -75,23 +75,23 @@
 - [Calendar](arkts-arkui-calendar-comp-sys.md)
   - [Calendar属性/事件](arkts-arkui-calendar-comp-attribute.md)
   <!--Del-->
-  - [CalendarDay(系统接口)](arkts-arkui-calendar-comp-calendarday-i-sys.md)<!--DelEnd-->
+  - CalendarDay(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [CalendarRequestedData(系统接口)](arkts-arkui-calendar-comp-calendarrequesteddata-i-sys.md)<!--DelEnd-->
+  - CalendarRequestedData(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [CalendarSelectedDate(系统接口)](arkts-arkui-calendar-comp-calendarselecteddate-i-sys.md)<!--DelEnd-->
+  - CalendarSelectedDate(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [CurrentDayStyle(系统接口)](arkts-arkui-calendar-comp-currentdaystyle-i-sys.md)<!--DelEnd-->
+  - CurrentDayStyle(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [MonthData(系统接口)](arkts-arkui-calendar-comp-monthdata-i-sys.md)<!--DelEnd-->
+  - MonthData(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [NonCurrentDayStyle(系统接口)](arkts-arkui-calendar-comp-noncurrentdaystyle-i-sys.md)<!--DelEnd-->
+  - NonCurrentDayStyle(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [TodayStyle(系统接口)](arkts-arkui-calendar-comp-todaystyle-i-sys.md)<!--DelEnd-->
+  - TodayStyle(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [WeekStyle(系统接口)](arkts-arkui-calendar-comp-weekstyle-i-sys.md)<!--DelEnd-->
+  - WeekStyle(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [WorkStateStyle(系统接口)](arkts-arkui-calendar-comp-workstatestyle-i-sys.md)<!--DelEnd-->
+  - WorkStateStyle(系统接口)<!--DelEnd-->
   <!--Del-->
   - [CalendarController(系统接口)](arkts-arkui-calendar-comp-calendarcontroller-c-sys.md)<!--DelEnd-->
 - [CalendarPicker](arkts-arkui-calendarpicker-comp.md)
@@ -213,7 +213,7 @@
   - [BindOptions](arkts-arkui-common-comp-bindoptions-i.md)
   - [BlurOptions](arkts-arkui-common-comp-bluroptions-i.md)
   <!--Del-->
-  - [BlurSnapshotOptions(系统接口)](arkts-arkui-common-comp-blursnapshotoptions-i-sys.md)<!--DelEnd-->
+  - BlurSnapshotOptions(系统接口)<!--DelEnd-->
   - [BlurStyleOptions](arkts-arkui-common-comp-blurstyleoptions-i.md)
   - [BorderImageOption](arkts-arkui-common-comp-borderimageoption-i.md)
   - [Callback](arkts-arkui-common-comp-callback-i.md)
@@ -233,11 +233,11 @@
   - [CustomPopupOptions](arkts-arkui-common-comp-custompopupoptions-i.md)
   - [DateRange](arkts-arkui-common-comp-daterange-i.md)
   <!--Del-->
-  - [DepthColorRGB(系统接口)](arkts-arkui-common-comp-depthcolorrgb-i-sys.md)<!--DelEnd-->
+  - DepthColorRGB(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DepthVector3(系统接口)](arkts-arkui-common-comp-depthvector3-i-sys.md)<!--DelEnd-->
+  - DepthVector3(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DepthVector4(系统接口)](arkts-arkui-common-comp-depthvector4-i-sys.md)<!--DelEnd-->
+  - DepthVector4(系统接口)<!--DelEnd-->
   - [DismissContentCoverAction](arkts-arkui-common-comp-dismisscontentcoveraction-i.md)
   - [DismissPopupAction](arkts-arkui-common-comp-dismisspopupaction-i.md)
   - [DismissSheetAction](arkts-arkui-common-comp-dismisssheetaction-i.md)
@@ -250,7 +250,7 @@
   - [DropOptions](arkts-arkui-common-comp-dropoptions-i.md)
   - [EdgeEffectOptions](arkts-arkui-common-comp-edgeeffectoptions-i.md)
   <!--Del-->
-  - [EdgeLightParams(系统接口)](arkts-arkui-common-comp-edgelightparams-i-sys.md)<!--DelEnd-->
+  - EdgeLightParams(系统接口)<!--DelEnd-->
   - [EditModeOptions](arkts-arkui-common-comp-editmodeoptions-i.md)
   - [EntryOptions](arkts-arkui-common-comp-entryoptions-i.md)
   - [EventTarget](arkts-arkui-common-comp-eventtarget-i.md)
@@ -266,7 +266,7 @@
   - [GeometryTransitionOptions(系统接口)](arkts-arkui-common-comp-geometrytransitionoptions-i-sys.md)<!--DelEnd-->
   - [GestureModifier](arkts-arkui-common-comp-gesturemodifier-i.md)
   <!--Del-->
-  - [GravityCenterOptions(系统接口)](arkts-arkui-common-comp-gravitycenteroptions-i-sys.md)<!--DelEnd-->
+  - GravityCenterOptions(系统接口)<!--DelEnd-->
   - [HistoricalPoint](arkts-arkui-common-comp-historicalpoint-i.md)
   - [HorizontalAlignParam](arkts-arkui-common-comp-horizontalalignparam-i.md)
   - [HoverEvent](arkts-arkui-common-comp-hoverevent-i.md)
@@ -287,7 +287,7 @@
   - [LayoutChild](arkts-arkui-common-comp-layoutchild-i.md)
   - [LayoutInfo](arkts-arkui-common-comp-layoutinfo-i.md)
   <!--Del-->
-  - [LightSource(系统接口)](arkts-arkui-common-comp-lightsource-i-sys.md)<!--DelEnd-->
+  - LightSource(系统接口)<!--DelEnd-->
   - [LinearGradient](arkts-arkui-common-comp-lineargradient-i.md)
   - [LinearGradientBlurOptions](arkts-arkui-common-comp-lineargradientbluroptions-i.md)
   - [LinearGradientOptions](arkts-arkui-common-comp-lineargradientoptions-i.md)
@@ -313,11 +313,11 @@
   - [PickerDialogButtonStyle](arkts-arkui-common-comp-pickerdialogbuttonstyle-i.md)
   - [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)
   <!--Del-->
-  - [PixelMapMock(系统接口)](arkts-arkui-common-comp-pixelmapmock-i-sys.md)<!--DelEnd-->
+  - PixelMapMock(系统接口)<!--DelEnd-->
   - [PixelRoundPolicy](arkts-arkui-common-comp-pixelroundpolicy-i.md)
   - [PixelStretchEffectOptions](arkts-arkui-common-comp-pixelstretcheffectoptions-i.md)
   <!--Del-->
-  - [PointLightStyle(系统接口)](arkts-arkui-common-comp-pointlightstyle-i-sys.md)<!--DelEnd-->
+  - PointLightStyle(系统接口)<!--DelEnd-->
   - [PopupBorderLinearGradient](arkts-arkui-common-comp-popupborderlineargradient-i.md)
   - [PopupCommonOptions](arkts-arkui-common-comp-popupcommonoptions-i.md)
   - [PopupMaskType](arkts-arkui-common-comp-popupmasktype-i.md)
@@ -347,9 +347,9 @@
   - [SizeResult](arkts-arkui-common-comp-sizeresult-i.md)
   - [SmartGestureShortcutOptions](arkts-arkui-common-comp-smartgestureshortcutoptions-i.md)
   <!--Del-->
-  - [SpatialEffectParams(系统接口)](arkts-arkui-common-comp-spatialeffectparams-i-sys.md)<!--DelEnd-->
+  - SpatialEffectParams(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [SpatialPosition(系统接口)](arkts-arkui-common-comp-spatialposition-i-sys.md)<!--DelEnd-->
+  - SpatialPosition(系统接口)<!--DelEnd-->
   - [SpringBackAction](arkts-arkui-common-comp-springbackaction-i.md)
   - [StateStyles](arkts-arkui-common-comp-statestyles-i.md)
   - [SweepGradientOptions](arkts-arkui-common-comp-sweepgradientoptions-i.md)
@@ -421,7 +421,7 @@
   - [AnimationRange](arkts-arkui-common-comp-animationrange-t.md)
   - [AreaChangeCallback](arkts-arkui-common-comp-areachangecallback-t.md)
   <!--Del-->
-  - [Blender(系统接口)](arkts-arkui-common-comp-blender-t-sys.md)<!--DelEnd-->
+  - Blender(系统接口)<!--DelEnd-->
   - [BorderRadiusType](arkts-arkui-common-comp-borderradiustype-t.md)
   - [BuilderCallback](arkts-arkui-common-comp-buildercallback-t.md)
   - [CircleShape](arkts-arkui-common-comp-circleshape-t.md)
@@ -502,15 +502,15 @@
   - [ContentClipMode](arkts-arkui-common-comp-contentclipmode-e.md)
   - [DismissReason](arkts-arkui-common-comp-dismissreason-e.md)
   <!--Del-->
-  - [DistortionMode(系统接口)](arkts-arkui-common-comp-distortionmode-e-sys.md)<!--DelEnd-->
+  - DistortionMode(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DragAnimationType(系统接口)](arkts-arkui-common-comp-draganimationtype-e-sys.md)<!--DelEnd-->
+  - DragAnimationType(系统接口)<!--DelEnd-->
   - [DragBehavior](arkts-arkui-common-comp-dragbehavior-e.md)
   - [DraggingSizeChangeEffect](arkts-arkui-common-comp-draggingsizechangeeffect-e.md)
   - [DragPreviewMode](arkts-arkui-common-comp-dragpreviewmode-e.md)
   - [DragResult](arkts-arkui-common-comp-dragresult-e.md)
   <!--Del-->
-  - [EdgeLightMode(系统接口)](arkts-arkui-common-comp-edgelightmode-e-sys.md)<!--DelEnd-->
+  - EdgeLightMode(系统接口)<!--DelEnd-->
   - [EffectEdge](arkts-arkui-common-comp-effectedge-e.md)
   - [EffectType](arkts-arkui-common-comp-effecttype-e.md)
   - [FinishCallbackType](arkts-arkui-common-comp-finishcallbacktype-e.md)
@@ -546,7 +546,7 @@
   - [TouchTestStrategy](arkts-arkui-common-comp-touchteststrategy-e.md)
   - [TransitionEdge](arkts-arkui-common-comp-transitionedge-e.md)
   <!--Del-->
-  - [TransitionHierarchyStrategy(系统接口)](arkts-arkui-common-comp-transitionhierarchystrategy-e-sys.md)<!--DelEnd-->
+  - TransitionHierarchyStrategy(系统接口)<!--DelEnd-->
 - [Component3D(Defines 3D component)](arkts-arkui-component3d-comp.md)
   - [Component3D属性/事件](arkts-arkui-component3d-comp-attribute.md)
   - [SceneOptions](arkts-arkui-component3d-comp-sceneoptions-i.md)
@@ -580,53 +580,53 @@
 - [DepthComponent](arkts-arkui-depthcomponent-comp-sys.md)
   - [DepthComponent属性/事件](arkts-arkui-depthcomponent-comp-attribute.md)
   <!--Del-->
-  - [CameraBufferCrop(系统接口)](arkts-arkui-depthcomponent-comp-camerabuffercrop-i-sys.md)<!--DelEnd-->
+  - CameraBufferCrop(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [CropOffset(系统接口)](arkts-arkui-depthcomponent-comp-cropoffset-i-sys.md)<!--DelEnd-->
+  - CropOffset(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DepthCameraParams(系统接口)](arkts-arkui-depthcomponent-comp-depthcameraparams-i-sys.md)<!--DelEnd-->
+  - DepthCameraParams(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DepthComponentCompleteEvent(系统接口)](arkts-arkui-depthcomponent-comp-depthcomponentcompleteevent-i-sys.md)<!--DelEnd-->
+  - DepthComponentCompleteEvent(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DepthComponentErrorEvent(系统接口)](arkts-arkui-depthcomponent-comp-depthcomponenterrorevent-i-sys.md)<!--DelEnd-->
+  - DepthComponentErrorEvent(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DepthComponentOptions(系统接口)](arkts-arkui-depthcomponent-comp-depthcomponentoptions-i-sys.md)<!--DelEnd-->
+  - DepthComponentOptions(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DepthLightParams(系统接口)](arkts-arkui-depthcomponent-comp-depthlightparams-i-sys.md)<!--DelEnd-->
+  - DepthLightParams(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DepthComponentCompleteCallback(系统接口)](arkts-arkui-depthcomponent-comp-depthcomponentcompletecallback-t-sys.md)<!--DelEnd-->
+  - DepthComponentCompleteCallback(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DepthComponentErrorCallback(系统接口)](arkts-arkui-depthcomponent-comp-depthcomponenterrorcallback-t-sys.md)<!--DelEnd-->
+  - DepthComponentErrorCallback(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DepthMapCallback(系统接口)](arkts-arkui-depthcomponent-comp-depthmapcallback-t-sys.md)<!--DelEnd-->
+  - DepthMapCallback(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DepthSpaceType(系统接口)](arkts-arkui-depthcomponent-comp-depthspacetype-e-sys.md)<!--DelEnd-->
+  - DepthSpaceType(系统接口)<!--DelEnd-->
 - [DistortionComponent](arkts-arkui-distortioncomponent-comp-sys.md)
   - [DistortionComponent属性/事件](arkts-arkui-distortioncomponent-comp-attribute.md)
   <!--Del-->
-  - [DistortionComponentOptions(系统接口)](arkts-arkui-distortioncomponent-comp-distortioncomponentoptions-i-sys.md)<!--DelEnd-->
+  - DistortionComponentOptions(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DistortionParam(系统接口)](arkts-arkui-distortioncomponent-comp-distortionparam-i-sys.md)<!--DelEnd-->
+  - DistortionParam(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [Vector2(系统接口)](arkts-arkui-distortioncomponent-comp-vector2-t-sys.md)<!--DelEnd-->
+  - Vector2(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [Vector4(系统接口)](arkts-arkui-distortioncomponent-comp-vector4-t-sys.md)<!--DelEnd-->
+  - Vector4(系统接口)<!--DelEnd-->
 - [Divider](arkts-arkui-divider-comp.md)
   - [Divider属性/事件](arkts-arkui-divider-comp-attribute.md)
 - [DynamicComponent(System API)](arkts-arkui-dynamiccomponent-comp-sys.md)
   - [DynamicComponent属性/事件](arkts-arkui-dynamiccomponent-comp-attribute.md)
   <!--Del-->
-  - [DynamicOptions(系统接口)](arkts-arkui-dynamiccomponent-comp-dynamicoptions-i-sys.md)<!--DelEnd-->
+  - DynamicOptions(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [ErrorCallback(系统接口)](arkts-arkui-dynamiccomponent-comp-errorcallback-t-sys.md)<!--DelEnd-->
+  - ErrorCallback(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [Worker(系统接口)](arkts-arkui-dynamiccomponent-comp-worker-t-sys.md)<!--DelEnd-->
+  - Worker(系统接口)<!--DelEnd-->
 - [EffectComponent](arkts-arkui-effectcomponent-comp-sys.md)
   - [EffectComponent属性/事件](arkts-arkui-effectcomponent-comp-attribute.md)
   <!--Del-->
-  - [EffectComponentOptions(系统接口)](arkts-arkui-effectcomponent-comp-effectcomponentoptions-i-sys.md)<!--DelEnd-->
+  - EffectComponentOptions(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [EffectLayer(系统接口)](arkts-arkui-effectcomponent-comp-effectlayer-e-sys.md)<!--DelEnd-->
+  - EffectLayer(系统接口)<!--DelEnd-->
 - [Ellipse](arkts-arkui-ellipse-comp.md)
   - [Ellipse属性/事件](arkts-arkui-ellipse-comp-attribute.md)
   - [EllipseOptions](arkts-arkui-ellipse-comp-ellipseoptions-i.md)
@@ -655,21 +655,21 @@
 - [FormComponent(系统接口)](arkts-arkui-formcomponent-comp-sys.md)
   - [FormComponent属性/事件](arkts-arkui-formcomponent-comp-attribute.md)
   <!--Del-->
-  - [ErrorInformation(系统接口)](arkts-arkui-formcomponent-comp-errorinformation-i-sys.md)<!--DelEnd-->
+  - ErrorInformation(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [FormCallbackInfo(系统接口)](arkts-arkui-formcomponent-comp-formcallbackinfo-i-sys.md)<!--DelEnd-->
+  - FormCallbackInfo(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [FormInfo(系统接口)](arkts-arkui-formcomponent-comp-forminfo-i-sys.md)<!--DelEnd-->
+  - FormInfo(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [FormSize(系统接口)](arkts-arkui-formcomponent-comp-formsize-i-sys.md)<!--DelEnd-->
+  - FormSize(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [FormColorMode(系统接口)](arkts-arkui-formcomponent-comp-formcolormode-e-sys.md)<!--DelEnd-->
+  - FormColorMode(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [FormDimension(系统接口)](arkts-arkui-formcomponent-comp-formdimension-e-sys.md)<!--DelEnd-->
+  - FormDimension(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [FormRenderingMode(系统接口)](arkts-arkui-formcomponent-comp-formrenderingmode-e-sys.md)<!--DelEnd-->
+  - FormRenderingMode(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [FormShape(系统接口)](arkts-arkui-formcomponent-comp-formshape-e-sys.md)<!--DelEnd-->
+  - FormShape(系统接口)<!--DelEnd-->
 - [FormLink](arkts-arkui-formlink-comp.md)
   - [FormLink属性/事件](arkts-arkui-formlink-comp-attribute.md)
   - [FormLinkOptions](arkts-arkui-formlink-comp-formlinkoptions-i.md)
@@ -741,12 +741,12 @@
   <!--Del-->
   - [GridLayoutOptions(系统接口)](arkts-arkui-grid-comp-gridlayoutoptions-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [StartLineInfo(系统接口)](arkts-arkui-grid-comp-startlineinfo-i-sys.md)<!--DelEnd-->
+  - StartLineInfo(系统接口)<!--DelEnd-->
   - [UIGridEvent](arkts-arkui-grid-comp-uigridevent-i.md)
   <!--Del-->
-  - [OnGetStartIndexByIndexCallback(系统接口)](arkts-arkui-grid-comp-ongetstartindexbyindexcallback-t-sys.md)<!--DelEnd-->
+  - OnGetStartIndexByIndexCallback(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [OnGetStartIndexByOffsetCallback(系统接口)](arkts-arkui-grid-comp-ongetstartindexbyoffsetcallback-t-sys.md)<!--DelEnd-->
+  - OnGetStartIndexByOffsetCallback(系统接口)<!--DelEnd-->
   - [OnGridScrollIndexCallback](arkts-arkui-grid-comp-ongridscrollindexcallback-t.md)
   - [GridDirection](arkts-arkui-grid-comp-griddirection-e.md)
   - [GridItemAlignment](arkts-arkui-grid-comp-griditemalignment-e.md)
@@ -788,7 +788,7 @@
   - [ImageMatrix](arkts-arkui-image-comp-imagematrix-t.md)
   - [RequestDownloadInfo](arkts-arkui-image-comp-requestdownloadinfo-t.md)
   <!--Del-->
-  - [ResolutionQuality(系统接口)](arkts-arkui-image-comp-resolutionquality-t-sys.md)<!--DelEnd-->
+  - ResolutionQuality(系统接口)<!--DelEnd-->
   - [DynamicRangeMode](arkts-arkui-image-comp-dynamicrangemode-e.md)
   - [ImageContent](arkts-arkui-image-comp-imagecontent-e.md)
   - [ImageInterpolation](arkts-arkui-image-comp-imageinterpolation-e.md)
@@ -807,13 +807,13 @@
 - [IsolatedComponent(System API)](arkts-arkui-isolatedcomponent-comp.md)
   - [IsolatedComponent属性/事件](arkts-arkui-isolatedcomponent-comp-attribute.md)
   <!--Del-->
-  - [IsolatedOptions(系统接口)](arkts-arkui-isolatedcomponent-comp-isolatedoptions-i-sys.md)<!--DelEnd-->
+  - IsolatedOptions(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [ErrorCallback(系统接口)](arkts-arkui-isolatedcomponent-comp-errorcallback-t-sys.md)<!--DelEnd-->
+  - ErrorCallback(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [RestrictedWorker(系统接口)](arkts-arkui-isolatedcomponent-comp-restrictedworker-t-sys.md)<!--DelEnd-->
+  - RestrictedWorker(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [Want(系统接口)](arkts-arkui-isolatedcomponent-comp-want-t-sys.md)<!--DelEnd-->
+  - Want(系统接口)<!--DelEnd-->
 - [LazyForEach](arkts-arkui-lazyforeach-comp.md)
   - [LazyForEach属性/事件](arkts-arkui-lazyforeach-comp-attribute.md)
   - [DataAddOperation](arkts-arkui-lazyforeach-comp-dataaddoperation-i.md)
@@ -842,7 +842,7 @@
 - [List](arkts-arkui-list-comp.md)
   - [List属性/事件](arkts-arkui-list-comp-attribute.md)
   <!--Del-->
-  - [ChainAnimationOptions(系统接口)](arkts-arkui-list-comp-chainanimationoptions-i-sys.md)<!--DelEnd-->
+  - ChainAnimationOptions(系统接口)<!--DelEnd-->
   - [CloseSwipeActionOptions](arkts-arkui-list-comp-closeswipeactionoptions-i.md)
   - [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md)
   - [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md)
@@ -853,7 +853,7 @@
   - [OnListScrollIndexCallback](arkts-arkui-list-comp-onlistscrollindexcallback-t.md)
   - [OnScrollVisibleContentChangeCallback](arkts-arkui-list-comp-onscrollvisiblecontentchangecallback-t.md)
   <!--Del-->
-  - [ChainEdgeEffect(系统接口)](arkts-arkui-list-comp-chainedgeeffect-e-sys.md)<!--DelEnd-->
+  - ChainEdgeEffect(系统接口)<!--DelEnd-->
   - [ListItemAlign](arkts-arkui-list-comp-listitemalign-e.md)
   - [ListItemGroupArea](arkts-arkui-list-comp-listitemgrouparea-e.md)
   - [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md)
@@ -887,7 +887,7 @@
 - [MediaCachedImage](arkts-arkui-mediacachedimage-comp-sys.md)
   - [MediaCachedImage属性/事件](arkts-arkui-mediacachedimage-comp-attribute.md)
   <!--Del-->
-  - [ASTCResource(系统接口)](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md)<!--DelEnd-->
+  - ASTCResource(系统接口)<!--DelEnd-->
 - [Menu](arkts-arkui-menu-comp.md)
   - [Menu属性/事件](arkts-arkui-menu-comp-attribute.md)
   - [SubMenuExpandingMode](arkts-arkui-menu-comp-submenuexpandingmode-e.md)
@@ -1022,13 +1022,13 @@
 - [PluginComponent(System API)](arkts-arkui-plugincomponent-comp-sys.md)
   - [PluginComponent属性/事件](arkts-arkui-plugincomponent-comp-attribute.md)
   <!--Del-->
-  - [PluginComponentOptions(系统接口)](arkts-arkui-plugincomponent-comp-plugincomponentoptions-i-sys.md)<!--DelEnd-->
+  - PluginComponentOptions(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [PluginComponentTemplate(系统接口)](arkts-arkui-plugincomponent-comp-plugincomponenttemplate-i-sys.md)<!--DelEnd-->
+  - PluginComponentTemplate(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [PluginErrorData(系统接口)](arkts-arkui-plugincomponent-comp-pluginerrordata-i-sys.md)<!--DelEnd-->
+  - PluginErrorData(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [PluginErrorCallback(系统接口)](arkts-arkui-plugincomponent-comp-pluginerrorcallback-t-sys.md)<!--DelEnd-->
+  - PluginErrorCallback(系统接口)<!--DelEnd-->
 - [Polygon](arkts-arkui-polygon-comp.md)
   - [Polygon属性/事件](arkts-arkui-polygon-comp-attribute.md)
   - [PolygonOptions](arkts-arkui-polygon-comp-polygonoptions-i.md)
@@ -1085,9 +1085,9 @@
 - [RemoteWindow](arkts-arkui-remotewindow-comp-sys.md)
   - [RemoteWindow属性/事件](arkts-arkui-remotewindow-comp-attribute.md)
   <!--Del-->
-  - [RRect(系统接口)](arkts-arkui-remotewindow-comp-rrect-i-sys.md)<!--DelEnd-->
+  - RRect(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [WindowAnimationTarget(系统接口)](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md)<!--DelEnd-->
+  - WindowAnimationTarget(系统接口)<!--DelEnd-->
 - [Repeat](arkts-arkui-repeat-comp.md)
   - [Repeat属性/事件](arkts-arkui-repeat-comp-attribute.md)
   - [RepeatItem](arkts-arkui-repeat-comp-repeatitem-i.md)
@@ -1215,13 +1215,13 @@
 - [SecurityUIExtensionComponent(System API)](arkts-arkui-securityuiextensioncomponent-comp-sys.md)
   - [SecurityUIExtensionComponent属性/事件](arkts-arkui-securityuiextensioncomponent-comp-attribute.md)
   <!--Del-->
-  - [SecurityUIExtensionOptions(系统接口)](arkts-arkui-securityuiextensioncomponent-comp-securityuiextensionoptions-i-sys.md)<!--DelEnd-->
+  - SecurityUIExtensionOptions(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [SecurityUIExtensionProxy(系统接口)](arkts-arkui-securityuiextensioncomponent-comp-securityuiextensionproxy-i-sys.md)<!--DelEnd-->
+  - SecurityUIExtensionProxy(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [TerminationInfo(系统接口)](arkts-arkui-securityuiextensioncomponent-comp-terminationinfo-i-sys.md)<!--DelEnd-->
+  - TerminationInfo(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [SecurityDpiFollowStrategy(系统接口)](arkts-arkui-securityuiextensioncomponent-comp-securitydpifollowstrategy-e-sys.md)<!--DelEnd-->
+  - SecurityDpiFollowStrategy(系统接口)<!--DelEnd-->
 - [Select](arkts-arkui-select-comp.md)
   - [Select属性/事件](arkts-arkui-select-comp-attribute.md)
   - [MenuItemConfiguration](arkts-arkui-select-comp-menuitemconfiguration-i.md)
@@ -1438,17 +1438,17 @@
 - [UIExtensionComponent(System API)](arkts-arkui-uiextensioncomponent-comp-sys.md)
   - [UIExtensionComponent属性/事件](arkts-arkui-uiextensioncomponent-comp-attribute.md)
   <!--Del-->
-  - [TerminationInfo(系统接口)](arkts-arkui-uiextensioncomponent-comp-terminationinfo-i-sys.md)<!--DelEnd-->
+  - TerminationInfo(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [UIExtensionOptions(系统接口)](arkts-arkui-uiextensioncomponent-comp-uiextensionoptions-i-sys.md)<!--DelEnd-->
+  - UIExtensionOptions(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [UIExtensionProxy(系统接口)](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md)<!--DelEnd-->
+  - UIExtensionProxy(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [ReceiveCallback(系统接口)](arkts-arkui-uiextensioncomponent-comp-receivecallback-t-sys.md)<!--DelEnd-->
+  - ReceiveCallback(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [DpiFollowStrategy(系统接口)](arkts-arkui-uiextensioncomponent-comp-dpifollowstrategy-e-sys.md)<!--DelEnd-->
+  - DpiFollowStrategy(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [WindowModeFollowStrategy(系统接口)](arkts-arkui-uiextensioncomponent-comp-windowmodefollowstrategy-e-sys.md)<!--DelEnd-->
+  - WindowModeFollowStrategy(系统接口)<!--DelEnd-->
 - [UIPickerComponent](arkts-arkui-uipickercomponent-comp.md)
   - [UIPickerComponent属性/事件](arkts-arkui-uipickercomponent-comp-attribute.md)
   - [PickerIndicatorStyle](arkts-arkui-uipickercomponent-comp-pickerindicatorstyle-i.md)
@@ -1458,9 +1458,9 @@
 - [UnionEffectContainer](arkts-arkui-unioneffectcontainer-comp-sys.md)
   - [UnionEffectContainer属性/事件](arkts-arkui-unioneffectcontainer-comp-attribute.md)
   <!--Del-->
-  - [UnionEffectContainerOptions(系统接口)](arkts-arkui-unioneffectcontainer-comp-unioneffectcontaineroptions-i-sys.md)<!--DelEnd-->
+  - UnionEffectContainerOptions(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [UnionMode(系统接口)](arkts-arkui-unioneffectcontainer-comp-unionmode-e-sys.md)<!--DelEnd-->
+  - UnionMode(系统接口)<!--DelEnd-->
 - [Video](arkts-arkui-video-comp.md)
   - [Video属性/事件](arkts-arkui-video-comp-attribute.md)
   - [FullscreenInfo](arkts-arkui-video-comp-fullscreeninfo-i.md)

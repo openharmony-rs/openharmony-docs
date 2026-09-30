@@ -27,7 +27,7 @@ import { map } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [MapMseProfile](arkts-connectivity-map-mapmseprofile-i-sys.md) | 该实例表示蓝牙消息访问协议中的MSE角色。 |
+| MapMseProfile | 该实例表示蓝牙消息访问协议中的MSE角色。 |
 <!--DelEnd-->
 
 ### 类型

@@ -60,7 +60,7 @@ import { eSIM } from '@kit.TelephonyKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [AccessRule](arkts-telephony-esim-accessrule-i-sys.md) | 访问规则。 |
+| AccessRule | 访问规则。 |
 | [ContractRequestData](arkts-telephony-esim-contractrequestdata-i-sys.md) | 加密需要的信息。 |
 | [DownloadConfiguration](arkts-telephony-esim-downloadconfiguration-i-sys.md) | 下载过程中的属性配置。 |
 | [DownloadProfileResult](arkts-telephony-esim-downloadprofileresult-i-sys.md) | 下载配置文件的结果。 |

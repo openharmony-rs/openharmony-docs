@@ -54,7 +54,7 @@ position: SpatialPosition | number
 
 由角点或深度值定义的空间位置。
 
-**类型：** [SpatialPosition](arkts-arkui-common-comp-spatialposition-i-sys.md) &#124; number
+**类型：** SpatialPosition &#124; number
 
 **起始版本：** 26.0.0
 

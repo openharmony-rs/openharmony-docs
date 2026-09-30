@@ -4,7 +4,7 @@
 declare interface WebKeyboardCallbackInfo
 ```
 
-拦截网页可编辑元素拉起软键盘的回调入参，包括[WebKeyboardController](arkts-arkweb-web-comp.md)和可编辑元素的属性。适用于需要自定义键盘交互的场景，提升输入体验的定制性和灵活性。
+拦截网页可编辑元素拉起软键盘的回调入参，包括WebKeyboardController和可编辑元素的属性。适用于需要自定义键盘交互的场景，提升输入体验的定制性和灵活性。
 
 **起始版本：** 12
 

@@ -26,7 +26,7 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controller | [web_webview.WebviewController](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md) | 是 | Web组件控制器。 |
+| controller | web_webview.WebviewController | 是 | Web组件控制器。 |
 | context | [common.UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) | 是 | UIAbility的上下文环境。 |
 
 **错误码：**
@@ -89,7 +89,7 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controller | [web_webview.WebviewController](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md) | 是 | Web组件控制器。 |
+| controller | web_webview.WebviewController | 是 | Web组件控制器。 |
 | context | [common.UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-common-uiabilitycontext-t.md) | 是 | UIAbility的上下文环境。 |
 | needRefresh | boolean | 是 | 是否需要刷新页面（true: 需要；false: 不需要）。 |
 

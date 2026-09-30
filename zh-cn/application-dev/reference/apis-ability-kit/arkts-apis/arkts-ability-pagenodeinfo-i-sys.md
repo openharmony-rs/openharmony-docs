@@ -182,7 +182,7 @@ rect: AutoFillRect
 
 页面节点的rect。
 
-**类型：** [AutoFillRect](arkts-ability-autofillrect-i-sys.md)
+**类型：** AutoFillRect
 
 **起始版本：** 12
 

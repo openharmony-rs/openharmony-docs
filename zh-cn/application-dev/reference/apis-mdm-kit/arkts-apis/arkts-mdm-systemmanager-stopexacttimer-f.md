@@ -28,7 +28,7 @@ function stopExactTimer(timer: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timer | number | 是 | 定时器ID，调用获取。[systemManager.createTimer](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-systemtimer-createtimer-f-sys.md)。 |
+| timer | number | 是 | 定时器ID，调用获取。systemManager.createTimer。 |
 
 **返回值：**
 

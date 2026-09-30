@@ -30,7 +30,7 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../../application
 
 ServiceExtensionAbility提供后台服务扩展能力，支持后台运行并对外提供相应能力。三方应用可以连接该ExtensionAbility，并进行通信。
 
-通过本接口连接成功后，会启动ServiceExtensionAbility组件，具体请参考[组件启动规则](../../../application-models/component-startup-rules.md)。
+通过本接口连接成功后，会启动ServiceExtensionAbility组件，具体请参考组件启动规则。
 
 **起始版本：** 21
 

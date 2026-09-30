@@ -57,7 +57,7 @@ DataPanel(options: DataPanelOptions)
 
 ### 示例1（设置数据面板类型）
 
-该示例通过[DataPanelOptions](#datapanel)的type属性，实现了设置数据面板的类型的功能。
+该示例通过DataPanelOptions的type属性，实现了设置数据面板的类型的功能。
 
 
 

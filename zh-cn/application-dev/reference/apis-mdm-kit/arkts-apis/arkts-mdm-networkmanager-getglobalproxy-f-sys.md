@@ -35,7 +35,7 @@ function getGlobalProxy(admin: Want, callback: AsyncCallback<connection.HttpProx
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[connection.HttpProxy](../../apis-network-kit/arkts-apis/arkts-network-connection-httpproxy-i.md)&gt; | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;connection.HttpProxy&gt; | 是 | 回调函数。当接口调用成功，err为null，否则err为错误对象。 |
 
 **错误码：**
 
@@ -105,7 +105,7 @@ function getGlobalProxy(admin: Want): Promise<connection.HttpProxy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[connection.HttpProxy](../../apis-network-kit/arkts-apis/arkts-network-connection-httpproxy-i.md)&gt; | Promise对象，返回网络全局Http代理配置信息。 |
+| Promise&lt;connection.HttpProxy&gt; | Promise对象，返回网络全局Http代理配置信息。 |
 
 **错误码：**
 

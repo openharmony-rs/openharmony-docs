@@ -29,7 +29,7 @@ function setAppHttpProxy(httpProxy: HttpProxy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| httpProxy | [HttpProxy](arkts-network-connection-httpproxy-i.md) | 是 | 网络应用级Http代理配置信息。 |
+| httpProxy | HttpProxy | 是 | 网络应用级Http代理配置信息。 |
 
 **错误码：**
 

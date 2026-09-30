@@ -8,7 +8,7 @@ export interface BusinessError<T = void> extends Error
 
 @typedef BusinessError [since 6 - 11] @typedef BusinessError&lt;T = void&gt; [since 12]
 
-**继承/实现关系：** BusinessError extends [Error](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-messagelevel-e.md#error)
+**继承/实现关系：** BusinessError extends Error
 
 **起始版本：** 6
 

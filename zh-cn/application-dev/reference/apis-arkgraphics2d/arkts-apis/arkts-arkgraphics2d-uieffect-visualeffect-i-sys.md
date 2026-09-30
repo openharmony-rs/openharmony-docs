@@ -46,7 +46,7 @@ backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 
 | 类型 | 说明 |
 | --- | --- |
-| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回添加了背景颜色更改效果的VisualEffect。 |
+| VisualEffect | 返回添加了背景颜色更改效果的VisualEffect。 |
 
 **示例**
 
@@ -90,7 +90,7 @@ borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIn
 
 | 类型 | 说明 |
 | --- | --- |
-| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回了具有边框光照效果的VisualEffect。 |
+| VisualEffect | 返回了具有边框光照效果的VisualEffect。 |
 
 **错误码：**
 
@@ -171,7 +171,7 @@ colorGradient(colors: Array<Color>, positions: Array<common2D.Point>, strengths:
 
 | 类型 | 说明 |
 | --- | --- |
-| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回具有颜色渐变效果的VisualEffect。 |
+| VisualEffect | 返回具有颜色渐变效果的VisualEffect。 |
 
 **错误码：**
 
@@ -248,13 +248,13 @@ backgroundEffect、brightness、blur等需要截屏的接口无法截取到正�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| distortionParam | [DistortionParam](../../apis-arkui/arkts-components/arkts-arkui-distortioncomponent-comp-distortionparam-i-sys.md) | 是 | 非线性形变效果的参数。 |
+| distortionParam | DistortionParam | 是 | 非线性形变效果的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回添加了非线性形变效果的VisualEffect。 |
+| VisualEffect | 返回添加了非线性形变效果的VisualEffect。 |
 
 **示例**
 
@@ -319,7 +319,7 @@ glassMarbleEffect(material: GlassMarbleMaterialParam, marbleShell: GlassMarbleSp
 
 | 类型 | 说明 |
 | --- | --- |
-| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回附加了玻璃弹珠效果的VisualEffect。 |
+| VisualEffect | 返回附加了玻璃弹珠效果的VisualEffect。 |
 
 ## liquidMaterial
 
@@ -351,7 +351,7 @@ liquidMaterial(param : LiquidMaterialEffectParam, useEffectMask: Mask, distortMa
 
 | 类型 | 说明 |
 | --- | --- |
-| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回具有材质效果的VisualEffect。 |
+| VisualEffect | 返回具有材质效果的VisualEffect。 |
 
 **错误码：**
 

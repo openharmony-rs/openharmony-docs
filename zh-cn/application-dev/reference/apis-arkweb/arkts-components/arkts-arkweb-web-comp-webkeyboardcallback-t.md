@@ -18,7 +18,7 @@ type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => We
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyboardCallbackInfo | [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | 是 | 拦截网页拉起软键盘回调通知的入参，其中包括[WebKeyboardController](arkts-arkweb-web-comp.md)、可编辑元素的属性。 |
+| keyboardCallbackInfo | [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | 是 | 拦截网页拉起软键盘回调通知的入参，其中包括WebKeyboardController、可编辑元素的属性。 |
 
 **返回值：**
 

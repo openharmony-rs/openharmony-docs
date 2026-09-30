@@ -351,7 +351,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
@@ -430,7 +430,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
@@ -512,7 +512,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
@@ -848,7 +848,7 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
@@ -931,7 +931,7 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 
@@ -1017,7 +1017,7 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 对应UIExtensionComponent控件所在的应用需要处于前台获焦状态。
 

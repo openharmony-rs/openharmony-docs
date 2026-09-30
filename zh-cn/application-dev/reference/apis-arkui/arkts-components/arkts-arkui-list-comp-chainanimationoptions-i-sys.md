@@ -74,7 +74,7 @@ edgeEffect?: ChainEdgeEffect
 
 默认值：ChainEdgeEffect.DEFAULT
 
-**类型：** [ChainEdgeEffect](arkts-arkui-list-comp-chainedgeeffect-e-sys.md)
+**类型：** ChainEdgeEffect
 
 **默认值：** ChainEdgeEffect.DEFAULT
 

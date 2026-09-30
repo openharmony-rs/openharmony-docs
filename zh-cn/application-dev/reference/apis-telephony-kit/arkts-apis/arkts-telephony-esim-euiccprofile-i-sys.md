@@ -28,7 +28,7 @@ accessRules: Array<AccessRule>
 
 配置文件规则。
 
-**类型：** Array&lt;[AccessRule](arkts-telephony-esim-accessrule-i-sys.md)&gt;
+**类型：** Array&lt;AccessRule&gt;
 
 **起始版本：** 18
 

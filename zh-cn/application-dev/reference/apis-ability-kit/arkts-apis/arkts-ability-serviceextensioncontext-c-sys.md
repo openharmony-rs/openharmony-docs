@@ -32,7 +32,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -125,7 +125,7 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -367,7 +367,7 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 18
 
@@ -452,7 +452,7 @@ openLink(link: string, options?: OpenLinkOptions): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 12
 
@@ -644,7 +644,7 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 11
 
@@ -729,7 +729,7 @@ requestModalUIExtension(pickerWant: Want): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 11
 
@@ -1183,7 +1183,7 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 10
 
@@ -1270,7 +1270,7 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 10
 
@@ -1360,7 +1360,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 10
 
@@ -1460,7 +1460,7 @@ startAbilityByCall(want: Want): Promise<Caller>
 
 - 调用方应用位于后台时，使用该接口启动Ability需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。  
 - 跨应用场景下，目标Ability的exported属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限。  
-- 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+- 同设备与跨设备场景下，该接口的使用规则存在差异，详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -1593,7 +1593,7 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise<Caller>
 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`权限。  
 - 调用方应用位于后台时，使用该接口启动Ability需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。  
 - 跨应用场景下，目标Ability的exported属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限。  
-- 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+- 同设备与跨设备场景下，该接口的使用规则存在差异，详见：组件启动规则（Stage模型）。
 
 **起始版本：** 10
 
@@ -1690,7 +1690,7 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback<v
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -1789,7 +1789,7 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -1893,7 +1893,7 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -2000,7 +2000,7 @@ startRecentAbility(want: Want, callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -2095,7 +2095,7 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback<vo
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -2193,7 +2193,7 @@ startRecentAbility(want: Want, options?: StartOptions): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -2454,7 +2454,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -2544,7 +2544,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -2639,7 +2639,7 @@ startUIAbilities(wantList: Array<Want>): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 20
 
@@ -2683,7 +2683,7 @@ startUIAbilities(wantList: Array<Want>): Promise<void>
 | [16000076](../errorcode-ability.md#16000076-指定的app_instance_key不存在) | The app instance key is invalid. |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported. |
 | [16000120](../errorcode-ability.md#16000120-wantlist内的元素个数超出4个或小于1个) | A maximum of four UIAbility instances can be started simultaneously. The current parameter exceeds the maximum number or is less than 1. |
-| [16000121](../errorcode-ability.md#16000121-待启动的目标组件类型不是uiability) | The target component type is not a UIAbility. |
+| 16000121 | The target component type is not a UIAbility. |
 | [16000122](../errorcode-ability.md#16000122-待启动的目标组件被系统管控模块拦截) | The target component is blocked by the system module and does not support startup. |
 | [16000123](../errorcode-ability.md#16000123-不支持隐式启动) | Implicit startup is not supported. |
 | [16000124](../errorcode-ability.md#16000124-不支持启动分布式uiability) | Starting a remote UIAbility is not supported. |
@@ -2731,7 +2731,7 @@ startUIServiceExtensionAbility(want: Want): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 14
 

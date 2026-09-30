@@ -791,7 +791,7 @@ struct SliderExample {
 
 ### 示例7（设置滑动条的双向绑定）
 
-从API version 11开始，将[SliderOptions](#slider)的value属性设置为[$$](../../../ui/state-management/arkts-two-way-sync.md)绑定的变量，实现数据同步。
+从API version 11开始，将SliderOptions的value属性设置为[$$](../../../ui/state-management/arkts-two-way-sync.md)绑定的变量，实现数据同步。
 
 
 

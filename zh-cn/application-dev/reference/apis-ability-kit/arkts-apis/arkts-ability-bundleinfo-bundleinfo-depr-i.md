@@ -7,13 +7,13 @@ export interface BundleInfo
 
 > **说明：** 
 > 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager-BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用bundleManager-BundleInfo替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md)
+**替代接口：** BundleInfo
 
 <!--Device-unnamed-export interface BundleInfo--><!--Device-unnamed-export interface BundleInfo-End-->
 
@@ -29,7 +29,7 @@ Ability的配置信息
 
 通过调用[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-2)接口时，传入GET_BUNDLE_WITH_ABILITIES获取。
 
-**类型：** Array&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt;
+**类型：** Array&lt;AbilityInfo&gt;
 
 **默认值：** Obtains configuration information about an ability
 
@@ -73,7 +73,7 @@ readonly appInfo: ApplicationInfo
 
 应用程序的配置信息。
 
-**类型：** [ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)
+**类型：** ApplicationInfo
 
 **默认值：** Obtains configuration information about an application
 
@@ -175,7 +175,7 @@ readonly hapModuleInfos: Array<HapModuleInfo>
 
 模块的配置信息。
 
-**类型：** Array&lt;[HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)&gt;
+**类型：** Array&lt;HapModuleInfo&gt;
 
 **默认值：** Obtains configuration information about a module
 

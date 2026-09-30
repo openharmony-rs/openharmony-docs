@@ -18,7 +18,7 @@
   - [controlCamera(系统接口)](arkts-telephony-call-controlcamera-f-sys.md)<!--DelEnd-->
   - [dial](arkts-telephony-call-dial-f.md)
   <!--Del-->
-  - [dialCall(系统接口)](arkts-telephony-call-dialcall-f-sys.md)<!--DelEnd-->
+  - dialCall(系统接口)<!--DelEnd-->
   <!--Del-->
   - [disableImsSwitch(系统接口)](arkts-telephony-call-disableimsswitch-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -312,7 +312,7 @@
   <!--Del-->
   - [switchToProfile(系统接口)](arkts-telephony-esim-switchtoprofile-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [AccessRule(系统接口)](arkts-telephony-esim-accessrule-i-sys.md)<!--DelEnd-->
+  - AccessRule(系统接口)<!--DelEnd-->
   <!--Del-->
   - [ContractRequestData(系统接口)](arkts-telephony-esim-contractrequestdata-i-sys.md)<!--DelEnd-->
   - [DownloadableProfile](arkts-telephony-esim-downloadableprofile-i.md)

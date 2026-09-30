@@ -77,8 +77,8 @@ import { statistics } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md) | 获取的历史流量信息。 |
-| [NetworkInfo](arkts-network-statistics-networkinfo-i.md) | 网络信息。 |
+| NetStatsInfo | 获取的历史流量信息。 |
+| NetworkInfo | 网络信息。 |
 
 <!--Del-->
 ### 接口（系统接口）
@@ -101,7 +101,7 @@ import { statistics } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [UidNetStatsInfo](arkts-network-statistics-uidnetstatsinfo-t-sys.md) | [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md) for every UID. Key is UID. [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md) for every UID. Key is UID. |
+| [UidNetStatsInfo](arkts-network-statistics-uidnetstatsinfo-t-sys.md) | NetStatsInfo for every UID. Key is UID. NetStatsInfo for every UID. Key is UID. |
 <!--DelEnd-->
 
 <!--Del-->

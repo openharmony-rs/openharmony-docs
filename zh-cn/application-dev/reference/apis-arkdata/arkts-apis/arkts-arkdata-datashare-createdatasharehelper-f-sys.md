@@ -15,7 +15,7 @@ function createDataShareHelper(context: Context, uri: string, callback: AsyncCal
 创建DataShareHelper实例。使用callback异步回调。<br>  
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -89,7 +89,7 @@ function createDataShareHelper(
 创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用callback异步回调。<br>  
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 10
 
@@ -163,7 +163,7 @@ function createDataShareHelper(
 创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用Promise异步回调。<br>  
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 9
 

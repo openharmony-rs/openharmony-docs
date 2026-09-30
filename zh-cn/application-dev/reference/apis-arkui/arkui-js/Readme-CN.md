@@ -55,7 +55,7 @@
   - [richtext](js-components-basic-richtext.md)
   - [search](js-components-basic-search.md)
   - [select](js-components-basic-select.md)
-  - [slider](js-components-basic-slider.md)
+  - slider
   - [span](js-components-basic-span.md)
   - [switch](js-components-basic-switch.md)
   - [text](js-components-basic-text.md)

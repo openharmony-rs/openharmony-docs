@@ -80,7 +80,7 @@ List(options?: ListOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [ChainAnimationOptions](arkts-arkui-list-comp-chainanimationoptions-i-sys.md) | 链式联动动效属性集合，用于设置List最大间距、最小间距、动效强度、传导系数、边缘效果、刚度和阻尼。当列表需要精细控制链式联动弹性效果时，可通过调整本对象中的参数实现不同动效手感。 |
+| ChainAnimationOptions | 链式联动动效属性集合，用于设置List最大间距、最小间距、动效强度、传导系数、边缘效果、刚度和阻尼。当列表需要精细控制链式联动弹性效果时，可通过调整本对象中的参数实现不同动效手感。 |
 | [CloseSwipeActionOptions](arkts-arkui-list-comp-closeswipeactionoptions-i.md) | 收起[EXPANDED](arkts-arkui-listitem-comp-swipeactionstate-e.md)状态[ListItem](arkts-arkui-listitem-comp.md)回调事件集合，用于设置收起动画完成后回调事件。 |
 | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) | 定义List组件的系统返回键行为。 |
 | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) | 用于设置List或ListItemGroup组件的分割线样式。 |
@@ -99,7 +99,7 @@ List(options?: ListOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [ChainEdgeEffect](arkts-arkui-list-comp-chainedgeeffect-e-sys.md) | 设置链式动效的边缘效果，用于决定列表滚动到边缘后继续拖动时列表项间距的变化方式。 |
+| ChainEdgeEffect | 设置链式动效的边缘效果，用于决定列表滚动到边缘后继续拖动时列表项间距的变化方式。 |
 | [ListItemAlign](arkts-arkui-list-comp-listitemalign-e.md) | 设置子组件在List交叉轴方向的对齐方式。 |
 | [ListItemGroupArea](arkts-arkui-list-comp-listitemgrouparea-e.md) | 枚举了ListItemGroup各个区域。 |
 | [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md) | 设置列表项滚动结束对齐效果。 |

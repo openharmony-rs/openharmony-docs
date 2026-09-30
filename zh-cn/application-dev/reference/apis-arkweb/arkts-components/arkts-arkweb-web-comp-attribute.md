@@ -277,7 +277,7 @@ darkMode(mode: WebDarkMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [WebDarkMode](arkts-arkweb-web-comp-webdarkmode-e.md) | 是 | 设置Web的深色模式为关闭、开启或跟随系统。<br>传入null或undefined时为`WebDarkMode.Off`。 |
+| mode | WebDarkMode | 是 | 设置Web的深色模式为关闭、开启或跟随系统。<br>传入null或undefined时为`WebDarkMode.Off`。 |
 
 ## databaseAccess
 
@@ -662,7 +662,7 @@ enableImageAnalyzer(enable: boolean)
 > 
 > - 图片的原始长宽均不小于100px。
 > 
-> - 在[设备类型](../../../quick-start/module-configuration-file.md#devicetypes标签)不为2in1的设备上，需要图片渲染宽度超过网页宽度的80%。
+> - 在设备类型不为2in1的设备上，需要图片渲染宽度超过网页宽度的80%。
 
 **起始版本：** 23
 
@@ -1220,7 +1220,7 @@ layoutMode(mode: WebLayoutMode)
 > 
 > - 当layoutMode设置为WebLayoutMode.FIT_CONTENT
 > 
-> - [forceDisplayScrollBar](#forcedisplayscrollbar)不支持常驻
+> - forceDisplayScrollBar不支持常驻
 > 
 > - [blankScreenDetectionConfig](#blankscreendetectionconfig)不生效
 > 
@@ -1405,7 +1405,7 @@ mixedMode(mixedMode: MixedMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mixedMode | [MixedMode](arkts-arkweb-web-comp-mixedmode-e.md) | 是 | 要设置的混合内容模式。<br>传入undefined或null时为MixedMode.All。 |
+| mixedMode | MixedMode | 是 | 要设置的混合内容模式。<br>传入undefined或null时为MixedMode.All。 |
 
 ## multiWindowAccess
 
@@ -1481,7 +1481,7 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [NestedScrollOptions](../../apis-arkui/arkts-components/arkts-arkui-common-comp-nestedscrolloptions-i.md) &#124; [NestedScrollOptionsExt](arkts-arkweb-web-comp-nestedscrolloptionsext-i.md) | 是 | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为[NestedScrollMode.SELF_FIRST](../../apis-arkui/arkts-apis/arkts-arkui-nestedscrollmode-e.md)。<br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。<br>**适用版本：** 14 |
+| value | [NestedScrollOptions](../../apis-arkui/arkts-components/arkts-arkui-common-comp-nestedscrolloptions-i.md) &#124; NestedScrollOptionsExt | 是 | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为[NestedScrollMode.SELF_FIRST](../../apis-arkui/arkts-apis/arkts-arkui-nestedscrollmode-e.md)。<br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。<br>**适用版本：** 14 |
 
 ## onActivateContent
 
@@ -1849,7 +1849,7 @@ onDownloadStart(callback: Callback<OnDownloadStartEvent>)
 onErrorReceive(callback: Callback<OnErrorReceiveEvent>)
 ```
 
-网页加载遇到错误时触发该回调。主资源与子资源出错都会回调该接口，可以通过[isMainFrame](arkts-arkweb-web-comp-webresourcerequest-c.md#ismainframe)来判断是否是主资源报错。出于性能考虑，建议此回调中尽量执行简单逻辑。在无网络的情况下，触发此回调。
+网页加载遇到错误时触发该回调。主资源与子资源出错都会回调该接口，可以通过isMainFrame来判断是否是主资源报错。出于性能考虑，建议此回调中尽量执行简单逻辑。在无网络的情况下，触发此回调。
 
 **起始版本：** 8
 
@@ -2205,7 +2205,7 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnInterceptRequestEvent](arkts-arkweb-web-comp-oninterceptrequestevent-i.md), [WebResourceResponse](arkts-arkweb-web-comp-webresourceresponse-c.md)&gt; | 是 | 当Web组件加载url之前触发此回调。<br>返回值[WebResourceResponse](arkts-arkweb-web-comp.md)。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。<br>**适用版本：** 12 |
+| callback | Callback&lt;[OnInterceptRequestEvent](arkts-arkweb-web-comp-oninterceptrequestevent-i.md), WebResourceResponse&gt; | 是 | 当Web组件加载url之前触发此回调。<br>返回值WebResourceResponse。返回响应数据则按照响应数据加载，无响应数据则返回null表示按照原来的方式加载。<br>**适用版本：** 12 |
 
 ## onLargestContentfulPaint
 
@@ -2289,7 +2289,7 @@ onLoadIntercept(callback: Callback<OnLoadInterceptEvent, boolean>)
 
 > **说明：** 
 > 
-> - onLoadIntercept无法获取到完整的headers，如需获取完整headers建议在[onInterceptRequest](#oninterceptrequest)或者通过WebSchemeHandler的[onRequestStart](../arkts-apis/arkts-arkweb-webview-webschemehandler-c.md#onrequeststart)中获取。
+> - onLoadIntercept无法获取到完整的headers，如需获取完整headers建议在onInterceptRequest或者通过WebSchemeHandler的[onRequestStart](../arkts-apis/arkts-arkweb-webview-webschemehandler-c.md#onrequeststart)中获取。
 
 **起始版本：** 10
 
@@ -2514,7 +2514,7 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 > 
 > - 该功能需通过调用[setErrorPageEnabled](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#seterrorpageenabled)&lt;sup &gt; &gt;20+&lt;/sup&gt;启用mainframe错误页功能后才会生效。如需同时启用subframe错误页功能，请调用[setErrorPageEnabled](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#seterrorpageenabled-1)接口并将includeSubframe设置为true。
 > 
-> - 通过[errorPageEvent.request.isMainFrame()](arkts-arkweb-web-comp-webresourcerequest-c.md#ismainframe)判断请求来源是mainframe还是subframe，以便在回调中分别设置对应的自定义错误页。
+> - 通过errorPageEvent.request.isMainFrame()判断请求来源是mainframe还是subframe，以便在回调中分别设置对应的自定义错误页。
 > 
 > - 通过[errorPageEvent.error.getErrorCode()](arkts-arkweb-web-comp-webresourceerror-c.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
 
@@ -3102,7 +3102,7 @@ onShowFileSelector(callback: Callback<OnShowFileSelectorEvent, boolean>)
 onSslErrorEvent(callback: OnSslErrorEventCallback)
 ```
 
-通知用户加载资源（主资源+子资源）时发生SSL错误，如果只想处理主资源的SSL错误，请用[isMainFrame](arkts-arkweb-web-comp-webresourcerequest-c.md#ismainframe)字段进行区分。
+通知用户加载资源（主资源+子资源）时发生SSL错误，如果只想处理主资源的SSL错误，请用isMainFrame字段进行区分。
 
 > **说明：** 
 > 
@@ -4059,7 +4059,7 @@ textZoomAtio(textZoomAtio: number)
 
 **废弃版本：** 9
 
-**替代接口：** [textZoomRatio](#textzoomratio)
+**替代接口：** textZoomRatio
 
 <!--Device-WebAttribute-textZoomAtio(textZoomAtio: number): WebAttribute--><!--Device-WebAttribute-textZoomAtio(textZoomAtio: number): WebAttribute-End-->
 

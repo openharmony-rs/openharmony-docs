@@ -8,7 +8,7 @@
 > 
 > - 该组件从API version 10开始支持继承父组件Text的属性，即如果子组件未设置属性且父组件设置属性，则继承父组件设置的属性。支持继承的属性仅包括：fontColor、fontSize、fontStyle、fontWeight、decoration、letterSpacing、textCase、fontFamily、textShadow。
 > 
-> - 支持[通用属性](arkts-arkui-common-comp.md)中的[无障碍属性](arkts-arkui-common-comp.md)（[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)）、[组件标识](arkts-arkui-common-comp.md)（[id](arkts-arkui-common-comp-commonmethod-c.md#id)、[key](arkts-arkui-common-comp-commonmethod-c.md#key)）和[禁用反色能力](arkts-arkui-common-comp.md)（[allowForceDark](arkts-arkui-common-comp-commonmethod-c.md#allowforcedark)），不支持其他通用属性。若需设置其他通用属性，应使用[Text](arkts-arkui-text-comp.md)进行设置，或改用[属性字符串](../arkts-apis/arkts-arkui-styledstring.md#styled_string)中的[CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md)自行绘制。
+> - 支持[通用属性](arkts-arkui-common-comp.md)中的[无障碍属性](arkts-arkui-common-comp.md)（[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)）、[组件标识](arkts-arkui-common-comp.md)（[id](arkts-arkui-common-comp-commonmethod-c.md#id)、[key](arkts-arkui-common-comp-commonmethod-c.md#key)）和[禁用反色能力](arkts-arkui-common-comp.md)（[allowForceDark](arkts-arkui-common-comp-commonmethod-c.md#allowforcedark)），不支持其他通用属性。若需设置其他通用属性，应使用[Text](arkts-arkui-text-comp.md)进行设置，或改用[属性字符串](../arkts-apis/arkts-arkui-styledstring.md)中的[CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md)自行绘制。
 > 
 > - [accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)仅在Span设置了[onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick)事件时生效，配置的文本只会体现在无障碍服务识别到的内嵌链接弹窗中。直接播报时，仍播报Span的内容，不会替换为accessibilityText配置的文本。
 > 

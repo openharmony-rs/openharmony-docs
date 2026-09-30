@@ -9,7 +9,7 @@
 - [@ohos.data.cloudData(端云服务)](arkts-arkdata-data-clouddata.md)
   - [cloudData](arkts-arkdata-clouddata-n.md)
     <!--Del-->
-    - [sharing(系统接口)](arkts-arkdata-clouddata-sharing-n.md)<!--DelEnd-->
+    - sharing(系统接口)<!--DelEnd-->
       <!--Del-->
       - [allocResourceAndShare(系统接口)](arkts-arkdata-sharing-allocresourceandshare-f-sys.md)<!--DelEnd-->
       <!--Del-->

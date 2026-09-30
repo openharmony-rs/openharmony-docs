@@ -76,7 +76,7 @@ readonly windowBounds: RRect
 
 动画窗口实际大小。
 
-**类型：** [RRect](arkts-arkui-remotewindow-comp-rrect-i-sys.md)
+**类型：** RRect
 
 **起始版本：** 9
 

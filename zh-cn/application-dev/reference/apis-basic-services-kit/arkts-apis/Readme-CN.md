@@ -218,7 +218,7 @@
 <!--Del-->
 - [@ohos.brightness(屏幕亮度)](arkts-basicservices-brightness.md)<!--DelEnd-->
   <!--Del-->
-  - [setValue(系统接口)](arkts-basicservices-brightness-setvalue-f-sys.md)<!--DelEnd-->
+  - setValue(系统接口)<!--DelEnd-->
 - [@ohos.busManager.serial(串口通信管理)](arkts-basicservices-busmanager-serial.md)
   <!--Del-->
   - [addPortAuthorization(系统接口)](arkts-basicservices-serial-addportauthorization-f-sys.md)<!--DelEnd-->
@@ -333,7 +333,7 @@
   - [isScreenOn](arkts-basicservices-power-isscreenon-f.md)
   - [isStandby](arkts-basicservices-power-isstandby-f.md)
   <!--Del-->
-  - [reboot(系统接口)](arkts-basicservices-power-reboot-f-sys.md)<!--DelEnd-->
+  - reboot(系统接口)<!--DelEnd-->
   - [rebootDevice](arkts-basicservices-power-rebootdevice-f.md)
   <!--Del-->
   - [refreshActivity(系统接口)](arkts-basicservices-power-refreshactivity-f-sys.md)<!--DelEnd-->
@@ -664,11 +664,11 @@
   <!--Del-->
   - [setAutoTimeStatus(系统接口)](arkts-basicservices-systemdatetime-setautotimestatus-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [setDate(系统接口)](arkts-basicservices-systemdatetime-setdate-f-sys.md)<!--DelEnd-->
+  - setDate(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [setTime(系统接口)](arkts-basicservices-systemdatetime-settime-f-sys.md)<!--DelEnd-->
+  - setTime(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [setTimezone(系统接口)](arkts-basicservices-systemdatetime-settimezone-f-sys.md)<!--DelEnd-->
+  - setTimezone(系统接口)<!--DelEnd-->
   <!--Del-->
   - [updateNtpTime(系统接口)](arkts-basicservices-systemdatetime-updatentptime-f-sys.md)<!--DelEnd-->
   - [TimeType](arkts-basicservices-systemdatetime-timetype-e.md)
@@ -704,9 +704,9 @@
 <!--Del-->
 - [@ohos.systemTimer(系统定时器)](arkts-basicservices-systemtimer.md)<!--DelEnd-->
   <!--Del-->
-  - [createTimer(系统接口)](arkts-basicservices-systemtimer-createtimer-f-sys.md)<!--DelEnd-->
+  - createTimer(系统接口)<!--DelEnd-->
   <!--Del-->
-  - [destroyTimer(系统接口)](arkts-basicservices-systemtimer-destroytimer-f-sys.md)<!--DelEnd-->
+  - destroyTimer(系统接口)<!--DelEnd-->
   <!--Del-->
   - [startTimer(系统接口)](arkts-basicservices-systemtimer-starttimer-f-sys.md)<!--DelEnd-->
   <!--Del-->

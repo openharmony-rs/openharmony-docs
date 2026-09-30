@@ -33,7 +33,7 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback<Panel>): 
 > <br>
 > 输入法面板不支持创建子窗口。例如：不支持使用window.createWindow[设置应用子窗口](../../../windowmanager/application-window-fa.md#设置应用子窗口)、<br>
 > [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) <br>
-> 、[CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如<br>
+> 、[CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如<br>
 > [弹出框](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md)、<br>
 > [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu)或设置<br>
 > showInSubwindow为false。
@@ -106,7 +106,7 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise<Panel>
 > <br>
 > 输入法面板不支持创建子窗口。例如：不支持使用window.createWindow[设置应用子窗口](../../../windowmanager/application-window-fa.md#设置应用子窗口)、<br>
 > [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) <br>
-> 、[CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如<br>
+> 、[CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如<br>
 > [弹出框](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md)、<br>
 > [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu)或设置<br>
 > showInSubwindow为false。

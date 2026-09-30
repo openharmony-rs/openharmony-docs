@@ -8,13 +8,13 @@ Hap模块信息，未做特殊说明的属性，均通过[bundle.getBundleInfo](
 
 > **说明：** 
 > 
-> 从API version 9开始，该模块不再维护，建议使用[bundleManager-HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)替代。
+> 从API version 9开始，该模块不再维护，建议使用bundleManager-HapModuleInfo替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)
+**替代接口：** HapModuleInfo
 
 <!--Device-unnamed-export interface HapModuleInfo--><!--Device-unnamed-export interface HapModuleInfo-End-->
 
@@ -28,7 +28,7 @@ readonly abilityInfo: Array<AbilityInfo>
 
 Ability信息。
 
-**类型：** Array&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt;
+**类型：** Array&lt;AbilityInfo&gt;
 
 **默认值：** Obtains configuration information about ability
 

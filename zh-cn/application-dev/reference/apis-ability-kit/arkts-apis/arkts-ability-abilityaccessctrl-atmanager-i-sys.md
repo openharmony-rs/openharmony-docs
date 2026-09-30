@@ -523,7 +523,7 @@ off(
 取消订阅时，若不传入callback，则批量取消与tokenIDList和permissionList完全匹配的所有监听回调。
 
 > **说明：** 
-> 该接口通常与[on](#onpermissionstatechange)配套使用，用于取消通过on创建的监听关系。
+> 该接口通常与on配套使用，用于取消通过on创建的监听关系。
 
 **起始版本：** 9
 

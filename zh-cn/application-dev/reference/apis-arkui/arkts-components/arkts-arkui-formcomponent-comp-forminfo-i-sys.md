@@ -60,7 +60,7 @@ dimension?: FormDimension
 
 默认值：Dimension_2_2。
 
-**类型：** [FormDimension](arkts-arkui-formcomponent-comp-formdimension-e-sys.md)
+**类型：** FormDimension
 
 **起始版本：** 12
 
@@ -167,7 +167,7 @@ renderingMode?: FormRenderingMode
 
 如果系统不支持统一渲染模式，卡片框架在单色模式下也不会把卡片背景设为透明。
 
-**类型：** [FormRenderingMode](arkts-arkui-formcomponent-comp-formrenderingmode-e-sys.md)
+**类型：** FormRenderingMode
 
 **起始版本：** 12
 
@@ -185,7 +185,7 @@ shape?: FormShape
 
 卡片的形状。
 
-**类型：** [FormShape](arkts-arkui-formcomponent-comp-formshape-e-sys.md)
+**类型：** FormShape
 
 **起始版本：** 12
 

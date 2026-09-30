@@ -49,7 +49,7 @@ distortionMode?: DistortionMode
 
 设置菜单的非线性形变动画模式。
 
-**类型：** [DistortionMode](arkts-arkui-common-comp-distortionmode-e-sys.md)
+**类型：** DistortionMode
 
 **默认值：** DistortionMode.DISTORTION_AUTO
 
@@ -71,7 +71,7 @@ edgeLightMode?: EdgeLightMode
 
 设置菜单的流光动画模式。
 
-**类型：** [EdgeLightMode](arkts-arkui-common-comp-edgelightmode-e-sys.md)
+**类型：** EdgeLightMode
 
 **默认值：** EdgeLightMode.EDGELIGHT_DISABLED
 

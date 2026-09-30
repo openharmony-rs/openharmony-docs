@@ -1045,7 +1045,7 @@
   <!--Del-->
   - [getAllNewPreinstalledApplicationInfo(系统接口)](arkts-ability-bundlemanager-getallnewpreinstalledapplicationinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [getAllPluginInfo(系统接口)](arkts-ability-bundlemanager-getallplugininfo-f-sys.md)<!--DelEnd-->
+  - getAllPluginInfo(系统接口)<!--DelEnd-->
   <!--Del-->
   - [getAllPreinstalledApplicationInfo(系统接口)](arkts-ability-bundlemanager-getallpreinstalledapplicationinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1376,7 +1376,7 @@
   - [getLauncherAbilityInfo(系统接口)](arkts-ability-launcherbundlemanager-getlauncherabilityinfo-f-sys.md)<!--DelEnd-->
   - [getLauncherAbilityInfoSync](arkts-ability-launcherbundlemanager-getlauncherabilityinfosync-f.md)
   <!--Del-->
-  - [getShortcutInfo(系统接口)](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md)<!--DelEnd-->
+  - getShortcutInfo(系统接口)<!--DelEnd-->
   <!--Del-->
   - [getShortcutInfoByAppIndex(系统接口)](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1653,17 +1653,17 @@
   <!--Del-->
   - [AutoFillRect(自动填充矩形区域)](arkts-ability-autofillrect.md)<!--DelEnd-->
     <!--Del-->
-    - [AutoFillRect(系统接口)](arkts-ability-autofillrect-i-sys.md)<!--DelEnd-->
+    - AutoFillRect(系统接口)<!--DelEnd-->
   - [AutoFillRequest(AutoFillRequest)](arkts-ability-autofillrequest.md)
     - [FillFailureResult](arkts-ability-autofillrequest-fillfailureresult-i.md)
     <!--Del-->
-    - [FillRequest(系统接口)](arkts-ability-autofillrequest-fillrequest-i-sys.md)<!--DelEnd-->
+    - FillRequest(系统接口)<!--DelEnd-->
     <!--Del-->
     - [FillRequestCallback(系统接口)](arkts-ability-autofillrequest-fillrequestcallback-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [FillResponse(系统接口)](arkts-ability-autofillrequest-fillresponse-i-sys.md)<!--DelEnd-->
     <!--Del-->
-    - [SaveRequest(系统接口)](arkts-ability-autofillrequest-saverequest-i-sys.md)<!--DelEnd-->
+    - SaveRequest(系统接口)<!--DelEnd-->
     <!--Del-->
     - [SaveRequestCallback(系统接口)](arkts-ability-autofillrequest-saverequestcallback-i-sys.md)<!--DelEnd-->
     <!--Del-->
@@ -1799,7 +1799,7 @@
   <!--Del-->
   - [PageNodeInfo(页面节点信息)](arkts-ability-pagenodeinfo.md)<!--DelEnd-->
     <!--Del-->
-    - [PageNodeInfo(系统接口)](arkts-ability-pagenodeinfo-i-sys.md)<!--DelEnd-->
+    - PageNodeInfo(系统接口)<!--DelEnd-->
   - [ProcessData(ProcessData)](arkts-ability-processdata.md)
     - [ProcessData](arkts-ability-processdata-c.md)
   - [ProcessInformation(ProcessInformation)](arkts-ability-processinformation.md)

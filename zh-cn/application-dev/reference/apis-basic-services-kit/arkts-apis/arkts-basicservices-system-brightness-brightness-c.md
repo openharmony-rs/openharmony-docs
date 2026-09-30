@@ -406,7 +406,7 @@ static setValue(options?: SetBrightnessOptions): void
 
 **废弃版本：** 7
 
-**替代接口：** [setValue](arkts-basicservices-brightness-setvalue-f-sys.md)
+**替代接口：** setValue
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 

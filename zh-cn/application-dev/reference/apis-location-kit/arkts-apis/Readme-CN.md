@@ -5,7 +5,7 @@
 <!--Del-->
 - [@ohos.app.ability.FenceExtensionContext](arkts-location-app-ability-fenceextensioncontext.md)<!--DelEnd-->
   <!--Del-->
-  - [FenceExtensionContext(系统接口)](arkts-location-app-ability-fenceextensioncontext-fenceextensioncontext-c-sys.md)<!--DelEnd-->
+  - FenceExtensionContext(系统接口)<!--DelEnd-->
 - [@ohos.geolocation](arkts-location-geolocation.md)
   - [flushCachedGnssLocations](arkts-location-geolocation-flushcachedgnsslocations-f.md)
   - [getAddressesFromLocation](arkts-location-geolocation-getaddressesfromlocation-f.md)
@@ -185,7 +185,7 @@
   <!--Del-->
   - [LocationIconStatus(系统接口)](arkts-location-geolocationmanager-locationiconstatus-e-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [LocationPrivacyType(系统接口)](arkts-location-geolocationmanager-locationprivacytype-e-sys.md)<!--DelEnd-->
+  - LocationPrivacyType(系统接口)<!--DelEnd-->
   - [LocationRequestPriority](arkts-location-geolocationmanager-locationrequestpriority-e.md)
   - [LocationRequestScenario](arkts-location-geolocationmanager-locationrequestscenario-e.md)
   - [LocationSourceType](arkts-location-geolocationmanager-locationsourcetype-e.md)

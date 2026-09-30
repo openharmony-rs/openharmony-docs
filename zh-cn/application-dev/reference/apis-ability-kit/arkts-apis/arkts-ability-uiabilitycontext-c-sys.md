@@ -24,7 +24,7 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -126,7 +126,7 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 11
 
@@ -209,7 +209,7 @@ requestModalUIExtension(pickerWant: Want): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 11
 
@@ -531,7 +531,7 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 10
 
@@ -618,7 +618,7 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 10
 
@@ -707,7 +707,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 
 **起始版本：** 10
 
@@ -804,7 +804,7 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise<Caller>
 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`权限。  
 - 调用方应用位于后台时，使用该接口启动UIAbility需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。  
 - 跨应用场景下，目标UIAbility的exported属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限。  
-- 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+- 同设备与跨设备场景下，该接口的使用规则存在差异，详见：组件启动规则（Stage模型）。
 
 **起始版本：** 10
 
@@ -909,7 +909,7 @@ startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncC
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -1018,7 +1018,7 @@ startAbilityForResultWithAccount(
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -1125,7 +1125,7 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartO
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -1235,7 +1235,7 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback<v
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -1338,7 +1338,7 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -1445,7 +1445,7 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -1561,7 +1561,7 @@ startRecentAbility(want: Want, callback: AsyncCallback<void>): void
 > 
 > - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。
 > 
-> - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -1662,7 +1662,7 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback<vo
 > 
 > - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。
 > 
-> - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -1768,7 +1768,7 @@ startRecentAbility(want: Want, options?: StartOptions): Promise<void>
 > 
 > - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。
 > 
-> - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见组件启动规则（Stage模型）。
 
 **起始版本：** 9
 
@@ -2035,7 +2035,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -2126,7 +2126,7 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<
 
 > **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：组件启动规则（Stage模型）。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 

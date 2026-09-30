@@ -72,7 +72,7 @@ lightSource?: LightSource
 
 默认值：无光源
 
-**类型：** [LightSource](arkts-arkui-common-comp-lightsource-i-sys.md)
+**类型：** LightSource
 
 **默认值：** undefined
 

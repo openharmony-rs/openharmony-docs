@@ -93,4 +93,4 @@ function getScanInfos(callback: AsyncCallback<Array<WifiScanInfo>>): void
 
 **示例**
 
-参见 [getScanInfos](#getscaninfos)
+参见 getScanInfos

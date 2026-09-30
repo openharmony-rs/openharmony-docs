@@ -54,7 +54,7 @@ Marquee(options: MarqueeOptions)
 
 该示例展示了跑马灯内容动态更新时的运行效果，主要涉及start、step、loop、fromStart、src等属性以及[marqueeUpdateStrategy](arkts-arkui-marquee-comp-attribute.md#marqueeupdatestrategy)属性的设置。
 
-从API version 23开始，[MarqueeOptions](#marquee)新增spacing、delay属性。
+从API version 23开始，MarqueeOptions新增spacing、delay属性。
 
 
 

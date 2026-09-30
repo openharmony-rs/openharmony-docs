@@ -303,9 +303,9 @@ struct TextTimerDemo {
 
 ### 示例6（设置初始计时时间）
 
-该示例通过[TextTimerOptions](#texttimer)的startTime属性设置计时器初始计时时间。
+该示例通过TextTimerOptions的startTime属性设置计时器初始计时时间。
 
-从API版本26.0.0开始，[TextTimerOptions](#texttimer)新增了startTime属性。
+从API版本26.0.0开始，TextTimerOptions新增了startTime属性。
 
 ```TypeScript
 // xxx.ets

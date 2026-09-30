@@ -291,7 +291,7 @@ struct Gauge4 {
 
 ### 示例5（设置最大最小值）
 
-该示例通过设置[GaugeOptions](#gauge)的min、max属性，实现了量规图的最大最小值设置的功能。
+该示例通过设置GaugeOptions的min、max属性，实现了量规图的最大最小值设置的功能。
 
 
 
