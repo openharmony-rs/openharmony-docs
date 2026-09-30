@@ -1719,3 +1719,17 @@ Allows an application to enter exam mode. The system service will display a dial
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.1
+
+## ohos.permission.DIRECT_CALL
+
+Allows an application to make calls with one tap.
+
+<!--RP112--><!--RP112End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Supported devices**: phones
+
+**Since**: 26.0.1
