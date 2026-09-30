@@ -1713,3 +1713,17 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.1
+
+## ohos.permission.DIRECT_CALL
+
+允许应用一键拨号。
+
+<!--RP112--><!--RP112End-->
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**支持设备**：Phone
+
+**起始版本**：26.0.1
