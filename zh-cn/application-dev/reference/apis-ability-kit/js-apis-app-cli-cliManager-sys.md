@@ -348,7 +348,7 @@ Shell命令执行参数，用于Hook拦截。包含命令字符串和执行选�
 
 | 名称        | 类型 | 必填 | 说明 |
 | ----------- | ---- | --- | ------------------ |
-| execResult  | [ExecResult](js-apis-app-cli-cliManager.md#execresult) | 是 | 执行结果。 |
+| execResult  | [ExecResult](js-apis-app-cli-cliManager.md#execresult) | 是 | 工具或命令的执行结果，包含退出码（exitCode）、标准输出（outputText）、标准错误输出（errorText）、终止信号（signalNumber）、是否超时（timeOut）和执行时长（executionTime），详见[ExecResult](js-apis-app-cli-cliManager.md#execresult)。在[onAfterCallTool()](#onaftercalltool)和[onAfterCallCmd()](#onaftercallcmd)回调中可读取该字段查看原始执行结果，修改后会将替换后的结果返回给调用方。 |
 
 ## CliHook
 
