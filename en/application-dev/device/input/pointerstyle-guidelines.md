@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=7de74d10089ae65ef9185e98373eb2da78c06dde translatedAt=2026-09-28T02:26:45.878Z pushedAt=2026-09-29T10:00:43.172Z -->
+<!-- md-trans-meta sourceCommit=7de74d10089ae65ef9185e98373eb2da78c06dde translatedAt=2026-09-28T02:26:45.878Z pushedAt=2026-09-30T04:27:23.845Z -->
 
 ## When to Use
 
@@ -87,7 +87,7 @@ Text("Click to display pointer")
 
 ## Setting the Mouse Pointer Style
 
-When you design the color picker feature, you can switch the mouse pointer style to the color picker style, and set the mouse pointer style back to the default after color pickup is complete.This API sets and queries the pointer style of a specified window in the current application. A total of 49 pointer styles are available. For details, see [PointerStyle](../../reference/apis-input-kit/js-apis-pointer.md#pointerstyle).
+When you design the color picker feature, you can switch the mouse pointer style to the color picker style, and set the mouse pointer style back to the default after color pickup is complete. This API sets and queries the pointer style of a specified window in the current application. A total of 49 pointer styles are available. For details, see [PointerStyle](../../reference/apis-input-kit/js-apis-pointer.md#pointerstyle).
 
 ### How to Develop
 
