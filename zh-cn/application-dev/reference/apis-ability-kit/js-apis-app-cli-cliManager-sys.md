@@ -297,3 +297,397 @@ try {
 }
 ```
 
+## ExecToolParam
+
+CLI工具执行参数，用于Hook拦截。包含工具名称、子命令、参数、挑战码和执行选项。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+| 名称        | 类型 | 必填 | 说明 |
+| ----------- | ---- | --- | ------------------ |
+| toolName    | string | 是 | 工具名称。 |
+| subCommand  | string | 是 | 子命令名称。 |
+| args        | Record\<string, Object\> | 是 | 工具执行参数。 |
+| challenge   | string | 是 | 权限校验的挑战码。 |
+| execOptions | [ExecOptions](#execoptions) | 否 | 执行选项。<br/>默认值：详见[ExecOptions](#execoptions)的具体属性默认值。 |
+
+## ExecCmdParam
+
+Shell命令执行参数，用于Hook拦截。包含命令字符串和执行选项。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+| 名称           | 类型 | 必填 | 说明 |
+| -------------- | ---- | --- | ------------------ |
+| cmd            | string | 是 | 要执行的Shell命令。 |
+| execCmdOptions | [ExecCmdOptions](js-apis-app-cli-cliManager.md#execcmdoptions) | 否 | 命令执行选项。<br/>默认值：详见[ExecCmdOptions](js-apis-app-cli-cliManager.md#execcmdoptions)的具体属性默认值。 |
+
+## ExecResultWrap
+
+执行结果包装类，用于[onAfterCallTool()](#onaftercalltool)和[onAfterCallCmd()](#onaftercallcmd)回调。包含执行结果。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+| 名称        | 类型 | 必填 | 说明 |
+| ----------- | ---- | --- | ------------------ |
+| execResult  | [ExecResult](js-apis-app-cli-cliManager.md#execresult) | 是 | 执行结果。 |
+
+## CliHook
+
+CLI工具和命令执行拦截Hook接口。Hook对象可实现该接口中可选方法的任意子集，仅已实现的方法会被调用，未实现的方法将被跳过。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+### onBeforeCallTool
+
+onBeforeCallTool(param: ExecToolParam): ExecToolParam
+
+工具执行前的回调。返回的对象将替换原始参数。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| param | [ExecToolParam](#exectoolparam) | 是 | 原始工具执行参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [ExecToolParam](#exectoolparam) | 替换后的工具执行参数。 |
+
+**示例：**
+
+```ts
+import { CliHook, ExecToolParam } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const LOG_DOMAIN = 0x00;
+const LOG_TAG = 'testTag';
+
+const cliHook: CliHook = {
+  onBeforeCallTool: (param: ExecToolParam): ExecToolParam => {
+    hilog.info(LOG_DOMAIN, LOG_TAG, 'onBeforeCallTool, toolName: ' + param.toolName);
+    // 可在此修改执行参数，例如替换toolName或args
+    return param;
+  }
+};
+```
+
+### onAfterCallTool
+
+onAfterCallTool(param: ExecResultWrap): ExecResultWrap
+
+工具执行后的回调。返回的对象将替换原始结果。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| param | [ExecResultWrap](#execresultwrap) | 是 | 执行结果参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [ExecResultWrap](#execresultwrap) | 替换后的执行结果参数。 |
+
+**示例：**
+
+```ts
+import { CliHook, ExecResultWrap } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const LOG_DOMAIN = 0x00;
+const LOG_TAG = 'testTag';
+
+const cliHook: CliHook = {
+  onAfterCallTool: (param: ExecResultWrap): ExecResultWrap => {
+    hilog.info(LOG_DOMAIN, LOG_TAG, 'onAfterCallTool, exitCode: ' + param.execResult.exitCode);
+    // 可在此修改执行结果，例如改写stdout或exitCode
+    return param;
+  }
+};
+```
+
+### onBeforeCallCmd
+
+onBeforeCallCmd(param: ExecCmdParam): ExecCmdParam
+
+命令执行前的回调。返回的对象将替换原始参数。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| param | [ExecCmdParam](#execcmdparam) | 是 | 原始命令执行参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [ExecCmdParam](#execcmdparam) | 替换后的命令执行参数。 |
+
+**示例：**
+
+```ts
+import { CliHook, ExecCmdParam } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const LOG_DOMAIN = 0x00;
+const LOG_TAG = 'testTag';
+
+const cliHook: CliHook = {
+  onBeforeCallCmd: (param: ExecCmdParam): ExecCmdParam => {
+    hilog.info(LOG_DOMAIN, LOG_TAG, 'onBeforeCallCmd, cmd: ' + param.cmd);
+    // 可在此修改命令参数，例如替换cmd
+    return param;
+  }
+};
+```
+
+### onAfterCallCmd
+
+onAfterCallCmd(param: ExecResultWrap): ExecResultWrap
+
+命令执行后的回调。返回的对象将替换原始结果。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| param | [ExecResultWrap](#execresultwrap) | 是 | 执行结果参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [ExecResultWrap](#execresultwrap) | 替换后的执行结果参数。 |
+
+**示例：**
+
+```ts
+import { CliHook, ExecResultWrap } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const LOG_DOMAIN = 0x00;
+const LOG_TAG = 'testTag';
+
+const cliHook: CliHook = {
+  onAfterCallCmd: (param: ExecResultWrap): ExecResultWrap => {
+    hilog.info(LOG_DOMAIN, LOG_TAG, 'onAfterCallCmd, exitCode: ' + param.execResult.exitCode);
+    // 可在此修改命令结果，例如改写stdout或exitCode
+    return param;
+  }
+};
+```
+
+## cliManager.registerCliHook
+
+registerCliHook(hook: CliHook): Promise\<void\>
+
+注册CLI Hook，用于拦截工具和命令执行。同一时间只允许注册一个CLI Hook，已有Hook注册时再次注册将失败。本接口仅在开发者模式下可用。如需更新已注册的Hook，请先调用[unregisterCliHook()](#climanagerunregisterclihook)取消注册后再重新注册。Hook对象必须实现[CliHook](#clihook)接口中至少一个可选方法。注册CLI Hook的应用与调用[execTool()](#climanagerexectool)/[execCmd()](js-apis-app-cli-cliManager.md#climanagerexeccmd)的应用不能为同一应用：execTool()/execCmd()会同步阻塞主线程，而Hook回调在主线程执行，同一应用下会因主线程被占用导致回调无法触发。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.REGISTER_AGENT_HOOK
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| hook | [CliHook](#clihook) | 是 | 实现CliHook接口的Hook对象。该对象必须实现至少一个可选方法。 |
+
+**返回值：**
+
+| 类型           | 说明                     |
+| -------------- | ------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied, interface caller does not have permission "ohos.permission.REGISTER_AGENT_HOOK". |
+| 202      | Not system application. Interface caller is not a system app. |
+| 35600034 | The device is not in developer mode.                         |
+| 35600035 | A hook is already registered; unregister it first.           |
+| 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
+
+**示例：**
+
+```ts
+import { cliManager, CliHook, ExecToolParam, ExecCmdParam, ExecResultWrap } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const LOG_DOMAIN = 0x00;
+const LOG_TAG = 'testTag';
+
+// 定义CLI Hook对象
+const cliHook: CliHook = {
+  onBeforeCallTool: (param: ExecToolParam): ExecToolParam => {
+    hilog.info(LOG_DOMAIN, LOG_TAG, 'onBeforeCallTool, toolName: ' + param.toolName);
+    // 可在此修改执行参数
+    return param;
+  },
+  onAfterCallTool: (param: ExecResultWrap): ExecResultWrap => {
+    hilog.info(LOG_DOMAIN, LOG_TAG, 'onAfterCallTool, exitCode: ' + param.execResult.exitCode);
+    // 可在此修改执行结果
+    return param;
+  },
+  onBeforeCallCmd: (param: ExecCmdParam): ExecCmdParam => {
+    hilog.info(LOG_DOMAIN, LOG_TAG, 'onBeforeCallCmd, cmd: ' + param.cmd);
+    // 可在此修改命令参数
+    return param;
+  },
+  onAfterCallCmd: (param: ExecResultWrap): ExecResultWrap => {
+    hilog.info(LOG_DOMAIN, LOG_TAG, 'onAfterCallCmd, exitCode: ' + param.execResult.exitCode);
+    // 可在此修改命令结果
+    return param;
+  }
+};
+
+export default class CliHookTest {
+  static async registerHook() {
+    try {
+      // 注册CLI Hook
+      await cliManager.registerCliHook(cliHook);
+      hilog.info(LOG_DOMAIN, LOG_TAG, 'registerCliHook success.');
+    } catch (error) {
+      hilog.error(LOG_DOMAIN, LOG_TAG, `registerCliHook failed, errorCode: ${error.code}, message: ${error.message}`);
+    }
+  }
+}
+```
+
+## cliManager.unregisterCliHook
+
+unregisterCliHook(hook: CliHook): Promise\<void\>
+
+取消注册已注册的CLI Hook。传入的Hook对象必须与调用[registerCliHook()](#climanagerregisterclihook)时传入的对象相同。若无Hook注册，调用将失败。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.REGISTER_AGENT_HOOK
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| hook | [CliHook](#clihook) | 是 | 要取消注册的Hook对象。 |
+
+**返回值：**
+
+| 类型           | 说明                     |
+| -------------- | ------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied, interface caller does not have permission "ohos.permission.REGISTER_AGENT_HOOK". |
+| 202      | Not system application. Interface caller is not a system app. |
+| 35600036 | No hook is registered; nothing to unregister.               |
+| 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
+
+**示例：**
+
+```ts
+import { cliManager, CliHook, ExecToolParam } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const LOG_DOMAIN = 0x00;
+const LOG_TAG = 'testTag';
+
+// cliHook为调用registerCliHook时传入的Hook对象
+const cliHook: CliHook = {
+  onBeforeCallTool: (param: ExecToolParam): ExecToolParam => {
+    return param;
+  }
+};
+
+export default class CliHookTest {
+  static async unregisterHook() {
+    try {
+      // 取消注册CLI Hook
+      await cliManager.unregisterCliHook(cliHook);
+      hilog.info(LOG_DOMAIN, LOG_TAG, 'unregisterCliHook success.');
+    } catch (error) {
+      hilog.error(LOG_DOMAIN, LOG_TAG, `unregisterCliHook failed, errorCode: ${error.code}, message: ${error.message}`);
+    }
+  }
+}
+```
