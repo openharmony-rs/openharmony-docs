@@ -27863,7 +27863,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/myabilitystage/MyAbilityStage.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":56,
 						"name":"myAbility_start",
 						"start_line":16
 					}
