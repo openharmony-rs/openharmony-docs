@@ -35,7 +35,7 @@ import { boardInfo } from '@kit.BasicServicesKit';
 | cpuId | string | 是 | CPU ID。<br>示例：AA AA AA AA 00 00 00 00（十六进制字符串）|
 | cpuArch | string | 是 | CPU架构。<br>示例：aarch64 |
 | cpuVendor | string | 是 | CPU厂商信息。<br>示例：HISILICON |
-| boardSn | string | 是 | 主板序列号。<br>**说明**：可作为设备唯一识别码。<br>**需要权限**：ohos.permission.ACCESS_BOARD_INFO(该权限只允许系统应用及企业类应用申请)<br>示例：0123456789ABCDEF |
+| boardSn | string | 是 | 主板序列号。<br>**说明**：可作为设备唯一识别码。<br>**需要权限**：ohos.permission.ACCESS_BOARD_INFO<br>示例：0123456789ABCDEF |
 | boardVendor | string | 是 | 主板厂商。<br>示例：HUAWEI |
 | boardName | string | 是 | 主板产品名称。<br>示例：HAD-PCB |
 | biosVendor | string | 是 | BIOS厂商。<br>示例：HUAWEI |
@@ -48,7 +48,7 @@ import { boardInfo } from '@kit.BasicServicesKit';
 
 | 错误码ID | 错误信息 |
 |---------|---------|
-| 201 | Permission denied. Permission verification failed. An attempt was made to access a service or API that requires ohos.permission.ACCESS_BOARD_INFO. |
+| 201 | Permission denied. requires ohos.permission.ACCESS_BOARD_INFO |
 
 **示例**
 
