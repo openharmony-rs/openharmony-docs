@@ -70,6 +70,26 @@ System internal error.
 
 2.系统异常，请稍后重试或重启设备。
 
+## 2201004 以太网配置信息无效
+
+**错误信息**
+
+Invalid Ethernet profile.
+
+**错误描述**
+
+调用[setIfaceConfig](./js-apis-net-ethernet-sys.md#ethernetsetifaceconfig)接口时，传入的以太网接口配置信息无效。
+
+**可能原因**
+
+1. 传入的[InterfaceConfiguration](./js-apis-net-ethernet-sys.md#interfaceconfiguration)不合法，例如静态模式下ipAddr、netMask、gateway、route、dnsServers为空或格式错误。
+
+2. mode取值与所传配置项不匹配，例如DHCP模式下传入了静态IP配置。
+
+**处理步骤**
+
+检查传入的InterfaceConfiguration各字段取值是否符合setIfaceConfig接口说明中的要求。
+
 ## 2201005 设备信息不存在
 
 **错误信息**
