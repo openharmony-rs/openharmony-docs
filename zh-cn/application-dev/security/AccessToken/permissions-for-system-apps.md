@@ -9380,6 +9380,20 @@
  
 **起始版本**：26.0.1
 
+## ohos.permission.REGISTER_AGENT_HOOK
+
+允许系统应用注册智能体钩子。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.1
+
 ## ohos.permission.vehicle.DEVICE_INFO_WRITE
 
 允许应用设置车辆下挂设备的参数。

@@ -9349,6 +9349,20 @@ Allows an application to skip enterprise re-signing certificate verification.
  
 **Since**: 26.0.1
 
+## ohos.permission.REGISTER_AGENT_HOOK
+ 
+Allows a system application to register an agent hook.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+ 
+**Since**: 26.0.1
+
 ## ohos.permission.vehicle.DEVICE_INFO_WRITE
 
 Allows an application to configure parameters for devices attached to the vehicle.
