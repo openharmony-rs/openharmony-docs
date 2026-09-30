@@ -451,7 +451,7 @@ struct Index {
 | keyCode         | number  | 否    |  否 | 按键键值。当前仅支持返回键/KEYCODE_BACK键。 |
 | keyDownDuration | number  | 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
 | isIntercepted   | boolean | 否    |  否 | 按键是否可以被拦截。<br>true表示可以被拦截，false表示不可被拦截。 |
-| displayId | number | 否    |  是 | 目标屏幕ID。取值应为≥0的整数。<br>**起始版本**：26.0.1|
+| displayId | number | 否    |  是 | 目标屏幕ID。取值应为≥0的整数。<br>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## KeyEventData<sup>11+</sup>
 
