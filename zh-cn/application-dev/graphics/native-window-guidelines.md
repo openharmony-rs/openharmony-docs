@@ -53,7 +53,7 @@ libnative_window.so
         <!-- @[create_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/ets/pages/Index.ets) -->
         
         ``` TypeScript
-        XComponent({ id: 'xcomponentId', type: 'texture', libraryname: 'nativerender' })
+        XComponent({ id: 'xcomponentId', type: XComponentType.TEXTURE, libraryname: 'nativerender' })
           .margin({ bottom: 26 })
           .onLoad((nativeWindowContext) => {
             this.nativeWindowContext = nativeWindowContext as NativeWindowContext;
