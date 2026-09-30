@@ -32,7 +32,7 @@
 - 结构体<!--imagekit-struct-->
     - [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)
     - [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)
-    - [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)
+    - [OH_PixelmapNative (ImageProcessing)](capi-imageprocessing-oh-pixelmapnative.md)
     - [OH_AVFormat](capi-imageprocessing-oh-avformat.md)
     - [OhosPixelMapInfo](capi-image-ohospixelmapinfo.md)
     - [ImagePacker_Opts_](capi-image-imagepacker-opts-.md)
@@ -67,7 +67,7 @@
     - [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md)
     - [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md)
     - [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md)
-    - [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)
+    - [OH_PixelmapNative (Image_NativeModule)](capi-image-nativemodule-oh-pixelmapnative.md)
     - [OH_NativeBuffer](capi-image-nativemodule-oh-nativebuffer.md)
     - [OH_NativeColorSpaceManager](capi-image-nativemodule-oh-nativecolorspacemanager.md)
     - [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md)

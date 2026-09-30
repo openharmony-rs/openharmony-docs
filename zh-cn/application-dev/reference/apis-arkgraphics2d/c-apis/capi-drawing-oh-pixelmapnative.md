@@ -1,4 +1,4 @@
-# OH_PixelmapNative
+# OH_PixelmapNative (Drawing)
 
 ```c
 typedef struct OH_PixelmapNative OH_PixelmapNative

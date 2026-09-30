@@ -1,4 +1,4 @@
-# OH_AVBuffer
+# OH_AVBuffer (Core)
 
 ```c
 typedef struct OH_AVBuffer OH_AVBuffer
