@@ -63,7 +63,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
-| 801      | Capability not supported.  <br>适用版本：18+。 |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -493,8 +493,8 @@ async function claimInterfaceExclusive() {
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   // 独占声明接口，并注册冲突回调
   try {
-    usbManager.claimInterfaceExclusive(devicePipe, interfaces, false, (conflictInfo: usbManager.InterfaceConflictInfo => {
-      console.info(`interface conflict: busNum=${conflictInfo.busNum}, devAddr=${conflictInfo.devAddr},interfaceId=${conflictInfo.interfaceId}`);
+    usbManager.claimInterfaceExclusive(devicePipe, interfaces, false, (conflictInfo: usbManager.InterfaceConflictInfo) => {
+      console.info(`interface conflict: busNum=${conflictInfo.busNum}, devAddr=${conflictInfo.devAddr}, interfaceId=${conflictInfo.interfaceId}`);
     });
   } catch (err) {
     console.error(`claimInterfaceExclusive failed, err=${JSON.stringify(err)}`);
@@ -1655,7 +1655,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout?: n
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | USB设备连接通道对象，用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，包含request、target、reqType、value、index、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。|
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -1757,7 +1757,7 @@ USB端点，用于主机与设备之间数据传输的通信端点。通过[USBI
 
 ## InterfaceConflictInfo
 
-描述当其他进程以非独占方式声明已独占声明的USB接口时的冲突信息，通过调用[usbManager.claimInterfaceExclusive](#usbmanagerclaiminterfaceexclusive)独占声明接口后使用。
+描述当已独占声明的USB接口被其他进程以非独占方式声明时的冲突信息，通过调用[usbManager.claimInterfaceExclusive](#usbmanagerclaiminterfaceexclusive)独占声明接口后使用。
 
 > **说明：**
 >
@@ -1906,9 +1906,9 @@ USB数据传输参数对象，包含USB数据传输所需的所有参数，用�
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
 | devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 否 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
-| flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动释放传输资源）、3（传输将增加一个额外的零长度数据包。）。 |
+| flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动释放传输资源）、3（传输将增加一个额外的零长度数据包）。 |
 | endpoint | number | 否 | 否 | 端点地址，取值范围为[1, 255]的正整数。需要调用[getDevices](#usbmanagergetdevices)获取设备信息，通过endpoint的address属性确定端点信息，通过direction属性确定端点方向。 |
-| type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型，指定USB传输的方式。可选值包括：0x1（实时传输，适合音视频等实时数据流）、0x2（批量传输，适合非实时的数据传输）、0x3（中断传输，适合实时的数据传输）。 |
+| type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型，指定USB传输的方式。可选值包括：0x1（实时传输，适合音视频等实时数据流）、0x2（批量传输，适合大量数据非实时传输）、0x3（中断传输，适合小数据量实时传输）。 |
 | timeout | number | 否 | 否 | 超时时间（单位：ms），指定时间内等待传输完成，若在指定时间内传输完成则正常返回否则返回超时。设置为0时无限等待直到传输完成。传入负数时抛出参数错误异常。 |
 | length | number | 否 |否 | 数据缓冲区的长度，取值范围为[0, INT_MAX]的非负数（期望长度，单位：B）。 |
 | callback | [AsyncCallback](js-apis-base.md#asynccallback)&lt;[SubmitTransferCallback](#submittransfercallback18)&gt; | 否 |否 | 传输完成时的回调函数，签名：(err: Error, data: SubmitTransferCallback) => void。err为错误对象（成功时为null），data包含传输状态、实际长度等信息。|
@@ -1924,7 +1924,7 @@ USB传输标志。
 
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
-| USB_TRANSFER_SHORT_NOT_OK    | 0    | 将短帧报告为错误。短帧指实际传输的数据长度小于端点maxPacketSize的数据包。 |
+| USB_TRANSFER_SHORT_NOT_OK    | 0    | 将短帧报告为错误。短帧指实际传输的数据长度小于端点`maxPacketSize`的数据包。 |
 | USB_TRANSFER_FREE_BUFFER | 1    | 自动释放传输缓冲区。 |
 | USB_TRANSFER_FREE_TRANSFER  | 2    | 完成回调后自动释放传输资源。 |
 | USB_TRANSFER_ADD_ZERO_PACKET     | 3    | 传输将增加一个额外的零长度数据包。 |
