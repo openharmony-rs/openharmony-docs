@@ -51,28 +51,26 @@
    ```
 
    <!-- @[best_match_locale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) --> 
-
-  ``` TypeScript
-  import { i18n } from '@kit.LocalizationKit';
-
-  let systemLanguage = i18n.System.getSimplifiedLanguage();
-  // languagesList根据应用实际需要进行配置。例如，当应用不需要区分不同的繁体中文时，可将'zh-Hant-HK'和'zh-Hant-TW'合并成'zh-Hant'
-  let languagesList = ['zh-Hans', 'zh-Hant-HK', 'zh-Hant-TW'];
-  let matchedLanguage = i18n.I18NUtil.getBestMatchLocale(systemLanguage, languagesList);
-  switch (matchedLanguage) {
-    case 'zh-Hans':
-      // 系统语言为简体中文
-      break;
-    case 'zh-Hant-HK':
-      // 系统语言为繁体中文（香港）
-      break;
-    case 'zh-Hant-TW':
-      // 系统语言为繁体中文（台湾）
-      break;
-    default:
-      // 系统语言不属于languagesList中的任何一种
-  }
-  ```
+   
+   ``` TypeScript
+   let systemLanguage = i18n.System.getSimplifiedLanguage();
+   // languagesList根据应用实际需要进行配置。例如，当应用不需要区分不同的繁体中文时，可将'zh-Hant-HK'和'zh-Hant-TW'合并成'zh-Hant'
+   let languagesList = ['zh-Hans', 'zh-Hant-HK', 'zh-Hant-TW'];
+   let matchedLanguage = i18n.I18NUtil.getBestMatchLocale(systemLanguage, languagesList);
+   switch (matchedLanguage) {
+     case 'zh-Hans':
+       // 系统语言为简体中文
+       break;
+     case 'zh-Hant-HK':
+       // 系统语言为繁体中文（香港）
+       break;
+     case 'zh-Hant-TW':
+       // 系统语言为繁体中文（台湾）
+       break;
+     default:
+       // 系统语言不属于languageList中的任何一种
+   }
+   ```
 
 ## 多语言资源配置
 
