@@ -72,7 +72,7 @@
   - [createA2dpSnkProfile](arkts-connectivity-a2dp-createa2dpsnkprofile-f.md)
   - [createA2dpSrcProfile](arkts-connectivity-a2dp-createa2dpsrcprofile-f.md)
   <!--Del-->
-  - A2dpSinkProfile(系统接口)<!--DelEnd-->
+  - [A2dpSinkProfile(系统接口)](arkts-connectivity-a2dp-a2dpsinkprofile-i-sys.md)<!--DelEnd-->
   - [A2dpSourceProfile](arkts-connectivity-a2dp-a2dpsourceprofile-i.md)
   <!--Del-->
   - [A2dpSourceProfile(系统接口)](arkts-connectivity-a2dp-a2dpsourceprofile-i-sys.md)<!--DelEnd-->
@@ -327,9 +327,9 @@
   - [createHfpAgProfile](arkts-connectivity-hfp-createhfpagprofile-f.md)
   - [createHfpHfProfile](arkts-connectivity-hfp-createhfphfprofile-f.md)
   <!--Del-->
-  - HandsFreeAudioGatewayProfile(系统接口)<!--DelEnd-->
+  - [HandsFreeAudioGatewayProfile(系统接口)](arkts-connectivity-hfp-handsfreeaudiogatewayprofile-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - HandsFreeHfProfile(系统接口)<!--DelEnd-->
+  - [HandsFreeHfProfile(系统接口)](arkts-connectivity-hfp-handsfreehfprofile-i-sys.md)<!--DelEnd-->
   - [BaseProfile](arkts-connectivity-hfp-baseprofile-t.md)
 - [@ohos.bluetooth.hid(蓝牙hid模块)](arkts-connectivity-bluetooth-hid.md)
   - [createHidDeviceProfile](arkts-connectivity-hid-createhiddeviceprofile-f.md)
@@ -339,7 +339,7 @@
   - [HidDeviceQos](arkts-connectivity-hid-hiddeviceqos-i.md)
   - [HidDeviceSdp](arkts-connectivity-hid-hiddevicesdp-i.md)
   <!--Del-->
-  - HidHostProfile(系统接口)<!--DelEnd-->
+  - [HidHostProfile(系统接口)](arkts-connectivity-hid-hidhostprofile-i-sys.md)<!--DelEnd-->
   - [InterruptData](arkts-connectivity-hid-interruptdata-i.md)
   - [ProtocolData](arkts-connectivity-hid-protocoldata-i.md)
   - [SetReportData](arkts-connectivity-hid-setreportdata-i.md)
@@ -353,7 +353,7 @@
 - [@ohos.bluetooth.map(蓝牙map模块)](arkts-connectivity-bluetooth-map.md)
   - [createMapMseProfile](arkts-connectivity-map-createmapmseprofile-f.md)
   <!--Del-->
-  - MapMseProfile(系统接口)<!--DelEnd-->
+  - [MapMseProfile(系统接口)](arkts-connectivity-map-mapmseprofile-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AccessAuthorization(系统接口)](arkts-connectivity-map-accessauthorization-t-sys.md)<!--DelEnd-->
   - [BaseProfile](arkts-connectivity-map-baseprofile-t.md)
@@ -382,9 +382,9 @@
   - [createPbapClientProfile](arkts-connectivity-pbap-createpbapclientprofile-f.md)
   - [createPbapServerProfile](arkts-connectivity-pbap-createpbapserverprofile-f.md)
   <!--Del-->
-  - PbapClientProfile(系统接口)<!--DelEnd-->
+  - [PbapClientProfile(系统接口)](arkts-connectivity-pbap-pbapclientprofile-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - PbapServerProfile(系统接口)<!--DelEnd-->
+  - [PbapServerProfile(系统接口)](arkts-connectivity-pbap-pbapserverprofile-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [SyncStateChangeParam(系统接口)](arkts-connectivity-pbap-syncstatechangeparam-i-sys.md)<!--DelEnd-->
   <!--Del-->

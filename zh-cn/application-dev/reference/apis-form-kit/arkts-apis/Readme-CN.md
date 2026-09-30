@@ -289,7 +289,7 @@
   <!--Del-->
   - [FormExtensionContext](arkts-form-formextensioncontext.md)<!--DelEnd-->
     <!--Del-->
-    - FormExtensionContext(系统接口)<!--DelEnd-->
+    - [FormExtensionContext(系统接口)](arkts-form-formextensioncontext-c-sys.md)<!--DelEnd-->
   - [LiveFormExtensionContext](arkts-form-liveformextensioncontext.md)
     - [LiveFormExtensionContext](arkts-form-liveformextensioncontext-c.md)
     <!--Del-->

@@ -1,4 +1,4 @@
-# Context
+# deprecated Context
 
 ```TypeScript
 export interface Context extends BaseContext

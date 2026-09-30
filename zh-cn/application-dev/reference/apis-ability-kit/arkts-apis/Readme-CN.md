@@ -1045,7 +1045,7 @@
   <!--Del-->
   - [getAllNewPreinstalledApplicationInfo(系统接口)](arkts-ability-bundlemanager-getallnewpreinstalledapplicationinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - getAllPluginInfo(系统接口)<!--DelEnd-->
+  - [getAllPluginInfo(系统接口)](arkts-ability-bundlemanager-getallplugininfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getAllPreinstalledApplicationInfo(系统接口)](arkts-ability-bundlemanager-getallpreinstalledapplicationinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1376,7 +1376,7 @@
   - [getLauncherAbilityInfo(系统接口)](arkts-ability-launcherbundlemanager-getlauncherabilityinfo-f-sys.md)<!--DelEnd-->
   - [getLauncherAbilityInfoSync](arkts-ability-launcherbundlemanager-getlauncherabilityinfosync-f.md)
   <!--Del-->
-  - getShortcutInfo(系统接口)<!--DelEnd-->
+  - [getShortcutInfo(系统接口)](arkts-ability-launcherbundlemanager-getshortcutinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getShortcutInfoByAppIndex(系统接口)](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1653,17 +1653,17 @@
   <!--Del-->
   - [AutoFillRect(自动填充矩形区域)](arkts-ability-autofillrect.md)<!--DelEnd-->
     <!--Del-->
-    - AutoFillRect(系统接口)<!--DelEnd-->
+    - [AutoFillRect(系统接口)](arkts-ability-autofillrect-i-sys.md)<!--DelEnd-->
   - [AutoFillRequest(AutoFillRequest)](arkts-ability-autofillrequest.md)
     - [FillFailureResult](arkts-ability-autofillrequest-fillfailureresult-i.md)
     <!--Del-->
-    - FillRequest(系统接口)<!--DelEnd-->
+    - [FillRequest(系统接口)](arkts-ability-autofillrequest-fillrequest-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [FillRequestCallback(系统接口)](arkts-ability-autofillrequest-fillrequestcallback-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [FillResponse(系统接口)](arkts-ability-autofillrequest-fillresponse-i-sys.md)<!--DelEnd-->
     <!--Del-->
-    - SaveRequest(系统接口)<!--DelEnd-->
+    - [SaveRequest(系统接口)](arkts-ability-autofillrequest-saverequest-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [SaveRequestCallback(系统接口)](arkts-ability-autofillrequest-saverequestcallback-i-sys.md)<!--DelEnd-->
     <!--Del-->
@@ -1710,6 +1710,9 @@
     <!--Del-->
     - [Context(系统接口)](arkts-ability-context-c-sys.md)<!--DelEnd-->
   <!--Del-->
+    - [deprecated Context](arkts-ability-context-context-depr-i.md)
+    - [deprecated PermissionOptions](arkts-ability-context-permissionoptions-depr-i.md)
+    - [deprecated PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)
   - [ContinuableInfo](arkts-ability-continuableinfo.md)<!--DelEnd-->
     <!--Del-->
     - [ContinuableInfo(系统接口)](arkts-ability-continuableinfo-i-sys.md)<!--DelEnd-->
@@ -1799,7 +1802,7 @@
   <!--Del-->
   - [PageNodeInfo(页面节点信息)](arkts-ability-pagenodeinfo.md)<!--DelEnd-->
     <!--Del-->
-    - PageNodeInfo(系统接口)<!--DelEnd-->
+    - [PageNodeInfo(系统接口)](arkts-ability-pagenodeinfo-i-sys.md)<!--DelEnd-->
   - [ProcessData(ProcessData)](arkts-ability-processdata.md)
     - [ProcessData](arkts-ability-processdata-c.md)
   - [ProcessInformation(ProcessInformation)](arkts-ability-processinformation.md)
@@ -1894,6 +1897,7 @@
   - [AbilityInfo](arkts-ability-abilityinfo.md)
     - [AbilityInfo](arkts-ability-abilityinfo-i.md)
     - [WindowSize](arkts-ability-abilityinfo-windowsize-i.md)
+    - [deprecated AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)
   - [ApplicationInfo](arkts-ability-applicationinfo.md)
     - [ApplicationInfo](arkts-ability-applicationinfo-i.md)
     <!--Del-->
@@ -1903,6 +1907,7 @@
     <!--Del-->
     - [PreinstalledApplicationInfo(系统接口)](arkts-ability-applicationinfo-preinstalledapplicationinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
+    - [deprecated ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)
   - [AppProvisionInfo](arkts-ability-appprovisioninfo.md)<!--DelEnd-->
     <!--Del-->
     - [AppProvisionInfo(系统接口)](arkts-ability-appprovisioninfo-i-sys.md)<!--DelEnd-->
@@ -1926,6 +1931,9 @@
     - [SignatureInfo(系统接口)](arkts-ability-bundleinfo-signatureinfo-i-sys.md)<!--DelEnd-->
     - [UsedScene](arkts-ability-bundleinfo-usedscene-i.md)
   <!--Del-->
+    - [deprecated BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md)
+    - [deprecated ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-depr-i.md)
+    - [deprecated UsedScene](arkts-ability-bundleinfo-usedscene-depr-i.md)
   - [BundlePackInfo](arkts-ability-bundlepackinfo.md)<!--DelEnd-->
     <!--Del-->
     - [AbilityFormInfo(系统接口)](arkts-ability-bundlepackinfo-abilityforminfo-i-sys.md)<!--DelEnd-->
@@ -1959,6 +1967,7 @@
     - [DispatchInfo(系统接口)](arkts-ability-dispatchinfo-i-sys.md)<!--DelEnd-->
   - [ElementName](arkts-ability-elementname.md)
     - [ElementName](arkts-ability-elementname-i.md)
+    - [deprecated ElementName](arkts-ability-elementname-elementname-depr-i.md)
   - [ExtensionAbilityInfo](arkts-ability-extensionabilityinfo.md)
     - [ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md)
   - [HapModuleInfo](arkts-ability-hapmoduleinfo.md)
@@ -1969,6 +1978,7 @@
     - [HapModuleInfo(系统接口)](arkts-ability-hapmoduleinfo-i-sys.md)<!--DelEnd-->
     - [PreloadItem](arkts-ability-hapmoduleinfo-preloaditem-i.md)
     - [RouterItem](arkts-ability-hapmoduleinfo-routeritem-i.md)
+    - [deprecated HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)
   - [LauncherAbilityInfo](arkts-ability-launcherabilityinfo.md)
     - [LauncherAbilityInfo](arkts-ability-launcherabilityinfo-i.md)
   <!--Del-->
@@ -2006,6 +2016,8 @@
     - [ShortcutWant](arkts-ability-shortcutinfo-shortcutwant-i.md)
     <!--Del-->
     - [ShortcutWant(系统接口)](arkts-ability-shortcutinfo-shortcutwant-i-sys.md)<!--DelEnd-->
+    - [deprecated ShortcutInfo](arkts-ability-shortcutinfo-shortcutinfo-depr-i.md)
+    - [deprecated ShortcutWant](arkts-ability-shortcutinfo-shortcutwant-depr-i-sys.md)
   - [Skill](arkts-ability-skill.md)
     - [Skill](arkts-ability-skill-i.md)
     - [SkillUri](arkts-ability-skill-skilluri-i.md)

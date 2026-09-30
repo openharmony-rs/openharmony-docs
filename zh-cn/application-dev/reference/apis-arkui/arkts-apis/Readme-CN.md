@@ -22,7 +22,7 @@
 <!--Del-->
 - [@ohos.application.WindowExtensionAbility](arkts-arkui-application-windowextensionability.md)<!--DelEnd-->
   <!--Del-->
-  - WindowExtensionAbility(系统接口)<!--DelEnd-->
+  - [WindowExtensionAbility(系统接口)](arkts-arkui-application-windowextensionability-windowextensionability-c-sys.md)<!--DelEnd-->
   <!--Del-->
   - [WindowExtensionContext(系统接口)](arkts-arkui-windowextensioncontext-t-sys.md)<!--DelEnd-->
 - [@ohos.arkui.advanced.ArcButton(Defines the arc button component)](arkts-arkui-arkui-advanced-arcbutton.md)
@@ -663,9 +663,9 @@
   - [RectChangeReason](arkts-arkui-uiextension-rectchangereason-e.md)
 - [@ohos.arkui.uiMaterial(系统材质)](arkts-arkui-arkui-uimaterial.md)
   <!--Del-->
-  - convertToECMaterial(系统接口)<!--DelEnd-->
+  - [convertToECMaterial(系统接口)](arkts-arkui-uimaterial-converttoecmaterial-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - convertToECSubMaterial(系统接口)<!--DelEnd-->
+  - [convertToECSubMaterial(系统接口)](arkts-arkui-uimaterial-converttoecsubmaterial-f-sys.md)<!--DelEnd-->
   - [getGlobalMaterialLevel](arkts-arkui-uimaterial-getglobalmateriallevel-f.md)
   - [getMaterialInfo](arkts-arkui-uimaterial-getmaterialinfo-f.md)
   - [isImmersiveMaterialSupported](arkts-arkui-uimaterial-isimmersivematerialsupported-f.md)

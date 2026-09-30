@@ -212,7 +212,7 @@
     <!--Del-->
     - [SweepRefractionParam(系统接口)](arkts-arkgraphics2d-uieffect-sweeprefractionparam-i-sys.md)<!--DelEnd-->
     <!--Del-->
-    - VisualEffect(系统接口)<!--DelEnd-->
+    - [VisualEffect(系统接口)](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [WarpedRingParam(系统接口)](arkts-arkgraphics2d-uieffect-warpedringparam-i-sys.md)<!--DelEnd-->
     <!--Del-->

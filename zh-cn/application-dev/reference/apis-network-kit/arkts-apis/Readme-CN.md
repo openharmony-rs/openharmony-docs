@@ -71,7 +71,7 @@
   <!--Del-->
   - [setProxyMode(系统接口)](arkts-network-connection-setproxymode-f-sys.md)<!--DelEnd-->
   - [ConnectionProperties](arkts-network-connection-connectionproperties-i.md)
-  - HttpProxy
+  - [HttpProxy](arkts-network-connection-httpproxy-i.md)
   - [LinkAddress](arkts-network-connection-linkaddress-i.md)
   - [NetAddress](arkts-network-connection-netaddress-i.md)
   - [NetBlockStatusInfo](arkts-network-connection-netblockstatusinfo-i.md)
@@ -149,7 +149,7 @@
   - [DeviceConnectionType(系统接口)](arkts-network-ethernet-deviceconnectiontype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [IPSetMode(系统接口)](arkts-network-ethernet-ipsetmode-e-sys.md)<!--DelEnd-->
-- @ohos.net.http(数据请求)
+- [@ohos.net.http(数据请求)](arkts-network-net-http.md)
   - [createHttp](arkts-network-http-createhttp-f.md)
   - [createHttpResponseCache](arkts-network-http-createhttpresponsecache-f.md)
   - [HttpInterceptorChain](arkts-network-http-httpinterceptorchain-c.md)
@@ -425,8 +425,8 @@
   - [IfaceInfo(系统接口)](arkts-network-statistics-ifaceinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [NetStatsChangeInfo(系统接口)](arkts-network-statistics-netstatschangeinfo-i-sys.md)<!--DelEnd-->
-  - NetStatsInfo
-  - NetworkInfo
+  - [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)
+  - [NetworkInfo](arkts-network-statistics-networkinfo-i.md)
   <!--Del-->
   - [UidInfo(系统接口)](arkts-network-statistics-uidinfo-i-sys.md)<!--DelEnd-->
   - [NetBearType](arkts-network-statistics-netbeartype-t.md)

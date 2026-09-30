@@ -1,4 +1,4 @@
-# AbilityInfo
+# deprecated AbilityInfo
 
 ```TypeScript
 export interface AbilityInfo
