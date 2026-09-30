@@ -177,7 +177,7 @@ Monitor - sum changed from 0 to 6
 
 ## 接口说明
 
-IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状态变量变化监听](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md)。
+IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor-static.md)。
 
 ## 监听变化
 
@@ -730,7 +730,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
   2. 打印`splice execute ...`；
   3. 执行`onArrChangedSync`, 打印日志'@SyncMonitor: arr: [0,100,101,102,5], m.dirty: [arr.1,arr.2,arr.3,arr.4,arr.length]'；
   4. 打印日志`shift execute ...`；
-  5. 执行`onArrChangedSync`， 打印日志'@SyncMonitor: arr: [100,101,102,5], m.dirty: [arr.0,arr.1,arr.2,arr.3,arr.length]'；
+  5. 执行`onArrChangedSync`， 打印日志'@SyncMonitor: arr: [100,101,102,5], m.dirty: [arr.0,arr.1,arr.2,arr.3,arr.4,arr.length]'；
   6. 打印`.. done`日志。
 
 ## 观察路径中的通配符
@@ -861,17 +861,12 @@ struct DocSampleArray {
             this.arrayOfPerson.shift();
           }
         })
-      Button('#5 arrayOfPerson length change')
-        .onClick(() => {
-          // arrayOfPersonMonitor回调触发
-          this.arrayOfPerson.length = this.arrayOfPerson.length + 1;
-        })
-      Button('#6 arrayOfPerson = new Array')
+      Button('#5 arrayOfPerson = new Array')
         .onClick(() => {
           // arrayOfPersonMonitor回调触发
           this.arrayOfPerson = [new Person('Adrian'), new Person('Andrew')]
         })
-      Button('#7 arrayOfPerson [1] last name')
+      Button('#6 arrayOfPerson [1] last name')
         .onClick(() => {
           if (this.arrayOfPerson.length > 1 && this.arrayOfPerson[1] instanceof Person) {
             // arrayOfPersonMonitor回调不触发
@@ -883,13 +878,13 @@ struct DocSampleArray {
 }
 ```
 
-当按下按钮1-6时，监听函数会被触发:
+当按下按钮1-5时，监听函数会被触发:
 
 ```text
 ### SyncMonitor dirty: arrayOfPerson.*
 ```
 
-按下按钮7，监听函数不会被调用，因为没有数组项被更改。
+按下按钮6，监听函数不会被调用，因为没有数组项被更改。
 
 ### 嵌套被观察对象属性更改时，监听函数会执行
 
@@ -1179,7 +1174,7 @@ struct DocSampleArrayOfArrays {
        hilog.info(0xFF00, 'testTag', '%{public}s', `propC change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }
      
-     // @SyncMonitor入参类型为变量，编译会报错，提示`Only constant expressions are supported as parameters in '@SyncMonitor'. Variables are not allowed.`
+     // @SyncMonitor入参类型为变量，编译会报错，提示`Invalid value for annotation field, expected a constant literal.`
      @SyncMonitor([propD])
      onPropDChange(monitor: IMonitor): void {
        hilog.info(0xFF00, 'testTag', '%{public}s', `propD change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
@@ -1335,7 +1330,8 @@ struct Page {
   onChange(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
       hilog.info(0xFF00, 'testTag', '%{public}s',
-        `onChange: User property ${path} change from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
+        `onChange: User property ${path} change from ${mon.value<number | undefined>(path)?.before} to ` +
+          `${mon.value<number | undefined>(path)?.now}`);
     });
   }
 
