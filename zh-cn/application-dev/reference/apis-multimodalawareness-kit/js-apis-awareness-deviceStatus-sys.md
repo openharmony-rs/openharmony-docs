@@ -19,6 +19,20 @@
    import { deviceStatus } from '@kit.MultimodalAwarenessKit';
    ```
 
+## DeviceRotationRadian
+
+设备旋转弧度接口。
+
+**系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
+
+**系统接口**：此接口为系统接口
+
+| 名称 | 类型   | 只读 | 可选 | 说明             |
+| --- | ------ | ---- | ---- | --------------- |
+|  x  | number |  是  |  否  | 表示x轴旋转弧度。 |
+|  y  | number |  是  |  否  | 表示y轴旋转弧度。 |
+|  z  | number |  是  |  否  | 表示z轴旋转弧度。 |
+
 ## deviceStatus.getDeviceRotationRadian()
 
 getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
@@ -30,6 +44,12 @@ getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
 **系统接口**：此接口为系统接口。
+
+**返回值**：
+
+| 类型                                | 说明               |
+| ----------------------------------- | ------------------ |
+| Promise&lt;DeviceRotationRadian&gt; | 设备旋转弧度的结果。 |
 
 **错误码**：
 
