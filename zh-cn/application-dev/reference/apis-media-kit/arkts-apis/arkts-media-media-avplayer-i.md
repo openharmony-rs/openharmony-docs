@@ -2081,7 +2081,7 @@ async function test(){
 on(type: 'endOfStream', callback: Callback<void>): void
 ```
 
-监听资源播放至结尾的事件；如果用户设置[loop](../../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)=true，播放会跳转至开头重播；如果用户没有设置loop，会通过[stateChange](#onstatechange)上报completed状态。
+监听资源播放至结尾的事件；如果用户设置loop=true，播放会跳转至开头重播；如果用户没有设置loop，会通过[stateChange](#onstatechange)上报completed状态。
 
 **起始版本：** 9
 
@@ -3494,7 +3494,7 @@ seek(timeMs: number, mode?: SeekMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timeMs | number | 是 | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, [duration](../../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)]。<br>当模式为[SEEK_CONTINUOUS](arkts-media-media-seekmode-e.md)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
+| timeMs | number | 是 | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, duration]。<br>当模式为[SEEK_CONTINUOUS](arkts-media-media-seekmode-e.md)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
 | mode | [SeekMode](arkts-media-media-seekmode-e.md) | 否 | 基于视频I帧的跳转模式，默认为SEEK_PREV_SYNC模式，**仅在视频资源播放时设置**。 |
 
 **示例**
@@ -3688,7 +3688,7 @@ setDecryptionConfig(mediaKeySession: drm.MediaKeySession, secureVideoPath: boole
 
 **示例**
 
-关于drm模块的示例具体可见[@ohos.multimedia.drm](../apis-drm-kit/arkts-apis-drm.md)。
+关于drm模块的示例具体可见@ohos.multimedia.drm。
 
 ```TypeScript
 import { drm } from '@kit.DrmKit';
@@ -4677,7 +4677,7 @@ url?: string
 
 1. fd类型播放：fd://xx。
 
-![](../../../reference/apis-media-kit/figures/zh-cn_image_url.png)
+![](../../../reference/apis-media-kit/figures/image-url.png)
 
 2. http网络播放：`http://xx`。
 3. https网络播放：`https://xx`。
@@ -4685,7 +4685,7 @@ url?: string
 
 **说明：** 
 
-- 设置网络播放路径，需[声明权限](../../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../../../reference/errorcode-universal.md#201-权限校验失败)。  
+- 设置网络播放路径，需[声明权限](../../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../../../reference/errorcode-universal.md#201-api权限校验失败)。  
 - 从API version 11开始不支持webm。  
 - 将资源句柄（fd）传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator  
 / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。

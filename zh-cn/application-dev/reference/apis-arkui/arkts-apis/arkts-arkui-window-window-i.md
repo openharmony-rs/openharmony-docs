@@ -165,7 +165,7 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 | --- | --- | --- | --- |
 | from | [RotationInfoType](arkts-arkui-window-rotationinfotype-e.md) | 是 | 待转换的值的类型。 |
 | to | [RotationInfoType](arkts-arkui-window-rotationinfotype-e.md) | 是 | 目标值的类型。 |
-| value | number | 是 | 待转换的值。该参数为整数，浮点数输入将向下取整，取值范围为[0, 3]，范围外为非法参数（抛出错误码[401](../../../reference/errorcode-universal.md#401-参数检查失败)）。 |
+| value | number | 是 | 待转换的值。该参数为整数，浮点数输入将向下取整，取值范围为[0, 3]，范围外为非法参数（抛出错误码[401](../../../reference/errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
 
 **返回值：**
 
@@ -1013,7 +1013,7 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 
 主窗口/子窗口：
 
-- [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-arkui-window-windowstatustype-e.md)）下，仅存在固定态软键盘（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_KEYBOARD）类型的避让区域。  
+- [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-arkui-window-windowstatustype-e.md)）下，仅存在固定态软键盘（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_KEYBOARD）类型的避让区域。  
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_SYSTEM）类型的避让区域。  
 - 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。  
 - 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
@@ -1076,7 +1076,7 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 
 主窗口/子窗口：
 
-- 主窗口在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-arkui-window-windowstatustype-e.md)）下，仅存在系统栏（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_SYSTEM）类型的避让区域。  
+- 主窗口在非[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-arkui-window-windowstatustype-e.md)）下，仅存在系统栏（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_SYSTEM）类型的避让区域。  
 - 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。  
 - 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 
@@ -1506,7 +1506,7 @@ getWindowStatus(): WindowStatusType
 
 > **说明：** 
 > 
-> 在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，应用的
+> 在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，应用的
 > [targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有
 > dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的
 > [targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有
@@ -1914,7 +1914,7 @@ try {
 isInFreeWindowMode(): boolean
 ```
 
-查询当前窗口是否为[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)模式。
+查询当前窗口是否为[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)模式。
 
 **起始版本：** 22
 
@@ -3128,13 +3128,13 @@ moveWindowTo(x: number, y: number): Promise<void>
 > 
 > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus)获取）外的其他窗口模式下使用。
 > 
-> - 在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
+> - 在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
 > 
 > - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal)。
 > 
 > - 该方法对非自由窗口状态下的主窗口无效。
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 9
 
@@ -3196,13 +3196,13 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback<void>): void
 > 
 > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus)获取）外的其他窗口模式下使用。
 > 
-> - 在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
+> - 在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
 > 
 > - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal)。
 > 
 > - 该方法对非自由窗口状态下的主窗口无效。
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 9
 
@@ -3259,7 +3259,7 @@ moveWindowToAsync(x: number, y: number): Promise<void>
 
 在自由悬浮窗口模式下，不同类型窗口的移动行为如下：
 
-| 窗口类型 | [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态 | 非自由窗口状态 |  
+| 窗口类型 | [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态 | 非自由窗口状态 |  
 |---------|---------------|-----------------|  
 | 主窗口 | 相对于屏幕移动 | 调用不生效不报错 |
 | 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |
@@ -3267,7 +3267,7 @@ moveWindowToAsync(x: number, y: number): Promise<void>
 
 > **说明：** 
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 12
 
@@ -3333,7 +3333,7 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 
 在自由悬浮窗口模式下，不同类型窗口的移动行为如下：
 
-| 窗口类型 | [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态 | 非自由窗口状态 |  
+| 窗口类型 | [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态 | 非自由窗口状态 |  
 |---------|---------------|-----------------|  
 | 主窗口 | 相对于屏幕移动 | 调用不生效不报错 |
 | 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |
@@ -3341,7 +3341,7 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 
 > **说明：** 
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 15
 
@@ -3410,9 +3410,9 @@ moveWindowToGlobal(x: number, y: number): Promise<void>
 
 > **说明：** 
 > 
-> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不生效不报错。
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 13
 
@@ -3478,9 +3478,9 @@ moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration):
 
 > **说明：** 
 > 
-> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不生效不报错。
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 15
 
@@ -3543,17 +3543,17 @@ try {
 moveWindowToGlobalDisplay(x: number, y: number): Promise<void>
 ```
 
-基于[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)移动窗口位置，使用Promise异步回调。
+基于[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)移动窗口位置，使用Promise异步回调。
 
 该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
 
 > **说明：** 
 > 
-> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
+> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不生效不报错。
 > 
 > - 窗口移动后，如果窗口跨越多个屏幕，窗口将归属于与其重叠面积最大的屏幕。
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
 
 **起始版本：** 20
 
@@ -4917,7 +4917,7 @@ try {
 off(type: 'rectChangeInGlobalDisplay', callback?: Callback<RectChangeOptions>): void
 ```
 
-关闭[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
+关闭[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
 
 **起始版本：** 20
 
@@ -5338,7 +5338,7 @@ on(type: 'avoidAreaChange', callback: Callback<AvoidAreaOptions>): void
 
 主窗口/子窗口：
 
-- [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-arkui-window-windowstatustype-e.md)）下触发回调时，仅存在固定态软键盘（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_KEYBOARD）类型的避让区域。  
+- [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-arkui-window-windowstatustype-e.md)）下触发回调时，仅存在固定态软键盘（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_KEYBOARD）类型的避让区域。  
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下触发回调时，仅存在系统栏（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_SYSTEM）类型的避让区域。  
 - 主窗口在其余场景下触发回调时，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能返回计算后的避让区域，否则直接返回空的避让区域。  
 - 子窗口在非自由窗口状态或非自由悬浮窗口模式下触发回调时，仅当子窗口的位置和大小与主窗口一致时，才能返回计算后的子窗口避让区域，否则直接返回空的避让区域。
@@ -6017,7 +6017,7 @@ on(type: 'windowStatusChange', callback: Callback<WindowStatusType>): void
 
 > **说明：** 
 > 
-> 在[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，应用的
+> 在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，应用的
 > [targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)设置小于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有
 > dock栏和状态栏，Tablet设备会有状态栏）时返回值对应为WindowStatusType::FULL_SCREEN。应用的
 > [targetAPIVersion](../../../quick-start/app-configuration-file.md#配置文件标签)设置大于等于14时，在窗口最大化状态（窗口铺满整个屏幕，2in1设备会有
@@ -6351,7 +6351,7 @@ try {
 on(type: 'rectChangeInGlobalDisplay', callback: Callback<RectChangeOptions>): void
 ```
 
-开启[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
+开启[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
 
 **起始版本：** 20
 
@@ -6818,7 +6818,7 @@ resize(width: number, height: number): Promise<void>
 
 > **说明：** 
 > 
-> - 主窗口处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下调用不报错不生效。
+> - 主窗口处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不报错不生效。
 
 **起始版本：** 9
 
@@ -6890,7 +6890,7 @@ resize(width: number, height: number, callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> - 主窗口处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下调用不报错不生效。
+> - 主窗口处于自由悬浮窗口模式时，在非[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不报错不生效。
 
 **起始版本：** 9
 
@@ -6958,7 +6958,7 @@ resizeAsync(width: number, height: number): Promise<void>
 
 > **说明：** 
 > 
-> - 在非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 在非[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，主窗口调用不生效。
 
 **起始版本：** 12
 
@@ -10593,9 +10593,9 @@ setWindowLimits(windowLimits: WindowLimits): Promise<WindowLimits>
 
 > **说明：** 
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）的窗口在尺寸变化时受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束。触发场景包括：应用主动改变窗口大小（如调用[resize()](#resize)）；系统调节窗口大小（如分辨率变化、显示大小缩放系数变化）；用户拖拽缩放窗口。
+> - [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）的窗口在尺寸变化时受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束。触发场景包括：应用主动改变窗口大小（如调用[resize()](#resize)）；系统调节窗口大小（如分辨率变化、显示大小缩放系数变化）；用户拖拽缩放窗口。
 > 
-> - 非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口尺寸不受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束，其他类型窗口仍受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束。
+> - 非[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，主窗口尺寸不受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束，其他类型窗口仍受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束。
 
 **起始版本：** 11
 
@@ -10665,9 +10665,9 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise<Window
 
 > **说明：** 
 > 
-> - [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）的窗口在尺寸变化时受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束。触发场景包括：应用主动改变窗口大小（如调用[resize()](#resize)）；系统调节窗口大小（如分辨率变化、显示大小缩放系数变化）；用户拖拽缩放窗口。
+> - [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）的窗口在尺寸变化时受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束。触发场景包括：应用主动改变窗口大小（如调用[resize()](#resize)）；系统调节窗口大小（如分辨率变化、显示大小缩放系数变化）；用户拖拽缩放窗口。
 > 
-> - 非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口尺寸不受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束，其他类型窗口仍受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束。
+> - 非[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，主窗口尺寸不受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束，其他类型窗口仍受[WindowLimits](arkts-arkui-window-windowlimits-i.md)约束。
 
 **起始版本：** 15
 
@@ -12080,7 +12080,7 @@ showWindow(options: ShowWindowOptions): Promise<void>
 
 > **说明：** 
 > 
-> 调用该接口前，建议优先通过[loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者
+> 调用该接口前，建议优先通过loadContent方法或者
 > [setUIContent](#setuicontent-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会
 > 一直显示启动界面；如果系统窗口、应用子窗口和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
@@ -12352,7 +12352,7 @@ startMoving(): Promise<void>
 
 开始移动窗口，使用Promise异步回调。
 
-[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，对系统窗口、应用主窗口、应用子窗口、全局悬浮窗和模态窗口生效。非自由窗口状态下，仅对系统窗口、应用子窗口、全局悬浮窗和模态窗口生效，应用主窗口调用该接口返回801或1300004错误码。
+[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，对系统窗口、应用主窗口、应用子窗口、全局悬浮窗和模态窗口生效。非自由窗口状态下，仅对系统窗口、应用子窗口、全局悬浮窗和模态窗口生效，应用主窗口调用该接口返回801或1300004错误码。
 
 仅在onTouch事件（其中，事件类型必须为TouchType.Down）的回调方法中调用此接口才会有移动效果，成功调用此接口后，窗口将跟随鼠标或触摸点移动。
 
@@ -12685,7 +12685,7 @@ getAvoidArea(type: AvoidAreaType, callback: AsyncCallback<AvoidArea>): void
 
 主窗口/子窗口：
 
-- [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，  
+- [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，  
 仅存在固定态软键盘（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_KEYBOARD）类型的避让区域。  
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_SYSTEM）类型的避让区域。  
 - 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。  
@@ -12745,7 +12745,7 @@ getAvoidArea(type: AvoidAreaType): Promise<AvoidArea>
 
 主窗口/子窗口：
 
-- [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，  
+- [自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，  
 仅存在固定态软键盘（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_KEYBOARD）类型的避让区域。  
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)为TYPE_SYSTEM）类型的避让区域。  
 - 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。  
@@ -13282,8 +13282,8 @@ resetSize(width: number, height: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../../../reference/errorcode-universal.md#401-参数检查失败)）。 |
-| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../../../reference/errorcode-universal.md#401-参数检查失败)）。 |
+| width | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../../../reference/errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../../../reference/errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
 
 **返回值：**
 
@@ -13347,8 +13347,8 @@ resetSize(width: number, height: number, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| width | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../../../reference/errorcode-universal.md#401-参数检查失败)）。 |
-| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../../../reference/errorcode-universal.md#401-参数检查失败)）。 |
+| width | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../../../reference/errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../../../reference/errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例**
