@@ -1724,7 +1724,7 @@ Allows an application to enter exam mode. The system service will display a dial
 
 Allows an application to make calls with one tap.
 
-<!--RP112--><!--RP112End-->
+<!--RP114--><!--RP114End-->
 
 **Permission level**: system_basic
 
