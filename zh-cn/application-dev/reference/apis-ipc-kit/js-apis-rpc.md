@@ -1205,9 +1205,6 @@ readDouble(): number
 
 从MessageSequence实例中读取双精度浮点值。
 
-- 返回新创建的数组，无需预先创建。
-- 数组元素为双精度浮点数。
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -1415,14 +1412,10 @@ try {
 
 writeString(val: string): void
 
-将字符串值写入MessageSequence实例。调用此方法后，字符串会被序列化存入缓冲区。写入时会先存储字符串长度，再存储字节数据。
+将字符串值写入MessageSequence实例。
 
 - 此方法与[readString](#readstring9)方法配对使用。
-- 先写入长度，再写入内容。
 - 支持多语言字符集。
-- 长度信息便于[readString](#readstring9)确定读取边界。
-- 注意区分字符数和字节数，中文字符占用更多字节。
-- 长字符串会占用较多缓冲区空间。
 - 空字符串也可以正常写入。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
@@ -1467,8 +1460,6 @@ try {
 readString(): string
 
 从MessageSequence实例中读取字符串值。
-
-- 先读取长度，再读取内容。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -2685,7 +2676,8 @@ writeStringArray(stringArray: string[]): void
 
 - 必须与[readStringArray](#readstringarray9)配对使用。
 - 读取数组长度必须与写入数组长度一致。
-
+- 数组单个元素的长度范围[0, 40960)。
+- 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -2727,8 +2719,7 @@ readStringArray(dataIn: string[]): void
 从MessageSequence实例中读取字符串数组，并将其写入到创建的空数组中。
 
 - 需预先创建空数组且长度应与写入时的数组长度一致。
-- 读取后dataIn数组会被填充读取的字节数据。
-- 读指针向后移动相应字节数。
+- 读取后，dataIn数组会被填充读取的字符串数据。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -2774,7 +2765,6 @@ readStringArray(): string[]
 从MessageSequence实例中读取字符串数组。
 
 - 返回新创建的数组，无需预先创建。
-- 数组单个元素的长度范围[0, 40960)。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
