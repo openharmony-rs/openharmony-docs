@@ -377,7 +377,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed; 2. The subWindow has been created and cannot be created again. 3. Internal task error. 4. It is not allowed to create non-secure window when secure extension exists. 5. The parent window and the subwindow are not created by the same process. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. The subWindow has been created and cannot be created again. 3. Internal task error. 4. It is not allowed to create non-secure window when secure extension exists. 5. The parent window and the subwindow are not created by the same process. |
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
