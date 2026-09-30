@@ -226,7 +226,7 @@ Function结果包装类，用于[onAfterInvokeFunction()](#onafterinvokefunction
 
 | 名称   | 类型 | 必填 | 说明 |
 | ------ | ---- | --- | ------------------ |
-| result | [InvokeResult](#invokeresult) | 是 | 调用结果。 |
+| result | [InvokeResult](#invokeresult) | 是 | Function调用的结果，包含调用是否成功（success）、成功时的返回数据（data）、失败时的错误码（errorCode）和错误信息（errorMsg），详见[InvokeResult](#invokeresult)。在[onAfterInvokeFunction()](#onafterinvokefunction)回调中可读取该字段查看原始调用结果，修改后会将替换后的结果返回给调用方。 |
 
 ## FunctionHook
 
