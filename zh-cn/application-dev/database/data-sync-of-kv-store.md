@@ -109,7 +109,7 @@
 
 1. 导入模块获取context，此处以Stage模型为例，FA模型context的获取请见[context](../application-models/application-context-fa.md)。
 
-   <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) --> 
+   <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
 
 2. 请求权限。
 
