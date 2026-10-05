@@ -4835,7 +4835,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | netHandle            | [NetHandle](#nethandle)               | 否 | 否   |网络句柄。 <br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23  |
-| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是堵塞状态。true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23 |
+| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是阻塞状态。true：标识当前网络是阻塞状态；false：标识当前网络不是阻塞状态。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23 |
 
 ## ConnectionProperties
 
