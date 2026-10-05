@@ -1514,7 +1514,7 @@ policy.getPowerSaveTrustlist((error: BusinessError, data: number[]) => {
 
 getPowerSaveTrustlist(): Promise\<Array\<number>>
 
-获取休眠模式白名单所包含的uid数组。使用Promise异步回调。
+获取省电模式白名单所包含的uid数组。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1573,7 +1573,7 @@ setNetworkAccessPolicy(uid: number, policy: NetworkAccessPolicy, isReconfirmed?:
 | ------------- | ---------------------------------------------- | ---- | ---------------------------------------------------------------------------- |
 | uid           | number                                         | 是   | app唯一标识符，取值范围为int32_t范围内的正整数。                                                                |
 | policy        | [NetworkAccessPolicy](#networkaccesspolicy12)  | 是   | 网络策略。                                                                      |
-| isReconfirmed | boolean                                        | 否   | 默认false；false 表示需要重确认，应用访问网络会弹框; true 表示不需要重确认，无弹框。 |
+| isReconfirmed | boolean                                        | 否   | 默认false；false 表示需要重确认，应用访问网络会弹框； true 表示不需要重确认，无弹框。 |
 
 **返回值：**
 
