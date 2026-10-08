@@ -217,7 +217,7 @@ struct DialogStatePage {
 
 | 差异类型 | 对比维度 | 老接口（第一/二代） | 新接口（第三代 `@ohos.arkui.dialog`） |
 |---------|---------|-------------------|----------------------------|
-| 属性差异 | 高级动画 | `customStyle` + `animationStyle`/`transition` | `dialogTransition` + `maskTransition`（TransitionEffect） |
+| 属性差异 | 高级动画 | `customStyle` + `openAnimation`/`closeAnimation`（`AnimateParam`） | `dialogTransition` + `maskTransition`（`TransitionEffect`） |
 | 属性差异 | update 更新面 | `CustomDialogController.update()` 支持多属性 | `DialogPresenter.update()` 仅支持 `alignment`/`offset`/`autoCancel`/`maskColor` |
 | 使用差异 | 编程模型 | 静态方法 / 装饰器 + Controller | `UIContext.getDialogPresenter()` + Promise |
 | 使用差异 | 取消回调 | `onCancel` / `onWillDismiss` | `onWillDismiss: Callback<DialogDismissal>` |
@@ -234,7 +234,7 @@ struct DialogStatePage {
 | 样式控制 | `customStyle: boolean`（CustomDialogControllerOptions） | `DialogCustomOptions.customStyle: boolean` |
 | 打开 | `controller.open()` | `presenter.present(content, options): Promise<DialogResult>` |
 | 关闭 | `controller.close()` | `DialogBaseController.close()` 或 `presenter.dismiss(target)` |
-| 状态查询 | 无直接等价 | `DialogBaseController.getState(): DialogState` |
+| 状态查询 | `controller.getState(): PromptActionCommonState`（API 20+） | `DialogBaseController.getState(): DialogState` |
 | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
 | 偏移 | `offset: { dx, dy }` | `offset: Offset` |
 | 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
@@ -242,19 +242,19 @@ struct DialogStatePage {
 | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
 | 模态 | `isModal: boolean` | `isModal: boolean` |
 | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-| 焦点 | `focusable: boolean`（不可配置，默认 true） | `focusable: boolean`（可配置，默认 true） |
-| 打开动画回调 | `onDidAppear` 等 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 取消回调 | `onCancel` | `onWillDismiss: Callback<DialogDismissal>`（见 G2） |
-| 背景模糊 | `backgroundColorBlurStyle`（仅模糊） | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-| 边框 | 无 | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
-| 阴影 | 无 | `shadow: ShadowOptions | ShadowStyle` |
-| 内容区动画 | `animationStyle` + `transition` | `dialogTransition: TransitionEffect`（见 G3） |
+| 焦点 | `focusable: boolean`（可配置，默认 true，API 19+） | `focusable: boolean`（可配置，默认 true） |
+| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`（API 19+） | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+| 取消回调 | `cancel: () => void` + `onWillDismiss: Callback<DismissDialogAction>`（API 12+） | `onWillDismiss: Callback<DialogDismissal>`（见 G2） |
+| 背景模糊 | `backgroundBlurStyle`（API 12+） + `backgroundBlurStyleOptions`（API 19+） + `backgroundEffect`（API 19+） | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+| 边框 | `cornerRadius`（API 10+）/ `borderWidth`（API 12+）/ `borderColor`（API 12+）/ `borderStyle`（API 12+） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`，其余同名） |
+| 阴影 | `shadow: ShadowOptions \| ShadowStyle`（API 12+） | `shadow: ShadowOptions \| ShadowStyle` |
+| 内容区动画 | `openAnimation` + `closeAnimation`（`AnimateParam`，API 10+） | `dialogTransition: TransitionEffect`（见 G3） |
 | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-| 键盘避让 | 无直接等价 | `keyboardAvoidMode` + `keyboardAvoidDistance` |
-| 悬浮模式 | 无直接等价 | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | 无直接等价 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | 无 | `systemMaterial: SystemUiMaterial` |
-| 系统接口属性 | — | `distortionMode`（@systemapi）、`edgeLightMode`（@systemapi）——不入正文，见 [系统接口](../reference/apis-arkui/js-apis-dialog-sys.md) |
+| 键盘避让 | `keyboardAvoidMode`（API 12+） + `keyboardAvoidDistance`（API 15+） | `keyboardAvoidMode` + `keyboardAvoidDistance` |
+| 悬浮模式 | `enableHoverMode`（API 14+） + `hoverModeArea`（API 14+） | `enableHoverMode` + `hoverModeArea` |
+| 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+| 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
+| 系统接口属性 | `distortionMode`（@systemapi）、`edgeLightMode`（@systemapi）——见 [系统接口](../reference/apis-arkui/ts-methods-custom-dialog-box-sys.md) | `distortionMode`（@systemapi）、`edgeLightMode`（@systemapi）——见 [系统接口](../reference/apis-arkui/js-apis-dialog-sys.md) |
 
 #### 2. AlertDialog（确认弹窗）
 
@@ -312,7 +312,7 @@ struct DialogStatePage {
 
 #### G3：高级动画参数差异
 
-老接口使用 `customStyle: boolean` 控制是否使用自定义样式，`animationStyle`（已废弃）/ `transition` 控制动画。新接口使用 `dialogTransition: TransitionEffect` 控制内容区动画，`maskTransition: TransitionEffect` 控制蒙层动画。两者参数类型不同，**不存在等效映射**，迁移时需按新接口 `TransitionEffect` 重写动画参数。
+老接口使用 `customStyle: boolean` 控制是否使用自定义样式，`openAnimation` / `closeAnimation`（`AnimateParam`）控制打开和关闭动画。新接口使用 `dialogTransition: TransitionEffect` 控制内容区动画，`maskTransition: TransitionEffect` 控制蒙层动画。两者参数类型不同，**不存在等效映射**，迁移时需按新接口 `TransitionEffect` 重写动画参数。
 
 #### G4：update 更新面收窄
 
