@@ -4761,7 +4761,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AbilityStage-sta/entry/src/main/ets/myabilitystage/MyAbilityStage.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":60,
 						"name":"myAbility_start",
 						"start_line":17
 					}
