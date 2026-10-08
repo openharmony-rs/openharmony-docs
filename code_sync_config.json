@@ -27516,6 +27516,11 @@
 						"end_line":1265,
 						"name":"App_Hicollie_Trigger",
 						"start_line":1189
+					},
+					{
+						"end_line":55,
+						"name":"App_Hicollie_Watcher_R_ptr",
+						"start_line":52
 					}
 				]
 			}
@@ -46906,6 +46911,21 @@
 						"end_line":210,
 						"name":"stop_scan",
 						"start_line":207
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/hicollie-settimer-guidelines-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":1117,
+						"name":"Hicollie_Set_Timer",
+						"start_line":1095
 					}
 				]
 			}
