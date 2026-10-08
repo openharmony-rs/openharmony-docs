@@ -80,21 +80,21 @@ ArkGraphics 3D支持开发者创建环境资源，用于定义3D场景背景。
    ``` TypeScript
    function createEnvironmentPromise() : Promise<Environment> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // 确保在访问sceneFactory之前场景已加载
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
    
-         // Manually load environment maps (.ktx/.jpg/.png etc.)
+         // 手动加载环境贴图（.ktx/.jpg/.png等）
          let sceneImageParameter: SceneResourceParameters = { name: 'image', uri: $rawfile('image/Cube_BaseColor.png') };
          let image: Promise<Image> = sceneFactory.createImage(sceneImageParameter);
          image.then(async (imageEntity: Image) => {
-           // Create Environment
+           // 创建环境
            let sceneEnvironmentParameter: SceneResourceParameters = { name: 'env' };
            let env: Promise<Environment> = sceneFactory.createEnvironment(sceneEnvironmentParameter);
            env.then(async (envEntity: Environment) => {
              envEntity.backgroundType = EnvironmentBackgroundType.BACKGROUND_EQUIRECTANGULAR;
              envEntity.environmentImage  = imageEntity;
-             // Set environment related properties
+             // 设置环境相关属性
              envEntity.indirectDiffuseFactor.x = 1;
              envEntity.indirectDiffuseFactor.y = 1;
              envEntity.indirectDiffuseFactor.z = 1;
