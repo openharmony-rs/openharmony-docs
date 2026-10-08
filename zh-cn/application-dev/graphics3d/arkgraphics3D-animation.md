@@ -52,7 +52,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
    this.anim = this.scene.animations[0];
    if (this.anim) {
      this.anim.enabled = true;
-     // Register callback function
+     // 注册回调函数
      this.anim.onStarted(() => {
        // ...
        this.animationCallbackInvoked = 'animation on start';
