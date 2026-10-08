@@ -1,18 +1,18 @@
 # AVSession_OutputDeviceInfo
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct AVSession_OutputDeviceInfo {...}
+typedef struct AVSession_OutputDeviceInfo {...} AVSession_OutputDeviceInfo
 ```
 
 ## Overview
 
-Defines a struct for the target device information.
+Defines information about the output device.
 
 **Since:** 23
 
@@ -26,5 +26,5 @@ Defines a struct for the target device information.
 
 | Name| Description|
 | -- | -- |
-| uint32_t size | Size of the device information array.|
-| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) **deviceInfos | Double pointer to the device information array.|
+| uint32_t size | Size of the device information array, indicating the number of elements in the **deviceInfos** array.|
+| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) **deviceInfos | Pointer to the device information array. The array length is specified by the **size** field.|
