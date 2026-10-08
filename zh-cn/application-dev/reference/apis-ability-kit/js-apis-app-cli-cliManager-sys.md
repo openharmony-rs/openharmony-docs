@@ -299,7 +299,7 @@ try {
 
 ## ExecToolParam
 
-CLI工具执行参数，用于Hook拦截。包含工具名称、子命令、参数、挑战码和执行选项。
+CLI工具执行参数，用于拦截Hook。包含工具名称、子命令、参数、挑战码和执行选项。
 
 **起始版本：** 26.0.1
 
@@ -314,12 +314,12 @@ CLI工具执行参数，用于Hook拦截。包含工具名称、子命令、参�
 | toolName    | string | 是 | 工具名称。 |
 | subCommand  | string | 是 | 子命令名称。 |
 | args        | Record\<string, Object\> | 是 | 工具执行参数。 |
-| challenge   | string | 是 | 权限校验的挑战码。 |
+| challenge   | string | 是 | 使用[requestToolPermissions](js-apis-abilityToolAccessCtrl-sys.md#abilitytoolaccessctrlrequesttoolpermissions)接口生成的[TicketInfo](js-apis-abilityToolAccessCtrl-sys.md#ticketinfo)中的ticket字符串。 |
 | execOptions | [ExecOptions](#execoptions) | 否 | 执行选项。<br/>默认值：详见[ExecOptions](#execoptions)的具体属性默认值。 |
 
 ## ExecCmdParam
 
-Shell命令执行参数，用于Hook拦截。包含命令字符串和执行选项。
+Shell命令执行参数，用于拦截Hook。包含命令字符串和执行选项。
 
 **起始版本：** 26.0.1
 
@@ -542,7 +542,11 @@ const cliHook: CliHook = {
 
 registerCliHook(hook: CliHook): Promise\<void\>
 
-注册CLI Hook，用于拦截工具和命令执行。同一时间只允许注册一个CLI Hook，已有Hook注册时再次注册将失败。本接口仅在开发者模式下可用。如需更新已注册的Hook，请先调用[unregisterCliHook()](#climanagerunregisterclihook)取消注册后再重新注册。Hook对象必须实现[CliHook](#clihook)接口中至少一个可选方法。注册CLI Hook的应用与调用[execTool()](#climanagerexectool)/[execCmd()](js-apis-app-cli-cliManager.md#climanagerexeccmd)的应用不能为同一应用：execTool()/execCmd()会同步阻塞主线程，而Hook回调在主线程执行，同一应用下会因主线程被占用导致回调无法触发。
+注册[CliHook](#clihook)。CliHook注册后用于拦截对[execTool()](#climanagerexectool)和[execCmd()](js-apis-app-cli-cliManager.md#climanagerexeccmd)的调用。本接口仅在开发者模式下可用。
+
+同一时间只允许注册一个CLI Hook，已有Hook注册时再次注册将失败，如需更新已注册的Hook，请先调用[unregisterCliHook()](#climanagerunregisterclihook)取消注册后再重新注册。传入的Hook对象必须实现[CliHook](#clihook)接口中至少一个可选方法。
+
+需要注意的是，注册CLI Hook的应用与调用[execTool()](#climanagerexectool)或[execCmd()](js-apis-app-cli-cliManager.md#climanagerexeccmd)的应用不能为同一应用：因为execTool()和execCmd()会同步阻塞主线程，而Hook回调同样在主线程执行，若为同一应用将因主线程被占用导致Hook回调无法触发。
 
 **起始版本：** 26.0.1
 
