@@ -3861,7 +3861,7 @@ struct Index {
 | childrenIds             | Array\<number>                                                             | 否  | 是  | 组件的子元素ID列表。|
 | customActions             | Array\<string>                                                 | 否  | 是  | 元素支持的自定义操作列表。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
-## FocusedUIAccessibilityElementChangeInfo
+## UIAccessibilityFocusChangeInfo
 
 无障碍聚焦节点变化信息。
 
