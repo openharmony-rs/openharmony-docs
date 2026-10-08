@@ -894,7 +894,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        if (!formId) {
          return;
        }
-       console.info(TAG, `doy: formId: ${formId}, message: ${message}`)
+       console.info(TAG, `formId: ${formId}, message: ${message}`)
        let param: Record<string, string> = {
          'message': message
        }
