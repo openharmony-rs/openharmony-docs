@@ -14,6 +14,8 @@
 >
 > - 子组件需要设置[空间效果](./ts-universal-attributes-spatial-effect-sys.md)，才能与景深组件的背景产生交互效果。
 >
+> - 空间效果不支持[Web](../../../web/web-component-overview.md)、[XComponent](./ts-basic-components-xcomponent.md)、[RichEditor](./ts-basic-components-richeditor.md)、[RichText](./ts-basic-components-richtext.md)、[Video](./ts-media-components-video.md)、[Component3D](./ts-basic-components-component3d.md)、[EmbeddedComponent](./ts-container-embedded-component.md)组件。
+>
 > - 具备基本的计算机图形学知识有助于更好地使用该组件。
 >
 > - 本模块为系统接口。
@@ -278,7 +280,7 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | position | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 相机在三维空间中的位置。无单位，其值表示三维空间中的坐标。 |
-| quaternion | [DepthVector4](ts-universal-attributes-spatial-effect-sys.md#depthvector4) | 否 | 否 | 相机旋转四元数，按(x, y, z, w)表示。无单位。其中(0, 0, 0, 1)为单位四元数，表示无旋转，相机保持默认朝向（默认看向-Z方向）；需要改变朝向时，绕Y轴旋转可左右调整朝向、绕X轴旋转可俯仰、绕Z轴旋转可滚转，按(x, y, z, w) = (轴·sin(θ/2), cos(θ/2))由旋转轴与角度换算。 |
+| quaternion | [DepthVector4](ts-universal-attributes-spatial-effect-sys.md#depthvector4) | 否 | 否 | 相机旋转四元数，按(x, y, z, w)表示。无单位。其中(0, 0, 0, 1)为单位四元数，表示无旋转，相机保持默认朝向（默认看向-Z方向）；需要改变朝向时，绕Y轴旋转可左右调整朝向、绕X轴旋转可俯仰、绕Z轴旋转可滚转，可由旋转轴与角度换算，公式为(x, y, z, w)=(旋转轴向量·sin(θ/2), cos(θ/2))。 |
 | yFov | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | 相机垂直方向视场角，单位为弧度。组件仅提供垂直视场角，水平视场角由yFov与组件宽高比自动导出，无法单独设置。 |
 | zNear | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | 近裁剪面距离。无单位。必须为正数，且应小于zFar；取0或负数时参数无效，当zNear大于或等于zFar时可视范围为空、画面不渲染。 |
 | zFar | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | 远裁剪面距离。无单位。必须为正数，且应大于zNear；取0或负数时参数无效，当zNear大于或等于zFar时可视范围为空、画面不渲染。 |
@@ -346,9 +348,9 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| direction | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 光照方向向量，表示光的传播方向（从光源指向被照物）。无单位。示例 { x: 0, y: 0, z: -1 } 表示光朝-Z方向照射，被照亮的面是其法线朝+Z（迎着光源）的面。 |
+| direction | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 光照方向向量，表示光的传播方向（从光源指向被照物）。无单位。示例{ x: 0, y: 0, z: -1 }表示光朝-Z方向照射，被照亮的面是其法线朝+Z（迎着光源）的面。 |
 | color | [DepthColorRGB](ts-universal-attributes-spatial-effect-sys.md#depthcolorrgb) | 否 | 否 | 光照颜色。 |
-| intensity | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | 光照强度。无单位，取值范围[0, +∞)。<br/>建议取值范围[0, 1]，当设置为0时，无光照；超出1时光照过强、可能过曝，不建议超出该范围。 |
+| intensity | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | 光照强度。无单位，取值范围[0, +∞)。<br/>建议取值范围[0, 1]，当设置为0时，无光照；超出1时光照过强，可能在受光面形成局部高亮的光斑，导致显示效果与预期不一致，不建议超出该范围。 |
 
 ## DepthComponentCompleteCallback
 
