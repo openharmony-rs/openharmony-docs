@@ -1732,4 +1732,4 @@ Allows an application to disable screen privacy protection while recording the s
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 26.0.1
+**Since**: 26.2.0
