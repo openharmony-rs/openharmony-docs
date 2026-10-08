@@ -86,7 +86,7 @@ ArkGraphics 3D提供基于JPEG、PNG和KTX格式创建Image资源的能力，支
    ``` TypeScript
    function createImagePromise(): Promise<Image> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // 确保在访问sceneFactory之前场景已加载
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
    
