@@ -1,26 +1,27 @@
 # @ohos.data.dataShare (DataShare)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=92fad92320c327a07cb31c689545113f874871a6 translatedAt=2026-06-26T06:37:28.930Z pushedAt=2026-06-29T02:15:43.577Z -->
+<!-- md-trans-meta sourceCommit=290991ba34a14252faa986897a6b8fc4198384bb translatedAt=2026-09-04T03:25:58.657Z pushedAt=2026-09-09T09:11:03.708Z -->
 
-The **DataShare** module allows an application to manage its own data and share data with other applications on the same device.
+The **DataShare** module allows an app to manage its own data and share data with other apps on the same device.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since <!--RP1-->API version 9<!--RP1End-->. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The APIs of this module can be used only in the stage model.
+
 
 ## Modules to Import
 
 ```ts
 import { dataShare } from '@kit.ArkData';
 ```
+
 
 ## dataShare.createDataProxyHandle<sup>20+</sup>
 
@@ -45,7 +46,6 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 | 15700000 | Inner error. Possible causes: The service is not ready or is being restarted abnormally. |
 
 **Example:**
-
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -82,11 +82,11 @@ Defines a struct for shared configurations.
 | Name      | Type                                                        | Read-Only| Optional| Description          |
 | ---------- | ----------------------------------------------------------- | ----| ---- | -------------- |
 | uri        | string                                                      | No| No | Unique ID of a shared configuration, fixed at the format of **"datashareproxy://{*bundleName*}/{*path*}"**, in which **bundleName** indicates the bundle name of the publisher application, and **path** can be set to any value but must be unique in the same application. The value is a string with a maximum of 256 bytes.|
-| value      | [ValueType](js-apis-data-valuesBucket.md#valuetype)         | No  | Yes   | Value of the share configuration. If not filled, it is an empty string.<br/>**NOTE**<br/>1. Before API version 26.0.0, the string length does not exceed 4096 bytes. Since API version 26.0.0, the default maximum allowed length of the string is 4096 bytes. You can configure **maxValueLength** in [DataProxyConfig](#dataproxyconfig20) to extend the maximum length to 102400 bytes.<br/>2. When a shared configuration is published for the first time, an empty string is used as the default value if the value is not provided. When a shared configuration is updated, the value is left unchanged if not provided.     |
-| allowList  | string\[]                                         | No  | Yes   | List of applications allowed to subscribe to and read the share configuration. If not set, it is an empty string array. The maximum array length is 256, and elements beyond 256 do not take effect. When a share configuration is published for the first time, the value defaults to an empty string if not provided. When the share configuration is updated, if not filled, the value is left unchanged if not provided. An empty **allowlist** indicates that only the publisher can access the share configuration. <br/>Before API version 26.0.0, each element in the array is the [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier) of an application. The maximum length of a single **appIdentifier** is 128 bytes, and **appIdentifiers** exceeding 128 bytes do not take effect.<br/>Since API version 26.0.0, the array supports the special string **"all"** (case-sensitive), which indicates that all applications are allowed to access.|
-| isMultiValues      | boolean         | No  | Yes   | Whether it is a share configuration of the multi-value type that uses values. **true** means yes, and the **value** parameter will be ignored. **false** means no. The default value is **false**. <br/>**Since:** 26.0.0 |
-| values      | Record&lt;number, [ValueType](js-apis-data-valuesBucket.md#valuetype)&gt;         | No  | Yes   | Values of the multi-value type. The first parameter in **Record** is **key**, which is specified by the user and must be unique. The second parameter is the **value** corresponding to the **key**. A single application can add a maximum of 10 values under a single URI, and the maximum length of each value is 4096 bytes. Meanwhile, the total length of all values is limited by the **maxValueLength** field in [DataProxyConfig](#dataproxyconfig20). This parameter takes effect only when **isMultiValues** is set to **true** and cannot be empty. When **isMultiValues** is **false**, it defaults to **undefined**. <br/>**Since:** 26.0.0 |
-| trustProviders      | string[]         | No  | Yes   | List of applications that can assign values to the multi-value share configuration. The array can contain a maximum of 256 elements, and elements beyond that are invalid. Each element in the array is the [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier) of an application. The maximum length of an **appIdentifier** is 128 bytes, and the part exceeding 128 bytes does not take effect.<br/>If this parameter is not set when a share configuration is published for the first time, the default list is empty. An empty list indicates that only the publisher can assign values to the multi-value share configuration. The array supports the special string **"all"** (case-sensitive), which indicates that all applications are allowed to assign values to the multi-value share configuration. This parameter takes effect only when **isMultiValues** is set to **true**.<br/>**Since:** 26.0.0 |
+| value      | [ValueType](js-apis-data-valuesBucket.md#valuetype)         | No | Yes   | Value of the shared configuration. If not specified, an empty string is used.<br>**Note:** <br>1. Before API version 26.0.0, the string length does not exceed 4096 bytes. Since API version 26.0.0, the default maximum string length allowed is 4096 bytes, and you can configure maxValueLength in [DataProxyConfig](#dataproxyconfig20) to extend the maximum length to 102400 bytes.<br>2. When the shared configuration is published for the first time, if this parameter is not specified, an empty string is used by default. When the shared configuration is updated, if this parameter is not specified, the value of the shared configuration will not be updated.     |
+| allowList  | string\[]                                         | No | Yes   | List of apps that are allowed to subscribe to and read the shared configuration. If not specified, an empty string array is used. The maximum length of the array is 256, and elements beyond 256 do not take effect. When the shared configuration is published for the first time, if this parameter is not specified, an empty allowlist is used by default. When the shared configuration is updated, if this parameter is not specified, the allowlist of the shared configuration will not be updated. An empty allowlist indicates that only the publisher can access the shared configuration. <br>Before API version 26.0.0, each element in the array is the [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier) of an app. The maximum length of a single appIdentifier is 128 bytes, and an appIdentifier longer than 128 bytes does not take effect.<br>Since API version 26.0.0, the array supports the special string "all" (case-sensitive), which indicates that all apps are allowed to access.|
+| isMultiValues      | boolean         | No | Yes   | Whether this is a multi-value shared configuration that uses values. **true** indicates that the data published this time is of the multi-value type, in which case the value parameter is ignored. **false** indicates a non-multi-value type. The default value is **false**. <br>**Since:** 26.0.0 |
+| values      | Record&lt;number, [ValueType](js-apis-data-valuesBucket.md#valuetype)&gt;         | No | Yes   | Value of the multi-value type. The first parameter in Record is the key, which is specified by the user and must be unique. The second parameter is the value corresponding to the key. A single app can add up to 10 values under a single URI, and the maximum length of each value is 4096 bytes. In addition, the total length of all values is limited by the maxValueLength field in [DataProxyConfig](#dataproxyconfig20). This parameter takes effect only when isMultiValues is set to **true**, and it cannot be empty. When isMultiValues is **false**, the default value is undefined. <br>**Since:** 26.0.0 |
+| trustProviders      | string[]         | No | Yes   | List of apps that can assign values to the multi-value shared configuration. The array can contain up to 256 elements, and elements beyond 256 do not take effect. Each element in the array is the [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier) of an app. The maximum length of an appIdentifier is 128 bytes, and the part longer than 128 bytes does not take effect.<br>If this parameter is not set when the shared configuration is published for the first time, the assignment list is empty by default. An empty assignment list indicates that only the publisher can assign values to the multi-value shared configuration. The array supports the special string "all" (case-sensitive), which indicates that all apps are allowed to assign values to the multi-value shared configuration. This parameter takes effect only when isMultiValues is set to **true**.<br>**Since:** 26.0.0 |
 
 ## DataProxyChangeInfo<sup>20+</sup>
 
@@ -99,7 +99,7 @@ Defines a struct for notifying subscribers of the shared configuration changes, 
 | type       | [ChangeType](#changetype20)                                | No| No   | Data change type.|
 | uri       | string                                                        | No  | No    | Data change URI. The fixed format is `"datashareproxy://{bundleName}/{path}"`, where **bundleName** is the **bundleName** of the publisher application, **path** can be set as required, but duplication is not allowed within the same application, and the string length does not exceed 256 bytes.|
 | value     | [ValueType](js-apis-data-valuesBucket.md#valuetype)             | No| No    | Changed data.    |
-| values     | [ValueType](js-apis-data-valuesBucket.md#valuetype)[]          | No  | Yes     | Change data of the multi-value type. If the changed data type is not a multi-value type, the **values** is **undefined**.<br/>**Since:** 26.0.0     |
+| values     | [ValueType](js-apis-data-valuesBucket.md#valuetype)[]          | No | Yes     | Change data of the multi-value type. If the changed data type is not a multi-value type, the value of values is undefined.<br>**Since:** 26.0.0     |
 
 ## DataProxyErrorCode<sup>20+</sup>
 
@@ -157,7 +157,7 @@ Defines a struct for the data proxy configuration.
 | Name      | Type                                                         | Read-Only| Optional| Description          |
 | ---------- | ----------------------------------------------------------- | ---- | ---- | -------------- |
 | type      | [DataProxyType](#dataproxytype20)                            | No| No  | Type of the data proxy.|
-| maxValueLength  | [DataProxyMaxValueLength](#dataproxymaxvaluelength)  | No | Yes   | Maximum length of the share configuration value. If not set, the default value is **MAX_LENGTH_4K**, meaning the maximum length of the share configuration value is 4096 bytes.<br/>**Since:** 26.0.0 |
+| maxValueLength  | [DataProxyMaxValueLength](#dataproxymaxvaluelength)  | No | Yes   | Sets the maximum allowed length of the value of the shared configuration. If not filled, the default value is MAX_LENGTH_4K, that is, the maximum allowed length of the value of the shared configuration is 4096 bytes.<br>**Since:** 26.0.0 |
 
 ## DataProxyMaxValueLength
 
@@ -185,11 +185,8 @@ on(event: 'dataChange', uris: string[], config: DataProxyConfig, callback: Async
 Subscribes to the change event of the shared configuration corresponding to a specified URI. If the change event is subscribed, the subscriber will receive a callback notification that carries the data change type, changed URI, and changed content when the publisher modifies the configuration. This API uses an asynchronous callback to return the result. This function does not support cross-user notification subscription or subscription to unpublished configurations. If the permission is revoked after the subscription is successful, the subscriber will not be notified consequently.
 
 **API called in pairs**
-
 - After subscription, you must call [off('dataChange')](#offdatachange20) to unsubscribe when it is no longer needed.
-
 - To unsubscribe an event, ensure that the **event**, **uris**, **config**, and **callback** parameters are consistent with those used during subscription.
-
 - Failure to unsubscribe may lead to memory leaks and resource occupation.
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -199,7 +196,7 @@ Subscribes to the change event of the shared configuration corresponding to a sp
 | Name    | Type                       | Mandatory| Description                   |
 | -------- | ----------------------------- | ---- | ------------------------ |
 | event     | string                        | Yes  | Event or callback type. The **dataChange** event is triggered when the publisher modifies the configuration.|
-| uris     | string\[]             | Yes   | URI array corresponding to the share configuration to be subscribed to.<br/>**NOTE**<br/>1. Before API version 26.0.0, the maximum array length is 32; since API version 26.0.0, the maximum array length is 64.<br/>2. The URI fixed format is `"datashareproxy://{bundleName}/{path}"`, where **bundleName** is the **bundleName** of the publisher application, **path** can be set as required, but not allowed to be duplicated within the same application, and the string length does not exceed 256 bytes. |
+| uris     | string\[]             | Yes   | Array of URIs corresponding to the share configurations to subscribe to.<br>**NOTE**<br>1. Before API version 26.0.0, the maximum length of the array is 32; from API version 26.0.0, the maximum length of the array is 64.<br>2. The URI is in the fixed format of `"datashareproxy://{bundleName}/{path}"`, where bundleName is the bundleName of the publisher app of the configuration, path can be any value but must be unique within the same app, and the string length cannot exceed 256 bytes. |
 | config      | [DataProxyConfig](#dataproxyconfig20)               | Yes   | Configuration of the data proxy operation. Since API version 26.0.0, when the length of the changed share configuration content exceeds the maximum length limit configured by the **maxValueLength** field in [DataProxyConfig](#dataproxyconfig20), the share configuration content will be truncated. |
 | callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | Yes   | Callback used to return the result. If the subscription is successful, **err** is **undefined**, and **data** is the obtained **DataProxyChangeInfo** array, containing the change type, URI, and the changed share configuration content; otherwise, it is an error object.|
 
@@ -248,11 +245,8 @@ off(event: 'dataChange', uris: string[], config: DataProxyConfig, callback?: Asy
 Unsubscribes from the change event of the proxy data corresponding to a specified URI.
 
 **API called in pairs**
-
 - This API must be used after [on('dataChange')](#ondatachange20) is called for subscription.
-
 - To unregister a subscription, ensure that the **event**, **uris**, and **config** parameters are consistent with those used during subscription.
-
 - If the **callback** parameter is not specified, all registered callbacks for the URI will be unsubscribed.
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -262,9 +256,9 @@ Unsubscribes from the change event of the proxy data corresponding to a specifie
 | Name    | Type                       | Mandatory| Description                   |
 | -------- | ----------------------------- | ---- | ------------------------ |
 | event     | string                        | Yes  | Event or callback type. The value is **dataChange**, which indicates the data change.|
-| uris     | string\[]             | Yes   | URI array corresponding to the share configuration of the subscription to be unregistered.<br/>**NOTE**<br/>1. Before API version 26.0.0, the array maximum length is 32; since API version 26.0.0, the array maximum length is 64.<br/>2. The fixed URI format is **"datashareproxy://{bundleName}/{path}"**, where **bundleName** is the **bundleName** of the configuration publisher application, **path** can be set as required, but not allowed to be duplicated within the same application, and the string length does not exceed 256 bytes. |
+| uris     | string\[]             | Yes   | URI array of the shared configurations to unsubscribe from.<br>**NOTE**<br>1. Before API version 26.0.0, the maximum length of the array is 32. Since API version 26.0.0, the maximum length of the array is 64.<br>2. The URI is in the fixed format `"datashareproxy://{bundleName}/{path}"`, where bundleName is the bundle name of the publisher application of the configuration, and path can be any value but must be unique within the same app. The string length cannot exceed 256 bytes. |
 | config      | [DataProxyConfig](#dataproxyconfig20)               | Yes  | Data proxy configuration.|
-| callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | No   | Callback to be unregistered. If not set, all registered callbacks will be unregistered.|
+| callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | No   | Callback function. When the unsubscription succeeds, err is undefined and data is the obtained DataProxyChangeInfo array, which contains the change type, URI, and changed shared configuration content; otherwise, it is an error object. If this parameter is not specified, all registered callback functions are unsubscribed. |
 
 **Return value**
 
@@ -318,7 +312,7 @@ Only the publisher is allowed to update share configuration items.
 
 Before API version 26.0.0, an application supports a maximum of 32 share configurations; since API version 26.0.0, an application supports a maximum of 64 share configurations.
 
-Since API version 26.0.0, publishing multi-value type configurations is supported. One URI can only correspond to one value type. After a configuration is published, the **publish** API cannot be used to update a published multi-value type URI. For multi-value type operation APIs, see [putValue](#putvalue), [removeValue](#removevalue), and [getValues](#getvalues).
+Since API version 26.0.0, publishing multi-value type configurations is supported, and a URI can correspond to only one value type. After a configuration is published, the publish API cannot be used to update a published multi-value type URI. For the APIs for operating multi-value types, see [putValue](#putvalue), [removeValue](#removevalue), and [getValues](#getvalues).
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -380,7 +374,7 @@ Deletes the specified shared configuration items based on URIs. This API uses a 
 
 | Name    | Type                       | Mandatory| Description                   |
 | -------- | ----------------------------- | ---- | ------------------------ |
-| uris     | string\[]          | Yes   | URI array corresponding to the share configuration to be deleted.<br/>**NOTE**<br/>1. Before API version 26.0.0, the maximum array length is 32; since API version 26.0.0, the maximum array length is 64.<br/>2. The fixed URI format is **"datashareproxy://{bundleName}/{path}"**, where **bundleName** is the **bundleName** of the publisher application, and **path** can be set as required, but not allowed to be duplicated within the same application, and the string length does not exceed 256 bytes. |
+| uris     | string\[]          | Yes   | Array of URIs corresponding to the share configurations to be deleted.<br>**NOTE**<br>1. Before API version 26.0.0, the maximum length of the array is 32; starting from API version 26.0.0, the maximum length of the array is 64.<br>2. The URI is in the fixed format of `"datashareproxy://{bundleName}/{path}"`, where bundleName is the bundle name of the publisher app of the configuration, and path can be set to any value but must be unique within the same app. The string length cannot exceed 256 bytes. |
 | config   | [DataProxyConfig](#dataproxyconfig20)   | Yes  | Data proxy configuration.|
 
 **Return value**
@@ -473,7 +467,7 @@ Obtains a specified share configuration item based on the URI. This API uses a p
 
 | Name    | Type                       | Mandatory| Description                   |
 | -------- | ----------------------------- | ---- | ------------------------ |
-| uris     | string\[]         | Yes   | URI array of the share configuration to be obtained.<br/>**NOTE**<br/>1. Before API version 26.0.0, the array maximum length is 32; since API version 26.0.0, the array maximum length is 64.<br/>2. The fixed URI format is **"datashareproxy://{bundleName}/{path}"**, where **bundleName** is the **bundleName** of the publisher application, **path** can be set as required, but not allowed to be duplicated within the same application, and the string length does not exceed 256 bytes. |
+| uris     | string\[]         | Yes   | Array of URIs of the share configurations to obtain.<br>**NOTE**<br>1. Before API version 26.0.0, the maximum length of the array is 32; since API version 26.0.0, the maximum length of the array is 64.<br>2. The URI is in the fixed format `"datashareproxy://{bundleName}/{path}"`, where bundleName is the bundle name of the publisher app of the configuration, and path can be any value but must be unique within the same app. The string length cannot exceed 256 bytes. |
 | config   | [DataProxyConfig](#dataproxyconfig20)   | Yes   | Configuration of the data proxy operation. Since API version 26.0.0, the length of the obtained share configuration item value cannot exceed the maximum length limit configured in the **maxValueLength** field of [DataProxyConfig](#dataproxyconfig20). When the limit is exceeded, the return value status code [DataProxyErrorCode](#dataproxyerrorcode20) of the corresponding operation result is **OVER_LIMIT**. |
 
 **Return value**
@@ -516,7 +510,7 @@ Writes a value to the published data. This operation is only supported for multi
 
 If the passed key does not exist, a new value is added; if the passed key already exists, the value corresponding to that key is updated.
 
-By default, a single piece of data (i.e., a URI) can have a maximum of 10 values added within a single application, with each value having a maximum length of 4096 bytes. At the same time, the total length of all values for a single piece of data (i.e., one URI) within a single application is limited by the **maxValueLength** parameter value specified during [publish](#publish20).
+By default, a single data item (that is, a URI) can have a maximum of 10 values added in a single app, and the maximum length of each value is 4096 bytes. In addition, the total length of all values of a single data item (that is, a URI) in a single app is limited by the maxValueLength parameter value specified when the data is published using [publish](#publish20).
 
 **Since:** 26.0.0
 
@@ -594,7 +588,7 @@ Removes the value corresponding to the key. This operation can only be performed
 | Name     | Type                        | Mandatory | Description                    |
 | -------- | ----------------------------- | ---- | ------------------------ |
 | uri      | string   | Yes   | URI corresponding to the data to be operated. The fixed format is **"datashareproxy://{bundleName}/{path}"**, where **bundleName** is the **bundleName** of the publisher application, **path** can be set as required but not allowed to be duplicated within the same application, and the string length cannot exceed 256 bytes. |
-| key      | number   | Yes   | Key corresponding to the added value. <br>The value range is all integers. |
+| key      | number   | Yes   | Key corresponding to the value to be removed. <br>The value range is all integers. |
 | config   | [DataProxyConfig](#dataproxyconfig20)   | Yes   | Configuration of the data proxy operation. |
 
 **Return value**

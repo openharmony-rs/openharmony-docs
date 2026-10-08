@@ -1,4 +1,4 @@
-# Generating an MD Using SHA3-256 (C/C++)
+# Generating an MD Using SHA-3 (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,12 +6,14 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=9fdfc79fd811dbd3830944fd4ada4372911e5c41 translatedAt=2026-08-07T03:28:56.603Z pushedAt=2026-08-11T01:38:12.866Z -->
 
-From API version 22, the crypto algorithm library supports digest operation with SHA3-256.
+Starting from API version 22, the algorithm library supports digest computation using this algorithm.
 
 For details about the algorithm specifications, see [Supported Algorithms and Specifications](crypto-generate-message-digest-overview.md#supported-algorithms-and-specifications).
 
 ## Adding the Dynamic Library in the CMake Script
+
 ```txt
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
@@ -26,9 +28,9 @@ The following provides examples with different data passing methods.
 
 1. Call [OH_CryptoDigest_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_create) with the MD algorithm **SHA3-256** to generate an MD operation instance (**OH_CryptoDigest**).
 
-2. Call [OH_CryptoDigest_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_update) to pass in the data for generating an MD. The amount of data to be passed in by a single **Mac.update()** call is not limited.
+2. Call [OH_CryptoDigest_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_update) to pass in the data for generating an MD. The amount of data to be passed in by a single update call is not limited.
 
-3. Call [OH_CryptoDigest_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_final) to generate an MD.
+3. Call [OH_CryptoDigest_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_final) to obtain the MD computation result.
 
 4. Call [OH_CryptoDigest_GetLength](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_getlength) to obtain the MD length, in bytes.
 
@@ -72,7 +74,6 @@ OH_Crypto_ErrCode doTestSha3Md()
     return ret;
 }
 ```
-
 
 ### Generating an MD by Passing In Data by Segment
 

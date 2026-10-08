@@ -6,7 +6,7 @@
 <!--Designer: @renzehua; @huangjieliang; @zhanganxiang-->
 <!--Tester: @rongwei-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=2845f22b3a6c7c573421bce7ff3e32f73246613d translatedAt=2026-07-20T10:51:44.450Z pushedAt=2026-07-21T02:56:08.593Z -->
+<!-- md-trans-meta sourceCommit=2845f22b3a6c7c573421bce7ff3e32f73246613d translatedAt=2026-07-20T10:51:44.450Z pushedAt=2026-08-13T03:06:28.705Z -->
 
 Binary Sign Tool is used for code signing of binary files. It supports signing standard ELF files or printing the permission and certificate information of signed ELF files through the command line.
 

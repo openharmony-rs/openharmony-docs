@@ -185,7 +185,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Device info | 设备信息 | 8 | 是 | - |
 | Build info | 版本信息 | 8 | 是 | - |
 | DeviceDebuggable | 设备的系统版本是否可调试 | 23 | 是 | - |
-| Fingerprint | 故障特征，聚类同类问题的哈希值，哈希值相同即判定为同一故障原因 | 8 | 是 | - |
+| Fingerprint | 故障特征，聚类同类问题的哈希值，哈希值相同即判定为同一故障原因。 | 8 | 是 | - |
 | Enabled app log configs | 使能的配置参数列表 | 20 | 否 | 仅用户配置时打印，详见[应用通过HiAppEvent设置崩溃日志配置参数场景日志规格](#应用通过hiappevent设置崩溃日志配置参数场景日志规格)。 |
 | Module name | 模块名 | 8 | 是 | - |
 | ReleaseType | 应用的版本类型 | 23 | 否 | 仅在应用进程提供，release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。 |
@@ -205,7 +205,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Process life time | 故障进程存活时间 | 8 | 是 | - |
 | Process Memory(kB) | 故障进程内存占用 | 20 | 是 | - |
 | Device Memory(kB) | 整机内存信息 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[实现原理](#实现原理)。 |
-| Log source | 用于标识采集日志的方式，目前有以下几种方式： <br> **processdump：** 用户态生成的cppcrash日志<br> **pdump：** 用户态生成cppcrash日志失败时由内核补偿生成<br> **liteprocessdump：** render/cpu等低权限进程崩溃时生成的cppcrash日志<br> 不同方式下生成日志规格会有差异，详见[不同采集方式下日志规格差异](#不同采集方式下日志规格差异) | 26.0.0 | 是 | - |
+| Log source | 用于标识采集日志的方式，目前有以下几种方式： <br> **processdump：** 由用户态生成<br> **pdump：** 用户态生成cppcrash日志失败时由内核补偿生成<br> **liteprocessdump：** render/cpu等低权限进程崩溃时由用户态生成<br> 不同方式下生成日志规格会有差异，详见[不同采集方式下日志规格差异](#不同采集方式下日志规格差异)。 | 26.0.0 | 是 | - |
 | Reason | 故障原因 | 8 | 是 | - |
 | LastFatalMessage | Fatal消息 | 8 | 否 | 以下几种情况共用此字段：<br> 解析到不可靠的栈帧地址时输出的提示信息。<br> 因ABORT信号崩溃退出时保存最后一条FATAL级Hilog日志。<br>系统内部的维测信息。<br>应用通过[OH_HiDebug_SetCrashObj](hidebug-guidelines.md#添加维测信息到崩溃日志中)设置的字符串信息。<br>从API版本26.0.0开始，应用若开启[模块加载链路调试开关](../arkts-utils/arkts-module-debug.md)，则此字段包含模块加载链路。|
 | Fault thread info | 故障线程信息 | 8 | 是 | - |
@@ -277,6 +277,7 @@ App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:255s <- 故障进程存活时间
 Process Memory(kB): 177672(Rss) <- 故障进程内存占用
 Device Memory(kB): Total 2001936, Free 509212, Available 1115804 <- 整机内存信息（非必选）
+Log source:processdump <- 用于标识采集日志的方式，processdump表示由用户态生成
 Reason:Signal:SIGSEGV(SI_USER)@0x00001e99 from:7833:0 <- 故障原因，详见信号值说明
 Fault thread info:           <- 故障线程信息
 Tid:6946, Name:e.myapplication  <- 故障线程号，线程名
@@ -439,9 +440,9 @@ ARM 64位系统支持抓取CPP和JS之间跨语言的调用栈，因此如果在
 
 空指针解引用通常有以下两个常见的场景：
 
-1.形如SIGSEGV(SEGV_MAPERR)\@0x00000000或cppcrash日志的Register中打印的r0，r1等传参寄存器的值为0，应首先考虑调用时是否传入了空指针。
+1. 形如SIGSEGV(SEGV_MAPERR)\@0x00000000或cppcrash日志的Register中打印的r0，r1等传参寄存器的值为0，应首先考虑调用时是否传入了空指针。
 
-2.形如SIGSEGV(SEGV_MAPERR)\@0x0000000c（小于一个内存页大小）或cppcrash日志Register中打印的r1等传参寄存器的值为一个很小的值时应考虑调用入参的结构体成员是否包含空指针。
+2. 形如SIGSEGV(SEGV_MAPERR)\@0x0000000c（小于一个内存页大小）或cppcrash日志Register中打印的r1等传参寄存器的值为一个很小的值时应考虑调用入参的结构体成员是否包含空指针。
 
 该场景会在日志中打印出提示信息，表明故障很有可能是因为空指针解引用导致。以下是一份DevEco Studio归档在FaultLog的进程崩溃日志的核心内容。
 
@@ -463,6 +464,7 @@ App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s               <- 故障进程存活时间
 Process Memory(kB): 5357(Rss)     <- 故障进程内存占用
 Device Memory(kB): Total 2001936, Free 583336, Available 1194164 <- 整机内存信息（非必选）
+Log source:processdump <- 用于标识采集日志的方式，processdump表示由用户态生成
 Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000004  probably caused by NULL pointer dereference   <- 故障原因和空指针提示
 Fault thread info:
 Tid:9623, Name:crasher_cpp         <- 故障线程号，线程名
@@ -526,6 +528,7 @@ App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s                  <- 故障进程存活时间
 Process Memory(kB): 5279(Rss)     <- 故障进程内存占用
 Device Memory(kB): Total 2001936, Free 311000, Available 1181132 <- 整机内存信息（非必选）
+Log source:processdump <- 用于标识采集日志的方式，processdump表示由用户态生成
 Reason:Signal:SIGSEGV(SEGV_ACCERR)@0xf740efe0  current thread stack low address = 0xf740f000, probably caused by stack-buffer-overflow    <- 故障原因和栈溢出提示
 Fault thread info:
 Tid:15414, Name:crasher_cpp
@@ -561,6 +564,7 @@ App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s                      <- 故障进程存活时间
 Process Memory(kB): 5271(Rss)            <- 故障进程内存占用
 Device Memory(kB): Total 2001936, Free 311220, Available 1181516 <- 整机内存信息（非必选）
+Log source:processdump <- 用于标识采集日志的方式，processdump表示由用户态生成
 Reason:Signal:SIGSEGV(SEGV_MAPERR)@0000000000  probably caused by NULL pointer dereference      <- 故障原因
 LastFatalMessage:Failed to unwind stack, try to get unreliable call stack from #02 by reparsing thread stack. <- #00和#01一般认为是可信的，从#02开始尝试从线程栈内存里解析不可靠的调用栈
 Fault thread info:
@@ -647,6 +651,7 @@ App running unique id:124500628566978194    <- 应用运行时唯一关联的id
 Process life time:42s                        <- 故障进程存活时间
 Process Memory(kB): 151736(Rss)            <- 故障进程内存占用
 Device Memory(kB): Total 11712088, Free 2500232, Available 5275648 <- 整机内存信息（非必选）
+Log source:processdump <- 用于标识采集日志的方式，processdump表示由用户态生成
 Reason:Signal:SIGABRT(SI_TKILL)@0x01317bf600006f05  from:28421:20020214  <- 故障原因
 Fault thread info:
 Tid:29192, Name:OS_FFRT_2_0                 <- 故障线程号，线程名
@@ -678,6 +683,35 @@ Tid:29192, Name:OS_FFRT_2_0                 <- 故障线程号，线程名
 ...
 ```
 <!--RP5End-->
+
+### Promise异步嵌套调用故障场景日志规格
+
+从API版本26.0.1开始，在ARM 64位系统下，当Promise异步嵌套调用过程中发生Cpp Crash时，异步栈跟踪维测功能还会打印提交该异步任务的线程栈，帮助定位由异步任务提交者造成的崩溃问题。Promise异步栈功能默认关闭，开启方法参见[Promise异步栈](jscrash-guidelines.md#promise异步栈)。
+
+在多层异步嵌套调用场景下，当前规格仅保留**发生故障的调用层**的提交者调用栈，而非完整的嵌套调用链。崩溃线程的调用栈与其提交线程的调用栈通过`SubmitterStacktrace`字符串分隔。
+
+以9级`async/await`嵌套调用为例，整个过程如下图所示：调用方发起调用后，每层异步函数执行至`await`处挂起，待其Promise决议后由运行时（事件循环）恢复执行，随后调用下一层异步函数，如此逐层嵌套，直至最深层multiAsync9。每层`await`都会产生一个新的Promise节点，运行时会逐层保存该层的提交者调用栈。multiAsync9恢复执行后调用`TriggerCppCrash()`触发Cpp Crash，日志中保留的正是该层的提交者调用栈。
+
+![Promise异步嵌套调用过程](figures/promise_async_nested_call.png)
+
+以下是一份DevEco Studio归档在FaultLog的进程崩溃日志的核心内容。
+
+```text
+...
+========SubmitterStacktrace========       <- 任务异常时打印任务提交者调用栈
+#00 pc 00000000005f40d0 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::AsyncStackTraceManager::SavePromiseNode(panda::ecmascript::JSHandle<panda::ecmascript::JSPromise> const&)+60)(dbd213472df8eda22fa2fc27e7353c09)
+#01 pc 0000000000289628 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::JSAsyncFunction::AsyncFunctionAwait(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue> const&, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue> const&)+1752)(dbd213472df8eda22fa2fc27e7353c09)
+#02 pc 0000000000288cb0 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::RuntimeStubs::AsyncFunctionAwaitUncaught(unsigned long, unsigned int, unsigned long)+116)(dbd213472df8eda22fa2fc27e7353c09)
+#03 pc 0000000000e85c58 /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+40)
+#04 pc 0000000000d55e8c /system/lib64/module/arkcompiler/stub.an(BCStub_HandleAsyncfunctionawaituncaughtV8StwCopy+64)
+#05 at multiAsync9 entry (entry/src/main/ets/pages/Index.ets:140:3)  <- 发生故障的调用帧
+#06 at multiAsync8 entry (entry/src/main/ets/pages/Index.ets:134:3)
+#07 pc 00000000004b0860 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::InterpreterAssembly::GeneratorReEnterInterpreter(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::GeneratorContext>)+164)(dbd213472df8eda22fa2fc27e7353c09)
+#08 pc 000000000027ff7c /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::EcmaInterpreter::GeneratorReEnterInterpreter(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::GeneratorContext>)+248)(dbd213472df8eda22fa2fc27e7353c09)
+#09 pc 000000000027fd3c /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::GeneratorHelper::Next(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::GeneratorContext> const&, panda::ecmascript::JSTaggedValue)+172)(dbd213472df8eda22fa2fc27e7353c09)
+#10 pc 000000000027fbdc /system/lib64/platformsdk/libark_jsruntime.so(dbd213472df8eda22fa2fc27e7353c09)
+...
+```
 
 ### 应用通过HiAppEvent设置崩溃日志配置参数场景日志规格
 
@@ -959,7 +993,7 @@ at onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 | Device info | 设备信息 | 有 | 有 | 有 |
 | Build info | 版本信息 | 有 | 有 | 有 |
 | DeviceDebuggable | 设备的系统版本是否可调试 | 有 | 有 | 有 |
-| Fingerprint | 故障特征，聚类同类问题的哈希值，哈希值相同即判定为同一故障原因 | 有 | 有 | 有 |
+| Fingerprint | 故障特征，聚类同类问题的哈希值，哈希值相同即判定为同一故障原因。 | 有 | 有 | 有 |
 | Enabled app log configs | 使能的配置参数列表 | 有 | 无 | 无 |
 | Module name | 模块名 | 有 | 有 | 有 |
 | ReleaseType | 应用的版本类型 | 有 | 有 | 有 |
@@ -979,7 +1013,7 @@ at onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 | Process life time | 故障进程存活时间 | 有 | 有 | 有 |
 | Process Memory(kB) | 故障进程内存占用 | 有 | 有 | 有 |
 | Device Memory(kB) | 整机内存状态 | 有 | 有 | 有 |
-| Log source | 用于标识采集日志的方式 | 有 | 有 | 有 |
+| Log source | 用于标识采集日志的方式。 | 有 | 有 | 有 |
 | Reason | 故障原因 | 有 | 有 | 有 |
 | LastFatalMessage | Fatal消息 | 有 | 无 | 无 |
 | Fault thread info | 故障线程信息 | 有 | 有 | 有 |
@@ -1011,7 +1045,7 @@ at onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 
 **编译选项开启方法**
 
-以Cmake为例，在CMakeList.txt中添加`set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")`。
+以CMake为例，在CMakeLists.txt中添加`set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")`。
 
 ### 应用发生SIGPIPE异常退出
 

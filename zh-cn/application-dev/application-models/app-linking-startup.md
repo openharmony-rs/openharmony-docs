@@ -214,12 +214,12 @@ struct Index {
 ```
 
 
-在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应的App Linking配置正确。
+在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应用的App Linking配置正确。
 
 ## FAQ
 
 
-1. 应用的Modules.json5文件skills设置不正确。
+1. 应用的modules.json5文件skills设置不正确。
 
    检查"host"字段中是否是应用所对应的域名。
 

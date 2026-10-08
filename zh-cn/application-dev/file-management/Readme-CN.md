@@ -2,9 +2,9 @@
 
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25-->
-<!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
-<!--Tester: @liuhonggang123-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 - [Core File Kit简介](core-file-kit-intro.md)

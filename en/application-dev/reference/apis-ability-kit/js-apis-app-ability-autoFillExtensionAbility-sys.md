@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e2c3267fc728379ed661f6395560cc18d085c54a translatedAt=2026-09-03T10:00:05.414Z pushedAt=2026-09-05T10:47:30.237Z -->
 
-The AutoFillExtensionAbility module provides APIs for automatically filling in and saving accounts and passwords. It inherits from [ExtensionAbility](js-apis-app-ability-extensionAbility.md).
+The AutoFillExtensionAbility module supports automatic filling and saving of multiple data types such as accounts, passwords, and addresses. It inherits from [ExtensionAbility](js-apis-app-ability-extensionAbility.md).
 
 > **NOTE**
 > 
@@ -40,7 +41,7 @@ import { AutoFillExtensionAbility } from '@kit.AbilityKit';
 
 onCreate(): void
 
-Called when an AutoFillExtensionAbility is created.
+Called when the AutoFillExtensionAbility is created. In this method, you can perform initialization operations, such as registering listeners and loading necessary resources.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -87,16 +88,19 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
     hilog.info(0x0000, 'testTag', 'fill requestCallback: %{public}s', JSON.stringify(callback));
     hilog.info(0x0000, 'testTag', 'get request viewData: %{public}s', JSON.stringify(request.viewData));
     try {
+      // Define the local storage data.
       let localStorageData: Record<string, UIExtensionContentSession | string | autoFillManager.FillRequestCallback |
       autoFillManager.ViewData | common.AutoFillExtensionContext> = {
         'session': session,
         'message': 'AutoFill Page',
-        'fillCallback': callback,
+        'saveCallback': callback,
         'viewData': request.viewData,
         'context': this.context
       };
+      // Create a local storage instance for passing data between pages.
       let storage_fill = new LocalStorage(localStorageData);
       if (session) {
+        // Load the auto-save page.
         session.loadContent('pages/SelectorList', storage_fill);
       } else {
         hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
@@ -121,7 +125,7 @@ Called when automatic or manual saving is initiated.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | session | [UIExtensionContentSession](js-apis-app-ability-uiExtensionContentSession.md)  | Yes| UI content information related to the AutoFillExtensionAbility.|
-| request | [SaveRequest](js-apis-inner-application-autoFillRequest-sys.md#saverequest)  | Yes| Data to be saved.|
+| request | [SaveRequest](js-apis-inner-application-autoFillRequest.md#saverequest)  | Yes | Save request data. |
 | callback | [SaveRequestCallback](js-apis-inner-application-autoFillRequest-sys.md#saverequestcallback)  | Yes| Callback used for the saving request.|
 
 **Example**
@@ -136,6 +140,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
                 callback : autoFillManager.SaveRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'onSaveRequest');
     try {
+      // Define the local storage data.
       let localStorageData: Record<string, UIExtensionContentSession | string | autoFillManager.SaveRequestCallback |
       autoFillManager.ViewData | common.AutoFillExtensionContext> = {
         'session': session,
@@ -144,8 +149,10 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
         'viewData': request.viewData,
         'context': this.context,
       };
+      // Create the local storage instance to pass data between pages.
       let storage_save = new LocalStorage(localStorageData);
       if (session) {
+        // Load the auto-save page.
         session.loadContent('pages/SavePage', storage_save);
       } else {
         hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
@@ -161,7 +168,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 onUpdateRequest(request: UpdateRequest): void
 
-Called when an update request is received.
+Called when the UI data of the application changes and the filled content needs to be updated. The request parameter contains information such as the updated viewData.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -189,7 +196,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 onSessionDestroy(session: UIExtensionContentSession): void
 
-Called when a UIExtensionContentSession instance is destroyed for this AutoFillExtensionAbility.
+Called when the session of the AutoFillExtensionAbility is destroyed. A session is usually destroyed when the user cancels the filling operation or after the filling task is completed.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 

@@ -3,8 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1; @yangxuguang-huawei; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T10:08:57.655Z pushedAt=2026-09-05T10:47:30.358Z -->
 
 **CompletionHandler** is an optional parameter of [StartOptions](js-apis-app-ability-startOptions.md#startoptions) and [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md#openlinkoptions). It is used to process the result of an application launch request.
 
@@ -37,13 +38,13 @@ import { CompletionHandler } from '@kit.AbilityKit';
 
 ## CompletionHandler
 
-CompletionHandler provides two callback functions, [onRequestSuccess](#onrequestsuccess) and [onRequestFailure](#onrequestfailure), to handle the results of successful and failed application launch requests, respectively.
+CompletionHandler provides two callback functions, [onRequestSuccess](#onrequestsuccess) and [onRequestFailure](#onrequestfailure), to handle the results of a successful and a failed application launch, respectively.
 
 ### onRequestSuccess
 
 onRequestSuccess(elementName: ElementName, message: string): void
 
-Called when the application is successfully launched.
+Callback invoked when the application is launched successfully. It is used to receive and process the result information after the application is launched successfully.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -64,7 +65,7 @@ See [Usage of CompletionHandler](#usage-of-completionhandler).
 
 onRequestFailure(elementName: ElementName, message: string): void
 
-Called when the application fails to be launched.
+Callback invoked when the application fails to be launched. It is used to receive and process the error information after the application fails to be launched.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -89,12 +90,14 @@ See [Usage of CompletionHandler](#usage-of-completionhandler).
 
   export default class EntryAbility extends UIAbility {
     onForeground() {
+      // Define the Want parameter for launching an application.
       let want: Want = {
         deviceId: '',
         bundleName: 'com.example.myapplication',
         abilityName: 'EntryAbility'
       };
 
+      // Define a CompletionHandler object to handle the callbacks for successful and failed application launches.
       let completionHandler: CompletionHandler = {
         onRequestSuccess: (elementName: bundleManager.ElementName, message: string): void => {
           console.info(`${elementName.bundleName}-${elementName.moduleName}-${elementName.abilityName} start succeeded: ${message}`);
@@ -109,6 +112,7 @@ See [Usage of CompletionHandler](#usage-of-completionhandler).
       };
 
       try {
+        // Launch the target application. The completionHandler in options returns the launch result through a callback.
         this.context.startAbility(want, options, (err: BusinessError) => {
           if (err.code) {
             // Process service logic errors.

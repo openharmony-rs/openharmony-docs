@@ -18,18 +18,20 @@
 - `-stateVariable`：打印状态变量及关联的组件和同步对象的信息。不支持`-r`递归dump。
 - `-registeredElementIds`：打印当前自定义组件拥有的elementId。
 - `-inactiveComponents`：[组件冻结](./state-management/arkts-custom-components-freeze.md)场景下非激活的组件列表。
-- `-dumpAll`：打印自定义组件树、状态变量和自定义组件的子组件和脏节点列表。
+- `-dumpAll`：打印自定义组件树、状态变量、自定义组件build()方法中创建的子组件及脏节点列表。
 - `-h`：打印帮助信息。
 
 除上述命令外，开发者可以额外输入以下命令选择递归打印或指定打印某一个组件id的信息，如果没有指定，则默认打印页面的根节点的信息。
-- `-r`：递归从根节点打印，自定义组件和其拥有组件的elementId。默认值打印根节点信息。
+- `-r`：递归从根节点打印，自定义组件和其拥有组件的elementId。默认打印根节点信息。
 - `-viewId`：打印指定viewId的自定义组件的信息。
 
 具体例子如下：
 
 下面的例子为嵌套两层子组件的典型示例，使用了装饰器[\@State](./state-management/arkts-state.md)和 [\@Link](./state-management/arkts-link.md)。开发者可组合使用上述命令，展示前端组件树、状态变量和其影响的组件等信息。
 
-```ts
+<!-- @[ui_inspector_profiler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/UIInspectorProfiler.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Page {

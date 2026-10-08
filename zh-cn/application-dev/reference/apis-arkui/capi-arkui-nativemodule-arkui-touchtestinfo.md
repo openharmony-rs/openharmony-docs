@@ -12,7 +12,7 @@ typedef struct ArkUI_TouchTestInfo ArkUI_TouchTestInfo
 
 ## 概述
 
-定义触摸测试信息，用于设置命中测试策略和结果作用的子组件，并获取各子组件的触摸测试结果。
+定义触摸测试信息，用于设置命中测试策略和命中测试过程中需要作用的子组件，并获取各子组件的触摸测试结果。
 
 当用户通过[registerNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)注册了[NODE_ON_CHILD_TOUCH_TEST](capi-native-node-h.md#arkui_nodeeventtype)事件时，开发者才能在事件回调中获取此触摸测试信息结构体。
 

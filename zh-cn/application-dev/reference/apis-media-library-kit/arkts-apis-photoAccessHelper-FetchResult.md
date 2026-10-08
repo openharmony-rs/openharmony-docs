@@ -22,7 +22,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 getCount(): number
 
-获取文件检索结果中的文件总数。
+获取文件检索结果总数。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -40,8 +40,8 @@ getCount(): number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
 
 **示例：**
 
@@ -85,8 +85,8 @@ isAfterLast(): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
 
 **示例：**
 
@@ -106,7 +106,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('count:' + fetchCount);
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getLastObject();
   if (fetchResult.isAfterLast()) {
-    console.info('photoAsset isAfterLast displayName = ', photoAsset.displayName);
+    if (photoAsset) {
+      console.info('photoAsset isAfterLast displayName = ', photoAsset.displayName);
+    }
   } else {
     console.info('photoAsset not isAfterLast.');
   }
@@ -129,8 +131,8 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid argument. Possible causes: <br>1. Parameter count exceeds the limit; 2. The current object is invalid |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -178,8 +180,8 @@ getFirstObject(callback: AsyncCallback&lt;T&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -197,11 +199,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   fetchResult.getFirstObject((err, photoAsset) => {
-    if (photoAsset !== undefined) {
-      console.info('photoAsset displayName: ', photoAsset.displayName);
-    } else {
-      console.error(`photoAsset failed with err:${err.code}, ${err.message}`);
+    if (err) {
+      console.error(`Failed to getFirstObject. Code: ${err.code}, message: ${err.message}`);
+      return;
     }
+      console.info('photoAsset displayName: ', photoAsset.displayName);
   });
 }
 ```
@@ -220,7 +222,7 @@ getFirstObject(): Promise&lt;T&gt;
 
 | 类型                                    | 说明                       |
 | --------------------------------------- | -------------------------- |
-| Promise&lt;T&gt; | Promise对象，返回结果集中第一个对象。 |
+| Promise&lt;T&gt; | Promise对象，返回结果集中的第一个文件资产。 |
 
 **错误码：**
 
@@ -228,8 +230,8 @@ getFirstObject(): Promise&lt;T&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -275,8 +277,8 @@ getNextObject(callback: AsyncCallback&lt;T&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -322,7 +324,7 @@ getNextObject(): Promise&lt;T&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;T&gt; | Promise对象，返回结果集中下一个对象。 |
+| Promise&lt;T&gt; | Promise对象，返回结果集中的下一个文件资产。 |
 
 **错误码：**
 
@@ -330,8 +332,8 @@ getNextObject(): Promise&lt;T&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -378,8 +380,8 @@ getLastObject(callback: AsyncCallback&lt;T&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -420,7 +422,7 @@ getLastObject(): Promise&lt;T&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;T&gt; | Promise对象，返回结果集中的最后一个对象。 |
+| Promise&lt;T&gt; | Promise对象，返回结果集中的最后一个文件资产。 |
 
 **错误码：**
 
@@ -428,8 +430,8 @@ getLastObject(): Promise&lt;T&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -474,8 +476,8 @@ getObjectByPosition(index: number, callback: AsyncCallback&lt;T&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -522,7 +524,7 @@ getObjectByPosition(index: number): Promise&lt;T&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;T&gt; | Promise对象，返回结果集中指定索引的一个对象。 |
+| Promise&lt;T&gt; | Promise对象，返回结果集中指定索引的文件资产。 |
 
 **错误码：**
 
@@ -530,8 +532,8 @@ getObjectByPosition(index: number): Promise&lt;T&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -579,8 +581,8 @@ getAllObjects(callback: AsyncCallback&lt;Array&lt;T&gt;&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -629,8 +631,8 @@ getAllObjects(): Promise&lt;Array&lt;T&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes:1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -717,7 +719,7 @@ getObjectsByIndexSet(indexSet: number[]): Promise\<T[]\>
 
 | 参数名   | 类型                                          | 必填 | 说明                                        |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------- |
-| indexSet | number[]         | 是   | 指定的索引集合。                |
+| indexSet | number[]         | 是   | 指定的索引数组。 |
 
 **返回值：**
 
@@ -731,7 +733,7 @@ getObjectsByIndexSet(indexSet: number[]): Promise\<T[]\>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151       | The scenario parameter verification fails. Possible causes: 1.The indexSet is null,undefined or empty. 2.The indexSet length is bigger than 500. 3.The max value of indexSet is equal or bigger than the fetch result length. 4.The min value of indexSet is less than 0.          |
+| 23800151 | Invalid parameter. Possible causes:<br>1. The parameter is not an array.<br>2. indexSet is null or undefined. |
 
 **示例：**
 
@@ -819,14 +821,14 @@ getRangeObjects(index: number, offset: number): Promise\<T[]\>
 
 | 参数名       | 类型                                       | 必填   | 说明                 |
 | -------- | ---------------------------------------- | ---- | ------------------ |
-| index    | number                                   | 是    | 开始获取的文件资产索引，大于等于0，小于文件检索结果中对象数量。    |
-| offset    | number                                  | 是    | 要获取的文件资产数量，大于0。<br>index和offset之和需要小于检索结果中的对象数量，否则抛出23800151错误码。    |
+| index    | number                                   | 是    | 开始获取的文件资产索引，大于等于0，小于文件检索结果中对象数量。index和offset之和需要小于检索结果中的对象数量。 |
+| offset    | number                                  | 是    | 要获取的文件资产数量，大于0。<br>index和offset之和需要小于检索结果中的对象数量，否则抛出23800151错误码。 |
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise\<T[]\>| 返回Promise异步回调数组。 |
+| Promise\<T[]\>| Promise对象，返回指定索引范围内的文件资产数组。 |
 
 **错误码：**
 
@@ -834,7 +836,7 @@ getRangeObjects(index: number, offset: number): Promise\<T[]\>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151       | The scenario parameter verification fails. Possible causes: index or offset validity check failed.          |
+| 23800151 | Invalid parameter. Possible causes:<br>1. The index is out of range, must be within [0, count).<br>2. The FetchResType is not supported, must be a valid FetchResType enum value. |
 | 23800301       | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal.         |
 
 **示例：**
@@ -854,12 +856,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       fetchColumns: [],
       predicates: predicates
   };
+  // 创建两个独立的FetchResult实例用于并行获取，提高大批量数据检索效率。
   let fetchResult1: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
       await phAccessHelper.getAssets(fetchOptions);
   let fetchResult2: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
       await phAccessHelper.getAssets(fetchOptions);
   let count: number = fetchResult1.getCount();
   const half: number = Math.ceil(count / 2);
+  // 将结果集分为两批并行获取：前半部分从fetchResult1获取，后半部分从fetchResult2获取。
   let promises: Promise<PhotoAsset[]>[] = [];
   promises[0] = fetchResult1.getRangeObjects(0, half);
   promises[1] = fetchResult2.getRangeObjects(half, count - half);

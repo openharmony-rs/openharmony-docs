@@ -60,6 +60,7 @@
 | [int32_t OH_ArkUI_DragEvent_GetUdmfData(ArkUI_DragEvent* event, OH_UdmfData *data)](#oh_arkui_dragevent_getudmfdata) | 从ArkUI_DragEvent中获取拖拽数据。 |
 | [int32_t OH_ArkUI_DragEvent_GetDataTypeCount(ArkUI_DragEvent* event, int32_t* count)](#oh_arkui_dragevent_getdatatypecount) | 从ArkUI_DragEvent中获取所拖拽的数据类型种类个数。 |
 | [int32_t OH_ArkUI_DragEvent_GetDataTypes(ArkUI_DragEvent *event, char *eventTypeArray[], int32_t length, int32_t maxStrLen)](#oh_arkui_dragevent_getdatatypes) | 从ArkUI_DragEvent中获取拖拽数据的类型列表。 |
+| [int32_t OH_ArkUI_DragEvent_GetSummary(ArkUI_DragEvent* event, OH_UDMF_Summary* summary)](#oh_arkui_dragevent_getsummary) | 从ArkUI_DragEvent中获取数据摘要。 |
 | [int32_t OH_ArkUI_DragEvent_GetDragResult(ArkUI_DragEvent* event, ArkUI_DragResult* result)](#oh_arkui_dragevent_getdragresult) | 从ArkUI_DragEvent中获取拖拽结果。 |
 | [int32_t OH_ArkUI_DragEvent_GetDropOperation(ArkUI_DragEvent* event, ArkUI_DropOperation* operation)](#oh_arkui_dragevent_getdropoperation) | 从ArkUI_DragEvent中获取数据处理方式。 |
 | [float OH_ArkUI_DragEvent_GetPreviewTouchPointX(ArkUI_DragEvent* event)](#oh_arkui_dragevent_getpreviewtouchpointx) | 从ArkUI_DragEvent中获取预览图跟手点的x轴坐标。 |
@@ -74,7 +75,7 @@
 | [float OH_ArkUI_DragEvent_GetVelocityY(ArkUI_DragEvent* event)](#oh_arkui_dragevent_getvelocityy) | 获取当前拖拽的y轴方向拖动速度。 |
 | [float OH_ArkUI_DragEvent_GetVelocity(ArkUI_DragEvent* event)](#oh_arkui_dragevent_getvelocity) | 获取当前拖拽的主方向拖动速度。 |
 | [int32_t OH_ArkUI_DragEvent_GetModifierKeyStates(ArkUI_DragEvent* event, uint64_t* keys)](#oh_arkui_dragevent_getmodifierkeystates) | 获取修饰键按压状态。 |
-| [int32_t OH_ArkUI_DragEvent_StartDataLoading(ArkUI_DragEvent* event, OH_UdmfGetDataParams* options, char* key, unsigned int keyLen)](#oh_arkui_dragevent_startdataloading) | 使用指定的同步参数开始数据同步。 |
+| [int32_t OH_ArkUI_DragEvent_StartDataLoading(ArkUI_DragEvent* event, OH_UdmfGetDataParams* options, char* key, unsigned int keyLen)](#oh_arkui_dragevent_startdataloading) | 使用指定的参数异步加载拖拽数据。 |
 | [int32_t OH_ArkUI_CancelDataLoading(ArkUI_ContextHandle uiContext, const char* key)](#oh_arkui_canceldataloading) | 取消正在进行的数据同步。 |
 | [int32_t OH_ArkUI_DisableDropDataPrefetchOnNode(ArkUI_NodeHandle node, bool disabled)](#oh_arkui_disabledropdataprefetchonnode) | 设置是否在执行[NODE_ON_DROP](./capi-native-node-h.md#arkui_nodeeventtype)之前禁用数据预获取过程。系统将重试获取数据，直到达到最大时间限制（目前为2.4秒），这对跨设备的拖动操作非常有用，因为它有助于系统稳定通信。然而，对于[OH_ArkUI_DragEvent_StartDataLoading](#oh_arkui_dragevent_startdataloading)方法而言，这一特性显得多余。该方法采用异步机制获取数据，因此在NODE_ON_DROP中使用[OH_ArkUI_DragEvent_StartDataLoading](#oh_arkui_dragevent_startdataloading)时，为了避免在NODE_ON_DROP执行前意外获取数据，必须将此字段设置为true。 |
 | [int32_t OH_ArkUI_SetDragEventStrictReportWithNode(ArkUI_NodeHandle node, bool enabled)](#oh_arkui_setdrageventstrictreportwithnode) | 设置是否开启严格dragEvent上报。建议开启，默认不开启。不开启时，从父组件拖移进子组件时，父组件不会收到leave通知；开启后，前后组件发生变化时，上一个组件会收到leave通知，新组件会收到enter通知。该配置与具体的UI实例相关，需通过传入一个当前UI实例上的组件节点来关联。 |
@@ -106,7 +107,7 @@
 | [int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction, void* userData,void(\*listener)(ArkUI_DragAndDropInfo* dragAndDropInfo, void* userData))](#oh_arkui_dragaction_registerstatuslistener) | 注册拖拽状态监听回调，该回调可感知到拖拽已经发起或用户松手结束的状态，可通过该监听获取到落入方对数据的接收处理是否成功。 |
 | [ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDisplayId(ArkUI_DragEvent* event, int32_t* displayId)](#oh_arkui_dragevent_getdisplayid) | 获取当前拖拽事件发生时所在的屏幕ID，适用于多屏设备场景下需要判断拖拽操作发生在哪个屏幕的情况，如跨屏拖拽时根据屏幕ID进行差异化处理。不支持当eventType为NODE_ON_DRAG_END时获取。 |
 | [void OH_ArkUI_DragAction_UnregisterStatusListener(ArkUI_DragAction* dragAction)](#oh_arkui_dragaction_unregisterstatuslistener) | 解注册拖拽状态监听回调。 |
-| [ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* dragAndDropInfo)](#oh_arkui_draganddropinfo_getdragstatus) | 获取[ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)发起拖拽的状态，获取异常时返回 ArkUI_DRAG_STATUS_UNKNOWN。 |
+| [ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* dragAndDropInfo)](#oh_arkui_draganddropinfo_getdragstatus) | 获取[ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)发起拖拽的状态，获取异常时返回ARKUI_DRAG_STATUS_UNKNOWN。 |
 | [ArkUI_DragEvent* OH_ArkUI_DragAndDropInfo_GetDragEvent(ArkUI_DragAndDropInfo* dragAndDropInfo)](#oh_arkui_draganddropinfo_getdragevent) | 通过dragAndDropInfo获取到DragEvent，可通过DragEvent获取释放结果等。 |
 | [int32_t OH_ArkUI_StartDrag(ArkUI_DragAction* dragAction)](#oh_arkui_startdrag) | 通过构造的DragAction对象发起拖拽。 |
 | [int32_t OH_ArkUI_DragEvent_RequestDragEndPending(ArkUI_DragEvent* event, int32_t* requestIdentify)](#oh_arkui_dragevent_requestdragendpending) | 请求延迟处理拖拽结束事件，等待应用确认操作结果。应用需通过 [OH_ArkUI_NotifyDragResult](#oh_arkui_notifydragresult)接口将最终结果回传至系统，并在所有处理完成后调用 [OH_ArkUI_NotifyDragEndPendingDone](#oh_arkui_notifydragendpendingdone)。最大等待时间为2秒。 |
@@ -247,7 +248,7 @@ ArkUI_DragEvent* OH_ArkUI_NodeEvent_GetDragEvent(ArkUI_NodeEvent* nodeEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* | ArkUI_DragEvent 事件指针，当传入的 NodeEvent 无效或不是拖拽相关的事件时，则返回空。 |
+| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* | ArkUI_DragEvent事件指针，当传入的NodeEvent无效或不是拖拽相关的事件时，则返回空。 |
 
 ### OH_ArkUI_NodeEvent_GetPreDragStatus()
 
@@ -273,7 +274,7 @@ ArkUI_PreDragStatus OH_ArkUI_NodeEvent_GetPreDragStatus(ArkUI_NodeEvent* nodeEve
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_PreDragStatus](#arkui_predragstatus) | ArkUI_PreDragStatus 拖拽发起前交互状态。 |
+| [ArkUI_PreDragStatus](#arkui_predragstatus) | ArkUI_PreDragStatus拖拽发起前交互状态。 |
 
 ### OH_ArkUI_DragEvent_DisableDefaultDropAnimation()
 
@@ -492,6 +493,31 @@ int32_t OH_ArkUI_DragEvent_GetDataTypes(ArkUI_DragEvent *event, char *eventTypeA
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 传入的缓冲区大小异常。 |
+
+### OH_ArkUI_DragEvent_GetSummary()
+
+```c
+int32_t OH_ArkUI_DragEvent_GetSummary(ArkUI_DragEvent* event, OH_UDMF_Summary* summary)
+```
+
+**描述：**
+
+从ArkUI_DragEvent中获取数据摘要。
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) *event | ArkUI_DragEvent事件指针。 |
+| [OH_UDMF_Summary](../apis-arkdata/capi-udmf-oh-udmf-summary.md) *summary | 出参，用于接收数据摘要的OH_UDMF_Summary对象指针。调用本接口前需由调用方创建该对象，使用完毕后由调用方销毁；操作失败时，对象内容不保证有效。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，例如入参指针为空或摘要对象无效。<br>         [ARKUI_ERROR_CODE_INTERNAL_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 内部错误，例如拖拽事件未携带摘要数据。 |
 
 ### OH_ArkUI_DragEvent_GetDragResult()
 
@@ -869,7 +895,7 @@ int32_t OH_ArkUI_DragEvent_StartDataLoading(ArkUI_DragEvent* event, OH_UdmfGetDa
 **描述：**
 
 
-使用指定的同步参数开始数据同步。在NODE_ON_DROP中使用该方法时，为了避免在NODE_ON_DROP执行前意外获取数据，需先通过[OH_ArkUI_DisableDropDataPrefetchOnNode](capi-drag-and-drop-h.md#oh_arkui_disabledropdataprefetchonnode)将数据预获取过程设置为禁用。
+使用指定的参数异步加载拖拽数据。在NODE_ON_DROP中使用该方法时，为了避免在NODE_ON_DROP执行前意外获取数据，需先通过[OH_ArkUI_DisableDropDataPrefetchOnNode](capi-drag-and-drop-h.md#oh_arkui_disabledropdataprefetchonnode)将数据预获取过程设置为禁用。
 
 **起始版本：** 15
 
@@ -880,8 +906,8 @@ int32_t OH_ArkUI_DragEvent_StartDataLoading(ArkUI_DragEvent* event, OH_UdmfGetDa
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | ArkUI_DragEvent事件指针。 |
 | [OH_UdmfGetDataParams](../apis-arkdata/capi-udmf-oh-udmfgetdataparams.md)* options | 数据获取参数指针，用于配置本次拖拽数据同步时的数据请求选项。 |
-| char* key | 返回数据加载成功启动后分配的key值，用于接收key值的字符数组长度不小于[UDMF_KEY_BUFFER_LEN](../apis-arkdata/capi-udmf-h.md#udmf_key_buffer_len)。 |
-| unsigned int keyLen | key字符串的长度，不应小于[UDMF_KEY_BUFFER_LEN](../apis-arkdata/capi-udmf-h.md#udmf_key_buffer_len)定义的长度，用于确保key值能够被完整接收。 |
+| char* key | 返回数据加载成功启动后分配的key值，用于接收key值的字符数组长度不小于[UDMF_KEY_BUFFER_LEN](../apis-arkdata/capi-udmf-h.md#宏定义)。 |
+| unsigned int keyLen | key字符串的长度，不应小于[UDMF_KEY_BUFFER_LEN](../apis-arkdata/capi-udmf-h.md#宏定义)定义的长度，用于确保key值能够被完整接收。 |
 
 **返回：**
 
@@ -1641,7 +1667,7 @@ int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction,
 | -- | -- |
 | [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)* dragAction | 拖拽行为对象。 |
 | void* userData | 应用自定义数据，注册状态监听后会在回调触发时通过listener的userData参数传回。 |
-| listener | 状态监听回调，签名为void(\*listener)(ArkUI_DragAndDropInfo* dragAndDropInfo, void* userData)。dragAndDropInfo为系统返回的拖拽状态对象指针，该指针会在回调执行完成后被销毁，应用不应再持有；userData为注册时传入的应用自定义数据。 |
+| void(\*listener)(ArkUI_DragAndDropInfo\* dragAndDropInfo, void\* userData) | 状态监听回调。dragAndDropInfo为系统返回的拖拽状态对象指针，该指针会在回调执行完成后被销毁，应用不应再持有；userData为注册时传入的应用自定义数据。 |
 
 **返回：**
 
@@ -1705,7 +1731,7 @@ ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* d
 **描述：**
 
 
-获取[ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)发起拖拽的状态，获取异常时返回 ArkUI_DRAG_STATUS_UNKNOWN。
+获取[ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)发起拖拽的状态，获取异常时返回ARKUI_DRAG_STATUS_UNKNOWN。
 
 **起始版本：** 12
 
@@ -1720,7 +1746,7 @@ ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* d
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_DragStatus](capi-drag-and-drop-h.md#arkui_dragstatus) | 拖拽状态，如果获取失败，返回默认值 ArkUI_DRAG_STATUS_UNKNOWN。 |
+| [ArkUI_DragStatus](capi-drag-and-drop-h.md#arkui_dragstatus) | 拖拽状态，如果获取失败，返回默认值ARKUI_DRAG_STATUS_UNKNOWN。 |
 
 ### OH_ArkUI_DragAndDropInfo_GetDragEvent()
 
@@ -1799,7 +1825,7 @@ int32_t OH_ArkUI_DragEvent_RequestDragEndPending(ArkUI_DragEvent* event, int32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  函数参数异常。<br>         [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  当前阶段不允许该操作。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  函数参数异常。<br>         [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  当前拖拽事件处理阶段不允许执行请求的操作。 |
 
 ### OH_ArkUI_NotifyDragResult()
 
@@ -1826,12 +1852,12 @@ int32_t OH_ArkUI_NotifyDragResult(int32_t requestIdentify, ArkUI_DragResult resu
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  函数参数异常。<br>         [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  当前阶段不允许该操作。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  函数参数异常。<br>         [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  当前拖拽事件处理阶段不允许执行请求的操作。 |
 
 ### OH_ArkUI_NotifySuggestedDropOperation()
 
 ```c
-int32_t OH_ArkUI_NotifySuggestedDropOperation(int32_t requestIdentify, ArkUI_DropOperation operation)
+int32_t OH_ArkUI_NotifySuggestedDropOperation(int32_t requestIdentity, ArkUI_DropOperation operation)
 ```
 
 **描述：**
@@ -1846,7 +1872,7 @@ int32_t OH_ArkUI_NotifySuggestedDropOperation(int32_t requestIdentify, ArkUI_Dro
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t requestIdentify | 由[OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending)返回的标识符，用来标识本次拖拽事件。 |
+| int32_t requestIdentity | 由[OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending)返回的标识符，用来标识本次拖拽事件。 |
 | [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation) operation | 落入行为类型[ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation)。 |
 
 **返回：**
@@ -1873,7 +1899,7 @@ int32_t OH_ArkUI_NotifyDisableDefaultDropAnimation(int32_t requestIdentity, bool
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t requestIdentify | 由[OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending)返回的标识符，用来标识本次拖拽事件。 |
+| int32_t requestIdentity | 由[OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending)返回的标识符，用来标识本次拖拽事件。 |
 | bool disable | 通知是否禁用系统默认落入动画。true表示禁用系统默认落入动画，false表示使用系统默认落入动画。 |
 
 **返回：**
@@ -1906,7 +1932,7 @@ int32_t OH_ArkUI_NotifyDragEndPendingDone(int32_t requestIdentify)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  函数参数异常。<br>         [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  当前阶段不允许该操作。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  函数参数异常。<br>         [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)  当前拖拽事件处理阶段不允许执行请求的操作。 |
 
 ### OH_ArkUI_EnableDropDisallowedBadge()
 
@@ -2006,7 +2032,7 @@ ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDragSource(ArkUI_DragEvent* event, char *b
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | 指向<b>ArkUI_DragEvent</b>对象的指针。 |
-| char *bundleName | 用来接收拖起方包名的字符串数组，长度不应小于128个字符。 |
+| char *bundleName | 用来接收拖拽发起方包名的字符串数组，长度不应小于128个字符。 |
 | int32_t length | 用来显式指明传入的字符串数组长度，不应小于128个字符。 |
 
 **返回：**

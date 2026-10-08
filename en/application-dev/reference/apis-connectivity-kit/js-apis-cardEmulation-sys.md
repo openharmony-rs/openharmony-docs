@@ -2,10 +2,11 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=37e87e28b1f57566fffb557016c871f107cbe03a translatedAt=2026-09-08T07:22:32.907Z pushedAt=2026-09-08T09:24:20.666Z -->
 
 The **cardEmulation** module implements Near-Field Communication (NFC) card emulation. You can use the APIs provided by this module to determine the card emulation type supported and implement Host Card Emulation (HCE).
 
@@ -28,6 +29,8 @@ import { cardEmulation } from '@kit.ConnectivityKit';
 getPaymentServices(): [AbilityInfo](../apis-ability-kit/js-apis-bundleManager-abilityInfo.md)[]
 
 Obtains all payment services. If an application declares the support for the HCE feature and **payment-aid**, the application is contained in the payment service list. For details, see [HCE and AID Declaration](js-apis-cardEmulation.md#hce-and-aid-declaration).
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -61,3 +64,4 @@ if (paymentServices == undefined || paymentServices.length == 0) {
 }
 
 ```
+

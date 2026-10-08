@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=abb2cbc3c0ee7701da88cfed86a07b11347a25be translatedAt=2026-07-08T06:44:03.133Z pushedAt=2026-07-08T07:46:19.987Z -->
+<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-07-30T02:51:28.950Z pushedAt=2026-07-30T06:06:12.842Z -->
 
 ## Overview
 
@@ -21,7 +21,7 @@ This section describes how to use the C/C++ APIs provided by HiAppEvent to subsc
 
 ## How to Develop
 
-### Adding an Event Watcher 
+### Adding an Event Watcher
 
 The following uses subscribing to app freeze warning events as an example to illustrate the development procedure.
 

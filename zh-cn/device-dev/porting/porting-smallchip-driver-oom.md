@@ -163,9 +163,9 @@ WLAN驱动分为两部分，一部分负责管理WLAN设备，另一个部分负
 
 | 接口 | 定义头文件 | 接口说明 |
 | -------- | -------- | -------- |
-| HdfChipDriverFactory | drivers\hdf_core\framework\include\wifi\hdf_wlan_chipdriver_manager.h | ChipDriver的Factory，用于支持一个芯片多个WLAN端口。 |
-| HdfChipDriver | drivers\hdf_core\framework\include\wifi\wifi_module.h | 每个WLAN端口对应一个HdfChipDriver，用来管理一个特定端口。 |
-| NetDeviceInterFace | drivers\hdf_core\framework\include\net\net_device.h | 与协议栈之间的接口，如发送数据、设置网络接口状态等。 |
+| HdfChipDriverFactory | drivers/hdf_core/framework/include/wifi/hdf_wlan_chipdriver_manager.h | ChipDriver的Factory，用于支持一个芯片多个WLAN端口。 |
+| HdfChipDriver | drivers/hdf_core/framework/include/wifi/wifi_module.h | 每个WLAN端口对应一个HdfChipDriver，用来管理一个特定端口。 |
+| NetDeviceInterFace | drivers/hdf_core/framework/include/net/net_device.h | 与协议栈之间的接口，如发送数据、设置网络接口状态等。 |
 
 > <img src="public_sys-resources/icon-note.gif" alt="说明"/> <b>说明：</b>
 > 详细的接口开发指导，请参考[WLAN开发](../driver/driver-peripherals-external-des.md)。
@@ -178,16 +178,35 @@ WLAN驱动分为两部分，一部分负责管理WLAN设备，另一个部分负
 
    
    ```c
-   static int32_t HdfWlanXXXChipDriverInit(struct HdfDeviceObject *device) {
-       static struct HdfChipDriverFactory factory = CreateChipDriverFactory(); // 需要移植者实现的方法。
-       struct HdfChipDriverManager *driverMgr = HdfWlanGetChipDriverMgr();
-       if (driverMgr->RegChipDriver(&factory) != HDF_SUCCESS) { // 注册驱动工厂。
+   static int32_t HDFWlanRegXXXDriverFactory(void)
+   {
+       static struct HdfChipDriverFactory tmpFactory = { 0 };
+       struct HdfChipDriverManager *driverMgr = NULL;
+       driverMgr = HdfWlanGetChipDriverMgr();
+       if (driverMgr == NULL) {
+           HDF_LOGE("%s fail: driverMgr is NULL!", __func__);
+           return HDF_FAILURE;
+       }
+       tmpFactory.driverName = XXX_DRIVER_NAME;
+       tmpFactory.GetMaxIFCount = GetXXXGetMaxIFCount;
+       tmpFactory.InitChip = InitXXXChip;
+       tmpFactory.DeinitChip = DeinitXXXChip;
+       tmpFactory.Build = BuildXXXDriver;
+       tmpFactory.Release = ReleaseXXXDriver;
+       tmpFactory.ReleaseFactory = NULL;
+       if (driverMgr->RegChipDriver(&tmpFactory) != HDF_SUCCESS) {
            HDF_LOGE("%s fail: driverMgr is NULL!", __func__);
            return HDF_FAILURE;
        }
        return HDF_SUCCESS;
    }
-   
+
+   static int32_t HdfWlanXXXChipDriverInit(struct HdfDeviceObject *device)
+   {
+       (void)device;
+       return HDFWlanRegXXXDriverFactory();
+   }
+   ......
    struct HdfDriverEntry g_hdfXXXChipEntry = {
        .moduleVersion = 1,
        .Bind = HdfWlanXXXDriverBind,

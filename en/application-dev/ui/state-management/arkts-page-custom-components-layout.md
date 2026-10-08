@@ -1,12 +1,11 @@
 # Custom Component Layout
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:10:24.826Z pushedAt=2026-07-23T10:40:11.881Z -->
+<!-- md-trans-meta sourceCommit=1d7744169f647bc48a2c65086f0061aa3c69406b translatedAt=2026-09-21T11:29:10.126Z pushedAt=2026-09-23T09:16:02.447Z -->
 
 If the system-provided layout components (such as [Flex](../../reference/apis-arkui/arkui-ts/ts-container-flex.md), [Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md), [Row](../../reference/apis-arkui/arkui-ts/ts-container-row.md), etc.) cannot meet complex layout requirements, or if you want to customize the calculation of the size and position of child components within a component, you are advised to use the following APIs in a custom component:
 

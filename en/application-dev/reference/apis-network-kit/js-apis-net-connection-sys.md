@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:35.595Z pushedAt=2026-06-26T03:00:41.289Z -->
+<!-- md-trans-meta sourceCommit=5be809ee325d7899c2cd8b0e87edd71926208235 translatedAt=2026-09-23T02:01:34.750Z pushedAt=2026-09-24T06:00:14.191Z -->
 
 The network connection management module provides basic network capabilities. You can obtain the default active data network or the list of all active data networks, enable or disable the airplane mode, and obtain network capability information.
 
@@ -40,6 +40,8 @@ Obtains the global network proxy configuration information. This API uses an asy
 
 **Error codes**
 
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                       |
 | ------- | -----------------------------  |
 | 401     | Parameter error.             |
@@ -61,7 +63,7 @@ connection.getGlobalHttpProxy((error: BusinessError, data: connection.HttpProxy)
 
 ## connection.getGlobalHttpProxy<sup>10+</sup>
 
-getGlobalHttpProxy(): Promise\<HttpProxy>;
+getGlobalHttpProxy(): Promise\<HttpProxy>
 
 Obtains the global network proxy configuration information. This API uses a promise to return the result.
 
@@ -73,9 +75,11 @@ Obtains the global network proxy configuration information. This API uses a prom
 
 | Type                             | Description                                 |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[HttpProxy](js-apis-net-connection.md#httpproxy10)> | Promise used to return the result.|
+| Promise\<[HttpProxy](js-apis-net-connection.md#httpproxy10)> | Promise object used to return the global proxy configuration information of the network. |
 
 **Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                       |
 | ------- | -----------------------------  |
@@ -100,7 +104,7 @@ connection.getGlobalHttpProxy().then((data: connection.HttpProxy) => {
 
 setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback\<void>): void
 
-Sets the global network HTTP proxy configuration information. This API uses an asynchronous callback to return the result.
+Sets the global HTTP proxy configuration information. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -116,6 +120,8 @@ Sets the global network HTTP proxy configuration information. This API uses an a
 | callback  | AsyncCallback\<void>    | Yes  | Callback used to return the result. If the global HTTP proxy configuration of the network is set successfully, **error** is **undefined**. Otherwise, **error** is an error object.|
 
 **Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                       |
 | ------- | -----------------------------  |
@@ -150,9 +156,9 @@ connection.setGlobalHttpProxy(httpProxy, (err: BusinessError) => {
 
 ## connection.setGlobalHttpProxy<sup>10+</sup>
 
-setGlobalHttpProxy(httpProxy: HttpProxy): Promise\<void>;
+setGlobalHttpProxy(httpProxy: HttpProxy): Promise\<void>
 
-Sets the global network HTTP proxy configuration information. This API uses a promise to return the result.
+Sets the global HTTP proxy configuration information. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -170,9 +176,11 @@ Sets the global network HTTP proxy configuration information. This API uses a pr
 
 | Type                                       | Description                         |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                       |
 | ------- | -----------------------------  |
@@ -207,7 +215,7 @@ connection.setGlobalHttpProxy({
 
 enableAirplaneMode(callback: AsyncCallback\<void>): void
 
-Enables the airplane mode. This API uses an asynchronous callback to return the result.
+Enables airplane mode. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -219,9 +227,11 @@ Enables the airplane mode. This API uses an asynchronous callback to return the 
 
 | Name  | Type                                             | Mandatory| Description              |
 | -------- | ------------------------------------------------- | ---- | ------------------ |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result.        |
+| callback | AsyncCallback\<void> | Yes | Callback function. If airplane mode is enabled successfully, error is undefined; otherwise, it is an error object. |
 
 **Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                       |
 | ------- | -----------------------------  |
@@ -258,9 +268,11 @@ Enables airplane mode. This API uses a promise to return the result.
 
 | Type                                       | Description                         |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                       |
 | ------- | -----------------------------  |
@@ -299,6 +311,8 @@ Disables airplane mode. This API uses an asynchronous callback to return the res
 
 **Error codes**
 
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                       |
 | ------- | -----------------------------  |
 | 201     | Permission denied.             |
@@ -334,9 +348,11 @@ Disables airplane mode. This API uses a promise to return the result.
 
 | Type                                       | Description                         |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                       |
 | ------- | -----------------------------  |
@@ -360,7 +376,7 @@ connection.disableAirplaneMode().then((error: void) => {
 
 factoryReset(): Promise\<void\>
 
-Resets the network settings to the factory defaults. This API uses a promise to return the result.
+Resets network settings to factory defaults. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -372,9 +388,11 @@ Resets the network settings to the factory defaults. This API uses a promise to 
 
 | Type                  | Description                   |
 | ---------------------- | ----------------------- |
-| Promise\<void\>        | Promise that returns no value. |
+| Promise\<void\>        | Promise that returns no value.  |
 
 **Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                   |
 | ------- | ------------------------------------------  |
@@ -398,7 +416,7 @@ connection.factoryReset().then(() => {
 
 ## ProxyMode<sup>20+</sup>
 
-Enumerates the proxy modes. This API uses a promise to return the result.
+Enumerates the proxy modes.
 
 **System API**: This is a system API.
 
@@ -477,6 +495,8 @@ Obtains the current proxy mode. This API uses a promise to return the result.
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message                       |
 | ------- | -----------------------------  |
 | 201     | Permission denied.             |
@@ -540,7 +560,7 @@ For details about the error codes, see [Network Connection Management Error Code
 
 **Example**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let ifName = "eth0";
@@ -597,7 +617,7 @@ For details about the error codes, see [Network Connection Management Error Code
 
 **Example**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let ifName = "eth0";
@@ -655,7 +675,7 @@ For details about the error codes, see [Network Connection Management Error Code
 
 **Example**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let ifName = "eth0";
@@ -723,7 +743,7 @@ For details about the error codes, see [Network Connection Management Error Code
 
 **Example**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let ifName = "eth0";

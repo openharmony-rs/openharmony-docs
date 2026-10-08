@@ -6,7 +6,6 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=be48531bb599ab262690e4bcab7fffa1f7126656 translatedAt=2026-07-27T00:47:20.894Z pushedAt=2026-07-27T08:45:08.372Z -->
 
 The **userAccessCtrl** module is a core component of the OpenHarmony user identity and access management (UserIAM) system. It is dedicated to the verification and management of authentication tokens. This module provides APIs for verifying authentication tokens (**AuthToken**). It can parse and verify user authentication results and return detailed authentication information.
 
@@ -127,7 +126,7 @@ The integrity check verifies the digital signature of the **AuthToken** to ensur
 
 | Type                                     | Description        |
 | ----------------------------------------- | ------------ |
-| Promise\<[AuthToken](#authtoken)> | Promise object used to return the result. If the verification is successful, the parsed **AuthToken** data is returned, including the challenge value, authentication trust level, authentication type, and user ID. If the verification fails, the corresponding error code is returned.|
+| Promise\<[AuthToken](#authtoken)> | Promise used to return the result. If the verification is successful, the parsed **AuthToken** data is returned, including the challenge value, authentication trust level, authentication type, and user ID. If the verification fails, the corresponding error code is returned.|
 
 **Error codes**
 

@@ -4,14 +4,15 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=b3bc27a342923ac4fafa55153b55c4f3b627330f translatedAt=2026-09-03T10:21:21.065Z pushedAt=2026-09-05T11:51:38.607Z -->
 
-The InsightIntentDecorator module provides several types of intent decorators for decorating classes or methods. You can [use these decorators to develop intents](../../application-models/insight-intent-decorator-development.md), define application functionalities as intents, and integrate them into AI entry points such as intelligent Q&A, intelligent search, and intelligent recommendation systems.
+The InsightIntentDecorator module provides several types of intent decorators for decorating classes or methods. You can [use decorators to develop intents](../../application-models/insight-intent-decorator-development.md) to define the functions of an application as intents and integrate them into AI entries such as intelligent Q&A, intelligent search, and intelligent recommendation.
 
-- [@InsightIntentLink](#insightintentlink): decorates a URI in your application as an intent, enabling AI systems to quickly jump to your application via this intent. For details on the parameters supported by this decorator, see [LinkIntentDecoratorInfo](#linkintentdecoratorinfo).
+- [@InsightIntentLink](#insightintentlink): decorates a URI in the current application as an intent, enabling AI entries to quickly jump to the current application. For details on the parameters supported by this decorator, see [LinkIntentDecoratorInfo](#linkintentdecoratorinfo).
 - [@InsightIntentPage](#insightintentpage): decorates a page in your application as an intent, enabling AI systems to swiftly navigate to that page. For details on the parameters supported by this decorator, see [PageIntentDecoratorInfo](#pageintentdecoratorinfo).
-- [@InsightIntentFunction](#insightintentfunction) and [@InsightIntentFunctionMethod](#insightintentfunctionmethod): The two decorators must be used together. [@InsightIntentFunction](#insightintentfunction) is used to decorate a class, and [@InsightIntentFunctionMethod](#insightintentfunctionmethod) is used to decorate a static function in that class. This setup defines the static function as an intent, enabling AI systems to execute it rapidly.
+- [@InsightIntentFunction](#insightintentfunction) and [@InsightIntentFunctionMethod](#insightintentfunctionmethod): these two decorators must be used together. Use [@InsightIntentFunction](#insightintentfunction) to decorate a class and [@InsightIntentFunctionMethod](#insightintentfunctionmethod) to decorate a static function in the class, so that the static function is defined as an intent, enabling AI entries to quickly execute the function.
 - [@InsightIntentEntry](#insightintententry): decorates a class that inherits from [InsightIntentEntryExecutor](./js-apis-app-ability-InsightIntentEntryExecutor.md) to implement intent operations and configure the ability on which the intent depends. This helps the AI entry point to easily invoke the associated ability and perform the intended action. For details on the parameters supported by this decorator, see [EntryIntentDecoratorInfo](#entryintentdecoratorinfo).
 - [@InsightIntentForm](#insightintentform): decorates a [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md) to specify the name of the widget bound to the FormExtensionAbility. This enables the AI entry point to add the widget via intent calls. For details on the parameters supported by this decorator, see [FormIntentDecoratorInfo](#formintentdecoratorinfo).
 - [@InsightIntentEntity](#insightintententity): decorates a class that inherits from [IntentEntity](./js-apis-app-ability-insightIntent.md#intententity20) to define the class as an intent entity, which can pass parameters required for intent calls. For details on the parameters supported by this decorator, see [IntentEntityDecoratorInfo](#intententitydecoratorinfo).
@@ -39,11 +40,11 @@ import { InsightIntentLink, InsightIntentPage, InsightIntentFunctionMethod, Insi
 
 ## @InsightIntentLink
 
-Decorates a URI in the application as an intent, enabling AI systems to quickly jump to the application via this intent. For details on the parameters supported by this decorator, see [LinkIntentDecoratorInfo](#linkintentdecoratorinfo).
+Decorates a URI link in the current application as an intent, enabling AI entries to quickly jump to the current application via the defined intent. For details on the parameters supported by this decorator, see [LinkIntentDecoratorInfo](#linkintentdecoratorinfo).
 
 > **NOTE**
 >
-> The URI format must adhere to the requirements described in [Application Link Description](../../application-models/app-uri-config.md).
+> The URI format must comply with the requirements described in [Application Link Description](../../application-models/app-uri-config.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -72,7 +73,7 @@ import { InsightIntentLink, LinkParamCategory } from '@kit.AbilityKit';
     paramCategory: LinkParamCategory.LINK
   }],
   parameters: {
-    'schema': 'http://json-schema.org/draft-07/schema#',
+    '$schema': 'http://json-schema.org/draft-07/schema#',
     'type': 'object',
     'title': 'Song Schema',
     'description': 'A schema for describing songs and their artists',
@@ -122,7 +123,7 @@ export class ClassForLink {
     this._playback = playback;
   }
 
-  static Function1(playbackProgress: number, playback?: number): void {
+  static updatePlaybackStatus(playbackProgress: number, playback?: number): void {
     console.info(`Function1, playbackProgress: ${playbackProgress}.`);
   }
 }
@@ -150,15 +151,15 @@ Common properties for intent decorators, used to define basic information about 
 | displayName        | string          | No      | No  | Name of the intent displayed to users.                                      |
 | displayDescription | string         | No       | Yes  | Description of the intent displayed to users.                                      |
 | schema             | string         | No       | Yes  | Name of a standard intent schema. This field is required when you [access a standard intent](../../application-models/insight-intent-definition.md#accessing-standard-intents). It is not required when you [create a custom intent](../../application-models/insight-intent-definition.md#creating-custom-intents). For details about the standard intent list, see [Appendix: Standard Intent Access Specifications](../../application-models/insight-intent-access-specifications.md).|
-| icon               | ResourceStr | No  | Yes  | Icon of the intent. It is displayed in the AI entry point.<br>- If the value is a string, the icon is read from a network resource.<br>- If the value is a [resource](../../reference/apis-localization-kit/js-apis-resource-manager.md), the icon is read from a local resource.|
-| llmDescription     | string      | No          | Yes  | Function of an intent, which helps large language models understand the intent.                 |
+| icon               | ResourceStr | No   | Yes   | Indicates the intent icon, which is displayed at the AI entry.<br>- When the value is of the string type, the icon is read from a network resource.<br>- When the value is of the [Resource](../../reference/apis-localization-kit/js-apis-resource-manager.md) type, the icon is read from a local resource. |
+| llmDescription     | string      | No           | Yes   | Indicates the functional description of the intent, which is used by a large language model to understand the intent.                  |
 | keywords           | string[]     | No         | Yes  | Search keywords for the intent.                                      |
-| parameters         | Record<string, Object>| No| Yes  | Data format of intent parameters, which is used to define the input data format during intent calls.  |
-| result           | Record<string, Object>     | No         | Yes  | Data format for the results returned by intent calls. It defines how the data should be structured.                                      |
+| parameters         | Record\<string, Object\>| No | Yes   | Indicates the data format declaration of the intent parameters, which is used to define the data format of the input parameters during intent invocation. For details about the values, see Intent Schema for Each Vertical Domain. |
+| result           | Record\<string, Object\>     | No          | Yes   | Indicates the data format declaration of the result returned by intent invocation, which is used to define the data format of the result returned by intent invocation.                                       |
 
 ## LinkIntentDecoratorInfo
 
-**LinkIntentDecoratorInfo** inherits from [IntentDecoratorInfo](#intentdecoratorinfo) and describes the parameters supported by the [@InsightIntentLink](#insightintentlink) decorator, such as the URI information required for application redirection.
+LinkIntentDecoratorInfo inherits from [IntentDecoratorInfo](#intentdecoratorinfo) and is used to describe the parameters supported by the [@InsightIntentLink](#insightintentlink) decorator, such as the URI information required for inter-application jumps.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -168,12 +169,12 @@ Common properties for intent decorators, used to define basic information about 
 
 | Name       | Type             | Read-Only| Optional| Description                                                        |
 | ----------- | -----------------| ------ | ---- | ------------------------------------------------------------ |
-| uri                | string          | No         | No  | URI information associated with the intent.                                |
-| paramMappings      | [LinkIntentParamMapping](#linkintentparammapping)[] | No| Yes  | Mapping between intent parameters and URI information.   |
+| uri                | string          | No          | No   | URI address of the intent.                                 |
+| paramMappings      | [LinkIntentParamMapping](#linkintentparammapping)[] | No | Yes   | Mapping between intent parameters and URI information.    |
 
 ## LinkIntentParamMapping
 
-**LinkIntentParamMapping** defines the mapping between intent parameters and URI information for the [@InsightIntentLink](#insightintentlink) decorator.
+LinkIntentParamMapping is the mapping between the intent parameters of the [@InsightIntentLink](#insightintentlink) decorator and the URI information.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -185,7 +186,7 @@ Common properties for intent decorators, used to define basic information about 
 | ---------------- | ------ | ----| ---- | -------------------------------------- |
 | paramName        | string | No| No  | Name of the intent parameter.                      |
 | paramMappingName | string | No| Yes  | Mapping name of the intent parameter.                    |
-| paramCategory    | [LinkParamCategory](#linkparamcategory) | No| Yes  | Category of the intent parameter.<br>If an intent parameter is of the [LINK](#linkparamcategory) category, the system retrieves **paramMappingName** corresponding to **paramName** and appends it to the URI as a key-value pair (where **key** is the value of **paramMappingName**, and **value** is the intent parameter value).<br>If an intent parameter is of the [WANT](#linkparamcategory) category, the system retrieves **paramMappingName** corresponding to **paramName** and passes the mapping name and value using the **parameters** field in [Want](./js-apis-app-ability-want.md). |
+| paramCategory    | [LinkParamCategory](#linkparamcategory) | No | Yes   | Intent parameter category. If the value is [LINK](#linkparamcategory), the system obtains the mapping name corresponding to paramName and appends it to the end of the URI in key-value pair form. If the value is [WANT](#linkparamcategory), the system obtains the mapping name corresponding to paramName and its value, and passes them through the parameters field of [Want](./js-apis-app-ability-want.md).  |
 
 ## LinkParamCategory
 
@@ -197,8 +198,8 @@ Enumerates the intent parameter categories available for the [@InsightIntentLink
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| LINK  | 'link' | Category of link. Intent parameters are appended to the end of a URI link and passed to the application via the URI.|
-| WANT  | 'want' | Category of want. Intent parameters are passed to the application through the **parameters** field in [Want](./js-apis-app-ability-want.md).|
+| LINK  | 'link' | Indicates that the intent parameter category is 'link'. The system obtains the intent parameter mapping name corresponding to the paramName field and appends the intent parameter mapping name to the end of the URI link. |
+| WANT  | 'want' | Indicates that the intent parameter category is 'want'. The system obtains the intent parameter mapping name corresponding to the paramName field and passes the intent parameter mapping name and its value through the parameters field of [Want](./js-apis-app-ability-want.md). |
 
 ## @InsightIntentPage
 
@@ -253,7 +254,7 @@ struct Index {
 
 ## PageIntentDecoratorInfo
 
-**PageIntentDecoratorInfo** inherits from [IntentDecoratorInfo](#intentdecoratorinfo) and describes the parameters supported by the [@InsightIntentPage](#insightintentpage) decorator, such as the name of [NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) of the target page.
+PageIntentDecoratorInfo inherits from [IntentDecoratorInfo](#intentdecoratorinfo) and is used to describe the parameters supported by the [@InsightIntentPage](#insightintentpage) decorator, such as the [navDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) name of the target page.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -265,8 +266,8 @@ struct Index {
 | ------------------ | -------------| --------- | ---- | ------------------------------------------------------------ |
 | uiAbility          | string       | No          | Yes  | Name of the UIAbility bound to the intent.                                 |
 | pagePath           | string        | No         | No  | Path of the page bound to the intent. The page must be a file that actually exists.|
-| navigationId       | string        | No       | Yes  | ID of the [Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#attributes) component bound to the intent.|
-| navDestinationName | string         | No      | Yes  | Name of the [NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) component bound to the intent.|
+| navigationId       | string        | No        | Yes   | ID attribute of the [Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md) component bound to the intent. |
+| navDestinationName | string         | No       | Yes   | Name of the [navDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) component bound to the intent. |
 
 ## @InsightIntentFunction
 
@@ -308,12 +309,12 @@ export class ClassForFuncDemo {
   displayName: 'Query weather',
   displayDescription: 'Display weather information',
   icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
-  llmDescription: 'Get weather of an location',
+  llmDescription: 'Get weather of a location',
   parameters: {
-    'schema': 'http://json-schema.org/draft-07/schema#',
+    '$schema': 'http://json-schema.org/draft-07/schema#',
     'type': 'object',
     'title': 'Weather Schema',
-    'description': 'A schema for get weather of an location',
+    'description': 'A schema for getting weather of a location',
     'properties': {
       'location': {
         'type': 'string',
@@ -346,9 +347,9 @@ Decorates a class that inherits from [InsightIntentEntryExecutor](./js-apis-app-
 
 > **NOTE**
 >
-> - If this decorator is used to access a standard intent, all mandatory parameters defined in the standard intent JSON schema must be implemented and their parameter types must match.
-> - If this decorator is used to access a custom intent, all mandatory parameters defined in **parameters** must be implemented and their parameter types must match.
-> - Classes decorated by this decorator must be exported using **export default**. Class properties are limited to basic types or intent entities, and the return value must be intent entities.
+> - If this decorator is used to integrate a standard intent, all mandatory parameters defined in the standard intent JSON Schema must be implemented and their types must match.
+> - If a custom intent is created, all mandatory parameters defined in the parameters field must be implemented and their types must match.
+> - The decorated class must be exported using export default. The attributes of the class support only basic types or intent entities, and the return value supports only intent entities.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -375,7 +376,7 @@ const LOG_TAG: string = 'testTag-EntryIntent';
   abilityName: 'EntryAbility',
   executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
   parameters: {
-    'schema': 'http://json-schema.org/draft-07/schema#',
+    '$schema': 'http://json-schema.org/draft-07/schema#',
     'type': 'object',
     'title': 'Song Schema',
     'description': 'A schema for describing songs and their artists',
@@ -395,7 +396,9 @@ export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
   onExecute(): Promise<insightIntent.IntentResult<string>> {
     hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo executeMode %{public}s', JSON.stringify(this.executeMode));
     hilog.info(0x0000, LOG_TAG, '%{public}s', JSON.stringify(this));
+    // Create a LocalStorage instance to pass parameters between pages.
     let storage = new LocalStorage();
+    // Save the song name to LocalStorage for the target page to read.
     storage.setOrCreate('songName', this.songName);
     // Start the PlayMusicPage page based on the executeMode parameter.
     if (this.executeMode == insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND) {
@@ -408,8 +411,8 @@ export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
       code: 123,
       result: 'result'
     }
-    hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo return %{public}s', JSON.stringify(result));
-    // Return the intent execution result in Promise mode.
+    hilog.error(0x0000, LOG_TAG, `Failed to execute PlayMusicDemo. Code: ${result.code}, message: ${result.result}`);
+    // Return the intent execution failure result by using Promise.reject.
     return Promise.reject(result);
   }
 }
@@ -445,8 +448,8 @@ Decorates a [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensi
 **Example**
 
 ```ts
-import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
-import { insightIntent, Want, InsightIntentForm } from '@kit.AbilityKit';
+import { formBindingData, FormExtensionAbility } from '@kit.FormKit';
+import { Want, InsightIntentForm } from '@kit.AbilityKit';
 
 // Use the @InsightIntentForm decorator to define a widget of the FormExtensionAbility as an intent.
 @InsightIntentForm({
@@ -480,7 +483,7 @@ import { insightIntent, Want, InsightIntentForm } from '@kit.AbilityKit';
           },
           'city': {
             'type': 'object',
-            'description': 'The artist\' city of origin'
+            'description': 'The artist\'s city of origin'
           },
           'name': {
             'type': 'string',
@@ -576,5 +579,6 @@ Describes the parameters supported by the [@InsightIntentEntity](#insightintente
 
 | Name              | Type        | Read-Only      | Optional| Description                                                        |
 | ------------------ | -------------| --------- | ---- | ------------------------------------------------------------ |
-| entityCategory        | string       | No       | No  | Category of the intent entity. Intents can be classified based on intent entity categories.                  |
+| entityCategory        | string       | No        | No   | Category of the intent entity, used to classify intent entities.                   |
 | parameters        | Record<string, Object> | No       | Yes  | Data format of the intent entity.  |
+| supportedQueryProperties        | string[] | No        | Yes   | List of attributes supported for querying the intent entity. The attribute names in the list must be defined in parameters.<br>**Since:** 26.0.0<br>**Atomic service API**: Since API version 26.0.0, this API is supported in atomic services. |

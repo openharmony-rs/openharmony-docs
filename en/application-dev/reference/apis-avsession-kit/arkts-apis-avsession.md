@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=092adc6b47e5b0c088b6fe6b4574b30796b51a5e translatedAt=2026-09-01T12:54:59.058Z pushedAt=2026-09-07T08:00:02.512Z -->
 
 The AVSession module provides APIs for media playback control so that applications can access the system's Media Controller.
 

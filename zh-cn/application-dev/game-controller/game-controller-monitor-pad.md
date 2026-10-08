@@ -4,7 +4,7 @@
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
+<!--Adviser: @yuwenliang0514-->
 
 > **说明：**<br/>
 > 须先完成[监听设备上下线](game-controller-monitor-device.md)功能的开发后，才能进行游戏手柄轴事件和按键事件的监听注册。
@@ -39,6 +39,7 @@ Game Controller Kit支持的手柄键位参考图如下：
 | OH_GamePad_ButtonX_RegisterButtonInputMonitor | 注册X按键事件的监听。 | 
 | OH_GamePad_ButtonY_RegisterButtonInputMonitor | 注册Y按键事件的监听。 | 
 | OH_GamePad_ButtonC_RegisterButtonInputMonitor | 注册C按键事件的监听。 | 
+| OH_GamePad_ButtonNonstandard_RegisterButtonInputMonitor | 注册非标准按键事件的监听。 | 
 | OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor | 注册方向按键的向左按键事件的监听。 | 
 | OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor | 注册方向按键的向右按键事件的监听。 | 
 | OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor | 注册方向按键的向上按键事件的监听。 | 
@@ -153,6 +154,9 @@ void GamePad::LeftThumbstick_OnAxisEvent(const struct GamePad_AxisEvent *axisEve
 | Dpad_DownButton | 2013 | 
 | Dpad_LeftButton | 2014 | 
 | Dpad_RightButton | 2015 | 
+
+> **说明：**<br/>
+> 非标准按键的按键值请参见[KeyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)。
 
 以LeftShoulder按键事件为例。
 

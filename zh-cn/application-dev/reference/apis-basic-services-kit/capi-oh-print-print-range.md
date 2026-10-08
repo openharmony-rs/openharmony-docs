@@ -29,5 +29,5 @@ typedef struct {...} Print_Range
 | uint32_t startPage     | 打印起始页，页码从 1 开始计数，取值应为文档中的有效页码且需小于等于 endPage。     |
 | uint32_t endPage       | 打印结束页，页码从 1 开始计数，取值应为文档中的有效页码且需大于等于 startPage。     |
 | uint32_t pagesArrayLen | 打印页码数组长度，须与 pagesArray 数组实际元素数一致，仅在 pagesArray 不为 NULL 时有效。 |
-| uint32_t* pagesArray   | 打印页码数组，每个元素表示一个需要打印的页码（从 1 开始计数），取值应为文档中的有效页码，数组长度由 pagesArrayLen 决定。 |
+| uint32_t* pagesArray   | 打印页码数组，每个元素表示一个需要打印的页码，页码从 1 开始计数，取值应为文档中的有效页码，数组长度由 pagesArrayLen 决定。 |
 

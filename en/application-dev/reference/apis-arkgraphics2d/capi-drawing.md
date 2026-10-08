@@ -1,18 +1,21 @@
 # Drawing
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=357665bbb6caa6d8123e7eb4a2cbf8a969d1a249 translatedAt=2026-08-24T09:03:25.163Z pushedAt=2026-08-31T11:32:46.035Z -->
 
 ## Overview
 
-The Drawing module provides the functions for 2D graphics rendering, text drawing, and image display.<br>It uses the physical pixel unit, px.
+The Drawing module provides functions such as 2D graphics rendering, text drawing, and image display.<br>This module uses the physical pixel unit px.<br>This module adopts a single-thread model, and callers need to manage thread safety and context state switching on their own.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
+
 ## Files
 
 | Name| Description|
@@ -49,7 +52,7 @@ The Drawing module provides the functions for 2D graphics rendering, text drawin
 | [drawing_shadow_layer.h](capi-drawing-shadow-layer-h.md) | Declares the functions related to the shadow in the drawing module.|
 | [drawing_surface.h](capi-drawing-surface-h.md) | Declares the functions related to the surface in the drawing module, including creating, destroying, and using the surface.|
 | [drawing_text_blob.h](capi-drawing-text-blob-h.md) | Declares the functions related to the text blob in the drawing module.|
-| [drawing_text_declaration.h](capi-drawing-text-declaration-h.md) | Declares the structs related to text in 2D drawing.|
+| [drawing_text_declaration.h](capi-drawing-text-declaration-h.md) | Provides declarations of data structures related to 2D text drawing. |
 | [drawing_text_font_descriptor.h](capi-drawing-text-font-descriptor-h.md) | Declares the capabilities of font information, such as obtaining font information and searching for a font.|
 | [drawing_text_global.h](capi-drawing-text-global-h.md) | Declares the functions related to global text information, for example, setting the high contrast mode for text rendering.|
 | [drawing_text_line.h](capi-drawing-text-line-h.md) | Declares the capabilities for obtaining the character position in a text line, obtaining the run information, and truncating text by line.|

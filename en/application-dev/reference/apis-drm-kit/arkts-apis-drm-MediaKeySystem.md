@@ -1,10 +1,12 @@
 # Interface (MediaKeySystem)
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+
 MediaKeySystem manages MediaKeySystem instances, handles device certificate (DRM certificate) requests and processing, creates sessions, manages offline media keys, obtains DRM metrics, and obtain device configurations. Before calling any API in MediaKeySystem, you must use [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem) to create a MediaKeySystem instance.
 
 > **NOTE**
@@ -40,17 +42,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-mediaKeySystem.setConfigurationString("stringConfigName", "stringConfigValue"); // Ensure that stringConfigName is configurable.
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+mediaKeySystem.setConfigurationString('stringConfigName', 'stringConfigValue'); // Ensure that stringConfigName is configurable.
 ```
 
 ## getConfigurationString
@@ -81,17 +83,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed, the param's length is zero or too big(exceeds 4096 Bytes).                              |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. Parameter verification failed, the param's length is zero or too big (exceeds 4096 Bytes). |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-let configValue: string = mediaKeySystem.getConfigurationString("vendor");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+let configValue: string = mediaKeySystem.getConfigurationString('vendor');
 ```
 
 ## setConfigurationByteArray
@@ -126,11 +128,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // Set configValue based on project requirements.
 let configValue: Uint8Array = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 // Ensure that byteArrayConfigName of the current DRM solution is configurable.
-mediaKeySystem.setConfigurationByteArray("byteArrayConfigName", configValue);
+mediaKeySystem.setConfigurationByteArray('byteArrayConfigName', configValue);
 ```
 
 ## getConfigurationByteArray
@@ -162,16 +164,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.        |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-let configValue: Uint8Array = mediaKeySystem.getConfigurationByteArray("deviceUniqueId"); // Ensure that deviceUniqueId exists.
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+let configValue: Uint8Array = mediaKeySystem.getConfigurationByteArray('deviceUniqueId'); // Ensure that deviceUniqueId exists.
 ```
 
 ## getStatistics
@@ -196,15 +198,15 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let statisticKeyValue: drm.StatisticKeyValue[] = mediaKeySystem.getStatistics();
 ```
 
@@ -230,15 +232,15 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let maxLevel: drm.ContentProtectionLevel = mediaKeySystem.getMaxContentProtectionLevel();
 ```
 
@@ -266,15 +268,15 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // Do not call this API if a device certificate already exists on the device.
 mediaKeySystem.generateKeySystemRequest().then((provisionRequest: drm.ProvisionRequest) => {
   // provisionRequest is the device certificate request object returned by the API, including the request data and default URL.
@@ -313,15 +315,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // keySystemResponse is the device certificate response obtained from the DRM service. Pass in the actual value as required.
 let keySystemResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
@@ -331,7 +333,7 @@ mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
 
 ## getCertificateStatus
 
-getCertificateStatus():CertificateStatus
+getCertificateStatus(): CertificateStatus
 
 Obtains the status of the device certificate.
 
@@ -351,15 +353,15 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let certificateStatus: drm.CertificateStatus = mediaKeySystem.getCertificateStatus();
 ```
 
@@ -378,7 +380,7 @@ Subscribes to events indicating that the application requests a device certifica
 | Name     | Type                 | Mandatory| Description                                 |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | Yes  | Event type. This event is available for listening after a MediaKeySystem instance is created by calling [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem). It is triggered when a device certificate is required.|
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | Yes  | Callback used to return the event information. The occurrence of this event signals the need to request a device certificate.                |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | Yes  | Callback used to return the event information. When this event is received, the device certificate needs to be requested.                |
 
 **Error codes**
 
@@ -387,14 +389,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.               |
-| 24700101                |  All unknown errors                  |
+| 24700101                |  All unknown errors.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
   console.info('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
@@ -424,13 +426,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.               |
-| 24700101                |  All unknown errors                  |
+| 24700101                |  All unknown errors.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 mediaKeySystem.off('keySystemRequired');
 ```
 
@@ -462,17 +465,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.The param level exceeds reasonable range, please use value in ContentProtectionLevel.          |
-| 24700101                 |  All unknown errors                  |
-| 24700104                 |  Meet max MediaKeySession num limit                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. The param level exceeds reasonable range, please use value in ContentProtectionLevel. |
+| 24700101                 |  All unknown errors.                 |
+| 24700104                 |  Meet max MediaKeySession num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
 ```
 
@@ -498,16 +501,16 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700104                 |  Meet max MediaKeySession num limit                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700104                 |  Meet max MediaKeySession num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 ```
 
@@ -533,15 +536,15 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let offlineMediaKeyIds: Uint8Array[] = mediaKeySystem.getOfflineMediaKeyIds();
 ```
 
@@ -574,15 +577,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Pass in the actual value as required.
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 let configValue: drm.OfflineMediaKeyStatus = mediaKeySystem.getOfflineMediaKeyStatus(mediaKeyId);
@@ -611,15 +614,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed.Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.           |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // mediaKeyId is the return value of processMediaKeyResponse or getOfflineMediaKeyIds. Pass in the actual value as required.
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySystem.clearOfflineMediaKeys(mediaKeyId);
@@ -641,14 +644,14 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **Example**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 mediaKeySystem.destroy();
 ```

@@ -1,7 +1,7 @@
 # Class (WebviewController)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -339,106 +339,106 @@ struct WebComponent {
 
 加载本地网页，加载本地资源文件有三种方式。
 
-1.$rawfile方式。
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
+1. $rawfile方式。
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Button('loadUrl')
-        .onClick(() => {
-          try {
-            // 通过$rawfile加载本地资源文件。
-            this.controller.loadUrl($rawfile('index.html'));
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('loadUrl')
+           .onClick(() => {
+             try {
+               // 通过$rawfile加载本地资源文件。
+               this.controller.loadUrl($rawfile('index.html'));
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-2.resource协议。
+2. resource协议。
 
-使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时URL会被“#”截断的问题。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
+   使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时URL会被“#”截断的问题。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Button('loadUrl')
-        .onClick(() => {
-          try {
-            // 通过resource协议加载本地资源文件。
-            this.controller.loadUrl("resource://rawfile/index.html#home");
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('loadUrl')
+           .onClick(() => {
+             try {
+               // 通过resource协议加载本地资源文件。
+               this.controller.loadUrl("resource://rawfile/index.html#home");
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-在“src\main\resources\rawfile”文件夹下创建index.html：
-```html
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-<body>
-<div id="content"></div>
+   在“src\main\resources\rawfile”文件夹下创建index.html：
+   ```html
+   <!-- index.html -->
+   <!DOCTYPE html>
+   <html>
+   <body>
+   <div id="content"></div>
 
-<script>
-  function loadContent() {
-    var hash = window.location.hash;
-    var contentDiv = document.getElementById('content');
+   <script>
+     function loadContent() {
+       var hash = window.location.hash;
+       var contentDiv = document.getElementById('content');
 
-    if (hash === '#home') {
-      contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
-    } else {
-      contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
-    }
-  }
+       if (hash === '#home') {
+         contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
+       } else {
+         contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
+       }
+     }
 
-  // 加载界面
-  window.addEventListener('load', loadContent);
+     // 加载界面
+     window.addEventListener('load', loadContent);
 
-  // 当hash变化时，更新界面
-  window.addEventListener('hashchange', loadContent);
-</script>
-</body>
-</html>
-```
+     // 当hash变化时，更新界面
+     window.addEventListener('hashchange', loadContent);
+   </script>
+   </body>
+   </html>
+   ```
 
-3.通过沙箱路径加载本地文件，可以参考[web](../../web/web-page-loading-with-web-components.md#加载本地页面)加载沙箱路径的示例代码。
+3. 通过沙箱路径加载本地文件，可以参考[web](../../web/web-page-loading-with-web-components.md#加载本地页面)加载沙箱路径的示例代码。
 
-加载的html文件。
-```html
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-  <body>
-    <p>Hello World</p>
-  </body>
-</html>
-```
+   加载的html文件。
+   ```html
+   <!-- index.html -->
+   <!DOCTYPE html>
+   <html>
+     <body>
+       <p>Hello World</p>
+     </body>
+   </html>
+   ```
 
 ## loadData
 
@@ -471,8 +471,8 @@ data数据必须使用base64编码或将内容中的任何#字符编码为%23。
 | data       | string | 是   | 按照"base64"或者"URL"编码后的一段字符串。                    |
 | mimeType   | string | 是   | 媒体类型（MIME）。                                           |
 | encoding   | string | 是   | 编码类型，具体为"base64"或者"URL"编码。                       |
-| baseUrl    | string | 否   | 指定的一个URL路径（"http"/"https"/"data"协议），并由Web组件赋值给`window.origin`。当加载大量html文件时，需设置为"data"。<br>传入undefined或null会抛出异常错误码401。 |
-| historyUrl | string | 否   | 用作历史记录所使用的URL。非空时，历史记录以此URL进行管理。当baseUrl为空时，此属性无效。<br>传入undefined或null会抛出异常错误码401。 |
+| baseUrl | string | 否 | 指定的一个URL路径（"http"/"https"/"data"协议），并由Web组件赋值给`window.origin`。当加载大量html文件时，需设置为"data"。<br>传入undefined或null会抛出异常错误码401。 |
+| historyUrl | string | 否 | 用作历史记录所使用的URL。非空时，历史记录以此URL进行管理。当baseUrl为空时，此属性无效。<br>传入undefined或null会抛出异常错误码401。 |
 
 **错误码：**
 
@@ -1330,6 +1330,7 @@ runJavaScript(script: string, callback : AsyncCallback\<string>): void
 > - 目前不支持传递对象，支持传递结构体。
 > - 执行异步方法无法获取返回值，需要根据具体情境判断是否使用同步或异步方式。
 > - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
+> - 多次调用runJavaScript时，脚本按调用顺序依次执行，但回调结果的返回顺序不保证与调用顺序一致。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1421,11 +1422,12 @@ runJavaScript(script: string): Promise\<string>
 
 > **说明：**
 >
-> - 跨导航操作（如loadUrl）时，JavaScript状态 将不再保留，例如，调用loadUrl前定义的全局变量和函数在加载的页面中将不存在。
+> - 跨导航操作（如loadUrl）时，JavaScript状态将不再保留，例如，调用loadUrl前定义的全局变量和函数在加载的页面中将不存在。
 > - 建议应用程序使用registerJavaScriptProxy来确保JavaScript状态能够在页面导航间保持。
 > - 目前不支持传递对象，支持传递结构体。
 > - 执行异步方法无法获取返回值，需要根据具体情境判断是否使用同步或异步方式。
 > - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
+> - 多次调用runJavaScript时，脚本按调用顺序依次执行，但Promise结果的返回顺序不保证与调用顺序一致。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1517,6 +1519,7 @@ runJavaScriptExt(script: string | ArrayBuffer, callback : AsyncCallback\<JsMessa
 > **说明：**
 >
 > - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
+> - 多次调用runJavaScriptExt时，脚本按调用顺序依次执行，但回调结果的返回顺序不保证与调用顺序一致。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1644,7 +1647,7 @@ struct WebComponent {
           try {
             let uiContext : UIContext = this.getUIContext();
             let context : Context | undefined = uiContext.getHostContext() as common.UIAbilityContext;
-            let filePath = context!.filesDir + 'test.txt';
+            let filePath = context!.filesDir + '/test.txt';
             // 新建并打开文件。
             let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
             // 写入一段内容至文件。
@@ -1742,6 +1745,7 @@ runJavaScriptExt(script: string | ArrayBuffer): Promise\<JsMessageExt>
 > **说明：**
 >
 > - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
+> - 多次调用runJavaScriptExt时，脚本按调用顺序依次执行，但Promise结果的返回顺序不保证与调用顺序一致。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1865,7 +1869,7 @@ struct WebComponent {
           try {
             let uiContext : UIContext = this.getUIContext();
             let context : Context | undefined = uiContext.getHostContext() as common.UIAbilityContext;
-            let filePath = context!.filesDir + 'test.txt';
+            let filePath = context!.filesDir + '/test.txt';
             // 新建并打开文件。
             let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
             // 写入一段内容至文件。
@@ -2061,13 +2065,19 @@ zoom(factor: number): void
 
 调整当前网页的缩放比例，[zoomAccess](arkts-basic-components-web-attributes.md#zoomaccess)需为true。
 
+> **说明：**
+>
+> 入参超出取值范围时，本次调用不生效，网页缩放比例保持不变。
+>
+> 当网页缩放比例已达到最大值或最小值时，继续同向缩放的调用同样不生效。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| factor | number   | 是   | 基于当前网页所需调整的相对缩放比例，入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。<br>取值范围：(0，100]。 |
+| factor | number   | 是   | 缩放倍数，与当前网页缩放比例相乘得到新的缩放比例。入参为1时缩放比例保持不变，入参小于1为缩小，入参大于1为放大。<br>取值范围：(0，100]。 |
 
 **错误码：**
 
@@ -3840,11 +3850,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-清除与当前WebView上下文相关的资源缓存。
-
-> **说明：**
->
-> 可以通过在data/storage/el2/base/cache/web/Cache目录下查看Webview的缓存。
+清除应用内所有Webview产生的资源缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3896,10 +3902,6 @@ struct WebComponent {
 static removeAllCache(clearRom: boolean): void
 
 清除应用内所有Webview(含隐私模式)产生的资源缓存。
-
-> **说明：**
->
-> 可以通过在data/app/el2/100/base/\<applicationPackageName\>/cache/web/目录下查看Webview的缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4192,56 +4194,56 @@ serializeWebState(): Uint8Array
 
 **示例：**
 
-1.对文件的操作需要导入文件管理模块，详情请参考[文件管理](../apis-core-file-kit/js-apis-file-fs.md)。
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
+1. 对文件的操作需要导入文件管理模块，详情请参考[文件管理](../apis-core-file-kit/js-apis-file-fs.md)。
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo } from '@kit.CoreFileKit';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Button('serializeWebState')
-        .onClick(() => {
-          try {
-            let state = this.controller.serializeWebState();
-            let path:string | undefined = AppStorage.get("cacheDir");
-            if (path) {
-              path += '/WebState';
-              // 以同步方法打开文件。
-              let file = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-              fileIo.writeSync(file.fd, state.buffer);
-              fileIo.closeSync(file.fd);
-            }
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('serializeWebState')
+           .onClick(() => {
+             try {
+               let state = this.controller.serializeWebState();
+               let path:string | undefined = AppStorage.get("cacheDir");
+               if (path) {
+                 path += '/WebState';
+                 // 以同步方法打开文件。
+                 let file = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                 fileIo.writeSync(file.fd, state.buffer);
+                 fileIo.closeSync(file.fd);
+               }
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-2.修改EntryAbility.ets。
+2. 修改EntryAbility.ets。
 
-获取应用缓存文件路径。
-```ts
-// xxx.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   获取应用缓存文件路径。
+   ```ts
+   // xxx.ets
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
-        AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
-    }
-}
-```
+   export default class EntryAbility extends UIAbility {
+       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+           // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
+           AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
+       }
+   }
+   ```
 
 ## restoreWebState
 
@@ -4270,65 +4272,65 @@ restoreWebState(state: Uint8Array): void
 
 **示例：**
 
-1.对文件的操作需要导入文件管理模块，详情请参考[文件管理](../apis-core-file-kit/js-apis-file-fs.md)。
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
+1. 对文件的操作需要导入文件管理模块，详情请参考[文件管理](../apis-core-file-kit/js-apis-file-fs.md)。
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo } from '@kit.CoreFileKit';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Button('RestoreWebState')
-        .onClick(() => {
-          try {
-            let path: string | undefined = AppStorage.get("cacheDir");
-            if (path) {
-              path += '/WebState';
-              // 以同步方法打开文件。
-              let file = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE);
-              let stat = fileIo.statSync(path);
-              let size = stat.size;
-              let buf = new ArrayBuffer(size);
-              fileIo.read(file.fd, buf, (err, readLen) => {
-                if (err) {
-                  console.error("console error with error message: " + err.message + ", error code: " + err.code);
-                } else {
-                  console.info("read file data succeed");
-                  this.controller.restoreWebState(new Uint8Array(buf.slice(0, readLen)));
-                  fileIo.closeSync(file);
-                }
-              });
-            }
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('RestoreWebState')
+           .onClick(() => {
+             try {
+               let path: string | undefined = AppStorage.get("cacheDir");
+               if (path) {
+                 path += '/WebState';
+                 // 以同步方法打开文件。
+                 let file = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE);
+                 let stat = fileIo.statSync(path);
+                 let size = stat.size;
+                 let buf = new ArrayBuffer(size);
+                 fileIo.read(file.fd, buf, (err, readLen) => {
+                   if (err) {
+                     console.error("console error with error message: " + err.message + ", error code: " + err.code);
+                   } else {
+                     console.info("read file data succeed");
+                     this.controller.restoreWebState(new Uint8Array(buf.slice(0, readLen)));
+                     fileIo.closeSync(file);
+                   }
+                 });
+               }
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-2.修改EntryAbility.ets。
+2. 修改EntryAbility.ets。
 
-获取应用缓存文件路径。
-```ts
-// xxx.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   获取应用缓存文件路径。
+   ```ts
+   // xxx.ets
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
-    AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
-  }
-}
-```
+   export default class EntryAbility extends UIAbility {
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+       // 通过在AppStorage对象上绑定cacheDir，可以实现UIAbility组件与Page之间的数据同步。
+       AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
+     }
+   }
+   ```
 
 ## customizeSchemes
 
@@ -4844,7 +4846,7 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>, prefetchOptions
 | ------------------| --------------------------------| ---- | ------------- |
 | url               | string                          | 是    | 预加载的URL。|
 | additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否    | URL的附加HTTP请求头。<br>默认值： [] |
-| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | 否    | 用来自定义预取行为的相关选项。 |
+| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | 否    | 用来自定义预取行为的相关选项。 <br>两次预取间默认的最小时间间隔为500ms，默认不忽略响应头中的Cache-Control: no-store。|
 
 **错误码：**
 
@@ -5132,7 +5134,7 @@ setCustomUserAgent(userAgent: string): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| userAgent      | string  | 是   | 用户自定义代理信息。建议先使用[getUserAgent](#getuseragent)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
+| userAgent | string | 是 | 用户自定义代理信息。建议先使用[getUserAgent](#getuseragent)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
 
 **错误码：**
 
@@ -5355,7 +5357,7 @@ static setAppCustomUserAgent(userAgent: string): void
 
 | 参数名          | 类型    |  必填  | 说明 |
 | ---------------| ------- | ---- | ------------- |
-| userAgent      | string  | 是   | 用户自定义代理信息。建议先使用[getDefaultUserAgent](#getdefaultuseragent14)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
+| userAgent | string | 是 | 用户自定义代理信息。建议先使用[getDefaultUserAgent](#getdefaultuseragent14)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
 
 **示例：**
 
@@ -5404,7 +5406,7 @@ static setUserAgentForHosts(userAgent: string, hosts: Array\<string>): void
 
 | 参数名          | 类型    |  必填  | 说明 |
 | ---------------| ------- | ---- | ------------- |
-| userAgent      | string  | 是   | 用户自定义代理信息。建议先使用[getDefaultUserAgent](#getdefaultuseragent14)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
+| userAgent | string | 是 | 用户自定义代理信息。建议先使用[getDefaultUserAgent](#getdefaultuseragent14)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
 | hosts      | Array\<string>  | 是   | 用户自定义代理的相关域名列表，每次调用时仅保留最新传入的列表，并限制最大条目数为两万，超出部分自动截断。 |
 
 
@@ -5457,7 +5459,7 @@ static setConnectionTimeout(timeout: number): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| timeout        | number  | 是   | socket连接超时时间，单位：s，必须为大于0的整数。 |
+| timeout | number | 是 | socket连接超时时间，单位：s，必须为大于0的整数。 |
 
 **错误码：**
 
@@ -7282,7 +7284,7 @@ struct WebComponent {
 
 setServiceWorkerWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
 
-为当前应用的所有Web组件设置用于拦截ServiceWorker的WebSchemeHandler。
+为当前应用的所有Web组件设置WebSchemeHandler，用于拦截ServiceWorker中指定scheme的请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8620,30 +8622,30 @@ setUrlTrustList(urlTrustList: string): void
 
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
-设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源。典型使用场景包括：需要允许Web组件跨域访问本地资源文件，同时限制访问范围以保证安全。（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。
+设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源。典型使用场景：用于需要允许Web组件跨域访问本地资源文件，同时限制访问范围以保证安全的场景。（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。
  
 setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
 
-1.应用文件目录的子目录（应用文件目录通过Ability Kit中的[Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
+1. 应用文件目录的子目录（应用文件目录通过Ability Kit中的[Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
 
-* /data/storage/el2/base/files/example
-* /data/storage/el2/base/haps/entry/files/example
+   * /data/storage/el2/base/files/example
+   * /data/storage/el2/base/haps/entry/files/example
 
-2.应用资源目录及其子目录（应用资源目录通过Ability Kit中的[Context.resourceDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
+2. 应用资源目录及其子目录（应用资源目录通过Ability Kit中的[Context.resourceDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
 
-* /data/storage/el1/bundle/entry/resources/resfile
-* /data/storage/el1/bundle/entry/resources/resfile/example
+   * /data/storage/el1/bundle/entry/resources/resfile
+   * /data/storage/el1/bundle/entry/resources/resfile/example
 
-3.从API version 21开始，还包括了应用缓存目录及其子目录（应用缓存目录通过Ability Kit中的[Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
+3. 从API version 21开始，还包括了应用缓存目录及其子目录（应用缓存目录通过Ability Kit中的[Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
 
-* /data/storage/el2/base/cache
-* /data/storage/el2/base/haps/entry/cache/example
-* 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。
+   * /data/storage/el2/base/cache
+   * /data/storage/el2/base/haps/entry/cache/example
+   * 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。
 
-4.从API version 21开始，还包括了应用临时目录及其子目录（应用临时目录通过Ability Kit中的[Context.tempDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
+4. 从API version 21开始，还包括了应用临时目录及其子目录（应用临时目录通过Ability Kit中的[Context.tempDir](../apis-ability-kit/js-apis-inner-application-context.md#属性)获取），例如：
 
-* /data/storage/el2/base/temp
-* /data/storage/el2/base/haps/entry/temp/example
+   * /data/storage/el2/base/temp
+   * /data/storage/el2/base/haps/entry/temp/example
 
 当路径列表中有其中一个路径不满足以上条件之一，则会抛出异常码401，并且设置路径列表失败。当设置的路径列表为空，则file协议可访问范围以[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为为准。
 
@@ -9306,7 +9308,7 @@ getAttachState(): ControllerAttachState
 
 | 类型         | 说明                 |
 | ------------ | -------------------- |
-| [ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20) | WebViewController与Web组件的绑定状态。 |
+| [ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20) | WebViewController与Web组件的绑定状态。 |
 
 **示例：**
 点击Button可以获取当前WebViewController的绑定状态并输出日志。
@@ -9353,7 +9355,7 @@ on(type: 'controllerAttachStateChange', callback: Callback&lt;ControllerAttachSt
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 表示注册WebViewController绑定状态事件，固定为"controllerAttachStateChange"。 |
-| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 是 | WebViewController绑定状态改变时的回调函数。 |
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)> | 是 | WebViewController绑定状态改变时的回调函数。 |
 
 **示例：**
 
@@ -9372,7 +9374,7 @@ off(type: 'controllerAttachStateChange', callback?: Callback&lt;ControllerAttach
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 表示注册WebViewController绑定状态事件，固定为"controllerAttachStateChange"。 |
-| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 否 | WebViewController绑定状态发生改变时的回调函数，默认情况下不填写回调函数。如果填写了Callback，将仅取消注册该特定的回调。如果不填写Callback，将取消注册所有回调。<br>传入null或undefined时会抛出异常错误码401。 |
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)> | 否 | WebViewController绑定状态发生改变时的回调函数，默认情况下不填写回调函数。如果填写了Callback，将仅取消注册该特定的回调。如果不填写Callback，将取消注册所有回调。<br>传入null或undefined时会抛出异常错误码401。 |
 
 **示例：**
 
@@ -9432,7 +9434,7 @@ struct WebComponent {
 
 waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
 
-异步等待WebViewController与Web组件绑定完成，绑定完成或超时触发回调，通过Promise方式返回当前[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)状态。
+异步等待WebViewController与Web组件绑定完成，绑定完成或超时触发回调，通过Promise方式返回当前[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9446,7 +9448,7 @@ waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
 
 | 类型                           | 说明                          |
 | ------------------------------ | ----------------------------- |
-| Promise<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | Promise实例，返回当前[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)状态。 |
+| Promise<[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)> | Promise实例，返回当前[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)状态。 |
 
 
 **示例：**
@@ -9599,7 +9601,7 @@ getHitTest(): WebHitTestType
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9654,7 +9656,7 @@ getHitTestValue(): HitTestValue
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -10010,9 +10012,9 @@ struct WebComponent {
               let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
               if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
                 if (info.similarity >= 0.5 && info.loadingTime < 1000) {
-                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', true);
+                  this.controller.setBlanklessLoadingWithKey('https://www.example.com/page1', true);
                 } else {
-                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', false);
+                  this.controller.setBlanklessLoadingWithKey('https://www.example.com/page1', false);
                 }
               } else {
                 console.info('getBlankless info err');
@@ -10083,9 +10085,9 @@ struct WebComponent {
               let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
               if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
                 if (info.similarity >= 0.5 && info.loadingTime < 1000) {
-                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', true);
+                  this.controller.setBlanklessLoadingWithKey('https://www.example.com/page1', true);
                 } else {
-                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', false);
+                  this.controller.setBlanklessLoadingWithKey('https://www.example.com/page1', false);
                 }
               } else {
                 console.info('getBlankless info err');
@@ -10165,7 +10167,7 @@ struct WebComponent {
                     // 数据监控
                   },
                 };
-                this.controller.setBlanklessLoadingWithParams('http://www.example.com/page1', param);
+                this.controller.setBlanklessLoadingWithParams('https://www.example.com/page1', param);
               } else {
                 console.info('getBlankless info err');
               }
@@ -10494,7 +10496,7 @@ static setAutoPreconnect(enabled: boolean): void
 
 设置Web内核的自动预连接状态。若未设置，默认启用自动预连接。
 
-需要在[initializeWebEngine()](#initializewebengine)初始化内核或者创建Web组件之前调用。
+需要在[initializeWebEngine()](#initializewebengine)初始化内核或者创建Web组件之前调用。若已加载任何Web组件，则该设置无效。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -10604,7 +10606,7 @@ setSiteIsolationMode(mode: SiteIsolationMode): void
 
 设置站点隔离模式。站点隔离机制将不同源的网站隔离在不同的渲染进程中，减少跨域攻击面。例如：PC等设备上，在未启用站点隔离模式时，原有进程模型是每一个Tab对应一个渲染进程，开启站点隔离后，一个Tab下不同源的Iframe可在独立的渲染进程中运行。
 
-对于仅加载可信网页的第三方应用，可以关闭此功能，以提升性能并减少内存占用，同时减少跨域访问的拦截。默认值根据不同的设备而定，PC/Table采用严格站点隔离[SiteIsolationMode.STRICT](./arkts-apis-webview-e.md#siteisolationmode21)，Phone默认部分站点隔离[SiteIsolationMode.PARTIAL](./arkts-apis-webview-e.md#siteisolationmode21)。[坚盾守护模式](../..//web/web-secure-shield-mode.md)下采用严格站点隔离。
+对于仅加载可信网页的第三方应用，可以关闭此功能，以提升性能并减少内存占用，同时减少跨域访问的拦截。默认值根据不同的设备而定，PC/Table采用严格站点隔离[SiteIsolationMode.STRICT](./arkts-apis-webview-e.md#siteisolationmode21)，Phone默认部分站点隔离[SiteIsolationMode.PARTIAL](./arkts-apis-webview-e.md#siteisolationmode21)。[坚盾守护模式](../../web/web-secure-shield-mode.md)下采用严格站点隔离。
 
 > **说明：**
 >
@@ -11257,7 +11259,8 @@ executeAIPageCommand(command: string): Promise\<string\>
 
 > **说明：**
 >
-> - 当网页不可用、命令无法执行或无结果返回时，Promise返回空字符串。
+> - 不同命令的返回格式不同，详细说明请参见[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)和[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。
+> - 当命令无法分发或无结果返回时，Promise可能返回空字符串。
 > - 返回值非空时为JSON字符串，应用可通过`JSON.parse`解析后使用。
 
 **起始版本：** 26.0.0
@@ -11276,7 +11279,7 @@ executeAIPageCommand(command: string): Promise\<string\>
 
 | 类型             | 说明 |
 | ---------------- | ---- |
-| Promise\<string\> | Promise对象，执行成功时返回JSON格式的命令执行结果，执行失败或无返回值时返回空字符串。 |
+| Promise\<string\> | Promise对象，返回JSON格式的命令执行结果。不同命令的返回格式不同。命令无法分发或无返回值时，返回空字符串。 |
 
 **错误码：**
 
@@ -11374,6 +11377,9 @@ struct WebComponent {
         .onControllerAttached(() => {
           // 启用mainframe和subframe错误页功能
           this.controller.setErrorPageEnabled(true, true);
+          // 查询subframe错误页功能是否已启用
+          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
+          console.info("Subframe error page enabled: " + isSubframeEnabled);
         })
         .onOverrideErrorPage((event) => {
           if (event.request.isMainFrame()) {
@@ -11431,33 +11437,4 @@ getSubframeErrorPageEnabled(): boolean
 
 **示例：**
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
-        .onControllerAttached(() => {
-          // 启用mainframe和subframe错误页功能
-          this.controller.setErrorPageEnabled(true, true);
-          // 查询subframe错误页功能是否已启用
-          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
-          console.info("Subframe error page enabled: " + isSubframeEnabled);
-
-          // 仅启用mainframe错误页功能，不启用subframe
-          this.controller.setErrorPageEnabled(true, false);
-          let isSubframeEnabled2: boolean = this.controller.getSubframeErrorPageEnabled();
-          console.info("Subframe error page enabled after disable: " + isSubframeEnabled2);
-        })
-    }
-  }
-}
-```
-
-> **示例说明：** 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
+完整示例代码参考[setErrorPageEnabled](#seterrorpageenabled)。

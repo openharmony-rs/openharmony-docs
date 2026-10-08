@@ -1,14 +1,14 @@
 # Vibrator Overview
+
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:42:17.151Z pushedAt=2026-06-25T06:59:41.795Z -->
+<!-- md-trans-meta sourceCommit=2cc3d788470dfc527ff67f0d956b9e3149129ee5 translatedAt=2026-08-20T06:25:45.600Z pushedAt=2026-08-20T13:27:36.558Z -->
 
 The **vibrator** module extends the vibrator service via maximizing utilization of vibrator hardware capabilities. By innovatively integrating vibration and interaction, the module takes user interaction efficiency and usability to the next level.
-
 
 ## Working Principles
 
@@ -25,7 +25,6 @@ The vibrator is a Misc device that consists of four modules: Vibrator API, Vibra
 - Misc device service: manages services of controllers.
 
 - HDF layer: adapts to different devices.
-
 
 ## Constraints
 

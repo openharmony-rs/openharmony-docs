@@ -2,16 +2,16 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @guozejun-->
-<!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Owner: @rongShao-Z; @guozejun-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b6f38d021a31abc28b1dd271b68098ebc074e7ab translatedAt=2026-07-29T09:31:43.662Z pushedAt=2026-07-31T01:06:00.344Z -->
 
-Provides the details about the lazy loading layout algorithms supported by the [LazyDynamicLayout](./arkui-ts/ts-container-lazydynamiclayout.md) component.
+Provides the details about the lazy loading layout algorithms supported by the [LazyDynamicLayout](./arkui-ts/ts-container-lazydynamiclayout.md) component, helping you customize measurement and arrangement of child components, obtain visible area information, and control the active state of child components.
 
 > **NOTE**
 >
-
 > The APIs of this module can be used only in the stage model.
 
 **Since:** 26.0.0
@@ -70,7 +70,7 @@ Lazy loading layout auxiliary class, which provides the layout direction and vis
 
 getViewStart(): number
 
-Obtains the start position of the visible area.
+Obtains the start position of the visible area. It can be used together with [getViewEnd](#getviewend) to determine the visible area range for custom measurement.
 
 **Since:** 26.0.0
 
@@ -90,7 +90,7 @@ Obtains the start position of the visible area.
 
 getViewEnd(): number
 
-Obtains the end position of the visible area.
+Obtains the end position of the visible area. It can be used together with [getViewStart](#getviewstart) to determine the visible area range for custom measurement.
 
 **Since:** 26.0.0
 
@@ -110,7 +110,7 @@ Obtains the end position of the visible area.
 
 getLazyLayoutDirection(): LazyLayoutDirection
 
-Obtains the lazy loading layout direction.
+Obtains the lazy loading layout direction. This API can be used to determine whether to start layout from the beginning or end of the content in custom measurement.
 
 **Since:** 26.0.0
 
@@ -132,8 +132,7 @@ setAdjustedOffset(offset: number): void
 
 Sets an adjusted offset for lazy loading.
 
-When parameters such as the number of layout columns and spacing change, this API needs to be called to adjust the offset to keep the relative position of the first child component in the visible region unchanged.<br>
-Take the vertical layout as an example. When the layout direction is **LazyLayoutDirection.FORWARD**, the offset set by this API is the adjustment value of the upper boundary of the container. When the layout direction is **LazyLayoutDirection.BACKWARD**, the offset set by this API is the adjustment value of the lower boundary of the container.
+When parameters such as the number of layout columns and spacing change, this API needs to be called to adjust the offset to keep the relative position of the first child component in the visible area unchanged.<br>Take the vertical layout as an example. When the layout direction is **LazyLayoutDirection.FORWARD**, the offset set by this API is the adjustment value of the upper boundary of the container. When the layout direction is **LazyLayoutDirection.BACKWARD**, the offset set by this API is the adjustment value of the lower boundary of the container.
 
 **Since:** 26.0.0
 
@@ -172,11 +171,11 @@ Child components outside the visible area are automatically set to the inactive 
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| children | number[] | Yes| Index array of child components to be set to the inactive state.|
+| children | number[] | Yes | Index array of child components to be set to the inactive state. An index must be a non-negative integer within the range [0, Total child components - 1]. The index outside this range does not take effect. |
 
 ## LazyCustomLayoutAlgorithm
 
-Custom lazy loading layout algorithm class.
+A custom lazy loading layout algorithm class. It supports custom measurement and arrangement of child components by overriding [onMeasure](#onmeasure) and [onLayout](#onlayout).
 
 > **NOTE**
 >
@@ -208,7 +207,7 @@ Constructor of the custom lazy loading layout algorithm class.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| option | [LazyCustomLayoutAlgorithmOptions](#lazycustomlayoutalgorithmoptions) | No| Input parameters for constructing the custom lazy loading layout algorithm, which are used to set the axis direction of the layout algorithm.|
+| option | [LazyCustomLayoutAlgorithmOptions](#lazycustomlayoutalgorithmoptions) | No | Input parameters for constructing the custom lazy loading layout algorithm, which are used to set the axis direction of the layout algorithm. This parameter needs to be passed when the main axis direction needs to be specified. If not passed, the main axis direction is **Axis.Vertical**. |
 
 ### onMeasure
 
@@ -281,6 +280,6 @@ Input parameters for constructing the custom lazy loading layout algorithm, whic
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| axis | [Axis](./arkui-ts/ts-appendix-enums.md#axis) | No| Yes| Main axis direction of the lazy loading layout.<br>Default value: **Axis.Vertical**|
+| axis | [Axis](./arkui-ts/ts-appendix-enums.md#axis) | No | Yes | Main axis direction of the lazy loading layout. **Axis.Vertical** is used for the vertical layout of the main axis, and **Axis.Horizontal** is used for the horizontal layout of the main axis.<br/>Default value: **Axis.Vertical** |
 
 <!--no_check-->

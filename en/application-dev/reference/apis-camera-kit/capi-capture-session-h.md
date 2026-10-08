@@ -1,10 +1,12 @@
 # capture_session.h
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=82f5cac2f5b65e3b4cb11e0d7ed6b4b50144d1e0 translatedAt=2026-08-20T09:36:43.659Z pushedAt=2026-08-21T03:13:48.596Z -->
 
 ## Overview
 
@@ -77,16 +79,16 @@ The file declares the capture session concepts.
 | [Camera_ErrorCode OH_CaptureSession_SetExposureMeteringMode(const Camera_CaptureSession* session, OH_Camera_ExposureMeteringMode exposureMeteringMode)](#oh_capturesession_setexposuremeteringmode) | - | Sets exposure metering mode.|
 | [Camera_ErrorCode OH_CaptureSession_GetSupportedISORange(const Camera_CaptureSession* session, int32_t *minIsoValue, int32_t *maxIsoValue)](#oh_capturesession_getsupportedisorange) | - | Obtains the ISO range.|
 | [Camera_ErrorCode OH_CaptureSession_GetIso(const Camera_CaptureSession* session, int32_t* isoValue)](#oh_capturesession_getiso) | - | Obtains the ISO sensitivity or ISO speed (compliant with the ISO 12232:2006 standard).|
-| [Camera_ErrorCode OH_CaptureSession_SetIso(const Camera_CaptureSession* session, int32_t isoValue)](#oh_capturesession_setiso) | - | Sets the ISO sensitivity or ISO speed. The value must be within the range specified by [OH_CaptureSession_GetSupportedISORange](capi-capture-session-h.md#oh_capturesession_getsupportedisorange) and takes effect only when the exposure mode is set to **EXPOSURE_MODE_LOCKED**.|
+| [Camera_ErrorCode OH_CaptureSession_SetIso(const Camera_CaptureSession* session, int32_t isoValue)](#oh_capturesession_setiso) | - | Sets the ISO sensitivity or ISO speed. The value must be within the range specified by [OH_CaptureSession_GetSupportedISORange](capi-capture-session-h.md#oh_capturesession_getsupportedisorange). When [ExposureMode](capi-camera-h.md#camera_exposuremode) is set to **EXPOSURE_MODE_LOCKED**, the ISO sensitivity or ISO speed cannot be set. |
 | [Camera_ErrorCode OH_CaptureSession_GetSupportedPhysicalApertures(const Camera_CaptureSession* session, OH_Camera_PhysicalAperture** apertures, uint32_t* size)](#oh_capturesession_getsupportedphysicalapertures) | - | Obtains the supported physical apertures. Call [OH_CaptureSession_DeletePhysicalApertures](capi-capture-session-h.md#oh_capturesession_deletephysicalapertures) to delete the supported physical apertures.|
 | [Camera_ErrorCode OH_CaptureSession_DeletePhysicalApertures(const Camera_CaptureSession* session, OH_Camera_PhysicalAperture* apertures, uint32_t size)](#oh_capturesession_deletephysicalapertures) | - | Deletes the supported physical apertures.|
 | [Camera_ErrorCode OH_CaptureSession_GetPhysicalAperture(const Camera_CaptureSession* session, double* aperture)](#oh_capturesession_getphysicalaperture) | - | Obtains the physical aperture in use.|
-| [Camera_ErrorCode OH_CaptureSession_SetPhysicalAperture(const Camera_CaptureSession* session, double aperture)](#oh_capturesession_setphysicalaperture) | - | Sets a physical aperture.|
+| [Camera_ErrorCode OH_CaptureSession_SetPhysicalAperture(const Camera_CaptureSession* session, double aperture)](#oh_capturesession_setphysicalaperture) | - | Sets a physical aperture. Before setting this parameter, you are advised to call [OH_CaptureSession_GetSupportedPhysicalApertures](capi-capture-session-h.md#oh_capturesession_getsupportedphysicalapertures) to obtain the list of supported physical apertures. |
 | [Camera_ErrorCode OH_CaptureSession_GetExposureBiasRange(Camera_CaptureSession* session, float* minExposureBias, float* maxExposureBias, float* step)](#oh_capturesession_getexposurebiasrange) | - | Obtains the exposure compensation values of the device.|
-| [Camera_ErrorCode OH_CaptureSession_SetExposureBias(Camera_CaptureSession* session, float exposureBias)](#oh_capturesession_setexposurebias) | - | Sets an exposure compensation value for the device.|
+| [Camera_ErrorCode OH_CaptureSession_SetExposureBias(Camera_CaptureSession* session, float exposureBias)](#oh_capturesession_setexposurebias) | - | Sets an exposure compensation value for the device. Before setting this parameter, you are advised to call [OH_CaptureSession_GetExposureBiasRange](capi-capture-session-h.md#oh_capturesession_getexposurebiasrange) to obtain the exposure compensation range. |
 | [Camera_ErrorCode OH_CaptureSession_GetExposureBias(Camera_CaptureSession* session, float* exposureBias)](#oh_capturesession_getexposurebias) | - | Obtains the exposure compensation value in use.|
 | [Camera_ErrorCode OH_CaptureSession_GetSupportedExposureDurationRange(const Camera_CaptureSession* session, int32_t* minExposureDuration, int32_t* maxExposureDuration)](#oh_capturesession_getsupportedexposuredurationrange) | - | Obtains the supported exposure durations, in microseconds.|
-| [Camera_ErrorCode OH_CaptureSession_SetExposureDuration(const Camera_CaptureSession* session, int32_t exposureDuration)](#oh_capturesession_setexposureduration) | - | Sets the exposure duration, in microseconds. If the sensor cannot use the set exposure duration, the system automatically adjusts it to a value closest to the set value and reports the value to the application by calling [OH_CaptureSession_OnExposureDurationChange](capi-capture-session-h.md#oh_capturesession_onexposuredurationchange).|
+| [Camera_ErrorCode OH_CaptureSession_SetExposureDuration(const Camera_CaptureSession* session, int32_t exposureDuration)](#oh_capturesession_setexposureduration) | - | Sets the exposure duration, in microseconds. If the sensor cannot use the set exposure duration, the system automatically adjusts it to a value closest to the set value and reports the value to the application by calling [OH_CaptureSession_OnExposureDurationChange](capi-capture-session-h.md#oh_capturesession_onexposuredurationchange). This setting takes effect only in [ExposureMode](capi-camera-h.md#camera_exposuremode).EXPOSURE_MODE_MANUAL mode. |
 | [Camera_ErrorCode OH_CaptureSession_GetExposureDuration(const Camera_CaptureSession* session, int32_t* exposureDuration)](#oh_capturesession_getexposureduration) | - | Obtains the exposure duration, in microseconds.|
 | [typedef void (\*OH_CaptureSession_OnExposureDurationChange)(const Camera_CaptureSession* session, int32_t exposureDuration)](#oh_capturesession_onexposuredurationchange) | OH_CaptureSession_OnExposureDurationChange | Defines the callback used to listen for exposure duration changes of a camera capture session.|
 | [Camera_ErrorCode OH_CaptureSession_RegisterExposureInfoChangeCallback(const Camera_CaptureSession* session, OH_CaptureSession_OnExposureDurationChange exposureDurationChange)](#oh_capturesession_registerexposureinfochangecallback) | - | Registers a callback to listen for exposure information changes. After the exposure parameters are modified, the system returns the updated exposure information.|
@@ -98,7 +100,7 @@ The file declares the capture session concepts.
 | [Camera_ErrorCode OH_CaptureSession_SetFocusPoint(Camera_CaptureSession* session, Camera_Point focusPoint)](#oh_capturesession_setfocuspoint) | - | Sets a focal point for the device.|
 | [Camera_ErrorCode OH_CaptureSession_GetZoomRatioRange(Camera_CaptureSession* session, float* minZoom, float* maxZoom)](#oh_capturesession_getzoomratiorange) | - | Obtains the supported zoom ratio range.|
 | [Camera_ErrorCode OH_CaptureSession_GetZoomRatio(Camera_CaptureSession* session, float* zoom)](#oh_capturesession_getzoomratio) | - | Obtains the zoom ratio in use.|
-| [Camera_ErrorCode OH_CaptureSession_SetZoomRatio(Camera_CaptureSession* session, float zoom)](#oh_capturesession_setzoomratio) | - | Sets a zoom ratio for the device.|
+| [Camera_ErrorCode OH_CaptureSession_SetZoomRatio(Camera_CaptureSession* session, float zoom)](#oh_capturesession_setzoomratio) | - | Sets a zoom ratio for the device. Before setting this parameter, you are advised to use [OH_CaptureSession_GetZoomRatioRange](capi-capture-session-h.md#oh_capturesession_getzoomratiorange) to obtain the supported zoom ratio range. |
 | [Camera_ErrorCode OH_CaptureSession_IsVideoStabilizationModeSupported(Camera_CaptureSession* session, Camera_VideoStabilizationMode mode, bool* isSupported)](#oh_capturesession_isvideostabilizationmodesupported) | - | Checks whether a video stabilization mode is supported. |
 | [Camera_ErrorCode OH_CaptureSession_GetVideoStabilizationMode(Camera_CaptureSession* session, Camera_VideoStabilizationMode* mode)](#oh_capturesession_getvideostabilizationmode) | - | Obtains the video stabilization mode in use.|
 | [Camera_ErrorCode OH_CaptureSession_SetVideoStabilizationMode(Camera_CaptureSession* session, Camera_VideoStabilizationMode mode)](#oh_capturesession_setvideostabilizationmode) | - | Sets a video stabilization mode for the device.|
@@ -119,7 +121,7 @@ The file declares the capture session concepts.
 | [Camera_ErrorCode OH_CaptureSession_GetSupportedColorSpaces(Camera_CaptureSession* session, OH_NativeBuffer_ColorSpace** colorSpace, uint32_t* size)](#oh_capturesession_getsupportedcolorspaces) | - | Obtains the supported color spaces.|
 | [Camera_ErrorCode OH_CaptureSession_DeleteColorSpaces(Camera_CaptureSession* session, OH_NativeBuffer_ColorSpace* colorSpace)](#oh_capturesession_deletecolorspaces) | - | Deletes color spaces.|
 | [Camera_ErrorCode OH_CaptureSession_GetActiveColorSpace(Camera_CaptureSession* session, OH_NativeBuffer_ColorSpace* colorSpace)](#oh_capturesession_getactivecolorspace) | - | Obtains the active color space.|
-| [Camera_ErrorCode OH_CaptureSession_SetActiveColorSpace(Camera_CaptureSession* session, OH_NativeBuffer_ColorSpace colorSpace)](#oh_capturesession_setactivecolorspace) | - | Sets the active color space.|
+| [Camera_ErrorCode OH_CaptureSession_SetActiveColorSpace(Camera_CaptureSession* session, OH_NativeBuffer_ColorSpace colorSpace)](#oh_capturesession_setactivecolorspace) | - | Sets the active color space. The value must be in the list obtained by calling [OH_CaptureSession_GetSupportedColorSpaces](capi-capture-session-h.md#oh_capturesession_getsupportedcolorspaces). |
 | [Camera_ErrorCode OH_CaptureSession_RegisterAutoDeviceSwitchStatusCallback(Camera_CaptureSession* session, OH_CaptureSession_OnAutoDeviceSwitchStatusChange autoDeviceSwitchStatusChange)](#oh_capturesession_registerautodeviceswitchstatuscallback) | - | Registers a callback to listen for device switching changes.|
 | [Camera_ErrorCode OH_CaptureSession_UnregisterAutoDeviceSwitchStatusCallback(Camera_CaptureSession* session, OH_CaptureSession_OnAutoDeviceSwitchStatusChange autoDeviceSwitchStatusChange)](#oh_capturesession_unregisterautodeviceswitchstatuscallback) | - | Unregisters the callback used to listen for device switching changes.|
 | [Camera_ErrorCode OH_CaptureSession_IsAutoDeviceSwitchSupported(Camera_CaptureSession* session, bool* isSupported)](#oh_capturesession_isautodeviceswitchsupported) | - | Checks whether automatic device switching is supported.|
@@ -132,7 +134,7 @@ The file declares the capture session concepts.
 | [Camera_ErrorCode OH_CaptureSession_SetWhiteBalance(Camera_CaptureSession* session, int32_t colorTemperature)](#oh_capturesession_setwhitebalance) | - | Sets the white balance color temperature.<br> Before setting this parameter, you are advised to use [OH_CaptureSession_GetWhiteBalanceRange](capi-capture-session-h.md#oh_capturesession_getwhitebalancerange) to obtain the supported white balance color temperature range.|
 | [Camera_ErrorCode OH_CaptureSession_GetColorTintRange(const Camera_CaptureSession* session, int32_t *minColorTint, int32_t *maxColorTint)](#oh_capturesession_getcolortintrange) | - | Obtains the supported white balance hue adjustment range.|
 | [Camera_ErrorCode OH_CaptureSession_GetColorTint(const Camera_CaptureSession* session, int32_t *colorTint)](#oh_capturesession_getcolortint) | - | Obtains the white balance hue adjustment.|
-| [Camera_ErrorCode OH_CaptureSession_SetColorTint(const Camera_CaptureSession* session, int32_t colorTint)](#oh_capturesession_setcolortint) | - | Sets the white balance hue adjustment. Before setting this parameter, you are advised to use [OH_CaptureSession_GetColorTintRange](capi-capture-session-h.md#oh_capturesession_getcolortintrange) to obtain the supported white balance hue adjustment range.|
+| [Camera_ErrorCode OH_CaptureSession_SetColorTint(Camera_CaptureSession* session, int32_t colorTint)](#oh_capturesession_setcolortint) | - | Sets the white balance hue adjustment. Before setting this parameter, you are advised to use [OH_CaptureSession_GetColorTintRange](capi-capture-session-h.md#oh_capturesession_getcolortintrange) to obtain the supported white balance hue adjustment range. |
 | [Camera_ErrorCode OH_CaptureSession_GetWhiteBalance(Camera_CaptureSession* session, int32_t *colorTemperature)](#oh_capturesession_getwhitebalance) | - | Obtains the white balance color temperature.|
 | [Camera_ErrorCode OH_CaptureSession_GetWhiteBalanceMode(Camera_CaptureSession* session, Camera_WhiteBalanceMode* whiteBalanceMode)](#oh_capturesession_getwhitebalancemode) | - | Obtains the white balance mode in use.|
 | [Camera_ErrorCode OH_CaptureSession_IsWhiteBalanceModeSupported(Camera_CaptureSession* session, Camera_WhiteBalanceMode whiteBalanceMode, bool* isSupported)](#oh_capturesession_iswhitebalancemodesupported) | - | Checks whether the specified white balance mode is supported.|
@@ -156,12 +158,15 @@ The file declares the capture session concepts.
 | [Camera_ErrorCode OH_CaptureSession_GetCurrentOISMode(const Camera_CaptureSession* session, OH_Camera_OISMode* oisMode)](#oh_capturesession_getcurrentoismode) | - | Obtains the OIS mode.|
 | [Camera_ErrorCode OH_CaptureSession_GetCurrentCustomOISBias(const Camera_CaptureSession* session, float* pitchBias, float* yawBias)](#oh_capturesession_getcurrentcustomoisbias) | - | Obtains the custom offsets on all OIS axes.|
 | [Camera_ErrorCode OH_CaptureSession_SetOISMode(const Camera_CaptureSession* session, OH_Camera_OISMode oisMode)](#oh_capturesession_setoismode) | - | Sets the OIS mode.|
-| [Camera_ErrorCode OH_CaptureSession_SetOISModeCustom(const Camera_CaptureSession* session, float pitchBias, float yawBias)](#oh_capturesession_setoismodecustom) | - | Sets the custom offset for an OIS axis.|
+| [Camera_ErrorCode OH_CaptureSession_SetOISModeCustom(const Camera_CaptureSession* session, float pitchBias, float yawBias)](#oh_capturesession_setoismodecustom) | - | Sets the custom offset for an OIS axis. Before setting this parameter, you are advised to obtain the offset range supported by the axis by calling [OH_CaptureSession_GetSupportedOISBiasRange](capi-capture-session-h.md#oh_capturesession_getsupportedoisbiasrange). |
 | [typedef void (\*OH_CaptureSession_OnExposureStateChange)(void* context, OH_Camera_ExposureState exposureState)](#oh_capturesession_onexposurestatechange) | OH_CaptureSession_OnExposureStateChange | Defines a callback to be invoked when the exposure state changes.|
 | [Camera_ErrorCode OH_CaptureSession_RegisterExposureStateChangeCallback(const Camera_CaptureSession* session, void* context, OH_CaptureSession_OnExposureStateChange callback)](#oh_capturesession_registerexposurestatechangecallback) | - | Registers a callback function to listen for exposure state changes. This callback is invoked when the exposure state in the capture session changes.|
 | [Camera_ErrorCode OH_CaptureSession_UnregisterExposureStateChangeCallback(const Camera_CaptureSession* session, void* context, OH_CaptureSession_OnExposureStateChange callback)](#oh_capturesession_unregisterexposurestatechangecallback) | - | Unregisters a callback to be invoked when the exposure state changes.|
 | [Camera_ErrorCode OH_CaptureSession_GetZoomPointInfos(const Camera_CaptureSession* session, uint32_t* size, OH_Camera_ZoomPointInfo** zoomPointInfo)](#oh_capturesession_getzoompointinfos) | - | Obtains the zoom information.<br> You need to call [OH_CaptureSession_DeleteZoomPointInfos](capi-capture-session-h.md#oh_capturesession_deletezoompointinfos) to release the memory for storing the zoom information.|
 | [Camera_ErrorCode OH_CaptureSession_DeleteZoomPointInfos(const Camera_CaptureSession* session, OH_Camera_ZoomPointInfo* zoomPointInfo)](#oh_capturesession_deletezoompointinfos) | - | Deletes the zoom information.|
+| [bool OH_CaptureSession_IsLockFocusTrackingSupported(const Camera_CaptureSession* session)](#oh_capturesession_islockfocustrackingsupported) | - |Checks whether locking focus tracking is supported. |
+| [Camera_ErrorCode OH_CaptureSession_LockFocusTracking(Camera_CaptureSession* session, Camera_Point focusPoint)](#oh_capturesession_lockfocustracking) | - | Locks focus tracking. You can unlock focus tracking by calling [OH_CaptureSession_UnlockFocusTracking](#oh_capturesession_unlockfocustracking). |
+| [Camera_ErrorCode OH_CaptureSession_UnlockFocusTracking(Camera_CaptureSession* session)](#oh_capturesession_unlockfocustracking) | - | Unlocks focus tracking. |
 
 ## Function Description
 
@@ -206,7 +211,6 @@ Defines the callback defined in the [CaptureSession_Callbacks](capi-oh-camera-ca
 **See also**
 
 [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode)
-
 
 ### OH_CaptureSession_OnSmoothZoomInfo()
 
@@ -1235,7 +1239,7 @@ Camera_ErrorCode OH_CaptureSession_SetIso(const Camera_CaptureSession* session, 
 
 **Description**
 
-Sets the ISO sensitivity or ISO speed. The value must be within the range specified by [OH_CaptureSession_GetSupportedISORange](capi-capture-session-h.md#oh_capturesession_getsupportedisorange) and takes effect only when the exposure mode is set to **EXPOSURE_MODE_LOCKED**.
+Sets the ISO sensitivity or ISO speed. The value must be within the range specified by [OH_CaptureSession_GetSupportedISORange](capi-capture-session-h.md#oh_capturesession_getsupportedisorange). When [ExposureMode](capi-camera-h.md#camera_exposuremode) is set to **EXPOSURE_MODE_LOCKED**, the ISO sensitivity or ISO speed cannot be set.
 
 **Since:** 24
 
@@ -1339,6 +1343,8 @@ Camera_ErrorCode OH_CaptureSession_SetPhysicalAperture(const Camera_CaptureSessi
 
 Sets a physical aperture.
 
+Before setting this parameter, you are advised to call [OH_CaptureSession_GetSupportedPhysicalApertures](capi-capture-session-h.md#oh_capturesession_getsupportedphysicalapertures) to obtain the list of supported physical apertures.
+
 **Since:** 24
 
 **Parameters**
@@ -1390,6 +1396,8 @@ Camera_ErrorCode OH_CaptureSession_SetExposureBias(Camera_CaptureSession* sessio
 **Description**
 
 Sets an exposure compensation value for the device.
+
+Before setting this parameter, you are advised to call [OH_CaptureSession_GetExposureBiasRange](capi-capture-session-h.md#oh_capturesession_getexposurebiasrange) to obtain the exposure compensation range.
 
 **Since**: 11
 
@@ -1465,7 +1473,7 @@ Camera_ErrorCode OH_CaptureSession_SetExposureDuration(const Camera_CaptureSessi
 
 **Description**
 
-Sets the exposure duration, in microseconds. If the sensor cannot use the set exposure duration, the system automatically adjusts it to a value closest to the set value and reports the value to the application by calling [OH_CaptureSession_OnExposureDurationChange](capi-capture-session-h.md#oh_capturesession_onexposuredurationchange).
+Sets the exposure duration, in microseconds. If the sensor cannot use the set exposure duration, the system automatically adjusts it to a value closest to the set value and reports the value to the application by calling [OH_CaptureSession_OnExposureDurationChange](capi-capture-session-h.md#oh_capturesession_onexposuredurationchange). This setting takes effect only in [ExposureMode](capi-camera-h.md#camera_exposuremode).EXPOSURE_MODE_MANUAL mode.
 
 **Since:** 24
 
@@ -1762,6 +1770,8 @@ Camera_ErrorCode OH_CaptureSession_SetZoomRatio(Camera_CaptureSession* session, 
 **Description**
 
 Sets a zoom ratio for the device.
+
+Before setting this parameter, you are advised to call [OH_CaptureSession_GetZoomRatioRange](capi-capture-session-h.md#oh_capturesession_getzoomratiorange) to obtain the supported zoom ratio range.
 
 **Since**: 11
 
@@ -2203,8 +2213,8 @@ Sets smooth zoom.
 
 | Name| Description|
 | -- | -- |
-| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to the target Camera_CaptureSession instance.|
-| float targetZoom | Target zoom ratio.|
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to the target **Camera_CaptureSession** instance.|
+| float targetZoom | Target zoom ratio. The value range can be obtained through [OH_CaptureSession_GetZoomRatioRange](capi-capture-session-h.md#oh_capturesession_getzoomratiorange). |
 | [Camera_SmoothZoomMode](capi-camera-h.md#camera_smoothzoommode) smoothZoomMode | Smooth zoom mode.|
 
 **Returns**
@@ -2298,6 +2308,8 @@ Camera_ErrorCode OH_CaptureSession_SetActiveColorSpace(Camera_CaptureSession* se
 **Description**
 
 Sets the active color space.
+
+The value must be in the list obtained by calling [OH_CaptureSession_GetSupportedColorSpaces](capi-capture-session-h.md#oh_capturesession_getsupportedcolorspaces).
 
 **Since**: 12
 
@@ -2574,7 +2586,7 @@ Camera_ErrorCode OH_CaptureSession_GetColorTintRange(const Camera_CaptureSession
 
 Obtains the supported white balance hue adjustment range.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Parameters**
 
@@ -2600,7 +2612,7 @@ Camera_ErrorCode OH_CaptureSession_GetColorTint(const Camera_CaptureSession* ses
 
 Obtains the white balance hue adjustment.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Parameters**
 
@@ -2618,14 +2630,14 @@ Obtains the white balance hue adjustment.
 ### OH_CaptureSession_SetColorTint()
 
 ```c
-Camera_ErrorCode OH_CaptureSession_SetColorTint(const Camera_CaptureSession* session, int32_t colorTint)
+Camera_ErrorCode OH_CaptureSession_SetColorTint(Camera_CaptureSession* session, int32_t colorTint)
 ```
 
 **Description**
 
 Sets the white balance hue adjustment. Before setting this parameter, you are advised to use [OH_CaptureSession_GetColorTintRange](capi-capture-session-h.md#oh_capturesession_getcolortintrange) to obtain the supported white balance hue adjustment range.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Parameters**
 
@@ -3223,6 +3235,8 @@ Camera_ErrorCode OH_CaptureSession_SetOISModeCustom(const Camera_CaptureSession*
 
 Sets the custom offset for an OIS axis.
 
+Before setting this parameter, you are advised to obtain the offset range supported by the axis by calling [OH_CaptureSession_GetSupportedOISBiasRange](capi-capture-session-h.md#oh_capturesession_getsupportedoisbiasrange).
+
 **Since**: 24
 
 **Parameters**
@@ -3276,7 +3290,7 @@ Registers a callback function to listen for exposure state changes. This callbac
 | -- | -- |
 | [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session |  Pointer to the target Camera_CaptureSession instance.|
 | void* context | Pointer to the custom context.|
-| [OH_CaptureSession_OnExposureStateChange](capi-capture-session-h.md#oh_capturesession_onexposurestatechange) callback | Triggered when the playback state changes.|
+| [OH_CaptureSession_OnExposureStateChange](capi-capture-session-h.md#oh_capturesession_onexposurestatechange) callback | Callback for exposure status changes.|
 
 **Returns**
 
@@ -3302,7 +3316,7 @@ Unregisters a callback to be invoked when the exposure state changes.
 | -- | -- |
 | [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to the target Camera_CaptureSession instance.|
 | void* context | Pointer to the custom context specified during callback registration.|
-| [OH_CaptureSession_OnExposureStateChange](capi-capture-session-h.md#oh_capturesession_onexposurestatechange) callback | Triggered when the playback state changes.|
+| [OH_CaptureSession_OnExposureStateChange](capi-capture-session-h.md#oh_capturesession_onexposurestatechange) callback | Callback for exposure status changes.|
 
 **Returns**
 
@@ -3360,3 +3374,76 @@ Deletes the zoom information.
 | Type| Description|
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.|
+
+### OH_CaptureSession_IsLockFocusTrackingSupported()
+
+```c
+bool OH_CaptureSession_IsLockFocusTrackingSupported(const Camera_CaptureSession* session)
+```
+
+**Description**
+
+Checks whether locking focus tracking is supported.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to the **Camera_CaptureSession** instance. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| bool | Whether focus tracking is supported. The value **true** indicates that it is supported, and **false** indicates the opposite. |
+
+### OH_CaptureSession_LockFocusTracking()
+
+```c
+Camera_ErrorCode OH_CaptureSession_LockFocusTracking(Camera_CaptureSession* session, Camera_Point focusPoint)
+```
+
+**Description**
+
+Locks focus tracking. You can unlock focus tracking by calling [OH_CaptureSession_UnlockFocusTracking](#oh_capturesession_unlockfocustracking).
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to the **Camera_CaptureSession** instance. |
+| [Camera_Point](capi-oh-camera-camera-point.md) focusPoint | Focus point locked for tracking. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>   **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br> **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
+
+### OH_CaptureSession_UnlockFocusTracking()
+
+```c
+Camera_ErrorCode OH_CaptureSession_UnlockFocusTracking(Camera_CaptureSession* session)
+```
+
+**Description**
+
+ Unlocks focus tracking.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to the **Camera_CaptureSession** instance. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>   **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br> **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |

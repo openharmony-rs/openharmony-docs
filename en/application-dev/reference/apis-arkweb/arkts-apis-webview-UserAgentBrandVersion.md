@@ -1,12 +1,16 @@
 # Class (UserAgentBrandVersion)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:45:24.830Z pushedAt=2026-08-07T08:11:25.867Z -->
 
-This class provides APIs for configuring **UserAgentBrandVersion**.
+UserAgentBrandVersion is a data class in the ArkWeb framework used to configure the brand name and version number in User-Agent client hints, and is used together with [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md). In the User-Agent Client Hints mechanism, the browser reports brand and version information to the server through request headers such as Sec-CH-UA-Full-Version-List. UserAgentBrandVersion is used to define a single brand entry in it.
+
+UserAgentBrandVersion provides methods for setting and obtaining the brand name and version number: setBrand/getBrand are used to set and obtain the brand name (for example, "ArkWeb"), setMajorVersion/getMajorVersion are used to set and obtain the major version number (for example, "126"), and setFullVersion/getFullVersion are used to set and obtain the full version number (for example, "126.0.0.0"). An app can customize the browser identity information reported by the Web component to the server by modifying these values.
 
 > **NOTE**
 >
@@ -50,7 +54,7 @@ Obtains the brand name.
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| string | Brand name.|
+| string | Brand name string. |
 
 **Example**
 
@@ -90,7 +94,7 @@ Obtains the major version number.
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| string | Major version number.|
+| string | Major version number string. |
 
 **Example**
 
@@ -130,7 +134,7 @@ Obtains the full version number.
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
-| string | Full version number.|
+| string | Full version number string. |
 
 **Example**
 

@@ -6,8 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-
-## Overview
+<!-- md-trans-meta sourceCommit=50713b5507bc1dd76af41b33f945afecf178d99e translatedAt=2026-09-01T11:41:38.861Z -->
 
 **SaveButton** is a system API for the save security control. It applies to scenarios where apps need temporary media library access permissions to save images or videos, such as saving images to albums and exporting media content.
 
@@ -27,7 +26,7 @@ You need to call media library APIs to obtain file handles and complete temporar
 
 ### Key Enums
 
-- [SaveIconStyle](#saveiconstyle): Enumeration of icon styles for the save button. Extends icon styles for the system API.
+- [SaveIconStyle](#saveiconstyle): Enum of icon styles for the save button. Extends icon styles for the system API.
 
 ## SaveIconStyle
 

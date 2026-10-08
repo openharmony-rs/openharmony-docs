@@ -3,17 +3,18 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
+<!-- md-trans-meta sourceCommit=8e4ee7947dfeb3a89be0dfff4e576f69a510a94f translatedAt=2026-09-03T10:56:04.769Z pushedAt=2026-09-05T10:47:30.501Z -->
 
-The appManager module implements application management. You can use the APIs of this module to query whether the application is undergoing a stability test, whether the application is running on a RAM constrained device, the memory size of the application, and information about the running process.
+The appManager module provides application management capabilities, including registering application state observers, obtaining foreground application information, terminating application processes, clearing application data, and obtaining running process information.
 
 > **NOTE**
-> 
-> The APIs of this module are supported since API version 8 and deprecated since API version 9. You are advised to use [@ohos.app.ability.appManager](js-apis-app-ability-appManager.md) instead. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.application.appManager (appManager)](js-apis-application-appManager.md).
+> The initial APIs of this module are supported since API version 8 and deprecated since API version 9. You are advised to use [@ohos.app.ability.appManager](js-apis-app-ability-appManager.md) instead. For APIs added in later versions, the earliest API version is marked with a superscript.
+>
+> This page contains only the system APIs of this module. For details about other public APIs, see [@ohos.application.appManager (appManager)](js-apis-application-appManager.md).
 
 ## Modules to Import
 
@@ -37,16 +38,16 @@ Registers an observer to listen for the state changes of all applications.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | Yes| Application state observer, which is used to observe the lifecycle change of an application.|
+| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | Yes | Application state observer used to observe the lifecycle changes of applications. |
 
 **Return value**
 
 | Type| Description|
 | --- | --- |
-| number | Digital code of the observer.|
+| number | Numeric code of the registered observer, used to unregister the observer. |
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
 
@@ -78,7 +79,7 @@ Registers an observer to listen for the state changes of all applications.
 
 ## appManager.unregisterApplicationStateObserver
 
-unregisterApplicationStateObserver(observerId: number,  callback: AsyncCallback\<void>): void
+unregisterApplicationStateObserver(observerId: number, callback: AsyncCallback\<void>): void
 
 Deregisters the application state observer. This API uses an asynchronous callback to return the result.
 
@@ -92,11 +93,11 @@ Deregisters the application state observer. This API uses an asynchronous callba
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| observerId | number | Yes| Numeric code of the observer.|
-| callback | AsyncCallback\<void> | Yes| Callback used to return the result.|
+| observerId | number | Yes | Numeric code of the observer. |
+| callback | AsyncCallback\<void> | Yes | Callback for the unregistration. |
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
   import { BusinessError } from '@ohos.base';
@@ -129,7 +130,7 @@ Deregisters the application state observer. This API uses a promise to return th
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| observerId | number | Yes| Numeric code of the observer.|
+| observerId | number | Yes | Numeric code of the observer. |
 
 **Return value**
 
@@ -138,7 +139,7 @@ Deregisters the application state observer. This API uses a promise to return th
 | Promise\<void> | Promise that returns no value.|
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
   import { BusinessError } from '@ohos.base';
@@ -173,7 +174,7 @@ Obtains information about the applications that are running in the foreground. T
 | callback | AsyncCallback\<Array\<[AppStateData](js-apis-inner-application-appStateData.md)>> | Yes| Callback used to return the application information.|
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
 
@@ -205,7 +206,7 @@ Obtains information about the applications that are running in the foreground. T
 | Promise\<Array\<[AppStateData](js-apis-inner-application-appStateData.md)>> | Promise used to return the application information.|
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
   import { BusinessError } from '@ohos.base';
@@ -223,7 +224,7 @@ Obtains information about the applications that are running in the foreground. T
 
 killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 
-Kills a process by bundle name and account ID. This API uses a promise to return the result.
+Terminates the application process of the specified account based on the bundle name and account ID. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -240,7 +241,7 @@ Kills a process by bundle name and account ID. This API uses a promise to return
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | bundleName | string | Yes| Bundle name.|
-| accountId | number | Yes| ID of a system account. For details, see [getOsAccountCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated).|
+| accountId | number | Yes | System account ID. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated). |
 
 **Return value**
 
@@ -270,25 +271,25 @@ appManager.killProcessWithAccount(bundleName, accountId)
 
 killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCallback\<void\>): void
 
-Kills a process by bundle name and account ID. This API uses an asynchronous callback to return the result.
+Terminates the application process of the specified account based on the bundle name and account ID. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is not required when **accountId** specifies the current user.
 
+**Required Permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.CLEAN_BACKGROUND_PROCESSES
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **System API**: This is a system API.
-
-**Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | bundleName | string | Yes| Bundle name.|
-| accountId | number | Yes| ID of a system account. For details, see [getOsAccountCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated).|
-| callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| accountId | number | Yes | System account ID. For details, see [getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated). |
+| callback | AsyncCallback\<void\> | Yes | Callback function invoked when the application process of the specified account is terminated successfully. In this case, err is undefined; otherwise, it is an error object. |
 
 **Example**
 
@@ -326,11 +327,11 @@ Kills a process by bundle name. This API uses an asynchronous callback to return
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| bundleName | string | Yes| Bundle name.|
+| bundleName | string | Yes | Application bundle name. |
 | callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the process is killed, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
   import { BusinessError } from '@ohos.base';
@@ -364,7 +365,7 @@ Kills a process by bundle name. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| bundleName | string | Yes| Bundle name.|
+| bundleName | string | Yes | Application bundle name. |
 
 **Return value**
 
@@ -404,11 +405,11 @@ Clears application data by bundle name. This API uses an asynchronous callback t
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| bundleName | string | Yes| Bundle name.|
+| bundleName | string | Yes | Application bundle name. |
 | callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the application data is cleared, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
   import { BusinessError } from '@ohos.base';
@@ -442,7 +443,7 @@ Clears application data by bundle name. This API uses a promise to return the re
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| bundleName | string | Yes| Bundle name.|
+| bundleName | string | Yes | Application bundle name. |
 
 **Return value**
 
@@ -451,7 +452,7 @@ Clears application data by bundle name. This API uses a promise to return the re
 | Promise\<void> | Promise that returns no value.|
 
 **Example**
-    
+
   ```ts
   import appManager from '@ohos.application.appManager';
   import { BusinessError } from '@ohos.base';
@@ -464,4 +465,92 @@ Clears application data by bundle name. This API uses a promise to return the re
     .catch((err: BusinessError) => {
       console.error(`ClearUpApplicationData failed, error code: ${err.code}, error msg: ${err.message}.`);
     });
+  ```
+
+## appManager.getProcessRunningInformation<sup>(deprecated)</sup>
+
+getProcessRunningInformation(): Promise\<Array\<ProcessRunningInfo>>
+
+Obtains information about running processes. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation) instead.
+
+**Required Permissions:** ohos.permission.GET_RUNNING_INFO (available only to system applications)
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**System API**: This is a system API.
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise\<Array\<[ProcessRunningInfo](js-apis-inner-application-processRunningInfo.md)>> | Promise object used to return the information about running processes. |
+
+**Error codes**
+
+For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message |
+| ------- | -------- |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. |
+
+**Example**
+
+  ```ts
+  import appManager from '@ohos.application.appManager';
+  import { BusinessError } from '@ohos.base';
+
+  appManager.getProcessRunningInformation().then((data) => {
+    console.info(`The process running infos is: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`error: ${JSON.stringify(error)}`);
+  });
+  ```
+
+## appManager.getProcessRunningInformation<sup>(deprecated)</sup>
+
+getProcessRunningInformation(callback: AsyncCallback\<Array\<ProcessRunningInfo>>): void
+
+Obtains information about running processes. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation) instead.
+
+**Required Permissions:** ohos.permission.GET_RUNNING_INFO (available only to system applications)
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| callback | AsyncCallback\<Array\<[ProcessRunningInfo](js-apis-inner-application-processRunningInfo.md)>> | Yes | Callback invoked to return the information about running processes. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message |
+| ------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. |
+
+**Example**
+
+  ```ts
+  import appManager from '@ohos.application.appManager';
+
+  appManager.getProcessRunningInformation((error, data) => {
+    if (error && error.code !== 0) {
+      console.error(`GetProcessRunningInformation failed, error code: ${error.code}, error msg: ${error.message}.`);
+    } else {
+      console.info(`getProcessRunningInformation success, data: ${JSON.stringify(data)}`);
+    }
+  });
   ```

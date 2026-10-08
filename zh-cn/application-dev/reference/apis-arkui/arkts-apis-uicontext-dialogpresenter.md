@@ -12,7 +12,7 @@
 >
 > 以下API需先使用UIContext中的[getDialogPresenter()](arkts-apis-uicontext-uicontext.md#getdialogpresenter)方法获取到DialogPresenter对象，再通过该对象调用对应方法。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 ## present
 
@@ -20,7 +20,7 @@ present(options?: dialog.DialogStyleOptions): Promise&lt;DialogResult&gt;
 
 提供一个固定样式的弹出框，返回对话结果。使用Promise异步回调。适用于使用系统统一样式展示提示或确认信息的场景。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -30,7 +30,7 @@ present(options?: dialog.DialogStyleOptions): Promise&lt;DialogResult&gt;
 
 | 参数名  | 类型                                                         | 必填 | 说明           |
 | ------- | ------------------------------------------------------------ | ---- | -------------- |
-| options | [dialog.DialogStyleOptions](js-apis-dialog.md#dialogstyleoptions) | 否   | 固定样式弹出框的配置选项，用于配置弹出框的标题、副标题、消息、按钮及工作表项等内容。弹出框样式（背景、对齐、蒙层、避让等）继承自dialog.DialogBaseOptions。<br>**说明：** [dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)中的isModal与showInSubWindow不能同时设置为true。 |
+| options | [dialog.DialogStyleOptions](js-apis-dialog.md#dialogstyleoptions) | 否   | 固定样式弹出框的配置选项，用于配置弹出框的标题、副标题、消息、按钮及工作表项等内容。弹出框样式（背景、对齐、蒙层、避让等）继承自[dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)。<br/>**说明：** dialog.DialogBaseOptions中的isModal与showInSubWindow不能同时设置为true。 |
 
 **返回值：**
 
@@ -40,11 +40,10 @@ present(options?: dialog.DialogStyleOptions): Promise&lt;DialogResult&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[弹窗错误码](errorcode-promptAction.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 103306   | The dialog cannot be opened due to node mount failure.       |
 | 103308   | The dialog cannot be opened due to subwindow create failure. |
 
@@ -52,7 +51,7 @@ present(options?: dialog.DialogStyleOptions): Promise&lt;DialogResult&gt;
 
 该示例通过调用present接口，展示固定样式弹出框并通过Promise获取对话结果的功能。
 
-从API版本26.1.0开始，新增[present](#present)接口。
+从API版本26.0.1开始，新增[present](#present)接口。
 
 ```ts
 import { DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -62,6 +61,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct Index {
   private ctx: UIContext = this.getUIContext();
+  // 获取DialogPresenter实例，用于弹出和管理弹出框
   private dialogPresenter: DialogPresenter = this.ctx.getDialogPresenter();
 
   build() {
@@ -87,9 +87,11 @@ struct Index {
               }
             ]
           })
+            // 弹出框弹出成功，获取弹出框ID
             .then((result: DialogResult) => {
               console.info('present success, dialogId: ' + result.dialogId);
             })
+            // 弹出框弹出失败，输出错误信息
             .catch((error: BusinessError) => {
               console.error(`present error code is ${error.code}, message is ${error.message}`);
             })
@@ -107,7 +109,7 @@ present(content: CustomBuilder \| CustomBuilderWithId \| ComponentContent&lt;Obj
 
 提供一个自定义样式的弹出框，其中包含所提供的内容，返回对话结果，使用Promise异步回调。适用于需要自定义弹出框内容、布局和样式的场景。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -128,11 +130,10 @@ present(content: CustomBuilder \| CustomBuilderWithId \| ComponentContent&lt;Obj
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[弹窗错误码](errorcode-promptAction.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 103301   | Dialog content error. The ComponentContent is incorrect.     |
 | 103302   | Dialog content already exist. The ComponentContent has already been opened. |
 | 103306   | The dialog cannot be opened due to node mount failure.       |
@@ -142,12 +143,13 @@ present(content: CustomBuilder \| CustomBuilderWithId \| ComponentContent&lt;Obj
 
 该示例通过调用present、update和dismiss接口，展示了弹出、更新以及关闭自定义弹出框的功能。
 
-从API版本26.1.0开始，新增[present](#present)、[update](#update)、[dismiss](#dismiss)接口。
+从API版本26.0.1开始，新增[present](#present)、[update](#update)、[dismiss](#dismiss)接口。
 
 ```ts
 import { ComponentContent, DialogPresenter, DialogResult, DialogBaseAlignment } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 定义参数类，用于向自定义弹出框内容传递数据
 class Params {
   text: string = '';
   constructor(text: string) {
@@ -155,6 +157,7 @@ class Params {
   }
 }
 
+// 自定义弹出框内容的构建器函数
 @Builder
 function buildText(params: Params) {
   Column({ space: 20 }) {
@@ -162,6 +165,7 @@ function buildText(params: Params) {
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
       .margin({ bottom: 36 })
+    // 更新弹出框样式按钮，动态修改蒙层颜色、对齐方式和偏移量
     Button('Update dialog')
       .onClick(() => {
         dialogPresenter?.update(contentNode, {
@@ -176,6 +180,7 @@ function buildText(params: Params) {
             console.error(`update error code is ${error.code}, message is ${error.message}`);
           })
       })
+    // 关闭弹出框按钮，通过ComponentContent引用关闭弹出框
     Button('Dismiss dialog')
       .onClick(() => {
         dialogPresenter?.dismiss(contentNode)
@@ -189,7 +194,9 @@ function buildText(params: Params) {
   }
 }
 
+// 全局变量，保存DialogPresenter实例
 let dialogPresenter: DialogPresenter | null = null;
+// 全局变量，保存自定义弹出框的ComponentContent实例
 let contentNode: ComponentContent<Object> | null = null;
 
 @Entry
@@ -198,7 +205,9 @@ struct Index {
   @State message: string = 'custom dialog';
 
   aboutToAppear(): void {
+    // 获取DialogPresenter实例
     dialogPresenter = this.getUIContext().getDialogPresenter();
+    // 创建ComponentContent，绑定自定义构建器函数和参数
     contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params(this.message));
   }
 
@@ -206,9 +215,11 @@ struct Index {
     Column({ space: 10 }) {
       Button('Present custom dialog')
         .onClick(() => {
+          // 弹出自定义样式弹出框，传入ComponentContent和配置选项
           dialogPresenter?.present(contentNode, {
             isModal: true
           })
+            // 弹出成功，获取弹出框ID
             .then((result: DialogResult) => {
               console.info('present success, dialogId: ' + result.dialogId);
             })
@@ -229,7 +240,7 @@ update(content: ComponentContent&lt;Object&gt;, options?: dialog.DialogBaseOptio
 
 更新已弹出的自定义弹出框，无返回结果。使用Promise异步回调。适用于弹出框已弹出后需要动态更新其样式或位置的交互场景。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -250,17 +261,16 @@ update(content: ComponentContent&lt;Object&gt;, options?: dialog.DialogBaseOptio
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[弹窗错误码](errorcode-promptAction.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 103301   | Dialog content error. The ComponentContent is incorrect.     |
 | 103303   | Dialog content not found. The ComponentContent cannot be found. |
 
 **示例：**
 
-请参考[present](#present)的示例。
+请参考[present](#present-1)的示例。
 
 ## dismiss
 
@@ -270,7 +280,7 @@ dismiss(target: number \| ComponentContent&lt;Object&gt;): Promise&lt;void&gt;
 
 接受弹出框ID（由[present](#present)返回的[DialogResult](js-apis-dialog.md#dialogresult)中的dialogId）或[ComponentContent](./js-apis-arkui-ComponentContent.md)引用作为target，关闭对应的弹出框。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -290,11 +300,10 @@ dismiss(target: number \| ComponentContent&lt;Object&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+以下错误码的详细介绍请参见[弹窗错误码](errorcode-promptAction.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 103301   | Dialog content error. The ComponentContent is incorrect.     |
 | 103303   | Dialog content not found. The ComponentContent cannot be found. |
 
@@ -302,7 +311,7 @@ dismiss(target: number \| ComponentContent&lt;Object&gt;): Promise&lt;void&gt;
 
 该示例通过调用dismiss接口，展示了通过弹出框ID关闭弹出框的功能。弹出框的弹出可参考[present](#present)的示例。
 
-从API版本26.1.0开始，新增[present](#present)、[dismiss](#dismiss)接口。
+从API版本26.0.1开始，新增[present](#present)、[dismiss](#dismiss)接口。
 
 ```ts
 import { DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -314,6 +323,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   @State message: string = 'custom dialog';
   dialogPresenter: DialogPresenter | null = this.getUIContext().getDialogPresenter();
+  // 保存弹出框ID，用于后续关闭
   dialogId: number = 0;
 
   @Builder
@@ -321,6 +331,7 @@ struct Index {
     Column() {
       Text('A dialog is open').fontSize(20)
       Row({ space: 10 }) {
+        // 通过弹出框ID关闭弹出框
         Button('Close dialog').onClick(() => {
           this.getUIContext().getDialogPresenter().dismiss(this.dialogId)
             .then(() => {
@@ -338,12 +349,14 @@ struct Index {
     Column({ space: 10 }) {
       Button('Present custom dialog')
         .onClick(() => {
+          // 弹出自定义样式弹出框，传入构建器函数和样式配置
           this.dialogPresenter?.present(() => {this.customDialogComponent();},
             {
               isModal: true,
               backgroundColor: Color.Pink,
               backgroundBlurStyle: BlurStyle.NONE
             })
+            // 弹出成功，保存弹出框ID用于后续关闭
             .then((result: DialogResult) => {
               this.dialogId = result.dialogId;
               console.info('present success, dialogId: ' + result.dialogId);

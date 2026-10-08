@@ -1,10 +1,12 @@
 # Interface (Stabilization)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=74c4dbb2e4c85d9d81e30e801daaa7ed40ca474a translatedAt=2026-08-20T09:34:45.233Z pushedAt=2026-08-21T02:04:55.794Z -->
 
 **Stabilization** inherits from [StabilizationQuery](arkts-apis-camera-StabilizationQuery.md).
 

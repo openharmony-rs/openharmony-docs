@@ -2,17 +2,17 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供通知管理的系统接口能力，包括发布通知给指定用户、发布代理通知、取消代理通知，创建、获取、移除通知渠道，设定和查询通知使能状态、角标使能状态、渠道使能状态，设置和查询免打扰时间及勿扰模式配置，管理分布式通知协同，管理通知发布权限管控，获取活动通知信息，设置通知提醒方式，订阅系统实况窗，注册通知校验回调，管理通知优先级策略，以及设置地理围栏、铃声信息、静默提醒等高级功能。
+本模块提供通知管理的系统接口能力，包括发布通知给指定用户、发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)、取消代理通知，创建、获取、移除[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)，设定和查询通知使能状态、角标使能状态、渠道使能状态，设置和查询免打扰时间及勿扰模式配置，管理[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)协同，管理通知发布权限管控，获取活动通知信息，设置[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)，订阅[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)，注册[通知校验](../../notification/notification-glossary.md#notification-check通知校验)回调，管理通知优先级策略，以及设置[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)、铃声信息、[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)等高级功能。
 
 > **说明：**
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationManager](./js-apis-notificationManager.md)。
+> 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationManager](js-apis-notificationManager.md)。
 
 ## 导入模块
 
@@ -42,7 +42,7 @@ publish(request: NotificationRequest, userId: number, callback: AsyncCallback\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -79,7 +79,7 @@ let publishCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("publish success");
+        console.info('publish success');
     }
 }
 // 用户ID，使用时需替换为真实的userId。
@@ -90,9 +90,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -126,7 +126,7 @@ publish(request: NotificationRequest, userId: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -163,9 +163,9 @@ let notificationRequest: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -174,7 +174,7 @@ let notificationRequest: notificationManager.NotificationRequest = {
 let userId: number = 1;
 
 notificationManager.publish(notificationRequest, userId).then(() => {
-    console.info("publish success");
+    console.info('publish success');
 }).catch((err: BusinessError) => {
     console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -184,7 +184,7 @@ notificationManager.publish(notificationRequest, userId).then(() => {
 
 addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 
-创建通知渠道。使用callback异步回调。
+创建[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -219,25 +219,25 @@ addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // addSlot回调
-let addSlotCallBack = (err: BusinessError): void => {
+let addSlotCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("addSlot success");
+        console.info('addSlot success');
     }
 }
 // 通知slot对象
 let notificationSlot: notificationManager.NotificationSlot = {
     notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
 };
-notificationManager.addSlot(notificationSlot, addSlotCallBack);
+notificationManager.addSlot(notificationSlot, addSlotCallback);
 ```
 
 ## notificationManager.addSlot
 
 addSlot(slot: NotificationSlot): Promise\<void\>
 
-创建通知渠道。使用Promise异步回调。
+创建[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -281,7 +281,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
     notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
 };
 notificationManager.addSlot(notificationSlot).then(() => {
-    console.info("addSlot success");
+    console.info('addSlot success');
 }).catch((err: BusinessError) => {
     console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -291,7 +291,7 @@ notificationManager.addSlot(notificationSlot).then(() => {
 
 addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): void
 
-创建多个通知渠道。使用callback异步回调。
+创建多个[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -326,11 +326,11 @@ addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): voi
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // addSlots回调
-let addSlotsCallBack = (err: BusinessError): void => {
+let addSlotsCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("addSlots success");
+        console.info('addSlots success');
     }
 }
 // 通知slot对象
@@ -341,14 +341,14 @@ let notificationSlot: notificationManager.NotificationSlot = {
 let notificationSlotArray: notificationManager.NotificationSlot[] = new Array();
 notificationSlotArray[0] = notificationSlot;
 
-notificationManager.addSlots(notificationSlotArray, addSlotsCallBack);
+notificationManager.addSlots(notificationSlotArray, addSlotsCallback);
 ```
 
 ## notificationManager.addSlots
 
 addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
 
-创建多个通知渠道。使用Promise异步回调。
+创建多个[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -396,7 +396,7 @@ let notificationSlotArray: notificationManager.NotificationSlot[] = new Array();
 notificationSlotArray[0] = notificationSlot;
 
 notificationManager.addSlots(notificationSlotArray).then(() => {
-    console.info("addSlots success");
+    console.info('addSlots success');
 }).catch((err: BusinessError) => {
     console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -419,13 +419,13 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)   | 是   | 指定应用的包信息。        |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)   | 是   | 指定应用的包信息。        |
 | enable   | boolean               | 是   | 使能状态（true：使能，false：禁止）。             |
 | callback | AsyncCallback\<void\> | 是   | 设定通知使能回调函数。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -446,11 +446,11 @@ let setNotificationEnableCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setNotificationEnable success");
+        console.info('setNotificationEnable success');
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.setNotificationEnable(bundle, false, setNotificationEnableCallback);
 ```
@@ -471,7 +471,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 | enable | boolean      | 是   | 使能状态（true：使能，false：禁止）。   |
 
 **返回值：**
@@ -482,7 +482,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -500,10 +500,10 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.setNotificationEnable(bundle, false).then(() => {
-    console.info("setNotificationEnable success");
+    console.info('setNotificationEnable success');
 }).catch((err: BusinessError) => {
     console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -626,12 +626,12 @@ isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>):
 
 | 参数名     | 类型                  | 必填 | 说明                     |
 | -------- | --------------------- | ---- | ------------------------ |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | 是   | 指定应用的包信息。            |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | 是   | 指定应用的包信息。            |
 | callback | AsyncCallback\<boolean\> | 是   | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -657,7 +657,7 @@ let isNotificationEnabledCallback = (err: BusinessError, data: boolean): void =>
 }
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 notificationManager.isNotificationEnabled(bundle, isNotificationEnabledCallback);
@@ -679,7 +679,7 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 
 **返回值：**
 
@@ -689,7 +689,7 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -707,7 +707,7 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
     console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
@@ -839,13 +839,13 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | 是   | 指定应用的包信息。           |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | 是   | 指定应用的包信息。           |
 | enable   | boolean               | 是   | 使能状态（true：使能，false：禁止）。             |
 | callback | AsyncCallback\<void\> | 是   | 设定角标使能回调函数。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -867,11 +867,11 @@ let displayBadgeCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("displayBadge success");
+        console.info('displayBadge success');
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.displayBadge(bundle, false, displayBadgeCallback);
 ```
@@ -894,7 +894,7 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 | enable | boolean      | 是   | 使能状态（true：使能，false：禁止）。   |
 
 **返回值：**
@@ -905,7 +905,7 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -924,10 +924,10 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.displayBadge(bundle, false).then(() => {
-    console.info("displayBadge success");
+    console.info('displayBadge success');
 }).catch((err: BusinessError) => {
     console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -951,12 +951,12 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 
 | 参数名     | 类型                  | 必填 | 说明                     |
 | -------- | --------------------- | ---- | ------------------------ |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | 是   | 指定应用的包信息。               |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | 是   | 指定应用的包信息。               |
 | callback | AsyncCallback\<boolean\> | 是   | 获取角标使能状态回调函数（true：使能，false：禁止）。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -982,7 +982,7 @@ let isBadgeDisplayedCallback = (err: BusinessError, data: boolean): void => {
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isBadgeDisplayed(bundle, isBadgeDisplayedCallback);
 ```
@@ -1005,7 +1005,7 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 
 **返回值：**
 
@@ -1015,7 +1015,7 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1034,7 +1034,7 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 
 notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
@@ -1048,7 +1048,7 @@ notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
 
 setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 
-设定指定应用的通知提醒方式开关。使用Promise异步回调。
+设定指定应用的[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)开关。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1062,7 +1062,7 @@ setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 | slotFlags   | number | 是   | 通知提醒方式开关标识位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
 
 **返回值：**
@@ -1073,7 +1073,7 @@ setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1092,13 +1092,13 @@ setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let slotFlags: number = 1;
 
 notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
-    console.info("setSlotFlagsByBundle success");
+    console.info('setSlotFlagsByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1108,7 +1108,7 @@ notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
 
 setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 
-设置指定应用的通知渠道。使用callback异步回调。
+设置指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 设置前需要先通过[addSlot](#notificationmanageraddslot)创建通知渠道。
 
@@ -1124,13 +1124,13 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCal
 
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | 是   | 指定应用的包信息。           |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | 是   | 指定应用的包信息。           |
 | slot     | [NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md)      | 是   | 通知渠道。             |
 | callback | AsyncCallback\<void\> | 是   | 设定通知渠道回调函数。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1152,11 +1152,11 @@ let setSlotByBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setSlotByBundle success");
+        console.info('setSlotByBundle success');
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let notificationSlot: notificationManager.NotificationSlot = {
     notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
@@ -1168,7 +1168,7 @@ notificationManager.setSlotByBundle(bundle, notificationSlot, setSlotByBundleCal
 
 setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
-设置指定应用的通知渠道。使用Promise异步回调。
+设置指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 设置前需要先通过[addSlot](#notificationmanageraddslot)创建通知渠道。
 
@@ -1184,7 +1184,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 | slot   | [NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md) | 是   | 通知渠道。 |
 
 **返回值：**
@@ -1195,7 +1195,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1214,7 +1214,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let notificationSlot: notificationManager.NotificationSlot = {
@@ -1222,7 +1222,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
 };
 
 notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
-    console.info("setSlotByBundle success");
+    console.info('setSlotByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1232,7 +1232,7 @@ notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
 
 getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 
-获取指定应用的通知渠道标识位。使用Promise异步回调。
+获取指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)标识位。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1246,7 +1246,7 @@ getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 
 **返回值：**
 
@@ -1256,7 +1256,7 @@ getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1275,7 +1275,7 @@ getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.getSlotFlagsByBundle(bundle).then((data : number) => {
     console.info(`getSlotFlagsByBundle success, data: ${JSON.stringify(data)}`);
@@ -1288,7 +1288,7 @@ notificationManager.getSlotFlagsByBundle(bundle).then((data : number) => {
 
 getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<NotificationSlot>>): void
 
-获取指定应用的所有通知渠道。使用callback异步回调。
+获取指定应用的所有[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1302,12 +1302,12 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 
 | 参数名     | 类型                                     | 必填 | 说明                 |
 | -------- | ---------------------------------------- | ---- | -------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)                             | 是   | 指定应用的包信息。           |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)                             | 是   | 指定应用的包信息。           |
 | callback | AsyncCallback\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md)>> | 是   | 获取通知渠道回调函数。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1333,7 +1333,7 @@ let getSlotsByBundleCallback = (err: BusinessError, data: Array<notificationMana
     }
 }
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.getSlotsByBundle(bundle, getSlotsByBundleCallback);
 ```
@@ -1342,7 +1342,7 @@ notificationManager.getSlotsByBundle(bundle, getSlotsByBundleCallback);
 
 getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
-获取指定应用的所有通知渠道。使用Promise异步回调。
+获取指定应用的所有[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1356,7 +1356,7 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 
 **返回值：**
 
@@ -1366,7 +1366,7 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1385,7 +1385,7 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 notificationManager.getSlotsByBundle(bundle).then((data: Array<notificationManager.NotificationSlot>) => {
@@ -1399,7 +1399,7 @@ notificationManager.getSlotsByBundle(bundle).then((data: Array<notificationManag
 
 getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<number\>): void
 
-获取指定应用的通知渠道数量。使用callback异步回调。
+获取指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)数量。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1413,12 +1413,12 @@ getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<number\>): voi
 
 | 参数名     | 类型                      | 必填 | 说明                   |
 | -------- | ------------------------- | ---- | ---------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)              | 是   | 指定应用的包信息。             |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)              | 是   | 指定应用的包信息。             |
 | callback | AsyncCallback\<number\> | 是   | 获取通知渠道数量回调函数。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1445,7 +1445,7 @@ let getSlotNumByBundleCallback = (err: BusinessError, data: number): void => {
 }
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 
 notificationManager.getSlotNumByBundle(bundle, getSlotNumByBundleCallback);
@@ -1455,7 +1455,7 @@ notificationManager.getSlotNumByBundle(bundle, getSlotNumByBundleCallback);
 
 getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 
-获取指定应用的通知渠道数量。使用Promise异步回调。
+获取指定应用的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)数量。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1469,7 +1469,7 @@ getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 
 **返回值：**
 
@@ -1479,7 +1479,7 @@ getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1498,7 +1498,7 @@ getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 
 notificationManager.getSlotNumByBundle(bundle).then((data: number) => {
@@ -1598,66 +1598,11 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
 });
 ```
 
-
-## notificationManager.getActiveNotification
-
-getActiveNotification(hashCode: string): Promise\<NotificationRequest\>
-
-根据通知的唯一标识hashCode获取当前未删除的通知信息。使用Promise异步回调。
-
-**起始版本**：26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.Notification.Notification
-
-**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
-
-**系统接口**：此接口为系统接口。
-
-**参数：**
-
-| 参数名     | 类型    | 必填 | 说明                           |
-| --------- | ------- | ---- | ----------------------------- |
-| hashCode  | string  | 是   | 通知的唯一标识。                |
-
-**返回值：**
-
-| 类型                                                        | 说明                                                         |
-| ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\> | 以Promise形式返回获取通知信息。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | ----------------------------------- |
-| 201      | Permission denied.                  |
-| 202      | Not system application to call the interface. |
-| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.|
-| 1600002  | Marshalling or unmarshalling error. |
-| 1600003  | Failed to connect to the service.   |
-| 1600007  | The notification does not exist.    |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.getActiveNotification().then((data: notificationManager.NotificationRequest) => {
-    console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getActiveNotification failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-
 ## notificationManager.getActiveNotificationByFilter<sup>11+</sup>
 
 getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallback\<NotificationRequest\>): void
 
-获取满足条件的普通实况通知信息。使用callback异步回调。
+获取满足条件的[普通实况通知](../../notification/notification-glossary.md#normal-live-view普通实况通知)信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1675,7 +1620,7 @@ getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
@@ -1690,11 +1635,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     id: 11,
-    label: ""
+    label: ''
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -1705,7 +1650,7 @@ let getActiveNotificationByFilterCallback = (err: BusinessError, data: notificat
     if (err) {
         console.error(`getActiveNotificationByFilter failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("getActiveNotificationByFilter success");
+        console.info('getActiveNotificationByFilter success');
     }
 }
 notificationManager.getActiveNotificationByFilter(filter, getActiveNotificationByFilterCallback);
@@ -1715,7 +1660,7 @@ notificationManager.getActiveNotificationByFilter(filter, getActiveNotificationB
 
 getActiveNotificationByFilter(filter: NotificationFilter): Promise\<NotificationRequest\>
 
-获取满足条件的普通实况通知信息。使用Promise异步回调。
+获取满足条件的[普通实况通知](../../notification/notification-glossary.md#normal-live-view普通实况通知)信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1738,7 +1683,7 @@ getActiveNotificationByFilter(filter: NotificationFilter): Promise\<Notification
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
@@ -1753,11 +1698,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 let notificationKey: notificationSubscribe.NotificationKey = {
     id: 11,
-    label: ""
+    label: ''
 };
 let filter: notificationManager.NotificationFilter = {
     bundle: bundleOption,
@@ -1787,13 +1732,13 @@ removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCall
 
 | 参数名      | 类型                  | 必填 | 说明                         |
 | --------- | --------------------- | ---- | ---------------------------- |
-| bundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | 是   | 应用的包信息。                   |
-| groupName | string                | 是   | 通知组名称。               |
+| bundle    | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | 是   | 应用的包信息。                   |
+| groupName | string                | 是   | 通知组名称，此名称需要在发布通知时通过[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)对象指定。<br>大小不超过202字节，超出部分会被截断。 |
 | callback  | AsyncCallback\<void\> | 是   | 删除指定应用指定组下通知的回调函数。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1814,12 +1759,12 @@ let removeGroupByBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("removeGroupByBundle success");
+        console.info('removeGroupByBundle success');
     }
 }
 
-let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
-let groupName: string = "GroupName";
+let bundleOption: notificationManager.BundleOption = { bundle: 'Bundle' };
+let groupName: string = 'GroupName';
 
 notificationManager.removeGroupByBundle(bundleOption, groupName, removeGroupByBundleCallback);
 ```
@@ -1840,8 +1785,8 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 
 | 参数名      | 类型         | 必填 | 说明           |
 | --------- | ------------ | ---- | -------------- |
-| bundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。     |
-| groupName | string       | 是   | 通知组名称。 |
+| bundle    | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。     |
+| groupName | string       | 是   | 通知组名称，此名称需要在发布通知时通过[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)对象指定。<br>大小不超过202字节，超出部分会被截断。 |
 
 **返回值：**
 
@@ -1851,7 +1796,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1868,11 +1813,11 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleOption: notificationManager.BundleOption = { bundle: "Bundle" };
-let groupName: string = "GroupName";
+let bundleOption: notificationManager.BundleOption = { bundle: 'Bundle' };
+let groupName: string = 'GroupName';
 
 notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
-    console.info("removeGroupByBundle success");
+    console.info('removeGroupByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -1923,7 +1868,7 @@ let setDoNotDisturbDateCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDoNotDisturbDate success");
+        console.info('setDoNotDisturbDate success');
     }
 }
 
@@ -1989,7 +1934,7 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
     end: new Date(2021, 11, 15, 18, 0)
 };
 notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
-    console.info("setDoNotDisturbDate success");
+    console.info('setDoNotDisturbDate success');
 }).catch((err: BusinessError) => {
     console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2043,7 +1988,7 @@ let setDoNotDisturbDateCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDoNotDisturbDate success");
+        console.info('setDoNotDisturbDate success');
     }
 }
 
@@ -2117,7 +2062,7 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
 let userId: number = 1;
 
 notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
-    console.info("setDoNotDisturbDate success");
+    console.info('setDoNotDisturbDate success');
 }).catch((err: BusinessError) => {
     console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2435,13 +2380,11 @@ notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
 
 setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
-设置设备是否支持分布式通知。使用callback异步回调。
+设置设备是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用callback异步回调。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
-
-**替代接口：** [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃，建议使用[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2480,7 +2423,7 @@ let setDistributedEnableCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDistributedEnable success");
+        console.info('setDistributedEnable success');
     }
 };
 let enable: boolean = true;
@@ -2491,13 +2434,11 @@ notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 
 setDistributedEnable(enable: boolean): Promise\<void>
 
-设置设备是否支持分布式通知。使用Promise异步回调。
+设置设备是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用Promise异步回调。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
-
-**替代接口：** [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃，建议使用[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2539,7 +2480,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
 notificationManager.setDistributedEnable(enable).then(() => {
-    console.info("setDistributedEnable success");
+    console.info('setDistributedEnable success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2549,13 +2490,11 @@ notificationManager.setDistributedEnable(enable).then(() => {
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<void>): void
 
-设置指定应用是否支持分布式通知。使用callback异步回调。
+设置指定应用是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用callback异步回调。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
-
-**替代接口：** [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃，建议使用[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2567,13 +2506,13 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
 | enable   | boolean                  | 是   | 指定应用是否支持分布式通知（true：支持，false：不支持）。|
 | callback | AsyncCallback\<void\> | 是   | 应用是否支持分布式通知的回调函数。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2596,11 +2535,11 @@ let setDistributedEnableByBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setDistributedEnableByBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setDistributedEnableByBundle success");
+        console.info('setDistributedEnableByBundle success');
     }
 };
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedEnableByBundleCallback);
@@ -2612,13 +2551,11 @@ notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedE
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<void>
 
-设置指定应用是否支持分布式通知。使用Promise异步回调。
+设置指定应用是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用Promise异步回调。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
-
-**替代接口：** [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃，建议使用[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2630,7 +2567,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包。                |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包。                |
 | enable   | boolean                  | 是   | 指定应用是否支持分布式通知（true：支持，false：不支持）。                  |
 
 **返回值：**
@@ -2641,7 +2578,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2661,11 +2598,11 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
-    console.info("setDistributedEnableByBundle success");
+    console.info('setDistributedEnableByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnableByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -2675,13 +2612,11 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
-根据应用的包获取应用是否支持分布式通知。使用callback异步回调。
+根据应用的包获取应用是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用callback异步回调。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
-
-**替代接口：** [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃，建议使用[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2693,12 +2628,12 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包。                     |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包。                     |
 | callback | AsyncCallback\<boolean\> | 是   | 查询指定应用是否支持分布式通知的回调函数（true：支持，false：不支持）。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2725,7 +2660,7 @@ let isDistributedEnabledByBundleCallback = (err: BusinessError, data: boolean): 
     }
 };
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
 ```
@@ -2734,13 +2669,11 @@ notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByB
 
 isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
-查询指定应用是否支持分布式通知。使用Promise异步回调。
+查询指定应用是否支持[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)。使用Promise异步回调。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
-
-**替代接口：** [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃，建议使用[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2752,7 +2685,7 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包。                |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包。                |
 
 **返回值：**
 
@@ -2762,7 +2695,7 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2782,7 +2715,7 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
@@ -2798,9 +2731,9 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 获取通知的提醒方式。使用callback异步回调。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2812,7 +2745,7 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 | 参数名   | 类型                               | 必填 | 说明                       |
 | -------- | --------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback\<[DeviceRemindType](#deviceremindtype)\> | 是   | 获取通知提醒方式的回调函数。 |
+| callback | AsyncCallback\<[DeviceRemindType](#deviceremindtype)\> | 是   | 获取[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的回调函数。 |
 
 **错误码：**
 
@@ -2849,9 +2782,9 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 获取通知的提醒方式。使用Promise异步回调。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2863,7 +2796,7 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 | 类型               | 说明            |
 | ------------------ | --------------- |
-| Promise\<[DeviceRemindType](#deviceremindtype)\> | Promise方式返回获取通知提醒方式的结果。 |
+| Promise\<[DeviceRemindType](#deviceremindtype)\> | Promise方式返回获取[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的结果。 |
 
 **错误码：**
 
@@ -2895,9 +2828,11 @@ notificationManager.getDeviceRemindType().then((data: notificationManager.Device
 
 publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number, callback: AsyncCallback\<void\>): void
 
-发布代理通知。使用callback异步回调。
+发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：接口参数request中携带trigger参数，且LiveViewStatus为LIVE_VIEW_PENDING_CREATE和LIVE_VIEW_PENDING_END时，非手机设备均会返回801错误，其余场景接口功能使用正常。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER，ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
@@ -2914,7 +2849,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2951,11 +2886,11 @@ let callback = (err: BusinessError): void => {
     if (err) {
         console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("publishAsBundle success");
+        console.info('publishAsBundle success');
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 // NotificationRequest对象
@@ -2964,9 +2899,9 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
@@ -2977,9 +2912,11 @@ notificationManager.publishAsBundle(request, representativeBundle, userId, callb
 
 publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number): Promise\<void\>
 
-发布代理通知。使用Promise异步回调。
+发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：接口参数request中携带trigger参数，且LiveViewStatus为LIVE_VIEW_PENDING_CREATE和LIVE_VIEW_PENDING_END时，非手机设备均会返回801错误，其余场景接口功能使用正常。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER，ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
@@ -3002,7 +2939,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -3035,7 +2972,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 // NotificationRequest对象
@@ -3044,14 +2981,14 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
-    console.info("publishAsBundle success");
+    console.info('publishAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3061,7 +2998,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId).then(
 
 publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest): Promise\<void\>
 
-发布代理通知。使用Promise异步回调。
+发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3074,7 +3011,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 
 | 参数名               | 类型                                        | 必填 | 说明                                          |
 |----------------------|--------------------------------------------|------|-----------------------------------------------|
-| representativeBundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)  | 是   | 被代理应用的包信息。                            |
+| representativeBundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)  | 是   | 被代理应用的包信息。                            |
 | request              | [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) | 是   | 用于设置要发布通知的内容和相关配置信息。 |
 
 **返回值：**
@@ -3085,7 +3022,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -3119,7 +3056,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包信息
 let representativeBundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 // NotificationRequest对象
 let request: notificationManager.NotificationRequest = {
@@ -3127,14 +3064,14 @@ let request: notificationManager.NotificationRequest = {
     content: {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "test_title",
-            text: "test_text",
-            additionalText: "test_additionalText"
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
         }
     }
 };
 notificationManager.publishAsBundle(representativeBundle, request).then(() => {
-    console.info("publishAsBundle success");
+    console.info('publishAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3144,7 +3081,7 @@ notificationManager.publishAsBundle(representativeBundle, request).then(() => {
 
 cancelAsBundle(id: number, representativeBundle: string, userId: number, callback: AsyncCallback\<void\>): void
 
-取消代理通知。使用callback异步回调。
+取消[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3163,7 +3100,7 @@ cancelAsBundle(id: number, representativeBundle: string, userId: number, callbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3187,11 +3124,11 @@ let cancelAsBundleCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("cancelAsBundle success");
+        console.info('cancelAsBundle success');
     }
 }
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBundleCallback);
@@ -3201,7 +3138,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBund
 
 cancelAsBundle(id: number, representativeBundle: string, userId: number): Promise\<void\>
 
-取消代理通知。使用Promise异步回调。
+取消[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3225,7 +3162,7 @@ cancelAsBundle(id: number, representativeBundle: string, userId: number): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3245,11 +3182,11 @@ cancelAsBundle(id: number, representativeBundle: string, userId: number): Promis
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
-let representativeBundle: string = "com.example.demo";
+let representativeBundle: string = 'com.example.demo';
 // 用户ID，使用时需替换为真实的userId。
 let userId: number = 100;
 notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
-    console.info("cancelAsBundle success");
+    console.info('cancelAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3260,7 +3197,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 
 cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
 
-取消代理通知。使用Promise异步回调。
+取消[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3273,7 +3210,7 @@ cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
 
 | 参数名               | 类型                                        | 必填 | 说明                                          |
 | -------------------- | ------------------------------------------- | ---- | --------------------------------------------- |
-| representativeBundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)  |是   | 被代理应用的包信息。 |
+| representativeBundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)  |是   | 被代理应用的包信息。 |
 | id                   | number                                     | 是   | 通知ID。           |
 
 **返回值：**
@@ -3284,7 +3221,7 @@ cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -3305,10 +3242,10 @@ cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let representativeBundle: notificationManager.BundleOption = {
-  bundle: "bundleName1",
+  bundle: 'bundleName1',
 };
 notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
-    console.info("cancelAsBundle success");
+    console.info('cancelAsBundle success');
 }).catch((err: BusinessError) => {
     console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3330,7 +3267,7 @@ cancel(representativeBundle: BundleOption, id: number): Promise\<void\>
 
 | 参数名               | 类型   | 必填 | 说明               |
 | -------------------- | ------ | ---- | ------------------ |
-| representativeBundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。           |
+| representativeBundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。           |
 |       id             | number | 是   | 通知ID。 |
 
 **返回值：**
@@ -3360,11 +3297,11 @@ cancel(representativeBundle: BundleOption, id: number): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-  bundle: "bundleName"
+  bundle: 'bundleName'
 };
 let id: number = 1;
 notificationManager.cancel(bundle, id).then(() => {
-  console.info("cancel success");
+  console.info('cancel success');
 }).catch((err: BusinessError) => {
   console.error(`cancel failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -3388,14 +3325,14 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 | 参数名   | 类型                          | 必填 | 说明                   |
 | -------- | ----------------------------- | ---- | ---------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。           |
-| type     | [SlotType](./js-apis-notificationManager.md#slottype)         | 是   | 指定渠道类型。         |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。           |
+| type     | [SlotType](js-apis-notificationManager.md#slottype)         | 是   | 指定渠道类型。         |
 | enable   | boolean                       | 是   | 使能状态（true：使能，false：禁止）。             |
 | callback | AsyncCallback\<void\>         | 是   | 设置渠道使能回调函数。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3419,11 +3356,11 @@ let setNotificationEnableSlotCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setNotificationEnableSlot success");
+        console.info('setNotificationEnableSlot success');
     }
 };
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    { bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true,
     setNotificationEnableSlotCallback);
@@ -3447,15 +3384,15 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 | 参数名   | 类型                          | 必填 | 说明                     |
 | -------- | ----------------------------- | ---- | ----------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。|
-| type     | [SlotType](./js-apis-notificationManager.md#slottype)         | 是   | 指定渠道类型。           |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。|
+| type     | [SlotType](js-apis-notificationManager.md#slottype)         | 是   | 指定渠道类型。           |
 | enable   | boolean                       | 是   | 使能状态（true：使能，false：禁止）。               |
-| isForceControl<sup>11+</sup> | boolean                 | 是   | 渠道开关是否受通知授权开关影响（false：受影响，true：不受影响）。 |
+| isForceControl<sup>11+</sup> | boolean                 | 是   | 渠道开关是否受[通知授权](../../notification/notification-glossary.md#notification-authorization通知授权)开关影响（false：受影响，true：不受影响）。 |
 | callback | AsyncCallback\<void\>         | 是   | 设置渠道使能回调函数。    |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3478,12 +3415,12 @@ let setNotificationEnableSlotCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setNotificationEnableSlot success");
+        console.info('setNotificationEnableSlot success');
     }
 };
 
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    { bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true,
     false,
@@ -3508,8 +3445,8 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 | 参数名 | 类型                          | 必填 | 说明           |
 | ------ | ----------------------------- | ---- | -------------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。   |
-| type   | [SlotType](./js-apis-notificationManager.md#slottype)         | 是   | 渠道类型。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。   |
+| type   | [SlotType](js-apis-notificationManager.md#slottype)         | 是   | 渠道类型。 |
 | enable | boolean                       | 是   | 使能状态（true：使能，false：禁止）。     |
 | isForceControl<sup>11+</sup> | boolean               | 否   | 渠道开关是否受通知总开关影响（false：受总开关影响，true：不受总开关影响）。默认为false。     |
 
@@ -3521,7 +3458,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3542,10 +3479,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // setNotificationEnableSlot
 notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
+    { bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     true).then(() => {
-        console.info("setNotificationEnableSlot success");
+        console.info('setNotificationEnableSlot success');
     }).catch((err: BusinessError) => {
         console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
     });
@@ -3569,13 +3506,13 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncC
 
 | 参数名   | 类型                          | 必填 | 说明                   |
 | -------- | ----------------------------- | ---- | ---------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。           |
-| type     | [SlotType](./js-apis-notificationManager.md#slottype)         | 是   | 渠道类型。         |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。           |
+| type     | [SlotType](js-apis-notificationManager.md#slottype)         | 是   | 渠道类型。         |
 | callback | AsyncCallback\<boolean\>         | 是   | 获取渠道使能状态回调函数（true：使能，false：禁止）。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3603,7 +3540,7 @@ let isNotificationSlotEnabledCallback = (err: BusinessError, data: boolean): voi
 };
 
 notificationManager.isNotificationSlotEnabled(
-    { bundle: "ohos.samples.notification", },
+    { bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION,
     isNotificationSlotEnabledCallback);
 ```
@@ -3626,8 +3563,8 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 
 | 参数名 | 类型                          | 必填 | 说明           |
 | ------ | ----------------------------- | ---- | -------------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。   |
-| type   | [SlotType](./js-apis-notificationManager.md#slottype)         | 是   | 渠道类型。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。   |
+| type   | [SlotType](js-apis-notificationManager.md#slottype)         | 是   | 渠道类型。 |
 
 **返回值：**
 
@@ -3637,7 +3574,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3656,7 +3593,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // isNotificationSlotEnabled
-notificationManager.isNotificationSlotEnabled({ bundle: "ohos.samples.notification", },
+notificationManager.isNotificationSlotEnabled({ bundle: 'ohos.samples.notification', },
     notificationManager.SlotType.SOCIAL_COMMUNICATION).then((data: boolean) => {
     console.info(`isNotificationSlotEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -3684,14 +3621,14 @@ isNotificationSlotEnabledByBundles(bundles: Array\<BundleOption\>, type: SlotTyp
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| bundles | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\> | 是 | 应用包信息数组。最大长度为1000且不能为空。 |
-| type | [SlotType](./js-apis-notificationManager.md#slottype) | 是 | 渠道类型。所有应用共享同一个渠道类型。 |
+| bundles | Array\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\> | 是 | 应用包信息数组。最大长度为1000且不能为空。 |
+| type | [SlotType](js-apis-notificationManager.md#slottype) | 是 | 渠道类型。所有应用共享同一个渠道类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Promise\<Map\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean\>\> | 以Promise形式返回批量查询结果，key为应用包信息，value为渠道使能状态（true：使能，false：禁止）。未创建渠道的应用不会出现在返回结果中。 |
+| Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean\>\> | 以Promise形式返回批量查询结果，key为应用包信息，value为渠道使能状态（true：使能，false：禁止）。未创建渠道的应用不会出现在返回结果中。 |
 
 **错误码：**
 
@@ -3733,9 +3670,9 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: 
 
 设置是否将通知同步到未安装应用的设备(callback形式)。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3778,7 +3715,7 @@ let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError): void =>
     if (err) {
         console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
     } else {
-        console.info("setSyncNotificationEnabledWithoutApp success");
+        console.info('setSyncNotificationEnabledWithoutApp success');
     }
 }
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSyncNotificationEnabledWithoutAppCallback);
@@ -3791,9 +3728,9 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<
 
 设置是否将通知同步到未安装应用的设备(Promise形式)。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3851,9 +3788,9 @@ getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<bo
 
 获取同步通知到未安装应用设备的开关是否开启(callback形式)。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3907,9 +3844,9 @@ getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
 获取同步通知到未安装应用设备的开关是否开启(Promise形式)。
 
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
+> **说明：**
+>
+> 从API version 9开始支持，从API version 26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3964,7 +3901,7 @@ on(type: 'checkNotification', callback: (checkInfo: NotificationCheckInfo) => No
 
 注册通知监听回调。通知服务将通知信息回调给校验程序，校验程序返回校验结果决定该通知是否发布，如营销类通知发布频率控制等。
 
-系统中每个[SlotType](./js-apis-notificationManager.md#slottype)只允许存在一个注册者。
+系统中每个[SlotType](js-apis-notificationManager.md#slottype)只允许存在一个注册者。
 
 **设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
 
@@ -3989,6 +3926,7 @@ on(type: 'checkNotification', callback: (checkInfo: NotificationCheckInfo) => No
 | -------- | ----------------------------------- | 
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801      | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 
 **示例：**
@@ -3999,15 +3937,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let onCheckNotification = (info : notificationManager.NotificationCheckInfo): notificationManager.NotificationCheckResult => {
     console.info(`====>OnCheckNotification info: ${JSON.stringify(info)}`);
     if(info.notificationId == 1){
-        let result: notificationManager.NotificationCheckResult =  { code: 1, message: "testMsg1"};
+        let result: notificationManager.NotificationCheckResult =  { code: 1, message: 'testMsg1'};
         return result;
     } else {
-        let result: notificationManager.NotificationCheckResult =   { code: 0, message: "testMsg0"};
+        let result: notificationManager.NotificationCheckResult =   { code: 0, message: 'testMsg0'};
         return result;
     }
 }
 try{
-    notificationManager.on("checkNotification", onCheckNotification);
+    notificationManager.on('checkNotification', onCheckNotification);
 } catch (err){
     console.error(`notificationManager.on failed, code is ${err.code}, message is ${err.message}`);
 }
@@ -4019,7 +3957,7 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 
 注册通知监听回调。通知服务将通知信息回调给校验程序，校验程序返回校验结果决定该通知是否发布，如营销类通知发布频率控制等。使用Promise异步回调。
 
-系统中每个[SlotType](./js-apis-notificationManager.md#slottype)只允许存在一个注册者。
+系统中每个[SlotType](js-apis-notificationManager.md#slottype)只允许存在一个注册者。
 
 **设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
 
@@ -4034,7 +3972,7 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 | 参数名 | 类型                                                                                                             | 必填 | 说明           |
 | ------ |-----------------------------------------------------------------------------------------------------------------| ---- | -------------- |
 | type | string                                                                                                            | 是   | 回调函数类型名，固定为'checkNotification'。 |
-| checkRequest | [NotificationCheckRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationcheckrequest11)    | 是   | 通知请求验证内容。 |
+| checkRequest | [NotificationCheckRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationcheckrequest11)    | 是   | [通知请求](../../notification/notification-glossary.md#notification-request通知请求)验证内容。 |
 | callback | (checkInfo: [NotificationCheckInfo](#notificationcheckinfo10)) =>  Promise\<[NotificationCheckResult](#notificationcheckresult10)\> | 是   | 消息验证函数指针。 |
 
 **错误码：**
@@ -4046,6 +3984,7 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801      | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -4059,10 +3998,10 @@ try{
   notificationManager.on('checkNotification',{
     contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LIVE_VIEW,
     slotType: notificationManager.SlotType.LIVE_VIEW ,
-    extraInfoKeys: ["event"],
+    extraInfoKeys: ['event'],
   },
     async (checkInfo)=>{
-      return { code: 1, message: "INVALID_PARAMETERS"};
+      return { code: 1, message: 'INVALID_PARAMETERS'};
   },);
 } catch (err) {
   console.error(`notificationManager.on failed, code is ${err.code}, message is ${err.message}`);
@@ -4098,6 +4037,7 @@ off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => 
 | -------- | ----------------------------------- |
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801      | Capability not supported.<br> 适用版本：18+ |
 | 1600001  | Internal error.                     |
 
 **示例：**
@@ -4106,7 +4046,7 @@ off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => 
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try{
-    notificationManager.off("checkNotification");
+    notificationManager.off('checkNotification');
 } catch (err){
     console.error(`notificationManager.off failed, code is ${err.code}, message is ${err.message}`);
 }
@@ -4116,7 +4056,7 @@ try{
 
 triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOptions: ButtonOptions): Promise\<void>
 
-触发系统实况窗。使用Promise异步回调。
+触发[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4130,7 +4070,7 @@ triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOption
 
 | 参数名 | 类型                   | 必填 | 说明           |
 | -------------- | ------------- | ---- | -------------- |
-| bundle         | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)  | 是   |指定应用的包信息。 |
+| bundle         | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)  | 是   |指定应用的包信息。 |
 | notificationId | number        | 是   | 通知ID。 |
 | buttonOptions  | [ButtonOptions](#buttonoptions11) | 是   | 按钮信息。 |
 
@@ -4142,7 +4082,7 @@ triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOption
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -4163,16 +4103,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 包信息
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 // 通知ID
 let notificationId = 1;
 // 按钮信息
 let buttonOptions: notificationManager.ButtonOptions = {
-    buttonName: "buttonName1",
+    buttonName: 'buttonName1',
 }
 notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions).then(() => {
-  console.info("triggerSystemLiveView success");
+  console.info('triggerSystemLiveView success');
 }).catch((err: BusinessError) => {
   console.error(`triggerSystemLiveView failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4183,7 +4123,7 @@ notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions)
 
 subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 
-订阅系统实况窗。使用Promise异步回调。
+订阅[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4229,7 +4169,7 @@ let subscriber: notificationManager.SystemLiveViewSubscriber  = {
     onResponse: onResponseCallback,
 };
 notificationManager.subscribeSystemLiveView(subscriber).then(() => {
-    console.info("subscribeSystemLiveView success");
+    console.info('subscribeSystemLiveView success');
 }).catch((err: BusinessError) => {
     console.error(`subscribeSystemLiveView failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4239,7 +4179,7 @@ notificationManager.subscribeSystemLiveView(subscriber).then(() => {
 
 setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: boolean): Promise<void\>
 
-设置指定应用是否支持跨设备协同。使用Promise异步回调。
+设置指定应用是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4253,8 +4193,8 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
-| deviceType | string | 是   | 设备类型。|
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
+| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 | enable   | boolean                  | 是   | 指定应用是否支持跨设备协同（true：支持，false：不支持）。|
 
 **返回值：**
@@ -4265,7 +4205,7 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4286,13 +4226,13 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
     uid: 1
 };
 let enable: boolean = true;
-let deviceType: string = "phone";
+let deviceType: string = 'wearable';
 notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).then(() => {
-    console.info("setDistributedEnabledByBundle success");
+    console.info('setDistributedEnabledByBundle success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4302,7 +4242,7 @@ notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).th
 
 setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableInfo\>, deviceType: string): Promise\<void\>
 
-批量设置应用是否支持跨设备协同。使用Promise异步回调。
+批量设置应用是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4317,7 +4257,7 @@ setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableI
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundleEnableInfos   | Array\<[DistributedBundleEnableInfo](#distributedbundleenableinfo20)\>             | 是   | 需要设置的应用数组。                   |
-| deviceType | string | 是   | 设备类型。|
+| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 
 **返回值：**
@@ -4347,12 +4287,12 @@ setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableI
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle1: notificationManager.DistributedBundleEnableInfo = {
-    bundleName: "bundleName1",
+    bundleName: 'bundleName1',
     uid: 1,
     enable: true
 };
 let bundle2: notificationManager.DistributedBundleEnableInfo = {
-    bundleName: "bundleName2",
+    bundleName: 'bundleName2',
     uid: 2,
     enable: true
 };
@@ -4360,9 +4300,9 @@ let bundles: Array<notificationManager.DistributedBundleEnableInfo> = [
     bundle1,bundle2
 ]
 
-let deviceType: string = "liteWearable";
+let deviceType: string = 'liteWearable';
 notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() => {
-    console.info("setDistributedEnableByBundles success");
+    console.info('setDistributedEnableByBundles success');
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4372,7 +4312,7 @@ notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() =
 
 isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<boolean\>
 
-获取指定应用是否支持跨设备协同。使用Promise异步回调。
+获取指定应用是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4386,8 +4326,8 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
-| deviceType | string | 是   | 设备类型。 |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | 是   | 应用的包信息。                   |
+| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 **返回值：**
 
@@ -4397,7 +4337,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4418,10 +4358,10 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
     uid: 1
 };
-let deviceType: string = "phone";
+let deviceType: string = 'wearable';
 notificationManager.isDistributedEnabledByBundle(bundle, deviceType).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -4447,8 +4387,8 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| deviceType | string | 是   | 设备类型。 |
-| enable   | boolean                  | 是   | 指定应用是否支持设备是否与其他设备协同智能提醒（true：支持，false：不支持）。|
+| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
+| enable   | boolean                  | 是   | 指定应用是否支持设置设备与其他设备协同智能提醒（true：支持，false：不支持）。|
 
 **返回值：**
 
@@ -4458,7 +4398,7 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4478,10 +4418,10 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let deviceType: string = "phone";
+let deviceType: string = 'wearable';
 let enable: boolean = true;
 notificationManager.setSmartReminderEnabled(deviceType, enable).then(() => {
-    console.info("setSmartReminderEnabled success");
+    console.info('setSmartReminderEnabled success');
 }).catch((err: BusinessError) => {
     console.error(`setSmartReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4505,7 +4445,7 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 
 | 参数名   | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| deviceType | string | 是   | 设备类型。 |
+| deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 **返回值：**
 
@@ -4515,7 +4455,7 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4535,7 +4475,7 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let deviceType: string = "phone";
+let deviceType: string = 'wearable';
 notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
     console.info(`isSmartReminderEnabled success， data:${data}`);
 }).catch((err: BusinessError) => {
@@ -4572,7 +4512,7 @@ setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: number): Promise\<void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
@@ -4607,7 +4547,7 @@ notificationManager.setBadgeNumberByBundle(bundle, badgeNumber).then(() => {
 
 getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<NotificationSlot>
 
-获取指定应用指定类型的通知渠道。使用Promise异步回调。
+获取指定应用指定类型的[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。
 
 获取前需要先通过[addSlot](#notificationmanageraddslot)创建通知渠道。
 
@@ -4623,8 +4563,8 @@ getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<Notification
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
-| slotType | [SlotType](././js-apis-notificationManager.md#slottype) | 是   | 渠道类型。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| slotType | [SlotType](js-apis-notificationManager.md#slottype) | 是   | 渠道类型。 |
 
 **返回值：**
 
@@ -4634,7 +4574,7 @@ getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<Notification
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4654,7 +4594,7 @@ getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<Notification
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 
 let slotType = notificationManager.SlotType.LIVE_VIEW;
@@ -4731,7 +4671,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 ]
 
 notificationManager.addDoNotDisturbProfile(templates).then(() => {
-  console.info("addDoNotDisturbProfile success.");
+  console.info('addDoNotDisturbProfile success.');
 }).catch((err: BusinessError) => {
   console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4808,7 +4748,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 ]
 
 notificationManager.addDoNotDisturbProfile(templates, userId).then(() => {
-  console.info("addDoNotDisturbProfile success.");
+  console.info('addDoNotDisturbProfile success.');
 }).catch((err: BusinessError) => {
   console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4867,7 +4807,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
   }
 ]
 notificationManager.removeDoNotDisturbProfile(templates).then(() => {
-  console.info("removeDoNotDisturbProfile success.");
+  console.info('removeDoNotDisturbProfile success.');
 }).catch((err: BusinessError) => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4929,7 +4869,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
   }
 ]
 notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
-  console.info("removeDoNotDisturbProfile success.");
+  console.info('removeDoNotDisturbProfile success.');
 }).catch((err: BusinessError) => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -4953,7 +4893,7 @@ setAdditionalConfig(key: string, value: string): Promise\<number\>
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用自定义铃声。 |
+| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)。 |
 | value   | string | 是  | 附加配置值。参数示例：[bundleName1,bundleName2]。 |
 
 **返回值：**
@@ -5148,7 +5088,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let disabled: boolean = true;
-let bundleList: Array<string> = ["com.example.myapplication"];
+let bundleList: Array<string> = ['com.example.myapplication'];
 try {
   notificationManager.disableNotificationFeature(disabled, bundleList).then(() => {
     hilog.info(0x0000, 'testTag', '%{public}s', `disableNotificationFeature success.`);
@@ -5206,7 +5146,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let disabled: boolean = true;
-let bundleList: Array<string> = ["com.example.myapplication"];
+let bundleList: Array<string> = ['com.example.myapplication'];
 let userId: number = 1;
 try {
   notificationManager.disableNotificationFeature(disabled, bundleList, userId).then(() => {
@@ -5223,7 +5163,7 @@ try {
 
 setTargetDeviceStatus(deviceType: string, status: number): Promise\<void\>
 
-设置设备配对成功后的状态。当发布通知时，会根据各个设备的状态来确定当前设备的通知提醒方式。
+设置设备配对成功后的状态。当发布通知时，会根据各个设备的状态来确定当前设备的[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5259,7 +5199,7 @@ setTargetDeviceStatus(deviceType: string, status: number): Promise\<void\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.setTargetDeviceStatus("current", 1).then(() => {
+notificationManager.setTargetDeviceStatus('current', 1).then(() => {
   console.info(`Succeeded in setting target device status.`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to set target device status. Code is ${err.code}, message is ${err.message}`);
@@ -5270,7 +5210,7 @@ notificationManager.setTargetDeviceStatus("current", 1).then(() => {
 
 setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean): Promise\<void\>
 
-设置指定渠道的通知是否支持通知跨设备协同至指定类型设备。使用Promise异步回调。
+设置指定渠道的通知是否支持通知[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)至指定类型设备。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5282,7 +5222,7 @@ setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | 通知渠道类型。 |
+| slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | [通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。 |
 | deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 | enabled | boolean | 是   | 是否开启通知跨设备协同开关。取值为true表示打开，取值为false表示关闭。 |
 
@@ -5323,7 +5263,7 @@ notificationManager.setDistributedEnabledBySlot(slot, deviceType, enabled).then(
 
 isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean\>
 
-查询指定渠道的通知是否支持通知跨设备协同至指定类型设备。使用Promise异步回调。
+查询指定渠道的通知是否支持通知[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)至指定类型设备。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5335,7 +5275,7 @@ isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | 通知渠道类型。 |
+| slot | [SlotType](js-apis-notificationManager.md#slottype) | 是   | [通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。 |
 | deviceType | string | 是   | 设备类型。<br>从API version 18开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>从API version 20开始，支持的设备类型如下：<br>- headset（可穿戴式音频设备）。<br>- liteWearable（轻量级智能穿戴设备）。<br>- wearable（智能穿戴设备）。<br>- current（本设备）。<br>- 2in1（PC设备）。<br>- tablet（平板）。 |
 
 **返回值：**
@@ -5374,7 +5314,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\>
 
-设置静默提醒的开关状态。使用Promise进行异步回调。
+设置[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)的开关状态。使用Promise进行异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5386,7 +5326,7 @@ setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 | enabled | boolean | 是   | 表示是否开启通知静默提醒开关。true表示打开，false表示关闭。 |
 
 **返回值：**
@@ -5397,7 +5337,7 @@ setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5416,7 +5356,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName",
+    bundle: 'bundleName',
 };
 notificationManager.setSilentReminderEnabled(bundle, true).then(() => {
     hilog.info(0x0000, 'testTag', '%{public}s', `setSilentReminderEnabled success.`);
@@ -5429,7 +5369,7 @@ notificationManager.setSilentReminderEnabled(bundle, true).then(() => {
 
 isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
 
-查询静默提醒的开关状态。使用Promise进行异步回调。
+查询[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)的开关状态。使用Promise进行异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5441,7 +5381,7 @@ isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 
 **返回值：**
 
@@ -5451,7 +5391,7 @@ isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5470,7 +5410,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
+    bundle: 'bundleName1',
 };
 notificationManager.isSilentReminderEnabled(bundle).then((data: notificationManager.SwitchState) => {
     hilog.info(0x0000, 'testTag', '%{public}s', `isSilentReminderEnabled success, switchState:  ${JSON.stringify(data)}.`);
@@ -5601,7 +5541,7 @@ notificationManager.getNotificationSwitch(switchName, userId).then((data: notifi
 
 isDistributedEnabled(deviceType: string): Promise\<boolean\>
 
-查询设备是否支持跨设备协同通知。使用Promise异步回调。
+查询设备是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)通知。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5619,7 +5559,7 @@ isDistributedEnabled(deviceType: string): Promise\<boolean\>
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<boolean\> | 返回设备是否支持跨设备协同通知的结果，返回true表示支持；返回false表示不支持。Promise对象。 |
+| Promise\<boolean\> | Promise对象。返回设备是否支持跨设备协同通知的结果，返回true表示支持；返回false表示不支持。 |
 
 **错误码**：
 
@@ -5642,7 +5582,7 @@ export default class EntryAbility extends UIAbility {
 
   onForeground(): void {
     try {
-      let deviceType: string = "wearable";
+      let deviceType: string = 'wearable';
       notificationManager.isDistributedEnabled(deviceType).then((data: boolean) => {
         console.info('isDistributedEnabled succeeded, result = ' + data);
       }).catch((err: BusinessError) => {
@@ -5659,7 +5599,7 @@ export default class EntryAbility extends UIAbility {
 
 setDistributedEnabled(enable: boolean, deviceType: string): Promise\<void\>
 
-设置设备是否支持跨设备协同通知。使用Promise异步回调。
+设置设备是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)通知。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5678,7 +5618,7 @@ setDistributedEnabled(enable: boolean, deviceType: string): Promise\<void\>
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<void\> | 无返回结果。Promise对象。 |
+| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -5702,7 +5642,7 @@ export default class EntryAbility extends UIAbility {
   onForeground(): void {
     try {
       let isEnable: boolean = true;
-      let deviceType: string = "wearable";
+      let deviceType: string = 'wearable';
       notificationManager.setDistributedEnabled(isEnable, deviceType).then(() => {
         console.info('setDistributedEnabled succeeded.');
       }).catch((err: BusinessError) => {
@@ -5719,7 +5659,7 @@ export default class EntryAbility extends UIAbility {
 
 getDistributedDeviceList(): Promise\<Array\<string\>\>
 
-查询支持跨设备协同通知的设备类型。使用Promise异步回调。
+查询支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)通知的设备类型。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5731,7 +5671,7 @@ getDistributedDeviceList(): Promise\<Array\<string\>\>
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<Array\<string\>\> | 返回支持跨设备协同通知的设备列表。Promise对象。 |
+| Promise\<Array\<string\>\> | Promise对象。返回支持跨设备协同通知的设备类型列表。 |
 
 **错误码**：
 
@@ -5770,7 +5710,7 @@ export default class EntryAbility extends UIAbility {
 
 setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promise\<void\>
 
-设置应用自定义铃声信息。使用Promise异步回调。
+设置应用[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5782,7 +5722,7 @@ setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promi
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 | ringtoneInfo | [RingtoneInfo](#ringtoneinfo21) | 是   | 自定义铃声信息。 |
 
 **返回值：**
@@ -5816,13 +5756,13 @@ export default class EntryAbility extends UIAbility {
   onForeground(): void {
     try {
       let bundle: notificationManager.BundleOption = {
-        bundle: "bundleName",
+        bundle: 'bundleName',
       };
       let ringtoneInfo: notificationManager.RingtoneInfo = {
         ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
-        ringtoneTitle: "ringtoneName",
-        ringtoneFileName: "ringtonePath",
-        ringtoneUri: "ringtoneUri",
+        ringtoneTitle: 'ringtoneName',
+        ringtoneFileName: 'ringtonePath',
+        ringtoneUri: 'ringtoneUri',
       }
       notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
         console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
@@ -5840,7 +5780,7 @@ export default class EntryAbility extends UIAbility {
 
 getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
 
-获取应用自定义铃声信息。使用Promise异步回调。
+获取应用[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5852,7 +5792,7 @@ getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
 
 **返回值：**
 
@@ -5886,7 +5826,7 @@ export default class EntryAbility extends UIAbility {
   onForeground(): void {
     try {
       let bundle: notificationManager.BundleOption = {
-        bundle: "bundleName",
+        bundle: 'bundleName',
       };
       notificationManager.getRingtoneInfoByBundle(bundle)
         .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
@@ -5972,13 +5912,13 @@ getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<Bun
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundles   | Array<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 是   | 待获取应用角标显示状态的应用包信息数组。 |
+| bundles   | Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 是   | 待获取应用角标显示状态的应用包信息数组。 |
 
 **返回值：**
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<Map\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean>> | Promise对象，返回应用包信息和显示角标状态的键值对集合的Promise对象 。 |
+| Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean>> | Promise对象，返回应用包信息和显示角标状态的键值对集合的Promise对象 。 |
 
 **错误码**：
 
@@ -6058,7 +5998,7 @@ setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Prom
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName",
+    bundle: 'bundleName',
 };
 let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
     {
@@ -6090,7 +6030,7 @@ getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<Notif
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundles   | Array<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 是  | 待获取应用提醒信息的应用包信息数组。 |
+| bundles   | Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 是  | 待获取应用提醒信息的应用包信息数组。 |
 
 **返回值：**
 
@@ -6147,7 +6087,7 @@ isPriorityEnabled(): Promise\<boolean\>
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
+| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。<br> - true：允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - false：禁止设置为优先通知。 |
 
 **错误码**：
 
@@ -6189,7 +6129,7 @@ setPriorityEnabled(enable: boolean): Promise\<void\>
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| enable   | boolean | 是  | 所有通知的优先使能状态。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
+| enable   | boolean | 是  | 所有通知的优先使能状态。<br> - true：允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - false：禁止设置为优先通知。 |
 
 **返回值：**
 
@@ -6238,7 +6178,7 @@ isPriorityEnabledByBundle(bundle: BundleOption): Promise\<PriorityEnableStatus\>
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
 
 **返回值：**
 
@@ -6289,8 +6229,8 @@ setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableSta
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
-| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | 是 | 应用通知优先级开关状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | 是 | 应用通知优先级开关状态。<br> - DISABLE：不允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
 
 **返回值：**
 
@@ -6329,7 +6269,7 @@ notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager
 
 getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
 
-获取应用的优先功能配置。
+获取应用的优先功能配置，包括关键词优先通知识别规则。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6341,7 +6281,7 @@ getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
 
 **返回值：**
 
@@ -6380,7 +6320,7 @@ notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) =
 
 setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
 
-设置应用的优先功能配置。
+设置应用的优先功能配置，包括关键词优先通知识别规则。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6392,8 +6332,8 @@ setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
-| value | string | 是 | 应用的优先功能配置。|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+| value | string | 是 | 应用的优先功能配置。字符串长度不超过3074字节，超出后返回401错误码。|
 
 **返回值：**
 
@@ -6432,7 +6372,7 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
 
 isPriorityIntelligentEnabled(): Promise\<boolean\>
 
-获取优先通知智能服务使能状态。使用Promise异步回调。
+获取[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)智能服务使能状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6477,7 +6417,7 @@ notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
 
 setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 
-设置优先通知智能服务使能状态。使用Promise异步回调。
+设置[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)智能服务使能状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6827,7 +6767,7 @@ try{
 
 setGeofenceEnabled(enabled: boolean):  Promise\<void\>
 
-设置地理围栏的启用状态。使用Promise异步回调。
+设置[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)的启用状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6867,7 +6807,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setGeofenceEnabled(true).then(() => {
-  hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
+  hilog.info(0x0000, 'testTag', '%{public}s', 'setGeofenceEnabled success');
 }).catch((err: BusinessError) => {
   hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -6919,8 +6859,8 @@ getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<BundleNotif
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundles: notificationManager.BundleOption[] = [
-  { bundle:"com.example.test01" },
-  { bundle:"com.example.test02" }
+  { bundle:'com.example.test01' },
+  { bundle:'com.example.test02' }
 ];
 notificationManager.getNotificationStatisticsByBundle(bundles).then(
   (data: notificationManager.BundleNotificationStatistics[]) => {
@@ -6934,7 +6874,7 @@ notificationManager.getNotificationStatisticsByBundle(bundles).then(
 
 snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
 
-设置通知稍后提醒。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。<br/>设置后该通知被删除。
+设置通知[稍后提醒](../../notification/notification-glossary.md#notification-snooze稍后提醒)。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。<br/>设置后该通知被删除。
 
 **起始版本**：26.0.0
 
@@ -6978,10 +6918,10 @@ snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 此处应改为开发者需要设定稍后提醒通知的唯一标识
-let hashCode: string = "hashCode";
+let hashCode: string = 'hashCode';
 let delayTime: number = 60;
 notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
-  console.info("snoozeNotification success.")
+  console.info('snoozeNotification success.')
 }).catch((err: BusinessError):void => {
   console.error(`snoozeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
@@ -7012,14 +6952,14 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | 名称         | 值               | 说明                                       |
 | ------------ | ---------------- | ------------------------------------------ |
 | TYPE_NONE    | 0 | 非通知勿扰类型。                           |
-| TYPE_ONCE    | 1 | 以设置时间段(只看小时和分钟)一次执行勿扰。 |
-| TYPE_DAILY   | 2 | 以设置时间段(只看小时和分钟)每天执行勿扰。 |
-| TYPE_CLEARLY | 3 | 以设置时间段(明确月日时)执行勿扰。     |
+| TYPE_ONCE    | 1 | 以设置时间段（只看小时和分钟）一次执行勿扰。 |
+| TYPE_DAILY   | 2 | 以设置时间段（只看小时和分钟）每天执行勿扰。 |
+| TYPE_CLEARLY | 3 | 以设置时间段（精确到月、日、时）执行勿扰。     |
 
 
 ## DeviceRemindType
 
-通知提醒方式。
+[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7049,7 +6989,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## NotificationCheckInfo<sup>10+</sup>
 
-通知校验参数。
+[通知校验](../../notification/notification-glossary.md#notification-check通知校验)参数。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7062,14 +7002,14 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | bundleName                   | string                       |  否  | 否   | Bundle名称。    |
 | notificationId               | number                       |  否  | 否   | 通知ID。        |
 | label<sup>11+</sup>          | string                       |  否  | 是   | 通知标签。      |
-| contentType                  | [ContentType](./js-apis-notificationManager.md#contenttype)  |  否  | 否   | 通知类型。      |
+| contentType                  | [ContentType](js-apis-notificationManager.md#contenttype)  |  否  | 否   | 通知类型。      |
 | creatorUserId<sup>11+</sup>  | number                       |  否  | 否   | 通知的user ID。 |
-| slotType<sup>11+</sup>       | [SlotType](./js-apis-notificationManager.md#slottype)        |  否  | 否   | 渠道类型。      |
-| extraInfos<sup>11+</sup>     | Record<string, Object>       |  否  | 是   | 实况通知的附加信息。 |
+| slotType<sup>11+</sup>       | [SlotType](js-apis-notificationManager.md#slottype)        |  否  | 否   | 渠道类型。      |
+| extraInfos<sup>11+</sup>     | Record<string, Object>       |  否  | 是   | [实况通知](../../notification/notification-glossary.md#live-view-notification实况通知)的附加信息。 |
 
 ## NotificationCheckResult<sup>10+</sup>
 
-通知校验结果。
+[通知校验](../../notification/notification-glossary.md#notification-check通知校验)结果。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7100,7 +7040,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## SystemLiveViewSubscriber<sup>11+</sup>
 
-系统实况窗订阅者。
+[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)订阅者。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7113,7 +7053,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## SlotType
 
-通知渠道类型。
+[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)类型。
 
 不同类型对应不同的[SlotLevel](js-apis-notificationManager.md#slotlevel)，决定通知的提醒行为。
 
@@ -7152,14 +7092,14 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
 | id        | number | 否   |  否  | 勿扰模式编号。 |
-| name      | string | 否   |  否  | 勿扰模式名称。 |
-| trustlist | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 否 | 是 | 勿扰模式的信任列表。 |
+| name      | string | 否   |  否  | 勿扰模式名称。字符串长度不超过202字节，超出部分会被截断。 |
+| trustlist | Array\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 否 | 是 | 勿扰模式的信任列表。 |
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
 type NotificationLiveViewContent = _NotificationLiveViewContent 
 
-描述普通实况通知。
+描述[普通实况通知](../../notification/notification-glossary.md#normal-live-view普通实况通知)。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -7196,11 +7136,11 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
 | bundleName   | string | 否 | 否 | 包名。          |
 | uid          | number | 否 | 否 | 应用的UID。          |
-| enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |
+| enable       | boolean| 否 | 是 | 是否支持[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)，返回true表示支持，返回false表示不支持，默认为false。      |
 
 ## RingtoneType<sup>21+</sup>
 
-描述自定义铃声类型。
+描述[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)类型。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7215,7 +7155,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 ## RingtoneInfo<sup>21+</sup>
 
-描述自定义铃声信息。
+描述[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7224,9 +7164,9 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称    | 类型     | 只读 | 可选 | 说明                     |
 | ------- | ------- | ---- | ---- | ----------------------- |
 | ringtoneType | [RingtoneType](#ringtonetype21)  |  否  | 否   | 铃声的类型。|
-| ringtoneTitle | string  |  否  | 是   | 铃声的标题。  |
-| ringtoneFileName | string  |  否  | 是   | 铃声的文件名称。  |
-| ringtoneUri | string  |  否  | 是   | 铃声的URI。  |
+| ringtoneTitle | string  |  否  | 是   | 铃声的标题。<br>大小不超过202字节，超出后返回401错误码。默认为空。  |
+| ringtoneFileName | string  |  否  | 是   | 铃声的文件名称。<br>大小不超过202字节，超出后返回401错误码。默认为空。  |
+| ringtoneUri | string  |  否  | 是   | 铃声的URI。资源支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。<br>大小不超过202字节，超出后返回401错误码。默认为空。  |
 
 ## NotificationReminderInfo<sup>21+</sup>
 
@@ -7238,9 +7178,9 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
-| reminderFlags | number | 否 | 否 | 表示通知提醒方式的标志位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
-| silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
+| reminderFlags | number | 否 | 否 | 表示[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的标志位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
+| silentReminderEnabled | boolean | 否 | 否 | 表示[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)开关使能状态（true：使能，false：禁止）。 |
 
 ## BundleNotificationStatistics
 
@@ -7268,18 +7208,18 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
-| PAYMENT_DUE   | "PAYMENT_DUE"   | 表示通知优先级类型为缴费还款。                 |
-| TRANSACTION_ALERT   | "TRANSACTION_ALERT"   | 表示通知优先级类型为动账提醒。                 |
-| EXPRESS_PROGRESS   | "EXPRESS_PROGRESS"   | 表示通知优先级类型为物流进展。                 |
-| MISS_CALL   | "MISS_CALL"   | 表示通知优先级类型为未接来电。                 |
-| TRAVEL_ALERT   | "TRAVEL_ALERT"   | 表示通知优先级类型为出行异常。                 |
-| ACCOUNT_ALERT   | "ACCOUNT_ALERT"   | 表示通知优先级类型为账号安全。                 |
-| APPOINTMENT_REMINDER   | "APPOINTMENT_REMINDER"   | 表示通知优先级类型为预约提醒。                 |
-| TRAFFIC_NOTICE   | "TRAFFIC_NOTICE"   | 表示通知优先级类型为交通违规。                 |
-| KEY_PROGRESS   | "KEY_PROGRESS"   | 表示通知优先级类型为关键进展通知。                 |
-| PUBLIC_EVENT   | "PUBLIC_EVENT"   | 表示通知优先级类型为重要公共事件。                 |
-| IOT_WARNING   | "IOT_WARNING"   | 表示通知优先级类型为预警通知。                 |
-| CUSTOM_KEYWORD   | "CUSTOM_KEYWORD"   | 表示通知优先级类型为用户自定义关键词。                 |
+| PAYMENT_DUE   | 'PAYMENT_DUE'   | 表示通知优先级类型为缴费还款。                 |
+| TRANSACTION_ALERT   | 'TRANSACTION_ALERT'   | 表示通知优先级类型为动账提醒。                 |
+| EXPRESS_PROGRESS   | 'EXPRESS_PROGRESS'   | 表示通知优先级类型为物流进展。                 |
+| MISS_CALL   | 'MISS_CALL'   | 表示通知优先级类型为未接来电。                 |
+| TRAVEL_ALERT   | 'TRAVEL_ALERT'   | 表示通知优先级类型为出行异常。                 |
+| ACCOUNT_ALERT   | 'ACCOUNT_ALERT'   | 表示通知优先级类型为账号安全。                 |
+| APPOINTMENT_REMINDER   | 'APPOINTMENT_REMINDER'   | 表示通知优先级类型为预约提醒。                 |
+| TRAFFIC_NOTICE   | 'TRAFFIC_NOTICE'   | 表示通知优先级类型为交通违规。                 |
+| KEY_PROGRESS   | 'KEY_PROGRESS'   | 表示通知优先级类型为关键进展通知。                 |
+| PUBLIC_EVENT   | 'PUBLIC_EVENT'   | 表示通知优先级类型为重要公共事件。                 |
+| IOT_WARNING   | 'IOT_WARNING'   | 表示通知优先级类型为预警通知。                 |
+| CUSTOM_KEYWORD   | 'CUSTOM_KEYWORD'   | 表示通知优先级类型为用户自定义关键词。                 |
 
 ## PriorityEnableStatus<sup>23+</sup>
 
@@ -7292,14 +7232,14 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
 | DISABLE    | 0   | 应用通知的优先级开关为关闭状态。 |
-| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。 |
+| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。 |
 | ENABLE   | 2   | 应用通知均设置为优先通知。 |
 
 ## NotificationIconButton<sup>23+</sup>
 
 type NotificationIconButton = _NotificationIconButton
 
-系统通知按钮。
+系统[通知按钮](../../notification/notification-glossary.md#notification-button通知按钮)。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -7345,7 +7285,7 @@ type Trigger = _Trigger
 
 type Geofence = _Geofence
 
-地理围栏的配置信息。
+[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)的配置信息。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -7361,7 +7301,7 @@ type Geofence = _Geofence
 
 type CoordinateSystemType = _CoordinateSystemType
 
-表示地理围栏坐标系类型的枚举。
+表示[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)坐标系类型的枚举。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -7377,7 +7317,7 @@ type CoordinateSystemType = _CoordinateSystemType
 
 type MonitorEvent = _MonitorEvent
 
-表示地理围栏的监控事件类型的枚举。
+表示[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)的监控事件类型的枚举。
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -7412,7 +7352,7 @@ type MonitorEvent = _MonitorEvent
 
 type GroupInfo = _GroupInfo
 
-组通知定制信息。
+[组通知](../../notification/notification-glossary.md#group-notification组通知)定制信息。
 
 **起始版本**：26.0.0
 

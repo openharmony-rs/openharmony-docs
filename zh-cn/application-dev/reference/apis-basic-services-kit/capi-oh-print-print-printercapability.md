@@ -41,6 +41,6 @@ typedef struct {...} Print_PrinterCapability
 | uint32_t supportedResolutionsCount | 支持的打印机分辨率数量，与 supportedResolutions 数组实际元素数一致。 |
 | [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) *supportedOrientations | 支持的打印方向模式数组，数组长度由 supportedOrientationsCount 决定。 |
 | uint32_t supportedOrientationsCount | 支持的打印方向模式数量，与 supportedOrientations 数组实际元素数一致。 |
-| char *advancedCapability | 高级能力，以 JSON 格式表示，用于描述不属于上述标准能力字段的额外打印机特性，具体取值由打印机决定。 |
+| char *advancedCapability | 高级能力，以 JSON 对象格式字符串表示，用于描述不属于上述标准能力字段的打印机特性，JSON 对象的具体字段名和取值由打印机决定，开发者需根据实际返回的 JSON 内容进行解析。 |
 
 

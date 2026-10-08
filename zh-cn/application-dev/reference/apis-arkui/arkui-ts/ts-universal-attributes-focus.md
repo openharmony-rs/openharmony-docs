@@ -244,7 +244,7 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 | -------- | -------- |
 | T | 返回当前组件。 |
 
-### FocusPriority<sup>12+</sup>
+## FocusPriority<sup>12+</sup>
 
 设置组件获焦优先级。
 
@@ -260,7 +260,7 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 | PRIOR | 2000|容器首次获焦时优先获焦的优先级。优先级高于AUTO。 |
 | PREVIOUS | 3000|上一次容器整体失焦时获焦节点的优先级。优先级高于PRIOR。 |
 
-### KeyProcessingMode<sup>15+</sup>
+## KeyProcessingMode<sup>15+</sup>
 
 设置按键事件处理的模式。
 
@@ -546,11 +546,11 @@ struct FocusableExample {
 
 ![groupDefaultFocus1](figures/groupDefaultFocus1.png)
 
-第二次按Tab键，焦点切换到tabIndex(2)的容器上，且自动走到其内部的groupDefaultFocus绑定的组件上：
+第二次按Tab键，焦点切换到tabIndex(2)的容器上，且自动走焦到其内部的groupDefaultFocus绑定的组件上：
 
 ![groupDefaultFocus2](figures/groupDefaultFocus2.png)
 
-第三次按Tab键，焦点切换到tabIndex(3)的容器上，且自动走焦到内部配置了defaultFocus的组件上：
+第三次按Tab键，焦点切换到tabIndex(3)的容器上，且自动走焦到内部首个可获焦组件上：
 
 ![groupDefaultFocus3](figures/groupDefaultFocus3.png)
 
@@ -927,9 +927,10 @@ struct TabStop {
 
 从API version 18开始，该示例通过配置[nextFocus](#nextfocus18)实现自定义走焦规则。
 
-如果不配置[nextFocus](#nextfocus18)，默认的按下Tab键的走焦顺序为：M->A->B->C->D->E->F；配置了[nextFocus](#nextfocus18)以后，走焦顺序变更为：M->D->F->B->C。
+如果不配置[nextFocus](#nextfocus18)，默认的按下Tab键的走焦顺序为：M->A->B->C->D->E->F；配置了[nextFocus](#nextfocus18)以后，Tab键前几次的走焦顺序变更为：M->D->F->B->C；焦点到达C后，C按照默认走焦规则继续移动。
 
 ```ts
+import { AttributeModifier, ButtonAttribute } from '@kit.ArkUI';
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyNormalAttribute(instance: ButtonAttribute): void {
     instance.id('M');

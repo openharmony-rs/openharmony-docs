@@ -907,7 +907,7 @@ Allows an application to query, set, and subscribe to the mating part status inf
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.STEERINGWHEEL_INFO
 
@@ -923,7 +923,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.INTERIOR_LIGHT_INFO
 
@@ -939,7 +939,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
 
@@ -955,7 +955,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.DRIVE_INFORMATION_INFO
 
@@ -971,7 +971,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.ACCELERATOR_PEDAL_INFO
 
@@ -987,7 +987,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.BRAKE_PEDAL_INFO
 
@@ -1003,7 +1003,7 @@ You must request ohos.permission.vehicle.CAR_CONTROL before requesting this perm
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
@@ -1452,7 +1452,7 @@ Allows an application to install the PCIe driver.
 ## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
 
 Allows an application to access the game buddy service. 
-With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and capturing user voice data via the microphone.
+With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and obtaining the foreground and background states of games.
 
 <!--RP93--><!--RP93End-->
 
@@ -1460,9 +1460,11 @@ With this permission, the application can utilize the APIs provided by the game 
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 26.0.0
+
+**Changelog**: Since API version 26.0.0, this permission is also available on tablets, PCs/2-in-1 devices and TVs.
 
 ## ohos.permission.KNOCK_COLLABORATION
 
@@ -1618,4 +1620,102 @@ Allows an application to be set as the user's default browser.
 
 **Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
+ 
+## ohos.permission.vehicle.MMA_ENERGYREFILL
+ 
+Allows an in-vehicle application to obtain the current vehicle's energy replenishment status.
+ 
+<!--RP104--><!--RP104End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.0.1
+ 
+## ohos.permission.vehicle.MMA_WEATHER
+ 
+Allows an in-vehicle application to obtain real-time weather information of the vehicle's surroundings.
+ 
+<!--RP105--><!--RP105End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.0.1
+ 
+## ohos.permission.vehicle.MMA_SPATIALACTION
+ 
+Allows an application on the rear display to call spatial gesture APIs to enable contactless interaction for passengers.
+ 
+<!--RP106--><!--RP106End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.0.1
+
+## ohos.permission.LOCAL_DEBUG_OTHER_APPS
+
+Allows an application to use the aa tool to debug other applications locally in developer mode.
+
+<!--RP107--><!--RP107End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.1
+
+## ohos.permission.kernel.ALLOW_PTRACE_READ
+
+Allows an application to use PTRACE read capabilities to obtain register and memory information of application processes.
+
+<!--RP110--><!--RP110End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
+## ohos.permission.GET_ALL_BUNDLE_INFO
+ 
+Allows an application to obtain the list of applications installed on the device.
+ 
+<!--RP111--><!--RP111End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: user_grant
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Since**: 26.0.1
+
+## ohos.permission.ASSESSMENT_CONFIGURATION
+
+Allows an application to enter exam mode. The system service will display a dialog to remind the user that system capabilities will be restricted once exam mode is enabled. This prevents cheating or information leakage during exams, ensuring exam fairness while protecting user rights.
+
+<!--RP112--><!--RP112End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.1

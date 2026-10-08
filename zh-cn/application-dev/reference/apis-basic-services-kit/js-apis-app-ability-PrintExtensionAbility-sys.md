@@ -22,11 +22,11 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 ## PrintExtensionAbility
 
-### onRequestPreview<sup>24+</sup>
+### onRequestPreview
 
 onRequestPreview(jobInfo: print.PrintJob): string
 
-请求预览时调用，并将结果返回到系统打印服务。
+系统打印服务在请求预览时回调此方法，开发者需继承PrintExtensionAbility类并实现此方法，将预览结果返回到系统打印服务。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

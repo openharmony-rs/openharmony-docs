@@ -5,7 +5,6 @@
 <!--Designer: @zhangzhengxue; @jackd320-->
 <!--Tester: @mamba-ting-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=6a0c4a565ec3c4eada9375dc1f53febf5f813a4b translatedAt=2026-07-27T01:18:54.831Z pushedAt=2026-07-27T01:19:49.941Z -->
 
 The **@ohos.update** module provides the core capabilities of online update, local SD card update, and factory reset. Version management, update control, and equipment maintenance can be implemented for the Over-The-Air (OTA) clients and system apps using this module. APIs provided by this module can be used for system version update, offline update, and data clearing.
 
@@ -62,7 +61,7 @@ The following standard process must be followed for restoring the equipment to f
 
 ```mermaid
 graph TD
-    A["System verification permission:</br>
+    A["System verification permission:<\br>
     (Check whether the current caller has the permission to perform the restoration operation.)"] --> B{Application developer selects the factory reset mode.}
     B -->|factoryReset| C1[Common factory reset: Clear data in the user partition only.]
     B -->|forceFactoryReset| C2[Forcible factory reset: Clear data and file keys.]
@@ -108,7 +107,7 @@ This API obtains an **OnlineUpdater** object through the system service interfac
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | --- |
-| upgradeInfo | [UpgradeInfo](#upgradeinfo) | Yes   | **UpgradeInfo** is the upgrade object information, which is used to identify the caller and upgrade service type. **upgradeApp** is the package name of the caller. The value is a string of 1 to 255 characters in the format **com.***xxx.xxx.xxx*. The length of each segment ranges from 1 to 64 characters. Only letters, digits, and periods (.) are supported. Each segment must start with a letter and cannot contain consecutive periods (.) or start or end with a period (.). If the value is out of range or the format is incorrect, an exception is thrown.|
+| upgradeInfo | [UpgradeInfo](#upgradeinfo) | Yes   | **UpgradeInfo** is the upgrade object information, which is used to identify the caller and upgrade service type. **upgradeApp** is the package name of the caller. The value is a string of 1 to 255 characters in the format **com.xxx.xxx.xxx**. The length of each segment ranges from 1 to 64 characters. Only letters, digits, and periods (.) are supported. Each segment must start with a letter and cannot contain consecutive periods (.) or start or end with a period (.). If the value is out of range or the format is incorrect, an exception is thrown.|
 
 **Return value**
 
@@ -248,7 +247,7 @@ Users can obtain system updates in a timely manner, improving upgrade efficiency
 
 ```mermaid
 graph TD
-    A[Obtain an Updater object by calling getOnlineUpdater and pass the app upgrade information and service type.] --> B[Check for new versions by calling checkNewVersion and obtain the result CheckResult.]
+    A[Obtain an Updater object by calling getOnlineUpdater and pass the app upgrade information and service type.] --> B[Check for new versions by calling checkNewVersion and obtain the result graph TD.]
     B --> C[Check the isExistNewVersion field in the returned result. If the value is true, call getNewVersionInfo to obtain the detailed information about the new version.]
     C --> D[Download the upgrade package to the device by calling download. The download can be paused and resumed.]
     D --> E[Perform the upgrade and installation by calling upgrade. The device will restart to apply the new version.]
@@ -1163,7 +1162,7 @@ This method queries the status of the current upgrade task from the system upgra
 - **pauseDownload()**: pauses download. (You can call **getTaskInfo** to query the pause status after download is paused.)
 - **terminateUpgrade()**: terminates upgrade. (You can call **getTaskInfo** to query the task cancellation status after upgrade is terminated.)
 
-**When to Call:**
+**When to Call**
 
 - You are advised to call **getTaskInfo** to query the task progress periodically after calling **download** or **upgrade** to start the upgrade task.
 - During upgrade, you can obtain the progress in real time using an event listener registered by **on** or use **getTaskInfo** to query the current status.
@@ -1331,9 +1330,9 @@ try {
 
 download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions): Promise\<void>
 
-Downloads the upgrade package to the device. This method provides the online upgrade function, which depends on the upgrade package management server deployed by the vendor. Progress monitoring, pause, and resumption of download are supported,
+Downloads the upgrade package to the device. This method provides the online upgrade function, which depends on the upgrade package management server deployed by the vendor. Progress monitoring, pause, and resumption of download are supported.
 
-helping users efficiently obtain the upgrade package, saving bandwidth and time, and improving the upgrade success rate. This API uses a promise to return the result.
+This method can help users efficiently obtain the upgrade package, saving bandwidth and time, and improving the upgrade success rate. This API uses a promise to return the result.
 
 Use scenarios: online update of the OTA client, automatic download of the upgrade package in the background, and resumable transfer after network interruption.
 
@@ -1500,7 +1499,7 @@ try {
   };
   // Obtain an OnlineUpdater object.
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Resume the download of the update package.
+  // Resume the download of the upgrade package.
   onlineUpdater.resumeDownload(versionDigestInfo, resumeDownloadOptions,
     (resumeDownloadError: BusinessError) => {
     if (resumeDownloadError) {
@@ -1587,7 +1586,7 @@ try {
   };
   // Obtain an OnlineUpdater object.
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Resume the download of the update package.
+  // Resume the download of the upgrade package.
   onlineUpdater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
     console.info(`resumeDownload start`);
   }).catch((resumeDownloadError: BusinessError) => {
@@ -1671,7 +1670,7 @@ try {
   };
   // Obtain an OnlineUpdater object.
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Pause the download of the update package.
+  // Pause the download of the upgrade package.
   onlineUpdater.pauseDownload(versionDigestInfo, pauseDownloadOptions,
     (pauseDownloadError: BusinessError) => {
     if (pauseDownloadError) {
@@ -1763,7 +1762,7 @@ try {
   };
   // Obtain an OnlineUpdater object.
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Pause the download of the update package.
+  // Pause the download of the upgrade package.
   onlineUpdater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
     console.info(`pauseDownload`);
   }).catch((pauseDownloadError: BusinessError) => {
@@ -2320,7 +2319,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const upgradePolicy: update.UpgradePolicy = {
   downloadStrategy: false, // Disable automatic download.
   autoUpgradeStrategy: false, // Disable automatic upgrade.
-  autoUpgradePeriods: [ { start: 120, end: 240 }] // Automatic update period, in minutes
+  autoUpgradePeriods: [ { start: 120, end: 240 }] // Automatic upgrade period, in minutes
 };
 try {
   // Define an UpgradeInfo object.
@@ -2396,7 +2395,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const upgradePolicy: update.UpgradePolicy = {
   downloadStrategy: false, // Disable automatic download.
   autoUpgradeStrategy: false, // Disable automatic upgrade.
-  autoUpgradePeriods: [ { start: 120, end: 240 }] // Automatic update period, in minutes
+  autoUpgradePeriods: [ { start: 120, end: 240 }] // Automatic upgrade period, in minutes
 };
 try {
   // Define an UpgradeInfo object.
@@ -3031,7 +3030,7 @@ Use scenarios: Before performing the deep factory reset, remind the user with th
 
 **Overview**
 
-This method calculates the time required by analyzing the data clearance scope and storage medium. Deep data clearance destroys data by overwriting it multiple times. The time required is directly proportional to the clearance scope. It the clearance scope is set to **DATA**, it takes a shorter time because only data in the user partition needs to be cleared; if the scope is set to **DATA_AND_OS**, it takes a longer time because data in both the user partition and OS partition needs to be cleared. The system calculates the estimated time based on factors such as the storage capacity, number of overwrites, and write speed.
+This method calculates the time required by analyzing the data clearance scope and storage medium. Deep data clearance destroys data by overwriting it multiple times. The time required is directly proportional to the clearance scope. If the clearance scope is set to **DATA**, it takes a shorter time because only data in the user partition needs to be cleared; if the scope is set to **DATA_AND_OS**, it takes a longer time because data in both the user partition and OS partition needs to be cleared. The system calculates the estimated time based on factors such as the storage capacity, number of overwrites, and write speed.
 
 **Constraints**
 
@@ -3133,7 +3132,7 @@ Use scenarios: When a user obtains an upgrade package from a local storage devic
 
 **Overview**
 
-The process is as follows: Read the upgrade package and certificate file. Use the certificate to verify the digital signature of the upgrade package, including the signature algorithm, signature value, and certificate validity. Calculate the hash value of the upgrade package and compare it with the hash value in the package to verify the file integrity. Check the compatibility between the upgrade package version and the current system version. Return the verification result. Digital signature verification ensures that the upgrade package is from a trusted source signed using the official signature. Integrity verification ensures that the upgrade package has not been tampered with. Version compatibility verification ensures that the upgrade package is applicable to the current device. After the verification is successful, the upgrade package is marked as trusted and can be used in the subsequent installation process.
+The process is as follows: Read the upgrade package and certificate file. Use the certificate to verify the digital signature of the upgrade package, including the signing algorithm, signature value, and certificate validity. Calculate the hash value of the upgrade package and compare it with the hash value in the package to verify the file integrity. Check the compatibility between the upgrade package version and the current system version. Return the verification result. Digital signature verification ensures that the upgrade package is from a trusted source signed using the official signature. Integrity verification ensures that the upgrade package has not been tampered with. Version compatibility verification ensures that the upgrade package is applicable to the current device. After the verification is successful, the upgrade package is marked as trusted and can be used in the subsequent installation process.
 
 **Calling sequence**
 
@@ -3210,7 +3209,7 @@ Use scenarios: When a user obtains an upgrade package from a local storage devic
 
 **Overview**
 
-The process is as follows: Read the upgrade package and certificate file. Use the certificate to verify the digital signature of the upgrade package, including the signature algorithm, signature value, and certificate validity. Calculate the hash value of the upgrade package and compare it with the hash value in the package to verify the file integrity. Check the compatibility between the upgrade package version and the current system version. Return the verification result. Digital signature verification ensures that the upgrade package is from a trusted source signed using the official signature. Integrity verification ensures that the upgrade package has not been tampered with. Version compatibility verification ensures that the upgrade package is applicable to the current device. After the verification is successful, the upgrade package is marked as trusted and can be used in the subsequent installation process.
+The process is as follows: Read the upgrade package and certificate file. Use the certificate to verify the digital signature of the upgrade package, including the signing algorithm, signature value, and certificate validity. Calculate the hash value of the upgrade package and compare it with the hash value in the package to verify the file integrity. Check the compatibility between the upgrade package version and the current system version. Return the verification result. Digital signature verification ensures that the upgrade package is from a trusted source signed using the official signature. Integrity verification ensures that the upgrade package has not been tampered with. Version compatibility verification ensures that the upgrade package is applicable to the current device. After the verification is successful, the upgrade package is marked as trusted and can be used in the subsequent installation process.
 
 **Calling sequence**
 
@@ -3305,7 +3304,7 @@ Use scenarios: This method is used to upgrade the system from a local storage de
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | --- |
-| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | Yes   | An array of upgrade files, which is used to specify the local upgrade files to be installed. You must call **verifyUpgradePackage** to verify the upgrade package and pass the verification before using this parameter to install the upgrade package. The parameter contains the **fileType** and **filePath** fields. The value of **filePath** is a string of 1 to 255 characters. If the value is out of range, an exception is thrown, and you need to provide the path of the upgrade package.|
+| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | Yes   | Array of upgrade files, which is used to specify the local upgrade files to be installed. You must call **verifyUpgradePackage** to verify the upgrade package and pass the verification before using this parameter to install the upgrade package. The parameter contains the **fileType** and **filePath** fields. The value of **filePath** is a string of 1 to 255 characters. If the value is out of range, an exception is thrown, and you need to provide the path of the upgrade package.|
 | callback    | AsyncCallback\<void> | Yes| Callback function used to receive the result of installing the upgrade package. The callback parameter is **err**. If the operation is successful, **err** is **null**; if the operation fails, **err** is an error object.|
 
 **Error codes**
@@ -3374,7 +3373,7 @@ Use scenarios: This method is used to upgrade the system from a local storage de
 
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | --- |
-| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | Yes   | An array of upgrade files, which is used to specify the local upgrade files to be installed. You must call **verifyUpgradePackage** to verify the upgrade package and pass the verification before using this parameter to install the upgrade package. The parameter contains the **fileType** and **filePath** fields. The value of **filePath** is a string of 1 to 255 characters. If the value is out of range, an exception is thrown, and you need to provide the path of the upgrade package.|
+| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | Yes   | Array of upgrade files, which is used to specify the local upgrade files to be installed. You must call **verifyUpgradePackage** to verify the upgrade package and pass the verification before using this parameter to install the upgrade package. The parameter contains the **fileType** and **filePath** fields. The value of **filePath** is a string of 1 to 255 characters. If the value is out of range, an exception is thrown, and you need to provide the path of the upgrade package.|
 
 **Return value**
 
@@ -3533,7 +3532,7 @@ let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => 
 try {
   // Obtain a LocalUpdater object.
   let localUpdater = update.getLocalUpdater();
-  // Unregister a local upgrade event listener.
+  // Unregister the local upgrade event listener.
   localUpdater.off(eventClassifyInfo, onTaskUpdate);
 } catch (error) {
   console.error(`Fail to get localUpdater error: ${error}`);
@@ -3542,7 +3541,7 @@ try {
 
 ## UpgradeInfo
 
-Represents update information.
+Represents upgrade information.
 
 **System API:** This is a system API.
 
@@ -3550,7 +3549,7 @@ Represents update information.
 
 | Name      | Type                           | Attribute| Description  |
 | ------------ | ----------------------------- | -------- | ------ |
-| upgradeApp   | string                        | Read-only: no; optional: no| Caller package name, which is used to identify the app that calls the upgrade API. The value is in the format of **com.***xxx.xxx.xxx* and consists of multiple segments separated by dots (.). The value is a string of 1 to 255 characters, and each segment ranges from 1 to 64 characters. Only letters, digits, and dots (.) are supported. Each segment must start with a letter and cannot contain consecutive dots (.) or end with a dot (.). An exception is thrown when the value is out of range or the format is incorrect.|
+| upgradeApp   | string                        | Read-only: no; optional: no| Caller package name, which is used to identify the app that calls the upgrade API. The value is in the format of **com.xxx.xxx.xxx** and consists of multiple segments separated by dots (.). The value is a string of 1 to 255 characters, and each segment ranges from 1 to 64 characters. Only letters, digits, and dots (.) are supported. Each segment must start with a letter and cannot contain consecutive dots (.) or end with a dot (.). An exception is thrown when the value is out of range or the format is incorrect.|
 | businessType | [BusinessType](#businesstype) | Read-only: no; optional: no| Upgrade service type.|
 
 ## BusinessType
@@ -3686,7 +3685,7 @@ Defines the download options, including the **allowNetwork** and **order** field
 
 | Name             | Type                             | Attribute        | Description  |
 | --------------- | ----------------------------------- | --------- | -------- |
-| allowNetwork | [NetType](#nettype) | Read-only: no; optional: no| Network type allowed for download. The value **CELLULAR** indicates that only download over the cellular network is allowed; **WiFi** that only download using Wi-Fi is allowed; **CELLULAR_AND_WIFI** indicates that download over both the cellular network and Wi-Fi is allowed. You are advised to select a network type based on the upgrade package size and network environment. If the upgrade package is big, you are advised to set the network type to **WIFI** to reduce mobile data usage and improve the download speed. If you are in a mobile scenario or there is no Wi-Fi available, you can set the network type to **CELLULAR**. If the network environment is uncertain, you are advised to set the network type to **CELLULAR_AND_WIFI**.|
+| allowNetwork | [NetType](#nettype) | Read-only: no; optional: no| Network type allowed for download. The value **CELLULAR** indicates that only download over the cellular network is allowed; **WiFi** indicates that only download using Wi-Fi is allowed; **CELLULAR_AND_WIFI** indicates that download over both the cellular network and Wi-Fi is allowed. You are advised to select a network type based on the upgrade package size and network environment. If the upgrade package is big, you are advised to set the network type to **WIFI** to reduce mobile data usage and improve the download speed. If you are in a mobile scenario or there is no Wi-Fi available, you can set the network type to **CELLULAR**. If the network environment is uncertain, you are advised to set the network type to **CELLULAR_AND_WIFI**.|
 | order        | [Order](#order)     | Read-only: no; optional: no| The options are as follows: **DOWNLOAD**: download the upgrade package, which needs to be manually installed later; **INSTALL**: install the upgrade package that has been downloaded; **DOWNLOAD_AND_INSTALL**: download and install the upgrade package, which is the complete upgrade process; **APPLY**: apply the upgrade package that has been installed by restarting device; **INSTALL_AND_APPLY**: install the upgrade package and apply it immediately by restarting the device.|
 
 ## ResumeDownloadOptions
@@ -3699,7 +3698,7 @@ Defines the resuming download options, which are used to specify the network typ
 
 | Name             | Type                             | Attribute        | Description  |
 | --------------- | ----------------------------------- | --------- | -------- |
-| allowNetwork | [NetType](#nettype)                    | Read-only: no; optional: no| Network type allowed for resuming download. This parameter is set only after the **pauseDownload** API is called to pause download. The value **CELLULAR** indicates that only download resumption over the cellular network is allowed; **WiFi** that only download resumption using Wi-Fi is allowed; **CELLULAR_AND_WIFI** indicates download resumption over both the cellular network and Wi-Fi is allowed. You are advised to select a network type based on the upgrade package size and network environment. If the upgrade package exceeds 100 MB, you are advised to set the network type to **WIFI** to reduce mobile data usage and improve the download speed. If you are in a mobile scenario or there is no Wi-Fi available, you can set the network type to **CELLULAR**. If the network environment is uncertain, you are advised to set the network type to **CELLULAR_AND_WIFI**.|
+| allowNetwork | [NetType](#nettype)                    | Read-only: no; optional: no| Network type allowed for resuming download. This parameter is set only after the **pauseDownload** API is called to pause download. The value **CELLULAR** indicates that only download resumption over the cellular network is allowed; **WiFi** indicates that only download resumption using Wi-Fi is allowed; **CELLULAR_AND_WIFI** indicates download resumption over both the cellular network and Wi-Fi is allowed. You are advised to select a network type based on the upgrade package size and network environment. If the upgrade package exceeds 100 MB, you are advised to set the network type to **WIFI** to reduce mobile data usage and improve the download speed. If you are in a mobile scenario or there is no Wi-Fi available, you can set the network type to **CELLULAR**. If the network environment is uncertain, you are advised to set the network type to **CELLULAR_AND_WIFI**.|
 
 ## PauseDownloadOptions
 
@@ -3755,7 +3754,7 @@ Construct an object based on actual requirements.
 
 | Name             | Type                             | Attribute        | Description  |
 | --------------- | ----------------------------------- | ------------------- | -------- |
-| downloadStrategy    | boolean                        | Read-only: no; optional: no| Automatic download policy.<br>The value **true** indicates that automatic download is enabled, which is applicable to scenarios where the system is expected to automatically detect and download the new version to reduce manual operations. <br>The value **false** indicates that automatic download is disabled, which is applicable to scenarios where users need to manually confirm the download, preventing using the mobile data or storage space in the background. Select a value based on user preferences and mobile data policies.|
+| downloadStrategy    | boolean                        | Read-only: no; optional: no| Automatic download policy.<br>The value **true** indicates that automatic download is enabled, which is applicable to scenarios where the system is expected to automatically detect and download the new version to reduce manual operations.<br>The value **false** indicates that automatic download is disabled, which is applicable to scenarios where users need to manually confirm the download, preventing using the mobile data or storage space in the background. Select a value based on user preferences and mobile data policies.|
 | autoUpgradeStrategy | boolean                        | Read-only: no; optional: no| Automatic upgrade policy.<br>The value **true** indicates that automatic upgrade is enabled, which is applicable to scenarios where the system needs to automatically complete the upgrade process to improve user experience.<br>The value **false** indicates that automatic upgrade is disabled, which is applicable to scenarios where users need to manually confirm the upgrade to prevent unexpected upgrade or ensure that users are informed. Select a value based on user experience requirements and the upgrade control policy.|
 | autoUpgradePeriods  | Array\<[UpgradePeriod](#upgradeperiod)> | Read-only: no; optional: yes| Automatic upgrade periods. This parameter is optional and is used when the automatic upgrade needs to be performed in a specified period (for example, at night). If this parameter is not passed, the value is an empty array **[]** by default, indicating that the automatic upgrade period is not limited and the upgrade can be performed at any time.|
 
@@ -3769,8 +3768,8 @@ Represents an automatic upgrade period.
 
 | Name             | Type                             | Attribute        | Description  |
 | --------------- | ----------------------------------- | ------------------- | -------- |
-| start | int | Read-only: no; optional: no| Start time. The value ranges from 0 to 1440, in minutes. This parameter indicates the number of minutes in a day. The value **0** indicates the time of 00:00, and the value **1440** indicates 24:00.<br>The value must be less than or equal to that of **end**. An exception is thrown if the value is out of range.|
-| end   | int | Read-only: no; optional: no| End time. The value ranges from 0 to 1440, in minutes. This parameter indicates the number of minutes in a day. The value **0** indicates the time of 00:00, and the value **1440** indicates 24:00.<br>The value must be greater than or equal to that of **start**. An exception is thrown if the value is out of range.|
+| start | int | Read-only: no; optional: no| Start time, in minutes. The value ranges from 0 to 1440. This parameter indicates the number of minutes in a day. The value **0** indicates the time of 00:00, and the value **1440** indicates 24:00.<br>The value must be less than or equal to that of **end**. An exception is thrown if the value is out of range.|
+| end   | int | Read-only: no; optional: no| End time, in minutes. The value ranges from 0 to 1440. This parameter indicates the number of minutes in a day. The value **0** indicates the time of 00:00, and the value **1440** indicates 24:00.<br>The value must be greater than or equal to that of **start**. An exception is thrown if the value is out of range.|
 
 ## TaskInfo
 
@@ -3988,7 +3987,7 @@ Enumerates effective modes.
 
 ## OtaMode
 
-Enumerates the update modes.
+Enumerates the upgrade modes.
 
 **System API:** This is a system API.
 
@@ -4029,7 +4028,7 @@ Enumerates description file formats.
 
 ## NetType
 
-Enumerates the network types allowed for download. The value **CELLULAR** indicates that only download over the cellular network is allowed; **WiFi** that only download using Wi-Fi is allowed; **CELLULAR_AND_WIFI** indicates that download over both the cellular network and Wi-Fi is allowed.
+Enumerates the network types allowed for download. The value **CELLULAR** indicates that only download over the cellular network is allowed; **WiFi** indicates that only download using Wi-Fi is allowed; **CELLULAR_AND_WIFI** indicates that download over both the cellular network and Wi-Fi is allowed.
 
 **System API:** This is a system API.
 
@@ -4045,7 +4044,7 @@ Enumerates the network types allowed for download. The value **CELLULAR** indica
 
 ## Order
 
-Enumerates update commands.
+Enumerates upgrade commands.
 
 **System API:** This is a system API.
 
@@ -4061,7 +4060,7 @@ Enumerates update commands.
 
 ## UpgradeStatus
 
-Enumerates update states.
+Enumerates upgrade statuses.
 
 **System API:** This is a system API.
 
@@ -4076,9 +4075,9 @@ Enumerates update states.
 | WAITING_INSTALL  | 30   | Waiting for installation. |
 | UPDATING         | 31   | Updating. |
 | WAITING_APPLY    | 40   | Waiting for applying the upgrade. |
-| APPLYING         | 41   | Applying the update. |
-| UPGRADE_SUCCESS  | 50   | Update succeeded.|
-| UPGRADE_FAIL     | 51   | Update failed.|
+| APPLYING         | 41   | Applying the upgrade. |
+| UPGRADE_SUCCESS  | 50   | Upgrade succeeded.|
+| UPGRADE_FAIL     | 51   | Upgrade failed.|
 
 ## EventClassify
 
@@ -4118,5 +4117,5 @@ Enumerates event IDs.
 | EVENT_APPLY_WAIT       | 0x0100000D | Waiting for applying the upgrade.   |
 | EVENT_APPLY_START      | 0x0100000E | Applying the upgrade.  |
 | EVENT_UPGRADE_SUCCESS  | 0x0100000F | Upgrade succeeded.  |
-| EVENT_UPGRADE_FAIL     | 0x01000010 | Update failed.  |
+| EVENT_UPGRADE_FAIL     | 0x01000010 | Upgrade failed.  |
 <!--no_check-->

@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-The module provides APIs for loading, unloading, playing, and stopping playing sounds, setting the volume, and setting the number of loops.
+The module provides APIs for loading, unloading, playing, and stopping playing sounds, setting the volume, and setting the number of loops. The module is applicable to scenarios that require quick response and low-latency playback, such as game sound effects, UI interaction sound effects, and notification sounds.
 
 Before using these APIs, you must call [media.createSoundPool](arkts-apis-media-f.md#mediacreatesoundpool10) to create a **SoundPool** instance.
 
@@ -32,11 +32,11 @@ These parameters are used to control the playback volume, number of loops, and p
 | Name           | Type                                    | Read-Only| Optional| Description                                                        |
 | --------------- | ---------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | loop | number   | No| Yes | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly.<br>The default value is **0**, indicating that the content is played only once.<br>If this parameter is set to a floating-point number, only the integer part is used.                  |
-| rate | number    | No| Yes | Playback rate. For details, see [AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8). Default value: **0**|
+| rate | number    | No| Yes | Playback rate. For details, see [AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8). The default value is **RENDER_RATE_NORMAL**, corresponding to the enumerated value **0**.|
 | leftVolume  | number | No| Yes | Volume of the left channel. The value range is [0.0, 1.0], and the default value is **1.0**.<br> When the volume exceeds the boundary value, the boundary value is automatically used.                      |
 | rightVolume | number  | No| Yes | Volume of the right channel. (Currently, the volume cannot be set separately for the left and right channels. The volume set for the left channel is used.) The value range is [0.0, 1.0], and the default value is **1.0**.<br> When the volume exceeds the boundary value, the boundary value is automatically used.|
 | priority  | number  | No| Yes | Priority for playing an audio stream. The value **0** indicates the lowest priority. A larger value indicates a higher priority.<br> The playback priority is determined by comparing the values. The value must be an integer greater than or equal to 0. The default value is **0**.<br> If this parameter is set to a negative value, it is automatically set to 0. If this parameter is set to a floating point number, only the integer part is used.    |
-| pitch  | number  | No| Yes | Pitch for playing an audio stream. The value range is [0.25, 4.0]. The default value is **1.0**.<br>When the pitch exceeds the boundary value, the boundary value is automatically used.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.      |
+| pitch  | number  | No| Yes | Pitch for playing an audio stream. The value range is [0.25, 4.0]. The default value is **1.0**.<br>When the pitch exceeds the boundary value, the boundary value is automatically used.<br>**Since:** 26.0.0<br>**Model restriction**: This API can be used only in the stage model.      |
 
 ## ErrorType<sup>20+</sup>
 
@@ -222,7 +222,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
         console.info('Succeeded in loading uri');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundPool. Code: ${err.code}, message: ${err.message}');
+        console.error(`Failed to load soundPool. Code: ${err.code}, message: ${err.message}`);
       });
     }); // '/test_01.mp3' here is only an example. Replace it with the actual URI.
   }
@@ -287,12 +287,10 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let file: fileIo.File;
     let soundID: number = 0;
     let fileSize: number = 1; // Obtain the size through fileIo.stat().
-    let uri: string = "";
     // Obtain the FD. The test_01.mp3 file is not an audio file in the rawfile directory.
     fileIo.open('/test_01.mp3', fileIo.OpenMode.READ_ONLY).then((file_: fileIo.File) => {
       file = file_;
       console.info("file fd: " + file.fd);
-      uri = 'fd://' + (file.fd).toString();
       soundPool.load(file.fd, 0, fileSize, (error: BusinessError, soundId_: number) => {
         if (error) {
           console.error(`Failed to load soundPool: Code: ${error.code}, message: ${error.message}`);
@@ -406,12 +404,10 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let file: fileIo.File;
     let soundID: number = 0;
     let fileSize: number = 1; // Obtain the size through fileIo.stat().
-    let uri: string = "";
     // Obtain the FD. The test_01.mp3 file is not an audio file in the rawfile directory.
     fileIo.open('/test_01.mp3', fileIo.OpenMode.READ_ONLY).then((file_: fileIo.File) => {
       file = file_;
       console.info("file fd: " + file.fd);
-      uri = 'fd://' + (file.fd).toString();
       soundPool.load(file.fd, 0, fileSize).then((soundId: number) => {
         console.info('Succeeded in loading soundpool');
         soundID = soundId;
@@ -508,7 +504,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let soundID: number = 0;
     let streamID: number = 0;
     let playParameters: media.PlayParameters = {
-      loop: 3, // The sound is played four times (three loops).
+      loop: 3, // The content is played four times. (If loop is set to a value greater than or equal to 0, the number of times the content is actually played is the value of loop plus 1.)
       rate: audio.AudioRendererRate.RENDER_RATE_NORMAL, // The sound is played at the original frequency.
       leftVolume: 0.5, // range = 0.0-1.0
       rightVolume: 0.5, // range = 0.0-1.0
@@ -640,7 +636,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     let soundID: number = 0;
     let streamID: number = 0;
     let playParameters: media.PlayParameters = {
-      loop: 3, // The sound is played four times (three loops).
+      loop: 3, // The content is played four times. (If loop is set to a value greater than or equal to 0, the number of times the content is actually played is the value of loop plus 1.)
       rate: audio.AudioRendererRate.RENDER_RATE_NORMAL, // The sound is played at the original frequency.
       leftVolume: 0.5, // range = 0.0-1.0.
       rightVolume: 0.5, // range = 0.0-1.0.
@@ -652,7 +648,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       console.info('Succeeded in playing soundpool');
       streamID = streamId;
     },(err: BusinessError) => {
-      console.error('Failed to play soundpool. Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to play soundpool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -791,7 +787,7 @@ Sets the loop mode. This API uses an asynchronous callback to return the result.
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
-| loop | number | Yes  | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly.|
+| loop | number | Yes  | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly.<br>If this parameter is set to a floating-point number, only the integer part is used.|
 | callback | AsyncCallback\<void> | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -852,7 +848,7 @@ Sets the loop mode. This API uses a promise to return the result.
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | Yes  | Audio stream ID, which is obtained by calling **play()**.|
-| loop | number | Yes  | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly.|
+| loop | number | Yes  | Number of loops.<br>If this parameter is set to a value greater than or equal to 0, the number of times the content is actually played is the value of **loop** plus 1.<br> If this parameter is set to a value less than 0, the content is played repeatedly.<br>If this parameter is set to a floating-point number, only the integer part is used.|
 
 **Return value**
 
@@ -1020,7 +1016,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setPriority(streamID, 1).then(() => {
       console.info('Succeeded in setting Priority soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to set Priority soundPool. Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to set Priority soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1269,7 +1265,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setVolume(streamID, 0.5, 0.5).then(() => {
       console.info('Succeeded in setVolume soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to setVolume soundPool and catch error is ' + err.message);
+      console.error(`Failed to setVolume soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1279,7 +1275,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setInterruptMode(interruptMode: media.SoundInterruptMode): void
 
-Sets the interruption mode of the audio files with the same ID during playback. After the **SoundPool** is created, this API is valid only when the **Play** function of the **SoundPool** is called for the first time. You can set the interruption mode for multiple times. If the interruption mode is not set, the [SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23) mode is used by default. That is, if the former audio file is not completely played, the latter audio file with the same ID interrupts the former audio file.
+Sets the interruption mode of the audio resources with the same sound ID during playback. After a **soundPool** instance is created, this API is valid only before the play function of the **soundPool** instance is called for the first time. If this parameter is not set, [SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23) is used by default. That is, for the audio resources with the same sound ID, if the previous playback instance has not finished playing, the next playback instance interrupts the previous one before playing.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1294,7 +1290,9 @@ Sets the interruption mode of the audio files with the same ID during playback. 
 **Example**
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
+import { audio } from '@kit.AudioKit';
 
 // Create a SoundPool instance.
 let soundPool: media.SoundPool;
@@ -1431,7 +1429,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.unload(soundID).then(() => {
       console.info('Succeeded in unload soundPool');
     }, (err: BusinessError) => {
-      console.error('Failed to unload soundPool and catch error is ' + err.message);
+      console.error(`Failed to unload soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1535,7 +1533,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.release().then(() => {
       console.info('Succeeded in releasing soundPool');
     }, (err: BusinessError) => {
-      console.error('Failed to release soundPool and catch error is ' + err.message);
+      console.error(`Failed to release soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });

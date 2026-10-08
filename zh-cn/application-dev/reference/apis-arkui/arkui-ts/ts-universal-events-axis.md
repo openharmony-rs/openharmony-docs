@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-轴事件是指当鼠标或触控板等带指针输入设备的指针位于组件区域内时，因操作滚轮、触控板双指沿特定方向（轴）滑动或触控板双指捏合时触发的事件。“轴”指二维坐标系中的方向，分为水平（X轴）和垂直（Y轴）。
+轴事件是指当鼠标或触控板等带指针输入设备的指针位于组件区域内时，因操作滚轮、触控板双指沿特定方向（轴）滑动或触控板双指捏合时触发的事件。轴事件中的轴类型包括水平轴（X轴）、垂直轴（Y轴）以及双指捏合轴。
 
 >  **说明：**
 >
@@ -38,7 +38,7 @@ onAxisEvent(event: Callback\<AxisEvent>): T
 
 ## AxisEvent
 
-轴事件的对象说明，继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
+轴事件的对象说明，继承于[BaseEvent](ts-universal-events-click.md#baseevent8)。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -109,7 +109,7 @@ getPinchAxisScaleValue(): number
 
 | 类型              |说明       |
 | ------- | --------------------------------- |
-| number | 双指缩放比例。<br> **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值；当前轴事件不包含捏合轴时，取默认值0。<br>默认值：0<br>取值范围：[0, +∞)<br> |
+| number | 双指缩放比例。<br> **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值；当前轴事件不包含捏合轴时取默认值0。<br>取值范围：[0, +∞)<br> |
 
 ### hasAxis<sup>22+</sup>
 
@@ -137,7 +137,7 @@ hasAxis(axisType: AxisType): boolean
 
 getCurrentLocalPosition?(): Coordinate2D
 
-获取鼠标光标相对于当前组件实时位置左上角的坐标。
+获取鼠标光标相对于当前组件实时位置左上角的坐标。在事件无法提供有效的实时组件坐标时，返回空值，使用前请进行判空处理。
 
 **起始版本：** 26.0.0
 
@@ -157,7 +157,7 @@ getCurrentLocalPosition?(): Coordinate2D
 
 ### 示例1（获取轴事件相关参数）
 
-该示例中，对按钮设置轴事件，通过滚动鼠标滚轮可获取轴事件的相关参数。从API version 21开始，该示例通过[axisPinch](./ts-gesture-customize-judge.md#属性)和[getPinchAxisScaleValue](#getpinchaxisscalevalue21)获取双指缩放比例；从API version 22开始，该示例通过[hasAxis](#hasaxis22)判断轴事件是否包含指定的轴类型。
+该示例中，对按钮设置轴事件，通过滚动鼠标滚轮可获取轴事件的相关参数。从API version 21开始，该示例通过[BaseEvent](./ts-universal-events-click.md#baseevent8)的`axisPinch`属性和[getPinchAxisScaleValue](#getpinchaxisscalevalue21)获取双指缩放比例；从API version 22开始，该示例通过[hasAxis](#hasaxis22)判断轴事件是否包含指定的轴类型。
 
 ```ts
 // xxx.ets

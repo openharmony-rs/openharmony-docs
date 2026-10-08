@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-09-03T11:13:38.898Z pushedAt=2026-09-05T10:47:30.571Z -->
 
 The module provides version information about the dispatchInfo struct and dispatch API. The information can be obtained through [freeInstall.getDispatchInfo](js-apis-freeInstall-sys.md#getdispatchinfo).
 
@@ -28,5 +29,5 @@ import { freeInstall } from '@kit.AbilityKit';
 
 | Name       | Type  | Read-Only| Optional| Description                    |
 | ----------- | ------ | ---- | ---- | ------------------------ |
-| version     | string | Yes  | No  | Version of the dispatchInfo struct.|
+| version     | string | Yes   | No   | Version information of the DispatchInfo struct. |
 | dispatchAPIVersion | string | Yes  | No  | Version of the dispatch API.    |

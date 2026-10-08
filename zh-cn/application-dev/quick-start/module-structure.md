@@ -31,7 +31,7 @@ module对象包含HAP的配置信息。
 | entryTheme | 此标签标识系统内部主题的关键字。将标记值设置为名称的资源索引。 | 字符串 | 可缺省，缺省值为空。 |
 |testRunner | 此标签用于支持对测试框架的配置。 | 对象 | 可缺省，缺省值为空。 |
 |generateBuildHash |标识当前HAP/HSP是否由打包工具生成哈希值。<br/>该字段配置为true时，当前HAP/HSP会由打包工具生成对应的哈希值。系统OTA升级时，若应用的[version下的code](./app-structure.md#version对象内部结构)保持不变时，可根据哈希值判断应用是否需要升级。<br/>-&nbsp;true：表示当前HAP/HSP是由打包工具生成对应的哈希值。<br/>-&nbsp;false：表示当前HAP/HSP不会由打包工具生成对应的哈希值。<br/>**说明：**<br/>该字段仅对预置应用生效。 |布尔值|该标签可缺省，缺省值为false。|
-|libIsolation |用于区分同应用不同hap下的so文件，以防止so冲突。<br/>-&nbsp;true：当前hap的so会储存在libs目录中以Module名命名的路径下。<br/>-&nbsp;false：当前hap的so会直接储存在libs目录中。|布尔值|该标签可缺省, 缺省值为false。|
+|libIsolation |用于区分同应用不同hap下的so文件，以防止so冲突。<br/>-&nbsp;true：当前hap的so会存储在libs目录中以Module名命名的路径下。<br/>-&nbsp;false：当前hap的so会直接存储在libs目录中。|布尔值|该标签可缺省，缺省值为false。|
 
 module示例：
 
@@ -107,7 +107,7 @@ module示例：
 | moduleName | 标识当前HAP的名称，最大长度为31个字节。 在应用升级时，该名称允许修改，但需要应用适配Module相关数据目录的迁移，可使用[@ohos.file.fs (文件管理)](../reference/apis-core-file-kit/js-apis-file-fs.md)接口。| 字符串 | 不可缺省。 |
 | moduleType | 标识当前HAP的类型，包括三种类型：entry、feature和har。 | 字符串 | 不可缺省。 |
 | installationFree | 标识当前HAP是否支持免安装特性。true：表示支持免安装特性，且符合免安装约束。false：表示不支持免安装特性。另外还需注意：当entry.hap该字段配置为true时，与该entry.hap相关的所有feature.hap该字段也需要配置为true。当entry.hap该字段配置为false时，与该entry.hap相关的各feature.hap该字段可按业务需求配置true或false。 | 布尔值 | 不可缺省。 |
-| deliveryWithInstall | 标识当前HAP是否在用户主动安装HAP所在应用的时候一起安装。true：&nbsp;安装应用时当前HAP随应用一起下载安装。false：安装应用时当前HAP并不下载安装，后续使用是按需下载。 | 布尔值 | 不可缺省。 |
+| deliveryWithInstall | 标识当前HAP是否在用户主动安装HAP所在应用的时候一起安装。true：&nbsp;安装应用时当前HAP随应用一起下载安装。false：安装应用时当前HAP并不下载安装，后续使用时按需下载。 | 布尔值 | 不可缺省。 |
 
 
 distro示例：
@@ -129,7 +129,7 @@ distro示例：
 | -------- | -------- | -------- | -------- |
 | parameters | 标识调用Ability时所有调用参数的元信息。每个调用参数的元信息由以下三个标签组成：description、name、type。 | 对象数组 | 可缺省，缺省值为空。 |
 | results | 标识Ability返回值的元信息。每个返回值的元信息由以下三个标签组成：description、name、type。 | 对象数组 | 可缺省，缺省值为空。 |
-| customizeData | 该标签标识父级组件的自定义元信息，Parameters和results在application不可配。 | 对象数组 | 可缺省，缺省值为空。 |
+| customizeData | 该标签标识父级组件的自定义元信息，parameters和results在application不可配。 | 对象数组 | 可缺省，缺省值为空。 |
 
 ## parameters对象内部结构
 
@@ -207,7 +207,7 @@ metadata对象示例：
 <!--Table: 15%; 60%; 10%; 15%-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| process | 运行应用程序或Ability的进程名称。如果在deviceConfig标记中配置了进程，则应用程序的所有能力都在此进程中运行。您还可以为特定能力设置流程属性，以便该能力可以在此流程中运行。如果此属性设置为与其他应用程序相同的进程名称，则所有这些应用程序可以在同一进程中运行，前提是他们具有相同的联合用户ID和相同的签名。该标签最大字节数为31个字节。 | 字符串 | 可缺省，缺省值为空。 |
+| process | 运行应用程序或Ability的进程名称。如果在deviceConfig标记中配置了进程，则应用程序的所有能力都在此进程中运行。您还可以为特定能力设置进程属性，以便该能力可以在此进程中运行。如果此属性设置为与其他应用程序相同的进程名称，则所有这些应用程序可以在同一进程中运行，前提是他们具有相同的联合用户ID和相同的签名。该标签最大字节数为31个字节。 | 字符串 | 可缺省，缺省值为空。 |
 | name | 标识Ability名称。取值可采用反向域名方式表示，由包名和类名组成，如"com.example.myapplication.EntryAbility"；也可采用"."开头的类名方式表示，如".EntryAbility"。<br/>Ability的名称，需在一个应用的范围内保证唯一。说明：在使用DevEco&nbsp;Studio新建项目时，默认生成首个Ability的配置，即"config.json"中"EntryAbility"的配置。如使用其他DevEco Studio工具，可自定义名称。该标签最大长度为127个字节。 | 字符串 | 不可缺省。 |
 | description | 标识对Ability的描述。取值可以是描述性内容，也可以是对描述性内容的资源索引，以支持多语言。该标签最大长度为255个字节。 | 字符串 | 可缺省，缺省值为空。 |
 | icon | 标识Ability图标资源文件的索引。取值示例：$media:ability_icon。如果在该Ability的skills属性中，actions的取值包含&nbsp;"action.system.home"，entities取值中包含"entity.system.home"，则该Ability的icon将同时作为应用的icon。如果存在多个符合条件的Ability，则取位置靠前的Ability的icon作为应用的icon。<br/>说明：应用的"icon"和"label"是用户可感知配置项，需要区别于当前所有已有的应用"icon"或"label"（至少有一个不同）。 | 字符串 | 可缺省，缺省值为空。 |
@@ -221,7 +221,7 @@ metadata对象示例：
 | metaData | 元数据。 | 对象 | 可缺省，缺省值为空。 |
 | type | 标识Ability的类型。取值范围如下：<br/>page：表示基于Page模板开发的FA，用于提供与用户交互的能力。<br/>service：表示基于Service模板开发的PA，用于提供后台运行任务的能力。<br/>data：表示基于Data模板开发的PA，用于对外部提供统一的数据访问对象。<br/>CA：表示支持其他应用以窗口方式调起该Ability。 | 字符串 | 不可缺省。 |
 | orientation | 标识该Ability的显示模式。该标签仅适用于page类型的Ability。取值范围如下：<br/>unspecified：由系统自动判断显示方向。<br/>landscape：横屏模式。<br/>portrait：竖屏模式。<br/>followRecent：跟随栈中最近的应用。 | 字符串 | 可缺省，缺省值为"unspecified"。 |
-| backgroundModes | 标识后台服务的类型，可以为一个服务配置多个后台服务类型。该标签仅适用于service类型的Ability。取值范围如下：<br/>dataTransfer：通过网络/对端设备进行数据下载、备份、分享、传输等。<br/>audioPlayback：音频播放。<br/>audioRecording：录音。<br/>pictureInPicture：画中画、小窗口播放视频。<br/>voip：音视频电话、VOIP。<br/>location：定位、导航。<br/>bluetoothInteraction：蓝牙扫描、连接、传输。<br/>wifiInteraction：Wi-Fi扫描、连接、传输。<br/>screenFetch：录屏、截屏。<br/>multiDeviceConnection：多设备互联。 | 字符串数组 | 可缺省，缺省值为空。 |
+| backgroundModes | 标识后台服务的类型，可以为一个服务配置多个后台服务类型。该标签仅适用于service类型的Ability。取值范围如下：<br/>dataTransfer：通过网络/对端设备进行数据下载、备份、分享、传输等。<br/>audioPlayback：音频播放。<br/>audioRecording：录音。<br/>pictureInPicture：画中画、小窗口播放视频。<br/>voip：音视频电话、VOIP。<br/>location：定位、导航。<br/>bluetoothInteraction：蓝牙扫描、连接、传输。<br/>wifiInteraction：Wi-Fi扫描、连接、传输。<br/>screenFetch：录屏、截屏。<br/>multiDeviceConnection：多设备互联。<br/>usbConnection：USB连接，从API版本26.2.0开始支持。 | 字符串数组 | 可缺省，缺省值为空。 |
 | grantPermission | 指定是否可以向Ability内任何数据授予权限。<br/>-&nbsp;true：表示可以向Ability内任何数据授予权限。<br/>-&nbsp;false：表示不可以向Ability内任何数据授予权限。 | 布尔值 | 可缺省，缺省值为空。 |
 | readPermission | 标识读取Ability的数据所需的权限。该标签仅适用于data类型的Ability。取值为长度不超过255字节的字符串。该标签仅适用于默认设备、平板、智慧屏、车机、智能穿戴。 | 字符串 | 可缺省，缺省为空。 |
 | writePermission | 标识向Ability写数据所需的权限。该标签仅适用于data类型的Ability。取值为长度不超过255字节的字符串。 | 字符串 | 可缺省，缺省为空。 |
@@ -232,7 +232,7 @@ metadata对象示例：
 | forms | 标识服务卡片的属性。该标签仅当formsEnabled为"true"时，才能生效。 | 对象数组 | 可缺省，缺省值为空。 |
 | srcLanguage | Ability开发语言的类型，开发者创建工程时由开发者手动选择开发语言。取值如下："js"、"ets"、"java"。 | 字符串 | 可缺省，缺省值为"js"。 |
 | srcPath | 该标签标识Ability对应的JS组件代码路径，该标签最大长度为127字节。 | 字符串 | 不可缺省。 |
-| uriPermission | 标识该Ability有权访问的应用程序数据。此属性由模式和路径子属性组成。此属性仅对类型提供者的能力有效。 | 对象 | 可缺省，缺省值为空。 |
+| uriPermission | 标识该Ability有权访问的应用程序数据。此属性由模式和路径子属性组成。此属性仅对类型提供者的Ability有效。 | 对象 | 可缺省，缺省值为空。 |
 | startWindowIcon | 标识该Ability启动页面图标资源文件的索引。该标签仅适用于page类型的Ability。取值示例：$media:icon。 | 字符串 | 可缺省，缺省值为空。 |
 | startWindowBackground | 标识该Ability启动页面背景颜色资源文件的索引。该标签仅适用于page类型的Ability。取值示例：$color:red。 | 字符串 | 可缺省，缺省值为空。 |
 | removeMissionAfterTerminate | 该标签标识Ability销毁后是否从任务列表中移除任务。该标签仅适用于page类型的Ability。true表示销毁后移除任务，&nbsp;false表示销毁后不移除任务。 | 布尔值 | 可缺省，缺省值为false。 |

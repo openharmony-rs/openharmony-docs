@@ -61,14 +61,22 @@
 
 - 共享模块可以引用其他共享模块或非共享模块，引用和被引用场景没有限制。
 
-- 仅支持使用静态加载、napi_load_module或napi_load_module_with_info加载共享模块。
+- 仅支持使用静态加载、动态加载、`napi_load_module` 或 `napi_load_module_with_info` 加载共享模块。其中，动态加载从API version 26.2.0开始支持。
 
   ```TypeScript
   // test.ets
   import { num } from './A'; // 支持静态加载
 
   import { worker } from '@kit.ArkTS';
-  let wk = new worker.ThreadWorker("./A"); // 不支持其他方式加载共享模块, 将产生运行时报错
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let wk = new worker.ThreadWorker('./A'); // 不支持作为 worker 入口加载共享模块，将产生运行时报错
+
+  import('./A').then((module: ESObject) => { // 支持动态加载
+    let moduleNum: number = module.num;
+    console.info(`num: ${moduleNum}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to dynamically import module. Code: ${err.code}, message: ${err.message}`);
+  });
   ```
 
   ```TypeScript
@@ -86,10 +94,10 @@
    // 共享模块
    import { ArkTSUtils } from '@kit.ArkTS';
    
-   // 声明当前模块为共享模块，只能导出可Sendable数据
+   // 声明当前模块为共享模块，只能导出Sendable数据
    'use shared'
    
-   // 共享模块，SingletonA全局唯一
+   // 共享模块，singletonA全局唯一
    @Sendable
    class SingletonA {
      private count_: number = 0;
@@ -118,35 +126,17 @@
    import { ArkTSUtils, taskpool } from '@kit.ArkTS';
    import { singletonA } from './sharedModule';
    
-   export { num, str } from './test'; // 正确示例，导出对象合集
-   
-   @Sendable
-   export class A {
-     private count_: number = 0;
-     public lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
-   
-     public async getCount(): Promise<number> {
-       return this.lock_.lockAsync(() => {
-         return this.count_;
-       })
-     }
-   
-     public async increaseCount() {
-       await this.lock_.lockAsync(() => {
-         this.count_++;
-       })
-     }
-   }
+   // ...
    
    @Concurrent
    async function increaseCount() {
      await singletonA.increaseCount();
-     console.info('SharedModule: count is:' + await singletonA.getCount());
+     console.info(`SharedModule: count is: ${await singletonA.getCount()}`);
    }
    
    @Concurrent
    async function printCount() {
-     console.info('SharedModule: count is:' + await singletonA.getCount());
+     console.info(`SharedModule: count is: ${await singletonA.getCount()}`);
    }
    
    @Entry

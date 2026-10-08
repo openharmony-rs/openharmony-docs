@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-13T08:06:37.506Z pushedAt=2026-07-13T08:28:01.935Z -->
+<!-- md-trans-meta sourceCommit=0d88cc2609499932569930500f1a6723fd824448 translatedAt=2026-08-11T10:11:42.071Z pushedAt=2026-08-11T11:30:25.595Z -->
 
 ## When to Use
 
@@ -69,10 +69,10 @@ A screen group is a set of logically associated display areas in the system, wit
 
 > **NOTE**
 >
-> - For listening APIs: Use the corresponding **off()** API to remove the relevant listener when the page is destroyed to avoid memory leaks.
+> - For listener APIs: Use the corresponding **off()** API to remove the relevant listener when the page is destroyed to avoid memory leaks.
 >
 > - Page loading takes precedence over display: When calling APIs such as **showWindow()** to display a window, ensure that the page has been loaded using **loadContent()** or **setUIContent**.
 >
 > - Use the exclusive window highlight mode appropriately: Avoid abusing [setExclusivelyHighlighted()](../reference/apis-arkui/arkts-apis-window-Window.md#setexclusivelyhighlighted15), which may lead to a fragmented user experience.
 >
-> - Combining state query and listening APIs: When entering a page for the first time, use isWindowHighlighted()/isFocused() to obtain the initial state, and then listen for subsequent changes through the corresponding **on('windowHighlightChange')**/**on('windowEvent')** APIs to implement relevant adaptations and operations.
+> - Combining state query and listening APIs: When entering a page for the first time, use **isWindowHighlighted()**/**isFocused()** to obtain the initial state, and then listen for subsequent changes through the corresponding **on('windowHighlightChange')**/**on('windowEvent')** APIs to implement relevant adaptations and operations.

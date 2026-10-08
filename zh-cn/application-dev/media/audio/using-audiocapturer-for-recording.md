@@ -32,7 +32,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    >
    > 当设置Mic音频源（即[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)为SOURCE_TYPE_MIC、SOURCE_TYPE_VOICE_RECOGNITION、SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_VOICE_MESSAGE、SOURCE_TYPE_LIVE（从API version 20开始支持））时，需要申请麦克风权限ohos.permission.MICROPHONE，申请方式参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
-   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
+   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -72,11 +72,16 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    > **注意：**
    > 
    > - **主线程阻塞风险**：录音流会持续产生音频数据，对回调响应的及时性要求较高。ArkTS应用的主线程通常负责UI刷新、用户交互和部分业务回调，如果在主线程中执行同步文件读写、复杂计算、频繁日志打印等耗时任务，会导致主线程无法及时处理录音数据回调。对于AudioCapturer，`readData`回调执行不及时会影响音频缓冲区流转，可能造成录音数据缺失、卡顿或杂音。因此，应该避免在主线程中注册回调，以免被其他业务阻塞导致响应回调不及时造成卡顿。录音数据回调中只做必要的轻量处理，例如复制数据、更新少量状态，然后尽快返回。文件保存、编码、网络传输等耗时处理应按业务需要投递到异步任务或Worker中执行。
+   > - **高负载阻塞风险**：在高负载场景下，承载回调的ArkTS执行上下文可能被其他业务的任务持续占用，导致回调调度延迟。此类场景会产生和主线程阻塞类似的录音数据缺失、卡顿或杂音问题。处理高负载时，应降低同一执行上下文中非必要任务的执行频率，避免多个定时任务同时运行，必要时暂停其他非关键业务。
+   > - **录音过载确认**：录音过程中，系统音频模块将音频输入数据写入与应用侧音频客户端共享的录音缓冲区，应用侧音频客户端从该缓冲区读取数据。应用侧读取数据的速率低于系统音频模块写入速率时，未处理的数据会持续积压。当共享缓冲区剩余可写空间不足以容纳一个完整音频帧时，系统音频模块判定发生过载。此时输入数据不会写入共享缓冲区，应用侧无法读取数据。过载计数用于记录检测到的过载情况，ArkTS应用可调用[getOverflowCount()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#getoverflowcount12)或[getOverflowCountSync()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#getoverflowcountsync12)查询过载音频帧数量。从API版本26.0.0及以上，使用[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo)输出录音快照时，也可查看其中的`overflowCount`，用于录音结束后的问题定位。高负载或任务队列积压期间，如果过载计数持续增加，应优先降低任务竞争、限制队列长度或主动停止录音流。
    > - **线程管理**：不建议直接使用多线程处理数据读取。如果需要将数据保存、编码、网络传输等耗时任务投递到异步任务或Worker中处理，要求做好线程管理。
    > - **数据缓存**：`readData`回调返回的ArrayBuffer对应底层音频缓冲区，回调返回后该缓冲区可能被系统复用。如果需要在回调结束后继续处理数据，应先复制ArrayBuffer，再投递到异步任务中处理。
    > - **接口调用**：`readData`回调仅用于获取音频数据，不建议在回调中调用AudioCapturer的start、stop、release、off等接口。注册`readData`回调后，同一个AudioCapturer实例不建议再调用已废弃的read接口读取数据。
+   > - **业务静音处理**：当前可通过以下方式实现录音静音。
+   >   1. 静音期间仍需保持录音流运行：应用在`readData`回调中复制采集数据，并将副本中的全部采样数据设置为静音值后保存或发送。有符号PCM格式的静音值为`0`；`SAMPLE_FORMAT_U8`格式的静音值为`0x80`。
+   >   2. 业务允许静音期间不再采集数据：由应用主动停止录音流，后续需要录音时再重新启动，以停止采集替代静音处理。
 
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->     
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -114,7 +119,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    ```
 3. 调用[start](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#start8)方法进入running状态，开始录制音频。
 
-   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
+   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -131,7 +136,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    ```
 4. 调用[stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#stop8)方法停止录制。
 
-   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
+   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -147,7 +152,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
        }
    ```
 5. 调用[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)方法销毁实例，释放资源。
-<!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->   
+<!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -171,7 +176,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 下面展示了使用AudioCapturer录制音频的完整示例代码。
 
-<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->   
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -261,7 +266,7 @@ async function initRender(context: common.UIAbilityContext) {
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x80为静音数据，使用其他采样格式时0为静音数据。本示例采样格式为SAMPLE_FORMAT_S16LE，因此静音数据填充0。
           view.setUint8(i, 0);
         }
       }
@@ -282,7 +287,7 @@ async function initRender(context: common.UIAbilityContext) {
         audioRenderer.on('writeData', writeDataCallback);
       }
     } else {
-      console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+      console.error(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
     }
   });
 }
@@ -292,7 +297,7 @@ async function startRender(updateCallback?: (msg: string, isError: boolean) => v
   if (audioRenderer !== undefined) {
     let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     if (stateGroup.indexOf(audioRenderer.state.valueOf()) === -1) { // 当且仅当状态为prepared、paused和stopped之一时才能启动渲染。
-      console.error(TAG + 'start failed');
+      console.info(TAG + 'start failed');
       return;
     }
     // 启动渲染。
@@ -372,7 +377,7 @@ async function start(updateCallback?: (msg: string, isError: boolean) => void): 
       , audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     // 当且仅当状态为STATE_PREPARED、STATE_PAUSED和STATE_STOPPED之一时才能启动采集。
     if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) {
-      console.error(`${TAG}: start failed`);
+      console.info(`${TAG}: start failed`);
       // ...
       return;
     }
@@ -496,7 +501,7 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
 
 该接口仅允许在AudioCapturer处于running状态时调用，否则会返回错误码`6800103`。如果同一录音流同时设置了流级静音提示和会话级静音提示[setCapturerMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24)，流级静音提示优先级更高，以流级设置值为准。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。以下示例中，`muteHint`为`true`表示上报静音提示，`false`表示解除静音提示；`capturerMuteHintEnabledByApp`为应用本地维护的状态，记录当前设置的muteHint的值。
 
-<!-- @[set_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+<!-- @[set_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
 try {

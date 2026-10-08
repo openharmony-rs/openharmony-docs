@@ -1,12 +1,14 @@
 # Class (MeasureUtils)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=89682c631d1be2b78acdb9477c9eda01133e0baf translatedAt=2026-08-05T03:05:03.598Z pushedAt=2026-08-06T01:28:54.306Z -->
 
-Provides APIs for measuring text metrics, such as text height and width.
+The MeasureUtils class provides text width, height, and other related measurement capabilities, suitable for scenarios such as text-adaptive layout, multi-line text truncation, and dynamic UI adaptation. With this class, you can accurately calculate text dimensions, helping you predict text display effects before layout, and thereby avoiding issues such as text overflow or layout misalignment.
 
 > **NOTE**
 >
@@ -14,25 +16,28 @@ Provides APIs for measuring text metrics, such as text height and width.
 >
 > - The initial APIs of this class are supported since API version 12.
 >
-> - In the following API examples, you must first use [getMeasureUtils()](arkts-apis-uicontext-uicontext.md#getmeasureutils12) in **UIContext** to obtain a **MeasureUtils** instance, and then call the APIs using the obtained instance.
+> - Before using the following APIs, you must first obtain a MeasureUtils instance using [getMeasureUtils()](arkts-apis-uicontext-uicontext.md#getmeasureutils12) in UIContext, and then call the corresponding methods through this instance.
 >
-> - To perform more complex text measurements, use the [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) API.
+> - If you need more text measurement parameters, such as [includeFontPadding](./arkui-ts/ts-basic-components-text.md#includefontpadding23) and [fallbackLineSpacing](./arkui-ts/ts-basic-components-text.md#fallbacklinespacing23), you are advised to use the corresponding graphics measurement API [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph).
 >
-> - Avoid using [ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13) during text measurement API calls. To ensure timing correctness and the accuracy of measurement results, manually listen for font scale changes.
+> - When calling text measurement APIs, avoid simultaneously using [ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13) to set the app font size scale. To ensure correct timing, you are advised to listen for font scale changes on your own to guarantee the accuracy of measurement results.
 >
-> - For measuring text after truncation, direct use of the string length for truncation may lead to inaccuracies. This is because certain Unicode characters (for example, emojis) have code points with a length greater than 1, and truncating by string length can split these multi-code-point characters, resulting in incorrect text display or measurement errors. As such, you are advised to perform iterative truncation processing based on Unicode code points. For details, see [Example 2 in measureTextSize](#measuretextsize12).
+> - When measuring truncated text, because the code point length of certain Unicode characters (such as emoji) is greater than 1, directly truncating by string length will lead to inaccurate results. You are advised to iterate based on Unicode code points to avoid incorrect character truncation and ensure accurate measurement results. See example 2 of [measureTextSize](#measuretextsize12).
 
 ## measureText<sup>12+</sup>
 
 measureText(options: MeasureOptions): number
 
-Measures the single-line display width of the specified text. For multi-line text (separated by newline characters **\n**), this API returns the width of the longest line.
+Calculates the width of the specified text when displayed as a single-line text. If the text contains multiple lines (separated by the newline character `\n`), the width of the longest line is returned.
 
 > **NOTE**
 >
-> **measureText** always measures single-line text width. Layout constraints in **options** (**constraintWidth**, **maxLines**, and more) do not affect results. For layout-constrained width measurement, use [measureTextSize](#measuretextsize12).
+> - When calling this API, avoid simultaneously using [ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13) to set the app font size scale. To ensure correct timing, you are advised to listen for font scale changes on your own to guarantee the accuracy of measurement results.
+> - The calculation result of the measureText API is always the width of a single-line text. Layout constraints configured in the input parameter **options** (such as **constraintWidth** and **maxLines**) do not affect the result of **measureText**. If you need to calculate the width under layout constraints, use the [measureTextSize](#measuretextsize12) method.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,14 +45,13 @@ Measures the single-line display width of the specified text. For multi-line tex
 
 | Name    | Type                             | Mandatory  | Description       |
 | ------- | ------------------------------- | ---- | --------- |
-| options | [MeasureOptions](js-apis-measure.md#measureoptions) | Yes   | Options of the target text.|
+| options | [MeasureOptions](js-apis-measure.md#measureoptions) | Yes    | Text measurement configuration options, containing properties such as text content (**textContent**) and font size (**fontSize**). Layout constraint properties such as **constraintWidth** and **maxLines** do not affect the calculation result of **measureText**. To calculate the width under layout constraints, use the **measureTextSize** method. |
 
 **Return value**
 
 | Type         | Description      |
 | ------------  | --------- |
-| number        | Text width.<br>**NOTE**<br>Floating-point results are rounded up.<br>Unit: px.|
-
+| number | Text width.<br>**NOTE**<br>Floating-point numbers are rounded up.<br>Unit: px |
 
 **Example**
 
@@ -62,7 +66,7 @@ struct Index {
   @State uiContext: UIContext = this.getUIContext();
   @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
   @State textWidth: number = this.uiContextMeasure.measureText({
-    textContent: "Hello World",
+    textContent: 'Hello World',
     fontSize: '50px'
   });
 
@@ -82,9 +86,15 @@ struct Index {
 
 measureTextSize(options: MeasureOptions): SizeOptions
 
-Measures the width and height of the given single-line text.
+Calculates the width and height of the specified text.
+
+> **NOTE**
+>
+> When calling this API, avoid simultaneously using [ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13) to set the app font size scale. To ensure correct timing, you are advised to listen for font scale changes on your own to guarantee the accuracy of measurement results.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,14 +102,13 @@ Measures the width and height of the given single-line text.
 
 | Name    | Type                             | Mandatory  | Description       |
 | ------- | ------------------------------- | ---- | --------- |
-| options | [MeasureOptions](js-apis-measure.md#measureoptions) | Yes   | Options of the target text.|
+| options | [MeasureOptions](js-apis-measure.md#measureoptions) | Yes | Text measurement configuration options, including attributes such as text content (**textContent**), font size (**fontSize**), constraint width (**constraintWidth**), and maximum lines (**maxLines**). This parameter is used to configure the measurement parameters of the text to be calculated. |
 
 **Return value**
 
 | Type         | Description      |
 | ------------  | --------- |
-| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)   | Width and height of the text.<br>**NOTE**<br>If **constraintWidth** is not specified, the floating-point value of the text width will be rounded up.<br>The return values for text width and height are both in px.|
-
+| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)   | Layout width and height occupied by the text.<br>**NOTE**<br>When **constraintWidth** is not set, the returned text width is rounded up; when **constraintWidth** is passed, the returned text width is not rounded.<br>Both the text width and height return values are in px. |
 
 **Example 1**
 
@@ -114,7 +123,7 @@ struct Index {
   @State uiContext: UIContext = this.getUIContext();
   @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
   textSize: SizeOptions = this.uiContextMeasure.measureTextSize({
-    textContent: "Hello World",
+    textContent: 'Hello World',
     fontSize: '50px'
   });
   build() {
@@ -138,9 +147,7 @@ This example implements custom text truncation using the **measureTextSize** met
 @Entry
 @Component
 struct TextDemo {
-  @State isExpanded: boolean = false;
   @State displayedText: string = '';
-  @State defaultFontSize: number = 16;
   @State textWidth: number = 150;
   @State numLenghth: number = 0;
   @State numUnocde: number = 0;
@@ -169,7 +176,7 @@ struct TextDemo {
     return codePoints;
   }
 
-  lastUnicodeLength(str:string) { // Obtain the Unicode length of the last character in the string.
+  lastUnicodeLength(str: string): number { // Obtain the Unicode length of the last character in the string.
     if (!str || str.length < 1) {
       return 0;
     }
@@ -177,14 +184,14 @@ struct TextDemo {
       return 1;
     }
     let lastCodePoint = str.codePointAt(str.length - 2);
-    if (lastCodePoint == undefined) {
+    if (lastCodePoint === undefined) {
       return 1;
     }
     let lastStr = String.fromCodePoint(lastCodePoint);
     return lastStr.length;
   }
 
-  calculateText(maxLines: number, fullText: string) { // Calculate text truncation based on line constraints.
+  calculateText(maxLines: number, fullText: string): void { // Calculate and process text truncation.
     const noMaxLinesSize = this.getUIContext().getMeasureUtils().measureTextSize({
       textContent: fullText,
       constraintWidth: this.textWidth
@@ -195,13 +202,13 @@ struct TextDemo {
       maxLines: this.maxLines
     });
 
-    this.displayedText = this.displayedText = this.fullText;
+    this.displayedText = this.fullText;
     if (Number(noMaxLinesSize.height) > Number(hasMaxLinesSize.height)) { // Truncation exists.
       while (this.displayedText.length > 0) {
         this.displayedText =
           this.displayedText.slice(0,
             this.displayedText.length - this.lastUnicodeLength(this.displayedText)); // Remove characters.
-        let textAfterCut = this.displayedText + "…"; // Add an ellipsis.
+        let textAfterCut = this.displayedText + '...'; // Append an ellipsis.
         let sizeAfteCut = this.getUIContext().getMeasureUtils().measureTextSize({
           textContent: textAfterCut,
           constraintWidth: this.textWidth
@@ -209,10 +216,10 @@ struct TextDemo {
         if (Number(sizeAfteCut.height) <= Number(hasMaxLinesSize.height)) {
           break;
         } else {
-          console.info("displayedText: " + this.displayedText);
+          console.info('displayedText: ' + this.displayedText);
         }
       }
-      this.displayedText = this.displayedText + "...";
+      this.displayedText = this.displayedText + '...';
     }
   }
 
@@ -224,7 +231,7 @@ struct TextDemo {
       Text(this.fullText)
         .borderWidth(1)
 
-      Text('Text with maxLines and textOverflow set')
+      Text('Below is the text with maxLines and textOverflow set')
       Text(this.fullText)
         .maxLines(this.maxLines)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
@@ -249,6 +256,8 @@ getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array\<P
 
 Converts a styled string into an array of corresponding [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) objects based on text layout options.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -256,13 +265,13 @@ Converts a styled string into an array of corresponding [Paragraph](../apis-arkg
 | Name| Type  | Mandatory| Description          |
 | ----- | ------ | ---- | -------------- |
 | styledString | [StyledString](arkui-ts/ts-universal-styled-string.md#styledstring) | Yes  | Styled string to be converted.|
-| options | [TextLayoutOptions](arkui-ts/ts-text-common.md#textlayoutoptions20) | No| Text layout options.|
+| options | [TextLayoutOptions](arkui-ts/ts-text-common.md#textlayoutoptions20) | No | Text layout options. If omitted, the default layout configuration is used.|
 
 **Return value**
 
 | Type    | Description       |
 | ------ | --------- |
-| Array<[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)> | Array of [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) objects.|
+| Array\<[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)> | Array of [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) objects obtained after conversion based on the text layout options, used for subsequent text layout calculation. |
 
 **Example**
 
@@ -320,7 +329,7 @@ class MyCustomSpan extends CustomSpan {
   }
 
   width: number = 160;
-  word: string = "drawing";
+  word: string = 'drawing';
   height: number = 10;
   context: UIContext;
 }
@@ -329,7 +338,7 @@ class MyCustomSpan extends CustomSpan {
 @Component
 struct Index {
   str: string =
-    "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.";
+    'Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.';
   mutableStr2 = new MutableStyledString(this.str, [
     {
       start: 0,
@@ -348,11 +357,11 @@ struct Index {
   // Measure the number of lines a styled string can display within a specified width.
   getLineNum(styledString: StyledString, width: LengthMetrics) {
     let paragraphArr = this.getUIContext().getMeasureUtils().getParagraphs(styledString, { constraintWidth: width });
-    let res = 0;
+    let lineCount = 0;
     for (let i = 0; i < paragraphArr.length; ++i) {
-      res += paragraphArr[i].getLineCount();
+      lineCount += paragraphArr[i].getLineCount();
     }
-    return res;
+    return lineCount;
   }
 
   // Determine the maximum character count that can be displayed in maxLines for a styled string.
@@ -362,15 +371,15 @@ struct Index {
     // Use binary search.
     while (low <= high) {
       let mid = (low + high) >> 1;
-      console.info("demo: get " + low + " " + high + " " + mid);
-      let moreStyledString = new MutableStyledString("... Full Text", [{
+      console.info('demo: get ' + low + ' ' + high + ' ' + mid);
+      let moreStyledString = new MutableStyledString('... full text', [{
         start: 4,
         length: 2,
         styledKey: StyledStringKey.FONT,
         styledValue: new TextStyle({ fontColor: Color.Blue })
       }]);
       moreStyledString.insertStyledString(0, styledString.subStyledString(0, mid));
-      let lineNum = this.getLineNum(moreStyledString, LengthMetrics.px(500));
+      let lineNum = this.getLineNum(moreStyledString, width);
       if (lineNum <= maxLines) {
         low = mid + 1;
       } else {
@@ -394,7 +403,7 @@ struct Index {
       styledValue: new TextStyle({ fontColor: Color.Brown })
     }
   ]);
-  customSpan1: MyCustomSpan = new MyCustomSpan("Hello", 120, 10, this.getUIContext());
+  customSpan1: MyCustomSpan = new MyCustomSpan('Hello', 120, 10, this.getUIContext());
   mutableStrAllContent2 = new MutableStyledString(this.str, [
     {
       start: 0,
@@ -429,15 +438,15 @@ struct Index {
         Divider().strokeWidth(8).color('#F1F3F5')
         Text('After layout')
         Text(undefined, { controller: this.textController }).onAppear(() => {
-          let now = this.getCorrectIndex(this.mutableStrAllContent, 3, LengthMetrics.px(500));
-          if (now != this.mutableStrAllContent.length - 1) {
-            let moreStyledString = new MutableStyledString("... Full Text", [{
+          let correctIndex = this.getCorrectIndex(this.mutableStrAllContent, 3, LengthMetrics.px(500));
+          if (correctIndex != this.mutableStrAllContent.length - 1) {
+            let moreStyledString = new MutableStyledString('... full text', [{
               start: 4,
               length: 2,
               styledKey: StyledStringKey.FONT,
               styledValue: new TextStyle({ fontColor: Color.Blue })
             }]);
-            moreStyledString.insertStyledString(0, this.mutableStrAllContent.subStyledString(0, now));
+            moreStyledString.insertStyledString(0, this.mutableStrAllContent.subStyledString(0, correctIndex));
             this.textController.setStyledString(moreStyledString);
           } else {
             this.textController.setStyledString(this.mutableStrAllContent);
@@ -452,14 +461,14 @@ struct Index {
         Divider().strokeWidth(8).color('#F1F3F5')
         Text('After layout')
         Text(undefined, { controller: this.textController2 }).onAppear(() => {
-          let now = this.getCorrectIndex(this.mutableStrAllContent2, 3, LengthMetrics.px(500));
-          let moreStyledString = new MutableStyledString("... Full Text", [{
+          let correctIndex = this.getCorrectIndex(this.mutableStrAllContent2, 3, LengthMetrics.px(500));
+          let moreStyledString = new MutableStyledString('... full text', [{
             start: 4,
             length: 2,
             styledKey: StyledStringKey.FONT,
             styledValue: new TextStyle({ fontColor: Color.Blue })
           }]);
-          moreStyledString.insertStyledString(0, this.mutableStrAllContent2.subStyledString(0, now));
+          moreStyledString.insertStyledString(0, this.mutableStrAllContent2.subStyledString(0, correctIndex));
           this.textController2.setStyledString(moreStyledString);
         })
           .width('500px')
@@ -468,4 +477,5 @@ struct Index {
   }
 }
 ```
+
 ![](figures/styledString_15.png)

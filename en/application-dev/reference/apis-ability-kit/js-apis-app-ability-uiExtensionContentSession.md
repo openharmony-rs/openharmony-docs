@@ -1,11 +1,12 @@
-# @ohos.app.ability.UIExtensionContentSession (UIExtensionAbility UI Operation Class)
+# @ohos.app.ability.UIExtensionContentSession (UI Operation Class with UI Extension Capability)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c; @xuzhihao666-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=d6766dab6bb43292d31aa3b7e92efbf3b8558dc7 translatedAt=2026-09-03T10:35:40.409Z pushedAt=2026-09-05T10:47:30.443Z -->
 
 UIExtensionContentSession is the UI operation class for the [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). It provides control over page loading and allows configuration of the window privacy mode of the host application (application that starts the UIExtensionAbility). When the host application starts a specific UIExtensionAbility, the system creates a UIExtensionContentSession object and passes it back via the [onSessionCreate](js-apis-app-ability-uiExtensionAbility.md#onsessioncreate) callback. Each UIExtensionAbility corresponds to one UIExtensionContentSession object, and these objects operate independently without interfering with each other.
 
@@ -539,8 +540,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
+| 201 | The application does not have permission to call the interface. <br>Applicable Version: 11 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 16000001 | The specified ability does not exist. <br>Applicable Version: 11 |
+| 16000002 | Incorrect ability type. <br>Applicable Version: 11 |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 11 |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>Applicable Version: 11 |
 
 **Example**
 
@@ -606,8 +612,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
+| 201 | The application does not have permission to call the interface. <br>Applicable Version: 11 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 16000001 | The specified ability does not exist. <br>Applicable Version: 11 |
+| 16000002 | Incorrect ability type. <br>Applicable Version: 11 |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 11 |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>Applicable Version: 11 |
 
 **Example**
 

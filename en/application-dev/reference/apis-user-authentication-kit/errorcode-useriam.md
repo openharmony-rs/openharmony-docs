@@ -6,7 +6,6 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=be48531bb599ab262690e4bcab7fffa1f7126656 translatedAt=2026-07-27T00:47:00.811Z pushedAt=2026-07-27T08:45:08.371Z -->
 
 This topic describes error codes specific to the user authentication service. It helps you locate and handle authentication exceptions.
 

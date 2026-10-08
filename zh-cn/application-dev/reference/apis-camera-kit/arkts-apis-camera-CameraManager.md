@@ -128,7 +128,7 @@ function getSupportedOutputCapability(camera: camera.CameraDevice, cameraManager
 
 getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutputCapability
 
-查询指定相机在指定模式下支持的完整输出能力，包括未压缩图（YUV）、HEIF和HDR等能力。
+查询指定相机在指定模式下支持的完整输出能力，包括未压缩图像（YUV）、HEIF和HDR等能力。
 
 > **说明：**
 >
@@ -849,7 +849,7 @@ isTorchSupported(): boolean
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| boolean    | 表示设备是否支持手电筒，true表示设备支持手电筒，false表示设备不支持手电。<br>如果返回false，则[isTorchModeSupported](#istorchmodesupported11)、[getTorchMode](#gettorchmode11)、[setTorchMode](#settorchmode11)、[isTorchLevelControlSupported](#istorchlevelcontrolsupported)和[setTorchModeOnWithLevel](#settorchmodeonwithlevel)都不会生效。<br>若接口调用失败，返回undefined。 |
+| boolean    | 表示设备是否支持手电筒，true表示设备支持手电筒，false表示设备不支持手电筒。<br>如果返回false，则[isTorchModeSupported](#istorchmodesupported11)、[getTorchMode](#gettorchmode11)、[setTorchMode](#settorchmode11)、[isTorchLevelControlSupported](#istorchlevelcontrolsupported)和[setTorchModeOnWithLevel](#settorchmodeonwithlevel)都不会生效。<br>若接口调用失败，返回undefined。 |
 
 **示例：**
 

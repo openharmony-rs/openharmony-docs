@@ -286,15 +286,21 @@
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
+> 从API version 7开始支持，从API version 9开始废弃。
+>
+> 申请音频焦点时，建议使用[AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8).rendererInfo替代，[StreamUsage](arkts-apis-audio-e.md#streamusage)决定音频流的焦点策略。
+>
+> 建议使用[on('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9)接口监听音频焦点事件[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)，替代音频中断事件。
+>
+> 使用已废弃的接口[on('interrupt')](arkts-apis-audio-AudioManager.md#oninterruptdeprecated)不会打断新机制的音频流，也不会收到焦点中断事件。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 | 名称            | 类型                        | 只读 | 可选 | 说明                                                         |
 | --------------- | --------------------------- | ----|---| ------------------------------------------------------------ |
-| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音频流使用类型。                                             |
-| contentType     | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | 否 | 否 | 音频打断媒体类型。                                           |
-| pauseWhenDucked | boolean                     | 否 | 否 | 音频打断时是否可以暂停音频播放。true表示音频播放可以在音频打断期间暂停，false表示音频播放不可以在音频打断期间暂停。 |
+| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音频流使用类型。<br> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用[AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8).rendererInfo替代。 |
+| contentType     | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | 否 | 否 | 音频打断媒体类型。<br> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用[AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8).rendererInfo替代。 |
+| pauseWhenDucked | boolean                     | 否 | 否 | 音频打断时是否可以暂停音频播放。true表示音频播放可以在音频打断期间暂停，false表示音频播放不可以在音频打断期间暂停。<br> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用[InterruptEvent](arkts-apis-audio-i.md#interruptevent9).hintType替代。 |
 
 ## CaptureFilterOptions<sup>(deprecated)</sup>
 
@@ -337,7 +343,7 @@
 | actionType | [InterruptActionType](arkts-apis-audio-e.md#interruptactiontypedeprecated) | 否 | 否 | 事件返回类型。TYPE_ACTIVATED为焦点触发事件，TYPE_INTERRUPT为音频打断事件。 |
 | type       | [InterruptType](arkts-apis-audio-e.md#interrupttype)             | 否 | 是 | 打断事件类型。                                               |
 | hint       | [InterruptHint](arkts-apis-audio-e.md#interrupthint)             | 否 | 是 | 打断事件提示。                                               |
-| activated  | boolean                                     | 否 | 是 | 焦点获取/释放是否成功。true表示焦点获取/释放成功，false表示焦点获得/释放失败。 |
+| activated  | boolean                                     | 否 | 是 | 焦点获取/释放是否成功。true表示焦点获取/释放成功，false表示焦点获取/释放失败。 |
 
 ## SystemRecordControllerConfig
 

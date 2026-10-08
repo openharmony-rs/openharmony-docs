@@ -196,7 +196,7 @@ OH_Drawing_PathEffect* OH_Drawing_CreatePathDashEffect(const OH_Drawing_Path* pa
 | -- | -- |
 | const [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 表示虚线样式的路径对象[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)的指针。 |
 | float advance | 表示虚线段的步长，取值范围>0，单位为物理像素px。 |
-| float phase | 表示虚线段内图形在虚线步长范围内的偏移量，用于控制虚线段绘制的起始位置，单位为物理像素px。 |
+| float phase | 表示虚线样式的起始偏移量，用于控制虚线段绘制的起始位置，单位为物理像素px。 |
 | [OH_Drawing_PathDashStyle](#oh_drawing_pathdashstyle) type | 表示虚线路径效果样式，取值见[OH_Drawing_PathDashStyle](#oh_drawing_pathdashstyle)枚举。 |
 
 **返回：**

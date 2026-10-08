@@ -19,7 +19,7 @@ The **formHost** module provides APIs related to the widget host, which is an ap
 import { formHost } from '@kit.FormKit';
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -71,7 +71,7 @@ try {
 }
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string): Promise&lt;void&gt;
 
@@ -126,7 +126,7 @@ try {
 }
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -176,7 +176,7 @@ try {
 }
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -227,7 +227,7 @@ try {
 }
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
@@ -283,7 +283,7 @@ try {
 }
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -333,7 +333,7 @@ try {
 }
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string): Promise&lt;void&gt;
 
@@ -388,7 +388,7 @@ try {
 }
 ```
 
-## requestFormWithParams<sup>12+</sup>
+## formHost.requestFormWithParams<sup>12+</sup>
 
 requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Promise&lt;void&gt;
 
@@ -447,7 +447,7 @@ try {
 }
 ```
 
-## castToNormalForm
+## formHost.castToNormalForm
 
 castToNormalForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -497,7 +497,7 @@ try {
 }
 ```
 
-## castToNormalForm
+## formHost.castToNormalForm
 
 castToNormalForm(formId: string): Promise&lt;void&gt;
 
@@ -552,7 +552,7 @@ try {
 }
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -600,7 +600,7 @@ try {
 }
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -653,7 +653,7 @@ try {
 }
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -701,7 +701,7 @@ try {
 }
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -754,7 +754,7 @@ try {
 }
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -803,7 +803,7 @@ try {
 }
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -857,7 +857,7 @@ try {
 }
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -907,7 +907,7 @@ try {
 }
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -962,7 +962,7 @@ try {
 }
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
@@ -1002,7 +1002,7 @@ try {
 }
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(): Promise&lt;void&gt;
 
@@ -1041,7 +1041,7 @@ try {
 }
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -1088,7 +1088,7 @@ try {
 }
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -1132,7 +1132,7 @@ try {
 }
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -1181,7 +1181,7 @@ try {
 }
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -1231,7 +1231,7 @@ try {
 }
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -1284,7 +1284,7 @@ try {
 }
 ```
 
-## getFormsInfo<sup>12+</sup>
+## formHost.getFormsInfo<sup>12+</sup>
 
 getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -1341,11 +1341,11 @@ try {
 }
 ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
 
-Deletes invalid widgets from the list. This API uses an asynchronous callback to return the result.
+Deletes widgets that are not in the valid widget list. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.REQUIRE_FORM
 
@@ -1355,7 +1355,7 @@ Deletes invalid widgets from the list. This API uses an asynchronous callback to
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | Yes  | List of valid widget IDs.|
+| formIds | Array&lt;string&gt; | Yes  | List of valid widgets.|
 | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If the invalid widgets are deleted, **error** is undefined and **data** is the number of widgets deleted; otherwise, **error** is an error object.|
 
 **Error codes**
@@ -1390,7 +1390,7 @@ try {
 }
 ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
 
@@ -1442,7 +1442,7 @@ try {
 }
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&gt;): void
 
@@ -1503,7 +1503,7 @@ try {
 }
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 
@@ -1567,7 +1567,7 @@ try {
 }
 ```
 
-## on('formUninstall')
+## formHost.on('formUninstall')
 
 on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 
@@ -1605,7 +1605,7 @@ formHost.on('formUninstall', (formId: string) => {
 });
 ```
 
-## off('formUninstall')
+## formHost.off('formUninstall')
 
 off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
@@ -1643,7 +1643,7 @@ formHost.off('formUninstall', (formId: string) => {
 });
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1693,7 +1693,7 @@ try {
 }
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt;void&gt;
 
@@ -1748,7 +1748,7 @@ try {
 }
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1763,7 +1763,7 @@ Instructs the widgets to enable or disable updates. This API uses an asynchronou
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
 | formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-| isEnableUpdate | boolean | Yes  | Whether the widget can be updated.<br>**true**: The widget can be updated. **false**: The widget cannot be updated.|
+| isEnableUpdate | boolean | Yes  | Indicates whether the widget update state is enabled.<br>**true**: yes **false**: no|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the notification is sent, **error** is undefined; otherwise, **error** is an error object.|
 
 **Error codes**
@@ -1798,7 +1798,7 @@ try {
 }
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): Promise&lt;void&gt;
 
@@ -1813,7 +1813,7 @@ Instructs the widgets to enable or disable updates. This API uses a promise to r
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
 | formIds | Array&lt;string&gt; | Yes  | List of widget IDs.|
-| isEnableUpdate | boolean | Yes  | Whether the widget can be updated.<br>**true**: The widget can be updated.<br>**false**: The widget cannot be updated.|
+| isEnableUpdate | boolean | Yes  | Indicates whether the widget update state is enabled.<br>**true**: yes<br>**false**: no|
 
 **Return value**
 
@@ -1852,7 +1852,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-## shareForm
+## formHost.shareForm
 
 shareForm(formId: string, deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1903,7 +1903,7 @@ try {
 }
 ```
 
-## shareForm
+## formHost.shareForm
 
 shareForm(formId: string, deviceId: string): Promise&lt;void&gt;
 
@@ -1959,7 +1959,7 @@ try {
 }
 ```
 
-## notifyFormsPrivacyProtected
+## formHost.notifyFormsPrivacyProtected
 
 notifyFormsPrivacyProtected(formIds: Array\<string>, isProtected: boolean, callback: AsyncCallback\<void>): void
 
@@ -2008,7 +2008,7 @@ try {
 }
 ```
 
-## notifyFormsPrivacyProtected
+## formHost.notifyFormsPrivacyProtected
 
 notifyFormsPrivacyProtected(formIds: Array\<string\>, isProtected: boolean): Promise\<void\>
 
@@ -2060,7 +2060,7 @@ try {
 }
 ```
 
-## acquireFormData<sup>10+</sup>
+## formHost.acquireFormData<sup>10+</sup>
 
 acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>>): void
 
@@ -2077,7 +2077,7 @@ Requests data from the widget provider. This API uses an asynchronous callback t
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
 | formId | string | Yes  | Widget ID.|
-| callback | AsyncCallback\<Record\<string, Object>> | Yes  | Callback used to return the API call result and the shared data.|
+| callback | AsyncCallback\<Record\<string, Object>> | Yes  | Callback used to return the API call result and the widget provider data.|
 
 **Error codes**
 
@@ -2086,6 +2086,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permissions denied. |
+| 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
@@ -2111,7 +2112,7 @@ try {
 }
 ```
 
-## acquireFormData<sup>10+</sup>
+## formHost.acquireFormData<sup>10+</sup>
 
 acquireFormData(formId: string): Promise\<Record\<string, Object>>
 
@@ -2133,7 +2134,7 @@ Requests data from the widget provider. This API uses a promise to return the re
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise\<Record\<string, Object>>| Promise used to return the API call result and the shared data.|
+| Promise\<Record\<string, Object>> | Promise used to return the API call result and the widget provider data.|
 
 **Error codes**
 
@@ -2142,6 +2143,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permissions denied. |
+| 202 | The application is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
@@ -2166,7 +2168,7 @@ try {
 }
 ```
 
-## setRouterProxy<sup>11+</sup>
+## formHost.setRouterProxy<sup>11+</sup>
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2261,11 +2263,11 @@ struct CardExample {
 }
 ```
 
-## setRouterProxy<sup>11+</sup>
+## formHost.setRouterProxy<sup>11+</sup>
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
-Sets a router proxy for widgets and obtains the Want information required for redirection. This API uses a promise to return the result. This API uses a promise to return the result.
+Sets a router proxy for widgets and obtains the Want information required for redirection. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2362,7 +2364,7 @@ struct CardExample {
 }
 ```
 
-## clearRouterProxy<sup>11+</sup>
+## formHost.clearRouterProxy<sup>11+</sup>
 
 clearRouterProxy(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2377,7 +2379,7 @@ Clears the router proxy set for widgets. This API uses an asynchronous callback 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | formIds  | Array&lt;string&gt;      | Yes  | Array of widget IDs.                                              |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the router proxy is cleared, **error** is **undefined**; otherwise, an exception is thrown.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **error** is **undefined**. Otherwise, an exception is thrown.|
 
 **Error codes**
 
@@ -2411,7 +2413,7 @@ try {
 }
 ```
 
-## clearRouterProxy<sup>11+</sup>
+## formHost.clearRouterProxy<sup>11+</sup>
 
 clearRouterProxy(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -2464,7 +2466,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-## setFormsRecyclable<sup>11+</sup>
+## formHost.setFormsRecyclable<sup>11+</sup>
 
 setFormsRecyclable(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2514,7 +2516,7 @@ try {
 }
 ```
 
-## setFormsRecyclable<sup>11+</sup>
+## formHost.setFormsRecyclable<sup>11+</sup>
 
 setFormsRecyclable(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -2568,11 +2570,11 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-## recoverForms<sup>11+</sup>
+## formHost.recoverForms<sup>11+</sup>
 
 recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Recovers widgets. This API uses an asynchronous callback to return the result.
+Recovers the specified widgets that have been recycled and updates their state to non‑recyclable. If a widget has not been recycled, its state is still updated to non‑recyclable. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2617,7 +2619,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-## recoverForms<sup>11+</sup>
+## formHost.recoverForms<sup>11+</sup>
 
 recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -2664,7 +2666,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.recoverForms(formIds).then(() => {
-    console.info('recover forms success');
+    console.info('formHost recoverForms success');
   }).catch((err: BusinessError) => {
     console.error(`formHost recover forms error, code: ${err.code}, message: ${err.message}`);
   });
@@ -2672,7 +2674,7 @@ try {
   console.error(`catch error, code: ${e.code}, message: ${e.message}`);
 }
 ```
-## recycleForms<sup>12+</sup>
+## formHost.recycleForms<sup>12+</sup>
 
 recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -2728,7 +2730,7 @@ try {
 }
 ```
 
-## updateFormLocation<sup>12+</sup>
+## formHost.updateFormLocation<sup>12+</sup>
 updateFormLocation(formId: string, location: formInfo.FormLocation): void;
 
 Updates the widget location.
@@ -2775,7 +2777,7 @@ try {
 }
 ```
 
-## setPublishFormResult<sup>12+</sup>
+## formHost.setPublishFormResult<sup>12+</sup>
 
 setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void;
 
@@ -2823,7 +2825,7 @@ try {
 }
 ```
 
-## updateFormLockedState<sup>22+</sup>
+## formHost.updateFormLockedState<sup>22+</sup>
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
@@ -3180,7 +3182,7 @@ try {
 }
 ```
 
-## getAllTemplateFormsInfo<sup>23+</sup>
+## formHost.getAllTemplateFormsInfo<sup>23+</sup>
 
 getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -3228,7 +3230,7 @@ try {
 ```
 
 
-## getTemplateFormsInfo<sup>23+</sup>
+## formHost.getTemplateFormsInfo<sup>23+</sup>
 
 getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -3309,7 +3311,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | Permissions denied.Called by non-system application. |
+| 202 | The application is not a system application. |
 | 16500050 | IPC connection error. |
 
 **Example**
@@ -3359,7 +3361,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | Permissions denied.Called by non-system application. |
+| 202 | The application is not a system application. |
 | 16500050 | IPC connection error. |
 
 **Example**
@@ -3727,4 +3729,122 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
-<!--no_check-->
+
+## formHost.registerFormHostService
+
+registerFormHostService(service: formInfo.FormHostServiceInfo): Promise&lt;string&gt;
+
+Registers the service information of the widget host. After the registration is successful, the widget can be published across devices. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------ | ------ | ---- | -------|
+| service | [formInfo.FormHostServiceInfo](js-apis-app-form-formInfo-sys.md#formhostserviceinfo) | Yes| Service information of the widget host to be registered with the widget management service.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;string&gt; | Promise used to return the ID of the widget host service that is successfully registered.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501000 | An internal functional error occurred. |
+
+**Example**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let service: formInfo.FormHostServiceInfo = {
+  serviceName: 'serviceName',
+  serviceDisplayName: 'serviceDisplayName',
+  displayId: '0'
+};
+try {
+  formHost.registerFormHostService(service).then((data: string) => {
+    console.info(`formHost registerFormHostService success, service ID is: ${data}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.unregisterFormHostService
+
+unregisterFormHostService(serviceId: string): Promise&lt;void&gt;
+
+Deregisters the service information of the widget host. After the deregistration, the corresponding widget host service cannot be used for cross-device widget publishing. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------ | ------ | ---- | -------|
+| serviceId | string | Yes| ID of the service to be deregistered.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501019 | A form service not owned by you cannot be unregistered. |
+| 16501000 | An internal functional error occurred. |
+
+**Example**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let serviceId: string = 'serviceId'; // ID of the service to be deregistered. Replace it with the actual service ID.
+try {
+  formHost.unregisterFormHostService(serviceId).then(() => {
+    console.info('formHost unregisterFormHostService success');
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

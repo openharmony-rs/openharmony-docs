@@ -51,8 +51,8 @@ constructor(album: Album)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.          |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The constructor was not called with the new keyword.<br>2. The album to be modified is invalid, the passed Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum().<br>3. System memory insufficient, please retry.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -68,9 +68,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
-  let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
-  let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
+    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+  } catch (err) {
+    console.error(`MediaAlbumChangeRequest constructorDemo failed with error: ${err.code}, ${err.message}`);
+  }
 }
 ```
 
@@ -98,8 +102,8 @@ getAlbum(): Album
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011 |  System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The album to be modified is invalid, the Album passed to the MediaAlbumChangeRequest constructor is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum().<br>2. System memory insufficient, please retry.<br>3. IPC timeout, please retry.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -127,19 +131,13 @@ setAlbumName(name: string): void
 
 设置相册名称。
 
-相册名参数规格：
-- 相册名字符串长度为1~255。
-- 不允许出现的非法英文字符，包括：<br> . \ / : * ? " ' ` < > | { } [ ]
-- 英文字符大小写不敏感。
-- 相册名不允许重名。
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| name | string | 是   | 待设置的相册名称。|
+| name | string | 是   | 待设置的相册名称。<br>相册名字符串长度为1~255。不允许出现的非法英文字符，包括：<br> . \ / : * ? " ' ` < > \| { } [ ]<br>英文字符大小写不敏感。<br>相册名不允许重名。 |
 
 **错误码：**
 
@@ -147,8 +145,8 @@ setAlbumName(name: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The name parameter is invalid, please check if the name meets the naming rules (non-empty, within length limit, no illegal characters).<br>2. The album to be modified is invalid, the Album passed to the MediaAlbumChangeRequest constructor is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum().<br>3. The album type does not support setAlbumName, only user source albums, highlights, smart portrait albums and group photos support this operation.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -191,9 +189,9 @@ addAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
-| 14000016 |  Operation Not Support.     |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The assets array contains assets that were already added in a previous addAssets operation, please remove duplicates.<br>2. The album to be modified is invalid, the Album passed to the MediaAlbumChangeRequest constructor is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum().<br>3. The album type does not support addAssets, only user albums and highlight albums support this operation.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 14000016 | Operation type not support. Possible causes:<br>Duplicate asset in addAssets, the asset was already added in a previous addAssets operation. |
 
 **示例：**
 
@@ -245,9 +243,9 @@ removeAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
-| 14000016 |  Operation Not Support.     |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The album to be modified is invalid, the Album passed to the MediaAlbumChangeRequest constructor is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum().<br>2. The album type does not support removeAssets, only user albums support this operation.<br>3. The assets array contains elements that are not valid PhotoAsset objects.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 14000016 | Operation type not support. Possible causes:<br>Duplicate asset in removeAssets, the asset was already removed in a previous removeAssets operation. |
 
 **示例：**
 

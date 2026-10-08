@@ -301,8 +301,11 @@ struct ImageExample {
           .width('100%')
           .allowDrop([uniformTypeDescriptor.UniformDataType.TEXT])
           .onDrop((event?: DragEvent, extraParams?: string) => {
-            this.uri = JSON.parse(extraParams as string)?.extraInfo;
-            this.disallowedBlockArr.splice(JSON.parse(extraParams as string)?.insertIndex, 0, this.uri);
+            if (extraParams === undefined) { return; }
+            const dropInfo = JSON.parse(extraParams);
+            this.uri = dropInfo?.extraInfo;
+            if (typeof dropInfo.insertIndex !== 'number') { return; }
+            this.disallowedBlockArr.splice(dropInfo.insertIndex, 0, this.uri);
             console.info('ondrop not udmf data');
           })
           .border({ width: 1 })
@@ -339,7 +342,9 @@ struct ImageExample {
               if (arr.length > 0) {
                 let image = arr[0] as unifiedDataChannel.Image;
                 this.uri = image.imageUri;
-                this.allowedBlockArr.splice(JSON.parse(extraParams as string)?.insertIndex, 0, this.uri);
+                const dropInfo = JSON.parse(extraParams ?? '{}');
+                if (typeof dropInfo.insertIndex !== 'number') { return; }
+                this.allowedBlockArr.splice(dropInfo.insertIndex, 0, this.uri);
               } else {
                 console.info(`dragData arr is null`);
               }
@@ -594,7 +599,7 @@ struct DragPreviewOptionsDemo {
           .width('100%')
           .draggable(true)
           .dragPreviewOptions({
-            modifier: this.myModifier.opacity(this.opacityList[this.opacityIndex]) as ImageModifier
+            modifier: this.myModifier.opacity(this.opacityList[this.opacityIndex] ?? 1) as ImageModifier
           })
       }
       .width('50%')
@@ -724,7 +729,7 @@ struct ImageDrag {
           .width('70%')
           .height('70%')
           .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-          .onDrop((event: DragEvent, extraParams: string) => {
+          .onDrop((event: DragEvent, extraParams?: string) => {
             if (extraParams === null || extraParams === undefined) {
               return;
             }
@@ -734,7 +739,10 @@ struct ImageDrag {
             if (typeof uri == 'string') {
               this.targetImage1 = uri;
               try {
-                request.downloadFile(this.context, {
+                  const context = this.context;
+                  const filesDir = this.filesDir;
+                  if (context === undefined || filesDir === undefined) { return; }
+                  request.downloadFile(context, {
                   url: uri,
                   filePath: this.filesDir + '/example.png'
                 }).then((downloadTask: request.DownloadTask) => {
@@ -767,11 +775,11 @@ struct ImageDrag {
           .width('70%')
           .height('70%')
           .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-          .onDrop((event: DragEvent, extraParams: string) => {
+          .onDrop((event: DragEvent, extraParams?: string) => {
             // 通过uniformTypeDescriptor获取图片
             let data: UnifiedData = event.getData();
             let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
-            if (records[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
+            if (records.length > 0 && records[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
               let image: unifiedDataChannel.Image = records[0] as unifiedDataChannel.Image;
               this.targetImage2 = image.imageUri;
             }
@@ -796,11 +804,11 @@ struct ImageDrag {
           .width('70%')
           .height('70%')
           .allowDrop([uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP])
-          .onDrop(async (event: DragEvent, extraParams: string) => {
+          .onDrop(async (event: DragEvent, extraParams?: string) => {
             // 通过uniformTypeDescriptor获取图片
             let data: UnifiedData = event.getData();
             let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
-            if (records[0].getType() === uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP) {
+            if (records.length > 0 && records[0].getType() === uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP) {
               let record: unifiedDataChannel.SystemDefinedPixelMap =
                 records[0] as unifiedDataChannel.SystemDefinedPixelMap;
               this.targetImage3 = await this.createPixelMap(record);
@@ -810,13 +818,17 @@ struct ImageDrag {
               let packOpts: image.PackingOption = { format: 'image/jpeg', quality: 98 };
               const path: string = this.context?.cacheDir + "/pixel_map.jpg";
               let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-              imagePackerApi.packToFile(this.targetImage3, file.fd, packOpts).then(() => {
-                // 直接打包进文件
-                fileIo.closeSync(file);
-              }).catch((error: BusinessError) => {
-                fileIo.closeSync(file);
-                console.error('Failed to pack the image. And the error is: ' + error);
-              });
+              if (this.targetImage3 !== null && typeof this.targetImage3 !== 'string') {
+                imagePackerApi.packToFile(this.targetImage3, file.fd, packOpts).then(() => {
+                  // 直接打包进文件
+                  imagePackerApi.release();
+                  fileIo.closeSync(file);
+                }).catch((error: BusinessError) => {
+                  imagePackerApi.release();
+                  fileIo.closeSync(file);
+                  console.error('Failed to pack the image. And the error is: ' + error);
+                });
+              }
             }
           })
       }
@@ -878,7 +890,7 @@ struct DragPreviewDemo {
           .width('30%')
           .draggable(true)
           .dragPreviewOptions({},
-            { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true, enableHapticFeedback: true })
+            { defaultAnimationBeforeLifting: true, enableHapticFeedback: true })
           .bindContextMenu(this.menuBuilder, ResponseType.LongPress)
           .onDragStart(() => {
             console.info('Image onDragStart');

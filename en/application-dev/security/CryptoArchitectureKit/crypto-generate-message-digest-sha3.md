@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:28:47.308Z pushedAt=2026-08-10T09:09:57.927Z -->
 
-From API version 22, the crypto algorithm library supports digest operation with SHA-3.
+Starting from API version 22, Crypto Architecture Kit supports digest computation using this algorithm.
 
 For details about the algorithm specifications, see [Supported Algorithms and Specifications](crypto-generate-message-digest-overview.md#supported-algorithms-and-specifications).
 
@@ -21,16 +22,16 @@ The following provides examples with different data passing methods.
 
 1. Call [cryptoFramework.createMd](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemd) with the MD algorithm **SHA3-256** to create a message digest (**Md**) instance.
 
-2. Call [Md.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-6) to pass in the full data. The amount of data to be passed in by a single **Mac.update()** call is not limited.
+2. Call [Md.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-6) to pass in the full data. The amount of data to be passed in by a single update call is not limited.
 
-3. Call [Md.digest](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#digest) to generate an MD.
+3. Call [Md.digest](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#digest) to obtain the MD computation result.
 
 4. Call [Md.getMdLength](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getmdlength) to obtain the MD length, in bytes.
 
 - Example: Pass in the full data to generate an MD using **await**.
 
   <!-- @[message_digest_sha3_single_time_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha3/singleTime/SingleTimeAsync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -48,11 +49,10 @@ The following provides examples with different data passing methods.
   }
   ```
 
-
 - Example: Pass in the full data to generate an MD using a synchronous API.
 
   <!-- @[message_digest_sha3_single_time_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha3/singleTime/SingleTimeSync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -70,10 +70,9 @@ The following provides examples with different data passing methods.
   }
   ```
 
-
 ### Generating an MD by Passing In Data by Segment
 
-1. Call [cryptoFramework.createMd](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemd) with the MD algorithm **MD5** to create a message digest (**Md**) instance.
+1. Call [cryptoFramework.createMd](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemd) with the digest algorithm SHA3-256 to generate a digest instance (`Md`).
 
 2. Call [Md.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-7) multiple times to pass in 20 bytes each time.
 
@@ -107,7 +106,6 @@ The following provides examples with different data passing methods.
     console.info('md len: ' + mdLen);
   }
   ```
-
 
 - Example: Pass in data by segment to generate an MD using a synchronous API.
 

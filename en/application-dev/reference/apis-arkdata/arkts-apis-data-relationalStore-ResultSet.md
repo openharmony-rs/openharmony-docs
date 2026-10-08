@@ -1,12 +1,11 @@
 # Interface (ResultSet)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8af95004d9117739e6649a82566e8756f994e75a translatedAt=2026-07-14T10:33:00.050Z pushedAt=2026-07-17T09:25:09.800Z -->
+<!-- md-trans-meta sourceCommit=4b1c0990e7305766fe10024f567b18e463a94205 translatedAt=2026-09-04T02:36:59.809Z pushedAt=2026-09-09T09:11:03.629Z -->
 
 Provides APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
 
@@ -445,6 +444,7 @@ if (resultSet != undefined) {
 
 goToFirstRow(): boolean
 
+
 Moves to the first row of the result set.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -697,6 +697,7 @@ if (resultSet !== undefined) {
 ## getBlob
 
 getBlob(columnIndex: number): Uint8Array
+
 
 Obtains the value of the specified column in the current row as a byte array. If the data type of the current column is INTEGER, DOUBLE, TEXT, or BLOB, the value is converted to a byte array and returned. If the column is empty, an empty byte array is returned. For other data types, error code 14800000 is thrown.
 
@@ -1103,7 +1104,7 @@ Obtains a specified amount of data from the result set. This API uses a promise 
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
-| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | Promise used to return **maxCount** rows of data obtained. If the number of remaining records is less than **maxCount**, the remaining records are returned. Returning an empty array indicates that the end of the result set is reached. If the result set contains duplicate column names, the return values are not as expected. You are advised to use the [getRowsData](#getrowsdata23) API.|
+| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | Promise object that returns maxCount records of data. If the remaining data is fewer than maxCount records, the remaining data is returned. An empty array indicates that the end of the result set has been reached. When the result set contains duplicate column names, the return value will not meet the expected result. It is recommended to use [getRowsData](#getrowsdata23) to obtain the data. |
 
 **Error codes**
 
@@ -1227,7 +1228,7 @@ Obtains data of a specified number of rows from the specified position. This API
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
-| Promise<[RowsData](arkts-apis-data-relationalStore-t.md#rowsdata23)> | Promise used to return **maxCount** rows of data obtained. If the number of remaining records is less than **maxCount**, the remaining records are returned. Returning an empty array indicates that the end of the result set is reached. The values of columns with the same name can be obtained.|
+| Promise<[RowsData](arkts-apis-data-relationalStore-t.md#rowsdata23)> | Promise object that returns **maxCount** records. If the remaining data is fewer than **maxCount** records, the remaining data is returned. An empty array indicates that the end of the result set has been reached. It supports obtaining values of columns that contain duplicate names. |
 
 **Error codes**
 
@@ -1333,7 +1334,6 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 For details about the definition of **this.context** in the sample code, see the application [context](../apis-ability-kit/js-apis-inner-application-context.md) of the stage model.
 
 <!--code_no_check-->
-
 ```ts
 // EntryAbility.ets
 import { window } from '@kit.ArkUI';

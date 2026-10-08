@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c33290f86c4a896f90eff1ee86d78748f13424d1 translatedAt=2026-09-23T01:32:19.223Z pushedAt=2026-09-24T06:00:14.126Z -->
 
 ```c
 struct WebSocket_CloseOption {...}
@@ -13,7 +14,7 @@ struct WebSocket_CloseOption {...}
 
 ## Overview
 
-Defines the parameters for the proactive connection closure initiated by the WebSocket client.
+Defines the parameters for proactively closing a WebSocket client connection.
 
 **Since**: 11
 

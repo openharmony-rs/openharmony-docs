@@ -5,6 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=7ef9b5061ca4cac695cf7b193861ba482e2c784a translatedAt=2026-09-04T02:36:58.976Z pushedAt=2026-09-09T09:11:03.627Z -->
 
 > **NOTE**
 > 
@@ -12,7 +13,7 @@
 
 ## SecurityLevel
 
-Enumerates the KV store security levels. Use the enum name rather than the enum value. You cannot change the security level of an RDB store from a higher level to a lower one.
+Enumerates the RDB store security levels. Use the enum name rather than the enum value. You cannot change the security level of an RDB store from a higher level to a lower one.
 
 > **NOTE**
 >
@@ -22,7 +23,7 @@ Enumerates the KV store security levels. Use the enum name rather than the enum 
 
 | Name| Value  | Description                                                        |
 | ---- | ---- | ------------------------------------------------------------ |
-| S1   | 1    | The RDB store security level is low. If data leakage occurs, minor impact will be caused on the database. An example would be a graph store containing non-sensitive system data such as wallpapers.|
+| S1   | 1    | The RDB store security level is low. If data leakage occurs, minor impact will be caused on the database. An example would be a graph store containing system data such as wallpapers.|
 | S2   | 2    | The RDB store security level is medium. If data leakage occurs, moderate impact will be caused on the database. An example would be a graph store containing audio and video data created by users or call logs.|
 | S3   | 3    | The RDB store security level is high. If data leakage occurs, major impact will be caused on the database. An example would be a graph store containing user fitness, health, and location data.|
 | S4   | 4    | The RDB store security level is critical. If data leakage occurs, severe impact will be caused on the database. An example would be a graph store containing authentication credentials and financial data.|
@@ -156,14 +157,14 @@ export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('custom tokenizer example: window stage create begin.');
     let store: relationalStore.RdbStore | undefined = undefined;
-    const SQL_CREATE_TABLE: relationalStore.StoreConfig = {
+    const storeConfig: relationalStore.StoreConfig = {
       name: "MyStore.db",
       securityLevel: relationalStore.SecurityLevel.S3
     };
     let customType = relationalStore.Tokenizer.CUSTOM_TOKENIZER;
     let customTypeSupported = relationalStore.isTokenizerSupported(customType);
     if (customTypeSupported) {
-      SQL_CREATE_TABLE.tokenizer = customType;
+      storeConfig.tokenizer = customType;
     } else {
       console.info('custom tokenizer example: not support custom tokenizer.');
       return;
@@ -209,7 +210,7 @@ Defines the database synchronization mode. Use the enum name rather than the enu
 | -------------- | ---- | ---------------------------------- |
 | SYNC_MODE_PUSH                       | 0   | Data is pushed from a local device to a remote device.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | SYNC_MODE_PULL                       | 1   | Data is pulled from a remote device to a local device.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
-| SYNC_MODE_TIME_FIRST<sup>10+</sup>   | 4   | Synchronize with the data with the latest modification time.<br>**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client|
+| SYNC_MODE_TIME_FIRST<sup>10+</sup>   | 4   | Synchronize data from the end with a newer modification time to the end with an older modification time.<br>**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client|
 | SYNC_MODE_NATIVE_FIRST<sup>10+</sup> | 5   | Synchronize data from a local device to the cloud.<br>**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client|
 | SYNC_MODE_CLOUD_FIRST<sup>10+</sup>  | 6   | Synchronize data from the cloud to a local device.<br>**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client|
 
@@ -248,8 +249,8 @@ Enumerates the subscription types. Use the enum name rather than the enum value.
 | Name                 | Value  | Description              |
 | --------------------- | ---- | ------------------ |
 | SUBSCRIBE_TYPE_REMOTE | 0    | Subscribe to remote data changes.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
-| SUBSCRIBE_TYPE_CLOUD<sup>10+</sup> | 1  | Subscribe to cloud data changes.<br>**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client|
-| SUBSCRIBE_TYPE_CLOUD_DETAILS<sup>10+</sup> | 2  | Subscribe to detailed information about cloud data changes.<br>**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client|
+| SUBSCRIBE_TYPE_CLOUD<sup>10+</sup> | 1  | Subscribe to cloud data changes.<br>**Required permission:**<br>- API version 12+: N/A<br>- API version 10-11: ohos.permission.DISTRIBUTED_DATASYNC<br>**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client |
+| SUBSCRIBE_TYPE_CLOUD_DETAILS<sup>10+</sup> | 2  | Subscribe to cloud data change details.<br>**Required permission:**<br>- API version 12+: N/A<br>- API version 10-11: ohos.permission.DISTRIBUTED_DATASYNC<br>**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client |
 | SUBSCRIBE_TYPE_LOCAL_DETAILS<sup>12+</sup> | 3  | Subscribe to detailed information about local data changes.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 
 ## RebuildType<sup>12+</sup>
@@ -272,8 +273,8 @@ Enumerates data change types. Use the enum name rather than the enum value.
 
 | Name                        | Value  | Description                        |
 | -------------------------- | --- | -------------------------- |
-| DATA_CHANGE  | 0   | Data change.  |
-| ASSET_CHANGE | 1   | Asset change.|
+| DATA_CHANGE  | 0   | Data change.<br>**Required permission:**<br>- API version 12+: N/A<br>- API version 10-11: ohos.permission.DISTRIBUTED_DATASYNC   |
+| ASSET_CHANGE | 1   | Asset change.<br>**Required permission:**<br>- API version 12+: N/A<br>- API version 10-11: ohos.permission.DISTRIBUTED_DATASYNC |
 
 ## DistributedType<sup>10+</sup>
 
@@ -282,7 +283,7 @@ Enumerates the distributed database table types. Use the enum name rather than t
 | Name               | Value  | Description                                                                                                |
 | ------------------ | --- | -------------------------------------------------------------------------------------------------- |
 | DISTRIBUTED_DEVICE | 0  | Distributed database table synced between devices.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core              |
-| DISTRIBUTED_CLOUD  | 1   | Distributed database table synced between a device and the cloud.<br>**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client|
+| DISTRIBUTED_CLOUD  | 1   | Distributed database table synced between the device and the cloud.<br>**Required permission:**<br>- API version 12+: N/A<br>- API version 10-11: ohos.permission.DISTRIBUTED_DATASYNC<br>**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client |
 
 ## ConflictResolution<sup>10+</sup>
 

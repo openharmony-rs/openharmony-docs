@@ -159,7 +159,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
-获取由elementName指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
+获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -226,7 +226,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>): Promise\<Array\<RemoteAbilityInfo>>
 
-获取由elementName指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
+获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -421,7 +421,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
-获取由elementName和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
+获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -489,7 +489,7 @@ try {
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise\<Array\<RemoteAbilityInfo>>
 
-获取由elementName和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
+获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -508,7 +508,7 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise对象，调用成功返回RemoteAbilityInfo对象列表；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -560,7 +560,7 @@ try {
 
 getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise\<number>
 
-获取指定远程设备上指定包名的应用版本信息。使用Promise异步回调。
+获取指定远程设备上指定包名的应用版本号。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -583,7 +583,7 @@ getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise\<numbe
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<number> | Promise对象，调用成功返回版本信息；调用失败返回错误对象。 |
+| Promise\<number> | Promise对象，调用成功返回版本号；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -614,6 +614,68 @@ try {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
   console.error(`getRemoteBundleVersionCode failed: error code is ${code}  and error msg is ${message}`);
+}
+```
+
+## distributedBundleManager.getRemoteMetadata
+
+getRemoteMetadata(deviceId: string, bundleName: string): Promise\<Array\<ModuleMetadata>>
+
+获取指定远程设备上指定包名的应用元数据信息。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名        | 类型                                                | 必填 | 说明                    |
+| ------------ | --------------------------------------------------- | ---- | ----------------------- |
+| deviceId | string | 是   | 远程设备ID。可以通过[getAvailableDeviceList](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelist)获取所有可信设备列表，取值为可信设备信息下networkId字段。 |
+| bundleName  | string |是 | 应用的包名。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                              |
+| ------------------------------------------------------------ | --------------------------------- |
+| Promise\<Array\<[ModuleMetadata](js-apis-bundleManager-applicationInfo.md#modulemetadata10)\>\> | Promise对象，调用成功返回[ModuleMetadata](js-apis-bundleManager-applicationInfo.md#modulemetadata10)数组（每个元素携带一个模块的metadata）；调用失败返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID |    错误信息                   |
+|----------|-------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 801 | Capability not supported. |
+| 17700001 | The specified bundle is not found. |
+| 17700007 | The specified device ID is not found. |
+| 17700027 | The distributed service is not running. |
+| 17700101 | Bundle manager service is excepted. |
+
+**示例：**
+
+```ts
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedBundleManager.getRemoteMetadata('1111', 'com.hap.myapplication').then((data) => {
+    console.info(`getRemoteMetadata succeed:` + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    console.error(`getRemoteMetadata failed: error code is ${err.code}  and error msg is ${err.message}`);
+  });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`getRemoteMetadata failed: error code is ${code}  and error msg is ${message}`);
 }
 ```
 

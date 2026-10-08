@@ -2,10 +2,11 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @bitbegin-->
-<!--Designer: @guofan912-->
-<!--Tester: @wuqingyang1-->
+<!--Owner: @yh1719-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=37e87e28b1f57566fffb557016c871f107cbe03a translatedAt=2026-09-08T07:23:45.488Z pushedAt=2026-09-08T10:55:52.315Z -->
 
 The **connectedTag** module provides APIs for using active tags. You can use the APIs to initialize the active tag chip and read and write active tags.
 
@@ -43,7 +44,7 @@ Initializes the active tag chip.
 
 initialize(): void
 
-Initializes the active tag chip.
+Initializes the active tag chip. Call this API to initialize the active tag before performing reading or writing once. To initialize the active tag again, call [uninitialize](#connectedtaguninitialize9) first.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -59,6 +60,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |801 | Capability not supported.          |
 |3200101 | Connected NFC tag running state is abnormal in service. |
 
+**Example:**
+
+```js
+import { connectedTag } from '@kit.ConnectivityKit';
+
+try {
+    console.info("connectedTag initialize");
+    connectedTag.initialize();
+} catch (error) {
+    console.error("initialize error:" + error);
+}
+```
+
 ## connectedTag.uninit<sup>(deprecated)</sup>
 
 uninit(): boolean
@@ -67,7 +81,7 @@ Uninitializes the active tag resources.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [uninitialize](#connectedtaguninitialize9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [connectedTag.read](#connectedtagread9) instead.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -87,7 +101,7 @@ Uninitializes the active tag resources.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
-**System capability**: SystemCapability.Communication.ConnectedTag
+**System capability:** SystemCapability.Communication.ConnectedTag
 
 **Error codes**
 
@@ -99,15 +113,28 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |801 | Capability not supported.          |
 |3200101 | Connected NFC tag running state is abnormal in service. |
 
+**Example:**
+
+```js
+import { connectedTag } from '@kit.ConnectivityKit';
+
+try {
+    console.info("connectedTag uninitialize");
+    connectedTag.uninitialize();
+} catch (error) {
+    console.error("connectedTag error: " + error);
+}
+```
+
 ## connectedTag.readNdefTag<sup>(deprecated)</sup>
 
 readNdefTag(): Promise&lt;string&gt;
 
-Reads the content of this active tag. This API uses a promise to return the result.
+Reads the content of an active tag. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [uninitialize](#connectedtaguninitialize9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [connectedTag.read](#connectedtagread9) instead.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -117,7 +144,7 @@ Reads the content of this active tag. This API uses a promise to return the resu
 
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise used to return the content of the active tag.|
+| Promise&lt;string&gt; | Promise used to return the content of the active tag. |
 
 **Example**
 
@@ -136,7 +163,7 @@ connectedTag.readNdefTag().then((data) => {
 
 read(): Promise&lt;number[]&gt;
 
-Reads the content of this active tag. This API uses a promise to return the result.
+Reads the content of an active tag. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -146,7 +173,7 @@ Reads the content of this active tag. This API uses a promise to return the resu
 
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;number[]&gt; | Promise used to return the content of the active tag.|
+| Promise&lt;number[]&gt; | Promise used to return the content of the active tag. |
 
 **Error codes**
 
@@ -179,7 +206,7 @@ Reads the content of this active tag. This API uses an asynchronous callback to 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [uninitialize](#connectedtaguninitialize9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [connectedTag.read](#connectedtagread9) instead.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -189,7 +216,7 @@ Reads the content of this active tag. This API uses an asynchronous callback to 
 
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the active tag content obtained.|
+| callback | AsyncCallback&lt;string&gt; | Yes | Callback used to return the result. If the reading is successful, **data** is the content of the active tag read. Otherwise, **err** is an error object. |
 
 **Example**
 
@@ -219,7 +246,7 @@ Reads the content of this active tag. This API uses an asynchronous callback to 
 
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;number[]&gt; | Yes| Callback used to return the active tag content obtained.|
+| callback | AsyncCallback&lt;number[]&gt; | Yes | Callback used to return the result. If the reading is successful, **data** is the content of the active tag read. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -249,7 +276,7 @@ connectedTag.read((err, data)=> {
 
 writeNdefTag(data: string): Promise&lt;void&gt;
 
-Writes data to this active tag. This API uses a promise to return the result.
+Writes data to an active tag. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -263,13 +290,13 @@ Writes data to this active tag. This API uses a promise to return the result.
 
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| data | string | Yes| Data to be written to the active tag. The maximum length is 1024 bytes.|
+| data | string | Yes | Data to be written to the active tag. The maximum length is 1024 bytes. |
 
 **Return value**
 
 | **Type**| **Description**|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -289,7 +316,7 @@ connectedTag.writeNdefTag(rawData).then(() => {
 
 write(data: number[]): Promise&lt;void&gt;
 
-Writes data to this active tag. This API uses a promise to return the result.
+Writes data to an active tag. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.NFC_TAG
 
@@ -299,7 +326,7 @@ Writes data to this active tag. This API uses a promise to return the result.
 
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| data | number[] | Yes| Data to be written to the active tag. The value is a hexadecimal number ranging from 0x00 to 0xFF.|
+| data | number[] | Yes | Data to be written to the active tag. The value is a hexadecimal number ranging from 0x00 to 0xFF. |
 
 **Return value**
 
@@ -350,8 +377,8 @@ Writes data to this active tag. This API uses an asynchronous callback to return
 
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| data | string | Yes| Data to be written to the active tag. The maximum length is 1024 bytes.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the active tag content obtained.|
+| data | string | Yes | Data to be written to the active tag. The maximum length is 1024 bytes. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If data is successfully written to the tag, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Example**
 
@@ -382,8 +409,8 @@ Writes data to this active tag. This API uses an asynchronous callback to return
 
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| data | number[] | Yes| Data to be written to the active tag. The value is a hexadecimal number ranging from 0x00 to 0xFF.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the active tag content obtained.|
+| data | number[] | Yes | Data to be written to the active tag. The value is a hexadecimal number ranging from 0x00 to 0xFF. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If data is successfully written to the tag, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -426,7 +453,7 @@ Registers the NFC field strength state events.
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type. This parameter has a fixed value of **notify**.|
-| callback | Callback&lt;number&gt; | Yes| Callback used to return the [NfcRfType](#nfcrftype).|
+| callback | Callback&lt;number&gt; | Yes | Callback used to return the result. For details about the values indicating successful registration, see [NfcRfType](#nfcrftype). |
 
 ## connectedTag.off('notify')
 
@@ -487,7 +514,6 @@ async function nfcTagTestOff(): Promise<void> {
     }
 }
 
-export { nfcTagTestOn, nfcTagTestOff }
 ```
 
 ## NfcRfType

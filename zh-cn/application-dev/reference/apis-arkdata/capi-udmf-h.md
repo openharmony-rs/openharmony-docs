@@ -35,6 +35,7 @@
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) | OH_UdmfOptions | 数据操作选项，定义数据操作的可选参数。 |
 | [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) | OH_UdmfDataLoadParams | 表示数据加载参数结构体。 |
 | [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) | OH_UdmfDataLoadInfo | 表示数据加载信息结构体。 |
+| [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) | OH_UDMF_Summary | 描述统一数据对象的汇总信息。 |
 
 ### 枚举
 
@@ -46,11 +47,16 @@
 | [Udmf_ProgressIndicator](#udmf_progressindicator) | Udmf_ProgressIndicator | 定义进度条指示选项，可选择是否采用系统默认进度显示。 |
 | [Udmf_Visibility](#udmf_visibility) | Udmf_Visibility | 定义数据的可见性等级。 |
 
+### 宏定义
+
+| 名称 | 描述 |
+| -- | -- |
+| UDMF_KEY_BUFFER_LEN (512)  | 统一数据对象唯一标识符最小空间长度。<br>**起始版本：** 12 |
+
 ### 函数
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [UDMF_KEY_BUFFER_LEN (512)](#udmf_key_buffer_len) | - | 统一数据对象唯一标识符最小空间长度。 |
 | [typedef void (\*OH_Udmf_DataProgressListener)(OH_Udmf_ProgressInfo* progressInfo, OH_UdmfData* data)](#oh_udmf_dataprogresslistener) | OH_Udmf_DataProgressListener | 定义获取进度信息和数据的监听回调函数。<br>使用时需要判断数据是否返回空指针。只有当进度达到100%时，才会返回数据。 |
 | [OH_UdmfData* OH_UdmfData_Create()](#oh_udmfdata_create) | - | 创建统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdmfData_Destroy](capi-udmf-h.md#oh_udmfdata_destroy)销毁实例对象，否则会导致内存泄漏。 |
 | [void OH_UdmfData_Destroy(OH_UdmfData* pThis)](#oh_udmfdata_destroy) | - | 销毁统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)指针指向的实例对象。 |
@@ -110,8 +116,8 @@
 | [int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)](#oh_udmfoptions_reset) | - | 重置数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例为空。 |
 | [int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfData* unifiedData)](#oh_udmf_getunifieddata) | - | 从统一数据管理框架数据库中获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
 | [int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)](#oh_udmf_getunifieddatabyoptions) | - | 通过数据通路类型从统一数据管理框架数据库中获取统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
-| [int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddata) | - | 从统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
-| [int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData *unifiedData, char *key, unsigned int keyLen)](#oh_udmf_setunifieddatabyoptions) | - | 从统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
+| [int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddata) | - | 指定数据通路类型向统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
+| [int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddatabyoptions) | - | 指定数据操作选项向统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
 | [int OH_Udmf_UpdateUnifiedData(OH_UdmfOptions* options, OH_UdmfData* unifiedData)](#oh_udmf_updateunifieddata) | - | 对统一数据管理框架数据库中的统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据进行数据更改。 |
 | [int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)](#oh_udmf_deleteunifieddata) | - | 删除统一数据管理框架数据库中的统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。 |
 | [void OH_Udmf_DestroyDataArray(OH_UdmfData** dataArray, unsigned int dataSize)](#oh_udmf_destroydataarray) | - | 销毁数据数组内存。 |
@@ -138,6 +144,11 @@
 | [void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)](#oh_udmfdataloadinfo_setrecordcount) | - | 设置数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的记录数量。 |
 | [OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)](#oh_udmf_getdataelementat) | - | 从统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数组中获取指定下标的统一数据对象数据。 |
 | [int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolicy)](#oh_udmfproperty_setauthpermission) | - | 在[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中设置权限，对[OH_UdmfData](capi-udmf-oh-udmfdata.md)生效。 |
+| [OH_UDMF_Summary *OH_UDMF_CreateSummary(void)](#oh_udmf_createsummary) | - | 创建指向统一数据对象的汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针。<br>当不再需要使用指针时，必须调用[OH_UDMF_DestroySummary](#oh_udmf_destroysummary)释放。 |
+| [void OH_UDMF_DestroySummary(OH_UDMF_Summary *summary)](#oh_udmf_destroysummary) | - | 销毁汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)指针指向的实例对象。请注意，对于同一个指针，不能重复调用此函数。 |
+| [int OH_UDMF_GetSummaryOverviewTypes(const OH_UDMF_Summary *summary, const char *const **types, int64_t *count)](#oh_udmf_getsummaryoverviewtypes) | - | 获取汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)中的所有数据类型。 |
+| [int OH_UDMF_GetSummaryOverviewSize(const OH_UDMF_Summary *summary, const char *type, int64_t *dataSize)](#oh_udmf_getsummaryoverviewsize) | - | 获取与汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)中数据类型关联的数据大小。 |
+| [int OH_UDMF_GetSummaryFilenameExtensions(const OH_UDMF_Summary *summary, const char *const **filenameExtensions, int64_t *count)](#oh_udmf_getsummaryfilenameextensions) | - | 获取汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例中的所有文件扩展名。 |
 
 ## 枚举类型说明
 
@@ -472,7 +483,7 @@ typedef OH_UdmfData* (*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableI
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UdmfData](capi-udmf-oh-udmfdata.md)* (*OH_Udmf_DataLoadHandler) | 返回待加载的数据。 |
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)* | 返回待加载的数据。 |
 
 ### OH_UdmfOptions_GetVisibility()
 
@@ -522,18 +533,6 @@ int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibili
 | 类型 | 说明 |
 | -- | -- |
 | int | 返回执行结果。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br> 若返回UDMF_E_OK，表示执行成功。<br> 若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
-
-### UDMF_KEY_BUFFER_LEN()
-
-```c
-UDMF_KEY_BUFFER_LEN (512)
-```
-
-**描述**
-
-统一数据对象唯一标识符最小空间长度。
-
-**起始版本：** 12
 
 ### OH_Udmf_DataProgressListener()
 
@@ -789,7 +788,7 @@ typedef void* (*OH_UdmfRecordProvider_GetData)(void* context, const char* type)
 
 | 类型 | 说明 |
 | -- | -- |
-| void* | 需要返回一个标准化数据。 |
+| void* | 返回从上下文中获取的指定类型的数据指针。 |
 
 ### OH_UdmfRecordProvider_SetData()
 
@@ -854,7 +853,7 @@ void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据对象[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
+| [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
 
 ### OH_UdmfRecord_AddGeneralEntry()
 
@@ -2016,7 +2015,7 @@ int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, c
 
 **描述**
 
-从统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
+指定数据通路类型向统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
 
 **起始版本：** 12
 
@@ -2039,12 +2038,12 @@ int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, c
 ### OH_Udmf_SetUnifiedDataByOptions()
 
 ```c
-int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData *unifiedData, char *key, unsigned int keyLen)
+int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)
 ```
 
 **描述**
 
-从统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
+指定数据操作选项向统一数据管理框架数据库中写入统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数据。
 
 **起始版本：** 20
 
@@ -2054,8 +2053,8 @@ int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData *unifie
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)* options | 指向数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。 |
-| [OH_UdmfData](capi-udmf-oh-udmfdata.md) *unifiedData | 指向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)实例的指针。 |
-| char *key | 成功将数据设置到数据库后对应数据的唯一标识符，内存大小不小于[UDMF_KEY_BUFFER_LEN](#udmf_key_buffer_len)。 |
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)* unifiedData | 指向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)实例的指针。 |
+| char* key | 成功将数据设置到数据库后对应数据的唯一标识符，内存大小不小于[UDMF_KEY_BUFFER_LEN](#宏定义)。 |
 | unsigned int keyLen | 唯一标识符参数的空间大小。 |
 
 **返回：**
@@ -2207,7 +2206,7 @@ OH_UdmfGetDataParams* OH_UdmfGetDataParams_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)* | 执行成功则返回一个指向属性[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)实例对象的指针，否则返回nullptr。 |
+| [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)* | 执行成功则返回一个指向[OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)实例对象的指针，否则返回nullptr。 |
 
 ### OH_UdmfGetDataParams_Destroy()
 
@@ -2351,6 +2350,120 @@ int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolic
 | -- | -- |
 | [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)* pThis | 表示指向[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)实例的指针。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
 | uint32_t authPolicy | 表示拖拽场景下的URI授权策略，默认值READ+WRITE+PERSIST，只对单次数据生效，优先级较低。具体策略见[Udmf_AuthPermission](capi-uds-h.md#udmf_authpermission)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的状态代码。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
+
+### OH_UDMF_CreateSummary()
+
+```c
+OH_UDMF_Summary *OH_UDMF_CreateSummary(void)
+```
+
+**描述**
+
+创建指向统一数据对象的汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针。<br>当不再需要使用指针时，必须调用[OH_UDMF_DestroySummary](#oh_udmf_destroysummary)释放。
+
+**起始版本：** 26.0.1
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) | 如果操作成功，返回一个指向[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针，调用者拥有该实例的所有权。 |
+
+### OH_UDMF_DestroySummary()
+
+```c
+void OH_UDMF_DestroySummary(OH_UDMF_Summary *summary)
+```
+
+**描述**
+
+销毁汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)指针指向的实例对象。请注意，对于同一个指针，不能重复调用此函数。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [入参]表示指向[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针。 |
+
+### OH_UDMF_GetSummaryOverviewTypes()
+
+```c
+int OH_UDMF_GetSummaryOverviewTypes(const OH_UDMF_Summary *summary, const char *const **types, int64_t *count)
+```
+
+**描述**
+
+获取汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)中的所有数据类型。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [入参]表示指向汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针。该指针不能为NULL。 |
+| const char *const **types | [出参]表示数据类型的输出数组。每个元素都是非空的、以'\0'结尾的UTF-8字符串。 |
+| int64_t *count | [出参]表示输出数组中的数据类型的数量。summary为空时，count为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的状态代码。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
+
+### OH_UDMF_GetSummaryOverviewSize()
+
+```c
+int OH_UDMF_GetSummaryOverviewSize(const OH_UDMF_Summary *summary, const char *type, int64_t *dataSize)
+```
+
+**描述**
+
+获取与汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)中数据类型关联的数据大小。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [入参]表示指向汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针。该指针不能为NULL。 |
+| const char *type | [入参]表示查询的数据类型。该参数是以'\0'结尾的UTF-8字符串，不能为空。 |
+| int64_t *dataSize | [出参] 数据大小，单位为字节。如果未找到对应数据类型，*dataSize为-1。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的状态代码。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。<br>若返回UDMF_ERR，表示内部数据错误。可能的原因是服务故障或者内存不足等。具体请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
+
+### OH_UDMF_GetSummaryFilenameExtensions()
+
+```c
+int OH_UDMF_GetSummaryFilenameExtensions(const OH_UDMF_Summary *summary, const char *const **filenameExtensions, int64_t *count)
+```
+
+**描述**
+
+获取汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例中的所有文件扩展名。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [入参]表示指向汇总信息[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针。该指针不能为NULL。 |
+| const char *const **filenameExtensions | [出参]指向文件扩展名数组的指针。包含前导句点，使用小写ASCII字母，每个数组元素都是非空的、以'\0'结尾的字符串。调用[OH_UDMF_DestroySummary](#oh_udmf_destroysummary)接口后该参数失效。 |
+| int64_t *count | [出参]指向文件扩展名数量的指针。该值为非负整数。未获取到有效扩展名时，该值为0。|
 
 **返回：**
 

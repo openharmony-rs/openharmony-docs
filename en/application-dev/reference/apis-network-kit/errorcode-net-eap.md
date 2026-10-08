@@ -1,12 +1,13 @@
 # Extended Authentication Error Codes
 
+<!-- md-trans-meta sourceCommit=7b8b9d8ce742c4a1126ab4e1f2ad4f9170b54175 translatedAt=2026-09-23T01:44:39.256Z pushedAt=2026-09-24T06:00:14.166Z -->
+
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:42.585Z pushedAt=2026-06-26T03:00:41.280Z -->
 
 > **NOTE**
 >
@@ -20,15 +21,15 @@ Invalid netId.
 
 **Description**
 
-This error code is reported if **netId** is invalid.
+Invalid **netId** value.
 
 **Possible causes**
 
-The specified **netId** does not exist.
+The **netId** value does not exist.
 
 **Solution**
 
-Enter a valid **netId**.
+Enter a valid **netId** value.
 
 ## 33200002 Failed to Exit Extended Authentication of the Specified NIC
 
@@ -38,15 +39,15 @@ log off fail.
 
 **Description**
 
-This error code is reported if the attempt to exit extended authentication of the NIC identified by the specified **netId** fails.
+Failed to exit extended authentication of the specified **netId**.
 
 **Possible causes**
 
-The specified **netId** does not exist.
+The **netId** value does not exist.
 
 **Solution**
 
-Enter a valid **netId**.
+Enter a valid **netId** value.
 
 ## 33200003 Invalid eth eap Configuration
 
@@ -92,7 +93,7 @@ Invalid size of eap data.
 
 **Description**
 
-This error code is reported if the EAP data length is invalid.
+Invalid EAP data length value.
 
 **Possible causes**
 
@@ -118,7 +119,8 @@ The input network type is not supported.
 
 **Solution**
 
-Set the input network type to **1** (WLAN) or **2** (ETH).
+Pass in a supported valid network type: **WLAN: 1**; **ETH: 2**.
+
 
 ## 33200007 Invalid eapCode Value
 
@@ -128,7 +130,7 @@ Invalid eap code.
 
 **Description**
 
-This error code is reported if **eapCode** is invalid.
+The **eapCode** value is invalid.
 
 **Possible causes**
 
@@ -136,7 +138,7 @@ The input **eapCode** is not within the valid value range.
 
 **Solution**
 
-Enter a valid **eapCode** value, which can be **1**, **2**, **3**, or **4**.
+The valid values of **eapCode** are **1**, **2**, **3**, and **4**.
 
 ## 33200008 Invalid eapType Value
 
@@ -146,7 +148,7 @@ Invalid eap type.
 
 **Description**
 
-This error code is reported if **eapType** is invalid.
+The **eapType** is invalid.
 
 **Possible causes**
 
@@ -154,7 +156,7 @@ The input **eapCode** is not within the valid value range.
 
 **Solution**
 
-Set **eapType** to a value within the range of [1, 255].
+Pass in a valid **eapType**, with a value range of [1, 255].
 
 ## 33200009 netmanager Not Exist
 
@@ -174,7 +176,7 @@ This error code is reported if the netmanager process is abnormal.
 
 Reboot the system.
 
-## 33200010 Invalid eap Status
+## 33200010 Invalid eth State
 
 **Error Message**
 
@@ -225,3 +227,4 @@ This error code is reported if a program fails to operate properly.
 4. Ensure that the callback is not unregistered repeatedly before unregistration, and is used normally after registration.
 
 5. If the problem persists, restart the device and try again.
+

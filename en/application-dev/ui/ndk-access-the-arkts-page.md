@@ -6,7 +6,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4431c59b895d1d02940f60be4527223815858a92 translatedAt=2026-07-09T11:48:25.531Z pushedAt=2026-07-14T03:42:53.846Z -->
+<!-- md-trans-meta sourceCommit=d2d180bb8a8dbb27c5a12f721bbaa8fe745c322c translatedAt=2026-08-05T01:25:58.821Z pushedAt=2026-08-05T03:11:36.895Z -->
 
 ## Placeholder Components
 
@@ -123,7 +123,7 @@ After obtaining a function pointer struct, use the functions within the struct t
   arkUINativeNodeApi->setAttribute(stack, NODE_WIDTH, &item);
   ArkUI_NumberValue value_color[] = {{.u32 = 0xff112233}};
   ArkUI_AttributeItem item_color = {value_color, 1};
-  arkUINativeNodeApi->setAttribute(stack, NODE_BACKGROUND_COLOR, &item);
+  arkUINativeNodeApi->setAttribute(stack, NODE_BACKGROUND_COLOR, &item_color);
   ```
 
   To query the attribute types supported by the NDK API, use the [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) API.
@@ -609,8 +609,8 @@ Sample code directory structure:
     ``` C
     // ArkUIListItemNode.h
     // Provide an encapsulation class for list items
-    #ifndef MYAPPLICATION_ARKUISTACKNODE_H
-    #define MYAPPLICATION_ARKUISTACKNODE_H
+    #ifndef MYAPPLICATION_ARKUILISTITEMNODE_H
+    #define MYAPPLICATION_ARKUILISTITEMNODE_H
     
     #include "ArkUINode.h"
     
@@ -622,7 +622,7 @@ Sample code directory structure:
     };
     } // namespace NativeModule
     
-    #endif // MYAPPLICATION_ARKUISTACKNODE_H
+    #endif // MYAPPLICATION_ARKUILISTITEMNODE_H
     ```
 
    (5) Implement the text component.
@@ -674,7 +674,7 @@ Sample code directory structure:
     #endif // MYAPPLICATION_ARKUITEXTNODE_H
     ```
 
-5. Complete the **CreateTextListExample** function from step 3 to create and mount the display of the native text list.
+5. Complete the **CreateTextListExample** function from step 3 to implement the creation, mounting, and display of the native text list.
 
     <!-- @[Cpp_NormalTextListExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NormalTextListExample.h) -->  
 
@@ -710,7 +710,6 @@ Sample code directory structure:
             textNode->SetTextContent(std::to_string(i));
             textNode->SetFontSize(fontSizes);
             textNode->SetFontColor(0xFF000000);
-            textNode->SetPercentWidth(1);
             textNode->SetPercentWidth(screenWidth);
             textNode->SetHeight(defaultHeight);
             textNode->SetBackgroundColor(0xFFfffacd);

@@ -5,6 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=15496fed0cae2d3de7549779264807cf5940b7af translatedAt=2026-09-04T03:50:50.389Z pushedAt=2026-09-09T09:11:03.731Z -->
 
 A content card designed in the [ContentForm](js-apis-data-uniformDataStruct.md#contentform14) struct. You can set the title (mandatory), description, application icon, application name, redirection link, and content image for the content card. When a user taps the card, a callback of the pass event is triggered to redirect the user to the specified page if the target link is set.
 
@@ -33,7 +34,7 @@ N/A
 
 ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: number, formHeight?: number, handleOnClick?: Function})
 
-Defines the information of a content card component that displayed in an application, including the title, description, content image, application information, and the like. It is applicable to scenarios such as content distribution, social updates, and message notifications.
+Defines the information of a content card component that is displayed in an application, including the title, description, content image, application information, and the like. It is applicable to scenarios such as content distribution, social updates, and message notifications.
 
 **Decorator**: \@Component
 
@@ -57,7 +58,7 @@ Enumerates content card types, including large, medium, and small.
 |-------------|---|-------------------|
 | TYPE_BIG | 0 | 4 × 4. The default card width is 200 vp, and the default height is 200 vp.|
 | TYPE_MID | 1 | 4 × 2. The default card width is 200 vp, and the default height is 100 vp.|
-| TYPE_SMALL | 2 | 2 × 1. The default card width is 137 vp, and the default height is 83 vp.|
+| TYPE_SMALL | 2 | 2 x 1. The default card width is 137 vp, and the default height is 83 vp. |
 
 ## Example
 

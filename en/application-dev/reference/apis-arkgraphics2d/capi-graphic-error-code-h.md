@@ -1,8 +1,16 @@
 # graphic_error_code.h
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=138b9da99fa1494d3d8b18ca10cbbcd2abcda6ea translatedAt=2026-08-24T09:07:53.364Z pushedAt=2026-08-31T11:43:55.891Z -->
+
 ## Overview
 
-Defines error codes.
+Defines error codes used to identify various errors that may occur during API calls, including memory operation errors, invalid parameters, insufficient permissions, abnormal buffer states, and unsupported devices, helping developers quickly locate and troubleshoot the causes of API call failures.
 
 **File to include**: <native_window/graphic_error_code.h>
 
@@ -26,7 +34,7 @@ Defines error codes.
 
 ### OHNativeErrorCode
 
-```
+```c
 enum OHNativeErrorCode
 ```
 
@@ -43,6 +51,7 @@ Defines an enum for the error codes.
 | NATIVE_ERROR_INVALID_ARGUMENTS = 40001000 | An input parameter is invalid.|
 | NATIVE_ERROR_NO_PERMISSION = 40301000 | You do not have the permission to perform the operation.|
 | NATIVE_ERROR_NO_BUFFER = 40601000 | No buffer is available.|
+| NATIVE_ERROR_INVALID_OPERATION = 41201000 | Invalid operation.<br/>**Since:** 26.0.0 |
 | NATIVE_ERROR_NO_CONSUMER = 41202000 | The consumer does not exist.|
 | NATIVE_ERROR_NOT_INIT = 41203000 | Not initialized.|
 | NATIVE_ERROR_CONSUMER_CONNECTED = 41206000 | The consumer is connected.|
@@ -56,5 +65,5 @@ Defines an enum for the error codes.
 | NATIVE_ERROR_UNKNOWN = 50002000 | Unknown error. Check the log.|
 | NATIVE_ERROR_HDI_ERROR = 50007000 | Failed to call the HDI.|
 | NATIVE_ERROR_BINDER_ERROR = 50401000 | Cross-process communication failed.|
-| NATIVE_ERROR_EGL_STATE_UNKNOWN = 60001000 | The EGL environment is abnormal.|
-| NATIVE_ERROR_EGL_API_FAILED = 60002000 | Failed to call the EGL APIs.|
+| NATIVE_ERROR_EGL_STATE_UNKNOWN = 60001000 | Abnormal EGL environment state. |
+| NATIVE_ERROR_EGL_API_FAILED = 60002000 | EGL API call failed. |

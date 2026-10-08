@@ -1,4 +1,4 @@
-# ArkTSUtils.ASON
+# namespace (ASON)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
@@ -32,7 +32,7 @@ ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自�
 
 | 类型 | 说明   |
 | ------ | ------ |
-| [lang.ISendable](js-apis-arkts-lang.md#langisendable)   | 所有Sendable类型的父类型。 |
+| [lang.ISendable](js-apis-arkts-lang.md#isendable)   | 所有Sendable类型的父类型。 |
 
 ## Transformer
 
@@ -153,9 +153,9 @@ let options2: ArkTSUtils.ASON.ParseOptions = {
 }
 let mapText = '{"largeNumber":112233445566778899}';
 let parsedMap = ArkTSUtils.ASON.parse(mapText, undefined, options2);
-console.info("parsedMap is " + parsedMap);
+console.info(`parsedMap is ${parsedMap}`);
 // 期望输出：parsedMap is [object SendableMap]
-console.info("largeNumber is " + (parsedMap as collections.Map<string,bigint>).get("largeNumber"));
+console.info(`largeNumber is ${(parsedMap as collections.Map<string,bigint>).get("largeNumber")}`);
 // 期望输出：largeNumber is 112233445566778899
 ```
 

@@ -202,9 +202,10 @@ struct OverlayContentPage {
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: ComponentContent<Params> =
     new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor));
+  private timer: number = -1;
 
   aboutToAppear(): void {
-    setInterval(() => {
+    this.timer = setInterval(() => {
       if (this.overlayColor.includes('0.6')) {
         this.overlayColor = 'rgba(0, 0, 0, 0.1)';
         this.overlayNode.update(new Params(this.overlayColor));
@@ -213,6 +214,9 @@ struct OverlayContentPage {
         this.overlayNode.update(new Params(this.overlayColor));
       }
     }, 1000);
+  }
+  aboutToDisappear(): void {
+    clearInterval(this.timer);
   }
 
   build() {

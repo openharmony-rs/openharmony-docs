@@ -6,11 +6,11 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**TextPicker** is a component that allows users to select text, images, or hybrid content through scrolling. It supports three usage modes: single-column picker, multi-column independent picker, and multi-column cascading picker.
+**TextPicker** is a component that allows users to select text, images, or hybrid content through scrolling. It supports three usage modes: single-column picker, multi-column independent picker, and multi-column cascading picker. This component is suitable for scenarios where users need to select data from preset options, such as selecting a date, region, or configuration item. It supports features such as cyclic scrolling, custom text style, divider style, fade-out effect, option height adjustment, haptic feedback, and crown sensitivity settings. It provides a smooth sliding interaction experience and flexible data display modes.
 
 >  **NOTE**
 >
-> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - Avoid changing the attribute data during the animation process of this component.
 >
@@ -21,7 +21,7 @@
 
 ## Child Components
 
-Not supported
+This component is a basic component and does not contain child components.
 
 
 ## APIs
@@ -38,7 +38,7 @@ Creates a text picker based on the specified data list.
 
 | Name | Type                                           | Mandatory| Description                  |
 | ------- | ----------------------------------------------- | ---- | ---------------------- |
-| options | [TextPickerOptions](#textpickeroptions) | No  | Parameters of the text picker.|
+| options | [TextPickerOptions](#textpickeroptions) | No  | Parameters of the text picker. This parameter is passed when you need to customize the data source, selected item, and column width of the picker. If the parameter is left empty, the component cannot be displayed.|
 
 ## TextPickerOptions
 
@@ -46,12 +46,13 @@ Defines the configuration options of the text picker.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| range | string[]&nbsp;\|&nbsp;string[][]<sup>10+</sup> \| [Resource](ts-types.md#resource)&nbsp;\|<br>[TextPickerRangeContent](#textpickerrangecontent10)[]<sup>10+</sup>&nbsp;\|&nbsp;[TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[]<sup>10+</sup> | No| No| Data selection range of the picker. This parameter cannot be set to an empty array. If it is set to an empty array, no value is displayed. If it is dynamically changed to an empty array, the current valid value remains displayed.<br>**NOTE**<br>1. Single-column pickers: string[], [Resource](ts-types.md#resource), or [TextPickerRangeContent](#textpickerrangecontent10)[]<br>2. Multi-column independent pickers: string[][]<br>3. Multi-column cascading pickers: [TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[]<br>4. The Resource type supports only [strarray.json](../../../quick-start/resource-categories-and-access.md#resource-group-directories).<br>5. The type and number of columns in the range cannot be dynamically modified.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| selected | number&nbsp;\|&nbsp;number[]<sup>10+</sup> | No| Yes| Index of the selected item in the data list. The index is zero-based.<br>Default value: **0**<br>**NOTE**<br>1. Single-column pickers: number<br>2. Multi-column pickers: number[]<br>3. Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| value | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)[] | No| Yes| Value of the selected item. The priority of this parameter is lower than that of **selected**.<br>Default value: value of the first item in the data list.<br> **NOTE**<br>1. Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>2. The [Resource](ts-types.md#resource) type is supported since API version 20.<br>3. This parameter works only when the picker contains text only. It does not work when the picker contains images or mixed content.<br>4. Single-column pickers: [ResourceStr](ts-types.md#resourcestr)<br>5. Multi-column pickers: [ResourceStr](ts-types.md#resourcestr)[]<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| columnWidths<sup>18+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)[] | No| Yes| Custom widths for each column.<br>Default value: Each column has equal width, calculated by dividing the total component width by the number of columns.<br>**NOTE**<br>1. Text truncation occurs when content exceeds column width.<br>2. Invalid values are treated as the default value.<br>3. Individual array elements can be **Undefined** or **Null**, but the entire array cannot be **Undefined[]** or **Null[]**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| range | string[] \| string[][]<sup>10+</sup> \| [Resource](ts-types.md#resource) \| [TextPickerRangeContent](#textpickerrangecontent10)[]<sup>10+</sup> \| [TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[]<sup>10+</sup> | No| No| Data selection range of the picker. This parameter cannot be set to an empty array. If it is set to an empty array, no value is displayed. If it is dynamically changed to an empty array, the current valid value remains displayed.<br>**NOTE**<br>1. Single-column pickers: string[], [Resource](ts-types.md#resource), or [TextPickerRangeContent](#textpickerrangecontent10)[]<br>2. Multi-column independent pickers: string[][]<br>3. Multi-column cascading pickers: [TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[]<br>4. The Resource type supports only [strarray.json](../../../quick-start/resource-categories-and-access.md#resource-group-directories).<br>5. The type and number of columns in the range cannot be dynamically modified.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| selected | number&nbsp;\|&nbsp;number[]<sup>10+</sup> | No| Yes| Index of the selected item or items in the data list. The index is zero-based.<br>Default value: **0**<br>**NOTE**<br>1. Single-column pickers: number<br>2. Multi-column independent picker: number[] (The array length is the same as the number of columns.)<br>3. Multi-column cascading picker: number[] (The array length is the same as the number of levels.)<br>4. Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>5. If this parameter is not set or the value is invalid, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| value | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)[] | No| Yes| Value of the selected item. The priority of this parameter is lower than that of **selected**.<br>Default value: value of the first item in the data list.<br> **NOTE**<br>1. Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>2. The [Resource](ts-types.md#resource) type is supported since API version 20.<br>3. This parameter works only when the picker contains text only. It does not work when the picker contains images or mixed content.<br>4. Single-column pickers: [ResourceStr](ts-types.md#resourcestr)<br>5. Multi-column independent picker: [ResourceStr](ts-types.md#resourcestr)[] (The array length is the same as the number of columns.)<br>6. Multi-column cascading picker: [ResourceStr](ts-types.md#resourcestr)[] (The array length is the same as the number of levels.)<br>7. If neither **selected** nor **value** is set, or the value of **selected** is invalid, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| columnWidths<sup>18+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)[] | No| Yes| Custom widths for each column.<br>Default value: Each column has equal width, calculated by dividing the total component width by the number of columns.<br>**NOTE**<br>1. Text truncation occurs when content exceeds column width.<br>2. Invalid values are treated as the default value.<br>3. Individual array elements can be **Undefined** or **Null**, but the entire array cannot be **Undefined[]** or **Null[]**.<br>4. If the length of the **columnWidths** array does not match the actual number of columns, the excess column widths will be ignored. The columns for which no width is specified will be evenly distributed across the remaining available width of the component (the component width minus the sum of specified column widths).<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## TextPickerRangeContent<sup>10+</sup>
 
@@ -59,12 +60,14 @@ Defines the content for single-column picker options.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type                                                | Read Only| Optional| Description                                                        |
 | ---- | ---------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| icon | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No  | No  | Image resource. If the value is a string, such as **"/common/hello.png"**, it represents the path to the image.|
-| text | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No  | Yes  | Text information.<br>An empty character string is used by default.<br>Note: Text truncation occurs when content exceeds column width.|
+| icon | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No  | No  | Image resource. For the string type, this parameter indicates the path for storing the image, for example, **"/common/hello.png"**. For the Resource type, this parameter indicates a resource reference.|
+| text | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No  | Yes  | Text information.<br>An empty character string is used by default.<br>**NOTE**<br>1. If this attribute is not set, the default value is used.<br>2. Text truncation occurs when content exceeds column width.|
 
 ## TextCascadePickerRangeContent<sup>10+</sup>
 
@@ -72,25 +75,29 @@ Defines the content for multi-column picker options.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type                                                | Read Only| Optional| Description  |
 | ------ | -------------------------------------------------------- | ---- | ---------- | ---------- |
 | text   | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No | No | Text information.<br>Note: Text truncation occurs when content exceeds column width.|
-| children   | [TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[] | No | Yes | Linkage data.|
+| children   | [TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[] | No | Yes | Linkage data. It indicates the array of sub-options for the current data item, used to build the hierarchical structure of the multi-column cascading data picker. Each element in the array is of the [TextCascadePickerRangeContent](#textcascadepickerrangecontent10) type, which contains the **text** and **children** attributes and supports multi-level nesting. This parameter is passed when the picker supports multi-level cascading. If this parameter is not passed, the item does not have child data.|
 ## DividerOptions<sup>12+</sup>
 
 Define the divider configuration options.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name       | Type                                      | Read Only| Optional| Description                                                        |
 | ----------- | ------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| strokeWidth | [Dimension](ts-types.md#dimension10)       | No  | Yes  | Stroke width of the divider.<br>Default value: **2.0px**<br>Unit: vp (default) or px.<br>If the value is less than 0, the default value is used. The maximum value allowed is half the height of the column. Percentages are not supported.|
-| startMargin | [Dimension](ts-types.md#dimension10)       | No  | Yes  | Distance between the divider and the start edge of the text picker.<br>Default value: **0**<br>Unit: vp (default) or px.<br>Values less than 0 are invalid. The maximum value allowed is the width of the column. Percentages are not supported.|
-| endMargin   | [Dimension](ts-types.md#dimension10)       | No  | Yes  | Distance between the divider and the end edge of the text picker.<br>Default value: **0**<br>Unit: vp (default) or px.<br>Values less than 0 are invalid. The maximum value allowed is the width of the column. Percentages are not supported.|
+| strokeWidth | [Dimension](ts-types.md#dimension10)       | No  | Yes  | Stroke width of the divider.<br>Default value: **2.0px**<br>Unit: vp (default) or px.<br>Value range: [0, +∞). If the value is less than 0, the default value is used. The maximum value allowed is half the height of the column. Percentages are not supported.|
+| startMargin | [Dimension](ts-types.md#dimension10)       | No  | Yes  | Distance between the divider and the start edge of the text picker.<br>Default value: **0**<br>Unit: vp (default) or px.<br>Value range: [0, +∞). Values less than 0 are invalid. The maximum value allowed is the width of the column. Percentages are not supported.<br>**Note**: If the sum of **startMargin** and **endMargin** exceeds the component width, the value is set to **0**.|
+| endMargin   | [Dimension](ts-types.md#dimension10)       | No  | Yes  | Distance between the divider and the end edge of the text picker.<br>Default value: **0**<br>Unit: vp (default) or px.<br>Value range: [0, +∞). Values less than 0 are invalid. The maximum value allowed is the width of the column. Percentages are not supported.<br>**Note**: If the sum of **startMargin** and **endMargin** exceeds the component width, the value is set to **0**.|
 | color       | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Color of the divider.<br>Default value: **'#33000000'**                      |
 
 ## Attributes
@@ -111,7 +118,7 @@ Sets the height of the picker items.
 
 | Name| Type                      | Mandatory| Description                  |
 | ------ | -------------------------- | ---- | ---------------------- |
-| value  | number&nbsp;\|&nbsp;string | Yes  | Height of the picker items.<br>Value range:<br>Number type: [0, +∞), in vp.<br>String type: numeric string only, for example, **"56"**.<br>Default value: selected item 56 vp, unselected item 36 vp.<br>**NOTE**<br>The set value applies to both selected and unselected items.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Height of the picker items.<br>Value range:<br>Number type: [0, +∞), in vp.<br>String type: numeric string only, for example, **"56"**.<br>Default value: selected item 56 vp, unselected item 36 vp.<br>**NOTE**<br>The set value applies to both selected and unselected items.<br>If the value is **undefined** or negative, the default value is used.|
 
 ### defaultPickerItemHeight<sup>18+</sup>
 
@@ -120,6 +127,8 @@ defaultPickerItemHeight(height: Optional\<number | string>)
 Sets the height of the picker items. Compared with [defaultPickerItemHeight](#defaultpickeritemheight), this API supports the **undefined** type for the **height** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,13 +146,15 @@ Sets the text color, font size, and font weight of edge items (the second item a
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Text color, font size, and font weight for edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Text color, font size, and font weight for edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}<br>**Note**: If this API is not used to set the style, the default value is used.|
 
 >  **NOTE**
 >
@@ -156,6 +167,8 @@ disappearTextStyle(style: Optional\<PickerTextStyle>)
 Sets the text color, font size, and font weight of edge items (the second item above or below the selected item). Compared with [disappearTextStyle<sup>10+</sup>](#disappeartextstyle10), this API supports the **undefined** type for the **style** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,9 +186,11 @@ Sets the text color, font size, and font weight of edge items (the second item a
 
 disappearTextStyle(style: Optional\<PickerTextStyle\|TextPickerTextStyle>)
 
-Sets the text style of edge items (the second item above or below the selected item), covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode. Compared with [disappearTextStyle](#disappeartextstyle18)<sup>18+</sup>, this API supports the [TextPickerTextStyle](#textpickertextstyle15) type for the **style** parameter.
+Sets the text style of edge items (the second item above or below the selected item), covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode. Compared with [disappearTextStyle<sup>18+</sup>](#disappeartextstyle18), this API supports the [TextPickerTextStyle](#textpickertextstyle15) type.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -183,7 +198,7 @@ Sets the text style of edge items (the second item above or below the selected i
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)> | Yes  | Text style of edge items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)>| Yes  | Text style of edge items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 >  **NOTE**
 >
@@ -197,13 +212,15 @@ Sets the text color, font size, and font weight of candidate items (the first it
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Text color, font size, and font weight for candidate items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Text color, font size, and font weight for candidate items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>**Note**: If this API is not used to set the style, the default value is used.|
 
 >  **NOTE**
 >
@@ -216,6 +233,8 @@ textStyle(style: Optional\<PickerTextStyle>)
 Sets the text color, font size, and font weight of candidate items (the first item immediately above or below the selected item). Compared with [textStyle<sup>10+</sup>](#textstyle10), this API supports the **undefined** type for the **style** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -233,9 +252,11 @@ Sets the text color, font size, and font weight of candidate items (the first it
 
 textStyle(style: Optional\<PickerTextStyle\|TextPickerTextStyle>)
 
-Sets the text style of candidate items (the first item immediately above or below the selected item), covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode. Compared with [textStyle](#textstyle18)<sup>18+</sup>, this API supports the [TextPickerTextStyle](#textpickertextstyle15) type for the **style** parameter.
+Sets the text style of candidate items (the first item immediately above or below the selected item), covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode. Compared with [textStyle<sup>18+</sup>](#textstyle18), this API supports the [TextPickerTextStyle](#textpickertextstyle15) type.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -243,7 +264,7 @@ Sets the text style of candidate items (the first item immediately above or belo
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)> | Yes  | Style of candidate items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)>| Yes  | Style of candidate items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 >  **NOTE**
 >
@@ -257,15 +278,15 @@ Sets the text color, font size, and font weight of the selected item.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**Model restriction**: This API can be used only in the stage model.
 
-**Device behavior**: This API has no effect on wearables and works on other devices.
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Text color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Text color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>}<br>**Note**: If this API is not used to set the style, the default value is used.|
 
 ### selectedTextStyle<sup>18+</sup>
 
@@ -275,9 +296,9 @@ Sets the text color, font size, and font weight of the selected item. Compared w
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**Model restriction**: This API can be used only in the stage model.
 
-**Device behavior**: This API has no effect on wearables and works on other devices.
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -289,19 +310,19 @@ Sets the text color, font size, and font weight of the selected item. Compared w
 
 selectedTextStyle(style: Optional\<PickerTextStyle\|TextPickerTextStyle>)
 
-Sets the text style of the selected item, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode. Compared with [selectedTextStyle](#selectedtextstyle18)<sup>18+</sup>, this API supports the [TextPickerTextStyle](#textpickertextstyle15) type for the **style** parameter.
+Sets the text style of the selected item, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode. Compared with [selectedTextStyle<sup>18+</sup>](#selectedtextstyle18), this API supports the [TextPickerTextStyle](#textpickertextstyle15) type.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**Model restriction**: This API can be used only in the stage model.
 
-**Device behavior**: This API has no effect on wearables and works on other devices.
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)> | Yes  | Text style of the selected item, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)>| Yes  | Text style of the selected item, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 ### selectedIndex<sup>10+</sup>
 
@@ -310,6 +331,8 @@ selectedIndex(value: number | number[])
 Sets the index of the selected item or items in the data list. This setting takes precedence over the **value** property in [TextPickerOptions](#textpickeroptions). Use the number type for single-column pickers. Use the number[] type for multi-column pickers.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -327,6 +350,8 @@ Sets the index of the selected item or items in the data list. This setting take
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -343,6 +368,8 @@ Sets whether to enable loop scrolling.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -358,6 +385,8 @@ canLoop(isLoop: Optional\<boolean>)
 Sets whether to enable loop scrolling. Compared with [canLoop<sup>10+</sup>](#canloop10), this API supports the **undefined** type for the **isLoop** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -377,12 +406,14 @@ If the sum of **startMargin** and **endMargin** in [DividerOptions](#divideropti
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 | Name| Type   | Mandatory| Description                                                                 |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| value | [DividerOptions](#divideroptions12) \| null | Yes  | Default value:<br>{<br>strokeWidth: '2px', <br>startMargin: 0, <br>endMargin: 0, <br>color: '#33000000'<br>}<br>1. If **textDivider** is a valid [DividerOptions](#divideroptions12) object, the divider is rendered using the specified style.<br>2. If **textDivider** is **null**, the divider is hidden.|
+| value | [DividerOptions](#divideroptions12) \| null| Yes  | Divider style. To customize the width, margin, and color of the divider, pass the **DividerOptions** object. To hide the divider, pass **null**. If no value is passed, the default style is used.<br>Default value:<br>{<br>strokeWidth: '2px', <br>startMargin: 0, <br>endMargin: 0, <br>color: '#33000000'<br>}<br>1. If **value** is set to a valid [DividerOptions](#divideroptions12) object, the divider is rendered using the specified style.<br>2. If **value** is **null**, the divider is hidden.|
 
 ### divider<sup>18+</sup>
 
@@ -393,6 +424,8 @@ Sets the divider style. If not explicitly set, the divider uses the default styl
 If the sum of **startMargin** and **endMargin** in [DividerOptions](#divideroptions12) exceeds the component's width, both margins are automatically reset to 0.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -410,6 +443,8 @@ Sets the height of the fade effect applied to the top and bottom edges of the co
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -425,6 +460,8 @@ gradientHeight(height: Optional\<Dimension>)
 Sets the height of the fade effect applied to the top and bottom edges of the content area. If no setting is specified, a default fade effect is used. Compared with [gradientHeight<sup>12+</sup>](#gradientheight12), this API supports the **undefined** type for the **height** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -442,13 +479,15 @@ Sets whether to disable the animation effect of text style changes during scroll
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| disabled  | boolean | Yes  | Whether to disable the animation effect of text style changes during scrolling.<br>- **true**: Disable the animation effect of text style changes.<br>- **false**: Do not disable the animation effect of text style changes.<br>Default value: **false**<br>**NOTE**<br>When this API is used with **true**, there are no text style changes, including the font size, weight, and color, during scrolling, and all text is displayed in the style set by [defaultTextStyle](#defaulttextstyle15). If [defaultTextStyle](#defaulttextstyle15) is not set, the default style of the [Text](ts-basic-components-text.md) component is used.|
+| disabled  | boolean | Yes  | Whether to disable the animation effect of text style changes during scrolling.<br>- **true**: Disable the animation effect of text style changes.<br>- **false**: Do not disable the animation effect of text style changes.<br>Default value: **false**<br>**NOTE**<br>When this API is used with **true**, there are no text style changes, including the font size, weight, and color, during scrolling, and all text is displayed in the style set by [defaultTextStyle](#defaulttextstyle15). If [defaultTextStyle](#defaulttextstyle15) is not set, the default style of the [Text](ts-basic-components-text.md) component is used. When this API is used with **false**, the default animation effect of text style changes during scrolling is used.|
 
 ### defaultTextStyle<sup>15+</sup>
 
@@ -458,6 +497,8 @@ Sets the text style of the items when the text style change animation during the
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -465,16 +506,6 @@ Sets the text style of the items when the text style change animation during the
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style  | [TextPickerTextStyle](#textpickertextstyle15) | Yes  | Text style of the items when the text style change animation during the scrolling process is disabled.<br>Default value: same as the default value of the [Text](ts-basic-components-text.md) component|
-
-To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
-
-```json
-"requestPermissions": [
-   {
-      "name": "ohos.permission.VIBRATE",
-   }
-]
-```
 
 ### enableHapticFeedback<sup>18+</sup>
 
@@ -484,20 +515,22 @@ Sets whether to enable haptic feedback.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**<br>Whether this parameter takes effect after being set to **true** depends on hardware support.|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**<br>Whether this parameter takes effect after being set to **true** depends on hardware support. If the hardware does not support haptic feedback, enabling this feature will not produce any haptic feedback effect or throw an exception.|
 
 To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
 
 ```json
 "requestPermissions": [
    {
-      "name": "ohos.permission.VIBRATE",
+      "name": "ohos.permission.VIBRATE"
    }
 ]
 ```
@@ -509,13 +542,15 @@ Sets the sensitivity to the digital crown rotation.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                    | Mandatory  | Description                     |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
-| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | Yes   | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**                    |
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | Yes   | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM** Different sensitivity values affect the mapping between the crown scrolling speed and the item switching speed. For details about the effect of each enumerated value, see [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18).                    |
 
 >  **NOTE**
 >
@@ -527,6 +562,8 @@ selectedBackgroundStyle(style: Optional\<PickerBackgroundStyle>)
 Sets the background style of selected items.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -544,7 +581,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onChange(callback:&nbsp;(value:&nbsp;string&nbsp;\|&nbsp;string[],&nbsp;index:&nbsp;number&nbsp;\|&nbsp;number[])&nbsp;=&gt;&nbsp;void)
 
-Triggered when the text picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. When the picker contains text only or a combination of images and text, **value** indicates the text of the selected item. When the picker contains images only, **value** is empty.
+Triggered when the text picker snaps to the selected item. It is triggered when the selected item changes due to user interaction with the picker, but cannot be triggered by modifying the two-way bound state variable (such as **selected**). When the picker contains text only or a combination of images and text, **value** indicates the text of the selected item. When the picker contains images only, **value** is empty.
 
 This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea18) instead.
 
@@ -556,18 +593,20 @@ This callback is triggered only after the scroll animation completes. To obtain 
 
 | Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| value  | string&nbsp;\|&nbsp;string[]<sup>10+</sup> | Yes  | Text of the selected item. Use the array type for multi-column pickers.  |
+| value  | string&nbsp;\|&nbsp;string[]<sup>10+</sup> | Yes  | Text of the selected item. Use the array type for multi-column pickers.<br>**NOTE**<br>When the picker contains text only or a combination of images and text, **value** indicates the text of the selected item. When the picker contains images only, **value** is empty.|
 | index  | number&nbsp;\|&nbsp;number[]<sup>10+</sup> | Yes  | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers.|
 
 ### onChange<sup>18+</sup>
 
 onChange(callback: Optional\<OnTextPickerChangeCallback>)
 
-Triggered when the text picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. When the picker contains text only or a combination of images and text, **value** indicates the text of the selected item. When the picker contains images only, **value** is empty. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the text picker snaps to the selected item. It is triggered when the selected item changes due to user interaction with the picker, but cannot be triggered by modifying the two-way bound state variable (such as **selected**). When the picker contains text only or a combination of images and text, **value** indicates the text of the selected item. When the picker contains images only, **value** is empty. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
 
 This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea18) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -587,9 +626,13 @@ If the scrolling is initiated by a gesture, this event is triggered when the fin
 
 >**NOTE**
 >
-> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+> - The difference between **onScrollStop** and [onEnterSelectedArea](#onenterselectedarea18) is that **onScrollStop** is triggered when the scrolling completely stops, while **onEnterSelectedArea** is triggered when an option enters the selected area. If you need to respond to index changes earlier and provide real-time feedback, you are advised to use [onEnterSelectedArea](#onenterselectedarea18). If you need to confirm that the scrolling behavior has completely stopped, use **onScrollStop**.
+>
+> - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -597,7 +640,7 @@ If the scrolling is initiated by a gesture, this event is triggered when the fin
 
 | Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback | [TextPickerScrollStopCallback](#textpickerscrollstopcallback14) | Yes  | Event triggered when the scrolling in the text picker stops.|
+| callback | [TextPickerScrollStopCallback](#textpickerscrollstopcallback14) | Yes  | Event triggered when the scrolling in the text picker stops. Callback signature: (value: string \| string[], index: number \| number[]) => void, where **value** indicates the text of the currently selected item, and **index** indicates the index of the currently selected item (starting from 0).|
 
 ### onScrollStop<sup>18+</sup>
 
@@ -609,9 +652,13 @@ If the scrolling is initiated by a gesture, this event is triggered when the fin
 
 >**NOTE**
 >
-> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+> - The difference between **onScrollStop** and [onEnterSelectedArea](#onenterselectedarea18) is that **onScrollStop** is triggered when the scrolling completely stops, while **onEnterSelectedArea** is triggered when an option enters the selected area. If you need to respond to index changes earlier and provide real-time feedback, you are advised to use [onEnterSelectedArea](#onenterselectedarea18). If you need to confirm that the scrolling behavior has completely stopped, use **onScrollStop**.
+>
+> - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -629,13 +676,17 @@ Triggered when an option enters the selection zone during text picker scrolling 
 
 >  **NOTE**
 >
-> - This event is triggered earlier than the [onChange](#onchange) event.
+> - This event is triggered earlier than the [onChange](#onchange) event. **onEnterSelectedArea** is triggered when an option enters the selected area during scrolling, making it suitable for obtaining index value changes in real time and for scenarios that require quick response to user scrolling. **onChange** is triggered after scrolling ends and the selected item is positioned, making it suitable for obtaining the final selected value and for scenarios where the user's final selection needs to be obtained.
 >
-> - In scenarios where the picker contains linked columns, the use of this callback is not recommended. The reason is that it identifies nodes where items enter the divider area during scrolling. However, items that change in response to the scrolling do not themselves scroll. As a result, the callback's return values will only reflect changes for the currently scrolling column, while other non-scrolling columns will remain unchanged.
+> - The difference between **onEnterSelectedArea** and [onScrollStop](#onscrollstop14) is that the former follows the logical state of an option entering the selected area, while the latter follows the complete stop of the scrolling behavior. Use **onEnterSelectedArea** when you need to respond to index changes earlier, and use [onScrollStop](#onscrollstop14) when you need to confirm that the scrolling has completely stopped.
+>
+> - In multi-column cascading scenarios, this callback is not recommended. This callback identifies the nodes where options enter the divider area during scrolling. Items that change in response to the scrolling do not themselves scroll. As a result, the callback's return values will only reflect changes for the currently scrolling column, while other non-scrolling columns will remain unchanged.
 >
 > - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -643,7 +694,7 @@ Triggered when an option enters the selection zone during text picker scrolling 
 
 | Name  | Type                      | Mandatory| Description                                      |
 | -------- | -------------------------- | ---- | ------------------------------------------ |
-| callback | [TextPickerEnterSelectedAreaCallback](#textpickerenterselectedareacallback18) | Yes  | Callback invoked when an option enters the selection zone during text picker scrolling.|
+| callback | [TextPickerEnterSelectedAreaCallback](#textpickerenterselectedareacallback18) | Yes  | Callback invoked when an option enters the selection zone during text picker scrolling. Callback signature: (value: string \| string[], index: number \| number[]) => void, where **value** indicates the text of the currently selected item, and **index** indicates the index of the currently selected item (starting from 0).|
 
 ### onAccept<sup>(deprecated) </sup>
 
@@ -651,7 +702,9 @@ onAccept(callback: (value: string, index: number) => void)
 
 Triggered when the OK button in the dialog box is clicked. This event can be triggered only in the [text picker dialog box](ts-methods-textpicker-dialog.md).
 
-This API is supported since API version 8 and deprecated since API version 10. No substitute is provided.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 10. This API has been completely removed and has no substitute.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -668,11 +721,14 @@ onCancel(callback: () => void)
 
 Triggered when the cancel button in the dialog box is clicked. This event can be triggered only in the [text picker dialog box](ts-methods-textpicker-dialog.md).
 
-This API is supported since API version 8 and deprecated since API version 10. No substitute is provided.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 10. This API has been completely removed and has no substitute.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
+
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
 | callback  | () => void | Yes  | Callback invoked when the cancel button in the dialog box is clicked.  |
@@ -683,12 +739,14 @@ Defines the text style options for the text picker. Inherits from [PickerTextSty
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name  | Type                                    | Read Only| Optional| Description                     |
-| ----- | ---------------------------------------- | ---- | ------------------------- | ------------------------- |
-| minFontSize | number \| string \| [Resource](ts-types.md#resource) | No| Yes| Minimum font size for the text. Used with **maxFontSize** to enable font scaling. When both **minFontSize** and **maxFontSize** are set, the **size** property in **font** is ignored. By default, the maximum number of lines is 1, with the **MIN_FONT_SIZE_FIRST** adaptation strategy. For details, see [minFontSize](ts-basic-components-text.md#minfontsize).|
-| maxFontSize  | number \| string \| [Resource](ts-types.md#resource) | No  | Yes  | Maximum font size for the text. For details, see [maxFontSize](ts-basic-components-text.md#maxfontsize).                    |
+| ----- | ---------------------------------------- | ---- | ---- | ------------------------- |
+| minFontSize | number \| string \| [Resource](ts-types.md#resource) | No| Yes| Minimum font size, which is used together with **maxFontSize**. This parameter is passed when the minimum display size of the text needs to be limited to avoid excessively small text or when font size adaptation is required.<br>**Note**: When **minFontSize** and **maxFontSize** are set, **size** in **font** does not take effect. By default, the maximum number of lines is 1, with the **MIN_FONT_SIZE_FIRST** adaptation strategy. For details, see [minFontSize](ts-basic-components-text.md#minfontsize).|
+| maxFontSize  | number \| string \| [Resource](ts-types.md#resource) | No  | Yes  | Maximum font size, which is used together with **minFontSize**. This parameter is passed when the maximum display size of the text needs to be limited to avoid excessively oversized text or when font size adaptation is required.<br>**Note**: When **minFontSize** and **maxFontSize** are set, **size** in **font** does not take effect. For details, see [maxFontSize](ts-basic-components-text.md#maxfontsize).                    |
 | overflow | [TextOverflow](ts-appendix-enums.md#textoverflow) | No| Yes| Text overflow behavior. This property has no effect when set to **MARQUEE**. For details, see [textOverflow](ts-basic-components-text.md#textoverflow).|
 
 ## OnTextPickerChangeCallback<sup>18+</sup>
@@ -698,6 +756,8 @@ type OnTextPickerChangeCallback = (selectItem: string | string[], index: number 
 Defines the **onChange** event callback signature.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -716,6 +776,8 @@ Defines the **onScrollStop** event callback signature.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -733,6 +795,8 @@ Defines the **onEnterSelectedArea** event callback signature.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -748,12 +812,14 @@ Defines the background style configuration for selected picker items.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type                                      | Read Only| Optional| Description                                             |
-| ------ | ------------------------------------- | ---- | ------------------------------------------------- | ------------------------------------------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Background color of the selected item.<br>Default value:<br>'sys.color.comp_background_tertiary'   |
-| borderRadius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) &nbsp;\|&nbsp; [BorderRadiuses](ts-types.md#borderradiuses9) &nbsp;\|&nbsp; [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | No | Yes | Border radius of the selected item.<br>Default value: **{ value:24, unit:LengthUnit.VP }**, meaning 24 vp for all corners.<br>**NOTE**<br>1. [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12): uniform radius with a customizable unit<br>2. [BorderRadiuses](ts-types.md#borderradiuses9): per-corner radius values (vp units only)<br>3. [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12): per-corner radius values with individual units|
+| ------ | ------------------------------------- | ---- | ---- | ------------------------------------------------- |
+| color  | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Background color of the selected item.<br>Default value:<br>'sys.color.comp_background_tertiary'<br>**Note**: If this attribute is not set, the default value is used.  |
+| borderRadius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) &nbsp;\|&nbsp; [BorderRadiuses](ts-types.md#borderradiuses9) &nbsp;\|&nbsp; [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | No | Yes | Border radius of the selected item.<br>Default value: **{ value:24, unit:LengthUnit.VP }**, meaning 24 vp for all corners.<br>Unit: vp (default). You can specify the unit using the **LengthMetrics** or **LocalizedBorderRadiuses** type.<br>**NOTE**<br>1. [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12): uniform radius with a customizable unit<br>2. [BorderRadiuses](ts-types.md#borderradiuses9): per-corner radius values (vp units only)<br>3. [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12): per-corner radius values with individual units|
 ## Example
 
 ### Example 1: Setting the Number of Columns in the Picker
@@ -766,11 +832,6 @@ The **columnWidths** attribute of [TextPickerOptions](#textpickeroptions) is add
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
 
-class Bottom {
-  bottom: number = 50;
-}
-
-let bott: Bottom = new Bottom();
 @Entry
 @Component
 struct TextPickerExample {
@@ -820,7 +881,7 @@ struct TextPickerExample {
         })
         .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
-        }).margin(bott)
+        }).margin({ bottom: 50 })
         .onEnterSelectedArea((value: string | string[], index: number | number[]) => {
           console.info('Picker item enter selected area, value: ' + value + ', index: ' + index);
         })
@@ -831,7 +892,7 @@ struct TextPickerExample {
         })
         .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('TextPicker multi-column: onScrollStop ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
-        }).margin(bott)
+        }).margin({ bottom: 50 })
         .onEnterSelectedArea((value: string | string[], index: number | number[]) => {
           console.info('TextPicker multi-column: onEnterSelectedArea ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
         })
@@ -912,9 +973,9 @@ struct TextPickerExample {
         .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
         })
-        .disappearTextStyle({color: Color.Red, font: {size: 15, weight: FontWeight.Lighter}})
-        .textStyle({color: Color.Black, font: {size: 20, weight: FontWeight.Normal}})
-        .selectedTextStyle({color: Color.Blue, font: {size: 30, weight: FontWeight.Bolder}})
+        .disappearTextStyle({ color: Color.Red, font: { size: 15, weight: FontWeight.Lighter } })
+        .textStyle({ color: Color.Black, font: { size: 20, weight: FontWeight.Normal } })
+        .selectedTextStyle({ color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } })
         .divider(null)
     }.width('100%').height('100%')
   }
@@ -943,9 +1004,9 @@ struct TextPickerExample {
         .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
         })
-        .disappearTextStyle({color: Color.Red, font: {size: 15, weight: FontWeight.Lighter}})
-        .textStyle({color: Color.Black, font: {size: 20, weight: FontWeight.Normal}})
-        .selectedTextStyle({color: Color.Blue, font: {size: 30, weight: FontWeight.Bolder}})
+        .disappearTextStyle({ color: Color.Red, font: { size: 15, weight: FontWeight.Lighter } })
+        .textStyle({ color: Color.Black, font: { size: 20, weight: FontWeight.Normal } })
+        .selectedTextStyle({ color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } })
         .divider({
           strokeWidth: 10,
           color: Color.Red,
@@ -979,9 +1040,9 @@ struct TextPickerExample {
         .onScrollStop((value: string | string[], index: number | number[]) => {
           console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
         })
-        .disappearTextStyle({color: Color.Red, font: {size: 15, weight: FontWeight.Lighter}})
-        .textStyle({color: Color.Black, font: {size: 20, weight: FontWeight.Normal}})
-        .selectedTextStyle({color: Color.Blue, font: {size: 30, weight: FontWeight.Bolder}})
+        .disappearTextStyle({ color: Color.Red, font: { size: 15, weight: FontWeight.Lighter } })
+        .textStyle({ color: Color.Black, font: { size: 20, weight: FontWeight.Normal } })
+        .selectedTextStyle({ color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } })
         .gradientHeight(100)
     }.width('100%').height('100%')
   }
@@ -1161,7 +1222,7 @@ struct TextPickerExample {
               topStart: { value: 5, unit: LengthUnit.VP },
               topEnd: { value: 10, unit: LengthUnit.VP },
               bottomStart: { value: 15, unit: LengthUnit.VP },
-              bottomEnd: { value: 20, unit: LengthUnit.VP },
+              bottomEnd: { value: 20, unit: LengthUnit.VP }
             }
           })
       }

@@ -26,8 +26,6 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **参数：**
 
 | 参数名        | 类型                                                      | 必填 | 说明                                                         |
@@ -189,11 +187,11 @@ onDataReloaded(reuseImmediately: boolean): void
 
 配置不允许在更新过程中复用旧的子组件，键值没有变化的数据项会使用原先的子组件，键值发生变化的数据项，若使用了@Reusable/@ReusableV2且复用池中有可用的组件，将复用旧组件，否则将创建新的子组件。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -497,7 +495,7 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 | 名称 | 类型                     | 只读 | 可选 | 说明             |
 | ------ | ------------------------ | ---- | ---- | ---------------- |
 | type   | [DataOperationType](#dataoperationtype12).RELOAD | 否 | 否   | 数据全部重载类型。 |
-| reuseImmediately   | boolean | 否 | 是   | 是否允许在更新过程中复用旧的子组件。<br/>true：允许在更新过程中复用旧的子组件。<br/>false：不允许在更新过程中复用旧的子组件。<br/>默认值：false<br/>当值为undefined或null时，取默认值。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| reuseImmediately   | boolean | 否 | 是   | 是否允许在更新过程中复用旧的子组件。<br/>true：允许在更新过程中复用旧的子组件。<br/>false：不允许在更新过程中复用旧的子组件。<br/>默认值：false<br/>当值为undefined或null时，取默认值。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ### DataOperationType<sup>12+</sup>
 
@@ -638,7 +636,7 @@ LazyForEach内存优化策略枚举。
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
 | DEFAULT | 0 | 无内存优化策略。 |
-| ENABLE_AUTO_CACHE_OPTIMIZATION | 1 << 0 | 自动内存优化策略，当LazyForEach承载的列表项数量较多（例如达到数百项以上）或单项子组件结构复杂（例如包含多层嵌套或数十个子节点），导致内存占用偏高（可通过性能分析工具检测内存占用情况）时，建议使用此策略以降低内存使用量。<br>当应用退后台时、LazyForEach所在组件不可见时（[visibility](./ts-universal-attributes-visibility.md#visibility)属性设置为[Visible](./ts-appendix-enums.md#visibility)以外的值，或组件面积为0，不考虑遮挡）、整机低内存时（[MemoryLevel](../../apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)达到MEMORY_LEVEL_LOW或MEMORY_LEVEL_CRITICAL），释放[预加载区域](../../../ui/rendering-control/arkts-rendering-control-overview.md#基本概念)内的部分节点，直至上下预加载区域内的节点数量均不超过2。<br>当应用恢复前台时、LazyForEach所在组件恢复显示时，LazyForEach发生滑动时，恢复预加载区域内的节点。<br>在释放和恢复节点时，会触发[自定义组件生命周期](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。 |
+| ENABLE_AUTO_CACHE_OPTIMIZATION | 1 << 0 | 自动内存优化策略，当LazyForEach承载的列表项数量较多（例如达到数百项以上）或单项子组件结构复杂（例如包含多层嵌套或数十个子节点），导致内存占用偏高（可通过性能分析工具检测内存占用情况）时，建议使用此策略以降低内存使用量。<br>当应用退后台时、LazyForEach所在组件不可见时（[visibility](./ts-universal-attributes-visibility.md#visibility)属性设置为[Visible](./ts-appendix-enums.md#visibility)以外的值，或组件面积为0，不考虑遮挡）、整机低内存时（[MemoryLevel](../../apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)达到MEMORY_LEVEL_LOW或MEMORY_LEVEL_CRITICAL），对于内存大于6G的设备，释放[预加载区域](../../../ui/rendering-control/arkts-rendering-control-overview.md#基本概念)内的部分节点，直至上下预加载区域内的节点数量均不超过2；对于内存小于等于6G的设备，释放预加载区域内的全部节点。<br>当应用恢复前台时、LazyForEach所在组件恢复显示时，LazyForEach发生滑动时，恢复预加载区域内的节点。<br>在释放和恢复节点时，会触发[自定义组件生命周期](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。 |
 
 ## 示例
 

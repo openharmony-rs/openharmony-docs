@@ -30,7 +30,7 @@ import { common } from '@kit.AbilityKit';
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
 >
 
 **原子化服务API**：从 API version 14开始，该接口支持在原子化服务中使用。
@@ -137,7 +137,7 @@ onDisconnect(): void
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
 >
 
 **原子化服务API**：从 API version 14开始，该接口支持在原子化服务中使用。
@@ -183,7 +183,7 @@ struct UIServiceExtensionAbility {
             middle: { anchor: '__container__', align: HorizontalAlign.Center }
           })
           .onClick(() => {
-            this.myConnectUIServiceExtensionAbility()
+            this.myDisconnectUIServiceExtensionAbility()
           });
       }
       .width('100%')
@@ -191,7 +191,7 @@ struct UIServiceExtensionAbility {
     .height('100%')
   }
 
-  myConnectUIServiceExtensionAbility() {
+  myDisconnectUIServiceExtensionAbility() {
     // 获取上下文
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // 断开连接的UIServiceExtensionAbility

@@ -3,11 +3,12 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yzkp-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a914ec5c20531defc3768aa8242b62bbe2d1d08f translatedAt=2026-09-03T10:45:17.436Z pushedAt=2026-09-05T11:31:25.463Z -->
 
 
-The module provides the capability to configure [AppStartup](../../application-models/app-startup.md).
+This module provides the capability of configuring the [application startup framework](../../application-models/app-startup.md), including setting the execution timeout of the startup framework, registering a startup completion listener, and customizing startup task matching rules. It applies to scenarios where the execution behavior of startup tasks needs to be controlled on demand during the AbilityStage startup phase of different HAPs, helping developers flexibly configure the running policy of the startup framework.
 
 > **NOTE**
 >
@@ -27,9 +28,9 @@ import { StartupConfigEntry } from '@kit.AbilityKit';
 
 onConfig?(): StartupConfig
 
-Called if the HAP of the AbilityStage has [defined the AppStartup configuration file](../../application-models/app-startup.md#defining-startup-parameter-configuration). This callback is triggered before [AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate).
+This callback is triggered before [AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate) if the [HAP](../../../application-dev/quick-start/hap-package.md) corresponding to the AbilityStage has [defined the startup framework configuration](../../application-models/app-startup.md#defining-startup-parameter-configuration) in its startup framework configuration file. This method is optional.
 
-You can set the AppStartup configuration within this callback. For details, see [Setting Startup Parameters](../../application-models/app-startup.md#setting-startup-parameters).
+Developers can set the startup framework configuration information within this callback. For details, see [Setting Startup Parameters](../../application-models/app-startup.md#setting-startup-parameters). If custom matching rules are required, the [onRequestCustomMatchRule](#onrequestcustommatchrule20) callback is triggered after this callback completes.
 
 **System capability**: SystemCapability.Ability.AppStartup
 
@@ -52,19 +53,19 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
     let onCompletedCallback = (error: BusinessError<void>) => {
       hilog.info(0x0000, 'testTag', `onCompletedCallback`);
       if (error) {
-        hilog.info(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code,
+        hilog.error(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code,
           error.message);
       } else {
         hilog.info(0x0000, 'testTag', `onCompletedCallback: success.`);
       }
-    }
+    };
     let startupListener: StartupListener = {
       'onCompleted': onCompletedCallback
-    }
+    };
     let config: StartupConfig = {
       'timeoutMs': 10000,
       'startupListener': startupListener
-    }
+    };
     return config;
   }
 }
@@ -74,9 +75,9 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
 
 onRequestCustomMatchRule(want: Want): string
 
-Called if the HAP of the AbilityStage has [defined the AppStartup configuration file](../../application-models/app-startup.md#defining-startup-parameter-configuration). This callback is triggered after [StartupConfigEntry.onConfig](#onconfig) but before [AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate).
+If the [startup framework configuration is defined](../../application-models/app-startup.md#defining-startup-parameter-configuration) in the startup framework configuration file of the HAP corresponding to the AbilityStage, this callback is triggered before [AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate) and after [StartupConfigEntry.onConfig](#onconfig).
 
-You can use this callback to return different custom matching rules based on parameters in the Want object passed by the caller to start the UIAbility. . AppStartup matches these rules with the **customization** field in **matchRules** of the startup task configuration. If a match is successful, the task is executed automatically. For details about the matching rules, see [Adding Task Matching Rules](../../application-models/app-startup.md#adding-task-matching-rules).
+Developers can use this callback to return different custom matching rules based on different parameters in the Want object passed by the caller to start the [UIAbility](js-apis-app-ability-uiAbility.md). The startup framework matches these rules with the **customization** field in the matchRules of the startup task configuration. If the match succeeds, the task is executed in automatic mode. For details about the matching rules, see [Adding Task Matching Rules](../../application-models/app-startup.md#adding-task-matching-rules).
 
 This API is typically used in scenarios where tasks cannot be matched directly using URI, action, or intent name rules. It allows for further refinement of matching rules.
 

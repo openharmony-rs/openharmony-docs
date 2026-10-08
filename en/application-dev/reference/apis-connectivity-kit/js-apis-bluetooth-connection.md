@@ -3,11 +3,12 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=cc0fc565309f1feee1e8ea853938538a7ace0021 translatedAt=2026-09-15T02:36:10.385Z pushedAt=2026-09-17T00:59:29.265Z -->
 
-The connection module provides capabilities for pairing with, connecting to, and querying the status of Bluetooth devices.
+The **connection** module provides capabilities such as Bluetooth device pairing, connection, status query, device scanning and discovery, scanning mode setting, battery level information obtaining, and event subscription. It is applicable to scenarios where Bluetooth device discovery, pairing, connection, and information query need to be implemented in an app.
 
 > **NOTE**
 >
@@ -26,65 +27,75 @@ import { connection } from '@kit.ConnectivityKit';
 
 type ProfileConnectionState = constant.ProfileConnectionState
 
-Defines the connection status of the Bluetooth profile. Supported Bluetooth profiles include Advanced Audio Distribution Profile (A2DP), Hands-Free Profile (HFP), and Human Interface Device (HID).
+Connection state of the Profile protocol of a Bluetooth device. The Profile protocols include A2DP (Advanced Audio Distribution Profile), HFP (Hands-Free Profile), and HID (Human Interface Device).
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Type                 | Description                 |
+**Model restriction:** This API can be used only in the stage model.
+
+| Type                  | Description                  |
 | ------------------- | ------------------- |
-| [constant.ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Connection status of the Bluetooth profile.|
+| [constant.ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Defines the profile connection status of the Bluetooth device. |
 
 
 ## ProfileId
 
 type ProfileId = constant.ProfileId
 
-Enumerates Bluetooth profiles.
+Enumerates the Bluetooth profile protocols.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Type                 | Description                 |
+**Model restriction:** This API can be used only in the stage model.
+
+| Type                  | Description                  |
 | ------------------- | ------------------- |
-| [constant.ProfileId](js-apis-bluetooth-constant.md#profileid) | Bluetooth profile.|
+| [constant.ProfileId](js-apis-bluetooth-constant.md#profileid) | Enumerates the Bluetooth profile protocols. |
 
 
 ## ProfileUuids<sup>12+</sup>
 
 type ProfileUuids = constant.ProfileUuids
 
-Defines the UUID of the Bluetooth profile.
+UUID of the Bluetooth Profile protocol.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Type                 | Description                 |
+**Model restriction:** This API can be used only in the stage model.
+
+| Type                  | Description                  |
 | ------------------- | ------------------- |
-| [constant.ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12) | Defines the UUID of the Bluetooth profile.|
+| [constant.ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12) | UUID of the Bluetooth Profile protocol. |
 
 
 ## MajorClass
 
 type MajorClass = constant.MajorClass
 
-Defines the Bluetooth device major class. This is a standard field in the Bluetooth protocol.
+Enumerates the types of Bluetooth devices. This is a standard field in the Bluetooth protocol.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Type                 | Description                 |
+**Model restriction:** This API can be used only in the stage model.
+
+| Type                  | Description                  |
 | ------------------- | ------------------- |
-| [constant.MajorClass](js-apis-bluetooth-constant.md#majorclass) | Bluetooth device major class.|
+| [constant.MajorClass](js-apis-bluetooth-constant.md#majorclass) | Enumerates the types of Bluetooth devices. |
 
 
 ## MajorMinorClass
 
 type MajorMinorClass = constant.MajorMinorClass
 
-Defines the Bluetooth device subclass, which is further classified based on [MajorClass](js-apis-bluetooth-constant.md#majorclass). This is a standard field in the Bluetooth protocol.
+Subtype of the Bluetooth device, further classified based on [MajorClass](js-apis-bluetooth-constant.md#majorclass). A standard Bluetooth protocol field.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Type                 | Description                 |
+**Model restriction:** This API can be used only in the stage model.
+
+| Type                  | Description                  |
 | ------------------- | ------------------- |
-| [constant.MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | Bluetooth device subclass.|
+| [constant.MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | Subtype of the Bluetooth device. |
 
 
 ## BluetoothAddress<sup>21+</sup>
@@ -95,18 +106,20 @@ Defines the address information of a Bluetooth device, including the address and
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Type                 | Description                 |
+**Model restriction:** This API can be used only in the stage model.
+
+| Type                  | Description                  |
 | ------------------- | ------------------- |
-| [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | Address information of the Bluetooth device.|
+| [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | Address information of the Bluetooth device. |
 
 
 ## connection.pairDevice
 
 pairDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Initiates pairing with the peer Bluetooth device. This API uses an asynchronous callback to return the result.
-- If you do not know the [address type](js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, you are advised to call this API to initiate pairing.
-- You can obtain the Bluetooth pairing status from the callback of [on('bondStateChange')](#connectiononbondstatechange).
+Initiates the pairing process with a peer Bluetooth device. This API uses an asynchronous callback to return the result.
+- If the developer does not know the [address type](js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, it is recommended to call this API to initiate pairing.
+- The Bluetooth pairing state is obtained through the callback result of [on('bondStateChange')](#connectiononbondstatechange).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -114,18 +127,20 @@ Initiates pairing with the peer Bluetooth device. This API uses an asynchronous 
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type    | Mandatory  | Description                                 |
+| Name     | Type    | Mandatory | Description                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the peer Bluetooth device, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;void&gt;  | Yes   | Callback used to return the result. If the pairing is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| deviceId | string | Yes   | Address of the peer Bluetooth device to be paired, for example, "XX:XX:XX:XX:XX:XX". |
+| callback | AsyncCallback&lt;void&gt;  | Yes   | Callback used to return the result. If pairing is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -154,9 +169,9 @@ try {
 
 pairDevice(deviceId: string): Promise&lt;void&gt;
 
-Initiates pairing with the peer Bluetooth device. This API uses a promise to return the result.
-- If you do not know the [address type](js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, you are advised to call this API to initiate pairing.
-- You can obtain the Bluetooth pairing status from the callback of [on('bondStateChange')](#connectiononbondstatechange).
+Initiates the pairing process with a peer Bluetooth device. This API uses a promise to return the result asynchronously.
+- If the developer does not know the [address type](js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, it is recommended to call this API to initiate pairing.
+- The Bluetooth pairing state is obtained through the callback result of [on('bondStateChange')](#connectiononbondstatechange).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -164,23 +179,25 @@ Initiates pairing with the peer Bluetooth device. This API uses a promise to ret
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type    | Mandatory  | Description                                 |
+| Name      | Type     | Mandatory   | Description                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the peer Bluetooth device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the peer Bluetooth device to be paired, for example, "XX:XX:XX:XX:XX:XX". |
 
 **Return value**
 
-| Type                 | Description           |
+| Type                  | Description            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
-**Error codes**
+**Error Code**:
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -211,31 +228,33 @@ try {
 
 pairDevice(deviceId: BluetoothAddress): Promise&lt;void&gt;
 
-Initiates pairing with the peer Bluetooth device. This API uses a promise to return the result.
-- If you know the MAC address and [address type](js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, you are advised to call this API to initiate pairing.
-- You can obtain the Bluetooth pairing status from the callback of [on('bondStateChange')](#connectiononbondstatechange).
+Initiates the pairing process with a peer Bluetooth device. This API uses a promise to return the result asynchronously.
+- If the developer knows the MAC address and [address type](js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, it is recommended to call this API to initiate pairing.
+- The Bluetooth pairing state is obtained through the callback result of [on('bondStateChange')](#connectiononbondstatechange).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type    | Mandatory  | Description                                 |
+| Name      | Type     | Mandatory   | Description                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | Yes   | Address information of the peer Bluetooth device, including the address and address type.|
+| deviceId | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | Yes    | Address information of the peer Bluetooth device to be paired, including the address and address type. |
 
 **Return value**
 
-| Type                 | Description           |
+| Type                  | Description            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
-**Error codes**
+**Error Code**:
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -251,8 +270,8 @@ import { common } from '@kit.ConnectivityKit';
 // promise
 try {
     let btAddr: common.BluetoothAddress = {
-        "address": '11:22:33:44:55:66', // Actual or virtual MAC address of the target device.
-        "addressType": common.BluetoothAddressType.REAL, // Address type of the target device.
+        "address": '11:22:33:44:55:66', // Actual MAC address or virtual MAC address of the target device.
+        "addressType": common.BluetoothAddressType.REAL, // Corresponding address type.
     }
     connection.pairDevice(btAddr).then(() => {
         console.info('pairDevice');
@@ -279,23 +298,25 @@ Obtains the name of the peer Bluetooth device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type    | Mandatory  | Description                               |
+| Name | Type | Mandatory | Description |
 | -------- | ------ | ---- | --------------------------------- |
-| deviceId | string | Yes   | Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes | Address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
 
 **Return value**
 
-| Type    | Description           |
+| Type | Description |
 | ------ | ------------- |
-| string | Device name (a string) obtained.|
+| string | Device name returned as a string. |
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -320,7 +341,7 @@ try {
 
 getRemoteDeviceName(deviceId: string, alias?: boolean): string
 
-Obtains the name of the peer device. The **alias** parameter is optional.
+Obtains the name of the peer Bluetooth device, where alias is an optional parameter.
 
 - Starting from API version 21, this API can be used to obtain the device name by using the actual MAC address of the peer device.
 
@@ -330,24 +351,26 @@ Obtains the name of the peer device. The **alias** parameter is optional.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type    | Mandatory  | Description                               |
+| Name      | Type     | Mandatory   | Description                                |
 | -------- | ------ | ---- | --------------------------------- |
-| deviceId | string | Yes   | Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
-| alias | boolean | No   | Whether to obtain the alias of the peer device.<br>- If **alias** is present, the application determines whether to obtain the alias of the peer device. The value **true** means to obtain the alias, and the value **false** means to obtain the original name.<br>- If **alias** is not present, the default value is **true**, which means to obtain the alias of the peer device.|
+| deviceId | string | Yes    | Address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
+| alias | boolean | No    | Whether to obtain the alias of the peer Bluetooth device.<br>- If alias is carried, whether to obtain the alias of the peer Bluetooth device is determined by alias: true indicates obtaining the alias of the peer Bluetooth device, and false indicates obtaining the original name of the peer Bluetooth device.<br>- If alias is not carried, the default value is true, and the alias of the peer Bluetooth device is returned. |
 
 **Return value**
 
-| Type    | Description           |
+| Type     | Description            |
 | ------ | ------------- |
-| string | Device name (a string) obtained.|
+| string | Device name returned in string format. |
 
 **Error codes**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -374,30 +397,33 @@ getRemoteDeviceClass(deviceId: string): DeviceClass
 
 Obtains the class of the peer Bluetooth device.
 
-- Starting from API version 18, this API does not verify the ohos.permission.ACCESS_BLUETOOTH permission.
-- Starting from API version 21, this API can be used to obtain the device class by using the actual MAC address of the peer device.
+- Starting from API version 18, this API no longer verifies the ohos.permission.ACCESS_BLUETOOTH permission.
+- Starting from API version 21, this API can be used to obtain the device class information by using the actual MAC address of the peer device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type    | Mandatory  | Description                               |
+| Name | Type | Mandatory | Description |
 | -------- | ------ | ---- | --------------------------------- |
-| deviceId | string | Yes   | Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes | Address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
 
 **Return value**
 
-| Type                         | Description      |
+| Type | Description |
 | --------------------------- | -------- |
-| [DeviceClass](#deviceclass) | Class of the peer device.|
+| [DeviceClass](#deviceclass) | Class of the peer device. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|201 |Permission denied.<br>Applicable versions: 10-17 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -420,27 +446,29 @@ getRemoteDeviceTransport(deviceId: string): BluetoothTransport
 
 Obtains the transport type of the peer Bluetooth device.
 
-- Starting from API version 21, this API can be used to obtain the transport type of the peer device by using the actual MAC address of the peer device.
+- Starting from API version 21, this API can be used to obtain the transport type of the device by using the actual MAC address of the peer device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type    | Mandatory  | Description                               |
+| Name      | Type     | Mandatory   | Description                                |
 | -------- | ------ | ---- | --------------------------------- |
-| deviceId | string | Yes   | Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
 
 **Return value**
 
-| Type                         | Description      |
+| Type                          | Description       |
 | --------------------------- | -------- |
-| [BluetoothTransport](#bluetoothtransport) | Transport type of the peer device.|
+| [BluetoothTransport](#bluetoothtransport) | Transport type of the peer device. |
 
-**Error codes**
+**Error codes:**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
@@ -462,26 +490,28 @@ try {
 
 getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;ProfileUuids&gt;&gt;): void
 
-Obtains the profile of the peer Bluetooth device based on the specified UUID. This API uses an asynchronous callback to return the result.
-- You are advised to use this API only for paired devices.
-- Starting from API version 21, this API can be used to obtain the profile of the peer Bluetooth device based on the actual MAC address of the peer device.
+Obtains the profile protocol capabilities of the peer Bluetooth device, distinguished by UUID. This API uses an asynchronous callback to return the result.
+- It is recommended that this method be called only for paired devices.
+- Starting from API version 21, this API can be used to obtain the profile protocol capabilities by using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type    | Mandatory  | Description                                 |
+| Name      | Type     | Mandatory   | Description                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and the set of supported profiles is returned. Otherwise, **err** is an error object.|
+| deviceId | string | Yes    | Address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
+| callback | AsyncCallback&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Yes    | Callback used to return the result. If the UUIDs are obtained successfully, **err** is **undefined** and the returned value is the set of profile protocol capabilities; otherwise, **err** is an error object. |
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter.    |
@@ -509,31 +539,33 @@ try {
 
 getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt;
 
-Obtains the profile of the peer Bluetooth device based on the specified UUID. This API uses a promise to return the result.
-- You are advised to use this API only for paired devices.
-- Starting from API version 21, this API can be used to obtain the profile of the peer Bluetooth device based on the actual MAC address of the peer device.
+Obtains the profile protocol capabilities of the peer Bluetooth device, which are distinguished by UUID. This API uses a promise to return the result.
+- It is recommended that this method be called only for paired devices.
+- Starting from API version 21, this API can be used to obtain the profile protocol capabilities by using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type    | Mandatory  | Description                                 |
-| -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
+| Name     | Type   | Mandatory | Description                                  |
+| -------- | ------ | --------- | -------------------------------------------- |
+| deviceId | string | Yes       | Address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
 
 **Return value**
 
-| Type                 | Description           |
-| ------------------- | ------------- |
-|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Promise used to return the set of supported profiles.|
+| Type                  | Description            |
+| --------------------- | ---------------------- |
+| Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Promise object used to return the set of supported profile protocol capabilities. |
 
-**Error codes**
+**Error codes**:
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter.    |
@@ -568,17 +600,19 @@ Obtains the name of the local Bluetooth device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Return value**
 
-| Type    | Description       |
+| Type | Description |
 | ------ | --------- |
-| string | Name of the local Bluetooth device.|
+| string | Name of the local Bluetooth device. |
 
-**Error codes**
+**Error code:**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -601,25 +635,29 @@ try {
 
 getPairedDevices(): Array&lt;string&gt;
 
-Obtains the addresses of paired Bluetooth devices.
+Obtains the address set of paired Bluetooth devices.
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**:
+- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API version 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Return value**
 
-| Type                 | Description           |
+| Type                  | Description            |
 | ------------------- | ------------- |
-| Array&lt;string&gt; | Addresses of paired Bluetooth devices.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual addresses of paired Bluetooth devices will not change.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
+| Array&lt;string&gt; | Address set of paired Bluetooth devices.<br>For information security purposes, the device address obtained here is a virtual MAC address.<br>- The address of a paired device does not change.<br>- If Bluetooth is restarted on the device, the virtual address obtained again changes immediately.<br>- If pairing is canceled, the Bluetooth subsystem determines when to change the address based on its actual usage. If another application is using the address, it will not be changed immediately.<br>- To persist the address, use the [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16) method. |
 
-**Error codes**
+**Error code:**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -643,9 +681,9 @@ try {
 
 getPairState(deviceId: string): BondState
 
-Obtains the pairing status of the peer Bluetooth device.
+Obtains the pairing state of the peer Bluetooth device.
 
-- Starting from API version 21, this API can be used to obtain the pairing status of the peer Bluetooth device based on the actual MAC address of the peer device.
+- Starting from API version 21, this API can be used to obtain the pairing state by using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -653,23 +691,25 @@ Obtains the pairing status of the peer Bluetooth device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type    | Mandatory  | Description                               |
+| Name      | Type     | Mandatory   | Description                                |
 | -------- | ------ | ---- | --------------------------------- |
-| deviceId | string | Yes   | Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes    | Address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
 
 **Return value**
 
-| Type                         | Description      |
+| Type                          | Description       |
 | --------------------------- | -------- |
-| [BondState](#bondstate) | Bluetooth pairing state obtained.|
+| [BondState](#bondstate) | Bluetooth pairing state of the device. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -695,30 +735,32 @@ try {
 
 getProfileConnectionState(profileId?: ProfileId): ProfileConnectionState
 
-Obtains the connection status of a Bluetooth profile. The **ProfileId** parameter is optional.
+Obtains the connection state of a Bluetooth profile. The parameter ProfileId is optional.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 <!--Table: 10%; 10%; 10%; 70%-->
-| Name      | Type       | Mandatory  | Description                                   |
+| Name       | Type        | Mandatory   | Description                                    |
 | --------- | --------- | ---- | ------------------------------------- |
-| profileId | [ProfileId](js-apis-bluetooth-constant.md#profileid) | No   | Bluetooth profile. If **ProfileId** is present, the connection status of the specified profile is returned. If **ProfileId** is not present, the connection status of all supported profiles is returned in the following order:<br>- If a profile is connected, [STATE_CONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If a profile is being connected, [STATE_CONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If a profile is being disconnected, [STATE_DISCONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If none of the preceding conditions is met, [STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate) is returned.|
+| profileId | [ProfileId](js-apis-bluetooth-constant.md#profileid) | No    | Enum value of the profile. If ProfileId is carried, the connection state of the specified profile is returned. If ProfileId is not carried, the connection states of all supported profiles are checked and returned in the following priority order:<br>- If a connected profile exists, [STATE_CONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If a connecting profile exists, [STATE_CONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If a disconnecting profile exists, [STATE_DISCONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If none of the preceding conditions is met, [STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate) is returned. |
 
 **Return value**
 
-| Type                                             | Description               |
+| Type                                              | Description                |
 | ------------------------------------------------- | ------------------- |
-| [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Connection status of the profile.|
+| [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Connection state of the profile. |
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Incorrect parameter types.        |
@@ -745,25 +787,27 @@ try {
 
 setDevicePairingConfirmation(deviceId: string, accept: boolean): void
 
-Confirms the pairing request from the peer Bluetooth device.
-- You can obtain the pairing status of the peer Bluetooth device from the callback of [on('pinRequired')](#connectiononpinrequired).
+Confirms the result of a pairing request after receiving the pairing request event from the peer Bluetooth device.
+- The pairing request from the peer Bluetooth device is obtained through the callback result of [on('pinRequired')](#connectiononpinrequired).
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH (available only for system applications)
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH (available only to system applications)
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name   | Type     | Mandatory  | Description                              |
-| ------   | ------- | ---- | -------------------------------- |
-| deviceId | string | Yes| Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
-| accept   | boolean | Yes   | Whether to accept the pairing request from the peer device. The value **true** means to accept the pairing request, and the value **false** means the opposite.      |
+| Name | Type | Mandatory | Description |
+| ------ | ------- | ---- | -------------------------------- |
+| deviceId | string | Yes | Address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
+| accept | boolean | Yes | Whether to accept the pairing request from the peer device. The value true means to accept the request, and false means the opposite. |
 
-**Error codes**
+**Error code**:
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -776,8 +820,8 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-// Subscribe to the pinRequired event and configure the pairing confirmation after receiving a pairing request from the peer device.
-function onReceivePinRequiredEvent(data: connection.PinRequiredParam) { // data is the input parameter for the pairing request.
+// Subscribe to the "pinRequired" pairing request event and set the pairing confirmation after receiving the peer pairing request.
+function onReceivePinRequiredEvent(data: connection.PinRequiredParam) { // data is the input parameter of the pairing request, that is, the pairing request parameter.
     console.info('pin required  = '+ JSON.stringify(data));
     connection.setDevicePairingConfirmation(data.deviceId, true);
 }
@@ -793,25 +837,27 @@ try {
 
 setDevicePinCode(deviceId: string, code: string, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the PIN used to complete Bluetooth pairing. This API uses an asynchronous callback to return the result.
+During Bluetooth pairing, a dialog box prompts the user to enter a personal identification number (PIN). Call this API to set the PIN and complete Bluetooth pairing. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name   | Type     | Mandatory  | Description                              |
+| Name    | Type      | Mandatory   | Description                               |
 | ------ | ------- | ---- | -------------------------------- |
-| deviceId | string  | Yes   | MAC address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
-| code   | string  | Yes   | PIN code entered by the user. The value is a string of 0 (not included) to 16 (included) characters, for example, **12345**.       |
-| callback   | AsyncCallback&lt;void&gt;  | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.       |
+| deviceId | string  | Yes    | MAC address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
+| code   | string  | Yes    | PIN entered by the user. The number of characters ranges from (0, 16], for example, "12345".        |
+| callback   | AsyncCallback&lt;void&gt;  | Yes    | Callback used to return the result. If the PIN is set successfully, **err** is **undefined**. Otherwise, **err** is an error object.        |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -845,24 +891,26 @@ Sets the PIN used to complete Bluetooth pairing. This API uses a promise to retu
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name   | Type     | Mandatory  | Description                              |
+| Name    | Type      | Mandatory   | Description                               |
 | ------ | ------- | ---- | -------------------------------- |
-| deviceId | string  | Yes   | MAC address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
-| code   | string  | Yes   | PIN code entered by the user. The value is a string of 0 (not included) to 16 (included) characters, for example, **12345**.       |
+| deviceId | string  | Yes    | MAC address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
+| code   | string  | Yes    | PIN entered by the user. The number of characters ranges from (0, 16], for example, "12345".        |
 
 **Return value**
 
-| Type                 | Description           |
+| Type                  | Description            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -893,26 +941,28 @@ try {
 
 setLocalName(name: string): void
 
-Sets the name of the local Bluetooth device. The value cannot be an empty string. If the value is an empty string, the operation will fail.
+Sets the name of the local Bluetooth device. The name cannot be an empty string; otherwise, the operation fails.
 
-> **NOTE**<br>
-> This API is supported since API version 10 and deprecated since API version 12. No substitute is provided.
+> **NOTE**<br/>
+> This API is supported since API version 10 and deprecated since API version 12 for security and sensitive information concerns. No substitute is provided. To change the Bluetooth device name of the local device, you can do so in the system settings.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name | Type    | Mandatory  | Description                   |
+| Name | Type | Mandatory | Description |
 | ---- | ------ | ---- | --------------------- |
-| name | string | Yes   | Bluetooth name. The value is a string of 0 (not included) to 248 (included) bytes.|
+| name | string | Yes | Bluetooth name to set. The name length ranges from (0, 248], in bytes. |
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -937,24 +987,26 @@ try {
 
 setBluetoothScanMode(mode: ScanMode, duration: number): void
 
-Sets the Bluetooth scan mode, which determines whether the local device can be connected or discovered. This API is used together with the [onScanModeChange](#connectiononscanmodechange23) API to listen for Bluetooth scan mode change events in real time.
+Sets the Bluetooth scan mode to determine whether the local device can be connected or discovered. Used together with [onScanModeChange](#connectiononscanmodechange23), this API allows real-time listening for Bluetooth scan mode change events.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                   | Mandatory  | Description                          |
+| Name | Type | Mandatory | Description |
 | -------- | --------------------- | ---- | ---------------------------- |
-| mode     | [ScanMode](#scanmode) | Yes   | Bluetooth scan mode to set. If the scan times out (**duration** is not **0**) when the scan mode is **SCAN_MODE_GENERAL_DISCOVERABLE**, the scan mode will be reset to **SCAN_MODE_CONNECTABLE**.              |
-| duration | number                | Yes   | Duration during which the device can be discovered, in milliseconds. If the value is set to **0**, the device can be discovered permanently.|
+| mode | [ScanMode](#scanmode) | Yes | Bluetooth scan mode to set. If the scan times out (**duration** is not **0**) when the scan mode is **SCAN_MODE_GENERAL_DISCOVERABLE**, the scan mode will be reset to **SCAN_MODE_CONNECTABLE**. |
+| duration | number | Yes | Duration during which the device can be discovered, in milliseconds. If the value is set to **0**, the device can be discovered permanently. |
 
-**Error codes**
+**Error code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -968,7 +1020,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    // The device can be discovered and connected only when the discoverable and connectable mode is used.
+    // Set the device to connectable and discoverable so that it can be scanned and connected by the peer device.
     connection.setBluetoothScanMode(connection.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE, 100);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -980,23 +1032,25 @@ try {
 
 getBluetoothScanMode(): ScanMode
 
-Obtains the Bluetooth scan mode. This API is used together with the [onScanModeChange](#connectiononscanmodechange23) API to listen for Bluetooth scan mode change events in real time.
+Obtains the Bluetooth scan mode. Used together with [onScanModeChange](#connectiononscanmodechange23), this API can listen for Bluetooth scan mode change events in real time.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Return value**
 
-| Type                   | Description     |
+| Type                    | Description      |
 | --------------------- | ------- |
-| [ScanMode](#scanmode) | Bluetooth scan mode obtained.|
+| [ScanMode](#scanmode) | Bluetooth scan mode. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1020,11 +1074,11 @@ try {
 
 startBluetoothDiscovery(): void
 
-Starts a Bluetooth scan for device discovery.<br>
-- This API applies to both Bluetooth Classic devices and BLE devices. The entire Bluetooth scan process takes about 12 seconds.<br>
-- You can obtain the scan result from the callback of [connection.on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind) (supported since API version 10) or [connection.on('discoveryResult')](#connectionondiscoveryresult18) (supported since API version 18). You are advised to use [connection.on('discoveryResult')](#connectionondiscoveryresult18), which can obtain more detailed device information.<br>
-- Do not call this API repeatedly during a scan. You can use [connection.isBluetoothDiscovering](#connectionisbluetoothdiscovering11) to check whether a Bluetooth scan is in progress.<br>
-- You can call [connection.stopBluetoothDiscovery](#connectionstopbluetoothdiscovery) to stop the scan. Start the next scan only after the current scan is stopped.<br>
+Starts Bluetooth scanning to discover peer Bluetooth devices.<br>
+- This API supports discovering both classic Bluetooth devices and Bluetooth Low Energy devices. The entire Bluetooth scanning process lasts about 12 seconds.<br>
+- The scan results can be obtained through the callback function of [connection.on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind), supported since API version 10, or [connection.on('discoveryResult')](#connectionondiscoveryresult18), supported since API version 18. It is recommended to use [connection.on('discoveryResult')](#connectionondiscoveryresult18), which can obtain more device information.<br>
+- Do not call this API repeatedly during scanning. You can use [connection.isBluetoothDiscovering](#connectionisbluetoothdiscovering11) to check whether Bluetooth is currently scanning.<br>
+- Calling [connection.stopBluetoothDiscovery](#connectionstopbluetoothdiscovery) stops the scanning process started by this API. Only after scanning stops can the next Bluetooth scan be started.<br>
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1032,11 +1086,13 @@ Starts a Bluetooth scan for device discovery.<br>
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Error codes**
+**Model restriction:** This API can be used only in the stage model.
+
+**Error code:**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1064,10 +1120,10 @@ try {
 
 stopBluetoothDiscovery(): void
 
-Stops the Bluetooth scan.<br>
-- This API applies only to scans initiated by [connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery).<br>
-- Call this API to stop the Bluetooth scan when device discovery is no longer needed.<br>
-- Do not call this API repeatedly if a scan is not in progress. You can use [connection.isBluetoothDiscovering](#connectionisbluetoothdiscovering11) to check whether a Bluetooth scan is in progress.<br>
+Stops Bluetooth scanning.<br>
+- The scanning to be stopped is triggered by [connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery).<br>
+- When an application no longer needs to scan for devices, it must proactively call this method to stop scanning.<br>
+- If scanning is not in progress, do not call this method repeatedly. (You can use [connection.isBluetoothDiscovering](#connectionisbluetoothdiscovering11) to check whether Bluetooth is currently scanning.)<br>
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1075,11 +1131,13 @@ Stops the Bluetooth scan.<br>
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Error codes**
+**Model restriction:** This API can be used only in the stage model.
+
+**Error codes**:
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1103,23 +1161,25 @@ try {
 
 isBluetoothDiscovering(): boolean
 
-Checks whether the local Bluetooth device is in the device scanning state.
+Checks whether the local Bluetooth device is in the Device Scan state.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Return value**
 
-| Type                 | Description           |
+| Type                  | Description            |
 | ------------------- | ------------- |
-|   boolean           | Whether Bluetooth discovery is in process. The value **true** indicates that Bluetooth discovery is in process, and the value **false** indicates the opposite. |
+|   boolean           | Whether Bluetooth discovery is enabled. The value **true** indicates that a Device Scan is being initiated, and **false** indicates that no Device Scan is being initiated.  |
 
-**Error codes**
+**Error code:**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1143,9 +1203,9 @@ try {
 
 setRemoteDeviceName(deviceId: string, name: string): Promise&lt;void&gt;
 
-Sets the name of the peer Bluetooth device. The value cannot be an empty string. If the value is an empty string, the operation will fail. This API uses a promise to return the result.
-- You are advised to use this API only for paired devices.
-- Starting from API version 21, this API can be used to set the name of the peer Bluetooth device based on the actual MAC address of the peer device.
+Sets the name of the peer Bluetooth device. The name cannot be an empty string; setting it to an empty string will fail. This API uses a promise to return the result asynchronously.
+- It is recommended to call this method only for paired devices.
+- Since API version 21, this API supports setting the name using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1153,24 +1213,26 @@ Sets the name of the peer Bluetooth device. The value cannot be an empty string.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                 | Mandatory  | Description                                    |
+| Name      | Type                                  | Mandatory   | Description                                     |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| deviceId     | string                              | Yes   | MAC address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
-| name | string | Yes   | Name of the peer device. The value is a string of 0 (not included) to 64 (included) bytes.   |
+| deviceId     | string                              | Yes    | MAC address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
+| name | string | Yes    | New name of the peer device. The name length ranges from (0, 64], in bytes.    |
 
 **Return value**
 
-| Type                 | Description           |
+| Type                  | Description            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.            |
@@ -1198,31 +1260,33 @@ try {
 
 getRemoteDeviceBatteryInfo(deviceId: string): Promise&lt;BatteryInfo&gt;
 
-Obtains the battery level of the peer Bluetooth device. This API uses a promise to return the result.
-- You can obtain the battery level of the peer Bluetooth device from the callback of [on('batteryChange')](#connectiononbatterychange12).
-- Starting from API version 21, this API can be used to obtain the battery level of the peer Bluetooth device based on the actual MAC address of the peer device.
+Obtains the battery information of the peer Bluetooth device. This API uses a promise to return the result asynchronously.
+- Changes in the battery information of the peer Bluetooth device are obtained through the callback result of [on('batteryChange')](#connectiononbatterychange12).
+- Starting from API version 21, this API can be used to obtain the battery information by using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name   | Type     | Mandatory  | Description                              |
+| Name    | Type      | Mandatory   | Description                               |
 | ------ | ------- | ---- | -------------------------------- |
-| deviceId | string  | Yes   | MAC address of the peer Bluetooth device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string  | Yes    | MAC address of the peer Bluetooth device, for example, "XX:XX:XX:XX:XX:XX". |
 
 **Return value**
 
-| Type                 | Description        |
+| Type                  | Description         |
 | ------------------- | ------------- |
-| Promise&lt;[BatteryInfo](#batteryinfo12)&gt; | Promise used to return the battery level information.|
+| Promise&lt;[BatteryInfo](#batteryinfo12)&gt; | Promise object used to return the battery information object. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.            |
@@ -1248,24 +1312,26 @@ try {
 
 on(type: 'batteryChange', callback: Callback&lt;BatteryInfo&gt;): void
 
-Subscribes to battery change events of the peer device. This API uses an asynchronous callback to return the result.
+Subscribes to the battery information change event of the peer device. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                 | Mandatory  | Description                                    |
+| Name      | Type                                  | Mandatory   | Description                                     |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| type     | string                              | Yes   | Event type. The value **batteryChange** indicates the battery change event. This event is triggered when the battery level of the peer device changes.|
-| callback | Callback&lt;[BatteryInfo](#batteryinfo12)&gt; | Yes   | Callback used to return the battery level information.   |
+| type     | string                              | Yes    | Event callback type. The supported event is 'batteryChange', which indicates the battery information change event of the peer device. This event is triggered when the device notifies a battery change. |
+| callback | Callback&lt;[BatteryInfo](#batteryinfo12)&gt; | Yes    | Callback invoked to return the battery information.    |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |2900099 | Operation failed.                        |
@@ -1289,24 +1355,26 @@ try {
 
 off(type: 'batteryChange', callback?: Callback&lt;BatteryInfo&gt;): void
 
-Unsubscribes from battery change events of the peer device.
+Unsubscribes from the battery information change event of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                 | Mandatory  | Description                                      |
+| Name      | Type                                  | Mandatory   | Description                                       |
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
-| type     | string                              | Yes   | Event type. The value **batteryChange** indicates the battery change event.  |
-| callback | Callback&lt;[BatteryInfo](#batteryinfo12)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('batteryChange')](#connectiononbatterychange12). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| type     | string                              | Yes    | Type of the event to unsubscribe from. The supported event is 'batteryChange', which indicates the battery information change event of the peer device.   |
+| callback | Callback&lt;[BatteryInfo](#batteryinfo12)&gt; | No    | Callback for the battery information change event.<br>If this parameter is passed, it must be the same as the callback in [connection.on('batteryChange')](#connectiononbatterychange12). If this parameter is not passed, all callbacks subscribed for this type are unsubscribed. |
 
-**Error codes**
+**Error code:**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |2900099 | Operation failed.                        |
@@ -1331,32 +1399,36 @@ try {
 
 on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): void
 
-Subscribes to scan result reporting events of Bluetooth devices. This API uses an asynchronous callback to return the result.<br>
-- This API applies to both classic Bluetooth devices and BLE devices.<br>
-- This API provides only the device address.<br>
-- You are advised to use [connection.on('discoveryResult')](#connectionondiscoveryresult18) (supported since API version 18), which can obtain more detailed device information, including the device address, signal strength, name, and type.
+Subscribes to the Bluetooth device scan result reporting event. This API uses an asynchronous callback.<br>
+- The device types that can be scanned include classic Bluetooth devices and Bluetooth Low Energy devices.<br>
+- This reporting method supports obtaining only the device address information.<br>
+- It is recommended that you use the [connection.on('discoveryResult')](#connectionondiscoveryresult18) scan reporting method supported since API version 18, which can obtain more device information, including the device address, device signal strength, device name, and device type.
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**:
+- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API version 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                 | Mandatory  | Description                                    |
+| Name      | Type                                  | Mandatory   | Description                                     |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| type     | string                              | Yes   | Event type. The value **bluetoothDeviceFind** indicates a scan result reporting event. A device scan starts when [connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery) is called. This event is triggered when a device is discovered.|
-| callback | Callback&lt;Array&lt;string&gt;&gt; | Yes   | Callback used to return the set of device addresses.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual addresses of paired Bluetooth devices will not change.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).  |
+| type     | string                              | Yes    | Type of the event to subscribe to. The supported event is 'bluetoothDeviceFind', which indicates the Bluetooth device scan result reporting event. After [connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery) is called, device scanning starts. If a device is scanned, this event is triggered. |
+| callback | Callback&lt;Array&lt;string&gt;&gt; | Yes    | Callback invoked to return the set of scanned device addresses.<br>For information security purposes, the device address obtained here is a virtual MAC address.<br>- The address of a paired device does not change.<br>- If Bluetooth is restarted on the device, the re-obtained virtual address changes immediately.<br>- If pairing is canceled, the Bluetooth subsystem determines the subsequent change timing based on the actual usage of the address. If another application is using the address, it will not change immediately.<br>- To persist the address, use [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).   |
 
 **Error codes**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>Applicable versions: 10 to 24                 |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1364,7 +1436,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-function onReceiveEvent(data: Array<string>) { // data is an array of Bluetooth device addresses.
+function onReceiveEvent(data: Array<string>) { // data is a set of Bluetooth device addresses.
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
 try {
@@ -1379,7 +1451,7 @@ try {
 
 off(type: 'bluetoothDeviceFind', callback?: Callback&lt;Array&lt;string&gt;&gt;): void
 
-Unsubscribes from Bluetooth scan result reporting events.
+Unsubscribes from Bluetooth device scan result reporting events.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1387,18 +1459,20 @@ Unsubscribes from Bluetooth scan result reporting events.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                 | Mandatory  | Description                                      |
+| Name      | Type                                  | Mandatory   | Description                                       |
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
-| type     | string                              | Yes   | Event type. The value **bluetoothDeviceFind** indicates a scan result reporting event.  |
-| callback | Callback&lt;Array&lt;string&gt;&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| type     | string                              | Yes    | Type of the event callback. The supported event is 'bluetoothDeviceFind', which indicates the Bluetooth device scan result reporting event.   |
+| callback | Callback&lt;Array&lt;string&gt;&gt; | No    | Callback for the Bluetooth device scan result reporting event.<br>If this parameter is passed, it must be the same as the callback in [connection.on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind). If this parameter is not passed, all callbacks registered for this type are unsubscribed. |
 
-**Error codes**
+**Error code:**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1426,25 +1500,29 @@ on(type: 'bondStateChange', callback: Callback&lt;BondStateParam&gt;): void
 
 Subscribes to Bluetooth pairing status change events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**:
+- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API version 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                      | Mandatory  | Description                                  |
+| Name      | Type                                       | Mandatory   | Description                                   |
 | -------- | ---------------------------------------- | ---- | ------------------------------------ |
-| type     | string                                   | Yes   | Event type. The value **bondStateChange** indicates a Bluetooth pairing status change event.<br>This event is triggered when [connection.pairDevice](#connectionpairdevice) is called to initiate pairing or the local device receives a pairing request from another device.|
-| callback | Callback&lt;[BondStateParam](#bondstateparam)&gt; | Yes   | Callback used to return the pairing status.   |
+| type     | string                                   | Yes    | Type of the event to subscribe to. The supported event is 'bondStateChange', which indicates a Bluetooth pairing status change event.<br>This event is triggered when [connection.pairDevice](#connectionpairdevice) is called to initiate pairing, or when the local device receives a pairing request from another device. |
+| callback | Callback&lt;[BondStateParam](#bondstateparam)&gt; | Yes    | Callback invoked to return the pairing status result.    |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>Applicable versions: 10 to 24                 |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1452,7 +1530,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-function onReceiveEvent(data: connection.BondStateParam) { // data, as the input parameter of the callback, indicates the pairing state.
+function onReceiveEvent(data: connection.BondStateParam) { // data is the input parameter of the callback function, indicating the pairing status.
     console.info('pair state = '+ JSON.stringify(data));
 }
 try {
@@ -1467,24 +1545,26 @@ try {
 
 off(type: 'bondStateChange', callback?: Callback&lt;BondStateParam&gt;): void
 
-Unsubscribes from Bluetooth pairing status change events.
+Unsubscribes from the Bluetooth pairing state change event.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                      | Mandatory  | Description                                      |
+| Name      | Type                                       | Mandatory   | Description                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| type     | string                                   | Yes   | Event type. The value **bondStateChange** indicates a Bluetooth pairing status change event.    |
-| callback | Callback&lt;[BondStateParam](#bondstateparam)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('bondStateChange')](#connectiononbondstatechange). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| type     | string                                   | Yes    | Type of the event callback. The supported event is 'bondStateChange', which indicates the Bluetooth pairing state change event.     |
+| callback | Callback&lt;[BondStateParam](#bondstateparam)&gt; | No    | Callback for the Bluetooth pairing state change event.<br>If this parameter is passed, it must be the same as the callback in [connection.on('bondStateChange')](#connectiononbondstatechange). If this parameter is not passed, all callbacks registered for this type are unsubscribed. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1511,27 +1591,31 @@ try {
 
 on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 
-Subscribes to pairing request events. This API uses an asynchronous callback to return the result.
+Subscribes to the pairing request event. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**:
+- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API version 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                      | Mandatory  | Description                              |
+| Name      | Type                                       | Mandatory   | Description                               |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| type     | string                                   | Yes   | Event type. The value **pinRequired** indicates a pairing request event.<br>This event is triggered when [connection.pairDevice](#connectionpairdevice) is called to initiate pairing or the local device receives a pairing request from another device.    |
-| callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | Yes   | Callback used to return the pairing request.|
+| type     | string                                   | Yes    | Event type. The value **pinRequired** indicates a pairing request event. This event is triggered when [connection.pairDevice](#connectionpairdevice) is called to initiate pairing or the local device receives a pairing request from another device. After receiving a pairing request, you can call [connection.setDevicePairingConfirmation](#connectionsetdevicepairingconfirmation) to accept or reject the request.     |
+| callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | Yes    | Callback used to return the pairing request. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>Applicable versions: 10 to 24                 |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1554,24 +1638,26 @@ try {
 
 off(type: 'pinRequired', callback?: Callback&lt;PinRequiredParam&gt;): void
 
-Unsubscribes from pairing request events.
+Unsubscribes from the pairing request event.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                      | Mandatory  | Description                                      |
+| Name      | Type                                       | Mandatory   | Description                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| type     | string                                   | Yes   | Event type. The value **pinRequired** indicates a pairing request event.            |
-| callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('pinRequired')](#connectiononpinrequired). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| type     | string                                   | Yes    | Type of the event callback. The supported event is 'pinRequired', which indicates the pairing request event.             |
+| callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | No    | Callback for the pairing request event.<br>If this parameter is passed, it must be the same as the callback in [connection.on('pinRequired')](#connectiononpinrequired). If this parameter is not passed, all callbacks for this type are unsubscribed. |
 
-**Error codes**
+**Error code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1598,29 +1684,33 @@ try {
 
 on(type: 'discoveryResult', callback: Callback&lt;Array&lt;DiscoveryResult&gt;&gt;): void
 
-Subscribes to scan result reporting events of Bluetooth devices. This API uses an asynchronous callback to return the result.<br>
-- This API applies to both classic Bluetooth devices and BLE devices.<br>
-- The reported information includes the device address, signal strength, name, and type.
+Subscribes to the Bluetooth device scan result reporting event. This API uses an asynchronous callback to return the result.<br>
+- The device types that can be scanned include classic Bluetooth devices and Bluetooth Low Energy devices.<br>
+- This reporting method supports obtaining the device address, device signal strength, device name, and device type.
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**:
+- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API version 18 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                 | Mandatory  | Description                                    |
+| Name      | Type                                  | Mandatory   | Description                                     |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| type     | string                              | Yes   | Event type. The value **discoveryResult** indicates a scan result reporting event. A device scan starts when [connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery) is called. This event is triggered when a device is discovered.|
-| callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | Yes   | Callback used to return the set of scan results.   |
+| type     | string                              | Yes    | Event callback type. The supported event is 'discoveryResult', which indicates the Bluetooth device scan result reporting event. After [connection.startBluetoothDiscovery](#connectionstartbluetoothdiscovery) is called, device scan starts. If a device is scanned, this event is triggered. |
+| callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | Yes    | Callback invoked to return the set of scan results.    |
 
-**Error codes**
+**Error Code**:
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>Applicable versions: 18 to 24                 |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1628,7 +1718,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent: (data: Array<connection.DiscoveryResult>) => void = (data: Array<connection.DiscoveryResult>) => { // data is an array of Bluetooth devices discovered.
+let onReceiveEvent: (data: Array<connection.DiscoveryResult>) => void = (data: Array<connection.DiscoveryResult>) => { // data is the set of Bluetooth device scan results.
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
 try {
@@ -1643,24 +1733,26 @@ try {
 
 off(type: 'discoveryResult', callback?: Callback&lt;Array&lt;DiscoveryResult&gt;&gt;): void
 
-Unsubscribes from the Bluetooth device discovered.
+Unsubscribes from Bluetooth device scan result reporting events.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                 | Mandatory  | Description                                      |
+| Name      | Type                                  | Mandatory   | Description                                       |
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
-| type     | string                              | Yes   | Event type. The value **discoveryResult** indicates a scan result reporting event.  |
-| callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('discoveryResult')](#connectionondiscoveryresult18). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| type     | string                              | Yes    | Event callback type. The supported event is 'discoveryResult', which indicates the Bluetooth device scan result reporting event.   |
+| callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | No    | Callback for the Bluetooth device scan result reporting event.<br>If this parameter is passed, it must be the same as the callback in [connection.on('discoveryResult')](#connectionondiscoveryresult18). If this parameter is not passed, all callbacks corresponding to this type are unsubscribed. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1670,7 +1762,7 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-let onReceiveEvent: (data: Array<connection.DiscoveryResult>) => void = (data: Array<connection.DiscoveryResult>) => { // data is an array of Bluetooth devices discovered.
+let onReceiveEvent: (data: Array<connection.DiscoveryResult>) => void = (data: Array<connection.DiscoveryResult>) => { // data is the set of Bluetooth device scan results.
     console.info('bluetooth device find = '+ JSON.stringify(data));
 }
 try {
@@ -1686,23 +1778,25 @@ try {
 
 onScanModeChange(callback: Callback&lt;ScanMode&gt;): void
 
-Subscribes to Bluetooth scan mode change events. This API uses an asynchronous callback to return the result. If such events are subscribed to, after the current Bluetooth scan mode is changed by calling [setBluetoothScanMode](#connectionsetbluetoothscanmode), the callback containing the latest scan mode will be received.
+Subscribes to the Bluetooth scan mode change event. This API uses an asynchronous callback. After [setBluetoothScanMode](#connectionsetbluetoothscanmode) is called to change the current Bluetooth scan mode, if this event is subscribed, the callback function carrying the latest scan mode is invoked.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                      | Mandatory  | Description                              |
+| Name      | Type                                       | Mandatory   | Description                               |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| callback | Callback&lt;[ScanMode](#scanmode)&gt; | Yes   | Callback used to return the latest Bluetooth scan mode.|
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | Yes    | Callback invoked to return the latest Bluetooth scan mode after the change. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1726,23 +1820,25 @@ try {
 
 offScanModeChange(callback?: Callback&lt;ScanMode&gt;): void
 
-Unsubscribes from Bluetooth scan mode change events.
+Unsubscribes from the Bluetooth scan mode change event.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name     | Type                                      | Mandatory  | Description                                      |
+| Name      | Type                                       | Mandatory   | Description                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;[ScanMode](#scanmode)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is passed, the value must be the same as that in [connection.onScanModeChange](#connectiononscanmodechange23). If this parameter is not passed, all callbacks for the Bluetooth scan mode change will be unregistered.|
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | No    | Callback for the Bluetooth scan mode change event to unsubscribe from.<br>If this parameter is passed, it must be the same as the callback in [connection.onScanModeChange](#connectiononscanmodechange23). If this parameter is not passed, all callbacks for the Bluetooth scan mode change event are unsubscribed from. |
 
-**Error codes**
+**Error code**:
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1766,31 +1862,33 @@ try {
 
 getLastConnectionTime(deviceId: string): Promise&lt;number&gt;
 
-Obtains the latest connection time of the peer Bluetooth device. This API uses a promise to return the result.
+Obtains the time of the last connection to the peer Bluetooth device. This API uses a promise to return the result asynchronously.
 
-- Starting from API version 21, this API can be used to obtain the latest connection time of the peer Bluetooth device based on the actual MAC address of the peer device.
+- Starting from API version 21, this API can be used to obtain the last connection time by using the actual MAC address of the peer device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
-| Name   | Type     | Mandatory  | Description                              |
+| Name    | Type      | Mandatory   | Description                               |
 | ------ | ------- | ---- | -------------------------------- |
-| deviceId | string  | Yes   | MAC address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string  | Yes    | MAC address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
 
 **Return value**
 
-| Type                 | Description        |
+| Type                  | Description         |
 | ------------------- | ------------- |
-| Promise&lt;number&gt; | Promise used to return the latest connection time of the peer Bluetooth device, in the UNIX timestamp format.|
+| Promise&lt;number&gt; | Promise object that returns the time of the last connection to the peer Bluetooth device, in the format of a UNIX timestamp in seconds. |
 
-**Error codes**
+**Error codes**:
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -1814,27 +1912,27 @@ try {
 
 connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Obtains the profiles supported by the peer device. Supported profiles include A2DP, HFP, and HID. This API uses an asynchronous callback to return the result.
-- In versions earlier than API version 26.0.0, call [connection.pairDevice](#connectionpairdevice) to initiate pairing first. This API can be called only once within 30 seconds after each pairing is initiated.
-- In API version 26.0.0 and later, there is no time limit for calling this API for A2DP and HFP. You can call this API at any time after calling [connection.pairDevice](#connectionpairdevice) to initiate pairing.
+Connects to the profiles (including A2DP, HFP, HID, and PAN) supported by the peer device. The Bluetooth subsystem identifies the profile types supported by the peer device. This API uses an asynchronous callback to return the result.
+- For versions earlier than API version 26.0.0, call [connection.pairDevice](#connectionpairdevice) to initiate pairing first. This API can be called only once within 30 seconds after each pairing is initiated.
+- Starting from API version 26.0.0, there is no time limit for calling this API for A2DP and HFP. You can call this API at any time after calling [connection.pairDevice](#connectionpairdevice) to initiate pairing. For HID, this API still needs to be called within 30 seconds after each pairing is initiated.
 - Upon successful pairing, you are advised to call [getRemoteProfileUuids](#connectiongetremoteprofileuuids12) to query the profiles supported by the target device. This API is called only if the target device supports the profile required by the application.
-- This API must be used in pair with [connection.disconnectAllowedProfiles](#connectiondisconnectallowedprofiles).
+- This API must be used together with [connection.disconnectAllowedProfiles](#connectiondisconnectallowedprofiles).
 - Starting from API version 21, this API can be used to perform profile connection using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name    | Type   | Mandatory | Description                                |
+| Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes  | MAC address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
+| deviceId | string | Yes   | MAC address of the peer device to connect, for example, "XX:XX:XX:XX:XX:XX".|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the connection is initiated successfully, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
-**Error codes**
+**Error codes**:
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
@@ -1869,32 +1967,32 @@ try {
 
 connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
-Obtains the profiles supported by the peer device. Supported profiles include A2DP, HFP, and HID. This API uses a promise to return the result.
-- In versions earlier than API version 26.0.0, call [connection.pairDevice](#connectionpairdevice) to initiate pairing first. This API can be called only once within 30 seconds after each pairing is initiated.
-- In API version 26.0.0 and later, there is no time limit for calling this API for A2DP and HFP. You can call this API at any time after calling [connection.pairDevice](#connectionpairdevice) to initiate pairing.
+Connects to the profiles (including A2DP, HFP, HID, and PAN) supported by the peer device. The Bluetooth subsystem identifies the profile types supported by the peer device. This API uses a promise to return the result.
+- For versions earlier than API version 26.0.0, call [connection.pairDevice](#connectionpairdevice) to initiate pairing first. This API can be called only once within 30 seconds after each pairing is initiated.
+- Starting from API version 26.0.0, there is no time limit for calling this API for A2DP and HFP. You can call this API at any time after calling [connection.pairDevice](#connectionpairdevice) to initiate pairing. For HID, this API still needs to be called within 30 seconds after each pairing is initiated.
 - Upon successful pairing, you are advised to call [getRemoteProfileUuids](#connectiongetremoteprofileuuids12) to query the profiles supported by the target device. This API is called only if the target device supports the profile required by the application.
-- This API must be used in pair with [connection.disconnectAllowedProfiles](#connectiondisconnectallowedprofiles).
+- This API must be used together with [connection.disconnectAllowedProfiles](#connectiondisconnectallowedprofiles).
 - Starting from API version 21, this API can be used to perform profile connection using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name    | Type   | Mandatory | Description                                |
+| Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes  | MAC address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | MAC address of the peer device to connect, for example, "XX:XX:XX:XX:XX:XX".|
 
 **Return value**
 
-| Type                                            | Description              |
+| Type                                             | Description               |
 | ------------------------------------------------- | ------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error codes**
+**Error Code:**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
@@ -1926,30 +2024,31 @@ try {
 
 disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
-Obtains the profiles supported by the disconnected peer device. Supported profiles include A2DP and HFP.
-- This API must be used in pair with [connection.connectAllowedProfiles](#connectionconnectallowedprofiles16).
+Disconnects the profiles supported by the peer device. This API uses a promise to return the result.
+- For non-system apps, this API must be used together with [connection.connectAllowedProfiles](#connectionconnectallowedprofiles16). If this API is directly called, error code 2900099 will be returned. For non-system apps, this API can only be used to disconnect from the A2DP and HFP profiles. Other profiles involve system app functions and can only be operated by system apps.
+- System apps can directly call this API to disconnect from all connected profiles, including A2DP, HFP, HID, and PAN.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name    | Type   | Mandatory | Description                                |
+| Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes  | MAC address of the disconnected peer device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | MAC address of the peer device to disconnect, for example, "XX:XX:XX:XX:XX:XX".|
 
 **Return value**
 
-| Type                                            | Description              |
+| Type                                             | Description               |
 | ------------------------------------------------- | ------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
@@ -1975,28 +2074,28 @@ try {
 
 getVirtualAddressByHash(algorithmType: HashAlgorithmType, hashValue: string): string
 
-Obtains the [virtual MAC address](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type) of a paired device based on the hash of its [actual MAC address](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type).
+Obtains the corresponding [virtual MAC address](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type) based on the hash value of the [actual MAC address](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type) of a paired device.
 
-When [HashAlgorithmType](#hashalgorithmtype24) is set to **HASH_ALGORITHM_SHA256**, the hash (a 64-digit hexadecimal value) is generated based on the actual MAC address in uppercase using the SHA-256 algorithm. The last 32 bits of the hash are used as the input. The letters in the hash are case insensitive.
+When [HashAlgorithmType](#hashalgorithmtype24) is HASH_ALGORITHM_SHA256, use the uppercase actual MAC address to generate the corresponding hash value (64 hexadecimal digits) through the SHA256 algorithm, take the last 32 digits as the input, and the letters in the hash value are case-insensitive.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Model restriction**: This API can be used only in the stage model.
-
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name    | Type   | Mandatory | Description                                |
+| Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| algorithmType | [HashAlgorithmType](#hashalgorithmtype24) | Yes  | Hash algorithm type.|
-| hashValue | string | Yes  | Hash value, for example, **c10b57deb2e1aafd255596e0d4fd6789**.|
+| algorithmType | [HashAlgorithmType](#hashalgorithmtype24) | Yes   | Hash algorithm type.|
+| hashValue | string | Yes   | Hash value, for example, "c10b57deb2e1aafd255596e0d4fd6789".|
 
 **Return value**
 
-| Type                                            | Description              |
+| Type                                             | Description               |
 | ------------------------------------------------- | ------------------- |
-| string | Virtual MAC address of the device corresponding to the hash, for example, XX:XX:XX:XX:XX:XX. The returned address is in uppercase.|
+| string | Returns the virtual MAC address of the device corresponding to the hash value, for example, "XX:XX:XX:XX:XX:XX". The returned address is in uppercase.|
 
 **Error codes**
 
@@ -2014,9 +2113,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-// If the queried actual address is 11:22:33:44:55:AA,
-// the corresponding 64-bit hash is d2204cb9b6d3d3962cc90fa54130efb4c10b57deb2e1aafd255596e0d4fd6789.
-// If HashAlgorithmType is set to HASH_ALGORITHM_SHA256, the last 32 bits of the hash are used.
+// If the actual address to be queried is 11:22:33:44:55:AA,
+// the corresponding 64-digit hash value is d2204cb9b6d3d3962cc90fa54130efb4c10b57deb2e1aafd255596e0d4fd6789,
+// Take the last 32 bits of the hash value when HashAlgorithmType is HASH_ALGORITHM_SHA256.
 let hashValue: string = "c10b57deb2e1aafd255596e0d4fd6789";
 try {
   let addr: string = connection.getVirtualAddressByHash(connection.HashAlgorithmType.HASH_ALGORITHM_SHA256, hashValue);
@@ -2031,25 +2130,25 @@ onAclStateChange(callback: Callback&lt;AclStateResult&gt;): void
 
 Subscribes to the Bluetooth ACL link connection status change event. If this event is subscribed to, a callback containing the address and connection status of the corresponding device will be received when the Bluetooth ACL link is connected or disconnected.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+**Required Permission:** ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name     | Type                                      | Mandatory  | Description                              |
+| Name      | Type                                       | Mandatory   | Description                               |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| callback | Callback&lt;[AclStateResult](#aclstateresult)&gt; | Yes   | Callback used to return the Bluetooth peripheral connection status.|
+| callback | Callback&lt;[AclStateResult](#aclstateresult)&gt; | Yes    | Callback used to return the Bluetooth ACL link connection status. |
 
-**Error codes**
+**Error Code**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.       |
@@ -2072,27 +2171,27 @@ try {
 
 offAclStateChange(callback?: Callback&lt;AclStateResult&gt;): void
 
-Unsubscribes from the Bluetooth ACL link connection status change event.
+Unsubscribes from the Bluetooth ACL link connection state change event.
 
 **Since**: 26.0.0
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+**Required Permission:** ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name     | Type                                      | Mandatory  | Description                                      |
+| Name      | Type                                       | Mandatory   | Description                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;[AclStateResult](#aclstateresult)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is passed, the value must be the same as that in [connection.onAclStateChange](#connectiononaclstatechange). If this parameter is not passed, all callbacks for the Bluetooth ACL connection status change will be unregistered.|
+| callback | Callback&lt;[AclStateResult](#aclstateresult)&gt; | No    | Callback for the Bluetooth ACL connection state change event.<br>If this parameter is passed, it must be the same as the callback in [connection.onAclStateChange](#connectiononaclstatechange). If this parameter is not passed, all callbacks for the Bluetooth ACL connection state change event are unsubscribed. |
 
-**Error codes**
+**Error Code:**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.|
@@ -2113,189 +2212,210 @@ try {
 
 ## BondStateParam
 
-Defines the parameters for the pairing status.
+Describes the parameter structure of the pairing state result.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name      | Type  | Read-Only| Optional  | Description         |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name       | Type   | Read-only | Optional   | Description          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string      | No   | No   | Address of the peer device.|
-| state    | [BondState](#bondstate)   | No   | No   | Pairing status.|
-| cause<sup>12+</sup>| [UnbondCause](#unbondcause12) | No| No| Reason why the pairing fails.|
+| deviceId | string      | No    | No    | Address of the peer device. |
+| state    | [BondState](#bondstate)   | No    | No    | Pairing status. |
+| cause<sup>12+</sup>| [UnbondCause](#unbondcause12) | No | No | Reason why the pairing fails. |
+| causeMessage | string | No | Yes | Specific reason why the pairing fails. For example, when the local service proactively deletes the pairing, **USER_REMOVED** is returned.<br> **Since:** 26.0.0  |
 
 
 ## PinRequiredParam
 
-Defines the parameters of a pairing request.
+Describes the parameter structure of a pairing request.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name      | Type  | Read-Only  | Optional  | Description         |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name | Type | Read-only | Optional | Description |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string | No   | No   | Address of the peer device.|
-| pinCode  | string | No   | No   | PIN used for pairing.  |
+| deviceId | string | No | No | Address of the peer device to pair. |
+| pinCode | string | No | No | PIN code used in the pairing process. |
 
 
 
 ## DeviceClass
 
-Represents the class of a Bluetooth device.
+Describes the type of a Bluetooth device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name             | Type                               | Read-Only  | Optional  | Description              |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name            | Type                                | Read-only | Optional | Description               |
 | --------------- | ----------------------------------- | ---- | ---- | ---------------- |
-| majorClass      | [MajorClass](js-apis-bluetooth-constant.md#majorclass)           | No   | No   | Main class. This is a standard field in the Bluetooth protocol.  |
-| majorMinorClass | [MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | No   | No   | Subclass, which is further classified based on the major class. This is a standard field in the Bluetooth protocol.|
-| classOfDevice   | number                              | No   | No   | Class of the Bluetooth device. This is a standard field in the Bluetooth protocol. It includes the [MajorClass](js-apis-bluetooth-constant.md#majorclass), [MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass), and supported major services.         |
+| majorClass      | [MajorClass](js-apis-bluetooth-constant.md#majorclass)           | No    | No    | Main class. This is a standard field in the Bluetooth protocol.   |
+| majorMinorClass | [MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | No    | No    | Subclass, which is further classified based on the major class. This is a standard field in the Bluetooth protocol. |
+| classOfDevice   | number                              | No    | No    | Class of the Bluetooth device. This is a standard field in the Bluetooth protocol. It includes the [MajorClass](js-apis-bluetooth-constant.md#majorclass), [MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass), and supported major services.          |
 
 
 ## BatteryInfo<sup>12+</sup>
 
-Describes the battery level of a device.<br>Only devices that support the **Attention** (AT) command (including +XEVENT and IPHONEACCEV) defined by the Bluetooth protocol can report valid battery level information.
+Describes the battery level of a device.<br>Only devices that support the specific **Attention** (AT) command (including +XEVENT and IPHONEACCEV) can report valid battery level information.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name      | Type  | Read-Only  | Optional  | Description         |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name       | Type   | Read-only   | Optional   | Description          |
 | -------- | ------ | ---- | ---- | ----------- |
-| batteryLevel  | number | No   | No   | Battery level.<br>If the value is **-1**, no battery level information is available.  |
-| leftEarBatteryLevel  | number | No   | No   | Battery level of the left earbud if the device is a Bluetooth earphone.<br>If the value is **-1**, no battery level information is available.  |
-| leftEarChargeState  | [DeviceChargeState](#devicechargestate12) | No   | No   | Charging status of the left earbud if the device is a Bluetooth earbud.  |
-| rightEarBatteryLevel  | number | No   | No   | Battery level of the right earbud if the device is a Bluetooth earphone.<br>If the value is **-1**, no battery level information is available.  |
-| rightEarChargeState  | [DeviceChargeState](#devicechargestate12) | No   | No   | Charging status of the right earbud if the device is a Bluetooth earbud.  |
-| boxBatteryLevel  | number | No   | No   | Battery level of the earbud compartment if the device is a Bluetooth earphone.<br>If the value is **-1**, no battery level information is available.  |
-| boxChargeState  | [DeviceChargeState](#devicechargestate12) | No   | No   | Charging status of the earbud compartment if the device is a Bluetooth earbud.  |
+| batteryLevel  | number | No    | No    | Battery level of the device. The value range is [0, 100], in percentage (%). If the value is **-1**, no battery level is available.   |
+| leftEarBatteryLevel  | number | No    | No    | Battery level of the left earbud if the device is a Bluetooth earbud. The value range is [0, 100], in percentage (%). If the value is **-1**, no battery level is available.   |
+| leftEarChargeState  | [DeviceChargeState](#devicechargestate12) | No    | No    | Charging status of the left earbud if the device is a Bluetooth earbud.   |
+| rightEarBatteryLevel  | number | No    | No    | Battery level of the right earbud if the device is a Bluetooth earbud. The value range is [0, 100], in percentage (%). If the value is **-1**, no battery level is available.   |
+| rightEarChargeState  | [DeviceChargeState](#devicechargestate12) | No    | No    | Charging status of the right earbud if the device is a Bluetooth earbud.   |
+| boxBatteryLevel  | number | No    | No    | Battery level of the earbud compartment if the device is a Bluetooth earbud. The value range is [0, 100], in percentage (%). If the value is **-1**, no battery level is available.   |
+| boxChargeState  | [DeviceChargeState](#devicechargestate12) | No    | No    | Charging status of the earbud compartment if the device is a Bluetooth earbud.   |
 
 
 ## BluetoothTransport
 
-Enumerates the device transmission modes.
+Enumerates the device transport types.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                              | Value   | Description             |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name                               | Value    | Description              |
 | -------------------------------- | ------ | --------------- |
-| TRANSPORT_BR_EDR   | 0 | Legacy Bluetooth basic rate/enhanced data rate (BR/EDR) mode. |
-| TRANSPORT_LE  | 1 | BLE mode. |
-| TRANSPORT_DUAL<sup>20+</sup>  | 2 | BR/EDR and BLE modes. You can select either the BR/EDR or BLE mode for communication. |
-| TRANSPORT_UNKNOWN<sup>20+</sup>  | 3 | Unknown transport mode. |
+| TRANSPORT_BR_EDR   | 0 | Transport mode of a classic Bluetooth (Basic Rate/Enhanced Data Rate, BR/EDR) device.  |
+| TRANSPORT_LE  | 1 | Transport mode of a Bluetooth Low Energy (BLE) device.  |
+| TRANSPORT_DUAL<sup>20+</sup>  | 2 | Transport mode of a dual-mode device that supports both classic Bluetooth (BR/EDR) and Bluetooth Low Energy (BLE). The device can select either classic Bluetooth (BR/EDR) or Bluetooth Low Energy (BLE) for communication as needed.  |
+| TRANSPORT_UNKNOWN<sup>20+</sup>  | 3 | Unknown device transport mode.  |
 
 
 ## ScanMode
 
-Enumerates the scan modes. The scan mode determines whether the device is discoverable or connectable.
+Enumerates the scan modes. The mode determines whether the device is discoverable or connectable.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                                      | Value | Description             |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name                                       | Value  | Description              |
 | ---------------------------------------- | ---- | --------------- |
-| SCAN_MODE_NONE                           | 0    | Undiscoverable and unconnectable mode.        |
-| SCAN_MODE_CONNECTABLE                    | 1    | Connectable mode.       |
-| SCAN_MODE_GENERAL_DISCOVERABLE           | 2    | General discoverable mode, allowing for long-term discovery.   |
-| SCAN_MODE_LIMITED_DISCOVERABLE           | 3    | Limited discoverable mode, allowing for discovery within a specific timeframe.   |
-| SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE | 4    | Connectable and general discoverable mode.|
-| SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE | 5    | Connectable and limited discoverable mode.|
+| SCAN_MODE_NONE                           | 0    | Not discoverable or connectable.         |
+| SCAN_MODE_CONNECTABLE                    | 1    | Connectable.        |
+| SCAN_MODE_GENERAL_DISCOVERABLE           | 2    | Generally discoverable, and can be discovered for a long time.    |
+| SCAN_MODE_LIMITED_DISCOVERABLE           | 3    | Limited discoverable, and discoverable for a certain period of time.    |
+| SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE | 4    | Connectable and generally discoverable. |
+| SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE | 5    | Connectable and limited discoverable. |
 
 
 ## BondState
 
-Enumerates the device pairing states.
+Enumerates the bond states.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                | Value | Description    |
-| ------------------ | ---- | ------ |
-| BOND_STATE_INVALID | 0    | Unpaired state.|
-| BOND_STATE_BONDING | 1    | Pairing state. |
-| BOND_STATE_BONDED  | 2    | Paired state.  |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name                | Value | Description |
+| ------------------- | ----- | ----------- |
+| BOND_STATE_INVALID | 0     | Unpaired.   |
+| BOND_STATE_BONDING | 1     | Pairing.    |
+| BOND_STATE_BONDED  | 2     | Paired.     |
 
 
 ## UnbondCause<sup>12+</sup>
 
-Enumerates the possible causes of a pairing failure.
+Enumerates the causes of pairing failure.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                | Value | Description    |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name                 | Value  | Description     |
 | ------------------ | ---- | ------ |
-| USER_REMOVED        | 0    | The user proactively removes the device. If [BondState](#bondstate) is **BOND_STATE_BONDED**, the pairing is successful.|
-| REMOTE_DEVICE_DOWN  | 1    | The peer device is offline. For example, the Bluetooth of the peer device is disabled.|
-| AUTH_FAILURE        | 2    | Authentication failed. For example, the keys of the devices at both ends do not match.|
-| AUTH_REJECTED       | 3    | Authentication rejected. For example, the peer device rejects the pairing request.|
-| INTERNAL_ERROR      | 4    | Internal error. For example, the device does not support pairing, or the pairing times out.|
+| USER_REMOVED        | 0    | The user removed the device. If the pairing state [BondState](#bondstate) is bonded, it also indicates that pairing is successful.|
+| REMOTE_DEVICE_DOWN  | 1    | The peer device is offline. For example, Bluetooth is disabled on the peer device.|
+| AUTH_FAILURE        | 2    | Authentication failed. For example, the keys of the two devices do not match.|
+| AUTH_REJECTED       | 3    | Authentication was rejected. For example, the peer device rejected the pairing request. |
+| INTERNAL_ERROR      | 4    | An internal error occurred. For example, the device does not support pairing, or the pairing process timed out. |
 
 
 ## DeviceChargeState<sup>12+</sup>
 
-Enumerates the device charging states.
+Enumerates the current charging states of a device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                | Value | Description    |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name                 | Value  | Description     |
 | ------------------ | ---- | ------ |
-| DEVICE_NORMAL_CHARGE_NOT_CHARGED        | 0    | A device that does not support super-fast charging is currently not charging.|
-| DEVICE_NORMAL_CHARGE_IN_CHARGING       | 1    | A device that does not support super-fast charging is currently charging.|
-| DEVICE_SUPER_CHARGE_NOT_CHARGED        | 2    | A device that supports super-fast charging is currently not charging.|
-| DEVICE_SUPER_CHARGE_IN_CHARGING       | 3    | A device that supports super-fast charging is currently charging.|
+| DEVICE_NORMAL_CHARGE_NOT_CHARGED        | 0    | The device that does not support super fast charging is currently not being charged.|
+| DEVICE_NORMAL_CHARGE_IN_CHARGING       | 1    | The device that does not support super fast charging is currently being charged.|
+| DEVICE_SUPER_CHARGE_NOT_CHARGED        | 2    | The device that supports super fast charging is currently not being charged.|
+| DEVICE_SUPER_CHARGE_IN_CHARGING       | 3    | The device that supports super fast charging is currently being charged.|
 
 ## DiscoveryResult<sup>18+</sup>
 
-Defines the device discovery result.
+Scan result reported after a device is discovered.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Table: 15%; 15%; 10%; 10%; 50%-->
-| Name      | Type  | Read-Only  | Optional  | Description         |
+| Name       | Type   | Read-only   | Optional   | Description          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId    | string      | No   | No   | Address of the discovered device.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual addresses of paired Bluetooth devices will not change.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
-| rssi     | number      | No   | No   | Signal strength, in dBm.|
-| deviceName     | string      | No   | No   | Device name.|
-| deviceClass     | [DeviceClass](#deviceclass)      | No   | No   | Device class.|
+| deviceId    | string      | No    | No    | Address of the discovered device.<br>For information security purposes, the device address obtained here is a virtual MAC address.<br>- The address of a paired device does not change.<br>- If the Bluetooth switch of the device is restarted, the virtual address obtained again changes immediately.<br>- If pairing is canceled, the Bluetooth subsystem decides when to change the address later based on the actual usage of the address. If another application is using the address, it is not changed immediately.<br>- To persist this address, use the [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16) method.|
+| rssi     | number      | No    | No    | Signal strength of the discovered device, in dBm.|
+| deviceName     | string      | No    | No    | Name of the discovered device.|
+| deviceClass     | [DeviceClass](#deviceclass)      | No    | No    | Type of the discovered device.|
 
 ## HashAlgorithmType<sup>24+</sup>
 
 Enumerates the hash algorithm types.
 
-The hash algorithm is a mathematical function that performs complex calculations on input data to generate a unique and fixed-length string (hash value). It is commonly used in scenarios such as data integrity verification and digital signatures.
-
-**Model restriction**: This API can be used only in the stage model.
+A hash algorithm is a mathematical function that generates a unique, fixed-length string (that is, a hash value) by performing complex computations on the input data. It is commonly used for data integrity verification, digital signatures, and other scenarios.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                | Value | Description    |
+**Model restriction:** This API can be used only in the stage model.
+
+| Name                 | Value  | Description     |
 | ------------------ | ---- | ------ |
-| HASH_ALGORITHM_SHA256        | 0    | SHA-256 hash algorithm.|
+| HASH_ALGORITHM_SHA256        | 0    | SHA-256. |
 
 
 ## AclStateResult
 
-Defines the parameters for the ACL connection status.
+Describes the parameter structure of the ACL connection state.
 
 **Since**: 26.0.0
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-| Name      | Type  | Read-Only| Optional  | Description         |
+| Name     | Type   | Read-only | Optional | Description          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string      | No   | No   | Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
-| state    | [AclState](#aclstate)   | No   | No   | Connection status.|
+| deviceId | string      | No    | No    | Address of the peer device, for example, "XX:XX:XX:XX:XX:XX". |
+| state    | [AclState](#aclstate)   | No    | No    | Connection status. |
 
 
 ## AclState
 
-Enumerates the ACL connection statuses.
+Enumerates the ACL connection states.
 
 **Since**: 26.0.0
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-| Name                | Value | Description    |
+| Name                 | Value  | Description     |
 | ------------------ | ---- | ------ |
 | STATE_CONNECTED        | 0    | The ACL link is connected.|
 | STATE_DISCONNECTED        | 1    | The ACL link is disconnected.|

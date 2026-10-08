@@ -1,4 +1,4 @@
-# RunningMultiAppInfo (系统接口)
+# RunningMultiAppInfo (多开应用运行信息)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -16,7 +16,7 @@
 
 ## 使用说明
 
-通过appManager的[getRunningMultiAppInfo](js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12)接口获取。该接口根据应用包名查询应用的多开运行态信息，返回的RunningMultiAppInfo结构包含应用的多开模式（[MultiAppMode](js-apis-inner-application-multiAppMode-sys.md#multiappmode)）及对应的运行实例信息：当应用处于分身模式（APP_CLONE）时，runningAppClones字段返回分身应用信息；当应用处于多实例模式（MULTI_INSTANCE）时，runningMultiInstances字段返回多实例应用信息。
+通过appManager的[getRunningMultiAppInfo](js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12)接口获取。该接口根据应用包名查询应用的多开运行态信息，返回的RunningMultiAppInfo结构包含应用的多开模式（[MultiAppMode (应用多开模式)](js-apis-inner-application-multiAppMode-sys.md#multiappmode)）及对应的运行实例信息：当应用处于分身模式（APP_CLONE）时，runningAppClones字段返回分身应用信息；当应用处于多实例模式（MULTI_INSTANCE）时，runningMultiInstances字段返回多实例应用信息。
 
 ## RunningMultiAppInfo
 
@@ -27,9 +27,9 @@
 | 名称                      | 类型   | 只读  | 可选  | 说明       |
 | ------------------------- | ------ | ---- | ---- | --------- |
 | bundleName | string | 否  | 否  | 应用的包名。 |
-| mode | [MultiAppMode](js-apis-inner-application-multiAppMode-sys.md) | 否  | 否  | 应用多开模式。 |
-| runningAppClones | Array<[RunningAppClone](js-apis-inner-application-runningAppClone-sys.md)> | 否  | 是  | 特定包名在运行态的分身应用信息。 |
-| runningMultiInstances<sup>14+</sup> | Array<[RunningMultiInstanceInfo](js-apis-inner-application-runningMultiInstanceInfo-sys.md)> | 否  | 是  | 特定包名在运行态的多实例应用信息。 |
+| mode | [MultiAppMode](js-apis-inner-application-multiAppMode-sys.md) | 否 | 否 | 应用多开模式。 |
+| runningAppClones | Array<[RunningAppClone](js-apis-inner-application-runningAppClone-sys.md)> | 否 | 是 | 特定包名在运行态的分身应用信息。 |
+| runningMultiInstances<sup>14+</sup> | Array<[RunningMultiInstanceInfo](js-apis-inner-application-runningMultiInstanceInfo-sys.md)> | 否 | 是 | 特定包名在运行态的多实例应用信息。 |
 
 **示例：**
 

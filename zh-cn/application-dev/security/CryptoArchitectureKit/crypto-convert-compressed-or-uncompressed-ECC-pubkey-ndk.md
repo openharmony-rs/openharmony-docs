@@ -11,9 +11,14 @@
 
 当前仅支持满足X.509规范的ECC算法的压缩或非压缩格式的完整公钥数据。此处的公钥数据应当是完整的X.509公钥，对于仅使用点数据的情况，请参考[使用ECC压缩/非压缩点格式转换](crypto-convert-compressed-or-uncompressed-ECC-point.md)。
 
-查看[非对称密钥生成和转换规格：ECC](crypto-asym-key-generation-conversion-spec.md#ecc)。
+查看[非对称密钥生成和转换规格：ECC](crypto-key-generation-conversion.md#ecc)。
 
 通过传入字符串参数，可指定需要获取的ECC公钥数据格式。如果需要获取满足X.509规范的压缩格式数据，则指定参数为："X509|COMPRESSED"；需要获取非压缩格式，则指定参数为："X509|UNCOMPRESSED"。
+
+## 在CMake脚本中链接相关动态库
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ##  指定非压缩公钥数据转换为压缩公钥数据
 
@@ -31,7 +36,7 @@
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_asym_key.h"
 
-OH_Crypto_ErrCode doTestEccDataCovert()
+OH_Crypto_ErrCode doTestEccDataConvert()
 {
     OH_CryptoAsymKeyGenerator *generator = nullptr;
     OH_CryptoKeyPair *keyPair = nullptr;

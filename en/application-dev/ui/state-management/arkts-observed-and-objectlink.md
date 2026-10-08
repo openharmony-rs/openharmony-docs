@@ -70,7 +70,7 @@ this.objLink= ...
 
   **Figure 1** Initialization rule illustration  
 
-  ![en-us_image_0000001502255261](figures/Initialization-rules01.png)
+  ![en-us_image_0000001502255261](figures/Initialization-rules01.PNG)
 
 ## Observed Changes and Behavior
 
@@ -339,7 +339,7 @@ When \@ObjectLink decorates a class that inherits from Set, the overall assignme
 
    ![observed-sync-0](./figures/observed-sync-0.gif)
 
-## Use Cases
+## When to Use
 
 ### Object Type
 
