@@ -180,11 +180,11 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
    ``` TypeScript
    function createMaterialPromise(): Promise<Material> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // 确保在访问sceneFactory之前场景已加载
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
          let sceneMaterialParameter: SceneResourceParameters = { name: 'material' };
-         // Create Material
+         // 创建材质
          let material: Promise<Material> = sceneFactory.createMaterial(sceneMaterialParameter, MaterialType.SHADER);
          material.then(resolve)
          .catch((err: string) => {
