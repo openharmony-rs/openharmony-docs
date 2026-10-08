@@ -68,9 +68,9 @@ glTF模型中引用的纹理图片支持以下格式：
    <!-- @[camera_scene_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/init.ets) --> 
    
    ``` TypeScript
-   // Create a Camera.
+   // 创建一个相机。
    this.cam = await rf.createCamera({ name: 'Camera' });
-   // Set proper camera parameters.
+   // 设置合适的相机参数。
    this.cam.enabled = true;
    this.cam.position.z = 5;
    
