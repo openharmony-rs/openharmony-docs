@@ -6032,8 +6032,7 @@ ArkTS-Sta: setAdditionalInfoByIndex(bundleName: string, additionalInfo: string, 
 | --------------------- | ------------------------------- | ---- | -------------------------------------------------- |
 | bundleName            | string                          | 是   | 指定应用的包名。                                    |
 | additionalInfo        | string                          | 是   | 需要设置的应用的额外信息。                           |
-| appIndex              | ------------------------------------------------ |
-| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指定的应用分身索引。取值范围：0或10000。                  |
+| appIndex              | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指定的应用分身索引。取值范围：0或10000。                  |
  
 **错误码：**
  
