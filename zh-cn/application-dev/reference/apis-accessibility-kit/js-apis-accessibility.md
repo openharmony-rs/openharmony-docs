@@ -2894,25 +2894,26 @@ struct Index {
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
  
 ### 属性
- 
+
 | 名称                  | 类型                                                             | 只读 | 可选 | 说明             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
 | focusedElement | [UIAccessibilityElement](#UIAccessibilityElement) | 否 | 是 | 当前聚焦节点的信息。|
 | unfocusedElement | [UIAccessibilityElement](#UIAccessibilityElement) | 否 | 是 | 上一个聚焦节点的信息。|
- 
+
 ## accessibility.getFocusedUIAccessibilityElement
- 
+
 getFocusedUIAccessibilityElement(): Promise&lt;UIAccessibilityElement | undefined&gt;
- 
+
 获取当前应用内部无障碍聚焦的节点的信息，使用Promise异步回调。
- 
+
 **起始版本：** 26.0.1
  
 **模型约束：** 此接口仅可在Stage模型下使用。
  
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
- 
+
 **返回值：**
+
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
 | Promise&lt;UIAccessibilityElement&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的信息；结果为undefined时说明当前应用内部没有无障碍聚焦节点。 |
