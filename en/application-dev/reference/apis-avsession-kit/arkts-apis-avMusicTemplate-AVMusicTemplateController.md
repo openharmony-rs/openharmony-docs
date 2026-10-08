@@ -1827,7 +1827,7 @@ export class ControllerManager {
 
 onCurrentSingleChange(callback: Callback&lt;Single&gt;): void
 
-Registers a callback for the current single track changes. When the currently playing song changes (for example, the song is switched or a new song starts to play), this callback is triggered to notify the sound template controller. This API uses an asynchronous callback to return the result.
+Registers a callback for the current single track changes. When the currently playing song changes (for example, the song is switched or a new song starts to play), this callback is triggered to notify the audio template controller. This API uses an asynchronous callback to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
