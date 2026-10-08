@@ -8,7 +8,7 @@ Provides the data structures for the C APIs of the the telephony radio.
 
 **起始版本：** 13
 
-**相关模块：** [](capi-.md)
+**相关模块：** [Telephony](capi-telephony.md)
 
 ## 汇总
 

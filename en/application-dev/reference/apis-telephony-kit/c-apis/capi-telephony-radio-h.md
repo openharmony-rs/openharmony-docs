@@ -10,7 +10,7 @@ Provides C interface for the telephony radio.
 
 **Since**: 13
 
-**Related module**: [](capi-.md)
+**Related module**: [Telephony](capi-telephony.md)
 
 ## Summary
 
