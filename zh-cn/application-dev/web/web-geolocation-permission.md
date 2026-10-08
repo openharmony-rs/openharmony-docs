@@ -143,6 +143,34 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
 
 <!-- @[setting_the_web_component_in_privacy_mode_allows_specifying_the_geolocation_of_the_source_used](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/AllowGeolocation.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  origin: string = 'file:///';
+
+  build() {
+    Column() {
+      Button('allowGeolocation')
+        .onClick(() => {
+          try {
+            // allowGeolocation第二个参数表示隐私模式（true）或非隐私模式（false）下，允许指定来源使用地理位置。
+            webview.GeolocationPermissions.allowGeolocation(this.origin, true);
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true });
+    }
+  }
+}
+```
+
 <!-- @[clear_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteGeolocation.ets) -->
 
 <!-- @[asynchronously_obtains_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/GetAccessibleGeolocation.ets) -->
