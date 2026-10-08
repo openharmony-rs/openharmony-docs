@@ -864,7 +864,7 @@ isSupportEffect(effectId: string): Promise&lt;boolean&gt;
 
 Checks whether the current device supports the preset vibration effect specified by the effect ID. This API uses a promise to return the result.
 
-This API is used when you need to check whether the current device supports the specified preset vibration effect before triggering the effect. The functionality is the same as the callback version. You can choose either based on your preference for the asynchronous callback style. If the API is callrf successfully, the promise returns a boolean value through **resolve**. The **value** true indicates that the device supports the specified effect ID, while the value **false** indicates the opposite. In this case, using the effect ID to trigger vibration may result in poor effect or no vibration.
+This API is used when you need to check whether the current device supports the specified preset vibration effect before triggering the effect. The functionality is the same as the callback version. You can choose either based on your preference for the asynchronous callback style. If the API is called successfully, the promise returns a boolean value through **resolve**. The **value** true indicates that the device supports the specified effect ID, while the value **false** indicates the opposite. In this case, using the effect ID to trigger vibration may result in poor effect or no vibration.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
