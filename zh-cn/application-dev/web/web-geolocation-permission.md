@@ -202,3 +202,38 @@ struct WebComponent {
 ```
 
 <!-- @[asynchronously_obtains_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/GetAccessibleGeolocation.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  origin: string = 'file:///';
+
+  build() {
+    Column() {
+      Button('getAccessibleGeolocation')
+        .onClick(() => {
+          try {
+            // getAccessibleGeolocation第三个参数表示隐私模式（true）或非隐私模式（false）下
+            // 以回调方式异步获取指定源的地理位置权限状态。
+            webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
+              if (error) {
+                console.error(`getAccessibleGeolocationAsync error: + Code: ${error.code}, message: ${error.message}`);
+                return;
+              }
+              console.info('getAccessibleGeolocationAsync result: ' + result);
+            }, true);
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller, incognitoMode: true });
+    }
+  }
+}
+```
