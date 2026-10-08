@@ -299,7 +299,7 @@ try {
 
 ## ExecToolParam
 
-CLI工具执行参数，用于拦截Hook。包含工具名称、子命令、参数、挑战码和执行选项。
+CLI工具执行参数，用于拦截Hook。包含工具名称、子命令、参数、权限ticket字符串和执行选项。
 
 **起始版本：** 26.0.1
 
@@ -424,13 +424,13 @@ onAfterCallTool(param: ExecResultWrap): ExecResultWrap
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| param | [ExecResultWrap](#execresultwrap) | 是 | 执行结果参数。 |
+| param | [ExecResultWrap](#execresultwrap) | 是 | 原始工具执行结果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [ExecResultWrap](#execresultwrap) | 替换后的执行结果参数。 |
+| [ExecResultWrap](#execresultwrap) | 修改后的工具执行结果。 |
 
 **示例：**
 
@@ -512,13 +512,13 @@ onAfterCallCmd(param: ExecResultWrap): ExecResultWrap
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| param | [ExecResultWrap](#execresultwrap) | 是 | 执行结果参数。 |
+| param | [ExecResultWrap](#execresultwrap) | 是 | 原始命令执行结果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [ExecResultWrap](#execresultwrap) | 替换后的执行结果参数。 |
+| [ExecResultWrap](#execresultwrap) | 修改后的命令执行结果。 |
 
 **示例：**
 
@@ -576,8 +576,8 @@ registerCliHook(hook: CliHook): Promise\<void\>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.REGISTER_AGENT_HOOK". |
-| 202      | Not system application. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 35600034 | The device is not in developer mode.                         |
 | 35600035 | A hook is already registered; unregister it first.           |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
@@ -662,8 +662,8 @@ unregisterCliHook(hook: CliHook): Promise\<void\>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.REGISTER_AGENT_HOOK". |
-| 202      | Not system application. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 35600036 | No hook is registered; nothing to unregister.               |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
