@@ -1,12 +1,11 @@
 # Requesting Notification Authorization
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:18:08.382Z pushedAt=2026-08-22T07:07:04.040Z -->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:48:52.724Z pushedAt=2026-10-08T06:47:34.730Z -->
 
 An app must obtain user authorization before it can send notifications. Before publishing a notification, call [requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10-1) to display a dialog box for the user to choose whether to allow notifications. After the user denies authorization, the dialog box cannot be displayed again through this API. If the app needs to request [notification authorization](notification-glossary.md#notification-authorization) from the user again, it can use [openNotificationSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettingswithresult) to display a semi-modal dialog for notification management.
 
@@ -22,12 +21,13 @@ For details about the APIs, see [@ohos.notificationManager (NotificationManager)
 | requestEnableNotification(context: UIAbilityContext): Promise\<void\> | Requests notification to be enabled. When called for the first time, this API displays a dialog box prompting the user to select.    |
 | openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<NotificationSetting\>  | Opens the notification management dialog and returns the setting result after the user completes the settings.|
 
+
 ## How to Develop
 
 1. Import the **NotificationManager** module.
 
    <!-- @[request_enable_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
-
+   
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -43,7 +43,7 @@ For details about the APIs, see [@ohos.notificationManager (NotificationManager)
    You can determine whether the user has authorized the request based on the error code of **requestEnableNotification**. If the error code **1600004** is returned, the authorization is rejected.
 
    <!-- @[request_enable_notification_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
-
+   
    ``` TypeScript
    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
    notificationManager.isNotificationEnabled().then((data: boolean) => {
@@ -69,10 +69,10 @@ For details about the APIs, see [@ohos.notificationManager (NotificationManager)
 
 3. (Optional) Display a semi-modal dialog box to request notification authorization from the user again.
 
-After the user completes authorization, the setting result is returned, which includes the notification authorization switch and the setting results of the lock screen, banner, badge, ringtone, and vibration switches.
+   After the user completes authorization, the setting result is returned, which includes the notification authorization switch and the setting results of the lock screen, banner, badge, ringtone, and vibration switches.
 
    <!-- @[reapply_notify_auth_halfModal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->    
-
+   
    ``` TypeScript
    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
    notificationManager.isNotificationEnabled().then((data: boolean) => {
@@ -92,3 +92,6 @@ After the user completes authorization, the setting result is returned, which in
        `isNotificationEnabled fail, code is ${err.code}, message is ${err.message}`);
    });
    ```
+
+
+

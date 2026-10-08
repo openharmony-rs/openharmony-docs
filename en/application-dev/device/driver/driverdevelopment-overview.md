@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=5f9ae49f4b8e860dbba833c52ed50c83453102b4 translatedAt=2026-09-20T06:17:38.684Z pushedAt=2026-09-20T11:33:07.478Z -->
+<!-- md-trans-meta sourceCommit=90b4d02a48a3db5de1635b8ee446b90ce9bc89ae translatedAt=2026-10-08T03:42:56.984Z pushedAt=2026-10-08T06:14:47.201Z -->
 
 Driver Development Kit (DDK) provides peripheral driver developers with efficient, secure, and feature-rich extended peripheral driver development solutions — ArkTS APIs and C APIs — enabling a seamless plug-and-play experience for end users.
 
@@ -66,23 +66,23 @@ Figure 3 shows the process for binding the peripheral driver client with a perip
 
 ## Constraints
 
-To call the ArkTS or C APIs provided by DDK, you need to apply for specified permissions.
+1. To call the ArkTS or C APIs provided by DDK, you need to apply for specified permissions.
 
-The following table lists the required permissions.
+   The following table lists the required permissions.
 
-| API Type | DDK Type | Permission |
-| --------- | --------- | --------- |
-| ArkTS-API | N/A | ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER |
-| C-API     | UsbDdk | ohos.permission.ACCESS_DDK_USB |
-| C-API     | HidDdk | ohos.permission.ACCESS_DDK_HID |
-| C-API     | USBSerialDDK | ohos.permission.ACCESS_DDK_USB_SERIAL |
-| C-API     | ScsiPeripheralDDK | ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL |
+   | API Type | DDK Type | Permission |
+   | --------- | --------- | --------- |
+   | ArkTS-API | N/A | ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER |
+   | C-API     | UsbDdk | ohos.permission.ACCESS_DDK_USB |
+   | C-API     | HidDdk | ohos.permission.ACCESS_DDK_HID |
+   | C-API     | USBSerialDDK | ohos.permission.ACCESS_DDK_USB_SERIAL |
+   | C-API     | ScsiPeripheralDDK | ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL |
 
-The C-APIs provided by Driver Development Kit can be used only in the DriverExtension process. Using them in other processes (including child processes) may cause functional exceptions. For details, see [Calling DDK C-APIs in a Child Process or a Non-Driver Ability Fails](./externaldevice-faqs.md#calling-ddk-c-apis-in-a-child-process-or-a-non-driver-ability-fails).
+2. The C-APIs provided by Driver Development Kit can be used only in the DriverExtension process. Using them in other processes (including child processes) may cause functional exceptions. For details, see [Calling DDK C-APIs in a Child Process or a Non-Driver Ability Fails](./externaldevice-faqs.md#calling-ddk-c-apis-in-a-child-process-or-a-non-driver-ability-fails).
+
+3. For API call restrictions of DriverExtensionAbility, see [Constraints](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md#constraints) in the API reference.
 
 <!--RP1--><!--RP1End-->
-
-For API call restrictions of DriverExtensionAbility, see [Constraints](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md#constraints) in the API reference.
 
 ## Associated Modules
 
