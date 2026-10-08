@@ -285,7 +285,7 @@ OH_AudioStream_Result unsetResult = OH_AudioCapturer_SetMuteHint(audioCapturer, 
       callbacks.OH_AudioCapturer_OnError = nullptr;
   ```
 
-- 方式2：使用前，必须初始化并清零结构体，确保所有未配置的回调字段为零值（空指针）。
+- 方式2：使用前，必须初始化并清零结构体，确保所有未配置的回调字段为空指针。
 
   <!-- @[callbackNullptr_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
   
