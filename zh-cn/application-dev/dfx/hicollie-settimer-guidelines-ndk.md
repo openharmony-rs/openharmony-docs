@@ -99,6 +99,8 @@
            OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // 打印任务id
            sleep(2);  // 模拟执行耗时函数，在这里简单地将线程阻塞2s
            OH_HiCollie_CancelTimer(id);  // 根据id取消已注册任务
+       } else {
+           OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_SetTimer failed, errorCode is %{public}d", errorCode);
        }
        return nullptr;
    }
