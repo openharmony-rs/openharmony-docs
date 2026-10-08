@@ -35,6 +35,9 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 | REFUELING | 'Refueling' | 补能识别能力，支持识别车辆加油的开始与结束状态。 |
 | CAR_STATUS | 'CarStatus' | 车辆状态感知能力，支持获取车辆相关状态信息。<br>**系统接口：** 此枚举成员为系统接口。 |
 | HABIT_RECOMMENDATION | 'HabitRecommendation' | 习惯推荐感知能力，支持基于用户习惯生成推荐。<br>**系统接口：** 此枚举成员为系统接口。 |
+| SPATIAL_DRAW | 'SpatialDraw' | 空间绘画能力，支持识别用户隔空画画的动作。<br>**系统接口：** 此枚举成员为系统接口。 |
+| GESTURE_CLOSEDOOR | 'GestureCloseDoor' | 挥手关门识别能力，支持识别用户手部关门动作。<br>**系统接口：** 此枚举成员为系统接口。 |
+| OCCUPANT_SENSE | 'OccupantSense' | 乘员感知能力，支持识别车内乘员布局和分类。<br>**系统接口：** 此枚举成员为系统接口。 |
 
 ## SpatialMotionInfo
 
