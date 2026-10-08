@@ -28,19 +28,17 @@
    ```
 
    <!-- @[system_locale_datetimeformat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) --> 
-
-  ``` TypeScript
-  import { i18n } from '@kit.LocalizationKit';
-
-  // 获取系统区域对象
-  let locale = i18n.System.getSystemLocaleInstance();
-
-  // 如果接口入参是区域ID（string类型），则通过toString()获取系统区域ID
-  let dateTimeFormat = new Intl.DateTimeFormat(locale.toString());
-
-  // 如果接口入参是区域对象（Intl.Locale类型），则直接使用系统区域对象
-  let simpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton('yMd', locale);
-  ```
+   
+   ``` TypeScript
+   // 获取系统区域对象
+   let locale = i18n.System.getSystemLocaleInstance();
+   
+   // 如果接口入参是区域ID（string类型），则通过toString()获取系统区域ID
+   let dateTimeFormat = new Intl.DateTimeFormat(locale.toString());
+   
+   // 如果接口入参是区域对象（Intl.Locale类型），则直接使用系统区域对象
+   let simpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton('yMd', locale);
+   ```
 
 - 识别系统语言
 
