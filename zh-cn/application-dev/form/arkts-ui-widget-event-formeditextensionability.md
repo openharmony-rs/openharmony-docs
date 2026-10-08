@@ -531,18 +531,6 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
          return formBindingData.createFormBindingData('');
        }
      
-       onCastToNormalForm(formId: string) {
-       }
-     
-       onUpdateForm(formId: string) {
-       }
-     
-       onFormEvent(formId: string, message: string) {
-       }
-     
-       onRemoveForm(formId: string) {
-       }
-     
        onAcquireFormState(want: Want) {
          return formInfo.FormState.READY;
        }
