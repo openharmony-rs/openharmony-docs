@@ -157,6 +157,8 @@ CloudDiskSystemAccessor的构造函数，用于创建CloudDiskSystemAccessor类�
 
 **起始版本**： 26.0.1
 
+**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
+
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.CloudDiskManager
@@ -167,7 +169,8 @@ CloudDiskSystemAccessor的构造函数，用于创建CloudDiskSystemAccessor类�
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
 | 34400014 | Temporary failure. Retry is recommended. |
 
 **示例：**
@@ -185,11 +188,11 @@ try {
 }
 ```
 
-### on('hydrateProgress')<sup>26+</sup>
+### onHydrateProgress<sup>26+</sup>
 
-on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
+onHydrateProgress(callback: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
 
-订阅水合进度事件，适用于文件管理应用展示文件水合进度的场景。订阅后可接收当前用户下所有水合任务（包括三方云盘应用通过CAPI发起的）的进度通知，通过[HydrateProgress](#hydrateprogress26)中的filePath字段区分不同文件。同一实例仅可注册一个回调，未取消订阅前再次调用本接口将抛出34400022错误码。可通过[off('hydrateProgress')](#offhydrateprogress26)取消订阅。
+订阅本实例发起的水合及取消操作的进度事件，适用于文件管理应用展示文件水合进度的场景。回调按发起操作的实例路由，与目标文件无关。同一实例同一时间仅可注册一个回调，携带有效参数重复订阅时保留已有回调，不报告重复注册错误。任务发起后订阅，或调用[offHydrateProgress](#offhydrateprogress26)取消订阅后再次订阅，可接收路由到本实例的后续事件，此前的事件不会重放。同一实例可同时发起多个水合任务，通过[HydrateProgress](#hydrateprogress26)中的filePath字段区分不同文件。
 
 **起始版本**： 26.0.1
 
@@ -203,8 +206,7 @@ on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprog
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| type | 'hydrateProgress' | 是 | 订阅的事件类型，取值为'hydrateProgress'（水合进度事件）。 |
-| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | 是 | 回调函数。水合任务进度变化时触发，返回水合进度信息。 |
+| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | 是 | 回调函数。本实例发起的水合任务进度变化时触发，返回水合进度信息。 |
 
 **错误码：**
 
@@ -214,12 +216,10 @@ on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprog
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
 | 34400003 | IPC communication failed. |
 | 34400008 | The sync root path is not registered. |
 | 34400014 | Temporary failure. Retry is recommended. |
-| 34400022 | The callback table has been registered. |
 
 **示例：**
 
@@ -235,19 +235,19 @@ let callback = (progress: cloudDiskManager.HydrateProgress) => {
 };
 
 try {
-  accessor.on('hydrateProgress', callback);
+  accessor.onHydrateProgress(callback);
   console.info('subscribe hydrateProgress successfully');
 } catch (err) {
   let error: BusinessError = err as BusinessError;
-  console.error(`on hydrateProgress failed. Code: ${error.code}, message: ${error.message}`);
+  console.error(`onHydrateProgress failed. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
-### off('hydrateProgress')<sup>26+</sup>
+### offHydrateProgress<sup>26+</sup>
 
-off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
+offHydrateProgress(callback?: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
 
-取消订阅水合进度事件。无论是否传入callback，均取消当前实例已注册的所有'hydrateProgress'回调。当前实例尚未订阅时调用本接口将抛出34400021错误码。
+取消订阅本实例的水合进度事件。本操作不会取消本实例已发起的水合任务，其他实例注册的订阅不受影响。当前实例未注册回调时，本接口在通过权限和参数校验后正常返回。
 
 **起始版本**： 26.0.1
 
@@ -261,8 +261,7 @@ off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydratepr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| type | 'hydrateProgress' | 是 | 取消订阅的事件类型，取值为'hydrateProgress'（水合进度事件）。 |
-| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | 否 | 待取消的回调函数。此参数传入与否均取消当前实例已注册的所有'hydrateProgress'回调。 |
+| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | 否 | 待取消的回调函数。无论是否传入此参数，均取消当前实例已注册的水合进度回调。 |
 
 **错误码：**
 
@@ -272,12 +271,10 @@ off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydratepr
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
 | 34400003 | IPC communication failed. |
 | 34400008 | The sync root path is not registered. |
 | 34400014 | Temporary failure. Retry is recommended. |
-| 34400021 | The callback table is not registered. |
 
 **示例：**
 
@@ -291,15 +288,15 @@ let callback = (progress: cloudDiskManager.HydrateProgress) => {
   console.info(`hydrate progress - filePath: ${progress.filePath}, state: ${progress.state}`);
 };
 
-accessor.on('hydrateProgress', callback);
+accessor.onHydrateProgress(callback);
 
 try {
-  accessor.off('hydrateProgress', callback); // 取消指定的回调
-  accessor.off('hydrateProgress'); // 取消所有回调
+  accessor.offHydrateProgress(callback); // 取消指定的回调
+  accessor.offHydrateProgress(); // 取消所有回调
   console.info('unsubscribe hydrateProgress successfully');
 } catch (err) {
   let error: BusinessError = err as BusinessError;
-  console.error(`off hydrateProgress failed. Code: ${error.code}, message: ${error.message}`);
+  console.error(`offHydrateProgress failed. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -311,8 +308,8 @@ hydratePlaceholder(filePath: string, callbackType: [CallbackType](#callbacktype2
 
 > **说明：**
 >
-> - callbackType取FETCH_DATA时发起水合：任务创建成功后Promise立即兑现，仅表示水合任务已创建并入队，不代表文件已开始下载或水合完成。实际进度需通过[on('hydrateProgress')](#onhydrateprogress26)订阅获取，文件水合状态依次经过PENDING、IN_PROGRESS，最终为COMPLETED或CANCELLED。
-> - callbackType取CANCEL_FETCH_DATA时取消水合：目标文件存在进行中的水合任务时将其取消（进度回调最终收到CANCELLED状态）；不存在进行中的水合任务时Promise被拒绝并返回34400032错误码。
+> - callbackType取FETCH_DATA时发起水合：任务创建成功后Promise立即兑现，仅表示水合任务已创建并入队，不代表文件已开始下载或水合完成。水合进度通过发起任务的实例的[onHydrateProgress](#onhydrateprogress26)回调送达；发起或取消水合任务前无需先注册回调。文件水合状态依次经过PENDING、IN_PROGRESS，最终为COMPLETED或CANCELLED。
+> - callbackType取CANCEL_FETCH_DATA时取消水合：目标文件存在进行中的水合任务时将其取消，取消成功时CANCELLED事件仅送达发起取消的实例（即使水合任务由其他实例发起）；不存在进行中的水合任务时Promise被拒绝并返回34400032错误码。发起取消的实例未注册回调时，其取消事件不会转发给其他实例，也不会事后重放；服务侧发起的自动取消事件路由到发起水合任务的实例。
 > - 待处理（排队中）的水合任务数量存在上限（单个云盘应用20个、全局40个），达到上限时Promise被拒绝并返回34400034错误码，可等待部分水合任务完成或取消后再重试。此外，单个云盘应用同时执行的水合任务最多5个、全局最多10个，超出部分排队等待，不会报错。
 
 **起始版本**： 26.0.1
@@ -328,7 +325,7 @@ hydratePlaceholder(filePath: string, callbackType: [CallbackType](#callbacktype2
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | filePath | string | 是 | 占位符文件的路径，须为"/storage/Users/currentUser/"前缀的绝对路径，且位于三方云盘应用已注册的同步根目录范围内。 |
-| callbackType | [CallbackType](#callbacktype26) | 是 | 回调类型。取FETCH_DATA时发起水合，取CANCEL_FETCH_DATA时取消水合。 |
+| callbackType | [CallbackType](#callbacktype26) | 是 | 回调类型。取FETCH_DATA时发起水合，取CANCEL_FETCH_DATA时取消水合；DEHYDRATE不适用于本接口，传入时返回34400001错误。 |
 | priority | [HydratePriority](#hydratepriority26) | 是 | 水合任务的优先级，仅callbackType为FETCH_DATA时生效。 |
 
 **返回值：**
@@ -345,7 +342,6 @@ hydratePlaceholder(filePath: string, callbackType: [CallbackType](#callbacktype2
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
 | 34400001 | Invalid argument. |
 | 34400003 | IPC communication failed. |
@@ -372,7 +368,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let accessor: cloudDiskManager.CloudDiskSystemAccessor = new cloudDiskManager.CloudDiskSystemAccessor();
 let filePath: string = '/storage/Users/currentUser/Docs/cloud/photo.jpg';
 
-accessor.on('hydrateProgress', (progress: cloudDiskManager.HydrateProgress) => {
+accessor.onHydrateProgress((progress: cloudDiskManager.HydrateProgress) => {
   console.info(`hydrate progress - filePath: ${progress.filePath}, state: ${progress.state}`);
   console.info(`processedSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
 });
@@ -389,7 +385,7 @@ accessor.hydratePlaceholder(filePath, cloudDiskManager.CallbackType.FETCH_DATA,
 
 dehydrateFile(filePath: string): Promise&lt;void&gt;
 
-对已完全水合的占位符文件执行脱水，将其回退为未水合占位符以释放本地存储空间，适用于文件管理应用空间优化场景。使用Promise异步回调。
+对已完全水合的占位符文件执行脱水，将其回退为未水合占位符以释放本地存储空间，适用于文件管理应用空间优化场景。待脱水文件可以是由其他实例水合的文件，本操作不触发水合进度事件。使用Promise异步回调。
 
 > **说明：**
 >
@@ -425,7 +421,6 @@ dehydrateFile(filePath: string): Promise&lt;void&gt;
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
 | 34400001 | Invalid argument. |
 | 34400003 | IPC communication failed. |
@@ -439,7 +434,6 @@ dehydrateFile(filePath: string): Promise&lt;void&gt;
 | 34400023 | The parent directory of the target path is not a directory. |
 | 34400024 | The target path does not exist. |
 | 34400025 | The file name or path is too long. |
-| 34400028 | The placeholder file is not fully hydrated. |
 | 34400029 | The application denied placeholder dehydration. |
 | 34400033 | The stored placeholder state is invalid. |
 
@@ -490,7 +484,7 @@ accessor.dehydrateFile(filePath).then(() => {
 
 ## HydrateProgress<sup>26+</sup>
 
-描述水合任务的进度信息，通过[on('hydrateProgress')](#onhydrateprogress26)订阅的回调获取。
+描述水合任务的进度信息，通过[onHydrateProgress](#onhydrateprogress26)订阅的回调获取。
 
 **起始版本**： 26.0.1
 
@@ -500,10 +494,10 @@ accessor.dehydrateFile(filePath).then(() => {
 
 | 名称      | 类型   | 只读 | 可选 | 说明      |
 | --------- | ------ | ---- | ---- | ---------------------------- |
-| filePath | string | 否   | 否   | 文件路径。     |
+| filePath | string | 否   | 否   | 文件的原始绝对路径，与调用hydratePlaceholder时传入的路径一致。     |
 | state   | [HydrateProgressState](#hydrateprogressstate26) | 否   | 否   | 水合进度状态。   |
-| processedSize   | number | 否   | 否   | 已水合的字节数，仅state为IN_PROGRESS时有效。   |
-| totalSize   | number | 否   | 否   | 正在水合的文件总大小，单位为字节。   |
+| processedSize   | long | 否   | 否   | 已水合的字节数，仅state为IN_PROGRESS时有效。单位为字节。   |
+| totalSize   | long | 否   | 否   | 正在水合的文件总大小，单位为字节。   |
 
 ## HydrateProgressState<sup>26+</sup>
 
