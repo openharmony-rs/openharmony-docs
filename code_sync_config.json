@@ -19445,7 +19445,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template6/IfElseGeometryTransition.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":82,
 						"name":"geometry_transition_simple",
 						"start_line":15
 					}
@@ -19455,7 +19455,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template7/Index.ets",
 				"functions":[
 					{
-						"end_line":193,
+						"end_line":216,
 						"name":"geometry_transition",
 						"start_line":16
 					}
