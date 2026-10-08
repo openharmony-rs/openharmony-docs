@@ -57,7 +57,7 @@
 
    使用[readImageMetadata](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadata23)接口，通过指定属性键（propertyKeys）读取对应格式的专有元数据。以读取GIF元数据中的帧延迟时长为例：
 
-   <!-- @[read_imageMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
+   <!-- @[read_imageMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
    async readImageMetadata(imageSource: image.ImageSource | undefined) : Promise<image.ImageMetadata | undefined> {
@@ -72,10 +72,10 @@
        if (imageMetadata.gifMetadata != undefined) {
          console.info(`GIF_DELAY_TIME: ${JSON.stringify(imageMetadata.gifMetadata?.delayTime)}`);
        }
-       return imageMetadata;
+       return imageMetadata
      } catch (error) {
        console.error(`ReadImageMetadata failed, error.code: ${error.code},
-                  error.message: ${error.message}`);
+                  error.message: ${error.message}`)
        return undefined;
      }
    }
@@ -83,7 +83,7 @@
 
    使用[readImageMetadataByType](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24)接口，通过指定[MetadataType](../../reference/apis-image-kit/arkts-apis-image-e.md#metadatatype13)枚举值读取对应格式的专有元数据。以读取GIF元数据为例：
 
-   <!-- @[read_imageMetadataByType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
+   <!-- @[read_imageMetadataByType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
    async readImageMetadataByType(imageSource: image.ImageSource | undefined) : Promise<image.ImageMetadata | undefined> {
@@ -101,7 +101,7 @@
        return imageMetadata;
      } catch (error) {
        console.error(`ReadImageMetadataByType failed, error.code: ${error.code},
-                  error.message: ${error.message}`);
+                  error.message: ${error.message}`)
        return undefined;
      }
    }
