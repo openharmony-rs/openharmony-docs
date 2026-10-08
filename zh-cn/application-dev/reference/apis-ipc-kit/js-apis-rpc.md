@@ -2677,7 +2677,7 @@ writeStringArray(stringArray: string[]): void
 - 必须与[readStringArray](#readstringarray9)配对使用。
 - 读取数组长度必须与写入数组长度一致。
 - 数组单个元素的长度范围[0, 40960)。
-- 
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**

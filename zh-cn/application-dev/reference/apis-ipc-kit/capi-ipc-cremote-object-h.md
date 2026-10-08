@@ -146,7 +146,7 @@ OHIPCRemoteStub* OH_IPCRemoteStub_Create(const char *descriptor, OH_OnRemoteRequ
 
 - 服务端需要提供跨进程服务能力时，创建Stub对象作为服务端实体。
 - 实现自定义IPC通信协议的服务端部分 - 构建RPC服务端服务能力。
-- 创建Stub对象后，通常需要通过 [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md)相关接口将Stub对象注册到服务管理器，供Proxy端发现和连接。
+- 创建Stub对象后，通常需要通过[OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md)相关接口将Stub对象注册到服务管理器，供Proxy端发现和连接。
 - requestCallback中应避免耗时操作，以免阻塞IPC通信。
 - 如需处理耗时任务，可在回调中返回错误码并使用线程池异步处理。
 - 确保userData的生命周期覆盖Stub对象的生命周期，避免悬空指针。
@@ -364,7 +364,7 @@ OHIPCDeathRecipient* OH_IPCDeathRecipient_Create(OH_OnDeathRecipientCallback dea
 
 | 参数项 | 描述 |
 | ------ | ---- |
-| [OH_OnDeathRecipientCallback](#oh_ondeathrecipientcallback) deathRecipientCallback | 远端 [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md)对象死亡通知的回调处理函数，不能为空。 |
+| [OH_OnDeathRecipientCallback](#oh_ondeathrecipientcallback) deathRecipientCallback | 远端[OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md)对象死亡通知的回调处理函数，不能为空。 |
 | [OH_OnDeathRecipientDestroyCallback](#oh_ondeathrecipientdestroycallback) destroyCallback | 对象销毁回调处理函数，可以为NULL。为NULL时不监听对象销毁事件。当需要在[OHIPCDeathRecipient](capi-ohipcremoteobject-ohipcdeathrecipient.md)对象销毁时执行清理操作（如释放userData资源）时传入此参数，不需要清理操作时可以不传或传NULL。传NULL时对象销毁不会触发任何回调通知。 |
 | void *userData | 用户私有数据指针，当需要在死亡通知回调中访问用户自定义数据时传入此参数，不需要访问用户数据时可以不传或传NULL。为NULL时回调函数无法访问用户私有数据。 |
 
