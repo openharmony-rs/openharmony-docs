@@ -302,13 +302,13 @@ Function调用后的回调。返回的对象将替换原始结果。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| param | [FunctionResultWrap](#functionresultwrap) | 是 | 调用结果参数。 |
+| param | [FunctionResultWrap](#functionresultwrap) | 是 | 原始Function调用结果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [FunctionResultWrap](#functionresultwrap) | 替换后的结果参数。 |
+| [FunctionResultWrap](#functionresultwrap) | 修改后的Function调用结果。 |
 
 **示例：**
 
@@ -362,8 +362,8 @@ registerFunctionHook(hook: FunctionHook): Promise\<void\>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.REGISTER_AGENT_HOOK". |
-| 202      | Not system application. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 35600034 | The device is not in developer mode.                         |
 | 35600035 | A hook is already registered; unregister it first.           |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
@@ -438,8 +438,8 @@ unregisterFunctionHook(hook: FunctionHook): Promise\<void\>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.REGISTER_AGENT_HOOK". |
-| 202      | Not system application. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 35600036 | No hook is registered; nothing to unregister.               |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
