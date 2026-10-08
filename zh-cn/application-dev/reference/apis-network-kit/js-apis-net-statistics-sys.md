@@ -582,21 +582,6 @@ statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
 | ifaceInfo | [IfaceInfo](#ifaceinfo) | 否   |否 |需查询的网卡和时间参数信息。 |
 | uid       | number                                | 否   |否 |需查询的应用 uid。          |
 
-## NetStatsInfo
-
-获取的历史流量信息。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.Communication.NetManager.Core
-
-| 名称      | 类型   | 只读 |可选| 说明                      |
-| --------- | ------ | ---- |---| ------------------------ |
-| rxBytes   | number | 否   |否 |流量下行数据(单位:字节)。 |
-| txBytes   | number | 否   |否 |流量上行数据(单位:字节)。 |
-| rxPackets | number | 否   |否 |流量下行包个数。          |
-| txPackets | number | 否   |否 |流量上行包个数。          |
-
 ## NetStatsChangeInfo<sup>11+</sup>
 
 流量变化事件上报的网卡名称及应用UID等信息。
