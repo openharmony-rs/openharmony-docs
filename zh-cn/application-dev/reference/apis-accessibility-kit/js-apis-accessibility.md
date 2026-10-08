@@ -2916,7 +2916,7 @@ getFocusedUIAccessibilityElement(): Promise&lt;UIAccessibilityElement | undefine
 
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;UIAccessibilityElement&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的信息；结果为undefined时说明当前应用内部没有无障碍聚焦节点。 |
+| Promise&lt;UIAccessibilityElement \| undefined&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的信息；结果为undefined时说明当前应用内部没有无障碍聚焦节点。 |
  
 **错误码：**
  
