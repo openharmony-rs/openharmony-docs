@@ -145,21 +145,27 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
   <!-- @[myAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AbilityStage-sta/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
   
   ``` TypeScript
-  import { AbilityStage, Configuration, AbilityConstant } from '@kit.AbilityKit';
+  import { AbilityStage, Configuration, AbilityConstant, Want } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
   export default class MyAbilityStage extends AbilityStage {
+    onAcceptWant(want: Want): string {
+      // 仅specified模式下触发
+      return 'MyAbilityStage';
+    }
+  
     onCreate(): void {
+      // 应用HAP首次加载时触发，可以在此执行该Module的初始化操作（例如资源预加载、线程创建等）。
       console.info('AbilityStage onCreate');
     }
   
     onConfigurationUpdated(config: Configuration): void {
       console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
-      let language = config.language; // 应用程序的当前语言
-      let colorMode = config.colorMode; // 深浅色模式
-      let direction = config.direction; // 屏幕方向
-      let fontSizeScale = config.fontSizeScale; // 字体大小缩放比例
-      let fontWeightScale = config.fontWeightScale; // 字体粗细缩放比例
+      let language = config.language; //应用程序的当前语言
+      let colorMode = config.colorMode; //深浅色模式
+      let direction = config.direction; //屏幕方向
+      let fontSizeScale = config.fontSizeScale; //字体大小缩放比例
+      let fontWeightScale = config.fontWeightScale; //字体粗细缩放比例
     }
   
     onMemoryLevel(level: AbilityConstant.MemoryLevel): void {
