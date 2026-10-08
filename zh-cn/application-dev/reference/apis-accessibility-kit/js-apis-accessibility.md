@@ -3809,9 +3809,11 @@ struct Index {
 }
 ```
 
-## UIRect 
+## UIRect
 
 表示矩形区域。
+
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -3832,7 +3834,7 @@ struct Index {
  
 ### 属性
  
-| 名称                  | 类型                                                             | 只读 | 可选 | 描述             |
+| 名称                  | 类型                                                             | 只读 | 可选 | 说明             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
 | accessibilityFocused | boolean | 否 | 是 | 表示元素是否因无障碍目的获得焦点。true表示已获得焦点，false表示未获得焦点。<br>默认值：false。|
 | checkable | boolean | 否 | 是 | 元素是否可勾选。true表示可勾选，false表示不可勾选。<br>默认值：false。|
@@ -3862,7 +3864,7 @@ struct Index {
 | valueNow            | number | 否  | 是  | 当前值。<br>默认值：0。|
 | offset            | number | 否  | 是  | 内容区域相对于可滚动组件（如List和Grid）顶部坐标的像素偏移量，单位为像素（px）。<br>默认值：0。|
 | accessibilityText | string | 否  | 是  | 元素的无障碍文本信息。|
-| accessibilityStateDescription | string | 否  | 是  | 元素的自定义无障碍状态播报文本信息。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| accessibilityStateDescription | string | 否  | 是  | 元素的自定义无障碍状态播报文本信息。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 | accessibilityRole             | string  | 否  | 是  | 自定义组件类型。|
 | accessibilityNextFocusId            | number                | 否  | 是  | 下一个要获得焦点的组件的ID。<br>默认值：-1。|
 | accessibilityPreviousFocusId             | number                | 否  | 是  | 上一个要获得焦点的组件的ID。<br>默认值：-1。|
@@ -3884,7 +3886,7 @@ struct Index {
 
 ### 属性
 
-| 名称                  | 类型                                                             | 只读 | 可选 | 描述             |
+| 名称                  | 类型                                                             | 只读 | 可选 | 说明             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
 | focusedElement | UIAccessibilityElement | 否 | 是 | 当前聚焦节点的信息。|
 | unfocusedElement | UIAccessibilityElement | 否 | 是 | 上一个聚焦节点的信息。|
@@ -3904,8 +3906,7 @@ getFocusedUIAccessibilityElement(): Promise<UIAccessibilityElement | undefined>
 **返回值：**
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;UIAccessibilityElement&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的信息 |
-| undefined | 当前应用内部没有无障碍聚焦节点 |
+| Promise&lt;UIAccessibilityElement&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的信息；结果为undefined时说明当前应用内部没有无障碍聚焦节点 |
 
 **错误码：**
 
@@ -3942,7 +3943,7 @@ onUIAccessibilityFocusChanged(callback: Callback&lt;UIAccessibilityFocusChangeIn
 
 | 参数名      | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;UIAccessibilityFocusChangeInfo&gt; | 是    | 回调函数，无障碍聚焦节点发生变化的时候，通过此回调函数进行通知。 |
+| callback | Callback&lt;UIAccessibilityFocusChangeInfo&gt; | 是    | 回调函数，无障碍聚焦节点发生变化的时候，通过此回调函数进行通知。返回值为[UIAccessibilityFocusChangeInfo](#UIAccessibilityFocusChangeInfo) |
 
 **错误码：**
 
@@ -3963,7 +3964,7 @@ struct Index {
 
   static onFocusChanged(data: accessibility.UIAccessibilityFocusChangeInfo): void {
     console.info('focusedElement: ' + JSON.stringify(data.focusedElement));
-    console.info('unFocusedElement: ' + JSON.stringify(data.unFocusedElement));
+    console.info('unfocusedElement: ' + JSON.stringify(data.unfocusedElement));
   }
 
   aboutToAppear(): void {
@@ -4025,7 +4026,7 @@ struct Index {
 
   static onFocusChanged(data: accessibility.UIAccessibilityFocusChangeInfo): void {
     console.info('focusedElement: ' + JSON.stringify(data.focusedElement));
-    console.info('unFocusedElement: ' + JSON.stringify(data.unFocusedElement));
+    console.info('unfocusedElement: ' + JSON.stringify(data.unfocusedElement));
   }
 
   aboutToAppear(): void {
