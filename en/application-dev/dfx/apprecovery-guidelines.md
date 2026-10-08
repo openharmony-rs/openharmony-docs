@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=6bafd7bb37af23db4f6f83a5e90138b583afaab9 translatedAt=2026-07-29T04:08:27.902Z pushedAt=2026-07-29T06:45:28.126Z -->
+<!-- md-trans-meta sourceCommit=8ea556ad50860a98041332a35647945090ac4fac translatedAt=2026-09-28T02:27:22.383Z pushedAt=2026-09-29T10:02:58.780Z -->
 
 ## Overview
 
@@ -18,7 +18,7 @@ If the [application recovery](#available-apis) functionality is enabled in [Abil
 
 In API version 9, application recovery is supported only for single-UIAbility applications developed using the stage model. Application state saving and automatic restart are performed when a JsError occurs.
 
-In API version 10, application recovery is supported for multi-UIAbility applications developed using the stage model. Application state storage and restore are performed when an AppFreeze occurs. If an application is killed in control mode, the application state will be restored upon next startup.
+In API version 10, application recovery is supported for multi-UIAbility applications developed using the stage model. Application state saving and restore are performed when an AppFreeze occurs. If an application is killed in control mode, the application state will be restored upon next startup.
 
 ## Available APIs
 
@@ -52,7 +52,7 @@ If the restarted UIAbility has saved state data, this data is passed in as the *
 
 Since API version 10, application recovery is not limited to automatic restart in the case of an exception. Therefore, you need to understand when the application will load the saved state.
 
-If the last exit of an application is not initiated by a user and a saved state is available for recovery, the startup reason is set to **APP_RECOVERY** when the application is started by the user next time, and the recovery state of the application is cleared.
+If the last exit of an application is not initiated by a user and a saved state is available for recovery, the startup cause is set to **APP_RECOVERY** when the application is started by the user next time, and the recovery state of the application is cleared.
 
 The application recovery state flag is set when **saveAppState** is actively or passively called. The flag is cleared when the application exits normally or restarts after an abnormal exit. (A normal exit is usually triggered by pressing the back key or clearing recent tasks.)
 
@@ -60,7 +60,7 @@ The application recovery state flag is set when **saveAppState** is actively or 
 
 ### Application State Saving and Restore
 
-API version 10 or later supports saving of the application state when an application is suspended. If a JsError occurs, **onSaveState** is called in the main thread. If an AppFreeze occurs, however, the main thread may be suspended, and therefore **onSaveState** is called in a non-main thread. The following figure shows the main service flow.
+API version 10 or later supports saving of the application state when an application is frozen. If a JsError occurs, **onSaveState** is called in the main thread. If an AppFreeze occurs, however, the main thread may be frozen, and therefore **onSaveState** is called in a non-main thread. The following figure shows the main service flow.
 
 ![20230315112235.png](figures/20230315112235.png)
 
@@ -68,7 +68,7 @@ When the application is frozen, the callback is not executed in the JS thread. T
 
 ### Framework Fault Management
 
-Fault management is an important way for applications to deliver a better user experience. The application framework offers three methods for application fault management: fault listening, fault rectification, and fault query.
+Fault management is an important way for applications to deliver a better user experience. The application framework offers three methods for application fault management: fault listening, fault recovery, and fault query.
 
 - Fault listening refers to the process of registering an [ErrorObserver](../reference/apis-ability-kit/js-apis-inner-application-errorObserver.md) via [errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md), listening for faults, and notifying the listener of the faults.
 
@@ -106,10 +106,11 @@ Enable **appRecovery** during application initialization. The following is an ex
 
 ```ts
 import { AbilityStage, appRecovery } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default class MyAbilityStage extends AbilityStage {
     onCreate() {
-        console.info("[Demo] MyAbilityStage onCreate");
+        hilog.info(0x0000, 'testTag', `[Demo] MyAbilityStage onCreate`);
         appRecovery.enableAppRecovery(appRecovery.RestartFlag.ALWAYS_RESTART,
             appRecovery.SaveOccasionFlag.SAVE_WHEN_ERROR | appRecovery.SaveOccasionFlag.SAVE_WHEN_BACKGROUND,
             appRecovery.SaveModeFlag.SAVE_WITH_FILE);
@@ -150,11 +151,12 @@ import { AbilityConstant, appRecovery, errorManager } from '@kit.AbilityKit';
 ```ts
 import { appRecovery, errorManager, UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let registerId = -1;
 let callback: errorManager.ErrorObserver = {
     onUnhandledException(errMsg) {
-    console.error(errMsg);
+    hilog.error(0x0000, 'testTag', `errMsg: ${errMsg}`);
     appRecovery.saveAppState();
     appRecovery.restartApp();
     }
@@ -163,15 +165,15 @@ let callback: errorManager.ErrorObserver = {
 export default class EntryAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage) {
     // Set the main page for the created main window.
-    console.info("[Demo] EntryAbility onWindowStageCreate");
+    hilog.info(0x0000, 'testTag', `[Demo] EntryAbility onWindowStageCreate`);
     registerId = errorManager.on('error', callback);
 
     windowStage.loadContent("pages/index", (err, data) => {
         if (err.code) {
-            console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+            hilog.error(0x0000, 'testTag', `Failed to load the content. Cause: ${JSON.stringify(err)}`);
             return;
         }
-        console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data));
+        hilog.info(0x0000, 'testTag', `Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
     })
     }
 }
@@ -183,11 +185,12 @@ After the callback triggers **appRecovery.saveAppState()**, **onSaveState(state,
 
 ```ts
 import { AbilityConstant, UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default class EntryAbility extends UIAbility {
     onSaveState(state:AbilityConstant.StateType, wantParams: Record<string, Object>) {
         // The UIAbility is called to save application data.
-        console.info("[Demo] EntryAbility onSaveState");
+        hilog.info(0x0000, 'testTag', `[Demo] EntryAbility onSaveState`);
         wantParams["myData"] = "my1234567";
         return AbilityConstant.OnSaveResult.ALL_AGREE;
     }
@@ -200,6 +203,7 @@ After the callback triggers **appRecovery.restartApp()**, the application is res
 
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let abilityWant: Want;
 
@@ -207,7 +211,7 @@ export default class EntryAbility extends UIAbility {
     storage: LocalStorage | undefined = undefined;
 
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] EntryAbility onCreate");
+        hilog.info(0x0000, 'testTag', `[Demo] EntryAbility onCreate`);
         abilityWant = want;
         if (launchParam.launchReason == AbilityConstant.LaunchReason.APP_RECOVERY) {
             this.storage = new LocalStorage();
@@ -225,16 +229,17 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 import { errorManager, UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let registerId = -1;
 
 export default class EntryAbility extends UIAbility {
     onWindowStageDestroy() {
         // Destroy the main window and release related UI resources.
-        console.info("[Demo] EntryAbility onWindowStageDestroy");
+        hilog.info(0x0000, 'testTag', `[Demo] EntryAbility onWindowStageDestroy`);
 
         errorManager.off('error', registerId, (err) => {
-            console.error("[Demo] err:", err);
+            hilog.error(0x0000, 'testTag', `[Demo] err: ${err}`);
         });
     }
 }
@@ -246,13 +251,14 @@ This is triggered by the recovery framework. You do not need to register an **Er
 
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let abilityWant: Want;
 
 export default class EntryAbility extends UIAbility {
     storage: LocalStorage | undefined = undefined
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.info("[Demo] EntryAbility onCreate");
+    hilog.info(0x0000, 'testTag', `[Demo] EntryAbility onCreate`);
         abilityWant = want;
         if (launchParam.launchReason == AbilityConstant.LaunchReason.APP_RECOVERY) {
             this.storage = new LocalStorage();
@@ -266,7 +272,7 @@ export default class EntryAbility extends UIAbility {
 
     onSaveState(state:AbilityConstant.StateType, wantParams: Record<string, Object>) {
         // The UIAbility is called to save application data.
-        console.info("[Demo] EntryAbility onSaveState");
+        hilog.info(0x0000, 'testTag', `[Demo] EntryAbility onSaveState`);
         wantParams["myData"] = "my1234567";
         return AbilityConstant.OnSaveResult.ALL_AGREE;
     }
@@ -279,6 +285,7 @@ When the faulty UIAbility is restarted, the **parameters** member of the **want*
 
 ```ts
 import { AbilityConstant, UIAbility, Want, wantConstant } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -287,7 +294,7 @@ export default class EntryAbility extends UIAbility {
         }
         if (want.parameters[wantConstant.Params.ABILITY_RECOVERY_RESTART] != undefined &&
             want.parameters[wantConstant.Params.ABILITY_RECOVERY_RESTART] == true) {
-            console.info("This ability need to recovery");
+            hilog.info(0x0000, 'testTag', `This ability need to recovery`);
         }
     }
 }

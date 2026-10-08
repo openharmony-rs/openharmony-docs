@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f771d833faf36ca8b13c1491a42033e94d5bb3f7 translatedAt=2026-09-14T08:49:39.194Z pushedAt=2026-09-15T10:37:00.809Z -->
+<!-- md-trans-meta sourceCommit=6013a617915ce1f228ac64fe8f5635f01779d382 translatedAt=2026-09-28T02:26:19.698Z pushedAt=2026-09-29T01:19:25.139Z -->
 
 ## When to Use
 
@@ -14,7 +14,7 @@ Since API version 12, the multimodal module provides applications with the abili
 
 ## Available APIs
 
-The following table lists the APIs for creating and deleting event listeners. For details, see [input](../../reference/apis-input-kit/capi-input.md).
+The APIs related to creating and removing event listening are shown in the following table. For details about the APIs, see [oh_input_manager.h](../../reference/apis-input-kit/capi-oh-input-manager-h.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
