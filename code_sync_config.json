@@ -37536,52 +37536,52 @@
 						"start_line":18
 					},
 					{
-						"end_line":295,
+						"end_line":472,
 						"name":"is_audio_session_activated",
-						"start_line":292
+						"start_line":467
 					},
 					{
-						"end_line":484,
+						"end_line":486,
 						"name":"on_audio_session_deactivated",
 						"start_line":19
 					},
 					{
-						"end_line":681,
+						"end_line":685,
 						"name":"deactivate_audio_session_v1",
 						"start_line":31
 					},
 					{
-						"end_line":682,
+						"end_line":686,
 						"name":"audio_session_v1",
 						"start_line":20
 					},
 					{
-						"end_line":536,
+						"end_line":538,
 						"name":"activate_audio_session_v2",
 						"start_line":21
 					},
 					{
-						"end_line":591,
+						"end_line":593,
 						"name":"on_audio_session_state_changed",
 						"start_line":22
 					},
 					{
-						"end_line":683,
+						"end_line":687,
 						"name":"deactivate_audio_session_v2",
 						"start_line":32
 					},
 					{
-						"end_line":684,
+						"end_line":688,
 						"name":"audio_session_v2",
 						"start_line":23
 					},
 					{
-						"end_line":538,
+						"end_line":540,
 						"name":"enable_mute_suggestion",
 						"start_line":24
 					},
 					{
-						"end_line":626,
+						"end_line":628,
 						"name":"set_session_behavior",
 						"start_line":26
 					},
@@ -58599,7 +58599,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":741,
+						"end_line":745,
 						"name":"print_session_info",
 						"start_line":27
 					}
@@ -59435,9 +59435,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
 				"functions":[
 					{
-						"end_line":245,
+						"end_line":406,
 						"name":"quick_start",
-						"start_line":202
+						"start_line":361
 					}
 				]
 			}
