@@ -29476,7 +29476,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/AudioPlaybackIndex.ets",
 				"functions":[
 					{
-						"end_line":24,
+						"end_line":23,
 						"name":"continuous_include",
 						"start_line":16
 					},
