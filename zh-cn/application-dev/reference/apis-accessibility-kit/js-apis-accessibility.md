@@ -2902,7 +2902,7 @@ struct Index {
  
 ## accessibility.getFocusedUIAccessibilityElement
  
-getFocusedUIAccessibilityElement(): Promise<UIAccessibilityElement | undefined>
+getFocusedUIAccessibilityElement(): Promise&lt;UIAccessibilityElement | undefined&gt;
  
 获取当前应用内部无障碍聚焦的节点的信息，使用Promise异步回调。
  
