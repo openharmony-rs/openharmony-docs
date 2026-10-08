@@ -1719,3 +1719,17 @@ Allows an application to enter exam mode. The system service will display a dial
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.1
+
+## ohos.permission.DISABLE_SCREEN_PRIVACY_PROTECTION
+
+Allows an application to disable screen privacy protection while recording the screen.
+
+<!--RP113--><!--RP113End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1

@@ -1713,3 +1713,17 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.1
+
+## ohos.permission.DISABLE_SCREEN_PRIVACY_PROTECTION
+
+允许应用在录屏时默认关闭屏幕隐私保护。
+
+<!--RP113--><!--RP113End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
