@@ -47,8 +47,8 @@ glTF模型中引用的纹理图片支持以下格式：
    
    ``` TypeScript
    if (this.scene == null) {
-     // Load the model and place the gltf file in the related path. Use the actual path during loading.
-     // Switched from .gltf to .glb; same content, different format
+     // 加载模型，并将 gltf 文件放在相关路径下。加载时使用实际路径。
+     // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.glb'))
        .then(async (result: Scene) => {
          this.scene = result;
