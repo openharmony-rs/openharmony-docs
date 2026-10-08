@@ -994,7 +994,7 @@ CryptoExtensionAbility不支持以下模块的引用。
 | Network Kit | [@ohos.net.networkSecurity (网络安全校验)](../../reference/apis-network-kit/js-apis-networkSecurity.md) |
 | Network Kit | [@ohos.net.policy (网络策略管理)](../../reference/apis-network-kit/js-apis-net-policy.md) |
 | Network Kit | [@ohos.net.sharing (网络共享管理)](../../reference/apis-network-kit/js-apis-net-sharing.md) |
-| Network Kit | [@ohos.net.socket (Socket连接)](../../reference/apis-network-kit/js-apis-socket.md) |
+| Network Kit | [@ohos.net.socket (Socket连接)](../../reference/apis-network-kit/js-apis-socket.md)<br>适用版本：22-26.0.0|
 | Network Kit | [@ohos.net.statistics (流量管理)](../../reference/apis-network-kit/js-apis-net-statistics.md) |
 | Network Kit | [@ohos.net.vpn (VPN管理)](../../reference/apis-network-kit/js-apis-net-vpn.md) |
 | Network Kit | [@ohos.net.vpnExtension (VPN增强管理)](../../reference/apis-network-kit/js-apis-net-vpnExtension.md) |
