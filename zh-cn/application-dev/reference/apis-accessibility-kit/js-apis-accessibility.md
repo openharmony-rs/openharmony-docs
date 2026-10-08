@@ -3825,7 +3825,7 @@ struct Index {
 | height | number | 否    | 否    | 矩形区域的高度，单位为像素（px）。  |
 
 ## UIAccessibilityElement
- 
+
 无障碍聚焦节点元素信息。
  
 **起始版本：** 26.0.1
@@ -3888,8 +3888,8 @@ struct Index {
 
 | 名称                  | 类型                                                             | 只读 | 可选 | 说明             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
-| focusedElement | UIAccessibilityElement | 否 | 是 | 当前聚焦节点的信息。|
-| unfocusedElement | UIAccessibilityElement | 否 | 是 | 上一个聚焦节点的信息。|
+| focusedElement | [UIAccessibilityElement](#UIAccessibilityElement) | 否 | 是 | 当前聚焦节点的信息。|
+| unfocusedElement | [UIAccessibilityElement](#UIAccessibilityElement) | 否 | 是 | 上一个聚焦节点的信息。|
 
 ## accessibility.getFocusedUIAccessibilityElement
 
@@ -3906,7 +3906,7 @@ getFocusedUIAccessibilityElement(): Promise<UIAccessibilityElement | undefined>
 **返回值：**
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;UIAccessibilityElement&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的信息；结果为undefined时说明当前应用内部没有无障碍聚焦节点 |
+| Promise&lt;UIAccessibilityElement&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的信息；结果为undefined时说明当前应用内部没有无障碍聚焦节点。 |
 
 **错误码：**
 
@@ -3943,7 +3943,7 @@ onUIAccessibilityFocusChanged(callback: Callback&lt;UIAccessibilityFocusChangeIn
 
 | 参数名      | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;UIAccessibilityFocusChangeInfo&gt; | 是    | 回调函数，无障碍聚焦节点发生变化的时候，通过此回调函数进行通知。返回值为[UIAccessibilityFocusChangeInfo](#UIAccessibilityFocusChangeInfo) |
+| callback | Callback&lt;UIAccessibilityFocusChangeInfo&gt; | 是    | 回调函数，无障碍聚焦节点发生变化的时候，通过此回调函数进行通知。返回值为[UIAccessibilityFocusChangeInfo](#UIAccessibilityFocusChangeInfo)。 |
 
 **错误码：**
 
@@ -3976,7 +3976,7 @@ struct Index {
     }
   }
 
-build() {
+  build() {
     RelativeContainer() {
       Text(this.message)
         .id('HelloWorld')
@@ -4005,7 +4005,7 @@ offUIAccessibilityFocusChanged(callback?: Callback&lt;UIAccessibilityFocusChange
 
 | 参数名      | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;UIAccessibilityFocusChangeInfo&gt; | 否    | 回调函数，需要注销的回调函数，传空值取消所有监听 |
+| callback | Callback&lt;UIAccessibilityFocusChangeInfo&gt; | 否    | 回调函数，需要注销的回调函数，传空值取消所有监听。 |
 
 **错误码：**
 
@@ -4047,7 +4047,7 @@ struct Index {
     }
   }
 
-build() {
+  build() {
     RelativeContainer() {
       Text(this.message)
         .id('HelloWorld')
