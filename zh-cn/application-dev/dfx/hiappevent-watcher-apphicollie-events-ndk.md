@@ -167,10 +167,13 @@
        const char *names[] = {EVENT_APP_HICOLLIE};
        // 开发者订阅感兴趣的事件，此处订阅了系统事件。
        OH_HiAppEvent_SetAppEventFilter(appHicollieWatcherR, DOMAIN_OS, 0, names, 1);
-       // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive回调。
+       // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceive回调。
        OH_HiAppEvent_SetWatcherOnReceive(appHicollieWatcherR, AppHicollieOnReceive);
        // 使观察者开始监听订阅的事件。
-       OH_HiAppEvent_AddWatcher(appHicollieWatcherR);
+       int ret = OH_HiAppEvent_AddWatcher(appHicollieWatcherR);
+       if (ret != 0) {
+           OH_LOG_ERROR(LogType::LOG_APP, "HiAppEvent AddWatcher failed, ret=%{public}d", ret);
+       }
        return {};
    }
    ```
