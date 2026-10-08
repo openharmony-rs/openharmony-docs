@@ -2820,16 +2820,16 @@ A hook is already registered; unregister it first.
 
 **错误描述**
 
-已有Hook注册，需要先取消注册原Hook。
+已注册了同类型的Hook，无法重复注册，需要先取消原注册Hook。
 
 **可能原因**
 
-同一时间一种hook只允许注册一个，已有Hook注册时再次调用[registerCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerregisterclihook)或[registerFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerregisterfunctionhook)接口会返回该错误码。
+同一时间对同一类型的Hook只允许注册一个。如果已有Hook处于注册状态时，再次调用[registerCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerregisterclihook)或[registerFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerregisterfunctionhook)接口，系统会返回该错误码。
 
 **处理步骤**
 
 1. 先调用[unregisterCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerunregisterclihook)或[unregisterFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerunregisterfunctionhook)接口取消已注册的Hook。
-2. 取消注册后重新调用注册Hook的接口。
+2. 确保前一个Hook成功取消注册后，再次调用相应的注册接口。
 
 ## 35600036 Hook未注册
 
@@ -2839,7 +2839,7 @@ No hook is registered; nothing to unregister.
 
 **错误描述**
 
-没有已注册的Hook，无需取消注册。
+当前未注册任何Hook，无需执行取消注册操作。
 
 **可能原因**
 

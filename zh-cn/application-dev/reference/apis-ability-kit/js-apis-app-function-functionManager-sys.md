@@ -230,7 +230,7 @@ Function结果包装类，用于[onAfterInvokeFunction()](#onafterinvokefunction
 
 ## FunctionHook
 
-Function调用拦截Hook接口。Hook对象可实现该接口中可选方法的任意子集，仅已实现的方法会被调用，未实现的方法将被跳过。
+Function调用拦截Hook接口。传入的Hook对象可实现该接口中可选方法的任意子集，系统仅会调用已实现的方法，未实现的方法将被自动跳过。
 
 **起始版本：** 26.0.1
 
@@ -332,7 +332,7 @@ const functionHook: FunctionHook = {
 
 registerFunctionHook(hook: FunctionHook): Promise\<void\>
 
-注册Function Hook，用于拦截Function调用。同一时间只允许注册一个Function Hook，已有Hook注册时再次注册将失败。本接口仅在开发者模式下可用。如需更新已注册的Hook，请先调用[unregisterFunctionHook()](#functionmanagerunregisterfunctionhook)取消注册后再重新注册。Hook对象必须实现[FunctionHook](#functionhook)接口中至少一个可选方法。
+注册[FunctionHook](#functionhook)。FunctionHook注册后用于拦截对[invokeFunction()](#functionmanagerinvokefunction)的调用。同一时间只允许注册一个Function Hook，已有Hook注册时再次注册将失败。本接口仅在开发者模式下可用。如需更新已注册的Hook，请先调用[unregisterFunctionHook()](#functionmanagerunregisterfunctionhook)取消注册后再重新注册。Hook对象必须实现[FunctionHook](#functionhook)接口中至少一个可选方法。
 
 **起始版本：** 26.0.1
 
