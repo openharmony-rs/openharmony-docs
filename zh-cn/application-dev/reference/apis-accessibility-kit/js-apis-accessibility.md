@@ -2917,66 +2917,66 @@ getFocusedUIAccessibilityElement(): Promise&lt;UIAccessibilityElement | undefine
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
 | Promise&lt;UIAccessibilityElement \| undefined&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的信息；结果为undefined时说明当前应用内部没有无障碍聚焦节点。 |
- 
+
 **错误码：**
- 
+
 以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
- 
+
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
 | 9300000 | System abnormality. |
- 
+
 ```ts
 import accessibility, { UIAccessibilityElement } from '@ohos.accessibility';
 import { BusinessError } from '@kit.BasicServicesKit';
- 
+
 accessibility.getFocusedUIAccessibilityElement().then((data: UIAccessibilityElement) => {
   console.info(`succeeded in getting focused accessibility elementInfo, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to call getFocusedUIAccessibilityElement. Code: ${err.code}, message: ${err.message}`);
 });
 ```
- 
+
 ## accessibility.onUIAccessibilityFocusChanged
- 
+
 onUIAccessibilityFocusChanged(callback: Callback&lt;UIAccessibilityFocusChangeInfo&gt;): void
- 
+
 注册监听器，监听应用无障碍焦点变化的事件。
- 
+
 **起始版本：** 26.0.1
- 
+
 **模型约束：** 此接口仅可在Stage模型下使用。
- 
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
- 
+
 **参数：**
- 
+
 | 参数名      | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
 | callback | Callback&lt;UIAccessibilityFocusChangeInfo&gt; | 是    | 回调函数，无障碍聚焦节点发生变化的时候，通过此回调函数进行通知。返回值为[UIAccessibilityFocusChangeInfo](#UIAccessibilityFocusChangeInfo)。 |
- 
+
 **错误码：**
- 
+
 以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
- 
+
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
 | 9300000 | System abnormality. |
- 
+
 ```ts
 import accessibility from '@ohos.accessibility';
 import { BusinessError } from '@kit.BasicServicesKit';
- 
+
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World';
- 
+
   static onFocusChanged(data: accessibility.UIAccessibilityFocusChangeInfo): void {
     console.info('focusedElement: ' + JSON.stringify(data.focusedElement));
     console.info('unfocusedElement: ' + JSON.stringify(data.unfocusedElement));
   }
- 
+
   aboutToAppear(): void {
     try {
       accessibility.onUIAccessibilityFocusChanged(Index.onFocusChanged);
@@ -2985,7 +2985,7 @@ struct Index {
       console.error(`Failed to call onUIAccessibilityFocusChanged. Code: ${err.code}, message: ${err.message}`);
     }
   }
- 
+
   build() {
     RelativeContainer() {
       Text(this.message)
@@ -2998,47 +2998,47 @@ struct Index {
   }
 }
 ```
- 
+
 ## accessibility.offUIAccessibilityFocusChanged
- 
+
 offUIAccessibilityFocusChanged(callback?: Callback&lt;UIAccessibilityFocusChangeInfo&gt;): void
- 
+
 注销监听器，该监听器用于监听应用无障碍焦点变化的事件。
- 
+
 **起始版本：** 26.0.1
- 
+
 **模型约束：** 此接口仅可在Stage模型下使用。
- 
+
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
- 
+
 **参数：**
- 
+
 | 参数名      | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
 | callback | Callback&lt;UIAccessibilityFocusChangeInfo&gt; | 否    | 回调函数，需要注销的回调函数，传空值取消所有监听。 |
- 
+
 **错误码：**
- 
+
 以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
- 
+
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
 | 9300000 | System abnormality. |
- 
+
 ```ts
 import accessibility from '@ohos.accessibility';
 import { BusinessError } from '@kit.BasicServicesKit';
- 
+
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World';
- 
+
   static onFocusChanged(data: accessibility.UIAccessibilityFocusChangeInfo): void {
     console.info('focusedElement: ' + JSON.stringify(data.focusedElement));
     console.info('unfocusedElement: ' + JSON.stringify(data.unfocusedElement));
   }
- 
+
   aboutToAppear(): void {
     try {
       accessibility.onUIAccessibilityFocusChanged(Index.onFocusChanged);
@@ -3047,7 +3047,7 @@ struct Index {
       console.error(`Failed to call onUIAccessibilityFocusChanged. Code: ${err.code}, message: ${err.message}`);
     }
   }
- 
+
   aboutToDisappear(): void {
     try {
       accessibility.offUIAccessibilityFocusChanged(Index.onFocusChanged);
@@ -3056,7 +3056,7 @@ struct Index {
       console.error(`Failed to call offUIAccessibilityFocusChanged. Code: ${err.code}, message: ${err.message}`);
     }
   }
- 
+
   build() {
     RelativeContainer() {
       Text(this.message)
