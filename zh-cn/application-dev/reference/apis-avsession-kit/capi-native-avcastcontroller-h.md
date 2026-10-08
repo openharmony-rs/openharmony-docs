@@ -76,6 +76,8 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlaybackStateChang
 
 播放状态改变的回调函数。
 
+**起始版本：** 23
+
 **参数：**
  
 | 参数项 | 描述 |
@@ -83,8 +85,6 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlaybackStateChang
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | OH_AVCastController实例指针。 |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | 设置的播放状态。 |
 | void* userData | 传递的用户数据。 |
-
-**起始版本：** 23
 
 ### OH_AVCastControllerCallback_MediaItemChange()
 
