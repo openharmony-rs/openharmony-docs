@@ -311,7 +311,7 @@
 
    为保证预览流在翻转时不露出，需要构建一个闪黑组件用于遮挡XComponent组件，构建方式参考[闪黑动效](#闪黑动效)-步骤2。
 
-   <!-- @[rotate_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[rotate_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->   
    
    ``` TypeScript
    /**
@@ -351,7 +351,7 @@
          }
        },
        () => {
-         // 截图向翻转动效。
+         // 截图向外翻转动效。
          if (this.curPosition === 1) {
            this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_90 };
          } else {

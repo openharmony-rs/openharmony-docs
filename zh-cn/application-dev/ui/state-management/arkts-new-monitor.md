@@ -1530,6 +1530,113 @@ struct MonitorWildcardSet {
   }
   ```
 
+- 从API version 24开始，当\@Monitor监听的路径可能不存在或者路径中的变量缺少观测能力时，编辑器会提示告警`The '@Monitor' decorator needs to monitor the state variables that exist.`。以下为\@Monitor路径校验的告警场景及修复方式：
+
+  - **类未被\@ObservedV2装饰**：当\@Monitor监听的路径经过未被\@ObservedV2装饰的类时，该路径无法被正常监听，编辑器会提示告警。
+
+    告警代码：
+    ``` TypeScript
+    class Inner {
+      public num: number = 0;
+    }
+
+    @ObservedV2
+    class Outer {
+      @Trace public inner: Inner = new Inner();
+
+      // inner的类型Inner未被@ObservedV2装饰，路径'inner.num'无法监听'num'属性的修改
+      @Monitor('inner.num')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+    修复代码：使用@ObservedV2装饰Inner类，并使用@Trace装饰其属性。
+    ``` TypeScript
+    @ObservedV2
+    class Inner {
+      @Trace public num: number = 0;
+    }
+
+    @ObservedV2
+    class Outer {
+      @Trace public inner: Inner = new Inner();
+
+      @Monitor('inner.num')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **属性未被\@Trace装饰**：当\@Monitor监听的属性未被\@Trace装饰时，该属性的变化无法被监听，编辑器会提示告警。
+
+    告警代码：
+    ``` TypeScript
+    @ObservedV2
+    class Info {
+      public name: string = 'Tom';
+
+      // name未被@Trace装饰，路径'name'无法监听修改
+      @Monitor('name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+    修复代码：使用@Trace装饰name属性。
+    ``` TypeScript
+    @ObservedV2
+    class Info {
+      @Trace public name: string = 'Tom';
+
+      @Monitor('name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **路径类型为interface**：当\@Monitor监听的路径中存在类型为interface的变量时，由于interface本身对其属性没有观测能力，编辑器会提示路径可能不存在的告警。该告警无法去除，开发者需要确认interface数据有UIUtils.makeObserved封装才能被\@Monitor监听。
+
+    告警代码：
+    ``` TypeScript
+    import { UIUtils } from '@kit.ArkUI';
+
+    interface IInfo {
+      name: string;
+    }
+
+    @ObservedV2
+    class Container {
+      // 使用UIUtils.makeObserved封装的interface数据才能被@Monitor监听
+      public info: IInfo = UIUtils.makeObserved({ name: 'Name' }); 
+
+      // info的类型为interface，路径'info.name'可能无法监听'name'属性的修改
+      @Monitor('info.name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **路径类型为联合类型**：当\@Monitor监听的路径中存在类型为联合类型的变量时，编辑器会提示路径可能不存在的告警。该告警无法去除，开发者需要确认联合类型中包含目标路径的对象类型存在并具有观测能力。
+
+    告警代码：
+    ``` TypeScript
+    @ObservedV2
+    class User {
+      @Trace public age: number = 10;
+    }
+
+    @ObservedV2
+    class Page {
+      @Trace user: User | number = new User();
+
+      // user的类型为联合类型User | number，路径'user.age'可能不存在
+      @Monitor('user.age')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
 ## \@Monitor与\@Watch对比
 
 \@Monitor与\@Watch的用法、功能对比如下：

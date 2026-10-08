@@ -1,4 +1,4 @@
-# MissionSnapshot (系统接口)
+# MissionSnapshot (任务快照)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

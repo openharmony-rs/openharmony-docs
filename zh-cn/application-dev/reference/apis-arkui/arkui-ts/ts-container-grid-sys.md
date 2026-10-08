@@ -199,7 +199,7 @@ struct Index {
         console.info('XXX' + 'Grid onScrollBarUpdate,index : ' + index.toString() + ',offset' + offset.toString());
         return {
           totalOffset: (index / this.crossCount) * (this.itemHeight) * 2 - offset,
-          totalLength: this.itemHeight * 2 * this.childrenCount / this.crossCount
+          totalLength: this.itemHeight * 2 * Math.ceil(this.childrenCount / this.crossCount)
         };
       }) // totalOffset和totalLength的计算方式依赖当前示例中的数据量、列数和不规则节点规则，修改数据源时需要同步调整。
     }.width('100%').margin({ top: 5 })

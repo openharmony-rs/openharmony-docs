@@ -7,13 +7,13 @@
 <!--Adviser: @w_Machine_cc-->
 
 - ArkTS API<!--driver-development-arkts-->
-  - [@ohos.app.ability.DriverExtensionAbility (驱动程序扩展能力)](js-apis-app-ability-driverExtensionAbility.md)
+  - [@ohos.app.ability.DriverExtensionAbility (驱动扩展能力)](js-apis-app-ability-driverExtensionAbility.md)
   - [@ohos.driver.deviceManager (外设管理)](js-apis-driver-deviceManager.md)
   <!--Del-->
   - [@ohos.driver.deviceManager (外设管理)(系统接口)](js-apis-driver-deviceManager-sys.md)
   <!--DelEnd-->
   - application<!--driver-development-arkts-application-->
-    - [DriverExtensionContext](js-apis-inner-application-driverExtensionContext.md)
+    - [DriverExtensionContext (定义驱动扩展的上下文)](js-apis-inner-application-driverExtensionContext.md)
 - C API<!--driver-development-c-->
   - 模块<!--driver-development-module-->
     - [Ddk](capi-baseddk.md)

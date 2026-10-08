@@ -41,6 +41,7 @@ libdl：dlopen等动态链接器接口，当前在OpenHarmony中是一个链接�
 3. 支持symbol-versioning功能。
 4. dlopen支持直接加载zip包中未压缩的文件。
 5. 支持C API兼容性版本保护。
+6. 从API version 26.2.0开始，支持按业务组标识符创建和访问共享内存及命名信号量，详见[group_ipc.h](capi-group-ipc-h.md)。
 <!--Del-->
 ### 调试能力
 libc提供了动态使能维测log功能（默认开启），供开发者需要的时候查看libc库异常。使用libc提供的动态使能维测log功能，不需要重新编译libc库，只需设置param属性即可。在正式发布版本中，不建议使能，会影响运行性能。
@@ -86,6 +87,7 @@ param set musl.log.ld.app.{app_name} false
 | 接口名称          | 说明                                                                                         |
 |:--               |    :--                                                                                       |
 | epoll_create     | 当前 OpenHarmony musl 仓中的 epoll_create 未对 size 入参进行有效性校验，不区分 size 是否小于等于 0。实际表现为：当 size <= 0 时，调用仍可能创建 epoll实例成功。该行为与 musl 社区 v1.2.5 及之后版本存在差异。musl 社区要求 size 必须大于 0，接口表现为：当 size <= 0 时，epoll_create 应创建失败，返回 -1，并设置 errno 为 EINVAL。开发者如需兼容 musl 社区 v1.2.5+ 行为，建议在调用 epoll_create 前自行保证 size > 0，或优先使用 epoll_create1。 |  
+| pthread_join     | 当目标线程处于 detached（分离）状态时（例如通过 pthread_detach 分离线程，或使用 PTHREAD_CREATE_DETACHED 属性创建线程），在 API version 26.2.0 之前，OpenHarmony musl 与 musl 社区版本行为一致，会触发进程崩溃；从 API version 26.2.0 开始，行为变更为直接返回 EINVAL，不再崩溃，与 musl 社区版本（仍会崩溃）存在差异。该错误码由接口返回值直接返回，不通过 errno 设置。开发者如需兼容不同系统版本，建议避免对处于 detached 状态的线程调用 pthread_join；若仍需调用，需注意仅从 API version 26.2.0 起可通过返回值是否为 EINVAL 进行错误处理，更早版本会直接崩溃，无法通过返回值判断。 |  
 
 ## ICONV支持的字符集编码格式
 

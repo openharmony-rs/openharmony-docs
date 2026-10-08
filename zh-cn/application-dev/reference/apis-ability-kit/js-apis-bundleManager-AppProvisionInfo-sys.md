@@ -56,5 +56,5 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称                      | 类型   | 只读 | 可选 | 说明                 |
 | ------------------------- | ------ | ---- | ---- | -------------------- |
-| notBefore                 | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 表示配置文件有效期的开始时间，单位：秒。 |
-| notAfter                  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 表示配置文件有效期的结束时间，单位：秒。 |
+| notBefore                 | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 表示配置文件有效期的开始时间，单位：s。 |
+| notAfter                  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 表示配置文件有效期的结束时间，单位：s。 |

@@ -217,6 +217,7 @@
     - [OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md)
     - [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md)
     - [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)
+    - [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md)
     - [OH_Filter](capi-effectkit-oh-filter.md)
     - [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)
     - [NativeWindow](capi-nativewindow-nativewindow.md)

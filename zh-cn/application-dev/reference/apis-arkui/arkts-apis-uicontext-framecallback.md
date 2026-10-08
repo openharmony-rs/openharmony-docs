@@ -38,7 +38,7 @@ ArkTS-Sta: onFrame(frameTimeInNano: long): void
 
 | 参数名  | 类型                                                 | 必填 | 说明                                                    |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------- |
-| frameTimeInNano | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 下一帧渲染开始执行的时间，以纳秒为单位。<br/>取值范围：[0, +∞) |
+| frameTimeInNano | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 下一帧渲染开始执行的时间，以ns为单位。<br/>取值范围：[0, +∞) |
 
 **示例：**
 

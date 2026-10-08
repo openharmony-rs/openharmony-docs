@@ -1081,6 +1081,8 @@ struct MaskDispersion {
       let imageSource = image.createImageSource(buffer);
       imageSource.createPixelMap().then(pixelMap => {
         this.pixelMap_ = pixelMap
+      }).finally(() => {
+        imageSource.release();
       })
     })
   }
@@ -1242,7 +1244,7 @@ ArkTS-Sta: directionLight(direction: common2D.Point3d, color: Color, intensity: 
 
 | 类型              | 说明                               |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | 返回挂载了由置换贴图控制的光照效果的Filter。 |
+| [Filter](#filter) | 返回挂载了由置换贴图控制的平行光照效果的Filter。 |
 
 **错误码：**
 
@@ -1463,6 +1465,8 @@ struct BlurBubblesRiseExample {
         let imageSource: image.ImageSource = image.createImageSource(buffer);
         imageSource.createPixelMap().then((pixelmap: image.PixelMap) => {
           this.maskImage = pixelmap as PixelMap;
+        }).finally(() => {
+          imageSource.release();
         })
       })
   }

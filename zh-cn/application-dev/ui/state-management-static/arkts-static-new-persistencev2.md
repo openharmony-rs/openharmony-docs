@@ -1172,7 +1172,7 @@ struct PersistenceV2NotifyOnErrorExample {
 ```
 初始时，SampleChild中的childInfo变量类型为SampleInfo，正常存储后，将childInfo变量的类型切换为number，并赋值为1，之后再次启动应用程序，此时会由于存储数据的结构与当前数据的结构不一致，导致数据反序列化失败。此时会通过notifyOnError中设置的回调函数，将磁盘中存储的旧的序列化数据打印出来。即在Error日志中显示：
 ```text
-error key: connectSample, reason: serialization, message: TypeError: Receiver is not a JSObject, oldValue: {"father":{"childInfo":{"info":true,"propertyName":"Hello"},"groupId":1}}
+error key: connectSample, reason: serialization, message: TypeError: Receiver is not a JSObject, oldValue: [...]
 ```
 
 ## 使用建议

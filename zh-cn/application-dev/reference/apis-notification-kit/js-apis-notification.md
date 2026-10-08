@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -289,14 +289,14 @@ addSlot(type: SlotType, callback: AsyncCallback\<void\>): void
 import Base from '@ohos.base';
 
 // addslot回调
-let addSlotCallBack = (err: Base.BusinessError) => {
+let addSlotCallback = (err: Base.BusinessError) => {
   if (err) {
     console.error("addSlot failed " + JSON.stringify(err));
   } else {
     console.info("addSlot success");
   }
 }
-Notification.addSlot(Notification.SlotType.SOCIAL_COMMUNICATION, addSlotCallBack);
+Notification.addSlot(Notification.SlotType.SOCIAL_COMMUNICATION, addSlotCallback);
 ```
 
 ## Notification.addSlot
@@ -536,14 +536,14 @@ removeAllSlots(callback: AsyncCallback\<void\>): void
 ```ts
 import Base from '@ohos.base';
 
-let removeAllCallBack = (err: Base.BusinessError) => {
+let removeAllCallback = (err: Base.BusinessError) => {
   if (err) {
     console.error("removeAllSlots failed " + JSON.stringify(err));
   } else {
     console.info("removeAllSlots success");
   }
 }
-Notification.removeAllSlots(removeAllCallBack);
+Notification.removeAllSlots(removeAllCallback);
 ```
 
 ## Notification.removeAllSlots
@@ -772,7 +772,7 @@ isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): voi
 ```ts
 import Base from '@ohos.base';
 
-let templateName: string = 'process';
+let templateName: string = 'downloadTemplate';
 function isSupportTemplateCallback(err: Base.BusinessError, data: boolean) {
   if (err) {
     console.error("isSupportTemplate failed " + JSON.stringify(err));
@@ -788,7 +788,7 @@ Notification.isSupportTemplate(templateName, isSupportTemplateCallback);
 
 isSupportTemplate(templateName: string): Promise\<boolean\>
 
-在使用通知模板[NotificationTemplate](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。
+在使用通知模板[NotificationTemplate](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -809,7 +809,7 @@ isSupportTemplate(templateName: string): Promise\<boolean\>
 ```ts
 import Base from '@ohos.base';
 
-let templateName: string = 'process';
+let templateName: string = 'downloadTemplate';
 Notification.isSupportTemplate(templateName).then((data: boolean) => {
   console.info("isSupportTemplate success, data: " + JSON.stringify(data));
 }).catch((err: Base.BusinessError) => {
@@ -1119,7 +1119,7 @@ Notification.isDistributedEnabled().then((data: boolean) => {
 | groupName<sup>8+</sup>| string                                        | 是  | 是  | [组通知](../../notification/notification-glossary.md#group-notification组通知)名称。                 |
 | template<sup>8+</sup> | [NotificationTemplate](#notificationtemplate8) | 是  | 是  | 通知模板。                   |
 | distributedOption<sup>8+</sup>   | [DistributedOptions](#distributedoptions8)                 | 是  | 是  | [分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)的选项。          |
-| notificationFlags<sup>8+</sup> | [NotificationFlags](./js-apis-inner-notification-notificationFlags.md)                    | 是  | 否  | 获取NotificationFlags。          |
+| notificationFlags<sup>8+</sup> | [NotificationFlags](js-apis-inner-notification-notificationFlags.md)                    | 是  | 否  | 获取NotificationFlags。          |
 | removalWantAgent<sup>9+</sup> | [WantAgent](../apis-ability-kit/js-apis-wantAgent.md) | 是  | 是  | 当移除通知时，通知将被重定向到的WantAgent实例。          |
 | badgeNumber<sup>9+</sup> | number                    | 是  | 是  | 应用程序图标上显示的通知数。          |
 
