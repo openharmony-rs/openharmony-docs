@@ -1,12 +1,11 @@
 # Sharing and Accessing Files Across Devices
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @yangwei_814916-->
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=fb5e4df3cbec2067fd516c5f6b4daf507a291430 translatedAt=2026-08-01T07:26:14.800Z pushedAt=2026-08-01T09:12:23.474Z -->
+<!-- md-trans-meta sourceCommit=2cb51ac6838a72a1ef6f657b572702456e062903 translatedAt=2026-10-08T03:44:38.889Z pushedAt=2026-10-08T06:19:42.490Z -->
 
 The distributed file system provides applications the capability for accessing files across devices. If the same application has been installed on two devices, you can use the [ohos.file.fs APIs](app-file-access.md) to read and write the application files in the [distributed file directory](app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths) (**/data/storage/el2/distributedfiles/**) on the other device. For example, an application is installed on both device A and device B. After device A and device B are connected to form a Super Device, the application on device A can access the files in the distributed directory of the same application on device B.
 
@@ -23,15 +22,14 @@ The distributed file system provides applications the capability for accessing f
 
 2. Grant the distributed data synchronization permission.
 
-   Use **requestPermissionsFromUser** to request user authorization for the ohos.permission.DISTRIBUTED_DATASYNC permission in the form of a dialog box. For details about how to obtain the application context, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+   The authorization method for the distributed data synchronization permission is **user_grant**, so you need to call **requestPermissionsFromUser()** to request user authorization in the form of a dynamic dialog box. For details about how to obtain the application context, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
    ```ts
    import { common, abilityAccessCtrl } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-
    <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
-
+   
    ``` TypeScript
    let atManager = abilityAccessCtrl.createAtManager();
    try {
@@ -47,6 +45,7 @@ The distributed file system provides applications the capability for accessing f
    }
    ```
 
+
 3. Implement cross-device access to the files of your application.<br>
 
    Place the files in the **distributedfiles/** directory of the application sandbox directory to implement access from different devices.
@@ -58,9 +57,8 @@ The distributed file system provides applications the capability for accessing f
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-
    <!--@[access_A_write_distributed_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
-
+   
    ``` TypeScript
    let pathDir: string = context.distributedFilesDir;
    // Obtain the file path of the distributed directory.
@@ -80,6 +78,7 @@ The distributed file system provides applications the capability for accessing f
    }
    ```
 
+
    Device B initiates a connection to device A. After the connection is established, device B can read the test file in the distributed directory.
    > **NOTE**
    >
@@ -92,9 +91,8 @@ The distributed file system provides applications the capability for accessing f
    import { buffer } from '@kit.ArkTS';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
-
    <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->         
-
+   
    ``` TypeScript
    // Obtain the network ID of device A by calling distributed device management APIs.
    // ...
@@ -147,10 +145,11 @@ The distributed file system provides applications the capability for accessing f
    }
    ```
 
+
 4. Disconnect the link for device B.
 
    <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
-
+   
    ``` TypeScript
    // Obtain the network ID of device A.
    // ...
@@ -171,3 +170,4 @@ The distributed file system provides applications the capability for accessing f
      console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
    }
    ```
+
