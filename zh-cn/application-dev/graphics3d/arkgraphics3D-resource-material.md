@@ -130,10 +130,10 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
    
    ``` TypeScript
    if (this.scene === null) {
-     // Switched from .gltf to .glb; same content, different format
+     // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
        .then(async (result: Scene) => {
-         // Assign loaded scene to globalScene for unified resource creation
+         // 将加载的场景赋值给globalScene，以便统一创建资源
          globalScene = result;
          this.scene = result;
          this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
