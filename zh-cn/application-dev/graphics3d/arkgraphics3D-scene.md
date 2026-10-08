@@ -136,16 +136,16 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
    ``` TypeScript
    let camera: Promise<Camera> = sceneFactory.createCamera(sceneCameraParameter);
    camera.then(async (cameraEntity: Camera) => {
-     // Enable the camera node.
+     // 启用相机节点。
      cameraEntity.enabled = true;
    
-     // Set the camera position.
+     // 设置相机位置。
      cameraEntity.position.z = 5;
    
-     // Set the FoV.
+     // 设置视场角（FoV）。
      cameraEntity.fov = 60 * Math.PI / 180;
    
-     // Set other camera parameters.
+     // 设置其他相机参数。
      // ...
      // ...
    }).catch((error: string) => {
