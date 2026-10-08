@@ -21,15 +21,15 @@ When the Secure Shield mode is enabled, ArkWeb reduces the attack surface by res
 
 - The MathML capability.
 
-- The Web Speech API for speech recognition and speech synthesis is prohibited.
+- The speech recognition and speech synthesis capabilities of the Web Speech API.
 
 - The **RTCDataChannel** API.
 
-- The **MediaDevices.getUserMedia** API, which prompts the user to allow access to media input devices (microphones and cameras), is prohibited.
+- The **MediaDevices.getUserMedia** API, which prompts the user to allow access to media input devices (microphones and cameras).
 
 - The Service Worker capability.
 
-- Non-proxy UDP traffic is prohibited to prevent WebRTC from leaking the real source IP.
+- Non-proxy UDP traffic. Restricting this prevents WebRTC from leaking the real source IP.
 
 - The JIT capability.
 

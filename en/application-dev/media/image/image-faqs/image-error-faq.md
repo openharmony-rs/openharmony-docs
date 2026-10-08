@@ -1,12 +1,11 @@
 # Image Kit Exception Handling
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9329f19aa2995f079ff9cf109a20aad0033a91a3 translatedAt=2026-08-11T10:27:39.839Z pushedAt=2026-08-11T11:32:27.839Z -->
+<!-- md-trans-meta sourceCommit=7309d91550473d80535b32eca83cb9c0b600f845 translatedAt=2026-09-28T02:46:20.185Z pushedAt=2026-09-29T08:31:46.442Z -->
 
 [Image Kit](../image-overview.md) provides **ArkTS APIs** and **C APIs**. In special cases (such as invalid input parameters, insufficient memory, or the function being unable to process the request), the system reports errors through exceptions (ArkTS) or error codes (C APIs). You need to properly catch and handle these errors at the app layer to prevent app crashes or undefined behavior. [Image Error Codes](../../../reference/apis-image-kit/errorcode-image.md) lists the error messages, possible causes, and handling steps for Image Kit error codes. However, because the causes of errors in some scenarios are complex, you may need to further locate the issue by analyzing logs. For example, error code 401 (invalid parameter) may be caused by invalid function input parameters, or by the lack of specific file read/write permissions that prevents access to or modification of image files (Image Kit is not aware of permissions, so this manifests as an invalid parameter error for the file input).
 
@@ -95,81 +94,81 @@ The C APIs uniformly use [Image Error Codes](../../../reference/apis-image-kit/e
 
    `Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_Pixelmap_ImageInfo *imageInfo)`
 
-      ```cpp
-      // Link the .so library file in the src/main/cpp/CMakeLists.txt file: target_link_libraries(entry PUBLIC libhilog_ndk.z.so libpixelmap.so).
-      #include <hilog/log.h>
-      #include <multimedia/image_framework/image/pixelmap_native.h>
-   
-      #undef LOG_DOMAIN
-      #undef LOG_TAG
-      #define LOG_DOMAIN 0x02b6
-      #define LOG_TAG "ImageKitDemo"
-   
-      void GetImageInfoExample(OH_PixelmapNative *pixelmap) {
-          if (!pixelmap) {
-              OH_LOG_ERROR(LOG_APP, "GetImageInfoExample: pixelmap is nullptr");
-              return;
-          }
-          OH_Pixelmap_ImageInfo *imageInfo;
-          Image_ErrorCode errCode = OH_PixelmapImageInfo_Create(&imageInfo);
-          if (errCode != IMAGE_SUCCESS) {
-              OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_Create failed, errCode: %{public}d.", errCode);
-              return;
-          }
+   ```cpp
+   // Link the .so library file in the src/main/cpp/CMakeLists.txt file: target_link_libraries(entry PUBLIC libhilog_ndk.z.so libpixelmap.so).
+   #include <hilog/log.h>
+   #include <multimedia/image_framework/image/pixelmap_native.h>
+
+   #undef LOG_DOMAIN
+   #undef LOG_TAG
+   #define LOG_DOMAIN 0x02b6
+   #define LOG_TAG "ImageKitDemo"
+
+   void GetImageInfoExample(OH_PixelmapNative *pixelmap) {
+       if (!pixelmap) {
+           OH_LOG_ERROR(LOG_APP, "GetImageInfoExample: pixelmap is nullptr");
+           return;
+       }
+       OH_Pixelmap_ImageInfo *imageInfo;
+       Image_ErrorCode errCode = OH_PixelmapImageInfo_Create(&imageInfo);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_PixelmapImageInfo_Create failed, errCode: %{public}d.", errCode);
+           return;
+       }
        errCode = OH_PixelmapNative_GetImageInfo(pixelmap, imageInfo);
-          if (errCode != IMAGE_SUCCESS) {
-              OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetImageInfo failed, errCode: %{public}d.", errCode);
-              return;
-          }
-   
-          // Obtain the width, height, pixel format, and alpha type of the image.
-          uint32_t width, height, rowStride;
-          int32_t pixelFormat, alphaType;
-          OH_PixelmapImageInfo_GetWidth(imageInfo, &width);
-          OH_PixelmapImageInfo_GetHeight(imageInfo, &height);
-          OH_PixelmapImageInfo_GetRowStride(imageInfo, &rowStride);
-          OH_PixelmapImageInfo_GetPixelFormat(imageInfo, &pixelFormat);
-          OH_PixelmapImageInfo_GetAlphaType(imageInfo, &alphaType);
-          OH_PixelmapImageInfo_Release(imageInfo);
-          OH_LOG_INFO(LOG_APP,
-                      "GetImageInfo success, width: %{public}d, height: %{public}d, "
-                      "rowStride: %{public}d, pixelFormat: %{public}d, alphaType: %{public}d.",
-                      width, height, rowStride, pixelFormat, alphaType);
-      }
-      ```
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetImageInfo failed, errCode: %{public}d.", errCode);
+           return;
+       }
+
+       // Obtain the width, height, pixel format, and alpha type of the image.
+       uint32_t width, height, rowStride;
+       int32_t pixelFormat, alphaType;
+       OH_PixelmapImageInfo_GetWidth(imageInfo, &width);
+       OH_PixelmapImageInfo_GetHeight(imageInfo, &height);
+       OH_PixelmapImageInfo_GetRowStride(imageInfo, &rowStride);
+       OH_PixelmapImageInfo_GetPixelFormat(imageInfo, &pixelFormat);
+       OH_PixelmapImageInfo_GetAlphaType(imageInfo, &alphaType);
+       OH_PixelmapImageInfo_Release(imageInfo);
+       OH_LOG_INFO(LOG_APP,
+                   "GetImageInfo success, width: %{public}d, height: %{public}d, "
+                   "rowStride: %{public}d, pixelFormat: %{public}d, alphaType: %{public}d.",
+                   width, height, rowStride, pixelFormat, alphaType);
+   }
+   ```
 
 2. Modify the EXIF information.
 
    `Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)`
 
-      ```cpp
-      // Link the .so library file in the src/main/cpp/CMakeLists.txt file: target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so).
-      #include <string>
-      #include <hilog/log.h>
-      #include <multimedia/image_framework/image/image_source_native.h>
-   
-      #undef LOG_DOMAIN
-      #undef LOG_TAG
-      #define LOG_DOMAIN 0x02b6
-      #define LOG_TAG "ImageKitDemo"
-   
-      void ModifyImagePropertyExample(OH_ImageSourceNative *source) {
-          if (!source) {
-              OH_LOG_ERROR(LOG_APP, "ModifyImagePropertyExample: source is nullptr");
-              return;
-          }
-          const std::string keyStr = OHOS_IMAGE_PROPERTY_ORIENTATION;
-          const std::string valueStr = "Top-left";
-          Image_String key{const_cast<char *>(keyStr.c_str()), keyStr.length()};
-          Image_String value{const_cast<char *>(valueStr.c_str()), valueStr.length()};
-   
-          Image_ErrorCode ret = OH_ImageSourceNative_ModifyImageProperty(source, &key, &value);
-          if (ret != IMAGE_SUCCESS) {
-              OH_LOG_ERROR(LOG_APP, "ModifyImageProperty failed, code=%{public}d", ret);
-              return;
-          }
-   
-          OH_LOG_INFO(LOG_APP, "ModifyImageProperty success, key=%{public}s, value=%{public}s", keyStr.c_str(),
-                      valueStr.c_str());
-      }
-      ```
+   ```cpp
+   // Link the .so library file in the src/main/cpp/CMakeLists.txt file: target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so).
+   #include <string>
+   #include <hilog/log.h>
+   #include <multimedia/image_framework/image/image_source_native.h>
+
+   #undef LOG_DOMAIN
+   #undef LOG_TAG
+   #define LOG_DOMAIN 0x02b6
+   #define LOG_TAG "ImageKitDemo"
+
+   void ModifyImagePropertyExample(OH_ImageSourceNative *source) {
+       if (!source) {
+           OH_LOG_ERROR(LOG_APP, "ModifyImagePropertyExample: source is nullptr");
+           return;
+       }
+       const std::string keyStr = OHOS_IMAGE_PROPERTY_ORIENTATION;
+       const std::string valueStr = "Top-left";
+       Image_String key{const_cast<char *>(keyStr.c_str()), keyStr.length()};
+       Image_String value{const_cast<char *>(valueStr.c_str()), valueStr.length()};
+
+       Image_ErrorCode ret = OH_ImageSourceNative_ModifyImageProperty(source, &key, &value);
+       if (ret != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "ModifyImageProperty failed, code=%{public}d", ret);
+           return;
+       }
+
+       OH_LOG_INFO(LOG_APP, "ModifyImageProperty success, key=%{public}s, value=%{public}s", keyStr.c_str(),
+                   valueStr.c_str());
+   }
+   ```

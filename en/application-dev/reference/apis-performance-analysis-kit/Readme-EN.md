@@ -17,7 +17,7 @@
   - [@ohos.hiviewdfx.FaultLogExtensionContext (Delayed Fault Notification Context)](js-apis-hiviewdfx-FaultLogExtensionContext.md)
   - [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](js-apis-hiviewdfx-hiappevent.md)
   - [@ohos.hiviewdfx.hiRetrieval (Application Grayscale)](js-apis-hiretrieval.md)
-  - [@ohos.hiviewdfx.jsLeakWatcher (JS Leak Watcher)](js-apis-jsleakwatcher.md)
+  - [@ohos.hiviewdfx.jsLeakWatcher (ArkTS Leak Watcher)](js-apis-jsleakwatcher.md)
   <!--Del-->
   - [@ohos.hiSysEvent (HiSysEvent)(System API)](js-apis-hisysevent-sys.md)
   - [@ohos.logLibrary (Log Library) (System API)](js-apis-loglibrary-sys.md)
@@ -32,7 +32,7 @@
     - [HiCollie](capi-hicollie.md)
     - [HiDebug](capi-hidebug.md)
     - [HiLog](capi-hilog.md)
-    - [Hitrace](capi-hitrace.md)
+    - [HiTrace](capi-hitrace.md)
   - Header Files<!--performance-analysis-headerfile-->
     - [hiappevent.h](capi-hiappevent-h.md)
     - [hiappevent_cfg.h](capi-hiappevent-cfg-h.md)

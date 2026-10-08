@@ -1,4 +1,4 @@
-# @ohos.bytrace (Performance Tracing)
+# @ohos.bytrace (ByTrace)
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
@@ -6,12 +6,14 @@
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=0c0db3e174588398ce45072b7ae0a095cb0a05c5 translatedAt=2026-09-21T02:44:14.231Z pushedAt=2026-09-22T01:29:30.407Z -->
 
-The **bytrace** module implements performance tracing for processes.
+This module provides the capability of tracing process traces for application performance analysis. Developers can use performance tracing to track the execution time of key code segments, locate performance bottlenecks, and optimize application performance. It applies to scenarios such as application startup duration analysis, service process performance monitoring, and frame rate analysis.
 
 > **NOTE**
-> - The APIs provided by this module are deprecated since API version 8. You are advised to use the new APIs [@ohos.hiTraceMeter](js-apis-hitracemeter.md) instead.
-> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with the superscript to indicate their earliest API version.
+> - The APIs of this module are deprecated since API version 8. You are advised to use the new APIs [@ohos.hiTraceMeter](js-apis-hitracemeter.md) instead.
 
 ## Modules to Import
 
@@ -27,7 +29,8 @@ Marks the start of a timeslice trace task.
 
 > **NOTE**
 >
-> If multiple trace tasks with the same name need to be performed at the same time or a trace task needs to be performed multiple times concurrently, different task IDs must be specified in **startTrace**. If the trace tasks with the same name are not performed at the same time, the same task ID can be used. For details, see the bytrace.finishTrace example.
+> - If multiple tasks with the same **name** need to be traced, or the same task needs to be traced multiple times, and these tracing tasks are executed concurrently, the **taskId** of each **startTrace** call must be different. If the tracing tasks with the same **name** are executed serially, the **taskId** can be the same. An example is provided in the **bytrace.finishTrace** example below.
+> - This API is supported since API version 7 and deprecated since API version 8. You are advised to use [startTrace](js-apis-hitracemeter.md#hitracemeterstarttrace) instead.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -37,7 +40,7 @@ Marks the start of a timeslice trace task.
 | -------- | -------- | -------- | -------- |
 | name | string | Yes| Name of a timeslice trace task.|
 | taskId | number | Yes| ID of a timeslice trace task.|
-| expectedTime | number | No| Expected duration of the trace, in ms. This parameter is optional and is left blank by default.|
+| expectedTime | number | No | Expected duration (unit: ms). After this value is set, the system generates a performance warning when the actual execution time exceeds the expected value. Optional. The default value is empty, indicating that no warning is generated. |
 
 
 **Example**
@@ -55,7 +58,8 @@ Marks the end of a timeslice trace task.
 
 > **NOTE**
 >
-> To stop a trace task, the values of name and task ID in **finishTrace** must be the same as those in **startTrace**.
+> - The **name** and **taskId** of **finishTrace** must be consistent with the corresponding parameter values of **startTrace** at the beginning of the process.
+> - This API is supported since API version 7 and deprecated since API version 8. You are advised to use [finishTrace](js-apis-hitracemeter.md#hitracemeterfinishtrace) instead.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -63,8 +67,8 @@ Marks the end of a timeslice trace task.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| name | string | Yes| Name of a timeslice trace task.|
-| taskId | number | Yes| ID of a timeslice trace task.|
+| name | string | Yes | Name of the time-slice tracing task, which must be consistent with the **name** parameter value in the **startTrace** call. |
+| taskId | number | Yes | ID of the time-slice tracing task, which must be consistent with the **taskId** parameter value in the **startTrace** call. |
 
 **Example**
 
@@ -98,7 +102,12 @@ bytrace.finishTrace("myTestFunc", 1);
 
 traceByValue(name: string, count: number): void
 
-Defines a numeric variable that indicates the number of timeslice trace tasks.
+Marks a numeric variable of a pre-tracing task whose value keeps changing. **traceByValue** can be used independently to record the change trace of a numeric variable.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 8. You are advised to use [traceByValue](js-apis-hitracemeter.md#hitracemetertracebyvalue) instead.
+
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -107,7 +116,7 @@ Defines a numeric variable that indicates the number of timeslice trace tasks.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | name | string | Yes| Name of the numeric variable.|
-| count | number | Yes| Value of the numeric variable.|
+| count | number | Yes | Value of the numeric variable. |
 
 **Example**
 

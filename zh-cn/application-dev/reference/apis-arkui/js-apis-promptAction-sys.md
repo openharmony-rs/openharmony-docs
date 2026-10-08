@@ -66,3 +66,101 @@ import { promptAction } from '@kit.ArkUI';
 | --------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | distortionMode | [DistortionMode](./arkui-ts/ts-appendix-enums-sys.md#distortionmode) | 否 | 是 | 设置系统材质下弹窗的非线性动画模式。<br/>**默认值：** DistortionMode.DISTORTION_AUTO <br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 | edgeLightMode | [EdgeLightMode](./arkui-ts/ts-appendix-enums-sys.md#edgelightmode) | 否 | 是 | 设置系统材质下弹窗的流光动画模式。<br/>**默认值：** EdgeLightMode.EDGELIGHT_AUTO <br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## 示例
+
+### 示例1（文本对话框设置沉浸式材质、非线性形变与流光）
+
+该示例通过调用[showDialog](./js-apis-promptAction.md#showdialogoptions)，设置[ShowDialogOptions](#showdialogoptions)中的系统材质systemMaterial，以及非线性形变[distortionMode](#showdialogoptions)和流光[edgeLightMode](#showdialogoptions)，两者均设置为AUTO模式（依据设备算力档位和系统设置中的沉浸光感配置自适应生效）。
+
+从API版本26.0.0开始，[ShowDialogOptions](#showdialogoptions)新增distortionMode和edgeLightMode属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShowDialogExample {
+  build() {
+    Column() {
+      Button("showDialog")
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().getPromptAction().showDialog({
+            title: 'showDialog Title',
+            message: 'showDialog Text',
+            buttons: [
+              { text: 'button1', color: '#0000ff' },
+              { text: 'button2', color: '#0000ff' }
+            ],
+            // 设置沉浸式材质
+            systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK }),
+            // 非线性形变自适应
+            distortionMode: DistortionMode.DISTORTION_AUTO,
+            // 流光自适应
+            edgeLightMode: EdgeLightMode.EDGELIGHT_AUTO,
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
+该示例配图为设置沉浸式材质、非线性形变与流光的高算力设备强档效果。
+
+![ShowDialogExample](./arkui-ts/figures/showDialog_material.gif)
+
+该示例配图为未设置沉浸式材质、非线性形变与流光的高算力设备强档效果。
+
+![ShowDialogNoExample](./arkui-ts/figures/showDialog_nomaterial.gif)
+
+### 示例2（操作菜单设置沉浸式材质、非线性形变与流光）
+
+该示例通过调用[showActionMenu](./arkts-apis-uicontext-promptaction.md#showactionmenu11)，设置[ActionMenuOptions](#actionmenuoptions)中的系统材质systemMaterial，以及非线性形变[distortionMode](#actionmenuoptions)和流光[edgeLightMode](#actionmenuoptions)，两者均设置为AUTO模式（依据设备算力档位和系统设置中的沉浸光感配置自适应生效）。
+
+从API版本26.0.0开始，[ActionMenuOptions](#actionmenuoptions)新增distortionMode和edgeLightMode属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShowActionMenuExample {
+  build() {
+    Column() {
+      Button("showActionMenu")
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().getPromptAction().showActionMenu({
+            title: 'showActionMenu Title',
+            buttons: [
+              { text: 'button1', color: '#0000ff' },
+              { text: 'button2', color: '#0000ff' },
+              { text: 'button3', color: '#0000ff' }
+            ],
+            // 设置沉浸式材质
+            systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK }),
+            // 非线性形变自适应
+            distortionMode: DistortionMode.DISTORTION_AUTO,
+            // 流光自适应
+            edgeLightMode: EdgeLightMode.EDGELIGHT_AUTO,
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
+该示例配图为设置沉浸式材质、非线性形变与流光的高算力设备强档效果。
+
+![ShowActionMenuExample](./arkui-ts/figures/ActionMenu_material.gif)
+
+该示例配图为未设置沉浸式材质、非线性形变与流光的高算力设备强档效果。
+
+![ShowActionMenuNoExample](./arkui-ts/figures/ActionMenu_nomaterial.gif)

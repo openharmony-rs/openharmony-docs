@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=dbefc6565738eab45398f8fefc196f52ffb4f9c7 translatedAt=2026-08-15T01:47:07.556Z pushedAt=2026-08-15T07:11:50.482Z -->
+<!-- md-trans-meta sourceCommit=8ea556ad50860a98041332a35647945090ac4fac translatedAt=2026-09-28T02:27:41.305Z pushedAt=2026-09-29T03:46:54.787Z -->
 
 ## Event Specifications
 
@@ -171,15 +171,15 @@ For details about how to use the APIs (such as parameter usage restrictions and 
        return exports;
    }
    ```
-
+   
    In the **index.d.ts** file, define the ArkTS API.
 
    ```typescript
    export const registerWatcher: () => void;
    export const leak: () => void;
    ```
-
-7. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, add the following interface invocation to **onCreate()**.
+   
+7. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, add the following API invocation to **onCreate()**.
 
    ```typescript
    // Import the dependent module.
@@ -228,7 +228,9 @@ For details about how to use the APIs (such as parameter usage restrictions and 
      ```c++
      static napi_value DestroyWatcher(napi_env env, napi_callback_info info) {
          // Destroy the created watcher and set systemEventWatcher to nullptr.
-         OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
+         if (systemEventWatcher != nullptr) {
+            OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
+         }
          systemEventWatcher = nullptr;
          return {};
      }

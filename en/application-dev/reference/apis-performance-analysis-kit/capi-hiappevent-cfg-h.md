@@ -6,6 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=848b888642bbe64b8f889cc3f9730e42133953ff translatedAt=2026-09-21T02:20:09.926Z pushedAt=2026-09-22T01:29:30.355Z -->
 
 ## Overview
 
@@ -27,8 +28,8 @@ Defines the configuration items of the event logging configuration function. To 
 
 | Name| Description|
 | -- | -- |
-| [DISABLE](#disable) "disable" | Whether to disable event logging. The default value is **false**. The value **true** means to disable the event logging function, and the value **false** means the opposite.<br>**Since**: 8|
-| [MAX_STORAGE](#max_storage) "max_storage" | Storage quota of the event file directory. The default value is **10M**.<br>**Since**: 8|
+| [DISABLE](#disable) "disable" | Event logging switch. Default value: **false**. **true**: disables the logging function; **false**: enables the logging function.<br>**Since:** 8 |
+| [MAX_STORAGE](#max_storage) "max_storage" | Event file directory storage quota size. Default value: "10MB".<br>**Since:** 8 |
 
 
 ## Macro Description
@@ -53,6 +54,9 @@ Whether to disable event logging. The default value is **false**. The value **tr
 
 **Description**
 
-Storage quota of the event file directory. The default value is **10M**.
+Storage quota of the event file directory. Default value: "10MB".
 
 **Since**: 8
+
+
+

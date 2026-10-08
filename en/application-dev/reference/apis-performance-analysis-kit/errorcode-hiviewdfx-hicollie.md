@@ -2,10 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=f319e3e62d6356bf78f31e2e8f7ba3927caddf1e translatedAt=2026-09-21T02:40:47.171Z pushedAt=2026-09-22T01:29:30.400Z -->
 
 > **Note:**
 >
@@ -15,15 +16,15 @@
 
 **Error Message**
 
-Wrong thread context.The function can not be called from main thread.
+Wrong thread context. The function cannot be called from main thread.
 
 **Description**
 
-The API fails to be called from the thread.
+The API is called in the wrong thread.
 
 **Possible Causes**
 
-The API cannot be called from the main thread.
+The API service cannot be called from the main thread.
 
 **Solution**
 
@@ -109,7 +110,7 @@ Wrong timer id output param.
 
 **Description**
 
-The timer task ID is incorrect.
+Invalid timer ID value parameter.
 
 **Possible Causes**
 
@@ -119,4 +120,4 @@ The timer task ID is incorrect.
 **Solution**
 
 - Check the ID and ensure that it is a non-null integer pointer.
-- Retry the operation or reduce the number of HiCollie timer tasks in the process.
+- If the maximum limit is reached, reduce the calls to the hicollie detection mechanism elsewhere in the process and try again.

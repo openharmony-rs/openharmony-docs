@@ -489,8 +489,8 @@ EditableTitleBarStyleV2的构造函数。
 从API版本26.0.0开始，支持EditableTitleBarV2。
 
 ```ts
-import { Prompt } from '@kit.ArkUI';
 import {
+  Prompt,
   EditableLeftIconTypeV2,
   EditableTitleBarV2,
   EditableLeftIconV2,
@@ -562,8 +562,9 @@ struct EditableTitleBarV2Demo01 {
 从API版本26.0.0开始，支持EditableTitleBarV2。
 
 ```ts
-import { LengthMetrics, Prompt } from '@kit.ArkUI';
 import {
+  LengthMetrics,
+  Prompt,
   EditableLeftIconTypeV2,
   EditableTitleBarV2,
   EditableLeftIconV2,
@@ -709,8 +710,8 @@ struct EditableTitleBarV2Demo02 {
 从API版本26.0.0开始，支持EditableTitleBarV2。
 
 ```ts
-import { Prompt } from '@kit.ArkUI';
 import {
+  Prompt,
   EditableLeftIconTypeV2,
   EditableTitleBarV2,
   EditableLeftIconV2,
@@ -789,8 +790,7 @@ struct EditableTitleBarV2Demo03 {
 从API版本26.0.0开始，支持EditableTitleBarV2。
 
 ```ts
-import { Prompt } from '@kit.ArkUI';
-import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, EditableSaveButtonV2 } from '@kit.ArkUI';
+import { Prompt, EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, EditableSaveButtonV2 } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -825,8 +825,8 @@ struct EditableTitleBarV2Demo04 {
 从API版本26.0.0开始，支持EditableTitleBarV2。
 
 ```ts
-import { Prompt } from '@kit.ArkUI';
 import {
+  Prompt,
   EditableLeftIconTypeV2,
   EditableTitleBarV2,
   EditableLeftIconV2,
@@ -884,8 +884,9 @@ struct EditableTitleBarV2Demo05 {
 从API版本26.0.0开始，支持EditableTitleBarV2。
 
 ```ts
-import { Prompt, SymbolGlyphModifier } from '@kit.ArkUI';
 import {
+  Prompt,
+  SymbolGlyphModifier,
   EditableLeftIconTypeV2,
   EditableTitleBarV2,
   EditableLeftIconV2,

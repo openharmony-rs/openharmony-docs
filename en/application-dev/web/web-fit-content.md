@@ -38,19 +38,19 @@ As shown in Figure 3, the height of the **Web** component automatically adapts t
 
 ## Specifications and Constraints
 
-1. Set the [rendering mode](web-render-mode.md) to [synchronous](web-render-mode.md#synchronous-rendering-mode) to avoid exceptions (white screen and layout errors) caused by the excessive component size.
+1. You are advised to set the [rendering mode](web-render-mode.md) to [synchronous](web-render-mode.md#synchronous-rendering-mode) to avoid exceptions (white screen and layout errors) caused by the excessive component size.
 
-2. Disable [overScrollMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11). When the overscroll mode is enabled and a user scrolls to the edge of a web page, the **Web** component bounces back with an elastic animation, which conflicts with the rebound of the **Scroll** component and affects the experience.
+2. You are advised to disable [overScrollMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11). When the overscroll mode is enabled and a user scrolls to the edge of a web page, the **Web** component bounces back with an elastic animation, which conflicts with the rebound of the **Scroll** component and affects the experience.
 
-3. Set [keyboardAvoidMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#keyboardavoidmode12) to **RESIZE_CONTENT** to disable this mode.
+3. When [keyboardAvoidMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#keyboardavoidmode12) is set to `RESIZE_CONTENT`, this avoidance mode does not take effect.
 
-4. Do not support page zooming.
+4. Page gesture zooming is not supported.
 
-5. Do not support using the **height** attribute of the **Web** component to change the component height.
+5. Using the **height** attribute of the **Web** component to change the component height is not supported.
 
-6. Support only component height fitting in the page content, but not width fitting.
+6. Only the component height can adapt to the page content. Adaptive width is not supported.
 
-7. Do not support the waterfall page.
+7. The waterfall page is not supported.
 
 ## Sample Code
 

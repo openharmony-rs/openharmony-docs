@@ -41,11 +41,10 @@ IPC CAPI接口不直接提供获取通信代理对象的能力，该功能由[Ab
 
 CMakeLists.txt中添加以下lib。
 
-```txt
-# ipc capi
-libipc_capi.so
-# 元能力，ability capi
-libchild_process.so
+<!-- @[child_process_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(childprocesssample libipc_capi.so libchild_process.so)
 ```
 
 **头文件**

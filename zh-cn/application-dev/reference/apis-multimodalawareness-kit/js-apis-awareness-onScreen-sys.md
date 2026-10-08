@@ -287,6 +287,12 @@ getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageCon
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
 | options | [ContentOptions](#contentoptions)   | 否   | 获取屏上内容的选项，默认为不指定window ID，且其余选项均为false。 |
 
+**返回值**：
+ 
+| 类型                                        | 说明                             |
+| ------------------------------------------ | -------------------------------- |
+| Promise&lt;[PageContent](#pagecontent)&gt; | 表示携带获取页面内容的Promise对象。 |
+
 **错误码**：
 
 以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
@@ -913,7 +919,7 @@ offReadingScreenPermissionListener(callback?: Callback&lt;ReadingScreenPermissio
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
-| 202      | Permission check failed. A non-system application uses the system API. |
+| 202      | Permission check failed. A nonsystem application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
 

@@ -82,7 +82,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    bool outputDone = false;
    // 编码输入。
    bool inputDone = false;
-   std::unique_ptr<std::ifstream> inFile_;
    ```
 
 ### Surface模式
@@ -517,7 +516,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                     // 异常处理。
                     return false;
                 }
-                if (inFile_->eof()) {
+                if (inputFile->eof()) {
                     inputDone = 1;
                 }
                 break;

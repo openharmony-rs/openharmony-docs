@@ -1,4 +1,4 @@
-# @ohos.hiAppEvent (Application Event Logging)
+# @ohos.hiAppEvent (HiAppEvent)
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
@@ -6,6 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=9592faf19ea4c7cae04b17ae5443971c6b571565 translatedAt=2026-09-21T02:45:27.154Z pushedAt=2026-09-22T01:29:30.411Z -->
 
 The **hiAppEvent** module provides the application event logging functions, such as writing application events to the event file and managing the event logging configuration.
 
@@ -163,7 +164,7 @@ hiAppEvent.configure(config1);
 
 // Configure the maximum size of the directory that stores the event logging files.
 let config2: hiAppEvent.ConfigOption = {
-  maxStorage: '100M',
+  maxStorage: '100MB',
 };
 hiAppEvent.configure(config2);
 ```
@@ -176,8 +177,8 @@ Provides the configuration items for application event logging.
 
 | Name      | Type   | Read-Only| Optional| Description                                                        |
 | ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| disable    | boolean | No| Yes| Application event logging switch. The value **true** means to disable the application event logging function, and the value **false** means the opposite.|
-| maxStorage | string  | No| Yes| Maximum size of the event file storage directory. The default value is **10M**. If the specified size is exceeded, the oldest event logging files in the directory will be deleted to free up space.|
+| disable    | boolean | No | Yes | Switch for the application event logging feature. The default value is **false**. The value **true** disables event logging, and **false** does not disable event logging. |
+| maxStorage | string  | No | Yes | Quota of the directory where the local storage files of event logging data reside. The default quota is "10MB". When the directory size exceeds the quota, the directory is cleaned up by deleting event logging data files one by one from oldest to newest until the directory size no longer exceeds the quota. |
 
 
 ## EventType

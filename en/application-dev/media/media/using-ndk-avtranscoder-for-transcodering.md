@@ -1,16 +1,15 @@
 # Using AVTranscoder to Transcode Videos (C/C++)
-
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=597f548e3301ae6f375b37ce4cb51b3aa12ee211 translatedAt=2026-08-22T02:11:09.464Z pushedAt=2026-08-22T06:49:22.820Z -->
+<!-- md-trans-meta sourceCommit=f3efdb02e23121aaefae0a5dab0a37bc284fa9d3 translatedAt=2026-09-23T08:21:00.370Z pushedAt=2026-09-23T08:30:32.772Z -->
 
 Starting from API version 20, NDK (C/C++) APIs are provided for video transcoding.
 
-You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding<!--RP1--><!--RP1End-->. You can call [canIUse](../../reference/common/syscap__ndk_8h.md#caniuse) to check whether the device supports AVTranscoder. When the return value of `canIUse("SystemCapability.Multimedia.Media.AVTranscoder")` is `true`, the transcoding capability is available.
+You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding<!--RP1--><!--RP1End-->. You can call [canIUse](../../reference/common/syscap-ndk-8h.md#caniuse) to check whether the device supports AVTranscoder. When the return value of `canIUse("SystemCapability.Multimedia.Media.AVTranscoder")` is `true`, the transcoding capability is available.
 
 This topic describes how to use the AVTranscoder to implement video transcoding, covering the process of starting, pausing, resuming, and exiting transcoding.
 
@@ -232,9 +231,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
     const std::int32_t VIDEO_BITRATE = 3000000;
     OH_AVTranscoderConfig_SetDstVideoBitrate(config, VIDEO_BITRATE); // (Optional) Video bit rate.
     ```
-
     <!--RP2--><!--RP2End-->
-
 11. Call **OH_AVTranscoder_Prepare()** to prepare for transcoding. After a successful call, the instance transitions to the **AVTRANSCODER_PREPARED** state.
 
     ```c++

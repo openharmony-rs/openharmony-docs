@@ -14,7 +14,7 @@ OffscreenCanvas组件用于绘制自定义图形。
 >
 > 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> OffscreenCanvas无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
+> OffscreenCanvas使用时依赖UI上下文，无法在没有加载UI上下文时使用（如ServiceExtensionAbility，MDM企业设备管理服务等可能无UI页面的场景下使用需注意此约束），此类无UI上下文的场景建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
 
 ## 子组件
 

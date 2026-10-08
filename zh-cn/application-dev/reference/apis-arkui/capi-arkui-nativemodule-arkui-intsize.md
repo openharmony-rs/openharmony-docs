@@ -18,7 +18,7 @@ typedef struct {...} ArkUI_IntSize
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [common_type.h](capi-common-type-h.md)
 
 ## 汇总
 
@@ -28,5 +28,4 @@ typedef struct {...} ArkUI_IntSize
 | -- | -- |
 | int32_t width | 宽度，单位为px。 |
 | int32_t height | 高度，单位为px。 |
-
 

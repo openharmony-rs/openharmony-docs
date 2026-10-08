@@ -1,12 +1,11 @@
 # Macro Photography Settings (C/C++)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=03da8d98875c99278437bdd28f12d4fdb3efd8f7 translatedAt=2026-08-10T09:20:01.977Z pushedAt=2026-08-10T13:22:08.851Z -->
+<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:44:19.575Z pushedAt=2026-09-29T08:24:12.440Z -->
 
 Starting from API version 19, you can configure macro photography. This feature allows the camera to focus closely and capture detailed images of small objects through optimized optical design and algorithms.
 
@@ -14,10 +13,10 @@ Starting from API version 19, you can configure macro photography. This feature 
 
 For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md).
 
-1. Import the NDK.  
+1. Import the NDK.
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
-
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->     
+   
    ``` C
    #include <cstdint>
    #include <native_buffer/buffer_common.h>
@@ -27,7 +26,6 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -76,7 +74,7 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
 3. Call [OH_CaptureSession_IsMacroSupported()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_ismacrosupported) to check whether the current device supports macro photography.
 
    <!-- @[is_macro_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    bool NDKCamera::IsMacroSupported(Camera_CaptureSession* captureSession)
    {
@@ -102,7 +100,7 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
 4. Call [OH_CaptureSession_EnableMacro()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_enablemacro) to enable or disable macro photography.
 
    <!-- @[enable_macro](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    void NDKCamera::EnableMacro(bool isMacro)
    {
@@ -129,7 +127,7 @@ void MacroStatusCallback(Camera_CaptureSession *captureSession, bool isMacroDete
 {
     OH_LOG_INFO(LOG_APP, "MacroStatusCallback isMacro: %{public}d", isMacroDetected);
 }
-        
+
 // Register the callback function.
 Camera_ErrorCode NDKCamera::RegisterMacroStatusCallback()
 {

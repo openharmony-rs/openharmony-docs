@@ -5,6 +5,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=d6c371f5a76bcb34b41529db389afabb669dd14f translatedAt=2026-09-20T09:21:26.333Z pushedAt=2026-09-21T12:32:53.663Z -->
 
 ```c
 typedef struct ArkUI_NodeContentEvent ArkUI_NodeContentEvent
@@ -12,7 +13,7 @@ typedef struct ArkUI_NodeContentEvent ArkUI_NodeContentEvent
 
 ## Overview
 
-Defines a node content event. This is a general struct type.
+Defines a node content event. This is a general struct type. It is used as the event parameter of the node content event callback to obtain the event type and the node content object that triggers the event.
 
 **Since**: 12
 

@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -202,7 +202,7 @@ CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events
 | 参数项 | 描述 |
 | -- | -- |
 | const char* events[] | 订阅的公共事件，实际订阅的数量为`eventsNum`与`events`数组长度的最小值。 |
-| int32_t eventsNum | 订阅的公共事件数量，非负整数，取值为`events`数组长度。 |
+| int32_t eventsNum | 订阅的公共事件数量，非负整数，应与`events`数组的实际长度一致。 |
 
 **返回：**
 
@@ -254,7 +254,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeI
 | 参数项 | 描述 |
 | -- | -- |
 | [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info | 待设置发布方权限的订阅者信息对象。 |
-| const char* bundleName | 包名称。用于限制订阅方只接收该bundleName的发布者发布的公共事件。不设置时，可接收所有应用发布的公共事件。 |
+| const char* bundleName | 包名称。用于限制订阅方只接收该bundleName的发布方发布的公共事件。不设置时，可接收所有应用发布的公共事件。 |
 
 **返回：**
 
@@ -563,7 +563,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishI
 | 参数项 | 描述 |
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | 公共事件属性对象。 |
-| const char* bundleName | 设置的订阅者包名称。 |
+| const char* bundleName | 设置的订阅者包名称。设置后，只有指定包名的订阅者才能收到此公共事件。当该参数为空时，所有订阅者均可收到。 |
 
 **返回：**
 
@@ -643,7 +643,7 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* i
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | 公共事件属性对象。 |
 | const char* data | 公共事件传递的数据，字符串类型，实际有效数据长度为`length`与`data`字符串长度的最小值。 |
-| size_t length | 结果数据的长度，取值为`data`数据字符串长度。 |
+| size_t length | 结果数据的长度，应与`data`数据字符串的实际长度一致。 |
 
 **返回：**
 
@@ -1556,7 +1556,7 @@ bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, cons
 | -- | -- |
 | [CommonEvent_Subscriber](#变量)* subscriber | 公共事件的订阅者对象。 |
 | const char* data | 有序公共事件传递的数据，字符串类型，实际有效数据长度为`length`与`data`字符串长度的最小值。 |
-| size_t length | 传递的数据字节长度，取值为`data`字符串长度。 |
+| size_t length | 传递的数据字节长度，应与`data`数据字符串的实际长度一致。 |
 
 **返回：**
 

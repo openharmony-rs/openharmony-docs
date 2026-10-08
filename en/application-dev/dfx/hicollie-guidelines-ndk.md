@@ -1,26 +1,25 @@
 # Using HiCollie to Detect Service Thread Stuck and Jank Events (C/C++)
-
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=4b483f6ded13e509559a42efa5c91336f6a913b4 translatedAt=2026-08-15T01:47:30.837Z pushedAt=2026-08-15T07:18:20.496Z -->
+<!-- md-trans-meta sourceCommit=8ea556ad50860a98041332a35647945090ac4fac translatedAt=2026-09-28T02:30:19.927Z pushedAt=2026-09-29T10:13:14.416Z -->
 
 ## Overview
 
 [Application freeze (AppFreeze)](appfreeze-guidelines.md) means that an application does not respond to user operations (for example, clicking) for a specified period of time. This topic describes the capabilities provided by the HiCollie module for detecting service thread stuck and jank events and reporting stuck events.
 
-## Availability APIs
+## Available APIs
 
 | API| Description|
 | -------- | -------- |
-| OH_HiCollie_Init_StuckDetection | Registers a periodic detection task for app service thread hang. You need to implement a callback function for timed detection of service thread hang.<br/>Default detection time: reports the BUSSINESS_THREAD_BLOCK_3S alarm event at 3s, and reports the BUSSINESS_THREAD_BLOCK_6S hang event at 6s.<br/>**Note:** Use this API in a non-main thread. |
-| OH_HiCollie_Init_StuckDetectionWithTimeout | Registers a periodic detection task for app service thread hang. You need to implement a callback function for timed detection of service thread hang.<br/>You can set the hang detection time. The configurable range is [3, 15], in seconds.<br/>**Note:**<br/>- Use this API in a non-main thread.<br/>- This API is supported since API version 18. |
+| OH_HiCollie_Init_StuckDetection | Registers a periodic detection task for app service thread hangs. You need to implement a callback function for timed detection of service thread hangs.<br/>Default detection time: reports the BUSSINESS_THREAD_BLOCK_3S alarm event at 3s, and reports the BUSSINESS_THREAD_BLOCK_6S stuck event at 6s.<br/>**Note:** Use this API in a non-main thread. |
+| OH_HiCollie_Init_StuckDetectionWithTimeout | Registers a periodic detection task for app service thread hangs. You need to implement a callback function for timed detection of service thread hangs.<br/>You can set the stuck detection time. The configurable range is [3, 15], in seconds.<br/>**Note:**<br/>- Use this API in a non-main thread.<br/>- This API is supported since API version 18. |
 | OH_HiCollie_Init_JankDetection | Registers a callback function for app service thread jank detection.<br/>The thread jank monitoring feature requires you to implement two jank detection callback functions, which are placed before and after the service thread processes events. They serve as instrumentation functions to monitor the execution of service thread event processing.<br/>**Note:** Use this API in a non-main thread. |
-| OH_HiCollie_Report | Reports an app service thread hang event, generates a hang fault log, and helps locate app hang issues.<br/>First, call OH_HiCollie_Init_StuckDetection or OH_HiCollie_Init_StuckDetectionWithTimeout to initialize the detection task.<br/>If the task times out, call OH_HiCollie_Report based on the business logic to report the hang event.<br/>**Note:**<br/>- Use this API in a non-main thread.<br/>- This API takes effect only for [release version apps](performance-analysis-kit-terminology.md#applications-of-the-release-version), not for [debug version apps](performance-analysis-kit-terminology.md#applications-of-the-debug-version). |
-| OH_HiCollie_ReportInputBlock | Reports an app input unresponsive event, generates a hang fault log, and helps locate app hang issues. On PC or tablet devices, a dialog box also appears, prompting the user to continue waiting or close the app. On other devices, no dialog box appears. The following two approaches are recommended for using this API.<br/>Approach 1 (recommended): Use it together with OH_HiCollie_Report, OH_HiCollie_Init_StuckDetection, or OH_HiCollie_Init_StuckDetectionWithTimeout. The service thread periodically detects its own hang status through the above APIs. When the service thread is hung and an input event (such as a screen tap, mouse click, or keyboard input) occurs, call OH_HiCollie_ReportInputBlock.<br/>Approach 2: If the service thread can detect its own hang status without using OH_HiCollie_Report, OH_HiCollie_Init_StuckDetection, or OH_HiCollie_Init_StuckDetectionWithTimeout, call OH_HiCollie_ReportInputBlock based on the combination of the service thread hang status and input events.<br/>**Note:**<br/>- This API can be used in the main thread. For example, when an input event needs to pass through the main thread before being encapsulated and forwarded to the service thread for processing, you can maintain a status flag when the service thread is hung. The main thread then calls this API based on the service thread hang status flag and the input event.<br/>- This API takes effect only for [release version apps](performance-analysis-kit-terminology.md#applications-of-the-release-version), not for [debug version apps](performance-analysis-kit-terminology.md#applications-of-the-debug-version).<br/>- This API is supported since API version 24. |
+| OH_HiCollie_Report | Reports an app service thread stuck event, generates a stuck fault log, and helps locate app stuck issues.<br/>First, call OH_HiCollie_Init_StuckDetection or OH_HiCollie_Init_StuckDetectionWithTimeout to initialize the detection task.<br/>If the task times out, call OH_HiCollie_Report based on the business logic to report the stuck event.<br/>**Note:**<br/>- Use this API in a non-main thread.<br/>- This API takes effect only for [release version apps](performance-analysis-kit-terminology.md#applications-of-the-release-version), not for [debug version apps](performance-analysis-kit-terminology.md#applications-of-the-debug-version). |
+| OH_HiCollie_ReportInputBlock | Reports an app input unresponsiveness event, generates a stuck fault log, and helps locate app stuck issues. On PC or tablet devices, a dialog box also appears, prompting the user to continue waiting or close the app. On other devices, no dialog box appears. The following two approaches are recommended for using this API.<br/>Approach 1 (recommended): Use it together with OH_HiCollie_Report, OH_HiCollie_Init_StuckDetection, or OH_HiCollie_Init_StuckDetectionWithTimeout. The service thread periodically detects its own stuck status through the above APIs. When the service thread hangs and an input event (such as a screen tap, mouse click, or keyboard input) occurs, call OH_HiCollie_ReportInputBlock.<br/>Approach 2: If the service thread can detect its own stuck status without using OH_HiCollie_Report, OH_HiCollie_Init_StuckDetection, or OH_HiCollie_Init_StuckDetectionWithTimeout, call OH_HiCollie_ReportInputBlock based on the combination of the service thread stuck status and input events.<br/>**Note:**<br/>- This API can be used in the main thread. For example, when an input event needs to pass through the main thread before being encapsulated and forwarded to the service thread for processing, you can maintain a status flag when the service thread hangs. The main thread then calls this API based on the service thread stuck status flag and the input event.<br/>- This API takes effect only for [release version apps](performance-analysis-kit-terminology.md#applications-of-the-release-version), not for [debug version apps](performance-analysis-kit-terminology.md#applications-of-the-debug-version).<br/>- This API is supported since API version 24. |
 | OH_HiCollie_SetFreezeCallback | Sets the freeze callback into the system. The system calls this function when a freeze event occurs.<br/>**Note:** This API is supported since API version 24. |
 | OH_HiCollie_AssociateProcessReport | Actively reports a process freeze event. This generates an [app execution timeout event](hiappevent-watcher-apphicollie-events.md).<br/>**Note:** This API is supported since API version 24. |
 
@@ -31,10 +30,10 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 1. For details about the fault specifications of service thread jank events detected by **OH_HiCollie_Init_JankDetection**, see [Main Thread Jank Event Detection Principles](hiappevent-watcher-mainthreadjank-events.md#detection-principles).
 
 2. Service thread stuck events:
+   
+   (1) Principles of **OH_HiCollie_Init_StuckDetection**: The watchdog thread of the app periodically performs activation detection on service threads. If the activation detection is not executed for more than 3 seconds, a BUSSINESS_THREAD_BLOCK_3S thread alarm event is reported. If it remains unexecuted for more than 6 seconds, a BUSSINESS_THREAD_BLOCK_6S thread stuck event is reported. The two events are matched according to system rules to generate an appfreeze fault log.
 
-   (1) Principles of **OH_HiCollie_Init_StuckDetection**: The watchdog thread of the app periodically performs activation detection on service threads. If the activation detection is not executed for more than 3 seconds, a BUSSINESS_THREAD_BLOCK_3S thread alarm event is reported. If it remains unexecuted for more than 6 seconds, a BUSSINESS_THREAD_BLOCK_6S thread hang event is reported. The two events are matched according to system rules to generate an appfreeze fault log.
-
-   (2) Principles of **OH_HiCollie_Init_StuckDetectionWithTimeout**: The watchdog thread of the app periodically performs activation detection on service threads. If the activation detection is not executed for more than the **stuckTimeout** duration, a BUSSINESS_THREAD_BLOCK_3S alarm event is reported. If it remains unexecuted for more than **stuckTimeout \* 2**, a BUSSINESS_THREAD_BLOCK_6S thread hang event is reported. The two events are matched to generate an appfreeze fault log.
+   (2) Principles of **OH_HiCollie_Init_StuckDetectionWithTimeout**: The watchdog thread of the app periodically performs activation detection on service threads. If the activation detection is not executed for more than the **stuckTimeout** duration, a BUSSINESS_THREAD_BLOCK_3S alarm event is reported. If it remains unexecuted for more than **stuckTimeout \* 2**, a BUSSINESS_THREAD_BLOCK_6S thread stuck event is reported. The two events are matched to generate an appfreeze fault log.
 
 > **NOTE**
 >
@@ -341,7 +340,7 @@ The following demonstrates how to add a button in the app and click the button t
    void InitStuckDetectionWithTimeout()
    {
      // Initialize the thread hang monitoring function.
-     int initResult = OH_HiCollie_Init_StuckDetectionWithTimeout(Timer, BLOCK_TIME);
+     int initResult = OH_HiCollie_Init_StuckDetectionWithTimeout(Timer, 5); // 5: hang detection threshold
      // Success result: 0
      OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetectionWithTimeout: %{public}d", initResult);
    }
@@ -381,9 +380,9 @@ The following demonstrates how to add a button in the app and click the button t
        napi_module_register(&demoModule);
    }
    ```
-
+ 
    - Starting from API version 24, **app thread hang detection with proactive reporting of input unresponsiveness faults** is supported: **OH_HiCollie_ReportInputBlock**. The sample code is as follows:
-
+ 
    ```c++
    #include "napi/native_api.h"
    #include "hilog/log.h"
@@ -495,7 +494,7 @@ The following demonstrates how to add a button in the app and click the button t
        napi_module_register(&demoModule);
    }
    ```
-
+   
    - Starting from API version 24, **app thread hang detection with custom log generation by third-party frameworks** is supported: **OH_HiCollie_SetFreezeCallback** and **OH_HiCollie_AssociateProcessReport**. The sample code is as follows:
 
    ```c++
@@ -508,7 +507,7 @@ The following demonstrates how to add a button in the app and click the button t
    
    #undef LOG_TAG
    #define LOG_TAG "StuckTest"
-   
+
    static size_t UserCall(OH_HiCollie_Freeze_Type type, void* buffer, size_t size)
    {
       std::string source("Freeze is happened");
@@ -540,7 +539,7 @@ The following demonstrates how to add a button in the app and click the button t
       OH_HiCollie_AssociateProcessReport(true);
       return 0;
    }
-   
+
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
    {
@@ -570,7 +569,7 @@ The following demonstrates how to add a button in the app and click the button t
    ```
 
 4. Edit the **Index.ets** file under **entry > src > main > cpp > types > libentry** in the project to define the ArkTS APIs.
-
+   
    - Example for **OH_HiCollie_Init_JankDetection**:
 
    ```ts
@@ -602,7 +601,6 @@ The following demonstrates how to add a button in the app and click the button t
    export const testHiCollieSetFreezeCallback: () => void;
    export const testHiCollieAssociateProcessReport: () => void;
    ```
-
 5. Edit the **entry > src > main > ets > pages > Index.ets** file in the project:
 
    ```ts
@@ -666,7 +664,7 @@ The following demonstrates how to add a button in the app and click the button t
        .onClick(testNapi.testHiCollieStuckWithTimeoutNdk);
    }
    ```
-
+   
     - Add a click event to trigger the **OH_HiCollie_Init_StuckDetectionWithTimeout** method and the **OH_HiCollie_ReportInputBlock** method.
 
    ```ts
@@ -687,7 +685,6 @@ The following demonstrates how to add a button in the app and click the button t
        .onClick(testNapi.testHiCollieInputBlock);
    }
    ```
-
     - Add a click event to trigger the **OH_HiCollie_SetFreezeCallback** method and the **OH_HiCollie_AssociateProcessReport** method.
 
    ```ts
@@ -712,7 +709,7 @@ The following demonstrates how to add a button in the app and click the button t
 6. Click the **Run** button in DevEco Studio to run the project.
 
 7. At the bottom of DevEco Studio, switch to the **Log** tab and filter the custom **LOG_TAG**.
-
+   
    - Click the **testHiCollieJankNdk** button.
 
    The thread timeout information of the sampling stack obtained through **OH_HiCollie_Init_JankDetection()** is displayed. You can obtain the corresponding event by [subscribing to the main thread jank event](hiappevent-watcher-mainthreadjank-events-arkts.md).
@@ -727,7 +724,7 @@ The following demonstrates how to add a button in the app and click the button t
 
    - First click the **testHiCollieStuckNdk** button, and then repeatedly click the **testHiCollieInputBlock** button.
 
-   At this point, the window displays that the hang detection callback function is initialized through the **OH_HiCollie_Init_StuckDetection** API. On a PC or tablet device, clicking the **testHiCollieInputBlock** button within the first 6 seconds does not trigger a dialog box, but subsequent clicks on the button will trigger one. You can define the hang detection function or the conditions for input event judgment based on your actual service scenarios.
+   At this point, the window displays that the stuck detection callback function is initialized through the **OH_HiCollie_Init_StuckDetection** API. On a PC or tablet device, clicking the **testHiCollieInputBlock** button within the first 6 seconds does not trigger a dialog box, but subsequent clicks on the button will trigger one. You can define the stuck detection function or the conditions for input event judgment based on your actual service scenarios.
 
    - First click the **testHiCollieSetFreezeCallback** button, and then click the **testHiCollieAssociateProcessReport** button.
 
