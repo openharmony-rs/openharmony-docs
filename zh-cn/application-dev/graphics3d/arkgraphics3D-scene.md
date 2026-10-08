@@ -85,7 +85,7 @@ glTF模型中引用的纹理图片支持以下格式：
    
    ``` TypeScript
    if (this.sceneOpt) {
-     // Use Component3D to display the 3D scenario.
+     // 使用 Component3D 显示 3D 场景。
      Component3D(this.sceneOpt);
    } else {
      Text('Loading···');
