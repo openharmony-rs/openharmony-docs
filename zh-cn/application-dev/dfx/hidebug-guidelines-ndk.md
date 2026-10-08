@@ -203,6 +203,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    #include "hidebug/hidebug.h"
    #include "hilog/log.h"
    #include "test_backtrace.h"
+   #include "test_async_context.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"
@@ -230,7 +231,13 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
                "GetAppThreadCpuUsage: threadId %{public}d, cpuUsage: %{public}f", cpuUsage->threadId, cpuUsage->cpuUsage);
            cpuUsage = cpuUsage->next; // 获取下一个线程的cpu使用率对象指针。
        }
-       OH_HiDebug_FreeThreadCpuUsage(&cpuUsage); // 释放内存，防止内存泄露。
+       OH_HiDebug_FreeThreadCpuUsage(&cpuUsage); // 释放内存，防止内存泄漏。
+       return nullptr;
+   }
+   
+   napi_value TestAsyncContext(napi_env env, napi_callback_info info)
+   {
+       TestAsyncContextChain();
        return nullptr;
    }
    ```
