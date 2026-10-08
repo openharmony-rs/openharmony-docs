@@ -155,7 +155,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
          return;
        }
        this.anim = this.scene.animations[0];
-       // seek to 30%
+       // 定位到 30% 处
        this.anim.seek(0.3);
      });
    ```
