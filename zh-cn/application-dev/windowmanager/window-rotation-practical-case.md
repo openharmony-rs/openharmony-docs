@@ -21,91 +21,8 @@
 
 示例代码如下：
 
-<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->  
 
-``` TypeScript
-import { window } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
-import { Callback, BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  @State currentOrientation: string = 'UNSPECIFIED';
-  private stage: window.WindowStage = (this.getUIContext().getHostContext() as common.UIAbilityContext).windowStage;
-  private foldDisplayModeCallback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
-    console.info(`Succeeded in listening fold display mode change, data is ${data}`);
-    this.getBreakPointAndSetOrientation();
-  };
-
-  aboutToAppear() {
-    try {
-      const ret = display.isFoldable();
-      if (ret) {
-        display.on('foldDisplayModeChange', this.foldDisplayModeCallback);
-      } else {
-        this.getBreakPointAndSetOrientation();
-      }
-    } catch (err) {
-      console.error(`aboutToAppear error: ${(err as BusinessError).message}`);
-    }
-  }
-
-  aboutToDisappear() {
-    try {
-      display.off('foldDisplayModeChange', this.foldDisplayModeCallback);
-    } catch (err) {
-      console.error(`aboutToDisappear error: ${(err as BusinessError).message}`);
-    }
-  }
-
-  private getBreakPointAndSetOrientation(): void {
-    try {
-      let displayInfo = display.getDefaultDisplaySync();
-      let displayWidth = displayInfo.width;
-      let displayHeight = displayInfo.height;
-      let heightBp = displayHeight / displayWidth;
-      if (displayWidth > displayHeight) {
-        let temp = displayWidth;
-        displayWidth = displayHeight;
-        displayHeight = temp;
-      }
-      // 建议优先使用单一策略（如"FOLLOW_DESKTOP"）来应对设备差异化，若单一策略无法满足需求，则可采用断点机制屏蔽设备差异
-      // 此处是举的特殊示例，原则上支持横屏的应用，旋转策略应该是支持4个方向可旋转，此处是为了说明断点的使用方式，才举此例
-      // 600为宽度断点枚举值其中的边界值， 0.8为高宽比断点枚举值其中的边界值
-      if (displayWidth >= 600 && heightBp < 0.8) {
-        this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.LANDSCAPE)
-          .catch((err: BusinessError) => {
-            console.error(`setPreferredOrientation error: ${err.message}`);
-          });
-        this.currentOrientation = 'LANDSCAPE';
-      } else {
-        this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.PORTRAIT)
-          .catch((err: BusinessError) => {
-            console.error(`setPreferredOrientation error: ${err.message}`);
-          });
-        this.currentOrientation = 'PORTRAIT';
-      }
-    } catch (err) {
-      console.error(`getBreakPointAndSetOrientation error: ${(err as BusinessError).message}`);
-    }
-  }
-
-  build() {
-    RelativeContainer() {
-      Text(this.currentOrientation)
-        .fontWeight(600)
-        .fontSize(30)
-        .textAlign(TextAlign.Center)
-        .position({ y: 300 })
-        .width('100%')
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
 
 ## 视频类应用横竖屏切换
 
@@ -127,7 +44,7 @@ struct Index {
 
 在多设备、多形态的场景下（例如折叠屏手机、平板、外接显示器），屏幕的[rotation](../reference/apis-arkui/js-apis-display.md#属性)（物理角度）和屏幕的[orientation](../reference/apis-arkui/js-apis-display.md#属性)（逻辑横竖状态）并不总是一一对应。
 
-直板机屏幕角度、屏幕方向、窗口方向对应关系：
+直板机、双折叠展开态的屏幕角度、屏幕方向、窗口方向对应关系：
 
 | 屏幕角度 | 屏幕方向 | 窗口方向 |
 | -------- | -------- | -------- |
@@ -136,7 +53,7 @@ struct Index {
 | 180 | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
 | 270 | LANDSCAPE_INVERTED | LANDSCAPE |
 
-三折叠全展开态屏幕角度、屏幕方向、窗口方向对应关系（在某些特性下，可能会与表中所述不一致，以实际表现为准）：
+阔折叠展开态、三折叠全展开态屏幕角度、屏幕方向、窗口方向对应关系（在某些特性下，可能会与表中所述不一致，以实际表现为准）：
 
 | 屏幕角度 | 屏幕方向 | 窗口方向 |
 | -------- | -------- | -------- |
@@ -157,85 +74,5 @@ struct Index {
 
 4. 调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略锁定显示方向。
 
-<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) --> 
 
-``` TypeScript
-import { display, window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct SpecificSceneSetOrientationIndex {
-  mainWindow: window.Window | undefined;
-
-  aboutToAppear() {
-    // 在 EntryAbility.ets 中通过 windowStage.getMainWindowSync() 保存主窗
-    this.mainWindow = AppStorage.get('mainWindow_SetOrientation') as window.Window;
-  }
-
-  setOrientationByDisplay() {
-    if (!this.mainWindow) {
-      console.error('Main window is not available.');
-      return;
-    }
-    try {
-      // 1.获取当前默认Display
-      const disp = display.getDefaultDisplaySync();
-      const displayOrientation = disp.orientation; // 当前屏幕方向（0/1/2/3）
-
-      console.info(`Succeeded in getting display orientation, orientation is ${displayOrientation}`);
-      // 2.将displayOrientation转换为windowOrientation
-      let windowOrientation: number =
-        this.mainWindow.convertOrientationAndRotation(
-          window.RotationInfoType.DISPLAY_ORIENTATION,
-          window.RotationInfoType.WINDOW_ORIENTATION,
-          displayOrientation
-        );
-      // 3.根据windowOrientation映射到window.Orientation
-      let orientation: window.Orientation = window.Orientation.UNSPECIFIED;
-
-      switch (windowOrientation) {
-        case 0:
-          orientation = window.Orientation.PORTRAIT;
-          break;
-        case 1:
-          orientation = window.Orientation.LANDSCAPE_INVERTED;
-          break;
-        case 2:
-          orientation = window.Orientation.PORTRAIT_INVERTED;
-          break;
-        case 3:
-          orientation = window.Orientation.LANDSCAPE;
-          break;
-        default:
-          throw new Error('Invalid orientation value');
-      }
-      // 4.设置旋转策略锁定窗口方向
-      this.mainWindow.setPreferredOrientation(orientation).then(() => {
-        console.info('Succeeded in setting preferred orientation.');
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to set preferred orientation. Code is ${err.code}, message is ${err.message}`);
-      });
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      console.error(`Failed to set orientation by display. Code is ${err.code}, message is ${err.message}`);
-    }
-  }
-  build() {
-    Column() {
-      Text('Lock the display orientation')
-        .fontSize(17)
-      Button('Set orientation from display')
-        .onClick(() => {
-          console.info('Click: Set orientation from display');
-          this.setOrientationByDisplay();
-        })
-        .margin({ top: 20 })
-    }
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-    .height('100%')
-    .width('100%')
-  }
-}
-```
