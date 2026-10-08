@@ -125,16 +125,16 @@ ArkGraphics 3D提供基于JPEG、PNG和KTX格式创建Image资源的能力，支
          return;
        }
    
-       // create shader
+       // 创建着色器
        this.shader = await this.rf.createShader({
          name: 'shaderResource',
          uri: $rawfile('shaders/custom_shader/custom_material_sample.shader')
        });
    
-       // create imageMat
+       // 创建图像材质
        this.imageMat = await this.rf.createMaterial({ name: 'imageMat' }, MaterialType.SHADER) as ShaderMaterial;
    
-       // bind between shader and imageMat
+       // 在着色器和图像材质之间进行绑定
        this.imageMat.colorShader = this.shader;
        let createdImage =  await createImagePromise();
        if (createdImage) {
