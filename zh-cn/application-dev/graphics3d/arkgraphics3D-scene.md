@@ -244,10 +244,10 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
    ``` TypeScript
    let light: Promise<Light> = sceneFactory.createLight(lightParameter, LightType.DIRECTIONAL);
    light.then(async (lightEntity: Light) => {
-     // Set the color of the directional light.
+     // 设置平行光的颜色。
      lightEntity.color = { r: 0.8, g: 0.1, b: 0.2, a: 1.0 };
    
-     // Set other light parameters.
+     // 设置其他光照参数。
      // ...
      // ...
    }).catch((err: string) => {
