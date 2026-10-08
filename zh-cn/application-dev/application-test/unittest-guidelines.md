@@ -700,22 +700,22 @@ ArgumentMatchers用于用户自定义函数参数，当开发者想基于某类�
 | anyFunction | 设定用户传任何function类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyFunction方式调用。                                                                             |
 | anyNumber | 设定用户传任何数字类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyNumber方式调用。                                                                                     |
 | anyObj | 设定用户传任何对象类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyObj方式调用。 |
-| notString | @since1.0.28，设定用户传任何非字符串参数，执行的结果都是预期的值，使用ArgumentMatchers.notString方式调用。 |
-| notBoolean | @since1.0.28，设定用户传任何非boolean类型参数，执行的结果都是预期的值，使用ArgumentMatchers.notBoolean方式调用。 |
-| notNumber | @since1.0.28，设定用户传任何非数字类型参数，执行的结果都是预期的值，使用ArgumentMatchers.notNumber方式调用。 |
-| notObj | @since1.0.28，设定用户传任何非对象类型参数，执行的结果都是预期的值，使用ArgumentMatchers.notObj方式调用。 |
-| notFunction | @since1.0.28，设定用户传任何非function类型参数，执行的结果都是预期的值，使用ArgumentMatchers.notFunction方式调用。 |
+| notString | 设定用户传任何非字符串参数，执行的结果都是预期的值，使用ArgumentMatchers.notString方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notBoolean | 设定用户传任何非boolean类型参数，执行的结果都是预期的值，使用ArgumentMatchers.notBoolean方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notNumber | 设定用户传任何非数字类型参数，执行的结果都是预期的值，使用ArgumentMatchers.notNumber方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notObj | 设定用户传任何非对象类型参数，执行的结果都是预期的值，使用ArgumentMatchers.notObj方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notFunction | 设定用户传任何非function类型参数，执行的结果都是预期的值，使用ArgumentMatchers.notFunction方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
 
 | 接口名 | 功能说明    |
 | --- |--------------|
 | matchRegexs | 设定用户传任何符合正则表达式验证的参数，执行的结果都是预期的值，使用ArgumentMatchers.matchRegexs(Regex)方式调用。 |
-| notMatchRegexs | @since1.0.28，设定用户传任何不符合正则表达式验证的参数，执行的结果都是预期的值，使用ArgumentMatchers.notMatchRegexs(RegExp)方式调用。 |
-| containSubstring | @since1.0.28，设定用户传任何包含特定子串的字符串参数，执行的结果都是预期的值，使用ArgumentMatchers.containSubstring(subString)方式调用。 |
-| notContainSubstring | @since1.0.28，设定用户传任何不包含特定子串的字符串参数，执行的结果都是预期的值，使用ArgumentMatchers.notContainSubstring(subString)方式调用。 |
-| containSubArray | @since1.0.28，设定用户传任何包含特定数组的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.containSubArray(subArray)方式调用。 |
-| notContainSubArray | @since1.0.28，设定用户传任何不包含特定数组的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.notContainSubArray(subArray)方式调用。 |
-| containValue | @since1.0.28，设定用户传任何包含特定值的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.containValue(value)方式调用。 |
-| notContainValue | @since1.0.28，设定用户传任何不包含特定值的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.notContainValue(value)方式调用。 |
+| notMatchRegexs | 设定用户传任何不符合正则表达式验证的参数，执行的结果都是预期的值，使用ArgumentMatchers.notMatchRegexs(RegExp)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| containSubstring | 设定用户传任何包含特定子串的字符串参数，执行的结果都是预期的值，使用ArgumentMatchers.containSubstring(subString)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notContainSubstring | 设定用户传任何不包含特定子串的字符串参数，执行的结果都是预期的值，使用ArgumentMatchers.notContainSubstring(subString)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| containSubArray | 设定用户传任何包含特定数组的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.containSubArray(subArray)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notContainSubArray | 设定用户传任何不包含特定数组的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.notContainSubArray(subArray)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| containValue | 设定用户传任何包含特定值的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.containValue(value)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notContainValue | 设定用户传任何不包含特定值的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.notContainValue(value)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
 
 
 > **说明：**
