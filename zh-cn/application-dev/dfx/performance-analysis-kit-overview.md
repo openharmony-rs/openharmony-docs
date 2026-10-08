@@ -52,14 +52,14 @@ Performance Analysis Kit承载着HarmonyOS DFX子系统面向应用开发者提�
 
 | 能力 | 支持设备 |
 | ------- | ------------ |
-| 检测模式 | 	支持Phone、PC/2in1、Tablet、Wearable、TV。 |
-| 系统调试信息获取 | 	支持Phone、PC/2in1、Tablet、Wearable、TV。 |
+| 检测模式 | 支持Phone、PC/2in1、Tablet、Wearable、TV。 |
+| 系统调试信息获取 | 支持Phone、PC/2in1、Tablet、Wearable、TV。 |
 
 **支持的国家/地区：**
 
 | 能力 | 支持的国家/地区 |
 | ------- | ----------------------------------------------------------------- |
-| 检测模式 | 只支持中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）。  |
+| 检测模式 | 请参见[支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-releases/sdk-supported-regions)。  |
 | 系统调试信息获取 | 请参见[支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-releases/sdk-supported-regions)。  |
 
 
