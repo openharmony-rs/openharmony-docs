@@ -75,9 +75,9 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
    <!-- @[anim_camera_sceneopt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) --> 
    
    ``` TypeScript
-   // create a new camera.
+   // 创建一个新相机。
    this.cam = await rf.createCamera({ name: 'Camera' });
-   // set the camera.
+   // 设置相机。
    this.cam.enabled = true;
    this.cam.position.z = 5;
    this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
