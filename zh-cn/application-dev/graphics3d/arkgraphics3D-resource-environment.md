@@ -67,7 +67,7 @@ ArkGraphics 3D支持开发者创建环境资源，用于定义3D场景背景。
    ``` TypeScript
    this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
    
-   // record original material
+   // 记录原始材质
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
