@@ -207,11 +207,11 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
    ``` TypeScript
    function createShaderPromise(): Promise<Shader> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // 确保在访问sceneFactory之前场景已加载
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
    
-         // Create a SceneResourceParameters object and use it to create a shader
+         // 创建一个SceneResourceParameters对象，并用它来创建着色器
          let sceneResourceParameter: SceneResourceParameters = {
            name: 'shaderResource',
            uri: $rawfile('shaders/custom_shader/custom_material_sample.shader')
