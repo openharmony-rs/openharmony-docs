@@ -73,7 +73,7 @@ ArkGraphics 3D提供基于JPEG、PNG和KTX格式创建Image资源的能力，支
    ``` TypeScript
    this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
    
-   // record original material
+   // 记录原始材质
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
