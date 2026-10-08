@@ -271,7 +271,7 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
      this.cam = await this.rf.createCamera({ name: 'Camera1' });
      this.cam.enabled = true;
      this.cam.position.z = 5;
-     // Initialize color value
+     // 初始化颜色值
      this.red = this.light.color.r;
      this.green = this.light.color.g;
      this.blue = this.light.color.b;
