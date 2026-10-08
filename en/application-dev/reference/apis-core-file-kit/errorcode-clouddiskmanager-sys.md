@@ -180,33 +180,15 @@ The callback table is not registered.
 
 **Description**
 
-The callback table of the cloud disk application is not registered, or the hydration progress callback is not registered.
+The callback table of the cloud disk application is not registered, or no usable sync root matches the path.
 
 **Possible Causes**
 
-The target path is not within any registered sync root directory, or the third-party cloud disk application corresponding to the sync root of the target path has not registered a callback table. Alternatively, off('hydrateProgress') is called when the current instance has not registered a callback through on('hydrateProgress').
+The target path is not within any registered sync root directory, or the third-party cloud disk application corresponding to the sync root of the target path has not registered a callback table.
 
 **Solution**
 
-Ensure that the target path is within a registered sync root directory and that the corresponding third-party cloud disk application has registered a callback table. Subscribe to the event before unsubscribing from it.
-
-## 34400022 Callback Table Already Registered
-
-**Error Message**
-
-The callback table has been registered.
-
-**Description**
-
-The callback has been registered.
-
-**Possible Causes**
-
-A callback has already been registered through on('hydrateProgress') on the same CloudDiskSystemAccessor instance, and on('hydrateProgress') is called again before the subscription is cancelled.
-
-**Solution**
-
-Call off('hydrateProgress') to unsubscribe from the event before subscribing to it again.
+Ensure that the target path is within a registered sync root directory and that the corresponding third-party cloud disk application has registered a callback table.
 
 ## 34400023 Not a Directory
 
@@ -261,24 +243,6 @@ The file path passed in, or the file name in it, exceeds the system limit.
 **Solution**
 
 Shorten the file name or path, and then try again.
-
-## 34400028 Placeholder Not Fully Hydrated
-
-**Error Message**
-
-The placeholder file is not fully hydrated.
-
-**Description**
-
-The placeholder file is not fully hydrated.
-
-**Possible Causes**
-
-The dehydration API is called on a placeholder file that is unhydrated or partially hydrated.
-
-**Solution**
-
-Call hydratePlaceholder to complete the hydration before dehydration.
 
 ## 34400029 Dehydration Denied
 

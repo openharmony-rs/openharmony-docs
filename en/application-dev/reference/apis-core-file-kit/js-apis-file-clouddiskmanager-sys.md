@@ -154,6 +154,8 @@ A constructor used to create a **CloudDiskSystemAccessor** instance.
 
 **Since**: 26.0.1
 
+**Required permissions**: ohos.permission.ACCESS_CLOUD_DISK_INFO
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.CloudDiskManager
@@ -164,7 +166,8 @@ For details about the error codes, see [Cloud Disk Management Error Codes](error
 
 | ID| Error Message|
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
 | 34400014 | Temporary failure. Retry is recommended. |
 
 **Example**
@@ -182,11 +185,11 @@ try {
 }
 ```
 
-### on('hydrateProgress')<sup>26+</sup>
+### onHydrateProgress<sup>26+</sup>
 
-on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
+onHydrateProgress(callback: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
 
-Subscribes to hydration progress events. This API is applicable to the scenario where the File Manager displays the hydration progress of files. After the subscription, progress notifications of all hydration tasks of the current user (including those initiated by third-party cloud disk applications through the CAPI) are received, and files are distinguished by **filePath** in [HydrateProgress](#hydrateprogress26). Only one callback can be registered on the same instance. Calling this API again before the subscription is cancelled throws error code 34400022. To cancel the subscription, use [off('hydrateProgress')](#offhydrateprogress26).
+Subscribes to progress events of hydration and cancellation operations invoked on this instance. This API is applicable to the scenario where the File Manager displays the hydration progress of files. The callback is selected by the calling instance, regardless of the target file. Only one callback can be registered for this instance at a time. Repeated subscriptions with valid arguments retain the existing callback without reporting a duplicate-registration error. Subscribing after a task starts, or subscribing again after calling [offHydrateProgress](#offhydrateprogress26), receives subsequent events routed to this instance. Earlier events are not replayed. An instance can start multiple hydration tasks at the same time, and files are distinguished by **filePath** in [HydrateProgress](#hydrateprogress26).
 
 **Since**: 26.0.1
 
@@ -200,8 +203,7 @@ Subscribes to hydration progress events. This API is applicable to the scenario 
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| type | 'hydrateProgress' | Yes| Type of the event to subscribe to. The value is 'hydrateProgress' (hydration progress event).|
-| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | Yes| Callback invoked when the hydration progress of a task changes.|
+| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | Yes| Callback invoked when the progress of a hydration task started by this instance changes.|
 
 **Error codes**
 
@@ -211,12 +213,10 @@ For details about the error codes, see [Cloud Disk Management Error Codes](error
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
 | 34400003 | IPC communication failed. |
 | 34400008 | The sync root path is not registered. |
 | 34400014 | Temporary failure. Retry is recommended. |
-| 34400022 | The callback table has been registered. |
 
 **Example**
 
@@ -232,19 +232,19 @@ let callback = (progress: cloudDiskManager.HydrateProgress) => {
 };
 
 try {
-  accessor.on('hydrateProgress', callback);
+  accessor.onHydrateProgress(callback);
   console.info('subscribe hydrateProgress successfully');
 } catch (err) {
   let error: BusinessError = err as BusinessError;
-  console.error(`on hydrateProgress failed. Code: ${error.code}, message: ${error.message}`);
+  console.error(`onHydrateProgress failed. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
-### off('hydrateProgress')<sup>26+</sup>
+### offHydrateProgress<sup>26+</sup>
 
-off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
+offHydrateProgress(callback?: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
 
-Unsubscribes from hydration progress events. All 'hydrateProgress' callbacks registered on the current instance are unsubscribed regardless of whether **callback** is specified. If the current instance has not subscribed to the event, calling this API throws error code 34400021.
+Unsubscribes this instance from hydration progress events. This operation does not cancel the hydration tasks started by this instance, and subscriptions registered by other instances are not affected. If no callback is registered on the current instance, this API succeeds after permission and parameter checks.
 
 **Since**: 26.0.1
 
@@ -258,8 +258,7 @@ Unsubscribes from hydration progress events. All 'hydrateProgress' callbacks reg
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| type | 'hydrateProgress' | Yes| Type of the event to unsubscribe from. The value is 'hydrateProgress' (hydration progress event).|
-| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | No| Callback to be unregistered. All 'hydrateProgress' callbacks registered on the current instance are unsubscribed regardless of this parameter.|
+| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | No| Callback to be unregistered. The hydration progress callback registered on the current instance is unsubscribed regardless of this parameter.|
 
 **Error codes**
 
@@ -269,12 +268,10 @@ For details about the error codes, see [Cloud Disk Management Error Codes](error
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
 | 34400003 | IPC communication failed. |
 | 34400008 | The sync root path is not registered. |
 | 34400014 | Temporary failure. Retry is recommended. |
-| 34400021 | The callback table is not registered. |
 
 **Example**
 
@@ -288,15 +285,15 @@ let callback = (progress: cloudDiskManager.HydrateProgress) => {
   console.info(`hydrate progress - filePath: ${progress.filePath}, state: ${progress.state}`);
 };
 
-accessor.on('hydrateProgress', callback);
+accessor.onHydrateProgress(callback);
 
 try {
-  accessor.off('hydrateProgress', callback); // Unsubscribe from the specified callback.
-  accessor.off('hydrateProgress'); // Unsubscribe from all callbacks.
+  accessor.offHydrateProgress(callback); // Unsubscribe from the specified callback.
+  accessor.offHydrateProgress(); // Unsubscribe from all callbacks.
   console.info('unsubscribe hydrateProgress successfully');
 } catch (err) {
   let error: BusinessError = err as BusinessError;
-  console.error(`off hydrateProgress failed. Code: ${error.code}, message: ${error.message}`);
+  console.error(`offHydrateProgress failed. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -308,8 +305,8 @@ Starts or cancels hydration of a placeholder file. This API is applicable to the
 
 > **NOTE**
 >
-> - If **callbackType** is **FETCH_DATA**, hydration starts. The promise is fulfilled once the hydration task is created and queued. This only indicates that the task has been created, not that the file has started downloading or the hydration is complete. To obtain the actual progress, subscribe to [on('hydrateProgress')](#onhydrateprogress26). The file hydration state changes from PENDING and IN_PROGRESS to the final state COMPLETED or CANCELLED.
-> - If **callbackType** is **CANCEL_FETCH_DATA**, hydration is cancelled. If an in-progress hydration task exists for the target file, the task is cancelled (the progress callback finally receives the CANCELLED state). If no in-progress hydration task exists, the promise is rejected with error code 34400032.
+> - If **callbackType** is **FETCH_DATA**, hydration starts. The promise is fulfilled once the hydration task is created and queued. This only indicates that the task has been created, not that the file has started downloading or the hydration is complete. The hydration progress is delivered to the [onHydrateProgress](#onhydrateprogress26) callback of the instance that starts the task, and a callback does not have to be registered before starting or cancelling a task. The file hydration state changes from PENDING and IN_PROGRESS to the final state COMPLETED or CANCELLED.
+> - If **callbackType** is **CANCEL_FETCH_DATA**, hydration is cancelled. If an in-progress hydration task exists for the target file, the task is cancelled, and the CANCELLED event is delivered only to the instance that requests the cancellation, even if the task was started by another instance. If no in-progress hydration task exists, the promise is rejected with error code 34400032. If the cancelling instance has no registered callback, its cancellation event is not delivered to another instance or replayed later. Automatic cancellation by the service is routed to the instance that started the task.
 > - The number of pending (queued) hydration tasks is limited (20 for a single cloud disk application and 40 globally). When the limit is reached, the promise is rejected with error code 34400034. In this case, wait for some hydration tasks to complete or be cancelled, and then try again. In addition, a maximum of five hydration tasks of a single cloud disk application and ten hydration tasks globally can run at the same time, and excess tasks wait in the queue without an error being reported.
 
 **Since**: 26.0.1
@@ -325,7 +322,7 @@ Starts or cancels hydration of a placeholder file. This API is applicable to the
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | filePath | string | Yes| Path of the placeholder file. The value must be an absolute path prefixed with "/storage/Users/currentUser/" and within the registered sync root directory of a third-party cloud disk application.|
-| callbackType | [CallbackType](#callbacktype26) | Yes| Callback type. The value **FETCH_DATA** starts hydration, and the value **CANCEL_FETCH_DATA** cancels hydration.|
+| callbackType | [CallbackType](#callbacktype26) | Yes| Callback type. The value **FETCH_DATA** starts hydration, and the value **CANCEL_FETCH_DATA** cancels hydration. The value **DEHYDRATE** is not supported by this API and results in error code 34400001.|
 | priority | [HydratePriority](#hydratepriority26) | Yes| Priority of the hydration task. This parameter takes effect only when **callbackType** is **FETCH_DATA**.|
 
 **Return value**
@@ -342,7 +339,6 @@ For details about the error codes, see [Cloud Disk Management Error Codes](error
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
 | 34400001 | Invalid argument. |
 | 34400003 | IPC communication failed. |
@@ -369,7 +365,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let accessor: cloudDiskManager.CloudDiskSystemAccessor = new cloudDiskManager.CloudDiskSystemAccessor();
 let filePath: string = '/storage/Users/currentUser/Docs/cloud/photo.jpg';
 
-accessor.on('hydrateProgress', (progress: cloudDiskManager.HydrateProgress) => {
+accessor.onHydrateProgress((progress: cloudDiskManager.HydrateProgress) => {
   console.info(`hydrate progress - filePath: ${progress.filePath}, state: ${progress.state}`);
   console.info(`processedSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
 });
@@ -386,7 +382,7 @@ accessor.hydratePlaceholder(filePath, cloudDiskManager.CallbackType.FETCH_DATA,
 
 dehydrateFile(filePath: string): Promise&lt;void&gt;
 
-Dehydrates a fully hydrated placeholder file, reverting it to an unhydrated placeholder to release local storage space. This API is applicable to the storage space optimization scenario of the File Manager. This API uses a promise to return the result.
+Dehydrates a fully hydrated placeholder file, reverting it to an unhydrated placeholder to release local storage space. This API is applicable to the storage space optimization scenario of the File Manager. The file can have been hydrated by another instance, and this operation does not emit hydration progress events. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -422,7 +418,6 @@ For details about the error codes, see [Cloud Disk Management Error Codes](error
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
 | 34400001 | Invalid argument. |
 | 34400003 | IPC communication failed. |
@@ -436,7 +431,6 @@ For details about the error codes, see [Cloud Disk Management Error Codes](error
 | 34400023 | The parent directory of the target path is not a directory. |
 | 34400024 | The target path does not exist. |
 | 34400025 | The file name or path is too long. |
-| 34400028 | The placeholder file is not fully hydrated. |
 | 34400029 | The application denied placeholder dehydration. |
 | 34400033 | The stored placeholder state is invalid. |
 
@@ -487,7 +481,7 @@ Enumerates the states of the sync root.
 
 ## HydrateProgress<sup>26+</sup>
 
-Describes the progress of a hydration task, which is reported by the callback subscribed via [on('hydrateProgress')](#onhydrateprogress26).
+Describes the progress of a hydration task, which is reported by the callback subscribed via [onHydrateProgress](#onhydrateprogress26).
 
 **Since**: 26.0.1
 
@@ -497,10 +491,10 @@ Describes the progress of a hydration task, which is reported by the callback su
 
 | Name     | Type  | Read-Only| Optional| Description     |
 | --------- | ------ | ---- | ---- | ---------------------------- |
-| filePath | string | No  | No  | File path.    |
+| filePath | string | No  | No  | Original absolute path of the file, consistent with the one passed in to hydratePlaceholder.    |
 | state   | [HydrateProgressState](#hydrateprogressstate26) | No  | No  | Hydration progress state.  |
-| processedSize   | number | No  | No  | Number of bytes hydrated. This field is valid only when **state** is IN_PROGRESS.  |
-| totalSize   | number | No  | No  | Total size of the file being hydrated, in bytes.  |
+| processedSize   | long | No  | No  | Number of bytes hydrated. This field is valid only when **state** is IN_PROGRESS. The unit is byte.  |
+| totalSize   | long | No  | No  | Total size of the file being hydrated, in bytes.  |
 
 ## HydrateProgressState<sup>26+</sup>
 
