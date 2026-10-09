@@ -624,7 +624,7 @@ onBatteryLevelChange(mechId: number, callback: Callback\<BatteryLevelInfo>): voi
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
 | mechId | number | 是 | 需要订阅的设备id。 |
-| callback | Callback\<[BatteryLevelInfo](#batterylevelInfo)> | 是 | 回调函数，电池电量变化的回调函数。 |
+| callback | Callback\<[BatteryLevelInfo](#BatteryLevelInfo)> | 是 | 回调函数，电池电量变化的回调函数。 |
 
 **错误码：**
 
@@ -662,7 +662,7 @@ offBatteryLevelChange(mechId: number, callback?: Callback\<BatteryLevelInfo>): v
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
 | mechId | number | 是 | 需要取消订阅的设备id。 |
-| callback | Callback\<[BatteryLevelInfo](#batterylevelInfo)> | 否 |  mechanicManager.offBatteryLevelChange(mechId)注册的回调函数。不填时默认取消所有注册的回调函数。 |
+| callback | Callback\<[BatteryLevelInfo](#BatteryLevelInfo)> | 否 |  mechanicManager.offBatteryLevelChange(mechId)注册的回调函数。不填时默认取消所有注册的回调函数。 |
 
 **错误码：**
 
@@ -705,7 +705,7 @@ getDeviceAdsorbState(mechId: number): AdsorbState
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| [AdsorbState](#adsorbstate) | 设备吸附状态。 |
+| [AdsorbState](#AdsorbState) | 设备吸附状态。 |
 
 **错误码：**
 
