@@ -396,7 +396,7 @@
 | --------- | ------------------------------------------- | ---- | ---- | ---------------- |
 | musicInfo | [SearchPlayMusicInfo](#searchplaymusicinfo) | 否   | 是   | 搜播的音频信息。 |
 | videoInfo | [SearchPlayVideoInfo](#searchplayvideoinfo) | 否   | 是   | 搜播的视频信息。 |
-| karaokeInfo | [SearchPlayKaraokeInfo](#searchplaykaraokeinfo) | 否   | 是   | 搜播的K歌信息。<br>**起始版本：** 26.0.1 |
+| karaokeInfo | [SearchPlayKaraokeInfo](#searchplaykaraokeinfo) | 否   | 是   | 搜播的K歌信息。如果此参数留空，则仅启动K歌应用。<br>**起始版本：** 26.0.1 |
  
 ## SearchPlayKaraokeInfo
  
@@ -424,8 +424,6 @@
 | queryKeyWords | string                                            | 否   | 是   | 关键词检索槽位。 |
 | extra         | string                                            | 否   | 是   | K歌的额外信息。  |
 | items         | [SearchPlayKaraokeItem](#searchplaykaraokeitem)[] | 否   | 是   | K歌曲目列表。    |
-| displayName   | string                                            | 否   | 是   | K歌的显示名称。  |
-| description   | string                                            | 否   | 是   | 对K歌的描述。    |
  
 ## SearchPlayKaraokeItem
  
@@ -439,8 +437,8 @@
  
 | 名称       | 类型   | 只读 | 可选 | 说明               |
 | ---------- | ------ | ---- | ---- | ------------------ |
-| entityId   | string | 否   | 否   | K歌项目的唯一标识。 |
-| entityName | string | 否   | 是   | K歌项目的名称。     |
+| entityId   | string | 否   | 否   | K歌媒体资源的唯一标识。 |
+| entityName | string | 否   | 是   | K歌媒体资源的名称。     |
 
 ## SearchPlayMusicInfo
 
