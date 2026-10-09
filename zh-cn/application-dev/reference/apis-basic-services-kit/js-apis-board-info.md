@@ -48,7 +48,7 @@ import { boardInfo } from '@kit.BasicServicesKit';
 
 | 错误码ID | 错误信息 |
 |---------|---------|
-| 201 | Permission denied. requires ohos.permission.ACCESS_BOARD_INFO |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**
 

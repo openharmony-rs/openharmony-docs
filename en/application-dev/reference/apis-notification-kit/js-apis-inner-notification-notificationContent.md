@@ -2,12 +2,12 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=8fa2dcc866325d394bcc777aefa34161a20f7429 translatedAt=2026-09-09T06:17:29.946Z pushedAt=2026-09-12T06:23:49.093Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:18:40.845Z pushedAt=2026-10-08T09:16:51.651Z -->
 
-NotificationContent defines the content structure of a notification and provides interfaces for describing multiple notification content types. When an application needs to publish a notification, it can select the corresponding content type interface to construct the [notification content](../../notification/notification-glossary.md#notification-content) based on the display requirements of the notification (such as plain text, long text, multiline text, picture, and live view).
+NotificationContent defines the content structure of a notification and provides interfaces for describing multiple notification content types. When an application needs to publish a notification, it can select the corresponding content type interface to construct the [notification content](../../notification/notification-glossary.md#notification-content) based on the display requirements of the notification (such as basic text, long text, multi-line text, picture, and live view).
 
 > **NOTE**
 >
@@ -21,13 +21,13 @@ NotificationContent defines the content structure of a notification and provides
 
 | Name          | Type                                                                       | Read-Only| Optional| Description              |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| notificationContentType<sup>11+</sup>    | [notificationManager.ContentType](./js-apis-notificationManager.md#contenttype)                | No  | Yes  | [Content type](../../notification/notification-glossary.md#content-type) of the notification, which specifies the content layout type of the notification and determines the display style of the notification in the [notification center](../../notification/notification-glossary.md#notification-center). It must be used together with the notification content object of the corresponding type. For example, when it is set to NOTIFICATION_CONTENT_BASIC_TEXT, the normal field must also be filled in.       |
-| normal         | [NotificationBasicContent](#notificationbasiccontent)                      | No  | Yes  | Basic notification content. This parameter is used when **notificationContentType** is **NOTIFICATION_CONTENT_BASIC_TEXT**. The notification displays the title and body in a plain text style.   |
+| notificationContentType<sup>11+</sup>    | [notificationManager.ContentType](js-apis-notificationManager.md#contenttype)                | No  | Yes  | [Content type](../../notification/notification-glossary.md#content-type) of the notification, which specifies the content layout type of the notification and determines the display style of the notification in the [notification center](../../notification/notification-glossary.md#notification-center). It must be used together with the notification content object of the corresponding type. For example, when it is set to **NOTIFICATION_CONTENT_BASIC_TEXT**, the **normal** field must also be filled in.       |
+| normal         | [NotificationBasicContent](#notificationbasiccontent)                      | No  | Yes  | Basic notification content. This parameter is used when **notificationContentType** is **NOTIFICATION_CONTENT_BASIC_TEXT**. The notification displays the title and body in a basic text style.   |
 | longText       | [NotificationLongTextContent](#notificationlongtextcontent)                | No  | Yes  | Long text notification content. This parameter is used when **notificationContentType** is **NOTIFICATION_CONTENT_LONG_TEXT**. The complete long text content can be displayed after the notification is expanded. |
 | multiLine      | [NotificationMultiLineContent](#notificationmultilinecontent)              | No  | Yes  | Multi-line notification content. This parameter is used when **notificationContentType** is **NOTIFICATION_CONTENT_MULTILINE**. The notification is displayed in a multi-line list style after expansion.   |
 | picture        | [NotificationPictureContent](#notificationpicturecontent)                  | No  | Yes  | Picture notification content. This parameter is used when **notificationContentType** is **NOTIFICATION_CONTENT_PICTURE**. The picture can be displayed after the notification is expanded.   |
-| systemLiveView<sup>11+</sup> | [NotificationSystemLiveViewContent](#notificationsystemliveviewcontent)    | No  | Yes  | [System live view](../../notification/notification-glossary.md#system-live-view) type notification content. Third-party applications are not supported to directly create this type of notification. After the system agent creates a system live view type notification, a third-party application can publish a notification with the same ID to update the specified content.|
-| contentType<sup>(deprecated)</sup> | [notification.ContentType](./js-apis-notification.md#contenttype)  | No | Yes | Notification content type.<br>This attribute is supported since API version 7 and deprecated since API version 11. You are advised to use **notificationContentType** instead.      |
+| systemLiveView<sup>11+</sup> | [NotificationSystemLiveViewContent](#notificationsystemliveviewcontent)    | No  | Yes  | [System live view](../../notification/notification-glossary.md#system-live-view) type notification content. Third-party applications cannot directly create this type of notification. After the system agent creates a system live view type notification, a third-party application can publish a notification with the same ID to update the specified content.|
+| contentType<sup>(deprecated)</sup> | [notification.ContentType](js-apis-notification.md#contenttype)  | No  | Yes  | Notification content type.<br>This attribute is supported since API version 7 and deprecated since API version 11. You are advised to use **notificationContentType** instead.       |
 
 ## NotificationBasicContent
 
@@ -48,7 +48,7 @@ Describes the long text notification. This API is inherited from [NotificationBa
 
 > **NOTE**
 >
-> - When this type of notification forms a [group notification](../../notification/notification-glossary.md#group-notification) with other notifications, the display effect of this notification type defaults to the collapsed state, and the displayed title and content are the `title` and `text` in the [plain text](#notificationbasiccontent) inherited by this type.<br>When this type of notification is displayed individually and does not form a group notification with other notifications, the display effect of this notification type defaults to the expanded state, the displayed title is the expanded title `expandedTitle`, and the displayed content is the long text `longText`.
+> - When this type of notification forms a [group notification](../../notification/notification-glossary.md#group-notification) with other notifications, the display effect of this notification type defaults to the collapsed state, and the displayed title and content are the `title` and `text` in the [basic text](#notificationbasiccontent) inherited by this type.<br>When this type of notification is displayed individually and does not form a group notification with other notifications, the display effect of this notification type defaults to the expanded state, the displayed title is the expanded title `expandedTitle`, and the displayed content is the long text `longText`.
 >
 > - When the user clicks a notification in grouped display to view each notification's details, the display effect of this notification changes to the expanded state.
 >
@@ -69,7 +69,7 @@ Describes the multi-line text notification. This API is inherited from [Notifica
 
 > **NOTE**
 >
-> - When this type of notification forms a [group notification](../../notification/notification-glossary.md#group-notification) with other notifications, the display effect of this notification type defaults to the collapsed state, and the displayed title and content are the `title` and `text` in the [plain text](#notificationbasiccontent) inherited by this type.<br>When this type of notification is displayed individually and does not form a group notification with other notifications, the display effect of this notification type defaults to the expanded state, the displayed title is the expanded title `longTitle`, and the multiline text content `lines` is displayed as the content in multiple lines.
+> - When this type of notification forms a [group notification](../../notification/notification-glossary.md#group-notification) with other notifications, the display effect of this notification type defaults to the collapsed state, and the displayed title and body are the `title` and `text` of the [basic text](#notificationbasiccontent) inherited by this type.<br>When this type of notification is displayed individually and does not form a group notification with other notifications, the display effect of this notification type defaults to the expanded state, the displayed title is the expanded title `longTitle`, and the multi-line text content `lines` is displayed as the body in multiple lines.
 >
 > - When the user clicks a notification in grouped display to view each notification's details, the display effect of this notification changes to the expanded state.
 >
@@ -90,11 +90,11 @@ Describes the picture-attached notification. This API is inherited from [Notific
 
 > **NOTE**
 >
-> - When this type of notification forms a [group notification](../../notification/notification-glossary.md#group-notification) with other notifications, the display effect of this notification type defaults to the collapsed state, and the displayed title and content are the `title` and `text` in the [plain text](#notificationbasiccontent) inherited by this type.<br>When this type of notification is displayed individually and does not form a group notification with other notifications, the display effect of this notification type defaults to the expanded state, the displayed title is the expanded title `expandedTitle`, and the displayed content is the `text` in the `plain text` inherited by this type plus the picture content `picture` of this type.
+> - When this type of notification forms a [group notification](../../notification/notification-glossary.md#group-notification) with other notifications, the display effect of this notification type defaults to the collapsed state, and the displayed title and body are the `title` and `text` in the [basic text](#notificationbasiccontent) inherited by this type.<br>When this type of notification is displayed individually without forming a group notification with other notifications, the display effect of this notification type defaults to the expanded state, the displayed title is the expanded title `expandedTitle`, and the displayed body is the `text` in the inherited `basic text` and the picture content `picture` of this type.
 >
-> - When the user clicks a notification in grouped display to view each notification's details, the display effect of this notification changes to the expanded state.
+> - When the user clicks a notification in grouped display to view the details of each notification, the display effect of this notification changes to the expanded state.
 >
-> - The actual display effect depends on the device capability and the [notification center](../../notification/notification-glossary.md#notification-center) UI style<!--RP1--><!--RP1End-->.
+> - The actual display effect depends on the device capability and the UI style of the [notification center](../../notification/notification-glossary.md#notification-center)<!--RP1--><!--RP1End-->.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -203,4 +203,3 @@ Describes the [notification progress](../../notification/notification-glossary.m
 | maxValue        | number         | No  | Yes  | Maximum value of the progress.|
 | currentValue    | number         | No  | Yes  | Current value of the progress.|
 | isPercentage    | boolean        | No  | Yes  | Whether to display the progress as a percentage. The value defaults to **false**.<br> - **true**: The progress is displayed as a percentage.<br> - **false**: The progress is displayed as an absolute value.|
-<!--no_check-->

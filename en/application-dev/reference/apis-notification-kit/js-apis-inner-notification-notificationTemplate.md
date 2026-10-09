@@ -1,12 +1,11 @@
 # NotificationTemplate
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:37:09.948Z pushedAt=2026-06-30T10:57:37.010Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:23:07.139Z pushedAt=2026-10-08T09:30:07.776Z -->
 
 This module defines the notification template, which is used to specify the template type for a notification.
 
@@ -24,4 +23,3 @@ This module defines the notification template, which is used to specify the temp
 | ---- | ---------------------- | ---- | ----|----------- |
 | name | string | No | No | Template name. Currently, only the progress bar notification template indicating download progress is supported, with the value **downloadTemplate**. The string length cannot exceed 202 bytes; any excess will be truncated. It cannot be an empty string. |
 | data | Record<string, Object> | No | No | Template data.<br> - **title**: Download title. Mandatory field, with the value being a string type.<br> - **fileName**: Download file name. Mandatory field, with the value being a string type.<br> - **progressValue**: Download progress, with the value being a numeric type. The recommended value range is 0 to 100, representing the percentage progress. When **progressValue** is less than or equal to 0, the progress is 0; when it is greater than or equal to 100, the progress ring disappears, indicating that the download is complete. |
-<!--no_check-->

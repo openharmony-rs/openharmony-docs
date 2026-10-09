@@ -315,7 +315,7 @@ static napi_value TestClose(napi_env env, napi_callback_info info)
             int value = 10;
             int ret = eventfd_write(fd, value);
             if (ret == -1){
-                OH_LOG_INFO(LOG_APP, "write failed!");
+                OH_LOG_ERROR(LOG_APP, "write failed!");
                 continue;
             }
         }
@@ -443,7 +443,7 @@ static napi_value TestClose(napi_env env, napi_callback_info info)
             int value = 10;
             int ret = eventfd_write(fd, value);
             if (ret == -1){
-                OH_LOG_INFO(LOG_APP, "write failed!");
+                OH_LOG_ERROR(LOG_APP, "write failed!");
                 continue;
             }
         }

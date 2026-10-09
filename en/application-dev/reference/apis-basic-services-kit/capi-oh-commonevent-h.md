@@ -2,10 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-23T02:06:37.834Z pushedAt=2026-09-23T10:59:08.325Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:40:42.685Z pushedAt=2026-10-08T02:39:02.483Z -->
 
 ## Overview
 
@@ -203,7 +203,7 @@ Creates the subscriber information.
 | Name| Description|
 | -- | -- |
 | const char* events[] | Pointer to the common events. The actual number of subscribed common events is the smaller value between **eventsNum** and **events**.|
-| int32_t eventsNum | Number of common events to subscribe to. The value is a non-negative integer and is the length of the **events** array.|
+| int32_t eventsNum | Number of common events to subscribe to. The value is a non-negative integer and should be the same as the actual length of the **events** array. |
 
 **Returns**
 
@@ -255,7 +255,7 @@ Sets the publisher bundle name.
 | Name| Description|
 | -- | -- |
 | [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info | Pointer to the subscriber information object for which the publisher permission is to be set.|
-| const char* bundleName | Pointer to the bundle name. This parameter is used to specify that the subscriber receives only public events published by the publisher with the specified bundle name. If this parameter is not set, the subscriber can receive all public events published by the app.|
+| const char* bundleName | Pointer to the bundle name to set. After this parameter is set, only the subscriber with the specified bundle name can receive the common event. If this parameter is left empty, all subscribers can receive the common event. |
 
 **Returns**
 
@@ -564,7 +564,7 @@ Sets the bundle name of a common event.
 | Name| Description|
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | Pointer to the property object of a common event.|
-| const char* bundleName | Pointer to the bundle name to set.|
+| const char* bundleName | Subscriber bundle name to set. After setting, only subscribers with the specified bundle name can receive this common event. When this parameter is empty, all subscribers can receive it. |
 
 **Returns**
 
@@ -644,7 +644,7 @@ Sets the result data (string type) of a common event.
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | Pointer to the property object of a common event.|
 | const char* data | Pointer to the result data to set. The value is a string. The valid data length is the smaller value between **length** and **data**.|
-| size_t length | Length of the result data. The value is the length of the **data** string.|
+| size_t length | Length of the result data. The value should be the same as the actual length of the **data** string. |
 
 **Returns**
 
@@ -1557,7 +1557,7 @@ Sets the result data (string type) of an ordered common event.
 | -- | -- |
 | [CommonEvent_Subscriber](#variables)* subscriber| Pointer to the common event subscriber.|
 | const char* data | Pointer to the result data to set. The valid data length is the smaller value between **length** and **data**.|
-| size_t length | Length of the data to be transferred, in bytes. The value is the length of the **data** string.|
+| size_t length | Length of the data to be transferred, in bytes. The value should be the same as the actual length of the **data** string. |
 
 **Returns**
 

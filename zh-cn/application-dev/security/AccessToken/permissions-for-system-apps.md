@@ -2591,7 +2591,7 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | SmartHomeHost
 
 **起始版本**：10
 
@@ -2605,7 +2605,7 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | SmartHomeHost
 
 **起始版本**：10
 

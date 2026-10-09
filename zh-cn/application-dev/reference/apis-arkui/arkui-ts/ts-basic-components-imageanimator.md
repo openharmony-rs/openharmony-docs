@@ -161,6 +161,26 @@ fillMode(value: FillMode)
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [FillMode](ts-appendix-enums.md#fillmode) | 是   | 当前播放方向下，动画开始前和结束后的状态。<br/>默认值：FillMode.Forwards |
 
+### interpolation
+
+interpolation(value: ImageInterpolation)
+
+设置帧图片的插值效果。用于优化图片缩放时的锯齿问题。SVG类型图源不支持该属性。未通过该接口设置时，默认值为ImageInterpolation.Low。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                          | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | [ImageInterpolation](ts-basic-components-image.md#imageinterpolation) | 是   | 帧图片的插值效果。 |
+
 ### iterations
 
 iterations(value: number)
