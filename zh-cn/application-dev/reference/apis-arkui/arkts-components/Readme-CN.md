@@ -395,7 +395,7 @@
   - [DrawModifier](arkts-arkui-common-comp-drawmodifier-c.md)
   - [DynamicNode](arkts-arkui-common-comp-dynamicnode-c.md)
   - [LayoutPolicy](arkts-arkui-common-comp-layoutpolicy-c.md)
-  - [MutableBuilder](arkts-arkui-common-comp-mutablebuilder-c.md)
+  - [type MutableBuilder](arkts-arkui-common-comp-mutablebuilder-c.md)
   - [ProgressMask](arkts-arkui-common-comp-progressmask-c.md)
   - [RawInputEventWrapper](arkts-arkui-common-comp-rawinputeventwrapper-c.md)
   - [ReadonlyEnvKey](arkts-arkui-common-comp-readonlyenvkey-c.md)
