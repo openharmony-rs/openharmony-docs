@@ -3854,7 +3854,7 @@ struct Index {
 | isVisible | boolean | 否 | 是 | 元素是否可见。true表示元素可见，false表示元素不可见。<br>默认值：false。|
 | longClickable | boolean | 否 | 是 | 元素是否可长按。true表示可长按，false表示不可长按。<br>默认值：false。|
 | pageId | number | 否 | 是 | 页面ID。<br>默认值：-1。|
-| rect                | [UIRect](#UIRect)  | 否  | 是  | 元素的区域。|
+| rect                | [UIRect](#uirect)  | 否  | 是  | 元素的区域。|
 | scrollable          | boolean | 否  | 是  | 元素是否可滚动。true表示元素可滚动，false表示不可滚动。<br>默认值：false。|
 | selected         | boolean | 否  | 是  | 元素是否已选中。true表示已选中，false表示未选中。<br>默认值：false。|
 | text                 | string | 否  | 是  | 元素的文本内容。|
@@ -3888,8 +3888,8 @@ struct Index {
 
 | 名称                  | 类型                                                             | 只读 | 可选 | 说明             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
-| focusedElement | [UIAccessibilityElement](#UIAccessibilityElement) | 否 | 是 | 当前聚焦节点的信息。|
-| unfocusedElement | [UIAccessibilityElement](#UIAccessibilityElement) | 否 | 是 | 上一个聚焦节点的信息。|
+| focusedElement | [UIAccessibilityElement](#uiaccessibilityelement) | 否 | 是 | 当前聚焦节点的信息。|
+| unfocusedElement | [UIAccessibilityElement](#uiaccessibilityelement) | 否 | 是 | 上一个聚焦节点的信息。|
 
 ## accessibility.getFocusedUIAccessibilityElement
 
@@ -3943,7 +3943,7 @@ onUIAccessibilityFocusChanged(callback: Callback&lt;UIAccessibilityFocusChangeIn
 
 | 参数名      | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;UIAccessibilityFocusChangeInfo&gt; | 是    | 回调函数，无障碍聚焦节点发生变化的时候，通过此回调函数进行通知。返回值为[UIAccessibilityFocusChangeInfo](#UIAccessibilityFocusChangeInfo)。 |
+| callback | Callback&lt;UIAccessibilityFocusChangeInfo&gt; | 是    | 回调函数，无障碍聚焦节点发生变化的时候，通过此回调函数进行通知。返回值为[UIAccessibilityFocusChangeInfo](#uiaccessibilityfocuschangeinf)。 |
 
 **错误码：**
 
