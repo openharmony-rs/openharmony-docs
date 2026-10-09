@@ -372,7 +372,33 @@ void setText6(ArkUI_NodeHandle &text6)
     ArkUI_NumberValue baselineOffset = {.f32 = VALUE_10};
     ArkUI_AttributeItem baselineOffsetItem = {&baselineOffset, VALUE_1};
     Manager::nodeAPI_->setAttribute(imageSpan, NODE_IMAGE_SPAN_BASELINE_OFFSET, &baselineOffsetItem);
+    // 使用slice设置ImageSpan的四边拉伸区域，顺序为left、top、right、bottom。
+    ArkUI_NumberValue resizableSlice[] = {
+        {.f32 = 10.0f}, {.f32 = 10.0f}, {.f32 = 10.0f}, {.f32 = 10.0f}};
+    ArkUI_AttributeItem resizableSliceItem = {.value = resizableSlice, .size = VALUE_4};
+    Manager::nodeAPI_->setAttribute(imageSpan, NODE_IMAGE_SPAN_RESIZABLE, &resizableSliceItem);
     Manager::nodeAPI_->addChild(text6, imageSpan);
+
+    // lattice与slice分别设置在不同的ImageSpan上；同一节点同时设置时优先使用lattice。
+    ArkUI_NodeHandle latticeImageSpan = Manager::nodeAPI_->createNode(ARKUI_NODE_IMAGE_SPAN);
+    Manager::nodeAPI_->setAttribute(latticeImageSpan, NODE_WIDTH, &width);
+    Manager::nodeAPI_->setAttribute(latticeImageSpan, NODE_HEIGHT, &height);
+    Manager::nodeAPI_->setAttribute(latticeImageSpan, NODE_IMAGE_SPAN_SRC, &spanUrl);
+    const int32_t xDivs[] = {20, 30};
+    const int32_t yDivs[] = {30, 60};
+    constexpr uint32_t xCount = sizeof(xDivs) / sizeof(xDivs[0]);
+    constexpr uint32_t yCount = sizeof(yDivs) / sizeof(yDivs[0]);
+    OH_Drawing_Rect* bounds = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_Lattice* resizableLattice = nullptr;
+    OH_Drawing_ErrorCode errorCode = OH_Drawing_LatticeCreate(
+        xDivs, yDivs, xCount, yCount, bounds, nullptr, 0, nullptr, 0, &resizableLattice);
+    OH_Drawing_RectDestroy(bounds);
+    if (errorCode == OH_DRAWING_SUCCESS) {
+        ArkUI_AttributeItem resizableLatticeItem = {.object = resizableLattice};
+        Manager::nodeAPI_->setAttribute(
+            latticeImageSpan, NODE_IMAGE_SPAN_RESIZABLE, &resizableLatticeItem);
+    }
+    Manager::nodeAPI_->addChild(text6, latticeImageSpan);
 }
 ```
 
