@@ -122,6 +122,7 @@
    let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
    let appId: string = 'com.example.kvstoresamples';
    let storeId: string = 'storeId';
+   // 获取context
    const context = EntryAbility.getContext();
    ```
 
