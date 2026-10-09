@@ -203,5 +203,3 @@ The following is a complete **menu.json** configuration file example, including 
 The following figure shows the effect.
 
 ![right-click-demo](figures/right_click_demo.png)
-
-<!--no_check-->
