@@ -1,4 +1,4 @@
-# @ohos.net.mdns (MDNS Management)
+# @ohos.net.mdns (mDNS Management)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->

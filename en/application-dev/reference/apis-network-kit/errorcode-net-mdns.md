@@ -1,4 +1,4 @@
-# MDNS Error Codes
+# mDNS Error Codes
 
 <!-- md-trans-meta sourceCommit=fe47b7db75861b58ddb0d93e5f0db87ae361144c translatedAt=2026-09-28T01:18:57.979Z pushedAt=2026-10-09T02:26:22.732Z -->
 

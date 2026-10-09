@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -15,7 +15,7 @@
 
 **API 组合使用关系说明：**
 
-本模块的事件通信遵循三条组合调用链：订阅流、发布流与有序事件流。其中订阅流与发布流通过事件名称关联，发布者与订阅者无需感知对方存在。
+本模块的事件通信遵循三条组合调用链：订阅流、发布流与有序事件流。其中订阅流与发布流通过事件名称关联，发布方与订阅者无需感知对方存在。
 
 **订阅流：创建订阅者 → 注册订阅 → 接收事件 → 取消订阅**
 

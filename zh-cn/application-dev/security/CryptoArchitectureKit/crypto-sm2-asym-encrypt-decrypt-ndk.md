@@ -9,6 +9,11 @@
 
 对应的算法规格请查看[非对称密钥加解密算法规格：SM2](crypto-encryption-decryption.md#sm2)。
 
+## 在CMake脚本中链接相关动态库
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
+
 **加密**
 
 1. 调用[OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create)、[OH_CryptoAsymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate)，生成SM2密钥类型为SM2_256的非对称密钥对（keyPair）。keyPair对象中包括公钥PubKey、私钥PriKey。

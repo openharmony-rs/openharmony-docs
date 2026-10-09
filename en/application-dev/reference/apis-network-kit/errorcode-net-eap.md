@@ -1,4 +1,4 @@
-# Extended Authentication Error Codes
+# Extensible Authentication Error Codes
 
 <!-- md-trans-meta sourceCommit=e75dab7e271311a5103ef7c57cad620c8a400383 translatedAt=2026-09-28T01:17:47.268Z pushedAt=2026-10-09T02:19:54.980Z -->
 
