@@ -73,8 +73,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 volumeManager.getExternalDiskInfos().then((disks: Array<volumeManager.ExternalDiskInfo>) => {
   console.info("getExternalDiskInfos successfully:" + JSON.stringify(disks));
-}).catch((error: BusinessError): void => {
-  console.error(`Failed to getExternalDiskInfos. Code: ${error.code}, message: ${error.message}`);
+}).catch((error: Error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to getExternalVolumeInfos. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -130,8 +131,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 volumeManager.getExternalVolumeInfos().then((volumes: Array<volumeManager.ExternalVolumeInfo>) => {
   console.info("getExternalVolumeInfos successfully:" + JSON.stringify(volumes));
-}).catch((error: BusinessError): void => {
-  console.error(`Failed to getExternalVolumeInfos. Code: ${error.code}, message: ${error.message}`);
+}).catch((error: Error) => {
+  const err = error as BusinessError;
+  console.error(`Failed to getExternalDiskInfos. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
