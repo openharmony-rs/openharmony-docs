@@ -1364,7 +1364,7 @@ Starts cast-enabled device discovery. This API uses a promise to return the resu
 
 | Name  | Type                                 | Mandatory| Description                                 |
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
-| filter | number | No| Filter criteria for device discovery. The value consists of **ProtocolType**s obtained from the bitwise OR operation.|
+| filter | number | No| Filter criteria for device discovery. The value consists of **ProtocolType**s obtained from the bitwise OR operation. |
 | drmSchemes | Array\<string> | No| Filter criteria for discovering devices that support DRM resource playback. The value consists of DRM UUIDs.<br>This parameter is supported since API version 12.|
 
 **Return value**
