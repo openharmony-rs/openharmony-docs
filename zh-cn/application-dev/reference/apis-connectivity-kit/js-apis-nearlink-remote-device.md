@@ -734,7 +734,7 @@ try {
 ```
 
 
-### DeviceInformation
+## DeviceInformation
 
 表示远端设备信息。
 
@@ -749,7 +749,7 @@ try {
 | manufacturerData | string | 否 | 否 | 厂商信息。数据为二进制编码格式，可通过buffer.from(manufacturerData, 'binary')等方式解析。 |
 | modelData | string | 否 | 否 | 设备型号信息。数据为二进制编码格式，可通过buffer.from(modelData, 'binary')等方式解析。 |
 
-### ConnectionStateParam
+## ConnectionStateParam
 
 订阅的连接状态变化事件上报结果。
 
@@ -767,7 +767,7 @@ try {
 | connectionReason | [ConnectionReason](#connectionreason) | 否 | 否 | 原因值。 |
 | reasonMsg | string | 否 | 是 | 原因详情。该字段仅用于日志信息，不应用于逻辑处理。无原因详情时，该字段默认为空字符串。 |
 
-### ConnectionReason
+## ConnectionReason
 
 星闪连接状态变化结果的原因值。
 
@@ -789,7 +789,7 @@ try {
 | CONNECTION_FAIL_CONNECTION_NUM_LIMITED | 7 | 表示连接数超出限制。 |
 
 
-### PairingStateParam
+## PairingStateParam
 
 订阅的配对状态变化结果。
 
@@ -808,7 +808,7 @@ try {
 | reasonMsg | string | 否 | 是 | 原因详情。该字段仅用于日志信息，不应用于逻辑处理。无原因详情时，该字段默认为空字符串。 |
 
 
-### PairingRequestParam
+## PairingRequestParam
 
 表示订阅的配对请求事件上报结果。
 
@@ -825,7 +825,7 @@ try {
 | pairingType | [PairingType](#pairingtype) | 否 | 否 | 表示配对类型。 |
 
 
-### PairingReason
+## PairingReason
 
 表示星闪配对状态变化结果的原因值，为枚举值。
 
