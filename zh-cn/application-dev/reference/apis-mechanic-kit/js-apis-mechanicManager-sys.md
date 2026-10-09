@@ -608,7 +608,7 @@ mechanicManager.searchTarget(targetInfo,
     console.info(`'result:' ${searchResult}`);
 });
 ```
-  
+
 ## mechanicManager.onBatteryLevelChange
 
 onBatteryLevelChange(mechId: number, callback: Callback\<BatteryLevelInfo>): void
@@ -895,8 +895,7 @@ console.info(`'Query the adsorb state successfully, axis state:' ${axisStatus}`)
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
 | targetType | [TargetType](#targettype21) | 否 | 否 | 搜索目标的相关信息。 |
-  
-  
+ 
  
 ## SearchParams<sup>21+<sup>
 
@@ -921,7 +920,8 @@ console.info(`'Query the adsorb state successfully, axis state:' ${axisStatus}`)
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
 | targetCount | number | 否 | 否 | 搜索到的目标数量。 |
-  
+
+
 ## BatteryLevelInfo
 
 电量状态变化信息。
@@ -935,7 +935,8 @@ console.info(`'Query the adsorb state successfully, axis state:' ${axisStatus}`)
 | mechId | number | 否 | 否 | 机械体设备ID。 |
 | batteryLevel | number | 否 | 否 | 设备电量。 |
 | isCharging | boolean | 否 | 否 | 是否充电中。 |
-  
+
+
 ## AdsorbState  
 
 设备吸附状态的枚举。
