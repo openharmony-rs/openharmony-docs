@@ -7575,9 +7575,9 @@
 						"start_line":16
 					},
 					{
-						"end_line":51,
-						"name":"release_pixelMapDecoder",
-						"start_line":44
+						"end_line":74,
+						"name":"release_imageSource",
+						"start_line":64
 					}
 				]
 			},
@@ -12426,9 +12426,9 @@
 						"start_line":16
 					},
 					{
-						"end_line":51,
-						"name":"release_pixelMapDecoder",
-						"start_line":44
+						"end_line":74,
+						"name":"release_imageSource",
+						"start_line":64
 					}
 				]
 			},
