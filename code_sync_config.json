@@ -50864,7 +50864,7 @@
 						"start_line":57
 					},
 					{
-						"end_line":54,
+						"end_line":56,
 						"name":"promise_then_catch_handling",
 						"start_line":16
 					}
