@@ -46,23 +46,6 @@ Performance Analysis Kit承载着HarmonyOS DFX子系统面向应用开发者提�
 - 调试命令提供包含[hdc](hdc.md)、[hilog](hilog.md)、[hidumper](hidumper.md)、[hitrace](hitrace.md)、[hiperf](hiperf.md)等工具用于调试系统和应用。
 
 
-## 约束与限制
-
-**支持的设备**
-
-| 能力 | 支持设备 |
-| ------- | ------------ |
-| 检测模式 | 支持Phone、PC/2in1、Tablet、Wearable、TV。 |
-| 系统调试信息获取 | 支持Phone、PC/2in1、Tablet、Wearable、TV。 |
-
-**支持的国家/地区：**
-
-| 能力 | 支持的国家/地区 |
-| ------- | ----------------------------------------------------------------- |
-| 检测模式 | 请参见[支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-releases/sdk-supported-regions)。  |
-| 系统调试信息获取 | 请参见[支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-releases/sdk-supported-regions)。  |
-
-
 ## 亮点/特征
 
 **便捷地构建APM系统**
@@ -88,3 +71,5 @@ Performance Analysis Kit承载着HarmonyOS DFX子系统面向应用开发者提�
 - 支持追踪进程轨迹，进行程序性能分析。
 
 <!--RP1--><!--RP1End-->
+
+<!--RP2--><!--RP2End-->
