@@ -66,7 +66,8 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
 ## 完整示例代码
 
 ArkTS-Dyn示例：
-  
+   <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) -->
+
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
