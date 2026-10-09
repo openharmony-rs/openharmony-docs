@@ -152,7 +152,7 @@ Hydration in progress.
 
 **处理步骤**
 
-等待水合完成，或先调用[hydratePlaceholder](js-apis-file-clouddiskmanager-sys.md#hydrateplaceholder26)（callbackType取CANCEL_FETCH_DATA）取消水合任务后再操作。
+等待水合完成，或先调用[hydratePlaceholder](js-apis-file-clouddiskmanager-sys.md#hydrateplaceholder)（callbackType取CANCEL_FETCH_DATA）取消水合任务后再操作。
 
 ## 34400020 磁盘可用空间不足
 
@@ -278,7 +278,7 @@ The placeholder file is already fully hydrated.
 
 **处理步骤**
 
-无需处理。水合在原路径完成，文件内容写入调用[hydratePlaceholder](js-apis-file-clouddiskmanager-sys.md#hydrateplaceholder26)时传入的filePath路径，可直接访问。
+无需处理。水合在原路径完成，文件内容写入调用[hydratePlaceholder](js-apis-file-clouddiskmanager-sys.md#hydrateplaceholder)时传入的filePath路径，可直接访问。
 
 ## 34400032 无进行中的水合任务
 
@@ -332,4 +332,4 @@ The number of active placeholder hydration tasks has reached the limit.
 
 **处理步骤**
 
-请等待部分水合任务完成或取消后再重试；可通过[onHydrateProgress](js-apis-file-clouddiskmanager-sys.md#onhydrateprogress26)订阅水合进度事件，在收到COMPLETED或CANCELLED状态后再发起水合。
+请等待部分水合任务完成或取消后再重试；可通过[onHydrateProgress](js-apis-file-clouddiskmanager-sys.md#onhydrateprogress)订阅水合进度事件，在收到COMPLETED或CANCELLED状态后再发起水合。
