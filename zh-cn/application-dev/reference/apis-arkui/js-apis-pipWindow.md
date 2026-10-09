@@ -661,6 +661,10 @@ setAutoStartEnabled(enable: boolean): void
 
 在使用XComponent方案实现画中画功能并结合Navigation进行路由管理时，首次调用setAutoStartEnabled(true)方法，系统会缓存当前应用传入的NavigationId的栈顶信息。
 
+> **说明：**
+>
+> 跳转同名页面时会复用缓存页面，如果页面名为缓存的Navigation栈顶则不会跳转。如果需要跳转同名页面，则需要创建同名页面的新实例，将[NavigationOptions](./arkui-ts/ts-basic-components-navigation.md#navigationoptions12)的[launchMode](./arkui-ts/ts-basic-components-navigation.md#launchmode12枚举说明)设置为NEW_INSTANCE即可。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
