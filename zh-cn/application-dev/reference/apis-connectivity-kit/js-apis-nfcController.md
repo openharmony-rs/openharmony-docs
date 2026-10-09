@@ -212,7 +212,7 @@ on(type: 'nfcStateChange', callback: Callback&lt;[NfcState](#nfcstate)&gt;): voi
  
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| type | string | 是 | 固定填"nfcStateChange"字符串。 |
+| type | string | 是 | 固定填'nfcStateChange'字符串。 |
 | callback | Callback&lt;[NfcState](#nfcstate)&gt; | 是 | 回调函数，返回NFC状态的枚举值。 |
 
 **示例：**
@@ -232,7 +232,7 @@ off(type: 'nfcStateChange', callback?: Callback&lt;[NfcState](#nfcstate)&gt;): v
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| type | string | 是 | 固定填"nfcStateChange"字符串。 |
+| type | string | 是 | 固定填'nfcStateChange'字符串。 |
 | callback | Callback&lt;[NfcState](#nfcstate)&gt; | 否 | NFC状态改变回调函数，可以空缺不填。如果callback不填，将取消注册该事件关联的所有回调函数。 |
   
 **示例：**
@@ -241,7 +241,7 @@ off(type: 'nfcStateChange', callback?: Callback&lt;[NfcState](#nfcstate)&gt;): v
 import { nfcController } from '@kit.ConnectivityKit';
 
 // 注册回调以接收nfc状态更改通知
-nfcController.on("nfcStateChange", (nfcState : number) => {
+nfcController.on('nfcStateChange', (nfcState: number) => {
   console.info("nfcController on callback nfcState: " + nfcState);
 });
 
@@ -272,5 +272,5 @@ if (nfcController.isNfcOpen()) {
 }
 
 // 取消注册回调
-nfcController.off("nfcStateChange");
+nfcController.off('nfcStateChange');
 ```
