@@ -39,7 +39,7 @@
 2. **OH_MD_KEY_VIDEO_DECODER_SPEED（解码倍速）**
    - 类型：`double`
    - 取值范围：严格大于0.0。
-   - 描述：**配置或切换到`ADAPTIVE`模式时，必须在同一个`OH_AVFormat`中同步配置当前倍速**，作为系统动态计算的依据。在`ADAPTIVE`模式下改变倍速时，也需更新此参数；初始化为`FULL`模式时无需配置。
+   - 描述：配置或切换到`ADAPTIVE`模式时，强烈建议同时显式配置当前播放倍速，以获得最佳的算法准确性；倍速变化时建议同步更新。初始化为`FULL`模式时无需配置。
 
 3. **OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO（保留比例）**
    - 类型：`double`
@@ -51,14 +51,13 @@
 - **格式支持**：此能力仅在视频解码链路生效，当前仅支持H.264、H.265及H.266码流格式。
 - **参数异常兜底**：在`UNIFORM`模式下，若传入的保留比例非法或未明确指定，系统将默认以30fps为目标输出帧率进行解码与送显。
 - **硬件能力降级**：`ADAPTIVE`模式依赖硬件解码器输出运动矢量（MV）信息的能力。在无法提供MV数据的硬件平台上，系统将在底层自动触发基础降级策略（对外仍保留`ADAPTIVE`模式状态）。此时系统仍能维持基础的流畅播放效果，但无法获得基于内容感知的最佳收益。
-- **MV信息输出**：自适应模式的丢帧判决模块依赖解码过程的MV信息。支持在初始化阶段配置`FULL`模式，并在播放过程中切换到`ADAPTIVE`模式后使用MV信息，无需为获取MV信息而在初始化阶段配置`ADAPTIVE`模式。MV信息是否可用仍取决于硬件解码器能力。
 - **音视频同步（AV Sync）安全**：智能倍速丢帧机制仅决定帧的存留，不会修改保留帧原始的PTS（显示时间戳）与DTS（解码时间戳）信息，不影响音画同步。
 
 ## 倍速播放场景开发实践
 
 对于常规视频播放业务，建议采用**初始化阶段配置与动态切换结合**的策略。
 
-- **初始化配置**：以正常倍速起播时，在视频起播前配置为全量直通（`FULL`）模式，无需设置解码倍速参数。后续切入`ADAPTIVE`模式时仍可使用MV信息。
+- **初始化配置**：以正常倍速起播时，在视频起播前配置为全量直通（`FULL`）模式，无需设置解码倍速参数。
 - **动态切换**：在播放过程中，当目标倍速大于1.0x时，通过`OH_VideoDecoder_SetParameter`在同一个`OH_AVFormat`中下发`ADAPTIVE`模式与当前倍速；当恢复至1.0x及以下倍速时，切回`FULL`模式，恢复全量帧解码输出。
 
 示例在`video_decoder.cpp`中将本能力的初始化配置、倍速切换和温控降载逻辑分别封装为独立函数，并通过代码标签引用，避免其他特性的配置变更影响本指南的示例。
@@ -67,7 +66,7 @@
 
 以下示例以正常倍速起播，配置`FULL`模式。`SetOptionalFormatFeatures`在完成同步模式配置后，当`sampleInfo.codec.isSmartFluencySupported`为`true`时调用`ConfigureSmartFluency(format)`并检查返回值。随后由`VideoDecoder::Configure`调用`OH_VideoDecoder_Configure`完成配置；该辅助函数仅设置本能力的参数，不负责创建或销毁`OH_AVFormat`。
 
-若业务需要直接以高倍速起播，也可在初始化阶段配置`ADAPTIVE`模式，但必须在同一个`OH_AVFormat`中同步设置`OH_MD_KEY_VIDEO_DECODER_SPEED`为实际起播倍速。
+若业务需要直接以高倍速起播，也可在初始化阶段配置`ADAPTIVE`模式，强烈建议同时显式设置`OH_MD_KEY_VIDEO_DECODER_SPEED`为实际起播倍速。
 
 <!-- @[configure_full_baseline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp) -->
 
