@@ -72,6 +72,8 @@
 
 2. 导入模块。
 
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/Index.ets) -->
+
    ``` TypeScript
    // 导入runningLock、commonEventManager、BusinessError模块
    import { runningLock } from '@kit.BasicServicesKit';
@@ -80,6 +82,8 @@
    ```
 
 3. 开发公共事件工具类以及运行锁工具类。
+
+   <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/CommonEventHelper.ets) -->
 
    ``` TypeScript
    // CommonEventHelper.ets
@@ -134,6 +138,8 @@
      }
    }
    ```
+
+   <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/RunningLockUtil.ets) -->
    
    ``` TypeScript
    // RunningLockUtil.ets
@@ -199,6 +205,9 @@
    ```
 
 4. 实现业务需要完成的后台系统闲时任务。
+
+   <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/UserIdleTask.ets) -->
+
    ``` TypeScript
    // UserIdleTask.ets
    import { CommonEventHelper } from './CommonEventHelper';
