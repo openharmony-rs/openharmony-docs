@@ -5956,7 +5956,7 @@ try {
 
 setAdditionalInfo(bundleName: string, additionalInfo: string): void
 
-设置指定应用的额外信息。此接口仅供应用市场调用。
+设置指定应用的额外信息。此接口仅供应用市场调用，用于写入其业务运营所需的专有管理字段（如内部版本号等）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6012,7 +6012,7 @@ ArkTS-Dyn: setAdditionalInfoByIndex(bundleName: string, additionalInfo: string, 
 
 ArkTS-Sta: setAdditionalInfoByIndex(bundleName: string, additionalInfo: string, appIndex: int): void
  
-设置指定应用的额外信息。此接口仅供应用市场调用。
+设置指定应用的额外信息。此接口仅供应用市场调用，用于写入其业务运营所需的专有管理字段（如内部版本号等）。
  
 **ArkTS-Dyn起始版本：** 26.0.1
 
