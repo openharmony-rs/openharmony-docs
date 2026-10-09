@@ -130,7 +130,6 @@ ArkTS-Sta示例：
   <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebRTC/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
-  'use static'
 
   // xxx.ets
   import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI';
