@@ -67635,5 +67635,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/internationalization/l10n-multilingual-resources.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"import_module",
+						"start_line":19
+					},
+					{
+						"end_line":60,
+						"name":"system_locale_datetimeformat",
+						"start_line":51
+					},
+					{
+						"end_line":83,
+						"name":"best_match_locale",
+						"start_line":65
+					}
+				]
+			}
+		]
 	}
 ]
