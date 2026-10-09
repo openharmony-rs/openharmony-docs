@@ -678,7 +678,7 @@ offBatteryLevelChange(mechId: number, callback?: Callback&lt;BatteryLevelInfo&gt
 **示例：**
 
 ```ts
-console.info('Unregister Battery Chanage listener');
+console.info('Unregister Battery Change listener');
 mechanicManager.offBatteryLevelChange(mechId, (result: mechanicManager.BatteryLevelInfo) => {
   console.info(`'result:' ${result}`);
 });
