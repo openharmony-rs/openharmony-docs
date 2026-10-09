@@ -46935,5 +46935,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/napi/use-napi-life-cycle.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":354,
+						"name":"napi_get_global_handle_count",
+						"start_line":338
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"napi_get_global_handle_count",
+						"start_line":50
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":162,
+						"name":"napi_get_global_handle_count",
+						"start_line":147
+					}
+				]
+			}
+		]
 	}
 ]
