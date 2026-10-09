@@ -1,18 +1,18 @@
 # App Window Development (Stage Model)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=19d0e8dbccdd9765ceafae62e52b988d19566645 translatedAt=2026-08-11T10:11:26.460Z pushedAt=2026-08-11T10:57:11.365Z -->
+<!-- md-trans-meta sourceCommit=d3c31cf9e6f06887980e22a3ec4e000b45021185 translatedAt=2026-10-08T08:59:55.134Z pushedAt=2026-10-08T11:06:46.868Z -->
 
 ## Basic Concepts
 
 - Window immersive: the ability to control system windows such as the status bar and navigation bar, reducing the abruptness of system UI elements like the status bar and navigation bar, thereby delivering an optimal user experience. The immersive capability takes effect only when the app main window is in full-screen mode. Generally, auxiliary windows of an app (such as subwindows and global floating windows) and the app main window in free window mode cannot use the immersive capability.
 
 - Global floating window: a special type of app auxiliary window that can remain displayed in the foreground even after the app main window and the corresponding UIAbility are moved to the background. Global floating windows can be used to continue displaying UI in a small window after an app is moved to the background. Before creating a global floating window, an app must apply for the corresponding permission.
+
 
 ## When to Use
 
@@ -52,6 +52,7 @@ The common APIs involved in the above scenarios are shown in the following table
 | Window         | showWindow(callback: AsyncCallback\<void>): void             | Shows the current window. |
 | Window         | on(type: 'touchOutside', callback: Callback&lt;void&gt;): void | Enables listening for tap events outside the current window area. |
 | Window         | destroyWindow(callback: AsyncCallback&lt;void&gt;): void     | Destroys the current window. |
+
 
 ## Setting the Main Window of an App
 
@@ -122,10 +123,10 @@ export default class EntryAbility extends UIAbility {
 
 You can create subwindows as needed, such as dialogs, and perform operations like setting their properties.
 
-> **NOTE**
+> **NOTE**  
 > The following scenarios are not recommended for using subwindows. You are advised to prioritize using the control [overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md) capability.
-> - On mobile devices (tablets in non-freeform mode and phones), subwindows cannot extend beyond the main window range when the main window is in multi-window floating window mode or split-screen mode, which is consistent with controls.
-> - In split-screen window and freeform window modes, controls have a better real-time following capability than subwindows when the main window position and size change.
+> - On mobile devices (tablets in non-freeform mode and phones), subwindows cannot extend beyond the main window range when the main window is in multi-window floating window mode or split-screen mode, which is consistent with controls.  
+> - In split-screen window and freeform window modes, controls have a better real-time following capability than subwindows when the main window position and size change.  
 > - On some device platforms, due to actual system configuration restrictions, subwindows only have the system's default animation effects and rounded corner shadows, which apps cannot set, resulting in low flexibility.
 
 ### How to Develop
@@ -143,10 +144,8 @@ You can create subwindows as needed, such as dialogs, and perform operations lik
    Before calling `showWindow`, you are advised to set the size and position of the subwindow.
 
    If the subwindow size is not set, after `showWindow` is called:
-
-   + In the [freeform window](./window-terminology.md#freeform-window) state, the default subwindow size is the size of the current physical screen.<!--RP3--><!--RP3End-->
-
-   + In the non-freeform window state, the default subwindow size is the size of the main window.
+    + In the [freeform window](./window-terminology.md#freeform-window) state, the default subwindow size is the size of the current physical screen.<!--RP3--><!--RP3End-->
+    + In the non-freeform window state, the default subwindow size is the size of the main window.
 
 3. Load and display the specific content of the subwindow.
 
@@ -537,12 +536,11 @@ export default class EntryAbility extends UIAbility {
 
 A global floating window allows you to create a window that remains displayed in the foreground on top of an existing task. Even if the task that creates the global floating window is moved to the background, the global floating window can still be displayed in the foreground. Typically, a global floating window is positioned above all app windows. Developers can create a global floating window and perform operations such as setting its properties.
 
+
 ### How to Develop
 
 <!--RP1-->
-
 **Prerequisites:** To create a window of the `WindowType.TYPE_FLOAT` type, i.e., a global floating window, you need to request the `ohos.permission.SYSTEM_FLOAT_WINDOW` permission. This permission is restricted. For details about how to request the permission, see [Applying for Restricted Permissions](../security/AccessToken/declare-permissions-in-acl.md).
-
 <!--RP1End-->
 
 1. Create a global floating window.
@@ -559,7 +557,7 @@ A global floating window allows you to create a window that remains displayed in
 
 4. Destroy the global floating window.
 
-When a global floating window is no longer needed, you can destroy it using the `destroyWindow` API based on the specific implementation logic.
+   When a global floating window is no longer needed, you can destroy it using the `destroyWindow` API based on the specific implementation logic.
 
 <!-- @[create_float_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateFloatWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
@@ -630,7 +628,7 @@ export default class EntryAbility extends UIAbility {
 
 ## Listening for Interactive and Non-interactive Window Events
 
-During foreground display, an app may enter certain non-interactive scenarios, a typical one being entering the multitasking screen. In such cases, some apps may need to pause a service that is currently interacting with the user, such as a video app pausing a playing video or a camera pausing the preview stream. When the app returns to the foreground from multitasking, it becomes interactive again, and the suspended business needs to be resumed, such as resuming video playback or the camera preview stream.
+During foreground display, an app may enter certain non-interactive scenarios, a typical one being entering the multitasking screen. In such cases, some apps may need to pause a service that is currently interacting with the user, such as a video app pausing a playing video or a camera pausing the preview stream. When the app returns to the foreground from multitasking, it becomes interactive again, and the suspended service needs to be resumed, such as resuming video playback or the camera preview stream.
 
 ### How to Develop
 

@@ -6,10 +6,11 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=2f4b89223ea807a0581c60a9a81b8de70ba28fa9 translatedAt=2026-10-08T08:57:21.302Z pushedAt=2026-10-08T09:16:42.786Z -->
 
 ## Introduction
 
-When you return to the home screen, lock the screen, or switch to another application, the current application is switched to the background. If the application continues to run in the background, the power consumption of the device may be high and the UI may freeze. To reduce the power consumption and deliver a positive user experience, the system manages the application running in the background, including suspending and terminating [processes](../application-models/process-model-overview.md). Typically, the application process is suspended after the application runs in the background for a while. If resources are inadequate, some processes will be terminated (that is, recycling all resources of the processes). After being suspended, the application process cannot use software resources (such as common events and timers) or hardware resources (such as CPU, network, GPS, and Bluetooth).<!--RP2--><!--RP2End-->
+Operations such as returning to the home screen, locking the screen, and switching applications cause an application to move to the background. After an application moves to the background, if it continues running in the background, it may cause the device to consume power quickly and the UI to become sluggish. To reduce power consumption and ensure a smooth user experience, the system manages applications that have moved to the background, including [process](../application-models/process-model-overview.md) suspension and process termination. Typical scenarios include: after an application moves to the background for a period of time, its application process is suspended; when resources are insufficient, the system terminates some application processes (that is, reclaims all resources of those processes). After an application process is suspended, it cannot use software resources (such as common events and timers) or hardware resources (such as the CPU, network, GPS, and Bluetooth).<!--RP2--><!--RP2End-->
 
 To ensure that background functionalities such as music playback and calendar reminders can be used properly, Background Tasks Kit provides some background tasks within the specifications, extending the running time of applications in the background. <!--Del-->For system applications, Background Tasks Kit also supports [device usage statistics](../device-usage-statistics/device-usage-statistics-overview-sys.md), including statistics on the application usage duration.<!--DelEnd-->
 
@@ -34,7 +35,7 @@ You can select a proper background task type to ensure that your application can
 <!--Del-->
 For system applications that provide basic capabilities, the system provides an API for [energy resource request](efficiency-resource-request-sys.md). After an application calls the API, the system exempts the application from management.<!--DelEnd-->
 
-  **Figure 1** Selecting a type of background task 
+  **Figure 1** Selecting a type of background task
 ![bgtask_choice](figures/bgtask_choice.png)
 
 
