@@ -556,9 +556,9 @@ mouse2TouchEventMode可配置字段说明。
 
 | 枚举值               | 说明                                                    |
 | -------------------- | ------------------------------------------------------- |
-| 'all'                  | 表示鼠标事件全部都转换成触摸事件。                      |
-| 'xcomponentAndWebOnly' | 表示鼠标事件在XComponent和Web组件里需要转换成触摸事件。 |
-| 'disabled'             | 表示鼠标事件全部都不转换成触摸事件。                    |
+| "all"                  | 表示鼠标事件全部都转换成触摸事件。                      |
+| "xcomponentAndWebOnly" | 表示鼠标事件在XComponent和Web组件里需要转换成触摸事件。 |
+| "disabled"             | 表示鼠标事件全部都不转换成触摸事件。                    |
 
 ### 配置鼠标右键转长按
 
@@ -588,16 +588,16 @@ mouse2TouchEventMode可配置字段说明。
 needTransferComponent数组中可选枚举类型说明。
 | 枚举值            | 说明           |
 | ----------------- | -------------- |
-| TextInput         | 文本输入框     |
-| TextArea          | 多行文本输入框 |
-| RichEditor        | 富文本编辑器   |
-| RichText          | 富文本         |
-| Text              | 文本           |
-| RenderNode        | 渲染节点       |
-| XComponent        | 自绘制组件     |
-| Image             | 图片           |
-| RelativeContainer | 相对布局容器   |
-| All               | 所有ArkUI组件   |
+| "TextInput"         | 文本输入框     |
+| "TextArea"          | 多行文本输入框 |
+| "RichEditor"        | 富文本编辑器   |
+| "RichText"          | 富文本         |
+| "Text"              | 文本           |
+| "RenderNode"        | 渲染节点       |
+| "XComponent"        | 自绘制组件     |
+| "Image"             | 图片           |
+| "RelativeContainer" | 相对布局容器   |
+| "All"               | 所有ArkUI组件   |
 
 needTransferComponent字段额外说明。
 | 规则               | 说明                                                         |
