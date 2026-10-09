@@ -132,7 +132,7 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
    }
    ```
 
-   <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/RunningLockUtil.ets) -->
+   <!-- @[running_lock_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/RunningLockUtil.ets) -->
    
    ``` TypeScript
    // RunningLockUtil.ets
@@ -199,7 +199,7 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
 
 4. Implement idle tasks of the background system required by services.
 
-   <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/UserIdleTask.ets) -->
+   <!-- @[Implement_Background_Idle_Tasks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/UserIdleTask.ets) -->
 
    ``` TypeScript
    // UserIdleTask.ets
