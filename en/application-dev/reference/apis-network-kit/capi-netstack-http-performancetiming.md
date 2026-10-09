@@ -5,6 +5,8 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=6bea3977f519f83af05e3810eb42fedb6ffc4399 translatedAt=2026-09-28T01:13:03.612Z pushedAt=2026-10-09T01:40:10.487Z -->
+
 ```c
 typedef struct Http_PerformanceTiming {...} Http_PerformanceTiming
 ```
@@ -25,10 +27,12 @@ Defines the HTTP response timing information, which will be collected via [Http_
 
 | Name| Description|
 | -- | -- |
-| double dnsTiming | Duration from the time when the request is initiated to the time when the DNS resolution is complete.|
-| double tcpTiming | Duration from the time when the request is initiated to the time when the TCP connection is complete.|
-| double tlsTiming | Duration from the time when the request is initiated to the time when the TLS connection is complete.|
-| double firstSendTiming | Duration from the time when the request is initiated to the time when the first byte is sent.|
-| double firstReceiveTiming | Duration from the time when the request is initiated to the time when the first byte is received.|
-| double totalFinishTiming | Duration from the time when the request is initiated to the time when the request is complete.|
-| double redirectTiming | Duration from the time when the request is initiated to the time when all redirection steps are complete.|
+| double dnsTiming | Time elapsed from the request to the completion of DNS resolution, including domain name resolution and TCP connection. Unit: ms. |
+| double tcpTiming | Time elapsed from the request to the completion of the TCP connection. Unit: ms. |
+| double tlsTiming | Time elapsed from the request to the completion of the TLS connection. Unit: ms. |
+| double firstSendTiming | Time elapsed from the request to the start of sending the first byte. Unit: ms. |
+| double firstReceiveTiming | Time elapsed from the request to the receipt of the first byte. Unit: ms. |
+| double totalFinishTiming | Time elapsed from the request to the completion of the request. Unit: ms. |
+| double redirectTiming | Time elapsed from the request to the completion of all redirect steps. Unit: ms. |
+
+

@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=2dd7d31bbec973d3a80dde935a68266b4fcf6625 translatedAt=2026-09-28T01:35:18.056Z pushedAt=2026-10-09T03:35:50.295Z -->
 
 The **netFirewall** module implements the firewall query functionality. It allows applications to query firewall interception records.
 
@@ -24,7 +25,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 getInterceptedRecords(userId: number, requestParam: RequestParam): Promise\<InterceptedRecordPage\>
 
-Obtains interception records based on the specified user ID. You need to specify the pagination query parameter when calling this API. This API uses a promise to return the result.
+Obtains the interception records by **userId**. You need to specify the pagination query parameters. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -47,7 +48,7 @@ Obtains interception records based on the specified user ID. You need to specify
 
 **Error codes**
 
-For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Network Connection Management Error Codes](errorcode-net-connection.md), and [Firewall Error Codes](errorcode-net-netfirewall.md).
 | ID| Error Message                                                                       |
 | -------  | --------------------------------------------------------------------------------|
 | 201      | Permission denied.                                                              |
@@ -57,7 +58,7 @@ For details about the error codes, see [Network Connection Management Error Code
 | 2100002  | Operation failed. Cannot connect to service.                                    |
 | 2100003  | System internal error.                                                          |
 | 29400000 | The specified user does not exist.                                              |
-  
+
 **Example**
 
 ```ts
@@ -87,7 +88,7 @@ Defines an interception record.
 
 | Name      | Type  | Read-only|Optional| Description               |
 |------------| -------|------|---|-------------------- |
-| time       | number | No  |No| Timestamp.           |
+| time       | number | No   | No | Timestamp. Unit: s.            |
 | localIp    | string | No  |Yes|Local IP address.           |
 | remoteIp   | string | No  |Yes| Remote IP address.           |
 | localPort  | number | No  |Yes|Local port. The default value is **0**.         |
