@@ -95,7 +95,7 @@ Defines the device profile information.
 |  hardwareVersion | string |  No  | No |  Hardware version.         |
 |  softwareVersion | string |  No | No |  Software version.         |
 |  protocolType    | number |  No  | No |  Protocol type.         |
-|  setupType       | number |  No  | No |  Device type.         |
+|  setupType       | number |  No  | No |  Setup type.         |
 |  wiseDeviceId    | string |  No  | No |  Registered device ID.       |
 |  wiseUserId      | string |  No  | No |  Registered user ID.       |
 |  registerTime    | string |  No  | No |  Registration time.         |
@@ -120,7 +120,7 @@ Defines the device icon information filter options.
 |  productId      | string  | No| No  |  Product ID.         |
 |  subProductId   | string  | No| Yes  |  Sub-product ID. This parameter is left unspecified by default.     |
 |  imageType      | string  | No| No  |  Image type. This parameter has a fixed value of **ID**, indicating the product's physical image.|
-|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1016064 px)<br>- **sm**: small image (size: 65536 px)        |
+|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1008×1008 pixels)<br>- **sm**: small image (size: 256×256 pixels).        |
 |  internalModel  | string  | No| Yes  |  Internal product model. This parameter is left unspecified by default.       |
 
 ## DeviceIconInfo<sup>18+</sup>
@@ -136,7 +136,7 @@ Defines the device icon information.
 |  productId      | string  | No| No  |  Product ID.         |
 |  subProductId   | string  | No| Yes  |  Sub-product ID. This parameter is left unspecified by default.    |
 |  imageType      | string  | No| No  |  Image type. This parameter has a fixed value of **ID**, indicating the product's physical image.       |
-|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1016064 px)<br>- **sm**: small image (size: 65536 px)        |
+|  specName       | string  | No| No  |  Image specification name. Value:<br>- **lg**: large image (size: 1008×1008 pixels)<br>- **sm**: small image (size: 256×256 pixels).        |
 |  url            | string  | No| No  |  URL.         |
 |  icon           | ArrayBuffer | No| No| Icon.        |
 |  internalModel  | string  | No| Yes  |  Internal product model. This parameter is left unspecified by default.        |

@@ -8,13 +8,11 @@
 
 CliToolEvent用于描述CLI工具进程运行期间产生的会话事件信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 > **说明：**
 >
 > 本模块仅适用于ArkTS-Dyn。
->
-> 本模块接口为系统接口。
 
 
 ## 导入模块
@@ -27,9 +25,7 @@ import { common } from '@kit.AbilityKit';
 
 CLI工具会话事件信息。
 
-**起始版本：** 26.0.0
-
-**系统接口**：此接口为系统接口。
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -44,9 +40,7 @@ CLI工具会话事件信息。
 
 CLI工具会话事件类型。
 
-**起始版本：** 26.0.0
-
-**系统接口**：此接口为系统接口。
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 

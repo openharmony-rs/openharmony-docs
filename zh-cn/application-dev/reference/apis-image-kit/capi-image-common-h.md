@@ -387,15 +387,15 @@ enum IMAGE_ALLOCATOR_MODE
 
 **描述**
 
-pixelmap内存分配类型。
+Pixelmap的内存分配类型。
 
 **起始版本：** 20
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IMAGE_ALLOCATOR_MODE_AUTO = 0 | 系统决定创建pixelmap时分配内存的类型。 |
-| IMAGE_ALLOCATOR_MODE_DMA = 1 | 分配DMA类型的内存Buffer。 |
-| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 | 使用共享内存创建pixelmap。 |
+| IMAGE_ALLOCATOR_MODE_AUTO = 0 | 系统决定内存分配类型。系统会根据图像类型、图像大小、平台能力等选择内存类型。 |
+| IMAGE_ALLOCATOR_MODE_DMA = 1 | 使用DMA（Direct Memory Access，直接内存访问）的内存类型，适用于对解码及渲染性能有较高要求的场景。根据设备硬件的差异可能会在每行像素的末尾产生用于内存对齐的空白填充字节。 |
+| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 | 使用共享内存（Shared Memory）的内存类型。 |
 
 
 ## 函数说明

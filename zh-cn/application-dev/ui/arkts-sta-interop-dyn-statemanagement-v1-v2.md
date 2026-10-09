@@ -58,7 +58,7 @@ ArkTS-Dyn调用ArkTS-Sta，父组件V2调用子组件V1示例如下：
     @State schoolName: string = '高中';
     @State className: string = '三年四班';
 
-    build() {
+    build(): void {
       Row() {
         Column() {
           Text(this.schoolName)
@@ -205,7 +205,7 @@ ArkTS-Sta调用ArkTS-Dyn，父组件V1调用子组件V2示例如下：
     schoolName: string = '高中';
     @State className: string = '四年三班';
 
-    build() {
+    build(): void {
       Column(undefined) {
         Text('ArkTS-Sta调用ArkTS-Dyn').fontSize(40);
         // ArkTS-Sta父组件V1调用ArkTS-Dyn子组件V2，编译报错

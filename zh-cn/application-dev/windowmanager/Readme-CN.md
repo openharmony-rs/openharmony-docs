@@ -44,3 +44,4 @@
 - [窗口开发术语](window-terminology.md)
 - [窗口开发常见问题](window-faqs.md)
 - [窗口开发常见日志问题与定位](window-log-faqs.md)
+- [ohos-window CLI工具](window-cli.md)

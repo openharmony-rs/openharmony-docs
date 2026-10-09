@@ -7,6 +7,11 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+## 在CMake脚本中链接相关动态库
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
+
 对应的算法规格请查看[非对称密钥加解密算法规格：RSA](crypto-encryption-decryption.md#rsa)。
 
 ## 使用RSA非对称密钥（PKCS1模式）加解密
