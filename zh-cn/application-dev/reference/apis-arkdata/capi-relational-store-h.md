@@ -76,7 +76,7 @@
 | [int OH_Rdb_IsTokenizerSupported(Rdb_Tokenizer tokenizer, bool *isSupported)](#oh_rdb_istokenizersupported) | - | 判断当前平台是否支持传入的分词器。 |
 | [int OH_Rdb_SetTokenizer(OH_Rdb_ConfigV2 *config, Rdb_Tokenizer tokenizer)](#oh_rdb_settokenizer) | - | 给指定的数据库文件配置设置分词器类型。 |
 | [int OH_Rdb_SetPersistent(OH_Rdb_ConfigV2 *config, bool isPersistent)](#oh_rdb_setpersistent) | - | 指定数据库是否需要持久化。 |
-| [const int *OH_Rdb_GetSupportedDbType(int *typeCount)](#oh_rdb_getsupporteddbtype) | - | 获得当前系统支持的数据库类型数组，数组长度通过出参typeCount返回，数组元素为[Rdb_DBType](#rdb_dbtype)。 |
+| [const int *OH_Rdb_GetSupportedDbType(int *typeCount)](#oh_rdb_getsupporteddbtype) | - | 获得当前系统支持的数据库类型数组，数组元素为[Rdb_DBType](#rdb_dbtype)。 |
 | [OH_VObject *OH_Rdb_CreateValueObject()](#oh_rdb_createvalueobject) | - | 创建[OH_VObject](capi-rdb-oh-vobject.md)实例。 |
 | [OH_VBucket *OH_Rdb_CreateValuesBucket()](#oh_rdb_createvaluesbucket) | - | 创建[OH_VBucket](capi-rdb-oh-vbucket.md)实例。 |
 | [OH_Predicates *OH_Rdb_CreatePredicates(const char *table)](#oh_rdb_createpredicates) | - | 创建[OH_Predicates](capi-rdb-oh-predicates.md)实例。 |
@@ -809,7 +809,7 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 **描述**
 
-获得当前系统支持的数据库类型数组，数组长度通过出参typeCount返回，数组元素为[Rdb_DBType](#rdb_dbtype)。
+获得当前系统支持的数据库类型数组，数组元素为[Rdb_DBType](#rdb_dbtype)。
 
 **起始版本：** 14
 
@@ -818,7 +818,7 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int *typeCount | 表示支持的数据库类型的数组的长度，作为出参使用。传入nullptr时函数返回nullptr。 |
+| int *typeCount | 表示支持的数据库类型的数组的长度，作为出参使用。 |
 
 **返回：**
 
