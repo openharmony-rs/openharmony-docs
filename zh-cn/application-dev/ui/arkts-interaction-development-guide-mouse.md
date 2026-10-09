@@ -531,7 +531,7 @@ struct MouseWheel {
 
 ### 配置鼠标左键或轴事件转触摸
 
-通过配置easy_go.json第二层multiModalInputOptions字段，可以将对应设备类型下的鼠标左键事件、轴事件转换成触摸事件发送给应用，从而达到类似手机上点击和触摸的效果。
+通过配置easy_go.json第二层multiModalInputOptions字段，将对应设备类型下的鼠标左键事件、轴事件转换成触摸事件发送给应用，从而达到类似手机上点击和触摸的效果。
 
 在PC/2in1设备上，配置为鼠标事件不转换成触摸事件，示例如下。
 
