@@ -62,7 +62,7 @@ The sync root path is not registered.
 
 **处理步骤**
 
-确认目标路径位于三方云盘应用已注册的同步根目录范围内后重试。
+可调用[getAllSyncFolders](js-apis-file-clouddiskmanager-sys.md#getallsyncfolders)查询已注册的同步根列表，确认目标路径位于同步根目录范围内后重试。
 
 ## 34400010 同步根路径不存在
 
@@ -134,7 +134,7 @@ The target path is not a placeholder file.
 
 **处理步骤**
 
-确认目标文件为三方云盘应用创建的占位符文件后再调用。
+可调用[getAllSyncFolders](js-apis-file-clouddiskmanager-sys.md#getallsyncfolders)确认目标文件位于三方云盘应用已注册的同步根目录内，且为云盘应用创建的文件（本地仅保留元数据、内容在云端）后再调用。
 
 ## 34400019 水合任务已在进行中
 
@@ -152,7 +152,7 @@ Hydration in progress.
 
 **处理步骤**
 
-等待水合完成，或先将水合任务取消（调用hydratePlaceholder时callbackType取CANCEL_FETCH_DATA）后再操作。
+等待水合完成，或先调用[hydratePlaceholder](js-apis-file-clouddiskmanager-sys.md#hydrateplaceholder26)（callbackType取CANCEL_FETCH_DATA）取消水合任务后再操作。
 
 ## 34400020 磁盘可用空间不足
 
@@ -206,7 +206,7 @@ The parent directory of the target path is not a directory.
 
 **处理步骤**
 
-检查并修正目标路径后重试。
+请检查目标路径中的各级路径段是否均为目录（可通过[@ohos.file.fs](js-apis-file-fs.md)的[statSync](js-apis-file-fs.md#fileiostatsync)接口判断路径段是否为目录），修正目标路径后重试。
 
 ## 34400024 目标路径不存在
 
@@ -242,7 +242,7 @@ The file name or path is too long.
 
 **处理步骤**
 
-缩短文件名或路径后重试。
+单个文件名最长255字节、完整路径最长4096字节，请缩短文件名或路径后重试。
 
 ## 34400029 云盘应用拒绝脱水
 
@@ -260,7 +260,7 @@ The application denied placeholder dehydration.
 
 **处理步骤**
 
-尊重云盘应用的授权结果，暂不执行脱水操作。
+该错误表示三方云盘应用未授权本次脱水，文件保持不变，无需处理。
 
 ## 34400031 占位符文件已完全水合
 
@@ -278,7 +278,7 @@ The placeholder file is already fully hydrated.
 
 **处理步骤**
 
-无需处理，文件内容已在本地。
+无需处理。水合在原路径完成，文件内容写入调用[hydratePlaceholder](js-apis-file-clouddiskmanager-sys.md#hydrateplaceholder26)时传入的filePath路径，可直接访问。
 
 ## 34400032 无进行中的水合任务
 
@@ -314,7 +314,7 @@ The stored placeholder state is invalid.
 
 **处理步骤**
 
-请重试；若持续出现该错误，请三方云盘应用重建该占位符文件。
+请确认占位符文件由三方云盘应用正常创建、状态值在有效范围内后重试；若持续出现该错误，请三方云盘应用重建该占位符文件。
 
 ## 34400034 活跃水合任务数量达到上限
 
@@ -332,4 +332,4 @@ The number of active placeholder hydration tasks has reached the limit.
 
 **处理步骤**
 
-等待部分水合任务完成或取消部分任务后再重试。
+请等待部分水合任务完成或取消后再重试；可通过[onHydrateProgress](js-apis-file-clouddiskmanager-sys.md#onhydrateprogress26)订阅水合进度事件，在收到COMPLETED或CANCELLED状态后再发起水合。
