@@ -1557,7 +1557,6 @@ struct example {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
 import {
   Entry,
   Component,
@@ -1662,7 +1661,6 @@ struct example {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
 import {
   Entry,
   Component,
@@ -2308,7 +2306,6 @@ struct GlassMarbleEffectExample {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
 import {
   Entry,
   Component,
@@ -3165,8 +3162,6 @@ struct SweepRefractionExample {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
-
 import { Entry, Component, Column, Row, HitTestMode, BlendMode } from '@ohos.arkui.component'
 import uiEffect from '@ohos.graphics.uiEffect'
 import common2D from '@ohos.graphics.common2D'
@@ -3305,7 +3300,6 @@ struct example {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
 import {
   Entry,
   Component,
@@ -3419,8 +3413,6 @@ struct Index {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
-
 import { Entry, Component, Stack, Image } from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import { DrawableDescriptor } from '@ohos.arkui.drawableDescriptor'
@@ -3531,8 +3523,6 @@ struct Index {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
-
 import { Entry, Component, Stack, Image } from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import { DrawableDescriptor } from '@ohos.arkui.drawableDescriptor'
@@ -3699,8 +3689,6 @@ struct AtlasFrameMaskDemo {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
-
 import { Entry, Component, Column, Stack,
   Curve } from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
