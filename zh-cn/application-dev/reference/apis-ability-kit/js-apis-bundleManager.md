@@ -37,7 +37,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | GET_BUNDLE_INFO_WITH_MENU<sup>11+</sup>       | 0x00000100 | 用于获取包含fileContextMenuConfig的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | GET_BUNDLE_INFO_WITH_ROUTER_MAP<sup>12+</sup> | 0x00000200 | 用于获取包含routerMap的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | GET_BUNDLE_INFO_WITH_SKILL<sup>12+</sup>      | 0x00000800 | 用于获取包含skills的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。<br/>**起始版本：** 26.2.0 |
+| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。<br/>**起始版本：** 26.1.0 |
 | GET_BUNDLE_INFO_WITH_ENTRY_MODULE<sup>23+</sup>      | 0x00010000 | 用于获取包含hapModuleInfo的bundleInfo，仅支持entry模块对应的bundleInfo.hapModulesInfo，如果entry模块不存在，bundleInfo.hapModulesInfo列表为空。获取的bundleInfo不包含signatureInfo、applicationInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## ExtensionAbilityType
@@ -140,7 +140,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 |  名称   | 值   |                            说明                            |
 | :-----: | ---- | :--------------------------------------------------------: |
-| PAGE    | 1    | UI界面类型的Ability。表示基于Page模板开发的FA，用于提供与用户交互的能力。        |
+| PAGE    | 1    | UI界面类型的Ability。表示基于Page模板开发的FA模型，用于提供与用户交互的能力。        |
 | SERVICE | 2    | 后台服务类型的Ability，无UI界面。表示基于Service模板开发的[ParticleAbility](js-apis-ability-particleAbility.md)，用于提供后台运行任务的能力，例如后台下载或者播放音乐。  |
 |  DATA   | 3    | 表示基于Data模板开发的[ParticleAbility](js-apis-ability-particleAbility.md)，用于对外部提供统一的数据访问对象。 |
 

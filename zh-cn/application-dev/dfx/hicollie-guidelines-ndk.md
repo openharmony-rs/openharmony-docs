@@ -339,7 +339,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    void InitStuckDetectionWithTimeout()
    {
      // 初始化线程卡死监控函数
-     int initResult = OH_HiCollie_Init_StuckDetectionWithTimeout(Timer, BLOCK_TIME);
+     int initResult = OH_HiCollie_Init_StuckDetectionWithTimeout(Timer, 5); // 5：卡死检测阈值
      // 成功结果：0
      OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetectionWithTimeout: %{public}d", initResult);
    }

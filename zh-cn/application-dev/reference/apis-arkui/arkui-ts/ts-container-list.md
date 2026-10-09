@@ -330,6 +330,7 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 - value为LengthConstrain类型时，LengthConstrain中的minLength表示最小列宽，List组件会根据自身宽度在满足最小列宽的情况下计算最大列数。同时，LengthConstrain会作为最大最小布局宽度约束传递给List的子组件，子组件没有设置宽度时会生效该最大最小布局约束。
 - &nbsp;ListItemGroup在多列模式下也是独占一行，ListItemGroup中的ListItem按照List组件的lanes属性设置值来布局。
 - value为LengthConstrain类型时，计算ListItemGroup中的列数时会按照ListItemGroup的自身宽度计算。因此ListItemGroup宽度与List宽度不一致时，ListItemGroup中的列数与List中的列数可能不一样。
+- 多列或多行模式下，当List使用Repeat生成子组件时，同一个Repeat中不支持ListItemGroup与ListItem同时存在，否则可能导致滚动或显示异常。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -348,7 +349,7 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 
 lanes(value: number | LengthConstrain | ItemFillPolicy, gutter?: Dimension)
 
-设置List组件交叉轴方向的布局数量和间距。List垂直滚动时，设置列数和列间距；List水平滚动时，设置行数和行间距。默认按一列或一行显示。在多列或多行模式下，ListItemGroup在垂直滚动时独占一行，在水平滚动时独占一列；ListItemGroup中的ListItem按照List组件的lanes属性设置值来布局。
+设置List组件交叉轴方向的布局数量和间距。List垂直滚动时，设置列数和列间距；List水平滚动时，设置行数和行间距。默认按一列或一行显示。在多列或多行模式下，ListItemGroup在垂直滚动时独占一行，在水平滚动时独占一列；ListItemGroup中的ListItem按照List组件的lanes属性设置值来布局。多列或多行模式下，当List使用Repeat生成子组件时，同一个Repeat中不支持ListItemGroup与ListItem同时存在，否则可能导致滚动或显示异常。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 

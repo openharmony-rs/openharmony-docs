@@ -50,8 +50,8 @@ Provides the constant values of function keys, edit boxes, and the cursor.
 | PATTERN_ONE_TIME_CODE<sup>20+</sup> | number | 13 | Verification code edit box.|
 | OPTION_ASCII | number | 20 | ASCII values are allowed.|
 | OPTION_NONE | number | 0 | No input attribute is specified.|
-| OPTION_AUTO_CAP_CHARACTERS | number | 2 | Characters are allowed.|
-| OPTION_AUTO_CAP_SENTENCES | number | 8 | Sentences are allowed.|
+| OPTION_AUTO_CAP_CHARACTERS | number | 2 | Characters are auto-capitalized.|
+| OPTION_AUTO_CAP_SENTENCES | number | 8 | Sentences are auto-capitalized.|
 | OPTION_AUTO_WORDS | number | 4 | Words are allowed.|
 | OPTION_MULTI_LINE | number | 1 | Multiple lines are allowed.|
 | OPTION_NO_FULLSCREEN | number | 10 | Half-screen style.|

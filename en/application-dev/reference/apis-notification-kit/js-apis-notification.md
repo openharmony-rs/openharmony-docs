@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:20:30.335Z pushedAt=2026-09-22T08:29:58.376Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:25:19.514Z pushedAt=2026-10-08T09:33:04.712Z -->
 
 The **Notification** module provides notification management capabilities, covering notifications, notification slots, notification subscription, notification enabled status, and notification badge status.
 
@@ -290,14 +290,14 @@ Adds a notification slot of a specified type. This API uses an asynchronous call
 import Base from '@ohos.base';
 
 // addSlot callback
-let addSlotCallBack = (err: Base.BusinessError) => {
+let addSlotCallback = (err: Base.BusinessError) => {
   if (err) {
     console.error("addSlot failed " + JSON.stringify(err));
   } else {
     console.info("addSlot success");
   }
 }
-Notification.addSlot(Notification.SlotType.SOCIAL_COMMUNICATION, addSlotCallBack);
+Notification.addSlot(Notification.SlotType.SOCIAL_COMMUNICATION, addSlotCallback);
 ```
 
 ## Notification.addSlot
@@ -537,14 +537,14 @@ Removes all notification slots. This API uses an asynchronous callback to return
 ```ts
 import Base from '@ohos.base';
 
-let removeAllCallBack = (err: Base.BusinessError) => {
+let removeAllCallback = (err: Base.BusinessError) => {
   if (err) {
     console.error("removeAllSlots failed " + JSON.stringify(err));
   } else {
     console.info("removeAllSlots success");
   }
 }
-Notification.removeAllSlots(removeAllCallBack);
+Notification.removeAllSlots(removeAllCallback);
 ```
 
 ## Notification.removeAllSlots
@@ -773,7 +773,7 @@ Before publishing a notification using [NotificationTemplate](js-apis-inner-noti
 ```ts
 import Base from '@ohos.base';
 
-let templateName: string = 'process';
+let templateName: string = 'downloadTemplate';
 function isSupportTemplateCallback(err: Base.BusinessError, data: boolean) {
   if (err) {
     console.error("isSupportTemplate failed " + JSON.stringify(err));
@@ -789,7 +789,7 @@ Notification.isSupportTemplate(templateName, isSupportTemplateCallback);
 
 isSupportTemplate(templateName: string): Promise\<boolean\>
 
-Before publishing a notification using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md), you can call this API to check whether the corresponding notification template is supported. This API uses an asynchronous callback to return the result asynchronously.
+Checks whether a specified template is supported before using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -810,7 +810,7 @@ Before publishing a notification using [NotificationTemplate](js-apis-inner-noti
 ```ts
 import Base from '@ohos.base';
 
-let templateName: string = 'process';
+let templateName: string = 'downloadTemplate';
 Notification.isSupportTemplate(templateName).then((data: boolean) => {
   console.info("isSupportTemplate success, data: " + JSON.stringify(data));
 }).catch((err: Base.BusinessError) => {
@@ -951,8 +951,8 @@ Notification.isDistributedEnabled().then((data: boolean) => {
 | LEVEL_NONE                        | 0           | The notification function is disabled.    |
 | LEVEL_MIN                         | 1           | The notification function is enabled, but the notification icon is not displayed in the status bar, with no banner or alert tone.|
 | LEVEL_LOW                         | 2           | The notification function is enabled, and the notification icon is displayed in the status bar, with no banner or alert tone.|
-| LEVEL_DEFAULT                     | 3           | The notification feature is enabled, and the notification icon is displayed in the status bar, with an alert tone but no banner.|
-| LEVEL_HIGH                        | 4           | The notification feature is enabled, and the notification icon is displayed in the status bar, with an alert tone and banner.|
+| LEVEL_DEFAULT                     | 3           | The notification function is enabled, and the notification icon is displayed in the status bar, with an alert tone but no banner.|
+| LEVEL_HIGH                        | 4           | The notification function is enabled, and the notification icon is displayed in the status bar, with an alert tone and banner.|
 
 
 ## BundleOption<sup>deprecated</sup>
@@ -1120,7 +1120,7 @@ Describes the notification request.
 | groupName<sup>8+</sup>| string                                        | Yes  | Yes  | [Group notification](../../notification/notification-glossary.md#group-notification) name.                 |
 | template<sup>8+</sup> | [NotificationTemplate](#notificationtemplate8) | Yes | Yes | Notification template.                  |
 | distributedOption<sup>8+</sup>   | [DistributedOptions](#distributedoptions8)                 | Yes  | Yes  | Options of the [distributed notification](../../notification/notification-glossary.md#distributed-notification).          |
-| notificationFlags<sup>8+</sup> | [NotificationFlags](./js-apis-inner-notification-notificationFlags.md)                    | Yes | No | Notification flags.         |
+| notificationFlags<sup>8+</sup> | [NotificationFlags](js-apis-inner-notification-notificationFlags.md)                    | Yes  | No  | Notification flags.          |
 | removalWantAgent<sup>9+</sup> | [WantAgent](../apis-ability-kit/js-apis-wantAgent.md) | Yes | Yes | **WantAgent** instance to which the notification will be redirected when it is removed.         |
 | badgeNumber<sup>9+</sup> | number                    | Yes | Yes | Number of notifications displayed on the application icon.         |
 
@@ -1179,4 +1179,3 @@ Provides the notification user input.
 | Name    | Type  | Readable| Writable| Description                         |
 | -------- | ------ | --- | ---- | ----------------------------- |
 | inputKey | string | Yes | Yes | Key to identify the user input.|
-<!--no_check-->

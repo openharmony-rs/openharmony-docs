@@ -61,13 +61,13 @@ NODE_FONT_COLOR = 1001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 字体颜色数值，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| .value[0].u32 | 字体颜色数值，0xARGB格式，形如 0xFFFF0000 表示红色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 字体颜色数值，0xargb格式。 |
+| .value[0].u32 | 字体颜色数值，0xARGB格式。 |
 
 ## NODE_FONT_SIZE
 
@@ -182,7 +182,7 @@ NODE_TEXT_DECORATION = 1006
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].i32 | 文本装饰线类型，具体枚举值请参考[ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype)。默认值为ARKUI_TEXT_DECORATION_TYPE_NONE，无装饰线。 |
-| .value[1]?.u32 | 可选值，装饰线颜色，0xargb格式，形如 0xFFFF0000 表示红色。默认值：0xFF000000，表示黑色。 |
+| .value[1]?.u32 | 可选值，装饰线颜色，0xARGB格式，形如 0xFFFF0000 表示红色。默认值：0xFF000000，表示黑色。 |
 | .value[2]?.i32 | 文本装饰线样式，具体枚举值请参考[ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle)。默认值为ARKUI_TEXT_DECORATION_STYLE_SOLID，实线装饰线。 |
 | .value[3]?.f32 | 可选值，文本装饰线粗细比例，默认值：1.0，取值范围：[0, +∞)。传入负数时参数不生效。 |
 
@@ -191,7 +191,7 @@ NODE_TEXT_DECORATION = 1006
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 文本装饰线类型[ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype)。 |
-| .value[1].u32 | 装饰线颜色，0xargb格式。 |
+| .value[1].u32 | 装饰线颜色，0xARGB格式。 |
 | .value[2].i32 | 文本装饰线样式[ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle)。 |
 | .value[3].f32 | 文本装饰线粗细比例。 |
 
@@ -404,7 +404,7 @@ NODE_TEXT_TEXT_SHADOW = 1015
 | -- | -- |
 | .value[0].f32 | 阴影模糊半径，单位为vp。取值范围：[0, +∞)。默认值为0，表示无模糊效果。 |
 | .value[1].i32 | 阴影类型，具体枚举值请参考[ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype)。默认值为ARKUI_SHADOW_TYPE_COLOR，表示颜色阴影。 |
-| .value[2].u32 | 阴影颜色，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| .value[2].u32 | 阴影颜色，0xARGB格式，形如 0xFFFF0000 表示红色。 |
 | .value[3].f32 | 阴影X轴偏移量，单位为vp。 |
 | .value[4].f32 | 阴影Y轴偏移量，单位为vp。 |
 
@@ -414,7 +414,7 @@ NODE_TEXT_TEXT_SHADOW = 1015
 | -- | -- |
 | .value[0].f32 | 阴影模糊半径，单位为vp。 |
 | .value[1].i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype)。 |
-| .value[2].u32 | 阴影颜色，0xargb格式。 |
+| .value[2].u32 | 阴影颜色，0xARGB格式。 |
 | .value[3].f32 | 阴影X轴偏移量，单位为vp。 |
 | .value[4].f32 | 阴影Y轴偏移量，单位为vp。 |
 
@@ -706,13 +706,13 @@ NODE_TEXT_SELECTED_BACKGROUND_COLOR = 1027
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 颜色数值，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| .value[0].u32 | 颜色数值，0xARGB格式，形如 0xFFFF0000 表示红色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 颜色数值，0xargb格式。 |
+| .value[0].u32 | 颜色数值，0xARGB格式。 |
 
 ## NODE_TEXT_CONTENT_WITH_STYLED_STRING
 
@@ -848,7 +848,7 @@ NODE_TEXT_LINEAR_GRADIENT = 1033
 | .value[1].i32 | 线性渐变的方向[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)。设置除ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM之外的线性渐变方向后，angle不生效。默认值：ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM。 |
 | .value[2].i32 | 是否为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。默认值：0。 |
 | .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过。 |
-| colors | 渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 |
+| colors | 渐变色颜色数组，数组元素为0xARGB格式，形如0xFFFF0000表示红色。 |
 | stops | stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。想要实现多个颜色渐变效果时，数组元素建议递增设置，如后一个数组元素比前一个数组元素小的话，按照等于前一个数组元素的值处理。 |
 | size | 颜色个数，若小于colors数组长度则仅生效前size个颜色，不建议设置大于colors数组长度或小于等于0的值以及异常值。 |
 
@@ -860,7 +860,7 @@ NODE_TEXT_LINEAR_GRADIENT = 1033
 | .value[1].i32 | 线性渐变的方向[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)。 |
 | .value[2].i32 | 为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。默认值：0。 |
 | .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过。 |
-| colors | 渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 |
+| colors | 渐变色颜色数组，数组元素为0xARGB格式，形如0xFFFF0000表示红色。 |
 | stops | stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。 |
 | size | 生效后渐变色的颜色个数。 |
 
@@ -885,7 +885,7 @@ NODE_TEXT_RADIAL_GRADIENT = 1034
 | .value[2]?.f32 | 径向渐变的半径，默认值0。取值范围：[0, +∞)。传入负数时参数不生效。 |
 | .value[3]?.i32 | 是否为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。默认值：0。 |
 | .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过。 |
-| colors | 渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 |
+| colors | 渐变色颜色数组，数组元素为0xARGB格式，形如0xFFFF0000表示红色。 |
 | stops | stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。想要实现多个颜色渐变效果时，数组元素建议递增设置，如后一个数组元素比前一个数组元素小的话，按照等于前一个数组元素的值处理。 |
 | size | 颜色个数，若小于colors数组长度则仅生效前size个颜色，不建议设置大于colors数组长度或小于等于0的值以及异常值。 |
 
@@ -898,7 +898,7 @@ NODE_TEXT_RADIAL_GRADIENT = 1034
 | .value[2]?.f32 | 径向渐变的半径，单位为vp。默认值0。 |
 | .value[3]?.i32 | 为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。默认值：0。 |
 | .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过。 |
-| colors | 渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 |
+| colors | 渐变色颜色数组，数组元素为0xARGB格式，形如0xFFFF0000表示红色。 |
 | stops | stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。 |
 | size | 生效后渐变色的颜色个数。 |
 
@@ -1500,7 +1500,7 @@ NODE_SPAN_TEXT_BACKGROUND_STYLE = 2001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 表示文本背景颜色，0xargb格式，形如0xFFFF0000表示红色。 |
+| .value[0].u32 | 表示文本背景颜色，0xARGB格式，形如0xFFFF0000表示红色。 |
 | .value[1].f32 | 文本背景圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。支持两种设置方式：<br>1）仅设置.value[1].f32，未设置.value[2].f32~.value[4].f32时，表示四个方向的圆角半径统一设置；<br>2）设置了.value[2].f32~.value[4].f32中任意项时，.value[1].f32仅表示左上角圆角半径。 |
 | .value[2].f32 | 设置右上角圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。 |
 | .value[3].f32 | 设置左下角圆角半径，单位为vp。取值范围：[0, +∞)。传入负数时参数不生效。 |
@@ -1509,7 +1509,7 @@ NODE_SPAN_TEXT_BACKGROUND_STYLE = 2001
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 文本背景颜色，0xargb格式。 |
+| .value[0].u32 | 文本背景颜色，0xARGB格式。 |
 | .value[1].f32 | 左上角圆角半径，单位为vp。 |
 | .value[2].f32 | 右上角圆角半径，单位为vp。 |
 | .value[3].f32 | 左下角圆角半径，单位为vp。 |

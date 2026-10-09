@@ -42,6 +42,8 @@ NavDestination组件状态。
 | ON_WILL_DISAPPEAR<sup>12+</sup>| 7   | NavDestination从组件树上卸载之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | ON_ACTIVE<sup>17+</sup> | 8 | NavDestination组件处于激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
 | ON_INACTIVE<sup>17+</sup> | 9 | NavDestination组件处于非激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
+| ABOUT_TO_APPEAR | 10 | NavDestination外层自定义组件即将出现。 <br/>**起始版本：** 26.2.0 <br/>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ABOUT_TO_DISAPPEAR | 11 | NavDestination外层自定义组件即将消失。 <br/>**起始版本：** 26.2.0 <br/>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | ON_BACKPRESS<sup>12+</sup> | 100   | NavDestination组件返回。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## ScrollEventType<sup>12+</sup>

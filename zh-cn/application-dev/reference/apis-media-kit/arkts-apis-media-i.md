@@ -176,7 +176,9 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | videoFrameRate   | number                                       | 否   | 是   | 视频帧率，选择视频录制时必填。推荐范围[1, 60]，单位为帧/秒（fps）。             |
 | isHdr<sup>11+</sup>            | boolean                        | 否   | 是   | HDR编码，选择视频录制时选填。isHdr默认为false，对应编码格式没有要求，isHdr为true时，对应的编码格式必须为video/hevc。|
 | enableTemporalScale<sup>12+</sup>            | boolean                        | 否   | 是   | 视频录制是否支持时域分层编码功能，选择视频录制时选填，enableTemporalScale默认为false。设置为true时，编码输出的码流中部分帧可以支持跳过不编码。|
-| enableBFrame<sup>20+</sup>            | boolean                        | 否   | 是   | 视频录制是否启用B帧编码。true表示启用B帧编码（仅在视频编码格式为H.265且设备硬件支持的情况下生效），false表示不启用B帧编码。<br>该参数为视频录制场景下的可选项，默认值为false。|
+| enableBFrame<sup>20+</sup>            | boolean                        | 否   | 是   | 视频录制是否启用B帧编码，仅在视频编码格式为H.265且设备硬件支持的情况下生效。true表示启用B帧编码，false表示不启用B帧编码。<br>该参数为视频录制场景下的可选项，默认值为false。|
+| enableStableQualityMode            | boolean                        | 否   | 是   | 是否使能视频编码质量稳定模式，仅在视频编码格式为H.265且设备硬件支持的情况下生效。true表示使能，false表示不使能。<br>该参数为视频录制场景下的可选项，默认值为false。<br>**起始版本：** 26.2.0|
+| sqrFactor            | number                        | 否   | 是   | 设置SQR码控模式的质量参数。<br>取值为整数，取值范围为[0, 51]，值越小，编码输出码率越大，画质越高。<br>需要先设置enableStableQualityMode为true，SQR码控模式的质量参数设置才生效。<br>该参数为视频录制场景下的可选项，默认值根据设备平台和分辨率的不同，底层动态配置。<br>**起始版本：** 26.2.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### 音频参数配置对照表
 

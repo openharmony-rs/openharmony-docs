@@ -400,7 +400,7 @@ type DepthComponentErrorCallback = (error: DepthComponentErrorEvent) => void
 | -------- | -------- | -------- | -------- | -------- |
 | componentWidth | number | 否 | 否 | 组件宽度，单位为vp。 |
 | componentHeight | number | 否 | 否 | 组件高度，单位为vp。 |
-| error | [BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)&lt;void&gt; | 是 | 是 | 加载失败的错误信息。 |
+| error | [BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)&lt;void&gt; | 否 | 是 | 加载失败的错误信息。 |
 
 ## 示例
 

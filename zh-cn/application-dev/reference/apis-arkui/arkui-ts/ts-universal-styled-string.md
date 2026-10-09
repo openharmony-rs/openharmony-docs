@@ -3497,29 +3497,38 @@ struct TailIndentsExample {
 
 ### 示例22（设置图片拉伸）
 
-该示例通过设置[ImageAttachment](#imageattachmentinterface对象说明)中的resizable属性，对图片不同方向进行拉伸。
+该示例通过设置[ImageAttachment](#imageattachmentinterface对象说明)中的resizable属性，分别使用slice和lattice选项对图片进行拉伸。
 
 从API版本26.0.1开始，ImageAttachment接口新增resizable属性。
 
 ```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
 @Entry
 @Component
 struct StyledStringResizablePage {
   controller: TextController = new TextController();
+  private xDivs: Array<number> = [1, 2, 200];
+  private yDivs: Array<number> = [1, 2, 200];
+  private fXCount: number = 3;
+  private fYCount: number = 3;
+  private drawingLattice: DrawingLattice =
+    drawing.Lattice.createImageLattice(this.xDivs, this.yDivs, this.fXCount, this.fYCount);
+
   build() {
     Column({ space: 20 }) {
       Text('StyledString resizable Demo')
-        .fontSize(28)
+        .fontSize(25)
         .fontWeight(FontWeight.Bold)
 
       Text(undefined, { controller: this.controller })
         .width('90%')
         .margin({ top: 10 })
-        .fontSize(28)
+        .fontSize(25)
         .onAppear(() => {
-          let mutableStyledString2: MutableStyledString = new MutableStyledString(new ImageAttachment({
+          let sliceStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
             resourceValue: $r('app.media.landscape'),
-            size: { width: 260, height: 260 },
+            size: { width: 200, height: 200 },
             resizable: {
               slice: {
                 left: '200px',
@@ -3529,13 +3538,22 @@ struct StyledStringResizablePage {
               }
             }
           }));
+          let latticeStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
+            resourceValue: $r('app.media.landscape'),
+            size: { width: 200, height: 200 },
+            resizable: {
+              lattice: this.drawingLattice
+            }
+          }));
           let mutableStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
             resourceValue: $r('app.media.landscape'),
-            size: { width: 260, height: 260 },
+            size: { width: 200, height: 200 },
           }));
           mutableStyledString.insertString(0, "原图\n")
-          mutableStyledString.insertString(mutableStyledString.length, "\n设置Resizable后\n")
-          mutableStyledString.appendStyledString(mutableStyledString2);
+          mutableStyledString.insertString(mutableStyledString.length, "\n设置slice后\n")
+          mutableStyledString.appendStyledString(sliceStyledString);
+          mutableStyledString.insertString(mutableStyledString.length, "\n设置lattice后\n")
+          mutableStyledString.appendStyledString(latticeStyledString);
           this.controller.setStyledString(mutableStyledString);
         })
     }

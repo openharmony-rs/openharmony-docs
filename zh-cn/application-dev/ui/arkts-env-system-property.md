@@ -584,7 +584,7 @@ struct Index {
           }
           hilog.info(DOMAIN, 'testTag', 'Succeeded in changing the window size.');
         });
-         // 为子窗口加载对应的目标页面。
+        // 为子窗口加载对应的目标页面。
         subWindowClass.setUIContent('pages/EnvBuilderNodeSubWindow', (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {

@@ -1383,6 +1383,466 @@ Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-tex
 
   ![Text-menu-subwindow](figures/Text-menu-subwindow.gif)
 
+## 跨节点选中
+
+在文章阅读、商品详情、协议条款等场景中，正文内容通常由标题、副标题、多个段落等独立Text组件分别承载。若无法跨越多个文本组件边界连续选择，多Text组件场景下选择体验存在割裂。
+
+从API版本26.0.0开始，可通过[SelectionContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md)组件为多个Text子组件提供统一的跨节点文本选中、复制及菜单扩展能力。用户长按后可在不同Text节点之间拖拽连续选中文本，选中文本按Text组件视觉顺序拼接后统一复制，同时支持统一配置选中手柄颜色、高亮颜色、文本拼接策略及自定义菜单。SelectionContainer默认采用[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)布局，如需线性布局请在SelectionContainer内放置Column或Row等容器组件。
+
+### 实现跨节点文本选中与复制
+
+将多个Text组件置于SelectionContainer内，通过[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#copyoption)设置可复制范围，即可实现跨Text组件的连续选中和复制。通过[caretColor](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#caretcolor)和[selectedBackgroundColor](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#selectedbackgroundcolor)可统一设置选中手柄和高亮颜色，通过[onTextSelectionChange](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#ontextselectionchange)、[onWillCopy](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#onwillcopy)、[onCopy](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#oncopy)可监听选中变化和复制流程。
+
+  <!-- @[cross_node_selection_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerDemo.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerTextJoinStyle
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerDemo {
+    @State selectedParts: string = '';
+    @State copiedText: string = '';
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Text('请在下方区域跨节点选中文本')
+            .fontSize(16)
+            .fontColor('#999999')
+  
+          SelectionContainer() {
+            Column({ space: 12 }) {
+              Text('跨节点选中示例文章')
+                .fontSize(24)
+                .fontWeight(FontWeight.Bold)
+              Text('在文章阅读场景中，标题与正文通常由多个Text组件分别承载。用户期望能够跨段落连续选中文本。')
+                .fontSize(16)
+              Text('SelectionContainer组件为多个文本节点提供跨节点选中、复制及菜单扩展能力，提升复杂文本布局中的交互体验。')
+                .fontSize(16)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .textJoinStyle(SelectionContainerTextJoinStyle.NEWLINE)
+          .caretColor(Color.Red)
+          .selectedBackgroundColor('#33007DFF')
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedParts = value.join(' | ');
+          })
+          .onWillCopy((value: string) => {
+            this.copiedText = `准备复制：${value}`;
+            return true;
+          })
+          .onCopy((value: string) => {
+            this.copiedText = `复制成功：${value}`;
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Text(`选中内容：${this.selectedParts}`)
+            .fontSize(14)
+            .fontColor('#666666')
+          Text(this.copiedText)
+            .fontSize(14)
+            .fontColor('#666666')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  }
+  ```
+
+  ![text-cross-node-selection](figures/text-cross-node-selection.gif)
+
+### 配置跨节点文本拼接方式
+
+跨节点选中涉及多个Text组件时，复制到剪贴板的文本需按视觉顺序拼接。通过[textJoinStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#textjoinstyle)可设置拼接方式：[SelectionContainerTextJoinStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#selectioncontainertextjoinstyle).NEWLINE在不同文本节点间插入换行符，.DIRECT直接拼接不添加分隔符。
+
+  <!-- @[cross_node_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerJoinStyle.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerTextJoinStyle
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerJoinStyle {
+    @State joinStyle: SelectionContainerTextJoinStyle = SelectionContainerTextJoinStyle.NEWLINE;
+    @State selectedText: string = '';
+    @State copiedText: string = '';
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Row({ space: 12 }) {
+            Button('换行拼接')
+              .type(ButtonType.Capsule)
+              .backgroundColor(this.joinStyle === SelectionContainerTextJoinStyle.NEWLINE ? '#007DFF' : '#E0E0E0')
+              .fontColor(this.joinStyle === SelectionContainerTextJoinStyle.NEWLINE ? Color.White : Color.Black)
+              .onClick(() => {
+                this.joinStyle = SelectionContainerTextJoinStyle.NEWLINE;
+              })
+            Button('直接拼接')
+              .type(ButtonType.Capsule)
+              .backgroundColor(this.joinStyle === SelectionContainerTextJoinStyle.DIRECT ? '#007DFF' : '#E0E0E0')
+              .fontColor(this.joinStyle === SelectionContainerTextJoinStyle.DIRECT ? Color.White : Color.Black)
+              .onClick(() => {
+                this.joinStyle = SelectionContainerTextJoinStyle.DIRECT;
+              })
+          }
+  
+          SelectionContainer() {
+            Column({ space: 12 }) {
+              Text('第一段文本：选中后复制的拼接方式由textJoinStyle决定。')
+                .fontSize(18)
+              Text('第二段文本：换行拼接时两段文本间会插入换行符，直接拼接时不插入任何分隔符。')
+                .fontSize(18)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .textJoinStyle(this.joinStyle)
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedText = value.join(' | ');
+          })
+          .onWillCopy((value: string) => {
+            this.copiedText = value;
+            return true;
+          })
+          .onCopy((value: string) => {
+            this.copiedText = value;
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Text(`选中内容：${this.selectedText}`)
+            .fontSize(14)
+            .fontColor('#666666')
+          Text('复制内容（体现拼接方式差异）：')
+            .fontSize(14)
+            .fontColor('#666666')
+          Text(this.copiedText)
+            .fontSize(14)
+            .fontColor('#333333')
+            .backgroundColor('#F5F5F5')
+            .padding(8)
+            .borderRadius(4)
+            .width('100%')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  }
+  ```
+
+  ![text-cross-node-join-style](figures/text-cross-node-join-style.gif)
+
+### 绑定自定义选择菜单
+
+当系统默认菜单无法满足业务需求时，可通过[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#bindselectionmenu)绑定完全自定义的选择菜单。与系统菜单不同，自定义菜单的内容、样式和触发条件均由开发者定义。
+
+  <!-- @[cross_node_custom_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerCustomMenu.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerMenuOptions,
+    SelectionContainerTextJoinStyle
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerCustomMenu {
+    @State selectedText: string = '';
+    @State menuLog: string = '';
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Text('请在下方区域选中文本，体验自定义菜单')
+            .fontSize(16)
+            .fontColor('#999999')
+  
+          SelectionContainer() {
+            Column({ space: 12 }) {
+              Text('第一段文本：跨节点选中后长按可弹出完全自定义的选择菜单。')
+                .fontSize(18)
+              Text('第二段文本：通过bindSelectionMenu绑定自定义菜单，可替代系统默认菜单。')
+                .fontSize(18)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .textJoinStyle(SelectionContainerTextJoinStyle.DIRECT)
+          .bindSelectionMenu(
+            TextSpanType.TEXT,
+            this.menuBuilder,
+            TextResponseType.DEFAULT,
+            {
+              onAppear: (text: string) => {
+                this.menuLog = `菜单出现，选中文本：${text}`;
+              },
+              onDisappear: () => {
+                this.menuLog = '菜单消失';
+              }
+            } as SelectionContainerMenuOptions
+          )
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedText = value.join(' | ');
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Text(`选中内容：${this.selectedText}`)
+            .fontSize(14)
+            .fontColor('#666666')
+          Text(this.menuLog)
+            .fontSize(14)
+            .fontColor('#999999')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  
+    @Builder
+    menuBuilder() {
+      Column() {
+        Menu() {
+          MenuItemGroup() {
+            MenuItem({ content: '自定义复制', labelInfo: '' })
+              .onClick(() => {
+                this.menuLog = '点击了自定义复制';
+              })
+            MenuItem({ content: '自定义分享', labelInfo: '' })
+              .onClick(() => {
+                this.menuLog = '点击了自定义分享';
+              })
+            MenuItem({ content: '自定义翻译', labelInfo: '' })
+              .onClick(() => {
+                this.menuLog = '点击了自定义翻译';
+              })
+          }
+        }
+        .radius($r('sys.float.ohos_id_corner_radius_card'))
+        .clip(true)
+        .backgroundColor('#F0F0F0')
+      }
+    }
+  }
+  ```
+
+  ![text-cross-node-bind-menu](figures/text-cross-node-bind-menu.gif)
+
+### 扩展系统菜单选项
+
+若需在保留系统菜单项的基础上增加自定义选项，可通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#editmenuoptions)实现。该方式支持添加自定义菜单项、移除指定系统菜单项，并在[onMenuItemClick](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#onmenuitemclickwithtextcallback)回调中通过返回值拦截或放行系统默认行为。
+
+  <!-- @[cross_node_extend_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerExtendMenu.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    OnMenuItemClickWithTextCallback,
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerEditMenuOptions,
+    SelectionContainerTextJoinStyle
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerExtendMenu {
+    @State selectedText: string = '';
+    @State menuClickLog: string = '';
+  
+    onCreateMenu = (menuItems: Array<TextMenuItem>): Array<TextMenuItem> => {
+      let targetIndex: number = menuItems.findIndex((item: TextMenuItem) => item.id.equals(TextMenuItemId.TRANSLATE));
+      if (targetIndex !== -1) {
+        menuItems.splice(targetIndex, 1);
+      }
+      targetIndex = menuItems.findIndex((item: TextMenuItem) => item.id.equals(TextMenuItemId.SEARCH));
+      if (targetIndex !== -1) {
+        menuItems.splice(targetIndex, 1);
+      }
+      let highlightItem: TextMenuItem = {
+        content: '标注',
+        id: TextMenuItemId.of('highlight')
+      };
+      let bookmarkItem: TextMenuItem = {
+        content: '收藏',
+        id: TextMenuItemId.of('bookmark')
+      };
+      let commentItem: TextMenuItem = {
+        content: '批注',
+        id: TextMenuItemId.of('comment')
+      };
+      menuItems.push(highlightItem);
+      menuItems.push(bookmarkItem);
+      menuItems.push(commentItem);
+      return menuItems;
+    }
+  
+    onMenuItemClick: OnMenuItemClickWithTextCallback = (menuItem: TextMenuItem, text: string): boolean => {
+      this.menuClickLog = `点击菜单项：${menuItem.content}，选中文本：${text}`;
+      if (menuItem.id.equals(TextMenuItemId.COPY)) {
+        this.selectedText = `已复制：${text}`;
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+        this.selectedText = `全选操作：${text}`;
+        return false;
+      }
+      if (menuItem.id.equals(TextMenuItemId.of('highlight'))) {
+        this.selectedText = `已标注：${text}`;
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.of('bookmark'))) {
+        this.selectedText = `已收藏：${text}`;
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.of('comment'))) {
+        this.selectedText = `已批注：${text}`;
+        return true;
+      }
+      return false;
+    }
+  
+    @State editMenuOptions: SelectionContainerEditMenuOptions = {
+      onCreateMenu: this.onCreateMenu,
+      onMenuItemClick: this.onMenuItemClick
+    };
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Text('请在下方区域选中文本，体验扩展菜单')
+            .fontSize(16)
+            .fontColor('#999999')
+  
+          SelectionContainer() {
+            Column({ space: 12 }) {
+              Text('第一段文本：通过editMenuOptions可以在系统菜单基础上扩展自定义项。')
+                .fontSize(18)
+              Text('第二段文本：可以移除不需要的系统菜单项，并添加标注、收藏、批注等自定义项。')
+                .fontSize(18)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .textJoinStyle(SelectionContainerTextJoinStyle.DIRECT)
+          .editMenuOptions(this.editMenuOptions)
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedText = value.join(' | ');
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Text(this.selectedText)
+            .fontSize(14)
+            .fontColor('#666666')
+          Text(this.menuClickLog)
+            .fontSize(14)
+            .fontColor('#999999')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  }
+  ```
+
+  ![text-cross-node-extend-menu](figures/text-cross-node-extend-menu.gif)
+
+### 通过控制器关闭菜单与清除选中
+
+在页面跳转、弹窗遮盖等场景下，需主动关闭选择菜单或清除选中状态。可通过[SelectionContainerController](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#selectioncontainercontroller)的[closeSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#closeselectionmenu)关闭菜单，通过[clearTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#cleartextselection)清除选中态。
+
+  <!-- @[cross_node_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerControllerDemo.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerController
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerControllerDemo {
+    private controller: SelectionContainerController = new SelectionContainerController();
+    @State selectedText: string = '';
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Text('请在下方区域跨节点选中文本，再点击按钮操作')
+            .fontSize(16)
+            .fontColor('#999999')
+  
+          SelectionContainer({ controller: this.controller }) {
+            Column({ space: 12 }) {
+              Text('第一段文本：选中后可通过控制器关闭选择菜单或清除选中文本。')
+                .fontSize(18)
+              Text('第二段文本：closeSelectionMenu仅关闭菜单，clearTextSelection会同时清除选中态。')
+                .fontSize(18)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedText = value.join(' | ');
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Row({ space: 12 }) {
+            Button('关闭选择菜单')
+              .type(ButtonType.Capsule)
+              .onClick(() => {
+                this.controller.closeSelectionMenu();
+              })
+            Button('清除文本选中')
+              .type(ButtonType.Capsule)
+              .onClick(() => {
+                this.controller.clearTextSelection();
+                this.selectedText = '';
+              })
+          }
+  
+          Text(`选中内容：${this.selectedText}`)
+            .fontSize(14)
+            .fontColor('#666666')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  }
+  ```
+
+  ![text-cross-node-controller](figures/text-cross-node-controller.gif)
+
 ## 实现热搜榜
 
 该示例通过[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)、[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)、[textAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textalign)、[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)属性展示了热搜榜的效果。

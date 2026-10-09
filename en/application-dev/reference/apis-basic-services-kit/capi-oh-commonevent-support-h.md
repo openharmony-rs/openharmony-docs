@@ -2,9 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:40:04.792Z pushedAt=2026-10-08T02:39:02.471Z -->
 
 ## Overview
 

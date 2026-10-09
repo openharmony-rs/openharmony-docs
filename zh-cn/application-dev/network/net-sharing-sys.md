@@ -105,7 +105,7 @@ sharing.on('sharingStateChange', (data: boolean) => {
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
   console.info('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
-  console.error('start wifi sharing failed');
+  console.error('stop wifi sharing failed');
 });
 ```
 
@@ -141,7 +141,7 @@ sharing.getStatsTotalBytes().then((data: number) => {
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
   console.info('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
-  console.error('start wifi sharing failed');
+  console.error('stop wifi sharing failed');
 });
 
 // 再次调用getStatsTotalBytes方法，共享网络数据量已清零
