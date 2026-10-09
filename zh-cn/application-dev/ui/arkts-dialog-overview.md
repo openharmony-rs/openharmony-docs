@@ -86,6 +86,6 @@
 
 ## 迁移指南
 
-从 API 版本 26.1.0 开始，`@ohos.arkui.dialog` 提供 Unified Dialog API（第三代弹窗接口），统一了固定样式弹窗和自定义弹窗的编程模型。如果您的应用正在使用老接口（CustomDialog、AlertDialog、TextPickerDialog、TimePickerDialog、DatePickerDialog），请参考 [弹窗迁移指南](arkui-dialog-migration-guide.md) 了解新老接口能力差异并按类别完成迁移。
+从 API 版本 26.1.0 开始，`@ohos.arkui.dialog` 提供 Unified Dialog API（统一弹窗接口），统一了固定样式弹窗和自定义弹窗的编程模型。如果您的应用正在使用老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[AlertDialog.show](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#show)、[ActionSheet.show](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#show)、[promptAction.showDialog](../reference/apis-arkui/js-apis-promptAction.md#showdialog)、[promptAction.showActionMenu](../reference/apis-arkui/js-apis-promptAction.md#showactionmenu)、[promptAction.openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#opencustomdialog)、[promptAction.openCustomDialogWithController](../reference/apis-arkui/js-apis-promptAction.md#opencustomdialogwithcontroller)、[promptAction.presentCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#presentcustomdialog)），请参考 [弹窗迁移指南](arkui-dialog-migration-guide.md) 了解新老接口能力差异并按类别完成迁移。
 
 

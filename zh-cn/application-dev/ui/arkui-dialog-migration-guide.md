@@ -8,9 +8,9 @@
 
 ## 概述
 
-本文档帮助开发者了解 `@ohos.arkui.dialog` 新接口与老接口（CustomDialog、AlertDialog、TextPickerDialog、TimePickerDialog、DatePickerDialog）的能力差异，并按弹窗类别提供从老接口到新接口的迁移映射和示例。
+本文档帮助开发者了解 `@ohos.arkui.dialog` 新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[AlertDialog.show](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#showdeprecated)、[ActionSheet.show](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#showdeprecated)、[promptAction.showDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowdialogdeprecated)、[promptAction.showActionMenu](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowactionmenudeprecated)、[promptAction.openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)、[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹窗类别提供从老接口到新接口的迁移映射和示例。
 
-> **适用版本：** 从 API 版本 26.1.0（OpenHarmony 7.1-Release）开始，`@ohos.arkui.dialog` 提供 Unified Dialog API。版本状态以 [`@ohos.arkui.dialog.d.ts`](../reference/apis-arkui/js-apis-dialog.md) 实际 `@since` 标注为准。
+> **适用版本：** 从 API 版本 26.1.0 开始，`@ohos.arkui.dialog` 提供 Unified Dialog API。版本状态以 [`@ohos.arkui.dialog.d.ts`](../reference/apis-arkui/js-apis-dialog.md) 实际 `@since` 标注为准。
 
 ### 快速导航
 
@@ -35,193 +35,37 @@ DialogTextStyleOptions
   └── DialogMessage（extends DialogTextStyleOptions）
 ```
 
-### 13 声明单元
+### 接口说明
 
-#### 1. DialogTextStyleOptions
+| 接口名 | 类型 | 说明 | 参考文档 |
+|--------|------|------|---------|
+| DialogTextStyleOptions | 选项类型 | 文本样式选项，控制弹窗消息内容的断行方式，作为 `DialogMessage` 的基类。 | [js-apis-dialog.md#dialogtextstyleoptions](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions) |
+| DialogButton | 选项类型 | 弹窗按钮配置，用于 `DialogStyleOptions.buttons` 数组元素。 | [js-apis-dialog.md#dialogbutton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton) |
+| DialogSheet | 选项类型 | Action-sheet 风格的菜单项，用于 `DialogStyleOptions.sheets` 数组元素。 | [js-apis-dialog.md#dialogsheet](../reference/apis-arkui/js-apis-dialog.md#dialogsheet) |
+| DialogBaseOptions | 选项类型 | 所有弹窗样式的基类选项，承载通用样式和行为配置，被 `DialogStyleOptions` 和 `DialogCustomOptions` 继承。 | [js-apis-dialog.md#dialogbaseoptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
+| DialogMessage | 选项类型 | 消息内容与文本样式，继承自 `DialogTextStyleOptions`，用于 `DialogStyleOptions.message`。 | [js-apis-dialog.md#dialogmessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage) |
+| DialogStyleOptions | 选项类型 | 固定样式弹窗选项，继承自 `DialogBaseOptions`，用于 `DialogPresenter.present(options)`。 | [js-apis-dialog.md#dialogstyleoptions](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions) |
+| DialogCustomOptions | 选项类型 | 自定义样式弹窗选项，继承自 `DialogBaseOptions`，用于 `DialogPresenter.present(content, options)`。 | [js-apis-dialog.md#dialogcustomoptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions) |
+| DialogBaseController | 控制器 | 弹窗控制器类，通过 `DialogBaseOptions.controller` 传入，提供 `close()` 和 `getState()` 方法。 | [js-apis-dialog.md#dialogbasecontroller](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller) |
+| DialogResult | 结果 | 弹窗操作结果，`present()` 的 Promise 返回值，包含 `dialogId`。 | [js-apis-dialog.md#dialogresult](../reference/apis-arkui/js-apis-dialog.md#dialogresult) |
+| DialogDismissal | 结果 | 弹窗关闭信息，`onWillDismiss` 回调参数，包含 `dismiss` 和 `reason`。 | [js-apis-dialog.md#dialogdismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal) |
+| DialogBaseAlignment | 枚举 | 弹窗对齐方式枚举（TOP/CENTER/BOTTOM/DEFAULT 等 10 种）。 | [js-apis-dialog.md#dialogbasealignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) |
+| DialogButtonOrientation | 枚举 | 按钮排列方向枚举（AUTO/HORIZONTAL/VERTICAL）。 | [js-apis-dialog.md#dialogbuttonorientation](../reference/apis-arkui/js-apis-dialog.md#dialogbuttonorientation) |
+| DialogState | 枚举 | 弹窗状态枚举（UNINITIALIZED~DISAPPEARED），通过 `DialogBaseController.getState()` 查询。 | [js-apis-dialog.md#dialogstate](../reference/apis-arkui/js-apis-dialog.md#dialogstate) |
 
-- **定位：** 文本样式选项，控制弹窗消息内容的断行方式。
-- **要点：** 作为 `DialogMessage` 的基类。
-- **关键属性：** `wordBreak?: WordBreak`
-- **参考文档：** [js-apis-dialog.md#dialogtextstyleoptions](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions)
-
-#### 2. DialogButton
-
-- **定位：** 弹窗按钮配置。
-- **要点：** 用于 `DialogStyleOptions.buttons` 数组元素。
-- **关键属性：** `value: ResourceStr`、`fontColor?`、`backgroundColor?`、`enabled?`（默认 true）、`primary?`、`style?`（默认 DEFAULT）、`action: VoidCallback`
-- **参考文档：** [js-apis-dialog.md#dialogbutton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton)
-
-#### 3. DialogSheet
-
-- **定位：** Action-sheet 风格的菜单项。
-- **要点：** 用于 `DialogStyleOptions.sheets` 数组元素，与 `buttons` 共存时按钮显示在列表下方。
-- **关键属性：** `title: ResourceStr`、`icon?: ResourceStr`、`action: VoidCallback`
-- **参考文档：** [js-apis-dialog.md#dialogsheet](../reference/apis-arkui/js-apis-dialog.md#dialogsheet)
-
-#### 4. DialogBaseOptions
-
-- **定位：** 所有弹窗样式的基类选项，承载通用样式和行为配置。
-- **要点：** 被 `DialogStyleOptions` 和 `DialogCustomOptions` 继承；也是 `DialogPresenter.update()` 的参数类型。
-- **关键属性：** `controller?`、`width?`、`height?`、`backgroundColor?`、`backgroundBlurStyle?`、`backgroundBlurStyleOptions?`、`backgroundEffect?`、`borderRadius?`、`borderWidth?`、`borderColor?`、`borderStyle?`、`shadow?`、`alignment?`、`offset?`、`maskRect?`、`maskColor?`、`isModal?`、`showInSubWindow?`、`displayModeInSubWindow?`、`autoCancel?`、`focusable?`、`dialogTransition?`、`maskTransition?`、`keyboardAvoidMode?`、`keyboardAvoidDistance?`、`onWillAppear?`、`onDidAppear?`、`onWillDisappear?`、`onDidDisappear?`、`onWillDismiss?`、`enableHoverMode?`、`hoverModeArea?`、`levelMode?`、`levelUniqueId?`、`immersiveMode?`、`levelOrder?`、`systemMaterial?`
-- **系统接口属性：** `distortionMode?`（@systemapi）、`edgeLightMode?`（@systemapi）——标注"系统接口"，详见 [js-apis-dialog-sys.md](../reference/apis-arkui/js-apis-dialog-sys.md)
-- **参考文档：** [js-apis-dialog.md#dialogbaseoptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)
-
-#### 5. DialogMessage
-
-- **定位：** 消息内容 + 文本样式，extends `DialogTextStyleOptions`。
-- **要点：** 用于 `DialogStyleOptions.message`。
-- **关键属性：** `content: ResourceStr`
-- **参考文档：** [js-apis-dialog.md#dialogmessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage)
-
-#### 6. DialogStyleOptions
-
-- **定位：** 固定样式弹窗选项，extends `DialogBaseOptions`。
-- **要点：** 用于 `DialogPresenter.present(options)` 的参数类型。
-- **关键属性：** `title?`、`subtitle?`、`message?: DialogMessage`、`buttons?: Array<DialogButton>`、`buttonDirection?`（默认 AUTO）、`sheets?: Array<DialogSheet>`、`gridCount?`
-- **参考文档：** [js-apis-dialog.md#dialogstyleoptions](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions)
-
-#### 7. DialogCustomOptions
-
-- **定位：** 自定义样式弹窗选项，extends `DialogBaseOptions`。
-- **要点：** 用于 `DialogPresenter.present(content, options)` 的 `options` 参数类型；弹窗内容由 `present` 第一个参数提供，不在此选项内。
-- **关键属性：** `customStyle?: boolean`（默认 false）
-- **参考文档：** [js-apis-dialog.md#dialogcustomoptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions)
-
-#### 8. DialogBaseController
-
-- **定位：** 弹窗控制器类，用于主动控制弹窗。
-- **要点：** 通过 `DialogBaseOptions.controller` 传入；`present` 返回的 `Promise<DialogResult>` 也可用于后续 `dismiss`。
-- **关键方法：** `constructor()`、`close(): void`、`getState(): DialogState`
-- **参考文档：** [js-apis-dialog.md#dialogbasecontroller](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller)
-
-<!-- @[dialog_migration_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/DialogStatePage.ets) -->
-
-```typescript
-import { dialog } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct DialogStatePage {
-  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
-  private controller: dialog.DialogBaseController = new dialog.DialogBaseController();
-  @State stateText: string = '';
-
-  build() {
-    Row() {
-      Column() {
-        Text('DialogBaseController 状态查询示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
-
-        Button('弹出弹窗（通过 controller 控制）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showDialogWithController();
-          })
-
-        Button('查询状态 getState()')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.queryState();
-          })
-
-        Button('关闭 close()')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.controller.close();
-            this.stateText = '已调用 close()';
-          })
-
-        if (this.stateText) {
-          Text(this.stateText)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-
-  private showDialogWithController(): void {
-    this.presenter.present(() => {
-      Column() {
-        Text('通过 DialogBaseController 控制的弹窗')
-          .fontSize(16)
-          .margin({ bottom: 10 })
-        Button('内部关闭')
-          .onClick(() => {
-            this.controller.close();
-          })
-      }
-      .padding(20)
-    }, {
-      controller: this.controller,
-      alignment: dialog.DialogBaseAlignment.CENTER,
-      autoCancel: true
-    }).then((result: dialog.DialogResult) => {
-      this.stateText = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.stateText = `present error: ${error.code}`;
-    });
-  }
-
-  private queryState(): void {
-    const state = this.controller.getState();
-    const stateNames = ['UNINITIALIZED', 'INITIALIZED', 'APPEARING', 'APPEARED', 'DISAPPEARING', 'DISAPPEARED'];
-    this.stateText = '当前状态: ' + stateNames[state];
-  }
-}
-```
-
-#### 9. DialogBaseAlignment
-
-- **定位：** 弹窗对齐方式枚举。
-- **枚举值：** `TOP = 0`、`CENTER = 1`、`BOTTOM = 2`、`DEFAULT = 3`、`TOP_START = 4`、`TOP_END = 5`、`CENTER_START = 6`、`CENTER_END = 7`、`BOTTOM_START = 8`、`BOTTOM_END = 9`
-- **参考文档：** [js-apis-dialog.md#dialogbasealignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment)
-
-#### 10. DialogButtonOrientation
-
-- **定位：** 按钮排列方向枚举。
-- **枚举值：** `AUTO = 0`、`HORIZONTAL = 1`、`VERTICAL = 2`
-- **参考文档：** [js-apis-dialog.md#dialogbuttonorientation](../reference/apis-arkui/js-apis-dialog.md#dialogbuttonorientation)
-
-#### 11. DialogState
-
-- **定位：** 弹窗状态枚举，通过 `DialogBaseController.getState()` 查询。
-- **枚举值：** `UNINITIALIZED = 0`、`INITIALIZED = 1`、`APPEARING = 2`、`APPEARED = 3`、`DISAPPEARING = 4`、`DISAPPEARED = 5`
-- **参考文档：** [js-apis-dialog.md#dialogstate](../reference/apis-arkui/js-apis-dialog.md#dialogstate)
-
-#### 12. DialogResult
-
-- **定位：** 弹窗操作结果，`present()` 的 Promise 返回值。
-- **关键属性：** `dialogId: int`
-- **参考文档：** [js-apis-dialog.md#dialogresult](../reference/apis-arkui/js-apis-dialog.md#dialogresult)
-
-#### 13. DialogDismissal
-
-- **定位：** 弹窗关闭信息，`onWillDismiss` 回调参数。
-- **关键属性：** `dismiss: VoidCallback`（调用以确认关闭）、`reason: DismissReason`
-- **参考文档：** [js-apis-dialog.md#dialogdismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal)
+> **说明：** `DialogBaseOptions` 还包含系统接口属性 `distortionMode`（@systemapi）和 `edgeLightMode`（@systemapi），详见 [系统接口](../reference/apis-arkui/js-apis-dialog-sys.md)。
 
 ## 新老接口能力差异
 
 ### 差异总览
 
-弹窗接口经历三代演进：第一代（API 9+，命令式静态方法如 `AlertDialog.show()`）、第二代（API 8+，`@CustomDialog` 装饰器 + `CustomDialogController`）、第三代（API 26.1.0+，Unified Dialog API，`DialogPresenter.present()` + Promise）。新老接口在以下维度存在差异，按"属性差异"和"使用差异"两类分述（详见下方对应小节）：
+新老接口在以下维度存在差异，按"属性差异"和"使用差异"两类分述（详见下方对应小节）：
 
-| 差异类型 | 对比维度 | 老接口（第一/二代） | 新接口（第三代 `@ohos.arkui.dialog`） |
-|---------|---------|-------------------|----------------------------|
+| 差异类型 | 对比维度 | 老接口 | 新接口（`@ohos.arkui.dialog`） |
+|---------|---------|---------|----------------------------|
 | 属性差异 | 高级动画 | `customStyle` + `openAnimation`/`closeAnimation`（`AnimateParam`） | `dialogTransition` + `maskTransition`（`TransitionEffect`） |
-| 属性差异 | update 更新面 | `CustomDialogController.update()` 支持多属性 | `DialogPresenter.update()` 仅支持 `alignment`/`offset`/`autoCancel`/`maskColor` |
-| 使用差异 | 编程模型 | 静态方法 / 装饰器 + Controller | `UIContext.getDialogPresenter()` + Promise |
-| 使用差异 | 取消回调 | `onCancel` / `onWillDismiss` | `onWillDismiss: Callback<DialogDismissal>` |
-| 使用差异 | FA 模型适用面 | 部分老接口支持 FA 模型 | 仅 Stage 模型（`@stagemodelonly`） |
+| 使用差异 | 编程模型 | 装饰器 + Controller / 命令式调用 | `UIContext.getDialogPresenter()` + Promise |
+| 使用差异 | 取消回调 | `cancel` / `onWillDismiss` | `onWillDismiss: Callback<DialogDismissal>` |
 
 ### 属性差异
 
@@ -244,11 +88,11 @@ struct DialogStatePage {
 | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
 | 焦点 | `focusable: boolean`（可配置，默认 true，API 19+） | `focusable: boolean`（可配置，默认 true） |
 | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`（API 19+） | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 取消回调 | `cancel: () => void` + `onWillDismiss: Callback<DismissDialogAction>`（API 12+） | `onWillDismiss: Callback<DialogDismissal>`（见 G2） |
+| 取消回调 | `cancel: () => void` + `onWillDismiss: Callback<DismissDialogAction>`（API 12+） | `onWillDismiss: Callback<DialogDismissal>` |
 | 背景模糊 | `backgroundBlurStyle`（API 12+） + `backgroundBlurStyleOptions`（API 19+） + `backgroundEffect`（API 19+） | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
 | 边框 | `cornerRadius`（API 10+）/ `borderWidth`（API 12+）/ `borderColor`（API 12+）/ `borderStyle`（API 12+） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`，其余同名） |
 | 阴影 | `shadow: ShadowOptions \| ShadowStyle`（API 12+） | `shadow: ShadowOptions \| ShadowStyle` |
-| 内容区动画 | `openAnimation` + `closeAnimation`（`AnimateParam`，API 10+） | `dialogTransition: TransitionEffect`（见 G3） |
+| 内容区动画 | `openAnimation` + `closeAnimation`（`AnimateParam`，API 10+） | `dialogTransition: TransitionEffect` |
 | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
 | 键盘避让 | `keyboardAvoidMode`（API 12+） + `keyboardAvoidDistance`（API 15+） | `keyboardAvoidMode` + `keyboardAvoidDistance` |
 | 悬浮模式 | `enableHoverMode`（API 14+） + `hoverModeArea`（API 14+） | `enableHoverMode` + `hoverModeArea` |
@@ -260,7 +104,7 @@ struct DialogStatePage {
 
 | 属性 | 老接口（AlertDialog.show） | 新接口（DialogPresenter.present + DialogStyleOptions） |
 |------|------|------|
-| 编程模型 | `AlertDialog.show(options)` 静态方法 | `presenter.present(options): Promise<DialogResult>`（见 G1） |
+| 编程模型 | `AlertDialog.show(options)` 命令式调用 | `presenter.present(options): Promise<DialogResult>` |
 | 标题 | `title: string \| Resource` | `title: ResourceStr` |
 | 副标题 | 无 | `subtitle: ResourceStr`（新增） |
 | 消息内容 | `message: string \| Resource` | `message: DialogMessage`（content + wordBreak） |
@@ -269,31 +113,31 @@ struct DialogStatePage {
 | 操作菜单 | 无 | `sheets: Array<DialogSheet>`（action-sheet 风格） |
 | 网格数 | 无 | `gridCount: int` |
 | 确认回调 | `confirm: VoidCallback` / `primaryButton.action` | `DialogButton.action`（通过 Promise 结果） |
-| 取消回调 | `cancel` | `onWillDismiss: Callback<DialogDismissal>`（见 G2） |
+| 取消回调 | `cancel` | `onWillDismiss: Callback<DialogDismissal>` |
 | 样式 | `alignment` / `offset` / `maskColor` / `autoCancel` 等 | 继承自 `DialogBaseOptions`（同 CustomDialog） |
 
 #### 3. TextPickerDialog（文本选择弹窗）
 
 | 属性 | 老接口（TextPickerDialog.show） | 新接口（迁移到 DialogPresenter + ComponentContent） |
 |------|------|------|
-| 编程模型 | `TextPickerDialog.show(options)` 静态方法 | 使用 `DialogPresenter.present(content, DialogCustomOptions)` 自定义内容内嵌 TextPicker（见 G1） |
-| 选择范围 | `range: string[] \| Resource` / `TextPickerRangeContent[]` | 内容组件中嵌入 `TextPicker`，通过自定义弹窗承载 |
+| 编程模型 | `TextPickerDialog.show(options)` 命令式调用 | 使用 `DialogPresenter.present(content, DialogCustomOptions)` 自定义内容内嵌 TextPicker |
+| 选择范围 | `range: string[] \| Resource` / `TextPickerRangeContent[]` | 内容组件中嵌入 `TextPicker`，通过自定义弹窗内嵌 |
 | 默认选中 | `selected: number` | TextPicker 组件 `selected` 属性 |
 | 确认回调 | `onAccept: (value: string\|TextPickerResult) => void` | 自定义组件内 `onAccept` 回调 |
-| 取消回调 | `onCancel` | `onWillDismiss: Callback<DialogDismissal>`（见 G2） |
+| 取消回调 | `onCancel` | `onWillDismiss: Callback<DialogDismissal>` |
 | 变化回调 | `onChange: (value: string\|TextPickerResult) => void` | TextPicker 组件 `onChange` |
 | 样式 | `alignment` / `offset` / `maskColor` 等 | 继承自 `DialogBaseOptions` |
 
-> **说明：** 新接口无 TextPicker 专用弹窗声明单元。迁移时使用自定义弹窗承载 `TextPicker` 组件，行为差异通过自定义内容实现等价能力。
+> **说明：** 新接口无 TextPicker 专用弹窗声明单元。迁移时在自定义弹窗中内嵌 `TextPicker` 组件，行为差异通过自定义内容实现等价能力。
 
 #### 4. TimePickerDialog（时间选择弹窗）
 
 | 属性 | 老接口（TimePickerDialog.show） | 新接口（迁移到 DialogPresenter + ComponentContent） |
 |------|------|------|
-| 编程模型 | `TimePickerDialog.show(options)` 静态方法 | 使用 `DialogPresenter.present(content, DialogCustomOptions)` 自定义内容内嵌 TimePicker（见 G1） |
+| 编程模型 | `TimePickerDialog.show(options)` 命令式调用 | 使用 `DialogPresenter.present(content, DialogCustomOptions)` 自定义内容内嵌 TimePicker |
 | 24小时制 | `useMilitaryTime: boolean` | TimePicker 组件 `useMilitaryTime` 属性 |
 | 响应回调 | `onAccept: (value: TimePickerValue) => void` | 自定义组件内回调 |
-| 取消回调 | `onCancel` | `onWillDismiss: Callback<DialogDismissal>`（见 G2） |
+| 取消回调 | `onCancel` | `onWillDismiss: Callback<DialogDismissal>` |
 | 变化回调 | `onChange` | TimePicker 组件 `onChange` |
 | 样式 | `alignment` / `offset` / `maskColor` 等 | 继承自 `DialogBaseOptions` |
 
@@ -301,35 +145,29 @@ struct DialogStatePage {
 
 | 属性 | 老接口（DatePickerDialog.show） | 新接口（迁移到 DialogPresenter + ComponentContent） |
 |------|------|------|
-| 编程模型 | `DatePickerDialog.show(options)` 静态方法 | 使用 `DialogPresenter.present(content, DialogCustomOptions)` 自定义内容内嵌 DatePicker（见 G1） |
+| 编程模型 | `DatePickerDialog.show(options)` 命令式调用 | 使用 `DialogPresenter.present(content, DialogCustomOptions)` 自定义内容内嵌 DatePicker |
 | 起始日期 | `start: Date` | DatePicker 组件 `start` 属性 |
 | 结束日期 | `end: Date` | DatePicker 组件 `end` 属性 |
 | 选中类型 | `type: DatePickerType` | DatePicker 组件 `type` 属性 |
 | 响应回调 | `onAccept: (value: DatePickerResult) => void` | 自定义组件内回调 |
-| 取消回调 | `onCancel` | `onWillDismiss: Callback<DialogDismissal>`（见 G2） |
+| 取消回调 | `onCancel` | `onWillDismiss: Callback<DialogDismissal>` |
 | 变化回调 | `onChange` | DatePicker 组件 `onChange` |
 | 样式 | `alignment` / `offset` / `maskColor` 等 | 继承自 `DialogBaseOptions` |
 
-#### G3：高级动画参数差异
+#### 高级动画参数差异
 
 老接口使用 `customStyle: boolean` 控制是否使用自定义样式，`openAnimation` / `closeAnimation`（`AnimateParam`）控制打开和关闭动画。新接口使用 `dialogTransition: TransitionEffect` 控制内容区动画，`maskTransition: TransitionEffect` 控制蒙层动画。两者参数类型不同，**不存在等效映射**，迁移时需按新接口 `TransitionEffect` 重写动画参数。
 
-#### G4：update 更新面收窄
-
-老接口 `CustomDialogController.update()` 可更新多种属性。新接口 `DialogPresenter.update(content, options)` 的 `options` 类型为 `DialogBaseOptions`，实际可更新面收窄为 `alignment`、`offset`、`autoCancel`、`maskColor` 四项。其他属性（如 `backgroundColor`、`borderRadius` 等）不支持通过 `update` 运行时更新。
-
-> **说明：** 本指南如实标注此收窄，不推动 G4 能力补齐（非目标）。
-
 ### 使用差异
 
-#### G1：编程模型差异
+#### 编程模型差异
 
-老接口分两代：第一代使用静态方法（`AlertDialog.show()`、`TextPickerDialog.show()` 等），第二代使用 `@CustomDialog` 装饰器 + `CustomDialogController`。新接口统一为 `UIContext.getDialogPresenter()` 获取 `DialogPresenter` 实例，通过 `present()` 弹出，返回 `Promise<DialogResult>`。
+老接口使用 `@CustomDialog` 装饰器 + `CustomDialogController` 或命令式调用（`AlertDialog.show()`、`TextPickerDialog.show()` 等）。新接口统一为 `UIContext.getDialogPresenter()` 获取 `DialogPresenter` 实例，通过 `present()` 弹出，返回 `Promise<DialogResult>`。
 
 **迁移范式：**
 
 ```typescript
-// 老接口（第二代 CustomDialog）
+// 老接口（CustomDialog）
 @CustomDialog
 struct MyDialog {
   controller: CustomDialogController
@@ -339,14 +177,14 @@ struct MyDialog {
 let controller = new CustomDialogController({ builder: MyDialog() })
 controller.open()
 
-// 新接口（第三代 DialogPresenter）
+// 新接口（DialogPresenter）
 let presenter = this.getUIContext().getDialogPresenter()
 presenter.present(() => { /* CustomBuilder 内容 */ }, { customStyle: false })
 ```
 
-#### G2：cancel 回调差异
+#### 取消回调差异
 
-老接口使用 `onCancel: () => void` 直接回调。新接口使用 `onWillDismiss: Callback<DialogDismissal>`，回调参数 `DialogDismissal` 包含 `dismiss: VoidCallback`（调用以确认关闭）和 `reason: DismissReason`（关闭原因）。新接口注册 `onWillDismiss` 后，弹窗不会立即关闭，需在回调中决定是否调用 `dismiss()`。
+老接口使用 `cancel: () => void` 直接回调。新接口使用 `onWillDismiss: Callback<DialogDismissal>`，回调参数 `DialogDismissal` 包含 `dismiss: VoidCallback`（调用以确认关闭）和 `reason: DismissReason`（关闭原因）。新接口注册 `onWillDismiss` 后，弹窗不会立即关闭，需在回调中决定是否调用 `dismiss()`。
 
 **等价实现样例：**
 
@@ -369,25 +207,21 @@ this.getUIContext().getDialogPresenter().present({
 })
 ```
 
-#### G5：FA 模型适用面
-
-新接口 `@ohos.arkui.dialog` 标注 `@stagemodelonly`，仅支持 Stage 模型。老接口中部分接口支持 FA 模型。本指南对 FA 适用面不作显式说明（FA 模型开发者如需弹窗请继续使用老接口）。
-
 ## 适配指导
 
 以下每个"迁移后示例（新接口）"代码块前均标注了 `<!-- @[tag](sample 文件 URL) -->` 同源注释，指向 samples 工程中对应的 `.ets` 文件。代码块内容为该文件的逐字摘录，开发者可点击注释中的链接查看完整源文件。
 
 > 示例工程路径：`applications_app_samples/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/`
 
-| 示例页面 | 对应章节 | 覆盖 AC |
-|---------|---------|--------|
-| `Index.ets` | 迁移映射入口 | AC-1, AC-4 |
-| `CustomDialogMigrationPage.ets` | CustomDialog 迁移 | AC-3.1, AC-4 |
-| `AlertDialogMigrationPage.ets` | AlertDialog 迁移 | AC-3.1, AC-4 |
-| `TextPickerMigrationPage.ets` | TextPickerDialog 迁移 | AC-3.1, AC-4 |
-| `TimePickerMigrationPage.ets` | TimePickerDialog 迁移 | AC-3.1, AC-4 |
-| `DatePickerMigrationPage.ets` | DatePickerDialog 迁移 | AC-3.1, AC-4 |
-| `DialogStatePage.ets` | 能力介绍（DialogBaseController/DialogState） | AC-2, AC-3.1 |
+| 示例页面 | 对应章节 |
+|---------|---------|
+| `Index.ets` | 迁移映射入口 |
+| `CustomDialogMigrationPage.ets` | CustomDialog 迁移 |
+| `AlertDialogMigrationPage.ets` | AlertDialog 迁移 |
+| `TextPickerMigrationPage.ets` | TextPickerDialog 迁移 |
+| `TimePickerMigrationPage.ets` | TimePickerDialog 迁移 |
+| `DatePickerMigrationPage.ets` | DatePickerDialog 迁移 |
+| `DialogStatePage.ets` | 能力介绍（DialogBaseController/DialogState） |
 
 ### CustomDialog → DialogPresenter.present（自定义弹窗）
 
@@ -395,8 +229,7 @@ this.getUIContext().getDialogPresenter().present({
 |-----------|-----------|------|
 | `new CustomDialogController({ builder, alignment, offset, customStyle, autoCancel, maskColor, ... }).open()` | `presenter.present(content: CustomBuilder \| CustomBuilderWithId \| ComponentContent<Object>, options?: DialogCustomOptions)` | 编程模型从 Controller 改为 Presenter + Promise |
 | `controller.close()` | `controller.close()` 或 `presenter.dismiss(target)` | 新接口支持 controller.close() 和 dismiss(id\|content) 两种方式 |
-| `controller.update({ alignment, offset, ... })` | `presenter.update(content, { alignment, offset, autoCancel, maskColor })` | 更新面收窄（G4） |
-| `onCancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版（G2） |
+| `onCancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
 
 **迁移前示例（老接口）：**
 
@@ -507,10 +340,10 @@ struct CustomDialogMigrationPage {
 
 | 老接口签名 | 新接口签名 | 说明 |
 |-----------|-----------|------|
-| `AlertDialog.show({ title, message, buttons, alignment, ... })` | `presenter.present(options?: DialogStyleOptions)` | 静态方法改 Presenter + Promise |
+| `AlertDialog.show({ title, message, buttons, alignment, ... })` | `presenter.present(options?: DialogStyleOptions)` | 命令式调用改 Presenter + Promise |
 | `buttons: Array<{ value, action }>` | `buttons: Array<DialogButton>` | 按钮属性扩展 |
 | `confirm: (value) => void` / `primaryButton.action` | `DialogButton.action` + Promise 结果 | 确认回调改 Promise |
-| `cancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版（G2） |
+| `cancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
 
 **迁移前示例（老接口）：**
 
@@ -613,9 +446,9 @@ struct AlertDialogMigrationPage {
 
 | 老接口签名 | 新接口签名 | 说明 |
 |-----------|-----------|------|
-| `TextPickerDialog.show({ range, selected, onAccept, onChange, onCancel })` | `presenter.present(content, DialogCustomOptions)` + 内容中嵌入 `TextPicker` | 无专用弹窗声明，用自定义弹窗承载 |
+| `TextPickerDialog.show({ range, selected, onAccept, onChange, onCancel })` | `presenter.present(content, DialogCustomOptions)` + 内容中嵌入 `TextPicker` | 无专用弹窗声明，使用自定义弹窗内嵌 |
 | `onAccept: (value) => void` | 自定义组件内回调 | 回调位置从选项移入内容组件 |
-| `onCancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版（G2） |
+| `onCancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
 
 **迁移前示例（老接口）：**
 
@@ -703,7 +536,7 @@ struct TextPickerMigrationPage {
 |-----------|-----------|------|
 | `TimePickerDialog.show({ selected, useMilitaryTime, onAccept, onChange, onCancel })` | `presenter.present(content, DialogCustomOptions)` + 内容中嵌入 `TimePicker` | 无专用弹窗声明 |
 | `onAccept: (value) => void` | 自定义组件内回调 | 回调位置移入内容组件 |
-| `onCancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版（G2） |
+| `onCancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
 
 **迁移前示例（老接口）：**
 
@@ -786,7 +619,7 @@ struct TimePickerMigrationPage {
 |-----------|-----------|------|
 | `DatePickerDialog.show({ start, end, selected, onAccept, onChange, onCancel })` | `presenter.present(content, DialogCustomOptions)` + 内容中嵌入 `DatePicker` | 无专用弹窗声明 |
 | `onAccept: (value) => void` | 自定义组件内回调 | 回调位置移入内容组件 |
-| `onCancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版（G2） |
+| `onCancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
 
 **迁移前示例（老接口）：**
 
