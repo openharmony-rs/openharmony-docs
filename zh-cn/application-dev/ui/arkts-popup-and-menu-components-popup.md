@@ -292,7 +292,7 @@ export struct ButtonPopupExample {
 
 ArkTS-Dyn示例：
 
-<!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
+<!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) --> 
 
 ``` TypeScript
 // xxx.ets
@@ -364,7 +364,7 @@ export struct AnimationPopupExample {
 
 ArkTS-Sta示例：
 
-<!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
+<!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) --> 
 
 ``` TypeScript
 // xxx.ets
