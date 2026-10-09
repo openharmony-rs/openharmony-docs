@@ -647,9 +647,9 @@ mechanicManager.onBatteryLevelChange(mechId, (result: mechanicManager.BatteryLev
 console.info('Successful registration');
 ```
 
-## mechanicManager.onBatteryLevelChange
+## mechanicManager.offBatteryLevelChange
 
-off(mechId: number, callback?: Callback\<BatteryLevelInfo>): void
+offBatteryLevelChange(mechId: number, callback?: Callback\<BatteryLevelInfo>): void
 
 取消订阅电池电量变化信息。使用callback异步回调。
 
