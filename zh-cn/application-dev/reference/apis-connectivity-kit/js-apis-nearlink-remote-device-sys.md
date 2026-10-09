@@ -13,7 +13,7 @@
 
 > **说明：**
 >
-> 本模块接口为系统接口。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.nearlink.remoteDevice (星闪远端设备连接能力)](js-apis-nearlink-remote-device.md)。
 
 
 ## 导入模块
@@ -668,7 +668,6 @@ onPairingRequest(callback: Callback&lt;PairingRequestParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
 | 801 | Capability not supported because the chip does not support it. |
 | 36100099 | Operation failed. |
 
@@ -714,7 +713,6 @@ offPairingRequest(callback?: Callback&lt;PairingRequestParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
 | 801 | Capability not supported because the chip does not support it. |
 | 36100099 | Operation failed. |
 
