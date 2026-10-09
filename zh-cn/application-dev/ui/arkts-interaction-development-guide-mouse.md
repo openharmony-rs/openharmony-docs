@@ -582,7 +582,7 @@ mouse2TouchEventMode可配置字段说明。
 
 | 字段名              | 类型 | 说明                         | 可选 |
 | -------------------- | ---- | ---------------------------- | ---- |
-| rightMouse2LongPress | boolean | 是否启用右键转长按策略。取值范围：true表示启用右键转长按策略，右键点击事件将被转换为长按事件；false表示不启    用，右键点击事件将按系统默认行为处理。当取值为false时，needTransferComponent配置不生效。 | 否   |
+| rightMouse2LongPress | boolean | 是否启用右键转长按策略。取值范围：true表示启用右键转长按策略，右键点击事件将被转换为长按事件；false表示不启用，右键点击事件将按系统默认行为处理。当取值为false时，needTransferComponent配置不生效。 | 否   |
 | needTransferComponent | string[] | 指定生效组件列表，决定哪些组件上的右键事件会被转换为长按事件。数组可为空，为空时表示不转换任何组件的右键事件。数组元素必须为下方枚举值之一。不配置时默认为空数组。needTransferComponent为空数组时，即使 rightMouse2LongPress为true，也不会转换任何组件的右键事件。 | 是   |
 
 needTransferComponent数组中可选枚举类型说明。
