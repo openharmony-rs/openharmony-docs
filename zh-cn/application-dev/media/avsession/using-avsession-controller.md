@@ -84,7 +84,7 @@
          });
        } catch (error) {
          if (error) {
-           console.error(`avSession Error: Code: ${error.code}, message: ${error.message}`);
+           Log.error(TAG, `avSession Error: Code: ${error.code}, message: ${error.message}`);
          }
        }
      }
@@ -99,7 +99,7 @@
      // 获取会话元数据。
      this.currentController?.getAVMetadata((error: BusinessError, metadata: avSession.AVMetadata) => {
        if (error) {
-         Log.info(TAG, 'Failed to get AV metadata, code: ' + error.code + ', message: ' + error.message);
+         Log.error(TAG, 'Failed to get AV metadata, code: ' + error.code + ', message: ' + error.message);
          return;
        }
        Log.info(TAG, 'Succeeded in getting AV metadata, assetId: ' + metadata.assetId);
@@ -111,7 +111,7 @@
      // 获取播放状态。
      this.currentController?.getAVPlaybackState((error: BusinessError, state: avSession.AVPlaybackState) => {
        if (error) {
-         Log.info(TAG, 'Failed to get AV playback state, code: ' + error.code + ', message: ' + error.message);
+         Log.error(TAG, 'Failed to get AV playback state, code: ' + error.code + ', message: ' + error.message);
          return;
        }
        Log.info(TAG, 'Succeeded in getting AV playback state.');
@@ -146,7 +146,7 @@
        // ...
      } catch (error) {
        if (error) {
-         console.error(`listenControllerInfo Error: Code: ${error.code}, message: ${error.message}`);
+         Log.error(TAG, `listenControllerInfo Error: Code: ${error.code}, message: ${error.message}`);
        }
      }
    }
@@ -163,7 +163,7 @@
        this.currentController?.getValidCommands((error: BusinessError,
          validCommands: avSession.AVControlCommandType[]) => {
          if (error) {
-           Log.info(TAG, 'Failed to get valid commands, code: ' + error.code + ', message: ' + error.message);
+           Log.error(TAG, 'Failed to get valid commands, code: ' + error.code + ', message: ' + error.message);
            return;
          }
          Log.info(TAG, 'Succeeded in getting valid commands, size: ' + validCommands.length);
@@ -177,7 +177,7 @@
        });
      } catch (error) {
        if (error) {
-         console.error(`validCommand Error: Code: ${error.code}, message: ${error.message}`);
+         Log.error(TAG, `validCommand Error: Code: ${error.code}, message: ${error.message}`);
        }
      }
    }
@@ -262,7 +262,7 @@
        });
      } catch (error) {
        if (error) {
-         console.error(`destroy Error: Code: ${error.code}, message: ${error.message}`);
+         Log.error(TAG, `destroy Error: Code: ${error.code}, message: ${error.message}`);
        }
      }
    }
