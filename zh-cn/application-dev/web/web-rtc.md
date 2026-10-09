@@ -111,6 +111,7 @@ ArkTS-Dyn示例：
                   value: 'onConfirm',
                   action: () => {
                     event.request.grant(event.request.getAccessibleResource());
+                    
                   }
                 },
                 cancel: () => {
@@ -176,6 +177,7 @@ ArkTS-Sta示例：
                   value: 'onConfirm',
                   action: () => {
                     event.request.grant(event.request.getAccessibleResource());
+                    
                   },
                 } as AlertDialogButtonBaseOptions,
                 cancel: () => {
