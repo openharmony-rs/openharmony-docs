@@ -639,7 +639,7 @@ napi_status napi_release_threadsafe_function(napi_threadsafe_function function,
 
 **1. 开发者创建loop**
 
-开发者可以通过调用`uv_loop_init`接口初始化loop，loop的生命周期由开发者自行维护（我们并不推荐使用`uv_loop_new`创建loop，`uv_loop_new`接口创建loop失败时会只返回空指针，而`uv_loop_init`接口初始化loop失败时会返回错误码，详见[libuv的错误码](#libuv的错误码)，提示开发者获取错误原因）。在这种情况下，如前文所述，需要保证`uv_run`执行在与创建/初始化loop操作相同的线程上，即loop线程上。此外，其余非线程安全操作，如timer相关操作等，均需要在loop线程上进行。 
+开发者可以通过调用`uv_loop_init`接口初始化loop，loop的生命周期由开发者自行维护（如果使用`uv_loop_new`创建loop，失败时会只返回空指针，而`uv_loop_init`接口初始化loop失败时会返回错误码，详见[libuv的错误码](#libuv的错误码)，提示开发者获取错误原因）。在这种情况下，如前文所述，需要保证`uv_run`执行在与创建/初始化loop操作相同的线程上，即loop线程上。此外，其余非线程安全操作，如timer相关操作等，均需要在loop线程上进行。 
 
 如果因为业务需要，必须在其他线程往loop线程抛任务，请使用`uv_async_send`函数：即在async句柄初始化时，注册一个回调函数，并在该回调中实现相应的操作，当调用`uv_async_send`时，在主线程上执行该回调函数。
 
