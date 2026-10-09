@@ -24,9 +24,9 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
    <!-- @[receiver_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
    
    ``` TypeScript
-   import { image } from '@kit.ImageKit'
+   import { image } from '@kit.ImageKit';
    import { camera } from '@kit.CameraKit';
-   import { BusinessError } from '@kit.BasicServicesKit'
+   import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
    
@@ -117,11 +117,11 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
 
 ``` TypeScript
 // stride与width不一致。
-const dstBufferSize = width * height * 1.5
-const dstArr = new Uint8Array(dstBufferSize)
+const dstBufferSize = width * height * 1.5;
+const dstArr = new Uint8Array(dstBufferSize);
 for (let j = 0; j < height * 1.5; j++) {
-  const srcBuf = new Uint8Array(imgComponent.byteBuffer, j * stride, width)
-  dstArr.set(srcBuf, j * width)
+  const srcBuf = new Uint8Array(imgComponent.byteBuffer, j * stride, width);
+  dstArr.set(srcBuf, j * width);
 }
 let pixelMap = await image.createPixelMap(dstArr.buffer, {
   size: { height: height, width: width },
