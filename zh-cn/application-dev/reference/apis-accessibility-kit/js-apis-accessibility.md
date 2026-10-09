@@ -3914,7 +3914,7 @@ getFocusedUIAccessibilityElement(): Promise&lt;UIAccessibilityElement | undefine
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
-| 9300000 | System abnormality. |
+| 9300000 | System abnormality.Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer).|
 
 ```ts
 import accessibility, { UIAccessibilityElement } from '@ohos.accessibility';
@@ -3951,7 +3951,7 @@ onUIAccessibilityFocusChanged(callback: Callback&lt;UIAccessibilityFocusChangeIn
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
-| 9300000 | System abnormality. |
+| 9300000 | System abnormality.Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer).|
 
 ```ts
 import accessibility from '@ohos.accessibility';
@@ -4013,7 +4013,7 @@ offUIAccessibilityFocusChanged(callback?: Callback&lt;UIAccessibilityFocusChange
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
-| 9300000 | System abnormality. |
+| 9300000 | System abnormality.Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.The listener or observer is not registered.|
 
 ```ts
 import accessibility from '@ohos.accessibility';
