@@ -102,7 +102,7 @@ DLP特性开关状态设置的结果信息。
 | -------- | -------- | -------- | -------- | -------- |
 | isSuccess | boolean | 否 | 否 | DLP特性开关状态是否设置成功。true表示设置成功；false表示设置失败。 |
 
-## DlpFeatureInfo
+## DLPFeatureInfo
 
 DLP特性开关的状态信息。
 
