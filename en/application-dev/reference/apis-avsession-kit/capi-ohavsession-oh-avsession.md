@@ -1,8 +1,8 @@
 # OH_AVSession
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,7 @@ typedef struct OH_AVSession OH_AVSession
 
 ## Overview
 
-The struct describes the playback control session object. You can use **OH_AVSession_Create** to create such an object.
+Defines a struct for the playback control session object. You can use **OH_AVSession_Create** to create such an object.
 
 **Since**: 13
 
