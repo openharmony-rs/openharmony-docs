@@ -62,7 +62,7 @@ export class Mover {
         await eStore.putBatch(entries);
         Logger.info(`ECDB_Encry move success`);
       } catch (e) {
-        Logger.info(`ECDB_Encry move failed,code is ${e.code},message is ${e.message}`);
+        Logger.error(`ECDB_Encry move failed,code is ${e.code},message is ${e.message}`);
       }
     }
   }
@@ -351,8 +351,7 @@ import { ECStoreManager } from './ECStoreManager';
 import { StoreInfo } from './Store';
 import { Mover } from './Mover';
 import { SecretKeyObserver } from './SecretKeyObserver';
-import { commonEventManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import Logger from '../common/Logger';
 
 export let storeManager = new ECStoreManager();
