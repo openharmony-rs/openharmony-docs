@@ -1,4 +1,4 @@
-# X509Crl
+# deprecated X509Crl
 
 ```TypeScript
 interface X509Crl
