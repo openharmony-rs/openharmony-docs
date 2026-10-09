@@ -38,12 +38,15 @@
 | &lt;path&gt;       | 通用路径                                        | d属性             |
 | &lt;text&gt;       | 简单文本                                        | 支持x、y、font-size、text-anchor |
 | &lt;tspan&gt;      | 文本子段                                        | 支持x、y、dx、dy |
+| &lt;textArea&gt;   | 多行文本区域                                    | 支持width、height、自动换行 |
 | &lt;image&gt;      | 内嵌位图                                        | href / xlink:href |
 | &lt;use&gt;        | 引用&lt;defs&gt;中定义的元素                      | href / xlink:href |
 | &lt;linearGradient&gt; | 线性渐变                                    | 需放在&lt;defs&gt;内   |
 | &lt;radialGradient&gt; | 径向渐变                                    | 需放在&lt;defs&gt;内   |
+| &lt;solidColor&gt;  | 纯色 paint server                              | 需放在&lt;defs&gt;内   |
 | &lt;stop&gt;       | 渐变色标                                        | offset、stop-color、stop-opacity |
 | &lt;animate&gt; / &lt;animateColor&gt; / &lt;animateTransform&gt; / &lt;animateMotion&gt; / &lt;set&gt; | SMIL动画 | 作用于父元素或xlink:href目标 |
+| &lt;mpath&gt;       | 引用外部路径作为动画运动路径                    | &lt;animateMotion&gt;子元素 |
 
 ### 全局属性
 
@@ -562,4 +565,4 @@ void DestroySvgDemo()
 
 9. **不支持/预留元素**：以下SVG元素当前仅保留枚举占位，ACE层不会将其路由到SVG引擎，也不保证渲染或行为：
 
-   &lt;a&gt;、&lt;switch&gt;、&lt;iframe&gt;、&lt;tbreak&gt;、&lt;tref&gt;、&lt;desc&gt;、&lt;title&gt;、&lt;metadata&gt;、&lt;script&gt;、&lt;font&gt;、&lt;font-face&gt;、&lt;font-face-src&gt;、&lt;font-face-uri&gt;、&lt;glyph&gt;、&lt;hkern&gt;、&lt;missing-glyph&gt;、&lt;handler&gt;、&lt;listener&gt;、&lt;prefetch&gt;、&lt;discard&gt;、&lt;audio&gt;、&lt;animation&gt;、&lt;foreignObject&gt;、&lt;object&gt;、&lt;applet&gt;、&lt;video&gt;。
+   &lt;a&gt;、&lt;switch&gt;、&lt;symbol&gt;、&lt;iframe&gt;、&lt;tbreak&gt;、&lt;tref&gt;、&lt;desc&gt;、&lt;title&gt;、&lt;metadata&gt;、&lt;script&gt;、&lt;style&gt;、&lt;font&gt;、&lt;font-face&gt;、&lt;font-face-src&gt;、&lt;font-face-uri&gt;、&lt;glyph&gt;、&lt;hkern&gt;、&lt;missing-glyph&gt;、&lt;handler&gt;、&lt;listener&gt;、&lt;prefetch&gt;、&lt;discard&gt;、&lt;audio&gt;、&lt;animation&gt;、&lt;foreignObject&gt;、&lt;object&gt;、&lt;applet&gt;、&lt;video&gt;。

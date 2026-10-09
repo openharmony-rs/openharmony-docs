@@ -309,8 +309,8 @@ ViewTransition是元素级转场的核心类，提供转场类型、视图、时
 | CSS字段                       | 语法                                                                                                         | 取值范围 | 说明                                                         |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | transition-effect          | fade / slide-left / slide-right / slide-up / slide-down / scale / shared-element | 枚举值   | 定义转场效果，非法值按fade处理                         |
-| transition-duration        |                                                                                                           | 0~10000  | 动画时长，单位ms，负数按0处理，缺省0表示立即切换        |
-| transition-delay           |                                                                                                           | 0~10000  | 延迟时长，单位ms，负数按0处理                             |
+| transition-duration        | number                                                                                                       | 0~10000  | 动画时长，单位ms，负数按0处理，缺省0表示立即切换        |
+| transition-delay           | number                                                                                                       | 0~10000  | 延迟时长，单位ms，负数按0处理                             |
 | transition-timing-function | linear / ease-in / ease-out / ease-in-out                                                    | 枚举值   | 缓动曲线，非法值、ease、nullptr均按linear处理 |
 
 #### Native接口
@@ -341,8 +341,8 @@ JS侧通过CSS的transition-* 字段和JS startTransition() 接口实现元素�
 | CSS字段                       | 语法                                                                                                         | 取值范围 | 说明              |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------ | -------- | ----------------- |
 | transition-effect          | fade / slide-left / slide-right / slide-up / slide-down / scale / shared-element | 枚举值   | 定义转场效果      |
-| transition-duration        |                                                                                                           | 0~10000  | 动画时长，单位ms |
-| transition-delay           |                                                                                                           | 0~10000  | 延迟时长，单位ms |
+| transition-duration        | number                                                                                                          | 0~10000  | 动画时长，单位ms |
+| transition-delay           | number                                                                                                          | 0~10000  | 延迟时长，单位ms |
 | transition-timing-function | linear / ease-in / ease-out / ease-in-out                                                    | 枚举值   | 缓动曲线          |
 
 **CSS声明转场样式**：
@@ -662,7 +662,7 @@ JS侧通过CSS的 @keyframes关键帧和animation字段实现属性动画。
 
 ** 透明度渐变**：
 
-![单视图属性动](../figures/animator_transition_001.gif)
+![单视图属性动画](../figures/animator_transition_001.gif)
 
 ```css
 @keyframes fadeAnim {
@@ -682,7 +682,7 @@ JS侧通过CSS的 @keyframes关键帧和animation字段实现属性动画。
 
 ** 缩放放大 / 缩放缩小**：
 
-![单视图属性动](../figures/animator_transition_002.gif)
+![单视图属性动画](../figures/animator_transition_002.gif)
 
 ```css
 @keyframes scaleAnim {
@@ -699,7 +699,7 @@ JS侧通过CSS的 @keyframes关键帧和animation字段实现属性动画。
 }
 ```
 
-![单视图属性动](../figures/animator_transition_003.gif)
+![单视图属性动画](../figures/animator_transition_003.gif)
 
 ```css
 @keyframes shrinkAnim {
@@ -718,7 +718,7 @@ JS侧通过CSS的 @keyframes关键帧和animation字段实现属性动画。
 
 ** 旋转**：
 
-![单视图属性动](../figures/animator_transition_004.gif)
+![单视图属性动画](../figures/animator_transition_004.gif)
 
 ```css
 @keyframes rotateAnim {
@@ -737,7 +737,7 @@ JS侧通过CSS的 @keyframes关键帧和animation字段实现属性动画。
 
 ** 颜色渐变**：
 
-![单视图属性动](../figures/animator_transition_005.gif)
+![单视图属性动画](../figures/animator_transition_005.gif)
 
 ```css
 @keyframes colorAnim {
@@ -756,7 +756,7 @@ JS侧通过CSS的 @keyframes关键帧和animation字段实现属性动画。
 
 ** 水平位移 /  垂直位移**：
 
-![单视图属性动](../figures/animator_transition_006.gif)
+![单视图属性动画](../figures/animator_transition_006.gif)
 
 ```css
 @keyframes moveAnim {
@@ -773,7 +773,7 @@ JS侧通过CSS的 @keyframes关键帧和animation字段实现属性动画。
 }
 ```
 
-![单视图属性动](../figures/animator_transition_007.gif)
+![单视图属性动画](../figures/animator_transition_007.gif)
 
 ```css
 @keyframes moveYAnim {
@@ -792,7 +792,7 @@ JS侧通过CSS的 @keyframes关键帧和animation字段实现属性动画。
 
 ** ease-in-out缓动**：
 
-![单视图属性动](../figures/animator_transition_008.gif)
+![单视图属性动画](../figures/animator_transition_008.gif)
 
 ```css
 @keyframes moveAnim {
@@ -811,7 +811,7 @@ JS侧通过CSS的 @keyframes关键帧和animation字段实现属性动画。
 
 ** 弹跳插值**：
 
-![单视图属性动](../figures/animator_transition_009.gif)
+![单视图属性动画](../figures/animator_transition_009.gif)
 
 ```css
 @keyframes bounceRight {
@@ -849,7 +849,7 @@ JS侧通过CSS的 @keyframes关键帧和animation字段实现属性动画。
 
 ** 串行（先旋转1s，再右移1s，单keyframes分段）**：
 
-![单视图属性动](../figures/animator_transition_010.gif)
+![单视图属性动画](../figures/animator_transition_010.gif)
 
 ```css
 @keyframes serialAnim {
@@ -869,7 +869,7 @@ JS侧通过CSS的 @keyframes关键帧和animation字段实现属性动画。
 
 ** 并行（旋转与位移同步2s完成）**：
 
-![单视图属性动](../figures/animator_transition_011.gif)
+![单视图属性动画](../figures/animator_transition_011.gif)
 
 ```css
 @keyframes parallelAnim {
@@ -888,7 +888,7 @@ JS侧通过CSS的 @keyframes关键帧和animation字段实现属性动画。
 
 ** 单一keyframes多属性复合**（translateX与rotate同帧生效）：
 
-![单视图属性动](../figures/animator_transition_012.gif)
+![单视图属性动画](../figures/animator_transition_012.gif)
 
 ```css
 @keyframes multiTransformAnim {
