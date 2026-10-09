@@ -14,7 +14,7 @@
 
 > **说明：**
 >
-> 本模块接口为系统接口。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.nearlink.manager (星闪基础管理能力)](js-apis-nearlink-manager.md)。
 
 
 ## 导入模块
