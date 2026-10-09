@@ -41,6 +41,7 @@
     - [@ohos.usbManager (USB管理)(系统接口)](js-apis-usbManager-sys.md)
     - [@ohos.usbManager.serial (串口管理)(系统接口)](js-apis-serialManager-sys.md)
     - [@ohos.update (升级)(系统接口)](js-apis-update-sys.md)
+    - [@ohos.boardInfo (板级硬件信息)](js-apis-board-info.md)
     <!--DelEnd-->
   - 数据文件处理<!--data-file-processing-arkts-->
     - [@ohos.app.ability.PrintExtensionAbility (打印扩展能力)](js-apis-app-ability-PrintExtensionAbility.md)
