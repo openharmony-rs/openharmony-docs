@@ -217,7 +217,7 @@ try {
   const result = Object.entries(typedArr);
   console.info('no error throw');
 } catch(e) {
-  console.info(e);
+  console.error(e);
 }
 // 期望输出：no error throw
 // 实际输出: RangeError: object entries is not supported IsJSUint8Array or IsJSUint16Array
@@ -232,7 +232,7 @@ try {
    const result = Object.entries(typedArr);
    console.info('no error throw');
 } catch (e) {
-   console.info(e);
+   console.error(e);
 }
 // 期望输出：no error throw
 // 实际输出: RangeError: object entries is not supported IsJSUint8Array or IsJSUint16Array
@@ -250,7 +250,7 @@ try {
   const result = Object.entries(normalArr1);
   console.info('no error throw');
 } catch(e) {
-  console.info(e);
+  console.error(e);
 }
 // 输出：no error throw
 ```
