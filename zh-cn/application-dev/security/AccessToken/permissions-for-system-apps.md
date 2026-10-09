@@ -2591,7 +2591,7 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | SmartHomeHost
 
 **起始版本**：10
 
@@ -2605,7 +2605,7 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | SmartHomeHost
 
 **起始版本**：10
 
@@ -9531,5 +9531,19 @@
 **是否支持证书授权**：true
 
 **支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.2.0
+
+## ohos.permission.vehicle.INNER_NETWORK
+
+允许应用访问车机内部网络。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
 
 **起始版本**：26.2.0

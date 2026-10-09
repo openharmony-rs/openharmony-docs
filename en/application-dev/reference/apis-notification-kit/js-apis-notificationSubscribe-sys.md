@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:35:12.973Z pushedAt=2026-09-22T08:29:58.390Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:30:17.167Z pushedAt=2026-10-08T09:55:25.303Z -->
 
 This module provides [notification subscription](../../notification/notification-glossary.md#notification-subscription), unsubscription, notification removal, and other capabilities. Generally, only system applications have the permissions for these operations.
 
@@ -172,7 +172,7 @@ Subscribes to a notification with the subscription information specified. This A
 | Name      | Type                     | Mandatory| Description        |
 | ---------- | ------------------------- | ---- | ------------ |
 | subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes   | [Notification subscription](../../notification/notification-glossary.md#notification-subscription) object. |
-| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | No  | Notification subscription information. By default, this parameter is left empty, which means to subscribe to notifications of all applications under this user.  |
+| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | No   | Notification subscription information. The default value is empty. When this parameter is empty, it indicates subscribing to notifications of all applications under the current user.   |
 
 **Return value**
 
@@ -242,7 +242,7 @@ Subscribes to notifications. After the subscription, the new message is received
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -291,7 +291,7 @@ Subscribes to notifications. After the subscription, the new message is received
 | Name      | Type                     | Mandatory| Description        |
 | ---------- | ------------------------- | ---- | ------------ |
 | subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | Yes   | [Notification subscriber](../../notification/notification-glossary.md#notification-subscription). |
-| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | Yes  | Notification subscription information.  |
+| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | Yes   | Notification subscription information. The default value is empty. When this parameter is empty, it indicates subscribing to notifications of all applications under the current user.   |
 
 **Return value**
 
@@ -301,7 +301,7 @@ Subscribes to notifications. After the subscription, the new message is received
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -336,7 +336,7 @@ notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() =
 
 subscribeSelf(subscriber: NotificationSubscriber): Promise\<void\>
 
-Subscribes to notifications of the application and specifies subscription information. This API uses a promise to return the result.
+Subscribes to notifications of this application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -373,7 +373,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
-  console.info(`Consume callback:  ${JSON.stringify(data)}`);
+  console.info(`Consume callback: ${JSON.stringify(data)}`);
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
@@ -394,6 +394,8 @@ unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>)
 Unsubscribes from a notification. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
 **System API**: This is a system API.
 
@@ -445,6 +447,8 @@ unsubscribe(subscriber: NotificationSubscriber): Promise\<void\>
 Unsubscribes from a notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
 **System API**: This is a system API.
 
@@ -785,7 +789,7 @@ Removes specified notifications. This API uses a promise to return the result.
 
 | Name      | Type                           | Mandatory| Description         |
 |-----------|-------------------------------| ---- |-------------|
-| hashCodes | Array\<String\>               | Yes  | Array of unique notification IDs.|
+| hashCodes | Array\<String\>               | Yes   | Array of unique notification IDs. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) used in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback. |
 | reason    | [RemoveReason](#removereason) | Yes  | Reason for removing the notification.    |
 
 **Return value**
@@ -934,7 +938,7 @@ Removes all notifications for a specified application. This API uses a promise t
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No  | Bundle information of the application. By default, this parameter is left empty, indicating that all notifications will be removed.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No   | Bundle information of the specified application. Default is empty. When this parameter is empty, it indicates deleting notifications of all applications. |
 
 **Return value**
 
@@ -1086,8 +1090,8 @@ Triggers the [cross-device collaboration](../../notification/notification-glossa
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| hashcode | string | Yes  | Unique notification ID.|
-| operationInfo | [OperationInfo](#operationinfo18) | No  | Cross-device operation information. This parameter is left empty by default.|
+| hashcode | string | Yes | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) used in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback. |
+| operationInfo | [OperationInfo](#operationinfo18) | No | Cross-device collaboration operation information. When this parameter is not passed, the system default collaboration operation configuration is used. |
 
 **Return value**
 
@@ -1112,14 +1116,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let hashcode: string = 'hashcode';
+let hashCode: string = 'hashCode';
 let operationInfo: notificationSubscribe.OperationInfo = {
   actionName: 'actionName',
   userInput: 'userInput',
   operationType: 1,
   buttonIndex: 1,
 };
-notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
+notificationSubscribe.distributeOperation(hashCode, operationInfo).then(() => {
   console.info('distributeOperation success');
 }).catch((err: BusinessError) => {
   console.error(`distributeOperation fail, code is ${err.code}, message is ${err.message}`);
@@ -1166,4 +1170,3 @@ Describes the [cross-device collaboration](../../notification/notification-gloss
 | userInput | string | No| Yes| User input, used to apply quick reply across devices. The value must be the same as that of **inputKey** in [NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput-1).|
 | operationType<sup>20+</sup> | number | No | Yes | Type of the user click operation.<br> - **0**: The user clicks the non-[live view notification](../../notification/notification-glossary.md#live-view-notification) body.<br> - **1**: The user clicks a non-live-view notification button.<br> - **32**: The user clicks the live view notification body.<br> - **33**: The user clicks the auxiliary area of the live view notification. |
 | buttonIndex<sup>20+</sup> | number | No| Yes| Index of the non-live view button or live view auxiliary area that the user taps.|
-<!--no_check-->

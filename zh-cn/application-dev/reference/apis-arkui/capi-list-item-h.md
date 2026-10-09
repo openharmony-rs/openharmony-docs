@@ -583,6 +583,10 @@ int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListIte
 
 展开指定ListItem的划出菜单（即侧滑操作时展示的操作项区域）。direction为ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START时，展开通过OH_ArkUI_ListItemSwipeActionOption_SetStart设置的划出菜单；direction为ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END时，展开通过OH_ArkUI_ListItemSwipeActionOption_SetEnd设置的划出菜单。展开后的划出菜单可通过OH_ArkUI_ListItemSwipeAction_Collapse接口收起。也可在应用响应用户点击"更多"等按钮后调用本接口，以编程方式展开划出菜单。
 
+> **说明：**
+>
+> - 如果List组件设置了NODE_LIST_CACHED_COUNT属性以启用预加载，则List显示区域外已预加载完成的ListItem支持展开；否则，List显示区域外的节点不支持展开。
+
 **起始版本：** 21
 
 **参数：**
@@ -597,10 +601,6 @@ int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListIte
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 传入的节点对象类型错误，请检查传入的节点是否为ListItem节点。<br>         [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 传入的节点未挂载到组件树上，请先将节点挂载到组件树上再执行该操作。 |
-
-> **说明：**
->
-> - 如果List组件设置了NODE_LIST_CACHED_COUNT属性以启用预加载，则List显示区域外已预加载完成的ListItem支持展开；否则，List显示区域外的节点不支持展开。
 
 ### OH_ArkUI_ListItemSwipeAction_Collapse()
 

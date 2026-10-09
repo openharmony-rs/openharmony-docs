@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:11:19.956Z pushedAt=2026-09-22T08:29:58.366Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:20:12.397Z pushedAt=2026-10-08T09:24:03.875Z -->
 
 Defines the data structure of a [notification request](../../notification/notification-glossary.md#notification-request), which is used to describe all information of a notification, including [notification content](../../notification/notification-glossary.md#notification-content), identifier, display style, interaction behavior, and so on.
 
@@ -13,7 +13,7 @@ Defines the data structure of a [notification request](../../notification/notifi
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationRequest](./js-apis-inner-notification-notificationRequest.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationRequest](js-apis-inner-notification-notificationRequest.md).
 
 ## NotificationRequest
 
@@ -31,14 +31,14 @@ Defines the data structure of a [notification request](../../notification/notifi
 | deviceId<sup>8+</sup>          | string                                                   |   Yes | Yes | Device ID of the notification source.<br>**System API**: This is a system API. Not supported currently.                      |
 | representativeBundle<sup>12+</sup> | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No| Yes| Information about the proxied bundle. This parameter is left empty by default.<br>**System API**: This is a system API.|
 | notificationControlFlags<sup>12+</sup>       | number                                                   |   No  | Yes  | [Notification reminder mode](../../notification/notification-glossary.md#notification-reminder-mode) control. The default value is **0**.<br>This API can be used to reduce the reminder modes of the current notification. This parameter is obtained by performing a bitwise OR operation on the enums of [NotificationControlFlagStatus](js-apis-notificationManager-sys.md#notificationcontrolflagstatus12).<br>**System API**: This API is a system API.            |
-| unifiedGroupInfo<sup>12+</sup>       | [UnifiedGroupInfo](#unifiedgroupinfo12) |   No  | Yes  |Information field of message [smart aggregation](../../notification/notification-glossary.md#notification-smart-aggregation). The default is empty. <br>**System API**: This API is a system API.|
+| unifiedGroupInfo<sup>12+</sup>       | [UnifiedGroupInfo](#unifiedgroupinfo12) |   No  | Yes  |Information field of message [smart aggregation](../../notification/notification-glossary.md#notification-smart-aggregation). This parameter is left empty by default. <br>**System API**: This API is a system API.|
 | creatorInstanceKey<sup>(deprecated)</sup>      | number |   Yes | Yes | Creator instance key.<br>This parameter is supported since API version 12 and deprecated since API version 15. You are advised to use **appInstanceKey** instead.<br>**System API**: This is a system API.|
 | agentBundle<sup>12+</sup>       | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) |   Yes | Yes | Information about the agent bundle for creating notifications. This parameter is left empty by default.<br>**System API**: This is a system API.|
-| appInstanceKey<sup>15+</sup>       | string |   Yes | Yes | Application instance key. This parameter is left empty by default.<br>**System API**: This is a system API.|
-| notDistributed<sup>18+</sup> | boolean | No | Yes | Whether the notification is not displayed through all-scenario [cross-device collaboration](../../notification/notification-glossary.md#cross-device-collaboration). The default is false.<br/>**Note:**<br/>This field is mutually exclusive with the forceDistributed field. When both are set to true, only the notDistributed field takes effect.<br/>-&nbsp;When set to true: the notification is displayed only on this device.<br/>-&nbsp;When set to false: the notification is displayed on all collaborating devices.<br>**System API**: This API is a system API. |
-| forceDistributed<sup>18+</sup> | boolean | No| Yes| Whether notifications are forcibly displayed in all scenarios across devices. The default value is **false**.<br>**NOTE**<br>This field takes effect only when the application is in the cross-device collaborative management list and **notDistributed** is set to **false**. Check whether the **collaborationFilter** field in the **notification_config.json** file contains the UID or bundle name of the application. For details about the file configuration path, see the **NOTIFICATION_CONFIG_FILE** property in [notification_config_parse.h](https://gitcode.com/openharmony/notification_distributed_notification_service/blob/master/services/ans/include/notification_config_parse.h). If yes, the application is on the cross-device collaborative management list.<br>- **true**: Notifications are displayed on all collaboration devices.<br>- **false**: Notifications are displayed on the applications that are on the collaborative management list.<br>**System API**: This is a system API.|
+| appInstanceKey<sup>15+</sup>       | string |   Yes  | Yes  | Application instance key. The default value is empty. Set this field when you need to distinguish between different instances of the same application.<br>**System API**: This API is a system API.|
+| notDistributed<sup>18+</sup> | boolean | No | Yes | Whether the notification is not displayed through all-scenario [cross-device collaboration](../../notification/notification-glossary.md#cross-device-collaboration). The default value is **false**.<br/>**Note:**<br/>This field is mutually exclusive with the forceDistributed field. When both are set to **true**, only the notDistributed field takes effect.<br/>-&nbsp;When set to **true**: the notification is displayed only on this device.<br/>-&nbsp;When set to **false**: the notification is displayed on all collaboration devices.<br>**System API**: This API is a system API. |
+| forceDistributed<sup>18+</sup> | boolean | No| Yes| Whether notifications are forcibly displayed through all-scenario cross-device collaboration. The default value is **false**.<br>**NOTE**<br>This field takes effect only when the application is in the cross-device collaboration management list and **notDistributed** is set to **false**. Check whether the **collaborationFilter** field in the **notification_config.json** file contains the UID or bundle name of the application. For details about the file configuration path, see the **NOTIFICATION_CONFIG_FILE** property in [notification_config_parse.h](https://gitcode.com/openharmony/notification_distributed_notification_service/blob/master/services/ans/include/notification_config_parse.h). If yes, the application is on the cross-device collaboration management list.<br>- **true**: Notifications are displayed on all collaboration devices.<br>- **false**: Notifications are displayed according to the collaborative management list.<br>**System API**: This is a system API.|
 | extendInfo<sup>20+</sup> | Record<string, Object> | No| Yes| Extended parameters customized for the system applications to publish notifications. This parameter is left empty by default.<br>**System API**: This is a system API.|
-| groupInfo | [GroupInfo](#groupinfo) | No | Yes | Custom information of the [group notification](../../notification/notification-glossary.md#group-notification). The default is empty.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br>**System API**: This API is a system API. |
+| groupInfo | [GroupInfo](#groupinfo) | No | Yes | Custom information of the [group notification](../../notification/notification-glossary.md#group-notification). This parameter is left empty by default.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br>**System API**: This API is a system API. |
 
 ## DistributedOptions<sup>8+</sup>
 
@@ -53,7 +53,7 @@ Describes distributed notification options.
 
 ## NotificationFilter<sup>11+</sup>
 
-Describes the filter criteria for querying the live view.
+Describes the filter criteria for querying live view notifications.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -181,4 +181,3 @@ Defines the information about [group notification](../../notification/notificati
 | -------------------- | -------------------- | ---- | ---- | ---------------------------------------- |
 | isGroupIcon | boolean | No| Yes| Whether to use the **smallIcon** field in [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) as the group icon displayed after notifications are grouped. Whether to use the **smallIcon** field as the group icon when the notification is the latest one in the notification group and the **smallIcon** field is passed. The default value is **false**.<br>- **true**: yes.<br>- **false**: no.|
 | groupTitle | string | No| Yes| Group title displayed after notifications are grouped. This parameter is valid only when the notification is the latest one in the notification group. This parameter is left empty by default.|
-<!--no_check-->

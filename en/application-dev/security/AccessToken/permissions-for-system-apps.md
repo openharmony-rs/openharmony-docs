@@ -2591,6 +2591,8 @@ Allows an application to modify HiView data.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | smarthomehosts
+
 **Since**: 10
 
 ## ohos.permission.READ_HIVIEW_SYSTEM
@@ -2602,6 +2604,8 @@ Allows an application to access HiView data.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | smarthomehosts
 
 **Since**: 10
 
@@ -9500,5 +9504,19 @@ Allows an application to modify the device security level (DSL) configuration.
 **Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.2.0
+
+## ohos.permission.vehicle.INNER_NETWORK
+
+Allows an application to access the vehicle's internal networks.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
 
 **Valid since**: 26.2.0

@@ -1720,6 +1720,22 @@ Allows an application to enter exam mode. The system service will display a dial
 
 **Since**: 26.0.1
 
+## ohos.permission.SYNC_ROOT_MANAGER
+
+Allows an application to manage cloud drive sync folders.
+
+With this permission, the application can add sync root folders to the sidebar of the file manager and customize the icons of sync root folders.
+
+<!--RP115--><!--RP115End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.1
+
 ## ohos.permission.DISABLE_SCREEN_PRIVACY_PROTECTION
 
 Allows an application to disable screen privacy protection while recording the screen.
@@ -1732,4 +1748,4 @@ Allows an application to disable screen privacy protection while recording the s
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 26.2.0
+**Since**: 26.1.0
