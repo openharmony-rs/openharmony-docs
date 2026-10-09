@@ -500,4 +500,4 @@ struct OnVisibleAreaChangeSample {
   }
 }
 ```
-![visible-area-change.gif](figures/visible-area-change3.jpg)
+![visible-area-change3.jpg](figures/visible-area-change3.jpg)
