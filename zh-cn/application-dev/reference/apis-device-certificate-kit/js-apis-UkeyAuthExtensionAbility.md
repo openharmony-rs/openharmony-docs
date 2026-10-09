@@ -17,7 +17,7 @@ UkeyAuthExtensionAbility是用于UKey认证UI显示的ExtensionAbility组件，�
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
