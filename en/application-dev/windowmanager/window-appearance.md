@@ -6,7 +6,7 @@
 <!--Designer: @shinmy; @qinliwen0417-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=6d870a1e492d5f49bffa121fefd841c2889e1f2e translatedAt=2026-08-11T10:11:37.125Z pushedAt=2026-08-11T11:30:37.910Z -->
+<!-- md-trans-meta sourceCommit=7f6d052803cbd907f6a8b345be71946d829a57f9 translatedAt=2026-10-08T09:01:58.058Z pushedAt=2026-10-08T11:18:57.984Z -->
 
 ## When to Use
 
@@ -26,7 +26,7 @@ You can customize the window appearance based on UI design and interaction requi
 
 A shaped window is a window with a non-rectangular shape, and a mask is used to describe the shape of the shaped window. Only app subwindows and global floating windows can be set as shaped windows.
 
-You can set the mask of a shaped window through the [setWindowMask()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmask12) or setWindowMaskWithAlpha() API to define the visible region of the window.
+You can set the mask of a shaped window through the [setWindowMask()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmask12) or [setWindowMaskWithAlpha()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha) API to define the visible region of the window.
 
 After setting the mask, the window will be displayed according to the mask shape, the [window shadow](#window-shadow) will be disabled, and the corner radius of the window will become **0**.
 
@@ -36,22 +36,20 @@ After setting the mask, the window will be displayed according to the mask shape
 
   ![setWindowMask](figures/setWindowMask.png)
 
-- Starting from API version 26.0.0, the setWindowMaskWithAlpha() API is supported for setting the mask of a shaped window.
+- Starting from API version 26.0.0, the [setWindowMaskWithAlpha()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha) API is supported for setting the mask of a shaped window.
 
-The mask supports array input with values in the range [0, 255], where the array length equals the window width multiplied by the window height. An integer value of **0** indicates that the corresponding pixel is transparent and non-interactive, **255** indicates that the corresponding pixel is opaque and interactive, and values between **0** and **255** indicate that the corresponding pixel is partially transparent and interactive. This API offers better performance than [setWindowMask()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmask12) and is recommended.
+  The mask supports array input with values in the range [0, 255], where the array length equals the window width multiplied by the window height. An integer value of **0** indicates that the corresponding pixel is transparent and non-interactive, **255** indicates that the corresponding pixel is opaque and interactive, and values between **0** and **255** indicate that the corresponding pixel is partially transparent and interactive. This API offers better performance than [setWindowMask()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmask12) and is recommended.
 
-![setWindowMaskWithAlpha](figures/setWindowMaskWithAlpha.png)
+  ![setWindowMaskWithAlpha](figures/setWindowMaskWithAlpha.png)
 
 The following takes setting a shaped window for a subwindow as an example.
 
 1. Tap **Create Sub Window** to create a subwindow.
 
-2. After the subwindow is created, tap **setWindowMask for Sub Window** to set the subwindow mask using the setWindowMaskWithAlpha() API. The subwindow undergoes the following changes:
+2. After the subwindow is created, tap **setWindowMask for Sub Window** to set the subwindow mask using the [setWindowMaskWithAlpha()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha) API. The subwindow undergoes the following changes:
 
      - The subwindow becomes a triangle.
-
      - The shadow and rounded corners of the subwindow disappear.
-
      - The upper-left part of the subwindow's rectangular area becomes transparent and non-interactive. Tapping the **Create Test Window** button allows the event to pass through to that button, creating a green test window.
 
 <!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
@@ -116,7 +114,6 @@ struct Index {
 A window shadow is a projection effect displayed at the window edge, which enhances the sense of depth between the window and the background, creating a visual effect of the window floating above the background.
 
 <!--Del-->
-
 - For system apps, you can use the [setShadow()](../reference/apis-arkui/js-apis-window-sys.md#setshadow9) API to set the window edge shadow. This API supports setting the blur radius, color, X-axis offset, and Y-axis offset of the window edge shadow. It is only supported for system windows, app subwindows, global floating windows, and dialog windows.
 
   The following takes a subwindow as an example to call **setShadow()** to set the window shadow.
@@ -167,7 +164,6 @@ A window shadow is a projection effect displayed at the window edge, which enhan
   ```
 
   ![setShadow](figures/setShadow.png)
-
 <!--DelEnd-->
 
 - You can use the [setWindowShadowRadius()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowshadowradius17) API to set the blur radius of the window edge shadow. This is only supported for subwindows and global floating windows.
@@ -231,7 +227,6 @@ A window shadow is a projection effect displayed at the window edge, which enhan
   ![setWindowCornerRadius](figures/setWindowCornerRadius.gif)
 
 <!--Del-->
-
 - For system apps, you can use the [setBlur()](../reference/apis-arkui/js-apis-window-sys.md#setblur9) API to set the blur radius of the window content. This is only supported for system windows, global floating windows, and dialog windows.
 
 - For system apps, you can use the [setBackdropBlur()](../reference/apis-arkui/js-apis-window-sys.md#setbackdropblur9) API to set the blur radius of the window background. This is only supported for system windows, global floating windows, and dialog windows.
@@ -270,7 +265,6 @@ struct SliderDemo {
 ```
 
 ![setBlur](figures/setBlur.gif)
-
 <!--DelEnd-->
 
 ## Window Background Color
@@ -285,7 +279,7 @@ You can choose to set the background color of the app content area or the window
 
 - When both [setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20) and [setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9) are used, the content area displays the color set by [setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9), while the title bar displays the color set by [setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20).
 
-- Starting from API version 26.0.0, the [setWindowContainerModalColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainermodalcolor) interface is supported for setting the background color of the main window container area on PCs or 2-in-1 devices to accommodate different UI design requirements. The background color set through this API applies to the entire window container area, including the title bar and content area. This API supports setting the main window background to transparent when it is not in focus.
+- Starting from API version 26.0.0, the [setWindowContainerModalColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainermodalcolor) API is supported for setting the background color of the main window container area on PCs or 2-in-1 devices to accommodate different UI design requirements. The background color set through this API applies to the entire window container area, including the title bar and content area. This API supports setting the main window background to transparent when it is not in focus.
 
 > **NOTE**
 >
@@ -317,10 +311,6 @@ struct Index {
   @State statusText: string = 'Move the sliders to change the current window background color.';
   @State applyModeText: string = 'Current mode: string (#AARRGGBB)';
 
-  aboutToAppear(): void {
-    this.applyWindowBackgroundColor();
-  }
-
   // Convert channel values from 0 to 255 into two-digit hexadecimal strings for concatenating #AARRGGBB.
   private toHex(value: number): string {
     return Math.round(value).toString(16).padStart(2, '0').toUpperCase();
@@ -330,7 +320,7 @@ struct Index {
   private getColorValue(): string {
     return `#${this.toHex(this.alpha)}${this.toHex(this.red)}${this.toHex(this.green)}${this.toHex(this.blue)}`;
   }
- // ...
+  // ...
   // Set the window background color directly using ColorMetrics.rgba(...).
   private applyByColorMetrics(): void {
     if (!this.mainWindow) {
@@ -352,8 +342,6 @@ struct Index {
     }
   }
 
- // ...
+  // ...
 }
 ```
-
-<!--no_check-->

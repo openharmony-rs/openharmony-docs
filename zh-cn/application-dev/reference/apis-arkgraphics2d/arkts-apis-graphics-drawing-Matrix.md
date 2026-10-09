@@ -575,7 +575,7 @@ getValue(index: number): number
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 for (let i = 0; i < 9; i++) {
@@ -610,7 +610,7 @@ postRotate(degree: number, px: number, py: number): void
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let degree: number = 2;
@@ -648,7 +648,7 @@ postScale(sx: number, sy: number, px: number, py: number): void
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let sx: number = 2;
@@ -685,7 +685,7 @@ postTranslate(dx: number, dy: number): void
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let dx: number = 3;
@@ -721,7 +721,7 @@ preRotate(degree: number, px: number, py: number): void
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let degree: number = 2;
@@ -751,7 +751,7 @@ postSkew(kx: number, ky: number, px: number, py: number): void
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.postSkew(2.0, 1.0, 2.0, 1.0);
@@ -777,7 +777,7 @@ preSkew(kx: number, ky: number, px: number, py: number): void
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.preSkew(2.0, 1.0, 2.0, 1.0);
@@ -806,7 +806,7 @@ mapRadius(radius: number): number
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
@@ -842,7 +842,7 @@ preScale(sx: number, sy: number, px: number, py: number): void
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let sx: number = 2;
@@ -879,7 +879,7 @@ preTranslate(dx: number, dy: number): void
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let dx: number = 3;
@@ -899,7 +899,7 @@ reset(): void
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.postScale(2, 3, 4, 5);
@@ -938,7 +938,7 @@ mapPoints(src: Array\<common2D.Point>): Array\<common2D.Point>
 **示例：**
 
 ```ts
-import { drawing, common2D } from "@kit.ArkGraphics2D";
+import { drawing, common2D } from '@kit.ArkGraphics2D';
 
 let src: Array<common2D.Point> = [];
 src.push({x: 15, y: 20});
@@ -967,7 +967,7 @@ getAll(): Array\<number>
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 console.info("matrix "+ matrix.getAll());
@@ -1007,7 +1007,7 @@ mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 **示例：**
 
 ```ts
-import { drawing, common2D } from "@kit.ArkGraphics2D";
+import { drawing, common2D } from '@kit.ArkGraphics2D';
 
 let dst: common2D.Rect = { left: 100, top: 20, right: 130, bottom: 60 };
 let src: common2D.Rect = { left: 100, top: 80, right: 130, bottom: 120 };
@@ -1050,7 +1050,7 @@ setRectToRect(src: common2D.Rect, dst: common2D.Rect, scaleToFit: ScaleToFit): b
 **示例：**
 
 ```ts
-import { drawing, common2D } from "@kit.ArkGraphics2D";
+import { drawing, common2D } from '@kit.ArkGraphics2D';
 
 let src: common2D.Rect = { left: 100, top: 100, right: 300, bottom: 300 };
 let dst: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
@@ -1094,7 +1094,7 @@ setPolyToPoly(src: Array\<common2D.Point>, dst: Array\<common2D.Point>, count: n
 **示例：**
 
 ```ts
-import { drawing, common2D } from "@kit.ArkGraphics2D";
+import { drawing, common2D } from '@kit.ArkGraphics2D';
 
 let srcPoints: Array<common2D.Point> = [ {x: 10, y: 20}, {x: 200, y: 150} ];
 let dstPoints: Array<common2D.Point> = [{ x:0, y: 10 }, { x:300, y: 600 }];

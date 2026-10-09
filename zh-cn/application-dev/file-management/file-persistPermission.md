@@ -32,41 +32,48 @@
 
     **示例：**
 
-    <!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
+    <!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->  
     
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
     import { picker } from '@kit.CoreFileKit';
     import { fileShare } from '@kit.CoreFileKit';
+    import { common } from '@kit.AbilityKit';
+    import { preferences } from '@kit.ArkData';
     
-    export async function persistPermissionExample() {
+    export async function persistPermissionExample(context: common.UIAbilityContext): Promise<void> {
       try {
         // ...
+        let store = await preferences.getPreferences(context, { name: 'persist_permission' });
         let documentSelectOptions = new picker.DocumentSelectOptions();
         let documentPicker = new picker.DocumentViewPicker();
         let uris = await documentPicker.select(documentSelectOptions);
-        // 可以组合授予多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。 
+        if (uris.length === 0) {
+          console.info('No URI selected');
+          return;
+        }
+        // 可以组合授予多个权限，例如读写权限可使用fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。
         // 注意：只能对已获取到的临时权限进行持久化授权操作，否则会报错。
         let policyInfo: fileShare.PolicyInfo = {
           uri: uris[0],
           operationMode: fileShare.OperationMode.READ_MODE,
         };
         let policies: fileShare.PolicyInfo[] = [policyInfo];
-        fileShare.persistPermission(policies).then(() => {
-          console.info('persistPermission successfully');
-        }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-          console.error('persistPermission failed with error message: ' + err.message + ', error code: ' + err.code);
-          if (err.code == 13900001 && err.data) {
-            for (let i = 0; i < err.data.length; i++) {
-              console.error('error code : ' + JSON.stringify(err.data[i].code));
-              console.error('error uri : ' + JSON.stringify(err.data[i].uri));
-              console.error('error reason : ' + JSON.stringify(err.data[i].message));
-            }
-          }
-        });
+        await fileShare.persistPermission(policies);
+        // 此示例保存最近一次成功持久化授权的URI，供激活和撤销操作使用。
+        await store.put('uri', uris[0]);
+        await store.flush();
+        console.info('persistPermission successfully');
       } catch (error) {
-        let err: BusinessError = error as BusinessError;
+        let err = error as BusinessError<Array<fileShare.PolicyErrorResult>>;
         console.error(`persistPermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+        if (err.code === 13900001 && err.data) {
+          for (let i = 0; i < err.data.length; i++) {
+            console.error('error code : ' + JSON.stringify(err.data[i].code));
+            console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+            console.error('error reason : ' + JSON.stringify(err.data[i].message));
+          }
+        }
       }
     }
     ```
@@ -88,39 +95,46 @@
 
     **示例：**
 
-    <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
+    <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->  
     
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
     import { picker } from '@kit.CoreFileKit';
     import { fileShare } from '@kit.CoreFileKit';
+    import { common } from '@kit.AbilityKit';
+    import { preferences } from '@kit.ArkData';
     
     // ...
-    export async function revokePermissionExample() {
+    export async function revokePermissionExample(context: common.UIAbilityContext): Promise<void> {
       try {
-        let uri = 'file://docs/storage/Users/username/tmp.txt';
-        // 可以组合取消多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。 
+        let store = await preferences.getPreferences(context, { name: 'persist_permission' });
+        // 使用Picker获取且成功持久化授权的URI，不手动构造URI。
+        let uri = await store.get('uri', '') as string;
+        if (uri.length === 0) {
+          console.info('Persist a URI before using this operation');
+          return;
+        }
+        // 可以组合取消多个权限，例如读写权限可使用fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。
         // 注意：只能对已获取到的持久化权限进行取消持久化授权操作，否则会报错。
         let policyInfo: fileShare.PolicyInfo = {
           uri: uri,
           operationMode: fileShare.OperationMode.READ_MODE,
         };
         let policies: fileShare.PolicyInfo[] = [policyInfo];
-        fileShare.revokePermission(policies).then(() => {
-          console.info('revokePermission successfully');
-        }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-          console.error('revokePermission failed with error message: ' + err.message + ', error code: ' + err.code);
-          if (err.code == 13900001 && err.data) {
-            for (let i = 0; i < err.data.length; i++) {
-              console.error('error code : ' + JSON.stringify(err.data[i].code));
-              console.error('error uri : ' + JSON.stringify(err.data[i].uri));
-              console.error('error reason : ' + JSON.stringify(err.data[i].message));
-            }
-          }
-        });
+        await fileShare.revokePermission(policies);
+        await store.delete('uri');
+        await store.flush();
+        console.info('revokePermission successfully');
       } catch (error) {
-        let err: BusinessError = error as BusinessError;
+        let err = error as BusinessError<Array<fileShare.PolicyErrorResult>>;
         console.error(`revokePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+        if (err.code === 13900001 && err.data) {
+          for (let i = 0; i < err.data.length; i++) {
+            console.error('error code : ' + JSON.stringify(err.data[i].code));
+            console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+            console.error('error reason : ' + JSON.stringify(err.data[i].message));
+          }
+        }
       }
     }
     ```
@@ -142,42 +156,44 @@ ohos.permission.FILE_ACCESS_PERSIST，具体参考[访问控制-申请应用权�
 
 **示例：**
 
-<!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
+<!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->  
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker } from '@kit.CoreFileKit';
 import { fileShare } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+import { preferences } from '@kit.ArkData';
 
 // ...
-export async function activatePermissionExample() {
+export async function activatePermissionExample(context: common.UIAbilityContext): Promise<void> {
   try {
-    let uri = 'file://docs/storage/Users/username/tmp.txt';
-    // 可以组合激活多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。
+    let store = await preferences.getPreferences(context, { name: 'persist_permission' });
+    // 使用Picker获取且成功持久化授权的URI，不手动构造URI。
+    let uri = await store.get('uri', '') as string;
+    if (uri.length === 0) {
+      console.info('Persist a URI before using this operation');
+      return;
+    }
+    // 可以组合激活多个权限，例如读写权限可使用fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。
     // 注意：只能对已获取到的持久化权限进行激活持久化授权操作，否则会报错。
     let policyInfo: fileShare.PolicyInfo = {
       uri: uri,
       operationMode: fileShare.OperationMode.READ_MODE,
     };
     let policies: fileShare.PolicyInfo[] = [policyInfo];
-    fileShare.activatePermission(policies).then(() => {
-      console.info('activatePermission successfully');
-    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-      console.error('activatePermission failed with error message: ' + err.message + ', error code: ' + err.code);
-      if (err.code == 13900001 && err.data) {
-        for (let i = 0; i < err.data.length; i++) {
-          console.error('error code : ' + JSON.stringify(err.data[i].code));
-          console.error('error uri : ' + JSON.stringify(err.data[i].uri));
-          console.error('error reason : ' + JSON.stringify(err.data[i].message));
-          if (err.data[i].code == fileShare.PolicyErrorCode.PERMISSION_NOT_PERSISTED) {
-          // 可以选择进行持久化后再激活。
-          }
-        }
-      }
-    });
+    await fileShare.activatePermission(policies);
+    console.info('activatePermission successfully');
   } catch (error) {
-    let err: BusinessError = error as BusinessError;
+    let err = error as BusinessError<Array<fileShare.PolicyErrorResult>>;
     console.error(`activatePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+    if (err.code === 13900001 && err.data) {
+      for (let i = 0; i < err.data.length; i++) {
+        console.error('error code : ' + JSON.stringify(err.data[i].code));
+        console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+        console.error('error reason : ' + JSON.stringify(err.data[i].message));
+      }
+    }
   }
 }
 ```

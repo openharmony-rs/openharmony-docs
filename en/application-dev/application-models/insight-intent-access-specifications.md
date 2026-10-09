@@ -138,7 +138,7 @@ Requests to display the user's subway or bus transportation card QR code, with o
 | Name| Type   | Mandatory| Description                                                                                                                                                  | Example Data|
 |-------------|---------|-------|----------------------------------------------------------------------------------------------|---------|
 | travelCardType | string | No| Type of transportation. By default, the type last viewed by the user is used (implementation-dependent).<br>- Metro: subway.<br>- Bus: bus.  | "Metro" |
-| adminCode    | number  | No| City code where the user is located. The default value is the user's current city. The city codes of China are used. For details, see [City Codes and Administrative Division Codes](https://developer.huawei.com/consumer/en/doc/harmonyos-references-V5/map-citycode-V5).| 320500 |
+| adminCode    | number  | No| City code where the user is located. The default value is the user's current city. The city codes of China are used. For details, see [City Codes and Administrative Division Codes](https://developer.huawei.com/consumer/en/doc/harmonyos-references/map-citycode).| 320500 |
 
 **Return value**
 

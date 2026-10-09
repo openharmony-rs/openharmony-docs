@@ -3,7 +3,7 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -32,7 +32,7 @@ Creates an audio template and returns the audio template instance.
 
 | Name    | Type                                                        | Mandatory| Description              |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------ |
-| accessType | [AVMusicTemplateType](arkts-apis-avMusicTemplate-e.md#avmusictemplatetype) | Yes  | Audio template enumeration type.|
+| accessType | [AVMusicTemplateType](arkts-apis-avMusicTemplate-e.md#avmusictemplatetype) | Yes  | Audio template type.|
 
 **Return value**
 
@@ -56,21 +56,21 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
-  private static sInstance: TemplateManager;
+  private static instance: TemplateManager;
 
   private constructor() {
   }
 
   /**
-   * Obtain the template controller instance.
+   * Obtain a TemplateManager instance.
    *
-   * @returns Template controller instance.
+   * @returns TemplateManager instance.
    */
   public static getInstance(): TemplateManager {
-    if (!TemplateManager.sInstance) {
-      TemplateManager.sInstance = new TemplateManager();
+    if (!TemplateManager.instance) {
+      TemplateManager.instance = new TemplateManager();
     }
-    return TemplateManager.sInstance;
+    return TemplateManager.instance;
   };
 
   /**
@@ -78,8 +78,8 @@ export class TemplateManager {
    */
   public createTemplate() {
     if (this.template) {
-      console.warn('createTemplate: template not undefined');
-      return
+      console.warn('createTemplate: template already exists');
+      return;
     }
     try {
       this.template = avMusicTemplate.createAVMusicTemplate(avMusicTemplate.AVMusicTemplateType.DEFAULT);

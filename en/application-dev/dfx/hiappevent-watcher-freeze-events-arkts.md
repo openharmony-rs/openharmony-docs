@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f319e3e62d6356bf78f31e2e8f7ba3927caddf1e translatedAt=2026-07-31T01:26:08.843Z pushedAt=2026-07-31T03:45:32.873Z -->
+<!-- md-trans-meta sourceCommit=511e898cebe4e8bab4e50adc75139ac41da9e351 translatedAt=2026-09-28T02:28:58.007Z pushedAt=2026-09-29T06:01:00.166Z -->
 
 ## Overview
 
@@ -23,7 +23,7 @@ This document describes how to use the ArkTS APIs provided by HiAppEvent to subs
 
 ### Adding an Event Watcher
 
-The following walks you through on how to subscribe to the application freeze events.
+The following walks you through how to subscribe to the application freeze events.
 
 1. In DevEco Studio, create an ArkTS app project, edit the **entry > src > main > ets > entryability > EntryAbility.ets** file in the project, and import the dependent modules. The sample code is as follows:
 
@@ -125,7 +125,7 @@ The following walks you through on how to subscribe to the application freeze ev
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_life_time=${eventInfo.params['process_life_time']}`);
             // Obtain the callback log information of the app freeze event.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_callback_log=${eventInfo.params['external_callback_log']}`);
-            // Obtain the page transition log of the app freeze event.
+            // Obtain the page switch log of the app freeze event.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.page_switch_log=${JSON.stringify(eventInfo.params['page_switch_log'])}`);
           }
         }
@@ -145,7 +145,7 @@ The following walks you through on how to subscribe to the application freeze ev
     })
    ```
 
-5. In DevEco Studio, click the **Run** button to run the project. Then, click the **appfreeze** button to trigger an application freeze event.
+5. In DevEco Studio, click the **Run** button to run the project. Then, click the **appFreeze** button to trigger an application freeze event.
 
 ### Verifying the Subscription
 
@@ -195,7 +195,6 @@ Set the event name to **hiAppEvent.event.APP_FREEZE** and event domain to **hiAp
 You can distinguish different application freeze events based on the **name** field of the **exception** field in [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params).
 
 The following table shows the mapping between [FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo) and [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params).
-
 | FaultLogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | Description |
 | --- | --- | --- |
 | pid | pid | N/A |
@@ -210,6 +209,3 @@ The following table shows the mapping between [FaultLogInfo](../reference/apis-p
 Both [FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9) (using callback) and [FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1) (using promise) can be replaced with [hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher) to achieve the same functionality.
 
 For details about how to use HiAppEvent to subscribe to app freeze events (ArkTS), see [How to Develop](#how-to-develop) and [Verifying the Subscription](#verifying-the-subscription).
-
-<!--RP1-->
-<!--RP1End-->

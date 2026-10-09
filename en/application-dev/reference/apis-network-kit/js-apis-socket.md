@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=4ddfa6eaa6c55f20119f367d3f4f2aec018f8da8 translatedAt=2026-09-28T01:48:40.740Z pushedAt=2026-10-09T06:28:45.571Z -->
 
 The **socket** module implements data transfer over TCP, UDP, Web, and TLS socket connections.
 
@@ -524,7 +525,7 @@ Obtains the status of the UDP socket connection. This API uses a promise to retu
 
 | Type                                            | Description                                      |
 |  ----------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result of obtaining the UDPSocket state. |
 
 **Error codes**
 
@@ -763,7 +764,7 @@ Obtains the local socket address of a **UDPSocket** connection. This API uses a 
 
 | Type           | Description                                                |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result.|
+| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result of obtaining the local socket address. |
 
 **Error codes**
 
@@ -1010,7 +1011,7 @@ Defines the destination address.
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | address<sup>11+</sup> | string | No  | No  | IP address.                                          |
 | port    | number | No  | No  | Port number. The value ranges from **0** to **65535**. If this parameter is not specified, the system randomly allocates a port.          |
-| family  | number | No  | No  | Network protocol type.<br>- **1**: IPv4 The default value is **1**.<br>- **2**: IPv6 For an IPv6 address, this field must be explicitly set to **2**.<br>- **3**: domain address<sup>18+</sup> For a domain address, this field must be explicitly set to **3**. Currently, only [TCPSocket.connect](#connect) and [TLSSocket.connect](#connect9) are supported.|
+| family  | number | No   | No   | Network protocol type. Available options:<br />- **1**: IPv4. The default value is **1**.<br />- **2**: IPv6. If the address is of the IPv6 type, this field must be explicitly set to **2**.<br />- **3**: Domain (supported since API version 18). If the address is of the Domain type, this field must be explicitly set to **3**. Currently supported only by [TCPSocket.connect](#connect) and [TLSSocket.connect](#connect9).|
 
 ## ProxyOptions<sup>18+</sup>
 
@@ -1541,7 +1542,7 @@ Obtains the TTL for multicast packets. This API uses a promise to return the res
 
 | Type              | Description                       |
 | ----------------   | --------------------------- |
-| Promise\<number\> | Promise used to return the result.|
+| Promise\<number\> | Promise used to return the current TTL value. |
 
 **Error codes**
 
@@ -1711,7 +1712,7 @@ Obtains the loopback mode flag for multicast communication. This API uses a prom
 > This API is effective only after [addMembership](#addmembership11) is called.
 
 **System capability**: SystemCapability.Communication.NetStack
-                                                      
+
 **Return value**
 
 | Type               | Description                       |
@@ -2393,7 +2394,7 @@ Obtains the remote address of a socket connection. This API uses a promise to re
 
 | Type                                       | Description                                       |
 | ------------------------------------------ | ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result.|
+| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result of obtaining the peer socket address. |
 
 **Error codes**
 
@@ -2501,7 +2502,7 @@ Obtains the status of the TCP socket connection. This API uses a promise to retu
 
 | Type                                            | Description                                      |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the TCPSocket state. |
 
 **Error codes**
 
@@ -2600,7 +2601,7 @@ Obtains the file descriptor of the **TCPSocket** object. This API uses a promise
 
 | Type                                            | Description                                      |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise used to return the result.|
+| Promise\<number\> | Promise used to return the file descriptor of the socket. |
 
 **Example**
 
@@ -3277,7 +3278,7 @@ Obtains the status of a TCP socket server connection. This API uses a promise to
 
 | Type                                        | Description                                      |
 |  ------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the TCPSocket state. |
 
 **Error codes**
 
@@ -4102,7 +4103,7 @@ Obtains the remote address of a socket connection. This API uses a promise to re
 
 | Type                              | Description                                       |
 |  --------------------------------- |  ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result.|
+| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result of obtaining the peer socket address. |
 
 **Error codes**
 
@@ -4772,7 +4773,7 @@ Obtains the local socket connection status. This API uses a promise to return th
 
 | Type                                         | Description                                    |
 | :------------------------------------------- | :--------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result of the LocalSocket state. |
 
 **Example**
 
@@ -4825,7 +4826,7 @@ Obtains the file descriptor of the **LocalSocket** object. This API uses a promi
 
 | Type              | Description                             |
 | :---------------- | :-------------------------------- |
-| Promise\<number\> | Promise used to return the result.|
+| Promise\<number\> | Promise used to return the file descriptor of the socket. |
 
 **Example**
 
@@ -4945,7 +4946,7 @@ Obtains the socket properties of the **LocalSocket** object. This API uses a pro
 
 | Type                        | Description                                     |
 | :-------------------------- | :---------------------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise used to return the result.|
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise used to return the properties of the LocalSocket socket. |
 
 **Error codes**
 
@@ -5003,7 +5004,7 @@ Obtains the local socket address of a **LocalSocket** connection. This API uses 
 
 | Type           | Description                                                |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<string\> | Promise used to return the result.|
+| Promise\<string\> | Promise used to return the result of obtaining the local socket address. |
 
 **Error codes**
 
@@ -5448,7 +5449,7 @@ Binds the address of the local socket file. The server listens to and accepts lo
 
 | Type           | Description                                                  |
 | :-------------- | :---------------------------------------------------- |
-| Promise\<void\> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -5501,7 +5502,7 @@ Obtains the status of a local socket server connection. This API uses a promise 
 
 | Type                                        | Description                                           |
 | :------------------------------------------- | :--------------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the LocalSocketServer status. |
 
 **Example**
 
@@ -5615,7 +5616,7 @@ Obtains the socket properties of the **LocalSocketServer** object. This API uses
 
 | Type                        | Description                       |
 | :-------------------------- | :-------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise used to return the result.|
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise used to return the socket properties. |
 
 **Error codes**
 
@@ -5669,7 +5670,7 @@ Obtains the local socket address of a **LocalSocketServer** connection. This API
 
 | Type           | Description                                                |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<string\> | Promise used to return the result.|
+| Promise\<string\> | Promise used to return the result of obtaining the local socket address. |
 
 **Error codes**
 
@@ -6087,7 +6088,7 @@ Obtains the local socket address of a **LocalSocketConnection** connection. This
 
 | Type           | Description                                                |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<string\> | Promise used to return the result.|
+| Promise\<string\> | Promise used to return the result of obtaining the local socket address. |
 
 **Error codes**
 
@@ -6704,7 +6705,7 @@ Obtains the status of the TLS socket connection. This API uses a promise to retu
 
 | Type                                            | Description                                      |
 |  ----------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result of the TLSSocket state. On failure, returns the error code and error message.|
 
 **Error codes**
 
@@ -7373,7 +7374,7 @@ Sets up a **TLSSocket** connection, and creates and initializes a TLS session af
 
 | Type                                       | Description                         |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<void\>                              | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void\>                              | Promise that returns no value.|
 
 **Error codes**
 
@@ -7612,7 +7613,7 @@ Obtains the remote address of a TLS socket connection. This API uses a promise t
 
 | Type                                       | Description                                       |
 |  ------------------------------------------ |  ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result of obtaining the peer socket address. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -7685,7 +7686,7 @@ Obtains the local digital certificate after a **TLSSocket** connection is establ
 
 | Type           | Description                 |
 | -------------- | -------------------- |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise used to return the local digital certificate. Returns an error code and error message on failure. |
 
 **Error codes**
 
@@ -7764,7 +7765,7 @@ Obtains the digital certificate of the server after a **TLSSocket** connection i
 
 | Type           | Description                 |
 | -------------- | -------------------- |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise used to return the server's digital certificate. If the operation fails, an error code and error message are returned. |
 
 **Error codes**
 
@@ -7840,7 +7841,7 @@ Obtains the communication protocol version after a **TLSSocket** connection is e
 
 | Type           | Description                 |
 | -------------- | -------------------- |
-| Promise\<string\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<string\> | Promise used to return the protocol of the communication. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -7915,7 +7916,7 @@ Obtains the cipher suite negotiated by both communication parties after a **TLSS
 
 | Type                   | Description                 |
 | ---------------------- | --------------------- |
-| Promise\<Array\<string\>\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<Array\<string\>\> | Promise used to return the cipher suites supported by both communicating parties. On failure, returns an error code and error message. |
 
 **Error codes**
 
@@ -7989,7 +7990,7 @@ Obtains the signing algorithm negotiated by both communication parties after a *
 
 | Type                   | Description                 |
 | ---------------------- | -------------------- |
-| Promise\<Array\<string\>\> | Promise used to return the result.|
+| Promise\<Array\<string\>\> | Promise used to return the obtained signing algorithms supported by both parties. |
 
 **Error codes**
 
@@ -8068,7 +8069,7 @@ Obtains the file descriptor of the **TLSSocket** object. This API uses a promise
 
 | Type                                            | Description                                      |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise used to return the result.|
+| Promise\<number\> | Promise used to return the file descriptor of the socket. |
 
 **Example**
 
@@ -8281,8 +8282,8 @@ TLS security options. When **cert** (local certificate) and **key** (private key
 
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| ca                    | string \| Array\<string\> | No  | Yes| CA certificate of the server, which is used to authenticate the digital certificate of the server. The default value is the preset CA certificate<sup>12+</sup>. A maximum of 1000 certificates can be set.|
-| cert                  | string \| Array\<string\>         | No  | Yes| Digital certificate of the local client. An array can be passed since API version 24. A maximum of 1000 certificates can be set.                |
+| ca                    | string \| Array\<string\> | No   | Yes | CA certificate of the server, used to authenticate and verify the server's digital certificate. Starting from API version 12, the system preset CA certificate is used by default. A maximum of 1000 certificates can be set. |
+| cert                  | string \| Array\<string\>         | No   | Yes | Digital certificate of the local client. Starting from API version 24, an array can be passed in, and a maximum of 1000 certificates can be set.                 |
 | key                   | string                                                  | No  | Yes| Private key of the local digital certificate.                  |
 | password                | string                                                  | No  | Yes| Password for reading the private key.                     |
 | protocols             | [Protocol](#protocol9) \|Array\<[Protocol](#protocol9)\> | No  | Yes| TLS protocol version. The default value is **TLSv1.2**.                 |
@@ -8431,7 +8432,7 @@ Listens for client connections after **bind** is successfully called to bind the
 
 | Type           | Description                                                     |
 | --------------- | --------------------------------------------------------- |
-| Promise\<void\> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -8564,7 +8565,7 @@ Obtains the status of the TLS socket server connection upon successful listening
 
 | Type                                          | Description                                                        |
 |  --------------------------------------------- |  ----------------------------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result of obtaining the TLSSocketServer state. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -8784,7 +8785,7 @@ Sets other properties of the **TLSSocketServer** object after **listen** is succ
 
 | Type           | Description                                                     |
 |  -------------- |  -------------------------------------------------------- |
-| Promise\<void\> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -8932,7 +8933,7 @@ Obtains the local digital certificate after a **TLSSocketServer** connection is 
 
 | Type                                           | Description                                                        |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise used to return the local digital certificate. Returns an error code and error message on failure. |
 
 **Error codes**
 
@@ -9064,7 +9065,7 @@ Obtains the communication protocol version after a **TLSSocketServer** connectio
 
 | Type             | Description                                                   |
 | ----------------- | ------------------------------------------------------- |
-| Promise\<string\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<string\> | Promise used to return the protocol of the communication. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -9572,7 +9573,7 @@ Sends a message to the server after a **TLSSocketServer** connection is establis
 
 | Type           | Description                                                     |
 | --------------- | --------------------------------------------------------- |
-| Promise\<void\> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -9705,7 +9706,7 @@ Closes a **TLSSocketServer** connection. This API uses a promise to return the r
 
 | Type           | Description                                                     |
 | --------------- | --------------------------------------------------------- |
-| Promise\<void\> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. If the operation fails, an error message is returned.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -9832,7 +9833,7 @@ Obtains the remote address of a TLS socket server connection. This API uses a pr
 
 | Type                                | Description                                                        |
 |  ----------------------------------- |  ----------------------------------------------------------- |
-| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result of obtaining the peer socket address. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -9960,7 +9961,7 @@ Obtains the digital certificate of the peer end after a **TLSSocketServer** conn
 
 | Type                                           | Description                                                        |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise used to return the peer's digital certificate. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -10090,7 +10091,7 @@ Obtains the cipher suite negotiated by both communication parties after a **TLSS
 
 | Type                      | Description                                                        |
 | -------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<string\>\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<Array\<string\>\> | Promise used to return the cipher suites supported by both communicating parties. On failure, returns an error code and error message. |
 
 **Error codes**
 
@@ -10217,7 +10218,7 @@ Obtains the signing algorithm negotiated by both communication parties after a *
 
 | Type                      | Description                                         |
 | -------------------------- | --------------------------------------------- |
-| Promise\<Array\<string\>\> | Promise used to return the result.|
+| Promise\<Array\<string\>\> | Promise used to return the obtained signing algorithms supported by both parties. |
 
 **Error codes**
 

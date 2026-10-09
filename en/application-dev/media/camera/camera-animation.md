@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-09-28T02:39:45.922Z pushedAt=2026-09-29T10:29:23.705Z -->
 
 When using the camera, transitions such as changing camera modes or switching between front and rear cameras will always involve replacing the preview stream. To enhance user experience, smooth animations can be effectively incorporated. This topic describes how to use preview stream snapshots and how to trigger explicit animations using the [animateToImmediately](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animatetoimmediately23) API provided by ArkUI, to implement three key scene transitions:
 
@@ -311,21 +312,21 @@ The sample code in the following steps (except step 2) is the internal method or
 
    To ensure that the preview stream is not exposed during flip, you must also build a blackout component to mask the XComponent, following the instructions provided in step 2 in [Blackout Animation](#blackout-animation).
 
-   <!-- @[rotate_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[rotate_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->   
    
    ``` TypeScript
    /**
-    * A 90° rotation outwards first for transition between the front and real cameras.
+    * First flip outward by 90°, triggered by front/rear camera switching.
     */
    private async rotateFirstAnim() {
      Logger.info(TAG, 'rotateFirstAnim E');
-     // Obtain the surface snapshot.
+     // Obtain the completed surface snapshot.
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
      // Switch from the rear camera to the front camera.
      if (this.curPosition === 1) {
        Logger.info(TAG, 'rotateFirstAnim BACK');
-         // Rotation compensation of 90° for snapshots when switching from rear to front camera on bar phones.
-       Rotation provided by await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90); // Rotation capability provided by Image Kit, used to handle rotation of the image itself.
+       // Rotation compensation of 90° for snapshots when switching from rear to front camera on bar phones.
+       await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90); // Rotation capability provided by Image Kit, used to handle rotation of the image itself.
        // Initial flip angle of 0° for snapshots when switching from rear to front camera on bar phones.
        this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_0 };
      } else {
@@ -342,7 +343,7 @@ The sample code in the following steps (except step 2) is the internal method or
      animateToImmediately(
        {
          duration: BlurAnimateUtil.ROTATION_DURATION,
-         delay: BlurAnimateUtil.FLIP_DELAY, // This delay ensures that the component's scaling and blur effects are triggered in prior to the flip effect.
+         delay: BlurAnimateUtil.FLIP_DELAY, // This delay ensures that the component's scaling and blur effects are triggered before the flip effect, resulting in a better visual effect.
          curve: curves.cubicBezierCurve(0.20, 0.00, 0.83, 1.00),
          onFinish: () => {
            Logger.info(TAG, 'rotateFirstAnim X');
@@ -351,7 +352,7 @@ The sample code in the following steps (except step 2) is the internal method or
          }
        },
        () => {
-         // Flip animation effect for the snapshot.
+         // Flip-out animation for the screenshot.
          if (this.curPosition === 1) {
            this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_90 };
          } else {
@@ -371,7 +372,7 @@ The sample code in the following steps (except step 2) is the internal method or
      // The rear camera is used.
      if (this.curPosition === 1) {
        // Rotation compensation of 90° for rear camera on bar phones.
-       Rotation provided by await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90); // Rotation capability provided by Image Kit, used to handle rotation of the image itself.
+       await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90); // Rotation capability provided by Image Kit, used to handle rotation of the image itself.
        // Instantly adjust to -90° to ensure the image is not mirrored after the second-stage rotation.
        this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_MINUS_90 };
      } else { // The front camera is used.
@@ -391,7 +392,7 @@ The sample code in the following steps (except step 2) is the internal method or
          }
        },
        () => {
-         // Flip to the initial state.
+         // Flip the screenshot to the initial state.
          if (this.curPosition === 1) {
            this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_0 };
          } else {

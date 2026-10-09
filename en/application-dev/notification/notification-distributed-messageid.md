@@ -1,12 +1,11 @@
 # Clearing Repeated Notifications Across Devices
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:16:41.147Z pushedAt=2026-08-22T07:04:01.252Z -->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:48:22.459Z pushedAt=2026-10-08T06:47:06.268Z -->
 
 Since API version 20, you can clear repeated notifications across devices to prevent users from being disturbed by notifications published through different ways (for example, notifications sent from a mobile phone to the current device are the same as those published by Push Kit).
 
@@ -23,7 +22,6 @@ Only the first notification is displayed on the device. Duplicate notifications 
 ## Constraints
 
 - You must ensure the uniqueness of **appMessageId**. The same notification must retain the same value for this field across all device form factors.
-
 - This field is only valid within 24 hours after the notification is published. It becomes invalid after 24 hours or when the device is restarted.
 
 ## Available APIs
@@ -37,7 +35,7 @@ Only the first notification is displayed on the device. Duplicate notifications 
 1. Import the related modules.
 
    <!-- @[clear_duplicate_notifications_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
-
+   
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -46,7 +44,7 @@ Only the first notification is displayed on the device. Duplicate notifications 
 2. Publish a notification that contains the **appMessageId** field.
 
    <!-- @[pub_appMsgId_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
-
+   
    ``` TypeScript
    // publish callback
    let publishCallback = (err: BusinessError): void => {

@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:53:08.137Z pushedAt=2026-06-26T03:00:41.309Z -->
+<!-- md-trans-meta sourceCommit=176a53b51231dd6d20addd1768f1625bead2763b translatedAt=2026-09-28T01:47:57.293Z pushedAt=2026-10-09T06:44:35.884Z -->
 
 Provides WebSocket clients and servers for third-party applications to implement bidirectional connections between the client and server.
 
@@ -14,9 +14,11 @@ On the WebSocket client: You can use WebSocket to establish a bidirectional conn
 
 On the WebSocket server: Use the [createWebSocketServer](#websocketcreatewebsocketserver19) method to create a [WebSocketServer](#websocketserver19) object, and then use the [start](#start19) method to start the server and listen to the link setup request message from the client. (The API version 23 and later versions support all devices. In earlier versions, only TV devices are supported.) If the connection is successful, the server receives the callback of the [connect](#onconnect19) event. The server can then communicate with the client by using the [send](#send19) API or obtain information about all connected clients by using the [listAllConnections](#listallconnections19) API. When the client sends a message to the server, the server receives the callback of the [messageReceive](#onmessagereceive19) event. If the connection is no longer needed, the server can call the [close](#close19) API to close the connection. After successful disconnection, the server will receive a callback of the [close](#onclose19) event. To stop the service, the server can use the [stop](#stop19) API. If an error occurs in any of the preceding processes, the server will receive a callback of the [error](#onerror19) event.
 
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+
 
 ## Modules to Import
 
@@ -86,11 +88,12 @@ For details about the error codes, see [webSocket Error Codes](errorcode-net-web
 | --------------------- | ------------------------------------------ |
 | 401                   | Parameter error.                           |
 | 201                   | Permission denied.                         |
-| 2302001               | Websocket url error.                       |
-| 2302002               | Websocket certificate file does not exist. |
-| 2302003               | Websocket connection already exists.       |
-| 2302998               | It is not allowed to access this domain.   |
-| 2302999               | Internal error.             |
+| 2302001               | Websocket url error. <br>Applicable versions: 12+                       |
+| 2302002               | Websocket certificate file does not exist. <br>Applicable versions: 12+ |
+| 2302003               | Websocket connection already exists. <br>Applicable versions: 12+       |
+| 2302998               | It is not allowed to access this domain. <br>Applicable versions: 12+   |
+| 2302999               | Websocket other unknown error. <br>Applicable versions: 10+             |
+
 
 **Example**
 
@@ -145,11 +148,11 @@ For details about the error codes, see [webSocket Error Codes](errorcode-net-web
 | --------------------- | ------------------------------------------ |
 | 401                   | Parameter error.                           |
 | 201                   | Permission denied.                         |
-| 2302001               | Websocket url error.                       |
-| 2302002               | Websocket certificate file does not exist. |
-| 2302003               | Websocket connection already exists.       |
-| 2302998               | It is not allowed to access this domain.   |
-| 2302999               | Internal error.             |
+| 2302001               | Websocket url error. <br>Applicable versions: 12+                       |
+| 2302002               | Websocket certificate file does not exist. <br>Applicable versions: 12+ |
+| 2302003               | Websocket connection already exists. <br>Applicable versions: 12+       |
+| 2302998               | It is not allowed to access this domain. <br>Applicable versions: 12+   |
+| 2302999               | Websocket other unknown error. <br>Applicable versions: 10+             |
 
 **Example**
 
@@ -234,11 +237,11 @@ For details about the error codes, see [webSocket Error Codes](errorcode-net-web
 | --------------------- | ------------------------------------------ |
 | 401                   | Parameter error.                           |
 | 201                   | Permission denied.                         |
-| 2302001               | Websocket url error.                       |
-| 2302002               | Websocket certificate file does not exist. |
-| 2302003               | Websocket connection already exists.       |
-| 2302998               | It is not allowed to access this domain.   |
-| 2302999               | Internal error.             |
+| 2302001               | Websocket url error. <br>Applicable versions: 12+                       |
+| 2302002               | Websocket certificate file does not exist. <br>Applicable versions: 12+ |
+| 2302003               | Websocket connection already exists. <br>Applicable versions: 12+       |
+| 2302998               | It is not allowed to access this domain. <br>Applicable versions: 12+   |
+| 2302999               | Websocket other unknown error. <br>Applicable versions: 10+             |
 
 **Example**
 
@@ -1037,7 +1040,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 2302002   | Websocket certificate file does not exist. |
 | 2302004   | Can't listen on the given NIC.            |
 | 2302005   | Can't listen on the given Port.           |
-| 2302007   | Websocket port already occupied.           |
+| 2302007   | Websocket port already occupied. <br>Applicable versions: 24+ |
 | 2302999   | Websocket other unknown error.             |
 
 **Example**
@@ -1155,7 +1158,6 @@ Obtains information about all clients connected to the server.
 >This API is called asynchronously. The **await** keyword needs to be used to wait until the asynchronous operation is complete, ensuring that information about all clients connected to the server can be correctly obtained.
 
 **Return value**
-
 | Type                                       | Description                        |
 | ------------------------------------------- | ---------------------------- |
 | [WebSocketConnection](#websocketconnection19)[] | Information of all clients in a string array.|
@@ -1169,7 +1171,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201     | Permission denied.      |
 
 **Example**
-
 ```ts
 import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1571,9 +1572,10 @@ Defines the optional parameters carried in the request for establishing a WebSoc
 | proxy<sup>12+</sup> | [ProxyConfiguration](#proxyconfiguration12) |  No | Yes| Proxy configuration. By default, the system network proxy is used.|
 | protocol<sup>12+</sup> | string |  No | Yes| Custom **Sec-WebSocket-Protocol** field. The default value is **""**.             |
 | skipServerCertVerification<sup>20+</sup> | boolean | No| Yes| Whether to skip server certificate verification. The value **true** means to skip server certificate verification, and the value **false** means the opposite. Default value: **false**.|
-| pingInterval<sup>21+</sup> | number | No| Yes| Custom [heartbeat detection interval](../../network/websocket-connection.md). The default value is 30s. Heartbeat detection is initiated at the specified interval. If the value is set to **0**, heartbeat detection is disabled. The maximum value is 30000s, and the minimum value is 0s.|
+| pingInterval<sup>21+</sup> | number | No| Yes| Custom [heartbeat detection](../../network/websocket-connection.md#when-to-use) interval. The default value is 30s. Heartbeat detection is initiated at the specified interval. If the value is set to **0**, heartbeat detection is disabled. The maximum value is 30000s, and the minimum value is 0s.|
 | pongTimeout<sup>21+</sup> | number | No| Yes| Custom timeout interval for disconnecting a connection after heartbeat detection is initiated. The default value is 30s. If no response is received during the specified interval, the connection is disconnected. The maximum value is 30000s, and the minimum value is 0s. **pongTimeout** must be less than or equal to **pingInterval**.|
 | minSupportTlsProtocol | [TlsProtocol](#tlsprotocol) | No | Yes | Custom minimum supported TLS protocol version. For example, if this parameter is set to **TLS_V_1_1**, the client can support TLS protocol versions TLS1.1, TLS1.2, and TLS1.3.<br/>**Since:** 26.0.0 <br/>**Model restriction:** This API can be used only in the stage model.|
+| supportOriginPort | boolean | No | Yes | Origin is an HTTP request header field in the WebSocket handshake request, used to identify the request source, based on which the server can perform source verification. This parameter controls whether the Origin field carries a custom port number. The default value is **false**. When set to **true**:<br/>- After the [connect](#connect) API is called, if the protocol specified in the first parameter **url** is **ws** and the explicitly specified port number is not 80, the Origin field carries the corresponding port; otherwise, no port number is carried.<br/>- After the [connect](#connect) API is called, if the protocol specified in the first parameter **url** is **wss** and the explicitly specified port number is not 443, the Origin field carries the corresponding port number; otherwise, no port number is carried.<br/>When set to **false**, the Origin field does not carry a port number.<br/>**Since Version:** 26.0.0<br/>**Model restriction:** This API can be used only in the stage model. |
 
 ## ClientCert<sup>11+</sup>
 
@@ -1588,7 +1590,6 @@ Defines the client certificate type.
 | keyPassword | string | No  |Yes| Password of the certificate key file. The default value is an empty string.|
 
 ## ProxyConfiguration<sup>12+</sup>
-
 type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 Represents the HTTP proxy configuration.
@@ -1722,7 +1723,6 @@ Callback invoked when the WebSocketServer connection is closed.
 **System capability**: SystemCapability.Communication.NetStack
 
 **Parameters**
-
 | Name| Type   | Mandatory| Description                           |
 | ---------------- | -------------------  | ------ | --------------------------------------------- |
 | clientConnection | [WebSocketConnection](#websocketconnection19) | Yes| Client information, including the IP address and port number.            |

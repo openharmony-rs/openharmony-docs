@@ -1,12 +1,11 @@
 # Image Decoding Memory Optimization (C/C++)
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=51871fad202ca89cea4824e5e1f6eae94c62de6c translatedAt=2026-08-11T01:42:46.183Z pushedAt=2026-08-11T03:01:43.186Z -->
+<!-- md-trans-meta sourceCommit=bb8dffad20b6dfeef9edb224e6970710896e01f5 translatedAt=2026-09-28T02:46:49.185Z pushedAt=2026-09-29T08:32:51.356Z -->
 
 When performing image decoding, an app needs to request the corresponding memory. The memory usage is closely related to the memory allocation type and pixel format. This guide introduces different memory types and pixel formats, and explains how to combine them for optimal decoding performance.
 
@@ -19,7 +18,6 @@ When a PixelMap is large and uses shared memory, the RS main thread experiences 
 The memory types for the PixelMap are as follows:
 
 - SHARE_MEMORY: shared memory. Texture upload is required.
-
 - DMA_ALLOC: DMA memory. Texture upload is not required.
 
 The system provides the [OH_ImageSourceNative_CreatePixelmapUsingAllocator](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator) API, allowing you to customize the memory allocation type for decoding. For details about the API definition and usage examples, see the image decoding API description in [image_source_native.h](../../reference/apis-image-kit/capi-image-source-native-h.md).
@@ -44,25 +42,21 @@ The system provides the [OH_ImageSourceNative_CreatePixelmapUsingAllocator](../.
   When SHARE_MEMORY is used, image data needs to be copied to GPU memory through the CPU, increasing the texture upload time. With DMA_ALLOC, data is directly stored in memory that is accessible by the GPU, avoiding the time-consuming copy process.
 
   - SHARE_MEMORY time consumption: Single-frame rendering of a 4K image takes about 20 ms.
-
   - DMA_ALLOC time consumption: The time of single-frame rendering for a 4K image can be reduced to about 4 ms. This optimization is particularly significant in scenarios involving the display of large images and frequent dynamic image loading.
-
 - **Reduced CPU load**
 
   DMA_ALLOC allows the GPU to directly access decoded data, reducing the load caused by memory copying.
 
 > **NOTE**
 >
-> When using DMA_ALLOC, you must pay attention to the difference between the stride and the image width, and perform alignment before data reading, parsing, and display.
+> When using DMA_ALLOC, you must pay attention to the difference between the stride and the image width, and perform alignment before data reading, parsing, and display.  
 
 ### Restrictions
 
 The current image decoding feature has the following restrictions on memory allocation modes:
 
 - HDR image decoding supports only DMA_ALLOC.
-
 - Hardware decoding supports only DMA_ALLOC.
-
 - SVG image decoding supports only SHARE_MEMORY.
 
 When [OH_ImageSourceNative_CreatePixelmapUsingAllocator](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator) is used for decoding, if the specified memory allocation mode does not match the image format or decoding method, an exception indicating a memory allocation failure is thrown.
@@ -78,13 +72,11 @@ The stride describes the storage width of each row of pixel data of an image in 
 When memory is allocated using DMA_ALLOC, the stride must meet the hardware alignment requirements.
 
 - The stride value must be an integer multiple of the number of bytes required by the hardware platform.
-
 - When the stride value is greater than the image width, the system automatically pads the data.
 
   The stride value can be obtained by calling [OH_PixelmapNative_GetImageInfo](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_getimageinfo).
 
-1. Call [OH_PixelmapNative_GetImageInfo](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_getimageinfo) to obtain an OH_Pixelmap_ImageInfo object.
-
+1. Call [OH_PixelmapNative_GetImageInfo](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_getimageinfo) to obtain an `OH_Pixelmap_ImageInfo` object.
 2. Call [OH_PixelmapImageInfo_GetRowStride](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getrowstride) to obtain the stride value.
 
 The sample code for obtaining and operating the stride by the C APIs is as follows. Before using the sample code, open the **src/main/cpp/CMakeLists.txt** file of the native project, and add **libimage_source.so** and the logging dependency **libhilog_ndk.z.so** to **target_link_libraries**.
@@ -100,7 +92,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 1. Create the **GetJsResult** function to process the NAPI return value.
 
    <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->    
-
+   
    ``` C++
    // Process the NAPI return value.
    napi_value GetJsResult(napi_env env, int result)
@@ -114,7 +106,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 2. Obtain and manipulate the stride value.
 
    <!-- @[allocator_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->      
-
+   
    ``` C++
    #include <cstring>
    #include <hilog/log.h>
@@ -285,7 +277,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
        return GetJsResult(env, image_ErrorCode);
    }
    ```
-
 ## Pixel Format
 
 The pixel format after image decoding directly affects the memory usage. The main supported pixel formats are as follows.
@@ -305,11 +296,8 @@ The pixel format after image decoding directly affects the memory usage. The mai
 - **Significantly reduces memory usage**
 
   Taking a 4K image (3840×2160) as an example:
-
   - RGBA_8888 memory usage: 3840 × 2160 × 4 ≈ 33.2 MB
-
   - NV21 memory usage: 3840 × 2160 × 1.5 ≈ 12.4 MB
-
   - Memory savings of approximately 62.5%, effectively reducing app memory pressure.
 
 - **Reduces format conversion overhead**
@@ -386,19 +374,9 @@ napi_value CreatePixelmapWithYUV(napi_env env, napi_callback_info info)
 
 ## Default System Memory Allocation
 
-When [OH_ImageSourceNative_CreatePixelmap](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap) is called for decoding, different memory allocation types are used in different scenarios.
+When [OH_ImageSourceNative_CreatePixelmap()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap) is called for decoding, the system automatically selects shared memory or DMA memory.
 
-DMA_ALLOC is used in the following scenarios:
-
-- Decoding HDR images
-
-- Decoding HEIF images
-
-- Decoding JPEG images, when the original image width and height are both between 1024 and 8192 pixels, [PIXEL_FORMAT](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format) is PIXEL_FORMAT_RGBA_8888 or PIXEL_FORMAT_NV21, and the hardware is not busy (concurrency is 3).
-
-- Decoding images in other formats, when **desiredSize** in [OH_DecodingOptions](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md) is greater than or equal to 512 × 512 pixels (the original image size is used if **desiredSize** is not set), and the width is a multiple of 64.
-
-In all other scenarios, SHARE_MEMORY is used.
+To specify the memory type, call [OH_ImageSourceNative_CreatePixelmapUsingAllocator()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator) and set `allocator` to `IMAGE_ALLOCATOR_TYPE_DMA` or `IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY`.
 
 ## Memory Restrictions for Decoding a Single Image
 
@@ -409,7 +387,6 @@ The image framework imposes a 2 GB memory limit for decoding a single image. Pro
 Applications can use [onMemoryLevel](../../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) to listen for system memory changes.
 
 The calculation rule for PixelMap memory allocation is as follows:
-
 ```TypeScript
 pixels_size (pixel memory size) = stride (image pixel storage width) * height (image pixel height)
 ```
@@ -419,7 +396,6 @@ For images with original pixel memory exceeding 2 GB and supporting downsampling
 Starting from API version 21, for images that support downsampling decoding, when **desiredSize** (expected output size) is set, the decoder calculates PixelMap pixel memory at the optimal downsampling rate with a base gradient of 1/8. This means that it selects the highest clarity sampling rate among 7/8, 6/8, ..., 1/8.
 
 The table below lists the downsampling decoding support for different image formats in the image framework.
-
 | Support for Downsampling| Image Format                                                 |
 | ------------ | --------------------------------------------------------- |
 | Supported         | .jpg, .png, .heic (Refer to the device specification document for specific support.)|
