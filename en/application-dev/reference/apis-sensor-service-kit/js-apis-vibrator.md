@@ -704,7 +704,7 @@ This method is used to stop vibration of a specified device or vibrator in a mul
 
 | Type               | Description         |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise that returns the result. If the API is called successfully, the promise returns a value through **resolve**, indicating that the vibration vibration of a specified device is stopped successfully. If the call fails, the promise returns an error object through **reject**. The error object contains the error code and error message, which can be used to locate the cause of the vibration stop failure.|
+| Promise&lt;void&gt; | Promise that returns the result. If the API is called successfully, the promise returns a value through **resolve**, indicating that the vibration of a specified device is stopped successfully. If the call fails, the promise returns an error object through **reject**. The error object contains the error code and error message, which can be used to locate the cause of the vibration stop failure.|
 
 **Error codes**
 
