@@ -14,7 +14,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 本开发指导将以SoundPool进行一次低时延播放音频的过程为例，向开发者讲解如何使用SoundPool。详细的API声明请参考[SoundPool (音频池)](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md)。
 
-过程包括：创建SoundPool实例，加载音频资源（包括资源的解封装与解码：解码格式参考[音频解码支持](../avcodec/audio-decoding.md)），设置播放参数（循环模式/播放优先级等），播放控制（播放/停止），释放资源。
+过程包括：创建SoundPool实例，加载音频资源（包括资源的解封装与解码：解码格式参考[音频解码支持](../avcodec/audio-decoding.md)，支持MP4格式），设置播放参数（循环模式/播放优先级等），播放控制（播放/停止），释放资源。
 
 在应用开发过程中，开发者应通过监听方法检查当前播放状态并按照一定顺序调用接口，执行对应操作，否则系统可能会抛出异常或生成其他未定义的行为。具体顺序可参考下列开发步骤及对应说明。
 
@@ -81,7 +81,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 5. 调用load方法进行音频资源加载。
 
-    可以传入uri或fd加载资源，此处使用传入fd的方式为例，更多方法请参考[API文档](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#load)。
+    可以传入uri或fd加载资源，此处使用传入fd的方式为例，更多方法请参考[load](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#load)。
 
     当系统加载完毕音频资源文件的时候，会通过loadComplete回调，通知用户资源加载完成，请在收到回调之后，再进行后续的play操作。
 
