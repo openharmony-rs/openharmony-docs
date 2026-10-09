@@ -611,7 +611,7 @@ mechanicManager.searchTarget(targetInfo,
 
 ## mechanicManager.onBatteryLevelChange
 
-onBatteryLevelChange(mechId: number, callback: Callback\<BatteryLevelInfo>): void
+onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;): void
 
 订阅目标设备的电池电量变化信息。使用callback异步回调。
 
@@ -624,7 +624,7 @@ onBatteryLevelChange(mechId: number, callback: Callback\<BatteryLevelInfo>): voi
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
 | mechId | number | 是 | 需要订阅的设备id。 |
-| callback | Callback\<[BatteryLevelInfo](#batteryLevelInfo)> | 是 | 回调函数，电池电量变化的回调函数。 |
+| callback | Callback\<[BatteryLevelInfo](#batterylevelinfo)> | 是 | 回调函数，电池电量变化的回调函数。 |
 
 **错误码：**
 
@@ -649,7 +649,7 @@ console.info('Successful registration');
 
 ## mechanicManager.offBatteryLevelChange
 
-offBatteryLevelChange(mechId: number, callback?: Callback\<BatteryLevelInfo>): void
+offBatteryLevelChange(mechId: number, callback?: Callback&lt;BatteryLevelInfo&gt;): void
 
 取消订阅电池电量变化信息。使用callback异步回调。
 
@@ -662,7 +662,7 @@ offBatteryLevelChange(mechId: number, callback?: Callback\<BatteryLevelInfo>): v
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
 | mechId | number | 是 | 需要取消订阅的设备id。 |
-| callback | Callback\<[BatteryLevelInfo](#batteryLevelInfo)> | 否 |  mechanicManager.offBatteryLevelChange(mechId)注册的回调函数。不填时默认取消所有注册的回调函数。 |
+| callback | Callback\<[BatteryLevelInfo](#batterylevelinfo)> | 否 |  mechanicManager.offBatteryLevelChange(mechId)注册的回调函数。不填时默认取消所有注册的回调函数。 |
 
 **错误码：**
 
@@ -705,7 +705,7 @@ getDeviceAdsorbState(mechId: number): AdsorbState
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| [AdsorbState](#adsorbState) | 设备吸附状态。 |
+| [AdsorbState](#adsorbstate) | 设备吸附状态。|
 
 **错误码：**
 
