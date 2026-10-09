@@ -511,7 +511,7 @@ struct MouseWheel {
 
 ### 配置生效设备类型
 
-通过easy_go.json第一层的配置，可以选择鼠标事件转换生效的设备类型。
+通过easy_go.json第一层的配置，选择鼠标事件转换生效的设备类型。
 
 ``` json
 {
