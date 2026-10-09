@@ -3945,6 +3945,11 @@
 						"end_line":348,
 						"name":"kv_store13",
 						"start_line":313
+					},
+					{
+						"end_line":30,
+						"name":"get_context",
+						"start_line":17
 					}
 				]
 			}
