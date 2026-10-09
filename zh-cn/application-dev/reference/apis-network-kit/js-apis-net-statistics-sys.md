@@ -131,7 +131,7 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsIn
 | 参数名    | 类型                                            | 必填 | 说明                                                                                    |
 | --------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | ifaceInfo | [IfaceInfo](#ifaceinfo)                       | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo)。                                     |
-| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。当成功获取指定网卡历史流量信息时，err为undefined，data为获取到的网卡历史流量信息；否则为错误对象。 |
+| callback  | AsyncCallback\<[NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22)> | 是   | 回调函数。当成功获取指定网卡历史流量信息时，err为undefined，data为获取到的网卡历史流量信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -202,7 +202,7 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise对象，返回网卡历史流量信息。 |
+| Promise\<[NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22)> | Promise对象，返回网卡历史流量信息。 |
 
 **错误码：**
 
@@ -263,7 +263,7 @@ getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): 
 | 参数名   | 类型                                            | 必填 | 说明                                                                                    |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | uidInfo  | [UidInfo](#uidinfo)                           | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo)。                                         |
-| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。当成功获取指定应用历史流量信息时，err为undefined，data为获取到的应用历史流量信息；否则为错误对象。 |
+| callback | AsyncCallback\<[NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22)> | 是   | 回调函数。当成功获取指定应用历史流量信息时，err为undefined，data为获取到的应用历史流量信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -343,7 +343,7 @@ getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
 | 类型                                      | 说明                                               |
 | ----------------------------------------- | -------------------------------------------------- |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise对象，返回应用历史流量信息。 |
+| Promise\<[NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22)> | Promise对象，返回应用历史流量信息。 |
 
 **错误码：**
 
@@ -624,7 +624,7 @@ statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
 
 | 名称        | 类型                                            | 只读 |可选| 说明           |
 |-----------|-----------------------------------------------|----|---|--------------|
-| [uid: number] | [NetStatsInfo](#netstatsinfo) | 否  |否 |所有应用的历史流量信息。 |
+| [uid: number] | [NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22) | 否  |否 |所有应用的历史流量信息。 |
 
 ## NetStatsInfoSequence<sup>12+</sup>
 
@@ -638,4 +638,4 @@ statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
 |-----------|---------------------------------|----|---|--------------|
 | startTime | number                          | 否  |否 |开始时间戳(单位:秒)。 |
 | endTime   | number                          | 否  |否 |结束时间戳(单位:秒)。 |
-| info      | [NetStatsInfo](#netstatsinfo) | 否  |否 |获取的应用历史流量信息。 |
+| info      | [NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22) | 否  |否 |获取的应用历史流量信息。 |
