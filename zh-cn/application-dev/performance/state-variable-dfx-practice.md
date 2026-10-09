@@ -363,7 +363,7 @@ struct ComponentB {
       |--Dependent components: 1 elmtIds: 'Text[8]'
     ```
     - @State/@Provide：状态变量的装饰器类型。
-    - 'message'[5]：状态变量的名称和节点Id，但是不能使用-viewId=5来获取相应的dump信息。
+    - 'indexMessage'[5]：状态变量的名称和节点Id，但是不能使用-viewId=5来获取相应的dump信息。
     - Owned by @Component 'Index'[4]：状态变量所属组件。
     - Sync peers： 要同步的其他状态变量和其所属的组件。
     - Dependent components：当前状态变量在此组件中关联的节点Id，即依赖该变量的系统或自定义组件的节点Id。

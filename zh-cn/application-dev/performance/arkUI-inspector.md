@@ -1,5 +1,12 @@
 # 页面布局检查器ArkUI Inspector使用指导
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 DevEco Studio内置ArkUI Inspector工具，开发者可以使用ArkUI Inspector，在DevEco Studio上查看应用在真机上的UI显示效果。利用ArkUI Inspector工具，开发者可以快速定位布局问题或其他UI相关问题，同时也可以观察和了解不同组件之间的布局关系和属性，学习如何通过布局属性来控制组件的显示方式。
 
 ## 使用约束
@@ -46,7 +53,7 @@ struct ArkUIInspectorExample {
 
 ## 如何使用页面布局检查器
 
-以DevEco Studio 4.0.0.400版本为例，在DevEco Studio菜单栏上单击***\*View\**** > ***\*Tool Windows\**** >***\*ArkUI Inspector\****，或者在DevEco Studio底部工具栏单击![img](./figures/profiler_inspector_button.jpg)
+以DevEco Studio 4.0.0.400版本为例，在DevEco Studio菜单栏上单击 ***\*View\**** > ***\*Tool Windows\**** >***\*ArkUI Inspector\****，或者在DevEco Studio底部工具栏单击![img](./figures/profiler_inspector_button.jpg)
 
 打开ArkUI Inspector工具，如下图所示：
 
