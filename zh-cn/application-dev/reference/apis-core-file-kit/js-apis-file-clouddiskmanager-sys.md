@@ -148,7 +148,7 @@ try {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-### constructor<sup>26+</sup>
+### constructor
 
 constructor()
 
@@ -189,7 +189,7 @@ try {
 }
 ```
 
-### onHydrateProgress<sup>26+</sup>
+### onHydrateProgress
 
 onHydrateProgress(callback: Callback&lt;HydrateProgress&gt;): void
 
@@ -199,7 +199,7 @@ onHydrateProgress(callback: Callback&lt;HydrateProgress&gt;): void
 >
 > - 回调按发起操作的实例路由，与目标文件无关；同一实例可同时发起多个水合任务，通过[HydrateProgress](#hydrateprogress)中的filePath字段区分不同文件。
 > - 同一实例同一时间仅可注册一个回调；携带有效参数重复订阅时保留已有回调，不报告重复注册错误。
-> - 任务发起后订阅，或调用[offHydrateProgress](#offhydrateprogress26)取消订阅后再次订阅，仅可接收路由到本实例的后续事件，此前的进度事件不会重放。
+> - 任务发起后订阅，或调用[offHydrateProgress](#offhydrateprogress)取消订阅后再次订阅，仅可接收路由到本实例的后续事件，此前的进度事件不会重放。
 
 **起始版本**： 26.0.1
 
@@ -252,7 +252,7 @@ try {
 }
 ```
 
-### offHydrateProgress<sup>26+</sup>
+### offHydrateProgress
 
 offHydrateProgress(callback?: Callback&lt;HydrateProgress&gt;): void
 
@@ -316,7 +316,7 @@ try {
 }
 ```
 
-### hydratePlaceholder<sup>26+</sup>
+### hydratePlaceholder
 
 hydratePlaceholder(filePath: string, callbackType: CallbackType, priority: HydratePriority): Promise&lt;void&gt;
 
@@ -324,7 +324,7 @@ hydratePlaceholder(filePath: string, callbackType: CallbackType, priority: Hydra
 
 > **说明：**
 >
-> - callbackType取FETCH_DATA时发起水合：任务创建成功后Promise立即兑现，仅表示水合任务已创建并入队，不代表文件已开始下载或水合完成。水合进度通过发起任务的实例的[onHydrateProgress](#onhydrateprogress26)回调送达；发起或取消水合任务前无需先注册回调。文件水合状态依次经过PENDING、IN_PROGRESS，最终为COMPLETED或CANCELLED。
+> - callbackType取FETCH_DATA时发起水合：任务创建成功后Promise立即兑现，仅表示水合任务已创建并入队，不代表文件已开始下载或水合完成。水合进度通过发起任务的实例的[onHydrateProgress](#onhydrateprogress)回调送达；发起或取消水合任务前无需先注册回调。文件水合状态依次经过PENDING、IN_PROGRESS，最终为COMPLETED或CANCELLED。
 > - callbackType取CANCEL_FETCH_DATA时取消水合：目标文件存在进行中的水合任务时将其取消，取消成功时CANCELLED事件仅送达发起取消的实例（即使水合任务由其他实例发起）；不存在进行中的水合任务时Promise被拒绝并返回34400032错误码。发起取消的实例未注册回调时，其取消事件不会转发给其他实例，也不会事后重放；服务侧发起的自动取消事件路由到发起水合任务的实例。
 > - 待处理（排队中）的水合任务数量存在上限（单个云盘应用20个、全局40个），达到上限时Promise被拒绝并返回34400034错误码，可等待部分水合任务完成或取消后再重试。此外，单个云盘应用同时执行的水合任务最多5个、全局最多10个，超出部分排队等待，不会报错。
 
@@ -399,7 +399,7 @@ accessor.hydratePlaceholder(filePath, cloudDiskManager.CallbackType.FETCH_DATA,
 });
 ```
 
-### dehydrateFile<sup>26+</sup>
+### dehydrateFile
 
 dehydrateFile(filePath: string): Promise&lt;void&gt;
 
@@ -505,7 +505,7 @@ accessor.dehydrateFile(filePath).then(() => {
 
 ## HydrateProgress
 
-描述水合任务的进度信息，通过[onHydrateProgress](#onhydrateprogress26)订阅的回调获取。
+描述水合任务的进度信息，通过[onHydrateProgress](#onhydrateprogress)订阅的回调获取。
 
 **起始版本**： 26.0.1
 
