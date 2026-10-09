@@ -372,22 +372,22 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
        if (ret == AV_ERR_TRY_AGAIN_LATER) {
            // 超时，可能输入的数据不足以编码出一帧，或者超时时间设置过短。
            AVCODEC_SAMPLE_LOGW("Get output buffer timeout.");
-           return AVCODEC_SAMPLE_ERR_AGAIN;
+           return AVCODEC_SAMPLE_ERR_AGAIN; // continue;
        }
        if (ret != AV_ERR_OK) {
            AVCODEC_SAMPLE_LOGE("query output buffer failed, ret: %{public}d", ret);
-           return AVCODEC_SAMPLE_ERR_ERROR;
+           return AVCODEC_SAMPLE_ERR_ERROR; // break;
        }
 
        OH_AVBuffer *outputBuf = OH_AudioCodec_GetOutputBuffer(encoder_, info.bufferIndex);
        if (outputBuf == nullptr) {
            AVCODEC_SAMPLE_LOGE("get output buffer failed, ret: %{public}d", ret);
-           return AVCODEC_SAMPLE_ERR_ERROR;
+           return AVCODEC_SAMPLE_ERR_ERROR; // break;
        }
        ret = OH_AVBuffer_GetBufferAttr(outputBuf, &info.attr);
        if (ret != AV_ERR_OK) {
            AVCODEC_SAMPLE_LOGE("get output buffer attr failed, ret: %{public}d", ret);
-           return AVCODEC_SAMPLE_ERR_ERROR;
+           return AVCODEC_SAMPLE_ERR_ERROR; // break;
        }
 
        info.buffer = outputBuf;

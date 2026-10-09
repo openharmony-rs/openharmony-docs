@@ -365,6 +365,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            CHECK_AND_CONTINUE_LOG(buffer != nullptr, "Get input buffer timeout, retry");
            CHECK_AND_BREAK_LOG(isStarted_ && audioWorkerRunning_, "Work done, thread out");
            bufferInfo.buffer = buffer;
+           AVCODEC_SAMPLE_LOGW("bufferInfo.attr.size:%{public}d", bufferInfo.attr.size);
            audioDecContext_->inputFrameCount++;
            lock.unlock();
            int32_t ret = demuxer_->ReadSample(demuxer_->GetAudioTrackId(), buffer, bufferInfo.attr);
@@ -412,23 +413,23 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
        if (ret == AV_ERR_TRY_AGAIN_LATER) {
            // 超时，异常处理，设置的超时时间过短或输入输出buffer没有消耗/释放导致解码阻塞。
            AVCODEC_SAMPLE_LOGW("Get output buffer timeout.");
-           return AVCODEC_SAMPLE_ERR_AGAIN;
+           return AVCODEC_SAMPLE_ERR_AGAIN; // continue;
        }
        if (ret != AV_ERR_OK) {
            AVCODEC_SAMPLE_LOGE("query output buffer failed, ret: %{public}d", ret);
-           return AVCODEC_SAMPLE_ERR_ERROR;
+           return AVCODEC_SAMPLE_ERR_ERROR; // break;
        }
 
        OH_AVBuffer *outputBuf = OH_AudioCodec_GetOutputBuffer(decoder_, info.bufferIndex);
        if (outputBuf == nullptr) {
            AVCODEC_SAMPLE_LOGE("get output buffer failed, ret: %{public}d", ret);
-           return AVCODEC_SAMPLE_ERR_ERROR;
+           return AVCODEC_SAMPLE_ERR_ERROR; // break;
        }
 
        ret = OH_AVBuffer_GetBufferAttr(outputBuf, &info.attr);
        if (ret != AV_ERR_OK) {
            AVCODEC_SAMPLE_LOGE("get output buffer attr failed, ret: %{public}d", ret);
-           return AVCODEC_SAMPLE_ERR_ERROR;
+           return AVCODEC_SAMPLE_ERR_ERROR; // break;
        }
        info.buffer = outputBuf;
        if (info.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
