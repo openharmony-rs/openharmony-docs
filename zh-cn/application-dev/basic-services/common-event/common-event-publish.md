@@ -31,7 +31,7 @@
 1. 导入模块。
    
    ArkTS-Dyn示例：
-   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) --> 
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
