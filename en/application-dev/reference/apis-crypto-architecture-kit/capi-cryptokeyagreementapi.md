@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides APIs for key agreement algorithms.
+Describes the APIs provided by OpenHarmony for key agreement.
 
 **Since**: 20
 

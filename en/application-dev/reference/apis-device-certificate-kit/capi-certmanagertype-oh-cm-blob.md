@@ -27,5 +27,5 @@ Defines a struct for a binary large object (BLOB).
 
 | Name| Description|
 | -- | -- |
-| uint32_t size | Data size.|
+| uint32_t size | Data size, in bytes.|
 | uint8_t *data | Pointer to the memory in which the data is stored.|

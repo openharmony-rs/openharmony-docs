@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides APIs for generating random numbers.
+Describes the APIs provided by OpenHarmony for random number generation.
 
 **Since**: 20
 
