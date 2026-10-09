@@ -12,16 +12,6 @@
 
 > **适用版本：** 从 API 版本 26.1.0 开始，`@ohos.arkui.dialog` 提供 Unified Dialog API。版本状态以 [`@ohos.arkui.dialog.d.ts`](../reference/apis-arkui/js-apis-dialog.md) 实际 `@since` 标注为准。
 
-### 快速导航
-
-如需直接迁移，可按弹窗类别跳转至“适配指导”对应小节：
-
-- [CustomDialog 迁移](#customdialog--dialogpresenterpresent自定义弹窗)
-- [AlertDialog 迁移](#alertdialog--dialogpresenterpresent固定样式弹窗)
-- [TextPickerDialog 迁移](#textpickerdialog--dialogpresenterpresent自定义弹窗内嵌-textpicker)
-- [TimePickerDialog 迁移](#timepickerdialog--dialogpresenterpresent自定义弹窗内嵌-timepicker)
-- [DatePickerDialog 迁移](#datepickerdialog--dialogpresenterpresent自定义弹窗内嵌-datepicker)
-
 ## 能力介绍
 
 `@ohos.arkui.dialog.d.ts` 包含 13 个声明单元，均标注 `@since 26.1.0 dynamic`、`@stagemodelonly`、`@crossplatform`、`@atomicservice`。各单元按"选项类型 / 控制器与结果 / 枚举"逻辑分组，类型继承关系如下：
@@ -239,7 +229,7 @@ DialogTextStyleOptions
 
 #### 编程模型差异
 
-老接口使用 `@CustomDialog` 装饰器 + `CustomDialogController` 或命令式调用（`AlertDialog.show()`、`TextPickerDialog.show()` 等）。新接口统一为 `UIContext.getDialogPresenter()` 获取 `DialogPresenter` 实例，通过 `present()` 弹出，返回 `Promise<DialogResult>`。
+老接口使用 `@CustomDialog` 装饰器 + `CustomDialogController` 或命令式调用（`AlertDialog.show()`、`ActionSheet.show()` 等）。新接口统一为 `UIContext.getDialogPresenter()` 获取 `DialogPresenter` 实例，通过 `present()` 弹出，返回 `Promise<DialogResult>`。
 
 **迁移范式：**
 
@@ -267,7 +257,7 @@ presenter.present(() => { /* CustomBuilder 内容 */ }, { customStyle: false })
 
 ```typescript
 // 老接口
-AlertDialog.show({
+this.getUIContext().showAlertDialog({
   message: '确认删除？',
   cancel: () => { console.info('用户取消') }
 })
@@ -295,9 +285,6 @@ this.getUIContext().getDialogPresenter().present({
 | `Index.ets` | 迁移映射入口 |
 | `CustomDialogMigrationPage.ets` | CustomDialog 迁移 |
 | `AlertDialogMigrationPage.ets` | AlertDialog 迁移 |
-| `TextPickerMigrationPage.ets` | TextPickerDialog 迁移 |
-| `TimePickerMigrationPage.ets` | TimePickerDialog 迁移 |
-| `DatePickerMigrationPage.ets` | DatePickerDialog 迁移 |
 | `DialogStatePage.ets` | 能力介绍（DialogBaseController/DialogState） |
 
 ### CustomDialog → DialogPresenter.present（自定义弹窗）
@@ -417,7 +404,7 @@ struct CustomDialogMigrationPage {
 
 | 老接口签名 | 新接口签名 | 说明 |
 |-----------|-----------|------|
-| `AlertDialog.show({ title, message, buttons, alignment, ... })` | `presenter.present(options?: DialogStyleOptions)` | 命令式调用改 Presenter + Promise |
+| `this.getUIContext().showAlertDialog({ title, message, buttons, alignment, ... })` | `presenter.present(options?: DialogStyleOptions)` | 命令式调用改 Presenter + Promise |
 | `buttons: Array<{ value, action }>` | `buttons: Array<DialogButton>` | 按钮属性扩展 |
 | `confirm: (value) => void` / `primaryButton.action` | `DialogButton.action` + Promise 结果 | 确认回调改 Promise |
 | `cancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
@@ -425,7 +412,7 @@ struct CustomDialogMigrationPage {
 **迁移前示例（老接口）：**
 
 ```typescript
-AlertDialog.show({
+this.getUIContext().showAlertDialog({
   title: '提示',
   message: '确认删除？',
   buttons: [
@@ -458,7 +445,7 @@ struct AlertDialogMigrationPage {
           .fontWeight(FontWeight.Bold)
           .margin({ bottom: 20 })
 
-        Button('老接口：AlertDialog.show')
+        Button('老接口：showAlertDialog')
           .width('90%')
           .margin({ bottom: 10 })
           .onClick(() => {
@@ -510,263 +497,6 @@ struct AlertDialogMigrationPage {
         this.result = 'onWillDismiss, reason: ' + dismissal.reason;
         dismissal.dismiss();
       }
-    }).then((result: dialog.DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
-  }
-}
-```
-
-### TextPickerDialog → DialogPresenter.present（自定义弹窗内嵌 TextPicker）
-
-| 老接口签名 | 新接口签名 | 说明 |
-|-----------|-----------|------|
-| `TextPickerDialog.show({ range, selected, onAccept, onChange, onCancel })` | `presenter.present(content, DialogCustomOptions)` + 内容中嵌入 `TextPicker` | 无专用弹窗声明，使用自定义弹窗内嵌 |
-| `onAccept: (value) => void` | 自定义组件内回调 | 回调位置从选项移入内容组件 |
-| `onCancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
-
-**迁移前示例（老接口）：**
-
-```typescript
-TextPickerDialog.show({
-  range: ['A', 'B', 'C'],
-  selected: 0,
-  onAccept: (value: string) => console.info('选中: ' + value),
-  onChange: (value: string) => console.info('变化: ' + value)
-})
-```
-
-**迁移后示例（新接口）：**
-
-<!-- @[dialog_migration_textpicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/TextPickerMigrationPage.ets) -->
-
-```typescript
-import { dialog } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct TextPickerMigrationPage {
-  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
-  @State selected: number = 0;
-  @State result: string = '';
-  private range: string[] = ['A', 'B', 'C', 'D'];
-
-  build() {
-    Row() {
-      Column() {
-        Text('TextPickerDialog 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
-
-        Button('老接口：TextPickerDialog.show')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 ts-methods-textpicker-dialog.md';
-          })
-
-        Button('新接口：DialogPresenter.present + TextPicker')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewTextPickerDialog();
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-
-  private showNewTextPickerDialog(): void {
-    this.presenter.present(() => {
-      TextPicker({ range: this.range, selected: this.selected })
-        .onChange((value: string) => {
-          this.selected = this.range.indexOf(value);
-        })
-        .onAccept((value: string) => {
-          this.result = '选中: ' + value;
-        })
-    }, {
-      alignment: dialog.DialogBaseAlignment.CENTER
-    }).then((result: dialog.DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
-  }
-}
-```
-
-### TimePickerDialog → DialogPresenter.present（自定义弹窗内嵌 TimePicker）
-
-| 老接口签名 | 新接口签名 | 说明 |
-|-----------|-----------|------|
-| `TimePickerDialog.show({ selected, useMilitaryTime, onAccept, onChange, onCancel })` | `presenter.present(content, DialogCustomOptions)` + 内容中嵌入 `TimePicker` | 无专用弹窗声明 |
-| `onAccept: (value) => void` | 自定义组件内回调 | 回调位置移入内容组件 |
-| `onCancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
-
-**迁移前示例（老接口）：**
-
-```typescript
-TimePickerDialog.show({
-  selected: new Date(),
-  useMilitaryTime: true,
-  onAccept: (value) => console.info('选中时间'),
-  onCancel: () => console.info('取消')
-})
-```
-
-**迁移后示例（新接口）：**
-
-<!-- @[dialog_migration_timepicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/TimePickerMigrationPage.ets) -->
-
-```typescript
-import { dialog } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct TimePickerMigrationPage {
-  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
-  @State result: string = '';
-
-  build() {
-    Row() {
-      Column() {
-        Text('TimePickerDialog 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
-
-        Button('老接口：TimePickerDialog.show')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 ts-methods-timepicker-dialog.md';
-          })
-
-        Button('新接口：DialogPresenter.present + TimePicker')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewTimePickerDialog();
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-
-  private showNewTimePickerDialog(): void {
-    this.presenter.present(() => {
-      TimePicker({ selected: new Date(), useMilitaryTime: true })
-        .onChange((value: TimePickerValue) => {
-          this.result = '时间变化: ' + value.hour + ':' + value.minute;
-        })
-    }, {
-      alignment: dialog.DialogBaseAlignment.CENTER
-    }).then((result: dialog.DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
-  }
-}
-```
-
-### DatePickerDialog → DialogPresenter.present（自定义弹窗内嵌 DatePicker）
-
-| 老接口签名 | 新接口签名 | 说明 |
-|-----------|-----------|------|
-| `DatePickerDialog.show({ start, end, selected, onAccept, onChange, onCancel })` | `presenter.present(content, DialogCustomOptions)` + 内容中嵌入 `DatePicker` | 无专用弹窗声明 |
-| `onAccept: (value) => void` | 自定义组件内回调 | 回调位置移入内容组件 |
-| `onCancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
-
-**迁移前示例（老接口）：**
-
-```typescript
-DatePickerDialog.show({
-  start: new Date('2020-01-01'),
-  end: new Date('2030-12-31'),
-  onAccept: (value) => console.info('选中日期'),
-  onCancel: () => console.info('取消')
-})
-```
-
-**迁移后示例（新接口）：**
-
-<!-- @[dialog_migration_datepicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/DatePickerMigrationPage.ets) -->
-
-```typescript
-import { dialog } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct DatePickerMigrationPage {
-  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
-  @State result: string = '';
-
-  build() {
-    Row() {
-      Column() {
-        Text('DatePickerDialog 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
-
-        Button('老接口：DatePickerDialog.show')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 ts-methods-datepicker-dialog.md';
-          })
-
-        Button('新接口：DialogPresenter.present + DatePicker')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewDatePickerDialog();
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-
-  private showNewDatePickerDialog(): void {
-    this.presenter.present(() => {
-      DatePicker({
-        start: new Date('2020-01-01'),
-        end: new Date('2030-12-31')
-      })
-        .onChange((value: DatePickerResult) => {
-          this.result = '日期变化: ' + value.year + '-' + (value.month + 1) + '-' + value.day;
-        })
-    }, {
-      alignment: dialog.DialogBaseAlignment.CENTER
     }).then((result: dialog.DialogResult) => {
       this.result = 'present success, dialogId: ' + result.dialogId;
     }).catch((error: BusinessError) => {
